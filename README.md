@@ -1,6 +1,6 @@
 # Criteri ESG — Document viu
 
-> **Última actualització:** 25 juny 2026
+> **Última actualització:** 26 juny 2026
 > **Autor:** Equip Criteri ESG (amb suport de Z.ai)
 > **Audiència:** Paolo + socis/cofundadors
 > **Estat:** En validació
@@ -19,6 +19,7 @@ Aquest repositori és el **document viu** del projecte Criteri ESG. Qualsevol de
 | **[06 — Informes piloto](./06-INFORMES-PILOTO.md)** | Llistat d'informes processats amb link a fitxers |
 | **[07 — Decisions](./07-DECISIONS.md)** | Log de decisions preses i per què |
 | **[08 — Idees pendents](./08-IDEES.md)** | Parking d'idees per validar |
+| **[09 — Anàlisi competència](./09-ANALISI-COMPETENCIA.md)** | Organismes, certificacions, competidors, formació, buyer persona, pricing, calendari, sectors, LATAM, Itàlia/Portugal |
 
 ## Com fer-lo servir
 
@@ -38,4 +39,5 @@ Aquest repositori és el **document viu** del projecte Criteri ESG. Qualsevol de
 
 ## Històric de canvis
 
+- **26 juny 2026** — Afegida anàlisi de competència i mercat completa (secció 09) amb 30+ fonts verificades
 - **25 juny 2026** — Creació del repositori. Migració de tota la documentació existent.

@@ -39,5 +39,6 @@ Aquest repositori és el **document viu** del projecte Criteri ESG. Qualsevol de
 
 ## Històric de canvis
 
+- **26 juny 2026** — Afegit document de fonts d'informes (88 fonts) i sistema de tasques (GitHub Issues + Projects)
 - **26 juny 2026** — Afegida anàlisi de competència i mercat completa (secció 09) amb 30+ fonts verificades
 - **25 juny 2026** — Creació del repositori. Migració de tota la documentació existent.

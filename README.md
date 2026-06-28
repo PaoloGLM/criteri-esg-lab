@@ -20,6 +20,9 @@ Aquest repositori és el **document viu** del projecte Criteri ESG. Qualsevol de
 | **[07 — Decisions](./07-DECISIONS.md)** | Log de decisions preses i per què |
 | **[08 — Idees pendents](./08-IDEES.md)** | Parking d'idees per validar |
 | **[09 — Anàlisi competència](./09-ANALISI-COMPETENCIA.md)** | Organismes, certificacions, competidors, formació, buyer persona, pricing, calendari, sectors, LATAM, Itàlia/Portugal |
+| **[10 — Fonts d'informes](./10-FONTS-INFORMES.md)** | 88 fonts identificades (CAT, ES, EU, global, sectorials) amb URL, periodicitat i estat de cobertura |
+| **[11 — Sistema de tasques](./11-SISTEMA-TASQUES.md)** | Documentació del sistema GitHub Issues + Projects per gestionar tasques |
+| **[12 — Plantejament legal](./12-PLANTEJAMENT-LEGAL.md)** | Marc legal CAT/ES: autònom, SL, sòcia, documentació, costos per fases |
 
 ## Com fer-lo servir
 
@@ -39,6 +42,7 @@ Aquest repositori és el **document viu** del projecte Criteri ESG. Qualsevol de
 
 ## Històric de canvis
 
+- **27 juny 2026** — Afegit plantejament legal (secció 12) amb marc legal CAT/ES per autònom, SL, sòcia i costos per fases
 - **26 juny 2026** — Afegit document de fonts d'informes (88 fonts) i sistema de tasques (GitHub Issues + Projects)
 - **26 juny 2026** — Afegida anàlisi de competència i mercat completa (secció 09) amb 30+ fonts verificades
 - **25 juny 2026** — Creació del repositori. Migració de tota la documentació existent.

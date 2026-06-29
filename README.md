@@ -23,6 +23,7 @@ Aquest repositori és el **document viu** del projecte Criteri ESG. Qualsevol de
 | **[10 — Fonts d'informes](./10-FONTS-INFORMES.md)** | 88 fonts identificades (CAT, ES, EU, global, sectorials) amb URL, periodicitat i estat de cobertura |
 | **[11 — Sistema de tasques](./11-SISTEMA-TASQUES.md)** | Documentació del sistema GitHub Issues + Projects per gestionar tasques |
 | **[12 — Plantejament legal](./12-PLANTEJAMENT-LEGAL.md)** | Marc legal CAT/ES: autònom, SL, sòcia, documentació, costos per fases |
+| **[13 — Emmagatzematge](./13-EMMAGATZEMATGE.md)** | On es guarda cada tipus de contingut (documents, informes, codi, dades usuaris, newsletter) |
 
 ## Com fer-lo servir
 
@@ -42,6 +43,7 @@ Aquest repositori és el **document viu** del projecte Criteri ESG. Qualsevol de
 
 ## Històric de canvis
 
+- **29 juny 2026** — Afegit document d'emmagatzematge (secció 13) + decisió Beehiiv registrada al document de decisions (secció 07)
 - **27 juny 2026** — Afegit plantejament legal (secció 12) amb marc legal CAT/ES per autònom, SL, sòcia i costos per fases
 - **26 juny 2026** — Afegit document de fonts d'informes (88 fonts) i sistema de tasques (GitHub Issues + Projects)
 - **26 juny 2026** — Afegida anàlisi de competència i mercat completa (secció 09) amb 30+ fonts verificades

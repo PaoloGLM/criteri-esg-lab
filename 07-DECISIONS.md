@@ -177,6 +177,36 @@
 
 ---
 
+## 29 juny 2026 — Newsletter: Beehiiv com a plataforma
+
+**Decisió**: Beehiiv serà la plataforma per crear i enviar la newsletter setmanal de Criteri ESG
+
+**Rao**: 
+- Pla Free gratuït fins 2.500 subscriptors (millor que Mailchimp que cobra a 500)
+- Excel·lent deliverability (especialitzat en newsletters, no e-commerce)
+- API pública que permet crear esborranys via API (jo faig el 95% de la feina, Paolo només clica "Send")
+- Monetització integrada (Boost, ad network) per al futur Premium
+- Editor visual per si calen ajustaments ràpids sense demanar-me codi
+
+**Alternatives considerades**:
+- **Mailchimp** — descartat per deliverability mitja-baixa i preu que puja ràpidament (80€/mes a 2.500 subs)
+- **Substack** — descartat perquè es queda 10% si cobres i no pots exportar fàcilment la llista
+- **Resend** — descartat per a fase inicial perquè no té dashboard ni editor visual; reconsiderable any 2 si volem control total
+
+**Limitació tècnica confirmada**:
+- La API pública de Beehiiv permet crear esborranys però NO permet enviar emails (cal pla Enterprise a 1.000+$/mes)
+- Flux setmanal: jo creo esborrany via API (5 minuts treball meu), Paolo revisa i clica "Send" al tauler (5 minuts treball Paolo)
+- Quan arribem a 5.000+ subs i sigui rendible Enterprise, automatitzo tot
+
+**Impacte**: 
+- Creació de compte Beehiiv: tasca P1 al roadmap (agost 2026)
+- Caldrà API key de Beehiiv (com la de GitHub) perquè jo pugui crear esborranys automàticament
+- 5 minuts/setmana de feina manual de Paolo per enviar
+
+**Estat**: Activa
+
+---
+
 ## Plantilla per a futures decisions
 
 ```markdown

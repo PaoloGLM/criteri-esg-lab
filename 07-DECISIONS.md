@@ -207,6 +207,154 @@
 
 ---
 
+## 29 juny 2026 — Estratègia de llançament per fases (early bird)
+
+**Decisió**: Llançament de Criteri ESG al setembre 2026 amb model freemium progressiu i "early bird" de 2 mesos
+
+**Rao**: 
+- Generar tracció inicial amb usuaris gratis que es converteixen en ambaixadors
+- Provar qualitat del producte sense pressió de venda
+- Recollir feedback abans de cobrar
+- Crear urgència amb oferta de llançament limitada
+
+**Detalls del model**:
+- Setembre-octubre 2026: accés total gratuït per a tothom (early bird)
+- A partir de novembre 2026: paywall activat
+  - Informes dels últims 6 mesos: només Premium
+  - Informes antics (>6 mesos): gratis amb registre
+  - Newsletter: completa per a Premium, reduïda per a gratuïts
+- Ultra no disponible fins abril 2027 (6 mesos post-llançament)
+
+**Oferta de llançament**:
+- 50 primers subscriptors Premium: 29€/mes durant el primer any (vs 39€/mes normal)
+- Comptador visible a la web ("Queden X places")
+- 7 dies de prova gratuïta sempre disponible (per a tothom)
+
+**Alternatives considerades**:
+- Llançament directe amb paywall des del dia 1 — descartat perquè requereix molta tracció inicial sense prova social
+- Tots els informes gratis per sempre — descartat perquè no genera ingressos
+- Freemium pur (alguns informes gratis sempre) — descartat perquè dilueix el valor Premium
+
+**Impacte**: 
+- Calendari detallat al document `05-ROADMAP.md`
+- Estratègia completa al document `14-LLANÇAMENT-FASES.md`
+- Newsletter reduïda per a gratuïts: apartats Inversió ESG i Connexió limitats a una frase + CTA
+
+**Estat**: Activa
+
+---
+
+## 29 juny 2026 — Newsletter bimensual (no setmanal)
+
+**Decisió**: La newsletter es publica cada 2 setmanes, no cada setmana
+
+**Rao**: 
+- Assegurar prou informació de qualitat per a cada edició
+- Reduir càrrega de producció (Paolo + Z.ai-bot)
+- Freqüència bimensual és suficient per mantenir relació amb subscriptor
+
+**Alternatives considerades**:
+- Setmanal — descartat per pressió de producció i risc de baixa qualitat
+- Mensual — descartat per massa espaiada, perd relació amb subscriptor
+
+**Calendari post-llançament**:
+- Newsletter #1: 7 setembre 2026
+- Newsletter #2: 21 setembre 2026
+- Cada 2 setmanes a partir d'aquí
+
+**Impacte**: 
+- 22-26 newsletters per any (vs 50-52 setmanals)
+- Calendari actualitzat al roadmap (secció 05)
+
+**Estat**: Activa
+
+---
+
+## 29 juny 2026 — Calendari juliol-setembre 2026
+
+**Decisió**: 
+- Juliol 2026: tancar dissenys + comptes + registres
+- Agost 2026: proves internes amb beta testers
+- Setembre 2026: llançament oficial
+
+**Rao**: 
+- Calendari realista que permet validar el producte abans del llançament
+- Aprofita el pic de publicacions ESG de setembre (segons anàlisi de competència)
+- Dona temps al nou membre de l'equip per incorporar-se
+
+**Detalls per mes**:
+- Juliol: 5 setmanes de treball intensiu en dissenys, informes pilot, comptes, registres
+- Agost: 4 setmanes de proves amb 10-20 beta testers + iteració
+- Setembre: deploy a producció + estratègia de captació inicial
+
+**Impacte**: 
+- Roadmap (secció 05) completament reescrit amb aquest calendari
+- 15 issues existents al GitHub Project revisats i reassignats
+
+**Estat**: Activa
+
+---
+
+## 29 juny 2026 — Incorporació nou membre equip
+
+**Decisió**: Una nova persona s'incorpora a l'equip amb rol de Tech Lead (disseny + programació + BD)
+
+**Rao**: 
+- Paolo no pot fer-ho tot sol
+- Necessitem expertesa tècnica especialitzada per al llançament
+- El nou membre té domini en disseny, programació web i bases de dades
+
+**Repartiment de rols**:
+- **Paolo** (CEO/Estratègia): decisions estratègiques, relacions externes, enviaments newsletter, gestió de marca
+- **Nou membre** (Tech Lead): disseny web, programació, base de dades, integracions tècniques
+- **Z.ai-bot** (assistent tècnic): generació de continguts, recerques, documentació al GitHub
+
+**Comunicació amb Z.ai-bot**:
+- Paolo parla amb Z.ai-bot a través del seu xat
+- Nou membre obre el seu propi xat amb Z.ai-bot (Opció A, recomanada)
+- GitHub és el "cervell compartit" — totes les decisions hi queden registrades
+- Per decisions estratègiques, Paolo i nou membre parlen primer, després Paolo consulta a Z.ai-bot
+
+**Accessos**:
+- Nou membre té accés al repositori GitHub (lectura i escriptura)
+- Nou membre tindrà accés a Vercel, Supabase, Beehiiv quan es creïn els comptes
+- Tokens i credencials NO es comparteixen al xat ni al GitHub
+
+**Impacte**: 
+- Roadmap (secció 05) actualitzat amb repartiment de responsabilitats
+- Sistema de tasques (secció 11) manté @PaoloGLM com a persona per a tasques operatives, però el nou membre es farà càrrec de les tècniques
+- 15 issues existents al GitHub Project es reassignen: Paolo → operatives, nou membre → tècniques
+
+**Estat**: Activa
+
+---
+
+## 29 juny 2026 — Repositori d'informes des del 1 gener 2026
+
+**Decisió**: El repositori d'informes a la web començarà l'1 de gener de 2026
+
+**Rao**: 
+- Dona continuïtat al llançament (al setembre ja hi haurà 8 mesos d'informes)
+- Permet que els primers usuaris vegin volum de contingut
+- Els informes de gener-març 2026 ja seran accessibles gratis al setembre (han passat 6 mesos)
+
+**Regla dels 6 mesos**:
+- Qualsevol informe publicat fa més de 6 mesos és accessible gratis (sota registre) per sempre
+- Els informes dels últims 6 mesos requereixen Premium
+- Exemple: informe publicat 15 gener 2026 → gratis a partir de 15 juliol 2026
+
+**Quantitat esperada al llançament (setembre 2026)**:
+- 32-48 informes processats (gener-agost 2026)
+- D'aquests, 16-24 seran gratis (>6 mesos), 16-24 requeriran Premium
+
+**Impacte**: 
+- Documentat a `14-LLANÇAMENT-FASES.md` secció 4
+- Cal processar informes de gener-juny 2026 durant juliol (ja al roadmap)
+
+**Estat**: Activa
+
+---
+
 ## Plantilla per a futures decisions
 
 ```markdown

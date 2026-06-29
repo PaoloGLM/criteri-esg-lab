@@ -2,90 +2,221 @@
 
 > Fites setmanals i properes accions. Actualitzat contínuament.
 
-## Setmana actual (25-29 juny 2026)
+## Setmana actual (29 juny - 5 juliol 2026)
 
 ### Fet aquesta setmana
-- ✅ Naming confirmat: Criteri ESG
-- ✅ Pla de negoci estructurat (PPT + PDF)
-- ✅ Web homepage operativa (12 seccions, bilingüe CAT/ES)
-- ✅ Primer informe pilot complet (ESRS maig 2026, 7 blocs)
-- ✅ PPT editable per Ultra (10 diapositives)
-- ✅ Format Ultra complet (podcast, PPT, dossier, connexions personalitzades)
-- ✅ Repositori GitHub document viu creat
-- ❌ Podcast TTS amb z-ai — descartat per qualitat (Paolo farà amb NotebookLM)
+- ✅ Anàlisi de competència i mercat completa (secció 09 del repo)
+- ✅ 88 fonts d'informes catalogades (secció 10)
+- ✅ Sistema de tasques GitHub Issues + Projects configurat (15 issues + 3 milestones)
+- ✅ Plantejament legal CAT/ES complet (secció 12)
+- ✅ Decisió Beehiiv com a plataforma de newsletter
+- ✅ Arquitectura d'emmagatzematge definida (secció 13)
+- ✅ Estratègia de llançament per fases definida (secció 14)
+- ✅ Disseny informes i newsletter homogeneïtzats (Estil B + Estil A v2)
+- ✅ Newsletter #14 demo en `.eml` per provar en clients d'email
+- ✅ Incorporació nou membre equip (disseny + programació + BD)
 
 ### Properes accions (aquesta setmana)
-- [ ] Paolo: registrar `criteriesg.com` (GoDaddy, Namecheap o similar)
+- [ ] Paolo: donar accés al nou membre al repositori GitHub
+- [ ] Paolo: explicar al nou membre el model de treball amb Z.ai-bot (GitHub com a cervell compartit)
+- [ ] Nou membre: llegir els 14 documents del repo per posar-se al dia
+- [ ] Z.ai-bot: integrar podcasts NotebookLM al modal de l'informe (quan Paolo tingui el primer)
+
+---
+
+## Calendari 2026 per fases
+
+### Fase 0 — Tancament de dissenys i preparatius (juliol 2026)
+
+**Objectiu:** Tenir tot llest per començar les proves a agost.
+
+#### Setmana 1 (29 juny - 5 juliol)
+- [ ] Paolo: explicar al nou membre el model de treball
+- [ ] Nou membre: llegir documentació del repo
+- [ ] Z.ai-bot: generar prototip de pàgina /informes amb biblioteca i cercador
+- [ ] Z.ai-bot: generar HTML/PDF de 5 informes pilot (de gener-juny 2026)
+
+#### Setmana 2 (6-12 juliol)
+- [ ] Paolo: registrar domini `criteriesg.com` + variants (`criteriapp.com`, `criteri-esg.com`)
 - [ ] Paolo: iniciar registre OEPM marca "CRITERI ESG"
-- [ ] Paolo: crear compte Beehiiv per newsletter
-- [ ] Z.ai: integrar podcasts NotebookLM al modal de l'informe (quan Paolo tingui el primer)
-- [ ] Z.ai: pujar captures de pantalla al repo GitHub
+- [ ] Nou membre: tancar disseny final de la homepage (12 seccions)
+- [ ] Z.ai-bot: tancar disseny final de l'informe (Estil B v2)
+- [ ] Z.ai-bot: tancar disseny final de la newsletter (Estil A v2)
 
-## Setmana propera (1-5 juliol 2026)
+#### Setmana 3 (13-19 juliol)
+- [ ] Paolo: crear compte Beehiiv
+- [ ] Paolo: crear compte Supabase
+- [ ] Paolo: crear compte Stripe (encara no activem pagaments)
+- [ ] Nou membre: tancar disseny de pàgines internes (/informes, /informes/[slug], /sobre-nosaltres, /faq)
+- [ ] Z.ai-bot: processar 5 informes pilot addicionals (de juliol 2026 i retroactius)
 
-### Pla
-- [ ] Definir 30 fonts ESG exactes a monitoritzar (RSS + crawler)
-- [ ] Escriure i publicar 1r resum pilot manualment (sense IA, per validar to)
-- [ ] Configurar Beehiiv amb plantilla brand Criteri
-- [ ] Crear compte LinkedIn empresa + Twitter/X
-- [ ] Llançar newsletter als primers 20 contactes personals de Paolo
+#### Setmana 4 (20-26 juliol)
+- [ ] Paolo: crear compte LinkedIn empresa + Twitter/X
+- [ ] Nou membre: implementar autenticació (Supabase Auth)
+- [ ] Nou membre: implementar base de dades (Supabase PostgreSQL + Prisma)
+- [ ] Z.ai-bot: configurar crawler RSS per a fonts prioritàries (Nivell 1 manual)
 
-## Roadmap 90 dies (actualitzat)
+#### Setmana 5 (27 juliol - 2 agost)
+- [ ] Paolo: contractar assegurança RC professional
+- [ ] Nou membre: integrar Stripe (sense activar encara)
+- [ ] Nou membre: provar flux de registre + login complet
+- [ ] Z.ai-bot: pujar 10 informes pilot a la base de dades
+- [ ] **Revisió final dissenys abans de agost**
 
-| Setmana | Tasca | Entregable |
-|---------|-------|-----------|
-| 1-2 (actual) | Confirmar nom + registrar OEPM + muntar Beehiiv + Twitter/LinkedIn | Marca registrada + newsletter operativa |
-| 3-4 | Publicar 4 resums pilot manualment + llistar 30 fonts ESG + prototip logo | 4 resums publicats + 100 lectors gratis |
-| 5-6 | Script Python processant informe real via API + 7 blocs estructurats + cross-ref manual | Prototip automàtic + 1 informe cross-ref complet |
-| 7-8 | Web simple Next.js + arxiu + premium paywall (Stripe) + 8 resums nous | Web operativa + 12 resums totals + 300 lectors |
-| 9-10 | Llançament premium (39€/mes promo 29€) + 1er dossier (EcoVadis) + webinar | 30 subs premium + 1 dossier publicat |
-| 11-12 | Pipeline Nivell 2 (RSS automàtic) + outreach 50 consultories ESG + cas d'èxit públic | Sistema autònom + 5 converses B2B obertes |
+### Fase 1 — Proves internes amb beta testers (agost 2026)
 
-## Fites macro
+**Objectiu:** Validar flux d'usuari, detectar errors, recollir feedback qualitatiu.
 
-### Q3 2026 (juliol-setembre)
-- 100 subscriptors gratuïts
-- 8 informes pilot publicats
-- 5 subscriptors premium
+#### Setmana 1-2 (3-16 agost)
+- [ ] Paolo: convidar 10-20 beta testers de confiança
+- [ ] Nou membre: donar accés als beta testers (credencials o registre)
+- [ ] Z.ai-bot: crear formulari de feedback estructurat (Typeform o similar)
+- [ ] Z.ai-bot: enviar newsletter #1 de prova a beta testers (esborrany via API, Paolo envia)
 
-### Q4 2026 (octubre-desembre)
-- 300 subscriptors gratuïts
-- 30 subscriptors premium
-- 1r dossier temàtic publicat (EcoVadis)
-- 1r client B2B (consultoria)
+#### Setmana 3-4 (17-30 agost)
+- [ ] Nou membre: iterar disseny segons feedback
+- [ ] Nou membre: corregir bugs detectats
+- [ ] Z.ai-bot: enviar newsletter #2 de prova a beta testers
+- [ ] Z.ai-bot: test tècnic — rendiment, SEO, accessibility, responsive
+- [ ] Paolo: revisar tot el contingut (proofreading)
 
-### Q1 2027 (gener-març)
-- 500 subscriptors gratuïts
-- 100 subscriptors premium
-- 5 clients B2B
-- Llançament Ultra (podcast + PPT + connexions personalitzades)
+#### Última setmana d'agost
+- [ ] Paolo: preparar estratègia de captació per setembre
+- [ ] Nou membre: deploy final a producció (criteriesg.com)
+- [ ] Z.ai-bot: programar newsletter #1 oficial per 7 setembre
 
-### Q2 2027 (abril-juny)
-- 1.000 subscriptors gratuïts
-- 200 subscriptors premium
-- 15 clients B2B
-- Validació per possible rondes d'inversió
+### Fase 2 — Llançament oficial i early bird (setembre 2026)
+
+**Objectiu:** Iniciar el període early bird de 2 mesos.
+
+#### Setmana 1 (1-7 setembre)
+- [ ] **Dilluns 1 setembre**: deploy final a producció
+- [ ] **Diumenge 7 setembre**: newsletter #1 oficial enviada
+- [ ] Paolo: posts LinkedIn + Twitter/X anunciants el llançament
+- [ ] Paolo: outreach a 50 contactes personals
+- [ ] Nou membre: monitorar mètriques (Analytics, Hotjar)
+
+#### Setmana 2-3 (8-21 setembre)
+- [ ] Paolo: outreach a 5 clústers catalans
+- [ ] Paolo: col·laboracions amb newsletters complementàries
+- [ ] Nou membre: optimitzar SEO dels informes publicats
+- [ ] Z.ai-bot: newsletter #2 (21 setembre)
+
+#### Setmana 4 (22-30 setembre)
+- [ ] Z.ai-bot: newsletter #3 (5 octubre, comencem bimensualitat)
+- [ ] Paolo: analitzar mètriques del primer mes
+- [ ] Nou membre: iteracions basades en comportament d'usuari
+
+### Fase 3 — Continuació early bird (octubre 2026)
+
+**Objectiu:** Mantenir tracció i preparar l'activació del paywall.
+
+- [ ] Z.ai-bot: newsletter #4 (19 octubre)
+- [ ] Paolo:跟进 conversió visitant → registrat
+- [ ] Nou membre: implementar el sistema de paywall (preparat per a novembre)
+- [ ] Nou membre: implementar tracker de places early bird (50 places)
+
+### Fase 4 — Activació paywall (novembre 2026)
+
+**Objectiu:** Activar el model freemium progressiu.
+
+- [ ] **1 novembre**: activar paywall
+- [ ] Z.ai-bot: newsletter #5 amb newsletter reduïda per als gratuïts (2 novembre)
+- [ ] Paolo: email als usuaris gratuïts recordant l'oferta early bird
+- [ ] Nou membre: monitorar conversió prova gratis → Premium
+- [ ] Z.ai-bot: newsletter #6 (16 novembre)
+
+### Fase 5 — Tancament de places early bird (desembre 2026)
+
+**Objectiu:** Arribar als 50 subscriptors Premium early bird.
+
+- [ ] Z.ai-bot: newsletter #7, #8, #9 (30 nov, 14 des, 28 des)
+- [ ] Paolo: campanya final per omplir places early bird
+- [ ] Nou membre: optimitzar pàgina de vendes
+- [ ] Paolo: preparar anàlisi de retenció any 1
+
+### Fase 6 — Estabilització i preparació Ultra (gener-març 2027)
+
+**Objectiu:** Consolidar el negoci i preparar el llançament Ultra.
+
+- [ ] Newsletter bimensual continuada
+- [ ] Recerca de formats Ultra (podcast, PPT, connexions personalitzades)
+- [ ] Recollir feedback dels Premium sobre què voldrien d'Ultra
+- [ ] Paolo: outreach 50 consultories ESG (ES, FR)
+- [ ] Nou membre: implementar dashboard d'usuari (`/compte`)
+
+### Fase 7 — Llançament Ultra (abril 2027)
+
+**Objectiu:** Activar el nivell Ultra amb podcast + PPT + connexions personalitzades.
+
+- [ ] Nou membre: implementar accés Ultra a la web
+- [ ] Z.ai-bot: generar primer podcast via NotebookLM (Paolo)
+- [ ] Z.ai-bot: generar primer PPT editable per a un informe real
+- [ ] Z.ai-bot: configurar formulari d'onboarding Ultra (dades empresa)
+- [ ] Paolo: anunciar Ultra a newsletter i LinkedIn
+
+---
+
+## Repartiment de responsabilitats
+
+### Paolo (CEO / Estratègia)
+- Registre de marca i dominis
+- Creació de comptes externs (Beehiiv, Supabase, Stripe, LinkedIn, Twitter/X)
+- Assegurança RC
+- Outreach a clústers i contactes
+- Newsletter: clicar "Send" a Beehiiv
+- Decisions estratègiques (preus, col·laboracions)
+- Gestió de marca
+
+### Nou membre equip (Tech Lead)
+- Disseny web final
+- Programació web (Next.js, TailwindCSS, Prisma)
+- Base de dades (Supabase PostgreSQL)
+- Integracions (Supabase Auth, Stripe, Beehiiv API)
+- Optimització SEO, rendiment, accessibility
+- Bugs i correccions
+
+### Z.ai-bot (assistent tècnic)
+- Processament d'informes (7 blocs)
+- Generació de HTML/PDF per a la web
+- Creació d'esborranys de newsletter via API Beehiiv
+- Recerques (mercat, competidors, fonts)
+- Documentació al GitHub
+- Suport tècnic puntual al nou membre
+
+---
 
 ## Mètriques setmanals a跟踪
 
 | Métrica | Setmana 1 | Setmana 4 | Setmana 8 | Setmana 12 |
 |---------|-----------|-----------|-----------|-----------|
 | Subscriptors newsletter | 20 | 100 | 300 | 500 |
-| Informes publicats | 0 | 4 | 12 | 20 |
-| Subscriptors premium | 0 | 0 | 5 | 30 |
+| Informes publicats | 10 | 14 | 18 | 22 |
+| Subscriptors Premium | 0 | 5 | 15 | 30 |
 | Converses B2B | 0 | 0 | 0 | 5 |
 | Tràfic web (visites/setmana) | 50 | 200 | 800 | 2.000 |
+
+---
 
 ## Blocs pendents de desenvolupament
 
 - [ ] Pàgina `/informes` amb biblioteca i cercador
-- [ ] Backend Prisma + SQLite per informes reals
+- [ ] Pàgina `/informes/[slug]` amb informe individual
+- [ ] Pàgina `/sobre-nosaltres`
+- [ ] Pàgina `/faq` (enllaçada des de la homepage)
+- [ ] Pàgina `/preus` amb avís "properament"
+- [ ] Backend Prisma + PostgreSQL per informes reals
 - [ ] Pipeline IA Nivell 2 (RSS automàtic)
-- [ ] Integració Stripe
-- [ ] Integració NextAuth
+- [ ] Integració Stripe (preparada per novembre)
+- [ ] Integració Beehiiv (API per crear esborranys)
+- [ ] Sistema de paywall (preparat per novembre)
+- [ ] Pàgina `/compte` dashboard d'usuari
 - [ ] Pàgina `/autodiagnostic` interactiva
-- [ ] Pàgina `/certificacions` amb dossiers
+- [ ] Tracker de places early bird (50 places)
+
+---
 
 ## Històric de canvis
 
-- **25 juny 2026** — Roadmap inicial basat en el pla de negoci
+- **29 juny 2026** — Roadmap revisat completament. Calendari juliol-setembre 2026 detallat. Repartiment de responsabilitats amb nou membre equip. Newsletter bimensual confirmada. Early bird 2 mesos + paywall progressiu.
+- **26 juny 2026** — Roadmap inicial basat en el pla de negoci

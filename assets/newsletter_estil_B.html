@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<title>Criteri ESG — Newsletter Estil B · Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #0F172A;
+    font-family: 'Inter', sans-serif;
+    color: #E2E8F0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 14mm 16mm;
+    background: #0F172A;
+    position: relative;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Header bar */
+  .header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 4mm;
+    border-bottom: 1pt solid #1E293B;
+    margin-bottom: 6mm;
+  }
+  .header-brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 14pt;
+    font-weight: 800;
+    color: #F8FAFC;
+    letter-spacing: -0.02em;
+  }
+  .header-brand .dot { color: #B87333; }
+  .header-meta {
+    display: flex;
+    gap: 3mm;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .header-meta .live {
+    background: #B87333;
+    color: #0F172A;
+    padding: 1mm 3mm;
+    font-weight: 700;
+    border-radius: 1mm;
+  }
+
+  /* Title row */
+  .title-row {
+    margin-bottom: 6mm;
+  }
+  .title-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    color: #B87333;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    margin-bottom: 2mm;
+  }
+  .title-main {
+    font-family: 'Inter', sans-serif;
+    font-size: 22pt;
+    font-weight: 800;
+    color: #F8FAFC;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .title-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    color: #94A3B8;
+    margin-top: 2mm;
+    font-weight: 400;
+  }
+
+  /* KPI summary cards */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3mm;
+    margin: 5mm 0;
+  }
+  .kpi-card {
+    background: #1E293B;
+    border: 1pt solid #334155;
+    border-left: 3pt solid #B87333;
+    padding: 4mm 5mm;
+  }
+  .kpi-card.alert { border-left-color: #DC2626; }
+  .kpi-card.success { border-left-color: #16A34A; }
+  .kpi-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 2mm;
+  }
+  .kpi-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 24pt;
+    font-weight: 800;
+    color: #F8FAFC;
+    line-height: 1;
+    margin-bottom: 1mm;
+    letter-spacing: -0.02em;
+  }
+  .kpi-delta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    color: #B87333;
+    font-weight: 600;
+  }
+  .kpi-delta.down { color: #DC2626; }
+  .kpi-delta.up { color: #16A34A; }
+
+  /* Reports table */
+  .reports-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5mm 0;
+    font-size: 9pt;
+  }
+  .reports-table thead { background: #1E293B; }
+  .reports-table th {
+    padding: 3mm 4mm;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    font-weight: 700;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1pt solid #334155;
+  }
+  .reports-table td {
+    padding: 4mm;
+    border-bottom: 1pt solid #1E293B;
+    vertical-align: top;
+    color: #E2E8F0;
+  }
+  .reports-table tr.featured td {
+    background: #1E293B;
+    border-left: 3pt solid #B87333;
+  }
+  .reports-table tr.featured td:first-child {
+    border-left: none;
+    padding-left: 5mm;
+  }
+  .report-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10pt;
+    color: #B87333;
+    font-weight: 700;
+  }
+  .report-source {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1mm;
+  }
+  .report-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    font-weight: 600;
+    color: #F8FAFC;
+    line-height: 1.3;
+    margin-bottom: 1mm;
+  }
+  .report-summary {
+    font-family: 'Inter', sans-serif;
+    font-size: 8.5pt;
+    color: #CBD5E1;
+    line-height: 1.4;
+  }
+  .report-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 6.5pt;
+    color: #0F172A;
+    background: #B87333;
+    padding: 0.5mm 2mm;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    border-radius: 1mm;
+  }
+  .report-tag.csrd { background: #DC2626; color: #FFFFFF; }
+  .report-tag.ecovadis { background: #2563EB; color: #FFFFFF; }
+  .report-tag.bcorp { background: #16A34A; color: #FFFFFF; }
+  .report-tag.csddd { background: #9333EA; color: #FFFFFF; }
+  .report-pages {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    color: #94A3B8;
+    text-align: right;
+  }
+  .report-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: #B87333;
+    text-align: right;
+  }
+
+  /* Connection section */
+  .connection-box {
+    background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+    border: 1pt solid #B87333;
+    padding: 6mm;
+    margin: 5mm 0;
+    position: relative;
+  }
+  .connection-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: #B87333;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    margin-bottom: 3mm;
+  }
+  .connection-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 16pt;
+    font-weight: 700;
+    color: #F8FAFC;
+    margin-bottom: 3mm;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .connection-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    line-height: 1.55;
+    color: #CBD5E1;
+    margin-bottom: 4mm;
+  }
+
+  /* Connection matrix */
+  .matrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2mm;
+    margin-top: 4mm;
+  }
+  .matrix-card {
+    background: #0F172A;
+    border: 1pt solid #334155;
+    padding: 4mm;
+    text-align: center;
+  }
+  .matrix-card-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18pt;
+    font-weight: 700;
+    color: #B87333;
+    line-height: 1;
+    margin-bottom: 2mm;
+  }
+  .matrix-card-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 8pt;
+    color: #94A3B8;
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  /* Watch next */
+  .watch-next {
+    background: #1E293B;
+    padding: 5mm 6mm;
+    margin: 5mm 0;
+    border-left: 3pt solid #DC2626;
+  }
+  .watch-next-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: #DC2626;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    margin-bottom: 3mm;
+  }
+  .watch-next-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 12pt;
+    font-weight: 700;
+    color: #F8FAFC;
+    margin-bottom: 2mm;
+  }
+  .watch-next-list {
+    list-style: none;
+    padding: 0;
+  }
+  .watch-next-list li {
+    font-family: 'Inter', sans-serif;
+    font-size: 9pt;
+    color: #CBD5E1;
+    padding: 1.5mm 0;
+    padding-left: 6mm;
+    position: relative;
+    line-height: 1.4;
+  }
+  .watch-next-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #DC2626;
+    font-weight: 700;
+  }
+  .watch-next-list li strong { color: #F8FAFC; font-weight: 600; }
+
+  /* CTA bottom */
+  .cta-bottom {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4mm;
+    margin: 6mm 0;
+    align-items: center;
+  }
+  .cta-text-side {
+    padding: 5mm 6mm;
+    background: #1E293B;
+    border-left: 3pt solid #B87333;
+  }
+  .cta-text-side h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 13pt;
+    font-weight: 700;
+    color: #F8FAFC;
+    margin-bottom: 2mm;
+  }
+  .cta-text-side p {
+    font-family: 'Inter', sans-serif;
+    font-size: 9pt;
+    color: #94A3B8;
+    line-height: 1.5;
+  }
+  .cta-button-side {
+    text-align: center;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #B87333;
+    color: #0F172A;
+    padding: 4mm 6mm;
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Footer */
+  .dashboard-footer {
+    margin-top: 8mm;
+    padding-top: 4mm;
+    border-top: 1pt solid #1E293B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .dashboard-footer a { color: #B87333; text-decoration: none; }
+
+  .page-footer {
+    position: absolute;
+    bottom: 8mm;
+    left: 16mm;
+    right: 16mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 3mm;
+    border-top: 1pt solid #1E293B;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .page-footer .page-num {
+    color: #B87333;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+<!-- ====================== PAGE 1 ====================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-brand">Criteri<span class="dot">.</span> ESG</div>
+    <div class="header-meta">
+      <span class="live">● LIVE</span>
+      <span>Edició #14</span>
+      <span>·</span>
+      <span>18 Juny 2026</span>
+      <span>·</span>
+      <span>Barcelona</span>
+    </div>
+  </div>
+
+  <div class="title-row">
+    <div class="title-eyebrow">▸ Briefing setmanal ESG</div>
+    <h1 class="title-main">4 informes. 1 connexió. 5 minuts.</h1>
+    <p class="title-sub">Tot el que has de saber aquesta setmana sobre sostenibilitat, ètica empresarial i regulació ESG europea.</p>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-label">Informes setmana</div>
+      <div class="kpi-value">4</div>
+      <div class="kpi-delta">+2 vs setmana prèvia</div>
+    </div>
+    <div class="kpi-card success">
+      <div class="kpi-label">Estalvi temps lector</div>
+      <div class="kpi-value">20h</div>
+      <div class="kpi-delta up">↑ vs lectura directa</div>
+    </div>
+    <div class="kpi-card alert">
+      <div class="kpi-label">Accions crítiques</div>
+      <div class="kpi-value">3</div>
+      <div class="kpi-delta down">⚠ Requereixen acció 30d</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Frameworks afectats</div>
+      <div class="kpi-value">5</div>
+      <div class="kpi-delta">CSRD · EcoVadis · B Corp · MSCI · GRI</div>
+    </div>
+  </div>
+
+  <table class="reports-table">
+    <thead>
+      <tr>
+        <th style="width: 10mm;">#</th>
+        <th>Informe</th>
+        <th style="width: 25mm;">Tags</th>
+        <th style="width: 18mm; text-align: right;">Pàgines</th>
+        <th style="width: 18mm; text-align: right;">Lectura</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="featured">
+        <td><span class="report-num">01</span></td>
+        <td>
+          <div class="report-source">Comissió Europea</div>
+          <div class="report-title">Revisió dels ESRS: simplificació del CSRD</div>
+          <div class="report-summary">Reducció del 61% dels datapoints obligatoris. Estalvi estimat de 3.700M€ en 5 anys. Aplicació FY 2027.</div>
+        </td>
+        <td><span class="report-tag csrd">CSRD</span></td>
+        <td class="report-pages">47</td>
+        <td class="report-time">5 min</td>
+      </tr>
+      <tr>
+        <td><span class="report-num">02</span></td>
+        <td>
+          <div class="report-source">EcoVadis</div>
+          <div class="report-title">Actualització de criteris 2026</div>
+          <div class="report-summary">Canvis en categories Environment i Procurement. Empreses que renoven al Q4 han d'adaptar documentació.</div>
+        </td>
+        <td><span class="report-tag ecovadis">EcoVadis</span></td>
+        <td class="report-pages">28</td>
+        <td class="report-time">4 min</td>
+      </tr>
+      <tr>
+        <td><span class="report-num">03</span></td>
+        <td>
+          <div class="report-source">Banc Central Europeu</div>
+          <div class="report-title">Climate risk in EU banking</div>
+          <div class="report-summary">Stress test climàtic anual. 110 bancs avaluats. Resultats preocupants per al sector immobiliari.</div>
+        </td>
+        <td><span class="report-tag">Climate</span></td>
+        <td class="report-pages">62</td>
+        <td class="report-time">6 min</td>
+      </tr>
+      <tr>
+        <td><span class="report-num">04</span></td>
+        <td>
+          <div class="report-source">EFRAG</div>
+          <div class="report-title">Esborrany ESRS S4 sobre drets humans</div>
+          <div class="report-summary">Consulta pública. 18 requisits de disclosure. Termini comentaris: 15 gener 2027.</div>
+        </td>
+        <td><span class="report-tag csrd">CSRD</span> <span class="report-tag csddd">CSDDD</span></td>
+        <td class="report-pages">47</td>
+        <td class="report-time">5 min</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
+    <span>Criteri ESG · Briefing #14 · 18 juny 2026</span>
+    <span class="page-num">01 / 02</span>
+  </div>
+</div>
+
+<!-- ====================== PAGE 2 ====================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-brand">Criteri<span class="dot">.</span> ESG</div>
+    <div class="header-meta">
+      <span class="live">● LIVE</span>
+      <span>Briefing #14 · Connexió de la setmana</span>
+    </div>
+  </div>
+
+  <div class="connection-box">
+    <div class="connection-eyebrow">◆ CONNEXIÓ DE LA SETMANA</div>
+    <h2 class="connection-title">Triple cop a la cadena de suministre: ESRS S4 + EcoVadis 3.2 + CSDDD</h2>
+    <p class="connection-body">Tres documents publicats aquesta setmana convergeixen en un mateix missatge: la due diligence a la cadena de suministre és ara obligatòria. L'esborrany ESRS S4 obliga a reportar sobre grievance mechanisms, l'actualització EcoVadis 2026 pondera més el criteri 3.2 de SupplierCSR, i la CSDDD entra en vigor progressivament.</p>
+
+    <div class="matrix">
+      <div class="matrix-card">
+        <div class="matrix-card-num">3</div>
+        <div class="matrix-card-label">Frameworks que convergeixen</div>
+      </div>
+      <div class="matrix-card">
+        <div class="matrix-card-num">12.000+</div>
+        <div class="matrix-card-label">Empreses afectades UE</div>
+      </div>
+      <div class="matrix-card">
+        <div class="matrix-card-num">30d</div>
+        <div class="matrix-card-label">Termini per començar acció</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="watch-next">
+    <div class="watch-next-eyebrow">⚠ Watch next · Properes 2 setmanes</div>
+    <div class="watch-next-title">Esdeveniments que monitoritzem</div>
+    <ul class="watch-next-list">
+      <li><strong>25 juny 2026:</strong> Votació al Parlament Europeu sobre Omnibus II (modificacions addicionals CSRD)</li>
+      <li><strong>1 juliol 2026:</strong> Publicació esperada de l'informe anual de progressos ODS d'Espanya</li>
+      <li><strong>8 juliol 2026:</strong> EcoVadis tancament periode de renovació Q3 — les empreses afectades han de tenir documentació a punt</li>
+      <li><strong>15 juliol 2026:</strong> BCE publica informe trimestral sobre riscos ESG al sector bancari</li>
+    </ul>
+  </div>
+
+  <div class="cta-bottom">
+    <div class="cta-text-side">
+      <h3>Accedeix als 4 informes complets</h3>
+      <p>7 blocs estructurats, cross-reference amb EcoVadis/B Corp/MSCI/GRI, accions recomanades, podcast en àudio (Ultra) i PPT editable (Ultra). Disponible per a subscriptors Premium i Ultra.</p>
+    </div>
+    <div class="cta-button-side">
+      <a href="#" class="cta-button">Prova 7d →</a>
+    </div>
+  </div>
+
+  <div class="dashboard-footer">
+    <span>criteriesg.com · @criteri_esg</span>
+    <span><a href="#">Cancel·lar subscripció</a> · <a href="#">Preferències</a></span>
+  </div>
+
+  <div class="page-footer">
+    <span>Criteri ESG · Briefing #14 · 18 juny 2026</span>
+    <span class="page-num">02 / 02</span>
+  </div>
+</div>
+
+</body>
+</html>

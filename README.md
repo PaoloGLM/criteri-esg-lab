@@ -24,6 +24,8 @@ Aquest repositori és el **document viu** del projecte Criteri ESG. Qualsevol de
 | **[11 — Sistema de tasques](./11-SISTEMA-TASQUES.md)** | Documentació del sistema GitHub Issues + Projects per gestionar tasques |
 | **[12 — Plantejament legal](./12-PLANTEJAMENT-LEGAL.md)** | Marc legal CAT/ES: autònom, SL, sòcia, documentació, costos per fases |
 | **[13 — Emmagatzematge](./13-EMMAGATZEMATGE.md)** | On es guarda cada tipus de contingut (documents, informes, codi, dades usuaris, newsletter) |
+| **[14 — Llançament per fases](./14-LLAN%C3%87AMENT-FASES.md)** | Estratègia early bird 2 mesos, paywall progressiu, calendaris juliol-setembre 2026, repartiment rols |
+| **[15 — Codi web](./15-CODI-WEB.md)** | Manual de reconstrucció + tot el codi font a `assets/web/` (Next.js, components, biblioteca informes) |
 
 ## Com fer-lo servir
 
@@ -35,14 +37,17 @@ Aquest repositori és el **document viu** del projecte Criteri ESG. Qualsevol de
 
 ✅ Naming triat: **Criteri ESG**
 ✅ Pla de negoci estructurat (PPT + PDF)
-✅ Web homepage operativa (12 seccions, bilingüe CAT/ES)
+✅ Web homepage operativa (12 seccions, bilingüe CAT/ES) + biblioteca amb 10 informes reals
 ✅ Primer informe pilot complet (ESRS maig 2026, 7 blocs)
 ✅ Formatos Ultra definits (podcast via NotebookLM, PPT editable)
+✅ Estratègia de llançament definida (early bird setembre, paywall novembre)
 🔄 Definint nivell Ultra (connexions personalitzades mensuals)
-⏳ Pendents: 4-5 informes pilot més, pàgina /informes, base de dades
+⏳ Pendents: 5 informes pilot amb 7 blocs complets, Supabase, Stripe, Beehiiv API
 
 ## Històric de canvis
 
+- **29 juny 2026** — Salvat tot el codi de la web v2 al directori `assets/web/` + manual de reconstrucció (secció 15)
+- **29 juny 2026** — Afegit document de llançament per fases (secció 14) + 6 decisions noves (early bird, newsletter bimensual, calendari, nou membre equip, repositori des de gener 2026)
 - **29 juny 2026** — Afegit document d'emmagatzematge (secció 13) + decisió Beehiiv registrada al document de decisions (secció 07)
 - **27 juny 2026** — Afegit plantejament legal (secció 12) amb marc legal CAT/ES per autònom, SL, sòcia i costos per fases
 - **26 juny 2026** — Afegit document de fonts d'informes (88 fonts) i sistema de tasques (GitHub Issues + Projects)

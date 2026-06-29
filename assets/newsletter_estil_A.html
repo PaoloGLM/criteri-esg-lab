@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<title>Criteri ESG — Newsletter Estil A · Editorial</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #FBF8F1;
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: #1A1A1A;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm 22mm;
+    background: #FBF8F1;
+    position: relative;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Masthead */
+  .masthead {
+    text-align: center;
+    padding-bottom: 6mm;
+    border-bottom: 1pt solid #1A1A1A;
+    margin-bottom: 8mm;
+  }
+  .masthead-brand {
+    font-family: 'Fraunces', serif;
+    font-size: 32pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #1A1A1A;
+    margin-bottom: 2mm;
+  }
+  .masthead-brand .dot { color: #8B0000; }
+  .masthead-tagline {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10pt;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 3mm;
+  }
+  .masthead-meta {
+    display: flex;
+    justify-content: center;
+    gap: 6mm;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+  .masthead-meta strong { color: #8B0000; }
+
+  /* Hero featured article */
+  .hero {
+    margin-bottom: 10mm;
+    padding-bottom: 8mm;
+    border-bottom: 0.5pt solid #999;
+  }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    color: #8B0000;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    margin-bottom: 3mm;
+  }
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: 32pt;
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: #1A1A1A;
+    margin-bottom: 4mm;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: #8B0000;
+    font-weight: 500;
+  }
+  .hero-deck {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13pt;
+    font-style: italic;
+    line-height: 1.45;
+    color: #444;
+    margin-bottom: 5mm;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 4mm;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .hero-meta .sep { color: #CCC; }
+  .hero-meta strong { color: #1A1A1A; }
+
+  /* Section header */
+  .section-header-news {
+    display: flex;
+    align-items: baseline;
+    gap: 4mm;
+    margin: 8mm 0 5mm 0;
+    padding-bottom: 2mm;
+    border-bottom: 0.5pt solid #1A1A1A;
+  }
+  .section-header-news .title {
+    font-family: 'Fraunces', serif;
+    font-size: 14pt;
+    font-weight: 600;
+    color: #1A1A1A;
+  }
+  .section-header-news .subtitle {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10pt;
+    font-style: italic;
+    color: #666;
+    margin-left: auto;
+  }
+
+  /* 3-column secondary articles */
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6mm;
+    margin: 5mm 0;
+  }
+  .article-card {
+    border-top: 1pt solid #1A1A1A;
+    padding-top: 4mm;
+  }
+  .article-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9pt;
+    color: #8B0000;
+    font-weight: 600;
+    margin-bottom: 2mm;
+    letter-spacing: 0.05em;
+  }
+  .article-source {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 2mm;
+  }
+  .article-title {
+    font-family: 'Fraunces', serif;
+    font-size: 14pt;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #1A1A1A;
+    margin-bottom: 3mm;
+  }
+  .article-summary {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9.5pt;
+    line-height: 1.55;
+    color: #1A1A1A;
+    margin-bottom: 3mm;
+  }
+  .article-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: #8B0000;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 0.5pt solid #8B0000;
+    padding-bottom: 0.5mm;
+  }
+
+  /* Connection of the week - big block */
+  .connection-week {
+    background: #F4EFE3;
+    border-left: 3pt solid #8B0000;
+    padding: 6mm 8mm;
+    margin: 8mm 0;
+  }
+  .connection-week-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    color: #8B0000;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    margin-bottom: 3mm;
+  }
+  .connection-week-title {
+    font-family: 'Fraunces', serif;
+    font-size: 18pt;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.2;
+    color: #1A1A1A;
+    margin-bottom: 4mm;
+  }
+  .connection-week-body {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11pt;
+    line-height: 1.55;
+    color: #1A1A1A;
+    margin-bottom: 3mm;
+  }
+  .connection-week-quote {
+    font-family: 'Fraunces', serif;
+    font-size: 13pt;
+    font-style: italic;
+    color: #8B0000;
+    border-left: 2pt solid #8B0000;
+    padding-left: 4mm;
+    margin-top: 3mm;
+  }
+
+  /* Editorial note */
+  .editorial-note {
+    margin: 8mm 0;
+    padding: 5mm 0;
+    border-top: 0.5pt solid #999;
+    border-bottom: 0.5pt solid #999;
+  }
+  .editorial-note-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: #8B0000;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    margin-bottom: 3mm;
+  }
+  .editorial-note-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10pt;
+    line-height: 1.55;
+    color: #1A1A1A;
+    font-style: italic;
+  }
+  .editorial-note-text:first-letter {
+    font-family: 'Fraunces', serif;
+    font-size: 36pt;
+    font-weight: 500;
+    float: left;
+    line-height: 0.85;
+    margin: 2pt 6pt 0 0;
+    color: #8B0000;
+    font-style: normal;
+  }
+
+  /* CTA */
+  .cta-block {
+    text-align: center;
+    margin: 10mm 0;
+    padding: 8mm;
+    background: #1A1A1A;
+    color: #FBF8F1;
+  }
+  .cta-title {
+    font-family: 'Fraunces', serif;
+    font-size: 18pt;
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 3mm;
+  }
+  .cta-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10pt;
+    line-height: 1.5;
+    color: #CCC;
+    margin-bottom: 4mm;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #8B0000;
+    color: #FBF8F1;
+    padding: 3mm 8mm;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+  }
+
+  /* Footer */
+  .news-footer {
+    margin-top: 10mm;
+    padding-top: 5mm;
+    border-top: 1pt solid #1A1A1A;
+    text-align: center;
+  }
+  .news-footer-brand {
+    font-family: 'Fraunces', serif;
+    font-size: 14pt;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-bottom: 2mm;
+  }
+  .news-footer-brand .dot { color: #8B0000; }
+  .news-footer-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    line-height: 1.6;
+  }
+  .news-footer-meta a { color: #8B0000; text-decoration: none; }
+
+  .page-footer {
+    position: absolute;
+    bottom: 10mm;
+    left: 22mm;
+    right: 22mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 3mm;
+    border-top: 0.25pt solid #999;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .page-footer .page-num { color: #8B0000; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- ====================== PAGE 1 ====================== -->
+<div class="page">
+  <div class="masthead">
+    <div class="masthead-brand">Criteri<span class="dot">.</span> ESG</div>
+    <div class="masthead-tagline">Intel·ligència ESG per a decisions ètiques</div>
+    <div class="masthead-meta">
+      <span><strong>EDICIÓ #14</strong></span>
+      <span>·</span>
+      <span>18 DE JUNY 2026</span>
+      <span>·</span>
+      <span>BARCELONA</span>
+    </div>
+  </div>
+
+  <!-- Hero featured -->
+  <div class="hero">
+    <div class="hero-eyebrow">▸ INFORME DESTACAT · COMISSIÓ EUROPEA</div>
+    <h1 class="hero-title">La Comissió Europea <em>simplifica</em> el CSRD: 61% menys de datapoints obligatoris</h1>
+    <p class="hero-deck">Un canvi que estalviarà 3.700 milions d'euros a les empreses europees en cinc anys, però que obliga a reinvertir l'estalvi en qualitat de dades per no perdre reputació davant certificacions com EcoVadis o MSCI.</p>
+    <div class="hero-meta">
+      <span><strong>Sintetitzat per</strong> Criteri ESG</span>
+      <span class="sep">·</span>
+      <span>5 minuts de lectura</span>
+      <span class="sep">·</span>
+      <span>47 pàgines originals</span>
+    </div>
+  </div>
+
+  <div class="section-header-news">
+    <span class="title">També aquesta setmana</span>
+    <span class="subtitle">Tres informes més que has de conèixer</span>
+  </div>
+
+  <div class="three-col">
+    <div class="article-card">
+      <div class="article-num">02</div>
+      <div class="article-source">EcoVadis</div>
+      <h3 class="article-title">Actualització de criteris EcoVadis 2026</h3>
+      <p class="article-summary">EcoVadis publica la revisió anual dels seus criteris amb canvis en les categories Environment i Procurement. Les empreses que renoven el rating al Q4 han d'adaptar la documentació.</p>
+      <a href="#" class="article-link">Llegir resum complet →</a>
+    </div>
+    <div class="article-card">
+      <div class="article-num">03</div>
+      <div class="article-source">Banc Central Europeu</div>
+      <h3 class="article-title">Climate risk in EU banking</h3>
+      <p class="article-summary">El BCE publica el stress test climàtic anual del sistema bancari europeu. 110 bancs avaluats, amb focus en transició física i de transició. Resultats preocupants per al sector immobiliari.</p>
+      <a href="#" class="article-link">Llegir resum complet →</a>
+    </div>
+    <div class="article-card">
+      <div class="article-num">04</div>
+      <div class="article-source">EFRAG</div>
+      <h3 class="article-title">Esborrany ESRS S4 sobre drets humans</h3>
+      <p class="article-summary">L'EFRAG obre consulta pública sobre l'estàndard sectorial de drets humans a la cadena de suministre. 47 pàgines, 18 requisits de disclosure. Termini: 15 gener 2027.</p>
+      <a href="#" class="article-link">Llegir resum complet →</a>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Criteri ESG · Newsletter #14 · Juny 2026</span>
+    <span class="page-num">01 / 02</span>
+  </div>
+</div>
+
+<!-- ====================== PAGE 2 ====================== -->
+<div class="page">
+  <div class="masthead">
+    <div class="masthead-brand">Criteri<span class="dot">.</span> ESG</div>
+    <div class="masthead-tagline">Intel·ligència ESG per a decisions ètiques</div>
+    <div class="masthead-meta">
+      <span><strong>EDICIÓ #14</strong></span>
+      <span>·</span>
+      <span>18 DE JUNY 2026</span>
+    </div>
+  </div>
+
+  <div class="connection-week">
+    <div class="connection-week-eyebrow">◆ CONNEXIÓ DE LA SETMANA</div>
+    <h2 class="connection-week-title">ESRS S4 + EcoVadis 3.2 + CSDDD: el triple cop a la cadena de suministre</h2>
+    <p class="connection-week-body">Aquesta setmana s'han publicat tres documents que convergeixen en un mateix missatge: la due diligence a la cadena de suministre és ara obligatòria. L'esborrany ESRS S4 obliga a reportar sobre grievance mechanisms, l'actualització EcoVadis 2026 pondera més el criteri 3.2 de SupplierCSR, i la CSDDD entra en vigor progressivament.</p>
+    <p class="connection-week-body">Per a les empreses subjectes a les tres regulacions, això significa que <strong>tenir un grievance mechanism extern ja no és opcional</strong>. Les que encara no el tenen implementat haurien de començar avui mateix.</p>
+    <div class="connection-week-quote">"Si encara no tens grievance mechanism, aquest és el moment. Les tres regulacions convergeixen en el mateix punt."</div>
+  </div>
+
+  <div class="editorial-note">
+    <div class="editorial-note-eyebrow">▸ NOTA EDITORIAL</div>
+    <p class="editorial-note-text">Aquesta setmana hem vist com la UE està simplificant el reporting (revisió ESRS) mentre, paradoxalment, refça el due diligence (CSDDD + ESRS S4). La conclusió és clara: menys paper, però més acció. Les empreses que interpretin la simplificació com una invitació a relaxar-se estan equivocades. La UE està dient: "ja no us demanem tantes dades, però les que us demanem han de ser veritat i han de portar a accions". Aquesta és la filosofia de Criteri ESG: no informem per informar, sinó per decidir.</p>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-title">Accedeix als informes complets</div>
+    <p class="cta-text">Els 4 informes d'aquesta setmana amb els 7 blocs estructurats, cross-reference amb EcoVadis/B Corp/MSCI/GRI, i accions recomanades. Disponibles per a subscriptors Premium.</p>
+    <span class="cta-button">Prova 7 dies gratis →</span>
+  </div>
+
+  <div class="news-footer">
+    <div class="news-footer-brand">Criteri<span class="dot">.</span> ESG</div>
+    <div class="news-footer-meta">
+      <a href="#">criteriesg.com</a> · Barcelona<br>
+      Rep aquesta newsletter perquè t'hi vas subscriure<br>
+      <a href="#">Cancel·lar subscripció</a> · <a href="#">Preferències</a>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Criteri ESG · Newsletter #14 · Juny 2026</span>
+    <span class="page-num">02 / 02</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<title>Criteri ESG — Estil B · Consultor</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    color: #1F2937;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 18mm 20mm;
+    background: #FFFFFF;
+    position: relative;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Header band */
+  .header-band {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 4mm;
+    border-bottom: 2pt solid #1F2937;
+    margin-bottom: 8mm;
+  }
+  .brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 13pt;
+    font-weight: 700;
+    color: #1F2937;
+    letter-spacing: -0.01em;
+  }
+  .brand .accent { color: #B45309; }
+  .doc-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    color: #6B7280;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .doc-id strong { color: #B45309; }
+
+  /* Cover page */
+  .cover-meta {
+    display: flex;
+    gap: 3mm;
+    align-items: center;
+    margin-bottom: 6mm;
+  }
+  .meta-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    background: #F3F4F6;
+    color: #374151;
+    padding: 1.5mm 3mm;
+    border-radius: 1mm;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+  .meta-pill.accent {
+    background: #B45309;
+    color: #FFFFFF;
+  }
+
+  h1.cover-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 32pt;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #1F2937;
+    margin-bottom: 5mm;
+    max-width: 165mm;
+  }
+  .cover-subtitle {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13pt;
+    font-style: italic;
+    line-height: 1.45;
+    color: #4B5563;
+    max-width: 165mm;
+    margin-bottom: 8mm;
+  }
+
+  /* Key takeaway box */
+  .takeaway-box {
+    background: #FFFBEB;
+    border: 1pt solid #B45309;
+    border-left: 4pt solid #B45309;
+    padding: 5mm 6mm;
+    margin: 6mm 0;
+  }
+  .takeaway-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    color: #B45309;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2mm;
+  }
+  .takeaway-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #1F2937;
+    font-weight: 500;
+  }
+
+  /* Stats row */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2mm;
+    margin: 6mm 0;
+    border-top: 1pt solid #E5E7EB;
+    border-bottom: 1pt solid #E5E7EB;
+    padding: 5mm 0;
+  }
+  .stat-block {
+    text-align: center;
+    border-right: 1pt solid #E5E7EB;
+    padding: 0 3mm;
+  }
+  .stat-block:last-child { border-right: none; }
+  .stat-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 22pt;
+    font-weight: 700;
+    color: #B45309;
+    line-height: 1;
+    margin-bottom: 2mm;
+    letter-spacing: -0.02em;
+  }
+  .stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 8pt;
+    color: #4B5563;
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+  .stat-page {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 6.5pt;
+    color: #9CA3AF;
+    margin-top: 1mm;
+  }
+
+  /* Section header */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 4mm;
+    margin-top: 8mm;
+    margin-bottom: 4mm;
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10pt;
+    color: #FFFFFF;
+    background: #1F2937;
+    padding: 1.5mm 3mm;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 14pt;
+    font-weight: 700;
+    color: #1F2937;
+    letter-spacing: -0.01em;
+  }
+
+  /* Body */
+  p.body {
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    line-height: 1.6;
+    color: #1F2937;
+    margin-bottom: 3mm;
+  }
+
+  /* Tech specs table */
+  .specs {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 3mm 0;
+    font-size: 9.5pt;
+  }
+  .specs tr { border-bottom: 1pt solid #E5E7EB; }
+  .specs td {
+    padding: 2.5mm 3mm;
+    vertical-align: top;
+  }
+  .specs td.key {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    color: #6B7280;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    width: 45mm;
+    font-weight: 600;
+  }
+  .specs td.val {
+    color: #1F2937;
+    font-weight: 500;
+  }
+
+  /* Implications 3-col */
+  .impl-3col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4mm;
+    margin: 4mm 0;
+  }
+  .impl-card {
+    border: 1pt solid #E5E7EB;
+    padding: 4mm;
+    background: #FAFAFA;
+  }
+  .impl-card-header {
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+    margin-bottom: 2mm;
+    padding-bottom: 2mm;
+    border-bottom: 1pt solid #E5E7EB;
+  }
+  .impl-icon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9pt;
+    color: #FFFFFF;
+    background: #B45309;
+    width: 6mm;
+    height: 6mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+  }
+  .impl-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    font-weight: 700;
+    color: #1F2937;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .impl-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 9pt;
+    line-height: 1.55;
+    color: #374151;
+  }
+
+  /* Connections table */
+  .conn-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4mm 0;
+    font-size: 9.5pt;
+  }
+  .conn-table thead {
+    background: #1F2937;
+    color: #FFFFFF;
+  }
+  .conn-table th {
+    padding: 3mm 4mm;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .conn-table td {
+    padding: 3.5mm 4mm;
+    border-bottom: 1pt solid #E5E7EB;
+    vertical-align: top;
+  }
+  .conn-table tr:nth-child(even) td { background: #FAFAFA; }
+  .conn-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    font-weight: 700;
+    padding: 1mm 2mm;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .conn-type.evo { background: #DBEAFE; color: #1E40AF; }
+  .conn-type.comp { background: #D1FAE5; color: #065F46; }
+  .conn-type.contr { background: #FEE2E2; color: #991B1B; }
+  .conn-target {
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 1mm;
+  }
+  .conn-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 9pt;
+    color: #4B5563;
+    line-height: 1.5;
+  }
+
+  /* Actions grid */
+  .actions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+    margin: 4mm 0;
+  }
+  .action-card {
+    border: 1pt solid #E5E7EB;
+    border-top: 3pt solid #B45309;
+    padding: 5mm;
+    background: #FFFFFF;
+  }
+  .action-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 3mm;
+  }
+  .action-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9pt;
+    color: #B45309;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .action-priority {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: #FFFFFF;
+    background: #B45309;
+    padding: 1mm 2mm;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  .action-priority.med { background: #92400E; }
+  .action-priority.low { background: #6B7280; }
+  .action-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 2mm;
+    line-height: 1.25;
+  }
+  .action-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 9pt;
+    line-height: 1.5;
+    color: #4B5563;
+    margin-bottom: 3mm;
+  }
+  .action-meta {
+    display: flex;
+    gap: 3mm;
+    padding-top: 2mm;
+    border-top: 1pt solid #E5E7EB;
+  }
+  .meta-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: #6B7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .meta-item.impact { color: #B45309; font-weight: 700; }
+
+  /* Xref table */
+  .xref-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4mm 0;
+    font-size: 9.5pt;
+  }
+  .xref-table thead { background: #FFFBEB; }
+  .xref-table th {
+    padding: 3mm 4mm;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: #92400E;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 2pt solid #B45309;
+  }
+  .xref-table td {
+    padding: 4mm;
+    border-bottom: 1pt solid #E5E7EB;
+    vertical-align: top;
+  }
+  .xref-framework {
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    font-weight: 700;
+    color: #1F2937;
+  }
+  .xref-criterion {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    color: #B45309;
+    margin-top: 1mm;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .xref-impact-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 9pt;
+    line-height: 1.5;
+    color: #374151;
+  }
+  .xref-impact-text strong { color: #1F2937; }
+
+  /* Footer */
+  .page-footer {
+    position: absolute;
+    bottom: 8mm;
+    left: 20mm;
+    right: 20mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2mm;
+    border-top: 1pt solid #E5E7EB;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: #6B7280;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .page-footer .page-num {
+    color: #B45309;
+    font-weight: 700;
+  }
+
+  /* Disclaimer */
+  .disclaimer {
+    margin-top: 6mm;
+    padding: 4mm 5mm;
+    background: #F9FAFB;
+    border-left: 3pt solid #6B7280;
+    font-family: 'Inter', sans-serif;
+    font-size: 8.5pt;
+    line-height: 1.5;
+    color: #4B5563;
+  }
+  .disclaimer strong { color: #1F2937; }
+
+  /* Cover footer */
+  .cover-footer {
+    position: absolute;
+    bottom: 12mm;
+    left: 20mm;
+    right: 20mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 4mm;
+    border-top: 1pt solid #E5E7EB;
+  }
+  .cover-footer-left {
+    font-family: 'Inter', sans-serif;
+    font-size: 8pt;
+    color: #6B7280;
+    line-height: 1.4;
+  }
+  .cover-footer-left strong { color: #1F2937; }
+  .cover-footer-right {
+    text-align: right;
+  }
+  .cover-url {
+    font-family: 'Inter', sans-serif;
+    font-size: 12pt;
+    font-weight: 700;
+    color: #B45309;
+  }
+  .cover-tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    color: #9CA3AF;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 1mm;
+  }
+</style>
+</head>
+<body>
+
+<!-- ====================== PAGE 1: COVER ====================== -->
+<div class="page">
+  <div class="header-band">
+    <div class="brand">Criteri<span class="accent">.</span> ESG</div>
+    <div class="doc-id"><strong>INFORME</strong> · Núm. 01 · Juny 2026</div>
+  </div>
+
+  <div class="cover-meta">
+    <span class="meta-pill accent">CSRD-RELACIONAT</span>
+    <span class="meta-pill">ESTALVI DE COSTOS</span>
+    <span class="meta-pill">REPORTING</span>
+  </div>
+
+  <h1 class="cover-title">Revisió dels ESRS: simplificació del CSRD</h1>
+
+  <p class="cover-subtitle">La Comissió Europea redueix un 61% els datapoints obligatoris del reporting de sostenibilitat. Estalvi estimat de 3.700M€ per a les empreses europees en 5 anys. Aplicació per a exercicis 2027.</p>
+
+  <div class="takeaway-box">
+    <div class="takeaway-label">▸ Missatge clau</div>
+    <div class="takeaway-text">El canvi beneficiarà les empreses amb sistemes ESG madurs, que podran reinvertir l'estalvi en millorar qualitat de dades. Les que només feien "box-ticking" quedaran exposades davant certificacions com EcoVadis i MSCI.</div>
+  </div>
+
+  <div class="section-header" style="margin-top: 8mm;">
+    <span class="section-num">01</span>
+    <span class="section-title">Fitxa tècnica</span>
+  </div>
+
+  <table class="specs">
+    <tr><td class="key">Institució</td><td class="val">Comissió Europea (DG FISMA)</td></tr>
+    <tr><td class="key">Data de publicació</td><td class="val">6 de maig de 2026</td></tr>
+    <tr><td class="key">Tipus de document</td><td class="val">Esborrany regulador</td></tr>
+    <tr><td class="key">Pàgines</td><td class="val">47</td></tr>
+    <tr><td class="key">Llengua original</td><td class="val">Anglès</td></tr>
+    <tr><td class="key">Aplicació</td><td class="val">Exercicis 2027 (delegated act estiu 2026)</td></tr>
+    <tr><td class="key">URL font original</td><td class="val" style="font-family: 'JetBrains Mono', monospace; font-size: 8.5pt;">finance.ec.europa.eu</td></tr>
+  </table>
+
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <span class="section-title">Cinc dades clau</span>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-block">
+      <div class="stat-value">61%</div>
+      <div class="stat-label">Datapoints obligatoris reduïts</div>
+      <div class="stat-page">P. 4</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-value">71%</div>
+      <div class="stat-label">Total datapoints reduïts</div>
+      <div class="stat-page">P. 4</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-value">3.700M€</div>
+      <div class="stat-label">Estalvi acumulat 5 anys</div>
+      <div class="stat-page">P. 8</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-value">12K+</div>
+      <div class="stat-label">Empreses UE afectades</div>
+      <div class="stat-page">P. 12</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-value">FY27</div>
+      <div class="stat-label">Aplicació prevista</div>
+      <div class="stat-page">P. 45</div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-footer-left">
+      <strong>Sintetitzat per</strong> Criteri ESG<br>
+      <strong>Font original:</strong> Comissió Europea<br>
+      <strong>Temps de lectura:</strong> 5 minuts
+    </div>
+    <div class="cover-footer-right">
+      <div class="cover-url">criteriesg.com</div>
+      <div class="cover-tagline">Intel·ligència ESG</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== PAGE 2 ====================== -->
+<div class="page">
+  <div class="header-band">
+    <div class="brand">Criteri<span class="accent">.</span> ESG</div>
+    <div class="doc-id">Revisió ESRS · <strong>Pàgina 02</strong></div>
+  </div>
+
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <span class="section-title">Resum executiu</span>
+  </div>
+
+  <p class="body">La Comissió Europea ha publicat l'esborrany revisat dels European Sustainability Reporting Standards (ESRS) en el marc del paquet Omnibus I. L'objectiu és simplificar el reporting de sostenibilitat sota la CSRD reduint un 61% els datapoints obligatoris i un 71% el total. S'estima un estalvi acumulat de 3.700M€ per a les empreses europees en els propers 5 anys.</p>
+
+  <p class="body">Els canvis afecten principalment la materialitat, l'eliminació de datapoints sectorials innecessaris i la racionalització dels requisits de disclose. L'aplicació està prevista per a exercicis 2027, amb adopció definitiva via delegated act abans de l'estiu de 2026. Fins a l'entrada en vigor, les empreses han de continuar reportant sota els ESRS vigents (2023).</p>
+
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <span class="section-title">Implicacions per actor</span>
+  </div>
+
+  <div class="impl-3col">
+    <div class="impl-card">
+      <div class="impl-card-header">
+        <div class="impl-icon">E</div>
+        <div class="impl-title">Empreses</div>
+      </div>
+      <div class="impl-text">Menys càrrega administrativa però cal reinvertir l'estalvi en millorar qualitat de dades. Les empreses amb sistemes ESG madurs guanyaran avantatge competitiu; les que només feien box-ticking quedaran exposades.</div>
+    </div>
+    <div class="impl-card">
+      <div class="impl-card-header">
+        <div class="impl-icon">R</div>
+        <div class="impl-title">Reguladors</div>
+      </div>
+      <div class="impl-text">Els estats membres hauran de transposir la versió revisada. Caldrà formació d'auditors i revisió de guies nacionals. L'EFRAG publicarà Q&A específics els propers 12 mesos.</div>
+    </div>
+    <div class="impl-card">
+      <div class="impl-card-header">
+        <div class="impl-icon">C</div>
+        <div class="impl-title">Ciutadans</div>
+      </div>
+      <div class="impl-text">Risc de pèrdua de transparència en alguns àmbits (datapoints eliminats cobrien supply chain i drets humans). ESMA i ONGs faran seguiment actiu dels efectes.</div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <span class="section-title">Connexions amb altres informes</span>
+  </div>
+
+  <table class="conn-table">
+    <thead>
+      <tr>
+        <th style="width: 25mm;">Tipus</th>
+        <th>Informe relacionat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="conn-type evo">Evolució</span></td>
+        <td>
+          <div class="conn-target">ESRS 2023 (versió original)</div>
+          <div class="conn-desc">Els ESRS 2023 continuen vigents fins FY 2026. Transició obligatòria FY 2027. Les empreses han de mantenir sistemes duals durant el període transitori.</div>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="conn-type comp">Complement</span></td>
+        <td>
+          <div class="conn-target">Omnibus I (febrer 2026)</div>
+          <div class="conn-desc">Paquet legislatiu que modifica CSRD, CSDDD i Taxonomia UE. Aquesta revisió dels ESRS n'és la part tècnica d'execució.</div>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="conn-type contr">Contradicció</span></td>
+        <td>
+          <div class="conn-target">TNFD v2.0 (2025)</div>
+          <div class="conn-desc">Mentre la UE elimina datapoints de biodiversitat, el TNFD els reforça. Les empreses amb exposició a natura hauran de mantenir-los voluntàriament.</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
+    <span>Criteri ESG · Revisió ESRS · Maig 2026</span>
+    <span class="page-num">02 / 04</span>
+  </div>
+</div>
+
+<!-- ====================== PAGE 3 ====================== -->
+<div class="page">
+  <div class="header-band">
+    <div class="brand">Criteri<span class="accent">.</span> ESG</div>
+    <div class="doc-id">Revisió ESRS · <strong>Pàgina 03</strong></div>
+  </div>
+
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <span class="section-title">Accions recomanades</span>
+  </div>
+
+  <p class="body" style="margin-bottom: 5mm;">Quatre passes prioritàries per als propers 90 dies. Aquestes accions estan ordenades per relació esforç-impacte i permeten a les empreses adaptar-se a la nova versió dels ESRS sense perdre temps ni recursos.</p>
+
+  <div class="actions-grid">
+    <div class="action-card">
+      <div class="action-card-header">
+        <span class="action-num">ACCIÓ 01</span>
+        <span class="action-priority">PRIORITAT ALTA</span>
+      </div>
+      <div class="action-title">Audita els teus datapoints actuals</div>
+      <div class="action-desc">Identifica quins dels 1.144 datapoints ESRS actuals estàs reportant. Marca quins desapareixeran amb la nova versió. Documenta els gaps.</div>
+      <div class="action-meta">
+        <span class="meta-item">Esforç: BAIX</span>
+        <span class="meta-item">Termini: 3 mesos</span>
+        <span class="meta-item impact">↑ Impacte: ALT</span>
+      </div>
+    </div>
+
+    <div class="action-card">
+      <div class="action-card-header">
+        <span class="action-num">ACCIÓ 02</span>
+        <span class="action-priority">PRIORITAT ALTA</span>
+      </div>
+      <div class="action-title">Revisa la doble materialitat</div>
+      <div class="action-desc">La nova versió simplifica els criteris. Programa una revisió de la teva última double materiality assessment per identificar quins temes pots deixar de reportar.</div>
+      <div class="action-meta">
+        <span class="meta-item">Esforç: MITJÀ</span>
+        <span class="meta-item">Termini: 6 mesos</span>
+        <span class="meta-item impact">↑ Impacte: ALT</span>
+      </div>
+    </div>
+
+    <div class="action-card">
+      <div class="action-card-header">
+        <span class="action-num">ACCIÓ 03</span>
+        <span class="action-priority">PRIORITAT ALTA</span>
+      </div>
+      <div class="action-title">Reinverteix l'estalvi en qualitat de dades</div>
+      <div class="action-desc">Els 3.700M€ d'estalvi europeu s'han de reinvertir. Prioritza auditoria de Scope 3, traçabilitat de supply chain i verificació externa.</div>
+      <div class="action-meta">
+        <span class="meta-item">Esforç: ALT</span>
+        <span class="meta-item">Termini: 12 mesos</span>
+        <span class="meta-item impact">↑ Impacte: ALT</span>
+      </div>
+    </div>
+
+    <div class="action-card">
+      <div class="action-card-header">
+        <span class="action-num">ACCIÓ 04</span>
+        <span class="action-priority med">PRIORITAT MITJANA</span>
+      </div>
+      <div class="action-title">Actualitza el roadmap ESG</div>
+      <div class="action-desc">Si tenies previst invertir en sistemes de reporting per cobrir datapoints eliminats, redirigeix aquest pressupost cap a millorar els ratings EcoVadis/MSCI o preparar B Corp.</div>
+      <div class="action-meta">
+        <span class="meta-item">Esforç: BAIX</span>
+        <span class="meta-item">Termini: 3 mesos</span>
+        <span class="meta-item impact">↑ Impacte: MITJÀ</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Criteri ESG · Revisió ESRS · Maig 2026</span>
+    <span class="page-num">03 / 04</span>
+  </div>
+</div>
+
+<!-- ====================== PAGE 4 ====================== -->
+<div class="page">
+  <div class="header-band">
+    <div class="brand">Criteri<span class="accent">.</span> ESG</div>
+    <div class="doc-id">Revisió ESRS · <strong>Pàgina 04</strong></div>
+  </div>
+
+  <div class="section-header">
+    <span class="section-num">07</span>
+    <span class="section-title">Cross-reference amb certificacions</span>
+  </div>
+
+  <p class="body" style="margin-bottom: 4mm;">Anàlisi de com afecta la revisió dels ESRS als 4 frameworks més utilitzats per les empreses espanyoles. Aquest mapatge permet prioritzar accions segons la certificació que tingui més impacte en el negoci.</p>
+
+  <table class="xref-table">
+    <thead>
+      <tr>
+        <th style="width: 35mm;">Framework</th>
+        <th style="width: 45mm;">Criteri afectat</th>
+        <th>Impacte i recomanació</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="xref-framework">EcoVadis</div>
+          <div class="xref-criterion">Categoria: Environment</div>
+        </td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 8pt; color: #6B7280; text-transform: uppercase; letter-spacing: 0.05em;">Rating B2B</td>
+        <td class="xref-impact-text">La reducció de datapoints facilita la recopilació per a EcoVadis, però <strong>NO afecta els seus criteris</strong>. Continua sent el rating B2B més demandat. Cal mantenir el nivell de documentació per a l'avaluació.</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="xref-framework">B Corp</div>
+          <div class="xref-criterion">Impact Area: Environment</div>
+        </td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 8pt; color: #6B7280; text-transform: uppercase; letter-spacing: 0.05em;">Certificació ètica</td>
+        <td class="xref-impact-text">B Corp manté els seus propis criteris. <strong>L'estalvi de temps en CSRD es pot reinvertir</strong> en millorar el B Impact Assessment, especialment en les seccions d'Environment i Workers.</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="xref-framework">MSCI ESG</div>
+          <div class="xref-criterion">Theme: Reporting</div>
+        </td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 8pt; color: #6B7280; text-transform: uppercase; letter-spacing: 0.05em;">Rating inversors</td>
+        <td class="xref-impact-text">MSCI <strong>pot penalitzar la pèrdua de transparència</strong> en datapoints eliminats. Cal comunicar proactivament la qualitat de les dades conservades per evitar downgrade del rating.</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="xref-framework">GRI</div>
+          <div class="xref-criterion">Universal 2 + 300</div>
+        </td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 8pt; color: #6B7280; text-transform: uppercase; letter-spacing: 0.05em;">Estàndard reporting</td>
+        <td class="xref-impact-text">GRI no canvia. Les empreses amb doble reporting CSRD+GRI <strong>hauran de mantenir molts datapoints que la UE elimina</strong> — caldrà duplicació de sistemes i processos.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="disclaimer">
+    <strong>Nota:</strong> Aquest informe és un exemple il·lustratiu del format Criteri ESG, basat en la publicació real de la Comissió Europea del 6 de maig de 2026. Les dades clau i les referències a pàgines són aproximacions pedagògiques. Per a decisions compliance, consulta sempre el document original a finance.ec.europa.eu.
+  </div>
+
+  <div class="page-footer">
+    <span>Criteri ESG · Revisió ESRS · Maig 2026</span>
+    <span class="page-num">04 / 04</span>
+  </div>
+</div>
+
+</body>
+</html>

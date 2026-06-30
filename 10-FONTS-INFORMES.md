@@ -2,7 +2,7 @@
 
 > **Document viu.** Llista d'organismes, institucions i publicacions que Criteri ESG monitoritza per processar informes. S'actualitza contínuament.
 >
-> **Estat:** Versió inicial 1.0 (26 juny 2026)
+> **Estat:** Versió 1.1 (30 juny 2026) — ampliades a 100 fonts
 > **Propera revisió:** Quan s'activi el pipeline automàtic (Nivell 2, setembre 2026)
 
 ---
@@ -252,14 +252,51 @@ Per cada font, registrem:
 
 ---
 
-## 7. Estadístiques i recomanacions
+## 7. Fonts addicionals (12 noves — 30 juny 2026)
 
-**Total fonts identificades**: 88
-- Catalunya: 11 fonts (12.5%)
-- Espanya: 13 fonts (14.8%)
-- Europa: 15 fonts (17.0%)
-- Globals (frameworks + organismes internacionals): 26 fonts (29.5%)
-- Sectorials: 23 fonts (26.1%)
+### 7.1 Tribunals de comptes i auditories
+
+| # | Font | Tipus | URL | Periodicitat | Cobertura |
+|---|------|-------|-----|--------------|-----------|
+| 89 | Tribunal de Cuentas Europeo (ECA) | Oficial | https://www.eca.europa.eu/es | Anual + informes especials | ⏳ |
+| 90 | Sindicatura de Comptes de Catalunya | Oficial | https://www.sindicatura.cat | Anual | ⏳ |
+
+### 7.2 Organitzacions internacionals addicionals
+
+| # | Font | Tipus | URL | Periodicitat | Cobertura |
+|---|------|-------|-----|--------------|-----------|
+| 91 | World Inequality Lab | Recerca | https://wir2026.wid.world | Anual (World Inequality Report) | ⏳ |
+| 92 | Banco Interamericano de Desarrollo (BID) | Oficial | https://publications.iadb.org | Anual + informes sectorials | ⏳ |
+| 93 | CEPAL (Comisión Económica para América Latina) | Oficial | https://www.cepal.org | Anual + informes temàtics | ⏳ |
+
+### 7.3 Xarxes empresarials i organitzacions sectorials
+
+| # | Font | Tipus | URL | Periodicitat | Cobertura |
+|---|------|-------|-----|--------------|-----------|
+| 94 | CSR Europe | Industry | https://www.csreurope.org | Anual + reports temàtics | ⏳ |
+| 95 | WBCSD (World Business Council for Sustainable Development) | Industry | https://www.wbcsd.org | Anual + roadmaps sectorials | ⏳ |
+| 96 | CSE (Centre for Sustainability and Excellence) | Industry | https://cse-net.org | Anual + estudis ESG | ⏳ |
+| 97 | Pacto Mundial ONU España | Ètica | https://www.pactomundial.org | Anual + estudis comunicació progrés | ⏳ |
+
+### 7.4 Plataformes de dades i indexes
+
+| # | Font | Tipus | URL | Periodicitat | Cobertura |
+|---|------|-------|-----|--------------|-----------|
+| 98 | Sustainalytics (ESG Risk Ratings) | Rating | https://www.sustainalytics.com | Anual + informes sectorials | ⏳ |
+| 99 | Morningstar Sustainability | Rating | https://www.morningstar.com/sustainability | Anual + quarterly | ⏳ |
+| 100 | Clarity AI (SFDR compliance analytics) | Rating | https://clarity.ai | Informes ad-hoc | ⏳ |
+
+---
+
+## 8. Estadístiques i recomanacions
+
+**Total fonts identificades**: 100
+- Catalunya: 12 fonts (12%)
+- Espanya: 14 fonts (14%)
+- Europa: 17 fonts (17%)
+- Globals (frameworks + organismes internacionals): 29 fonts (29%)
+- Sectorials: 23 fonts (23%)
+- Noves addicionals (tribunals, xarxes, ratings): 5 fonts (5%)
 
 **Tasques de processament**:
 - **Processar sempre**: 9 fonts (informes que sempre sintetitzarem)
@@ -312,4 +349,5 @@ Per cada font, registrem:
 
 ## Històric de canvis
 
+- **30 juny 2026** — Versió 1.1. Ampliades a 100 fonts (12 noves: ECA, Sindicatura Comptes CAT, World Inequality Lab, BID, CEPAL, CSR Europe, WBCSD, CSE, Pacto Mundial ES, Sustainalytics, Morningstar, Clarity AI). Iniciada descarrega d'informes 2026 a Google Drive.
 - **26 juny 2026** — Versió inicial 1.0. 88 fonts identificades: 11 CAT + 13 ES + 15 EU + 26 globals + 23 sectorials. Totes pendents d'activar al pipeline.

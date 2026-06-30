@@ -243,10 +243,12 @@ Cada informe processat per Criteri ESG segueix aquesta estructura:
 
 ### Sobre report setmanal
 
-10. **Report setmanal obligatori**: cada setmana (preferiblement diumenge vespre), enviar un resum amb:
+10. **Report setmanal obligatori**: cada diumenge vespre, enviar un resum amb:
     - El que s'ha fet durant la setmana que finalitza
     - Les coses més importants a fer la propera setmana
-    - Per xat i/o per email (Paolo confirmarà canal preferit)
+    - Errors pendents (si n'hi ha)
+    - **Canal (fase juliol 2026)**: pujar al repositori privat `criteri-esg-reports` + enganxar el contingut complet al xat
+    - **Canal (a partir d'agost 2026)**: pujar al repositori + crear esborrany a Beehiiv per email directe (substitueix el xat)
 
 ### Sobre GitHub i documentació
 

@@ -297,5 +297,27 @@ Cada informe processat per Criteri ESG segueix aquesta estructura:
 
 - Aquest fitxer s'actualitza quan hi ha canvis importants al projecte
 - Si trobes alguna cosa desactualitzada, avisa Paolo i actualitza'l
-- L'última actualització va ser el 29 juny 2026 (afegides 16 regles d'or permanents)
+- L'última actualització va ser el 30 juny 2026 (decisions editorials + territorialització + ritme publicació)
 - La propera revisió hauria de ser al final de juliol 2026
+
+---
+
+## Decisions editorials (30 juny 2026)
+
+1. **Informes genèrics amb part ESG**: són vàlids. Quan es processi un informe no específicament ESG (ex: Banc d'Espanya Estabilitat Financera, OCDE Economic Outlook), es ressaltarà la part ESG. El bloc 2 (resum) indicarà "Aquest informe no és específicament ESG, però conté elements rellevants" i el bloc 4 (implicacions) se centrarà només en la part ESG.
+
+2. **Territorialització per CCAA**: els subscriptors podran triar la seva comunitat autònoma al registre. Tothom rep global + Europa + Espanya. Si trien territori, reben annex amb informes de la seva CCAA (només si n'hi ha com a mínim 1 rellevant al període). Caldran 17 bases de fonts (una per CCAA). Traducció web a euskera i gallec en fase posterior.
+
+3. **Registres manuals**: Paolo s'encarrega de subscriure's a les llistes de les fonts que requereixen registre (MSCI, RE100, Climate Action 100+, PRI, etc.).
+
+4. **Publicació immediata**: els informes es publiquen a la web el mateix dia que es processen amb 7 blocs. No esperen a la newsletter. La newsletter recull els 3-4 millors del període + connexió.
+
+5. **Ritme de revisió de fonts**: Z.ai-bot revisa les fonts els **dilluns i dijous al matí**. Processa els informes nous amb 7 blocs i els publica a la web.
+
+6. **Newsletter**: s'envia els **dijous a les 15:00h** (hora de Barcelona). Freqüència bimensual (cada 2 setmanes). Mínim 2 informes, màxim 4 per newsletter. Si no hi ha prou informes institucionals, s'afegeixen de fonts no institucionals (think tanks, ONGs, iniciatives).
+
+7. **Nous tipus de fonts aprovades**: articles acadèmics (ètica empresarial, ESG, mètriques, metodologies), informes globals (UN, World Bank, IMF, WTO, ILO, BIS, ISO, UNCTAD), fonts espanyoles addicionals (CEOE, Pimec, Cámara Comerç, Cercle Economia), fonts catalanes addicionals (Cambra BCN, Foment Treball), i fonts globals addicionals (Harvard, Stanford, IESE, ESADE, MIT, LSE, Journal of Business Ethics).
+
+8. **Google Drive operatiu**: carpeta `Criteri ESG` amb 5 subcarpetes (assets, dossiers, originals, processats, ultra). 37 informes de 2026 ja descarregats a `originals`. Credencials OAuth2 a `/home/z/my-project/.gcp-oauth-tokens.json`.
+
+9. **Newsletter horari definitiu**: els dijous a les 15:00h (cada 2 setmanes).

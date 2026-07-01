@@ -26,6 +26,7 @@ Aquest repositori és el **document viu** del projecte Criteri ESG. Qualsevol de
 | **[13 — Emmagatzematge](./13-EMMAGATZEMATGE.md)** | On es guarda cada tipus de contingut (documents, informes, codi, dades usuaris, newsletter) |
 | **[14 — Llançament per fases](./14-LLAN%C3%87AMENT-FASES.md)** | Estratègia early bird 2 mesos, paywall progressiu, calendaris juliol-setembre 2026, repartiment rols |
 | **[15 — Codi web](./15-CODI-WEB.md)** | Manual de reconstrucció + tot el codi font a `assets/web/` (Next.js, components, biblioteca informes) |
+| **[16 — Base de dades de fonts](./16-BASE-DADES-FONTS.md)** | 187 fonts catalogades (globals, UE, ES, 17 CCAA, acadèmiques, think tanks, ONGs, Big 4, iniciatives, sectorials) |
 
 ## Com fer-lo servir
 

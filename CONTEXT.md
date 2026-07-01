@@ -266,6 +266,8 @@ Cada informe processat per Criteri ESG segueix aquesta estructura:
 
 16. **Criteri**: donem exemple de criteri. Tot el que es fa ha d'estar ben fet, amb solidesa, amb fonts verificades.
 
+17. **Corrector ortogràfic obligatori**: ABANS d'enviar qualsevol text en català o castellà (informes, newsletters, contingut web, documents), passar-lo pel corrector LanguageTool (`python3 /home/z/my-project/scripts/corrector.py <fitxer> [ca|es]`). Aquest corrector detecta errors ortogràfics, gramaticals i d'accentuació en català i castellà. Corregeix automàticament els errors amb una sola opció i marca els que requereixen revisió manual. El públic no pot llegir un text professional amb faltes d'ortografia.
+
 ---
 
 ## Estat actual (29 juny 2026)

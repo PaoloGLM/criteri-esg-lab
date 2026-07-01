@@ -9,14 +9,28 @@ Cada informe processat per Criteri ESG segueix una estructura fixa de 7 blocs. L
 ### Blocs
 
 1. **Fitxa tècnica** (60-80 paraules) — Institució, data, tipus, pàgines, URL original, context de publicació
-2. **Resum executiu** (400-500 paraules) — Què diu en llenguatge planer, context, impacte general
-3. **5 dades clau** — Punts quantitatius amb valor, context ampliat (2-3 frases) i pàgina citada
-4. **Implicacions** (500-600 paraules) — Tres blocs: empreses, reguladors, ciutadans. Anàlisi més profunda
+2. **Cinc dades clau** — Punts quantitatius amb valor, context ampliat (2-3 frases) i pàgina citada
+3. **Resum executiu** (300 paraules) — Què diu en llenguatge planer, context, impacte general
+4. **Implicacions** (450-540 paraules) — Tres blocs: empreses, reguladors, ciutadans. Anàlisi més profunda
 5. **Connexions** (200-250 paraules) — Relacions amb altres informes i actualitat. Tipus de relació explicat
 6. **Accions recomanades** ⭐ — 3-5 accions concretes per millorar. El cor operatiu. Cada acció amb context ampliat
 7. **Cross-reference** ⭐ — Mapatge automàtic amb EcoVadis, B Corp, MSCI i GRI. Impacte específic explicat
 
 ⭐ = blocs diferenciadors. Cap competidor els fa perquè requereixen coneixement expert dels frameworks.
+
+### Estructura de pàgines (regla fixa)
+
+| Pàgina | Contingut |
+|--------|-----------|
+| **1** | Títol + missatge clau + 01 Fitxa tècnica + 02 Cinc dades clau |
+| **2** | 03 Resum executiu + 04 Implicacions per actor |
+| **3** | 05 Connexions amb altres informes + 06 Accions recomanades |
+| **4** | 07 Cross-reference amb certificacions + disclaimer |
+
+- Sense subtítol a la portada (anar directe al missatge clau després del títol)
+- Marge uniforme de 18mm a totes les pàgines
+- Cap bloc tallat entre pàgines
+- Si un bloc no cap a la pàgina que li correspon, adaptar mides perquè hi càpiga
 
 ### Eslògan
 

@@ -8,15 +8,21 @@ Cada informe processat per Criteri ESG segueix una estructura fixa de 7 blocs. L
 
 ### Blocs
 
-1. **Fitxa tècnica** (50 paraules) — Institució, data, tipus, pàgines, URL original
-2. **Resum executiu** (200-300 paraules) — Què diu en llenguatge planer
-3. **5 dades clau** — Punts quantitatius amb valor, context i pàgina citada
-4. **Implicacions** (400 paraules) — Tres blocs: empreses, reguladors, ciutadans
-5. **Connexions** (150 paraules) — Relacions amb altres informes i actualitat
-6. **Accions recomanades** ⭐ — 3-5 accions concretes per millorar. El cor operatiu.
-7. **Cross-reference** ⭐ — Mapatge automàtic amb EcoVadis, B Corp, MSCI i GRI
+1. **Fitxa tècnica** (60-80 paraules) — Institució, data, tipus, pàgines, URL original, context de publicació
+2. **Resum executiu** (400-500 paraules) — Què diu en llenguatge planer, context, impacte general
+3. **5 dades clau** — Punts quantitatius amb valor, context ampliat (2-3 frases) i pàgina citada
+4. **Implicacions** (500-600 paraules) — Tres blocs: empreses, reguladors, ciutadans. Anàlisi més profunda
+5. **Connexions** (200-250 paraules) — Relacions amb altres informes i actualitat. Tipus de relació explicat
+6. **Accions recomanades** ⭐ — 3-5 accions concretes per millorar. El cor operatiu. Cada acció amb context ampliat
+7. **Cross-reference** ⭐ — Mapatge automàtic amb EcoVadis, B Corp, MSCI i GRI. Impacte específic explicat
 
 ⭐ = blocs diferenciadors. Cap competidor els fa perquè requereixen coneixement expert dels frameworks.
+
+### Eslògan
+
+**"Amb 7 minuts pots estalviar 5 hores de feina."**
+
+Aquest eslògan defineix la proposta de valor de Criteri ESG: cada informe processat amb els 7 blocs permet a un professional estalviar les 5 hores que trigaria a llegir i analitzar el document original de 200 pàgines. El temps de lectura del nostre informe processat és d'aproximadament 7 minuts.
 
 ### Exemple pilot
 

@@ -59,6 +59,39 @@ Criteri.
 
 Quan estiguem preparats per fer el logo oficial, ensenyarem 3 propostes a un dissenyador gràfic o ho farem amb una eina de IA generativa d'imatges.
 
+### Propostes de logo (juliol 2026)
+
+S'han generat 17 propostes de logo amb IA generativa. Totes disponibles a:
+
+- **Google Drive**: carpeta `logos` dins d'`assets` (folder ID: `1Q8h8iVC2f2YAuJQEbsVQpUKGgwWfMo_L`)
+  URL: https://drive.google.com/drive/folders/1Q8h8iVC2f2YAuJQEbsVQpUKGgwWfMo_L
+- **GitHub**: [`assets/logos/`](assets/logos/) en aquest repositori
+
+#### Evolució de les propostes
+
+| Iteració | Fitxers | Descripció |
+|----------|---------|------------|
+| Proposta 1-4 | `logo-proposta-1..4.png` | Primera ronda, 4 estils diferents |
+| Proposta 4a-c | `logo-proposta-4a/b/c.png` | Variants de la 4 (Criteri + hexàgon ESG en línia) |
+| 4a v2-v6 | `logo-proposta-4a-v2..v6.png` | Refinaments de tipografia i composició |
+| **v6 (finalista)** | `logo-v6-a..e.png` | **Seleccionada**: Criteri en negre, punt en coure (#B87333), hexàgon coure amb ESG blanc, fons crema (#F5EFE6). 5 variants de tipografia (Didot, Garamond, Playfair, Baskerville, Canela) |
+
+#### Especificacions del logo finalista (v6)
+
+```
+Criteri·ESG
+└── Criteri   → font elegant (a decidir entre Didot/Garamond/Playfair/Baskerville/Canela)
+└── · (punt)  → #B87333 (coure)
+└── ESG       → dins hexàgon coure, text blanc
+└── Fons      → #F5EFE6 (crema)
+```
+
+**Pendents**:
+- Selecció final de la tipografia entre les 5 variants v6
+- Validació amb dissenyador gràfic professional
+- Versió en blanc/negre per a fons foscos
+- Versió monocromàtica per a segells i favicons
+
 ## Paleta de colors — Terra + coure
 
 | Nom | HEX | Ús |

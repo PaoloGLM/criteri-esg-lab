@@ -280,7 +280,7 @@
 **Rao**: 
 - Calendari realista que permet validar el producte abans del llançament
 - Aprofita el pic de publicacions ESG de setembre (segons anàlisi de competència)
-- Dona temps al nou membre de l'equip per incorporar-se
+- Dona temps a la Roser per incorporar-se
 
 **Detalls per mes**:
 - Juliol: 5 setmanes de treball intensiu en dissenys, informes pilot, comptes, registres
@@ -295,35 +295,35 @@
 
 ---
 
-## 29 juny 2026 — Incorporació nou membre equip
+## 29 juny 2026 — Incorporació de la Roser a l'equip
 
 **Decisió**: Una nova persona s'incorpora a l'equip amb rol de Tech Lead (disseny + programació + BD)
 
 **Rao**: 
 - Paolo no pot fer-ho tot sol
 - Necessitem expertesa tècnica especialitzada per al llançament
-- El nou membre té domini en disseny, programació web i bases de dades
+- La Roser té domini en disseny, programació web i bases de dades
 
 **Repartiment de rols**:
 - **Paolo** (CEO/Estratègia): decisions estratègiques, relacions externes, enviaments newsletter, gestió de marca
-- **Nou membre** (Tech Lead): disseny web, programació, base de dades, integracions tècniques
+- **Roser** (Tech Lead): disseny web, programació, base de dades, integracions tècniques
 - **Z.ai-bot** (assistent tècnic): generació de continguts, recerques, documentació al GitHub
 
 **Comunicació amb Z.ai-bot**:
 - Paolo parla amb Z.ai-bot a través del seu xat
-- Nou membre obre el seu propi xat amb Z.ai-bot (Opció A, recomanada)
+- Roser obre el seu propi xat amb Z.ai-bot (Opció A, recomanada)
 - GitHub és el "cervell compartit" — totes les decisions hi queden registrades
-- Per decisions estratègiques, Paolo i nou membre parlen primer, després Paolo consulta a Z.ai-bot
+- Per decisions estratègiques, Paolo i la Roser parlen primer, després Paolo consulta a Z.ai-bot
 
 **Accessos**:
-- Nou membre té accés al repositori GitHub (lectura i escriptura)
-- Nou membre tindrà accés a Vercel, Supabase, Beehiiv quan es creïn els comptes
+- Roser té accés al repositori GitHub (lectura i escriptura)
+- Roser tindrà accés a Vercel, Supabase, Beehiiv quan es creïn els comptes
 - Tokens i credencials NO es comparteixen al xat ni al GitHub
 
 **Impacte**: 
 - Roadmap (secció 05) actualitzat amb repartiment de responsabilitats
-- Sistema de tasques (secció 11) manté @PaoloGLM com a persona per a tasques operatives, però el nou membre es farà càrrec de les tècniques
-- 15 issues existents al GitHub Project es reassignen: Paolo → operatives, nou membre → tècniques
+- Sistema de tasques (secció 11) manté @PaoloGLM com a persona per a tasques operatives, però la Roser es farà càrrec de les tècniques
+- 15 issues existents al GitHub Project es reassignen: Paolo → operatives, la Roser → tècniques
 
 **Estat**: Activa
 

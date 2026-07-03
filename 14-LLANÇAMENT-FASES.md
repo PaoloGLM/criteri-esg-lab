@@ -25,7 +25,7 @@ Aquesta estratègia permet:
 
 | Tasca | Responsable |
 |-------|-------------|
-| Tancar disseny final de la web (homepage + pàgines internes) | Nou membre equip + Z.ai-bot |
+| Tancar disseny final de la web (homepage + pàgines internes) | Roser + Z.ai-bot |
 | Tancar disseny final de l'informe (Estil B v2) | Z.ai-bot |
 | Tancar disseny final de la newsletter (Estil A v2) | Z.ai-bot |
 | Processar 5-10 informes pilot (tots els de 2026) | Z.ai-bot |
@@ -42,12 +42,12 @@ Aquesta estratègia permet:
 | Tasca | Responsable |
 |-------|-------------|
 | Convidar 10-20 beta testers de confiança | Paolo |
-| Donar-los accés a la web amb tot llest | Nou membre equip |
+| Donar-los accés a la web amb tot llest | Roser |
 | Recollir feedback estructurat (formulari) | Z.ai-bot (crea formulari) |
-| Iterar disseny segons feedback | Nou membre equip |
+| Iterar disseny segons feedback | Roser |
 | Provar enviat de 2 newsletters a beta testers | Z.ai-bot (esborrany) + Paolo (send) |
-| Provar flux de registre i login | Nou membre equip |
-| Test tècnic: rendiment, SEO, accessibility | Nou membre equip |
+| Provar flux de registre i login | Roser |
+| Test tècnic: rendiment, SEO, accessibility | Roser |
 
 ### 1.3 Setembre 2026 — Llançament oficial
 
@@ -297,30 +297,30 @@ Cada edició es genera en 2 versions:
 - Si als 3 mesos ja tenim 50+ Premium i ens demanen Ultra, podem avançar el llançament
 - No prometre data concreta als usuaris (dir "segona meitat 2027")
 
-### 7.4 Risc: el nou membre de l'equip i jo (Z.ai-bot) no ens coordinem
+### 7.4 Risc: la Roser i jo (Z.ai-bot) no ens coordinem
 
 **Mitigació:**
 - Tot el codi i les decisions al GitHub
-- El nou membre té accés al repositori
+- La Roser té accés al repositori
 - Quan té una pregunta tècnica, em pregunta al seu propi xat
 - Quan hi ha decisió estratègica, la parleu tu i ell primer, després m'ho dius a mi
 
 ---
 
-## 8. Communicació entre Paolo, nou membre i Z.ai-bot
+## 8. Communicació entre Paolo, la Roser i Z.ai-bot
 
 ### 8.1 Repartiment de rols
 
 | Persona | Rol | Què fa |
 |---------|-----|--------|
 | **Paolo** | CEO / Estratègia | Decisions estratègiques, relacions externes, Newsletter enviaments, gestió de marca |
-| **Nou membre** | Tech Lead | Disseny web, programació, base de dades, integracions tècniques |
+| **Roser** | Tech Lead | Disseny web, programació, base de dades, integracions tècniques |
 | **Z.ai-bot** | Assistència tècnica | Generar continguts (informes, newsletter, HTML), recerques, documentació al GitHub |
 
 ### 8.2 Comunicació amb Z.ai-bot
 
 **Paolo** parla amb Z.ai-bot a través del seu xat (aquest).
-**Nou membre** pot parlar amb Z.ai-bot:
+**Roser** pot parlar amb Z.ai-bot:
 - **Opció A (recomanada)**: obre el seu propi xat amb Z.ai-bot, llegeix el repositori GitHub per posar-se al dia, fa les seves preguntes tècniques allà
 - **Opció B**: fa servir el xat de Paolo (compartit, però pot ser confús)
 
@@ -334,7 +334,7 @@ Cada edició es genera en 2 versions:
 - Pla de negoci i finançament
 - Qualsevol cosa que requereixi visió global
 
-**Nou membre em parla per:**
+**Roser em parla per:**
 - Implementació tècnica (Next.js, Tailwind, Prisma, Supabase)
 - Ajustaments de disseny (CSS, responsive, dark mode)
 - Bugs i errors

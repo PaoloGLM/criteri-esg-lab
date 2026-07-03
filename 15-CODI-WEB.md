@@ -308,7 +308,7 @@ Fitxers de configuració (NO cal tocar):
 
 ---
 
-## Llistat de tasques pendents (per al nou membre de l'equip)
+## Llistat de tasques pendents (per a la Roser)
 
 ### Prioritat alta (juliol 2026)
 
@@ -338,7 +338,7 @@ Fitxers de configuració (NO cal tocar):
 
 ---
 
-## Notes importants per al nou membre de l'equip
+## Notes importants per a la Roser
 
 ### Sobre el codi
 

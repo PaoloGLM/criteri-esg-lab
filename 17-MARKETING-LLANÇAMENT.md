@@ -162,7 +162,7 @@ A mesura que tinguem subscriptors Premium:
 
 | Setmana | Acció | Responsable |
 |---------|-------|-------------|
-| 1 | Logo definitiu + kit de marca. Crear comptes LinkedIn empresa + Twitter/X | Paolo + nou membre |
+| 1 | Logo definitiu + kit de marca. Crear comptes LinkedIn empresa + Twitter/X | Paolo + la Roser |
 | 2 | 4 posts LinkedIn de Paolo sobre ESG. Email a 50 contactes personals. Outreach a 5 clústers | Paolo |
 | 3 | Outreach a 20 consultories ESG. Col·laboració amb 2 newsletters complementàries | Paolo |
 | 4 | Contactar 3 universitats. Preparar materials del llançament (thread Twitter, post LinkedIn, email announce) | Paolo + Z.ai-bot |
@@ -182,7 +182,7 @@ A mesura que tinguem subscriptors Premium:
 |---------|-------|-------------|
 | 1 | Newsletter #3. Webinar #2 | Paolo + Z.ai-bot |
 | 2 | Cas d'èxit #1 (si tenim un Premium satisfet) | Z.ai-bot |
-| 3 | Newsletter #4. Optimització SEO dels informes publicats | Nou membre |
+| 3 | Newsletter #4. Optimització SEO dels informes publicats | Roser |
 | 4 | Preparar campanya final early bird (novembre) | Paolo |
 
 ### Novembre 2026 (paywall activation)
@@ -190,7 +190,7 @@ A mesura que tinguem subscriptors Premium:
 | Setmana | Acció | Responsable |
 |---------|-------|-------------|
 | 1 | **Activació paywall**. Email a tots els gratuïts: "Oferta early bird: 29€/mes" | Paolo |
-| 2 | Newsletter #5 (primera amb versió reduïda per a gratuïts). Comptador de places visible | Z.ai-bot + nou membre |
+| 2 | Newsletter #5 (primera amb versió reduïda per a gratuïts). Comptador de places visible | Z.ai-bot + la Roser |
 | 3 | Webinar #3. Push final per omplir places | Paolo |
 | 4 | Newsletter #6. Seguiment de conversió | Z.ai-bot |
 
@@ -222,9 +222,9 @@ A mesura que tinguem subscriptors Premium:
 - Captures de pantalla de la web
 - Plantilles de presentació per a webinars
 
-### 7.2 Materials que necessiten Paolo o el nou membre
+### 7.2 Materials que necessiten Paolo o la Roser
 
-- Logo definitiu (Paolo decideix, nou membre executa)
+- Logo definitiu (Paolo decideix, la Roser executa)
 - Compte de LinkedIn empresa (Paolo crea)
 - Compte de Twitter/X (Paolo crea)
 - Llista de 50 contactes personals (Paolo)

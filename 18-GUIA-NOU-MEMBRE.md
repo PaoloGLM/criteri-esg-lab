@@ -6,14 +6,28 @@
 
 ## 1. Què és Criteri ESG (resum ràpid)
 
-Criteri ESG és un servei d'intel·ligència ESG que converteix informes institucionals, frameworks i certificacions europees en accions concretes. Cada informe es processa seguint una estructura de 7 blocs.
+Criteri ESG és un servei d'intel·ligència ESG que converteix informes institucionals, frameworks i certificacions europees en accions concretes. Cada informe es processa seguint una estructura de **1 targeta + 7 blocs narratius** (8 elements en total).
 
 - **Llançament oficial**: setembre 2026
 - **Model**: freemium progressiu amb early bird de 2 mesos
 - **Newsletter**: bimensual (dijous a les 15:00h)
 - **Preus**: Premium 39€/mes (29€ early bird), Ultra 89€/mes (a partir d'abril 2027)
 
-**El teu rol**: Tech Lead (disseny web, programació Next.js, base de dades, integracions tècniques).
+**El teu rol**: Tech Lead (disseny web, programació Next.js, base de dades, integracions tècniques). També validaràs decisions visuals i de marca.
+
+### Darrers canvis (juliol 2026) que has de conèixer
+
+1. **Bloc 0 — Semàfor Metodològic**: targeta visual amb 5 indicadors que evalua la qualitat metodològica de cada informe (nota A-D). **Format A (targeta compacta vertical)** confirmat com a model oficial. Prova real aplicada a Forética: [`assets/proves-format/`](assets/proves-format/) i [`assets/pilot-informe-foretica/`](../download/) (aquest últim només local, pujat al Drive)
+2. **Subsecció "Més enllà del Checkbox"** dins del bloc 4 (Implicacions): 100-150 paraules amb veu editorial crítica. Basada en 5 criteris interns (no públics): dignitat humana, justícia distributiva, sostenibilitat absoluta, co-decisió democràtica, arrelament territorial. **Els marcs teòrics (Felber/Sasia) no s'esmenten públicament** — la veu és de Criteri directament
+3. **Carta del Director mensual**: 400-600 paraules escrites per Paolo, a l'inici de l'última newsletter del mes. Empremta ètica personal
+4. **17 propostes de logo** ja pujades a `assets/logos/` i al Drive. Finalista v6: Criteri negre + punt coure + hexàgon coure ESG blanc + fons crema. **Pendents de la teva validació** de la tipografia definitiva entre 5 variants (Didot/Garamond/Playfair/Baskerville/Canela)
+5. **Estratègies per al nom "Criteri"** en mercats no-catalans: tagline ancorador multilingüe (CAT/ES/IT/EN) + storytelling a "Sobre nosaltres". **Pendents de la teva validació**
+
+### Què et demanem que validis primer
+
+- **Logo v6**: tria tipografia entre les 5 variants disponibles (`assets/logos/logo-v6-a.png` fins a `logo-v6-e.png`)
+- **Format A del Semàfor**: obre `assets/proves-format/semafor-format-A-compacte.png` i valida si encaixa amb l'estètica general de la web
+- **Storytelling del nom**: llegeix la proposta a `03-BRANDING.md` secció "Naming" i dona la teva opinió sobre com percebràs "Criteri" al mercat espanyol no-català
 
 ---
 
@@ -184,13 +198,21 @@ src/
 
 ## 8. Tasques pendents prioritàries (juliol 2026)
 
+### Validacions que et demanem (primeres 48h)
+1. **Logo v6**: tria la tipografia definitiva entre les 5 variants (`assets/logos/logo-v6-a.png` fins `logo-v6-e.png`)
+2. **Format A del Semàfor Metodològic**: valida si encaixa amb l'estètica web (`assets/proves-format/semafor-format-A-compacte.png`)
+3. **Storytelling del nom "Criteri"** per mercats no-catalans (llegeix `03-BRANDING.md` secció "Naming")
+
+### Desenvolupament web (juliol-agost 2026)
 1. Tancar disseny final de la homepage (iterar sobre la versió actual)
-2. Implementar pàgines internes: `/informes/[slug]`, `/sobre-nosaltres`, `/faq`, `/preus`
-3. Implementar Supabase (auth + PostgreSQL + Prisma)
-4. Integrar Stripe (sense activar pagaments encara)
-5. Implementar autenticació (Supabase Auth)
-6. Optimitzar SEO (meta tags, sitemap, structured data)
-7. Provar la web amb beta testers (agost)
+2. Implementar pàgines internes: `/informes/[slug]`, `/sobre-nosaltres`, `/faq`, `/preus`, `/carta-director`
+3. Implementar el component **Semàfor Metodològic** (Format A) per mostrar-lo a la pàgina de cada informe i al PDF
+4. Implementar la subsecció **"Més enllà del Checkbox"** dins del bloc 4 amb estil visual diferenciat (capçalera coure)
+5. Implementar Supabase (auth + PostgreSQL + Prisma)
+6. Integrar Stripe (sense activar pagaments encara)
+7. Implementar autenticació (Supabase Auth)
+8. Optimitzar SEO (meta tags, sitemap, structured data)
+9. Provar la web amb beta testers (agost)
 
 ---
 

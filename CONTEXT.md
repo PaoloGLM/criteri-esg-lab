@@ -154,19 +154,34 @@ Segueix els 3 passos del document `15-CODI-WEB.md`:
 
 ---
 
-## Format dels informes (7 blocs)
+## Format dels informes (1 targeta + 7 blocs)
 
 Cada informe processat per Criteri ESG segueix aquesta estructura:
 
+0. **Semàfor Metodològic** ⭐ — Targeta visual amb 5 indicadors (Scope 3, terminis, fonts, granularitat, verificació) + nota A-D. Diferenciació principal vs competidors
 1. **Fitxa tècnica** — Institució, data, tipus, pàgines, URL (50 paraules)
-2. **Resum executiu** — Què diu en llenguatge planer (200-300 paraules)
-3. **5 dades clau** — Punts quantitatius amb valor, context i pàgina citada
-4. **Implicacions** — Empreses, reguladors, ciutadans (400 paraules)
-5. **Connexions** — Relacions amb altres informes i actualitat (150 paraules)
+2. **5 dades clau** — Punts quantitatius amb valor, context i pàgina citada
+3. **Resum executiu** — Què diu en llenguatge planer (300 paraules)
+4. **Implicacions** — Empreses, reguladors, ciutadans (450-540 paraules) + subsecció **"Més enllà del Checkbox"** (lent d'Economia Civil, 100-150 paraules)
+5. **Connexions** — Relacions amb altres informes i actualitat (200-250 paraules)
 6. **Accions recomanades** ⭐ — 3-5 accions concretes (el cor operatiu)
 7. **Cross-reference** ⭐ — Mapatge amb EcoVadis, B Corp, MSCI i GRI
 
 ⭐ = blocs diferenciadors (cap competidor els fa)
+
+### Diferenciació editorial: Economia Civil
+
+Criteri aplica una lent d'Economia Civil (tradició mediterrània: cooperatives, economia social, distributiva) als marcs ESG hegemònons anglosaxons. Això es concreta a:
+- **"Més enllà del Checkbox"** (subsecció fixa del bloc 4): 1-2 preguntes d'Economia Civil per informe (la "S" és relacional o només demogràfica? La "G" és democràtica o només compliance? Impacte territorial o només global? Lògica distributiva o només maximització?)
+- **Semàfor Metodològic**: audita la qualitat del darrere, no només les conclusions
+- **Veu editorial**:mediterrània, crítica amb el greenwashing, propera a cooperatives i B Corps
+
+### Naming: per què "Criteri" (decisió 3 juliol 2026)
+
+- "Criteri" = paraula catalana que vol dir judici, discerniment. Identitat mediterrània autèntica
+- Es va descartar "Rigor" per ser fred i contradir la diferenciació d'Economia Civil
+- Estratègia per a mercats no-catalans: tagline ancorador multilingüe + storytelling obert del motiu del nom
+- Mai traduïr el nom — s'escriu igual a tots els idiomes (com Apple, Mango, Lego)
 
 ---
 

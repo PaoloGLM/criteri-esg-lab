@@ -6,12 +6,50 @@
 
 ### Nom escollit: **Criteri ESG**
 
-**Etimologia**: del grec *kriterion*, "mitjà per jutjar".
+**Etimologia**: del grec *kriterion*, "mitjà per jutjar". En català, "criteri" vol dir judici, discerniment, facultat de decidir amb fonament.
 
 **Per què encaixa**:
 1. Combina els tres eixos: ètica (decidir correctament), reputació (tenir criteri és un actiu), acció (és operatiu, no teòric)
-2. Funciona en 3 idiomes: idèntic en català i castellà, *criterion* recognizable en anglès
+2. **Identitat mediterrània autèntica** — paraula catalana que connecta amb la tradició d'Economia Civil (cooperatives, economia social), que és la diferenciació editorial vs els marcs ESG anglosaxons
 3. Tagline memorable: "El teu criteri per decidir bé."
+
+### Percepció internacional del nom
+
+| Mercat | Com es percep "Criteri" | Estratègia |
+|--------|-------------------------|------------|
+| Catalunya | Paraula pròpia, reconeguda | Identitat territorial autèntica |
+| Espanya (no-CAT) | "Criterio" sense 'o' final — sona estrany però intel·ligible | Es percep com a marca (no com a paraula), igual que Mango, Massimo Dutti, Desigual |
+| Itàlia | **És una paraula real** — plural de "criterio" (=criteris) | Funciona nativament, connotació positiva |
+| Portugal | "Critério" sense accent ni 'o' — sona mediterrània | Acceptable com a brand name |
+| França | "Critère" deprès — sona a marca inventada | Acceptable, com Vinted o Lego |
+| Internacional EN | Marca inventada propera a "criterion" | Com Spotify, Vinted — brand inventat memorable |
+
+### Estratègies per neutralitzar la percepció "estrany" a Espanya
+
+1. **Tagline ancorador**: sota el logo, sempre apareix un descriptor curt en l'idioma local:
+   - CAT: "Criteri · Intel·ligència ESG per a professionals"
+   - ES: "Criteri · Inteligencia ESG para profesionales"
+   - IT: "Criteri · Intelligenza ESG per professionisti"
+   - EN: "Criteri · ESG intelligence for professionals"
+   
+   La paraula queda ancorada semànticament; ningú es quedarà pensant "què vol dir Criteri?".
+
+2. **Storytelling de marca a la pàgina "Sobre nosaltres"**: explicar obertament el motiu del nom:
+   > "Criteri és una paraula catalana que vol dir judici, discerniment. La vam triar perquè el nostre projecte neix al Mediterrani i defensa una visió d'Economia Civil —cooperatives, economia social, distributiva— que el món anglosaxó ESG no cobreix."
+
+   Això converteix la "raretesa" en actiu identitari.
+
+3. **No traduir mai el nom**: "Criteri" s'escriu igual a tots els idiomes (com Apple, Tesla, Mango). La coherència gràfica és més important que l'adequació lingüística. El toggle CAT/ES canvia tota la web excepte el logo.
+
+4. **El logo "Criteri·ESG" ancorat**: el "ESG" en majúscules fa evident que és una marca ESG, no una paraula aïllada.
+
+### Per què NO vam canviar a "Rigor" (decisió 3 juliol 2026)
+
+Es va valorar canviar el nom a "Rigor" per emphasitzar la diferenciació de l'Auditor Metodològic. Es descartà per:
+- **Contradiu la diferenciació d'Economia Civil**: "Rigor" és fred, mecànic, anglosaxó; "Criteri" és editorial, relacional, mediterrani
+- **Etiqueta pretensiosa**: dir-se "Rigor" sense haver demostrat track record sona a autoproclamació
+- **Cost de rebranding**: logo, paleta, docs, CONTEXT, registre marca —tot s'ha de refer
+- **Disponibilitat de marca**: "Rigor" és paraula comuna, més difícil de defensar
 
 ### Decisions prèvies descartades
 
@@ -22,6 +60,7 @@
 - **Ethos** — Massa acadèmic
 - **Pauta** — No funciona en anglès
 - **Praxis** — Connotacions polítiques
+- **Rigor** — Descartat el 3 juliol 2026 (vegeu apartat anterior)
 
 ## Domini
 
@@ -149,4 +188,6 @@ Criteri·ESG
 
 ## Històric de canvis
 
+- **3 juliol 2026** — Confirmat "Criteri" com a nom definitiu. Descartat "Rigor" per contradir la diferenciació d'Economia Civil. Afegides estratègies per neutralitzar percepció "estrany" a mercats no-catalans (tagline ancorador multilingüe + storytelling).
+- **3 juliol 2026** — Documentades 17 propostes de logo pujades a Drive (`assets/logos/`) i GitHub (`assets/logos/`). Finalista v6 (Criteri negre + punt coure + hexàgon coure ESG blanc + fons crema), 5 tipografies en curs de selecció.
 - **25 juny 2026** — Definició completa de paleta i tipografia. Logo provisional amb tipografia fins a disseny oficial

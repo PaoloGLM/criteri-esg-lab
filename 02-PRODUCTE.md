@@ -2,28 +2,109 @@
 
 > Especificacions del producte: format de l'informe, formats addicionals, nivells de subscripció.
 
-## Format de l'informe — 7 blocs
+## Format de l'informe — 8 blocs (1 targeta + 7 blocs narratius)
 
-Cada informe processat per Criteri ESG segueix una estructura fixa de 7 blocs. La consistència és el que permet escalar i comparar informes entre ells.
+Cada informe processat per Criteri ESG segueix una estructura fixa. La consistència és el que permet escalar i comparar informes entre ells.
+
+L'estructura s'organitza en **1 targeta d'avaluació ràpida + 7 blocs narratius**:
 
 ### Blocs
 
+0. **Semàfor Metodològic** ⭐ — Targeta visual amb 5 indicadors de qualitat de l'informe. Permet al lector decidir en 10 segons si l'informe mereix ser llegit a fons. Cap competidor ho fa.
 1. **Fitxa tècnica** (60-80 paraules) — Institució, data, tipus, pàgines, URL original, context de publicació
 2. **Cinc dades clau** — Punts quantitatius amb valor, context ampliat (2-3 frases) i pàgina citada
 3. **Resum executiu** (300 paraules) — Què diu en llenguatge planer, context, impacte general
-4. **Implicacions** (450-540 paraules) — Tres blocs: empreses, reguladors, ciutadans. Anàlisi més profunda
+4. **Implicacions** (450-540 paraules) — Tres blocs: empreses, reguladors, ciutadans. Inclou la subsecció **"Més enllà del Checkbox"** (lent d'Economia Civil, 100-150 paraules)
 5. **Connexions** (200-250 paraules) — Relacions amb altres informes i actualitat. Tipus de relació explicat
 6. **Accions recomanades** ⭐ — 3-5 accions concretes per millorar. El cor operatiu. Cada acció amb context ampliat
 7. **Cross-reference** ⭐ — Mapatge automàtic amb EcoVadis, B Corp, MSCI i GRI. Impacte específic explicat
 
 ⭐ = blocs diferenciadors. Cap competidor els fa perquè requereixen coneixement expert dels frameworks.
 
+---
+
+## Bloc 0 — Semàfor Metodològic (diferenciació principal)
+
+### Propòsit
+
+Abans que el lector dediqui 7 minuts a llegir el resum, Criteri li dona una avaluació de 10 segons sobre la **qualitat metodològica** de l'informe original. Això resol el problema que la majoria d'agregadors ESG resumeixen conclusions optimistes sense qüestionar com s'han construït.
+
+### Els 5 indicadors (cadascun: verd / groc / vermell)
+
+| # | Indicador | 🟢 Verd | 🟡 Groc | 🔴 Vermell |
+|---|-----------|---------|---------|------------|
+| 1 | **Cobertura Scope 3** | Quantificat amb dades | Esmentat però no quantificat | Ignorat |
+| 2 | **Termes temporals** | Anys concrets + SBTi alineat | Decennis genèrics ("by 2050") | Només "compromís futur" sense data |
+| 3 | **Fonts independents** | Auditor extern verificat | Alguna cita externa | Només autocitacions |
+| 4 | **Granularitat de dades** | Desglossat per segment/instal·lació | Desglossat per regió | Només agregat global |
+| 5 | **Verificació externa** | Third-party auditada | Second-party | Self-declared |
+
+### Puntuació global (lletra A-D)
+
+| Verds | Lletra | Etiqueta | Significat |
+|-------|--------|----------|------------|
+| 5 | **A** | Rigorós | Informe fiable per a presa de decisions |
+| 3-4 | **B** | Acceptable amb matisos | Útil, però cal complementar amb altres fonts |
+| 1-2 | **C** | Feble metodològicament | Conclusions a prendre amb precaució |
+| 0 | **D** | Materialitat qüestionable | No utilitzar com a font única |
+
+### Format visual
+
+A la pàgina 1 del PDF i a la web, el Semàfor apareix com a targeta compacta:
+
+```
+┌─────────────────────────────────────────────┐
+│  SEMÀFOR METODOLÒGIC           Nota: B      │
+│  ─────────────────────────────────────      │
+│  Scope 3              🟢 Quantificat        │
+│  Termes temporals     🟡 2050 sense SBTi    │
+│  Fonts independents   🟢 Auditor extern     │
+│  Granularitat         🟡 Per regió           │
+│  Verificació          🟢 Third-party        │
+└─────────────────────────────────────────────┘
+```
+
+### Criteris d'aplicació
+
+- **Qui l'omple**: el redactor de Criteri (no IA) durant el processat de l'informe
+- **Auditoria**: el Consell Assessor revisa aleatòriament 1 informe/mes per validar coherència
+- **Transparència**: cada indicador té una frase justificant breu (màx. 15 paraules) accessible fent clic a la web
+- **No és una nota moral**: evalua metodologia, no contingut polític. Un informe pot ser "A" metodològicament i políticament discutible
+
+---
+
+## Subsecció "Més enllà del Checkbox" (dins del bloc 4)
+
+### Propòsit
+
+És **la veu editorial diferencial** de Criteri. Aplica la lent d'Economia Civil (tradició mediterrània: cooperatives, economia social, distributiva) als marcs ESG hegemònons (anglosaxons, basats en retorn financer i headcount diversity).
+
+### Què avalia (1-2 preguntes per informe, no totes)
+
+1. **La "S" és relacional o només demogràfica?** — Es mesura veu, salari, participació; o només headcount diversity?
+2. **La "G" és democràtica o només compliance?** — Stakeholders amb veu real en decisions; o només juntes tècniques?
+3. **L'impacte es mesura en relació al territori o només globalment?** — Impacte local / comunitat; o només KPIs globals?
+4. **Hi ha lògica distributiva o només maximització d'accionista?** — Repartiment de valor entre stakeholders; o només rentabilitat?
+
+### Format
+
+```
+MÉS ENLLÀ DEL CHECKBOX
+[Lent d'Economia Civil — 100-150 paraules]
+```
+
+Identificada visualment amb una capçalera diferenciada (icona o signe identificador mediterrani). Apareix sempre al final del bloc 4 (Implicacions), abans del bloc 5 (Connexions).
+
+### Exemple
+
+> "L'informe mesura la 'S' a través de diversity metrics (headcount per gènere i origen), però no pas a través de la ràtio salarial CEO/salari mitjà —un indicador clau d'Economia Civil que cooperatives i B Corps sí reporten. La 'G' es defineix com a compliance amb la llei de societats, sense incloure la veu dels treballadors en decisions d'inversió. Aquesta mancança no és un error de l'informe; és un símptoma del marc ESG hegemònic, que mesura el que és fàcil de comptar, no el que és rellevant per a la sostenibilitat real."
+
 ### Estructura de pàgines (regla fixa)
 
 | Pàgina | Contingut |
 |--------|-----------|
-| **1** | Títol + missatge clau + 01 Fitxa tècnica + 02 Cinc dades clau |
-| **2** | 03 Resum executiu + 04 Implicacions per actor |
+| **1** | Títol + missatge clau + **00 Semàfor Metodològic** + 01 Fitxa tècnica + 02 Cinc dades clau |
+| **2** | 03 Resum executiu + 04 Implicacions per actor + **"Més enllà del Checkbox"** |
 | **3** | 05 Connexions amb altres informes + 06 Accions recomanades |
 | **4** | 07 Cross-reference amb certificacions + disclaimer |
 
@@ -148,5 +229,7 @@ L'usuari Ultra fa 1 petició al mes on descriu la seva empresa i nosaltres li en
 
 ## Històric de canvis
 
+- **3 juliol 2026** — Afegit **Bloc 0: Semàfor Metodològic** (5 indicadors + nota A-D). Diferenciació principal vs competidors. Inspirat en valoració amb Gemini.
+- **3 juliol 2026** — Afegida **subsecció "Més enllà del Checkbox"** dins del bloc 4 (Implicacions). Veu editorial d'Economia Civil — diferenciació mediterrània vs marcs ESG anglosaxons.
 - **25 juny 2026** — Format Ultra completat: podcast (NotebookLM), PPT editable (python-pptx), dossier mensual, connexions personalitzades
 - **25 juny 2026** — Eliminada "sessió consultiva mensual" d'Ultra per decisió de Paolo

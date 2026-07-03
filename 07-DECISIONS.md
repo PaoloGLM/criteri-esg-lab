@@ -355,6 +355,59 @@
 
 ---
 
+## 3 juliol 2026 — Diferenciació estratègica: Semàfor Metodològic + Economia Civil
+
+**Decisió**: Adopció de dues innovacions editorials per diferenciar Criteri dels agregadors ESG existents (Bloomberg Green, GreenBiz, MSCI ESG):
+
+1. **Bloc 0 — Semàfor Metodològic**: targeta visual amb 5 indicadors (Scope 3, terminis, fonts independents, granularitat, verificació externa) + nota A-D. Apareix abans que la fitxa tècnica per permetre al lector avaluar la qualitat de l'informe en 10 segons.
+2. **Subsecció "Més enllà del Checkbox"** dins del bloc 4 (Implicacions): paràgraf editorial de 100-150 paraules amb lent d'Economia Civil (la "S" és relacional? la "G" és democràtica? impacte territorial? lògica distributiva?).
+
+**Rao**:
+- Risc detectat: mercat ESG saturat d'agregadors que només resumeixen conclusions. Sense diferenciació clara, Criteri es percep com "igual però sense experiència"
+- Semàfor Metodològic: cap competidor audita la qualitat del darrere. És innovació editorial (no tecnològica), executable des del dia 1
+- Economia Civil: és la veu autèntica mediterrània que cap Big Four pot replicar (el seu ADN és anglosaxó). Connecta amb el públic natural (cooperatives, B Corps, economia social CAT/ES/EU-sud)
+- Es descarten 7 idees addicionals suggerides (pasaporte corporatiu, mapeig de contradiccions, autoavaluació inversa amb dilemes) per risc de dilució del focus i càrrega editorial insostenible per a una startup de 2 persones. Queden al roadmap com a features Ultra 2027.
+
+**Alternatives considerades**:
+- Implementar totes les idees de Gemini (9 features) → descartat per càrrega editorial
+- Pivotar a eina d'auditoria automàtica → descartat per perdre la veu editorial
+- Mantenir format 7 blocs sense canvis → descartat per risc de percepció "igual però sense experiència"
+
+**Impacte**: 
+- Estructura d'informe passa de 7 blocs a 1 targeta + 7 blocs (vegeu `02-PRODUCTE.md`)
+- El redactor ha d'omplir manualment el Semàfor per cada informe (no IA)
+- Consell Assessor (pendent de constituir) revisarà aleatòriament 1 informe/mes
+- Documentat a `02-PRODUCTE.md`, `03-BRANDING.md`, `CONTEXT.md`
+
+**Estat**: Activa
+
+---
+
+## 3 juliol 2026 — Confirmació del nom "Criteri" (descartat "Rigor")
+
+**Decisió**: Es confirma "Criteri ESG" com a nom definitiu. Es descarta "Rigor" que s'havia valorat per emphasitzar el gir cap a l'auditoria metodològica.
+
+**Rao**:
+- "Rigor" contradiu la diferenciació d'Economia Civil (és fred, mecànic, anglosaxó)
+- "Criteri" manté la identitat mediterrània i editorial, no tècnica
+- "Rigor" com a autodesignació sense track record sona pretensiós
+- Cost de rebranding: logo (17 propostes ja pujades a Drive/GitHub), paleta, docs, CONTEXT, registre OEPM previst per juliol —tot s'hauria de refer
+- Disponibilitat de marca: "Rigor" és paraula comuna, registre més conflictiu
+
+**Alternatives considerades**:
+- Canvi a "Rigor" → descartat
+- Canvi a "Rigor." (amb punt) per suavitzar → descartat
+- Mantenir "Criteri" amb estratègies de neutralització → adoptat
+
+**Impacte**: 
+- Estratègies per neutralitzar percepció "estrany" a mercats no-catalans: tagline ancorador multilingüe (CAT/ES/IT/EN), storytelling obert a "Sobre nosaltres", no traduir mai el nom
+- Documentat a `03-BRANDING.md` secció "Naming"
+- Logo finalista v6 (Criteri negre + punt coure + hexàgon coure ESG blanc + fons crema) es manté
+
+**Estat**: Activa
+
+---
+
 ## Plantilla per a futures decisions
 
 ```markdown

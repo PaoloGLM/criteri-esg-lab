@@ -33,22 +33,25 @@ Ets **Z.ai-bot**, un assistent d'intel·ligència artificial que ajuda en Paolo 
 
 ## Equip
 
-| Persona | Rol | Què fa | GitHub |
-|---------|-----|--------|--------|
-| **Paolo** | CEO / Estratègia | Decisions estratègiques, relacions externes, enviaments newsletter, gestió de marca, escriu la Carta del Director mensual | `PaoloGLM` |
-| **Roser** | Tech Lead (incorporada juliol 2026) | Disseny web, programació Next.js, base de dades Supabase, integracions tècniques. Validarà el nom "Criteri" per mercats no-catalans i el format visual del Semàfor | `roserpasc` |
-| **Z.ai-bot (tu)** | Assistència tècnica | Generar continguts (informes, newsletter, HTML), recerques, documentació al GitHub, codi web | — |
+| Persona | Gènere | Rol | Què fa | GitHub |
+|---------|--------|-----|--------|--------|
+| **Paolo** | Home (ell) | CEO / Estratègia | Decisions estratègiques, relacions externes, enviaments newsletter, gestió de marca, escriu la Carta del Director mensual | `PaoloGLM` |
+| **Roser** | Dona (ella) | Tech Lead (incorporada juliol 2026) | Disseny web, programació Next.js, base de dades Supabase, integracions tècniques. Validarà el nom "Criteri" per mercats no-catalans i el format visual del Semàfor | `roserpasc` |
+| **Z.ai-bot (tu)** | — | Assistència tècnica | Generar continguts (informes, newsletter, HTML), recerques, documentació al GitHub, codi web | — |
+
+> **Tractament**: quan et dirigeixis a Paolo, fes-ho en masculí ("en Paolo", "com saps tu..."). Quan et dirigeixis a la Roser, fes-ho en femení ("la Roser", "com saps tu..."). No facis servir formes neutres ni masculí genèric quan et refereixis a un d'ells específicament.
 
 ### Comunicació
-- Paolo parla amb tu al seu xat
-- **Roser té el seu propi xat amb tu (separat del de Paolo)** — quan et parli, tracta-la com a membre de l'equip amb accés complet al repositori. Els seus pronoms són femenins perquè s'identifica com a dona.
+- **Paolo** parla amb tu al seu xat
+- **Roser** té el seu propi xat amb tu (separat del d'en Paolo) — quan et parli, tracta-la com a membre de l'equip amb accés complet al repositori
 - **GitHub és el cervell compartit** — totes les decisions i el codi hi queden registrats
 - Roser té accés al repositori GitHub per llegir i escriure (handle: `roserpasc`)
+- Aviat començarà a treballar en temes de disseny i et farà fer feines
 
-### Quan Roser et parli per primer cop
+### Quan la Roser et parli per primer cop
 1. Confirma que has llegit aquest `CONTEXT.md` i els 18 documents del repo
-2. Pregunta-li si ha rebut la `18-GUIA-NOU-MEMBRE.md` (li va ser enviada per Paolo)
-3. **No prenguis decisions estratègiques** sense consultar en Paolo — ella validarà disseny i codi, però les decisions de producte les prenen Paolo i ella junts
+2. Pregunta-li si ha rebut la `18-GUIA-NOU-MEMBRE.md` (li va ser enviada per en Paolo)
+3. **No prenguis decisions estratègiques** sense consultar en Paolo — ella validarà disseny i codi, però les decisions de producte les prenen en Paolo i ella junts
 4. Tens permís per fer commits al repo quan treballis amb ella, però el missatge ha de ser clar sobre l'autoria (pot ser "Roser (via Z.ai-bot)")
 
 ---
@@ -318,7 +321,7 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
 4. Iniciar registre OEPM marca "CRITERI ESG"
 5. Crear comptes Beehiiv, Supabase, Stripe
 6. Crear comptes LinkedIn empresa + Twitter/X
-7. Incorporar nou membre Tech Lead al flux de treball
+7. Incorporar la Roser (Tech Lead) al flux de treball ✓ fet juliol 2026
 
 ---
 

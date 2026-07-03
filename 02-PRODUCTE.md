@@ -48,9 +48,13 @@ Abans que el lector dediqui 7 minuts a llegir el resum, Criteri li dona una aval
 | 1-2 | **C** | Feble metodològicament | Conclusions a prendre amb precaució |
 | 0 | **D** | Materialitat qüestionable | No utilitzar com a font única |
 
-### Format visual
+### Format visual (model oficial — Format A)
 
-A la pàgina 1 del PDF i a la web, el Semàfor apareix com a targeta compacta:
+S'han provat 2 formats (juliol 2026). S'adopta el **Format A: targeta compacta vertical**, amb 5 files (una per indicador), justificació textual breu a cada fila, i la nota global en un pill a la capçalera.
+
+Prova visual real (aplicada al WEF Global Risks Report 2026): [`assets/proves-format/semafor-format-A-compacte.png`](assets/proves-format/semafor-format-A-compacte.png)
+
+Esquema:
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -61,8 +65,12 @@ A la pàgina 1 del PDF i a la web, el Semàfor apareix com a targeta compacta:
 │  Fonts independents   🟢 Auditor extern     │
 │  Granularitat         🟡 Per regió           │
 │  Verificació          🟢 Third-party        │
+│  ─────────────────────────────────────      │
+│  3 verds + 2 grocs. Útil, però cal ...      │
 └─────────────────────────────────────────────┘
 ```
+
+El format B (barra horitzontal amb cel·les) queda descartat però disponible a `assets/proves-format/semafor-format-B-horitzontal.png` per referència futura.
 
 ### Criteris d'aplicació
 
@@ -77,12 +85,9 @@ A la pàgina 1 del PDF i a la web, el Semàfor apareix com a targeta compacta:
 
 ### Propòsit
 
-És **la veu editorial diferencial** de Criteri. Aplica la lent de **l'Economia del Bé Comú** (Christian Felber) complementada amb la perspectiva d'**Economia Ciutadana** (Peru Sasia, Universidad de Deusto) als marcs ESG hegemònons (anglosaxons, basats en retorn financer i headcount diversity).
+És **la veu editorial diferencial** de Criteri. Aplica una lent crítica als marcs ESG hegemònons (anglosaxons, basats en retorn financer i headcount diversity) per detectar què mesuren i què ometen.
 
-**Per què aquest marc**:
-- L'Economia del Bé Comú proporciona una matriu operacional estructurada (5 valors × 5 grups d'stakeholders = 20 cel·les avaluables)
-- L'Economia Ciutadana de Sasia aporta l'èmfasi en l'arrelament territorial i la participació ciutadana en decisions econòmiques
-- Tots dos marcs són mediterranis/continentals i contrasten amb l'òptica anglosaxona dominant en ESG (MSCI, Sustainalytics, Bloomberg)
+> **Note interna (no pública)**: els criteris d'avaluació s'inspiren en l'Economia del Bé Comú (Christian Felber) i l'Economia Ciutadana (Peru Sasia, Universidad de Deusto), però **aquestes referències mai s'esmenten públicament**. La veu és de Criteri, directament. Els marcs teòrics són només un referent intern per garantir coherència editorial.
 
 ### Els 5 criteris (1-2 per informe, no tots)
 
@@ -100,16 +105,18 @@ Per cada informe, el redactor tria **1 o 2 criteris** que siguin més rellevants
 
 ```
 MÉS ENLLÀ DEL CHECKBOX
-[Lent d'Economia del Bé Comú + Economia Ciutadana — 100-150 paraules]
+[Veu editorial de Criteri — 100-150 paraules]
 ```
 
-Identificada visualment amb una capçalera diferenciada (capçalera pròpia amb tipografia i colorcoure). Apareix sempre al final del bloc 4 (Implicacions), abans del bloc 5 (Connexions).
+Identificada visualment amb una capçalera diferenciada (capçalera pròpia amb tipografia i color coure). Apareix sempre al final del bloc 4 (Implicacions), abans del bloc 5 (Connexions). **No menciona mai els marcs teòrics interns** (Bé Comú, Sasia) — la veu és de Criteri.
 
 ### Exemple
 
-> "**Criteri avaliat: Justícia distributiva + Arrelament territorial**
-> 
-> L'informe mesura la 'S' a través de diversity metrics (headcount per gènere i origen), però no pas a través de la ràtio salarial CEO/salari mitjà —un indicador clau de l'Economia del Bé Comú que cooperatives i B Corps sí reporten. La riquesa generada es presenta com a rendibilitat per accionista, sense desglossar quina part retorna als treballadors o a la comunitat d'origen. Quant a l'arrelament territorial, l'impacte es reporta només globalment (emissions agregades), sense dades per centre operatiu ni per comunitat local afectada. Aquesta mancança no és un error de l'informe; és un símptoma del marc ESG hegemònic, que mesura el que és fàcil de comptar, no el que és rellevant per al bé comú."
+> "**Criteri avaluat: Justícia distributiva + Arrelament territorial**
+>
+> L'informe mesura la 'S' a través de diversity metrics (headcount per gènere i origen), però no pas a través de la ràtio salarial CEO/salari mitjà —un indicador que cooperatives i B Corps sí reporten i que aquí brilla per la seva absència. La riquesa generada es presenta com a rendibilitat per accionista, sense desglossar quina part retorna als treballadors o a la comunitat d'origen. Quant a l'arrelament territorial, l'impacte es reporta només globalment (emissions agregades), sense dades per centre operatiu ni per comunitat local afectada. Aquesta mancança no és un error de l'informe; és un símptoma del marc ESG hegemònic, que mesura el que és fàcil de comptar, no el que és rellevant."
+
+**Nota**: l'exemple públic no menciona Felber ni Sasia. La tria dels criteris (justícia distributiva, arrelament territorial) es fa internament sobre la base d'aquests marcs, però la veu editorial parla en nom de Criteri.
 
 ### Criteris d'aplicació
 

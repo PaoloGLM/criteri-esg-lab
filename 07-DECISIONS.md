@@ -463,6 +463,43 @@
 
 ---
 
+## 4 juliol 2026 — Format A com a model oficial del Semàfor + marcs teòrics interns (no públics)
+
+**Decisió**: Dues decisions complementàries:
+
+1. **Format A (targeta compacta vertical)** confirmat com a model oficial del Semàfor Metodològic. Format B (barra horitzontal) descartat però disponible a `assets/proves-format/` per referència futura.
+
+2. **Els marcs teòrics (Economia del Bé Comú de Felber + Economia Ciutadana de Sasia) passen a ser criteris interns**. No s'esmenten públicament a:
+   - La veu editorial dels informes ("Més enllà del Checkbox")
+   - El storytelling de marca ("Sobre nosaltres", tagline, etc.)
+   - La Carta del Director
+   - Cap comunicació externa
+
+**Rao**:
+- Format A triat perquè ofereix més densitat informativa per indicador (justificació textual de 10-15 paraules), mentre que el Format B només mostrava 1-2 paraules per cel·la
+- Format A també es llegeix millor en PDF (pàgina 1) i en mòbil (columna única)
+- Sobre els marcs teòrics: Paolo considera que citar Felber/Sasia públicament podria:
+  - Confondre lectors no especialitzats (marcs poc coneguts fora de cercles acadèmics)
+  - Generar debat teòric sobre el marc correcte, quan el que importa és la veu editorial
+  - Restar autoria a Criteri (la veu ha de ser de Criteri, no d'una escola de pensament)
+- Els marcs queden com a referent intern per garantir coherència editorial entre informes
+
+**Alternatives considerades**:
+- Format B → descartat per menor densitat informativa
+- Format híbrid A+B → descartat per complexitat de maquetació
+- Citació pública dels marcs amb nota a peu → descartat perquè Paolo vol veu pròpia
+- Silenci absolut sobre el marc teòric (ni internament) → descartat perquè sense marc escrit els criteris derivarien en criteris personals del redactor de torn
+
+**Impacte**: 
+- Maquetació PDF i web del Semàfor: Format A
+- Storytelling actualitzat: mencions a Felber/Sasia eliminades
+- Exemple "Més enllà del Checkbox" reescrit sense mencions a marcs teòrics
+- Documentat a `02-PRODUCTE.md`, `03-BRANDING.md`, `CONTEXT.md`
+
+**Estat**: Activa
+
+---
+
 ## Plantilla per a futures decisions
 
 ```markdown

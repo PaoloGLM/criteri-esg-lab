@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<title>Semàfor Format A — Compacte vertical</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+  body { background: #F5EFE6; margin: 0; padding: 40px; font-family: 'Inter', sans-serif; color: #2C1810; }
+  .page { max-width: 760px; margin: 0 auto; }
+  .report-header { margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid #B87333; }
+  .report-header .kicker { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #B87333; font-weight: 600; }
+  .report-header h1 { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 600; margin: 6px 0 4px 0; }
+  .report-header .meta { font-size: 13px; color: #9C8B7A; }
+  
+  .semaphore-card {
+    background: white;
+    border: 1px solid #E5DDD0;
+    border-left: 4px solid #B87333;
+    padding: 24px 28px;
+    border-radius: 4px;
+  }
+  .semaphore-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid #E5DDD0; padding-bottom: 12px; margin-bottom: 14px;
+  }
+  .semaphore-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+  .grade-pill {
+    display: inline-block; padding: 4px 14px; border-radius: 12px;
+    background: #C9A961; color: white;
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: 14px;
+  }
+  .grade-pill .grade-letter { font-size: 22px; margin-right: 6px; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 8px 0; vertical-align: middle; }
+  td.ind-name { font-weight: 500; font-size: 13px; width: 28%; }
+  td.ind-dot { width: 24px; text-align: center; }
+  td.ind-label { font-size: 12px; color: #B87333; font-weight: 600; width: 22%; text-transform: uppercase; letter-spacing: 0.5px; }
+  td.ind-detail { font-size: 12px; color: #9C8B7A; font-style: italic; }
+  tr + tr td { border-top: 1px solid #F0EBE0; }
+  .semaphore-footer { margin-top: 14px; padding-top: 10px; border-top: 1px solid #E5DDD0; font-size: 11px; color: #9C8B7A; }
+  .footer-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #B87333; font-weight: 600; margin-right: 6px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="report-header">
+    <div class="kicker">CRITERI ESG · Prova format A</div>
+    <h1>Global Risks Report 2026</h1>
+    <div class="meta">World Economic Forum · Gener 2026 · 120 pàgines</div>
+  </div>
+  
+  <div class="semaphore-card">
+    <div class="semaphore-head">
+      <div class="semaphore-title">Semàfor Metodològic</div>
+      <div class="grade-pill"><span class="grade-letter">B</span>Acceptable amb matisos</div>
+    </div>
+    <table>
+      
+        <tr>
+          <td class="ind-name">Cobertura Scope 3</td>
+          <td class="ind-dot"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#5C8A5C;"></span></td>
+          <td class="ind-label">Quantificat</td>
+          <td class="ind-detail">Inclou emissions cadena valor, amb dades per sector</td>
+        </tr>
+        <tr>
+          <td class="ind-name">Termes temporals</td>
+          <td class="ind-dot"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#C9A961;"></span></td>
+          <td class="ind-label">Mixte</td>
+          <td class="ind-detail">Horitzó 2 i 10 anys concrets, però sense SBTi alineat</td>
+        </tr>
+        <tr>
+          <td class="ind-name">Fonts independents</td>
+          <td class="ind-dot"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#5C8A5C;"></span></td>
+          <td class="ind-label">Auditor extern</td>
+          <td class="ind-detail">Verificat per Marsh McLennan + aportacions acadèmiques</td>
+        </tr>
+        <tr>
+          <td class="ind-name">Granularitat</td>
+          <td class="ind-dot"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#C9A961;"></span></td>
+          <td class="ind-label">Per regió</td>
+          <td class="ind-detail">Desglossat per 7 regions, no per sector econòmic</td>
+        </tr>
+        <tr>
+          <td class="ind-name">Verificació externa</td>
+          <td class="ind-dot"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#5C8A5C;"></span></td>
+          <td class="ind-label">Third-party</td>
+          <td class="ind-detail">Auditoria externa de la metodologia d'enquesta Gallup</td>
+        </tr>
+    </table>
+    <div class="semaphore-footer">
+      <span class="footer-label">Nota global</span> 3 verds + 2 grocs = B (Acceptable amb matisos). Útil, però cal complementar amb fonts sectorials.
+    </div>
+  </div>
+</div>
+</body>
+</html>

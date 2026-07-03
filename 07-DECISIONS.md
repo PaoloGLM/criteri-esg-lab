@@ -408,6 +408,61 @@
 
 ---
 
+## 4 juliol 2026 — Canvi de marc: Economia Civil → Economia del Bé Comú + Economia Ciutadana
+
+**Decisió**: Substituir el marc conceptual "Economia Civil" per "Economia del Bé Comú (Christian Felber) + Economia Ciutadana (Peru Sasia, Universidad de Deusto)" com a base teòrica de la subsecció "Més enllà del Checkbox".
+
+**Rao**:
+- L'Economia del Bé Comú té una matriu operacional estructurada (5 valors × 5 grups d'stakeholders = 20 cel·les avaluables) que permet criteris concrets i auditables
+- L'Economia Ciutadana de Sasia aporta l'èmfasi en l'arrelament territorial i la participació ciutadana, matisos que l'Economia Civil no cobria tant explícitament
+- Tots dos marcs són mediterranis/continentals i contrasten amb l'òptica anglosaxona dominant en ESG
+- Paolo coneix i valora la feina de Peru Sasia a Deusto
+
+**Alternatives considerades**:
+- Mantenir "Economia Civil" → descartat perquè Paolo no li agrada el concepte
+- Usar només "Economia del Bé Comú" → descartat perquè perd el matís d'arrelament territorial
+- Usar només "Economia Ciutadana" → descartat perquè no té matriu operacional estructurada
+
+**Impacte**: 
+- Nous 5 criteris per "Més enllà del Checkbox": dignitat humana, justícia distributiva, sostenibilitat absoluta, co-decisió democràtica, arrelament territorial
+- Storytelling del nom "Criteri" s'actualitza per referenciar ambdós marcs
+- Documentat a `02-PRODUCTE.md`, `03-BRANDING.md`, `CONTEXT.md`
+
+**Estat**: Activa
+
+---
+
+## 4 juliol 2026 — Carta del Director mensual (empremta ètica de Paolo)
+
+**Decisió**: Afegir una nova peça editorial mensual —la "Carta del Director"— escrita personalment per Paolo, complementària al "Més enllà del Checkbox" (que escriu el redactor amb criteris definits).
+
+**Rao**:
+- "Més enllà del Checkbox" aporta veu editorial basada en criteris, però és estructural i apareix a cada informe
+- Falta una peça més personal, ètica i humana que només Paolo pot aportar
+- Aquesta peça és allò que cap competidor (ni IA ni Big Four) pot replicar —l'empremta humana del fundador
+- Diferenciació autèntica en un mercat on la majoria d'eines ESG son asèptiques
+
+**Especificacions**:
+- Freqüència: 1/mes, a l'inici de l'última newsletter del mes
+- Autor: Paolo (el bot només ajuda amb estructuració/revisió)
+- Extensió: 400-600 paraules
+- Estructura: anècdota/gancho + mirada ètica (lent Bé Comú) + compromís concret de Criteri
+- Arxiu web a `/carta-director` + GitHub a `assets/cartes-director/YYYY-MM.md`
+
+**Alternatives considerades**:
+- Carta setmanal → descartat per càrrega editorial de Paolo
+- Carta per a cada informe → descartat perquè es dilueix el pes
+- Peça escrita per IA i revisada per Paolo → descartat perquè perdria l'autenticitat
+
+**Impacte**: 
+- Nova secció 1 a l'última newsletter del mes
+- Nou apartat a `02-PRODUCTE.md` i `CONTEXT.md`
+- Estructura de carpetes GitHub: `assets/cartes-director/`
+
+**Estat**: Activa
+
+---
+
 ## Plantilla per a futures decisions
 
 ```markdown

@@ -169,18 +169,22 @@ Cada informe processat per Criteri ESG segueix aquesta estructura:
 
 ⭐ = blocs diferenciadors (cap competidor els fa)
 
-### Diferenciació editorial: Economia Civil
+### Diferenciació editorial: Economia del Bé Comú + Economia Ciutadana
 
-Criteri aplica una lent d'Economia Civil (tradició mediterrània: cooperatives, economia social, distributiva) als marcs ESG hegemònons anglosaxons. Això es concreta a:
-- **"Més enllà del Checkbox"** (subsecció fixa del bloc 4): 1-2 preguntes d'Economia Civil per informe (la "S" és relacional o només demogràfica? La "G" és democràtica o només compliance? Impacte territorial o només global? Lògica distributiva o només maximització?)
+Criteri aplica una lent basada en **l'Economia del Bé Comú** (Christian Felber) i **l'Economia Ciutadana** (Peru Sasia, Universidad de Deusto) als marcs ESG hegemònons anglosaxons. Això es concreta a:
+- **"Més enllà del Checkbox"** (subsecció fixa del bloc 4): 1-2 criteris per informe triats entre 5: dignitat humana, justícia distributiva, sostenibilitat absoluta, co-decisió democràtica, arrelament territorial
+- **Carta del Director mensual** (escriu Paolo): 400-600 paraules, a l'inici de l'última newsletter del mes. Empremta ètica personal
 - **Semàfor Metodològic**: audita la qualitat del darrere, no només les conclusions
-- **Veu editorial**:mediterrània, crítica amb el greenwashing, propera a cooperatives i B Corps
+- **Veu editorial**: mediterrània, crítica amb el greenwashing, propera a cooperatives i B Corps
 
-### Naming: per què "Criteri" (decisió 3 juliol 2026)
+### Naming: per què "Criteri" (decisió 3 juliol 2026, confirmada 4 juliol)
 
 - "Criteri" = paraula catalana que vol dir judici, discerniment. Identitat mediterrània autèntica
-- Es va descartar "Rigor" per ser fred i contradir la diferenciació d'Economia Civil
-- Estratègia per a mercats no-catalans: tagline ancorador multilingüe + storytelling obert del motiu del nom
+- Es va descartar "Rigor" per ser fred i contradir la diferenciació d'Economia del Bé Comú
+- Estratègies per a mercats no-catalans (pendents validació nova integrant equip):
+  1. Tagline ancorador multilingüe (CAT/ES/IT/EN)
+  2. Storytelling obert a "Sobre nosaltres"
+  3. No traduir mai el nom
 - Mai traduïr el nom — s'escriu igual a tots els idiomes (com Apple, Mango, Lego)
 
 ---

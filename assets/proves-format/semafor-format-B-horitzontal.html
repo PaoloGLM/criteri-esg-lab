@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<title>Semàfor Format B — Barra horitzontal</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+  body { background: #F5EFE6; margin: 0; padding: 40px; font-family: 'Inter', sans-serif; color: #2C1810; }
+  .page { max-width: 760px; margin: 0 auto; }
+  .report-header { margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid #B87333; }
+  .report-header .kicker { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #B87333; font-weight: 600; }
+  .report-header h1 { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 600; margin: 6px 0 4px 0; }
+  .report-header .meta { font-size: 13px; color: #9C8B7A; }
+  
+  .semaphore-banner {
+    background: white;
+    border: 1px solid #E5DDD0;
+    border-top: 4px solid #B87333;
+    padding: 18px 22px;
+    border-radius: 4px;
+  }
+  .banner-head {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 14px;
+  }
+  .banner-title { font-family: 'Fraunces', serif; font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #2C1810; }
+  .banner-grade {
+    display: flex; align-items: baseline; gap: 8px;
+  }
+  .banner-grade .letter {
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: 36px;
+    color: #C9A961; line-height: 1;
+  }
+  .banner-grade .label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+    color: #9C8B7A; max-width: 110px;
+  }
+  .ind-row {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;
+  }
+  .ind-cell {
+    border-left: 2px solid #F0EBE0;
+    padding: 4px 8px;
+  }
+  .ind-cell:first-child { border-left: none; padding-left: 0; }
+  .ind-cell .ind-status { margin-bottom: 6px; }
+  .ind-cell .ind-status span { width: 16px; height: 16px; }
+  .ind-cell .ind-name { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .ind-cell .ind-label { font-size: 11px; font-weight: 700; margin-bottom: 4px; }
+  .ind-cell .ind-detail { font-size: 10px; color: #9C8B7A; line-height: 1.4; }
+  .banner-footer {
+    margin-top: 14px; padding-top: 10px; border-top: 1px solid #E5DDD0;
+    font-size: 11px; color: #9C8B7A; font-style: italic;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="report-header">
+    <div class="kicker">CRITERI ESG · Prova format B</div>
+    <h1>Global Risks Report 2026</h1>
+    <div class="meta">World Economic Forum · Gener 2026 · 120 pàgines</div>
+  </div>
+  
+  <div class="semaphore-banner">
+    <div class="banner-head">
+      <div class="banner-title">Semàfor Metodològic</div>
+      <div class="banner-grade">
+        <span class="letter">B</span>
+        <span class="label">Acceptable amb matisos</span>
+      </div>
+    </div>
+    <div class="ind-row">
+      
+        <div class="ind-cell">
+          <div class="ind-status"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#5C8A5C;"></span></div>
+          <div class="ind-name">Cobertura Scope 3</div>
+          <div class="ind-label" style="color: #5C8A5C">Quantificat</div>
+          <div class="ind-detail">Inclou emissions cadena valor, amb dades per sector</div>
+        </div>
+        <div class="ind-cell">
+          <div class="ind-status"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#C9A961;"></span></div>
+          <div class="ind-name">Termes temporals</div>
+          <div class="ind-label" style="color: #C9A961">Mixte</div>
+          <div class="ind-detail">Horitzó 2 i 10 anys concrets, però sense SBTi alineat</div>
+        </div>
+        <div class="ind-cell">
+          <div class="ind-status"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#5C8A5C;"></span></div>
+          <div class="ind-name">Fonts independents</div>
+          <div class="ind-label" style="color: #5C8A5C">Auditor extern</div>
+          <div class="ind-detail">Verificat per Marsh McLennan + aportacions acadèmiques</div>
+        </div>
+        <div class="ind-cell">
+          <div class="ind-status"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#C9A961;"></span></div>
+          <div class="ind-name">Granularitat</div>
+          <div class="ind-label" style="color: #C9A961">Per regió</div>
+          <div class="ind-detail">Desglossat per 7 regions, no per sector econòmic</div>
+        </div>
+        <div class="ind-cell">
+          <div class="ind-status"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#5C8A5C;"></span></div>
+          <div class="ind-name">Verificació externa</div>
+          <div class="ind-label" style="color: #5C8A5C">Third-party</div>
+          <div class="ind-detail">Auditoria externa de la metodologia d'enquesta Gallup</div>
+        </div>
+    </div>
+    <div class="banner-footer">3 verds + 2 grocs. Útil, però cal complementar amb fonts sectorials per a anàlisi comparativa.</div>
+  </div>
+</div>
+</body>
+</html>

@@ -77,27 +77,83 @@ A la pàgina 1 del PDF i a la web, el Semàfor apareix com a targeta compacta:
 
 ### Propòsit
 
-És **la veu editorial diferencial** de Criteri. Aplica la lent d'Economia Civil (tradició mediterrània: cooperatives, economia social, distributiva) als marcs ESG hegemònons (anglosaxons, basats en retorn financer i headcount diversity).
+És **la veu editorial diferencial** de Criteri. Aplica la lent de **l'Economia del Bé Comú** (Christian Felber) complementada amb la perspectiva d'**Economia Ciutadana** (Peru Sasia, Universidad de Deusto) als marcs ESG hegemònons (anglosaxons, basats en retorn financer i headcount diversity).
 
-### Què avalia (1-2 preguntes per informe, no totes)
+**Per què aquest marc**:
+- L'Economia del Bé Comú proporciona una matriu operacional estructurada (5 valors × 5 grups d'stakeholders = 20 cel·les avaluables)
+- L'Economia Ciutadana de Sasia aporta l'èmfasi en l'arrelament territorial i la participació ciutadana en decisions econòmiques
+- Tots dos marcs són mediterranis/continentals i contrasten amb l'òptica anglosaxona dominant en ESG (MSCI, Sustainalytics, Bloomberg)
 
-1. **La "S" és relacional o només demogràfica?** — Es mesura veu, salari, participació; o només headcount diversity?
-2. **La "G" és democràtica o només compliance?** — Stakeholders amb veu real en decisions; o només juntes tècniques?
-3. **L'impacte es mesura en relació al territori o només globalment?** — Impacte local / comunitat; o només KPIs globals?
-4. **Hi ha lògica distributiva o només maximització d'accionista?** — Repartiment de valor entre stakeholders; o només rentabilitat?
+### Els 5 criteris (1-2 per informe, no tots)
+
+Per cada informe, el redactor tria **1 o 2 criteris** que siguin més rellevants per aquell informe concret. L'elecció es justifica breument.
+
+| # | Criteri | Pregunta clau | Què busca |
+|---|---------|---------------|-----------|
+| 1 | **Dignitat humana** | L'informe mesura condicions de vida digna (salari just, salut mental, conciliació, dret a desconnexió) o només compliance laboral mínima? | Si la persona és subjecte, no recurs |
+| 2 | **Justícia distributiva** | Es mesura com es reparteix la riquesa generada (ràtio salarial CEO/mitjà, repartiment de beneficis amb treballadors i comunitat) o només rendibilitat per accionista? | Si hi ha distribució, no només maximització |
+| 3 | **Sostenibilitat absoluta** | Es mesura l'impacte vs límits planetaris (emissions absolutes, biocapacitat, extracció de materials) o només intensitats relatives (emissions/unitat produïda)? | Si es respecten sostres ecològics |
+| 4 | **Co-decisió democràtica** | Hi ha participació real dels stakeholders (treballadors, comunitats, clients) en decisions materials o només compliance amb codis de govern corporatiu? | Si la governança és democràtica, no només procedimental |
+| 5 | **Arrelament territorial** | Es mesura l'impacte al territori on opera (comunitat local, proveïdors propers, cadena de valor relacional) o només xifres globals agregades? | Si hi ha economia territorial, no abstracta |
 
 ### Format
 
 ```
 MÉS ENLLÀ DEL CHECKBOX
-[Lent d'Economia Civil — 100-150 paraules]
+[Lent d'Economia del Bé Comú + Economia Ciutadana — 100-150 paraules]
 ```
 
-Identificada visualment amb una capçalera diferenciada (icona o signe identificador mediterrani). Apareix sempre al final del bloc 4 (Implicacions), abans del bloc 5 (Connexions).
+Identificada visualment amb una capçalera diferenciada (capçalera pròpia amb tipografia i colorcoure). Apareix sempre al final del bloc 4 (Implicacions), abans del bloc 5 (Connexions).
 
 ### Exemple
 
-> "L'informe mesura la 'S' a través de diversity metrics (headcount per gènere i origen), però no pas a través de la ràtio salarial CEO/salari mitjà —un indicador clau d'Economia Civil que cooperatives i B Corps sí reporten. La 'G' es defineix com a compliance amb la llei de societats, sense incloure la veu dels treballadors en decisions d'inversió. Aquesta mancança no és un error de l'informe; és un símptoma del marc ESG hegemònic, que mesura el que és fàcil de comptar, no el que és rellevant per a la sostenibilitat real."
+> "**Criteri avaliat: Justícia distributiva + Arrelament territorial**
+> 
+> L'informe mesura la 'S' a través de diversity metrics (headcount per gènere i origen), però no pas a través de la ràtio salarial CEO/salari mitjà —un indicador clau de l'Economia del Bé Comú que cooperatives i B Corps sí reporten. La riquesa generada es presenta com a rendibilitat per accionista, sense desglossar quina part retorna als treballadors o a la comunitat d'origen. Quant a l'arrelament territorial, l'impacte es reporta només globalment (emissions agregades), sense dades per centre operatiu ni per comunitat local afectada. Aquesta mancança no és un error de l'informe; és un símptoma del marc ESG hegemònic, que mesura el que és fàcil de comptar, no el que és rellevant per al bé comú."
+
+### Criteris d'aplicació
+
+- **Qui l'escriu**: el redactor de Criteri (pot ser assistit per IA, però la tria dels criteris i la veu editorial són humanes)
+- **Selecció de criteris**: 1-2 per informe, segons rellevància. No es repeteix el mateix criteri en dos informes consecutius
+- **To**: editorial, no acusatori. Es qüestiona el marc, no l'empresa
+- **Validació**: el Consell Assessor (pendent) revisa aleatòriament 1 informe/mes
+
+---
+
+## Carta del Director (mensual)
+
+### Propòsit
+
+És **l'empremta humana i ètica** de Criteri, escrita personalment per Paolo. Mentre "Més enllà del Checkbox" és la veu editorial basada en criteris definits, la Carta del Director és la mirada personal i ètica del fundador — allò que cap competidor (ni IA ni Big Four) pot replicar.
+
+### Especificacions
+
+| Atribut | Definició |
+|---------|-----------|
+| **Freqüència** | 1 cop al mes, a l'inici de l'última newsletter del mes (última setmana) |
+| **Autor** | Paolo (no Z.ai-bot). El bot pot ajudar amb estructuració o revisió ortogràfica, però el contingut i la veu són de Paolo |
+| **Extensió** | 400-600 paraules |
+| **Tonalitat** | Personal, ètica, editorial. No neutral — Paolo pren posició |
+| **Ubicació** | Secció 1 de l'última newsletter mensual (abans de notícies ESG) |
+
+### Estructura recomanada
+
+1. **Anècdota o gancho del mes** (1 paràgraf, ~100 paraules) — Un fet concret, personal o d'actualitat, que serveixi de porta d'entrada
+2. **Mirada ètica** (2-3 paràgrafs, ~250-350 paraules) — Què ensenyen els informes del mes des de la lent del Bé Comú / Economia Ciutadana. Connecta amb 1-2 informes publicats aquell mes
+3. **Compromís de Criteri** (1 paràgraf, ~100 paraules) — Què farem nosaltres amb això. No només opinar, sinó actuar
+
+### Examples temàtics (roadmap editorial)
+
+- **Setembre 2026 (llançament)**: "Per què Criteri, per què ara"
+- **Octubre 2026**: "El verdader cost del greenwashing"
+- **Novembre 2026**: "Quan la 'S' deixa de ser social"
+- **Desembre 2026**: "Balanç de l'any i propòsits per al 2027"
+
+### Integració
+
+- A la web: arxiu accessible a `/carta-director` (pàgina pública amb històric)
+- A la newsletter: secció 1 de l'última edició del mes
+- A GitHub: cada carta es guarda com a `assets/cartes-director/YYYY-MM.md`
 
 ### Estructura de pàgines (regla fixa)
 
@@ -229,7 +285,10 @@ L'usuari Ultra fa 1 petició al mes on descriu la seva empresa i nosaltres li en
 
 ## Històric de canvis
 
+- **4 juliol 2026** — Canvi de marc conceptual: "Economia Civil" → **Economia del Bé Comú (Felber) + Economia Ciutadana (Sasia, Deusto)**. Nous 5 criteris operacionals per "Més enllà del Checkbox": dignitat humana, justícia distributiva, sostenibilitat absoluta, co-decisió democràtica, arrelament territorial.
+- **4 juliol 2026** — Afegida **Carta del Director mensual**: peça editorial escrita per Paolo, 400-600 paraules, a l'inici de l'última newsletter del mes. Empremta humana ètica, complementària al "Més enllà del Checkbox".
+- **4 juliol 2026** — Generades 2 propostes visuals pel Semàfor Metodològic (Format A: compacte vertical · Format B: barra horitzontal). Pendents de selecció.
 - **3 juliol 2026** — Afegit **Bloc 0: Semàfor Metodològic** (5 indicadors + nota A-D). Diferenciació principal vs competidors. Inspirat en valoració amb Gemini.
-- **3 juliol 2026** — Afegida **subsecció "Més enllà del Checkbox"** dins del bloc 4 (Implicacions). Veu editorial d'Economia Civil — diferenciació mediterrània vs marcs ESG anglosaxons.
+- **3 juliol 2026** — Afegida **subsecció "Més enllà del Checkbox"** dins del bloc 4 (Implicacions). Veu editorial mediterrània vs marcs ESG anglosaxons.
 - **25 juny 2026** — Format Ultra completat: podcast (NotebookLM), PPT editable (python-pptx), dossier mensual, connexions personalitzades
 - **25 juny 2026** — Eliminada "sessió consultiva mensual" d'Ultra per decisió de Paolo

@@ -10,7 +10,7 @@
 
 **Per què encaixa**:
 1. Combina els tres eixos: ètica (decidir correctament), reputació (tenir criteri és un actiu), acció (és operatiu, no teòric)
-2. **Identitat mediterrània autèntica** — paraula catalana que connecta amb la tradició d'Economia Civil (cooperatives, economia social), que és la diferenciació editorial vs els marcs ESG anglosaxons
+2. **Identitat mediterrània autèntica** — paraula catalana que connecta amb la tradició de l'Economia del Bé Comú (Christian Felber) i l'Economia Ciutadana (Peru Sasia, Deusto), que és la diferenciació editorial vs els marcs ESG anglosaxons
 3. Tagline memorable: "El teu criteri per decidir bé."
 
 ### Percepció internacional del nom
@@ -35,7 +35,7 @@
    La paraula queda ancorada semànticament; ningú es quedarà pensant "què vol dir Criteri?".
 
 2. **Storytelling de marca a la pàgina "Sobre nosaltres"**: explicar obertament el motiu del nom:
-   > "Criteri és una paraula catalana que vol dir judici, discerniment. La vam triar perquè el nostre projecte neix al Mediterrani i defensa una visió d'Economia Civil —cooperatives, economia social, distributiva— que el món anglosaxó ESG no cobreix."
+   > "Criteri és una paraula catalana que vol dir judici, discerniment. La vam triar perquè el nostre projecte neix al Mediterrani i defensa una visió d'Economia del Bé Comú i Economia Ciutadana —dignitat, justícia distributiva, arrelament territorial— que el món anglosaxó ESG no cobreix."
 
    Això converteix la "raretesa" en actiu identitari.
 
@@ -46,7 +46,7 @@
 ### Per què NO vam canviar a "Rigor" (decisió 3 juliol 2026)
 
 Es va valorar canviar el nom a "Rigor" per emphasitzar la diferenciació de l'Auditor Metodològic. Es descartà per:
-- **Contradiu la diferenciació d'Economia Civil**: "Rigor" és fred, mecànic, anglosaxó; "Criteri" és editorial, relacional, mediterrani
+- **Contradiu la diferenciació d'Economia del Bé Comú**: "Rigor" és fred, mecànic, anglosaxó; "Criteri" és editorial, relacional, mediterrani
 - **Etiqueta pretensiosa**: dir-se "Rigor" sense haver demostrat track record sona a autoproclamació
 - **Cost de rebranding**: logo, paleta, docs, CONTEXT, registre marca —tot s'ha de refer
 - **Disponibilitat de marca**: "Rigor" és paraula comuna, més difícil de defensar
@@ -188,6 +188,7 @@ Criteri·ESG
 
 ## Històric de canvis
 
-- **3 juliol 2026** — Confirmat "Criteri" com a nom definitiu. Descartat "Rigor" per contradir la diferenciació d'Economia Civil. Afegides estratègies per neutralitzar percepció "estrany" a mercats no-catalans (tagline ancorador multilingüe + storytelling).
+- **4 juliol 2026** — Actualitzat el marc conceptual: "Economia Civil" → "Economia del Bé Comú (Felber) + Economia Ciutadana (Sasia)". No canvia el nom ni el storytelling, només el marc teòric de referència.
+- **3 juliol 2026** — Confirmat "Criteri" com a nom definitiu. Descartat "Rigor" per contradir la diferenciació d'Economia del Bé Comú. Afegides estratègies per neutralitzar percepció "estrany" a mercats no-catalans (tagline ancorador multilingüe + storytelling). Pendents de validació per la nova integrant de l'equip.
 - **3 juliol 2026** — Documentades 17 propostes de logo pujades a Drive (`assets/logos/`) i GitHub (`assets/logos/`). Finalista v6 (Criteri negre + punt coure + hexàgon coure ESG blanc + fons crema), 5 tipografies en curs de selecció.
 - **25 juny 2026** — Definició completa de paleta i tipografia. Logo provisional amb tipografia fins a disseny oficial

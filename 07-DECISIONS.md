@@ -500,6 +500,43 @@
 
 ---
 
+## 5 juliol 2026 — Patró LLM Wiki (Karpathy): fase mínima ara, completa al octubre/novembre
+
+**Decisió**: Implementar el patró LLM Wiki descrit per Andrej Karpathy (https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) en dues fases:
+
+**Fase 1 (implementada ara, juliol 2026)** — fase mìnima de traçabilitat:
+- Creació de `log.md` — registre cronològic d'operacions (ingests, lints, querys, ops)
+- Creació de `index.md` — catàleg de contingut intel·lectual (connexions, contradiccions, temes transversals, certificacions)
+- Sense wiki automàtica encara — els elements s'identifiquen manualment durant l'ingest
+
+**Fase 2 (prevista octubre-novembre 2026, post-llançament)** — wiki completa:
+- Wiki de connexions automatitzada (bloc 5): cada nou informe actualitza connexions amb els ja processats
+- Wiki de certificacions vives (bloc 7 enriquit): pàgines per EcoVadis, B Corp, MSCI, GRI, SGE 21, CSRD, SFDR, TCFD
+- Lint mensual: detectar contradiccions, claims desactualitzats, orphans
+- Activació quan la biblioteca arribi a 20+ informes
+
+**Rao**:
+- Amb 3 informes processats (juliol 2026), la wiki completa és overengineering — el valor emergeix amb escala
+- Setembre és el llançament; afegir una capa nova ara és risc de no arribar a temps
+- La fase 1 (log + index) aporta valor permanent (traçabilitat, navegació, auditoria) amb cost baix (1h)
+- El patlle encaixa molt bé amb els blocs 5 (Connexions) i 7 (Cross-reference) — quan s'activi la fase 2, aquests blocs es generaran automàticament
+
+**Alternatives considerades**:
+- Implementar wiki completa ara → descartat per risc de calendari
+- No implementar res → descartat perquè la traçabilitat (log + index) té valor permanent
+- Substituir els 7 blocs per wiki → descartat perquè perd l'estructura fixa que és el valor del producte
+
+**Consideració ètica**: caldrà ser honest amb l'usuari sobre què és automàtic vs humà quan la wiki estigui activa. La transparència és ètica; amagar que les connexions són automàtiques fent-les passar per anàlisi humana no ho és. Aquest aspecte es definirà a la Fase 2.
+
+**Impacte**:
+- Creació de 2 fitxers nous al repo: `log.md` i `index.md`
+- Sense impacte en el codi de la web (de moment) — la web segueix llegint de `reports.ts`
+- Quan s'activi la Fase 2, caldrà decidir si la wiki és la font de veritat per a connexions i cross-ref (sí, recomanat) o si conviuen dues fonts (no recomanat)
+
+**Estat**: Activa (fase 1 implementada; fase 2 prevista per revisió octubre/novembre 2026)
+
+---
+
 ## Plantilla per a futures decisions
 
 ```markdown

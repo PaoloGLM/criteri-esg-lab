@@ -79,6 +79,33 @@ Per a inversors PE/VC: informe ràpid (48h) sobre una empresa específica abans 
 - **Pros**: Alt marge, públic diferent
 - **Contres**: Possible competència amb due diligence firms
 
+### Patró LLM Wiki (Karpathy) — fase 2 per octubre/novembre 2026
+Implementar la fase completa del patró LLM Wiki descrit per Andrej Karpathy (https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f). La fase 1 (log.md + index.md) ja està implementada el juliol 2026; aquesta és la fase 2 que cal revisar al octubre/novembre.
+
+**Què inclouria**:
+- Wiki de connexions automatitzada (bloc 5): cada nou informe actualitza connexions amb tots els ja processats
+- Wiki de certificacions vives (bloc 7 enriquit): pàgines per EcoVadis, B Corp, MSCI, GRI, SGE 21, CSRD, SFDR, TCFD
+- Lint mensual: detectar contradiccions, claims desactualitzats, orphans, pàgines pendents
+- Operacions: Ingest (processar + actualitzar wiki), Query (pregunta + resposta arxivable), Lint (health-check)
+
+**Quan revisar-ho**: octubre o novembre 2026, quan la biblioteca arribi a 20+ informes processats. La decisió estratègica ja està registrada a `07-DECISIONS.md` (5 juliol 2026).
+
+**Pros**:
+- Escalabilitat del bloc 5 (Connexions) — dóna valor sense cost editorial marginal
+- Escalabilitat del bloc 7 (Cross-reference) — enriqueix automàticament
+- Detecció de contradiccions entre informes (valor únic vs competidors)
+- Lint mensual manté la qualitat del sistema
+
+**Contres**:
+- Complexitat addicional al sistema
+- Risc de desvincular la wiki del codi de la web (caldrà que la wiki sigui font de veritat)
+- Cal ser honest amb l'usuari sobre què és automàtic vs humà (transparència ètica)
+
+- **Prioritat**: Mitja (depèn de com evolucioni la biblioteca post-llançament)
+- **Objectiu**: Escalabilitat del bloc 5 i 7 a 50+ informes sense augment de cost editorial
+- **Riscos**: Doble font de veritat (wiki vs reports.ts), pèrdua de qualitat si la generació automàtica no es valida
+- **Estimació esforç**: 2-3 setmanes de desenvolupament (Rosier + Z.ai-bot)
+
 ---
 
 ## Idees descartades (registre)

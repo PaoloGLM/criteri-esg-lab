@@ -27,6 +27,10 @@ Aquest repositori és el **document viu** del projecte Criteri ESG. Qualsevol de
 | **[14 — Llançament per fases](./14-LLAN%C3%87AMENT-FASES.md)** | Estratègia early bird 2 mesos, paywall progressiu, calendaris juliol-setembre 2026, repartiment rols |
 | **[15 — Codi web](./15-CODI-WEB.md)** | Manual de reconstrucció + tot el codi font a `assets/web/` (Next.js, components, biblioteca informes) |
 | **[16 — Base de dades de fonts](./16-BASE-DADES-FONTS.md)** | 187 fonts catalogades (globals, UE, ES, 17 CCAA, acadèmiques, think tanks, ONGs, Big 4, iniciatives, sectorials) |
+| **[17 — Marketing llançament](./17-MARKETING-LLANÇAMENT.md)** | Estratègia de marketing amb pressupost 0-500€ |
+| **[18 — Guia nou membre](./18-GUIA-NOU-MEMBRE.md)** | Onboarding per a nous membres de l'equip |
+| **[log.md](./log.md)** | Registre cronològic d'operacions (ingests, lints, querys, ops) |
+| **[index.md](./index.md)** | Catàleg de contingut intel·lectual (connexions, contradiccions, temes transversals, certificacions) |
 
 ## Com fer-lo servir
 

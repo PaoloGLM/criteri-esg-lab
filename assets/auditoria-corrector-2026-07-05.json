@@ -1,0 +1,237 @@
+{
+  "date": "2026-07-05",
+  "files_audited": 15,
+  "files_with_errors": 15,
+  "total_errors": 3581,
+  "auto_corrections": 178,
+  "manual_corrections": 241,
+  "files": [
+    {
+      "file": "/home/z/my-project/download/pilot-informe-foretica-amb-semafor-i-mes-enlla.html",
+      "language": "ca-ES",
+      "errors": 270,
+      "auto": 15,
+      "manual": 12
+    },
+    {
+      "file": "/home/z/my-project/download/semafor-format-A-compacte.html",
+      "language": "ca-ES",
+      "errors": 38,
+      "auto": 2,
+      "manual": 2
+    },
+    {
+      "file": "/home/z/my-project/download/semafor-format-B-horitzontal.html",
+      "language": "ca-ES",
+      "errors": 47,
+      "auto": 2,
+      "manual": 2
+    },
+    {
+      "file": "/home/z/my-project/download/criteri-informe-exemple.html",
+      "language": "ca-ES",
+      "errors": 237,
+      "auto": 12,
+      "manual": 25
+    },
+    {
+      "file": "/home/z/my-project/scripts/informe_estil_A.html",
+      "language": "ca-ES",
+      "errors": 296,
+      "auto": 9,
+      "manual": 22
+    },
+    {
+      "file": "/home/z/my-project/scripts/informe_estil_B.html",
+      "language": "ca-ES",
+      "errors": 310,
+      "auto": 10,
+      "manual": 22
+    },
+    {
+      "file": "/home/z/my-project/scripts/informe_estil_B_homog.html",
+      "language": "ca-ES",
+      "errors": 310,
+      "auto": 10,
+      "manual": 22
+    },
+    {
+      "file": "/home/z/my-project/scripts/informe_estil_B_v2.html",
+      "language": "ca-ES",
+      "errors": 309,
+      "auto": 10,
+      "manual": 22
+    },
+    {
+      "file": "/home/z/my-project/scripts/informe_estil_C.html",
+      "language": "ca-ES",
+      "errors": 329,
+      "auto": 8,
+      "manual": 20
+    },
+    {
+      "file": "/home/z/my-project/scripts/informe_model_v3.html",
+      "language": "ca-ES",
+      "errors": 340,
+      "auto": 19,
+      "manual": 17
+    },
+    {
+      "file": "/home/z/my-project/scripts/informe_model_v3_1.html",
+      "language": "ca-ES",
+      "errors": 315,
+      "auto": 15,
+      "manual": 27
+    },
+    {
+      "file": "/home/z/my-project/scripts/newsletter_estil_A.html",
+      "language": "ca-ES",
+      "errors": 126,
+      "auto": 12,
+      "manual": 8
+    },
+    {
+      "file": "/home/z/my-project/scripts/newsletter_estil_A_homog.html",
+      "language": "ca-ES",
+      "errors": 236,
+      "auto": 23,
+      "manual": 12
+    },
+    {
+      "file": "/home/z/my-project/scripts/newsletter_estil_A_v2.html",
+      "language": "ca-ES",
+      "errors": 241,
+      "auto": 21,
+      "manual": 19
+    },
+    {
+      "file": "/home/z/my-project/scripts/newsletter_estil_B.html",
+      "language": "ca-ES",
+      "errors": 177,
+      "auto": 10,
+      "manual": 9
+    }
+  ],
+  "top_errors": [
+    {
+      "word": "Environment",
+      "replacement": "Environament",
+      "rule": "Possible error ortogràfic",
+      "count": 16
+    },
+    {
+      "word": "Omnibus",
+      "replacement": "Òmnibus",
+      "rule": "Possible error ortogràfic",
+      "count": 15
+    },
+    {
+      "word": "FY",
+      "replacement": "FA",
+      "rule": "Possible error ortogràfic",
+      "count": 15
+    },
+    {
+      "word": "Forètica",
+      "replacement": "Fonètica",
+      "rule": "Possible error ortogràfic",
+      "count": 14
+    },
+    {
+      "word": "Impact",
+      "replacement": "(cap suggeriment)",
+      "rule": "verbs / noms propis: Barbara, Macàs, Adoram",
+      "count": 12
+    },
+    {
+      "word": "regulatoria",
+      "replacement": "regulatòria",
+      "rule": "Possible error ortogràfic",
+      "count": 10
+    },
+    {
+      "word": "finance",
+      "replacement": "financi",
+      "rule": "Exigeix formes verbals del català central",
+      "count": 10
+    },
+    {
+      "word": "TREND",
+      "replacement": "TREN",
+      "rule": "Possible error ortogràfic",
+      "count": 10
+    },
+    {
+      "word": "suministre",
+      "replacement": "subministrament",
+      "rule": "Paraula incorrecta: suministre",
+      "count": 8
+    },
+    {
+      "word": "Sustainable",
+      "replacement": "Sostenible",
+      "rule": "Possible error ortogràfic",
+      "count": 7
+    },
+    {
+      "word": "d'risc",
+      "replacement": "de risc",
+      "rule": "apostrofació: no s'apostrofen d', l', n'",
+      "count": 6
+    },
+    {
+      "word": "FISMA",
+      "replacement": "FIRMA",
+      "rule": "Possible error ortogràfic",
+      "count": 6
+    },
+    {
+      "word": "eu",
+      "replacement": "eu.",
+      "rule": "falta el punt final en frases llargues",
+      "count": 6
+    },
+    {
+      "word": "disclose",
+      "replacement": "desclosa",
+      "rule": "Possible error ortogràfic",
+      "count": 6
+    },
+    {
+      "word": " però",
+      "replacement": ", però",
+      "rule": "coma abans de 'però'",
+      "count": 6
+    },
+    {
+      "word": "Q&A",
+      "replacement": "C&A",
+      "rule": "Possible error ortogràfic",
+      "count": 6
+    },
+    {
+      "word": "propers 12 mesos",
+      "replacement": "12 mesos vinents",
+      "rule": "proper > que ve/vinent",
+      "count": 6
+    },
+    {
+      "word": "ONGs",
+      "replacement": "ONG",
+      "rule": "plural de sigles",
+      "count": 6
+    },
+    {
+      "word": "v2.0",
+      "replacement": "D20",
+      "rule": "Possible error ortogràfic",
+      "count": 6
+    },
+    {
+      "word": "roadmap",
+      "replacement": "Rodman",
+      "rule": "Possible error ortogràfic",
+      "count": 6
+    }
+  ]
+}

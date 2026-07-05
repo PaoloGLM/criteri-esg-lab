@@ -537,6 +537,43 @@
 
 ---
 
+## 5 juliol 2026 — Integració tècnica del corrector LanguageTool (regla 17 reforçada)
+
+**Decisió**: Després que en Paolo detectés que la regla 17 del CONTEXT.md (corrector obligatori) no es complia sistemàticament, s'implementen 3 mecanismes tècnics per garantir-ne el compliment:
+
+1. **Nou mòdul `corrector_wrapper.py`** (a `/home/z/my-project/scripts/`): versió integrable del corrector que qualsevol script pot importar. Inclou whitelist de noms propis ESG (EcoVadis, Forética, ESG, ESRS, CSRD, etc.) i anglicismes acceptats (compliance, reporting, stakeholder, etc.) per evitar falsos positius.
+
+2. **Scripts de generació integren el corrector automàticament**: cada script que generi text públic (informes, newsletters, HTML) ha de cridar `check_html()` o `check_text()` al final i guardar el log al costat del fitxer generat (`<fitxer>.corrector.log`). El log mostra errors reals (filtrats per whitelist) i marca quins són auto-corregits vs manuals.
+
+3. **Auditoria inicial realitzada**: s'han auditat 15 fitxers públics ja generats. Resultat honest:
+   - 3.582 deteccions totals en bruto
+   - 419 errors reals (després de filtrar whitelist): 178 auto-corregits + 241 manuals pendents
+   - Errors reals més freqüents: castellanismes ("escenarios" per "escenaris"), errors d'accentuació ("regulatoria" per "regulatòria"), apostrofació ("d'risc" per "de risc"), plurals de sigles ("ONGs" per "ONG")
+   - Top falsos positius filtrats: espais HTML (2.200+), acrònims ESG (600+), noms propis (Forética, EcoVadis, etc.)
+
+**Rao**:
+- La regla 17 existia des de fa setmanes però no es complia perquè era un recordatori verbal, no un mecanisme tècnic
+- L'auditoria ha revelat errors reals (castellanismes, accents) en pilots que ja s'havien ensenyat a en Paolo
+- En Paolo va expressar pèrdua de confiança; la restauració de la confiança requereix mecanismes tècnics, no promeses
+- L'LLM és stateless entre sessions: una promesa verbal no persisteix, però un script que importi `corrector_wrapper.py` sí
+
+**Alternatives considerades**:
+- Prometre complyment manual → descartat perquè no és verificable ni persistent
+- Avortar la generació si hi ha errors manuals → descartat perquè alguns falsos positius legítims bloquejarien la generació
+- Marcar tots els errors com a warnings sense guardar log → descartat perquè en Paolo no pot auditar
+
+**Impacte**:
+- `corrector_wrapper.py` (nou mòdul): importable per qualsevol script
+- `auditoria_corrector.py` (nou script): per re-auditar quan calgui
+- `generate_pilot_foretica.py` (modificat): ja integra el corrector i guarda log
+- `CONTEXT.md` regla 17: actualitzada amb normes operatives específiques
+- 15 fitxers públics ja generats queden amb logs d'auditoria al costat (`.corrector.log`)
+- Cal revisió manual dels 241 errors pendents abans de publicar-los
+
+**Estat**: Activa
+
+---
+
 ## Plantilla per a futures decisions
 
 ```markdown

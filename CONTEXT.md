@@ -296,7 +296,24 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
 
 16. **Criteri**: donem exemple de criteri. Tot el que es fa ha d'estar ben fet, amb solidesa, amb fonts verificades.
 
-17. **Corrector ortogràfic obligatori**: ABANS d'enviar qualsevol text en català o castellà (informes, newsletters, contingut web, documents), passar-lo pel corrector LanguageTool (`python3 /home/z/my-project/scripts/corrector.py <fitxer> [ca|es]`). Aquest corrector detecta errors ortogràfics, gramaticals i d'accentuació en català i castellà. Corregeix automàticament els errors amb una sola opció i marca els que requereixen revisió manual. El públic no pot llegir un text professional amb faltes d'ortografia.
+17. **Corrector ortogràfic obligatori**: ABANS d'enviar o publicar qualsevol text en català o castellà (informes, newsletters, contingut web, documents), passar-lo pel corrector LanguageTool. Hi ha dos eines:
+    - **Per a fitxers ja generats**: `python3 /home/z/my-project/scripts/corrector.py <fitxer> [ca|es]`
+    - **Per integrar en scripts de generació**: `from corrector_wrapper import check_text, check_html, check_file` (mòdul `corrector_wrapper.py`)
+    
+    El corrector:
+    - Detecta errors ortogràfics, gramaticals i d'accentuació en català i castellà
+    - Corregeix automàticament els errors amb una sola opció
+    - Marca els que requereixen revisió manual
+    - Té una whitelist de noms propis ESG (EcoVadis, Forética, ESG, ESRS, CSRD, etc.) i anglicismes acceptats (compliance, reporting, stakeholder, etc.) per evitar falsos positius
+    
+    **Normes operatives (5 juliol 2026 — després de l'auditoria)**:
+    - Qualsevol script que generi text públic HA D'INTEGRAR el `corrector_wrapper.py` i mostrar el log al final
+    - El log es guarda al costat del fitxer generat (`<fitxer>.corrector.log`)
+    - Si hi ha errors manuals, avisar en Paolo i no donar el text per vàlid fins que s'hagin revisat
+    - Quan es mostri un text a en Paolo, adjuntar sempre el log del corrector (resum: "0 errors" / "3 errors, 1 manual pendent")
+    - El públic no pot llegir un text professional amb faltes d'ortografia
+    
+    **Auditoria 5 juliol 2026**: s'han trobat 419 errors reals en 15 fitxers públics (178 auto-corregits, 241 manuals pendents). Veure informe a `/home/z/my-project/download/auditoria-corrector-2026-07-05.json`. Cal revisió manual dels pilots generats.
 
 ---
 

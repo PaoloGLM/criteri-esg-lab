@@ -290,8 +290,54 @@ L'usuari Ultra fa 1 petició al mes on descriu la seva empresa i nosaltres li en
 
 **Total**: 30+ fonts monitoritzades via RSS i crawler automàtic.
 
+---
+
+## Política de contingut audiovisual (vídeos)
+
+### Principi rector
+
+**Criteri mai recomanarà vídeos per consumir, però sí processarà vídeos com a font d'informes.**
+
+La diferència és crucial:
+- **Recomanar per consumir**: "Mira aquest vídeo de 30 minuts" → rebutjat. Contradiu la proposta de valor ("amb 7 minuts estalvies 5 hores")
+- **Processar com a informe**: "Hem extret els 8 blocs d'aquesta presentació de la UE" → acceptat. Manté la proposta de valor
+
+### Tractament de vídeos com a font d'informes
+
+Hi ha institucions que publiquen vídeos llargs amb contingut substancial que es poden processar:
+
+| Tipus de vídeo | Exemple | Tractament |
+|----------------|---------|------------|
+| Presentacions d'informes oficials | UE presentant CSRD, IPCC presentant informe | Transcriure → processar amb 8 blocs |
+| Conferències acadèmiques | Harvard, IESE, ESADE | Transcriure → processar |
+| Webinars institucionals | WEF, OECD, ILO | Transcriure → processar |
+| Audiències parlamentàries | Comissió Europea, Congrés dels Diputats | Transcriure → processar |
+
+**Fluxe**: detectem vídeo rellevant → transcriure (Whisper o servei similar) → aplicar els 8 blocs incloent Semàfor Metodològic (adaptat al format vídeo) i Més enllà del Checkbox → publicar com a informe processat.
+
+### Decisions operatives
+
+| Idea | Decisió | Raó |
+|------|---------|-----|
+| Secció regular "Vídeos recomanats" a la newsletter | ❌ No | Contradiu proposta de valor, cost alt, risc greenwashing |
+| Bloc de vídeos a la web | ❌ No | Mateixos motius |
+| Processar vídeos llargs com a informes | ✅ Sí | Coherent amb proposta de valor |
+| "Vídeo de la quinzena" a newsletter (màx 1, auditat) | ✅ Sí (des de 2027) | Baix cost, alt descobriment, disciplina |
+| Recomanar vídeos corporatius | ❌ Mai | Risc greenwashing |
+| Recomanar vídeos institucionals (UE, IPCC, WEF) | ✅ Sí | Contingut rellevant i auditable |
+| Crear contingut propi en vídeo (webinars) | ⏳ Phase Ultra 2027 | Ja tenim podcast, vídeo és evolució natural |
+
+### Consideració ètica
+
+- **Risc principal**: difondre greenwashing per omisió d'auditoria. Si recomanem sense auditar, som còmplices del relat corporatiu
+- **Principi kantiana**: tractar els vídeos com a eina de retenció d'usuari sense valor afegit seria instrumentalitzar-los. Si recomanem un vídeo, ha de ser perquè realment aporta valor — no per omplir la newsletter
+- **Bé comú**: el bé comú es serveix amb contingut que millora la presa de decisions ESG. Un vídeo institucional rellevant sí; un vídeo corporatiu de greenwashing no
+
+---
+
 ## Històric de canvis
 
+- **5 juliol 2026** — **Política de contingut audiovisual**: Criteri no recomanarà vídeos per consumir, però sí processarà vídeos institucionals com a font d'informes (transcriure + 8 blocs). "Vídeo de la quinzena" a newsletter previst per 2027.
 - **4 juliol 2026** — Canvi de marc conceptual: "Economia Civil" → **Economia del Bé Comú (Felber) + Economia Ciutadana (Sasia, Deusto)**. Nous 5 criteris operacionals per "Més enllà del Checkbox": dignitat humana, justícia distributiva, sostenibilitat absoluta, co-decisió democràtica, arrelament territorial.
 - **4 juliol 2026** — Afegida **Carta del Director mensual**: peça editorial escrita per Paolo, 400-600 paraules, a l'inici de l'última newsletter del mes. Empremta humana ètica, complementària al "Més enllà del Checkbox".
 - **4 juliol 2026** — Generades 2 propostes visuals pel Semàfor Metodològic (Format A: compacte vertical · Format B: barra horitzontal). Pendents de selecció.

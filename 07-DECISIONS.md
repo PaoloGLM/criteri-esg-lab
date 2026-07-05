@@ -621,6 +621,51 @@
 
 ---
 
+## 5 juliol 2026 — Política de contingut audiovisual: processar, no recomanar
+
+**Decisió**: Criteri no inclourà una secció regular de "vídeos recomanats" a la newsletter ni a la web. En canvi, sí processarà vídeos institucionals llargs (presentacions d'informes, conferències acadèmiques, webinars, audiències parlamentàries) com a font d'informes, transcrivint-los i aplicant-hi els 8 blocs.
+
+**Principi reductor**: Criteri mai recomanarà vídeos per consumir, però sí processarà vídeos com a font d'informes. La diferència:
+- Recomanar per consumir ("mira aquest vídeo de 30 minuts") = rebutjat. Contradiu la proposta de valor
+- Processar com a informe ("hem extret els 8 blocs d'aquesta presentació") = acceptat. Manté la proposta de valor
+
+**Decisions operatives**:
+- ❌ Secció regular "Vídeos recomanats" a la newsletter — rebutjat
+- ❌ Bloc de vídeos a la web — rebutjat
+- ❌ Recomanar vídeos corporatius — mai (risc greenwashing)
+- ✅ Processar vídeos llargs institucionals com a informes — acceptat
+- ✅ "Vídeo de la quinzena" a newsletter (màx 1, auditat) — previst per 2027
+- ✅ Recomanar vídeos institucionals (UE, IPCC, WEF) — acceptat
+- ⏳ Crear contingut propi en vídeo (webinars) — Phase Ultra 2027
+
+**Rao**:
+- Recomanar vídeos contradiu la proposta de valor ("amb 7 minuts estalvies 5 hores"). Demana més temps a l'usuari, no menys
+- YouTube està ple de greenwashing corporatiu. Recomanar sense auditar seria difondre'l
+- El cost de curació d'una secció regular és alt (30-60 minuts per vídeo) i el valor afegit baix (l'usuari ja pot buscar vídeos ell mateix)
+- Competidors (Bloomberg Green, GreenBiz) ja tenen canals propis de vídeo. Competir-hi és competir en el seu camp, no en el nostre
+- En canvi, processar vídeos institucionals com a informes és coherent amb el valor de Criteri: estalviar temps a l'usuari donant-li 7 minuts de lectura amb anàlisi crítica
+
+**Alternatives considerades**:
+- Secció regular de vídeos recomanats → descartat per contradicció amb proposta de valor
+- Bloc de vídeos a la web → descartat pels mateixos motius
+- Substituir el text per vídeo com a format principal → descartat perquè perd el valor analític estructurat dels 8 blocs
+- "Vídeo de la quinzena" des del llançament → descartat per càrrega editorial addicional abans del llançament; previst per 2027
+
+**Consideració ètica (Kantiana i del Bé Comú)**:
+- **Kant**: tractar els vídeos com a eina de retenció d'usuari sense valor afegit seria instrumentalitzar-los. Si recomanem un vídeo, ha de ser perquè realment aporta valor — no per omplir la newsletter
+- **Bé comú**: el bé comú es serveix amb contingut que millora la presa de decisions ESG. Un vídeo institucional rellevant sí; un vídeo corporatiu de greenwashing no
+- **Risc principal**: difondre greenwashing per omisió d'auditoria. Si recomanem sense auditar, som còmplices del relat corporatiu
+
+**Impacte**:
+- Documentat a `02-PRODUCTE.md` secció "Política de contingut audiovisual"
+- Sense impacte en codi web (de moment)
+- Quan s'activi el processat de vídeos, caldrà integrar Whisper o servei similar de transcripció
+- El Semàfor Metodològic haurà d'adaptar-se al format vídeo (indicadors lleugerament diferents)
+
+**Estat**: Activa
+
+---
+
 ## Plantilla per a futures decisions
 
 ```markdown

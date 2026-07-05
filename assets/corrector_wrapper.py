@@ -78,6 +78,9 @@ WHITELIST_TERMS = {
     'feedback', 'Feedback',
     'checklist', 'checklists',
     'check-in', 'check-in,',
+    'newsletter', 'Newsletter',
+    'webinar', 'webinars', 'Webinar', 'Webinars',
+    'ILO', 'OECD', 'UNGC',
     # Paraules compostes
     'co-decisió', 'co-decisió,',
     'autocorregits', 'auto-corregits', 'auto-correcció',

@@ -574,6 +574,53 @@
 
 ---
 
+## 5 juliol 2026 — Política d'anglicismes: mantindre, però minimitzar
+
+**Decisió**: Es mantenen els anglicismes ESG acceptats (compliance, reporting, stakeholder, scope, greenwashing, framework, rating, score, audit, board, datapoints, disclosure, etc.) en la veu editorial de Criteri, amb dues condicions:
+
+1. **Freqüència baixa**: no n'abusis. Quan existeixi una alternativa catalana/castellana clara i equivalent, preferir-la (ex: "tauler" per "board" si sona natural; "informe" per "reporting" si el context ho permet).
+
+2. **Coherents amb el públic**: els professionals del sector ESG estan acostumats a aquests anglicismes; fer-los desaparèixer tots crearia un text artificiós i pedant. Però repetir-los en cada frase degrada el llenguatge i contradiu la veu mediterrània de Criteri.
+
+**Política operativa**:
+- Els anglicismes acceptats estan a la whitelist del `corrector_wrapper.py` i no saltaran com a errors
+- Quan el corrector marqui un anglicisme NO whitelisted, cal decidir:
+  - Si és tecnicisme ESG estès → afegir a whitelist
+  - Si té alternativa clara → substituir
+  - Si és dubtós → consultar en Paolo
+- L'objectiu no és zero anglicismes, sinó **densitat baixa**: cap paràgraf hauria de tenir més de 2-3 anglicismes
+
+**Rao**:
+- En Paolo considera que els anglicismes degraden el llenguatge, però reconeix que els professionals del sector n'estan acostumats
+- Eliminar-los tots faria el text artificial; mantindre'ls tots degrada la veu editorial
+- La posició intermèdia (mantindre'ls però minimitzar) és coherent amb la identitat mediterrània de Criteri
+
+**Llista actual d'anglicismes acceptats (juliol 2026)**:
+- compliance, Compliance
+- reporting, Reporting
+- stakeholders, stakeholder, Stakeholders
+- greenwashing, Greenwashing
+- scope, Scope, Scope 1, Scope 2, Scope 3
+- datapoints, datapoint
+- disclosure, disclosures, Disclosure
+- framework, frameworks, Framework
+- rating, ratings, Rating
+- score, scores, Score
+- audit, auditoria, auditable
+- board, Board
+- feedback, Feedback
+- checklist, checklists
+- CEO, CFO, CSO
+- AUM
+- Trend, Trends (de Forética Tendencias)
+- B Corp, B Corps
+
+**Quan revisar-ho**: setembre 2026 (postllançament), quan tinguem feedback real dels primers subscriptors sobre el to editorial.
+
+**Estat**: Activa
+
+---
+
 ## Plantilla per a futures decisions
 
 ```markdown

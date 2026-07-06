@@ -20,8 +20,99 @@
 | Auth | NextAuth.js v4 |
 | Email | Resend (transaccional) + Beehiiv (newsletter) |
 | Pagaments | Stripe |
-| LLM | z-ai-web-dev-sdk (GLM) o Claude 3.5 Sonnet |
-| Crawler | Scrapy + BeautifulSoup |
+| LLM | z-ai-web-dev-sdk (GLM) — provider principal, disseny modular per canviar si cal |
+| Crawler | Scrapy + BeautifulSoup + Vercel Cron |
+
+## Arquitectura d'automatització (definida 5 juliol 2026)
+
+### Visió general
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     Font institucional                       │
+│   (UE, WEF, Forética, Banc d'Espanya, OECD, IPCC, etc.)    │
+└──────────────────────────┬──────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────┐
+│  Crawler automàtic (Vercel Cron, dilluns + dijous matí)     │
+│  - Scrapy + BeautifulSoup                                   │
+│  - Detecta nous informes via RSS / scraping de pàgines      │
+│  - Descarrega PDF → Google Drive /originals/                │
+└──────────────────────────┬──────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────┐
+│  Backend (Next.js API routes + Supabase)                    │
+│  - Rep notificació de PDF nou                               │
+│  - Extreu text (PyMuPDF / pdfplumber)                       │
+│  - Crida API a Z.ai-bot amb el text del PDF                 │
+└──────────────────────────┬──────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────┐
+│  Z.ai-bot API                                               │
+│  - Rep text del PDF                                         │
+│  - Genera els 8 blocs (Semàfor + 7 blocs) en JSON           │
+│  - Passa corrector LanguageTool automàticament              │
+│  - Retorna JSON + log del corrector                         │
+└──────────────────────────┬──────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────┐
+│  Backend rep JSON                                           │
+│  - Aplica plantilla HTML oficial                            │
+│  - Genera PDF via Playwright                                │
+│  - Guarda a Supabase (taula informes) + Drive (processats/) │
+│  - Notifica en Paolo per revisió                            │
+└──────────────────────────┬──────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────┐
+│  Revisió humana (Paolo o Roser)                             │
+│  - Revisa els 8 blocs                                       │
+│  - Aprova o demana canvis                                   │
+│  - Si aprova → publica a la web automàticament              │
+└──────────────────────────┬──────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────┐
+│  Publicació                                                 │
+│  - Web (/informes/[slug])                                   │
+│  - Drive (processats/)                                      │
+│  - Notificació a subscriptors (si és informe destacat)      │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Newsletter (cada 2 setmanes, dijous 15:00h)
+
+```
+Dijous 12:00h — Script selecciona els 3-4 millors informes del període
+                    ↓
+Z.ai-bot API genera HTML del butlletí amb:
+  - Notícies ESG (apartat 6, fonts no territorials ES)
+  - Inversió ESG (apartat 7, fonts imparcials)
+  - 3-4 informes destacats amb connexions
+  - (Última setmana del mes) Carta del Director escrita per Paolo
+                    ↓
+Esborrany a Beehiiv per revisió de Paolo
+                    ↓
+Paolo aprova → Beehiiv envia a les 15:00h
+```
+
+### Edició de contingut (CMS)
+
+La web no es editarà com WordPress, però hi haurà 3 nivells d'edició segons el tipus de contingut:
+
+| Tipus de contingut | Com s'edita | Qui |
+|--------------------|-------------|-----|
+| **Informes** (els 8 blocs) | Panell de Supabase (taula `informes`) | Paolo o Roser |
+| **Pàgines estàtiques** (Sobre nosaltres, FAQ, preus) | Edició via GitHub (markdown al repo) | Roser o Z.ai-bot |
+| **Carta del Director** | GitHub (`assets/cartes-director/YYYY-MM.md`) | Paolo |
+| **Configuració** (preus, dates, idiomes) | Variables d'entorn + taula `config` a Supabase | Roser |
+
+**Supabase com a CMS per a informes**: en Paolo podrà afegir/editar informes directament des del panell web de Supabase (supabase.com/dashboard), sense tocar codi. La Roser crearà la taula `informes` amb els camps dels 8 blocs i la web Next.js la llegirà via API.
+
+### Principis ètics de l'automatització
+
+1. **Cap informe publicat sense revisió humana**: la Z.ai-bot genera, però en Paolo (o la Roser) revisa abans de publicar. Sempre.
+2. **Transparència sobre automatització**: cada informe duu nota al footer indicant que ha estat processat amb assistència d'IA i revisat per l'equip Criteri.
+3. **Provider d'IA intercanviable**: l'arquitectura es dissenya modularment per poder canviar de provider (Z.ai, OpenAI, Anthropic) sense haver de refer el backend. Evitem vendor lock-in.
+4. **Corrector obligatori**: tot text generat passa pel LanguageTool abans de guardar-se a Supabase. El log es guarda al camp `corrector_log` de l'informe.
 
 ## Arquitectura de pàgines (planificada)
 
@@ -150,4 +241,5 @@ Disponibles a `/home/z/my-project/download/`:
 
 ## Històric de canvis
 
+- **5 juliol 2026** — Definida **arquitectura d'automatització** completa: crawler Vercel Cron + Z.ai-bot API + Supabase com a CMS + revisió humana obligatòria. Provider d'IA modular (no vendor lock-in). Decisió d'integrar API des de l'inici (no semiautomàtic).
 - **25 juny 2026** — Homepage operativa amb 12 seccions, 2 modals, bilingüisme CAT/ES. Verificada amb Agent Browser

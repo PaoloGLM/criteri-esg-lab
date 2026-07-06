@@ -81,6 +81,11 @@ WHITELIST_TERMS = {
     'newsletter', 'Newsletter',
     'webinar', 'webinars', 'Webinar', 'Webinars',
     'ILO', 'OECD', 'UNGC',
+    'backend', 'Backend', 'frontend', 'Frontend',
+    'crawler', 'Crawler', 'cron', 'Cron',
+    'markdown', 'Markdown',
+    'dashboard', 'Dashboard',
+    'API', 'APIs',
     # Paraules compostes
     'co-decisió', 'co-decisió,',
     'autocorregits', 'auto-corregits', 'auto-correcció',

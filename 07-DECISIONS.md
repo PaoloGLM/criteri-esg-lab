@@ -666,6 +666,68 @@
 
 ---
 
+## 5 juliol 2026 — Arquitectura d'automatització: API des de l'inici (no semiautomàtic)
+
+**Decisió**: S'integrarà l'API de Z.ai-bot al backend des del llançament (setembre 2026), no pas en mode semiautomàtic. La Roser implementarà la integració durant juliol-agost 2026.
+
+**Arquitectura completa** (documentada al `04-WEB.md`):
+
+1. **Crawler automàtic** (Vercel Cron, dilluns + dijous matí): Scrapy + BeautifulSoup detecten nous informes a les fonts catalogades, descarreguen PDFs a Google Drive `/originals/`
+2. **Backend Next.js + Supabase**: rep notificació de PDF nou, extreu text (PyMuPDF), crida Z.ai-bot API
+3. **Z.ai-bot API**: rep text del PDF, genera els 8 blocs (Semàfor + 7 blocs) en JSON, passa corrector LanguageTool, retorna JSON + log
+4. **Backend**: aplica plantilla HTML, genera PDF via Playwright, guarda a Supabase + Drive `/processats/`, notifica en Paolo
+5. **Revisió humana obligatòria**: en Paolo (o la Roser) revisa abans de publicar. Sempre.
+6. **Publicació**: web `/informes/[slug]` + Drive + notificació a subscriptors si és destacat
+
+**CMS**: Supabase actua com a CMS per als informes. En Paolo pot editar informes des del panell web de Supabase sense tocar codi. La Roser crea la taula `informes` amb els camps dels 8 blocs.
+
+**Principis ètics**:
+1. Cap informe publicat sense revisió humana
+2. Transparència: cada informe duu nota al footer sobre processat amb IA + revisat per equip
+3. Provider d'IA intercanviable (no vendor lock-in): arquitectura modular per poder canviar de provider
+4. Corrector LanguageTool obligatori, log guardat al camp `corrector_log` de cada informe
+
+**Rao**:
+- En Paolo preferia integrar API des de l'inici encara que hi hagués un cost addicional, per evitar dependre d'acció humana per cada informe
+- L'opció semiautomàtica (en Paolo demana processar informes al xat) hauria estat un coll d'ampolla que hauria limitat l'escalabilitat
+- El cost d'IA al llançament és baix (1-4€/mes per 4-8 informes/mes) i justifica l'automatització
+
+**Costos estimats**:
+
+| Concepte | Llançament (set-dec 2026) | Creixement (gen-juny 2027) | Ultra (juliol 2027+) |
+|----------|---------------------------|-----------------------------|----------------------|
+| Vercel (hosting + Cron) | 0€ | 0-20€ | 20€ |
+| Supabase (auth + BD) | 0€ | 0€ | 25€ |
+| Beehiiv (newsletter) | 25€ | 35€ | 50€ |
+| Google Drive | 0€ | 0€ | 2€ |
+| GitHub | 0€ | 0€ | 0€ |
+| Domini | 1€ | 1€ | 1€ |
+| **Z.ai-bot API (processar informes)** | **1-4€** | **20-50€** | **50-100€** |
+| LanguageTool API | 0€ | 0€ | 5€ |
+| Whisper (transcriure vídeos, 2027) | — | — | 5-15€ |
+| **Total mensual** | **~30-35€** | **~60-110€** | **~160-220€** |
+
+**Alternatives considerades**:
+- Semiautomàtic (en Paolo demana al xat) → descartat per limitar escalabilitat
+- CMS headless de pagament (Sanity, Contentful) → descartat per cost addicional innecessari; Supabase n'hi prou
+- WordPress → descartat per incoherent amb stack Next.js
+- Vendor lock-in amb Z.ai → descartat per risc; arquitectura modular per permetre canvi de provider
+
+**Consideració ètica (Kantiana i del Bé Comú)**:
+- **Kant**: tractar la IA com a dependència oculta seria deshonest amb els subscriptors. Si el servei depèn d'IA, cal dir-ho (footer dels informes) i tenir pla B (provider intercanviable)
+- **Bé comú**: la transparència sobre automatització i costos serveix el bé comú. Amagar-los per fer el projecte més atractiu seria èticament reprovable
+- **Pla B ètic**: cap informe publicat sense revisió humana. La IA genera, l'equip revisa. Garanteix qualitat i evita dependència cega
+
+**Impacte**:
+- Documentat al `04-WEB.md` secció "Arquitectura d'automatització"
+- Stack tècnic actualitzat (LLM + Crawler)
+- La Roser haurà d'implementar: crawler + integració API + taula `informes` a Supabase + plantilla HTML dinàmica
+- Estimat esforç Roser: 2-3 setmanes (juliol-agost 2026)
+
+**Estat**: Activa
+
+---
+
 ## Plantilla per a futures decisions
 
 ```markdown

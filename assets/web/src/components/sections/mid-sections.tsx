@@ -36,7 +36,7 @@ export function MidSections({ onOpenRegister }: MidSectionsProps = {}) {
                 {t("sections.informes.title").toUpperCase()}
               </p>
               <h2 className="font-serif text-3xl font-semibold leading-tight text-primary sm:text-4xl">
-                Hores d'anàlisi, en 4 minuts de lectura.
+                Hores d'anàlisi, en 5 minuts de lectura.
               </h2>
               <div className="rule-accent my-6" />
               <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
@@ -45,8 +45,8 @@ export function MidSections({ onOpenRegister }: MidSectionsProps = {}) {
             </div>
             <div className="lg:col-span-5">
               <div className="grid grid-cols-3 gap-3">
-                <StatCard value="4 min" label="per entendre un informe" />
-                <StatCard value="30+" label="fonts monitoritzades" />
+                <StatCard value="5 min" label="per entendre un informe" />
+                <StatCard value="180+" label="fonts monitoritzades" />
                 <StatCard value="8" label="blocs per informe" />
               </div>
             </div>

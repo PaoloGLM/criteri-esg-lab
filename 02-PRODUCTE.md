@@ -288,7 +288,7 @@ L'usuari Ultra fa 1 petició al mes on descriu la seva empresa i nosaltres li en
 ### 4. Ètica i drets
 - UN Global Compact, OECD Guidelines, ILO Declaration, UN Guiding Principles, SDG Compass, Principles for Responsible Investment
 
-**Total**: 30+ fonts monitoritzades via RSS i crawler automàtic.
+**Total**: 180+ fonts monitoritzades via RSS i crawler automàtic (globals, UE, ES, 17 CCAA, acadèmiques, think tanks, ONGs, Big 4, iniciatives, sectorials). Vegeu `16-BASE-DADES-FONTS.md` per al detall complet.
 
 ---
 

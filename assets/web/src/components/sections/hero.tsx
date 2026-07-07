@@ -2,7 +2,7 @@
 
 import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileText, Award, Mail } from "lucide-react";
+import { ArrowRight, FileText, Award, Mail, Gauge, Compass, Feather } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 interface HeroProps {
@@ -79,6 +79,9 @@ export function Hero({ onOpenReport, onOpenRegister }: HeroProps) {
             <SectionCard href="#informes" icon={<FileText className="h-5 w-5" />} title={t("sections.informes.title")} desc={t("sections.informes.desc")} />
             <SectionCard href="#certificacions" icon={<Award className="h-5 w-5" />} title={t("sections.certif.title")} desc={t("sections.certif.desc")} />
             <SectionCard href="#newsletter" icon={<Mail className="h-5 w-5" />} title={t("sections.newsletter.title")} desc={t("sections.newsletter.desc")} />
+            <SectionCard href="#informes" icon={<Gauge className="h-5 w-5" />} title={t("sections.semafor.title")} desc={t("sections.semafor.desc")} highlighted />
+            <SectionCard href="#informes" icon={<Compass className="h-5 w-5" />} title={t("sections.editorial.title")} desc={t("sections.editorial.desc")} highlighted />
+            <SectionCard href="#newsletter" icon={<Feather className="h-5 w-5" />} title={t("sections.cartadirector.title")} desc={t("sections.cartadirector.desc")} highlighted />
           </div>
         </div>
       </div>
@@ -91,23 +94,34 @@ function SectionCard({
   icon,
   title,
   desc,
+  highlighted,
 }: {
   href: string;
   icon: React.ReactNode;
   title: string;
   desc: string;
+  highlighted?: boolean;
 }) {
   return (
     <a
       href={href}
-      className="group relative rounded-lg border border-rule bg-card p-5 transition-all hover:border-accent hover:shadow-md"
+      className={`group relative rounded-lg border p-5 transition-all hover:shadow-md ${
+        highlighted
+          ? "border-accent bg-accent-soft/10 hover:border-accent"
+          : "border-rule bg-card hover:border-accent"
+      }`}
     >
       <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-secondary text-accent-deep">
         {icon}
       </div>
+      {highlighted && (
+        <span className="absolute right-3 top-3 font-mono text-[10px] uppercase tracking-widest text-accent">
+          ⭐ Diferencial
+        </span>
+      )}
       <h3 className="mb-2 font-serif text-lg font-semibold leading-tight text-primary">{title}</h3>
       <p className="text-sm leading-relaxed text-foreground/70">{desc}</p>
-      <ArrowRight className="absolute right-4 top-4 h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+      <ArrowRight className="absolute right-4 bottom-4 h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
     </a>
   );
 }

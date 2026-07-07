@@ -65,6 +65,7 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
               t("preus.premium.f3"),
               t("preus.premium.f4"),
               t("preus.premium.f5"),
+              t("preus.premium.f6"),
             ]}
             cta={t("preus.premium.cta")}
             onCta={handleCta}
@@ -87,6 +88,7 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
             cta={t("preus.ultra.cta")}
             onCta={handleCta}
             icon={<Crown className="h-4 w-4" />}
+            disabled
           />
         </div>
 
@@ -121,6 +123,7 @@ function PlanCard({
   cta,
   onCta,
   highlighted,
+  disabled,
   icon,
 }: {
   name: string;
@@ -133,16 +136,22 @@ function PlanCard({
   cta: string;
   onCta: () => void;
   highlighted?: boolean;
+  disabled?: boolean;
   icon?: React.ReactNode;
 }) {
   return (
     <div
-      className={`flex flex-col rounded-md border p-5 ${
-        highlighted
-          ? "border-accent bg-accent-soft/15 shadow-sm"
-          : "border-rule bg-card"
+      className={`relative flex flex-col rounded-md border p-5 ${
+        disabled
+          ? "border-rule bg-secondary/30"
+          : highlighted
+            ? "border-accent bg-accent-soft/15 shadow-sm"
+            : "border-rule bg-card"
       }`}
     >
+      {disabled && (
+        <div className="absolute inset-0 rounded-md bg-background/40" aria-hidden />
+      )}
       <div className="mb-3 flex items-start justify-between">
         <div>
           <h3 className="font-serif text-xl font-semibold text-primary">{name}</h3>
@@ -179,6 +188,7 @@ function PlanCard({
       <Button
         onClick={onCta}
         variant={highlighted ? "default" : "outline"}
+        disabled={disabled}
         className="mt-auto w-full"
       >
         {cta}

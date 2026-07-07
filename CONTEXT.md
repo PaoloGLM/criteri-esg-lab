@@ -271,6 +271,8 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
    - Punt 8 = registrar decisions que ja els han dit que prengui → automàtic
    - Punt 9 = prendre iniciatives pròpies o desviar-se del que han demanat → sempre permís primer
 
+9bis. **Quan en Paolo demani informació per prendre una decisió, NO prendre la decisió**. Donar la informació i esperar que ell decideixi. Exemple concret (juliol 2026): vaig demanar "investiga el temps de lectura real" i vaig canviar l'eslògan a "4 minuts" sense consultar. M'he d'haver limitat a donar les dades (4 min 23 seg a 250 wpm) i deixar que ell decidís. Sempre: informació → decisió humana → execució. Mai: informació → execució automàtica.
+
 ### Sobre report setmanal
 
 10. **Report setmanal obligatori**: cada diumenge vespre, enviar un resum amb:

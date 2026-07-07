@@ -22,8 +22,8 @@ export const translations = {
     es: "Tu criterio para decidir bien.",
   },
   "hero.subtitle": {
-    ca: "Criteri ESG converteix els informes institucionals, els frameworks i les certificacions europees en accions concretes. Cada document, sintetitzat en 4 minuts de lectura — per a directors de sostenibilitat, compliance officers i consultories que volen ser més ètiques, més sostenibles i millor reputades.",
-    es: "Criteri ESG convierte los informes institucionales, los frameworks y las certificaciones europeas en acciones concretas. Cada documento, sintetizado en 4 minutos de lectura — para directores de sostenibilidad, compliance officers y consultorías que quieren ser más éticas, más sostenibles y mejor reputadas.",
+    ca: "Criteri ESG converteix els informes institucionals, els frameworks i les certificacions europees en accions concretes. Cada document, sintetitzat en 5 minuts de lectura — per a directors de sostenibilitat, compliance officers i consultories que volen ser més ètiques, més sostenibles i millor reputades.",
+    es: "Criteri ESG convierte los informes institucionales, los frameworks y las certificaciones europeas en acciones concretas. Cada documento, sintetizado en 5 minutos de lectura — para directores de sostenibilidad, compliance officers y consultorías que quieren ser más éticas, más sostenibles y mejor reputadas.",
   },
   "hero.cta.trial": { ca: "Prova 7 dies gratis", es: "Prueba 7 días gratis" },
   "hero.cta.newsletter": { ca: "Rep la newsletter", es: "Recibe la newsletter" },
@@ -60,6 +60,21 @@ export const translations = {
     ca: "3 informes destacats + 1 connexió entre ells, cada dues setmanes. Gratuït, cancel·la quan vulguis.",
     es: "3 informes destacados + 1 conexión entre ellos, cada dos semanas. Gratuito, cancela cuando quieras.",
   },
+  "sections.semafor.title": { ca: "Semàfor Metodològic", es: "Semáforo Metodológico" },
+  "sections.semafor.desc": {
+    ca: "Avalua la qualitat metodològica de cada informe en 10 segons. 5 indicadors + nota A-D. Cap competidor ho fa.",
+    es: "Evalúa la calidad metodológica de cada informe en 10 segundos. 5 indicadores + nota A-D. Ningún competidor lo hace.",
+  },
+  "sections.editorial.title": { ca: "Més enllà del Checkbox", es: "Más allá del Checkbox" },
+  "sections.editorial.desc": {
+    ca: "Veu editorial crítica que qüestiona el marc ESG hegemònic: dignitat, justícia distributiva, arrelament territorial.",
+    es: "Voz editorial crítica que cuestiona el marco ESG hegemónico: dignidad, justicia distributiva, arraigo territorial.",
+  },
+  "sections.cartadirector.title": { ca: "Carta del Director", es: "Carta del Director" },
+  "sections.cartadirector.desc": {
+    ca: "Cada mes, l'empremta ètica d'en Paolo. Mirada personal sobre els informes del període i el compromís de Criteri.",
+    es: "Cada mes, la huella ética de Paolo. Mirada personal sobre los informes del período y el compromiso de Criteri.",
+  },
 
   "latest.eyebrow": {
     ca: "Últim informe publicat · 6 maig 2026",
@@ -79,14 +94,14 @@ export const translations = {
     es: "Lee el informe completo con registro gratuito",
   },
 
-  "cta.newsletter.eyebrow": { ca: "Newsletter gratuït", es: "Newsletter gratuito" },
+  "cta.newsletter.eyebrow": { ca: "La newsletter gratuïta", es: "La newsletter gratuita" },
   "cta.newsletter.title": {
     ca: "Cada dues setmanes, 3 informes que has de conèixer.",
     es: "Cada dos semanas, 3 informes que debes conocer.",
   },
   "cta.newsletter.body": {
-    ca: "Resums executius de 300 paraules + una connexió entre ells. 4 minuts de lectura que et posen al dia. Cancel·la quan vulguis.",
-    es: "Resúmenes ejecutivos de 300 palabras + una conexión entre ellos. 4 minutos de lectura que te pon al día. Cancela cuando quieras.",
+    ca: "Resums executius de 300 paraules + una connexió entre ells. 5 minuts de lectura que et posen al dia. Cancel·la quan vulguis.",
+    es: "Resúmenes ejecutivos de 300 palabras + una conexión entre ellos. 5 minutos de lectura que te pon al día. Cancela cuando quieras.",
   },
   "cta.premium.eyebrow": { ca: "Prova Premium", es: "Prueba Premium" },
   "cta.premium.title": { ca: "7 dies gratis. Sense targeta.", es: "7 días gratis. Sin tarjeta." },
@@ -190,12 +205,13 @@ export const translations = {
   "preus.premium.f3": { ca: "Tots els informes recents (< 6 mesos)", es: "Todos los informes recientes (< 6 meses)" },
   "preus.premium.f4": { ca: "Cross-reference amb EcoVadis, B Corp, MSCI, GRI", es: "Cross-reference con EcoVadis, B Corp, MSCI, GRI" },
   "preus.premium.f5": { ca: "Alertes personalitzades per temes", es: "Alertas personalizadas por temas" },
+  "preus.premium.f6": { ca: "Preguntes per millorar (reflexió ètica mensual)", es: "Preguntas para mejorar (reflexión ética mensual)" },
   "preus.premium.cta": { ca: "Prova 7 dies gratis", es: "Prueba 7 días gratis" },
 
   "preus.ultra.name": { ca: "Ultra", es: "Ultra" },
   "preus.ultra.badge": {
-    ca: "Disponible abril 2027",
-    es: "Disponible abril 2027",
+    ca: "Pròximament · abril 2027",
+    es: "Próximamente · abril 2027",
   },
   "preus.ultra.description": {
     ca: "Per a l'equip que necessita sintetitzar per a la junta.",
@@ -205,7 +221,7 @@ export const translations = {
   "preus.ultra.f2": { ca: "Podcast d'àudio de cada informe (5 min)", es: "Podcast de audio de cada informe (5 min)" },
   "preus.ultra.f3": { ca: "Diapositives PowerPoint editables", es: "Diapositivas PowerPoint editables" },
   "preus.ultra.f4": { ca: "Dossier mensual temàtic + 1 connexió personalitzada/mes", es: "Dossier mensual temático + 1 conexión personalizada/mes" },
-  "preus.ultra.cta": { ca: "M'avisa quan obri", es: "Avísame cuando abra" },
+  "preus.ultra.cta": { ca: "Aviseu-me quan obri", es: "Avisadme cuando abra" },
 
   "preus.earlybird.title": {
     ca: "Early bird — 50 primers subscriptors",
@@ -300,5 +316,73 @@ export const translations = {
   "quisom.closing": {
     ca: "Si creus que les empreses poden ser agents de canvi —i que la tecnologia ha d'estar al servei del criteri humà—, som dels teus.",
     es: "Si crees que las empresas pueden ser agentes de cambio —y que la tecnología debe estar al servicio del criterio humano—, somos de los tuyos.",
+  },
+
+  // ============ Criteris i valors (proposta Paolo, pendent de revisió) ============
+  "quisom.valors.title": {
+    ca: "Els nostres criteris i valors",
+    es: "Nuestros criterios y valores",
+  },
+  "quisom.valors.intro": {
+    ca: "No som neutres. Ens movem per uns criteris ètics concrets que apliquem a cada informe que processem. La nostra mirada be de la tradició de l'ètica empresarial i dels principis de l'economia social, que ens conviden a pensar l'empresa no només com a unitat productiva, sinó com a comunitat humana que genera valor per a tots els seus stakeholders.",
+    es: "No somos neutrales. Nos movemos por unos criterios éticos concretos que aplicamos a cada informe que procesamos. Nuestra mirada viene de la tradición de la ética empresarial y de los principios de la economía social, que nos invitan a pensar la empresa no solo como unidad productiva, sino como comunidad humana que genera valor para todos sus stakeholders.",
+  },
+  "quisom.valors.etica.title": {
+    ca: "Ètica empresarial",
+    es: "Ética empresarial",
+  },
+  "quisom.valors.etica.body": {
+    ca: "L'empresa ha de ser conseqüent amb els seus principis. No basta amb publicar codis de conducta; cal viure'ls. Avaluem si allò que es diu correspon amb allò que es fa.",
+    es: "La empresa debe ser coherente con sus principios. No basta con publicar códigos de conducta; hay que vivirlos. Evaluamos si lo que se dice corresponde con lo que se hace.",
+  },
+  "quisom.valors.economia.title": {
+    ca: "Economia social",
+    es: "Economía social",
+  },
+  "quisom.valors.economia.body": {
+    ca: "Defensem un model on les persones i el territori estan per sobre del capital. Cooperatives, empreses d'inserció, fundacions: models on la propietat i la gestió són democràtiques.",
+    es: "Defendemos un modelo donde las personas y el territorio están por encima del capital. Cooperativas, empresas de inserción, fundaciones: modelos donde la propiedad y la gestión son democráticas.",
+  },
+  "quisom.valors.dignitat.title": {
+    ca: "Dignitat al centre",
+    es: "Dignidad en el centro",
+  },
+  "quisom.valors.dignitat.body": {
+    ca: "La persona no és un recurs. És subjecte. Qüestionem els marcs ESG que mesuren la 'S' només amb mètriques demogràfiques i obvien el salari just, la salut mental, la participació real.",
+    es: "La persona no es un recurso. Es sujeto. Cuestionamos los marcos ESG que miden la 'S' solo con métricas demográficas y obvian el salario justo, la salud mental, la participación real.",
+  },
+  "quisom.valors.territori.title": {
+    ca: "Arrelament territorial",
+    es: "Arraigo territorial",
+  },
+  "quisom.valors.territori.body": {
+    ca: "L'empresa existeix en un lloc concret. Valorem l'impacte al territori —comunitat local, proveïdors propers, cadena de valor relacional— per sobre de les xifres globals agregades.",
+    es: "La empresa existe en un lugar concreto. Valoramos el impacto en el territorio —comunidad local, proveedores cercanos, cadena de valor relacional— por encima de las cifras globales agregadas.",
+  },
+
+  // ============ Premium: Preguntes per millorar ============
+  "quisom.preguntes.title": {
+    ca: "Preguntes per millorar (Premium)",
+    es: "Preguntas para mejorar (Premium)",
+  },
+  "quisom.preguntes.eyebrow": {
+    ca: "Espai de reflexió ètica per a professionals",
+    es: "Espacio de reflexión ética para profesionales",
+  },
+  "quisom.preguntes.body": {
+    ca: "La filosofia és la disciplina que reflexiona sobre les qüestions fonamentals de la vida. Portada a l'empresa, ens convida a preguntar-nos per les qüestions fonamentals de tota organització: per què existim, a qui servim, què és legítim, què és just. A Criteri oferim als subscriptors Premium un espai per reflexionar-hi. No és una autoavaluació amb puntuació: és un espai per pensar en veu alta, amb preguntes ben fetes i context ètic, per ser millors professionals i millors organitzacions.",
+    es: "La filosofía es la disciplina que reflexiona sobre las cuestiones fundamentales de la vida. Llevada a la empresa, nos invita a preguntarnos por las cuestiones fundamentales de toda organización: por qué existimos, a quién servimos, qué es legítimo, qué es justo. En Criteri ofrecemos a los suscriptores Premium un espacio para reflexionar. No es una autoevaluación con puntuación: es un espacio para pensar en voz alta, con preguntas bien hechas y contexto ético, para ser mejores profesionales y mejores organizaciones.",
+  },
+  "quisom.preguntes.example.title": {
+    ca: "Exemple de pregunta",
+    es: "Ejemplo de pregunta",
+  },
+  "quisom.preguntes.example.body": {
+    ca: "«Si la teva empresa desaparegués demà, qui ho notaria de veritat —i per què? La resposta et diu més sobre el teu valor real que cap mètrica ESG.»",
+    es: "«Si tu empresa desapareciera mañana, quién lo notaría de verdad —y por qué? La respuesta te dice más sobre tu valor real que cualquier métrica ESG.»",
+  },
+  "quisom.preguntes.cta": {
+    ca: "Disponible per a subscriptors Premium",
+    es: "Disponible para suscriptores Premium",
   },
 } as const;

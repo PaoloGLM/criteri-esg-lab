@@ -23,6 +23,11 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
     onOpenRegister();
   };
 
+  const handleFiareForm = () => {
+    onOpenChange(false);
+    window.location.href = "/fiare-form-mockup.html";
+  };
+
   // Preu Premium segons el toggle
   const premiumPrice = period === "monthly" ? "39€" : "440€";
   const premiumPeriodLabel = period === "monthly" ? t("preus.period.month") : t("preus.period.year");
@@ -180,9 +185,12 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
                   {t("preus.metodes.stripe.title")}
                 </h4>
               </div>
-              <p className="text-xs leading-relaxed text-foreground/75">
+              <p className="text-xs leading-relaxed text-foreground/75 mb-3">
                 {t("preus.metodes.stripe.body")}
               </p>
+              <Button variant="outline" size="sm" onClick={handleCta} className="w-full">
+                {t("preus.metodes.stripe.cta")}
+              </Button>
             </div>
             <div className="rounded-md border border-accent/40 bg-accent-soft/10 p-4">
               <div className="mb-2 flex items-center gap-2">
@@ -191,9 +199,12 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
                   {t("preus.metodes.fiare.title")}
                 </h4>
               </div>
-              <p className="text-xs leading-relaxed text-foreground/75">
+              <p className="text-xs leading-relaxed text-foreground/75 mb-3">
                 {t("preus.metodes.fiare.body")}
               </p>
+              <Button variant="default" size="sm" onClick={handleFiareForm} className="w-full">
+                {t("preus.metodes.fiare.cta")}
+              </Button>
             </div>
           </div>
           <div className="mt-4 rounded-md border-l-2 border-accent bg-accent-soft/10 p-3">

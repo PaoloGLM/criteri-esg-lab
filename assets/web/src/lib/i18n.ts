@@ -279,16 +279,24 @@ export const translations = {
     es: "Tarjeta (Stripe)",
   },
   "preus.metodes.stripe.body": {
-    ca: "Mensuel o anual. Activació immediata. Mètode estàndard a internet.",
+    ca: "Mensual o anual. Activació immediata. Mètode estàndard a internet.",
     es: "Mensual o anual. Activación inmediata. Método estándar en internet.",
+  },
+  "preus.metodes.stripe.cta": {
+    ca: "Pagar amb targeta",
+    es: "Pagar con tarjeta",
   },
   "preus.metodes.fiare.title": {
     ca: "Transferència (Fiare Banca Ètica)",
     es: "Transferencia (Fiare Banca Ética)",
   },
   "preus.metodes.fiare.body": {
-    ca: "Només anual. Transferència manual amb comprovant. Activació en 3 dies màxim.",
-    es: "Solo anual. Transferencia manual con comprobante. Activación en 3 días máximo.",
+    ca: "Només anual. Transferència manual amb comprovant. Activació immediata.",
+    es: "Solo anual. Transferencia manual con comprobante. Activación inmediata.",
+  },
+  "preus.metodes.fiare.cta": {
+    ca: "Pagar amb transferència",
+    es: "Pagar con transferencia",
   },
   "preus.metodes.storytelling": {
     ca: "Si pagues amb targeta (Stripe), una corporació nord-americana es queda una comissió del nostre treball i els diners circulen pel sistema financer especulatiu. Si tries la transferència anual al nostre compte de Fiare Banca Ètica, el 100% dels teus diners dona suport a l'economia social i transformadora.",

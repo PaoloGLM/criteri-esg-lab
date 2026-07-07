@@ -15,13 +15,16 @@ import {
   ClipboardCheck,
   FileText,
   TrendingUp,
+  ArrowRight,
+  Eye,
 } from "lucide-react";
 
 interface MidSectionsProps {
   onOpenRegister?: () => void;
+  onOpenReport?: () => void;
 }
 
-export function MidSections({ onOpenRegister }: MidSectionsProps = {}) {
+export function MidSections({ onOpenRegister, onOpenReport }: MidSectionsProps = {}) {
   const { t } = useLanguage();
   void onOpenRegister; // mantingut per compatibilitat futura
 
@@ -77,6 +80,22 @@ export function MidSections({ onOpenRegister }: MidSectionsProps = {}) {
             <FormatBloc num="06" icon={<ClipboardCheck className="h-4 w-4" />} title="6. Accions recomanades" desc="3-5 accions concretes. El cor operatiu." highlighted />
             <FormatBloc num="07" icon={<Network className="h-4 w-4" />} title="7. Cross-reference" desc="Mapatge amb EcoVadis, B Corp, MSCI, GRI." highlighted wide />
           </div>
+
+          <div className="mt-8 flex justify-center">
+            <Button
+              size="lg"
+              variant="default"
+              onClick={onOpenReport}
+              className="h-12 px-6 text-base"
+            >
+              <Eye className="mr-2 h-4 w-4" />
+              {t("format.exemple.cta")}
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+          <p className="mt-3 text-center text-xs text-muted-foreground">
+            {t("format.exemple.note")}
+          </p>
         </div>
       </section>
 

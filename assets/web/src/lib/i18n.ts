@@ -174,11 +174,12 @@ export const translations = {
     es: "Elige cómo quieres avanzar.",
   },
   "preus.subtitle": {
-    ca: "Comencem amb 2 mesos gratuïts per a tothom (setembre i octubre 2026). A partir de novembre, tries el teu pla. Sense permanència, cancel·la quan vulguis.",
-    es: "Empezamos con 2 meses gratuitos para todos (septiembre y octubre 2026). A partir de noviembre, eliges tu plan. Sin permanencia, cancela cuando quieras.",
+    ca: "Comencem amb 2 mesos gratuïts per a tothom (setembre i octubre 2026). A partir de novembre, tries el teu pla. La subscripció Premium es paga anualment (millor per a la facturació, millor preu per a tu). Sense permanència, cancel·la quan vulguis.",
+    es: "Empezamos con 2 meses gratuitos para todos (septiembre y octubre 2026). A partir de noviembre, eliges tu plan. La suscripción Premium se paga anualmente (mejor para la facturación, mejor precio para ti). Sin permanencia, cancela cuando quieras.",
   },
   "preus.period.forever": { ca: "sempre", es: "siempre" },
   "preus.period.month": { ca: "mes", es: "mes" },
+  "preus.period.year": { ca: "any", es: "año" },
 
   "preus.free.name": { ca: "Free", es: "Free" },
   "preus.free.description": {
@@ -193,8 +194,8 @@ export const translations = {
 
   "preus.premium.name": { ca: "Premium", es: "Premium" },
   "preus.premium.badge": {
-    ca: "Early bird · 50 primers",
-    es: "Early bird · 50 primeros",
+    ca: "Early bird · 50 places · Anual",
+    es: "Early bird · 50 plazas · Anual",
   },
   "preus.premium.description": {
     ca: "Per al professional que ha de decidir cada setmana.",
@@ -206,7 +207,11 @@ export const translations = {
   "preus.premium.f4": { ca: "Cross-reference amb EcoVadis, B Corp, MSCI, GRI", es: "Cross-reference con EcoVadis, B Corp, MSCI, GRI" },
   "preus.premium.f5": { ca: "Alertes personalitzades per temes", es: "Alertas personalizadas por temas" },
   "preus.premium.f6": { ca: "Preguntes per millorar (reflexió ètica mensual)", es: "Preguntas para mejorar (reflexión ética mensual)" },
-  "preus.premium.cta": { ca: "Prova 7 dies gratis", es: "Prueba 7 días gratis" },
+  "preus.premium.subprice": {
+    ca: "Equival a 24,17€/mes · Impostos inclosos · 50 places",
+    es: "Equival a 24,17€/mes · Impuestos incluidos · 50 plazas",
+  },
+  "preus.premium.cta": { ca: "Reservar plaça early bird", es: "Reservar plaza early bird" },
 
   "preus.ultra.name": { ca: "Ultra", es: "Ultra" },
   "preus.ultra.badge": {
@@ -224,18 +229,28 @@ export const translations = {
   "preus.ultra.cta": { ca: "Aviseu-me quan obri", es: "Avisadme cuando abra" },
 
   "preus.earlybird.title": {
-    ca: "Early bird — 50 primers subscriptors",
-    es: "Early bird — 50 primeros suscriptores",
+    ca: "Early bird — 50 places amb pagament anual",
+    es: "Early bird — 50 plazas con pago anual",
   },
   "preus.earlybird.body": {
-    ca: "Els primers 50 subscriptors Premium tenen preu de 29€/mes (en lloc de 39€) de per vida. Llançament setembre 2026. Una vegada assignades les 50 places, el preu torna a 39€.",
-    es: "Los primeros 50 suscriptores Premium tienen precio de 29€/mes (en lugar de 39€) de por vida. Lanzamiento septiembre 2026. Una vez asignadas las 50 plazas, el precio vuelve a 39€.",
+    ca: "Els primers 50 subscriptors Premium paguen 290€/any (impostos inclosos) en lloc dels 468€ habituals (39€/mes × 12). Equival a 24,17€/mes — un descompte del 38%. Llançament setembre 2026. Una vegada assignades les 50 places, el preu torna a 39€/mes (468€/any). El pagament anual facilita la facturació i ens permet oferir-te un preu més competitiu.",
+    es: "Los primeros 50 suscriptores Premium pagan 290€/año (impuestos incluidos) en lugar de los 468€ habituales (39€/mes × 12). Equivale a 24,17€/mes — un descuento del 38%. Lanzamiento septiembre 2026. Una vez asignadas las 50 plazas, el precio vuelve a 39€/mes (468€/año). El pago anual facilita la facturación y nos permite ofrecerte un precio más competitivo.",
   },
 
   "preus.note.title": { ca: "Regla dels 6 mesos:", es: "Regla de los 6 meses:" },
   "preus.note.body": {
     ca: "Tots els informes amb més de 6 mesos d'antiguitat són gratuïts per sempre. Només els informes recents requereixen Premium. Així garantim accés universal al coneixement ESG acumulat.",
     es: "Todos los informes con más de 6 meses de antigüedad son gratuitos para siempre. Solo los informes recientes requieren Premium. Así garantizamos acceso universal al conocimiento ESG acumulado.",
+  },
+
+  // ============ Botó "Veure un exemple real" ============
+  "format.exemple.cta": {
+    ca: "Veure un exemple real",
+    es: "Ver un ejemplo real",
+  },
+  "format.exemple.note": {
+    ca: "Informe complet de la Revisió dels ESRS (Comissió Europea, maig 2026) amb els 8 blocs.",
+    es: "Informe completo de la Revisión de los ESRS (Comisión Europea, mayo 2026) con los 8 bloques.",
   },
 
   // ============ Qui som ============

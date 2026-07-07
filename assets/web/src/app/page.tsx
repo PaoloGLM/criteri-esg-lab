@@ -41,7 +41,10 @@ export default function Home() {
           onOpenRegister={() => setRegisterOpen(true)}
         />
         <ReportsLibrary onOpenReport={handleOpenReport} />
-        <MidSections onOpenRegister={() => setRegisterOpen(true)} />
+        <MidSections
+          onOpenRegister={() => setRegisterOpen(true)}
+          onOpenReport={handleOpenLatestReport}
+        />
         <FinalCta onOpenRegister={() => setRegisterOpen(true)} />
       </main>
       <Footer />

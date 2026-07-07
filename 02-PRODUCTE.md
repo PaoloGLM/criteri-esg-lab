@@ -270,7 +270,7 @@ L'usuari Ultra fa 1 petició al mes on descriu la seva empresa i nosaltres li en
 | Nivell | Preu | Contingut |
 |--------|------|-----------|
 | **Free** | 0€ | Newsletter + 3 informes oberts/mes + autodiagnòstic bàsic |
-| **Premium** | 39€/mes | Tot Free + arxiu complet + cerca + alertes + cross-reference + accions recomanades |
+| **Premium** | 39€/mes (pagament anual: 468€/any) — Early bird: 290€/any (50 places) | Tot Free + arxiu complet + cerca + alertes + cross-reference + accions recomanades + Preguntes per millorar (reflexió ètica mensual) |
 | **Ultra** | 89€/mes | Tot Premium + **podcast** + **PPT editable** + **dossier mensual temàtic** + **1 connexió personalitzada/mes** |
 | **Equip B2B** | 199€/mes | Ultra per a 5 usuaris + API + dashboard d'equip |
 

@@ -54,9 +54,9 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
           {/* Premium */}
           <PlanCard
             name={t("preus.premium.name")}
-            price="29€"
-            period={t("preus.period.month")}
-            oldPrice="39€"
+            price="290€"
+            period={t("preus.period.year")}
+            oldPrice="468€"
             badge={t("preus.premium.badge")}
             description={t("preus.premium.description")}
             features={[
@@ -70,6 +70,7 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
             cta={t("preus.premium.cta")}
             onCta={handleCta}
             highlighted
+            subprice={t("preus.premium.subprice")}
           />
 
           {/* Ultra */}
@@ -125,6 +126,7 @@ function PlanCard({
   highlighted,
   disabled,
   icon,
+  subprice,
 }: {
   name: string;
   price: string;
@@ -138,6 +140,7 @@ function PlanCard({
   highlighted?: boolean;
   disabled?: boolean;
   icon?: React.ReactNode;
+  subprice?: string;
 }) {
   return (
     <div
@@ -164,14 +167,17 @@ function PlanCard({
         {icon && <span className="text-accent-deep">{icon}</span>}
       </div>
 
-      <div className="mb-2 flex items-baseline gap-2">
+      <div className="mb-1 flex items-baseline gap-2">
         <span className="font-serif text-4xl font-semibold text-accent">{price}</span>
         <span className="text-xs text-muted-foreground">/ {period}</span>
       </div>
       {oldPrice && (
-        <p className="mb-2 text-xs text-muted-foreground line-through">
+        <p className="mb-1 text-xs text-muted-foreground line-through">
           {oldPrice} / {period}
         </p>
+      )}
+      {subprice && (
+        <p className="mb-3 text-xs font-medium text-accent-deep">{subprice}</p>
       )}
 
       <p className="mb-4 text-sm leading-relaxed text-foreground/70">{description}</p>

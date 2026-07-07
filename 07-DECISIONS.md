@@ -728,6 +728,44 @@
 
 ---
 
+## 5 juliol 2026 — Estratègia de preus nova: pagament anual + early bird a 290€/any
+
+**Decisió**: Canvi estratègic en el model de preus Premium:
+
+1. **Preu base Premium**: 39€/mes (mantingut)
+2. **Pagament anual**: 468€/any (12 × 39€) — opció sempre disponible
+3. **Early bird (50 places)**: **290€/any** (impostos inclosos) — equival a 24,17€/mes, descompte del 38% vs el pagament mensual
+4. Al llançament (setembre 2026) **només es podrà comprar la subscripció anual**. No hi haurà opció mensual fins que s'assignin les 50 places early bird.
+
+**Rao**:
+- **Facturació**: les subscripcions anuals faciliten molt la facturació (una factura a l'any per client en lloc de 12). En Paolo gestiona la facturació manualment, així que reduir el volum és clau
+- **Cash flow**: el pagament anticipat millora la tresoreria del projecte en la fase crítica post-llançament
+- **Compromís**: el pagament anual incrementa la retenció (el subscriber està compromès 12 mesos)
+- **Preu competitiu**: 290€/any = 24,17€/mes és molt competitiu vs Bloomberg Green (~50€/mes), Sustainalytics (~100€/mes)
+
+**Càlculs**:
+- Preu mensual: 39€ × 12 = 468€/any
+- Early bird: 290€/any → 24,17€/mes
+- Estalvi: 468 - 290 = 178€ (38% de descompte)
+- Ingressos potencials amb 50 early birds: 50 × 290€ = 14.500€ (llançament)
+
+**Alternatives considerades**:
+- Pagament mensual només → descartat per facturació manual complexa
+- Pagament trimestral → descartat, no aporta prou avantatge vs anual
+- Pagament anual sense early bird → descartat, perdem el ganxo de marketing del llançament
+- Pagament anual + mensual coexistint des del principi → descartat, dilueix la urgència de l'early bird
+
+**Impacte**:
+- Web: modal Preus actualitzat (Premium ara mostra 290€/any amb preu anterior ratllat 468€)
+- Subtitle del Preus actualitzat per mencionar pagament anual
+- Secció Early bird reescrita amb el descompte del 38% i la justificació de facturació
+- CTA Premium: "Reservar plaça early bird"
+- Documents `02-PRODUCTE.md` i `07-DECISIONS.md` actualitzats
+
+**Estat**: Activa
+
+---
+
 ## Plantilla per a futures decisions
 
 ```markdown

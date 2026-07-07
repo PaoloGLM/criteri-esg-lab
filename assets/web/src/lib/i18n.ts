@@ -22,8 +22,8 @@ export const translations = {
     es: "Tu criterio para decidir bien.",
   },
   "hero.subtitle": {
-    ca: "Criteri ESG converteix els informes institucionals, els frameworks i les certificacions europees en accions concretes. Cada document, sintetitzat en 5 minuts — per a directors de sostenibilitat, compliance officers i consultories que volen ser més ètiques, més sostenibles i millor reputades.",
-    es: "Criteri ESG convierte los informes institucionales, los frameworks y las certificaciones europeas en acciones concretas. Cada documento, sintetizado en 5 minutos — para directores de sostenibilidad, compliance officers y consultorías que quieren ser más éticas, más sostenibles y mejor reputadas.",
+    ca: "Criteri ESG converteix els informes institucionals, els frameworks i les certificacions europees en accions concretes. Cada document, sintetitzat en 4 minuts de lectura — per a directors de sostenibilitat, compliance officers i consultories que volen ser més ètiques, més sostenibles i millor reputades.",
+    es: "Criteri ESG convierte los informes institucionales, los frameworks y las certificaciones europeas en acciones concretas. Cada documento, sintetizado en 4 minutos de lectura — para directores de sostenibilidad, compliance officers y consultorías que quieren ser más éticas, más sostenibles y mejor reputadas.",
   },
   "hero.cta.trial": { ca: "Prova 7 dies gratis", es: "Prueba 7 días gratis" },
   "hero.cta.newsletter": { ca: "Rep la newsletter", es: "Recibe la newsletter" },
@@ -42,8 +42,8 @@ export const translations = {
   },
   "sections.informes.title": { ca: "Biblioteca d'informes", es: "Biblioteca de informes" },
   "sections.informes.desc": {
-    ca: "Cada informe rellevant de la UE, sintetitzat en 7 blocs accionables amb cross-reference a EcoVadis, B Corp i MSCI.",
-    es: "Cada informe relevante de la UE, sintetizado en 7 bloques accionables con cross-reference a EcoVadis, B Corp y MSCI.",
+    ca: "Cada informe rellevant de la UE, sintetitzat en 8 blocs accionables amb cross-reference a EcoVadis, B Corp i MSCI.",
+    es: "Cada informe relevante de la UE, sintetizado en 8 bloques accionables con cross-reference a EcoVadis, B Corp y MSCI.",
   },
   "sections.certif.title": { ca: "Guies de certificació", es: "Guías de certificación" },
   "sections.certif.desc": {
@@ -57,7 +57,7 @@ export const translations = {
   },
   "sections.newsletter.title": { ca: "Newsletter bimensual", es: "Newsletter bimensual" },
   "sections.newsletter.desc": {
-    ca: "3 informes destacats + 1 connexió entre ells, cada dues setmanes. gratuït, cancel·la quan vulguis.",
+    ca: "3 informes destacats + 1 connexió entre ells, cada dues setmanes. Gratuït, cancel·la quan vulguis.",
     es: "3 informes destacados + 1 conexión entre ellos, cada dos semanas. Gratuito, cancela cuando quieras.",
   },
 
@@ -79,14 +79,14 @@ export const translations = {
     es: "Lee el informe completo con registro gratuito",
   },
 
-  "cta.newsletter.eyebrow": { ca: "Newsletter gratuïta", es: "Newsletter gratuita" },
+  "cta.newsletter.eyebrow": { ca: "Newsletter gratuït", es: "Newsletter gratuito" },
   "cta.newsletter.title": {
     ca: "Cada dues setmanes, 3 informes que has de conèixer.",
     es: "Cada dos semanas, 3 informes que debes conocer.",
   },
   "cta.newsletter.body": {
-    ca: "Resums executius de 200 paraules + una connexió entre ells. 5 minuts de lectura que et posen al dia. Cancel·la quan vulguis.",
-    es: "Resúmenes ejecutivos de 200 palabras + una conexión entre ellos. 5 minutos de lectura que te pon al día. Cancela cuando quieras.",
+    ca: "Resums executius de 300 paraules + una connexió entre ells. 4 minuts de lectura que et posen al dia. Cancel·la quan vulguis.",
+    es: "Resúmenes ejecutivos de 300 palabras + una conexión entre ellos. 4 minutos de lectura que te pon al día. Cancela cuando quieras.",
   },
   "cta.premium.eyebrow": { ca: "Prova Premium", es: "Prueba Premium" },
   "cta.premium.title": { ca: "7 dies gratis. Sense targeta.", es: "7 días gratis. Sin tarjeta." },
@@ -212,7 +212,7 @@ export const translations = {
     es: "Early bird — 50 primeros suscriptores",
   },
   "preus.earlybird.body": {
-    ca: "Els primers 50 subscriptors Premium tenen preu de 29€/mes (en lloc de 39€) de per vida. Llançament setembre 2026. Una vegada assignedes les 50 places, el preu torna a 39€.",
+    ca: "Els primers 50 subscriptors Premium tenen preu de 29€/mes (en lloc de 39€) de per vida. Llançament setembre 2026. Una vegada assignades les 50 places, el preu torna a 39€.",
     es: "Los primeros 50 suscriptores Premium tienen precio de 29€/mes (en lugar de 39€) de por vida. Lanzamiento septiembre 2026. Una vez asignadas las 50 plazas, el precio vuelve a 39€.",
   },
 

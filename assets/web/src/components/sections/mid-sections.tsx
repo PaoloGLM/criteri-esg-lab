@@ -36,18 +36,18 @@ export function MidSections({ onOpenRegister }: MidSectionsProps = {}) {
                 {t("sections.informes.title").toUpperCase()}
               </p>
               <h2 className="font-serif text-3xl font-semibold leading-tight text-primary sm:text-4xl">
-                El que abans requeria 5 hores, ara 5 minuts.
+                Hores d'anàlisi, en 4 minuts de lectura.
               </h2>
               <div className="rule-accent my-6" />
               <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
-                Un director de sostenibilitat dedica de mitjana el 60% del seu temps a recopilar informació. Criteri ESG centralitza tota aquesta informació i la sintetitza en 7 blocs, perquè el temps d'anàlisi es converteixi en temps de decisió.
+                Un director de sostenibilitat dedica de mitjana el 60% del seu temps a recopilar informació. Criteri ESG centralitza tota aquesta informació i la sintetitza en 8 blocs, perquè el temps d'anàlisi es converteixi en temps de decisió.
               </p>
             </div>
             <div className="lg:col-span-5">
               <div className="grid grid-cols-3 gap-3">
-                <StatCard value="5 min" label="per entendre un informe" />
+                <StatCard value="4 min" label="per entendre un informe" />
                 <StatCard value="30+" label="fonts monitoritzades" />
-                <StatCard value="7" label="blocs per informe" />
+                <StatCard value="8" label="blocs per informe" />
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@ export function MidSections({ onOpenRegister }: MidSectionsProps = {}) {
           <div className="mb-10">
             <p className="eyebrow mb-3">COM REBRÀS LA INFORMACIÓ</p>
             <h2 className="font-serif text-3xl font-semibold leading-tight text-primary sm:text-4xl">
-              Set blocs. Un mateix patró per a 1.000 informes.
+              Vuit blocs. Un mateix patró per a 1.000 informes.
             </h2>
             <div className="rule-accent my-5" />
             <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
@@ -68,10 +68,11 @@ export function MidSections({ onOpenRegister }: MidSectionsProps = {}) {
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <FormatBloc num="00" icon={<Target className="h-4 w-4" />} title="0. Semàfor Metodològic" desc="5 indicadors + nota A-D. Avalua la qualitat en 10 segons." highlighted />
             <FormatBloc num="01" icon={<FileText className="h-4 w-4" />} title="1. Fitxa tècnica" desc="Institució, data, tipus, pàgines, URL. 50 paraules." />
-            <FormatBloc num="02" icon={<Layers className="h-4 w-4" />} title="2. Resum executiu" desc="Què diu en llenguatge planer. 200-300 paraules." />
-            <FormatBloc num="03" icon={<TrendingUp className="h-4 w-4" />} title="3. 5 dades clau" desc="Punts quantitatius amb valor, context i pàgina citada." />
-            <FormatBloc num="04" icon={<Target className="h-4 w-4" />} title="4. Implicacions" desc="Empreses, reguladors, ciutadans. 400 paraules." />
+            <FormatBloc num="02" icon={<TrendingUp className="h-4 w-4" />} title="2. 5 dades clau" desc="Punts quantitatius amb valor, context i pàgina citada." />
+            <FormatBloc num="03" icon={<Layers className="h-4 w-4" />} title="3. Resum executiu" desc="Què diu en llenguatge planer. 300 paraules." />
+            <FormatBloc num="04" icon={<Target className="h-4 w-4" />} title="4. Implicacions" desc="Empreses, reguladors, ciutadans. + Més enllà del Checkbox." />
             <FormatBloc num="05" icon={<Network className="h-4 w-4" />} title="5. Connexions" desc="Relacions amb altres informes i actualitat." />
             <FormatBloc num="06" icon={<ClipboardCheck className="h-4 w-4" />} title="6. Accions recomanades" desc="3-5 accions concretes. El cor operatiu." highlighted />
             <FormatBloc num="07" icon={<Network className="h-4 w-4" />} title="7. Cross-reference" desc="Mapatge amb EcoVadis, B Corp, MSCI, GRI." highlighted wide />

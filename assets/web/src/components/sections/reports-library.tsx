@@ -97,8 +97,8 @@ export function ReportsLibrary({ onOpenReport }: ReportsLibraryProps) {
           <div className="rule-accent my-5" />
           <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
             {lang === "ca"
-              ? "Tots els informes rellevants publicats el 2026, sintetitzats en 7 blocs amb cross-reference a EcoVadis, B Corp, MSCI i GRI. Fes clic a sobre per accedir a l'informe complet."
-              : "Todos los informes relevantes publicados en 2026, sintetizados en 7 bloques con cross-reference a EcoVadis, B Corp, MSCI y GRI. Haz clic para acceder al informe completo."}
+              ? "Tots els informes rellevants publicats el 2026, sintetitzats en 8 blocs amb cross-reference a EcoVadis, B Corp, MSCI i GRI. Fes clic a sobre per accedir a l'informe complet."
+              : "Todos los informes relevantes publicados en 2026, sintetizados en 8 bloques con cross-reference a EcoVadis, B Corp, MSCI y GRI. Haz clic para acceder al informe completo."}
           </p>
         </div>
 

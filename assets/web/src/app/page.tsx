@@ -9,19 +9,21 @@ import { ReportsLibrary } from "@/components/sections/reports-library";
 import { FinalCta } from "@/components/sections/final-cta";
 import { RegisterDialog } from "@/components/register-dialog";
 import { ReportDialog } from "@/components/report-dialog";
+import { PreusDialog } from "@/components/preus-dialog";
+import { QuiSomDialog } from "@/components/qui-som-dialog";
 
 export default function Home() {
   const [registerOpen, setRegisterOpen] = useState(false);
   const [reportOpen, setReportOpen] = useState(false);
+  const [preusOpen, setPreusOpen] = useState(false);
+  const [quiSomOpen, setQuiSomOpen] = useState(false);
   const [selectedReportSlug, setSelectedReportSlug] = useState<string | null>(null);
 
-  // Exemple: l'últim informe publicat (ESRS) per al botó "Veure exemple complet"
   const handleOpenLatestReport = () => {
     setSelectedReportSlug("revisio-esrs-maig-2026");
     setReportOpen(true);
   };
 
-  // Quan es clica un informe a la biblioteca
   const handleOpenReport = (slug: string) => {
     setSelectedReportSlug(slug);
     setReportOpen(true);
@@ -29,7 +31,10 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <Header />
+      <Header
+        onOpenPreus={() => setPreusOpen(true)}
+        onOpenQuiSom={() => setQuiSomOpen(true)}
+      />
       <main className="flex-1">
         <Hero
           onOpenReport={handleOpenLatestReport}
@@ -47,6 +52,15 @@ export default function Home() {
         open={reportOpen}
         onOpenChange={setReportOpen}
         slug={selectedReportSlug}
+      />
+      <PreusDialog
+        open={preusOpen}
+        onOpenChange={setPreusOpen}
+        onOpenRegister={() => setRegisterOpen(true)}
+      />
+      <QuiSomDialog
+        open={quiSomOpen}
+        onOpenChange={setQuiSomOpen}
       />
     </div>
   );

@@ -6,7 +6,12 @@ import { Input } from "@/components/ui/input";
 import { Search, Menu, X, LogIn } from "lucide-react";
 import { useState } from "react";
 
-export function Header() {
+interface HeaderProps {
+  onOpenPreus?: () => void;
+  onOpenQuiSom?: () => void;
+}
+
+export function Header({ onOpenPreus, onOpenQuiSom }: HeaderProps = {}) {
   const { lang, setLang, t } = useLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -30,12 +35,18 @@ export function Header() {
           <a href="#certificacions" className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground">
             {t("nav.certificacions")}
           </a>
-          <a href="#autodiagnostic" className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground">
-            {t("nav.autodiagnostic")}
-          </a>
-          <a href="#preus" className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground">
+          <button
+            onClick={onOpenQuiSom}
+            className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground"
+          >
+            {t("nav.quisom")}
+          </button>
+          <button
+            onClick={onOpenPreus}
+            className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground"
+          >
             {t("nav.preus")}
-          </a>
+          </button>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -101,18 +112,24 @@ export function Header() {
 
       {mobileOpen && (
         <nav className="flex flex-col gap-1 border-t border-rule bg-background px-4 py-3 md:hidden">
-          <a href="#informes" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-secondary">
+          <a href="#informes" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">
             {t("nav.informes")}
           </a>
-          <a href="#certificacions" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-secondary">
+          <a href="#certificacions" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">
             {t("nav.certificacions")}
           </a>
-          <a href="#autodiagnostic" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-secondary">
-            {t("nav.autodiagnostic")}
-          </a>
-          <a href="#preus" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-secondary">
+          <button
+            onClick={() => { setMobileOpen(false); onOpenQuiSom?.(); }}
+            className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary"
+          >
+            {t("nav.quisom")}
+          </button>
+          <button
+            onClick={() => { setMobileOpen(false); onOpenPreus?.(); }}
+            className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary"
+          >
             {t("nav.preus")}
-          </a>
+          </button>
           <Button variant="outline" size="sm" className="mt-2 w-full">
             <LogIn className="mr-1 h-3.5 w-3.5" />
             {t("nav.login")}

@@ -33,7 +33,7 @@ export function Footer() {
                 <ul className="space-y-2 text-sm">
                   <li><a href="#informes" className="text-primary-foreground/80 hover:text-accent-soft">{t("nav.informes")}</a></li>
                   <li><a href="#certificacions" className="text-primary-foreground/80 hover:text-accent-soft">{t("nav.certificacions")}</a></li>
-                  <li><a href="#autodiagnostic" className="text-primary-foreground/80 hover:text-accent-soft">{t("nav.autodiagnostic")}</a></li>
+                  <li><a href="#faq" className="text-primary-foreground/80 hover:text-accent-soft">{t("nav.quisom")}</a></li>
                 </ul>
               </div>
               <div>

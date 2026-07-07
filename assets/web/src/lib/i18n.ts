@@ -7,7 +7,7 @@ export const translations = {
 
   "nav.informes": { ca: "Informes", es: "Informes" },
   "nav.certificacions": { ca: "Certificacions", es: "Certificaciones" },
-  "nav.autodiagnostic": { ca: "Autodiagnòstic", es: "Autodiagnóstico" },
+  "nav.quisom": { ca: "Qui som", es: "Quiénes somos" },
   "nav.preus": { ca: "Preus", es: "Precios" },
   "nav.login": { ca: "Inicia sessió", es: "Inicia sesión" },
   "nav.cerca": { ca: "Cerca informes…", es: "Buscar informes…" },
@@ -148,4 +148,157 @@ export const translations = {
   "footer.privacy": { ca: "Privadesa", es: "Privacidad" },
   "footer.terms": { ca: "Termes", es: "Términos" },
   "footer.cookies": { ca: "Cookies", es: "Cookies" },
+
+  // ============ Preus ============
+  "preus.eyebrow": {
+    ca: "Preus · Setembre 2026",
+    es: "Precios · Septiembre 2026",
+  },
+  "preus.title": {
+    ca: "Tria com vols avançar.",
+    es: "Elige cómo quieres avanzar.",
+  },
+  "preus.subtitle": {
+    ca: "Comencem amb 2 mesos gratuïts per a tothom (setembre i octubre 2026). A partir de novembre, tries el teu pla. Sense permanència, cancel·la quan vulguis.",
+    es: "Empezamos con 2 meses gratuitos para todos (septiembre y octubre 2026). A partir de noviembre, eliges tu plan. Sin permanencia, cancela cuando quieras.",
+  },
+  "preus.period.forever": { ca: "sempre", es: "siempre" },
+  "preus.period.month": { ca: "mes", es: "mes" },
+
+  "preus.free.name": { ca: "Free", es: "Free" },
+  "preus.free.description": {
+    ca: "Per començar a entendre l'ecosistema ESG europeu.",
+    es: "Para empezar a entender el ecosistema ESG europeo.",
+  },
+  "preus.free.f1": { ca: "Newsletter bimensual", es: "Newsletter bimensual" },
+  "preus.free.f2": { ca: "3 informes oberts al mes", es: "3 informes abiertos al mes" },
+  "preus.free.f3": { ca: "Informes amb més de 6 mesos (arxiu)", es: "Informes con más de 6 meses (archivo)" },
+  "preus.free.f4": { ca: "Accés a la biblioteca pública", es: "Acceso a la biblioteca pública" },
+  "preus.free.cta": { ca: "Comença gratis", es: "Empieza gratis" },
+
+  "preus.premium.name": { ca: "Premium", es: "Premium" },
+  "preus.premium.badge": {
+    ca: "Early bird · 50 primers",
+    es: "Early bird · 50 primeros",
+  },
+  "preus.premium.description": {
+    ca: "Per al professional que ha de decidir cada setmana.",
+    es: "Para el profesional que debe decidir cada semana.",
+  },
+  "preus.premium.f1": { ca: "Tot el que té Free", es: "Todo lo que tiene Free" },
+  "preus.premium.f2": { ca: "Arxiu complet i cerca avançada", es: "Archivo completo y búsqueda avanzada" },
+  "preus.premium.f3": { ca: "Tots els informes recents (< 6 mesos)", es: "Todos los informes recientes (< 6 meses)" },
+  "preus.premium.f4": { ca: "Cross-reference amb EcoVadis, B Corp, MSCI, GRI", es: "Cross-reference con EcoVadis, B Corp, MSCI, GRI" },
+  "preus.premium.f5": { ca: "Alertes personalitzades per temes", es: "Alertas personalizadas por temas" },
+  "preus.premium.cta": { ca: "Prova 7 dies gratis", es: "Prueba 7 días gratis" },
+
+  "preus.ultra.name": { ca: "Ultra", es: "Ultra" },
+  "preus.ultra.badge": {
+    ca: "Disponible abril 2027",
+    es: "Disponible abril 2027",
+  },
+  "preus.ultra.description": {
+    ca: "Per a l'equip que necessita sintetitzar per a la junta.",
+    es: "Para el equipo que necesita sintetizar para la junta.",
+  },
+  "preus.ultra.f1": { ca: "Tot el que té Premium", es: "Todo lo que tiene Premium" },
+  "preus.ultra.f2": { ca: "Podcast d'àudio de cada informe (5 min)", es: "Podcast de audio de cada informe (5 min)" },
+  "preus.ultra.f3": { ca: "Diapositives PowerPoint editables", es: "Diapositivas PowerPoint editables" },
+  "preus.ultra.f4": { ca: "Dossier mensual temàtic + 1 connexió personalitzada/mes", es: "Dossier mensual temático + 1 conexión personalizada/mes" },
+  "preus.ultra.cta": { ca: "M'avisa quan obri", es: "Avísame cuando abra" },
+
+  "preus.earlybird.title": {
+    ca: "Early bird — 50 primers subscriptors",
+    es: "Early bird — 50 primeros suscriptores",
+  },
+  "preus.earlybird.body": {
+    ca: "Els primers 50 subscriptors Premium tenen preu de 29€/mes (en lloc de 39€) de per vida. Llançament setembre 2026. Una vegada assignedes les 50 places, el preu torna a 39€.",
+    es: "Los primeros 50 suscriptores Premium tienen precio de 29€/mes (en lugar de 39€) de por vida. Lanzamiento septiembre 2026. Una vez asignadas las 50 plazas, el precio vuelve a 39€.",
+  },
+
+  "preus.note.title": { ca: "Regla dels 6 mesos:", es: "Regla de los 6 meses:" },
+  "preus.note.body": {
+    ca: "Tots els informes amb més de 6 mesos d'antiguitat són gratuïts per sempre. Només els informes recents requereixen Premium. Així garantim accés universal al coneixement ESG acumulat.",
+    es: "Todos los informes con más de 6 meses de antigüedad son gratuitos para siempre. Solo los informes recientes requieren Premium. Así garantizamos acceso universal al conocimiento ESG acumulado.",
+  },
+
+  // ============ Qui som ============
+  "quisom.eyebrow": {
+    ca: "Qui som · Criteri ESG",
+    es: "Quiénes somos · Criteri ESG",
+  },
+  "quisom.title": {
+    ca: "Tecnologia al servei del criteri humà.",
+    es: "Tecnología al servicio del criterio humano.",
+  },
+  "quisom.subtitle": {
+    ca: "Una empresa petita amb una missió clara: ajudar les organitzacions a ser més ètiques, sostenibles i transformadores.",
+    es: "Una empresa pequeña con una misión clara: ayudar a las organizaciones a ser más éticas, sostenibles y transformadoras.",
+  },
+
+  "quisom.manifest.title": {
+    ca: "El nostre manifest",
+    es: "Nuestro manifiesto",
+  },
+  "quisom.manifest.body": {
+    ca: "La sensibilitat i la preocupació pel món que ens envolta és el motor que ens fa moure. Volem ajudar i facilitar que les empreses, com a agents ciutadans que construeixen societat, siguin les més eficients, exemplars i transformadores possibles.",
+    es: "La sensibilidad y la preocupación por el mundo que nos rodea es el motor que nos hace mover. Queremos ayudar y facilitar que las empresas, como agentes ciudadanos que construyen sociedad, sean las más eficientes, ejemplares y transformadoras posibles.",
+  },
+
+  "quisom.paragraph1": {
+    ca: "En un món on tot va tan de pressa, podem aprofitar les eines disponibles per facilitar-nos la vida, optimitzar el temps i destinar-lo a la feina important. Criteri ESG neix d'aquesta convicció: aplicar la tecnologia per alliberar temps dels professionals perquè puguin fer allò que les màquines no poden — pensar, decidir, liderar.",
+    es: "En un mundo donde todo va tan deprisa, podemos aprovechar las herramientas disponibles para facilitarnos la vida, optimizar el tiempo y destinarlo al trabajo importante. Criteri ESG nace de esta convicción: aplicar la tecnología para liberar tiempo de los profesionales para que puedan hacer aquello que las máquinas no pueden — pensar, decidir, liderar.",
+  },
+
+  "quisom.paragraph2": {
+    ca: "Per això hem construït un sistema que combina el millor de la intel·ligència artificial amb la mirada ètica de persones que coneixen el sector ESG. La IA fa la feina pesada — recerca, síntesi, classificació. Les persones aportem criteri, context i judici.",
+    es: "Por eso hemos construido un sistema que combina lo mejor de la inteligencia artificial con la mirada ética de personas que conocen el sector ESG. La IA hace el trabajo pesado — investigación, síntesis, clasificación. Las personas aportamos criterio, contexto y juicio.",
+  },
+
+  "quisom.pilar1.title": {
+    ca: "Sensibilitat",
+    es: "Sensibilidad",
+  },
+  "quisom.pilar1.body": {
+    ca: "Ens mou la preocupació real pel món, no l'oportunitat de mercat. L'ESG no és un negoci; és una responsabilitat.",
+    es: "Nos mueve la preocupación real por el mundo, no la oportunidad de mercado. ESG no es un negocio; es una responsabilidad.",
+  },
+  "quisom.pilar2.title": {
+    ca: "Tecnologia",
+    es: "Tecnología",
+  },
+  "quisom.pilar2.body": {
+    ca: "Aprofitem les eines disponibles —IA, automatització, bases de dades— per optimitzar el temps i destinar-lo al que importa.",
+    es: "Aprovechamos las herramientas disponibles —IA, automatización, bases de datos— para optimizar el tiempo y destinarlo a lo que importa.",
+  },
+  "quisom.pilar3.title": {
+    ca: "Criteri",
+    es: "Criterio",
+  },
+  "quisom.pilar3.body": {
+    ca: "La tecnologia mai substitueix el judici humà. La IA proposa; les persones revisen, decideixen i assumeixen responsabilitat.",
+    es: "La tecnología nunca sustituye el juicio humano. La IA propone; las personas revisan, deciden y asumen responsabilidad.",
+  },
+
+  "quisom.ai.title": {
+    ca: "Com treballem",
+    es: "Cómo trabajamos",
+  },
+  "quisom.ai.body": {
+    ca: "Criteri ESG compta amb un sistema integrat alimentat per un agent d'IA preconfigurat com a expert en recerca i generació d'informes ESG. L'agent monitoritza fonts institucionals (UE, WEF, OECD, IPCC, Banc d'Espanya, Forética…), detecta nous informes, en sintetitza el contingut seguint els 8 blocs del nostre format —Semàfor Metodològic + 7 blocs narratius— i passa un corrector ortogràfic automàtic abans de qualsevol publicació.",
+    es: "Criteri ESG cuenta con un sistema integrado alimentado por un agente de IA preconfigurado como experto en investigación y generación de informes ESG. El agente monitoriza fuentes institucionales (UE, WEF, OECD, IPCC, Banco de España, Forética…), detecta nuevos informes, sintetiza su contenido siguiendo los 8 bloques de nuestro formato —Semáforo Metodológico + 7 bloques narrativos— y pasa un corrector ortográfico automático antes de cualquier publicación.",
+  },
+  "quisom.ai.supervision.title": {
+    ca: "Supervisió humana sempre:",
+    es: "Supervisión humana siempre:",
+  },
+  "quisom.ai.supervision.body": {
+    ca: "Cap informe es publica sense revisió prèvia de l'equip. L'agent sintetitza; les persones validen, corregeixen i aproven. La responsabilitat editorial és nostra, mai de la IA.",
+    es: "Ningún informe se publica sin revisión previa del equipo. El agente sintetiza; las personas validan, corrigen y aprueban. La responsabilidad editorial es nuestra, nunca de la IA.",
+  },
+
+  "quisom.closing": {
+    ca: "Si creus que les empreses poden ser agents de canvi —i que la tecnologia ha d'estar al servei del criteri humà—, som dels teus.",
+    es: "Si crees que las empresas pueden ser agentes de cambio —y que la tecnología debe estar al servicio del criterio humano—, somos de los tuyos.",
+  },
 } as const;

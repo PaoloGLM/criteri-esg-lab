@@ -2,7 +2,6 @@
 
 import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Accordion,
   AccordionContent,
@@ -10,22 +9,21 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
-  Clock,
   Layers,
   Network,
   Target,
   ClipboardCheck,
-  ArrowRight,
   FileText,
   TrendingUp,
 } from "lucide-react";
 
 interface MidSectionsProps {
-  onOpenRegister: () => void;
+  onOpenRegister?: () => void;
 }
 
-export function MidSections({ onOpenRegister }: MidSectionsProps) {
+export function MidSections({ onOpenRegister }: MidSectionsProps = {}) {
   const { t } = useLanguage();
+  void onOpenRegister; // mantingut per compatibilitat futura
 
   return (
     <>
@@ -81,86 +79,6 @@ export function MidSections({ onOpenRegister }: MidSectionsProps) {
         </div>
       </section>
 
-      {/* Self-diagnosis */}
-      <section id="autodiagnostic" className="border-b border-rule py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
-            <div className="lg:col-span-6">
-              <p className="eyebrow mb-3">AUTODIAGNÒSTIC</p>
-              <h2 className="font-serif text-3xl font-semibold leading-tight text-primary sm:text-4xl">
-                Posa't a prova. Projeja el teu futur.
-              </h2>
-              <div className="rule-accent my-6" />
-              <p className="max-w-xl text-base leading-relaxed text-foreground/80">
-                Respon 15 preguntes sobre la teva empresa i rep un informe automàtic amb punts forts, punts febles i accions prioritàries. A més, Criteri ESG projecta què necessitaràs quan entrin en vigor les properes propostes de llei.
-              </p>
-              <Button size="lg" onClick={onOpenRegister} className="mt-6 h-12 px-6 text-base">
-                Fer l'autodiagnòstic gratuït
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
-            <div className="lg:col-span-6">
-              <Card className="border-accent/30 bg-accent-soft/15">
-                <CardHeader>
-                  <p className="font-mono text-xs uppercase tracking-widest text-accent-deep">
-                    EXEMPLE DE RESULTAT
-                  </p>
-                  <CardTitle className="font-serif text-xl">
-                    Empresa logística · 320 treballadors · puntuació ESG 62/100
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between rounded-md border border-accent/30 bg-background p-3">
-                      <div>
-                        <div className="font-serif text-2xl font-semibold text-accent">62/100</div>
-                        <div className="text-xs text-muted-foreground">ESG Score actual</div>
-                      </div>
-                      <div className="text-right">
-                        <div className="font-serif text-base text-primary">EcoVadis Plata</div>
-                        <div className="text-xs text-muted-foreground">Objectiu: Or · 12 mesos</div>
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="rounded-md border border-rule bg-background p-3">
-                        <p className="mb-1 font-mono text-[10px] uppercase tracking-widest text-accent-deep">
-                          PUNTS FORTS
-                        </p>
-                        <p className="text-xs leading-relaxed text-foreground/75">
-                          ✓ Scope 1+2 reporting<br />
-                          ✓ Code of conduct publicat<br />
-                          ✓ Política de diversitat
-                        </p>
-                      </div>
-                      <div className="rounded-md border border-rule bg-background p-3">
-                        <p className="mb-1 font-mono text-[10px] uppercase tracking-widest text-destructive">
-                          PUNTS FEBLES
-                        </p>
-                        <p className="text-xs leading-relaxed text-foreground/75">
-                          ✗ Scope 3 incomplet<br />
-                          ✗ Sense grievance mechanism<br />
-                          ✗ Living wage no mesurat
-                        </p>
-                      </div>
-                    </div>
-                    <div className="rounded-md border border-accent bg-accent-soft/25 p-3">
-                      <p className="mb-1 font-mono text-[10px] uppercase tracking-widest text-accent-deep">
-                        3 ACCIONS PRIORITÀRIES
-                      </p>
-                      <ol className="space-y-1 text-xs leading-relaxed text-foreground/80">
-                        <li>1. Implementar grievance mechanism extern (Q3 2026)</li>
-                        <li>2. Completar Scope 3 amb 10 proveïdors clau (Q4 2026)</li>
-                        <li>3. Living wage assessment per tota la plantilla (Q1 2027)</li>
-                      </ol>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ */}
       <section id="faq" className="border-b border-rule py-16 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
@@ -207,7 +125,7 @@ export function MidSections({ onOpenRegister }: MidSectionsProps) {
                 Puc provar-ho abans de pagar?
               </AccordionTrigger>
               <AccordionContent className="text-sm leading-relaxed text-foreground/75">
-                Sí. 7 dies de prova premium sense targeta. La newsletter i 3 informes oberts al mes són gratuïts per sempre amb registre. L'autodiagnòstic també és gratuït.
+                Sí. 7 dies de prova premium sense targeta. La newsletter i 3 informes oberts al mes són gratuïts per sempre amb registre.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

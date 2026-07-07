@@ -2,7 +2,7 @@
 
 import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileText, Award, ClipboardCheck, Mail } from "lucide-react";
+import { ArrowRight, FileText, Award, Mail } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 interface HeroProps {
@@ -75,10 +75,9 @@ export function Hero({ onOpenReport, onOpenRegister }: HeroProps) {
               {t("sections.title")}
             </h2>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             <SectionCard href="#informes" icon={<FileText className="h-5 w-5" />} title={t("sections.informes.title")} desc={t("sections.informes.desc")} />
             <SectionCard href="#certificacions" icon={<Award className="h-5 w-5" />} title={t("sections.certif.title")} desc={t("sections.certif.desc")} />
-            <SectionCard href="#autodiagnostic" icon={<ClipboardCheck className="h-5 w-5" />} title={t("sections.autodiag.title")} desc={t("sections.autodiag.desc")} />
             <SectionCard href="#newsletter" icon={<Mail className="h-5 w-5" />} title={t("sections.newsletter.title")} desc={t("sections.newsletter.desc")} />
           </div>
         </div>

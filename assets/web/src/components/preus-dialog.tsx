@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useLanguage } from "@/components/language-provider";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -11,13 +12,26 @@ interface PreusDialogProps {
   onOpenRegister: () => void;
 }
 
+type BillingPeriod = "monthly" | "annual";
+
 export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogProps) {
   const { t } = useLanguage();
+  const [period, setPeriod] = useState<BillingPeriod>("annual");
 
   const handleCta = () => {
     onOpenChange(false);
     onOpenRegister();
   };
+
+  // Preu Premium segons el toggle
+  const premiumPrice = period === "monthly" ? "39€" : "440€";
+  const premiumPeriodLabel = period === "monthly" ? t("preus.period.month") : t("preus.period.year");
+  const premiumSubprice = period === "monthly"
+    ? (t("preus.premium.subprice.monthly") as string)
+    : (t("preus.premium.subprice") as string);
+  const premiumCta = period === "monthly"
+    ? (t("preus.premium.cta.monthly") as string)
+    : (t("preus.premium.cta") as string);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -33,6 +47,35 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
             {t("preus.subtitle")}
           </DialogDescription>
         </DialogHeader>
+
+        {/* Toggle Mensual / Anual */}
+        <div className="flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-4">
+          <div className="flex items-center rounded-md border border-rule p-0.5">
+            <button
+              onClick={() => setPeriod("monthly")}
+              className={`rounded-sm px-4 py-1.5 text-sm font-medium transition-colors ${
+                period === "monthly"
+                  ? "bg-accent text-accent-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {t("preus.toggle.monthly")}
+            </button>
+            <button
+              onClick={() => setPeriod("annual")}
+              className={`rounded-sm px-4 py-1.5 text-sm font-medium transition-colors ${
+                period === "annual"
+                  ? "bg-accent text-accent-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {t("preus.toggle.annual")}
+            </button>
+          </div>
+          {period === "annual" && (
+            <p className="text-xs text-accent-deep">{t("preus.toggle.annual.note")}</p>
+          )}
+        </div>
 
         <div className="mt-2 grid gap-5 md:grid-cols-3">
           {/* Free */}
@@ -54,10 +97,9 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
           {/* Premium */}
           <PlanCard
             name={t("preus.premium.name")}
-            price="290€"
-            period={t("preus.period.year")}
-            oldPrice="468€"
-            badge={t("preus.premium.badge")}
+            price={premiumPrice}
+            period={premiumPeriodLabel}
+            badge={period === "annual" ? t("preus.premium.badge") : undefined}
             description={t("preus.premium.description")}
             features={[
               t("preus.premium.f1"),
@@ -67,10 +109,10 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
               t("preus.premium.f5"),
               t("preus.premium.f6"),
             ]}
-            cta={t("preus.premium.cta")}
+            cta={premiumCta}
             onCta={handleCta}
             highlighted
-            subprice={t("preus.premium.subprice")}
+            subprice={premiumSubprice}
           />
 
           {/* Ultra */}
@@ -93,13 +135,33 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
           />
         </div>
 
-        <div className="mt-6 rounded-md border border-rule bg-secondary/30 p-4">
-          <p className="font-mono text-xs uppercase tracking-widest text-accent-deep mb-2">
-            {t("preus.earlybird.title")}
-          </p>
-          <p className="text-sm leading-relaxed text-foreground/75">
-            {t("preus.earlybird.body")}
-          </p>
+        {/* Early bird — requadre especial a sota */}
+        <div className="mt-6 rounded-md border-2 border-accent bg-accent-soft/15 p-5">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex-1">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-accent-deep mb-2">
+                {t("preus.earlybird.eyebrow")}
+              </p>
+              <h3 className="font-serif text-xl font-semibold text-primary mb-2">
+                {t("preus.earlybird.title")}
+              </h3>
+              <p className="text-sm leading-relaxed text-foreground/80 mb-2">
+                {t("preus.earlybird.body")}
+              </p>
+              <p className="text-xs font-medium text-accent-deep">
+                {t("preus.earlybird.subprice")}
+              </p>
+            </div>
+            <div className="flex flex-col items-start gap-2 sm:items-end">
+              <div className="flex items-baseline gap-2">
+                <span className="font-serif text-4xl font-semibold text-accent">{t("preus.earlybird.price")}</span>
+                <span className="text-xs text-muted-foreground">/ {t("preus.earlybird.period")}</span>
+              </div>
+              <Button onClick={handleCta} className="w-full sm:w-auto">
+                {t("preus.earlybird.cta")}
+              </Button>
+            </div>
+          </div>
         </div>
 
         <div className="mt-4 rounded-md border border-accent/30 bg-accent-soft/10 p-4">

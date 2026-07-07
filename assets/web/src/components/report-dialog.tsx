@@ -19,6 +19,8 @@ import {
   Link2,
   ExternalLink,
   CheckCircle2,
+  Gauge,
+  Compass,
 } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
 import {
@@ -98,6 +100,27 @@ export function ReportDialog({ open, onOpenChange, slug }: ReportDialogProps) {
             </div>
           </Bloc>
 
+          {/* Bloc 0 — Semàfor Metodològic (destacat) */}
+          <Bloc num="0" icon={<Gauge className="h-4 w-4" />} title={lang === "ca" ? "Semàfor Metodològic" : "Semáforo Metodológico"} highlighted>
+            <div className="rounded-md border border-accent/30 bg-accent-soft/10 p-4">
+              <div className="mb-3 flex items-baseline justify-between">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-accent-deep">
+                  {lang === "ca" ? "Nota global" : "Nota global"}
+                </p>
+                <span className="rounded-md bg-accent px-3 py-1 font-serif text-lg font-bold text-accent-foreground">
+                  B · {lang === "ca" ? "Acceptable amb matisos" : "Aceptable con matices"}
+                </span>
+              </div>
+              <div className="space-y-1.5 text-xs">
+                <SemaforRow label={lang === "ca" ? "Cobertura Scope 3" : "Cobertura Scope 3"} status="groc" note={lang === "ca" ? "Esmentat, no detallat" : "Mencionado, no detallado"} />
+                <SemaforRow label={lang === "ca" ? "Termes temporals" : "Términos temporales"} status="verd" note={lang === "ca" ? "Aplicació 2027 definida" : "Aplicación 2027 definida"} />
+                <SemaforRow label={lang === "ca" ? "Fonts independents" : "Fuentes independientes"} status="verd" note={lang === "ca" ? "Consulta pública oberta" : "Consulta pública abierta"} />
+                <SemaforRow label={lang === "ca" ? "Granularitat" : "Granularidad"} status="groc" note={lang === "ca" ? "Per sector, no per empresa" : "Por sector, no por empresa"} />
+                <SemaforRow label={lang === "ca" ? "Verificació externa" : "Verificación externa"} status="verd" note={lang === "ca" ? "Procés UE obert" : "Proceso UE abierto"} />
+              </div>
+            </div>
+          </Bloc>
+
           {/* Bloc 2 — Resum executiu */}
           <Bloc num="2" icon={<Layers className="h-4 w-4" />} title={lang === "ca" ? "Resum executiu" : "Resumen ejecutivo"}>
             <p className="text-sm leading-relaxed text-foreground/85">{report.summary}</p>
@@ -117,20 +140,32 @@ export function ReportDialog({ open, onOpenChange, slug }: ReportDialogProps) {
               <ImplicationBlock
                 label={lang === "ca" ? "Empreses" : "Empresas"}
                 body={lang === "ca"
-                  ? "Cal adaptar el reporting i les operacions segons l'abast d'aquest informe. Revisar processos interns afectats."
-                  : "Hay que adaptar el reporting y las operaciones según el alcance de este informe. Revisar procesos internos afectados."}
+                  ? "Reducció significativa de la càrrega de reporting. Les empreses han d'adaptar sistemes interns per al nou marc simplificat, prioritzant els datapoints que queden."
+                  : "Reducción significativa de la carga de reporting. Las empresas deben adaptar sistemas internos para el nuevo marco simplificado, priorizando los datapoints que quedan."}
               />
               <ImplicationBlock
                 label={lang === "ca" ? "Reguladors" : "Reguladores"}
                 body={lang === "ca"
-                  ? "Caldrà transposar i fer complir les disposicions. Formació específica als auditors i revisió de guies nacionals."
-                  : "Habrá que transponer y hacer cumplir las disposiciones. Formación específica a los auditores y revisión de guías nacionales."}
+                  ? "La UE haurà de fer complir el marc revisat. Caldrà formació específica als auditors i revisió de guies nacionals per transposar la directiva."
+                  : "La UE deberá hacer cumplir el marco revisado. Será necesaria formación específica a los auditores y revisión de guías nacionales para transponer la directiva."}
               />
               <ImplicationBlock
                 label={lang === "ca" ? "Ciutadans" : "Ciudadanos"}
                 body={lang === "ca"
-                  ? "Impacte en transparència i accés a informació. Seguiment actiu d'ONGs i societat civil."
-                  : "Impacto en transparencia y acceso a información. Seguimiento activo de ONGs y sociedad civil."}
+                  ? "Risc de pèrdua de transparència: menys datapoints pot significar menys informació sobre impactes reals. Seguiment actiu d'ONGs i societat civil."
+                  : "Riesgo de pérdida de transparencia: menos datapoints puede significar menos información sobre impactos reales. Seguimiento activo de ONGs y sociedad civil."}
+              />
+            </div>
+
+            {/* Més enllà del Checkbox */}
+            <div className="mt-4">
+              <MesEnllaCheckbox
+                criteri={lang === "ca"
+                  ? "Criteri avaluat: Sostenibilitat absoluta + Justícia distributiva"
+                  : "Criterio evaluado: Sostenibilidad absoluta + Justicia distributiva"}
+                body={lang === "ca"
+                  ? "La simplificació dels ESRS es presenta com a estalvi econòmic (3.700M€ en 5 anys), però no quantifica quin cost té en termes de transparència perduda. La reducció del 61% dels datapoints afecta sobretot la granularitat de dades —precisament el que permetria auditar si les empreses compleixen realment. El debat sobre si això afavoreix les empreses grans (que poden absorbir el reporting) versus les pimes (que es beneficien de la reducció però perden eina comparativa) queda fora del marc oficial. La justícia distributiva hauria de preguntar: qui paga l'estalvi en transparència?"
+                  : "La simplificación de los ESRS se presenta como ahorro económico (3.700M€ en 5 años), pero no cuantifica qué costo tiene en términos de transparencia perdida. La reducción del 61% de los datapoints afecta sobre todo la granularidad de datos —precisamente lo que permitiría auditar si las empresas cumplen realmente. El debate sobre si esto favorece a las empresas grandes (que pueden absorber el reporting) versus las pymes (que se benefician de la reducción pero pierden herramienta comparativa) queda fuera del marco oficial. La justicia distributiva debería preguntar: ¿quién paga el ahorro en transparencia?"}
               />
             </div>
           </Bloc>
@@ -273,6 +308,34 @@ function ImplicationBlock({ label, body }: { label: string; body: string }) {
     <div className="rounded-md border border-rule bg-background p-4">
       <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-accent-deep">
         {label}
+      </p>
+      <p className="text-xs leading-relaxed text-foreground/80">{body}</p>
+    </div>
+  );
+}
+
+function SemaforRow({ label, status, note }: { label: string; status: "verd" | "groc" | "vermell"; note: string }) {
+  const color = status === "verd" ? "bg-[#5C8A5C]" : status === "groc" ? "bg-[#C9A961]" : "bg-[#A0522D]";
+  return (
+    <div className="flex items-center gap-3 rounded-sm border border-rule bg-background px-3 py-1.5">
+      <span className={`inline-block h-3 w-3 rounded-full ${color}`} aria-hidden />
+      <span className="flex-1 font-medium text-foreground">{label}</span>
+      <span className="text-xs text-muted-foreground">{note}</span>
+    </div>
+  );
+}
+
+function MesEnllaCheckbox({ criteri, body }: { criteri: string; body: string }) {
+  return (
+    <div className="rounded-md border border-accent bg-accent-soft/15 p-4">
+      <div className="mb-2 flex items-center gap-2">
+        <Compass className="h-4 w-4 text-accent" />
+        <p className="font-mono text-[10px] uppercase tracking-widest text-accent-deep">
+          Més enllà del Checkbox
+        </p>
+      </div>
+      <p className="mb-2 text-xs italic text-accent-deep">
+        {criteri}
       </p>
       <p className="text-xs leading-relaxed text-foreground/80">{body}</p>
     </div>

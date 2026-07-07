@@ -335,6 +335,128 @@ Hi ha institucions que publiquen vídeos llargs amb contingut substancial que es
 
 ---
 
+## Generació automàtica de rebuts i factures (definit 5 juliol 2026)
+
+### Principi
+
+Tant si l'usuari paga amb Stripe com amb Fiare, el sistema genera automàticament el document fiscal corresponent i l'envia per email. En Paolo no ha de fer facturació manual — només validar les transferències Fiare i, si cal, revertir a Free els usuaris amb problemes.
+
+### Tipus de document segons el cas
+
+| Mètode de pagament | Document generat | Qui el genera |
+|--------------------|------------------|---------------|
+| Stripe (targeta) | **Rebut Stripe** (automàtic) + Factura si l'usuari la demana | Stripe + web |
+| Fiare (transferència) — rebut simplificat | **Rebut simplificat** (dades mínimes: nom, NIF, import, concepte, data) | Web |
+| Fiare (transferència) — factura completa | **Factura completa** (dades fiscals: raó social, NIF/CIF, adreça fiscal, import, IVA desglossat, concepte) | Web |
+
+### Què decideix l'usuari al formulari
+
+Al formulari de pagament (tant Stripe com Fiare), l'usuari veu un checkbox:
+- ☐ **Vull factura amb el meu NIF/CIF** (en lloc de rebut simplificat)
+
+- Si **NO** marca → es genera **rebut simplificat** (per defecte, més ràpid, val per a particulars i pimes que no necessiten factura)
+- Si **marca** → es mostren camps addicionals (raó social, adreça fiscal, codi postal) → es genera **factura completa** amb dades fiscals
+
+### Rebut simplificat (contingut)
+
+```
+=================================================
+CRITERI ESG · Rebut simplificat #2026-XXXX
+=================================================
+Data: 5 juliol 2026
+Concepte: Subscripció Premium Anual
+Període: setembre 2026 → agost 2027
+Import: 290,00 € (IVA inclòs)
+
+Dades del client:
+Nom: Maria Garcia López
+NIF/CIF: 12345678Z
+
+Dades del emisor:
+Criteri ESG
+NIF: [NIF Criteri]
+Adreça: [Adreça Criteri]
+
+Mètode de pagament: Transferència bancària (Fiare Banca Ètica)
+=================================================
+```
+
+### Factura completa (contingut)
+
+```
+=================================================
+FACTURA #F-2026-XXXX
+================================================-
+Data d'emissió: 5 juliol 2026
+Data d'operació: 5 juliol 2026
+
+EMISOR:
+Criteri ESG
+NIF: [NIF Criteri]
+Adreça: [Adreça Criteri]
+
+CLIENT:
+Raó social: Cooperativa X SCCL
+NIF/CIF: B12345678
+Adreça fiscal: Carrer Major 12, Barcelona, 08001
+
+CONCEPTE:
+Subscripció Premium Anual · setembre 2026 → agost 2027
+
+BASE IMPONIBLE:    239,67 €
+IVA (21%):          50,33 €
+TOTAL:             290,00 €
+
+Mètode de pagament: Transferència bancària (Fiare Banca Ètica)
+================================================-
+```
+
+### Implementació tècnica (per a la Roser)
+
+**Llibreria recomanada**: `pdfkit` (Node.js) o `jsPDF` (client-side). Generen PDF a partir de plantilla amb dades del formulari.
+
+**Flux**:
+1. Usuari clica "Activar Premium" → es crea registre a taula `subscriptions` amb totes les dades del formulari
+2. Web genera PDF (rebut o factura segons checkbox) amb les dades
+3. Web envia email a l'usuari amb el PDF adjunt (via Resend o similar)
+4. Web envia email a en Paolo amb notificació + còpia del PDF
+5. PDF també accessible a l'àrea d'usuari (`/compte/documents`)
+
+**Plantilla**:
+- Disseny sobri amb paleta Criteri (terra + coure, fonts Fraunces + Inter)
+- Logo Criteri al capçal
+- Numeració automàtica: rebuts `#2026-XXXX`, factures `#F-2026-XXXX`
+- ID únic per document (per auditoria)
+
+**Supabase Storage**:
+- Bucket privat `documents-fiscals`
+- Cada PDF guardat amb path `users/{user_id}/{any}/{tipus}-{num}.pdf`
+- Accessible només per l'usuari propietari + en Paolo (admin)
+
+**Registre fiscal**:
+- Taula `documents_fiscals` a Supabase amb: id, user_id, tipus (rebut/factura), número, data, import, iva, concepte, metode_pagament, pdf_path
+- Per declaracions trimestrals d'IVA + IRPF (en Paolo pot exportar a CSV)
+
+### Consideracions ètiques
+
+1. **Transparència fiscal**: cada document té número únic, data, import desglossat. Res d'opacitat.
+2. **No doble facturació**: una transferència = un document. Si en Paolo reverteix a Free (per problema), s'emet **nota d'abonament** (negativa) que cancel·la la factura original.
+3. **Protecció de dades**: les dades fiscals del client es guarden a Supabase (UE), no es comparteixen amb tercers, retenció segons LOPDGDD.
+
+### Pendents operatius (per a la Roser)
+
+- [ ] Crear plantilla PDF rebut simplificat
+- [ ] Crear plantilla PDF factura completa
+- [ ] Implementar generació automàtica al flux de pagament
+- [ ] Implementar envig per email (Resend)
+- [ ] Crear taula `documents_fiscals` a Supabase
+- [ ] Crear bucket privat `documents-fiscals` a Supabase Storage
+- [ ] Implementar àrea d'usuari `/compte/documents` per descarregar històric
+- [ ] Implementar exportació CSV per a declaracions trimestrals d'en Paolo
+- [ ] Implementar nota d'abonament (si en Paolo reverteix a Free)
+
+---
+
 ## Històric de canvis
 
 - **5 juliol 2026** — **Política de contingut audiovisual**: Criteri no recomanarà vídeos per consumir, però sí processarà vídeos institucionals com a font d'informes (transcriure + 8 blocs). "Vídeo de la quinzena" a newsletter previst per 2027.

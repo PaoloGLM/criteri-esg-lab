@@ -238,9 +238,9 @@
 
   <!-- Warning immediatesa -->
   <div class="warning">
-    <div class="warning-title">⚡ Transferència immediata</div>
+    <div class="warning-title">⚡ Activació immediata</div>
     <div class="warning-body">
-      Per activar el teu accés el més ràpid possible, fes la transferència <strong>ara mateix</strong> mentre omplies el formulari. Un cop pujis el comprovant, en Paolo validarà l'apunt i activarà el teu accés. Si la transferència és entre comptes de la mateixa entitat, l'activació pot ser en qüestió d'hores.
+      Fes la transferència <strong>ara mateix</strong> mentre omplies aquest formulari. Quan cliquis "Activar Premium", el teu compte Premium s'activarà de manera immediata — com si paguessis amb targeta. No cal esperar.
     </div>
   </div>
 
@@ -312,9 +312,34 @@
       </div>
     </div>
 
-    <!-- Cortesia -->
-    <div class="cortesia">
-      <strong>✓ Accés provisional de 3 dies:</strong> mentre en Paolo valida la teva transferència, t'activem accés provisional a Premium perquè puguis començar a fer servir Criteri de seguida.
+    <!-- Opció factura -->
+    <div class="field">
+      <label class="field-label">Document fiscal</label>
+      <div class="check" style="margin-top: 0;">
+        <input type="checkbox" id="c-factura">
+        <label for="c-factura">
+          <strong>Vull factura amb el meu NIF/CIF</strong> (en lloc de rebut simplificat).<br>
+          <span class="field-hint">Si marques aquesta opció, et demanarem dades fiscals addicionals (raó social, adreça fiscal) per emetre factura completa.</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Camps condicionals factura (es mostren si es marca) -->
+    <div id="dades-factura" style="display: none; padding: 12px 16px; background: rgba(184, 115, 51, 0.06); border-radius: 6px; margin: 12px 0 16px;">
+      <div class="field">
+        <label class="field-label">Raó social<span class="required">*</span></label>
+        <input type="text" class="input" placeholder="Ex: Cooperativa X SCCL">
+      </div>
+      <div class="row-2">
+        <div class="field" style="margin-bottom: 0;">
+          <label class="field-label">Adreça fiscal<span class="required">*</span></label>
+          <input type="text" class="input" placeholder="Carrer, número, ciutat">
+        </div>
+        <div class="field" style="margin-bottom: 0;">
+          <label class="field-label">Codi postal<span class="required">*</span></label>
+          <input type="text" class="input" placeholder="08001">
+        </div>
+      </div>
     </div>
 
     <hr style="border: none; border-top: 1px solid #E5DDD0; margin: 24px 0;">
@@ -328,17 +353,20 @@
       <input type="checkbox" id="c2">
       <label for="c2">Accepto els <a href="#" style="color: #B87333;">termes del servei</a> i la <a href="#" style="color: #B87333;">política de privacitat</a>.</label>
     </div>
-    <div class="check">
-      <input type="checkbox" id="c3">
-      <label for="c3">Accepto rebre la factura per email (no es farà enviament postal).</label>
-    </div>
 
-    <button class="btn-primary" style="margin-top: 20px;">Enviar comprovant i activar accés</button>
+    <button class="btn-primary" style="margin-top: 20px;">Activar Premium</button>
 
     <div class="note-bottom">
-      Un cop enviat, rebràs un email de confirmació. En Paolo validarà el comprovant en un màxim de 24h i t'activarà Premium de manera definitiva.
+      En clicar, el teu compte Premium s'activa immediatament. Rebràs el document fiscal (rebut o factura) per email en qüestió de minuts.
     </div>
   </div>
+
+  <script>
+    // Mostra/amaga camps factura
+    document.getElementById('c-factura').addEventListener('change', function() {
+      document.getElementById('dades-factura').style.display = this.checked ? 'block' : 'none';
+    });
+  </script>
 
 </div>
 </body>

@@ -771,48 +771,80 @@
 **Decisió**: S'oferiran dos mètodes de pagament des del llançament (setembre 2026), co-iguals:
 
 1. **Stripe (targeta)** — tant per a subscripció mensual com anual. Mètode estàndard a internet, automatitzat.
-2. **Fiare Banca Ètica (transferència bancària)** — només per a subscripció anual. L'usuari fa transferència manual, puja comprovant PDF, rep accés provisional de 3 dies de cortesia mentre l'equip valida l'apunt, i factura emesa després de rebre els diners.
+2. **Fiare Banca Ètica (transferència bancària)** — només per a subscripció anual. L'usuari fa la transferència immediatament, puja el comprovant al formulari, i en clicar "Activar Premium" el seu compte Premium s'activa **immediatament** (com si pagués amb targeta, sense periode de cortesia).
 
 **Rao**:
 - **Coherència ètica**: si defensem Economia del Bé Comú i Banca Ètica al Qui som, no podem oferir només Stripe (corporació nord-americana amb comissió) des del principi. Posposar-ho seria instrumentalitzar la banca ètica com a reclam de màrqueting sense donar l'opció real — contradiria el principi kantiana que defensem
 - **Auto-selecció de l'usuari**: qui tria Fiare sap què tria. Funciona com a filtre de valors, reforça identitat
 - **Storytelling potent**: "el 100% dels teus diners dona suport a l'economia social i transformadora" és un argument fortíssim per al nostre públic natural (cooperatives, B Corps, economia social)
-- **Viabilitat tècnica**: l'arquitectura híbrida és viable. Els 3 punts febles identificats (desconnexió software, obsolescència avís, decalatge facturació) són reals però solucionables amb un flux manual amb comprovant + accés provisional de cortesia
+- **Activació immediata**: la lògica és "confiança + validació posterior". L'usuari puja el comprovant i el seu Premium s'activa a l'instant. En Paolo rep 2 notificacions (web + Fiare) i si hi ha problema (import incorrecte, no transferència, comprovant fals), entra a admin i reverteix a Free
 
-**Diferenciació operativa**:
+**Flux complet Fiare (actualitzat 5 juliol 2026)**:
+
+```
+1.Usuari tria Fiare al Preus → va al formulari
+2.Usuari omple formulari (nom, email, telèfon, empresa, NIF/CIF)
+3.Usuari decideix:
+   - Rebut simplificat (per defecte)
+   - Factura completa (checkbox: afegeix raó social + adreça fiscal)
+4.Usuari fa transferència ara mateix (IBAN Fiare + concepte únic)
+5.Usuari puja comprovant (PDF/JPG/PNG, màx 5MB)
+6.Usuari marca 2 checkboxes (confirmació transferència + termes)
+7.Usuari clica "Activar Premium" → compte Premium actiu immediatament
+8.En Paolo rep:
+   - Email de la web: "Nou Premium Fiare creat: [usuari]"
+   - Email de Fiare: "Has rebut una transferència de 290€"
+9.Sistema genera document fiscal automàticament:
+   - Rebut simplificat (si no va demanar factura)
+   - Factura completa (si va demanar factura amb NIF/CIF)
+10.Document enviat per email a l'usuari en qüestió de minuts
+11.Si en Paolo detecta problema → admin → canvia status a Free
+12.30 i 7 dies abans de caducar → email automàtic
+13.Si no renova → status canvia a Free automàticament (cron)
+```
+
+**Diferenciació operativa** (actualitzada):
 | | Stripe | Fiare |
 |---|--------|-------|
 | Disponibilitat | Mensual + Anual | Només Anual |
-| Activació | Automàtica (webhook) | Manual (3 dies cortesia) |
+| Activació compte | Automàtica (webhook) | **Immediata** (en clicar botó, sense cortesia) |
 | Comissió | Sí (Stripe es queda %) | No (100% va a Criteri) |
-| Factura | Automàtica (Stripe) | Manual (en Paolo emet després de rebre) |
-| Renovació | Automàtica | Manual (avís 30 i 7 dies abans, validació humana) |
+| Document fiscal | Automàtic (Stripe) | **Automàtic** (rebut o factura segons formulari) |
+| Validació posterior | No necessària | Sí — en Paolo revisa les 2 notificacions |
+| Renovació | Automàtica | Manual (cron envia avisos 30 + 7 dies; si no renova → Free automàtic) |
 
-**Storytelling a la web** (text a afegir al modal Preus):
+**Storytelling a la web** (al modal Preus):
 > "Si pagues amb targeta (Stripe), una corporació nord-americana es queda una comissió del nostre treball i els diners circulen pel sistema financer especulatiu. Si tries la transferència anual al nostre compte de Fiare Banca Ètica, el 100% dels teus diners dona suport a l'economia social i transformadora."
 
 **Consideració ètica (Kantiana i del Bé Comú)**:
 - **Kant**: posposar la opció Fiare per "prudència operativa" hauria estat instrumentalitzar la banca ètica com a reclam sense oferir-la. La coherència exigeix oferir-la des del dia 1
 - **Bé comú**: el bé comú es serveix amb coherència entre allò que es diu i allò que es fa. Defensar Banca Ètica al Qui som i no oferir-la com a mètode de pagament seria una contradicció ètica
-- **Prudència operativa**: el flux Fiare és més manual (gestió de comprovants, validació humana, facturació manual). Però això no justifica endarrerir l'opció — només caldrà un procés ben dissenyat
+- **Confiança**: el flux d'activació immediata confia en l'usuari. El risc d'abús (comprovant fals) és baix i controlable per en Paolo via admin. És èticament preferible a tractar tots els usuaris com a sospitosos amb un periode de cortesia
 
 **Alternatives considerades**:
 - Stripe només al llançament, Fiare a partir de gener 2027 → **descartat** per incoherència ètica
+- Fiare amb periode de cortesia de 3 dies → **descartat** (5 juliol 2026): afegia complexitat innecessària, l'usuari havia d'esperar. Flux nou: activació immediata + validació posterior per en Paolo
 - Fiare com a "preferida" (posicionar-la per sobre de Stripe) → descartat, volem co-igualtat, no coacció ètica
 - Només Fiare (sense Stripe) → descartat, perdrem usuaris que volen comoditat de targeta
 - Pagament trimestral via Fiare → descartat, complexitat afegida sense valor
 
 **Impacte**:
 - Web: secció "Mètodes de pagament" al modal Preus amb tots dos mètodes i nota transparent
-- Operacions: en Paolo haurà de gestionar manualment comprovants + factures Fiare
-- Facturació: una factura a l'any per client Fiare (molt manejable)
+- Web: formulari dedicat per al flux Fiare (mockup a `assets/web/public/fiare-form-mockup.html`)
+- Operacions: en Paolo rep 2 notificacions per cada Premium Fiare (web + Fiare)
+- Operacions: en Paolo valida ràpidament; si problema → reverteix a Free via admin
+- Facturació: automàtica per la web (rebut o factura segons formulari)
 - Finances: compte a Fiare Banca Ètica a obrir abans del llançament
 
 **Pendents operatius**:
 - Obrir compte a Fiare Banca Ètica (abans agost 2026)
-- Dissenyar pantalla d'alta específica per al mètode transferència (Roser)
+- Substituir IBAN fals del mockup per IBAN real quan es tingui
 - Configurar Stripe (compte + webhooks + facturació automàtica)
-- Implementar validació manual del comprovant + accés de 3 dies de cortesia
+- Implementar formulari real (la Roser) amb Supabase Storage per comprovants
+- Implementar mini dashboard admin per en Paolo (veure usuaris, canviar status)
+- Implementar generació automàtica de rebuts i factures (veure proposta específica al `02-PRODUCTE.md`)
+- Implementar cron d'avís 30 i 7 dies abans de caducar
+- Implementar cron de caducitat automàtica
 
 **Estat**: Activa
 

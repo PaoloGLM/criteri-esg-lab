@@ -265,6 +265,36 @@ export const translations = {
     es: "Todos los informes con más de 6 meses de antigüedad son gratuitos para siempre. Solo los informes recientes requieren Premium. Así garantizamos acceso universal al conocimiento ESG acumulado.",
   },
 
+  // ============ Mètodes de pagament ============
+  "preus.metodes.title": {
+    ca: "Mètodes de pagament",
+    es: "Métodos de pago",
+  },
+  "preus.metodes.eyebrow": {
+    ca: "Tria també com vols pagar",
+    es: "Elige también cómo quieres pagar",
+  },
+  "preus.metodes.stripe.title": {
+    ca: "Targeta (Stripe)",
+    es: "Tarjeta (Stripe)",
+  },
+  "preus.metodes.stripe.body": {
+    ca: "Mensuel o anual. Activació immediata. Mètode estàndard a internet.",
+    es: "Mensual o anual. Activación inmediata. Método estándar en internet.",
+  },
+  "preus.metodes.fiare.title": {
+    ca: "Transferència (Fiare Banca Ètica)",
+    es: "Transferencia (Fiare Banca Ética)",
+  },
+  "preus.metodes.fiare.body": {
+    ca: "Només anual. Transferència manual amb comprovant. Activació en 3 dies màxim.",
+    es: "Solo anual. Transferencia manual con comprobante. Activación en 3 días máximo.",
+  },
+  "preus.metodes.storytelling": {
+    ca: "Si pagues amb targeta (Stripe), una corporació nord-americana es queda una comissió del nostre treball i els diners circulen pel sistema financer especulatiu. Si tries la transferència anual al nostre compte de Fiare Banca Ètica, el 100% dels teus diners dona suport a l'economia social i transformadora.",
+    es: "Si pagas con tarjeta (Stripe), una corporación norteamericana se queda una comisión de nuestro trabajo y el dinero circula por el sistema financiero especulativo. Si eliges la transferencia anual a nuestra cuenta de Fiare Banca Ética, el 100% de tu dinero apoya la economía social y transformadora.",
+  },
+
   // ============ Botó "Veure un exemple real" ============
   "format.exemple.cta": {
     ca: "Veure un exemple real",

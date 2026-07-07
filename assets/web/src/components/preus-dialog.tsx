@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useLanguage } from "@/components/language-provider";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Check, Sparkles, Crown } from "lucide-react";
+import { Check, Sparkles, Crown, CreditCard, Landmark } from "lucide-react";
 
 interface PreusDialogProps {
   open: boolean;
@@ -161,6 +161,45 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
                 {t("preus.earlybird.cta")}
               </Button>
             </div>
+          </div>
+        </div>
+
+        {/* Mètodes de pagament */}
+        <div className="mt-4 rounded-md border border-rule bg-card p-5">
+          <p className="font-mono text-[10px] uppercase tracking-widest text-accent-deep mb-1">
+            {t("preus.metodes.eyebrow")}
+          </p>
+          <h3 className="font-serif text-lg font-semibold text-primary mb-4">
+            {t("preus.metodes.title")}
+          </h3>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="rounded-md border border-rule bg-background p-4">
+              <div className="mb-2 flex items-center gap-2">
+                <CreditCard className="h-4 w-4 text-accent-deep" />
+                <h4 className="font-serif text-sm font-semibold text-primary">
+                  {t("preus.metodes.stripe.title")}
+                </h4>
+              </div>
+              <p className="text-xs leading-relaxed text-foreground/75">
+                {t("preus.metodes.stripe.body")}
+              </p>
+            </div>
+            <div className="rounded-md border border-accent/40 bg-accent-soft/10 p-4">
+              <div className="mb-2 flex items-center gap-2">
+                <Landmark className="h-4 w-4 text-accent-deep" />
+                <h4 className="font-serif text-sm font-semibold text-primary">
+                  {t("preus.metodes.fiare.title")}
+                </h4>
+              </div>
+              <p className="text-xs leading-relaxed text-foreground/75">
+                {t("preus.metodes.fiare.body")}
+              </p>
+            </div>
+          </div>
+          <div className="mt-4 rounded-md border-l-2 border-accent bg-accent-soft/10 p-3">
+            <p className="text-xs italic leading-relaxed text-foreground/80">
+              {t("preus.metodes.storytelling")}
+            </p>
           </div>
         </div>
 

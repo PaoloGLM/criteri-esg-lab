@@ -766,6 +766,58 @@
 
 ---
 
+## 5 juliol 2026 — Mètodes de pagament: Stripe + Fiare Banca Ètica des del dia 1
+
+**Decisió**: S'oferiran dos mètodes de pagament des del llançament (setembre 2026), co-iguals:
+
+1. **Stripe (targeta)** — tant per a subscripció mensual com anual. Mètode estàndard a internet, automatitzat.
+2. **Fiare Banca Ètica (transferència bancària)** — només per a subscripció anual. L'usuari fa transferència manual, puja comprovant PDF, rep accés provisional de 3 dies de cortesia mentre l'equip valida l'apunt, i factura emesa després de rebre els diners.
+
+**Rao**:
+- **Coherència ètica**: si defensem Economia del Bé Comú i Banca Ètica al Qui som, no podem oferir només Stripe (corporació nord-americana amb comissió) des del principi. Posposar-ho seria instrumentalitzar la banca ètica com a reclam de màrqueting sense donar l'opció real — contradiria el principi kantiana que defensem
+- **Auto-selecció de l'usuari**: qui tria Fiare sap què tria. Funciona com a filtre de valors, reforça identitat
+- **Storytelling potent**: "el 100% dels teus diners dona suport a l'economia social i transformadora" és un argument fortíssim per al nostre públic natural (cooperatives, B Corps, economia social)
+- **Viabilitat tècnica**: l'arquitectura híbrida és viable. Els 3 punts febles identificats (desconnexió software, obsolescència avís, decalatge facturació) són reals però solucionables amb un flux manual amb comprovant + accés provisional de cortesia
+
+**Diferenciació operativa**:
+| | Stripe | Fiare |
+|---|--------|-------|
+| Disponibilitat | Mensual + Anual | Només Anual |
+| Activació | Automàtica (webhook) | Manual (3 dies cortesia) |
+| Comissió | Sí (Stripe es queda %) | No (100% va a Criteri) |
+| Factura | Automàtica (Stripe) | Manual (en Paolo emet després de rebre) |
+| Renovació | Automàtica | Manual (avís 30 i 7 dies abans, validació humana) |
+
+**Storytelling a la web** (text a afegir al modal Preus):
+> "Si pagues amb targeta (Stripe), una corporació nord-americana es queda una comissió del nostre treball i els diners circulen pel sistema financer especulatiu. Si tries la transferència anual al nostre compte de Fiare Banca Ètica, el 100% dels teus diners dona suport a l'economia social i transformadora."
+
+**Consideració ètica (Kantiana i del Bé Comú)**:
+- **Kant**: posposar la opció Fiare per "prudència operativa" hauria estat instrumentalitzar la banca ètica com a reclam sense oferir-la. La coherència exigeix oferir-la des del dia 1
+- **Bé comú**: el bé comú es serveix amb coherència entre allò que es diu i allò que es fa. Defensar Banca Ètica al Qui som i no oferir-la com a mètode de pagament seria una contradicció ètica
+- **Prudència operativa**: el flux Fiare és més manual (gestió de comprovants, validació humana, facturació manual). Però això no justifica endarrerir l'opció — només caldrà un procés ben dissenyat
+
+**Alternatives considerades**:
+- Stripe només al llançament, Fiare a partir de gener 2027 → **descartat** per incoherència ètica
+- Fiare com a "preferida" (posicionar-la per sobre de Stripe) → descartat, volem co-igualtat, no coacció ètica
+- Només Fiare (sense Stripe) → descartat, perdrem usuaris que volen comoditat de targeta
+- Pagament trimestral via Fiare → descartat, complexitat afegida sense valor
+
+**Impacte**:
+- Web: secció "Mètodes de pagament" al modal Preus amb tots dos mètodes i nota transparent
+- Operacions: en Paolo haurà de gestionar manualment comprovants + factures Fiare
+- Facturació: una factura a l'any per client Fiare (molt manejable)
+- Finances: compte a Fiare Banca Ètica a obrir abans del llançament
+
+**Pendents operatius**:
+- Obrir compte a Fiare Banca Ètica (abans agost 2026)
+- Dissenyar pantalla d'alta específica per al mètode transferència (Roser)
+- Configurar Stripe (compte + webhooks + facturació automàtica)
+- Implementar validació manual del comprovant + accés de 3 dies de cortesia
+
+**Estat**: Activa
+
+---
+
 ## Plantilla per a futures decisions
 
 ```markdown

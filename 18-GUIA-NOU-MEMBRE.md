@@ -214,6 +214,34 @@ src/
 8. Optimitzar SEO (meta tags, sitemap, structured data)
 9. Provar la web amb beta testers (agost)
 
+### Pagaments, facturació i operacions (juliol-agost 2026)
+
+**Crawler + automatització d'informes** (veure `04-WEB.md` secció "Arquitectura d'automatització"):
+1. Implementar crawler automàtic (Vercel Cron, dilluns + dijous matí) — Scrapy + BeautifulSoup
+2. Integrar Z.ai-bot API al backend per processar informes nous (8 blocs automàtics + corrector)
+3. Implementar mini dashboard admin per en Paolo (veure usuaris, validar informes, canviar status subscrípits)
+
+**Sistema de pagament** (veure `07-DECISIONS.md` decisió 5 juliol 2026 "Stripe + Fiare"):
+4. Configurar Stripe (compte + webhooks + facturació automàtica)
+5. Implementar formulari Fiare real (mockup a `assets/web/public/fiare-form-mockup.html`) amb Supabase Storage per comprovants
+6. Obrir compte a Fiare Banca Ètica (en Paolo ho fa, tu esperes IBAN real per substituir al formulari)
+7. Implementar mini dashboard admin per en Paolo (veure usuaris, canviar status Premium → Free si problema amb Fiare)
+
+**Generació automàtica de rebuts i factures** (veure `02-PRODUCTE.md` secció "Generació automàtica de rebuts i factures"):
+8. Crear plantilla PDF rebut simplificat (pdfkit o jsPDF)
+9. Crear plantilla PDF factura completa (amb dades fiscals + IVA desglossat)
+10. Implementar generació automàtica al flux de pagament (Fiare + Stripe)
+11. Implementar enviament per email (Resend — servei d'email transaccional)
+12. Crear taula `documents_fiscals` a Supabase (id, user_id, tipus, número, data, import, iva, concepte, metode_pagament, pdf_path)
+13. Crear bucket privat `documents-fiscals` a Supabase Storage
+14. Implementar àrea d'usuari `/compte/documents` per descarregar històric
+15. Implementar exportació CSV per a declaracions trimestrals d'en Paolo
+16. Implementar nota d'abonament (si en Paolo reverteix a Free per problema)
+
+**Crons de subscripcions**:
+17. Implementar cron d'avís 30 i 7 dies abans de caducar subscrípits Fiare
+18. Implementar cron de caducitat automàtica (si no renova → Free)
+
 ---
 
 ## 9. Comunicació amb Paolo

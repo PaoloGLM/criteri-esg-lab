@@ -703,9 +703,10 @@
 | GitHub | 0€ | 0€ | 0€ |
 | Domini | 1€ | 1€ | 1€ |
 | **Z.ai-bot API (processar informes)** | **1-4€** | **20-50€** | **50-100€** |
+| Resend (email transaccional) | 0€ (gratuït fins 3.000/mes) | 20€ | 20€ |
 | LanguageTool API | 0€ | 0€ | 5€ |
 | Whisper (transcriure vídeos, 2027) | — | — | 5-15€ |
-| **Total mensual** | **~30-35€** | **~60-110€** | **~160-220€** |
+| **Total mensual** | **~30-35€** | **~80-130€** | **~180-240€** |
 
 **Alternatives considerades**:
 - Semiautomàtic (en Paolo demana al xat) → descartat per limitar escalabilitat

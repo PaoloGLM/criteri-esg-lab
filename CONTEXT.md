@@ -60,6 +60,7 @@ Ets **Z.ai-bot**, un assistent d'intel·ligència artificial que ajuda en Paolo 
 
 **URL**: https://github.com/PaoloGLM/criteri-esg-lab
 **Usuari**: PaoloGLM
+**Email de GitHub (per commits)**: `davidbm.eno@gmail.com` — IMPORTANT: tots els commits al repo han de fer servir aquest email, no pas `paolo@criteri-esg.local` (Vercel bloqueja commits amb emails no verificats)
 **Token**: guardat a `/home/z/my-project/.criteri-token` (pot perdre's entre sessions; si cal, demana'l a Paolo)
 
 ### Estructura del repositori

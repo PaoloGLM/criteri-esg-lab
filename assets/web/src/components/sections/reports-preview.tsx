@@ -13,11 +13,8 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
   const { lang } = useLanguage();
   const router = useRouter();
 
-  // Mostrem només els 6 primers informes
-  const previewReports = reports.slice(0, 6);
-  // Els 3 primers completament visibles, els 3 següents degradats
-  const visibleReports = previewReports.slice(0, 3);
-  const fadedReports = previewReports.slice(3, 6);
+  // Mostrem 4 informes: 2 primeres (senceres) + 2 següents (mig amagades)
+  const previewReports = reports.slice(0, 4);
 
   const goToLibrary = () => {
     router.push("/informes");
@@ -43,34 +40,37 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {/* 3 targetes completament visibles */}
-          {visibleReports.map((report) => (
-            <ReportCard
-              key={report.slug}
-              report={report}
-              lang={lang}
-              onOpen={() => onOpenReport(report.slug)}
-            />
-          ))}
+        {/* Container amb max-height per tallar la segona fila + gradient overlay */}
+        <div className="relative">
+          <div
+            className="grid grid-cols-1 gap-4 overflow-hidden sm:grid-cols-2"
+            style={{ maxHeight: "320px" }}
+          >
+            {previewReports.map((report) => (
+              <ReportCard
+                key={report.slug}
+                report={report}
+                lang={lang}
+                onOpen={() => onOpenReport(report.slug)}
+              />
+            ))}
+          </div>
 
-          {/* 3 targetes degradades (s'intueix que continua) */}
-          {fadedReports.map((report) => (
-            <ReportCard
-              key={report.slug}
-              report={report}
-              lang={lang}
-              faded
-              onOpen={() => onOpenReport(report.slug)}
-            />
-          ))}
+          {/* Gradient overlay que difumina la part inferior */}
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-32"
+            style={{
+              background: "linear-gradient(to bottom, rgba(245, 239, 230, 0) 0%, rgba(245, 239, 230, 0.85) 50%, #F5EFE6 100%)",
+            }}
+            aria-hidden
+          />
         </div>
 
-        {/* CTA per anar a la biblioteca completa */}
-        <div className="mt-10 flex flex-col items-center gap-4">
+        {/* CTA per anar a la biblioteca completa — sobre la part tallada */}
+        <div className="relative z-10 -mt-8 flex flex-col items-center gap-4">
           <button
             onClick={goToLibrary}
-            className="group inline-flex items-center gap-2 rounded-md border border-accent bg-accent-soft/20 px-6 py-3 text-sm font-semibold text-accent-deep transition-all hover:bg-accent hover:text-accent-foreground"
+            className="group inline-flex items-center gap-2 rounded-md border border-accent bg-accent-soft/20 px-6 py-3 text-sm font-semibold text-accent-deep shadow-sm backdrop-blur-sm transition-all hover:bg-accent hover:text-accent-foreground"
           >
             <BookOpen className="h-4 w-4" />
             {lang === "ca"
@@ -109,12 +109,10 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
 function ReportCard({
   report,
   lang,
-  faded,
   onOpen,
 }: {
   report: typeof reports[0];
   lang: "ca" | "es";
-  faded?: boolean;
   onOpen: () => void;
 }) {
   const free = isFreeAccess(report.date);
@@ -122,11 +120,7 @@ function ReportCard({
   return (
     <button
       onClick={onOpen}
-      className={`group relative flex flex-col rounded-lg border bg-card p-5 text-left transition-all hover:shadow-md ${
-        faded
-          ? "border-rule/60 opacity-50 hover:opacity-100"
-          : "border-rule hover:border-accent"
-      }`}
+      className="group relative flex flex-col rounded-lg border border-rule bg-card p-5 text-left transition-all hover:border-accent hover:shadow-md"
     >
       <div className="mb-2 flex items-center justify-between">
         <span className="font-mono text-[10px] uppercase tracking-widest text-accent-deep">

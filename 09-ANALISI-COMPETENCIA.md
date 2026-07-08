@@ -496,4 +496,194 @@ Durant la recerca, he identificat **5 variables addicionals** que recomano anali
 
 ## Històric de canvis
 
+- **8 juliol 2026** — Anàlisi ampliat amb dades econòmiques, certificacions ESG a Espanya, mercat potencial per segment, i comparativa detallada amb competidors. Veure seccions 13-18 (nou).
 - **26 juny 2026** — Anàlisi inicial completada amb 30+ fonts verificades. 12 seccions cobrint: organismes, certificacions, competidors, formació, buyer persona, pricing, calendari, sectors, LATAM, Itàlia/Portugal, variables addicionals, conclusions
+
+---
+
+## 13. Certificacions ESG a Espanya — dades concretes (juliol 2026)
+
+Empreses espanyoles que ja tenen certificacions ESG actives. Són els nostres clients potencials perquè ja estan compromesos amb la sostenibilitat i necessiten informació per millorar.
+
+| Certificació | Empreses a Espanya | Què mesura | Preu per empresa |
+|--------------|-------------------|------------|------------------|
+| **EcoVadis** | ~5.000-8.000 valorades (estimació) | Cadena de subministrament, 21 criteris | 979-15.000€/any |
+| **B Corp** | **330 certificades** + 5.000 usen l'avaluació | Impacte social i ambiental integral | 500-50.000€/any (escala per ingressos) |
+| **SGE 21 (Forética)** | ~50-70 certificades | Sistema de gestió ètica i socialment responsable | 3.000-10.000€ (auditoria) |
+| **ISO 14001** | **20.836 certificats** (44.642 llocs) | Sistema de gestió ambiental | 2.000-8.000€ (auditoria) |
+| **Pacto Mundial ONU** | **1.890 participants** (2025) | 10 principis + ODS | Gratis |
+| **CDP** | ~800-1.000 reportant (estimació) | Emissions, aigua, boscos | Gratis (disclosure) / 9.500€ (supply chain) |
+| **GRI Standards** | **94% del IBEX 35** reporta amb GRI | Reporting de sostenibilitat | Gratis (estàndard) |
+| **TCFD** | ~200-300 reportant (estimació) | Riscos financers climàtics | Gratis (framework) |
+
+**Font**: EcoVadis (2024), B Lab Spain (2024), Forética (2025), ISOTools (2024), Pacto Mundial ONU España (2025), CDP (2024), GRI (2024)
+
+**Observació clau**: Hi ha més de 25.000 empreses espanyoles amb alguna certificació ESG activa. Aquestes són el nostre públic natural: ja creuen en la sostenibilitat, ja inverteixen en reporting, i necessiten entendre com els afecten els nous informes institucionals.
+
+---
+
+## 14. Empreses espanyoles afectades per CSRD (regulació obligatòria)
+
+| Fase | Empreses afectades ES | Quan | Què han de fer |
+|------|----------------------|------|----------------|
+| Fase 1 (NFRD prèvia) | ~1.200 grans cotitzades | Ja reportant (2024) | Reporting ESRS complet |
+| Fase 2 (CSRD) | +2.500 grans no cotitzades | 2025 (exercici 2024) | Reporting ESRS complet |
+| Fase 3 (pimes cotitzades) | +1.000 | 2026 (exercici 2025) | Reporting ESRS simplificat |
+| Fase 4 (Omnibus simplificació) | Redueix a >1.000 treballadors + 450M€ | 2026 | Redueix càrrega |
+| **Total afectades ES** | **~5.500 empreses** (estimació, post-Omnibus) | | |
+
+**Font**: PwC España (2024), EY (2024), Osapiens (2024), ICAC (2026)
+
+Aquestes 5.500 empreses tenen obligació legal de fer reporting ESG. Necessiten entendre els canvis normatius i com els afecten. Són un mercat captiu.
+
+---
+
+## 15. Competidors espanyols — detall ampliat (juliol 2026)
+
+### Competidors de contingut (notícies/informes)
+
+| Plataforma | Format | Subscriptors estimats | Preu | Diferència amb Criteri |
+|------------|--------|----------------------|------|------------------------|
+| **Forética** | Informes gratis + events | No subscripció (descàrregues lliures) | Informes gratis / 200-500€ events | Sense anàlisi crítica ni cross-reference |
+| **Pacto Mundial ONU España** | Informes + events | 1.890 participants | Gratis | Sense anàlisi crítica, focus en ODS |
+| **Expansión Sostenibilidad** | Secció diari + newsletter | ~50.000 lectors (part d'Expansión) | Subscripció Expansión | Notícies, no anàlisi estructurada |
+| **El País Retina** | Secció + newsletter | ~80.000 lectors (part d'El País) | Subscripció El País | Generalista, no especialitzat ESG |
+| **Cinco Días ESG** | Newsletter setmanal | ~15.000 (estimació) | Gratis | Notícies, no accionable |
+| **El Confidencial Hora Verde** | Newsletter setmanal | ~10.000-20.000 (estimació) | Gratis | Notícies generals sostenibilitat |
+| **El Economista ESG** | Secció + newsletter | ~10.000 (estimació) | Gratis | Notícies, no anàlisi |
+| **El Independiente** | Newsletter | ~5.000-10.000 (estimació) | Gratis | Notícies generals |
+| **Spainsif** | Informes + events | ~1.500 (membres associació) | Gratis (membres) | Focus inversió SRI, no empreses |
+
+### Competidors de serveis (consultoria/dades)
+
+| Plataforma | Tipus | Clients ES | Preu | Diferència amb Criteri |
+|------------|-------|-----------|------|------------------------|
+| **Big Four (Deloitte, PwC, EY, KPMG)** | Consultoria ESG | ~500-1.000 clients cadascuna | 50.000-500.000€/projecte | Cara, per a grans empreses |
+| **EcoVadis** | Ratings + plataforma | ~5.000-8.000 empreses valorades | 979-15.000€/any | Dades de proveïdors, no anàlisi d'informes |
+| **DNV / AENOR / Bureau Veritas** | Certificació (ISO, SGE 21) | ~10.000+ empreses | 2.000-15.000€/auditoria | Certifiquen, no analitzen informes |
+| **Sustainalytics / MSCI** | Ratings per inversors | ~200-500 clients institucionals ES | 20.000-100.000€/any | Per inversors, no per empreses |
+| **Dcycle / Manglai** | Software gestió ESG | ~500-1.000 pimes | 2.000-12.000€/any | Eines de reporting, no anàlisi |
+
+---
+
+## 16. Mercat econòmic ESG — dades globals i espanyoles
+
+### Mercat global
+
+| Mètrica | Valor | Font |
+|---------|-------|------|
+| Mercat global consultoria ESG | 8.120M$ (2024) → 39.000M$ (2034) | market.us |
+| Mercat global consultoria sostenibilitat | 16.890M$ (2026) → 24.440M$ (2030) | Research and Markets |
+| Actius gestionats amb criteris ASG (global) | 30 bilions $ (2025) | Bloomberg |
+| Empreses que reporten a CDP (global) | 22.700+ (2024) | CDP |
+| Empreses valorades per EcoVadis (global) | 100.000+ | EcoVadis |
+
+### Mercat espanyol
+
+| Mètrica | Valor | Font |
+|---------|-------|------|
+| Actius gestionats amb criteris ASG (gestores ES) | **236.894M€** | Spainsif 2024 |
+| Empreses afectades per CSRD | ~5.500 | Osapiens / PwC |
+| Empreses amb ISO 14001 | 20.836 | ISOTools 2024 |
+| Empreses B Corp certificades | 330 | B Lab Spain |
+| Empreses adherides Pacto Mundial | 1.890 | Pacto Mundial ONU España |
+| Cooperatives (economia social) | 16.000+ (creades última dècada) | CEPES |
+| Professionals ESG (estimació) | 10.000-17.000 | Criteri (càlcul propi) |
+
+---
+
+## 17. Potencial de clients per segment
+
+### Segment A: Empreses amb certificacions ESG actives
+
+| Subsegment | Empreses ES | Conversió realista Any 3 | Ingressos potencials |
+|------------|-------------|-------------------------|---------------------|
+| B Corp (330) | 330 | 10% = 33 | 14.520€/any |
+| SGE 21 (~60) | 60 | 15% = 9 | 3.960€/any |
+| ISO 14001 (20.836) | 20.836 | 0,5% = 104 | 45.760€/any |
+| EcoVadis (~6.000) | 6.000 | 1% = 60 | 26.400€/any |
+| Pacto Mundial (1.890) | 1.890 | 3% = 57 | 25.080€/any |
+| **Subtotal Segment A** | | **263 Premium** | **115.720€/any** |
+
+### Segment B: Empreses afectades per CSRD
+
+| Subsegment | Empreses ES | Conversió realista Any 3 | Ingressos potencials |
+|------------|-------------|-------------------------|---------------------|
+| Grans cotitzades (IBEX 35 + IBEX Small Caps) | ~200 | 5% = 10 | 4.400€/any |
+| Grans no cotitzades (>250 treballadors) | ~3.000 | 0,5% = 15 | 6.600€/any |
+| Pimes cotitzades | ~1.000 | 0,3% = 3 | 1.320€/any |
+| **Subtotal Segment B** | | **28 Premium** | **12.320€/any** |
+
+### Segment C: Professionals ESG (consultories, gestores, etc.)
+
+| Subsegment | Professionals ES | Conversió realista Any 3 | Ingressos potencials |
+|------------|-----------------|-------------------------|---------------------|
+| CSO / directors sostenibilitat | ~2.500 | 4% = 100 | 44.000€/any |
+| Compliance officers | ~6.000 | 1% = 60 | 26.400€/any |
+| Consultories ESG | ~4.000 | 2% = 80 | 35.200€/any |
+| Gestores de fons SRI | ~800 | 5% = 40 | 17.600€/any |
+| **Subtotal Segment C** | | **280 Premium** | **123.200€/any** |
+
+### Segment D: Economia social (cooperatives)
+
+| Subsegment | Entitats ES | Conversió realista Any 3 | Ingressos potencials |
+|------------|-------------|-------------------------|---------------------|
+| Cooperatives | 16.000+ | 0,2% = 32 | 14.080€/any |
+| Empreses d'inserció | ~500 | 5% = 25 | 11.000€/any |
+| **Subtotal Segment D** | | **57 Premium** | **25.080€/any** |
+
+### Total potencial Any 3
+
+| Segment | Subscriptors Premium | Ingressos anuals |
+|---------|---------------------|------------------|
+| A: Certificacions ESG | 263 | 115.720€ |
+| B: CSRD | 28 | 12.320€ |
+| C: Professionals | 280 | 123.200€ |
+| D: Economia social | 57 | 25.080€ |
+| **Total** | **628 Premium** | **276.320€/any** |
+
+### Escenaris
+
+| Escenari | Any | Subscriptors Premium | Ingressos anuals |
+|----------|-----|---------------------|------------------|
+| Conservador | Any 3 | 200-400 | 88.000-176.000€ |
+| Realista | Any 3 | 600+ | 276.000€ |
+| Optimista | Any 5 | 1.000-1.500 | 440.000-660.000€ |
+
+---
+
+## 18. Comparació amb certificacions ESG i on està el nínxol de Criteri
+
+| Certificació / Competidor | Què ofereix | A qui serveix | Preu | Criteri hi competeix? |
+|---------------------------|-------------|---------------|------|----------------------|
+| **EcoVadis** | Rating de proveïdors | Empreses que volen avaluar cadena | 979-15.000€/any | No directament — nosaltres analitzem informes, no empreses |
+| **B Corp** | Certificació d'impacte | Empreses que volen demostrar impacte | 500-50.000€/any | No directament — nosaltres informem sobre com els afecten els marcs ESG |
+| **MSCI / Sustainalytics** | Ratings per inversors | Gestores de fons, bancs | 20.000-100.000€/any | No directament — nosaltres servim empreses, no inversors |
+| **Big Four** | Consultoria a mida | Grans empreses (>500M€) | 50.000-500.000€/projecte | Sí, però segment diferent — nosaltres serveim pimes i professionals |
+| **Forética** | Informes + SGE 21 | Empreses espanyoles | Gratis / 3.000-10.000€ | **Sí, competidor directe** però sense anàlisi crítica ni accions |
+| **Newsletters diaris** | Notícies ESG | Público general | Gratis | **Sí, competidor directe** però sense estructura 8 blocs ni cross-ref |
+
+### On està el nostre nínxol
+
+**Criteri no competeix amb**: EcoVadis (valora empreses), MSCI (serveix inversors), Big Four (consultoria a mida per grans).
+
+**Criteri competeix amb**: Forética (informes), newsletters de diaris (notícies).
+
+**La nostra diferenciació**: els altres donen informació; **nosaltres donem criteri**. Estructura fixa de 8 blocs, Semàfor Metodològic, Més enllà del Checkbox, accions recomanades, cross-reference amb certificacions. Ningú fa això a Espanya.
+
+---
+
+## 19. Riscos i consideracions
+
+1. **Competència gratis**: Forética i newsletters de diaris ofereixen contingut gratis. Si Criteri no es percep com a suficientment superior, la gent no pagarà. La diferenciació (Semàfor + Més enllà del Checkbox + accions) ha de ser evident des del primer contacte.
+
+2. **Estimacions de conversió**: les xifres de conversió (0,5%-15% per segment) són estimacions. La realitat pot ser menor. Cal validar amb els primers 50 subscriptors early bird.
+
+3. **Canvi regulatori**: l'Omnibus I ha simplificat el CSRD (redueix d'11.700 a 5.500 empreses afectades a Espanya). Això pot reduir l'urgència de reporting per a algunes empreses, però també crea necessitat d'entendre què queda i què no.
+
+4. **Mercat captiu vs. mercat lliure**: les 5.500 empreses afectades per CSRD són mercat captiu (han de reportar). Les 25.000+ amb certificacions són mercat lliure (poden triar). Criteri ha de servir tots dos.
+
+5. **Públic de la Roser**: les dades d'aquesta anàlisi serveixen per a la Roser per entendre:
+   - A qui ens dirigim (Segment C: professionals ESG és el més accessible)
+   - Quin preu és competitiu (440€/any és molt competitiu vs. Big Four i EcoVadis)
+   - Quina diferenciació és clau (Semàfor + Més enllà del Checkbox + accions + cross-ref)

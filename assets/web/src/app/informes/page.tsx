@@ -1,24 +1,22 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
 import { ReportsLibrary } from "@/components/sections/reports-library";
 import { RegisterDialog } from "@/components/register-dialog";
-import { ReportDialog } from "@/components/report-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { QuiSomDialog } from "@/components/qui-som-dialog";
 
 export default function InformesPage() {
+  const router = useRouter();
   const [registerOpen, setRegisterOpen] = useState(false);
-  const [reportOpen, setReportOpen] = useState(false);
   const [preusOpen, setPreusOpen] = useState(false);
   const [quiSomOpen, setQuiSomOpen] = useState(false);
-  const [selectedReportSlug, setSelectedReportSlug] = useState<string | null>(null);
 
   const handleOpenReport = (slug: string) => {
-    setSelectedReportSlug(slug);
-    setReportOpen(true);
+    router.push(`/informes/${slug}`);
   };
 
   return (
@@ -50,11 +48,6 @@ export default function InformesPage() {
 
       {/* Modals */}
       <RegisterDialog open={registerOpen} onOpenChange={setRegisterOpen} />
-      <ReportDialog
-        open={reportOpen}
-        onOpenChange={setReportOpen}
-        slug={selectedReportSlug}
-      />
       <PreusDialog
         open={preusOpen}
         onOpenChange={setPreusOpen}

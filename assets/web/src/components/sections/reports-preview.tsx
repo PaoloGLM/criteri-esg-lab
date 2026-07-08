@@ -44,7 +44,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
         <div className="relative">
           <div
             className="grid grid-cols-1 gap-4 overflow-hidden sm:grid-cols-2"
-            style={{ maxHeight: "340px" }}
+            style={{ maxHeight: "350px" }}
           >
             {previewReports.map((report) => (
               <ReportCard

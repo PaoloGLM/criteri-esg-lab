@@ -37,7 +37,8 @@
 - [ ] Z.ai-bot: generar HTML/PDF de 5 informes pilot (de gener-juny 2026)
 
 #### Setmana 2 (6-12 juliol)
-- [ ] Paolo: registrar domini `criteriesg.com` + variants (`criteriapp.com`, `criteri-esg.com`)
+- [x] **Paolo: registrar domini `criteriesg.com`** ✓ fet juliol 2026
+- [ ] Paolo: registrar variants defensives (`criteriapp.com`, `criteri-esg.com`) — opcional
 - [ ] Paolo: iniciar registre OEPM marca "CRITERI ESG"
 - [ ] Roser: tancar disseny final de la homepage (12 seccions)
 - [ ] Z.ai-bot: tancar disseny final de l'informe (Estil B v2)

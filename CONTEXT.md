@@ -336,7 +336,7 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
 
 1. Tancar disseny final de la web
 2. Processar 5 informes pilot amb 7 blocs complets (ara els blocs 3 i 5 tenen placeholder)
-3. Registrar domini `criteriesg.com` + variants
+3. Registrar domini `criteriesg.com` + variants ✓ **fet juliol 2026** (criteriesg.com registrat per en Paolo)
 4. Iniciar registre OEPM marca "CRITERI ESG"
 5. Crear comptes Beehiiv, Supabase, Stripe
 6. Crear comptes LinkedIn empresa + Twitter/X

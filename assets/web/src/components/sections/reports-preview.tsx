@@ -44,7 +44,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
         <div className="relative">
           <div
             className="grid grid-cols-1 gap-4 overflow-hidden sm:grid-cols-2"
-            style={{ maxHeight: "320px" }}
+            style={{ maxHeight: "340px" }}
           >
             {previewReports.map((report) => (
               <ReportCard
@@ -58,7 +58,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
 
           {/* Gradient overlay que difumina la part inferior */}
           <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-32"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
             style={{
               background: "linear-gradient(to bottom, rgba(245, 239, 230, 0) 0%, rgba(245, 239, 230, 0.85) 50%, #F5EFE6 100%)",
             }}

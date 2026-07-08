@@ -3,27 +3,18 @@
 import { useState } from "react";
 import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
-import { Hero } from "@/components/sections/hero";
-import { MidSections } from "@/components/sections/mid-sections";
-import { ReportsPreview } from "@/components/sections/reports-preview";
-import { FaqSection } from "@/components/sections/faq-section";
-import { FinalCta } from "@/components/sections/final-cta";
+import { ReportsLibrary } from "@/components/sections/reports-library";
 import { RegisterDialog } from "@/components/register-dialog";
 import { ReportDialog } from "@/components/report-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { QuiSomDialog } from "@/components/qui-som-dialog";
 
-export default function Home() {
+export default function InformesPage() {
   const [registerOpen, setRegisterOpen] = useState(false);
   const [reportOpen, setReportOpen] = useState(false);
   const [preusOpen, setPreusOpen] = useState(false);
   const [quiSomOpen, setQuiSomOpen] = useState(false);
   const [selectedReportSlug, setSelectedReportSlug] = useState<string | null>(null);
-
-  const handleOpenLatestReport = () => {
-    setSelectedReportSlug("revisio-esrs-maig-2026");
-    setReportOpen(true);
-  };
 
   const handleOpenReport = (slug: string) => {
     setSelectedReportSlug(slug);
@@ -37,26 +28,23 @@ export default function Home() {
         onOpenQuiSom={() => setQuiSomOpen(true)}
       />
       <main className="flex-1">
-        {/* 1. Hero (inclou "Què trobaràs") */}
-        <Hero
-          onOpenReport={handleOpenLatestReport}
-          onOpenRegister={() => setRegisterOpen(true)}
-        />
+        {/* Capçalera de la pàgina */}
+        <section className="border-b border-rule bg-secondary/30 py-12">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <p className="eyebrow mb-2">
+              BIBLIOTECA D'INFORMES
+            </p>
+            <h1 className="font-serif text-4xl font-semibold leading-tight text-primary sm:text-5xl">
+              Tots els informes processats.
+            </h1>
+            <div className="rule-accent my-5" />
+            <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
+              Cada informe està sintetitzat amb els 8 blocs (Semàfor Metodològic + 7 blocs narratius). Fes servir els filtres per trobar el que necessites.
+            </p>
+          </div>
+        </section>
 
-        {/* 2. Estalvia temps, només 5 min (inclou Vuit blocs + botó exemple real) */}
-        <MidSections
-          onOpenRegister={() => setRegisterOpen(true)}
-          onOpenReport={handleOpenLatestReport}
-        />
-
-        {/* 3. Biblioteca d'informes (preview 6 caselles + CTA a pàgina completa) */}
-        <ReportsPreview onOpenReport={handleOpenReport} />
-
-        {/* 4. FAQ */}
-        <FaqSection />
-
-        {/* 5. CTA final */}
-        <FinalCta onOpenRegister={() => setRegisterOpen(true)} />
+        <ReportsLibrary onOpenReport={handleOpenReport} />
       </main>
       <Footer />
 

@@ -29,11 +29,8 @@ export function Header({ onOpenPreus, onOpenQuiSom }: HeaderProps = {}) {
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
-          <a href="#informes" className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground">
+          <a href="/informes" className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground">
             {t("nav.informes")}
-          </a>
-          <a href="#certificacions" className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground">
-            {t("nav.certificacions")}
           </a>
           <button
             onClick={onOpenQuiSom}
@@ -112,11 +109,8 @@ export function Header({ onOpenPreus, onOpenQuiSom }: HeaderProps = {}) {
 
       {mobileOpen && (
         <nav className="flex flex-col gap-1 border-t border-rule bg-background px-4 py-3 md:hidden">
-          <a href="#informes" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">
+          <a href="/informes" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">
             {t("nav.informes")}
-          </a>
-          <a href="#certificacions" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">
-            {t("nav.certificacions")}
           </a>
           <button
             onClick={() => { setMobileOpen(false); onOpenQuiSom?.(); }}

@@ -3,12 +3,6 @@
 import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import {
   Layers,
   Network,
   Target,
@@ -39,7 +33,7 @@ export function MidSections({ onOpenRegister, onOpenReport }: MidSectionsProps =
                 {t("sections.informes.title").toUpperCase()}
               </p>
               <h2 className="font-serif text-3xl font-semibold leading-tight text-primary sm:text-4xl">
-                Hores d'anàlisi, en 5 minuts de lectura.
+                Estalvia temps, només 5 min.
               </h2>
               <div className="rule-accent my-6" />
               <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
@@ -96,59 +90,6 @@ export function MidSections({ onOpenRegister, onOpenReport }: MidSectionsProps =
           <p className="mt-3 text-center text-xs text-muted-foreground">
             {t("format.exemple.note")}
           </p>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section id="faq" className="border-b border-rule py-16 sm:py-20">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <p className="eyebrow mb-3">PREGUNTES FREQÜENTS</p>
-          <h2 className="font-serif text-3xl font-semibold leading-tight text-primary sm:text-4xl">
-            Tot el que et pots preguntar.
-          </h2>
-          <div className="rule-accent my-6" />
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="q1">
-              <AccordionTrigger className="text-left text-base font-medium">
-                És una eina de compliance o estratègica?
-              </AccordionTrigger>
-              <AccordionContent className="text-sm leading-relaxed text-foreground/75">
-                Tots dos. Cobrim el que és obligatori (CSRD, CSDDD, SFDR) i el que és estratègic (EcoVadis, B Corp, MSCI rating). L'usuari tria el seu enfocament: pot prioritzar compliment normatiu o millorar reputació.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="q2">
-              <AccordionTrigger className="text-left text-base font-medium">
-                Quins frameworks cobriu?
-              </AccordionTrigger>
-              <AccordionContent className="text-sm leading-relaxed text-foreground/75">
-                Els 7 més usats: CSRD/ESRS, Taxonomia UE, SFDR, CSDDD, GRI, SASB, TCFD/TNFD. A més de les certificacions EcoVadis, B Corp, MSCI ESG, Sustainalytics, ISS ESG i CDP.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="q3">
-              <AccordionTrigger className="text-left text-base font-medium">
-                Com es comparen els informes entre ells?
-              </AccordionTrigger>
-              <AccordionContent className="text-sm leading-relaxed text-foreground/75">
-                Cada informe té cross-reference amb altres informes i amb els 5 frameworks principals. Pots veure evolucions, contradiccions i complementarietats.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="q4">
-              <AccordionTrigger className="text-left text-base font-medium">
-                Quan entra en vigor la subscripció?
-              </AccordionTrigger>
-              <AccordionContent className="text-sm leading-relaxed text-foreground/75">
-                La web obre al públic el setembre 2026. La newsletter bimensual ja està operativa. Els primers 50 subscriptors premium tenen preu promocional de 29€/mes (vs 39€ normal) de per vida.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="q5">
-              <AccordionTrigger className="text-left text-base font-medium">
-                Puc provar-ho abans de pagar?
-              </AccordionTrigger>
-              <AccordionContent className="text-sm leading-relaxed text-foreground/75">
-                Sí. 7 dies de prova premium sense targeta. La newsletter i 3 informes oberts al mes són gratuïts per sempre amb registre.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
         </div>
       </section>
     </>

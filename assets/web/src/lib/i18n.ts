@@ -5,8 +5,7 @@ export type TranslationKey = keyof typeof translations;
 export const translations = {
   "brand.name": { ca: "Criteri ESG", es: "Criteri ESG" },
 
-  "nav.informes": { ca: "Informes", es: "Informes" },
-  "nav.certificacions": { ca: "Certificacions", es: "Certificaciones" },
+  "nav.informes": { ca: "Biblioteca d'informes", es: "Biblioteca de informes" },
   "nav.quisom": { ca: "Qui som", es: "Quiénes somos" },
   "nav.preus": { ca: "Preus", es: "Precios" },
   "nav.login": { ca: "Inicia sessió", es: "Inicia sesión" },
@@ -49,6 +48,11 @@ export const translations = {
   "sections.certif.desc": {
     ca: "Dossiers pas a pas per pujar EcoVadis, obtenir B Corp, passar CSRD o millorar MSCI rating.",
     es: "Dossiers paso a paso para subir EcoVadis, obtener B Corp, pasar CSRD o mejorar MSCI rating.",
+  },
+  "sections.crossref.title": { ca: "Cross-reference amb frameworks", es: "Cross-reference con frameworks" },
+  "sections.crossref.desc": {
+    ca: "Cada informe es mapeja amb EcoVadis, B Corp, MSCI i GRI perquè sàpigues com t'afecta segons la teva certificació.",
+    es: "Cada informe se mapea con EcoVadis, B Corp, MSCI y GRI para que sepas cómo te afecta según tu certificación.",
   },
   "sections.autodiag.title": { ca: "Autodiagnòstic", es: "Autodiagnóstico" },
   "sections.autodiag.desc": {

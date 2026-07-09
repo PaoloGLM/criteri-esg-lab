@@ -341,8 +341,9 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
 4. Iniciar registre OEPM marca "CRITERI ESG"
 5. Crear comptes Beehiiv, Supabase, Stripe
 6. Crear comptes LinkedIn empresa + Twitter/X
-7. ✓ **Deploy a Vercel** (juliol 2026) — web desplegada, pendent connectar domini
-8. ✓ **Email corporatiu** (juliol 2026) — `paolo@criteriesg.com` configurat via ImprovMX (rebre) + Resend (enviar). Reenvia a Gmail.
+7. ✓ **Deploy a Vercel** (juliol 2026) — web desplegada a `criteri-esg-lab.vercel.app`
+8. ✓ **Domini connectat a Vercel** (juliol 2026) — `criteriesg.com` funcionant amb SSL
+9. ✓ **Email corporatiu** (juliol 2026) — `info@criteriesg.com` configurat via ImprovMX (rebre) + Resend (enviar). Reenvia a Gmail. DMARC + SPF configurats.
 7. Incorporar la Roser (Tech Lead) al flux de treball ✓ fet juliol 2026
 
 ---

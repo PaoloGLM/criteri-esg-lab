@@ -1,0 +1,39 @@
+# Criteri ESG
+
+> Criteri ESG is a service that synthesizes European institutional ESG reports into 8 actionable blocks for sustainability directors, compliance officers, and ESG consultants. Each report includes a Methodological Semaphore (A-D grade), 5 key data points, executive summary, implications, connections, recommended actions, and cross-references with EcoVadis, B Corp, MSCI ESG, and GRI frameworks.
+
+## Services
+- ESG report library (processed with 8 blocks): https://criteriesg.com/informes
+- Bimonthly ESG newsletter
+- Cross-reference with EcoVadis, B Corp, MSCI ESG, GRI certifications
+- Methodological Semaphore: quality assessment of ESG reports (A-D grade)
+- "Beyond the Checkbox": ethical editorial analysis from Mediterranean perspective
+
+## Areas of expertise
+- CSRD (Corporate Sustainability Reporting Directive)
+- ESRS (European Sustainability Reporting Standards)
+- EcoVadis methodology and ratings
+- B Corp certification (B Lab Standards V2.1)
+- MSCI ESG ratings
+- GRI Standards (Global Reporting Initiative)
+- TCFD (Task Force on Climate-related Financial Disclosures)
+- TNFD (Taskforce on Nature-related Financial Disclosures)
+- SFDR (Sustainable Finance Disclosure Regulation)
+- CSDDD (Corporate Sustainability Due Diligence Directive)
+- EU Taxonomy
+- ISO 14001
+- UN Global Compact / SDGs
+
+## Languages
+- Catalan (default)
+- Spanish
+- Both languages available on all pages via language toggle
+
+## Contact
+- Email: info@criteriesg.com
+- Website: https://criteriesg.com
+
+## Pricing
+- Free: newsletter + 3 reports/month + reports older than 6 months
+- Premium: 440 EUR/year (early bird 290 EUR/year for first 50 subscribers)
+- Ultra: available April 2027

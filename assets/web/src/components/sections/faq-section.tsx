@@ -11,7 +11,59 @@ import {
 export function FaqSection() {
   const { t } = useLanguage();
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "És una eina de compliance o estratègica?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Tots dos. Cobrim el que és obligatori (CSRD, CSDDD, SFDR) i el que és estratègic (EcoVadis, B Corp, MSCI rating). L'usuari tria el seu enfocament.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Quins frameworks cobriu?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Els 7 més usats: CSRD/ESRS, Taxonomia UE, SFDR, CSDDD, GRI, SASB, TCFD/TNFD. A més de les certificacions EcoVadis, B Corp, MSCI ESG, Sustainalytics, ISS ESG i CDP.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Com es comparen els informes entre ells?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Cada informe té cross-reference amb altres informes i amb els 5 frameworks principals. Pots veure evolucions, contradiccions i complementarietats.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Quan entra en vigor la subscripció?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "La web obre al públic el setembre 2026. Els primers 50 subscriptors Premium tenen preu promocional de 290€/any (vs 440€ normal) de per vida.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Puc provar-ho abans de pagar?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sí. 7 dies de prova premium sense targeta. La newsletter i 3 informes oberts al mes són gratuïts per sempre amb registre.",
+        },
+      },
+    ],
+  };
+
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+    />
     <section id="faq" className="border-b border-rule py-16 sm:py-20">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <p className="eyebrow mb-3">PREGUNTES FREQÜENTS</p>
@@ -63,5 +115,6 @@ export function FaqSection() {
         </Accordion>
       </div>
     </section>
+    </>
   );
 }

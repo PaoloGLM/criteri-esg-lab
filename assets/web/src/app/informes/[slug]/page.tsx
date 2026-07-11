@@ -117,8 +117,44 @@ export default function InformeSlugPage() {
     setRegisterOpen(true);
   };
 
+  const articleJsonLd = report
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: report.title,
+        author: {
+          "@type": "Organization",
+          name: "Criteri ESG",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "Criteri ESG",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://criteriesg.com/logo.svg",
+          },
+        },
+        datePublished: report.date,
+        dateModified: report.date,
+        description: report.summary,
+        about: report.tags.join(", "),
+        inLanguage: lang === "ca" ? "ca" : "es",
+        isPartOf: {
+          "@type": "WebSite",
+          name: "Criteri ESG",
+          url: "https://criteriesg.com",
+        },
+      }
+    : null;
+
   return (
     <div className="flex min-h-screen flex-col bg-background">
+      {articleJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        />
+      )}
       <Header
         onOpenPreus={() => setPreusOpen(true)}
         onOpenQuiSom={() => setQuiSomOpen(true)}

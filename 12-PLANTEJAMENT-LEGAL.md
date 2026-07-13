@@ -503,6 +503,166 @@ La web ha de tenir:
 
 ---
 
+## Política de privacitat (juliol 2026)
+
+La política de privacitat completa està disponible a:
+- **Web**: `https://criteriesg.com/privacidad`
+- **Mockup HTML**: `assets/web/public/privacidad.html`
+- **Adaptada de**: Vitivin PRO SCCL (revisada per advocat)
+
+### Punts clau
+
+1. **Responsable**: CRITERI ESG · info@criteriesg.com
+2. **Base legal**: consentiment (newsletter), execució de contracte (servei), obligació legal (facturació)
+3. **Dades obligatòries**: nom + email. Opcionals: empresa, interessos
+4. **Conservació**: compte 30 dies post-baixa; factures 6 anys (llei)
+5. **Eliminació (GDPR dret a l'oblit)**: soft delete 30 dies → anonimització
+6. **Destinataris**: Supabase (UE), Vercel (UE), Stripe (UE), Fiare (ES), Resend (UE), Beehiiv (EE.UU. amb CCT)
+7. **Drets RGPD**: accés, rectificació, supressió, limitació, portabilitat, oposició
+8. **Contacte**: info@criteriesg.com amb assumpte "Ejercicio de derechos RGPD"
+
+### Recomanació
+
+La política està adaptada de Vitivin (revisada per advocat). Es recomana una **revisió legal específica** abans del llançament (setembre 2026) per:
+- Verificar que cobreix els 3 mètodes de login (magic link, contrasenya, Google OAuth)
+- Verificar l'apartat de transferències internacionals (Beehiiv EE.UU.)
+- Verificar l'apartat d'estudiants universitaris (futur)
+
+---
+
+## Estructura de base de dades (Supabase / PostgreSQL)
+
+### Taula `profiles` (extensió d'auth.users)
+
+```sql
+create table profiles (
+  id uuid references auth.users primary key,
+  email text not null,
+  full_name text,
+  company text,
+  nif_cif text,
+  phone text,
+  preferred_language text default 'es' check (preferred_language in ('ca', 'es')),
+  sector text,
+  certifications text[],
+  interests text[],
+  user_type text default 'standard' check (user_type in ('standard', 'student', 'b2b_admin', 'b2b_member')),
+  newsletter_subscribed boolean default true,
+  newsletter_language text default 'es' check (newsletter_language in ('ca', 'es')),
+  gdpr_consent boolean default false,
+  gdpr_consent_date timestamptz,
+  marketing_consent boolean default false,
+  marketing_consent_date timestamptz,
+  is_active boolean default true,
+  deleted_at timestamptz,
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
+);
+```
+
+### Taula `subscriptions`
+
+```sql
+create table subscriptions (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid references profiles(id) not null,
+  plan text not null check (plan in ('free', 'premium', 'ultra')),
+  payment_method text check (payment_method in ('stripe', 'fiare')),
+  billing_period text check (billing_period in ('monthly', 'annual')),
+  status text not null default 'active' check (status in ('active', 'cancelled', 'expired', 'pending', 'suspended')),
+  started_at timestamptz not null default now(),
+  expires_at timestamptz,
+  cancelled_at timestamptz,
+  amount_paid numeric(10,2),
+  payment_currency text default 'EUR',
+  stripe_customer_id text,
+  stripe_subscription_id text,
+  fiare_proof_url text,
+  fiare_validated boolean default false,
+  fiscal_document_id uuid,
+  is_early_bird boolean default false,
+  early_bird_number integer,
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
+);
+```
+
+### Taula `documents_fiscals`
+
+```sql
+create table documents_fiscals (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid references profiles(id) not null,
+  subscription_id uuid references subscriptions(id),
+  type text not null check (type in ('receipt', 'invoice', 'credit_note')),
+  document_number text not null unique,
+  issue_date timestamptz not null default now(),
+  amount numeric(10,2) not null,
+  vat_amount numeric(10,2),
+  currency text default 'EUR',
+  client_name text not null,
+  client_nif text not null,
+  client_address text,
+  client_postal_code text,
+  concept text not null,
+  period_start date,
+  period_end date,
+  payment_method text check (payment_method in ('stripe', 'fiare')),
+  pdf_path text not null,
+  related_document_id uuid,
+  created_at timestamptz default now()
+);
+```
+
+### Taula `newsletter_subscribers`
+
+```sql
+create table newsletter_subscribers (
+  id uuid primary key default gen_random_uuid(),
+  email text not null unique,
+  language text default 'es' check (language in ('ca', 'es')),
+  source text default 'web',
+  is_active boolean default true,
+  unsubscribed_at timestamptz,
+  gdpr_consent boolean default false,
+  gdpr_consent_date timestamptz,
+  created_at timestamptz default now()
+);
+```
+
+### Taula `report_views` (auditoria)
+
+```sql
+create table report_views (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid references profiles(id),
+  report_slug text not null,
+  viewed_at timestamptz default now(),
+  ip_address inet,
+  user_agent text
+);
+```
+
+### Row Level Security (RLS)
+
+```sql
+-- Cada usuari només veu el seu perfil
+create policy "Users see own profile" on profiles
+  for select using (auth.uid() = id);
+
+-- Cada usuari només veu les seves subscripcions
+create policy "Users see own subscriptions" on subscriptions
+  for select using (auth.uid() = user_id);
+
+-- Cada usuari només veu els seus documents fiscals
+create policy "Users see own documents" on documents_fiscals
+  for select using (auth.uid() = user_id);
+```
+
+En Paolo (admin) pot veure totes les taules via `service_role` key de Supabase.
+
+---
+
 ## Històric de canvis
 
 - **27 juny 2026** — Versió inicial 1.0. Cobertura completa: autònom, SL, sòcia, documentació, costos per fases, fonts verificades

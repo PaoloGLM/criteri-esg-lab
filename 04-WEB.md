@@ -239,6 +239,83 @@ Disponibles a `/home/z/my-project/download/`:
 - Integració Stripe per pagaments
 - Integració NextAuth per login real
 
+## Sistema de registre i comptes d'usuari (definit juliol 2026)
+
+### Tipus d'usuari
+
+| Tipus | Com es registra | Què pot fer | Dades que guardem |
+|-------|----------------|-------------|-------------------|
+| **Newsletter** | Formulari registre (mateix que Free) | Rep newsletter bimensual | Email, idioma, data alta |
+| **Free** | Email + nom (obligatoris), empresa + interessos (opcionals) | Veure informes >6 mesos + 3 informes/mes + newsletter | Email, nom, empresa, interessos, idioma |
+| **Premium** | Free + pagament (Stripe o Fiare) | Tot Free + informes recents + cross-ref + accions + Preguntes | Tot Free + dades fiscals + mètode pagament + estat subscripció |
+| **Student** (futur) | Registre amb email universitari (.edu, .es) | Accés gratuït a tot (futur) | Mateix que Free + verificació email universitari |
+| **B2B** (futur 2027) | Admin convida membres | Premium per a equip (5 usuaris) + API + dashboard | Tot Premium + gestió d'equip |
+
+### Mètodes de login
+
+1. **Magic link** (per defecte — email sense contrasenya, més còmode i segur)
+2. **Email + contrasenya** (per als que prefereixin contrasenya)
+3. **Google OAuth** (per iniciar sessió amb compte Google)
+
+Tots gestionats per **Supabase Auth**.
+
+### Idioma per defecte
+
+- **Web**: castellà per defecte, català opcional (toggle al header)
+- **Newsletter**: castellà per defecte, català opcional (checkbox al registre)
+- L'usuari pot canviar l'idioma en qualsevol moment des de la seva compte
+
+### Formulari de registre (mockup a `assets/web/public/registro-mockup.html`)
+
+Camps:
+- **Obligatoris**: nom, email
+- **Opcionals**: empresa, interessos (10 temes ESG seleccionables)
+- **Newsletter**: checkbox marcat per defecte, idioma castellà per defecte amb opció català
+- **Selector de pla**: Gratis (per defecte) o Premium (early bird 290€/any)
+- **GDPR**: checkbox obligatori d'acceptació de política de privacitat i termes
+
+Flux:
+1. Usuari omple formulari
+2. Tria pla (Gratis o Premium)
+3. Si Premium → després del registre va al formulari de pagament (Stripe o Fiare)
+4. Si Gratis → compte creada, email de confirmació
+
+### Pàgina de compte d'usuari (mockup a `assets/web/public/cuenta-mockup.html`)
+
+4 pestanyes:
+1. **Suscripción**: estat, mètode pagament, preu, renovació, ús
+2. **Mi perfil**: dades editables + interessos + idioma + zona de perill (baixa newsletter + eliminar compte)
+3. **Documentos**: taula de rebuts i factures amb descàrrega PDF
+4. **Seguridad**: mètodes de login, sessions actives, GDPR (consentiment, exportació de dades)
+
+### Estructura de base de dades (Supabase / PostgreSQL)
+
+Veure detall SQL al document `12-PLANTEJAMENT-LEGAL.md` secció "Estructura de base de dades".
+
+Taules principals:
+- `profiles` (extensió d'auth.users): nom, email, empresa, interessos, idioma, tipus d'usuari, GDPR
+- `subscriptions`: pla, mètode pagament, estat, dates, Stripe/Fiare
+- `documents_fiscals`: rebuts i factures amb PDF
+- `newsletter_subscribers`: registres només newsletter
+- `report_views`: auditoria d'accés a informes
+
+### Seguretat
+
+- **Row Level Security (RLS)**: cada usuari només veu les seves dades
+- **Rate limiting**: 5 intents de login / 15 minuts (Supabase Auth)
+- **Encriptació**: TLS 1.3 en trànsit, AES-256 en repòs
+- **Backups**: diaris amb 7 dies de retenció (Supabase)
+- **Detecció de frau**: `report_views` registra IP + user agent
+- **Sense emmagatzematge de dades de targeta**: Stripe gestiona tot el processament (PCI-DSS)
+
+### Cancel·lació de comptes (GDPR)
+
+1. **Cancel·lar Premium**: usuari passa a Free. Manté accés fins que caduqui
+2. **Baixa newsletter**: deixa de rebre newsletter però manté compte
+3. **Eliminar compte**: soft delete (30 dies per recuperar) → anonimització de dades personals → factures es conserven 6 anys (llei)
+
+---
+
 ## Històric de canvis
 
 - **5 juliol 2026** — Definida **arquitectura d'automatització** completa: crawler Vercel Cron + Z.ai-bot API + Supabase com a CMS + revisió humana obligatòria. Provider d'IA modular (no vendor lock-in). Decisió d'integrar API des de l'inici (no semiautomàtic).

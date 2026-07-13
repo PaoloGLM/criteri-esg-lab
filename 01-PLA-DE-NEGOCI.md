@@ -18,7 +18,7 @@ Cap empresa hauria de decidir a cegues en matèria d'ètica i sostenibilitat. La
 
 ### 1. Freemium (adquisició)
 - Newsletter setmanal gratuïta: 3 informes + 1 connexió
-- 3 informes oberts al mes al web
+- Acceso a resúmenes de informes generados por Criteri ESG (> 6 meses)
 - Autodiagnòstic bàsic
 - Objectiu: 3.000 subscriptors gratuïts en 6 mesos
 

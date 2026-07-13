@@ -369,7 +369,7 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
 
 5. **Ritme de revisió de fonts**: Z.ai-bot revisa les fonts els **dilluns i dijous al matí**. Processa els informes nous amb 7 blocs i els publica a la web.
 
-6. **Newsletter**: s'envia els **dijous a les 15:00h** (hora de Barcelona). Freqüència bimensual (cada 2 setmanes). Mínim 2 informes, màxim 4 per newsletter. Si no hi ha prou informes institucionals, s'afegeixen de fonts no institucionals (think tanks, ONGs, iniciatives).
+6. **Newsletter**: s'envia els **dijous a les 15:00h** (hora de Barcelona). Freqüència bimensual (cada 2 setmanes). Informes recents, notícies i creuaments d'informació rellevants. Si no hi ha prou informes institucionals, s'afegeixen de fonts no institucionals (think tanks, ONGs, iniciatives).
 
 7. **Nous tipus de fonts aprovades**: articles acadèmics (ètica empresarial, ESG, mètriques, metodologies), informes globals (UN, World Bank, IMF, WTO, ILO, BIS, ISO, UNCTAD), fonts espanyoles addicionals (CEOE, Pimec, Cámara Comerç, Cercle Economia), fonts catalanes addicionals (Cambra BCN, Foment Treball), i fonts globals addicionals (Harvard, Stanford, IESE, ESADE, MIT, LSE, Journal of Business Ethics).
 

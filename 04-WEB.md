@@ -246,7 +246,7 @@ Disponibles a `/home/z/my-project/download/`:
 | Tipus | Com es registra | Què pot fer | Dades que guardem |
 |-------|----------------|-------------|-------------------|
 | **Newsletter** | Formulari registre (mateix que Free) | Rep newsletter bimensual | Email, idioma, data alta |
-| **Free** | Email + nom (obligatoris), empresa + interessos (opcionals) | Veure informes >6 mesos + 3 informes/mes + newsletter | Email, nom, empresa, interessos, idioma |
+| **Free** | Email + nom (obligatoris), empresa + interessos (opcionals) | Veure informes >6 mesos + newsletter | Email, nom, empresa, interessos, idioma |
 | **Premium** | Free + pagament (Stripe o Fiare) | Tot Free + informes recents + cross-ref + accions + Preguntes | Tot Free + dades fiscals + mètode pagament + estat subscripció |
 | **Student** (futur) | Registre amb email universitari (.edu, .es) | Accés gratuït a tot (futur) | Mateix que Free + verificació email universitari |
 | **B2B** (futur 2027) | Admin convida membres | Premium per a equip (5 usuaris) + API + dashboard | Tot Premium + gestió d'equip |

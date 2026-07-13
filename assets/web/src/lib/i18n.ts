@@ -61,8 +61,8 @@ export const translations = {
   },
   "sections.newsletter.title": { ca: "Newsletter bimensual", es: "Newsletter bimensual" },
   "sections.newsletter.desc": {
-    ca: "3 informes destacats + 1 connexió entre ells, cada dues setmanes. Gratuït, cancel·la quan vulguis.",
-    es: "3 informes destacados + 1 conexión entre ellos, cada dos semanas. Gratuito, cancela cuando quieras.",
+    ca: "Informes recents, notícies i creuaments d'informació rellevants, cada dues setmanes. Gratuït, cancel·la quan vulguis.",
+    es: "Informes recientes, noticias y cruces de información relevantes, cada dos semanas. Gratuito, cancela cuando quieras.",
   },
   "sections.semafor.title": { ca: "Semàfor Metodològic", es: "Semáforo Metodológico" },
   "sections.semafor.desc": {
@@ -100,8 +100,8 @@ export const translations = {
 
   "cta.newsletter.eyebrow": { ca: "La newsletter gratuïta", es: "La newsletter gratuita" },
   "cta.newsletter.title": {
-    ca: "Cada dues setmanes, 3 informes que has de conèixer.",
-    es: "Cada dos semanas, 3 informes que debes conocer.",
+    ca: "Cada dues setmanes, informes que has de conèixer.",
+    es: "Cada dos semanas, informes que debes conocer.",
   },
   "cta.newsletter.body": {
     ca: "Resums executius de 300 paraules + una connexió entre ells. 5 minuts de lectura que et posen al dia. Cancel·la quan vulguis.",
@@ -116,8 +116,8 @@ export const translations = {
 
   "form.title": { ca: "Registre gratuït", es: "Registro gratuito" },
   "form.subtitle": {
-    ca: "Accedeix a 3 informes oberts al mes i a la newsletter bimensual. Sense cost, sense targeta.",
-    es: "Accede a 3 informes abiertos al mes y a la newsletter bimensual. Sin coste, sin tarjeta.",
+    ca: "Accedeix als informes oberts (>6 mesos) i a la newsletter bimensual. Sense cost, sense targeta.",
+    es: "Accede a los informes abiertos (>6 meses) y a la newsletter bimensual. Sin coste, sin tarjeta.",
   },
   "form.name": { ca: "Nom i cognoms", es: "Nombre y apellidos" },
   "form.name.placeholder": { ca: "Ex: Maria Puig", es: "Ej: María Puig" },
@@ -197,7 +197,7 @@ export const translations = {
     es: "Para empezar a entender el ecosistema ESG europeo.",
   },
   "preus.free.f1": { ca: "Newsletter bimensual", es: "Newsletter bimensual" },
-  "preus.free.f2": { ca: "3 informes oberts al mes", es: "3 informes abiertos al mes" },
+  "preus.free.f2": { ca: "Accés a informes >6 mesos", es: "Acceso a informes >6 meses" },
   "preus.free.f3": { ca: "Informes amb més de 6 mesos (arxiu)", es: "Informes con más de 6 meses (archivo)" },
   "preus.free.f4": { ca: "Accés a la biblioteca pública", es: "Acceso a la biblioteca pública" },
   "preus.free.cta": { ca: "Comença gratis", es: "Empieza gratis" },

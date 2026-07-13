@@ -28,10 +28,10 @@
   .btn-magic { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px; border: 1px solid #C9B89A; border-radius: 6px; background: white; cursor: pointer; font-size: 14px; font-family: 'Inter', sans-serif; color: #2C1810; transition: background 0.15s; }
   .btn-magic:hover { background: #F5EFE6; }
 
-  .divider { text-align: center; margin: 16px 0; font-size: 12px; color: #9C8B7A; position: relative; }
-  .divider::before, .divider::after { content: ""; position: absolute; top: 50%; width: 40%; height: 1px; background: #C9B89A; }
-  .divider::before { left: 0; }
-  .divider::after { right: 0; }
+  .divider { text-align: center; margin: 16px 0; font-size: 12px; color: #9C8B7A; position: relative; padding: 0 10px; }
+  .divider::before, .divider::after { content: ""; position: absolute; top: 50%; width: 35%; height: 1px; background: #C9B89A; }
+  .divider::before { left: 5%; }
+  .divider::after { right: 5%; }
 
   /* Form fields */
   .field { margin-bottom: 14px; }
@@ -88,17 +88,16 @@
 <div class="page">
   <p class="kicker">CRITERI ESG · REGISTRO</p>
   <h1>Crea tu cuenta gratuita</h1>
-  <p class="subtitle">Accede a informes ESG, newsletter bimensual y más.</p>
+  <p class="subtitle">Regístrate para poder acceder a newsletters, informes ESG y más!</p>
 
   <div class="card">
     <!-- Beneficios -->
     <div class="benefits">
       <div class="benefits-title">QUÉ OBTIENES GRATIS</div>
       <ul>
-        <li>Newsletter bimensual con 3 informes destacados</li>
-        <li>3 informes abiertos al mes (rotación)</li>
-        <li>Acceso a todos los informes con más de 6 meses</li>
-        <li>Biblioteca pública con buscador y filtros</li>
+        <li>Newsletter bimensual con informes recientes, noticias y cruces de información relevantes</li>
+        <li>Acceso en abierto a los resúmenes de informes generados por Criteri ESG (> 6 meses)</li>
+        <li>Diversas fuentes de información que te harán reflexionar sobre cómo transformar éticamente las empresas</li>
       </ul>
     </div>
 
@@ -107,9 +106,6 @@
       <button class="btn-google" onclick="alert('Login con Google (simulación)')">
         <img src="https://www.google.com/favicon.ico" alt="Google" onerror="this.style.display='none'">
         Continuar con Google
-      </button>
-      <button class="btn-magic" onclick="alert('Magic link enviado (simulación)')">
-        \u2709 Enviar enlace mágico por email
       </button>
     </div>
 
@@ -140,13 +136,11 @@
           <label class="interest-chip"><input type="checkbox" value="CSRD"> CSRD / ESRS</label>
           <label class="interest-chip"><input type="checkbox" value="EcoVadis"> EcoVadis</label>
           <label class="interest-chip"><input type="checkbox" value="B Corp"> B Corp</label>
-          <label class="interest-chip"><input type="checkbox" value="MSCI"> MSCI ESG</label>
-          <label class="interest-chip"><input type="checkbox" value="GRI"> GRI</label>
-          <label class="interest-chip"><input type="checkbox" value="TCFD"> TCFD / TNFD</label>
-          <label class="interest-chip"><input type="checkbox" value="SFDR"> SFDR</label>
-          <label class="interest-chip"><input type="checkbox" value="CSDDD"> CSDDD</label>
-          <label class="interest-chip"><input type="checkbox" value="Scope3"> Scope 3</label>
-          <label class="interest-chip"><input type="checkbox" value="BancaEtica"> Banca ética</label>
+          <label class="interest-chip"><input type="checkbox" value="EconomiaCircular"> Economía circular</label>
+          <label class="interest-chip"><input type="checkbox" value="InversionImpacto"> Inversión de impacto (SFDR)</label>
+          <label class="interest-chip"><input type="checkbox" value="BienComun"> Bien común</label>
+          <label class="interest-chip"><input type="checkbox" value="EticaEmpresarial"> Ética empresarial</label>
+          <label class="interest-chip"><input type="checkbox" value="CSDDD"> Derechos Humanos y Cadena de Valor (CSDDD)</label>
         </div>
       </div>
 
@@ -156,12 +150,12 @@
           <input type="checkbox" id="newsletter" checked>
           <label for="newsletter">
             <strong>Sí, quiero recibir la newsletter bimensual gratuita</strong><br>
-            <span style="font-size: 11px; color: #9C8B7A;">3 informes destacados + 1 conexión entre ellos, cada 2 semanas.</span>
+            <span style="font-size: 11px; color: #9C8B7A;">Informes recientes, noticias y cruces de información relevantes, cada 2 semanas.</span>
           </label>
         </div>
         <div class="lang-row">
           <span style="font-size: 11px; color: #9C8B7A; margin-right: 4px;">Idioma:</span>
-          <label><input type="radio" name="nl-lang" value="es" checked> Español (por defecto)</label>
+          <label><input type="radio" name="nl-lang" value="es" checked> Español</label>
           <label><input type="radio" name="nl-lang" value="ca"> Catalán</label>
         </div>
       </div>
@@ -174,14 +168,15 @@
             <input type="radio" name="plan" value="free" checked>
             <div class="plan-info">
               <div class="plan-name">Gratis</div>
-              <div class="plan-price">0€ · Newsletter + 3 informes/mes + archivo >6 meses</div>
+              <div class="plan-price">Newsletter + acceso a informes >6 meses</div>
             </div>
           </label>
           <label class="plan-option" onclick="selectPlan('premium')">
             <input type="radio" name="plan" value="premium">
             <div class="plan-info">
               <div class="plan-name">Premium <span class="plan-badge">Early bird</span></div>
-              <div class="plan-price">290€/año · Todo + informes recientes + cross-reference + acciones</div>
+              <div class="plan-price">290€/año primeros 50 usuarios (después 440€/año o 39€/mes)</div>
+              <div style="font-size: 12px; color: #6B5847; margin-top: 2px;">Acceso total a los informes, destilado con 8 categorías, cruces de información y apartado de reflexión para dirección.</div>
             </div>
           </label>
         </div>

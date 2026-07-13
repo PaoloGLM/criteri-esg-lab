@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Criteri ESG — Registro</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #F5EFE6; font-family: 'Inter', sans-serif; color: #2C1810; line-height: 1.6; padding: 40px 16px; }
+  .page { max-width: 480px; margin: 0 auto; }
+  .kicker { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #B87333; font-weight: 600; margin-bottom: 8px; }
+  h1 { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 600; margin-bottom: 6px; }
+  .subtitle { color: #6B5847; font-size: 14px; margin-bottom: 24px; }
+  .card { background: white; border: 1px solid #E5DDD0; border-radius: 8px; padding: 28px 24px; margin-bottom: 20px; }
+
+  /* Beneficios */
+  .benefits { background: rgba(184,115,51,0.06); border: 1px solid #B87333; border-radius: 6px; padding: 14px 16px; margin-bottom: 20px; }
+  .benefits-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #B87333; font-weight: 600; margin-bottom: 8px; }
+  .benefits ul { list-style: none; padding: 0; }
+  .benefits li { font-size: 13px; padding: 3px 0; display: flex; align-items: start; gap: 6px; }
+  .benefits li::before { content: "\2713"; color: #5C8A5C; font-weight: 700; flex-shrink: 0; }
+
+  /* Social login */
+  .social-row { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+  .btn-google { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px; border: 1px solid #C9B89A; border-radius: 6px; background: white; cursor: pointer; font-size: 14px; font-family: 'Inter', sans-serif; color: #2C1810; transition: background 0.15s; }
+  .btn-google:hover { background: #F5EFE6; }
+  .btn-google img { width: 18px; height: 18px; }
+  .btn-magic { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px; border: 1px solid #C9B89A; border-radius: 6px; background: white; cursor: pointer; font-size: 14px; font-family: 'Inter', sans-serif; color: #2C1810; transition: background 0.15s; }
+  .btn-magic:hover { background: #F5EFE6; }
+
+  .divider { text-align: center; margin: 16px 0; font-size: 12px; color: #9C8B7A; position: relative; }
+  .divider::before, .divider::after { content: ""; position: absolute; top: 50%; width: 40%; height: 1px; background: #C9B89A; }
+  .divider::before { left: 0; }
+  .divider::after { right: 0; }
+
+  /* Form fields */
+  .field { margin-bottom: 14px; }
+  .field-label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .field-label .opt { color: #9C8B7A; font-weight: 400; font-size: 11px; }
+  .input { width: 100%; padding: 10px 12px; border: 1px solid #C9B89A; border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 14px; background: #FFFCF7; color: #2C1810; }
+  .input:focus { outline: none; border-color: #B87333; box-shadow: 0 0 0 3px rgba(184,115,51,0.1); }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  /* Intereses */
+  .interests-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 4px; }
+  .interest-chip { display: flex; align-items: center; gap: 5px; padding: 5px 8px; border: 1px solid #C9B89A; border-radius: 4px; font-size: 12px; cursor: pointer; transition: all 0.15s; background: #FFFCF7; }
+  .interest-chip:hover { border-color: #B87333; }
+  .interest-chip input { margin: 0; }
+  .interest-chip.selected { background: rgba(184,115,51,0.1); border-color: #B87333; }
+
+  /* Newsletter */
+  .newsletter-box { background: #FFFCF7; border: 1px solid #C9B89A; border-radius: 6px; padding: 12px 14px; margin: 14px 0; }
+  .check-row { display: flex; align-items: start; gap: 8px; font-size: 13px; margin-bottom: 8px; }
+  .check-row input { margin-top: 3px; }
+  .lang-row { display: flex; align-items: center; gap: 12px; font-size: 13px; margin-top: 8px; padding-left: 24px; }
+  .lang-row label { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+
+  /* Plan selector */
+  .plan-selector { margin: 16px 0; }
+  .plan-selector-label { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+  .plan-options { display: flex; flex-direction: column; gap: 8px; }
+  .plan-option { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 2px solid #C9B89A; border-radius: 6px; cursor: pointer; transition: all 0.15s; background: #FFFCF7; }
+  .plan-option:hover { border-color: #B87333; }
+  .plan-option.selected { border-color: #B87333; background: rgba(184,115,51,0.06); }
+  .plan-option input { margin: 0; }
+  .plan-info { flex: 1; }
+  .plan-name { font-weight: 600; font-size: 14px; }
+  .plan-price { font-size: 12px; color: #9C8B7A; }
+  .plan-badge { font-size: 10px; padding: 2px 8px; border-radius: 8px; background: #B87333; color: white; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+
+  /* GDPR */
+  .gdpr-check { display: flex; align-items: start; gap: 8px; font-size: 12px; margin: 12px 0; color: #6B5847; }
+  .gdpr-check input { margin-top: 3px; }
+  .gdpr-check a { color: #B87333; }
+
+  /* Submit */
+  .btn-primary { width: 100%; padding: 12px; background: #B87333; color: white; border: none; border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.15s; }
+  .btn-primary:hover { background: #8A5526; }
+
+  /* Login link */
+  .login-link { text-align: center; font-size: 13px; color: #6B5847; margin-top: 16px; }
+  .login-link a { color: #B87333; font-weight: 500; }
+
+  .note { text-align: center; font-size: 11px; color: #9C8B7A; margin-top: 12px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <p class="kicker">CRITERI ESG · REGISTRO</p>
+  <h1>Crea tu cuenta gratuita</h1>
+  <p class="subtitle">Accede a informes ESG, newsletter bimensual y más.</p>
+
+  <div class="card">
+    <!-- Beneficios -->
+    <div class="benefits">
+      <div class="benefits-title">QUÉ OBTIENES GRATIS</div>
+      <ul>
+        <li>Newsletter bimensual con 3 informes destacados</li>
+        <li>3 informes abiertos al mes (rotación)</li>
+        <li>Acceso a todos los informes con más de 6 meses</li>
+        <li>Biblioteca pública con buscador y filtros</li>
+      </ul>
+    </div>
+
+    <!-- Social login -->
+    <div class="social-row">
+      <button class="btn-google" onclick="alert('Login con Google (simulación)')">
+        <img src="https://www.google.com/favicon.ico" alt="Google" onerror="this.style.display='none'">
+        Continuar con Google
+      </button>
+      <button class="btn-magic" onclick="alert('Magic link enviado (simulación)')">
+        \u2709 Enviar enlace mágico por email
+      </button>
+    </div>
+
+    <div class="divider">o regístrate con email</div>
+
+    <!-- Form -->
+    <form onsubmit="event.preventDefault(); handleRegister();">
+
+      <div class="row-2">
+        <div class="field">
+          <label class="field-label">Nombre *</label>
+          <input type="text" class="input" placeholder="Tu nombre" required>
+        </div>
+        <div class="field">
+          <label class="field-label">Email *</label>
+          <input type="email" class="input" placeholder="tu@email.com" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Empresa <span class="opt">(opcional)</span></label>
+        <input type="text" class="input" placeholder="Nombre de tu empresa u organización">
+      </div>
+
+      <div class="field">
+        <label class="field-label">Intereses <span class="opt">(opcional — para recomendarte informes relevantes)</span></label>
+        <div class="interests-grid">
+          <label class="interest-chip"><input type="checkbox" value="CSRD"> CSRD / ESRS</label>
+          <label class="interest-chip"><input type="checkbox" value="EcoVadis"> EcoVadis</label>
+          <label class="interest-chip"><input type="checkbox" value="B Corp"> B Corp</label>
+          <label class="interest-chip"><input type="checkbox" value="MSCI"> MSCI ESG</label>
+          <label class="interest-chip"><input type="checkbox" value="GRI"> GRI</label>
+          <label class="interest-chip"><input type="checkbox" value="TCFD"> TCFD / TNFD</label>
+          <label class="interest-chip"><input type="checkbox" value="SFDR"> SFDR</label>
+          <label class="interest-chip"><input type="checkbox" value="CSDDD"> CSDDD</label>
+          <label class="interest-chip"><input type="checkbox" value="Scope3"> Scope 3</label>
+          <label class="interest-chip"><input type="checkbox" value="BancaEtica"> Banca ética</label>
+        </div>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="newsletter-box">
+        <div class="check-row">
+          <input type="checkbox" id="newsletter" checked>
+          <label for="newsletter">
+            <strong>Sí, quiero recibir la newsletter bimensual gratuita</strong><br>
+            <span style="font-size: 11px; color: #9C8B7A;">3 informes destacados + 1 conexión entre ellos, cada 2 semanas.</span>
+          </label>
+        </div>
+        <div class="lang-row">
+          <span style="font-size: 11px; color: #9C8B7A; margin-right: 4px;">Idioma:</span>
+          <label><input type="radio" name="nl-lang" value="es" checked> Español (por defecto)</label>
+          <label><input type="radio" name="nl-lang" value="ca"> Catalán</label>
+        </div>
+      </div>
+
+      <!-- Plan selector -->
+      <div class="plan-selector">
+        <div class="plan-selector-label">Elige tu plan:</div>
+        <div class="plan-options">
+          <label class="plan-option selected" onclick="selectPlan('free')">
+            <input type="radio" name="plan" value="free" checked>
+            <div class="plan-info">
+              <div class="plan-name">Gratis</div>
+              <div class="plan-price">0€ · Newsletter + 3 informes/mes + archivo >6 meses</div>
+            </div>
+          </label>
+          <label class="plan-option" onclick="selectPlan('premium')">
+            <input type="radio" name="plan" value="premium">
+            <div class="plan-info">
+              <div class="plan-name">Premium <span class="plan-badge">Early bird</span></div>
+              <div class="plan-price">290€/año · Todo + informes recientes + cross-reference + acciones</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- GDPR -->
+      <div class="gdpr-check">
+        <input type="checkbox" id="gdpr" required>
+        <label for="gdpr">
+          He leído y acepto la <a href="#">política de privacidad</a> y los <a href="#">términos del servicio</a>.
+        </label>
+      </div>
+
+      <button type="submit" class="btn-primary" id="submitBtn">
+        Crear cuenta gratis
+      </button>
+    </form>
+
+    <div class="login-link">
+      ¿Ya tienes cuenta? <a href="#">Inicia sesión</a>
+    </div>
+  </div>
+
+  <p class="note">
+    Al registrarte, tu idioma por defecto será español. Puedes cambiar a catalán en cualquier momento desde tu cuenta.<br>
+    Tus datos se almacenan en servidores de la UE (Supabase, Frankfurt). Cumplimos GDPR.
+  </p>
+</div>
+
+<script>
+function selectPlan(plan) {
+  document.querySelectorAll('.plan-option').forEach(el => el.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+
+  const btn = document.getElementById('submitBtn');
+  if (plan === 'premium') {
+    btn.textContent = 'Continuar a pago Premium →';
+  } else {
+    btn.textContent = 'Crear cuenta gratis';
+  }
+}
+
+function handleRegister() {
+  const plan = document.querySelector('input[name="plan"]:checked').value;
+  if (plan === 'premium') {
+    alert('Cuenta creada. Redirigiendo al formulario de pago Premium...');
+    // window.location.href = '/fiare-form-mockup.html';
+  } else {
+    alert('Cuenta gratuita creada. Revisa tu email para confirmar.');
+  }
+}
+
+// Toggle interest chips
+document.querySelectorAll('.interest-chip input').forEach(cb => {
+  cb.addEventListener('change', function() {
+    this.parentElement.classList.toggle('selected', this.checked);
+  });
+});
+</script>
+</body>
+</html>

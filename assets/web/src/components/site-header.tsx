@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 interface HeaderProps {
   onOpenPreus?: () => void;
   onOpenQuiSom?: () => void;
-  onOpenAuth?: () => void;
+  onOpenAuth?: (tab?: "register" | "login") => void;
 }
 
 export function Header({ onOpenPreus, onOpenQuiSom, onOpenAuth }: HeaderProps = {}) {
@@ -125,7 +125,7 @@ export function Header({ onOpenPreus, onOpenQuiSom, onOpenAuth }: HeaderProps = 
               variant="outline"
               size="sm"
               className="hidden md:inline-flex"
-              onClick={onOpenAuth}
+              onClick={() => onOpenAuth?.("login")}
             >
               <LogIn className="mr-1 h-3.5 w-3.5" />
               {t("nav.login")}
@@ -192,7 +192,7 @@ export function Header({ onOpenPreus, onOpenQuiSom, onOpenAuth }: HeaderProps = 
               variant="outline"
               size="sm"
               className="mt-2 w-full"
-              onClick={() => { setMobileOpen(false); onOpenAuth?.(); }}
+              onClick={() => { setMobileOpen(false); onOpenAuth?.("login"); }}
             >
               <LogIn className="mr-1 h-3.5 w-3.5" />
               {t("nav.login")}

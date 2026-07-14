@@ -48,6 +48,12 @@ export default function InformeSlugPage() {
 
   const [isRegistered, setIsRegistered] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
+  const [authTab, setAuthTab] = useState<"register" | "login">("register");
+
+  const openAuth = (tab: "register" | "login" = "register") => {
+    setAuthTab(tab);
+    setAuthOpen(true);
+  };
   const [preusOpen, setPreusOpen] = useState(false);
   const [quiSomOpen, setQuiSomOpen] = useState(false);
 
@@ -56,11 +62,11 @@ export default function InformeSlugPage() {
   // Els diàlegs sempre es renderitzen (estables entre renders)
   const dialogs = (
     <>
-      <AuthDialog open={authOpen} onOpenChange={setAuthOpen} />
+      <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
       <PreusDialog
         open={preusOpen}
         onOpenChange={setPreusOpen}
-        onOpenAuth={() => setAuthOpen(true)}
+        onOpenAuth={(tab) => openAuth(tab || "register")}
       />
       <QuiSomDialog open={quiSomOpen} onOpenChange={setQuiSomOpen} />
     </>
@@ -114,7 +120,7 @@ export default function InformeSlugPage() {
   const handleRegister = () => {
     // Simulació: en clicar per registrar-se, ja es considera registrat
     setIsRegistered(true);
-    setAuthOpen(true);
+    openAuth("register");
   };
 
   const articleJsonLd = report

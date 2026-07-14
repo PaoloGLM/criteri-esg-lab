@@ -54,7 +54,7 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
         </DialogHeader>
 
         {/* Toggle Mensual / Anual */}
-        <div className="flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-4">
+        <div className="flex flex-col items-center gap-2">
           <div className="flex items-center rounded-md border border-rule p-0.5">
             <button
               onClick={() => setPeriod("monthly")}
@@ -77,9 +77,11 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
               {t("preus.toggle.annual")}
             </button>
           </div>
-          <div className="h-5">
-            {period === "annual" && (
+          <div className="h-5 flex items-center">
+            {period === "annual" ? (
               <p className="text-xs text-accent-deep">{t("preus.toggle.annual.note")}</p>
+            ) : (
+              <p className="text-xs text-transparent">.</p>
             )}
           </div>
         </div>

@@ -16,21 +16,16 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/lib/supabase";
+import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 import { useAuth } from "@/lib/auth-context";
 import { Loader2, Mail, Lock, ArrowRight, CheckCircle2 } from "lucide-react";
 
 interface AuthDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  /**Pestanya activa per defecte: "register" o "login"*/
   defaultTab?: "register" | "login";
 }
 
-/**
- * Llista d'interessos ESG disponibles al formulari de registre.
- * S'envien com a metadata de l'usuari a Supabase (`user_metadata.interests`).
- */
 const INTERESES: { id: string; label: string }[] = [
   { id: "csrd", label: "CSRD/ESRS" },
   { id: "ecovadis", label: "EcoVadis" },
@@ -42,32 +37,13 @@ const INTERESES: { id: string; label: string }[] = [
   { id: "csddd", label: "Derechos Humanos y Cadena de Valor (CSDDD)" },
 ];
 
-/**Icona SVG de Google (lucide no la inclou).*/
 function GoogleIcon({ className }: { className?: string }) {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      width="16"
-      height="16"
-      aria-hidden="true"
-    >
-      <path
-        fill="#4285F4"
-        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-      />
-      <path
-        fill="#34A853"
-        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-      />
-      <path
-        fill="#FBBC05"
-        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
-      />
-      <path
-        fill="#EA4335"
-        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-      />
+    <svg className={className} viewBox="0 0 24 24" width="24" height="24">
+      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
     </svg>
   );
 }
@@ -85,14 +61,11 @@ export function AuthDialog({
             Criteri ESG
           </DialogTitle>
           <DialogDescription>
-            Accedeix o crea el teu compte per començar a llegir informes ESG
-            sintetitzats.
+            Accede o crea tu cuenta para empezar a leer informes ESG
+            sintetizados.
           </DialogDescription>
         </DialogHeader>
 
-        {/* El contingut intern es munta/desmunta amb el Dialog, per tant
-            l'estat del formulari es reseteja naturalment cada cop que
-            s'obre el modal. */}
         {open && (
           <AuthDialogInner
             defaultTab={defaultTab}
@@ -114,10 +87,8 @@ function AuthDialogInner({
   const { toast } = useToast();
   const { user } = useAuth();
 
-  // ---- Estat pestanya activa ----
   const [tab, setTab] = useState<"register" | "login">(defaultTab);
 
-  // ---- Estat formulari de registre ----
   const [regName, setRegName] = useState("");
   const [regEmail, setRegEmail] = useState("");
   const [regCompany, setRegCompany] = useState("");
@@ -129,26 +100,23 @@ function AuthDialogInner({
   const [regLoading, setRegLoading] = useState(false);
   const [regDone, setRegDone] = useState(false);
 
-  // ---- Estat formulari de magic link ----
   const [magicEmail, setMagicEmail] = useState("");
   const [magicLoading, setMagicLoading] = useState(false);
   const [magicSent, setMagicSent] = useState(false);
 
-  // ---- Estat formulari de login amb contrasenya ----
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [loginLoading, setLoginLoading] = useState(false);
   const [resetLoading, setResetLoading] = useState(false);
 
-  // Tanca automàticament quan l'usuari ja està autenticat
   useEffect(() => {
     if (user) {
       onOpenChange(false);
     }
   }, [user, onOpenChange]);
 
-  // ---- OAuth amb Google ----
   const handleGoogle = async () => {
+    if (!isSupabaseConfigured()) return;
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
@@ -158,27 +126,26 @@ function AuthDialogInner({
     });
     if (error) {
       toast({
-        title: "No s'ha pogut iniciar la sessió amb Google",
+        title: "No se ha podido iniciar sesión con Google",
         description: error.message,
         variant: "destructive",
       });
     }
   };
 
-  // ---- Registre amb email ----
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!regGdpr) {
       toast({
-        title: "Consentiment GDPR obligatori",
-        description:
-          "Has d'acceptar la política de privacitat per crear un compte.",
+        title: "Consentimiento GDPR obligatorio",
+        description: "Debes aceptar la política de privacidad para crear una cuenta.",
         variant: "destructive",
       });
       return;
     }
 
+    if (!isSupabaseConfigured()) return;
     setRegLoading(true);
     const { data, error } = await supabase.auth.signUp({
       email: regEmail.trim(),
@@ -203,36 +170,33 @@ function AuthDialogInner({
 
     if (error) {
       toast({
-        title: "Error en el registre",
+        title: "Error en el registro",
         description: error.message,
         variant: "destructive",
       });
       return;
     }
 
-    // Si l'usuari es registra immediatament com a sessió activa (sense confirmar email)
     if (data.session) {
       toast({
-        title: "Benvingut/da a Criteri ESG",
-        description: "El teu compte s'ha creat correctament.",
+        title: "Bienvenido a Criteri ESG",
+        description: "Tu cuenta se ha creado correctamente.",
       });
       onOpenChange(false);
       return;
     }
 
-    // Si cal confirmar per email
     setRegDone(true);
     toast({
-      title: "Revisa el teu correu",
-      description:
-        "T'hem enviat un enllaç per confirmar el teu compte a Criteri ESG.",
+      title: "Revisa tu correo",
+      description: "Te hemos enviado un enlace para confirmar tu cuenta de Criteri ESG.",
     });
   };
 
-  // ---- Magic link ----
   const handleMagicLink = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!magicEmail.trim()) return;
+    if (!isSupabaseConfigured()) return;
 
     setMagicLoading(true);
     const { error } = await supabase.auth.signInWithOtp({
@@ -247,7 +211,7 @@ function AuthDialogInner({
 
     if (error) {
       toast({
-        title: "No s'ha pogut enviar l'enllaç",
+        title: "No se ha podido enviar el enlace",
         description: error.message,
         variant: "destructive",
       });
@@ -256,15 +220,15 @@ function AuthDialogInner({
 
     setMagicSent(true);
     toast({
-      title: "Enllaç enviat",
-      description: "Revisa el teu correu per iniciar sessió.",
+      title: "Enlace enviado",
+      description: "Revisa tu correo para iniciar sesión.",
     });
   };
 
-  // ---- Login amb contrasenya ----
   const handlePasswordLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!loginEmail.trim() || !loginPassword) return;
+    if (!isSupabaseConfigured()) return;
 
     setLoginLoading(true);
     const { error } = await supabase.auth.signInWithPassword({
@@ -275,7 +239,7 @@ function AuthDialogInner({
 
     if (error) {
       toast({
-        title: "No s'ha pogut iniciar la sessió",
+        title: "No se ha podido iniciar sesión",
         description: error.message,
         variant: "destructive",
       });
@@ -283,25 +247,24 @@ function AuthDialogInner({
     }
 
     toast({
-      title: "Sessió iniciada",
-      description: "Benvingut/da de nou a Criteri ESG.",
+      title: "Sesión iniciada",
+      description: "Bienvenido de nuevo a Criteri ESG.",
     });
     onOpenChange(false);
   };
 
-  // ---- Reset password ----
   const handleResetPassword = async () => {
     const email = loginEmail.trim() || magicEmail.trim();
     if (!email) {
       toast({
-        title: "Cal el correu electrònic",
-        description:
-          "Introdueix el teu correu per rebre l'enllaç de recuperació.",
+        title: "Se necesita el correo electrónico",
+        description: "Introduce tu correo para recibir el enlace de recuperación.",
         variant: "destructive",
       });
       return;
     }
 
+    if (!isSupabaseConfigured()) return;
     setResetLoading(true);
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo:
@@ -313,7 +276,7 @@ function AuthDialogInner({
 
     if (error) {
       toast({
-        title: "No s'ha pogut enviar l'enllaç",
+        title: "No se ha podido enviar el enlace",
         description: error.message,
         variant: "destructive",
       });
@@ -321,8 +284,8 @@ function AuthDialogInner({
     }
 
     toast({
-      title: "Enllaç de recuperació enviat",
-      description: "Revisa el teu correu per restablir la contrasenya.",
+      title: "Enlace de recuperación enviado",
+      description: "Revisa tu correo para restablecer la contraseña.",
     });
   };
 
@@ -342,25 +305,25 @@ function AuthDialogInner({
         <TabsTrigger value="login">Iniciar sesión</TabsTrigger>
       </TabsList>
 
-      {/* ====================== PESTANYA REGISTRE ====================== */}
+      {/* ====================== PESTAÑA REGISTRO ====================== */}
       <TabsContent value="register" className="mt-4">
         {regDone ? (
           <div className="flex flex-col items-center py-8 text-center">
             <CheckCircle2 className="mb-4 h-12 w-12 text-accent" />
             <h3 className="mb-2 font-serif text-xl font-semibold text-primary">
-              Revisa el teu correu
+              Revisa tu correo
             </h3>
             <p className="text-sm text-muted-foreground">
-              T&apos;hem enviat un enllaç de confirmació a{" "}
+              Te hemos enviado un enlace de confirmación a{" "}
               <strong className="text-foreground">{regEmail}</strong>.
-              Fes-hi clic per activar el teu compte.
+              Haz clic en él para activar tu cuenta.
             </p>
             <Button
               className="mt-6"
               variant="outline"
               onClick={() => onOpenChange(false)}
             >
-              Tancar
+              Cerrar
             </Button>
           </div>
         ) : (
@@ -467,8 +430,8 @@ function AuthDialogInner({
                     htmlFor="reg-newsletter"
                     className="cursor-pointer text-sm font-normal leading-snug"
                   >
-                    Vull rebre la newsletter quinzenal d&apos;ESG amb els
-                    informes destacats.
+                    Sí, quiero recibir la newsletter bimensual gratuita con
+                    informes recientes, noticias y cruces de información relevantes.
                   </Label>
                   {regNewsletter && (
                     <div className="pt-1">
@@ -530,7 +493,7 @@ function AuthDialogInner({
                     </span>
                   </div>
                   <span className="pl-6 text-xs text-muted-foreground">
-                    3 informes al mes · accés bàsic
+                    Newsletter + acceso a informes &gt;6 meses
                   </span>
                 </Label>
                 <Label
@@ -548,7 +511,7 @@ function AuthDialogInner({
                     </span>
                   </div>
                   <span className="pl-6 text-xs text-muted-foreground">
-                    Informes il·limitats · cross-reference
+                    290 €/año · acceso total + cross-reference
                   </span>
                 </Label>
               </RadioGroup>
@@ -566,14 +529,14 @@ function AuthDialogInner({
                 htmlFor="reg-gdpr"
                 className="cursor-pointer text-xs font-normal leading-snug text-muted-foreground"
               >
-                He llegit i accepto la{" "}
+                He leído y acepto la{" "}
                 <a
-                  href="/politica-privacitat"
+                  href="/privacidad.html"
                   className="text-accent underline hover:text-accent-deep"
                 >
-                  política de privacitat
+                  política de privacidad
                 </a>{" "}
-                i el tractament de les meves dades segons el RGPD.
+                y el tratamiento de mis datos según el RGPD.
                 <span className="text-accent"> *</span>
               </Label>
             </div>
@@ -588,7 +551,7 @@ function AuthDialogInner({
               {regLoading ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  Creant compte…
+                  Creando cuenta…
                 </>
               ) : regPlan === "premium" ? (
                 <>
@@ -601,12 +564,12 @@ function AuthDialogInner({
             </Button>
 
             <p className="text-center text-xs text-muted-foreground">
-              En registrar-te acceptes els{" "}
+              Al registrarte aceptas los{" "}
               <a
-                href="/termes"
+                href="/privacidad.html"
                 className="text-accent underline hover:text-accent-deep"
               >
-                termes del servei
+                términos del servicio
               </a>
               .
             </p>
@@ -614,7 +577,7 @@ function AuthDialogInner({
         )}
       </TabsContent>
 
-      {/* ====================== PESTANYA LOGIN ====================== */}
+      {/* ====================== PESTAÑA LOGIN ====================== */}
       <TabsContent value="login" className="mt-4 space-y-4">
         {/* Google */}
         <Button
@@ -639,8 +602,8 @@ function AuthDialogInner({
           <div className="rounded-md border border-accent/30 bg-accent-soft/10 p-4 text-center">
             <Mail className="mx-auto mb-2 h-6 w-6 text-accent" />
             <p className="text-sm text-foreground">
-              T&apos;hem enviat un enllaç màgic a{" "}
-              <strong>{magicEmail}</strong>. Fes-hi clic per iniciar sessió.
+              Te hemos enviado un enlace mágico a{" "}
+              <strong>{magicEmail}</strong>. Haz clic en él para iniciar sesión.
             </p>
             <Button
               variant="link"
@@ -648,7 +611,7 @@ function AuthDialogInner({
               className="mt-2"
               onClick={() => setMagicSent(false)}
             >
-              Reenviar a un altre correu
+              Reenviar a otro correo
             </Button>
           </div>
         ) : (
@@ -674,7 +637,7 @@ function AuthDialogInner({
               {magicLoading ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  Enviant…
+                  Enviando…
                 </>
               ) : (
                 "Enviar enlace mágico"
@@ -683,7 +646,7 @@ function AuthDialogInner({
           </form>
         )}
 
-        {/* Divider + Contrasenya */}
+        {/* Divider + Contraseña */}
         <div className="relative py-1">
           <Separator />
           <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-background px-2 text-xs text-muted-foreground">
@@ -730,7 +693,7 @@ function AuthDialogInner({
               disabled={resetLoading}
               className="text-xs text-accent underline-offset-2 hover:underline disabled:opacity-50"
             >
-              {resetLoading ? "Enviant…" : "¿Olvidaste tu contraseña?"}
+              {resetLoading ? "Enviando…" : "¿Olvidaste tu contraseña?"}
             </button>
           </div>
 
@@ -743,7 +706,7 @@ function AuthDialogInner({
             {loginLoading ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" />
-                Iniciant…
+                Iniciando…
               </>
             ) : (
               "Iniciar sesión"
@@ -755,11 +718,6 @@ function AuthDialogInner({
   );
 }
 
-/**
- * Genera una contrasenya temporal segura per als registres amb email.
- * Supabase requereix contrasenya per `signUp`, però l'accés real es fa via
- * magic link / confirmació per email.
- */
 function generateTempPassword(): string {
   if (typeof window !== "undefined" && window.crypto?.randomUUID) {
     return `Criteri-${window.crypto.randomUUID()}!`;

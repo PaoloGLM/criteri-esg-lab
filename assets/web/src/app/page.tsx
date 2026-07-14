@@ -16,8 +16,14 @@ import { QuiSomDialog } from "@/components/qui-som-dialog";
 export default function Home() {
   const router = useRouter();
   const [authOpen, setAuthOpen] = useState(false);
+  const [authTab, setAuthTab] = useState<"register" | "login">("register");
   const [preusOpen, setPreusOpen] = useState(false);
   const [quiSomOpen, setQuiSomOpen] = useState(false);
+
+  const openAuth = (tab: "register" | "login" = "register") => {
+    setAuthTab(tab);
+    setAuthOpen(true);
+  };
 
   const handleOpenLatestReport = () => {
     router.push("/informes/revisio-esrs-maig-2026");
@@ -32,28 +38,28 @@ export default function Home() {
       <Header
         onOpenPreus={() => setPreusOpen(true)}
         onOpenQuiSom={() => setQuiSomOpen(true)}
-        onOpenAuth={() => setAuthOpen(true)}
+        onOpenAuth={(tab) => openAuth(tab || "register")}
       />
       <main className="flex-1">
         <Hero
           onOpenReport={handleOpenLatestReport}
-          onOpenRegister={() => setAuthOpen(true)}
+          onOpenRegister={() => openAuth("register")}
         />
         <MidSections
-          onOpenRegister={() => setAuthOpen(true)}
+          onOpenRegister={() => openAuth("register")}
           onOpenReport={handleOpenLatestReport}
         />
         <ReportsPreview onOpenReport={handleOpenReport} />
         <FaqSection />
-        <FinalCta onOpenRegister={() => setAuthOpen(true)} />
+        <FinalCta onOpenRegister={() => openAuth("register")} />
       </main>
       <Footer />
 
-      <AuthDialog open={authOpen} onOpenChange={setAuthOpen} />
+      <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
       <PreusDialog
         open={preusOpen}
         onOpenChange={setPreusOpen}
-        onOpenRegister={() => setAuthOpen(true)}
+        onOpenRegister={() => openAuth("register")}
       />
       <QuiSomDialog
         open={quiSomOpen}

@@ -12,6 +12,12 @@ import { QuiSomDialog } from "@/components/qui-som-dialog";
 export default function InformesPage() {
   const router = useRouter();
   const [authOpen, setAuthOpen] = useState(false);
+  const [authTab, setAuthTab] = useState<"register" | "login">("register");
+
+  const openAuth = (tab: "register" | "login" = "register") => {
+    setAuthTab(tab);
+    setAuthOpen(true);
+  };
   const [preusOpen, setPreusOpen] = useState(false);
   const [quiSomOpen, setQuiSomOpen] = useState(false);
 
@@ -24,7 +30,7 @@ export default function InformesPage() {
       <Header
         onOpenPreus={() => setPreusOpen(true)}
         onOpenQuiSom={() => setQuiSomOpen(true)}
-        onOpenAuth={() => setAuthOpen(true)}
+        onOpenAuth={(tab) => openAuth(tab || "register")}
       />
       <main className="flex-1">
         <section className="border-b border-rule bg-secondary/30 py-12">
@@ -46,11 +52,11 @@ export default function InformesPage() {
       </main>
       <Footer />
 
-      <AuthDialog open={authOpen} onOpenChange={setAuthOpen} />
+      <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
       <PreusDialog
         open={preusOpen}
         onOpenChange={setPreusOpen}
-        onOpenRegister={() => setAuthOpen(true)}
+        onOpenRegister={() => openAuth("register")}
       />
       <QuiSomDialog
         open={quiSomOpen}

@@ -1,13 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { QuiSomDialog } from "@/components/qui-som-dialog";
 import { useAuth } from "@/lib/auth-context";
+import { useLanguage } from "@/components/language-provider";
 import { supabase } from "@/lib/supabase";
+import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
@@ -55,8 +57,21 @@ const INTEREST_OPTIONS: { id: string; label: string }[] = [
   { id: "csddd", label: "Derechos Humanos y Cadena de Valor (CSDDD)" },
 ];
 
+/**Tipus de fila de perfil llegida de la taula `profiles` de Supabase.*/
+type ProfileRow = {
+  full_name: string | null;
+  company: string | null;
+  interests: string[] | null;
+  newsletter_language: "es" | "ca" | null;
+  newsletter_subscribed: boolean | null;
+  plan: "free" | "premium" | null;
+  gdpr_consent: boolean | null;
+};
+
 export default function CuentaPage() {
   const { user, session, loading, signOut } = useAuth();
+  const { lang } = useLanguage();
+  const { toast } = useToast();
   const [authOpen, setAuthOpen] = useState(false);
   const [preusOpen, setPreusOpen] = useState(false);
   const [quiSomOpen, setQuiSomOpen] = useState(false);
@@ -66,21 +81,78 @@ export default function CuentaPage() {
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
 
-  // Metadata guardada a user.user_metadata (la que envia el form de registre)
+  // Perfil llegit de la taula `profiles`. `profileRefreshKey` es fa servir
+  // per forçar un refresc explícit després de guardar (Problema 4).
+  const [profile, setProfile] = useState<ProfileRow | null>(null);
+  const [profileRefreshKey, setProfileRefreshKey] = useState(0);
+
+  // Metadata guardada a user.user_metadata (la que envia el form de registre).
+  // Es fa servir com a fallback mentre no s'hagi carregat la taula `profiles`.
   const meta = user?.user_metadata ?? {};
-  const fullName: string = meta.full_name ?? "";
-  const company: string = meta.company ?? "";
-  const plan: "free" | "premium" = meta.plan ?? "free";
-  const interests: string[] = Array.isArray(meta.interests) ? meta.interests : [];
-  const newsletterSubscribed: boolean = Boolean(meta.newsletter_subscribed);
-  const newsletterLanguage: "es" | "ca" = meta.newsletter_language ?? "es";
-  const gdprConsent: boolean = Boolean(meta.gdpr_consent);
+
+  // Font de veritat preferida: taula `profiles`. Si encara no s'ha carregat,
+  // fem servir `user.user_metadata` per evitar parpelleigs.
+  const fullName: string = profile?.full_name ?? (meta.full_name ?? "");
+  const company: string = profile?.company ?? (meta.company ?? "");
+  const plan: "free" | "premium" =
+    profile?.plan ?? (meta.plan ?? "free");
+  const interests: string[] = Array.isArray(profile?.interests)
+    ? profile.interests
+    : Array.isArray(meta.interests)
+      ? meta.interests
+      : [];
+  const newsletterSubscribed: boolean =
+    profile?.newsletter_subscribed ?? Boolean(meta.newsletter_subscribed);
+  const newsletterLanguage: "es" | "ca" =
+    profile?.newsletter_language ?? (meta.newsletter_language ?? "es");
+  const gdprConsent: boolean =
+    profile?.gdpr_consent ?? Boolean(meta.gdpr_consent);
 
   // Estat del formulari d'edició
   const [editName, setEditName] = useState(fullName);
   const [editCompany, setEditCompany] = useState(company);
   const [editInterests, setEditInterests] = useState<string[]>(interests);
   const [editLanguage, setEditLanguage] = useState<"es" | "ca">(newsletterLanguage);
+
+  // Llegeix el perfil de la taula `profiles` quan canvia l'usuari o quan
+  // es força un refresc (després de guardar).
+  useEffect(() => {
+    if (!user) {
+      setProfile(null);
+      return;
+    }
+    let active = true;
+    (async () => {
+      const { data, error } = await supabase
+        .from("profiles")
+        .select(
+          "full_name, company, interests, newsletter_language, newsletter_subscribed, plan, gdpr_consent"
+        )
+        .eq("id", user.id)
+        .maybeSingle();
+      if (active && !error && data) {
+        setProfile(data as ProfileRow);
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, [user, profileRefreshKey]);
+
+  // Manté els camps d'edició sincronitzats amb les dades refreshed quan no
+  // s'està editant (perquè la pròxima vegada que es premi "Editar dades"
+  // els camps arrenquin amb els valors més recents).
+  useEffect(() => {
+    if (!isEditing) {
+      setEditName(fullName);
+      setEditCompany(company);
+      setEditInterests(interests);
+      setEditLanguage(newsletterLanguage);
+    }
+  }, [fullName, company, interests, newsletterLanguage, isEditing]);
+
+  /**Helper de traducció inline CA/ES basat en l'idioma seleccionat al header.*/
+  const tr = (ca: string, es: string) => (lang === "ca" ? ca : es);
 
   /**Entra en mode edició inicialitzant els camps amb els valors actuals.*/
   const handleEditClick = () => {
@@ -105,26 +177,51 @@ export default function CuentaPage() {
     );
   };
 
-  /**Guarda els canvis a la taula profiles de Supabase.*/
+  /**Guarda els canvis a la taula `profiles` i a les metadades d'usuari de
+   * Supabase Auth perquè es reflecteixin immediatament (Problema 4).*/
   const handleSave = async () => {
     if (!user) return;
     setSaving(true);
     setSaveError(null);
     try {
-      const { error } = await supabase
+      const payload = {
+        full_name: editName,
+        company: editCompany,
+        interests: editInterests,
+        newsletter_language: editLanguage,
+      };
+
+      // 1. Actualitza la taula `profiles`
+      const { error: dbError } = await supabase
         .from("profiles")
-        .update({
-          full_name: editName,
-          company: editCompany,
-          interests: editInterests,
-          newsletter_language: editLanguage,
-        })
+        .update(payload)
         .eq("id", user.id);
-      if (error) throw error;
+      if (dbError) throw dbError;
+
+      // 2. Actualitza les metadades d'usuari a Supabase Auth perquè els
+      //    canvis també es reflecteixin a `user.user_metadata` immediatament.
+      const { error: authError } = await supabase.auth.updateUser({
+        data: payload,
+      });
+      if (authError) throw authError;
+
+      // 3. Refresca les dades locals llegint el perfil actualitzat de la
+      //    taula `profiles` perquè la UI es repinti amb els valors nous.
+      setProfileRefreshKey((k) => k + 1);
+
       setIsEditing(false);
+      toast({
+        title: tr("Canvis desats", "Cambios guardados"),
+        description: tr(
+          "Canvis desats correctament",
+          "Cambios guardados correctamente"
+        ),
+      });
     } catch (err) {
       setSaveError(
-        err instanceof Error ? err.message : "Error guardant els canvis"
+        err instanceof Error
+          ? err.message
+          : tr("Error guardant els canvis", "Error guardando los cambios")
       );
     } finally {
       setSaving(false);
@@ -142,7 +239,9 @@ export default function CuentaPage() {
         <main className="flex flex-1 items-center justify-center">
           <div className="flex flex-col items-center gap-3 text-muted-foreground">
             <Loader2 className="h-6 w-6 animate-spin text-accent" />
-            <p className="text-sm">Carregant el teu compte…</p>
+            <p className="text-sm">
+              {tr("Carregant el teu compte…", "Cargando tu cuenta…")}
+            </p>
           </div>
         </main>
         <Footer />
@@ -165,12 +264,13 @@ export default function CuentaPage() {
                 <LogIn className="h-6 w-6 text-accent" />
               </div>
               <CardTitle className="font-serif text-2xl text-primary">
-                Inicia sesión
+                {tr("Inicia sessió", "Inicia sesión")}
               </CardTitle>
               <CardDescription>
-                Inicia sesión o crea un compte gratuït per accedir a la teva
-                biblioteca d&apos;informes ESG, els teus interessos guardats i la
-                configuració de la newsletter.
+                {tr(
+                  "Inicia sessió o crea un compte gratuït per accedir a la teva biblioteca d'informes ESG, els teus interessos guardats i la configuració de la newsletter.",
+                  "Inicia sesión o crea una cuenta gratuita para acceder a tu biblioteca de informes ESG, tus intereses guardados y la configuración de la newsletter."
+                )}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
@@ -180,10 +280,16 @@ export default function CuentaPage() {
                 onClick={() => setAuthOpen(true)}
               >
                 <LogIn className="h-4 w-4" />
-                Iniciar sesión / Registrarse
+                {tr(
+                  "Iniciar sessió / Registrar-se",
+                  "Iniciar sesión / Registrarse"
+                )}
               </Button>
               <p className="text-xs text-muted-foreground">
-                Sense tarjeta de crèdit. Cancel·la quan vulguis.
+                {tr(
+                  "Sense targeta de crèdit. Cancel·la quan vulguis.",
+                  "Sin tarjeta de crédito. Cancela cuando quieras."
+                )}
               </p>
             </CardContent>
           </Card>
@@ -203,11 +309,14 @@ export default function CuentaPage() {
 
   // --- Amb usuari: mostra les seves dades ---
   const createdAt = user.created_at
-    ? new Date(user.created_at).toLocaleDateString("es-ES", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
+    ? new Date(user.created_at).toLocaleDateString(
+        lang === "ca" ? "ca-ES" : "es-ES",
+        {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }
+      )
     : "—";
 
   const provider =
@@ -223,14 +332,19 @@ export default function CuentaPage() {
       <main className="flex-1">
         <section className="border-b border-rule bg-secondary/30 py-12">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <p className="eyebrow mb-2">EL TEU COMPTE</p>
+            <p className="eyebrow mb-2">
+              {tr("El meu compte", "Mi cuenta")}
+            </p>
             <h1 className="font-serif text-4xl font-semibold leading-tight text-primary sm:text-5xl">
-              Hola{fullName ? `, ${fullName.split(" ")[0]}` : ""}.
+              {tr("Hola", "Hola")}
+              {fullName ? `, ${fullName.split(" ")[0]}` : ""}.
             </h1>
             <div className="rule-accent my-5" />
             <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
-              Gestiona el teu perfil, el teu pla i les preferències de la
-              newsletter.
+              {tr(
+                "Gestiona la teva subscripció i dades",
+                "Gestiona tu suscripción y datos"
+              )}
             </p>
           </div>
         </section>
@@ -241,10 +355,13 @@ export default function CuentaPage() {
             <Card className="border-rule bg-card">
               <CardHeader>
                 <CardTitle className="font-serif text-xl text-primary">
-                  Editar dades del perfil
+                  {tr("Editar dades", "Editar datos")}
                 </CardTitle>
                 <CardDescription>
-                  Actualitza el teu nom, empresa, interessos i idioma preferit.
+                  {tr(
+                    "Actualitza el teu nom, empresa, interessos i idioma de la newsletter.",
+                    "Actualiza tu nombre, empresa, intereses e idioma de la newsletter."
+                  )}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -254,13 +371,16 @@ export default function CuentaPage() {
                     htmlFor="edit-name"
                     className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground"
                   >
-                    Nombre
+                    {tr("Nom", "Nombre")}
                   </Label>
                   <Input
                     id="edit-name"
                     value={editName}
                     onChange={(e) => setEditName(e.target.value)}
-                    placeholder="El teu nom complet"
+                    placeholder={tr(
+                      "El teu nom complet",
+                      "Tu nombre completo"
+                    )}
                     autoComplete="name"
                   />
                 </div>
@@ -271,13 +391,13 @@ export default function CuentaPage() {
                     htmlFor="edit-company"
                     className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground"
                   >
-                    Empresa
+                    {tr("Empresa", "Empresa")}
                   </Label>
                   <Input
                     id="edit-company"
                     value={editCompany}
                     onChange={(e) => setEditCompany(e.target.value)}
-                    placeholder="La teva empresa"
+                    placeholder={tr("La teva empresa", "Tu empresa")}
                     autoComplete="organization"
                   />
                 </div>
@@ -287,7 +407,7 @@ export default function CuentaPage() {
                 {/* Interessos */}
                 <div className="space-y-3">
                   <Label className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                    Intereses
+                    {tr("Interessos", "Intereses")}
                   </Label>
                   <div className="grid gap-3 sm:grid-cols-2">
                     {INTEREST_OPTIONS.map((opt) => {
@@ -317,10 +437,10 @@ export default function CuentaPage() {
 
                 <Separator />
 
-                {/* Idioma */}
+                {/* Idioma de la newsletter — mateix text en CA i ES (Problema 3) */}
                 <div className="space-y-2">
                   <Label className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                    Idioma
+                    Idioma de la newsletter
                   </Label>
                   <Select
                     value={editLanguage}
@@ -351,16 +471,19 @@ export default function CuentaPage() {
               <Card className="border-rule bg-card md:col-span-2">
                 <CardHeader>
                   <CardTitle className="font-serif text-xl text-primary">
-                    Dades del compte
+                    {tr("Dades personals", "Datos personales")}
                   </CardTitle>
                   <CardDescription>
-                    Informació bàsica del teu perfil a Criteri ESG.
+                    {tr(
+                      "Informació bàsica del teu perfil a Criteri ESG.",
+                      "Información básica de tu perfil en Criteri ESG."
+                    )}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <DataRow
                     icon={<UserIcon className="h-4 w-4 text-accent" />}
-                    label="Nombre"
+                    label={tr("Nom", "Nombre")}
                     value={fullName || "—"}
                   />
                   <Separator />
@@ -372,23 +495,26 @@ export default function CuentaPage() {
                   <Separator />
                   <DataRow
                     icon={<Building2 className="h-4 w-4 text-accent" />}
-                    label="Empresa"
+                    label={tr("Empresa", "Empresa")}
                     value={company || "—"}
                   />
                   <Separator />
                   <DataRow
                     icon={<ShieldCheck className="h-4 w-4 text-accent" />}
-                    label="Mètode d'accés"
+                    label={tr("Mètode d'accés", "Método de acceso")}
                     value={
                       provider === "google"
                         ? "Google"
-                        : "Email + contrasenya"
+                        : tr(
+                            "Email + contrasenya",
+                            "Email + contraseña"
+                          )
                     }
                   />
                   <Separator />
                   <DataRow
                     icon={<CheckCircle2 className="h-4 w-4 text-accent" />}
-                    label="Compte creat el"
+                    label={tr("Compte creat el", "Cuenta creada el")}
                     value={createdAt}
                   />
                 </CardContent>
@@ -408,13 +534,19 @@ export default function CuentaPage() {
                       <Sparkles className="h-4 w-4 text-accent" />
                     )}
                     <CardTitle className="font-serif text-lg text-primary">
-                      Pla
+                      {tr("Pla actual", "Plan actual")}
                     </CardTitle>
                   </div>
                   <CardDescription>
                     {plan === "premium"
-                      ? "Subscrit al pla Premium."
-                      : "Estàs al pla gratuït."}
+                      ? tr(
+                          "Subscrit al pla Premium.",
+                          "Suscrito al plan Premium."
+                        )
+                      : tr(
+                          "Estàs al pla gratuït.",
+                          "Estás en el plan gratuito."
+                        )}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
@@ -426,7 +558,7 @@ export default function CuentaPage() {
                           : "bg-secondary text-muted-foreground"
                       }`}
                     >
-                      {plan === "premium" ? "Premium" : "Gratis"}
+                      {plan === "premium" ? "Premium" : tr("Gratis", "Gratis")}
                     </span>
                   </div>
                   {plan === "free" ? (
@@ -436,31 +568,39 @@ export default function CuentaPage() {
                       onClick={() => setPreusOpen(true)}
                     >
                       <Crown className="h-3.5 w-3.5" />
-                      Pujar a Premium
+                      {tr("Pujar a Premium", "Subir a Premium")}
                     </Button>
                   ) : (
                     <p className="text-xs leading-relaxed text-muted-foreground">
-                      Tens accés il·limitat als informes, cross-references i
-                      descàrregues PDF.
+                      {tr(
+                        "Tens accés il·limitat als informes, cross-references i descàrregues PDF.",
+                        "Tienes acceso ilimitado a los informes, cross-references y descargas PDF."
+                      )}
                     </p>
                   )}
                 </CardContent>
               </Card>
 
-              {/* Intereses */}
+              {/* Interessos */}
               <Card className="border-rule bg-card md:col-span-2">
                 <CardHeader>
                   <CardTitle className="font-serif text-xl text-primary">
-                    Intereses
+                    {tr("Interessos", "Intereses")}
                   </CardTitle>
                   <CardDescription>
-                    Temàtiques ESG que t&apos;interessen.
+                    {tr(
+                      "Temàtiques ESG que t'interessen.",
+                      "Temáticas ESG que te interesan."
+                    )}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   {interests.length === 0 ? (
                     <p className="text-sm text-muted-foreground">
-                      Encara no has seleccionat cap interès.
+                      {tr(
+                        "Encara no has seleccionat cap interès.",
+                        "Aún no has seleccionado ningún interés."
+                      )}
                     </p>
                   ) : (
                     <div className="flex flex-wrap gap-2">
@@ -478,19 +618,27 @@ export default function CuentaPage() {
                 </CardContent>
               </Card>
 
-              {/* Newsletter */}
+              {/* Newsletter / Estat de la subscripció */}
               <Card className="border-rule bg-card">
                 <CardHeader>
                   <CardTitle className="font-serif text-lg text-primary">
-                    Newsletter
+                    {tr(
+                      "Estat de la subscripció",
+                      "Estado de la suscripción"
+                    )}
                   </CardTitle>
                   <CardDescription>
-                    Preferències de la newsletter quinzenal.
+                    {tr(
+                      "Preferències de la newsletter quinzenal.",
+                      "Preferencias de la newsletter quincenal."
+                    )}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3 text-sm">
                   <div className="flex items-center justify-between">
-                    <span className="text-muted-foreground">Estat</span>
+                    <span className="text-muted-foreground">
+                      {tr("Estat", "Estado")}
+                    </span>
                     <span
                       className={`font-medium ${
                         newsletterSubscribed
@@ -498,12 +646,17 @@ export default function CuentaPage() {
                           : "text-muted-foreground"
                       }`}
                     >
-                      {newsletterSubscribed ? "Subscrit" : "No subscrit"}
+                      {newsletterSubscribed
+                        ? tr("Subscrit", "Suscrito")
+                        : tr("No subscrit", "No suscrito")}
                     </span>
                   </div>
                   <Separator />
                   <div className="flex items-center justify-between">
-                    <span className="text-muted-foreground">Idioma</span>
+                    <span className="text-muted-foreground">
+                      {/* Idioma de la newsletter — mateix text en CA i ES */}
+                      Idioma de la newsletter
+                    </span>
                     <span className="flex items-center gap-1 font-medium">
                       <Globe className="h-3.5 w-3.5 text-accent" />
                       {newsletterLanguage === "ca" ? "Català" : "Español"}
@@ -512,14 +665,14 @@ export default function CuentaPage() {
                   <Separator />
                   <div className="flex items-center justify-between">
                     <span className="text-muted-foreground">
-                      Consentiment GDPR
+                      {tr("Consentiment GDPR", "Consentimiento GDPR")}
                     </span>
                     <span
                       className={`font-medium ${
                         gdprConsent ? "text-accent" : "text-muted-foreground"
                       }`}
                     >
-                      {gdprConsent ? "Acceptat" : "—"}
+                      {gdprConsent ? tr("Acceptat", "Aceptado") : "—"}
                     </span>
                   </div>
                 </CardContent>
@@ -537,7 +690,7 @@ export default function CuentaPage() {
                   disabled={saving}
                 >
                   <X className="h-4 w-4" />
-                  Cancel·lar
+                  {tr("Cancel·lar", "Cancelar")}
                 </Button>
                 <Button onClick={handleSave} disabled={saving}>
                   {saving ? (
@@ -545,17 +698,17 @@ export default function CuentaPage() {
                   ) : (
                     <Save className="h-4 w-4" />
                   )}
-                  Guardar canvis
+                  {tr("Desar canvis", "Guardar cambios")}
                 </Button>
               </>
             ) : (
               <>
                 <Button variant="outline" onClick={handleEditClick}>
-                  Editar dades
+                  {tr("Editar dades", "Editar datos")}
                 </Button>
                 <Button variant="destructive" onClick={() => signOut()}>
                   <LogOut className="h-4 w-4" />
-                  Tancar sessió
+                  {tr("Tancar sessió", "Cerrar sesión")}
                 </Button>
               </>
             )}
@@ -600,7 +753,7 @@ function DataRow({
   );
 }
 
-/**Traducció llegible de l&apos;id d&apos;interès al label mostrat al formulari.*/
+/**Traducció llegible de l'id d'interès al label mostrat al formulari.*/
 function interestLabel(id: string): string {
   const map: Record<string, string> = {
     csrd: "CSRD/ESRS",

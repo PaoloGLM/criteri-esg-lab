@@ -61,8 +61,8 @@ export const translations = {
   },
   "sections.newsletter.title": { ca: "Newsletter bimensual", es: "Newsletter bimensual" },
   "sections.newsletter.desc": {
-    ca: "Informes recents, notícies i creuaments d'informació rellevants, cada dues setmanes. Gratuït, cancel·la quan vulguis.",
-    es: "Informes recientes, noticias y cruces de información relevantes, cada dos semanas. Gratuito, cancela cuando quieras.",
+    ca: "3 informes destacats + 1 connexió entre ells, cada dues setmanes. Gratuït, cancel·la quan vulguis.",
+    es: "3 informes destacados + 1 conexión entre ellos, cada dos semanas. Gratuito, cancela cuando quieras.",
   },
   "sections.semafor.title": { ca: "Semàfor Metodològic", es: "Semáforo Metodológico" },
   "sections.semafor.desc": {
@@ -100,8 +100,8 @@ export const translations = {
 
   "cta.newsletter.eyebrow": { ca: "La newsletter gratuïta", es: "La newsletter gratuita" },
   "cta.newsletter.title": {
-    ca: "Cada dues setmanes, informes que has de conèixer.",
-    es: "Cada dos semanas, informes que debes conocer.",
+    ca: "Cada dues setmanes, 3 informes que has de conèixer.",
+    es: "Cada dos semanas, 3 informes que debes conocer.",
   },
   "cta.newsletter.body": {
     ca: "Resums executius de 300 paraules + una connexió entre ells. 5 minuts de lectura que et posen al dia. Cancel·la quan vulguis.",
@@ -116,8 +116,8 @@ export const translations = {
 
   "form.title": { ca: "Registre gratuït", es: "Registro gratuito" },
   "form.subtitle": {
-    ca: "Accedeix als informes oberts (>6 mesos) i a la newsletter bimensual. Sense cost, sense targeta.",
-    es: "Accede a los informes abiertos (>6 meses) y a la newsletter bimensual. Sin coste, sin tarjeta.",
+    ca: "Accedeix a 3 informes oberts al mes i a la newsletter bimensual. Sense cost, sense targeta.",
+    es: "Accede a 3 informes abiertos al mes y a la newsletter bimensual. Sin coste, sin tarjeta.",
   },
   "form.name": { ca: "Nom i cognoms", es: "Nombre y apellidos" },
   "form.name.placeholder": { ca: "Ex: Maria Puig", es: "Ej: María Puig" },
@@ -188,7 +188,7 @@ export const translations = {
   "preus.toggle.annual": { ca: "Anual", es: "Anual" },
   "preus.toggle.annual.note": {
     ca: "Estalvia 28€/any pagant anualment",
-    es: "Ahorra 28€/año pagando anualmente",
+    es: "Ahorra 28 €/año pagando anualmente",
   },
 
   "preus.free.name": { ca: "Free", es: "Free" },
@@ -197,7 +197,7 @@ export const translations = {
     es: "Para empezar a entender el ecosistema ESG europeo.",
   },
   "preus.free.f1": { ca: "Newsletter bimensual", es: "Newsletter bimensual" },
-  "preus.free.f2": { ca: "Accés a informes >6 mesos", es: "Acceso a informes >6 meses" },
+  "preus.free.f2": { ca: "3 informes oberts al mes", es: "3 informes abiertos al mes" },
   "preus.free.f3": { ca: "Informes amb més de 6 mesos (arxiu)", es: "Informes con más de 6 meses (archivo)" },
   "preus.free.f4": { ca: "Accés a la biblioteca pública", es: "Acceso a la biblioteca pública" },
   "preus.free.cta": { ca: "Comença gratis", es: "Empieza gratis" },
@@ -219,7 +219,7 @@ export const translations = {
   "preus.premium.f6": { ca: "Preguntes per millorar (reflexió ètica mensual)", es: "Preguntas para mejorar (reflexión ética mensual)" },
   "preus.premium.subprice": {
     ca: "Equival a 36,67€/mes · Impostos inclosos",
-    es: "Equivale a 36,67€/mes · Impuestos incluidos",
+    es: "Equivale a 36,67 €/mes · Impuestos incluidos",
   },
   "preus.premium.subprice.monthly": {
     ca: "Impostos inclosos",
@@ -236,15 +236,15 @@ export const translations = {
     ca: "Oferta de llançament · 50 places limitades",
     es: "Oferta de lanzamiento · 50 plazas limitadas",
   },
-  "preus.earlybird.price": { ca: "290€", es: "290€" },
+  "preus.earlybird.price": { ca: "290 €", es: "290 €" },
   "preus.earlybird.period": { ca: "any", es: "año" },
   "preus.earlybird.subprice": {
     ca: "Equival a 24,17€/mes · Impostos inclosos · Estalvi de 150€",
-    es: "Equivale a 24,17€/mes · Impuestos incluidos · Ahorro de 150€",
+    es: "Equivale a 24,17 €/mes · Impuestos incluidos · Ahorro de 150 €",
   },
   "preus.earlybird.body": {
     ca: "Els primers 50 subscriptors Premium paguen 290€/any (impostos inclosos) en lloc dels 440€ habituals. Equival a 24,17€/mes — un descompte del 34%. Llançament setembre 2026. Una vegada assignades les 50 places, el preu torna a 440€/any.",
-    es: "Los primeros 50 suscriptores Premium pagan 290€/año (impuestos incluidos) en lugar de los 440€ habituales. Equival a 24,17€/mes — un descuento del 34%. Lanzamiento septiembre 2026. Una vez asignadas las 50 plazas, el precio vuelve a 440€/año.",
+    es: "Los primeros 50 suscriptores Premium pagan 290 €/año (impuestos incluidos) en lugar de los 440 € habituales. Equivale a 24,17 €/mes — un descuento del 34%. Lanzamiento septiembre 2026. Una vez asignadas las 50 plazas, el precio vuelve a 440 €/año.",
   },
   "preus.earlybird.cta": { ca: "Reservar plaça early bird", es: "Reservar plaza early bird" },
 

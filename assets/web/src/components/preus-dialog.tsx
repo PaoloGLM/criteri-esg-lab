@@ -29,7 +29,7 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
   };
 
   // Preu Premium segons el toggle
-  const premiumPrice = period === "monthly" ? "39€" : "440€";
+  const premiumPrice = period === "monthly" ? "39 €" : "440 €";
   const premiumPeriodLabel = period === "monthly" ? t("preus.period.month") : t("preus.period.year");
   const premiumSubprice = period === "monthly"
     ? (t("preus.premium.subprice.monthly") as string)

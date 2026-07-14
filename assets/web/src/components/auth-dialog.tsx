@@ -596,7 +596,7 @@ function AuthDialogInner({
                   <ArrowRight className="h-4 w-4" />
                 </>
               ) : (
-                "Crear cuenta gratis"
+                "¡Crear cuenta gratis!"
               )}
             </Button>
 

@@ -31,5 +31,5 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   // Aplicar a totes les rutes excepte arxius estàtics
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|logo.svg|robots.txt|llms.txt|fiare-form-mockup.html|registro-mockup.html|cuenta-mockup.html|privacidad.html).*)"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|logo.svg|robots.txt|llms.txt|fiare-form-mockup.html|registro-mockup.html|cuenta-mockup.html|cuenta-mockup-todas.html|privacidad.html).*)"],
 };

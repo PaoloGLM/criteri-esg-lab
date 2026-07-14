@@ -3,6 +3,7 @@ import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { LanguageProvider } from "@/components/language-provider";
+import { AuthProvider } from "@/lib/auth-context";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -147,7 +148,9 @@ export default function RootLayout({
       <body
         className={`${fraunces.variable} ${inter.variable} ${jetbrains.variable} antialiased bg-background text-foreground`}
       >
-        <LanguageProvider>{children}</LanguageProvider>
+        <AuthProvider>
+          <LanguageProvider>{children}</LanguageProvider>
+        </AuthProvider>
         <Toaster />
       </body>
     </html>

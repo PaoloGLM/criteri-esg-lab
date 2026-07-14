@@ -77,9 +77,11 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
               {t("preus.toggle.annual")}
             </button>
           </div>
-          {period === "annual" && (
-            <p className="text-xs text-accent-deep">{t("preus.toggle.annual.note")}</p>
-          )}
+          <div className="h-5">
+            {period === "annual" && (
+              <p className="text-xs text-accent-deep">{t("preus.toggle.annual.note")}</p>
+            )}
+          </div>
         </div>
 
         <div className="mt-2 grid gap-5 md:grid-cols-3">

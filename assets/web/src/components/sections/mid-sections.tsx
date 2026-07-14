@@ -72,7 +72,7 @@ export function MidSections({ onOpenRegister, onOpenReport }: MidSectionsProps =
             <FormatBloc num="04" icon={<Target className="h-4 w-4" />} title="4. Implicacions" desc="Empreses, reguladors, ciutadans. + Més enllà del Checkbox." />
             <FormatBloc num="05" icon={<Network className="h-4 w-4" />} title="5. Connexions" desc="Relacions amb altres informes i actualitat." />
             <FormatBloc num="06" icon={<ClipboardCheck className="h-4 w-4" />} title="6. Accions recomanades" desc="3-5 accions concretes. El cor operatiu." highlighted />
-            <FormatBloc num="07" icon={<Network className="h-4 w-4" />} title="7. Cross-reference" desc="Mapatge amb EcoVadis, B Corp, MSCI, GRI." highlighted wide />
+            <FormatBloc num="07" icon={<Network className="h-4 w-4" />} title="7. Cross-reference" desc="Mapatge amb EcoVadis, B Corp, MSCI, GRI." highlighted />
           </div>
 
           <div className="mt-8 flex justify-center">

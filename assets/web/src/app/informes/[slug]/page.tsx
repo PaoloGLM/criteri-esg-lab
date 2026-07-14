@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useParams } from "next/navigation";
 import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
-import { RegisterDialog } from "@/components/register-dialog";
+import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { QuiSomDialog } from "@/components/qui-som-dialog";
 import { useLanguage } from "@/components/language-provider";
@@ -47,7 +47,7 @@ export default function InformeSlugPage() {
         : "";
 
   const [isRegistered, setIsRegistered] = useState(false);
-  const [registerOpen, setRegisterOpen] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
   const [preusOpen, setPreusOpen] = useState(false);
   const [quiSomOpen, setQuiSomOpen] = useState(false);
 
@@ -56,11 +56,11 @@ export default function InformeSlugPage() {
   // Els diàlegs sempre es renderitzen (estables entre renders)
   const dialogs = (
     <>
-      <RegisterDialog open={registerOpen} onOpenChange={setRegisterOpen} />
+      <AuthDialog open={authOpen} onOpenChange={setAuthOpen} />
       <PreusDialog
         open={preusOpen}
         onOpenChange={setPreusOpen}
-        onOpenRegister={() => setRegisterOpen(true)}
+        onOpenAuth={() => setAuthOpen(true)}
       />
       <QuiSomDialog open={quiSomOpen} onOpenChange={setQuiSomOpen} />
     </>
@@ -114,7 +114,7 @@ export default function InformeSlugPage() {
   const handleRegister = () => {
     // Simulació: en clicar per registrar-se, ja es considera registrat
     setIsRegistered(true);
-    setRegisterOpen(true);
+    setAuthOpen(true);
   };
 
   const articleJsonLd = report

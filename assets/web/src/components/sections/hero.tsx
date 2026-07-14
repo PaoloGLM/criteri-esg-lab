@@ -77,8 +77,8 @@ export function Hero({ onOpenReport, onOpenRegister }: HeroProps) {
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             <SectionCard href="/informes" icon={<FileText className="h-5 w-5" />} title={t("sections.informes.title")} desc={t("sections.informes.desc")} />
-            <SectionCard href="/informes" icon={<Award className="h-5 w-5" />} title={t("sections.crossref.title")} desc={t("sections.crossref.desc")} />
             <SectionCard href="#newsletter" icon={<Mail className="h-5 w-5" />} title={t("sections.newsletter.title")} desc={t("sections.newsletter.desc")} />
+            <SectionCard href="/informes" icon={<Award className="h-5 w-5" />} title={t("sections.crossref.title")} desc={t("sections.crossref.desc")} />
             <SectionCard href="/informes" icon={<Gauge className="h-5 w-5" />} title={t("sections.semafor.title")} desc={t("sections.semafor.desc")} highlighted />
             <SectionCard href="/informes" icon={<Compass className="h-5 w-5" />} title={t("sections.editorial.title")} desc={t("sections.editorial.desc")} highlighted />
             <SectionCard href="#newsletter" icon={<Feather className="h-5 w-5" />} title={t("sections.cartadirector.title")} desc={t("sections.cartadirector.desc")} highlighted />

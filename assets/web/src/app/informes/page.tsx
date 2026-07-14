@@ -5,13 +5,13 @@ import { useRouter } from "next/navigation";
 import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
 import { ReportsLibrary } from "@/components/sections/reports-library";
-import { RegisterDialog } from "@/components/register-dialog";
+import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { QuiSomDialog } from "@/components/qui-som-dialog";
 
 export default function InformesPage() {
   const router = useRouter();
-  const [registerOpen, setRegisterOpen] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
   const [preusOpen, setPreusOpen] = useState(false);
   const [quiSomOpen, setQuiSomOpen] = useState(false);
 
@@ -24,9 +24,9 @@ export default function InformesPage() {
       <Header
         onOpenPreus={() => setPreusOpen(true)}
         onOpenQuiSom={() => setQuiSomOpen(true)}
+        onOpenAuth={() => setAuthOpen(true)}
       />
       <main className="flex-1">
-        {/* Capçalera de la pàgina */}
         <section className="border-b border-rule bg-secondary/30 py-12">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <p className="eyebrow mb-2">
@@ -46,12 +46,11 @@ export default function InformesPage() {
       </main>
       <Footer />
 
-      {/* Modals */}
-      <RegisterDialog open={registerOpen} onOpenChange={setRegisterOpen} />
+      <AuthDialog open={authOpen} onOpenChange={setAuthOpen} />
       <PreusDialog
         open={preusOpen}
         onOpenChange={setPreusOpen}
-        onOpenRegister={() => setRegisterOpen(true)}
+        onOpenRegister={() => setAuthOpen(true)}
       />
       <QuiSomDialog
         open={quiSomOpen}

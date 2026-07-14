@@ -1,20 +1,32 @@
 "use client";
 
 import { useLanguage } from "@/components/language-provider";
+import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Menu, X, LogIn } from "lucide-react";
+import { Search, Menu, X, LogIn, User, LogOut } from "lucide-react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface HeaderProps {
   onOpenPreus?: () => void;
   onOpenQuiSom?: () => void;
+  onOpenAuth?: () => void;
 }
 
-export function Header({ onOpenPreus, onOpenQuiSom }: HeaderProps = {}) {
+export function Header({ onOpenPreus, onOpenQuiSom, onOpenAuth }: HeaderProps = {}) {
   const { lang, setLang, t } = useLanguage();
+  const { user, signOut } = useAuth();
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+
+  const handleSignOut = async () => {
+    await signOut();
+    setUserMenuOpen(false);
+    router.push("/");
+  };
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-rule bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
@@ -76,10 +88,49 @@ export function Header({ onOpenPreus, onOpenQuiSom }: HeaderProps = {}) {
             </button>
           </div>
 
-          <Button variant="outline" size="sm" className="hidden md:inline-flex">
-            <LogIn className="mr-1 h-3.5 w-3.5" />
-            {t("nav.login")}
-          </Button>
+          {/* Auth: mostrar usuario o botón login */}
+          {user ? (
+            <div className="relative">
+              <button
+                onClick={() => setUserMenuOpen(!userMenuOpen)}
+                className="flex items-center gap-2 rounded-md border border-rule px-3 py-1.5 text-sm font-medium text-foreground hover:border-accent transition-colors"
+              >
+                <User className="h-4 w-4 text-accent" />
+                <span className="hidden sm:inline max-w-[120px] truncate">
+                  {user.email?.split("@")[0] || "Usuario"}
+                </span>
+              </button>
+              {userMenuOpen && (
+                <div className="absolute right-0 top-full mt-1 w-48 rounded-md border border-rule bg-card shadow-lg z-50">
+                  <a
+                    href="/cuenta"
+                    onClick={() => setUserMenuOpen(false)}
+                    className="flex items-center gap-2 px-4 py-2.5 text-sm hover:bg-secondary rounded-t-md"
+                  >
+                    <User className="h-4 w-4" />
+                    Mi cuenta
+                  </a>
+                  <button
+                    onClick={handleSignOut}
+                    className="flex w-full items-center gap-2 px-4 py-2.5 text-sm text-destructive hover:bg-secondary rounded-b-md"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Cerrar sesión
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Button
+              variant="outline"
+              size="sm"
+              className="hidden md:inline-flex"
+              onClick={onOpenAuth}
+            >
+              <LogIn className="mr-1 h-3.5 w-3.5" />
+              {t("nav.login")}
+            </Button>
+          )}
 
           <Button
             variant="ghost"
@@ -124,10 +175,29 @@ export function Header({ onOpenPreus, onOpenQuiSom }: HeaderProps = {}) {
           >
             {t("nav.preus")}
           </button>
-          <Button variant="outline" size="sm" className="mt-2 w-full">
-            <LogIn className="mr-1 h-3.5 w-3.5" />
-            {t("nav.login")}
-          </Button>
+          {user ? (
+            <>
+              <a href="/cuenta" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">
+                Mi cuenta
+              </a>
+              <button
+                onClick={() => { setMobileOpen(false); handleSignOut(); }}
+                className="rounded-md px-3 py-2 text-left text-sm font-medium text-destructive hover:bg-secondary"
+              >
+                Cerrar sesión
+              </button>
+            </>
+          ) : (
+            <Button
+              variant="outline"
+              size="sm"
+              className="mt-2 w-full"
+              onClick={() => { setMobileOpen(false); onOpenAuth?.(); }}
+            >
+              <LogIn className="mr-1 h-3.5 w-3.5" />
+              {t("nav.login")}
+            </Button>
+          )}
         </nav>
       )}
     </header>

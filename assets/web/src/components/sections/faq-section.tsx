@@ -52,7 +52,7 @@ export function FaqSection() {
         name: "Puc provar-ho abans de pagar?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sí. 7 dies de prova premium sense targeta. La newsletter i 3 informes oberts al mes són gratuïts per sempre amb registre.",
+          text: "Sí. El registre és gratuït i et dóna accés a la newsletter bimensual i als informes amb més de 6 mesos. Per accedir als informes recents, necessites Premium (290 €/any early bird per als primers 50).",
         },
       },
     ],
@@ -109,7 +109,7 @@ export function FaqSection() {
               Puc provar-ho abans de pagar?
             </AccordionTrigger>
             <AccordionContent className="text-sm leading-relaxed text-foreground/75">
-              Sí. 7 dies de prova premium sense targeta. La newsletter i 3 informes oberts al mes són gratuïts per sempre amb registre.
+              Sí. El registre és gratuït i et dóna accés a la newsletter bimensual i als informes amb més de 6 mesos. Per accedir als informes recents, necessites Premium (290 €/any early bird per als primers 50).
             </AccordionContent>
           </AccordionItem>
         </Accordion>

@@ -24,11 +24,11 @@ export const translations = {
     ca: "Criteri ESG converteix els informes institucionals, els frameworks i les certificacions europees en accions concretes. Cada document, sintetitzat en 5 minuts de lectura — per a directors de sostenibilitat, compliance officers i consultories que volen ser més ètiques, més sostenibles i millor reputades.",
     es: "Criteri ESG convierte los informes institucionales, los frameworks y las certificaciones europeas en acciones concretas. Cada documento, sintetizado en 5 minutos de lectura — para directores de sostenibilidad, compliance officers y consultorías que quieren ser más éticas, más sostenibles y mejor reputadas.",
   },
-  "hero.cta.trial": { ca: "Prova 7 dies gratis", es: "Prueba 7 días gratis" },
+  "hero.cta.trial": { ca: "Registra't gratis", es: "Regístrate gratis" },
   "hero.cta.newsletter": { ca: "Rep la newsletter", es: "Recibe la newsletter" },
   "hero.note": {
-    ca: "Sense targeta de crèdit. Cancel·la quan vulguis.",
-    es: "Sin tarjeta de crédito. Cancela cuando quieras.",
+    ca: "Accés gratuït a informes >6 mesos. Sense targeta.",
+    es: "Acceso gratuito a informes >6 meses. Sin tarjeta.",
   },
 
   "sections.title": {
@@ -107,11 +107,11 @@ export const translations = {
     ca: "Resums executius de 300 paraules + una connexió entre ells. 5 minuts de lectura que et posen al dia. Cancel·la quan vulguis.",
     es: "Resúmenes ejecutivos de 300 palabras + una conexión entre ellos. 5 minutos de lectura que te pon al día. Cancela cuando quieras.",
   },
-  "cta.premium.eyebrow": { ca: "Prova Premium", es: "Prueba Premium" },
-  "cta.premium.title": { ca: "7 dies gratis. Sense targeta.", es: "7 días gratis. Sin tarjeta." },
+  "cta.premium.eyebrow": { ca: "Fes-te Premium", es: "Hazte Premium" },
+  "cta.premium.title": { ca: "Early bird: 290 €/any", es: "Early bird: 290 €/año" },
   "cta.premium.body": {
-    ca: "Accés complet a la biblioteca, cerca semàntica, alertes personalitzades, cross-reference amb certificacions i dossiers temàtics. Si no t'agrada, no pagues res.",
-    es: "Acceso completo a la biblioteca, búsqueda semántica, alertas personalizadas, cross-reference con certificaciones y dossiers temáticos. Si no te gusta, no pagas nada.",
+    ca: "Accés complet a la biblioteca, cerca semàntica, alertes personalitzades, cross-reference amb certificacions i dossiers temàtics. Per als primers 50 subscriptors.",
+    es: "Acceso completo a la biblioteca, búsqueda semántica, alertas personalizadas, cross-reference con certificaciones y dossiers temáticos. Para los primeros 50 suscriptores.",
   },
 
   "form.title": { ca: "Registre gratuït", es: "Registro gratuito" },

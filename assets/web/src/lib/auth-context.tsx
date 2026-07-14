@@ -8,7 +8,7 @@ import React, {
   useCallback,
 } from "react";
 import type { Session, User } from "@supabase/supabase-js";
-import { supabase } from "@/lib/supabase";
+import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 
 interface AuthContextValue {
   /**Usuari actual o null si no hi ha sessió*/
@@ -28,6 +28,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Si Supabase no està configurat, no fer res
+    if (!isSupabaseConfigured()) {
+      setLoading(false);
+      return;
+    }
+
     // Recupera la sessió inicial de Supabase
     let mounted = true;
 
@@ -55,6 +61,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const signOut = useCallback(async () => {
+    if (!isSupabaseConfigured()) {
+      setSession(null);
+      return;
+    }
     const { error } = await supabase.auth.signOut();
     if (error) {
       console.error("[auth-context] Error signing out:", error.message);

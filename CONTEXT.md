@@ -376,3 +376,18 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
 8. **Google Drive operatiu**: carpeta `Criteri ESG` amb 5 subcarpetes (assets, dossiers, originals, processats, ultra). 37 informes de 2026 ja descarregats a `originals`. Credencials OAuth2 a `/home/z/my-project/.gcp-oauth-tokens.json`.
 
 9. **Newsletter horari definitiu**: els dijous a les 15:00h (cada 2 setmanes).
+
+10. **Ampliació de fonts (15 juliol 2026)** — Base de dades de fonts ampliada i corregida a 192 entrades (v2.1). Canvis concrets:
+    - **Eliminada** ICONA (institució extingida el 1995, integrada al MITECO).
+    - **Afegides fonts globals**: Ellen MacArthur Foundation (economia circular, Circulytics), Business & Human Rights Resource Centre (observatori de vulneracions de drets humans — clau per a CSDDD), Transparency International (Índex de Percepció de la Corrupció — clau per a la "G" de Governança).
+    - **Afegida font espanyola**: Plataforma Española de Economía Circular (EEAC) — simbiosi industrial i bones pràctiques estatals.
+    - **EFRAG desglossada**: a més de la web genèrica, ara es monitoritza específicament l'ESRS Q&A Platform i l'ESRS Knowledge Hub, on es publiquen les interpretacions tècniques que els directors de sostenibilitat necessiten per al reporting CSRD.
+    - **Justificació**: aquestes 5 fonts cobreixen forats detectats en temàtiques clau (economia circular, drets humans operatius, governança anti-corrupció, dubtes tècnics CSRD). Sense elles, els informes perdia força en aquestes àrees.
+    - Vegeu `16-BASE-DADES-FONTS.md` v2.1 per al detall complet.
+
+11. **Flux de treball confirmat (15 juliol 2026)** — Funcionament del cicle setmanal de processament d'informes:
+    1. **Z.ai-bot** revisa totes les fonts (192 actualment) dos cops a la setmana (dilluns i dijous al matí) per detectar nous informes.
+    2. **Z.ai-bot** publica els informes detectats a la web i en crea l'informe propi amb els 8 blocs (Semàfor + 7 blocs narratius) per a cadascun.
+    3. **Z.ai-bot** proposa a Paolo els 5-6 informes més rellevants per a la newsletter bimensual.
+    4. **Paolo** selecciona els informes que realment tenen pes per a la newsletter, i fa la revisió editorial dels informes creats per Z.ai-bot (per si s'han de millorar).
+    5. **Regla clara**: tots els informes detectats van a la web. Tots els informes detectats tenen el seu informe creat per Z.ai-bot amb els 8 blocs. **No tots** els informes detectats ni creats van a la newsletter. Només Paolo selecciona els que hi van, i Paolo és qui determina si els informes creats per Z.ai-bot estan bé. Aquesta és la part humana principal del procés.

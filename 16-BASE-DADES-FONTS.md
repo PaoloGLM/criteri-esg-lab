@@ -1,8 +1,8 @@
-# 16 — Base de dades completa de fonts (v2.0)
+# 16 — Base de dades completa de fonts (v2.1)
 
 > **Document viu.** Base de dades de totes les fonts que Criteri ESG monitoritza.
-> **Versió:** 2.0 (30 juny 2026)
-> **Total fonts:** 187 (100 originals + 12 noves globals + 17 CCAA × ~4-5 fonts cadascuna + fonts addicionals)
+> **Versió:** 2.1 (15 juliol 2026)
+> **Total fonts:** 192 (100 originals + 15 globals + 17 CCAA × ~4-5 fonts cadascuna + fonts addicionals)
 
 ---
 
@@ -47,6 +47,9 @@
 | 20 | ISO (International Organization for Standardization) | Framework | https://www.iso.org | Variable | ⏳ |
 | 21 | UNCTAD — World Investment Report | Oficial | https://unctad.org | Anual | ⏳ |
 | 22 | World Inequality Lab | Recerca | https://wir2026.wid.world | Anual | ✅ |
+| 23 | Ellen MacArthur Foundation | Think tank | https://ellenmacarthurfoundation.org | Variable (Circulytics + informes sectorials) | ⏳ |
+| 24 | Business & Human Rights Resource Centre | Ètica | https://www.business-humanrights.org | Variable (informes sectorials + denúncies) | ⏳ |
+| 25 | Transparency International | Ètica | https://www.transparency.org | Anual (CPI) + informes sectorials | ⏳ |
 
 ---
 
@@ -73,7 +76,9 @@
 
 | # | Font | Tipus | URL | Periodicitat | ID Drive |
 |---|------|-------|-----|--------------|----------|
-| 35 | EFRAG | Framework | https://www.efrag.org | Trimestral | ✅ |
+| 35 | EFRAG (web genèrica) | Framework | https://www.efrag.org | Trimestral | ✅ |
+| 35a | EFRAG — ESRS Q&A Platform | Framework | https://www.efrag.org/sustainability-reporting/esrs-q-a-platform | Variable (respostes tècniques contínues) | ⏳ |
+| 35b | EFRAG — ESRS Knowledge Hub | Framework | https://www.efrag.org/sustainability-reporting/esrs-knowledge-hub | Variable (guies d'implementació) | ⏳ |
 | 36 | ESMA | Regulador | https://www.esma.europa.eu | Anual | ✅ |
 | 37 | EBA | Regulador | https://www.eba.europa.eu | Anual | ✅ |
 | 38 | EIOPA | Regulador | https://www.eiopa.europa.eu | Anual | ✅ |
@@ -125,20 +130,20 @@
 | 67 | CES (Consejo Económico y Social) | Oficial | https://www.ces.es | Anual | ⏳ |
 | 68 | Banco de España — Informe Estabilidad Financiera | Oficial | https://www.bde.es | Semestral | ⏳ |
 | 69 | CNMV | Oficial | https://www.cnmv.es | Anual + boletín | ✅ |
-| 70 | ICONA | Oficial | https://www.miteco.gob.es | Anual | ⏳ |
-| 71 | Portal Transparencia | Oficial | https://transparencia.gob.es | Variable | ⏳ |
-| 72 | Forética | Industry | https://foretica.org | Anual + informes sectorials | ✅ |
-| 73 | Fundación Biodiversidad | Oficial | https://www.fundacionbiodiversidad.es | Anual | ⏳ |
-| 74 | Club de Excelencia en Sostenibilidad | Industry | https://www.clubsostenibilidad.org | Anual | ⏳ |
-| 75 | SERES | Industry | https://www.seresome.org | Anual | ⏳ |
-| 76 | FOESSA | Recerca | https://www.foessa.es | Quinquennal | ⏳ (no 2026) |
-| 77 | COTEC | Industry | https://cotec.es | Anual (economía circular) | ⏳ (no 2026) |
-| 78 | CEOE | Industry | https://www.ceoe.es | Variable | ⏳ |
-| 79 | Pimec | Industry | https://www.pimec.org | Variable | ⏳ |
-| 80 | Cámara de Comercio de España | Industry | https://www.camara.es | Anual | ⏳ |
-| 81 | Cercle d'Economia | Industry | https://www.cercledeconomia.com | Anual | ⏳ |
-| 82 | Pacto Mundial ONU España | Ètica | https://www.pactomundial.org | Anual | ⏳ |
-| 83 | Ministerio de Industria y Turismo | Oficial | https://mitur.gob.es | Anual | ⏳ |
+| 70 | Portal Transparencia | Oficial | https://transparencia.gob.es | Variable | ⏳ |
+| 71 | Forética | Industry | https://foretica.org | Anual + informes sectorials | ✅ |
+| 72 | Fundación Biodiversidad | Oficial | https://www.fundacionbiodiversidad.es | Anual | ⏳ |
+| 73 | Club de Excelencia en Sostenibilidad | Industry | https://www.clubsostenibilidad.org | Anual | ⏳ |
+| 74 | SERES | Industry | https://www.seresome.org | Anual | ⏳ |
+| 75 | FOESSA | Recerca | https://www.foessa.es | Quinquennal | ⏳ (no 2026) |
+| 76 | COTEC | Industry | https://cotec.es | Anual (economía circular) | ⏳ (no 2026) |
+| 77 | CEOE | Industry | https://www.ceoe.es | Variable | ⏳ |
+| 78 | Pimec | Industry | https://www.pimec.org | Variable | ⏳ |
+| 79 | Cámara de Comercio de España | Industry | https://www.camara.es | Anual | ⏳ |
+| 80 | Cercle d'Economia | Industry | https://www.cercledeconomia.com | Anual | ⏳ |
+| 81 | Pacto Mundial ONU España | Ètica | https://www.pactomundial.org | Anual | ⏳ |
+| 82 | Ministerio de Industria y Turismo | Oficial | https://mitur.gob.es | Anual | ⏳ |
+| 83 | Plataforma Española de Economía Circular (EEAC) | Industry | https://economiacircular.org | Variable (bones pràctiques + simbiosi industrial) | ⏳ |
 
 ---
 
@@ -379,8 +384,8 @@
 
 | Categoria | Nº de fonts |
 |-----------|-------------|
-| Globals (internacionals) | 22 |
-| Europees (UE) | 41 |
+| Globals (internacionals) | 25 |
+| Europees (UE) | 43 |
 | Espanyoles (estatals) | 20 |
 | Catalanes (CCAA) | 14 |
 | Altres CCAA (16 comunitats) | 39 |
@@ -389,7 +394,7 @@
 | Big 4 i consultories | 7 |
 | Iniciatives i coalicions | 12 |
 | Sectorials | 11 |
-| **TOTAL** | **187** |
+| **TOTAL** | **192** |
 
 ---
 
@@ -412,6 +417,15 @@ Quan un informe no es pugui descarregar com a PDF directe:
 
 ## Històric de canvis
 
+- **15 juliol 2026** — Versió 2.1. Correcció i ampliació a 192 fonts:
+  - **Eliminat** ICONA (fila 70): institució extingida el 1995, integrada al MITECO. Eliminada per evitar que el pipeline busqui en seccions obsoletes.
+  - **Afegides 3 fonts globals**:
+    - Ellen MacArthur Foundation (economia circular, Circulytics)
+    - Business & Human Rights Resource Centre (drets humans, observatori de vulneracions)
+    - Transparency International (Índex de Percepció de la Corrupció, governança)
+  - **Afegida 1 font espanyola**: Plataforma Española de Economía Circular (EEAC), simbiosi industrial i bones pràctiques estatals.
+  - **EFRAG desglossada en 3 entrades**: a més de la web genèrica (35), s'afegeixen ESRS Q&A Platform (35a) i ESRS Knowledge Hub (35b) — són els canals on es publiquen les interpretacions tècniques que els directors de sostenibilitat realment necessiten.
+  - **Justificació**: aquestes 5 fonts noves cobreixen forats evidents detectats per Gemini (economia circular, drets humans operatius, governança anti-corrupció, dubtes tècnics CSRD). Sense elles, els informes de Criteri perdien força en aquestes temàtiques.
 - **30 juny 2026** — Versió 2.0. Base de dades ampliada a 187 fonts. Incloses fonts territorials per a les 17 CCAA. Afegides fonts acadèmiques, think tanks, ONGs, Big 4, iniciatives i sectorials. Document estructurat en 10 categories.
 - **30 juny 2026** — Versió 1.1. Ampliades a 100 fonts (12 noves).
 - **26 juny 2026** — Versió 1.0. 88 fonts identificades.

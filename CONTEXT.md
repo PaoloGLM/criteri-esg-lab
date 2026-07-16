@@ -404,3 +404,10 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
     - Quan Z.ai-bot comenci una sessió nova, ha de llegir `CONTEXT.md` i `worklog.md` abans de respondre res.
     - Si la sessió dura més de 6 hores, ha de rellegir `CONTEXT.md` per assegurar-se que no s'ha perdut cap decisió nova (potser la Roser ha fet canvis, o en Paolo ha pres decisions en paral·lel).
     - Això evita errors com el de la newsletter (`ca` vs `es`) que va passar per no rellegir el CONTEXT.
+
+14. **Web per defecte en castellà (16 juliol 2026)** — IMPORTANT, NO CONFONDRE:
+    - La **web** (`<html lang="es">` + LanguageProvider per defecte `'es'`) és en **castellà** quan un usuari nou hi entra. Motiu: la majoria de clients potencials són castellanoparlants.
+    - L'usuari pot canviar a català amb el toggle CAT/ES del header. La seva elecció es guarda al localStorage i es respecta en visites futures.
+    - NO fem servir `navigator.language` per detectar l'idioma del navegador. La decisió és de negoci, no tècnica: si algú té el navegador en anglès o francès, també veurà ES per defecte.
+    - La **newsletter** que rep l'usuari també és en **castellà** per defecte (decisió 12).
+    - Resum: tant la web com la newsletter per defecte són en **castellà**. El català és una opció que l'usuari pot activar.

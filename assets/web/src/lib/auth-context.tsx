@@ -51,10 +51,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               plan: demo,
               company: "Criteri ESG S.L.",
               gdpr_consent: true,
-              // Per defecte, tot usuari nou té newsletter activada en català.
-              // Això és coherent amb el formulari de registre manual.
+              // Per defecte, tot usuari nou té newsletter activada en castellà.
+              // Decisió editorial de Paolo (CONTEXT decisió 12).
               newsletter_subscribed: true,
-              newsletter_language: "ca" as const,
+              newsletter_language: "es" as const,
               interests: [],
             },
             created_at: new Date().toISOString(),
@@ -109,7 +109,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
    * Si detectem aquest cas, fem un `auth.updateUser` silenciós amb valors
    * per defecte:
    *   - newsletter_subscribed: true (cohrent amb el formulari manual)
-   *   - newsletter_language: 'ca' (cohrent amb <html lang="ca">)
+   *   - newsletter_language: 'es' (la newsletter per defecte és en castellà, decisió editorial de Paolo)
    *   - plan: 'free'
    *
    * Així evitem la inconsistència que un usuari Google aparegui com
@@ -139,7 +139,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const { error } = await supabase.auth.updateUser({
         data: {
           newsletter_subscribed: true,
-          newsletter_language: "ca",
+          newsletter_language: "es",
           plan: "free",
           // No sobreescriure full_name/email/interests — Google ja els posa
         },

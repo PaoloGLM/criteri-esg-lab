@@ -99,7 +99,8 @@ function AuthDialogInner({
   const [regSector, setRegSector] = useState("");
   const [regInterests, setRegInterests] = useState<string[]>([]);
   const [regNewsletter, setRegNewsletter] = useState(true);
-  const [regNewsletterLang, setRegNewsletterLang] = useState<"es" | "ca">("ca");
+  // Default newsletter language: 'es' (decisió editorial de Paolo - CONTEXT decisió 12)
+  const [regNewsletterLang, setRegNewsletterLang] = useState<"es" | "ca">("es");
   const [regPlan, setRegPlan] = useState<"free" | "premium">("free");
   const [regGdpr, setRegGdpr] = useState(false);
   const [regLoading, setRegLoading] = useState(false);

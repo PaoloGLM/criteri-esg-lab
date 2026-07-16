@@ -63,7 +63,6 @@ type ProfileRow = {
   interests: string[] | null;
   newsletter_language: "es" | "ca" | null;
   newsletter_subscribed: boolean | null;
-  plan: "free" | "premium" | null;
   gdpr_consent: boolean | null;
 };
 
@@ -92,8 +91,12 @@ export default function CuentaPage() {
   // fem servir `user.user_metadata` per evitar parpelleigs.
   const fullName: string = profile?.full_name ?? (meta.full_name ?? "");
   const company: string = profile?.company ?? (meta.company ?? "");
+  // El plan no està a la taula profiles (està a subscriptions).
+  // Llegim de user_metadata.plan (enviat al registre) amb fallback 'free'.
+  // TODO: quan la Roser integri subscriptions, fer un JOIN per llegir el plan
+  // real de la taula subscriptions (permet canvis de plan via Stripe/Fiare).
   const plan: "free" | "premium" =
-    profile?.plan ?? (meta.plan ?? "free");
+    (meta.plan as "free" | "premium" | undefined) ?? "free";
   const interests: string[] = Array.isArray(profile?.interests)
     ? profile.interests
     : Array.isArray(meta.interests)
@@ -102,14 +105,15 @@ export default function CuentaPage() {
   // Defaults coherents amb el comportament del formulari de registre i amb
   // l'onboarding d'usuaris OAuth (auth-context.tsx):
   //   - newsletter_subscribed: true (tot usuari registrat la rep per defecte)
-  //   - newsletter_language: 'ca' (cohrent amb <html lang="ca">)
+  //   - newsletter_language: 'es' (la newsletter per defecte és en castellà,
+  //     decisió editorial de Paolo - CONTEXT decisió 12)
   const newsletterSubscribed: boolean =
     profile?.newsletter_subscribed ??
     (meta.newsletter_subscribed === undefined
       ? true
       : Boolean(meta.newsletter_subscribed));
   const newsletterLanguage: "es" | "ca" =
-    profile?.newsletter_language ?? (meta.newsletter_language ?? "ca");
+    profile?.newsletter_language ?? (meta.newsletter_language ?? "es");
   const gdprConsent: boolean =
     profile?.gdpr_consent ?? Boolean(meta.gdpr_consent);
 
@@ -131,7 +135,7 @@ export default function CuentaPage() {
       const { data, error } = await supabase
         .from("profiles")
         .select(
-          "full_name, company, interests, newsletter_language, newsletter_subscribed, plan, gdpr_consent"
+          "full_name, company, interests, newsletter_language, newsletter_subscribed, gdpr_consent"
         )
         .eq("id", user.id)
         .maybeSingle();

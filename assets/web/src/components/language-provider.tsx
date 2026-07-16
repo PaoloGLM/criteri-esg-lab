@@ -14,36 +14,43 @@ const LanguageContext = createContext<LanguageContextValue | undefined>(undefine
 const LANG_STORAGE_KEY = "criteri-lang";
 
 /**
- * Determina la llengua inicial:
- * 1. Si l'usuari ja ha triat una llengua (localStorage), respectem la seva elecció.
- * 2. Si no, mirem la preferència del navegador (navigator.language).
- * 3. Si no es pot determinar, default a "ca" (coherent amb <html lang="ca">).
+ * Determina la llengua inicial de la web.
  *
- * NOTA: aquesta funció corre al client (dins useEffect) per evitar
- * inconsistències SSR/hidratació. El primer render fa servir "ca".
+ * Decisió editorial de Paolo (CONTEXT decisió 12, 14): l'idioma per defecte
+ * de la web és **castellà** ('es'), perquè la majoria de clients potencials
+ * són castellanoparlants. La web en català és opcional (toggle al header).
+ *
+ * Ordre de preferència:
+ * 1. Si l'usuari ja ha triat una llengua (localStorage), respectem la seva elecció.
+ * 2. Si no, default a "es".
+ *
+ * NOTA: no fem servir navigator.language perquè la decisió és de negoci,
+ * no tècnica. Si algú té el navegador en anglès o francès, també veurà ES.
+ * L'usuari pot canviar manualment a CAT amb el toggle del header.
+ *
+ * NOTA SSR: aquesta funció corre al client (dins useEffect) per evitar
+ * inconsistències d'hidratació. El primer render fa servir "es".
  */
 function detectInitialLang(): Language {
-  if (typeof window === "undefined") return "ca";
+  if (typeof window === "undefined") return "es";
   try {
     const stored = window.localStorage.getItem(LANG_STORAGE_KEY);
     if (stored === "ca" || stored === "es") return stored;
   } catch {
     // localStorage pot estar bloquejat (mode privat), seguim
   }
-  const nav = window.navigator.language?.toLowerCase() ?? "";
-  if (nav.startsWith("es")) return "es";
-  return "ca";
+  return "es";
 }
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  // Primer render: "ca" (coherent amb <html lang="ca"> i amb el primer
-  // render del servidor, evitant mismatch d'hidratació).
-  const [lang, setLang] = useState<Language>("ca");
+  // Primer render: "es" (default de la web, decisió editorial).
+  // Evita mismatch d'hidratació perquè coincideix amb el render del servidor.
+  const [lang, setLang] = useState<Language>("es");
 
-  // Després del muntatge, sobreescriu amb la preferència detectada.
+  // Després del muntatge, respectem la preferència guardada si n'hi ha.
   useEffect(() => {
     const detected = detectInitialLang();
-    if (detected !== "ca") {
+    if (detected !== "es") {
       setLang(detected);
     }
   }, []);
@@ -63,7 +70,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     (key: TranslationKey): string => {
       const entry = translations[key];
       if (!entry) return key;
-      return entry[lang] ?? entry.ca ?? key;
+      // Fallback: lang -> es -> ca -> key
+      return entry[lang] ?? entry.es ?? key;
     },
     [lang]
   );

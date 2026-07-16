@@ -130,7 +130,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ca" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"

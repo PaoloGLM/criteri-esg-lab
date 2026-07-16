@@ -1,240 +1,559 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ca">
 <head>
 <meta charset="UTF-8">
-<title>Criteri ESG — Registro</title>
+<title>Criteri ESG — Registre / Inici de sessió (Mockup final)</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: #F5EFE6; font-family: 'Inter', sans-serif; color: #2C1810; line-height: 1.6; padding: 40px 16px; }
-  .page { max-width: 480px; margin: 0 auto; }
-  .kicker { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #B87333; font-weight: 600; margin-bottom: 8px; }
-  h1 { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 600; margin-bottom: 6px; }
-  .subtitle { color: #6B5847; font-size: 14px; margin-bottom: 24px; }
-  .card { background: white; border: 1px solid #E5DDD0; border-radius: 8px; padding: 28px 24px; margin-bottom: 20px; }
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-  /* Beneficios */
-  .benefits { background: rgba(184,115,51,0.06); border: 1px solid #B87333; border-radius: 6px; padding: 14px 16px; margin-bottom: 20px; }
-  .benefits-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #B87333; font-weight: 600; margin-bottom: 8px; }
-  .benefits ul { list-style: none; padding: 0; }
-  .benefits li { font-size: 13px; padding: 3px 0; display: flex; align-items: start; gap: 6px; }
-  .benefits li::before { content: "\2713"; color: #5C8A5C; font-weight: 700; flex-shrink: 0; }
+  * { box-sizing: border-box; }
+  body {
+    background: #F5EFE6;
+    margin: 0;
+    padding: 40px 20px;
+    font-family: 'Inter', sans-serif;
+    color: #2C1810;
+    line-height: 1.6;
+  }
+  .page { max-width: 560px; margin: 0 auto; }
 
-  /* Social login */
-  .social-row { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-  .btn-google { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px; border: 1px solid #C9B89A; border-radius: 6px; background: white; cursor: pointer; font-size: 14px; font-family: 'Inter', sans-serif; color: #2C1810; transition: background 0.15s; }
-  .btn-google:hover { background: #F5EFE6; }
-  .btn-google img { width: 18px; height: 18px; }
-  .btn-magic { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px; border: 1px solid #C9B89A; border-radius: 6px; background: white; cursor: pointer; font-size: 14px; font-family: 'Inter', sans-serif; color: #2C1810; transition: background 0.15s; }
-  .btn-magic:hover { background: #F5EFE6; }
+  /* Capçalera del diàleg */
+  .kicker {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: #8A5526; font-weight: 600; margin-bottom: 8px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif; font-size: 28px; font-weight: 600;
+    margin: 0 0 8px 0; line-height: 1.2; color: #2C1810;
+  }
+  .subtitle {
+    color: #6B5847; margin-bottom: 24px; font-size: 14px;
+  }
 
-  .divider { text-align: center; margin: 16px 0; font-size: 12px; color: #9C8B7A; position: relative; padding: 0 10px; }
-  .divider::before, .divider::after { content: ""; position: absolute; top: 50%; width: 35%; height: 1px; background: #C9B89A; }
-  .divider::before { left: 5%; }
-  .divider::after { right: 5%; }
+  /* Tabs */
+  .tabs {
+    display: grid; grid-template-columns: 1fr 1fr;
+    background: #EFE7DA; border: 1px solid #C9B89A;
+    border-radius: 6px; padding: 4px; margin-bottom: 24px;
+  }
+  .tab {
+    text-align: center; padding: 10px 16px;
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;
+    color: #6B5847; cursor: pointer;
+    border-radius: 4px; transition: all 0.15s;
+    border: none; background: transparent;
+  }
+  .tab.active {
+    background: #B87333; color: white; font-weight: 600;
+  }
+
+  /* Card principal */
+  .card {
+    background: white; border: 1px solid #E5DDD0;
+    border-radius: 8px; padding: 24px 28px;
+  }
+
+  /* Google button */
+  .btn-google {
+    width: 100%; padding: 11px 16px;
+    background: white; border: 1px solid #C9B89A;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;
+    color: #2C1810; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .btn-google:hover { border-color: #B87333; background: #FFFCF7; }
+  .btn-google svg { width: 18px; height: 18px; }
+
+  /* Divider */
+  .divider {
+    display: flex; align-items: center; margin: 20px 0;
+    color: #6B5847; font-size: 12px;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px; background: #C9B89A;
+  }
+  .divider span { padding: 0 12px; }
 
   /* Form fields */
-  .field { margin-bottom: 14px; }
-  .field-label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 4px; }
-  .field-label .opt { color: #9C8B7A; font-weight: 400; font-size: 11px; }
-  .input { width: 100%; padding: 10px 12px; border: 1px solid #C9B89A; border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 14px; background: #FFFCF7; color: #2C1810; }
-  .input:focus { outline: none; border-color: #B87333; box-shadow: 0 0 0 3px rgba(184,115,51,0.1); }
-  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .field { margin-bottom: 16px; }
+  .field-label {
+    display: block; font-size: 13px; font-weight: 500;
+    color: #2C1810; margin-bottom: 6px;
+  }
+  .field-label .required { color: #B87333; margin-left: 2px; }
+  .field-hint {
+    font-size: 11px; color: #6B5847; margin-top: 4px;
+  }
+  .input {
+    width: 100%; padding: 10px 14px;
+    border: 1px solid #C9B89A; border-radius: 6px;
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    background: #FFFCF7; color: #2C1810;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .input:focus {
+    outline: none; border-color: #B87333;
+    box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.1);
+  }
+  .input.with-icon { padding-left: 38px; }
+  .input-wrap { position: relative; }
+  .input-wrap .icon {
+    position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+    color: #6B5847; font-size: 16px;
+  }
 
-  /* Intereses */
-  .interests-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 4px; }
-  .interest-chip { display: flex; align-items: center; gap: 5px; padding: 5px 8px; border: 1px solid #C9B89A; border-radius: 4px; font-size: 12px; cursor: pointer; transition: all 0.15s; background: #FFFCF7; }
-  .interest-chip:hover { border-color: #B87333; }
-  .interest-chip input { margin: 0; }
-  .interest-chip.selected { background: rgba(184,115,51,0.1); border-color: #B87333; }
+  /* Select */
+  .select {
+    width: 100%; padding: 10px 14px;
+    border: 1px solid #C9B89A; border-radius: 6px;
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    background: #FFFCF7; color: #2C1810;
+    appearance: none; cursor: pointer;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B5847' stroke-width='2'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+  .select:focus {
+    outline: none; border-color: #B87333;
+    box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.1);
+  }
 
-  /* Newsletter */
-  .newsletter-box { background: #FFFCF7; border: 1px solid #C9B89A; border-radius: 6px; padding: 12px 14px; margin: 14px 0; }
-  .check-row { display: flex; align-items: start; gap: 8px; font-size: 13px; margin-bottom: 8px; }
-  .check-row input { margin-top: 3px; }
-  .lang-row { display: flex; align-items: center; gap: 12px; font-size: 13px; margin-top: 8px; padding-left: 24px; }
-  .lang-row label { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+  /* Interests grid */
+  .interests-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    background: #FFFCF7; border: 1px solid #C9B89A;
+    border-radius: 6px; padding: 14px;
+  }
+  .interest {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 12px; color: #2C1810; cursor: pointer;
+  }
+  .interest input { margin-top: 2px; accent-color: #B87333; }
 
-  /* Plan selector */
-  .plan-selector { margin: 16px 0; }
-  .plan-selector-label { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
-  .plan-options { display: flex; flex-direction: column; gap: 8px; }
-  .plan-option { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 2px solid #C9B89A; border-radius: 6px; cursor: pointer; transition: all 0.15s; background: #FFFCF7; }
-  .plan-option:hover { border-color: #B87333; }
-  .plan-option.selected { border-color: #B87333; background: rgba(184,115,51,0.06); }
-  .plan-option input { margin: 0; }
-  .plan-info { flex: 1; }
-  .plan-name { font-weight: 600; font-size: 14px; }
-  .plan-price { font-size: 12px; color: #9C8B7A; }
-  .plan-badge { font-size: 10px; padding: 2px 8px; border-radius: 8px; background: #B87333; color: white; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+  /* Newsletter box */
+  .newsletter-box {
+    background: rgba(184, 115, 51, 0.06);
+    border: 1px solid #C9B89A;
+    border-radius: 6px; padding: 14px 16px; margin-bottom: 16px;
+  }
+  .newsletter-box .check-line {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 13px; color: #2C1810;
+  }
+  .newsletter-box input[type=checkbox] { margin-top: 3px; accent-color: #B87333; }
+  .lang-options {
+    display: flex; gap: 16px; margin-top: 10px; padding-left: 24px;
+    font-size: 12px;
+  }
+  .lang-options label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+  .lang-options input { accent-color: #B87333; }
+
+  /* Plan options */
+  .plan-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .plan-card {
+    border: 1px solid #C9B89A; border-radius: 6px;
+    padding: 12px 14px; cursor: pointer;
+    background: #FFFCF7; transition: all 0.15s;
+  }
+  .plan-card:hover { border-color: #D9A574; }
+  .plan-card.active {
+    border-color: #B87333; background: rgba(184, 115, 51, 0.06);
+  }
+  .plan-card-head {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 4px;
+  }
+  .plan-card-head input { accent-color: #B87333; }
+  .plan-name {
+    font-family: 'Fraunces', serif; font-size: 14px; font-weight: 600;
+    color: #2C1810;
+  }
+  .plan-desc {
+    font-size: 11px; color: #6B5847; padding-left: 22px;
+    line-height: 1.45;
+  }
 
   /* GDPR */
-  .gdpr-check { display: flex; align-items: start; gap: 8px; font-size: 12px; margin: 12px 0; color: #6B5847; }
-  .gdpr-check input { margin-top: 3px; }
-  .gdpr-check a { color: #B87333; }
+  .gdpr {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 12px; color: #6B5847; margin: 16px 0;
+  }
+  .gdpr input { margin-top: 2px; accent-color: #B87333; }
+  .gdpr a { color: #B87333; }
 
-  /* Submit */
-  .btn-primary { width: 100%; padding: 12px; background: #B87333; color: white; border: none; border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.15s; }
+  /* Submit button */
+  .btn-primary {
+    width: 100%; padding: 13px 24px; background: #B87333;
+    color: white; border: none; border-radius: 6px;
+    font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: background 0.15s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
   .btn-primary:hover { background: #8A5526; }
+  .btn-primary:disabled { background: #C9B89A; cursor: not-allowed; }
+  .btn-secondary {
+    width: 100%; padding: 13px 24px; background: #2C1810;
+    color: #F5EFE6; border: none; border-radius: 6px;
+    font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: background 0.15s;
+  }
+  .btn-secondary:hover { background: #5C3A24; }
 
-  /* Login link */
-  .login-link { text-align: center; font-size: 13px; color: #6B5847; margin-top: 16px; }
-  .login-link a { color: #B87333; font-weight: 500; }
+  .note-bottom {
+    text-align: center; font-size: 11px; color: #6B5847;
+    margin-top: 14px;
+  }
+  .note-bottom a { color: #B87333; }
 
-  .note { text-align: center; font-size: 11px; color: #9C8B7A; margin-top: 12px; }
+  /* Magic link section */
+  .magic-box {
+    background: rgba(184, 115, 51, 0.06);
+    border: 1px solid #B87333;
+    border-radius: 6px; padding: 16px;
+    text-align: center;
+  }
+  .magic-box .icon { font-size: 24px; color: #B87333; margin-bottom: 6px; }
+  .magic-box p { margin: 4px 0; font-size: 13px; color: #2C1810; }
+  .magic-box strong { color: #2C1810; }
+
+  /* Password reset link */
+  .reset-link {
+    text-align: right; margin-top: -6px; margin-bottom: 12px;
+  }
+  .reset-link a {
+    font-size: 11px; color: #B87333; text-decoration: none;
+  }
+  .reset-link a:hover { text-decoration: underline; }
+
+  /* Tab content visibility */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Annotation banner (for mockup viewing only) */
+  .annotation {
+    background: rgba(184, 115, 51, 0.1);
+    border-left: 3px solid #B87333;
+    padding: 10px 14px; margin-bottom: 20px;
+    font-size: 12px; color: #6B5847; border-radius: 4px;
+  }
+  .annotation strong { color: #2C1810; }
+
+  /* Hide tab indicator (visual only) */
+  .lang-switch {
+    position: fixed; top: 20px; right: 20px;
+    background: white; border: 1px solid #C9B89A;
+    border-radius: 6px; padding: 6px;
+    display: flex; gap: 4px;
+  }
+  .lang-switch button {
+    background: transparent; border: none; cursor: pointer;
+    padding: 4px 10px; font-size: 12px; font-weight: 600;
+    color: #6B5847; border-radius: 4px;
+  }
+  .lang-switch button.active {
+    background: #B87333; color: white;
+  }
+
+  /* Hidden by default for ES content */
+  [data-lang].hidden { display: none !important; }
 </style>
 </head>
 <body>
+
+<!-- Mockup-only language switch -->
+<div class="lang-switch" id="langSwitch">
+  <button class="active" onclick="setLang('ca')">CAT</button>
+  <button onclick="setLang('es')">ES</button>
+</div>
+
 <div class="page">
-  <p class="kicker">CRITERI ESG · REGISTRO</p>
-  <h1>Crea tu cuenta gratuita</h1>
-  <p class="subtitle">Regístrate para poder acceder a newsletters, informes ESG y más!</p>
 
-  <div class="card">
-    <!-- Beneficios -->
-    <div class="benefits">
-      <div class="benefits-title">QUÉ OBTIENES GRATIS</div>
-      <ul>
-        <li>Newsletter bimensual con informes recientes, noticias y cruces de información relevantes</li>
-        <li>Acceso en abierto a los resúmenes de informes generados por Criteri ESG (> 6 meses)</li>
-        <li>Diversas fuentes de información que te harán reflexionar sobre cómo transformar éticamente las empresas</li>
-      </ul>
-    </div>
+  <div class="annotation">
+    <strong>Mockup-03-registro-final · v3</strong> — Aquest és el disseny aprovat per al diàleg de registre i inici de sessió. Tots els textos són bilingües (CAT/ES) i segueixen la paleta terra+coure de Criteri ESG.
+  </div>
 
-    <!-- Social login -->
-    <div class="social-row">
-      <button class="btn-google" onclick="alert('Login con Google (simulación)')">
-        <img src="https://www.google.com/favicon.ico" alt="Google" onerror="this.style.display='none'">
-        Continuar con Google
+  <p class="kicker" data-lang="ca">CRITERI ESG · Accés al compte</p>
+  <p class="kicker hidden" data-lang="es">CRITERI ESG · Acceso a la cuenta</p>
+  <h1 data-lang="ca">Criteri ESG</h1>
+  <h1 class="hidden" data-lang="es">Criteri ESG</h1>
+  <p class="subtitle" data-lang="ca">Accedeix o crea el teu compte per començar a llegir informes ESG sintetitzats.</p>
+  <p class="subtitle hidden" data-lang="es">Accede o crea tu cuenta para empezar a leer informes ESG sintetizados.</p>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" id="tab-register" onclick="switchTab('register')" data-lang="ca">Registre</button>
+    <button class="tab active hidden" data-lang="es" style="display:none">Registro</button>
+    <button class="tab" id="tab-login" onclick="switchTab('login')" data-lang="ca">Iniciar sessió</button>
+  </div>
+
+  <!-- ====== TAB: REGISTRE ====== -->
+  <div class="tab-content active" id="content-register">
+    <div class="card">
+
+      <!-- Google -->
+      <button class="btn-google">
+        <svg viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+        </svg>
+        <span data-lang="ca">Continuar amb Google</span>
+        <span class="hidden" data-lang="es">Continuar con Google</span>
       </button>
-    </div>
 
-    <div class="divider">o regístrate con email</div>
+      <div class="divider"><span data-lang="ca">o registra't amb correu</span><span class="hidden" data-lang="es">o regístrate con correo</span></div>
 
-    <!-- Form -->
-    <form onsubmit="event.preventDefault(); handleRegister();">
-
-      <div class="row-2">
-        <div class="field">
-          <label class="field-label">Nombre *</label>
-          <input type="text" class="input" placeholder="Tu nombre" required>
-        </div>
-        <div class="field">
-          <label class="field-label">Email *</label>
-          <input type="email" class="input" placeholder="tu@email.com" required>
-        </div>
+      <!-- Form fields -->
+      <div class="field">
+        <label class="field-label">
+          <span data-lang="ca">Nom i cognoms</span><span class="hidden" data-lang="es">Nombre y apellidos</span>
+          <span class="required">*</span>
+        </label>
+        <input type="text" class="input" placeholder="Ex: Maria Puig" data-ph-ca="Ex: Maria Puig" data-ph-es="Ej: María Puig">
       </div>
 
       <div class="field">
-        <label class="field-label">Empresa <span class="opt">(opcional)</span></label>
-        <input type="text" class="input" placeholder="Nombre de tu empresa u organización">
+        <label class="field-label">
+          <span data-lang="ca">Correu electrònic</span><span class="hidden" data-lang="es">Correo electrónico</span>
+          <span class="required">*</span>
+        </label>
+        <input type="email" class="input" placeholder="nom@empresa.com">
       </div>
 
       <div class="field">
-        <label class="field-label">Intereses <span class="opt">(opcional — para recomendarte informes relevantes)</span></label>
+        <label class="field-label">
+          <span data-lang="ca">Empresa o organització (opcional)</span>
+          <span class="hidden" data-lang="es">Empresa u organización (opcional)</span>
+        </label>
+        <input type="text" class="input" placeholder="Criteri ESG S.L.">
+      </div>
+
+      <div class="field">
+        <label class="field-label">
+          <span data-lang="ca">Sector professional</span><span class="hidden" data-lang="es">Sector profesional</span>
+          <span class="required">*</span>
+        </label>
+        <select class="select">
+          <option value="" data-lang="ca">— Selecciona —</option>
+          <option value="" class="hidden" data-lang="es">— Selecciona —</option>
+          <option data-lang="ca">Consultoria ESG</option>
+          <option class="hidden" data-lang="es">Consultoría ESG</option>
+          <option data-lang="ca">Director de sostenibilitat</option>
+          <option class="hidden" data-lang="es">Director de sostenibilidad</option>
+          <option>Compliance officer</option>
+          <option data-lang="ca">Investor relations</option>
+          <option class="hidden" data-lang="es">Investor relations</option>
+          <option data-lang="ca">ONG / Tercer sector</option>
+          <option class="hidden" data-lang="es">ONG / Tercer sector</option>
+          <option data-lang="ca">Sector públic</option>
+          <option class="hidden" data-lang="es">Sector público</option>
+          <option data-lang="ca">Altres</option>
+          <option class="hidden" data-lang="es">Otros</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label class="field-label">
+          <span data-lang="ca">Interessos principals</span><span class="hidden" data-lang="es">Intereses principales</span>
+        </label>
         <div class="interests-grid">
-          <label class="interest-chip"><input type="checkbox" value="CSRD"> CSRD / ESRS</label>
-          <label class="interest-chip"><input type="checkbox" value="EcoVadis"> EcoVadis</label>
-          <label class="interest-chip"><input type="checkbox" value="B Corp"> B Corp</label>
-          <label class="interest-chip"><input type="checkbox" value="EconomiaCircular"> Economía circular</label>
-          <label class="interest-chip"><input type="checkbox" value="InversionImpacto"> Inversión de impacto (SFDR)</label>
-          <label class="interest-chip"><input type="checkbox" value="BienComun"> Bien común</label>
-          <label class="interest-chip"><input type="checkbox" value="EticaEmpresarial"> Ética empresarial</label>
-          <label class="interest-chip"><input type="checkbox" value="CSDDD"> Derechos Humanos y Cadena de Valor (CSDDD)</label>
+          <label class="interest"><input type="checkbox"> CSRD / ESRS</label>
+          <label class="interest"><input type="checkbox"> EcoVadis</label>
+          <label class="interest"><input type="checkbox"> B Corp</label>
+          <label class="interest"><input type="checkbox"> MSCI ESG</label>
+          <label class="interest"><input type="checkbox"> Taxonomia UE</label>
+          <label class="interest"><input type="checkbox"> CSDDD</label>
+          <label class="interest"><input type="checkbox"> Drets humans / Due diligence</label>
+          <label class="interest"><input type="checkbox"> Risc climàtic / TCFD</label>
         </div>
       </div>
 
       <!-- Newsletter -->
       <div class="newsletter-box">
-        <div class="check-row">
-          <input type="checkbox" id="newsletter" checked>
-          <label for="newsletter">
-            <strong>Sí, quiero recibir la newsletter bimensual gratuita</strong><br>
-            <span style="font-size: 11px; color: #9C8B7A;">Informes recientes, noticias y cruces de información relevantes, cada 2 semanas.</span>
+        <div class="check-line">
+          <input type="checkbox" id="c-news" checked>
+          <label for="c-news">
+            <span data-lang="ca">Sí, vull rebre la newsletter bimensual gratuïta amb informes recents, notícies i creuaments d'informació rellevants.</span>
+            <span class="hidden" data-lang="es">Sí, quiero recibir la newsletter bimensual gratis con informes recientes, noticias y cruces de información relevantes.</span>
           </label>
         </div>
-        <div class="lang-row">
-          <span style="font-size: 11px; color: #9C8B7A; margin-right: 4px;">Idioma:</span>
-          <label><input type="radio" name="nl-lang" value="es" checked> Español</label>
-          <label><input type="radio" name="nl-lang" value="ca"> Catalán</label>
+        <div class="lang-options">
+          <label><input type="radio" name="nl-lang" value="ca" checked> Català</label>
+          <label><input type="radio" name="nl-lang" value="es"> Español</label>
         </div>
       </div>
 
-      <!-- Plan selector -->
-      <div class="plan-selector">
-        <div class="plan-selector-label">Elige tu plan:</div>
-        <div class="plan-options">
-          <label class="plan-option selected" onclick="selectPlan('free')">
-            <input type="radio" name="plan" value="free" checked>
-            <div class="plan-info">
-              <div class="plan-name">Gratis</div>
-              <div class="plan-price">Newsletter + acceso a informes >6 meses</div>
+      <!-- Plan -->
+      <div class="field">
+        <label class="field-label">
+          <span data-lang="ca">Pla</span><span class="hidden" data-lang="es">Plan</span>
+        </label>
+        <div class="plan-grid">
+          <div class="plan-card active" onclick="selectPlan(this)">
+            <div class="plan-card-head">
+              <input type="radio" name="plan" value="free" checked>
+              <span class="plan-name">
+                <span data-lang="ca">Gratuït</span>
+                <span class="hidden" data-lang="es"> Gratis</span>
+              </span>
             </div>
-          </label>
-          <label class="plan-option" onclick="selectPlan('premium')">
-            <input type="radio" name="plan" value="premium">
-            <div class="plan-info">
-              <div class="plan-name">Premium <span class="plan-badge">Early bird</span></div>
-              <div class="plan-price">290€/año primeros 50 usuarios (después 440€/año o 39€/mes)</div>
-              <div style="font-size: 12px; color: #6B5847; margin-top: 2px;">Acceso total a los informes, destilado con 8 categorías, cruces de información y apartado de reflexión para dirección.</div>
+            <div class="plan-desc">
+              <span data-lang="ca">Newsletter + accés a informes >6 mesos</span>
+              <span class="hidden" data-lang="es">Newsletter + acceso a informes >6 meses</span>
             </div>
-          </label>
+          </div>
+          <div class="plan-card" onclick="selectPlan(this)">
+            <div class="plan-card-head">
+              <input type="radio" name="plan" value="premium">
+              <span class="plan-name">Premium</span>
+            </div>
+            <div class="plan-desc">
+              <span data-lang="ca">290 €/any · accés total + cross-reference</span>
+              <span class="hidden" data-lang="es">290 €/año · acceso total + cross-reference</span>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- GDPR -->
-      <div class="gdpr-check">
-        <input type="checkbox" id="gdpr" required>
-        <label for="gdpr">
-          He leído y acepto la <a href="#">política de privacidad</a> y los <a href="#">términos del servicio</a>.
+      <div class="gdpr">
+        <input type="checkbox" id="c-gdpr">
+        <label for="c-gdpr">
+          <span data-lang="ca">He llegit i accepto la </span>
+          <span class="hidden" data-lang="es">He leído y acepto la </span>
+          <a href="#">política de privacitat</a>
+          <span data-lang="ca"> i el tractament de les meves dades segons el RGPD.</span>
+          <span class="hidden" data-lang="es"> y el tratamiento de mis datos según el RGPD.</span>
+          <span class="required">*</span>
         </label>
       </div>
 
-      <button type="submit" class="btn-primary" id="submitBtn">
-        Crear cuenta gratis
+      <!-- Submit -->
+      <button class="btn-primary">
+        <span data-lang="ca">Crear compte gratuït</span>
+        <span class="hidden" data-lang="es">Crear cuenta gratis</span>
+        <span>→</span>
       </button>
-    </form>
 
-    <div class="login-link">
-      ¿Ya tienes cuenta? <a href="#">Inicia sesión</a>
+      <div class="note-bottom">
+        <span data-lang="ca">En registrar-te acceptes els </span>
+        <span class="hidden" data-lang="es">Al registrarte aceptas los </span>
+        <a href="#">termes del servei</a>.
+      </div>
+
     </div>
   </div>
 
-  <p class="note">
-    Al registrarte, tu idioma por defecto será español. Puedes cambiar a catalán en cualquier momento desde tu cuenta.<br>
-    Tus datos se almacenan en servidores de la UE (Supabase, Frankfurt). Cumplimos GDPR.
-  </p>
+  <!-- ====== TAB: LOGIN ====== -->
+  <div class="tab-content" id="content-login">
+    <div class="card">
+
+      <!-- Google -->
+      <button class="btn-google">
+        <svg viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+        </svg>
+        <span data-lang="ca">Continuar amb Google</span>
+        <span class="hidden" data-lang="es">Continuar con Google</span>
+      </button>
+
+      <div class="divider"><span data-lang="ca">o inicia sessió amb correu</span><span class="hidden" data-lang="es">o inicia sesión con correo</span></div>
+
+      <!-- Magic link -->
+      <div class="field">
+        <label class="field-label">
+          <span data-lang="ca">Correu electrònic</span><span class="hidden" data-lang="es">Correo electrónico</span>
+        </label>
+        <input type="email" class="input" placeholder="nom@empresa.com">
+      </div>
+      <button class="btn-secondary" style="margin-bottom: 20px;">
+        <span data-lang="ca">Enviar enllaç màgic</span>
+        <span class="hidden" data-lang="es">Enviar enlace mágico</span>
+      </button>
+
+      <div class="divider"><span data-lang="ca">o amb contrasenya</span><span class="hidden" data-lang="es">o con contraseña</span></div>
+
+      <!-- Password login -->
+      <div class="field">
+        <label class="field-label">
+          <span data-lang="ca">Correu electrònic</span><span class="hidden" data-lang="es">Correo electrónico</span>
+        </label>
+        <div class="input-wrap">
+          <span class="icon">✉</span>
+          <input type="email" class="input with-icon" placeholder="nom@empresa.com">
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">
+          <span data-lang="ca">Contrasenya</span><span class="hidden" data-lang="es">Contraseña</span>
+        </label>
+        <div class="input-wrap">
+          <span class="icon">🔒</span>
+          <input type="password" class="input with-icon" placeholder="••••••••">
+        </div>
+      </div>
+
+      <div class="reset-link">
+        <a href="#">
+          <span data-lang="ca">Has oblidat la contrasenya?</span>
+          <span class="hidden" data-lang="es">¿Olvidaste tu contraseña?</span>
+        </a>
+      </div>
+
+      <button class="btn-primary">
+        <span data-lang="ca">Iniciar sessió</span>
+        <span class="hidden" data-lang="es">Iniciar sesión</span>
+      </button>
+
+    </div>
+  </div>
+
 </div>
 
 <script>
-function selectPlan(plan) {
-  document.querySelectorAll('.plan-option').forEach(el => el.classList.remove('selected'));
-  event.currentTarget.classList.add('selected');
-
-  const btn = document.getElementById('submitBtn');
-  if (plan === 'premium') {
-    btn.textContent = 'Continuar a pago Premium →';
-  } else {
-    btn.textContent = 'Crear cuenta gratis';
+  function switchTab(tab) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    if (tab === 'register') {
+      document.getElementById('tab-register').classList.add('active');
+      document.getElementById('content-register').classList.add('active');
+    } else {
+      document.getElementById('tab-login').classList.add('active');
+      document.getElementById('content-login').classList.add('active');
+    }
   }
-}
 
-function handleRegister() {
-  const plan = document.querySelector('input[name="plan"]:checked').value;
-  if (plan === 'premium') {
-    alert('Cuenta creada. Redirigiendo al formulario de pago Premium...');
-    // window.location.href = '/fiare-form-mockup.html';
-  } else {
-    alert('Cuenta gratuita creada. Revisa tu email para confirmar.');
+  function selectPlan(card) {
+    document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+    card.querySelector('input[type=radio]').checked = true;
   }
-}
 
-// Toggle interest chips
-document.querySelectorAll('.interest-chip input').forEach(cb => {
-  cb.addEventListener('change', function() {
-    this.parentElement.classList.toggle('selected', this.checked);
-  });
-});
+  function setLang(lang) {
+    document.querySelectorAll('#langSwitch button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('#langSwitch button').forEach(b => {
+      if (b.textContent.toLowerCase() === lang) b.classList.add('active');
+    });
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      if (el.dataset.lang === lang) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
+    });
+    // Update placeholders
+    document.querySelectorAll('[data-ph-ca]').forEach(el => {
+      el.placeholder = lang === 'ca' ? el.dataset.phCa : el.dataset.phEs;
+    });
+  }
 </script>
+
 </body>
 </html>

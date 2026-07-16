@@ -1,0 +1,20 @@
+:81 {
+	# Configuració mínima: només proxy a localhost:3000.
+	#
+	# NOTA DE SEGURETAT (15 jul 2026):
+	# Abans hi havia un block @transform_port_query que permetia a qualsevol
+	# visitant passar ?XTransformPort=NNNN i fer de proxy a localhost:NNNN.
+	# Això era un SSRF obert: si hi havia algun servei local escoltant
+	# (Prisma Studio, una altra app, una BD), quedava exposat a internet.
+	# Eliminat per seguretat. Si en el futur es necessita debug remots,
+	# protegir amb autenticació IP whitelist.
+
+	handle {
+		reverse_proxy localhost:3000 {
+			header_up Host {host}
+			header_up X-Forwarded-For {remote_host}
+			header_up X-Forwarded-Proto {scheme}
+			header_up X-Real-IP {remote_host}
+		}
+	}
+}

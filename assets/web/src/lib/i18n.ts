@@ -7,8 +7,13 @@ export const translations = {
 
   "nav.informes": { ca: "Biblioteca d'informes", es: "Biblioteca de informes" },
   "nav.quisom": { ca: "Qui som", es: "Quiénes somos" },
+  "nav.quefem": { ca: "Què fem", es: "Qué hacemos" },
   "nav.preus": { ca: "Preus", es: "Precios" },
   "nav.login": { ca: "Inicia sessió", es: "Inicia sesión" },
+  "nav.cuenta": { ca: "El meu compte", es: "Mi cuenta" },
+  "nav.logout": { ca: "Tancar sessió", es: "Cerrar sesión" },
+  "nav.menu": { ca: "Menú", es: "Menú" },
+  "nav.user.default": { ca: "Usuari", es: "Usuario" },
   "nav.cerca": { ca: "Cerca informes…", es: "Buscar informes…" },
   "nav.cerca.btn": { ca: "Cercar", es: "Buscar" },
 
@@ -28,7 +33,7 @@ export const translations = {
   "hero.cta.newsletter": { ca: "Rep la newsletter", es: "Recibe la newsletter" },
   "hero.note": {
     ca: "Accés gratuït a informes >6 mesos. Sense targeta.",
-    es: "Acceso gratuito a informes >6 meses. Sin tarjeta.",
+    es: "Acceso gratis a informes >6 meses. Sin tarjeta.",
   },
 
   "sections.title": {
@@ -62,7 +67,7 @@ export const translations = {
   "sections.newsletter.title": { ca: "Newsletter bimensual", es: "Newsletter bimensual" },
   "sections.newsletter.desc": {
     ca: "Informes recents, notícies i creuaments d'informació rellevants, cada dues setmanes. Gratuït, cancel·la quan vulguis.",
-    es: "Informes recientes, noticias y cruces de información relevantes, cada dos semanas. Gratuito, cancela cuando quieras.",
+    es: "Informes recientes, noticias y cruces de información relevantes, cada dos semanas. Gratis, cancela cuando quieras.",
   },
   "sections.semafor.title": { ca: "Semàfor Metodològic", es: "Semáforo Metodológico" },
   "sections.semafor.desc": {
@@ -95,10 +100,10 @@ export const translations = {
   "latest.cta": { ca: "Veure exemple complet", es: "Ver ejemplo completo" },
   "latest.cta.trial": {
     ca: "Llegeix l'informe complet amb registre gratuït",
-    es: "Lee el informe completo con registro gratuito",
+    es: "Lee el informe completo con registro gratis",
   },
 
-  "cta.newsletter.eyebrow": { ca: "La newsletter gratuïta", es: "La newsletter gratuita" },
+  "cta.newsletter.eyebrow": { ca: "La newsletter gratuïta", es: "La newsletter gratis" },
   "cta.newsletter.title": {
     ca: "Cada dues setmanes, informes que has de conèixer.",
     es: "Cada dos semanas, informes que debes conocer.",
@@ -114,7 +119,87 @@ export const translations = {
     es: "Acceso completo a la biblioteca, búsqueda semántica, alertas personalizadas, cross-reference con certificaciones y dossiers temáticos. Para los primeros 50 suscriptores.",
   },
 
-  "form.title": { ca: "Registre gratuït", es: "Registro gratuito" },
+  // ============ Mid sections (Speed + Format) ============
+  "mid.speed.eyebrow": { ca: "BIBLIOTECA D'INFORMES", es: "BIBLIOTECA DE INFORMES" },
+  "mid.speed.title": {
+    ca: "Estalvia temps, només 5 min.",
+    es: "Ahorra tiempo, solo 5 min.",
+  },
+  "mid.speed.body": {
+    ca: "Un director de sostenibilitat dedica de mitjana el 60% del seu temps a recopilar informació. Criteri ESG centralitza tota aquesta informació i la sintetitza en 8 blocs, perquè el temps d'anàlisi es converteixi en temps de decisió.",
+    es: "Un director de sostenibilidad dedica de media el 60% de su tiempo a recopilar información. Criteri ESG centraliza toda esta información y la sintetiza en 8 bloques, para que el tiempo de análisis se convierta en tiempo de decisión.",
+  },
+  "mid.speed.stat1.value": { ca: "5 min", es: "5 min" },
+  "mid.speed.stat1.label": {
+    ca: "per entendre un informe",
+    es: "para entender un informe",
+  },
+  "mid.speed.stat2.value": { ca: "180+", es: "180+" },
+  "mid.speed.stat2.label": {
+    ca: "fonts monitoritzades",
+    es: "fuentes monitorizadas",
+  },
+  "mid.speed.stat3.value": { ca: "8", es: "8" },
+  "mid.speed.stat3.label": {
+    ca: "blocs per informe",
+    es: "bloques por informe",
+  },
+
+  "mid.format.eyebrow": {
+    ca: "COM REBRÀS LA INFORMACIÓ",
+    es: "CÓMO RECIBIRÁS LA INFORMACIÓN",
+  },
+  "mid.format.title": {
+    ca: "Vuit blocs. Un mateix patró per a 1.000 informes.",
+    es: "Ocho bloques. Un mismo patrón para 1.000 informes.",
+  },
+  "mid.format.body": {
+    ca: "La consistència et permet saber què esperar. Cada informe segueix el mateix esquema perquè puguis comparar, prioritzar i decidir.",
+    es: "La consistencia te permite saber qué esperar. Cada informe sigue el mismo esquema para que puedas comparar, priorizar y decidir.",
+  },
+
+  "mid.format.bloc0.title": { ca: "0. Semàfor Metodològic", es: "0. Semáforo Metodológico" },
+  "mid.format.bloc0.desc": {
+    ca: "5 indicadors + nota A-D. Avalua la qualitat en 10 segons.",
+    es: "5 indicadores + nota A-D. Evalúa la calidad en 10 segundos.",
+  },
+  "mid.format.bloc1.title": { ca: "1. Fitxa tècnica", es: "1. Ficha técnica" },
+  "mid.format.bloc1.desc": {
+    ca: "Institució, data, tipus, pàgines, URL. 50 paraules.",
+    es: "Institución, fecha, tipo, páginas, URL. 50 palabras.",
+  },
+  "mid.format.bloc2.title": { ca: "2. 5 dades clau", es: "2. 5 datos clave" },
+  "mid.format.bloc2.desc": {
+    ca: "Punts quantitatius amb valor, context i pàgina citada.",
+    es: "Puntos cuantitativos con valor, contexto y página citada.",
+  },
+  "mid.format.bloc3.title": { ca: "3. Resum executiu", es: "3. Resumen ejecutivo" },
+  "mid.format.bloc3.desc": {
+    ca: "Què diu en llenguatge planer. 300 paraules.",
+    es: "Qué dice en lenguaje llano. 300 palabras.",
+  },
+  "mid.format.bloc4.title": { ca: "4. Implicacions", es: "4. Implicaciones" },
+  "mid.format.bloc4.desc": {
+    ca: "Empreses, reguladors, ciutadans. + Més enllà del Checkbox.",
+    es: "Empresas, reguladores, ciudadanos. + Más allá del Checkbox.",
+  },
+  "mid.format.bloc5.title": { ca: "5. Connexions", es: "5. Conexiones" },
+  "mid.format.bloc5.desc": {
+    ca: "Relacions amb altres informes i actualitat.",
+    es: "Relaciones con otros informes y actualidad.",
+  },
+  "mid.format.bloc6.title": { ca: "6. Accions recomanades", es: "6. Acciones recomendadas" },
+  "mid.format.bloc6.desc": {
+    ca: "3-5 accions concretes. El cor operatiu.",
+    es: "3-5 acciones concretas. El corazón operativo.",
+  },
+  "mid.format.bloc7.title": { ca: "7. Cross-reference", es: "7. Cross-reference" },
+  "mid.format.bloc7.desc": {
+    ca: "Mapatge amb EcoVadis, B Corp, MSCI, GRI.",
+    es: "Mapeo con EcoVadis, B Corp, MSCI, GRI.",
+  },
+
+  "form.title": { ca: "Registre gratuït", es: "Registro gratis" },
   "form.subtitle": {
     ca: "Accedeix als informes oberts (>6 mesos) i a la newsletter bimensual. Sense cost, sense targeta.",
     es: "Accede a los informes abiertos (>6 meses) y a la newsletter bimensual. Sin coste, sin tarjeta.",
@@ -153,6 +238,226 @@ export const translations = {
     es: "✓ Registro completado. Revisa tu correo para confirmar.",
   },
 
+  // ============ FAQ ============
+  "faq.eyebrow": { ca: "PREGUNTES FREQÜENTS", es: "PREGUNTAS FRECUENTES" },
+  "faq.title": {
+    ca: "Tot el que et pots preguntar.",
+    es: "Todo lo que te puedes preguntar.",
+  },
+  "faq.q1.q": {
+    ca: "És una eina de compliance o estratègica?",
+    es: "¿Es una herramienta de compliance o estratégica?",
+  },
+  "faq.q1.a": {
+    ca: "Tots dos. Cobrim el que és obligatori (CSRD, CSDDD, SFDR) i el que és estratègic (EcoVadis, B Corp, MSCI rating). L'usuari tria el seu enfocament: pot prioritzar compliment normatiu o millorar reputació.",
+    es: "Ambos. Cubrimos lo que es obligatorio (CSRD, CSDDD, SFDR) y lo que es estratégico (EcoVadis, B Corp, MSCI rating). El usuario elige su enfoque: puede priorizar cumplimiento normativo o mejorar reputación.",
+  },
+  "faq.q2.q": {
+    ca: "Quins frameworks cobriu?",
+    es: "¿Qué frameworks cubren?",
+  },
+  "faq.q2.a": {
+    ca: "Els 7 més usats: CSRD/ESRS, Taxonomia UE, SFDR, CSDDD, GRI, SASB, TCFD/TNFD. A més de les certificacions EcoVadis, B Corp, MSCI ESG, Sustainalytics, ISS ESG i CDP.",
+    es: "Los 7 más usados: CSRD/ESRS, Taxonomía UE, SFDR, CSDDD, GRI, SASB, TCFD/TNFD. Además de las certificaciones EcoVadis, B Corp, MSCI ESG, Sustainalytics, ISS ESG y CDP.",
+  },
+  "faq.q3.q": {
+    ca: "Com es comparen els informes entre ells?",
+    es: "¿Cómo se comparan los informes entre sí?",
+  },
+  "faq.q3.a": {
+    ca: "Cada informe té cross-reference amb altres informes i amb els 5 frameworks principals. Pots veure evolucions, contradiccions i complementarietats.",
+    es: "Cada informe tiene cross-reference con otros informes y con los 5 frameworks principales. Puedes ver evoluciones, contradicciones y complementariedades.",
+  },
+  "faq.q4.q": {
+    ca: "Quan entra en vigor la subscripció?",
+    es: "¿Cuándo entra en vigor la suscripción?",
+  },
+  "faq.q4.a": {
+    ca: "La web obre al públic el setembre 2026. La newsletter bimensual ja està operativa. Els primers 50 subscriptors Premium tenen preu promocional de 290€/any (vs 440€ normal) de per vida.",
+    es: "La web abre al público en septiembre 2026. La newsletter bimensual ya está operativa. Los primeros 50 suscriptores Premium tienen precio promocional de 290€/año (vs 440€ normal) de por vida.",
+  },
+  "faq.q5.q": {
+    ca: "Puc provar-ho abans de pagar?",
+    es: "¿Puedo probarlo antes de pagar?",
+  },
+  "faq.q5.a": {
+    ca: "Sí. El registre és gratuït i et dóna accés a la newsletter bimensual i als informes amb més de 6 mesos. Per accedir als informes recents, necessites Premium (290 €/any early bird per als primers 50).",
+    es: "Sí. El registro es gratis y te da acceso a la newsletter bimensual y a los informes con más de 6 meses. Para acceder a los informes recientes, necesitas Premium (290 €/año early bird para los primeros 50).",
+  },
+
+  // ============ Auth dialog (registre + login) ============
+  "auth.title": { ca: "Criteri ESG", es: "Criteri ESG" },
+  "auth.subtitle": {
+    ca: "Accedeix o crea el teu compte per començar a llegir informes ESG sintetitzats.",
+    es: "Accede o crea tu cuenta para empezar a leer informes ESG sintetizados.",
+  },
+  "auth.tab.register": { ca: "Registre", es: "Registro" },
+  "auth.tab.login": { ca: "Iniciar sessió", es: "Iniciar sesión" },
+  "auth.google": {
+    ca: "Continuar amb Google",
+    es: "Continuar con Google",
+  },
+  "auth.divider.register": {
+    ca: "o registra't amb correu",
+    es: "o regístrate con correo",
+  },
+  "auth.divider.login": {
+    ca: "o inicia sessió amb correu",
+    es: "o inicia sesión con correo",
+  },
+  "auth.divider.password": {
+    ca: "o amb contrasenya",
+    es: "o con contraseña",
+  },
+  "auth.name": { ca: "Nom i cognoms", es: "Nombre y apellidos" },
+  "auth.email": { ca: "Correu electrònic", es: "Correo electrónico" },
+  "auth.password": { ca: "Contrasenya", es: "Contraseña" },
+  "auth.company": { ca: "Empresa o organització (opcional)", es: "Empresa u organización (opcional)" },
+  "auth.sector": { ca: "Sector professional", es: "Sector profesional" },
+  "auth.sector.placeholder": { ca: "— Selecciona —", es: "— Selecciona —" },
+  "auth.interests": { ca: "Interessos principals", es: "Intereses principales" },
+  "auth.plan": { ca: "Pla", es: "Plan" },
+  "auth.plan.free": { ca: "Gratuït", es: "Gratis" },
+  "auth.plan.free.desc": {
+    ca: "Newsletter + accés a informes >6 mesos",
+    es: "Newsletter + acceso a informes >6 meses",
+  },
+  "auth.plan.premium": { ca: "Premium", es: "Premium" },
+  "auth.plan.premium.desc": {
+    ca: "290 €/any · accés total + cross-reference",
+    es: "290 €/año · acceso total + cross-reference",
+  },
+  "auth.newsletter.title": {
+    ca: "Sí, vull rebre la newsletter bimensual gratuïta amb informes recents, notícies i creuaments d'informació rellevants.",
+    es: "Sí, quiero recibir la newsletter bimensual gratis con informes recientes, noticias y cruces de información relevantes.",
+  },
+  "auth.newsletter.lang": {
+    ca: "Idioma de la newsletter:",
+    es: "Idioma de la newsletter:",
+  },
+  "auth.gdpr": {
+    ca: "He llegit i accepto la política de privacitat i el tractament de les meves dades segons el RGPD.",
+    es: "He leído y acepto la política de privacidad y el tratamiento de mis datos según el RGPD.",
+  },
+  "auth.gdpr.error": {
+    ca: "Cal acceptar la política de privacitat per crear un compte.",
+    es: "Debes aceptar la política de privacidad para crear una cuenta.",
+  },
+  "auth.submit.register.free": {
+    ca: "Crear compte gratuït",
+    es: "Crear cuenta gratis",
+  },
+  "auth.submit.register.premium": {
+    ca: "Continuar a pagament Premium",
+    es: "Continuar a pago Premium",
+  },
+  "auth.submit.login": { ca: "Iniciar sessió", es: "Iniciar sesión" },
+  "auth.magic.send": {
+    ca: "Enviar enllaç màgic",
+    es: "Enviar enlace mágico",
+  },
+  "auth.magic.sent.title": {
+    ca: "Comprova el teu correu",
+    es: "Revisa tu correo",
+  },
+  "auth.magic.sent.body": {
+    ca: "T'hem enviat un enllaç màgic. Fes-hi clic per iniciar sessió.",
+    es: "Te hemos enviado un enlace mágico. Haz clic en él para iniciar sesión.",
+  },
+  "auth.magic.sent.different": {
+    ca: "Enviar a un altre correu",
+    es: "Enviar a otro correo",
+  },
+  "auth.forgot": {
+    ca: "Has oblidat la contrasenya?",
+    es: "¿Olvidaste tu contraseña?",
+  },
+  "auth.reset.sent": {
+    ca: "Enllaç de recuperació enviat. Comprova el teu correu.",
+    es: "Enlace de recuperación enviado. Revisa tu correo.",
+  },
+  "auth.terms": {
+    ca: "En registrar-te acceptes els termes del servei.",
+    es: "Al registrarte aceptas los términos del servicio.",
+  },
+  "auth.loading.register": { ca: "Creant compte…", es: "Creando cuenta…" },
+  "auth.loading.login": { ca: "Iniciant…", es: "Iniciando…" },
+  "auth.loading.magic": { ca: "Enviant…", es: "Enviando…" },
+  "auth.success.register.title": {
+    ca: "Comprova el teu correu",
+    es: "Revisa tu correo",
+  },
+  "auth.success.register.body": {
+    ca: "T'hem enviat un enllaç de confirmació. Fes-hi clic per activar el teu compte.",
+    es: "Te hemos enviado un enlace de confirmación. Haz clic en él para activar tu cuenta.",
+  },
+  "auth.toast.welcome": {
+    ca: "Benvingut a Criteri ESG",
+    es: "Bienvenido a Criteri ESG",
+  },
+  "auth.toast.welcome.body": {
+    ca: "El teu compte s'ha creat correctament.",
+    es: "Tu cuenta se ha creado correctamente.",
+  },
+  "auth.toast.session": {
+    ca: "Sessió iniciada",
+    es: "Sesión iniciada",
+  },
+  "auth.toast.session.body": {
+    ca: "Benvingut de nou a Criteri ESG.",
+    es: "Bienvenido de nuevo a Criteri ESG.",
+  },
+  "auth.toast.magic.sent": {
+    ca: "Enllaç enviat",
+    es: "Enlace enviado",
+  },
+  "auth.toast.magic.sent.body": {
+    ca: "Comprova el teu correu per iniciar sessió.",
+    es: "Revisa tu correo para iniciar sesión.",
+  },
+  "auth.toast.reset.sent": {
+    ca: "Enllaç de recuperació enviat",
+    es: "Enlace de recuperación enviado",
+  },
+  "auth.toast.reset.sent.body": {
+    ca: "Comprova el teu correu per restablir la contrasenya.",
+    es: "Revisa tu correo para restablecer la contraseña.",
+  },
+  "auth.toast.error.register": {
+    ca: "Error en el registre",
+    es: "Error en el registro",
+  },
+  "auth.toast.error.login": {
+    ca: "No s'ha pogut iniciar sessió",
+    es: "No se ha podido iniciar sesión",
+  },
+  "auth.toast.error.magic": {
+    ca: "No s'ha pogut enviar l'enllaç",
+    es: "No se ha podido enviar el enlace",
+  },
+  "auth.close": { ca: "Tancar", es: "Cerrar" },
+  "auth.supabase.notconfigured": {
+    ca: "Supabase no està configurat. Demostració en mode lectura.",
+    es: "Supabase no está configurado. Demostración en modo lectura.",
+  },
+
+  // ============ CTA condicionals segons estat d'usuari ============
+  "cta.upgrade.title": { ca: "Fes-te Premium", es: "Hazte Premium" },
+  "cta.upgrade.body": {
+    ca: "Accedeix a la biblioteca completa, cross-references i informes >6 mesos.",
+    es: "Accede a la biblioteca completa, cross-references e informes >6 meses.",
+  },
+  "cta.upgrade.button": { ca: "Fes-te Premium", es: "Hazte Premium" },
+  "cta.premium.badge": { ca: "Ets Premium", es: "Eres Premium" },
+  "cta.newsletter.manage": {
+    ca: "Gestiona la newsletter",
+    es: "Gestiona la newsletter",
+  },
+  "cta.newsletter.subscribed": {
+    ca: "Ja estàs subscrit a la newsletter",
+    es: "Ya estás suscrito a la newsletter",
+  },
+
   "footer.tagline": {
     ca: "Intel·ligència ESG per a decisions ètiques.",
     es: "Inteligencia ESG para decisiones éticas.",
@@ -167,6 +472,7 @@ export const translations = {
   "footer.privacy": { ca: "Privadesa", es: "Privacidad" },
   "footer.terms": { ca: "Termes", es: "Términos" },
   "footer.cookies": { ca: "Cookies", es: "Cookies" },
+  "footer.faq": { ca: "Preguntes freqüents", es: "Preguntas frecuentes" },
 
   // ============ Preus ============
   "preus.eyebrow": {
@@ -179,7 +485,7 @@ export const translations = {
   },
   "preus.subtitle": {
     ca: "Comencem amb 2 mesos gratuïts per a tothom (setembre i octubre 2026). A partir de novembre, tries el teu pla. La subscripció Premium es paga anualment. Sense permanència, cancel·la quan vulguis.",
-    es: "Empezamos con 2 meses gratuitos para todos (septiembre y octubre 2026). A partir de noviembre, eliges tu plan. La suscripción Premium se paga anualmente. Sin permanencia, cancela cuando quieras.",
+    es: "Empezamos con 2 meses gratis para todos (septiembre y octubre 2026). A partir de noviembre, eliges tu plan. La suscripción Premium se paga anualmente. Sin permanencia, cancela cuando quieras.",
   },
   "preus.period.forever": { ca: "sempre", es: "siempre" },
   "preus.period.month": { ca: "mes", es: "mes" },
@@ -191,7 +497,7 @@ export const translations = {
     es: "Ahorra 28 €/año pagando anualmente",
   },
 
-  "preus.free.name": { ca: "Free", es: "Free" },
+  "preus.free.name": { ca: "Gratuït", es: "Gratis" },
   "preus.free.description": {
     ca: "Per començar a entendre l'ecosistema ESG europeu.",
     es: "Para empezar a entender el ecosistema ESG europeo.",
@@ -211,7 +517,7 @@ export const translations = {
     ca: "Per al professional que ha de decidir cada setmana.",
     es: "Para el profesional que debe decidir cada semana.",
   },
-  "preus.premium.f1": { ca: "Tot el que té Free", es: "Todo lo que tiene Free" },
+  "preus.premium.f1": { ca: "Tot el que té el pla Gratuït", es: "Todo lo que tiene el plan Gratis" },
   "preus.premium.f2": { ca: "Arxiu complet i cerca avançada", es: "Archivo completo y búsqueda avanzada" },
   "preus.premium.f3": { ca: "Tots els informes recents (< 6 mesos)", es: "Todos los informes recientes (< 6 meses)" },
   "preus.premium.f4": { ca: "Cross-reference amb EcoVadis, B Corp, MSCI, GRI", es: "Cross-reference con EcoVadis, B Corp, MSCI, GRI" },
@@ -266,7 +572,7 @@ export const translations = {
   "preus.note.title": { ca: "Regla dels 6 mesos:", es: "Regla de los 6 meses:" },
   "preus.note.body": {
     ca: "Tots els informes amb més de 6 mesos d'antiguitat són gratuïts per sempre. Només els informes recents requereixen Premium. Així garantim accés universal al coneixement ESG acumulat.",
-    es: "Todos los informes con más de 6 meses de antigüedad son gratuitos para siempre. Solo los informes recientes requieren Premium. Así garantizamos acceso universal al conocimiento ESG acumulado.",
+    es: "Todos los informes con más de 6 meses de antigüedad son gratis para siempre. Solo los informes recientes requieren Premium. Así garantizamos acceso universal al conocimiento ESG acumulado.",
   },
 
   // ============ Mètodes de pagament ============
@@ -463,5 +769,194 @@ export const translations = {
   "quisom.preguntes.cta": {
     ca: "Disponible per a subscriptors Premium",
     es: "Disponible para suscriptores Premium",
+  },
+
+  // ============ Pàgina /que-fem (Producte — com elaborem els informes) ============
+  "quefem.eyebrow": {
+    ca: "Què fem · Criteri ESG",
+    es: "Qué hacemos · Criteri ESG",
+  },
+  "quefem.title": {
+    ca: "De la font al criteri, en 5 minuts.",
+    es: "De la fuente al criterio, en 5 minutos.",
+  },
+  "quefem.subtitle": {
+    ca: "Cada informe que llegeixes a Criteri ESG passa per un procés rigorós de curació, síntesi i validació. Així és com ho fem.",
+    es: "Cada informe que lees en Criteri ESG pasa por un proceso riguroso de curación, síntesis y validación. Así es como lo hacemos.",
+  },
+
+  "quefem.process.eyebrow": {
+    ca: "EL PROCÉS",
+    es: "EL PROCESO",
+  },
+  "quefem.process.title": {
+    ca: "Cinc passos, de la font a la teva pantalla",
+    es: "Cinco pasos, de la fuente a tu pantalla",
+  },
+  "quefem.process.body": {
+    ca: "El procés és el mateix per a tots els informes, independentment de la font o el format. La consistència és el que ens permet comparar i decidir.",
+    es: "El proceso es el mismo para todos los informes, independientemente de la fuente o el formato. La consistencia es lo que nos permite comparar y decidir.",
+  },
+  "quefem.process.step1.title": {
+    ca: "1. Detecció automàtica",
+    es: "1. Detección automática",
+  },
+  "quefem.process.step1.body": {
+    ca: "Un agent d'IA monitoritza 180+ fonts institucionals (UE, OECD, BCE, EFRAG, EcoVadis, Banc d'Espanya, Forética, think tanks, acadèmics) via RSS i crawler. Dilluns i dijous al matí, el sistema ens presenta els nous informes detectats.",
+    es: "Un agente de IA monitoriza 180+ fuentes institucionales (UE, OECD, BCE, EFRAG, EcoVadis, Banco de España, Forética, think tanks, académicos) vía RSS y crawler. Lunes y jueves por la mañana, el sistema nos presenta los nuevos informes detectados.",
+  },
+  "quefem.process.step2.title": {
+    ca: "2. Curació humana",
+    es: "2. Curación humana",
+  },
+  "quefem.process.step2.body": {
+    ca: "Una persona revisa els informes detectats i decideix quins es processen. Criteri: rellevància pel director de sostenibilitat espanyol, impacte potencial, qualitat metodològica de la font. No tot el que es publica es processa; només allò que aporta valor per decidir.",
+    es: "Una persona revisa los informes detectados y decidece cuáles se procesan. Criterio: relevancia para el director de sostenibilidad español, impacto potencial, calidad metodológica de la fuente. No todo lo que se publica se procesa; solo lo que aporta valor para decidir.",
+  },
+  "quefem.process.step3.title": {
+    ca: "3. Síntesi en 8 blocs",
+    es: "3. Síntesis en 8 bloques",
+  },
+  "quefem.process.step3.body": {
+    ca: "L'agent d'IA processa cada informe seguint el nostre format de 8 blocs: Semàfor Metodològic + Fitxa tècnica + 5 dades clau + Resum executiu + Implicacions + Connexions + Accions recomanades + Cross-reference. Cada bloc té una longitud i un propòsit definits.",
+    es: "El agente de IA procesa cada informe siguiendo nuestro formato de 8 bloques: Semáforo Metodológico + Ficha técnica + 5 datos clave + Resumen ejecutivo + Implicaciones + Conexiones + Acciones recomendadas + Cross-reference. Cada bloque tiene una longitud y un propósito definidos.",
+  },
+  "quefem.process.step4.title": {
+    ca: "4. Validació editorial",
+    es: "4. Validación editorial",
+  },
+  "quefem.process.step4.body": {
+    ca: "Cap informe es publica sense revisió humana. Una persona valida el contingut, corregeix ortografia i to, comprova que les cites a pàgines siguin exactes i que la cross-reference amb EcoVadis/B Corp/MSCI/GRI tingui sentit. La responsabilitat editorial és sempre nostra, mai de la IA.",
+    es: "Ningún informe se publica sin revisión humana. Una persona valida el contenido, corrige ortografía y tono, comprueba que las citas a páginas sean exactas y que la cross-reference con EcoVadis/B Corp/MSCI/GRI tenga sentido. La responsabilidad editorial es siempre nuestra, nunca de la IA.",
+  },
+  "quefem.process.step5.title": {
+    ca: "5. Publicació immediata",
+    es: "5. Publicación inmediata",
+  },
+  "quefem.process.step5.body": {
+    ca: "L'informe es publica a la web el mateix dia amb els 8 blocs complets. No espera a la newsletter: els subscriptors Premium hi tenen accés immediat. La newsletter (quinzenal) recull els 3-4 millors del període + una connexió entre ells.",
+    es: "El informe se publica en la web el mismo día con los 8 bloques completos. No espera a la newsletter: los suscriptores Premium tienen acceso inmediato. La newsletter (quincenal) recoge los 3-4 mejores del período + una conexión entre ellos.",
+  },
+
+  "quefem.format.eyebrow": {
+    ca: "EL FORMAT",
+    es: "EL FORMATO",
+  },
+  "quefem.format.title": {
+    ca: "Vuit blocs, un mateix patró per a 1.000 informes",
+    es: "Ocho bloques, un mismo patrón para 1.000 informes",
+  },
+  "quefem.format.body": {
+    ca: "La consistència et permet saber què esperar. Cada informe segueix el mateix esquema perquè puguis comparar, prioritzar i decidir.",
+    es: "La consistencia te permite saber qué esperar. Cada informe sigue el mismo esquema para que puedas comparar, priorizar y decidir.",
+  },
+
+  "quefem.valors.eyebrow": {
+    ca: "CRITERIS I VALORS",
+    es: "CRITERIOS Y VALORES",
+  },
+  "quefem.valors.title": {
+    ca: "No som neutres. Ens movem per uns criteris ètics.",
+    es: "No somos neutrales. Nos movemos por unos criterios éticos.",
+  },
+  "quefem.valors.intro": {
+    ca: "La nostra mirada ve de la tradició de l'ètica empresarial i dels principis de l'economia social. Apliquem aquests criteris a cada informe que processem.",
+    es: "Nuestra mirada viene de la tradición de la ética empresarial y de los principios de la economía social. Aplicamos estos criterios a cada informe que procesamos.",
+  },
+
+  "quefem.preguntes.eyebrow": {
+    ca: "PREMIUM",
+    es: "PREMIUM",
+  },
+  "quefem.preguntes.title": {
+    ca: "Preguntes per millorar",
+    es: "Preguntas para mejorar",
+  },
+  "quefem.preguntes.intro": {
+    ca: "Un espai de reflexió ètica per a professionals. No és una autoavaluació amb puntuació: és un espai per pensar en veu alta, amb preguntes ben fetes i context ètic, per ser millors professionals i millors organitzacions.",
+    es: "Un espacio de reflexión ética para profesionales. No es una autoevaluación con puntuación: es un espacio para pensar en voz alta, con preguntas bien hechas y contexto ético, para ser mejores profesionales y mejores organizaciones.",
+  },
+
+  "quefem.closing.eyebrow": {
+    ca: "EL COMPROMÍS",
+    es: "EL COMPROMISO",
+  },
+  "quefem.closing.body": {
+    ca: "Si creus que les empreses poden ser agents de canvi —i que la tecnologia ha d'estar al servei del criteri humà—, som dels teus.",
+    es: "Si crees que las empresas pueden ser agentes de cambio —y que la tecnología debe estar al servicio del criterio humano—, somos de los tuyos.",
+  },
+
+  // ============ Pàgina /qui-som (Empresa — equip humà) ============
+  "quisom.page.eyebrow": {
+    ca: "Qui som · Criteri ESG",
+    es: "Quiénes somos · Criteri ESG",
+  },
+  "quisom.page.title": {
+    ca: "Una empresa petita amb una missió clara.",
+    es: "Una empresa pequeña con una misión clara.",
+  },
+  "quisom.page.subtitle": {
+    ca: "Ajudem les organitzacions a ser més ètiques, sostenibles i transformadores. Aquesta és la gent que hi ha al darrere.",
+    es: "Ayudamos a las organizaciones a ser más éticas, sostenibles y transformadoras. Esta es la gente que hay detrás.",
+  },
+  "quisom.manifest.page.eyebrow": {
+    ca: "EL NOSTRE MANIFEST",
+    es: "NUESTRO MANIFIESTO",
+  },
+  "quisom.manifest.page.body": {
+    ca: "La sensibilitat i la preocupació pel món que ens envolta és el motor que ens fa moure. Volem ajudar i facilitar que les empreses, com a agents ciutadans que construeixen societat, siguin les més eficients, exemplars i transformadores possibles.",
+    es: "La sensibilidad y la preocupación por el mundo que nos rodea es el motor que nos hace mover. Queremos ayudar y facilitar que las empresas, como agentes ciudadanos que construyen sociedad, sean las más eficientes, ejemplares y transformadoras posibles.",
+  },
+  "quisom.team.eyebrow": {
+    ca: "L'EQUIP",
+    es: "EL EQUIPO",
+  },
+  "quisom.team.title": {
+    ca: "Qui som",
+    es: "Quiénes somos",
+  },
+  "quisom.team.intro": {
+    ca: "Som un equip petit i compromès. Cadascú aporta el que sap fer millor, i ens complementem per construir Criteri ESG dia a dia.",
+    es: "Somos un equipo pequeño y comprometido. Cada uno aporta lo que sabe hacer mejor, y nos complementamos para construir Criteri ESG día a día.",
+  },
+  "quisom.team.paolo.role": {
+    ca: "CEO · Estratègia i editorial",
+    es: "CEO · Estrategia y editorial",
+  },
+  "quisom.team.paolo.bio": {
+    ca: "Paolo és el fundador de Criteri ESG. Combina formació en filosofia i gestió d'empreses, amb experiència en consultoria ESG. Decideix quins informes es processen, signa la Carta del Director mensual i manté la coherència editorial del projecte. La seva mirada ètica és el que diferencia Criteri d'altres serveis ESG.",
+    es: "Paolo es el fundador de Criteri ESG. Combina formación en filosofía y gestión de empresas, con experiencia en consultoría ESG. Decidece qué informes se procesan, firma la Carta del Director mensual y mantiene la coherencia editorial del proyecto. Su mirada ética es lo que diferencia a Criteri de otros servicios ESG.",
+  },
+  "quisom.team.techlead.role": {
+    ca: "Tech Lead · Disseny i programació",
+    es: "Tech Lead · Diseño y programación",
+  },
+  "quisom.team.techlead.bio": {
+    ca: "El Tech Lead s'encarrega del desenvolupament web (Next.js), la base de dades (Supabase), les integracions tècniques (Stripe, Beehiiv, Google Drive) i el manteniment de l'agent d'IA. Treballa estretament amb Paolo perquè la tecnologia estigui sempre al servei del criteri humà, no al revés.",
+    es: "El Tech Lead se encarga del desarrollo web (Next.js), la base de datos (Supabase), las integraciones técnicas (Stripe, Beehiiv, Google Drive) y el mantenimiento del agente de IA. Trabaja estrechamente con Paolo para que la tecnología esté siempre al servicio del criterio humano, no al revés.",
+  },
+  "quisom.team.zai.role": {
+    ca: "Assistent d'IA · Recerca i síntesi",
+    es: "Asistente de IA · Investigación y síntesis",
+  },
+  "quisom.team.zai.bio": {
+    ca: "L'agent d'IA fa la feina pesada —detecció de fonts, síntesi en 8 blocs, classificació, corrector ortogràfic— sempre sota supervisió humana. No és un membre de l'equip en sentit estricte, però sense ella no podríem mantenir el ritme de publicació ni el cost per informe que tenim.",
+    es: "El agente de IA hace el trabajo pesado —detección de fuentes, síntesis en 8 bloques, clasificación, corrector ortográfico— siempre bajo supervisión humana. No es un miembro del equipo en sentido estricto, pero sin ella no podríamos mantener el ritmo de publicación ni el coste por informe que tenemos.",
+  },
+  "quisom.team.join.title": {
+    ca: "Vols formar-ne part?",
+    es: "¿Quieres formar parte?",
+  },
+  "quisom.team.join.body": {
+    ca: "Som una empresa oberta a persones que comparteixin els nostres criteris ètics i la nostra passió per fer la tecnologia al servei del bé comú. Si creus que encaixes, escriu-nos a info@criteriesg.com.",
+    es: "Somos una empresa abierta a personas que compartan nuestros criterios éticos y nuestra pasión por poner la tecnología al servicio del bien común. Si crees que encajas, escríbenos a info@criteriesg.com.",
+  },
+  "quisom.page.closing.eyebrow": {
+    ca: "EL COMPROMÍS",
+    es: "EL COMPROMISO",
+  },
+  "quisom.page.closing.body": {
+    ca: "Criteri ESG no és només una eina. És la convicció que les empreses poden ser agents de canvi —i que la tecnologia ha d'estar al servei del criteri humà.",
+    es: "Criteri ESG no es solo una herramienta. Es la convicción de que las empresas pueden ser agentes de cambio —y que la tecnología debe estar al servicio del criterio humano.",
   },
 } as const;

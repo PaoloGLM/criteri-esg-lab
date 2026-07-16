@@ -26,32 +26,65 @@ export function Footer() {
 
           <div className="lg:col-span-8">
             <div className="grid gap-8 sm:grid-cols-3">
+              {/* Producte — Què fem + Biblioteca */}
               <div>
                 <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-accent-soft">
                   {t("footer.product")}
                 </p>
                 <ul className="space-y-2 text-sm">
-                  <li><a href="/informes" className="text-primary-foreground/80 hover:text-accent-soft">{t("nav.informes")}</a></li>
-                  <li><a href="#faq" className="text-primary-foreground/80 hover:text-accent-soft">{t("nav.quisom")}</a></li>
+                  <li>
+                    <a href="/informes" className="text-primary-foreground/80 hover:text-accent-soft">
+                      {t("nav.informes")}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/que-fem" className="text-primary-foreground/80 hover:text-accent-soft">
+                      {t("nav.quefem")}
+                    </a>
+                  </li>
                 </ul>
               </div>
+
+              {/* Empresa — Qui som + FAQ */}
               <div>
                 <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-accent-soft">
                   {t("footer.company")}
                 </p>
                 <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="text-primary-foreground/80 hover:text-accent-soft">Qui som</a></li>
-                  <li><a href="#" className="text-primary-foreground/80 hover:text-accent-soft">Preguntes freqüents</a></li>
+                  <li>
+                    <a href="/qui-som" className="text-primary-foreground/80 hover:text-accent-soft">
+                      {t("nav.quisom")}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/#faq" className="text-primary-foreground/80 hover:text-accent-soft">
+                      {t("footer.faq")}
+                    </a>
+                  </li>
                 </ul>
               </div>
+
+              {/* Legal */}
               <div>
                 <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-accent-soft">
                   {t("footer.legal")}
                 </p>
                 <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="text-primary-foreground/80 hover:text-accent-soft">{t("footer.privacy")}</a></li>
-                  <li><a href="#" className="text-primary-foreground/80 hover:text-accent-soft">{t("footer.terms")}</a></li>
-                  <li><a href="#" className="text-primary-foreground/80 hover:text-accent-soft">{t("footer.cookies")}</a></li>
+                  <li>
+                    <a href="#" className="text-primary-foreground/80 hover:text-accent-soft">
+                      {t("footer.privacy")}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-primary-foreground/80 hover:text-accent-soft">
+                      {t("footer.terms")}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-primary-foreground/80 hover:text-accent-soft">
+                      {t("footer.cookies")}
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>

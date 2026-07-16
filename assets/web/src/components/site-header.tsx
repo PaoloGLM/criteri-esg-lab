@@ -10,11 +10,10 @@ import { useRouter } from "next/navigation";
 
 interface HeaderProps {
   onOpenPreus?: () => void;
-  onOpenQuiSom?: () => void;
   onOpenAuth?: (tab?: "register" | "login") => void;
 }
 
-export function Header({ onOpenPreus, onOpenQuiSom, onOpenAuth }: HeaderProps = {}) {
+export function Header({ onOpenPreus, onOpenAuth }: HeaderProps = {}) {
   const { lang, setLang, t } = useLanguage();
   const { user, signOut } = useAuth();
   const router = useRouter();
@@ -44,12 +43,12 @@ export function Header({ onOpenPreus, onOpenQuiSom, onOpenAuth }: HeaderProps = 
           <a href="/informes" className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground">
             {t("nav.informes")}
           </a>
-          <button
-            onClick={onOpenQuiSom}
-            className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground"
-          >
+          <a href="/que-fem" className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground">
+            {t("nav.quefem")}
+          </a>
+          <a href="/qui-som" className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground">
             {t("nav.quisom")}
-          </button>
+          </a>
           <button
             onClick={onOpenPreus}
             className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground"
@@ -97,7 +96,9 @@ export function Header({ onOpenPreus, onOpenQuiSom, onOpenAuth }: HeaderProps = 
               >
                 <User className="h-4 w-4 text-accent" />
                 <span className="hidden sm:inline max-w-[120px] truncate">
-                  {user.email?.split("@")[0] || "Usuario"}
+                  {user.user_metadata?.full_name ||
+                    user.email?.split("@")[0] ||
+                    t("nav.user.default")}
                 </span>
               </button>
               {userMenuOpen && (
@@ -108,14 +109,14 @@ export function Header({ onOpenPreus, onOpenQuiSom, onOpenAuth }: HeaderProps = 
                     className="flex items-center gap-2 px-4 py-2.5 text-sm hover:bg-secondary rounded-t-md"
                   >
                     <User className="h-4 w-4" />
-                    Mi cuenta
+                    {t("nav.cuenta")}
                   </a>
                   <button
                     onClick={handleSignOut}
                     className="flex w-full items-center gap-2 px-4 py-2.5 text-sm text-destructive hover:bg-secondary rounded-b-md"
                   >
                     <LogOut className="h-4 w-4" />
-                    Cerrar sesión
+                    {t("nav.logout")}
                   </button>
                 </div>
               )}
@@ -137,7 +138,7 @@ export function Header({ onOpenPreus, onOpenQuiSom, onOpenAuth }: HeaderProps = 
             size="icon"
             className="md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Menu"
+            aria-label={t("nav.menu")}
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
@@ -163,12 +164,12 @@ export function Header({ onOpenPreus, onOpenQuiSom, onOpenAuth }: HeaderProps = 
           <a href="/informes" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">
             {t("nav.informes")}
           </a>
-          <button
-            onClick={() => { setMobileOpen(false); onOpenQuiSom?.(); }}
-            className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary"
-          >
+          <a href="/que-fem" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">
+            {t("nav.quefem")}
+          </a>
+          <a href="/qui-som" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">
             {t("nav.quisom")}
-          </button>
+          </a>
           <button
             onClick={() => { setMobileOpen(false); onOpenPreus?.(); }}
             className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary"
@@ -178,13 +179,13 @@ export function Header({ onOpenPreus, onOpenQuiSom, onOpenAuth }: HeaderProps = 
           {user ? (
             <>
               <a href="/cuenta" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">
-                Mi cuenta
+                {t("nav.cuenta")}
               </a>
               <button
                 onClick={() => { setMobileOpen(false); handleSignOut(); }}
                 className="rounded-md px-3 py-2 text-left text-sm font-medium text-destructive hover:bg-secondary"
               >
-                Cerrar sesión
+                {t("nav.logout")}
               </button>
             </>
           ) : (

@@ -86,22 +86,28 @@ export function ReportsLibrary({ onOpenReport }: ReportsLibraryProps) {
   }, []);
 
   return (
+    <>
+    {/* Page hero — capçalera de la biblioteca */}
+    <section className="border-b border-rule bg-secondary/30 py-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <p className="eyebrow mb-2">
+          {lang === "ca" ? "BIBLIOTECA D'INFORMES" : "BIBLIOTECA DE INFORMES"}
+        </p>
+        <h1 className="font-serif text-4xl font-semibold leading-tight text-primary sm:text-5xl">
+          {lang === "ca" ? "Biblioteca d'informes" : "Biblioteca de informes"}
+        </h1>
+        <div className="rule-accent my-5" />
+        <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
+          {lang === "ca"
+            ? "Tots els informes rellevants publicats el 2026, sintetitzats en 8 blocs amb cross-reference a EcoVadis, B Corp, MSCI i GRI. Fes clic a sobre per accedir a l'informe complet."
+            : "Todos los informes relevantes publicados en 2026, sintetizados en 8 bloques con cross-reference a EcoVadis, B Corp, MSCI y GRI. Haz clic para acceder al informe completo."}
+        </p>
+      </div>
+    </section>
+
+    {/* Cos: filtres + grid */}
     <section id="informes" className="border-b border-rule py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-8">
-          <p className="eyebrow mb-3">BIBLIOTECA</p>
-          <h2 className="font-serif text-4xl font-semibold leading-tight text-primary sm:text-5xl">
-            {lang === "ca" ? "Biblioteca d'informes" : "Biblioteca de informes"}
-          </h2>
-          <div className="rule-accent my-5" />
-          <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
-            {lang === "ca"
-              ? "Tots els informes rellevants publicats el 2026, sintetitzats en 8 blocs amb cross-reference a EcoVadis, B Corp, MSCI i GRI. Fes clic a sobre per accedir a l'informe complet."
-              : "Todos los informes relevantes publicados en 2026, sintetizados en 8 bloques con cross-reference a EcoVadis, B Corp, MSCI y GRI. Haz clic para acceder al informe completo."}
-          </p>
-        </div>
-
         {/* Filtres + cerca */}
         <div className="mb-8 space-y-3">
           <div className="relative">
@@ -243,6 +249,7 @@ export function ReportsLibrary({ onOpenReport }: ReportsLibraryProps) {
         </div>
       </div>
     </section>
+    </>
   );
 }
 
@@ -259,7 +266,16 @@ function ReportCard({
   return (
     <Card
       onClick={onOpen}
-      className="group cursor-pointer border-rule bg-card transition-all hover:border-accent hover:shadow-md"
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onOpen();
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      aria-label={`${report.title} — ${report.institution}`}
+      className="group cursor-pointer border-rule bg-card transition-all hover:border-accent hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       <CardContent className="p-5">
         <div className="mb-3 flex items-center justify-between gap-2">
@@ -304,7 +320,7 @@ function ReportCard({
           <Calendar className="h-3 w-3" />
           <span>{formatDate(report.date, lang)}</span>
           <span>·</span>
-          <span>{report.pages} pàg</span>
+          <span>{report.pages} {lang === "ca" ? "pàg" : "pág"}</span>
         </div>
 
         <h3 className="mb-2 font-serif text-lg font-semibold leading-tight text-primary line-clamp-2">

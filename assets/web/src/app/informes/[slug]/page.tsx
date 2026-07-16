@@ -6,8 +6,8 @@ import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
-import { QuiSomDialog } from "@/components/qui-som-dialog";
 import { useLanguage } from "@/components/language-provider";
+import { useAuth } from "@/lib/auth-context";
 import {
   reports,
   isFreeAccess,
@@ -15,6 +15,8 @@ import {
   getTypeLabel,
   getScopeLabel,
   type SemaforStatus,
+  type Report,
+  type ReportBlock,
 } from "@/lib/reports";
 import { getReportContent } from "@/lib/reports-content";
 import {
@@ -31,12 +33,15 @@ import {
   BookOpen,
   ArrowRight,
   Check,
+  Crown,
+  Globe,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 export default function InformeSlugPage() {
   const { lang } = useLanguage();
+  const { user, plan } = useAuth();
   const params = useParams();
   const slugRaw = params?.slug;
   const slug =
@@ -55,7 +60,6 @@ export default function InformeSlugPage() {
     setAuthOpen(true);
   };
   const [preusOpen, setPreusOpen] = useState(false);
-  const [quiSomOpen, setQuiSomOpen] = useState(false);
 
   const report = reports.find((r) => r.slug === slug);
 
@@ -66,9 +70,8 @@ export default function InformeSlugPage() {
       <PreusDialog
         open={preusOpen}
         onOpenChange={setPreusOpen}
-        onOpenAuth={(tab) => openAuth(tab || "register")}
+        onOpenRegister={() => openAuth("register")}
       />
-      <QuiSomDialog open={quiSomOpen} onOpenChange={setQuiSomOpen} />
     </>
   );
 
@@ -77,7 +80,6 @@ export default function InformeSlugPage() {
       <div className="flex min-h-screen flex-col bg-background">
         <Header
           onOpenPreus={() => setPreusOpen(true)}
-          onOpenQuiSom={() => setQuiSomOpen(true)}
         />
         <main className="flex-1">
           <div className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 lg:px-8">
@@ -111,11 +113,20 @@ export default function InformeSlugPage() {
 
   // Lògica d'accés:
   // - Informe pilot (revisio-esrs-maig-2026): accés lliure
-  // - Informe > 6 mesos: requereix registre
+  // - Informe > 6 mesos: requereix registre (o sessió iniciada)
   // - Informe recent (< 6 mesos): requereix Premium
-  const isLockedPremium = !isProbeReport && !isFree;
-  const isLockedRegister = !isProbeReport && isFree && !isRegistered;
+  // - Usuari Premium: accés total, mai bloquejat
+  const isPremiumUser = !!user && plan === "premium";
+  const isLoggedUser = !!user;
+  const isLockedPremium = !isProbeReport && !isFree && !isPremiumUser;
+  const isLockedRegister =
+    !isProbeReport && isFree && !isRegistered && !isLoggedUser;
   const isLocked = isLockedPremium || isLockedRegister;
+
+  // Determina la variant de l'upgrade bloc quan està bloquejat per Premium:
+  // - Variant A: visitant no loguejat → mostra "Crea compte" + "Fes-te Premium"
+  // - Variant C: usuari gratuït loguejat → mostra només "Fes-te Premium"
+  const upgradeVariant: "A" | "C" = isLoggedUser ? "C" : "A";
 
   const handleRegister = () => {
     // Simulació: en clicar per registrar-se, ja es considera registrat
@@ -163,14 +174,13 @@ export default function InformeSlugPage() {
       )}
       <Header
         onOpenPreus={() => setPreusOpen(true)}
-        onOpenQuiSom={() => setQuiSomOpen(true)}
       />
       <main className="flex-1">
         {/* Capçalera de l'informe */}
         <section className="border-b border-rule bg-secondary/30">
           <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
             <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-              {lang === "ca" ? "Informes" : "Informes"} &gt; {report.institution}
+              Informes &gt; {report.institution}
             </p>
             <p className="eyebrow mt-4">
               {report.institution} · {formatDate(report.date, lang)} · {report.pages}{" "}
@@ -182,28 +192,30 @@ export default function InformeSlugPage() {
             <div className="mt-4 flex flex-wrap gap-2">
               <Badge
                 variant="secondary"
-                className="border border-accent/30 bg-accent-soft/20 text-accent-deep"
+                className="bg-accent-soft/30 text-[10px] text-accent-deep"
               >
                 {getTypeLabel(report.type)}
               </Badge>
               <Badge
-                variant="secondary"
-                className="border border-accent/30 bg-accent-soft/20 text-accent-deep"
+                variant="outline"
+                className="border-rule text-[10px] text-foreground/70"
               >
+                <Globe className="mr-1 h-2.5 w-2.5" />
                 {getScopeLabel(report.scope)}
               </Badge>
               {showFreeBadge ? (
                 <Badge
-                  variant="secondary"
-                  className="border border-accent bg-accent-soft/40 text-accent-deep"
+                  variant="outline"
+                  className="border-accent bg-accent-soft/20 text-[10px] text-accent-deep"
                 >
                   {lang === "ca" ? "Accés obert" : "Acceso abierto"}
                 </Badge>
               ) : (
                 <Badge
-                  variant="secondary"
-                  className="border border-muted-foreground text-muted-foreground"
+                  variant="outline"
+                  className="border-muted-foreground text-[10px] text-muted-foreground"
                 >
+                  <Lock className="mr-1 h-2.5 w-2.5" />
                   Premium
                 </Badge>
               )}
@@ -220,11 +232,22 @@ export default function InformeSlugPage() {
           </div>
         </section>
 
-        {/* Cos: pantalla de bloqueig o 8 blocs */}
-        {isLocked ? (
+        {/* Cos: pantalla de bloqueig (registre), preview+upgrade (Premium), o 8 blocs */}
+        {isLockedRegister ? (
+          // Informe > 6 mesos, cal registre — pantalla genèrica simple
           <LockScreen
-            isPremium={isLockedPremium}
+            isPremium={false}
             lang={lang}
+            onRegister={handleRegister}
+            onPreus={() => setPreusOpen(true)}
+          />
+        ) : isLockedPremium && content ? (
+          // Informe recent (< 6 mesos), no Premium — preview + upgrade bloc contextual
+          <UpgradePreview
+            report={report}
+            content={content}
+            lang={lang}
+            variant={upgradeVariant}
             onRegister={handleRegister}
             onPreus={() => setPreusOpen(true)}
           />
@@ -350,7 +373,7 @@ export default function InformeSlugPage() {
               icon={<Layers className="h-4 w-4" />}
               title={lang === "ca" ? "Resum executiu" : "Resumen ejecutivo"}
             >
-              <p className="text-sm leading-relaxed text-foreground/85">
+              <p className="text-sm leading-relaxed text-foreground/80">
                 {content.resumExecutiu}
               </p>
             </Bloc>
@@ -670,7 +693,7 @@ function LockScreen({
             <p className="mx-auto mb-6 max-w-md text-sm leading-relaxed text-foreground/75">
               {lang === "ca"
                 ? "Aquest informe és d'accés obert per a usuaris registrats. Crea un compte gratuït per accedir als 8 blocs: semàfor, fitxa tècnica, dades clau, resum executiu i accions recomanades."
-                : "Este informe es de acceso abierto para usuarios registrados. Crea una cuenta gratuita para acceder a los 8 bloques: semáforo, ficha técnica, datos clave, resumen ejecutivo y acciones recomendadas."}
+                : "Este informe es de acceso abierto para usuarios registrados. Crea una cuenta gratis para acceder a los 8 bloques: semáforo, ficha técnica, datos clave, resumen ejecutivo y acciones recomendadas."}
             </p>
             <Button onClick={onRegister} size="lg">
               {lang === "ca" ? "Registra't gratis" : "Regístrate gratis"}
@@ -680,5 +703,363 @@ function LockScreen({
         )}
       </div>
     </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// UPGRADE PREVIEW — per a informes Premium bloquejats
+// ---------------------------------------------------------------------------
+// Quan un visitant (o usuari gratuït) obre un informe recent (< 6 mesos),
+// en lloc de mostrar la pantalla genèrica de LockScreen, mostrem:
+//   - Bloc 0 (Semàfor Metodològic) complet — el gancho visual
+//   - Bloc 1 (Fitxa tècnica) complet
+//   - Bloc 3 (Resum executiu) tallat a 280 paraules amb "[continua]"
+//   - UpgradeBloc contextual amb els 5 blocs que es perden + CTA
+//
+// Variant A (visitant no loguejat): "Crea compte gratuït" + "Fes-te Premium"
+// Variant C (gratuït loguejat): només "Fes-te Premium"
+//
+// Segueix estrictament DESIGN_SYSTEM.md: mateix patró de Bloc, mateixa
+// tipografia, mateixa paleta. Cap invent nou.
+// ---------------------------------------------------------------------------
+
+type UpgradePreviewProps = {
+  report: Report;
+  content: ReportBlock;
+  lang: "ca" | "es";
+  variant: "A" | "C";
+  onRegister: () => void;
+  onPreus: () => void;
+};
+
+function UpgradePreview({
+  report,
+  content,
+  lang,
+  variant,
+  onRegister,
+  onPreus,
+}: UpgradePreviewProps) {
+  // Tallar el resum executiu a ~280 caràcters (3-4 línies) per fer de gancho
+  const resumCurt =
+    content.resumExecutiu.length > 280
+      ? content.resumExecutiu.slice(0, 280).trim() + "…"
+      : content.resumExecutiu;
+
+  // Data en què l'informe serà d'accés gratuït (data + 6 mesos)
+  const freeDate = new Date(report.date);
+  freeDate.setMonth(freeDate.getMonth() + 6);
+  const freeDateStr = freeDate.toLocaleDateString(
+    lang === "ca" ? "ca-ES" : "es-ES",
+    { day: "numeric", month: "long", year: "numeric" }
+  );
+
+  return (
+    <div className="mx-auto max-w-4xl space-y-8 px-4 py-12 sm:px-6 lg:px-8">
+      {/* Bloc 0 — Semàfor Metodològic (destacat, visible complet) */}
+      <Bloc
+        num="0"
+        icon={<Gauge className="h-4 w-4" />}
+        title={lang === "ca" ? "Semàfor Metodològic" : "Semáforo Metodológico"}
+        highlighted
+      >
+        <div className="rounded-md border border-accent/30 bg-accent-soft/10 p-4">
+          <div className="mb-4 flex items-baseline justify-between gap-3">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-accent-deep">
+              {lang === "ca" ? "Nota global" : "Nota global"}
+            </p>
+            <span className="rounded-md bg-accent px-3 py-1 text-right font-serif text-base font-bold text-accent-foreground">
+              {content.semafor.grade} · {content.semafor.gradeLabel}
+            </span>
+          </div>
+          <div className="space-y-2">
+            {content.semafor.indicators.map((ind) => (
+              <SemaforRow
+                key={ind.name}
+                name={ind.name}
+                status={ind.status}
+                label={ind.label}
+                note={ind.note}
+              />
+            ))}
+          </div>
+        </div>
+      </Bloc>
+
+      {/* Bloc 1 — Fitxa tècnica (visible complet) */}
+      <Bloc
+        num="1"
+        icon={<FileText className="h-4 w-4" />}
+        title={lang === "ca" ? "Fitxa tècnica" : "Ficha técnica"}
+      >
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <Datum
+            label={lang === "ca" ? "Institució" : "Institución"}
+            value={report.institution}
+          />
+          <Datum
+            label={lang === "ca" ? "Data" : "Fecha"}
+            value={formatDate(report.date, lang)}
+          />
+          <Datum
+            label={lang === "ca" ? "Tipus" : "Tipo"}
+            value={getTypeLabel(report.type)}
+          />
+          <Datum
+            label={lang === "ca" ? "Pàgines" : "Páginas"}
+            value={String(report.pages)}
+          />
+          <Datum
+            label={lang === "ca" ? "Àmbit" : "Ámbito"}
+            value={getScopeLabel(report.scope)}
+          />
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+              URL
+            </p>
+            <a
+              href={report.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-sm font-medium text-accent-deep hover:underline"
+            >
+              <span className="font-mono">
+                {report.url.replace(/^https?:\/\//, "").slice(0, 28)}…
+              </span>
+              <ExternalLink className="h-3 w-3 flex-shrink-0" />
+            </a>
+          </div>
+        </div>
+      </Bloc>
+
+      {/* Bloc 3 — Resum executiu (tallat com a preview) */}
+      <Bloc
+        num="3"
+        icon={<Layers className="h-4 w-4" />}
+        title={lang === "ca" ? "Resum executiu" : "Resumen ejecutivo"}
+      >
+        <p className="text-sm leading-relaxed text-foreground/80">
+          {resumCurt}{" "}
+          <span className="italic text-muted-foreground">
+            {lang === "ca" ? "[continua]" : "[continúa]"}
+          </span>
+        </p>
+      </Bloc>
+
+      {/* === UPGRADE BLOC CONTEXTUAL ===
+          Bloc destacat més (mateix patró que Bloc highlighted),
+          no pas un component alien. L'única diferenciació és una icona
+          de cadenat dins un cercle accent/15 a la capçalera. */}
+      <UpgradeBloc
+        lang={lang}
+        variant={variant}
+        freeDateStr={freeDateStr}
+        onRegister={onRegister}
+        onPreus={onPreus}
+      />
+
+      {/* Peu de l'informe (igual que l'aprovat, sense CTA a Preus) */}
+      <div className="flex flex-col gap-3 rounded-md border border-rule bg-card p-5 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-xs leading-relaxed text-muted-foreground">
+          {lang === "ca"
+            ? "Criteri ESG no és font oficial. Consulta sempre el document original per a decisions compliance."
+            : "Criteri ESG no es fuente oficial. Consulta siempre el documento original para decisiones compliance."}
+        </p>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => window.open(report.url, "_blank")}
+          className="flex-shrink-0"
+        >
+          <ExternalLink className="mr-2 h-3.5 w-3.5" />
+          {lang === "ca" ? "Veure font original" : "Ver fuente original"}
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+function UpgradeBloc({
+  lang,
+  variant,
+  freeDateStr,
+  onRegister,
+  onPreus,
+}: {
+  lang: "ca" | "es";
+  variant: "A" | "C";
+  freeDateStr: string;
+  onRegister: () => void;
+  onPreus: () => void;
+}) {
+  // Llista del que l'usuari es perd (contextual a l'estructura de l'informe)
+  const missItems: { num: string; star?: boolean; title: { ca: string; es: string }; detail: { ca: string; es: string }; exclusive?: boolean }[] = [
+    {
+      num: "2",
+      title: {
+        ca: "5 dades clau amb pàgina citada",
+        es: "5 datos clave con página citada",
+      },
+      detail: {
+        ca: "Punts quantitatius amb valor, context i pàgina citada al document original.",
+        es: "Puntos cuantitativos con valor, contexto y página citada en el documento original.",
+      },
+    },
+    {
+      num: "4",
+      title: {
+        ca: "Implicacions per a empreses, reguladors i ciutadans",
+        es: "Implicaciones para empresas, reguladores y ciudadanos",
+      },
+      detail: {
+        ca: "Anàlisi triple + secció «Més enllà del Checkbox» amb mirada ètica.",
+        es: "Análisis triple + sección «Más allá del Checkbox» con mirada ética.",
+      },
+    },
+    {
+      num: "5",
+      title: {
+        ca: "Connexions amb altres informes i actualitat",
+        es: "Conexiones con otros informes y actualidad",
+      },
+      detail: {
+        ca: "Relacions de complementarietat i contradicció amb altres informes.",
+        es: "Relaciones de complementariedad y contradicción con otros informes.",
+      },
+    },
+    {
+      num: "⭐",
+      star: true,
+      title: {
+        ca: "Accions recomanades",
+        es: "Acciones recomendadas",
+      },
+      detail: {
+        ca: "El cor operatiu. 3-5 accions concretes amb esforç i impacte estimats.",
+        es: "El corazón operativo. 3-5 acciones concretas con esfuerzo e impacto estimados.",
+      },
+      exclusive: true,
+    },
+    {
+      num: "⭐",
+      star: true,
+      title: {
+        ca: "Cross-reference amb EcoVadis, B Corp, MSCI i GRI",
+        es: "Cross-reference con EcoVadis, B Corp, MSCI y GRI",
+      },
+      detail: {
+        ca: "Mapatge exacte de quins canvis de l'informe afecten cada certificació.",
+        es: "Mapeo exacte de qué cambios del informe afectan cada certificación.",
+      },
+      exclusive: true,
+    },
+  ];
+
+  return (
+    <section className="rounded-md border border-accent bg-accent-soft/10 p-5 shadow-sm">
+      {/* Capçalera del bloc — mateix patró que Bloc però amb icona Lock */}
+      <div className="mb-4 flex items-center gap-3 border-b border-accent/30 pb-4">
+        <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent">
+          <Lock className="h-4 w-4" />
+        </span>
+        <h2 className="flex-1 font-serif text-lg font-semibold text-primary">
+          {lang === "ca"
+            ? "Et queden 5 blocs per llegir en aquest informe"
+            : "Te quedan 5 bloques por leer en este informe"}
+        </h2>
+        <span className="inline-block rounded-full bg-accent px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-widest text-accent-foreground">
+          PREMIUM
+        </span>
+      </div>
+
+      {/* Subtítol mono com el dels altres blocs */}
+      <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-accent-deep">
+        {lang === "ca"
+          ? "QUÈ ET PERDS EN AQUEST INFORME"
+          : "QUÉ TE PIERDES EN ESTE INFORME"}
+      </p>
+
+      {/* Llista del que es perd */}
+      <ul className="space-y-0">
+        {missItems.map((item, i) => (
+          <li
+            key={i}
+            className="flex gap-3 border-b border-dashed border-rule py-3 last:border-b-0"
+          >
+            <span
+              className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full font-mono text-xs font-semibold ${
+                item.star
+                  ? "bg-accent text-accent-foreground"
+                  : "bg-accent/10 text-accent-deep"
+              }`}
+            >
+              {item.num}
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-semibold text-primary">
+                {item.title[lang]}
+              </p>
+              <p className="mt-0.5 text-xs leading-relaxed text-foreground/70">
+                {item.detail[lang]}
+              </p>
+              {item.exclusive && (
+                <span className="mt-1 inline-block rounded bg-accent/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-accent-deep">
+                  {lang === "ca"
+                    ? "Exclusiu Premium — cap competidor ho fa"
+                    : "Exclusivo Premium — ningún competidor lo hace"}
+                </span>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      {/* Peu: preu (patró Preus, 36px + period) + CTA segons variant */}
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-4 border-t border-accent/30 pt-5">
+        <div className="flex flex-col">
+          <div className="flex items-baseline gap-1.5">
+            <span className="font-serif text-4xl font-semibold text-accent">
+              290 €
+            </span>
+            <span className="text-xs text-muted-foreground">
+              {lang === "ca" ? "/ any" : "/ año"}
+            </span>
+          </div>
+          <span className="mt-1 font-mono text-[10px] uppercase tracking-widest text-accent-deep">
+            {lang === "ca" ? "EARLY BIRD · 50 PLACES" : "EARLY BIRD · 50 PLAZAS"}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-2">
+          {variant === "A" && (
+            <Button variant="outline" onClick={onRegister} size="sm">
+              {lang === "ca" ? "Crea compte gratuït" : "Crear cuenta gratis"}
+            </Button>
+          )}
+          <Button onClick={onPreus} size="sm">
+            <Crown className="mr-1.5 h-3.5 w-3.5" />
+            {lang === "ca" ? "Fes-te Premium" : "Hazte Premium"}
+            <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+          </Button>
+        </div>
+      </div>
+
+      {/* Nota inferior: data d'alliberament */}
+      <div className="mt-4 border-l-2 border-accent bg-accent-soft/5 px-3 py-2 text-xs leading-relaxed text-foreground/70">
+        {lang === "ca" ? (
+          <>
+            Aquest informe serà d&apos;accés gratuït a partir del{" "}
+            <strong className="text-primary">{freeDateStr}</strong> (fa més de 6
+            mesos). Fins llavors, és exclusiu per a subscriptors Premium.
+          </>
+        ) : (
+          <>
+            Este informe será de acceso gratis a partir del{" "}
+            <strong className="text-primary">{freeDateStr}</strong> (hace más de
+            6 meses). Hasta entonces, es exclusivo para suscriptores Premium.
+          </>
+        )}
+      </div>
+    </section>
   );
 }

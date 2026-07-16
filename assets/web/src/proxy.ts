@@ -1,26 +1,108 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-// Credencials d'accés — canvia-les quan vulguis
-const USERNAME = process.env.SITE_USERNAME || "criteri";
-const PASSWORD = process.env.SITE_PASSWORD || "esg2026";
+/**
+ * Middleware d'autenticació Basic HTTP.
+ *
+ * És PROVISIONAL — serveix per amagar la web mentre es desenvolupa (fins al
+ * llançament al setembre 2026). Un cop la web sigui pública, aquest middleware
+ * s'ha d'eliminar.
+ *
+ * SEGURETAT:
+ * - Mai fa fallback a valors per defecte. Si SITE_USERNAME o SITE_PASSWORD
+ *   no estan definides, el middleware rebutja TOTA petició amb 500.
+ *   Això evita que un error de configuració deixi la web amb credencials
+ *   hardcoded (que estarien al repo públic).
+ * - Les credencials es comparen amb timing-safe comparison per evitar
+ *   atacs de timing.
+ * - En desenvolupament (NODE_ENV !== 'production'), es permet un fallback
+ *   a credencials per defecte per conveniència, però es logueja un warning.
+ */
+
+const USERNAME = process.env.SITE_USERNAME;
+const PASSWORD = process.env.SITE_PASSWORD;
+const IS_PROD = process.env.NODE_ENV === "production";
+
+// En dev, si no hi ha env vars, fem servir valors per defecte per conveniència.
+// En producció, mai.
+const DEV_USERNAME = "criteri";
+const DEV_PASSWORD = "esg2026";
+
+function getEffectiveCredentials(): { username: string; password: string } | null {
+  if (USERNAME && PASSWORD) {
+    return { username: USERNAME, password: PASSWORD };
+  }
+  if (!IS_PROD) {
+    console.warn(
+      "[proxy] SITE_USERNAME/SITE_PASSWORD no definides. Utilitzant credencials de dev per defecte. NO usar en producció."
+    );
+    return { username: DEV_USERNAME, password: DEV_PASSWORD };
+  }
+  return null;
+}
+
+/**
+ * Comparació timing-safe per evitar atacs de timing.
+ * Si les longituds diferents, fem una comparació dummy per mantenir el temps constant.
+ */
+function safeCompare(a: string, b: string): boolean {
+  const encoder = new TextEncoder();
+  const bufA = encoder.encode(a);
+  const bufB = encoder.encode(b);
+  if (bufA.length !== bufB.length) {
+    // Longitud diferent — retornem false sense fer res més.
+    // No és possible fer timing-safe perfecte amb longituds diferents sense
+    // comparar primer els hash, però per al nostre cas d'ús (Basic Auth)
+    // és suficient: un atacant no pot extreure informació útil del timing.
+    return false;
+  }
+  // Comparació constant-time: XOR bit a bit, OR acumulatiu.
+  // Si tots els bytes són iguals, el resultat és 0.
+  let result = 0;
+  for (let i = 0; i < bufA.length; i++) {
+    result |= bufA[i] ^ bufB[i];
+  }
+  return result === 0;
+}
 
 export function proxy(request: NextRequest) {
-  // Comprovar si ja està autenticat
+  const creds = getEffectiveCredentials();
+
+  // En producció sense credencials configurades, error 500.
+  // Això és intencional: mai volem deixar la web oberta per error.
+  if (!creds) {
+    console.error(
+      "[proxy] PRODUCCIÓ sense SITE_USERNAME/SITE_PASSWORD configurades. Rebutjant tot el tràfic."
+    );
+    return new NextResponse("Server misconfigured", { status: 500 });
+  }
+
   const authHeader = request.headers.get("authorization");
 
   if (authHeader) {
     const [type, credentials] = authHeader.split(" ");
-    if (type === "Basic") {
-      const decoded = Buffer.from(credentials, "base64").toString("utf-8");
-      const [user, pass] = decoded.split(":");
-      if (user === USERNAME && pass === PASSWORD) {
-        return NextResponse.next();
+    if (type === "Basic" && credentials) {
+      try {
+        const decoded = Buffer.from(credentials, "base64").toString("utf-8");
+        const colonIdx = decoded.indexOf(":");
+        if (colonIdx === -1) {
+          return unauthorizedResponse();
+        }
+        const user = decoded.slice(0, colonIdx);
+        const pass = decoded.slice(colonIdx + 1);
+        if (safeCompare(user, creds.username) && safeCompare(pass, creds.password)) {
+          return NextResponse.next();
+        }
+      } catch {
+        // base64 invàlid — tractar com a no autenticat
       }
     }
   }
 
-  // No autenticat — demanar credencials
+  return unauthorizedResponse();
+}
+
+function unauthorizedResponse() {
   return new NextResponse("Autenticacio necessaria", {
     status: 401,
     headers: {
@@ -30,6 +112,6 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Aplicar a totes les rutes excepte arxius estàtics
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|logo.svg|robots.txt|llms.txt|fiare-form-mockup.html|registro-mockup.html|cuenta-mockup.html|cuenta-mockup-todas.html|privacidad.html).*)"],
+  // Aplicar a totes les rutes excepte arxius estàtics i mockups HTML
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|logo.svg|robots.txt|llms.txt|fiare-form-mockup.html|registro-mockup.html|upgrade-contextual-mockup.html|cuenta-mockup.html|cuenta-mockup-todas.html|privacidad.html).*)"],
 };

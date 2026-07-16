@@ -5,7 +5,6 @@ import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
-import { QuiSomDialog } from "@/components/qui-som-dialog";
 import { useAuth } from "@/lib/auth-context";
 import { useLanguage } from "@/components/language-provider";
 import { supabase } from "@/lib/supabase";
@@ -74,7 +73,6 @@ export default function CuentaPage() {
   const { toast } = useToast();
   const [authOpen, setAuthOpen] = useState(false);
   const [preusOpen, setPreusOpen] = useState(false);
-  const [quiSomOpen, setQuiSomOpen] = useState(false);
 
   // Mode edició del perfil
   const [isEditing, setIsEditing] = useState(false);
@@ -101,10 +99,17 @@ export default function CuentaPage() {
     : Array.isArray(meta.interests)
       ? meta.interests
       : [];
+  // Defaults coherents amb el comportament del formulari de registre i amb
+  // l'onboarding d'usuaris OAuth (auth-context.tsx):
+  //   - newsletter_subscribed: true (tot usuari registrat la rep per defecte)
+  //   - newsletter_language: 'ca' (cohrent amb <html lang="ca">)
   const newsletterSubscribed: boolean =
-    profile?.newsletter_subscribed ?? Boolean(meta.newsletter_subscribed);
+    profile?.newsletter_subscribed ??
+    (meta.newsletter_subscribed === undefined
+      ? true
+      : Boolean(meta.newsletter_subscribed));
   const newsletterLanguage: "es" | "ca" =
-    profile?.newsletter_language ?? (meta.newsletter_language ?? "es");
+    profile?.newsletter_language ?? (meta.newsletter_language ?? "ca");
   const gdprConsent: boolean =
     profile?.gdpr_consent ?? Boolean(meta.gdpr_consent);
 
@@ -234,7 +239,6 @@ export default function CuentaPage() {
       <div className="flex min-h-screen flex-col bg-background">
         <Header
           onOpenPreus={() => setPreusOpen(true)}
-          onOpenQuiSom={() => setQuiSomOpen(true)}
         />
         <main className="flex flex-1 items-center justify-center">
           <div className="flex flex-col items-center gap-3 text-muted-foreground">
@@ -255,7 +259,6 @@ export default function CuentaPage() {
       <div className="flex min-h-screen flex-col bg-background">
         <Header
           onOpenPreus={() => setPreusOpen(true)}
-          onOpenQuiSom={() => setQuiSomOpen(true)}
         />
         <main className="flex flex-1 items-center justify-center px-4 py-16">
           <Card className="w-full max-w-md border-rule bg-card text-center shadow-sm">
@@ -269,7 +272,7 @@ export default function CuentaPage() {
               <CardDescription>
                 {tr(
                   "Inicia sessió o crea un compte gratuït per accedir a la teva biblioteca d'informes ESG, els teus interessos guardats i la configuració de la newsletter.",
-                  "Inicia sesión o crea una cuenta gratuita para acceder a tu biblioteca de informes ESG, tus intereses guardados y la configuración de la newsletter."
+                  "Inicia sesión o crea una cuenta gratis para acceder a tu biblioteca de informes ESG, tus intereses guardados y la configuración de la newsletter."
                 )}
               </CardDescription>
             </CardHeader>
@@ -302,7 +305,6 @@ export default function CuentaPage() {
           onOpenChange={setPreusOpen}
           onOpenRegister={() => setAuthOpen(true)}
         />
-        <QuiSomDialog open={quiSomOpen} onOpenChange={setQuiSomOpen} />
       </div>
     );
   }
@@ -327,7 +329,6 @@ export default function CuentaPage() {
     <div className="flex min-h-screen flex-col bg-background">
       <Header
         onOpenPreus={() => setPreusOpen(true)}
-        onOpenQuiSom={() => setQuiSomOpen(true)}
       />
       <main className="flex-1">
         <section className="border-b border-rule bg-secondary/30 py-12">
@@ -545,7 +546,7 @@ export default function CuentaPage() {
                         )
                       : tr(
                           "Estàs al pla gratuït.",
-                          "Estás en el plan gratuito."
+                          "Estás en el plan gratis."
                         )}
                   </CardDescription>
                 </CardHeader>
@@ -596,12 +597,33 @@ export default function CuentaPage() {
                 </CardHeader>
                 <CardContent>
                   {interests.length === 0 ? (
-                    <p className="text-sm text-muted-foreground">
-                      {tr(
-                        "Encara no has seleccionat cap interès.",
-                        "Aún no has seleccionado ningún interés."
-                      )}
-                    </p>
+                    <div className="rounded-md border-l-2 border-accent bg-accent-soft/10 p-3">
+                      <div className="flex items-start gap-2">
+                        <Sparkles className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
+                        <div className="flex-1">
+                          <p className="text-sm font-medium text-primary">
+                            {tr(
+                              "Encara no has seleccionat cap interès.",
+                              "Aún no has seleccionado ningún interés."
+                            )}
+                          </p>
+                          <p className="mt-1 text-xs leading-relaxed text-foreground/75">
+                            {tr(
+                              "Si selecciones interessos et podrem personalitzar més les newsletters i avisar-te primer dels informes que t'afecten.",
+                              "Si seleccionas intereses podremos personalizar más las newsletters y avisarte primero de los informes que te afectan."
+                            )}
+                          </p>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="mt-3"
+                            onClick={handleEditClick}
+                          >
+                            {tr("Selecciona interessos", "Selecciona intereses")}
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
                   ) : (
                     <div className="flex flex-wrap gap-2">
                       {interests.map((id) => (
@@ -723,7 +745,6 @@ export default function CuentaPage() {
         onOpenChange={setPreusOpen}
         onOpenRegister={() => setAuthOpen(true)}
       />
-      <QuiSomDialog open={quiSomOpen} onOpenChange={setQuiSomOpen} />
     </div>
   );
 }

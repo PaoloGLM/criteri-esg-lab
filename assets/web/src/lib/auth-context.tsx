@@ -17,6 +17,8 @@ interface AuthContextValue {
   session: Session | null;
   /**Cert mentre es carrega la sessió inicial*/
   loading: boolean;
+  /**Pla de l'usuari: 'free' | 'premium'. Llegit de user.user_metadata.plan*/
+  plan: "free" | "premium";
   /**Tanca la sessió actual*/
   signOut: () => Promise<void>;
 }
@@ -28,8 +30,46 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Si Supabase no està configurat, no fer res
+    // Si Supabase no està configurat, mirem si hi ha un mode demo via
+    // query param `?demo=free|premium`. Això permet testejar visualment
+    // els CTAs condicionals sense Supabase configurat. NOMÉS en mode
+    // no configurat: si Supabase està configurat, això s'ignora.
     if (!isSupabaseConfigured()) {
+      if (typeof window !== "undefined") {
+        const params = new URLSearchParams(window.location.search);
+        const demo = params.get("demo");
+        if (demo === "free" || demo === "premium") {
+          const fakeUser = {
+            id: `demo-${demo}-user`,
+            aud: "authenticated",
+            role: "authenticated",
+            email: demo === "premium" ? "premium@demo.com" : "free@demo.com",
+            app_metadata: { provider: "email" },
+            user_metadata: {
+              full_name: demo === "premium" ? "Sònia Premium" : "Maria Puig",
+              email: demo === "premium" ? "premium@demo.com" : "free@demo.com",
+              plan: demo,
+              company: "Criteri ESG S.L.",
+              gdpr_consent: true,
+              // Per defecte, tot usuari nou té newsletter activada en català.
+              // Això és coherent amb el formulari de registre manual.
+              newsletter_subscribed: true,
+              newsletter_language: "ca" as const,
+              interests: [],
+            },
+            created_at: new Date().toISOString(),
+          } as unknown as User;
+          const fakeSession = {
+            access_token: "demo-token",
+            refresh_token: "demo-refresh",
+            expires_in: 3600,
+            expires_at: Math.floor(Date.now() / 1000) + 3600,
+            token_type: "bearer",
+            user: fakeUser,
+          } as unknown as Session;
+          setSession(fakeSession);
+        }
+      }
       setLoading(false);
       return;
     }
@@ -60,9 +100,73 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
+  /**
+   * Onboarding per defecte per a usuaris que entren via OAuth (Google)
+   * sense haver passat pel formulari de registre manual.
+   *
+   * Quan Supabase crea un usuari nou via Google, no li posa
+   * `newsletter_subscribed`, `newsletter_language`, `plan` ni `interests`.
+   * Si detectem aquest cas, fem un `auth.updateUser` silenciós amb valors
+   * per defecte:
+   *   - newsletter_subscribed: true (cohrent amb el formulari manual)
+   *   - newsletter_language: 'ca' (cohrent amb <html lang="ca">)
+   *   - plan: 'free'
+   *
+   * Així evitem la inconsistència que un usuari Google aparegui com
+   * "no subscrit" a la newsletter quan en realitat vol rebre-la.
+   */
+  useEffect(() => {
+    if (!isSupabaseConfigured()) return;
+    if (!session?.user) return;
+
+    const meta = session.user.user_metadata ?? {};
+    const isMissingDefaults =
+      meta.newsletter_subscribed === undefined ||
+      meta.newsletter_language === undefined ||
+      meta.plan === undefined;
+
+    if (!isMissingDefaults) return;
+
+    // Per evitar execucions duplicades en mode StrictMode (dev), marquem
+    // amb un flag temporal al localStorage.
+    const onboardingKey = `criteri-onboarding-${session.user.id}`;
+    if (typeof window !== "undefined") {
+      if (window.localStorage.getItem(onboardingKey)) return;
+      window.localStorage.setItem(onboardingKey, "1");
+    }
+
+    (async () => {
+      const { error } = await supabase.auth.updateUser({
+        data: {
+          newsletter_subscribed: true,
+          newsletter_language: "ca",
+          plan: "free",
+          // No sobreescriure full_name/email/interests — Google ja els posa
+        },
+      });
+      if (error) {
+        console.error(
+          "[auth-context] Error setting default user metadata:",
+          error.message
+        );
+        // Si falla, netegem el flag perquè es pugui reintentar
+        if (typeof window !== "undefined") {
+          window.localStorage.removeItem(onboardingKey);
+        }
+      }
+    })();
+  }, [session?.user]);
+
   const signOut = useCallback(async () => {
     if (!isSupabaseConfigured()) {
       setSession(null);
+      // En mode demo, netejem el query param
+      if (typeof window !== "undefined") {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("demo");
+        window.history.replaceState({}, "", url.toString());
+        window.location.reload();
+      }
       return;
     }
     const { error } = await supabase.auth.signOut();
@@ -76,6 +180,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     user: session?.user ?? null,
     session,
     loading,
+    plan:
+      (session?.user?.user_metadata?.plan as "free" | "premium" | undefined) ??
+      "free",
     signOut,
   };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useCallback } from "react";
+import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
 import { translations, type Language, type TranslationKey } from "@/lib/i18n";
 
 interface LanguageContextValue {
@@ -11,13 +11,51 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
 
+const LANG_STORAGE_KEY = "criteri-lang";
+
+/**
+ * Determina la llengua inicial:
+ * 1. Si l'usuari ja ha triat una llengua (localStorage), respectem la seva elecció.
+ * 2. Si no, mirem la preferència del navegador (navigator.language).
+ * 3. Si no es pot determinar, default a "ca" (coherent amb <html lang="ca">).
+ *
+ * NOTA: aquesta funció corre al client (dins useEffect) per evitar
+ * inconsistències SSR/hidratació. El primer render fa servir "ca".
+ */
+function detectInitialLang(): Language {
+  if (typeof window === "undefined") return "ca";
+  try {
+    const stored = window.localStorage.getItem(LANG_STORAGE_KEY);
+    if (stored === "ca" || stored === "es") return stored;
+  } catch {
+    // localStorage pot estar bloquejat (mode privat), seguim
+  }
+  const nav = window.navigator.language?.toLowerCase() ?? "";
+  if (nav.startsWith("es")) return "es";
+  return "ca";
+}
+
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = useState<Language>("es");
+  // Primer render: "ca" (coherent amb <html lang="ca"> i amb el primer
+  // render del servidor, evitant mismatch d'hidratació).
+  const [lang, setLang] = useState<Language>("ca");
+
+  // Després del muntatge, sobreescriu amb la preferència detectada.
+  useEffect(() => {
+    const detected = detectInitialLang();
+    if (detected !== "ca") {
+      setLang(detected);
+    }
+  }, []);
 
   const handleSetLang = useCallback((newLang: Language) => {
     setLang(newLang);
     if (typeof window !== "undefined") {
-      window.localStorage.setItem("criteri-lang", newLang);
+      try {
+        window.localStorage.setItem(LANG_STORAGE_KEY, newLang);
+      } catch {
+        // localStorage bloquejat, no crític
+      }
     }
   }, []);
 

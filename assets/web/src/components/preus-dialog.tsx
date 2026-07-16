@@ -87,7 +87,7 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
         </div>
 
         <div className="mt-2 grid gap-5 md:grid-cols-3">
-          {/* Free */}
+          {/* Pla Gratuït / Gratis */}
           <PlanCard
             name={t("preus.free.name")}
             price="0€"

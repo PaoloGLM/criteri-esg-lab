@@ -1,17 +1,27 @@
 "use client";
 
 import { useLanguage } from "@/components/language-provider";
+import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileText, Award, Mail, Gauge, Compass, Feather } from "lucide-react";
+import { ArrowRight, FileText, Award, Mail, Gauge, Compass, Feather, Crown, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 interface HeroProps {
   onOpenReport: () => void;
   onOpenRegister: () => void;
+  onOpenPreus?: () => void;
 }
 
-export function Hero({ onOpenReport, onOpenRegister }: HeroProps) {
+export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
   const { t } = useLanguage();
+  const { user, plan } = useAuth();
+
+  // Determina quins CTAs mostrar segons l'estat:
+  // - No loguejat: "Registra't gratis" + "Rep la newsletter"
+  // - Gratuït: "Fes-te Premium" (substitueix "Registra't") + "Gestiona la newsletter" → /cuenta
+  // - Premium: mostra un badge "Ets Premium" en lloc dels botons principals
+  const isPremium = user && plan === "premium";
+  const isFree = user && plan !== "premium";
 
   return (
     <section className="relative overflow-hidden border-b border-rule">
@@ -28,17 +38,60 @@ export function Hero({ onOpenReport, onOpenRegister }: HeroProps) {
             <p className="max-w-2xl text-base leading-relaxed text-foreground/80 sm:text-lg">
               {t("hero.subtitle")}
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Button size="lg" onClick={onOpenRegister} className="h-12 px-6 text-base">
-                {t("hero.cta.trial")}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button size="lg" variant="outline" onClick={onOpenRegister} className="h-12 px-6 text-base">
-                <Mail className="mr-2 h-4 w-4" />
-                {t("hero.cta.newsletter")}
-              </Button>
-            </div>
-            <p className="mt-3 text-sm text-muted-foreground">{t("hero.note")}</p>
+
+            {/* ===== CTAs condicionals segons estat d'usuari ===== */}
+            {isPremium ? (
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <Badge
+                  variant="secondary"
+                  className="h-12 gap-2 border border-accent/30 bg-accent-soft/20 px-4 text-sm font-medium text-accent-deep"
+                >
+                  <Crown className="h-4 w-4 text-accent" />
+                  {t("cta.premium.badge")}
+                </Badge>
+                <Button size="lg" variant="outline" onClick={onOpenReport} className="h-12 px-6 text-base">
+                  {t("latest.cta")}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+            ) : isFree ? (
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <Button
+                  size="lg"
+                  onClick={onOpenPreus || onOpenRegister}
+                  className="h-12 px-6 text-base"
+                >
+                  <Crown className="mr-2 h-4 w-4" />
+                  {t("cta.upgrade.button")}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+                <a
+                  href="/cuenta"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-rule bg-card px-6 text-sm font-medium text-foreground/80 transition-colors hover:border-accent hover:text-foreground"
+                >
+                  <Mail className="h-4 w-4" />
+                  {t("cta.newsletter.manage")}
+                </a>
+              </div>
+            ) : (
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <Button size="lg" onClick={onOpenRegister} className="h-12 px-6 text-base">
+                  {t("hero.cta.trial")}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+                <Button size="lg" variant="outline" onClick={onOpenRegister} className="h-12 px-6 text-base">
+                  <Mail className="mr-2 h-4 w-4" />
+                  {t("hero.cta.newsletter")}
+                </Button>
+              </div>
+            )}
+            <p className="mt-3 text-sm text-muted-foreground">
+              {isPremium
+                ? t("cta.premium.badge")
+                : isFree
+                  ? t("cta.upgrade.body")
+                  : t("hero.note")}
+            </p>
           </div>
 
           <div className="lg:col-span-5">
@@ -60,9 +113,29 @@ export function Hero({ onOpenReport, onOpenRegister }: HeroProps) {
                   {t("latest.cta")}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button variant="ghost" size="sm" onClick={onOpenRegister} className="w-full">
-                  {t("latest.cta.trial")}
-                </Button>
+                {!isPremium && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={isFree ? (onOpenPreus || onOpenRegister) : onOpenRegister}
+                    className="w-full"
+                  >
+                    {isFree ? (
+                      <>
+                        <Crown className="mr-1 h-3.5 w-3.5 text-accent" />
+                        {t("cta.upgrade.button")}
+                      </>
+                    ) : (
+                      t("latest.cta.trial")
+                    )}
+                  </Button>
+                )}
+                {isPremium && (
+                  <div className="flex items-center justify-center gap-2 rounded-md border border-accent/30 bg-accent-soft/10 px-3 py-2 text-xs text-accent-deep">
+                    <CheckCircle2 className="h-3.5 w-3.5" />
+                    {t("cta.premium.badge")}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -77,11 +150,11 @@ export function Hero({ onOpenReport, onOpenRegister }: HeroProps) {
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             <SectionCard href="/informes" icon={<FileText className="h-5 w-5" />} title={t("sections.informes.title")} desc={t("sections.informes.desc")} />
-            <SectionCard href="#newsletter" icon={<Mail className="h-5 w-5" />} title={t("sections.newsletter.title")} desc={t("sections.newsletter.desc")} />
+            <SectionCard href={isFree || isPremium ? "/cuenta" : "#newsletter"} icon={<Mail className="h-5 w-5" />} title={t("sections.newsletter.title")} desc={t("sections.newsletter.desc")} />
             <SectionCard href="/informes" icon={<Award className="h-5 w-5" />} title={t("sections.crossref.title")} desc={t("sections.crossref.desc")} />
             <SectionCard href="/informes" icon={<Gauge className="h-5 w-5" />} title={t("sections.semafor.title")} desc={t("sections.semafor.desc")} highlighted />
             <SectionCard href="/informes" icon={<Compass className="h-5 w-5" />} title={t("sections.editorial.title")} desc={t("sections.editorial.desc")} highlighted />
-            <SectionCard href="#newsletter" icon={<Feather className="h-5 w-5" />} title={t("sections.cartadirector.title")} desc={t("sections.cartadirector.desc")} highlighted />
+            <SectionCard href={isFree || isPremium ? "/cuenta" : "#newsletter"} icon={<Feather className="h-5 w-5" />} title={t("sections.cartadirector.title")} desc={t("sections.cartadirector.desc")} highlighted />
           </div>
         </div>
       </div>

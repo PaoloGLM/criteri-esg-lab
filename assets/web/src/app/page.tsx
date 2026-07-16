@@ -11,18 +11,42 @@ import { FaqSection } from "@/components/sections/faq-section";
 import { FinalCta } from "@/components/sections/final-cta";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
-import { QuiSomDialog } from "@/components/qui-som-dialog";
+import { useAuth } from "@/lib/auth-context";
 
 export default function Home() {
   const router = useRouter();
+  const { user, plan } = useAuth();
   const [authOpen, setAuthOpen] = useState(false);
   const [authTab, setAuthTab] = useState<"register" | "login">("register");
   const [preusOpen, setPreusOpen] = useState(false);
-  const [quiSomOpen, setQuiSomOpen] = useState(false);
 
+  /**
+   * Obre el diàleg d'autenticació. Si l'usuari ja està loguejat:
+   *  - Si és free → obre PreusDialog (per fer-se Premium)
+   *  - Si és premium → no fa res (no hauria d'arribar aquí perquè els
+   *    botons condicionals ja no es mostren)
+   */
   const openAuth = (tab: "register" | "login" = "register") => {
+    if (user) {
+      if (plan === "free") {
+        setPreusOpen(true);
+      }
+      return;
+    }
     setAuthTab(tab);
     setAuthOpen(true);
+  };
+
+  /**
+   * Obre PreusDialog (per a usuaris loguejats free que volen fer-se Premium).
+   * Si l'usuari no està loguejat, obre el diàleg d'autenticació primer.
+   */
+  const openPreusOrAuth = () => {
+    if (user) {
+      setPreusOpen(true);
+    } else {
+      openAuth("register");
+    }
   };
 
   const handleOpenLatestReport = () => {
@@ -37,13 +61,13 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background">
       <Header
         onOpenPreus={() => setPreusOpen(true)}
-        onOpenQuiSom={() => setQuiSomOpen(true)}
         onOpenAuth={(tab) => openAuth(tab || "register")}
       />
       <main className="flex-1">
         <Hero
           onOpenReport={handleOpenLatestReport}
           onOpenRegister={() => openAuth("register")}
+          onOpenPreus={openPreusOrAuth}
         />
         <MidSections
           onOpenRegister={() => openAuth("register")}
@@ -51,7 +75,10 @@ export default function Home() {
         />
         <ReportsPreview onOpenReport={handleOpenReport} />
         <FaqSection />
-        <FinalCta onOpenRegister={() => openAuth("register")} />
+        <FinalCta
+          onOpenRegister={() => openAuth("register")}
+          onOpenPreus={openPreusOrAuth}
+        />
       </main>
       <Footer />
 
@@ -60,10 +87,6 @@ export default function Home() {
         open={preusOpen}
         onOpenChange={setPreusOpen}
         onOpenRegister={() => openAuth("register")}
-      />
-      <QuiSomDialog
-        open={quiSomOpen}
-        onOpenChange={setQuiSomOpen}
       />
     </div>
   );

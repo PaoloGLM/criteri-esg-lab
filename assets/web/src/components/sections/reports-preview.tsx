@@ -1,8 +1,10 @@
 "use client";
 
 import { useLanguage } from "@/components/language-provider";
-import { Lock, ArrowRight, BookOpen } from "lucide-react";
-import { reports, isFreeAccess, formatDate, getScopeLabel, getTypeLabel } from "@/lib/reports";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Lock, ArrowRight, BookOpen, Building2, Calendar, Globe } from "lucide-react";
+import { reports, isFreeAccess, formatDate, getScopeLabel, getTypeLabel, type Report } from "@/lib/reports";
 import { useRouter } from "next/navigation";
 
 interface ReportsPreviewProps {
@@ -106,57 +108,121 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
   );
 }
 
+/**
+ * ReportCard unificat amb el patró canònic de reports-library:
+ * - shadcn Card + CardContent p-5
+ * - Badge variants per Type/Scope/Free/Premium
+ * - text-lg + line-clamp-2 per títol
+ * - text-sm leading-relaxed text-foreground/75 + line-clamp-3 per summary
+ * - certifications com a mono chips (text-[9px])
+ * - Footer amb "Veure informe complet" hover-reveal
+ *
+ * L'única diferència amb el de reports-library és que aquest és clicable
+ * des de tota la card (per la naturalesa de la preview amb overlay),
+ * mentre que el de library també ho és. Tots dos fan servir Card amb onClick.
+ */
 function ReportCard({
   report,
   lang,
   onOpen,
 }: {
-  report: typeof reports[0];
+  report: Report;
   lang: "ca" | "es";
   onOpen: () => void;
 }) {
   const free = isFreeAccess(report.date);
 
   return (
-    <button
+    <Card
       onClick={onOpen}
-      className="group relative flex flex-col rounded-lg border border-rule bg-card p-5 text-left transition-all hover:border-accent hover:shadow-md"
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onOpen();
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      aria-label={`${report.title} — ${report.institution}`}
+      className="group cursor-pointer border-rule bg-card transition-all hover:border-accent hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
-      <div className="mb-2 flex items-center justify-between">
-        <span className="font-mono text-[10px] uppercase tracking-widest text-accent-deep">
-          {getTypeLabel(report.type)}
-        </span>
-        {free ? (
-          <span className="rounded-full bg-accent/15 px-2 py-0.5 text-[10px] font-semibold text-accent-deep">
-            {lang === "ca" ? "Accés lliure" : "Acceso libre"}
+      <CardContent className="p-5">
+        <div className="mb-3 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5">
+            <Badge
+              variant="secondary"
+              className="bg-accent-soft/30 text-[10px] text-accent-deep"
+            >
+              {getTypeLabel(report.type)}
+            </Badge>
+            <Badge
+              variant="outline"
+              className="border-rule text-[10px] text-foreground/70"
+            >
+              <Globe className="mr-1 h-2.5 w-2.5" />
+              {getScopeLabel(report.scope)}
+            </Badge>
+          </div>
+          {free ? (
+            <Badge
+              variant="outline"
+              className="border-accent bg-accent-soft/20 text-[10px] text-accent-deep"
+            >
+              {lang === "ca" ? "Obert" : "Abierto"}
+            </Badge>
+          ) : (
+            <Badge
+              variant="outline"
+              className="border-muted-foreground text-[10px] text-muted-foreground"
+            >
+              <Lock className="mr-1 h-2.5 w-2.5" />
+              Premium
+            </Badge>
+          )}
+        </div>
+
+        <div className="mb-2 flex items-center gap-2 text-xs text-muted-foreground">
+          <Building2 className="h-3 w-3" />
+          <span className="truncate">{report.institution}</span>
+        </div>
+        <div className="mb-3 flex items-center gap-2 text-xs text-muted-foreground">
+          <Calendar className="h-3 w-3" />
+          <span>{formatDate(report.date, lang)}</span>
+          <span>·</span>
+          <span>{report.pages} {lang === "ca" ? "pàg" : "pág"}</span>
+        </div>
+
+        <h3 className="mb-2 font-serif text-lg font-semibold leading-tight text-primary line-clamp-2">
+          {report.title}
+        </h3>
+
+        <p className="mb-3 text-sm leading-relaxed text-foreground/75 line-clamp-3">
+          {report.summary}
+        </p>
+
+        <div className="mb-3 flex flex-wrap gap-1">
+          {report.certifications.slice(0, 3).map((cert) => (
+            <span
+              key={cert}
+              className="font-mono text-[9px] uppercase tracking-widest text-accent-deep"
+            >
+              {cert}
+            </span>
+          ))}
+          {report.certifications.length > 3 && (
+            <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground">
+              +{report.certifications.length - 3}
+            </span>
+          )}
+        </div>
+
+        <div className="flex items-center gap-1 border-t border-rule pt-2 text-xs font-medium text-accent-deep opacity-0 transition-opacity group-hover:opacity-100">
+          <span>
+            {lang === "ca" ? "Veure informe complet" : "Ver informe completo"}
           </span>
-        ) : (
-          <span className="inline-flex items-center gap-1 rounded-full bg-muted-foreground/15 px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
-            <Lock className="h-2.5 w-2.5" />
-            Premium
-          </span>
-        )}
-      </div>
-      <h3 className="mb-1 font-serif text-base font-semibold leading-tight text-primary">
-        {report.title}
-      </h3>
-      <p className="mb-3 text-xs text-muted-foreground">
-        {report.institution} · {formatDate(report.date, lang)} · {report.pages} {lang === "ca" ? "pàg" : "pág"}
-      </p>
-      <p className="mb-3 flex-1 text-xs leading-relaxed text-foreground/75">
-        {report.summary}
-      </p>
-      <div className="mt-auto flex flex-wrap gap-1">
-        {report.certifications.slice(0, 3).map((cert) => (
-          <span key={cert} className="rounded-sm border border-accent/30 px-1.5 py-0.5 text-[10px] text-accent-deep">
-            {cert}
-          </span>
-        ))}
-      </div>
-      <div className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-accent">
-        {lang === "ca" ? "Veure informe" : "Ver informe"}
-        <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
-      </div>
-    </button>
+          <ArrowRight className="h-3 w-3" />
+        </div>
+      </CardContent>
+    </Card>
   );
 }

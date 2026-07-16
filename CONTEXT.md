@@ -411,3 +411,11 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
     - NO fem servir `navigator.language` per detectar l'idioma del navegador. La decisió és de negoci, no tècnica: si algú té el navegador en anglès o francès, també veurà ES per defecte.
     - La **newsletter** que rep l'usuari també és en **castellà** per defecte (decisió 12).
     - Resum: tant la web com la newsletter per defecte són en **castellà**. El català és una opció que l'usuari pot activar.
+
+15. **Clau de protecció de credencials (16 juliol 2026)** — Regla absoluta:
+    - Z.ai-bot **MAI** compartirà, publicarà, ni commitejarà al GitHub cap clau, contrasenya, token, API key o `service_role` key que Paolo li hagi proporcionat.
+    - Aquestes claus són **només per ús productiu** del projecte Criteri ESG i es guarden exclusivament al fitxer `.env` local (gitignored).
+    - Mai apareixeran al codi font, ni al frontend, ni al backend, ni als commits, ni als missatges de commit, ni als logs públics.
+    - Si Z.ai-bot necessita fer servir una clau per a una tasca administrativa (ex: esborrar usuaris de test, executar SQL), la llegeix del `.env` local i la fa servir via scripts Node — sense exposar-la mai.
+    - Si una clau es compromet, es regenera al dashboard corresponent (Supabase, Stripe, etc.) i s'actualitza al `.env` local.
+    - Aquesta regla està alineada amb la regla 12 del CONTEXT ("Mai credencials al xat ni al repositori").

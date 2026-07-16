@@ -46,9 +46,6 @@ export function Header({ onOpenPreus, onOpenAuth }: HeaderProps = {}) {
           <a href="/que-fem" className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground">
             {t("nav.quefem")}
           </a>
-          <a href="/qui-som" className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground">
-            {t("nav.quisom")}
-          </a>
           <button
             onClick={onOpenPreus}
             className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground"
@@ -166,9 +163,6 @@ export function Header({ onOpenPreus, onOpenAuth }: HeaderProps = {}) {
           </a>
           <a href="/que-fem" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">
             {t("nav.quefem")}
-          </a>
-          <a href="/qui-som" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">
-            {t("nav.quisom")}
           </a>
           <button
             onClick={() => { setMobileOpen(false); onOpenPreus?.(); }}

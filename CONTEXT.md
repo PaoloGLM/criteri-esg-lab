@@ -391,3 +391,16 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
     3. **Z.ai-bot** proposa a Paolo els 5-6 informes més rellevants per a la newsletter bimensual.
     4. **Paolo** selecciona els informes que realment tenen pes per a la newsletter, i fa la revisió editorial dels informes creats per Z.ai-bot (per si s'han de millorar).
     5. **Regla clara**: tots els informes detectats van a la web. Tots els informes detectats tenen el seu informe creat per Z.ai-bot amb els 8 blocs. **No tots** els informes detectats ni creats van a la newsletter. Només Paolo selecciona els que hi van, i Paolo és qui determina si els informes creats per Z.ai-bot estan bé. Aquesta és la part humana principal del procés.
+
+12. **Newsletter per defecte en castellà (16 juliol 2026)** — IMPORTANT, NO CONFONDRE:
+    - La **web** (`<html lang="ca">` + LanguageProvider per defecte) és en **català**. Això és una decisió tècnica coherent amb l'origen del projecte.
+    - La **newsletter** que rep l'usuari és en **castellà** per defecte. Això és una decisió editorial de Paolo, ja presa.
+    - **Són dues decisions independents**. La web en català NO implica que la newsletter sigui en català.
+    - Quan un usuari es registra sense triar idioma de newsletter (ex: Google OAuth sense formulari), el default és **`newsletter_language = 'es'`**.
+    - L'usuari pot canviar l'idioma de la newsletter al seu perfil (`/cuenta`).
+    - Aquesta regla s'aplica a: trigger `handle_new_user` de Supabase, onboarding OAuth Google al `auth-context.tsx`, defaults al formulari de registre `auth-dialog.tsx`, i qualsevol altre lloc on es gestionin preferències de newsletter.
+
+13. **Z.ai-bot ha de rellegir CONTEXT cada 6 hores (16 juliol 2026)** — Instrucció permanent:
+    - Quan Z.ai-bot comenci una sessió nova, ha de llegir `CONTEXT.md` i `worklog.md` abans de respondre res.
+    - Si la sessió dura més de 6 hores, ha de rellegir `CONTEXT.md` per assegurar-se que no s'ha perdut cap decisió nova (potser la Roser ha fet canvis, o en Paolo ha pres decisions en paral·lel).
+    - Això evita errors com el de la newsletter (`ca` vs `es`) que va passar per no rellegir el CONTEXT.

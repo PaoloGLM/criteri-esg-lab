@@ -419,3 +419,57 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
     - Si Z.ai-bot necessita fer servir una clau per a una tasca administrativa (ex: esborrar usuaris de test, executar SQL), la llegeix del `.env` local i la fa servir via scripts Node — sense exposar-la mai.
     - Si una clau es compromet, es regenera al dashboard corresponent (Supabase, Stripe, etc.) i s'actualitza al `.env` local.
     - Aquesta regla està alineada amb la regla 12 del CONTEXT ("Mai credencials al xat ni al repositori").
+
+---
+
+## Feines pendents (16 juliol 2026)
+
+### P1. Repensar la newsletter perquè sigui diferencial (gratis + Premium)
+
+**Estat**: pendent de disseny. La newsletter actual (estil A v2) és una Recap amb informes, notícies i connexió. Cal diferenciar-la:
+- **Versió gratis**: resum executiu + 1 connexió + CTA Premium
+- **Versió Premium**: informe complet + cross-reference + accions recomanades + connexions + notícies ESG + inversió ESG
+- **Objectiu**: la versió gratis ha de ser prou útil per mantenir l'usuari subscrit, però prou limitada per motivar l'upgrade a Premium
+- **Plataforma**: Beehiiv (decisió presa 29 juny 2026)
+- **Freqüència**: bimensual (cada 2 setmanes), dijous 15:00h
+
+### P2. Preguntes ètiques per treballar en equip
+
+**Estat**: pendent de disseny. Actualment existeix com a concepte al bloc "Preguntes per millorar" (Premium) dins de la pàgina `/que-fem`. Cal:
+- Definir el format concret (quantitat de preguntes, periodicitat, format de resposta)
+- Decidir si és un apartat dins la newsletter Premium o una eina independent a la web
+- Redactar les primeres preguntes (Paolo lidera el contingut ètic)
+- Exemple existent: "«Si la teva empresa desaparegués demà, qui ho notaria de veritat —i per què? La resposta et diu més sobre el teu valor real que cap mètrica ESG.»"
+
+### P3. Nova pàgina web de certificacions
+
+**Estat**: pendent de disseny i implementació. Esquema aprovat per Paolo (16 juliol 2026):
+
+**Concepte**: personalitzar el coneixement que generem. Qui no té B Corp no li interessa el cross-reference amb B Corp. Aquesta pàgina permet a l'usuari veure només allò que li afecta segons les seves certificacions.
+
+**Estructura**:
+
+1. **Pàgina `/certificaciones`** (gratis, accessible a tothom)
+   - Page hero canònic: eyebrow + H1 + rule-accent + descripció
+   - Grid de cards de certificacions (EcoVadis, B Corp, MSCI ESG, GRI, CSRD, CSDDD, SFDR, Taxonomia UE, CDP, TNFD, TCFD, SASB, ISSB, ISO 26000, UN Global Compact, OECD Guidelines)
+   - Cada card mostra: nom, logo/badge, descripció curta (2 línies), nombre d'informes amb cross-reference, badge "Gratis" o "Premium"
+   - Clic a una certificació → porta a la pàgina de detall
+
+2. **Pàgina `/certificaciones/[slug]`** (Premium)
+   - Page hero amb el nom de la certificació
+   - Descripció de la certificació (què és, qui la emet, per a què serveix)
+   - **Taula de cross-reference**: tots els informes publicats que tenen cross-reference amb aquesta certificació
+     - Columnes: Informe | Data | Criteri afectat | Impacte (Alt/Mitjà/Baix)
+     - Filtre per data (range selector o dropdown de mesos)
+     - Filtre per impacte (Alt/Mitjà/Baix/Tots)
+   - Si l'usuari no és Premium: mostra la taula amb les primeres 3 files visibles i la resta difuminada amb CTA "Fes-te Premium per veure tots els cross-references"
+   - Sota la taula: secció "Accions recomanades relacionades" (3-5 accions extretes dels informes que afecten aquesta certificació)
+
+**Flux d'usuari**:
+1. Usuari entra a `/certificaciones`
+2. Veu totes les certificacions amb info bàsica (gratis)
+3. Clica la que li interesa (ex: EcoVadis)
+4. Si és Premium: veu la taula completa amb tots els informes + filtres
+5. Si no és Premium: veu 3 files + CTA upgrade
+
+**Disseny**: seguint DESIGN_SYSTEM.md (page hero canònic, cards amb `rounded-lg border border-rule bg-card p-5`, taula amb `border-collapse` + `border-rule`, badges d'impacte amb colors `#A0522D` / `#C9A961` / `#5C8A5C`)

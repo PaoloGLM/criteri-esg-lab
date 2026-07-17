@@ -441,35 +441,48 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
 - Redactar les primeres preguntes (Paolo lidera el contingut ètic)
 - Exemple existent: "«Si la teva empresa desaparegués demà, qui ho notaria de veritat —i per què? La resposta et diu més sobre el teu valor real que cap mètrica ESG.»"
 
-### P3. Nova pàgina web de certificacions
+### P3. Nova pàgina web d'estàndards ESG (abans "certificacions")
 
-**Estat**: pendent de disseny i implementació. Esquema aprovat per Paolo (16 juliol 2026):
+**Estat**: pendent de disseny i implementació. Esquema aprovat per Paolo (17 juliol 2026):
 
-**Concepte**: personalitzar el coneixement que generem. Qui no té B Corp no li interessa el cross-reference amb B Corp. Aquesta pàgina permet a l'usuari veure només allò que li afecta segons les seves certificacions.
+**Nom**: "Estándares ESG" (ES) / "Estàndards ESG" (CA). Cobreix els 3 tipus: regulacions, frameworks i certificacions/ratings.
+
+**Concepte**: personalitzar el coneixement que generem. Qui no té B Corp no li interessa el cross-reference amb B Corp. Aquesta pàgina permet a l'usuari veure només allò que li afecta segons els seus estàndards.
+
+**3 tipus amb 3 colors diferents** (dins la paleta Criteri):
+- **Regulacions** (obligatòries): coure fosc `#8A5526` — CSRD/ESRS, CSDDD, SFDR, Taxonomia UE
+- **Frameworks** (estàndards de reporting): coure `#B87333` — GRI, TNFD, TCFD, ISO 26000
+- **Certificacions/Ratings**: coure suau `#D9A574` — EcoVadis, B Corp, MSCI ESG, CDP
+
+**Ordre (de més utilitzat/urgent a menys)**:
+1. CSRD / ESRS (Regulació — Gratis)
+2. GRI (Framework — Gratis)
+3. EcoVadis (Certificación — Premium)
+4. B Corp (Certificación — Premium)
+5. MSCI ESG (Rating — Premium)
+6. CSDDD (Regulación — Gratis)
+7. SFDR (Regulación — Gratis)
+8. Taxonomía UE (Regulación — Gratis)
+9. CDP (Certificación — Premium)
+10. TNFD (Framework — Gratis)
+11. TCFD (Framework — Gratis)
+12. ISO 26000 (Framework — Gratis)
 
 **Estructura**:
 
-1. **Pàgina `/certificaciones`** (gratis, accessible a tothom)
+1. **Pàgina `/estandares-esg`** (gratis, accessible a tothom)
    - Page hero canònic: eyebrow + H1 + rule-accent + descripció
-   - Grid de cards de certificacions (EcoVadis, B Corp, MSCI ESG, GRI, CSRD, CSDDD, SFDR, Taxonomia UE, CDP, TNFD, TCFD, SASB, ISSB, ISO 26000, UN Global Compact, OECD Guidelines)
-   - Cada card mostra: nom, logo/badge, descripció curta (2 línies), nombre d'informes amb cross-reference, badge "Gratis" o "Premium"
-   - Clic a una certificació → porta a la pàgina de detall
+   - Llegenda amb els 3 colors/tipus
+   - Grid de cards (4 columnes desktop, 2 mòbil). Cada card té vora esquerra de 4px del color del tipus
+   - Cada card mostra: badge de tipus (Regulación/Framework/Certificación), badge d'accés (Gratis/Premium), nom, descripció curta, nombre d'informes cross-ref
+   - Clic a un estàndard → porta a la pàgina de detall
 
-2. **Pàgina `/certificaciones/[slug]`** (Premium)
-   - Page hero amb el nom de la certificació
-   - Descripció de la certificació (què és, qui la emet, per a què serveix)
-   - **Taula de cross-reference**: tots els informes publicats que tenen cross-reference amb aquesta certificació
-     - Columnes: Informe | Data | Criteri afectat | Impacte (Alt/Mitjà/Baix)
-     - Filtre per data (range selector o dropdown de mesos)
-     - Filtre per impacte (Alt/Mitjà/Baix/Tots)
-   - Si l'usuari no és Premium: mostra la taula amb les primeres 3 files visibles i la resta difuminada amb CTA "Fes-te Premium per veure tots els cross-references"
-   - Sota la taula: secció "Accions recomanades relacionades" (3-5 accions extretes dels informes que afecten aquesta certificació)
+2. **Pàgina `/estandares-esg/[slug]`** (Premium per a certificacions/ratings; Gratis per a regulacions/frameworks)
+   - Page hero amb breadcrumb, icona (color segons tipus), nom, descripció completa
+   - **Taula de cross-reference**: tots els informes amb cross-reference amb aquest estàndard
+     - Columnes: Informe | Data | Criteri afectat | Impacte (Alt/Medio)
+     - Filtre per data + filtre per impacte
+   - Si l'usuari no és Premium i l'estàndard és Premium: 3 files visibles + resta difuminada amb CTA upgrade
+   - Sota la taula: "Accions recomanades relacionades" (3-5 accions extretes dels informes)
 
-**Flux d'usuari**:
-1. Usuari entra a `/certificaciones`
-2. Veu totes les certificacions amb info bàsica (gratis)
-3. Clica la que li interesa (ex: EcoVadis)
-4. Si és Premium: veu la taula completa amb tots els informes + filtres
-5. Si no és Premium: veu 3 files + CTA upgrade
-
-**Disseny**: seguint DESIGN_SYSTEM.md (page hero canònic, cards amb `rounded-lg border border-rule bg-card p-5`, taula amb `border-collapse` + `border-rule`, badges d'impacte amb colors `#A0522D` / `#C9A961` / `#5C8A5C`)
+**Mockup**: `/home/z/my-project/download/estandares-mockup.png`

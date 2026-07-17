@@ -66,10 +66,16 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
           <div>
             <p className="eyebrow mb-4">{t("hero.eyebrow")}</p>
 
-            {/* Títol: "Informes ESG → Conocimiento. En sólo 5 minutos." */}
+            {/* Títol:
+                Línia 1: "Informes ESG"
+                Línia 2: "⤷ Coneixement." (la fletxa a sota la 'n' d'Informes, mateixa línia que Coneixement)
+                Línia 3: "En només 5 minuts."
+            */}
             <h1 className="font-serif font-semibold leading-[1.08] tracking-tight text-primary">
               <span className="block text-4xl sm:text-5xl">
-                {t("hero.title.line1")}{" "}
+                {t("hero.title.line1")}
+              </span>
+              <span className="block text-4xl sm:text-5xl">
                 <span className="text-accent">⤷</span>{" "}
                 <span className="text-accent">{t("hero.title.line1b")}</span>
               </span>

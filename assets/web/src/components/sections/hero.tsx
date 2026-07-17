@@ -96,9 +96,9 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
 
             {/* 3 blocs diferenciadors */}
             <div className="mb-8 flex flex-wrap gap-3">
-              <BlocKey icon={<Gauge className="h-5 w-5" />} name={t("mid.format.bloc0.title").replace(/^\d+\.\s/, "")} desc={t("mid.format.bloc0.desc")} />
-              <BlocKey icon={<ClipboardCheck className="h-5 w-5" />} name={t("mid.format.bloc6.title").replace(/^\d+\.\s/, "")} desc={t("mid.format.bloc6.desc")} />
-              <BlocKey icon={<Network className="h-5 w-5" />} name={t("mid.format.bloc7.title").replace(/^\d+\.\s/, "")} desc={t("mid.format.bloc7.desc")} />
+              <BlocKey icon={<Gauge className="h-5 w-5" />} name={t("hero.bloc0.name")} desc={t("hero.bloc0.desc")} />
+              <BlocKey icon={<ClipboardCheck className="h-5 w-5" />} name={t("hero.bloc6.name")} desc={t("hero.bloc6.desc")} />
+              <BlocKey icon={<Network className="h-5 w-5" />} name={t("hero.bloc7.name")} desc={t("hero.bloc7.desc")} />
             </div>
 
             {/* ===== CTAs condicionals segons estat d'usuari ===== */}
@@ -239,10 +239,10 @@ function BlocKey({
   desc: string;
 }) {
   return (
-    <div className="flex-1 rounded-md border border-accent bg-accent-soft/10 p-4 text-center transition-all hover:shadow-sm" style={{ minWidth: "110px" }}>
-      <div className="mb-1.5 flex justify-center text-accent-deep">{icon}</div>
-      <p className="mb-0.5 font-serif text-xs font-semibold text-primary">{name}</p>
-      <p className="text-[10px] leading-tight text-muted-foreground">{desc}</p>
+    <div className="flex-1 rounded-md border border-accent bg-accent-soft/10 p-5 text-center transition-all hover:shadow-sm" style={{ minWidth: "130px" }}>
+      <div className="mb-2 flex justify-center text-accent-deep">{icon}</div>
+      <p className="mb-1 font-serif text-sm font-semibold text-primary">{name}</p>
+      <p className="text-xs leading-snug text-muted-foreground">{desc}</p>
     </div>
   );
 }

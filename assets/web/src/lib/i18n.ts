@@ -45,6 +45,21 @@ export const translations = {
     ca: "IA agèntica al servei de l'empresa",
     es: "IA agéntica al servicio de la empresa",
   },
+  "hero.bloc0.name": { ca: "Semàfor Metodològic", es: "Semáforo Metodológico" },
+  "hero.bloc0.desc": {
+    ca: "5 indicadors per avaluar la qualitat de l'informe",
+    es: "5 indicadores para evaluar la calidad del informe",
+  },
+  "hero.bloc6.name": { ca: "Accions recomanades", es: "Acciones recomendadas" },
+  "hero.bloc6.desc": {
+    ca: "3-5 accions concretes. El cor operatiu.",
+    es: "3-5 acciones concretas. El corazón operativo.",
+  },
+  "hero.bloc7.name": { ca: "Cross-reference", es: "Cross-reference" },
+  "hero.bloc7.desc": {
+    ca: "Mapatge amb EcoVadis, B Corp, MSCI, GRI.",
+    es: "Mapeo con EcoVadis, B Corp, MSCI, GRI.",
+  },
   "hero.cta.trial": { ca: "Registra't gratis", es: "Regístrate gratis" },
   "hero.cta.newsletter": { ca: "Rep la newsletter", es: "Recibe la newsletter" },
   "hero.note": {

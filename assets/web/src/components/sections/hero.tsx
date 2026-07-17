@@ -70,7 +70,7 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
             <h1 className="font-serif font-semibold leading-[1.08] tracking-tight text-primary">
               <span className="block text-4xl sm:text-5xl">
                 {t("hero.title.line1")}{" "}
-                <span className="text-accent">↗</span>{" "}
+                <span className="text-accent">⤷</span>{" "}
                 <span className="text-accent">{t("hero.title.line1b")}</span>
               </span>
               <span className="mt-1 block text-3xl font-medium sm:text-4xl">

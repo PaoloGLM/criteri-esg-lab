@@ -3,7 +3,7 @@
 import { useLanguage } from "@/components/language-provider";
 import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileText, Award, Mail, Gauge, Compass, Feather, Crown, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Mail, Crown, CheckCircle2, Gauge, ClipboardCheck, Network } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 interface HeroProps {
@@ -16,32 +16,94 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
   const { t } = useLanguage();
   const { user, plan } = useAuth();
 
-  // Determina quins CTAs mostrar segons l'estat:
-  // - No loguejat: "Registra't gratis" + "Rep la newsletter"
-  // - Gratuït: "Fes-te Premium" (substitueix "Registra't") + "Gestiona la newsletter" → /cuenta
-  // - Premium: mostra un badge "Ets Premium" en lloc dels botons principals
   const isPremium = user && plan === "premium";
   const isFree = user && plan !== "premium";
+
+  // Dades del cross-reference de l'informe ESRS (hardcoded per la hero,
+  // ja que és un exemple visual. En el informe real es carrega dinàmicament).
+  const xrefRows: { cert: string; criterion: { ca: string; es: string }; impact: "high" | "med" }[] = [
+    {
+      cert: "EcoVadis",
+      criterion: {
+        ca: "Reducció del 61% en datapoints afecta l'score de reporting",
+        es: "Reducción de 61% en datapoints afecta al score de reporting",
+      },
+      impact: "high",
+    },
+    {
+      cert: "B Corp",
+      criterion: {
+        ca: "La simplificació pot facilitar el procés de certificació",
+        es: "Simplificación puede facilitar el proceso de certificación",
+      },
+      impact: "med",
+    },
+    {
+      cert: "MSCI ESG",
+      criterion: {
+        ca: "Convergència amb GRI i ISSB: impacte en la metodologia de rating",
+        es: "Convergencia con GRI e ISSB: impacto en rating methodology",
+      },
+      impact: "high",
+    },
+    {
+      cert: "GRI",
+      criterion: {
+        ca: "Interoperabilitat ESRS-GRI reforçada en aquesta revisió",
+        es: "Interoperabilidad ESRS-GRI reforzada en esta revisión",
+      },
+      impact: "med",
+    },
+  ];
 
   return (
     <section className="relative overflow-hidden border-b border-rule">
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-7">
+      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-14">
+          {/* === COLUMNA ESQUERRA: títol + bullets + blocs + CTAs === */}
+          <div>
             <p className="eyebrow mb-4">{t("hero.eyebrow")}</p>
-            <h1 className="font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-primary sm:text-5xl lg:text-6xl">
-              {t("hero.title")}
+
+            {/* Títol: "Informes ESG → Conocimiento. En sólo 5 minutos." */}
+            <h1 className="font-serif font-semibold leading-[1.08] tracking-tight text-primary">
+              <span className="block text-4xl sm:text-5xl">
+                {t("hero.title.line1")}{" "}
+                <span className="text-accent">→</span>{" "}
+                <span className="text-accent">{t("hero.title.line1b")}</span>
+              </span>
+              <span className="mt-1 block text-3xl font-medium sm:text-4xl">
+                {t("hero.title.line2")}
+              </span>
             </h1>
+
             <div className="rule-accent my-6" />
-            <p className="max-w-2xl text-base leading-relaxed text-foreground/80 sm:text-lg">
-              {t("hero.subtitle")}
-            </p>
+
+            {/* 3 bullets */}
+            <ul className="mb-8 space-y-2.5">
+              {[
+                { key: "hero.bullet1" as const },
+                { key: "hero.bullet2" as const },
+                { key: "hero.bullet3" as const },
+              ].map((bullet) => (
+                <li key={bullet.key} className="flex items-start gap-3 text-base text-foreground/80">
+                  <span className="mt-0.5 flex-shrink-0 font-bold text-accent">→</span>
+                  <span>{t(bullet.key)}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* 3 blocs diferenciadors */}
+            <div className="mb-8 flex flex-wrap gap-3">
+              <BlocKey icon={<Gauge className="h-5 w-5" />} name={t("mid.format.bloc0.title").replace(/^\d+\.\s/, "")} desc={t("mid.format.bloc0.desc")} />
+              <BlocKey icon={<ClipboardCheck className="h-5 w-5" />} name={t("mid.format.bloc6.title").replace(/^\d+\.\s/, "")} desc={t("mid.format.bloc6.desc")} />
+              <BlocKey icon={<Network className="h-5 w-5" />} name={t("mid.format.bloc7.title").replace(/^\d+\.\s/, "")} desc={t("mid.format.bloc7.desc")} />
+            </div>
 
             {/* ===== CTAs condicionals segons estat d'usuari ===== */}
             {isPremium ? (
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Badge
                   variant="secondary"
                   className="h-12 gap-2 border border-accent/30 bg-accent-soft/20 px-4 text-sm font-medium text-accent-deep"
@@ -55,7 +117,7 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
                 </Button>
               </div>
             ) : isFree ? (
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button
                   size="lg"
                   onClick={onOpenPreus || onOpenRegister}
@@ -74,7 +136,7 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
                 </a>
               </div>
             ) : (
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button size="lg" onClick={onOpenRegister} className="h-12 px-6 text-base">
                   {t("hero.cta.trial")}
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -94,67 +156,68 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
             </p>
           </div>
 
-          <div className="lg:col-span-5">
-            <div className="rounded-lg border border-rule bg-card p-6 shadow-sm">
-              <Badge
-                variant="secondary"
-                className="mb-3 border border-accent/30 bg-accent-soft/20 text-accent-deep hover:bg-accent-soft/30"
-              >
-                {t("latest.eyebrow")}
-              </Badge>
-              <h3 className="font-serif text-2xl font-semibold leading-tight text-primary">
-                {t("latest.title")}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-foreground/75">
-                {t("latest.summary")}
-              </p>
-              <div className="mt-5 flex flex-col gap-2">
-                <Button onClick={onOpenReport} className="w-full">
-                  {t("latest.cta")}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                {!isPremium && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={isFree ? (onOpenPreus || onOpenRegister) : onOpenRegister}
-                    className="w-full"
-                  >
-                    {isFree ? (
-                      <>
-                        <Crown className="mr-1 h-3.5 w-3.5 text-accent" />
-                        {t("cta.upgrade.button")}
-                      </>
-                    ) : (
-                      t("latest.cta.trial")
-                    )}
-                  </Button>
-                )}
-                {isPremium && (
-                  <div className="flex items-center justify-center gap-2 rounded-md border border-accent/30 bg-accent-soft/10 px-3 py-2 text-xs text-accent-deep">
-                    <CheckCircle2 className="h-3.5 w-3.5" />
-                    {t("cta.premium.badge")}
-                  </div>
-                )}
+          {/* === COLUMNA DRETA: cross-reference table === */}
+          <div>
+            <div className="overflow-hidden rounded-lg border border-rule bg-card shadow-lg">
+              {/* Header */}
+              <div className="border-b border-rule bg-accent-soft/10 p-5">
+                <span className="mb-2 inline-block rounded-full bg-accent px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-widest text-accent-foreground">
+                  {t("hero.xref.badge")}
+                </span>
+                <p className="font-serif text-base font-semibold text-primary">
+                  {t("hero.xref.title")}
+                </p>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {t("hero.xref.subtitle")}
+                </p>
+              </div>
+
+              {/* Table */}
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr>
+                    <th className="border-b border-rule bg-secondary/30 px-4 py-3 text-left font-mono text-[9px] uppercase tracking-widest text-accent-deep">
+                      {t("hero.xref.col_cert")}
+                    </th>
+                    <th className="border-b border-rule bg-secondary/30 px-4 py-3 text-left font-mono text-[9px] uppercase tracking-widest text-accent-deep">
+                      {t("hero.xref.col_criterion")}
+                    </th>
+                    <th className="border-b border-rule bg-secondary/30 px-4 py-3 text-left font-mono text-[9px] uppercase tracking-widest text-accent-deep">
+                      {t("hero.xref.col_impact")}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {xrefRows.map((row, i) => (
+                    <tr key={i} className={i < xrefRows.length - 1 ? "border-b border-rule/40" : ""}>
+                      <td className="px-4 py-3 align-top">
+                        <span className="font-serif text-sm font-semibold text-primary">{row.cert}</span>
+                      </td>
+                      <td className="px-4 py-3 align-top text-xs leading-relaxed text-foreground/80">
+                        {row.criterion[t("brand.name") === "Criteri ESG" ? "ca" : "es"]}
+                      </td>
+                      <td className="px-4 py-3 align-top">
+                        <span
+                          className={`inline-block rounded px-2 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider ${
+                            row.impact === "high"
+                              ? "bg-[#A0522D]/12 text-[#A0522D]"
+                              : "bg-[#C9A961]/15 text-[#8A6D2B]"
+                          }`}
+                        >
+                          {row.impact === "high" ? t("hero.xref.impact.high") : t("hero.xref.impact.med")}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              {/* Note */}
+              <div className="border-t border-rule bg-secondary/30 px-5 py-3 text-xs italic leading-relaxed text-muted-foreground">
+                <strong className="not-italic text-accent-deep">{t("hero.xref.note_title")}</strong>{" "}
+                {t("hero.xref.note_body")}
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="mt-16">
-          <div className="mb-6">
-            <p className="eyebrow mb-2">{t("sections.subtitle")}</p>
-            <h2 className="font-serif text-3xl font-semibold text-primary sm:text-4xl">
-              {t("sections.title")}
-            </h2>
-          </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            <SectionCard href="/informes" icon={<FileText className="h-5 w-5" />} title={t("sections.informes.title")} desc={t("sections.informes.desc")} />
-            <SectionCard href={isFree || isPremium ? "/cuenta" : "#newsletter"} icon={<Mail className="h-5 w-5" />} title={t("sections.newsletter.title")} desc={t("sections.newsletter.desc")} />
-            <SectionCard href="/informes" icon={<Award className="h-5 w-5" />} title={t("sections.crossref.title")} desc={t("sections.crossref.desc")} />
-            <SectionCard href="/informes" icon={<Gauge className="h-5 w-5" />} title={t("sections.semafor.title")} desc={t("sections.semafor.desc")} highlighted />
-            <SectionCard href="/informes" icon={<Compass className="h-5 w-5" />} title={t("sections.editorial.title")} desc={t("sections.editorial.desc")} highlighted />
-            <SectionCard href={isFree || isPremium ? "/cuenta" : "#newsletter"} icon={<Feather className="h-5 w-5" />} title={t("sections.cartadirector.title")} desc={t("sections.cartadirector.desc")} highlighted />
           </div>
         </div>
       </div>
@@ -162,39 +225,24 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
   );
 }
 
-function SectionCard({
-  href,
+/**
+ * BlocKey — card petit pels 3 blocs diferenciadors.
+ * Segueix el patró de FormatBloc de mid-sections.tsx però més compacte.
+ */
+function BlocKey({
   icon,
-  title,
+  name,
   desc,
-  highlighted,
 }: {
-  href: string;
   icon: React.ReactNode;
-  title: string;
+  name: string;
   desc: string;
-  highlighted?: boolean;
 }) {
   return (
-    <a
-      href={href}
-      className={`group relative rounded-lg border p-5 transition-all hover:shadow-md ${
-        highlighted
-          ? "border-accent bg-accent-soft/10 hover:border-accent"
-          : "border-rule bg-card hover:border-accent"
-      }`}
-    >
-      <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-secondary text-accent-deep">
-        {icon}
-      </div>
-      {highlighted && (
-        <span className="absolute right-3 top-3 font-mono text-[10px] uppercase tracking-widest text-accent">
-          ⭐ Diferencial
-        </span>
-      )}
-      <h3 className="mb-2 font-serif text-lg font-semibold leading-tight text-primary">{title}</h3>
-      <p className="text-sm leading-relaxed text-foreground/70">{desc}</p>
-      <ArrowRight className="absolute right-4 bottom-4 h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
-    </a>
+    <div className="flex-1 rounded-md border border-accent bg-accent-soft/10 p-4 text-center transition-all hover:shadow-sm" style={{ minWidth: "110px" }}>
+      <div className="mb-1.5 flex justify-center text-accent-deep">{icon}</div>
+      <p className="mb-0.5 font-serif text-xs font-semibold text-primary">{name}</p>
+      <p className="text-[10px] leading-tight text-muted-foreground">{desc}</p>
+    </div>
   );
 }

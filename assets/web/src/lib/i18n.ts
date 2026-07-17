@@ -21,19 +21,58 @@ export const translations = {
     ca: "Intel·ligència ESG · Des de 2026",
     es: "Inteligencia ESG · Desde 2026",
   },
-  "hero.title": {
-    ca: "El teu criteri per decidir bé.",
-    es: "Tu criterio para decidir bien.",
+  "hero.title.line1": {
+    ca: "Informes ESG",
+    es: "Informes ESG",
   },
-  "hero.subtitle": {
-    ca: "Criteri ESG converteix els informes institucionals, els frameworks i les certificacions europees en accions concretes. Cada document, sintetitzat en 5 minuts de lectura — per a directors de sostenibilitat, compliance officers i consultories que volen ser més ètiques, més sostenibles i millor reputades.",
-    es: "Criteri ESG convierte los informes institucionales, los frameworks y las certificaciones europeas en acciones concretas. Cada documento, sintetizado en 5 minutos de lectura — para directores de sostenibilidad, compliance officers y consultorías que quieren ser más éticas, más sostenibles y mejor reputadas.",
+  "hero.title.line1b": {
+    ca: "Coneixement.",
+    es: "Conocimiento.",
+  },
+  "hero.title.line2": {
+    ca: "En només 5 minuts.",
+    es: "En sólo 5 minutos.",
+  },
+  "hero.bullet1": {
+    ca: "Aplica les conclusions amb criteri",
+    es: "Aplica las conclusiones con criterio",
+  },
+  "hero.bullet2": {
+    ca: "Diferencia't actuant èticament",
+    es: "Diferénciate actuando éticamente",
+  },
+  "hero.bullet3": {
+    ca: "IA agèntica al servei de l'empresa",
+    es: "IA agéntica al servicio de la empresa",
   },
   "hero.cta.trial": { ca: "Registra't gratis", es: "Regístrate gratis" },
   "hero.cta.newsletter": { ca: "Rep la newsletter", es: "Recibe la newsletter" },
   "hero.note": {
     ca: "Accés gratuït a informes >6 mesos. Sense targeta.",
     es: "Acceso gratis a informes >6 meses. Sin tarjeta.",
+  },
+  "hero.xref.badge": {
+    ca: "⭐ EXCLUSIU · CAP COMPETIDOR HO FA",
+    es: "⭐ EXCLUSIVO · NINGÚN COMPETIDOR LO HACE",
+  },
+  "hero.xref.title": {
+    ca: "Cross-reference: Revisió ESRS ↔ les teves certificacions",
+    es: "Cross-reference: Revisión ESRS ↔ tus certificaciones",
+  },
+  "hero.xref.subtitle": {
+    ca: "Comissió Europea · DG FISMA · 6 de maig de 2026",
+    es: "Comisión Europea · DG FISMA · 6 mayo 2026",
+  },
+  "hero.xref.col_cert": { ca: "Certificació", es: "Certificación" },
+  "hero.xref.col_criterion": { ca: "Criteri afectat", es: "Criterio afectado" },
+  "hero.xref.col_impact": { ca: "Impacte", es: "Impacto" },
+  "hero.xref.impact.high": { ca: "Alt", es: "Alto" },
+  "hero.xref.impact.med": { ca: "Mitjà", es: "Medio" },
+  "hero.xref.impact.low": { ca: "Baix", es: "Bajo" },
+  "hero.xref.note_title": { ca: "Per què importa:", es: "¿Por qué importa:" },
+  "hero.xref.note_body": {
+    ca: "sense aquest mapeig, no saps si un informe europeu t'afecta fins que és massa tard. Amb Criteri, ho saps en el moment de publicar-se.",
+    es: "sin este mapeo, no sabes si un informe europeo te afecta hasta que es demasiado tarde. Con Criteri, lo sabes en el momento de publicarse.",
   },
 
   "sections.title": {

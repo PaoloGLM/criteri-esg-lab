@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criteri ESG — Newsletter #001 (mockup)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #E8DDC9; font-family: 'Inter', sans-serif; color: #2C1810; line-height: 1.6; }
+  .email { max-width: 640px; margin: 20px auto; background: #F5EFE6; border-radius: 8px; overflow: hidden; }
+
+  /* HEADER */
+  .email-header { background: #2C1810; padding: 32px 40px; text-align: center; }
+  .email-header .logo { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 600; color: #F5EFE6; }
+  .email-header .logo span { color: #D9A574; }
+  .email-header .edition { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(245,239,230,0.5); margin-top: 8px; }
+  .email-header .date { font-size: 13px; color: rgba(245,239,230,0.7); margin-top: 4px; }
+
+  /* CARTA DEL DIRECTOR (només últim dijous del mes) */
+  .carta-director { padding: 32px 40px; border-bottom: 1px solid #C9B89A; background: rgba(217,165,116,0.08); }
+  .carta-director .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #8A5526; font-weight: 600; margin-bottom: 12px; }
+  .carta-director h2 { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; color: #2C1810; margin-bottom: 12px; }
+  .carta-director p { font-size: 14px; line-height: 1.65; color: rgba(44,24,16,0.8); margin-bottom: 10px; }
+  .carta-director .signature { font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; color: #8A5526; margin-top: 12px; }
+
+  /* SECTION HEADER */
+  .section-header { padding: 28px 40px 16px; }
+  .section-header .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #8A5526; font-weight: 600; margin-bottom: 6px; }
+  .section-header h2 { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 600; color: #2C1810; }
+  .rule-accent { width: 40px; height: 2px; background: #B87333; margin: 12px 0 20px; }
+
+  /* INFORME CARD */
+  .informe-card { padding: 0 40px 24px; }
+  .informe-card-inner { background: #FFFFFF; border: 1px solid #C9B89A; border-radius: 8px; padding: 20px; }
+  .informe-card-inner.premium { border-left: 4px solid #B87333; }
+  .informe-badges { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+  .badge-type { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+  .badge-reg { background: rgba(92,58,30,0.15); color: #5C3A1E; }
+  .badge-fw { background: rgba(184,115,51,0.12); color: #B87333; }
+  .badge-cert { background: rgba(232,201,154,0.25); color: #8A6D2B; }
+  .badge-premium { background: #B87333; color: white; }
+  .informe-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 600; color: #2C1810; margin-bottom: 6px; line-height: 1.3; }
+  .informe-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8B7355; margin-bottom: 10px; }
+  .informe-summary { font-size: 13px; line-height: 1.6; color: rgba(44,24,16,0.75); margin-bottom: 12px; }
+
+  /* Semáforo compacto */
+  .semafor-mini { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+  .semafor-chip { display: flex; align-items: center; gap: 4px; background: rgba(239,231,218,0.5); border: 1px solid #C9B89A; border-radius: 4px; padding: 3px 8px; font-size: 10px; color: #2C1810; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .dot.g { background: #5C8A5C; } .dot.y { background: #C9A961; } .dot.r { background: #A0522D; }
+  .semafor-grade { background: #B87333; color: white; padding: 3px 8px; border-radius: 4px; font-family: 'Fraunces', serif; font-size: 11px; font-weight: 700; }
+
+  /* Cross-ref chips */
+  .xref-chips { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 12px; }
+  .xref-chip { background: white; border: 1px solid rgba(184,115,51,0.3); color: #8A5526; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 500; }
+
+  /* Acciones (Premium only) */
+  .acciones { background: rgba(184,115,51,0.06); border: 1px solid rgba(184,115,51,0.2); border-radius: 6px; padding: 12px; margin-bottom: 12px; }
+  .acciones-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: #8A5526; font-weight: 600; margin-bottom: 8px; }
+  .accion-item { display: flex; gap: 8px; margin-bottom: 6px; font-size: 12px; color: #2C1810; line-height: 1.4; }
+  .accion-num { background: #B87333; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; flex-shrink: 0; font-family: 'JetBrains Mono', monospace; }
+
+  /* CTA */
+  .informe-cta { display: inline-block; background: #B87333; color: white; text-decoration: none; padding: 8px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; }
+
+  /* Versión gratis: contenido bloqueado */
+  .locked-content { background: rgba(44,24,16,0.04); border: 1px dashed #C9B89A; border-radius: 6px; padding: 16px; text-align: center; margin-top: 12px; }
+  .locked-content p { font-size: 12px; color: #8B7355; margin-bottom: 8px; }
+  .locked-content a { display: inline-block; background: #2C1810; color: #F5EFE6; text-decoration: none; padding: 8px 20px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+
+  /* CONEXIÓN entre informes */
+  .conexion { padding: 24px 40px; background: rgba(184,115,51,0.06); border-top: 1px solid #C9B89A; border-bottom: 1px solid #C9B89A; }
+  .conexion .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #8A5526; font-weight: 600; margin-bottom: 8px; }
+  .conexion h3 { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; color: #2C1810; margin-bottom: 10px; }
+  .conexion p { font-size: 14px; line-height: 1.65; color: rgba(44,24,16,0.8); }
+
+  /* NOTICIAS ESG */
+  .noticias { padding: 0 40px 24px; }
+  .noticia-item { padding: 12px 0; border-bottom: 1px solid rgba(201,184,154,0.4); }
+  .noticia-item:last-child { border-bottom: none; }
+  .noticia-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: #B87333; font-weight: 600; }
+  .noticia-title { font-family: 'Fraunces', serif; font-size: 14px; font-weight: 600; color: #2C1810; margin: 4px 0; }
+  .noticia-desc { font-size: 12px; color: #8B7355; line-height: 1.5; }
+
+  /* INVERSIÓN ESG (Premium) */
+  .inversion { padding: 0 40px 24px; }
+
+  /* PREGUNTA ÉTICA (Premium) */
+  .pregunta-etica { padding: 24px 40px; background: #2C1810; color: #F5EFE6; }
+  .pregunta-etica .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #D9A574; font-weight: 600; margin-bottom: 8px; }
+  .pregunta-etica h3 { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; color: #F5EFE6; margin-bottom: 10px; }
+  .pregunta-etica p { font-size: 14px; line-height: 1.65; color: rgba(245,239,230,0.8); font-style: italic; }
+
+  /* FOOTER */
+  .email-footer { padding: 24px 40px; background: rgba(239,231,218,0.3); border-top: 1px solid #C9B89A; text-align: center; }
+  .email-footer p { font-size: 11px; color: #8B7355; margin-bottom: 6px; }
+  .email-footer a { color: #8A5526; }
+  .email-footer .unsubscribe { font-size: 10px; color: #8B7355; margin-top: 8px; }
+
+  /* VERSION BADGE */
+  .version-badge { position: fixed; top: 16px; right: 16px; background: #B87333; color: white; padding: 4px 12px; border-radius: 12px; font-size: 10px; font-weight: 600; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; }
+</style>
+</head>
+<body>
+
+<div class="version-badge">VERSIÓN PREMIUM</div>
+
+<div class="email">
+
+  <!-- HEADER -->
+  <div class="email-header">
+    <div class="logo">Criteri<span>.</span> <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(245,239,230,0.5);">ESG</span></div>
+    <div class="edition">EDICIÓN #001 · NEWSLETTER BIMENSUAL</div>
+    <div class="date">Jueves 17 de julio de 2026</div>
+  </div>
+
+  <!-- CARTA DEL DIRECTOR (solo último jueves del mes) -->
+  <div class="carta-director">
+    <div class="eyebrow">CARTA DEL DIRECTOR</div>
+    <h2>¿Por qué Criteri, por qué ahora?</h2>
+    <p>Esta semana la Comisión Europea ha publicado la revisión de los ESRS. Mientras tanto, tres de cada cuatro directores de sostenibilidad con los que he hablado este mes me dicen lo mismo: "no tengo tiempo de leerme 47 páginas". Esa es la brecha que venimos a cerrar.</p>
+    <p>Criteri no es un agregador más. Es un filtro con criterio: qué informes merecen tu atención, qué dicen realmente, qué debes hacer con ellos. Y sobre todo: qué te afecta según tus certificaciones. Eso nadie lo hace.</p>
+    <p class="signature">— Paolo, fundador de Criteri ESG</p>
+  </div>
+
+  <!-- INFORMES DESTACADOS -->
+  <div class="section-header">
+    <div class="eyebrow">INFORMES DE LA QUINCENA</div>
+    <h2>Lo que has de conocer</h2>
+    <div class="rule-accent"></div>
+  </div>
+
+  <!-- Informe 1 (Premium) -->
+  <div class="informe-card">
+    <div class="informe-card-inner premium">
+      <div class="informe-badges">
+        <span class="badge-type badge-reg">Regulación</span>
+        <span class="badge-premium">Premium</span>
+      </div>
+      <h3 class="informe-title">Revisión de los ESRS: simplificación del CSRD</h3>
+      <p class="informe-meta">Comisión Europea · 6 mayo 2026 · 47 pág</p>
+
+      <!-- Semáforo -->
+      <div class="semafor-mini">
+        <span class="semafor-grade">C · Feble</span>
+        <span class="semafor-chip"><span class="dot y"></span> Scope 3</span>
+        <span class="semafor-chip"><span class="dot y"></span> Terminis</span>
+        <span class="semafor-chip"><span class="dot g"></span> Fonts</span>
+        <span class="semafor-chip"><span class="dot r"></span> Granularitat</span>
+        <span class="semafor-chip"><span class="dot y"></span> Verificació</span>
+      </div>
+
+      <p class="informe-summary">La Comisión Europea reduce un 61% los datapoints obligatorios del CSRD. Estalvi estimat de 3.700M€ en 5 anys. Se simplifica la arquitectura pero se mantiene la convergència amb GRI i ISSB.</p>
+
+      <!-- Cross-ref -->
+      <div class="xref-chips">
+        <span class="xref-chip">GRI · Alto</span>
+        <span class="xref-chip">EcoVadis · Medio</span>
+        <span class="xref-chip">MSCI · Medio</span>
+        <span class="xref-chip">B Corp · Bajo</span>
+      </div>
+
+      <!-- Acciones (Premium) -->
+      <div class="acciones">
+        <p class="acciones-label">⭐ ACCIONES RECOMENDADAS</p>
+        <div class="accion-item"><span class="accion-num">1</span> Auditar la matriz de materialidad vigente</div>
+        <div class="accion-item"><span class="accion-num">2</span> Renegociar el contrato de assurance externo</div>
+        <div class="accion-item"><span class="accion-num">3</span> Construir un dataset voluntario interno</div>
+      </div>
+
+      <a href="#" class="informe-cta">Ver informe completo →</a>
+    </div>
+  </div>
+
+  <!-- Informe 2 (Premium) -->
+  <div class="informe-card">
+    <div class="informe-card-inner premium">
+      <div class="informe-badges">
+        <span class="badge-type badge-reg">Regulación</span>
+        <span class="badge-premium">Premium</span>
+      </div>
+      <h3 class="informe-title">CSDDD Omnibus I: enmiendas finales</h3>
+      <p class="informe-meta">Comisión Europea · 15 marzo 2026 · 38 pág</p>
+
+      <div class="semafor-mini">
+        <span class="semafor-grade">B · Robust</span>
+        <span class="semafor-chip"><span class="dot g"></span> Scope 3</span>
+        <span class="semafor-chip"><span class="dot g"></span> Terminis</span>
+        <span class="semafor-chip"><span class="dot y"></span> Fonts</span>
+        <span class="semafor-chip"><span class="dot g"></span> Granularitat</span>
+        <span class="semafor-chip"><span class="dot y"></span> Verificació</span>
+      </div>
+
+      <p class="informe-summary">Se estrecha el deber de diligencia en derechos humanos para empresas de más de 1.000 empleados. Las cadenas de suministro deben mapear riesgos y mitigar impactos. Entra en vigor 2027.</p>
+
+      <div class="xref-chips">
+        <span class="xref-chip">CSDDD · Alto</span>
+        <span class="xref-chip">B Corp · Alto</span>
+        <span class="xref-chip">SGE 21 · Medio</span>
+        <span class="xref-chip">GRI · Medio</span>
+      </div>
+
+      <div class="acciones">
+        <p class="acciones-label">⭐ ACCIONES RECOMENDADAS</p>
+        <div class="accion-item"><span class="accion-num">1</span> Mapear proveedores de alto riesgo antes de Q4</div>
+        <div class="accion-item"><span class="accion-num">2</span> Designar responsable de due diligence</div>
+      </div>
+
+      <a href="#" class="informe-cta">Ver informe completo →</a>
+    </div>
+  </div>
+
+  <!-- Informe 3 (Gratis — resumen ejecutivo only) -->
+  <div class="informe-card">
+    <div class="informe-card-inner">
+      <div class="informe-badges">
+        <span class="badge-type badge-cert">Rating</span>
+        <span class="badge-type" style="background:rgba(92,138,92,0.12);color:#4A6B3A;">Gratis</span>
+      </div>
+      <h3 class="informe-title">EcoVadis Methodology Updates Q1 2026</h3>
+      <p class="informe-meta">EcoVadis · 15 abril 2026 · 28 pág</p>
+
+      <div class="semafor-mini">
+        <span class="semafor-grade">B · Robust</span>
+        <span class="semafor-chip"><span class="dot g"></span> Scope 3</span>
+        <span class="semafor-chip"><span class="dot y"></span> Terminis</span>
+        <span class="semafor-chip"><span class="dot g"></span> Fonts</span>
+        <span class="semafor-chip"><span class="dot y"></span> Granularitat</span>
+        <span class="semafor-chip"><span class="dot g"></span> Verificació</span>
+      </div>
+
+      <p class="informe-summary">9 cambios metodológicos entre abril y mayo 2026. Se refuerza el reconocimiento a empresas que reportan con GRI Universal Standards. Impacto directo en scores de Sustainable Procurement.</p>
+
+      <div class="xref-chips">
+        <span class="xref-chip">EcoVadis · Alto</span>
+        <span class="xref-chip">GRI · Medio</span>
+      </div>
+
+      <!-- Versión gratis: acciones bloqueadas -->
+      <div class="locked-content">
+        <p>Las acciones recomendadas y el cross-reference completo están disponibles para suscriptores Premium.</p>
+        <a href="#">Hazte Premium · 290€/año</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONEXIÓN entre informes -->
+  <div class="conexion">
+    <div class="eyebrow">⭐ CONEXIÓN CRITERI</div>
+    <h3>El CSRD se simplifica, pero el CSDDD se endurece</h3>
+    <p>Mientras la revisión de los ESRS reduce un 61% los datapoints de reporting (menos información), el CSDDD exige más diligencia en derechos humanos (más acción). Las empresas se encuentran en una paradoja: <strong>menos información estructurada para tomar más decisiones</strong>. Esta es exactamente la brecha que Criteri ESG viene a cerrar: sintetizar lo que queda y conectarlo con lo que se exige.</p>
+  </div>
+
+  <!-- NOTICIAS ESG (Premium: completo, Gratis: solo titulares) -->
+  <div class="section-header">
+    <div class="eyebrow">NOTICIAS ESG</div>
+    <h2>Lo que ha pasado esta quincena</h2>
+    <div class="rule-accent"></div>
+  </div>
+
+  <div class="noticias">
+    <div class="noticia-item">
+      <span class="noticia-source">El País · 12 jul 2026</span>
+      <h4 class="noticia-title">El BCE incluye por primera vez el riesgo climático en los test de estrés de la banca española</h4>
+      <p class="noticia-desc">El 100% de los bancos significativos de la UE integran el riesgo climático, pero se mantienen gaps clave en datos Scope 3.</p>
+    </div>
+    <div class="noticia-item">
+      <span class="noticia-source">Cinco Días · 10 jul 2026</span>
+      <h4 class="noticia-title">Forética publica su informe anual sobre el estado de la RSE en España</h4>
+      <p class="noticia-desc">El 78% de las grandes empresas españolas tiene política de derechos humanos, pero solo el 23% la verifica con datos.</p>
+    </div>
+    <div class="noticia-item">
+      <span class="noticia-source">Expansión · 8 jul 2026</span>
+      <h4 class="noticia-title">Las gestoras españolas reclaman más armonización entre SFDR y Taxonomía UE</h4>
+      <p class="noticia-desc">La falta de alineación entre ambos marcos genera costes duplicados y confusión entre inversores.</p>
+    </div>
+  </div>
+
+  <!-- INVERSIÓN ESG (Premium only) -->
+  <div class="section-header">
+    <div class="eyebrow">INVERSIÓN ESG · PREMIUM</div>
+    <h2>Señales para inversores</h2>
+    <div class="rule-accent"></div>
+  </div>
+
+  <div class="inversion">
+    <div class="informe-card-inner premium">
+      <h3 class="informe-title">Sustainalytics eleva el riesgo ESG del sector utilities español</h3>
+      <p class="informe-meta">Sustainalytics · 5 julio 2026</p>
+      <p class="informe-summary">El riesgo ESG no gestionado del sector eléctrico español sube de "Medio" a "Alto" por la lentitud en la transición a renovables de algunas compañías. Impacto directo en MSCI ESG ratings.</p>
+      <div class="xref-chips">
+        <span class="xref-chip">MSCI · Alto</span>
+        <span class="xref-chip">Sustainalytics · Alto</span>
+        <span class="xref-chip">TCFD · Medio</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREGUNTA ÉTICA (Premium only) -->
+  <div class="pregunta-etica">
+    <div class="eyebrow">PREGUNTA PARA MEJORAR · PREMIUM</div>
+    <h3>Si tu empresa desapareciera mañana, ¿quién lo notaría de verdad —y por qué?</h3>
+    <p>La respuesta te dice más sobre tu valor real que cualquier métrica ESG. Las empresas que solo crean valor para accionistas no dejan vacío cuando desaparecen. Las que crean valor para trabajadores, comunidad y territorio, sí. Piensa en qué vacío dejarías.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="email-footer">
+    <p><strong>Criteri ESG</strong> · Inteligencia ESG para decisiones éticas</p>
+    <p>criteriesg.com · Barcelona · <a href="#">Gestiona tu suscripción</a></p>
+    <p class="unsubscribe">Recibes este correo porque te suscribiste en criteriesg.com. <a href="#">Cancelar suscripción</a></p>
+  </div>
+
+</div>
+
+</body>
+</html>

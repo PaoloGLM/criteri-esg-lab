@@ -34,40 +34,61 @@
   .informe-card { padding: 0 40px 24px; }
   .informe-card-inner { background: #FFFFFF; border: 1px solid #C9B89A; border-radius: 8px; padding: 20px; }
   .informe-card-inner.premium { border-left: 4px solid #B87333; }
-  .informe-badges { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+
+  /* TOP row: badges+title+meta a l'esquerra, semàfor a la dreta */
+  .informe-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 12px; }
+  .informe-main { flex: 1; min-width: 0; }
+  .informe-badges { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
   .badge-type { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
   .badge-reg { background: rgba(92,58,30,0.15); color: #5C3A1E; }
   .badge-fw { background: rgba(184,115,51,0.12); color: #B87333; }
   .badge-cert { background: rgba(232,201,154,0.25); color: #8A6D2B; }
-  .badge-premium { background: #B87333; color: white; }
+  /* Badge Premium subtil (com a la web) */
+  .badge-premium { background: rgba(44,24,16,0.08); color: #2C1810; display: inline-flex; align-items: center; gap: 3px; }
+  .badge-premium::before { content: ""; display: inline-block; width: 8px; height: 8px; background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232C1810' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='11' width='18' height='11' rx='2'/><path d='M7 11V7a5 5 0 0 1 10 0v4'/></svg>") center/contain no-repeat; }
   .informe-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 600; color: #2C1810; margin-bottom: 6px; line-height: 1.3; }
-  .informe-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8B7355; margin-bottom: 10px; }
+  .informe-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8B7355; }
   .informe-summary { font-size: 13px; line-height: 1.6; color: rgba(44,24,16,0.75); margin-bottom: 12px; }
 
-  /* Semáforo compacto */
-  .semafor-mini { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
-  .semafor-chip { display: flex; align-items: center; gap: 4px; background: rgba(239,231,218,0.5); border: 1px solid #C9B89A; border-radius: 4px; padding: 3px 8px; font-size: 10px; color: #2C1810; }
-  .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-  .dot.g { background: #5C8A5C; } .dot.y { background: #C9A961; } .dot.r { background: #A0522D; }
-  .semafor-grade { background: #B87333; color: white; padding: 3px 8px; border-radius: 4px; font-family: 'Fraunces', serif; font-size: 11px; font-weight: 700; }
+  /* Semáforo metodológico compacte (dalt a la dreta) */
+  .semafor-widget {
+    flex-shrink: 0;
+    background: rgba(239,231,218,0.55);
+    border: 1px solid #C9B89A;
+    border-radius: 6px;
+    padding: 6px 10px;
+    text-align: right;
+    min-width: 112px;
+  }
+  .semafor-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #8A5526;
+    font-weight: 600;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+  .semafor-result { display: flex; align-items: center; justify-content: flex-end; gap: 6px; }
+  .semafor-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .semafor-dot.g { background: #5C8A5C; }
+  .semafor-dot.y { background: #C9A961; }
+  .semafor-dot.r { background: #A0522D; }
+  .semafor-grade-inline { font-family: 'Fraunces', serif; font-size: 12px; font-weight: 700; color: #2C1810; line-height: 1; }
 
   /* Cross-ref chips */
   .xref-chips { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 12px; }
   .xref-chip { background: white; border: 1px solid rgba(184,115,51,0.3); color: #8A5526; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 500; }
 
-  /* Acciones (Premium only) */
+  /* Acciones */
   .acciones { background: rgba(184,115,51,0.06); border: 1px solid rgba(184,115,51,0.2); border-radius: 6px; padding: 12px; margin-bottom: 12px; }
   .acciones-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: #8A5526; font-weight: 600; margin-bottom: 8px; }
   .accion-item { display: flex; gap: 8px; margin-bottom: 6px; font-size: 12px; color: #2C1810; line-height: 1.4; }
   .accion-num { background: #B87333; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; flex-shrink: 0; font-family: 'JetBrains Mono', monospace; }
 
-  /* CTA */
+  /* CTA informe */
   .informe-cta { display: inline-block; background: #B87333; color: white; text-decoration: none; padding: 8px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; }
-
-  /* Versión gratis: contenido bloqueado */
-  .locked-content { background: rgba(44,24,16,0.04); border: 1px dashed #C9B89A; border-radius: 6px; padding: 16px; text-align: center; margin-top: 12px; }
-  .locked-content p { font-size: 12px; color: #8B7355; margin-bottom: 8px; }
-  .locked-content a { display: inline-block; background: #2C1810; color: #F5EFE6; text-decoration: none; padding: 8px 20px; border-radius: 6px; font-size: 12px; font-weight: 600; }
 
   /* CONEXIÓN entre informes */
   .conexion { padding: 24px 40px; background: rgba(184,115,51,0.06); border-top: 1px solid #C9B89A; border-bottom: 1px solid #C9B89A; }
@@ -83,10 +104,10 @@
   .noticia-title { font-family: 'Fraunces', serif; font-size: 14px; font-weight: 600; color: #2C1810; margin: 4px 0; }
   .noticia-desc { font-size: 12px; color: #8B7355; line-height: 1.5; }
 
-  /* INVERSIÓN ESG (Premium) */
+  /* INVERSIÓN ESG */
   .inversion { padding: 0 40px 24px; }
 
-  /* PREGUNTA ÉTICA (Premium) */
+  /* PREGUNTA ÉTICA */
   .pregunta-etica { padding: 24px 40px; background: #2C1810; color: #F5EFE6; }
   .pregunta-etica .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #D9A574; font-weight: 600; margin-bottom: 8px; }
   .pregunta-etica h3 { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; color: #F5EFE6; margin-bottom: 10px; }
@@ -97,14 +118,9 @@
   .email-footer p { font-size: 11px; color: #8B7355; margin-bottom: 6px; }
   .email-footer a { color: #8A5526; }
   .email-footer .unsubscribe { font-size: 10px; color: #8B7355; margin-top: 8px; }
-
-  /* VERSION BADGE */
-  .version-badge { position: fixed; top: 16px; right: 16px; background: #B87333; color: white; padding: 4px 12px; border-radius: 12px; font-size: 10px; font-weight: 600; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; }
 </style>
 </head>
 <body>
-
-<div class="version-badge">VERSIÓN PREMIUM</div>
 
 <div class="email">
 
@@ -127,31 +143,32 @@
   <!-- INFORMES DESTACADOS -->
   <div class="section-header">
     <div class="eyebrow">INFORMES DE LA QUINCENA</div>
-    <h2>Lo que has de conocer</h2>
+    <h2>No te pierdas…</h2>
     <div class="rule-accent"></div>
   </div>
 
-  <!-- Informe 1 (Premium) -->
+  <!-- Informe 1 -->
   <div class="informe-card">
     <div class="informe-card-inner premium">
-      <div class="informe-badges">
-        <span class="badge-type badge-reg">Regulación</span>
-        <span class="badge-premium">Premium</span>
+      <div class="informe-top">
+        <div class="informe-main">
+          <div class="informe-badges">
+            <span class="badge-type badge-reg">Regulación</span>
+            <span class="badge-type badge-premium">Premium</span>
+          </div>
+          <h3 class="informe-title">Revisión de los ESRS: simplificación del CSRD</h3>
+          <p class="informe-meta">Comisión Europea · 6 mayo 2026 · 47 pág</p>
+        </div>
+        <div class="semafor-widget">
+          <div class="semafor-label">Semáforo metodológico</div>
+          <div class="semafor-result">
+            <span class="semafor-dot y"></span>
+            <span class="semafor-grade-inline">C · Débil</span>
+          </div>
+        </div>
       </div>
-      <h3 class="informe-title">Revisión de los ESRS: simplificación del CSRD</h3>
-      <p class="informe-meta">Comisión Europea · 6 mayo 2026 · 47 pág</p>
 
-      <!-- Semáforo -->
-      <div class="semafor-mini">
-        <span class="semafor-grade">C · Feble</span>
-        <span class="semafor-chip"><span class="dot y"></span> Scope 3</span>
-        <span class="semafor-chip"><span class="dot y"></span> Terminis</span>
-        <span class="semafor-chip"><span class="dot g"></span> Fonts</span>
-        <span class="semafor-chip"><span class="dot r"></span> Granularitat</span>
-        <span class="semafor-chip"><span class="dot y"></span> Verificació</span>
-      </div>
-
-      <p class="informe-summary">La Comisión Europea reduce un 61% los datapoints obligatorios del CSRD. Estalvi estimat de 3.700M€ en 5 anys. Se simplifica la arquitectura pero se mantiene la convergència amb GRI i ISSB.</p>
+      <p class="informe-summary">La Comisión Europea reduce un 61% los datapoints obligatorios del CSRD. Ahorro estimado de 3.700 M€ en 5 años. Se simplifica la arquitectura pero se mantiene la convergencia con GRI e ISSB.</p>
 
       <!-- Cross-ref -->
       <div class="xref-chips">
@@ -161,35 +178,37 @@
         <span class="xref-chip">B Corp · Bajo</span>
       </div>
 
-      <!-- Acciones (Premium) -->
+      <!-- Acciones -->
       <div class="acciones">
-        <p class="acciones-label">⭐ ACCIONES RECOMENDADAS</p>
+        <p class="acciones-label">ACCIONES RECOMENDADAS</p>
         <div class="accion-item"><span class="accion-num">1</span> Auditar la matriz de materialidad vigente</div>
         <div class="accion-item"><span class="accion-num">2</span> Renegociar el contrato de assurance externo</div>
         <div class="accion-item"><span class="accion-num">3</span> Construir un dataset voluntario interno</div>
       </div>
 
-      <a href="#" class="informe-cta">Ver informe completo →</a>
+      <a href="#" class="informe-cta">Más detalles en el informe completo →</a>
     </div>
   </div>
 
-  <!-- Informe 2 (Premium) -->
+  <!-- Informe 2 -->
   <div class="informe-card">
     <div class="informe-card-inner premium">
-      <div class="informe-badges">
-        <span class="badge-type badge-reg">Regulación</span>
-        <span class="badge-premium">Premium</span>
-      </div>
-      <h3 class="informe-title">CSDDD Omnibus I: enmiendas finales</h3>
-      <p class="informe-meta">Comisión Europea · 15 marzo 2026 · 38 pág</p>
-
-      <div class="semafor-mini">
-        <span class="semafor-grade">B · Robust</span>
-        <span class="semafor-chip"><span class="dot g"></span> Scope 3</span>
-        <span class="semafor-chip"><span class="dot g"></span> Terminis</span>
-        <span class="semafor-chip"><span class="dot y"></span> Fonts</span>
-        <span class="semafor-chip"><span class="dot g"></span> Granularitat</span>
-        <span class="semafor-chip"><span class="dot y"></span> Verificació</span>
+      <div class="informe-top">
+        <div class="informe-main">
+          <div class="informe-badges">
+            <span class="badge-type badge-reg">Regulación</span>
+            <span class="badge-type badge-premium">Premium</span>
+          </div>
+          <h3 class="informe-title">CSDDD Omnibus I: enmiendas finales</h3>
+          <p class="informe-meta">Comisión Europea · 15 marzo 2026 · 38 pág</p>
+        </div>
+        <div class="semafor-widget">
+          <div class="semafor-label">Semáforo metodológico</div>
+          <div class="semafor-result">
+            <span class="semafor-dot g"></span>
+            <span class="semafor-grade-inline">B · Robusto</span>
+          </div>
+        </div>
       </div>
 
       <p class="informe-summary">Se estrecha el deber de diligencia en derechos humanos para empresas de más de 1.000 empleados. Las cadenas de suministro deben mapear riesgos y mitigar impactos. Entra en vigor 2027.</p>
@@ -202,32 +221,34 @@
       </div>
 
       <div class="acciones">
-        <p class="acciones-label">⭐ ACCIONES RECOMENDADAS</p>
+        <p class="acciones-label">ACCIONES RECOMENDADAS</p>
         <div class="accion-item"><span class="accion-num">1</span> Mapear proveedores de alto riesgo antes de Q4</div>
         <div class="accion-item"><span class="accion-num">2</span> Designar responsable de due diligence</div>
       </div>
 
-      <a href="#" class="informe-cta">Ver informe completo →</a>
+      <a href="#" class="informe-cta">Más detalles en el informe completo →</a>
     </div>
   </div>
 
-  <!-- Informe 3 (Gratis — resumen ejecutivo only) -->
+  <!-- Informe 3 -->
   <div class="informe-card">
-    <div class="informe-card-inner">
-      <div class="informe-badges">
-        <span class="badge-type badge-cert">Rating</span>
-        <span class="badge-type" style="background:rgba(92,138,92,0.12);color:#4A6B3A;">Gratis</span>
-      </div>
-      <h3 class="informe-title">EcoVadis Methodology Updates Q1 2026</h3>
-      <p class="informe-meta">EcoVadis · 15 abril 2026 · 28 pág</p>
-
-      <div class="semafor-mini">
-        <span class="semafor-grade">B · Robust</span>
-        <span class="semafor-chip"><span class="dot g"></span> Scope 3</span>
-        <span class="semafor-chip"><span class="dot y"></span> Terminis</span>
-        <span class="semafor-chip"><span class="dot g"></span> Fonts</span>
-        <span class="semafor-chip"><span class="dot y"></span> Granularitat</span>
-        <span class="semafor-chip"><span class="dot g"></span> Verificació</span>
+    <div class="informe-card-inner premium">
+      <div class="informe-top">
+        <div class="informe-main">
+          <div class="informe-badges">
+            <span class="badge-type badge-cert">Rating</span>
+            <span class="badge-type badge-premium">Premium</span>
+          </div>
+          <h3 class="informe-title">EcoVadis Methodology Updates Q1 2026</h3>
+          <p class="informe-meta">EcoVadis · 15 abril 2026 · 28 pág</p>
+        </div>
+        <div class="semafor-widget">
+          <div class="semafor-label">Semáforo metodológico</div>
+          <div class="semafor-result">
+            <span class="semafor-dot g"></span>
+            <span class="semafor-grade-inline">B · Robusto</span>
+          </div>
+        </div>
       </div>
 
       <p class="informe-summary">9 cambios metodológicos entre abril y mayo 2026. Se refuerza el reconocimiento a empresas que reportan con GRI Universal Standards. Impacto directo en scores de Sustainable Procurement.</p>
@@ -235,24 +256,28 @@
       <div class="xref-chips">
         <span class="xref-chip">EcoVadis · Alto</span>
         <span class="xref-chip">GRI · Medio</span>
+        <span class="xref-chip">CDP · Medio</span>
+        <span class="xref-chip">MSCI · Bajo</span>
       </div>
 
-      <!-- Versión gratis: acciones bloqueadas -->
-      <div class="locked-content">
-        <p>Las acciones recomendadas y el cross-reference completo están disponibles para suscriptores Premium.</p>
-        <a href="#">Hazte Premium · 290€/año</a>
+      <div class="acciones">
+        <p class="acciones-label">ACCIONES RECOMENDADAS</p>
+        <div class="accion-item"><span class="accion-num">1</span> Verificar si tu reporte GRI cumple con Universal Standards 1.0</div>
+        <div class="accion-item"><span class="accion-num">2</span> Actualizar evidencias de Sustainable Procurement</div>
       </div>
+
+      <a href="#" class="informe-cta">Más detalles en el informe completo →</a>
     </div>
   </div>
 
   <!-- CONEXIÓN entre informes -->
   <div class="conexion">
-    <div class="eyebrow">⭐ CONEXIÓN CRITERI</div>
+    <div class="eyebrow">CONEXIÓN CRITERI</div>
     <h3>El CSRD se simplifica, pero el CSDDD se endurece</h3>
     <p>Mientras la revisión de los ESRS reduce un 61% los datapoints de reporting (menos información), el CSDDD exige más diligencia en derechos humanos (más acción). Las empresas se encuentran en una paradoja: <strong>menos información estructurada para tomar más decisiones</strong>. Esta es exactamente la brecha que Criteri ESG viene a cerrar: sintetizar lo que queda y conectarlo con lo que se exige.</p>
   </div>
 
-  <!-- NOTICIAS ESG (Premium: completo, Gratis: solo titulares) -->
+  <!-- NOTICIAS ESG -->
   <div class="section-header">
     <div class="eyebrow">NOTICIAS ESG</div>
     <h2>Lo que ha pasado esta quincena</h2>
@@ -277,9 +302,9 @@
     </div>
   </div>
 
-  <!-- INVERSIÓN ESG (Premium only) -->
+  <!-- INVERSIÓN ESG -->
   <div class="section-header">
-    <div class="eyebrow">INVERSIÓN ESG · PREMIUM</div>
+    <div class="eyebrow">INVERSIÓN ESG</div>
     <h2>Señales para inversores</h2>
     <div class="rule-accent"></div>
   </div>
@@ -297,9 +322,9 @@
     </div>
   </div>
 
-  <!-- PREGUNTA ÉTICA (Premium only) -->
+  <!-- PREGUNTA ÉTICA -->
   <div class="pregunta-etica">
-    <div class="eyebrow">PREGUNTA PARA MEJORAR · PREMIUM</div>
+    <div class="eyebrow">PREGUNTA PARA MEJORAR</div>
     <h3>Si tu empresa desapareciera mañana, ¿quién lo notaría de verdad —y por qué?</h3>
     <p>La respuesta te dice más sobre tu valor real que cualquier métrica ESG. Las empresas que solo crean valor para accionistas no dejan vacío cuando desaparecen. Las que crean valor para trabajadores, comunidad y territorio, sí. Piensa en qué vacío dejarías.</p>
   </div>

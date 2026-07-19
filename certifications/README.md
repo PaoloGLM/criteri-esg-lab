@@ -20,7 +20,11 @@ oficials de cada certificació.
 | 9 | TCFD | tcfd-recommendations.pdf | 2.5 MB | ✓ |
 | 10 | TNFD | tnfd-framework.pdf | 87 KB | ✓ |
 | 11 | CDP | cdp-questionnaire.html | 11 KB | ✓ |
-| 12 | ISO 26000 | — | — | ❌ Pendent (Paolo enviarà) |
+| 12 | ISO 26000 | iso-26000-2010.pdf | 1.9 MB | ✓ (enviat per Paolo) |
+
+## Pendents
+
+- B Corp: descarregar manualment des de https://www.bcorporation.net/en-us/standards/ (la web bloqueja la descàrrega automàtica amb 403)
 
 ## Ús
 

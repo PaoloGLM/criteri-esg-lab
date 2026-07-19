@@ -8,6 +8,7 @@ export const translations = {
   "nav.informes": { ca: "Biblioteca d'informes", es: "Biblioteca de informes" },
   "nav.quisom": { ca: "Qui som", es: "Quiénes somos" },
   "nav.quefem": { ca: "Què fem", es: "Qué hacemos" },
+  "nav.estandares": { ca: "Estàndards ESG", es: "Estándares ESG" },
   "nav.preus": { ca: "Preus", es: "Precios" },
   "nav.login": { ca: "Inicia sessió", es: "Inicia sesión" },
   "nav.cuenta": { ca: "El meu compte", es: "Mi cuenta" },

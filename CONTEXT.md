@@ -458,48 +458,39 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
 
 **Decisió**: NO implementar abans del llançament al setembre. Afegir com a funcionalitat Premium al Q1 2027 si hi ha demanda.
 
-### P3. Nova pàgina web d'estàndards ESG (abans "certificacions")
+### P3. Pàgina d'estàndards ESG (IMPLEMENTADA 19 juliol 2026)
 
-**Estat**: pendent de disseny i implementació. Esquema aprovat per Paolo (17 juliol 2026):
+**Estat**: ✅ Implementada i en producció a `/estandares-esg` i `/estandares-esg/[slug]`.
 
-**Nom**: "Estándares ESG" (ES) / "Estàndards ESG" (CA). Cobreix els 3 tipus: regulacions, frameworks i certificacions/ratings.
+**Nom**: "Estándares ESG" (ES) / "Estàndards ESG" (CA).
 
-**Concepte**: personalitzar el coneixement que generem. Qui no té B Corp no li interessa el cross-reference amb B Corp. Aquesta pàgina permet a l'usuari veure només allò que li afecta segons els seus estàndards.
+**3 tipus amb 3 colors**:
+- **Regulacions** (obligatòries): `#5C3A1E` (marró molt fosc) — CSRD/ESRS, CSDDD, SFDR, Taxonomia UE, EMAS
+- **Frameworks** (estàndards de reporting): `#B87333` (coure) — GRI, SASB, TNFD, TCFD, ISO 26000
+- **Certificacions/Ratings**: `#E8C99A` (coure clar) — EcoVadis, B Corp, MSCI ESG, CDP, SGE 21, Sustainalytics
 
-**3 tipus amb 3 colors diferents** (dins la paleta Criteri):
-- **Regulacions** (obligatòries): coure fosc `#8A5526` — CSRD/ESRS, CSDDD, SFDR, Taxonomia UE
-- **Frameworks** (estàndards de reporting): coure `#B87333` — GRI, TNFD, TCFD, ISO 26000
-- **Certificacions/Ratings**: coure suau `#D9A574` — EcoVadis, B Corp, MSCI ESG, CDP
-
-**Ordre (de més utilitzat/urgent a menys)**:
+**16 estàndards** (ordre de més utilitzat a menys):
 1. CSRD / ESRS (Regulació — Gratis)
 2. GRI (Framework — Gratis)
-3. EcoVadis (Certificación — Premium)
-4. B Corp (Certificación — Premium)
+3. EcoVadis (Certificació — Premium)
+4. B Corp (Certificació — Premium)
 5. MSCI ESG (Rating — Premium)
-6. CSDDD (Regulación — Gratis)
-7. SFDR (Regulación — Gratis)
-8. Taxonomía UE (Regulación — Gratis)
-9. CDP (Certificación — Premium)
-10. TNFD (Framework — Gratis)
-11. TCFD (Framework — Gratis)
-12. ISO 26000 (Framework — Gratis)
+6. CSDDD (Regulació — Gratis)
+7. SFDR (Regulació — Gratis)
+8. Taxonomia UE (Regulació — Gratis)
+9. CDP (Certificació — Premium)
+10. SGE 21 (Certificació — Premium) — metodologia espanyola de Forètica
+11. Sustainalytics (Rating — Premium)
+12. SASB (Framework — Gratis)
+13. TNFD (Framework — Gratis)
+14. TCFD (Framework — Gratis)
+15. EMAS (Regulació — Gratis)
+16. ISO 26000 (Framework — Gratis)
 
-**Estructura**:
+**Pàgina principal** (`/estandares-esg`): grid de 16 cards amb franja esquerra 8px del color del tipus, descripció de 4 línies, nombre d'informes cross-ref. Llegenda amb els 3 colors. Icona de cadenat per als Premium.
 
-1. **Pàgina `/estandares-esg`** (gratis, accessible a tothom)
-   - Page hero canònic: eyebrow + H1 + rule-accent + descripció
-   - Llegenda amb els 3 colors/tipus
-   - Grid de cards (4 columnes desktop, 2 mòbil). Cada card té vora esquerra de 4px del color del tipus
-   - Cada card mostra: badge de tipus (Regulación/Framework/Certificación), badge d'accés (Gratis/Premium), nom, descripció curta, nombre d'informes cross-ref
-   - Clic a un estàndard → porta a la pàgina de detall
+**Pàgina de detall** (`/[slug]`): breadcrumb + icona + descripció completa + taula cross-reference amb headers clicables per ordenar + filtres per data i impacte + lock overlay per no-Premium (3 files visibles) + accions recomanades relacionades.
 
-2. **Pàgina `/estandares-esg/[slug]`** (Premium per a certificacions/ratings; Gratis per a regulacions/frameworks)
-   - Page hero amb breadcrumb, icona (color segons tipus), nom, descripció completa
-   - **Taula de cross-reference**: tots els informes amb cross-reference amb aquest estàndard
-     - Columnes: Informe | Data | Criteri afectat | Impacte (Alt/Medio)
-     - Filtre per data + filtre per impacte
-   - Si l'usuari no és Premium i l'estàndard és Premium: 3 files visibles + resta difuminada amb CTA upgrade
-   - Sota la taula: "Accions recomanades relacionades" (3-5 accions extretes dels informes)
+**Documents oficials descarregats**: 15 dels 16 a `/criteri-esg-lab/certifications/`. Pendent: B Corp (la web bloqueja la descàrrega automàtica).
 
-**Mockup**: `/home/z/my-project/download/estandares-mockup.png`
+**Mockup HTML**: accessible a `https://www.criteriesg.com/estandares-mockup.html`

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Criteri ESG — Estándares ESG (mockup final)</title>
+<title>Criteri ESG — Estándares ESG (mockup v3)</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,39 +28,40 @@
   .page-hero-inner { max-width: 1280px; margin: 0 auto; }
   .page-hero p.subtitle { font-size: 16px; color: rgba(44,24,16,0.75); max-width: 640px; margin-top: 16px; }
 
-  /* LEGEND */
+  /* LEGEND — colors ajustats */
   .legend { max-width: 1280px; margin: 0 auto; padding: 24px 32px 0; display: flex; gap: 24px; flex-wrap: wrap; }
   .legend-item { display: flex; align-items: center; gap: 10px; font-size: 12px; color: #2C1810; }
   .legend-bar { width: 6px; height: 20px; border-radius: 2px; }
-  .legend-bar.reg { background: #8A5526; }
+  .legend-bar.reg { background: #5C3A1E; }
   .legend-bar.fw { background: #B87333; }
-  .legend-bar.cert { background: #D9A574; }
+  .legend-bar.cert { background: #E8C99A; }
 
   /* GRID */
   .cert-grid { max-width: 1280px; margin: 0 auto; padding: 24px 32px 48px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
   @media (max-width: 1024px) { .cert-grid { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 768px) { .cert-grid { grid-template-columns: repeat(2, 1fr); } }
 
-  .cert-card { background: white; border: 1px solid #C9B89A; border-left: 8px solid #C9B89A; border-radius: 8px; padding: 20px; transition: all 0.2s; cursor: pointer; position: relative; min-height: 180px; }
+  /* CARD — franja 8px + colors ajustats */
+  .cert-card { background: white; border: 1px solid #C9B89A; border-left: 8px solid #C9B89A; border-radius: 8px; padding: 20px; transition: all 0.2s; cursor: pointer; position: relative; min-height: 200px; }
   .cert-card:hover { box-shadow: 0 4px 12px rgba(44,24,16,0.08); transform: translateY(-1px); }
-  .cert-card.reg { border-left-color: #8A5526; }
+  /* Regulacions: més fosc */
+  .cert-card.reg { border-left-color: #5C3A1E; }
+  /* Frameworks: coure */
   .cert-card.fw { border-left-color: #B87333; }
-  .cert-card.cert { border-left-color: #D9A574; }
-
-  .cert-logo { position: absolute; top: 14px; right: 14px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
-  .cert-logo-placeholder { font-size: 16px; opacity: 0.5; }
+  /* Certificacions: més clar */
+  .cert-card.cert { border-left-color: #E8C99A; }
 
   .type-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
-  .type-badge.reg { background: rgba(138,85,38,0.12); color: #8A5526; }
+  .type-badge.reg { background: rgba(92,58,30,0.15); color: #5C3A1E; }
   .type-badge.fw { background: rgba(184,115,51,0.12); color: #B87333; }
-  .type-badge.cert { background: rgba(217,165,116,0.18); color: #8A6D2B; }
+  .type-badge.cert { background: rgba(232,201,154,0.25); color: #8A6D2B; }
 
   .access-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-left: 4px; }
   .access-badge.free { background: rgba(92,138,92,0.12); color: #4A6B3A; }
   .access-badge.premium { background: rgba(44,24,16,0.08); color: #2C1810; }
 
-  .cert-name { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 600; color: #2C1810; margin-bottom: 4px; padding-right: 36px; }
-  .cert-desc { font-size: 12px; color: #8B7355; line-height: 1.4; margin-bottom: 10px; }
+  .cert-name { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 600; color: #2C1810; margin-bottom: 6px; }
+  .cert-desc { font-size: 12px; color: #8B7355; line-height: 1.45; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
   .cert-count { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: #B87333; font-weight: 600; position: absolute; bottom: 16px; left: 20px; }
 
   /* SEPARATOR */
@@ -75,7 +76,7 @@
   .breadcrumb a { color: #8A5526; text-decoration: none; }
   .cert-header { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 20px; }
   .cert-icon { width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
-  .cert-icon.cert { background: rgba(217,165,116,0.15); border: 1px solid #D9A574; }
+  .cert-icon.cert { background: rgba(232,201,154,0.2); border: 1px solid #E8C99A; }
   .cert-info h2 { margin-bottom: 4px; }
   .cert-info .cert-issuer { font-size: 13px; color: #8B7355; }
   .cert-info .cert-full-desc { font-size: 14px; color: rgba(44,24,16,0.75); margin-top: 10px; max-width: 700px; line-height: 1.6; }
@@ -86,11 +87,15 @@
   .filter-select { background: white; border: 1px solid #C9B89A; border-radius: 6px; padding: 8px 14px; font-family: 'Inter', sans-serif; font-size: 13px; color: #2C1810; cursor: pointer; }
   .filter-count { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8B7355; }
 
-  /* TABLE */
+  /* TABLE — amb headers clicables per ordenar */
   .xref-section { max-width: 1280px; margin: 0 auto; padding: 0 32px 48px; }
   .xref-table-wrap { background: white; border: 1px solid #C9B89A; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(44,24,16,0.06); }
   .xref-table { width: 100%; border-collapse: collapse; }
-  .xref-table th { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: #8A5526; padding: 14px 16px; text-align: left; border-bottom: 1px solid #C9B89A; background: rgba(239,231,218,0.3); }
+  .xref-table th { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: #8A5526; padding: 14px 16px; text-align: left; border-bottom: 1px solid #C9B89A; background: rgba(239,231,218,0.3); cursor: pointer; user-select: none; position: relative; padding-right: 28px; }
+  .xref-table th:hover { background: rgba(239,231,218,0.5); }
+  .xref-table th::after { content: '↕'; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); opacity: 0.4; font-size: 12px; }
+  .xref-table th.sorted-asc::after { content: '↑'; opacity: 1; color: #B87333; }
+  .xref-table th.sorted-desc::after { content: '↓'; opacity: 1; color: #B87333; }
   .xref-table td { padding: 14px 16px; font-size: 13px; color: #2C1810; border-bottom: 1px solid rgba(201,184,154,0.4); vertical-align: top; }
   .xref-table tr:last-child td { border-bottom: none; }
   .xref-table tr:hover { background: rgba(239,231,218,0.2); }
@@ -142,98 +147,128 @@
 </div>
 
 <div class="cert-grid">
+  <!-- 1. CSRD/ESRS — Regulación -->
   <div class="cert-card reg">
-    <div class="cert-logo"><span class="cert-logo-placeholder">🇪🇺</span></div>
     <span class="type-badge reg">Regulación</span><span class="access-badge free">Gratis</span>
     <p class="cert-name">CSRD / ESRS</p>
-    <p class="cert-desc">Directiva de reporting de sostenibilidad UE. ~11.500 empresas ES.</p>
+    <p class="cert-desc">Directiva de reporting de sostenibilidad de la UE. Afecta a ~11.500 empresas españolas. Define qué información ESG deben publicar y cómo. Aplicación progresiva desde 2025.</p>
     <p class="cert-count">10 informes cross-ref</p>
   </div>
+  <!-- 2. GRI — Framework -->
   <div class="cert-card fw">
-    <div class="cert-logo"><span class="cert-logo-placeholder">📋</span></div>
     <span class="type-badge fw">Framework</span><span class="access-badge free">Gratis</span>
     <p class="cert-name">GRI</p>
-    <p class="cert-desc">Global Reporting Initiative. Estándar más usado en ES.</p>
+    <p class="cert-desc">Global Reporting Initiative. Estándar de reporting de sostenibilidad más usado en España. El 70%+ del IBEX 35 reporta con GRI. Universal Standards + Topic Standards + Sector Standards.</p>
     <p class="cert-count">8 informes cross-ref</p>
   </div>
+  <!-- 3. EcoVadis — Certificación -->
   <div class="cert-card cert">
-    <div class="cert-logo"><span class="cert-logo-placeholder">📊</span></div>
     <span class="type-badge cert">Certificación</span><span class="access-badge premium">Premium</span>
     <p class="cert-name">EcoVadis</p>
-    <p class="cert-desc">Rating de sostenibilidad. Demandado por cadenas.</p>
+    <p class="cert-desc">Rating de sostenibilidad empresarial (medalla Bronce a Platino). El más demandado por cadenas de suministro en España. Evalúa 4 áreas: Environment, Labor & Human Rights, Ethics, Sustainable Procurement.</p>
     <p class="cert-count">7 informes cross-ref</p>
   </div>
+  <!-- 4. B Corp — Certificación -->
   <div class="cert-card cert">
-    <div class="cert-logo"><span class="cert-logo-placeholder">🌱</span></div>
     <span class="type-badge cert">Certificación</span><span class="access-badge premium">Premium</span>
     <p class="cert-name">B Corp</p>
-    <p class="cert-desc">Empresas con propósito. B Lab. 400+ en ES.</p>
+    <p class="cert-desc">Certificación de empresas con propósito de B Lab. 400+ empresas certificadas en España. Requiere score mínimo 80/200 en B Impact Assessment. 5 áreas: gobernanza, trabajadores, comunidad, entorno, clientes.</p>
     <p class="cert-count">5 informes cross-ref</p>
   </div>
+  <!-- 5. MSCI ESG — Rating -->
   <div class="cert-card cert">
-    <div class="cert-logo"><span class="cert-logo-placeholder">📈</span></div>
     <span class="type-badge cert">Rating</span><span class="access-badge premium">Premium</span>
     <p class="cert-name">MSCI ESG</p>
-    <p class="cert-desc">Rating ESG para inversores. AAA-CCC.</p>
+    <p class="cert-desc">Rating ESG para inversores (AAA-CCC). Todas las cotizadas del IBEX 35 lo monitorizan. Afecta al coste de capital. Evalúa exposición a riesgos ESG y gestión de los mismos.</p>
     <p class="cert-count">6 informes cross-ref</p>
   </div>
+  <!-- 6. CSDDD — Regulación -->
   <div class="cert-card reg">
-    <div class="cert-logo"><span class="cert-logo-placeholder">🇪🇺</span></div>
     <span class="type-badge reg">Regulación</span><span class="access-badge free">Gratis</span>
     <p class="cert-name">CSDDD</p>
-    <p class="cert-desc">Due diligence en derechos humanos.</p>
+    <p class="cert-desc">Directiva de due diligence en derechos humanos y cadena de valor. Obliga a identificar, prevenir y mitigar impactos negativos. Afecta a empresas con +1.000 empleados y facturación >450M€.</p>
     <p class="cert-count">4 informes cross-ref</p>
   </div>
+  <!-- 7. SFDR — Regulación -->
   <div class="cert-card reg">
-    <div class="cert-logo"><span class="cert-logo-placeholder">🇪🇺</span></div>
     <span class="type-badge reg">Regulación</span><span class="access-badge free">Gratis</span>
     <p class="cert-name">SFDR</p>
-    <p class="cert-desc">Reglamento de finanzas sostenibles.</p>
+    <p class="cert-desc">Reglamento de divulgación de finanzas sostenibles. Clasifica productos financieros en artículo 6, 8 o 9. Obliga a gestoras y aseguradoras a reportar impacto sostenible de sus inversiones.</p>
     <p class="cert-count">3 informes cross-ref</p>
   </div>
+  <!-- 8. Taxonomía UE — Regulación -->
   <div class="cert-card reg">
-    <div class="cert-logo"><span class="cert-logo-placeholder">🇪🇺</span></div>
     <span class="type-badge reg">Regulación</span><span class="access-badge free">Gratis</span>
     <p class="cert-name">Taxonomía UE</p>
-    <p class="cert-desc">Clasificación de actividades sostenibles.</p>
+    <p class="cert-desc">Clasificación de actividades económicas sostenibles. Define qué es "verde" con criterios técnicos. Empresas deben reportar % de alineación. 6 objetivos: clima, agua, economía circular, contaminación, biodiversidad.</p>
     <p class="cert-count">5 informes cross-ref</p>
   </div>
+  <!-- 9. CDP — Certificación -->
   <div class="cert-card cert">
-    <div class="cert-logo"><span class="cert-logo-placeholder">🌍</span></div>
     <span class="type-badge cert">Certificación</span><span class="access-badge premium">Premium</span>
     <p class="cert-name">CDP</p>
-    <p class="cert-desc">Disclosure de clima, agua y bosques.</p>
+    <p class="cert-desc">Sistema de disclosure global para cambio climático, agua y bosques. Las empresas responden cuestionarios estandarizados y reciben puntuación A- a D-. Usado por inversores y compradores corporativos.</p>
     <p class="cert-count">3 informes cross-ref</p>
   </div>
-  <div class="cert-card fw">
-    <div class="cert-logo"><span class="cert-logo-placeholder">🌿</span></div>
-    <span class="type-badge fw">Framework</span><span class="access-badge free">Gratis</span>
-    <p class="cert-name">TNFD</p>
-    <p class="cert-desc">Nature-related Financial Disclosures.</p>
-    <p class="cert-count">2 informes cross-ref</p>
+  <!-- 10. SGE 21 — Certificación -->
+  <div class="cert-card cert">
+    <span class="type-badge cert">Certificación</span><span class="access-badge premium">Premium</span>
+    <p class="cert-name">SGE 21</p>
+    <p class="cert-desc">Sistema de Gestión Ética de Forética. Metodología española para gestión de la RSE. Usada por Ferrovial, Repsol, Bankinter. Certificable por auditoría. Alineada con ISO 26000 y SDG Compass.</p>
+    <p class="cert-count">3 informes cross-ref</p>
   </div>
-  <div class="cert-card fw">
-    <div class="cert-logo"><span class="cert-logo-placeholder">🌡️</span></div>
-    <span class="type-badge fw">Framework</span><span class="access-badge free">Gratis</span>
-    <p class="cert-name">TCFD</p>
-    <p class="cert-desc">Climate-related Financial Disclosures.</p>
+  <!-- 11. Sustainalytics — Rating -->
+  <div class="cert-card cert">
+    <span class="type-badge cert">Rating</span><span class="access-badge premium">Premium</span>
+    <p class="cert-name">Sustainalytics</p>
+    <p class="cert-desc">Rating de riesgo ESG para inversores. Escala de 5 niveles (Negligible a Severe). Competidor de MSCI ESG. Usado por las cotizadas del IBEX 35. Evalúa exposición material a riesgos ESG.</p>
     <p class="cert-count">4 informes cross-ref</p>
   </div>
+  <!-- 12. SASB — Framework -->
   <div class="cert-card fw">
-    <div class="cert-logo"><span class="cert-logo-placeholder">📋</span></div>
+    <span class="type-badge fw">Framework</span><span class="access-badge free">Gratis</span>
+    <p class="cert-name">SASB</p>
+    <p class="cert-desc">Sustainability Accounting Standards Board. Estándares de reporting financiero-sostenibilidad por sector (77 industrias). Creciente en cotizadas españolas. Integrado en ISSB desde 2023.</p>
+    <p class="cert-count">3 informes cross-ref</p>
+  </div>
+  <!-- 13. TNFD — Framework -->
+  <div class="cert-card fw">
+    <span class="type-badge fw">Framework</span><span class="access-badge free">Gratis</span>
+    <p class="cert-name">TNFD</p>
+    <p class="cert-desc">Taskforce on Nature-related Financial Disclosures. Framework para reportar dependencias, impactos, riesgos y oportunidades relacionados con la naturaleza. Lanzado en 2023. Complementa TCFD.</p>
+    <p class="cert-count">2 informes cross-ref</p>
+  </div>
+  <!-- 14. TCFD — Framework -->
+  <div class="cert-card fw">
+    <span class="type-badge fw">Framework</span><span class="access-badge free">Gratis</span>
+    <p class="cert-name">TCFD</p>
+    <p class="cert-desc">Taskforce on Climate-related Financial Disclosures. Framework para reportar riesgos y oportunidades climáticas. 4 pilares: gobernanza, estrategia, gestión de riesgos, métricas. Base del ESRS E1.</p>
+    <p class="cert-count">4 informes cross-ref</p>
+  </div>
+  <!-- 15. EMAS — Regulación -->
+  <div class="cert-card reg">
+    <span class="type-badge reg">Regulación</span><span class="access-badge free">Gratis</span>
+    <p class="cert-name">EMAS</p>
+    <p class="cert-desc">Sistema comunitario de eco-gestión y auditoría de la UE. Certificación voluntaria pero regulada. Más exigente que ISO 14001: incluye declaración ambiental validada por auditor externo. ~4.000 organizaciones en Europa.</p>
+    <p class="cert-count">2 informes cross-ref</p>
+  </div>
+  <!-- 16. ISO 26000 — Framework -->
+  <div class="cert-card fw">
     <span class="type-badge fw">Framework</span><span class="access-badge free">Gratis</span>
     <p class="cert-name">ISO 26000</p>
-    <p class="cert-desc">Guía de responsabilidad social.</p>
+    <p class="cert-desc">Guía internacional de responsabilidad social. No certificable pero sirve de marco de referencia. 7 áreas: gobernanza, derechos humanos, prácticas laborales, medio ambiente, consumidores, comunidad, desarrollo.</p>
     <p class="cert-count">2 informes cross-ref</p>
   </div>
 </div>
 
+<!-- SEPARATOR -->
 <div class="separator">
   <span class="separator-line"></span>
   <span class="separator-text">EJEMPLO: DETALLE B CORP</span>
   <span class="separator-line"></span>
 </div>
 
+<!-- PÀGINA 2: B CORP -->
 <div class="detail-hero">
   <div class="detail-hero-inner">
     <p class="breadcrumb"><a href="#">Estándares ESG</a> &gt; B Corp</p>
@@ -302,6 +337,7 @@
   </div>
 </div>
 
+<!-- ACTIONS -->
 <div class="actions-section">
   <h3>Acciones recomendadas relacionadas con B Corp</h3>
   <div class="actions-list">
@@ -337,6 +373,41 @@
 </div>
 
 <div class="footer">© 2026 Criteri ESG. Todos los derechos reservados.</div>
+
+<script>
+// Ordenar tabla per columna clicada
+document.addEventListener('DOMContentLoaded', function() {
+  const table = document.querySelector('.xref-table');
+  if (!table) return;
+  const headers = table.querySelectorAll('th');
+  let sortDir = 'asc';
+
+  headers.forEach((header, idx) => {
+    header.addEventListener('click', function() {
+      // Treure classe sorted de tots
+      headers.forEach(h => h.classList.remove('sorted-asc', 'sorted-desc'));
+      // Canviar direcció
+      sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+      header.classList.add(sortDir === 'asc' ? 'sorted-asc' : 'sorted-desc');
+
+      // Obtenir files
+      const tbody = table.querySelector('tbody');
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+
+      // Ordenar
+      rows.sort((a, b) => {
+        const aText = a.cells[idx].textContent.trim();
+        const bText = b.cells[idx].textContent.trim();
+        if (sortDir === 'asc') return aText.localeCompare(bText);
+        return bText.localeCompare(aText);
+      });
+
+      // Reinsertar
+      rows.forEach(row => tbody.appendChild(row));
+    });
+  });
+});
+</script>
 
 </body>
 </html>

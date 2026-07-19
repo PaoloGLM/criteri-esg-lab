@@ -5,12 +5,12 @@ Z.ai-bot els carrega al seu context quan processa el bloc 7 (cross-reference)
 de cada informe, per poder comparar directament l'informe amb els criteris
 oficials de cada certificació.
 
-## Documents descarregats (17 juliol 2026)
+## Documents descarregats (19 juliol 2026)
 
 | # | Estàndard | Fitxer | Mida | Estat |
 |---|-----------|--------|------|-------|
 | 1 | EcoVadis | ecovadis-methodology.pdf | 150 KB | ✓ |
-| 2 | B Corp | b-impact-assessment.pdf | — | ❌ Pendent (web bloqueja descàrrega automàtica) |
+| 2 | B Corp | b-impact-assessment.pdf | — | ❌ Pendent (web bloqueja descàrrega) |
 | 3 | MSCI ESG | msci-esg-methodology.pdf | 62 KB | ✓ |
 | 4 | GRI | gri-universal-standards-2021.pdf | 78 KB | ✓ |
 | 5 | CSRD/ESRS | esrs-delegated-act.html | 5.6 MB | ✓ |
@@ -21,10 +21,14 @@ oficials de cada certificació.
 | 10 | TNFD | tnfd-framework.pdf | 87 KB | ✓ |
 | 11 | CDP | cdp-questionnaire.html | 11 KB | ✓ |
 | 12 | ISO 26000 | iso-26000-2010.pdf | 1.9 MB | ✓ (enviat per Paolo) |
+| 13 | SGE 21 | sge21-guia.pdf | 372 KB | ✓ |
+| 14 | Sustainalytics | sustainalytics-methodology.html | 220 KB | ✓ |
+| 15 | SASB | sasb-conceptual-framework.pdf | 365 KB | ✓ |
+| 16 | EMAS | emas-regulation.html | 890 KB | ✓ |
 
 ## Pendents
 
-- B Corp: descarregar manualment des de https://www.bcorporation.net/en-us/standards/ (la web bloqueja la descàrrega automàtica amb 403)
+- B Corp: descarregar manualment des de https://www.bcorporation.net/en-us/standards/
 
 ## Ús
 

@@ -295,45 +295,63 @@ Relacions de l'informe amb altres informes publicats i amb l'actualitat (200-250
 
 ### Què és
 
-Mapatge de l'informe amb els 4 frameworks/certificacions principals: EcoVadis, B Corp, MSCI ESG i GRI.
+Mapatge de l'informe amb els **4 estàndards de MAJOR impacte** detectat (no necessàriament els mateixos 4 per a cada informe). Es seleccionen d'entre els 12 estàndards disponibles:
+
+1. CSRD / ESRS (Regulació)
+2. GRI (Framework)
+3. EcoVadis (Certificació)
+4. B Corp (Certificació)
+5. MSCI ESG (Rating)
+6. CSDDD (Regulació)
+7. SFDR (Regulació)
+8. Taxonomia UE (Regulació)
+9. CDP (Certificació)
+10. TNFD (Framework)
+11. TCFD (Framework)
+12. ISO 26000 (Framework)
 
 ### Com es construeix
 
-Per a cadascun dels 4 frameworks, respondre:
+1. **Carregar al context els documents oficials** de les certificacions rellevants per a aquell informe, des de `/criteri-esg-lab/certifications/`. Això permet comparar directament l'informe amb els criteris oficials, no de memòria.
 
-1. **L'informe afecta aquest framework?** Sí/No
-2. **Si sí, com?** Escriure 1-2 frases que expliquin:
-   - Quin criteri o indicador del framework es veu afectat
-   - En quina direcció (facilita, complica, és neutral)
-3. **Impacte**: Alt / Mitjà / Baix segons:
-   - **Alt**: canvia directament un requeriment del framework o el score
-   - **Mitjà**: afecta indirectament o canvia context però no requeriment
-   - **Baix**: relació marginal o de llarg termini
+2. **Per a cadascun dels 12 estàndards**, avaluar l'impacte:
+   - L'informe canvia directament un requeriment? → Alt
+   - L'informe afecta indirectament el context? → Mitjà
+   - No hi ha evidència clara d'impacte? → Baix (no s'inclou al bloc 7)
 
-### Taula de referència ràpida
+3. **Seleccionar els 4 de MAJOR impacte**. Si hi ha empat, prioritzar:
+   - Regulacions obligatòries per sobre de frameworks voluntaris
+   - Certificacions/ratings per sobre de frameworks voluntaris
+   - Estàndards més utilitzats a Espanya per sobre de menys utilitzats
 
-| Framework | Què buscar | Impacte Alt | Impacte Mitjà | Impacte Baix |
-|-----------|-----------|-------------|---------------|--------------|
-| **EcoVadis** | Score de Environment, Labor & Human Rights, Ethics, Sustainable Procurement | Canvia un criteri de puntuació directament | Canvia context però no puntuació | Relació marginal |
-| **B Corp** | B Impact Assessment: Governance, Workers, Community, Environment, Customers | Canvia un requeriment de la certificació | Facilita o dificulta el procés | Relació marginal |
-| **MSCI ESG** | Rating AAA-CCC: data coverage, controversy screening, exposure | Canvia metodologia de rating o data coverage | Canvia context de risc | Relació marginal |
-| **GRI** | Universal Standards, Topic Standards, Sector Standards | Canvia interoperabilitat o requeriment de reporting | Canvia context però no requeriment | Relació marginal |
+4. **Per a cadascun dels 4 seleccionats**, escriure:
+   - Criteri o indicador específic afectat (no genèric)
+   - Direcció (facilita, complica, neutral)
+   - Nivell d'impacte (Alt / Mitjà)
 
 ### Regles de riguresa
 
-- **Els 4 frameworks sempre apareixen**: si l'informe no afecta un framework, es posa "Sense impacte directe" amb impacte "Baix"
+- **Els 4 cross-references mostren els de MAJOR impacte**, no sempre els mateixos. Un informe de drets humans pot tenir CSDDD + UN Global Compact + B Corp + GRI; un informe de clima pot tenir TCFD + CDP + MSCI + Taxonomia UE.
 - **Criteri específic**: no "afecta EcoVadis" sinó "Score de Environment i Sustainable Procurement"
 - **Direcció clara**: indicar si facilita o complica
-- **No especular**: si no hi ha evidència clara d'impacte, és "Baix"
+- **No especular**: si no hi ha evidència clara d'impacte, no s'inclou
+- **Comparar amb documents oficials**: el cross-reference es fa comparant l'informe amb els criteris oficials de cada estàndard, no de memòria
+- **Subagent específic**: el bloc 7 es processa com un subagent específic que carrega l'informe + els documents de certificacions
+
+### Documents oficials disponibles
+
+Els documents oficials estan a `/criteri-esg-lab/certifications/`. Veure `certifications/README.md` per al detall.
 
 ### Exemple real
 
-| Framework | Criteri afectat | Impacte |
+| Estàndard | Criteri afectat | Impacte |
 |-----------|----------------|---------|
 | GRI | Universal Standards 2021 (compatibilitat declarada) | Alt |
 | EcoVadis | Score de Environment i Sustainable Procurement | Mitjà |
 | MSCI ESG | Data coverage i controversy screening | Mitjà |
 | B Corp | Standards V2.1 — convergència parcial en indicadors | Baix |
+
+**Nota**: en aquest exemple, els 4 de major impacte són GRI, EcoVadis, MSCI i B Corp. Però un altre informe podria tenir CSDDD, TCFD, CDP i GRI si tracta de drets humans i clima.
 
 ---
 

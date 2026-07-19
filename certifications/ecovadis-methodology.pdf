@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<script src="https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/js/startup-scripts.min.js"></script>
+
+	
+		<!-- Google Tag Manager -->
+		<script type="text/plain" class="optanon-category-C0002 optanon-category-C0003 optanon-category-C0004">
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({
+					'gtm.start':
+						new Date().getTime(), event: 'gtm.js'
+				});
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+				j.async = true;
+				j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+				f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-WSTKWC');
+		</script>
+		<!-- End Google Tag Manager -->
+
+		<!-- Start VWO Async SmartCode -->
+		<link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
+		<script type='text/javascript' id='vwoCode'>
+			window._vwo_code ||
+			(function () {
+				var w=window,
+					d=document;
+				var account_id=1006279,
+					version=2.2,
+					settings_tolerance=2000,
+					hide_element='body',
+					hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important';
+				/* DO NOT EDIT BELOW THIS LINE */
+				if(f=!1,v=d.querySelector('#vwoCode'),cc={},-1<d.URL.indexOf('__vwo_disable__')||w._vwo_code)return;try{var e=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=e&&'object'==typeof e?e:{}}catch(e){}function r(t){try{return decodeURIComponent(t)}catch(e){return t}}var s=function(){var e={combination:[],combinationChoose:[],split:[],exclude:[],uuid:null,consent:null,optOut:null},t=d.cookie||'';if(!t)return e;for(var n,i,o=/(?:^|;\s*)(?:(_vis_opt_exp_(\d+)_combi=([^;]*))|(_vis_opt_exp_(\d+)_combi_choose=([^;]*))|(_vis_opt_exp_(\d+)_split=([^:;]*))|(_vis_opt_exp_(\d+)_exclude=[^;]*)|(_vis_opt_out=([^;]*))|(_vwo_global_opt_out=[^;]*)|(_vwo_uuid=([^;]*))|(_vwo_consent=([^;]*)))/g;null!==(n=o.exec(t));)try{n[1]?e.combination.push({id:n[2],value:r(n[3])}):n[4]?e.combinationChoose.push({id:n[5],value:r(n[6])}):n[7]?e.split.push({id:n[8],value:r(n[9])}):n[10]?e.exclude.push({id:n[11]}):n[12]?e.optOut=r(n[13]):n[14]?e.optOut=!0:n[15]?e.uuid=r(n[16]):n[17]&&(i=r(n[18]),e.consent=i&&3<=i.length?i.substring(0,3):null)}catch(e){}return e}();function i(){var e=function(){if(w.VWO&&Array.isArray(w.VWO))for(var e=0;e<w.VWO.length;e++){var t=w.VWO[e];if(Array.isArray(t)&&('setVisitorId'===t[0]||'setSessionId'===t[0]))return!0}return!1}(),t='a='+account_id+'&u='+encodeURIComponent(w._vis_opt_url||d.URL)+'&vn='+version+'&ph=1'+('undefined'!=typeof platform?'&p='+platform:'')+'&st='+w.performance.now();e||((n=function(){var e,t=[],n={},i=w.VWO&&w.VWO.appliedCampaigns||{};for(e in i){var o=i[e]&&i[e].v;o&&(t.push(e+'-'+o+'-1'),n[e]=!0)}if(s&&s.combination)for(var r=0;r<s.combination.length;r++){var a=s.combination[r];n[a.id]||t.push(a.id+'-'+a.value)}return t.join('|')}())&&(t+='&c='+n),(n=function(){var e=[],t={};if(s&&s.combinationChoose)for(var n=0;n<s.combinationChoose.length;n++){var i=s.combinationChoose[n];e.push(i.id+'-'+i.value),t[i.id]=!0}if(s&&s.split)for(var o=0;o<s.split.length;o++)t[(i=s.split[o]).id]||e.push(i.id+'-'+i.value);return e.join('|')}())&&(t+='&cc='+n),(n=function(){var e={},t=[];if(w.VWO&&Array.isArray(w.VWO))for(var n=0;n<w.VWO.length;n++){var i=w.VWO[n];if(Array.isArray(i)&&'setVariation'===i[0]&&i[1]&&Array.isArray(i[1]))for(var o=0;o<i[1].length;o++){var r,a=i[1][o];a&&'object'==typeof a&&(r=a.e,a=a.v,r&&a&&(e[r]=a))}}for(r in e)t.push(r+'-'+e[r]);return t.join('|')}())&&(t+='&sv='+n)),s&&s.optOut&&(t+='&o='+s.optOut);var n=function(){var e=[],t={};if(s&&s.exclude)for(var n=0;n<s.exclude.length;n++){var i=s.exclude[n];t[i.id]||(e.push(i.id),t[i.id]=!0)}return e.join('|')}();return n&&(t+='&e='+n),s&&s.uuid&&(t+='&id='+s.uuid),s&&s.consent&&(t+='&consent='+s.consent),w.name&&-1<w.name.indexOf('_vis_preview')&&(t+='&pM=true'),w.VWO&&w.VWO.ed&&(t+='&ed='+w.VWO.ed),t}code={nonce:v&&v.nonce,library_tolerance:function(){return'undefined'!=typeof library_tolerance?library_tolerance:void 0},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return performance.getEntriesByName('first-contentful-paint')[0]?'':'string'==typeof cc.hE?cc.hE:hide_element},getVersion:function(){return version},finish:function(e){var t;f||(f=!0,(t=d.getElementById('_vis_opt_path_hides'))&&t.parentNode.removeChild(t),e&&((new Image).src='https://dev.visualwebsiteoptimizer.com/ee.gif?a='+account_id+e))},finished:function(){return f},addScript:function(e){var t=d.createElement('script');t.type='text/javascript',e.src?t.src=e.src:t.text=e.text,v&&t.setAttribute('nonce',v.nonce),d.getElementsByTagName('head')[0].appendChild(t)},load:function(e,t){t=t||{};var n=new XMLHttpRequest;n.open('GET',e,!0),n.withCredentials=!t.dSC,n.responseType=t.responseType||'text',n.onload=function(){if(t.onloadCb)return t.onloadCb(n,e);200===n.status?_vwo_code.addScript({text:n.responseText}):_vwo_code.finish('&e=loading_failure:'+e)},n.onerror=function(){if(t.onerrorCb)return t.onerrorCb(e);_vwo_code.finish('&e=loading_failure:'+e)},n.send()},init:function(){var e,t=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish()},t),'body'!==this.hide_element()?(n=d.createElement('style'),e=(t=this.hide_element())?t+this.hide_element_style():'',t=d.getElementsByTagName('head')[0],n.setAttribute('id','_vis_opt_path_hides'),v&&n.setAttribute('nonce',v.nonce),n.setAttribute('type','text/css'),n.styleSheet?n.styleSheet.cssText=e:n.appendChild(d.createTextNode(e)),t.appendChild(n)):(n=d.getElementsByTagName('head')[0],(e=d.createElement('div')).style.cssText='z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;',e.setAttribute('id','_vis_opt_path_hides'),e.classList.add('_vis_hide_layer'),n.parentNode.insertBefore(e,n.nextSibling));var n='https://dev.visualwebsiteoptimizer.com/j.php?'+i();-1!==w.location.search.indexOf('_vwo_xhr')?this.addScript({src:n}):this.load(n+'&x=true',{l:1})}};w._vwo_code=code;code.init();})();
+		</script>
+		<!-- End VWO Async SmartCode -->
+
+	
+	<!-- OneTrust Cookies Consent Notice start for ecovadis.com -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/2b8280a0-f0f6-4472-8812-a0fbc1de56de/OtAutoBlock.js"></script>
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="2b8280a0-f0f6-4472-8812-a0fbc1de56de" crossorigin="anonymous"></script>
+<!-- OneTrust Cookies Consent Notice end for ecovadis.com -->
+	<title
+		class="">Page not found | EcoVadis</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="apple-touch-icon"
+	      sizes="180x180"
+	      href="https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/favicons/apple-touch-icon.png"
+	>
+	<link rel="icon"
+	      type="image/png"
+	      sizes="32x32"
+	      href="https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/favicons/favicon-32x32.png"
+	>
+	<link rel="icon"
+	      type="image/png"
+	      sizes="16x16"
+	      href="https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/favicons/favicon-16x16.png"
+	>
+	<link rel="manifest"
+	      href="https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/favicons/site.webmanifest"
+	      crossorigin="use-credentials"
+	>
+	<link rel="mask-icon"
+	      href="https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/favicons/safari-pinned-tab.svg"
+	      color="#00c43c"
+	>
+	<link rel="shortcut icon" href="https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/favicons/favicon.ico">
+	<meta name="msapplication-TileColor" content="#00c43c">
+	<meta name="msapplication-config"
+	      content="https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/favicons/browserconfig.xml"
+	>
+	<meta name="theme-color" content="#00c43c">
+
+		<meta name='robots' content='noindex, follow' />
+<link rel='preload' as='font' href='https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/webfonts/montserrat-latin-wght-normal.woff2' type='font/woff2' crossorigin><link rel='preload' as='font' href='https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/webfonts/montserrat-latin-ext-wght-normal.woff2' type='font/woff2' crossorigin>
+	<!-- This site is optimized with the Yoast SEO Premium plugin v28.0 (Yoast SEO v28.0) - https://yoast.com/product/yoast-seo-premium-wordpress/ -->
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:title" content="Page not found | EcoVadis" />
+	<meta property="og:site_name" content="EcoVadis" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebSite","@id":"https:\/\/ecovadis.com\/#website","url":"https:\/\/ecovadis.com\/","name":"EcoVadis","description":"Supplier Sustainability Ratings, Sustainable Supply Chain Management","publisher":{"@id":"https:\/\/ecovadis.com\/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/ecovadis.com\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https:\/\/ecovadis.com\/#organization","name":"EcoVadis","url":"https:\/\/ecovadis.com\/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https:\/\/ecovadis.com\/#\/schema\/logo\/image\/","url":"https:\/\/ecovadis.com\/wp-content\/uploads\/2020\/01\/V-logo-new.png","contentUrl":"https:\/\/ecovadis.com\/wp-content\/uploads\/2020\/01\/V-logo-new.png","width":"476","height":"476","caption":"EcoVadis"},"image":{"@id":"https:\/\/ecovadis.com\/#\/schema\/logo\/image\/"},"sameAs":["https:\/\/www.facebook.com\/ecovadis","https:\/\/x.com\/ecovadis"],"telephone":"+33 (0)1 82 28 88 88","legalName":"EcoVadis SAS","vatID":"FR63497842914"}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='weglot-css-css' href='https://ecovadis.com/wp-content/plugins/weglot/dist/css/front-css.css' media='all' />
+<style id="weglot-custom-style">.wg-translation {
+    animation: none;
+}
+.weglot-lang.weglot-language.ko{
+	display: none;
+}</style><link rel='stylesheet' id='main-css-css' href='https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/css/bundled.min.css?v=a15d18687ff50ac192c96f20424d316b' media='all' />
+<link rel='stylesheet' id='subpage-css-css' href='https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/css/subpage-bundled.min.css?v=51424a81ef2614f3d5264259d8e647a8' media='all' />
+<link rel='stylesheet' id='app-css' href='https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/css/app.min.css?v=5fd029f0f14c83d1f6c2a88e4b4b3be8' media='all' />
+<script id="wp-weglot-js-js" src="https://ecovadis.com/wp-content/plugins/weglot/dist/front-js.js"></script>
+<script id="jquery-js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script id="jquery-migrate-js" integrity="sha512-BzvgYEoHXuphX+g7B/laemJGYFdrq4fTKEo+B3PurSxstMZtwu28FHkPKXu6dSBCzbUWqz/rMv755nUwhjQypw==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.5.2/jquery-migrate.min.js"></script>
+<script id="swiper-js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+<script id="bootstrap-js" src="https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/js/vendor/bootstrap.min.js"></script>
+<script id="jquery.actual-js" integrity="sha512-tuZOdDlPdZebYT6mVgvEYJNjYIgiOxtbu3jJbMORG1UDV6BEE3nhba0ZAmbn1EMwU7tLbXNfxBpjEi8CdzD8Tw==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.actual/1.0.19/jquery.actual.min.js"></script>
+<script id="mCustomScrollbar-js" integrity="sha512-Yk47FuYNtuINE1w+t/KT4BQ7JaycTCcrvlSvdK/jry6Kcxqg5vN7/svVWCxZykVzzJHaxXk5T9jnFemZHSYgnw==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
+<script id="scrollmagic-js" integrity="sha512-HzAEuXwhLxwm/Jj+5ecdjzrRVrjuh2ZeIxyT1Ln37TO5pWNMnKBuU7cfd1wvRQ/k86w1oC174Yk1T7aRlBpIcA==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+<script id="select2-js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script id="tooltipster-js" integrity="sha512-ZKNW/Nk1v5trnyKMNuZ6kjL5aCM0kUATbpnWJLPSHFk/5FxnvF9XmpmjGbag6BEgmXiz7rL6o6uJF6InthyTSg==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/4.2.8/js/tooltipster.bundle.min.js"></script>
+<script id="lottie-js" integrity="sha512-uOtp2vx2X/5+tLBEf5UoQyqwAkFZJBM5XwGa7BfXDnWR+wdpRvlSVzaIVcRe3tGNsStu6UMDCeXKEnr4IBT8gA==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.13.0/lottie.min.js"></script>
+<script type="application/json" id="weglot-data">{"website":"https:\/\/ecovadis.com","uid":"62e4ea3d3a","project_slug":"ecovadis","deleted_at":null,"language_from":"en","language_from_custom_flag":null,"language_from_custom_name":null,"auto_switch":false,"auto_switch_fallback":null,"translation_engine":3,"excluded_paths":[],"excluded_blocks":[{"value":".location-wrapper","description":null},{"value":".weglot-no-translate","description":null}],"dynamics":[],"custom_settings":{"button_style":{"is_dropdown":true,"flag_type":"rectangle_mat","with_name":true,"custom_css":".wg-translation {\r\n    animation: none;\r\n}\r\n.weglot-lang.weglot-language.ko{\r\n\tdisplay: none;\r\n}","with_flags":false,"full_name":false},"translate_search":true,"wp_user_version":"5.5","translate_email":false,"translate_amp":false,"switchers":[{"templates":{"name":"default","hash":"e6b531b1069419e9caebcd483082dccf9dfa4873"},"location":[],"style":{"with_flags":false,"flag_type":"rectangle_mat","with_name":true,"full_name":false,"is_dropdown":true}}],"definitions":[]},"media_enabled":false,"external_enabled":false,"page_views_enabled":false,"versions":{"translation":1784209141,"slugTranslation":1659972479},"pending_translation_enabled":false,"curl_ssl_check_enabled":true,"custom_css":".wg-translation {\r\n    animation: none;\r\n}\r\n.weglot-lang.weglot-language.ko{\r\n\tdisplay: none;\r\n}","languages":[{"language_to":"fr","custom_code":null,"custom_name":null,"custom_local_name":null,"provider":null,"enabled":true,"automatic_translation_enabled":false,"deleted_at":null,"connect_host_destination":null,"custom_flag":null},{"language_to":"de","custom_code":null,"custom_name":null,"custom_local_name":null,"provider":null,"enabled":true,"automatic_translation_enabled":false,"deleted_at":null,"connect_host_destination":null,"custom_flag":null},{"language_to":"nl","custom_code":null,"custom_name":null,"custom_local_name":null,"provider":null,"enabled":true,"automatic_translation_enabled":true,"deleted_at":null,"connect_host_destination":null,"custom_flag":null},{"language_to":"ja","custom_code":null,"custom_name":null,"custom_local_name":null,"provider":null,"enabled":true,"automatic_translation_enabled":false,"deleted_at":null,"connect_host_destination":null,"custom_flag":null},{"language_to":"it","custom_code":null,"custom_name":null,"custom_local_name":null,"provider":null,"enabled":true,"automatic_translation_enabled":true,"deleted_at":null,"connect_host_destination":null,"custom_flag":null},{"language_to":"pt","custom_code":null,"custom_name":null,"custom_local_name":null,"provider":null,"enabled":true,"automatic_translation_enabled":true,"deleted_at":null,"connect_host_destination":null,"custom_flag":null},{"language_to":"es","custom_code":null,"custom_name":null,"custom_local_name":null,"provider":null,"enabled":true,"automatic_translation_enabled":true,"deleted_at":null,"connect_host_destination":null,"custom_flag":null}],"category":16,"organization_slug":"w-3bfe7ca45e","technology_id":1,"technology_name":"WordPress","api_domain":"cdn-api-weglot.com","api_base_url":"https:\/\/cdn-api-weglot.com","product":"1.0","current_language":"en","switcher_links":{"en":"https:\/\/ecovadis.com\/wp-content\/uploads\/2024\/01\/EcoVadis-Methodology-Overview-v7.0.pdf","fr":"https:\/\/ecovadis.com\/fr\/wp-content\/uploads\/2024\/01\/EcoVadis-Methodology-Overview-v7.0.pdf","de":"https:\/\/ecovadis.com\/de\/wp-content\/uploads\/2024\/01\/EcoVadis-Methodology-Overview-v7.0.pdf","nl":"https:\/\/ecovadis.com\/nl\/wp-content\/uploads\/2024\/01\/EcoVadis-Methodology-Overview-v7.0.pdf","ja":"https:\/\/ecovadis.com\/ja\/wp-content\/uploads\/2024\/01\/EcoVadis-Methodology-Overview-v7.0.pdf","it":"https:\/\/ecovadis.com\/it\/wp-content\/uploads\/2024\/01\/EcoVadis-Methodology-Overview-v7.0.pdf","pt":"https:\/\/ecovadis.com\/pt\/wp-content\/uploads\/2024\/01\/EcoVadis-Methodology-Overview-v7.0.pdf","es":"https:\/\/ecovadis.com\/es\/wp-content\/uploads\/2024\/01\/EcoVadis-Methodology-Overview-v7.0.pdf"},"original_path":"\/wp-content\/uploads\/2024\/01\/EcoVadis-Methodology-Overview-v7.0.pdf"}</script><link rel='alternate' href='https://ecovadis.com/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf' hreflang='en' /><link rel='alternate' href='https://ecovadis.com/de/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf' hreflang='de' /><link rel='alternate' href='https://ecovadis.com/fr/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf' hreflang='fr' /><link rel='alternate' href='https://ecovadis.com/it/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf' hreflang='it' /><link rel='alternate' href='https://ecovadis.com/es/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf' hreflang='es' /><link rel='alternate' href='https://ecovadis.com/nl/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf' hreflang='nl' /><link rel='alternate' href='https://ecovadis.com/pt/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf' hreflang='pt' /><link rel='alternate' href='https://ecovadis.com/ja/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf' hreflang='ja' /><link rel='alternate' href='https://ecovadis.com/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf' hreflang='x-default' />
+	<meta name="facebook-domain-verification"
+				      content="jsnb753iukieiyud5dlpr9ziszikyw"
+				/>
+				<meta name="google-site-verification"
+				      content="15fkuBWUNjoVm99My3IddANQBUCE2i-JJ0eU2khWd9g"
+				/><!-- Hotjar Tracking Code for Site 6465122 -->
+				<script type="text/plain" class="optanon-category-C0002">
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:6465122,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script></head>
+<body class="error404 wp-theme-wp-bootstrap-gulp  --child">
+
+<!-- Facebook pixel (noscript) -->
+				<noscript>
+					<img height="1" width="1" style="display:none" alt=""
+					     src="https://www.facebook.com/tr?id=752611148416733&ev=PageView&noscript=1"
+					/>
+				</noscript><!-- Google Tag Manager (noscript) -->
+				<noscript>
+					<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WSTKWC"
+					        height="0"
+					        width="0"
+					        style="display:none;visibility:hidden"
+					></iframe>
+				</noscript>
+<a href="#content"
+   id="skip-to-content"
+   class="btn btn-default btn-link btn-brand skip-nav-link"
+>Skip to content</a>
+
+
+
+<header class="header-2026">
+	<div class="header-inner">
+		<div class="rv-container header-inner-container">
+			<div class="header-left">
+									<a class="logo-wrapper" href="/" aria-label="Site logo">
+						<img width="108" height="20" src="https://ecovadis.com/wp-content/uploads/2026/05/revamp-logo.svg" class="attachment-logo size-logo" alt="" decoding="async" />					</a>
+								<div class="mobile-menu-back-container">
+					<button type="button">
+						<span class="l-menu-item"></span>
+						<span class="l-language-switcher">Select a language</span>
+					</button>
+				</div>
+				<div class="menu-overlay">
+						<nav id="header-menu-2026-container" class="header-menu-2026-container">
+		<ul id="header-menu-2026" class="header-menu-2026">
+											<li>
+					<button data-gtmplacement="Top menu" type="button" aria-expanded="false" aria-haspopup="true" id="header-menu-2026-6a5c98f61bdc4-6a5c98f61bda1--menu-item" aria-controls="header-menu-2026-6a5c98f61bdc4-6a5c98f61bda1--submenu" class="menu-item menu-item-button">Buyers<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></button>											<div class="submenu-wrapper">
+							<div class="scroll-container custom-scrollbar">
+								<div class="submenu-columns">
+																			
+										<div class="submenu-column submenu-column--links"
+										>
+																							<ul class="submenu-links">
+																											<li>
+															<span data-gtmplacement="Top menu" class="menu-item menu-item-span">Procurement and Resilience<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></span>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/enterprise/" class="menu-item menu-item-link">Sustainability Intelligence Platform<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/solutions/carbon/" class="menu-item menu-item-link">Scope 3 Carbon Management<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/solutions/ratings/" class="menu-item menu-item-link">Trusted Sustainability Ratings<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/solutions/ulula-worker-voice-supply-chain-transparency/" class="menu-item menu-item-link">Direct Worker Engagement<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<span data-gtmplacement="Top menu" class="menu-item menu-item-span">Supply Chain Risk Management<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></span>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/solutions/risk-management/" class="menu-item menu-item-link">Risk Management Overview<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/solutions/iq/" class="menu-item menu-item-link">Risk Mapping and Disclosure<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/solutions/iq/vitals/" class="menu-item menu-item-link">Supplier Questionnaires<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																									</ul>
+																					</div>
+																			
+										<div class="submenu-column submenu-column--links"
+										>
+																							<ul class="submenu-links">
+																											<li>
+															<span data-gtmplacement="Top menu" class="menu-item menu-item-span">Regulations & Compliance<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></span>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/solutions/regulations-compliance/" class="menu-item menu-item-link">Regulations & Compliance Overview<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/solutions/cs3d-and-csrd-value-chain-compliance/" class="menu-item menu-item-link">CS3D and CSRD<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/solutions/german-supply-chain-due-diligence-act-lksg/" class="menu-item menu-item-link">LkSG / German Supply Chain Act<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/solutions/value-chain-scope-3-reporting-regulatory-compliance/" class="menu-item menu-item-link">Scope 3 Reporting & Compliance<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/solutions/smart-compliance-with-modern-slavery-acts/" class="menu-item menu-item-link">Modern Slavery Acts<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/solutions/ulula-worker-voice-supply-chain-transparency/" class="menu-item menu-item-link">Human Rights Due Diligence<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																									</ul>
+																					</div>
+																			
+										<div class="submenu-column submenu-column--links"
+										>
+																							<ul class="submenu-links">
+																											<li>
+															<span data-gtmplacement="Top menu" class="menu-item menu-item-span">Industries<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></span>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/initiatives/food-and-beverage/" class="menu-item menu-item-link">Food & Beverage<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/initiatives/automotive/" class="menu-item menu-item-link">Automotive<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/initiatives/finance/" class="menu-item menu-item-link">Finance<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/initiatives/pharma/" class="menu-item menu-item-link">Pharmaceutical<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/initiatives/cpg/" class="menu-item menu-item-link">Consumer Goods<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/initiatives/electronics/" class="menu-item menu-item-link">Electronics<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/initiatives/beauty/" class="menu-item menu-item-link">Beauty<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/initiatives/retail/" class="menu-item menu-item-link">Retail<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/initiatives/energy-utilities/" class="menu-item menu-item-link">Energy & Utilities<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/initiatives/manufacturing-machinery/" class="menu-item menu-item-link">Manufacturing & Machinery<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																									</ul>
+																					</div>
+																			
+										<div class="submenu-column submenu-column--links"
+										>
+																							<ul class="submenu-links">
+																											<li>
+															<span data-gtmplacement="Top menu" class="menu-item menu-item-span">More for Buyers<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></span>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/solutions/sustainable-finance/" class="menu-item menu-item-link">Sustainable Finance<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/sector-initiatives/" class="menu-item menu-item-link">Sector Initiatives<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/plans-pricing/" class="menu-item menu-item-link">Plans and Pricing<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/partnerships/" class="menu-item menu-item-link">Partner Directory<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																									</ul>
+																					</div>
+																	</div>
+
+																	<div class="cta-banner-container">
+										
+	<div class="call-to-action-banner-component">
+		<div class="banner-body">
+			<div class="banner-body-text-wrapper">
+									<div class="title">Sustainable procurement barometer 2026</div>
+													<div class="subtitle">Actionable insights from 1,000+ global businesses</div>
+							</div>
+			<div class='buttons-container'><a href="https://ecovadis.com/insights/barometer/" data-gtmplacement="CTA banner - Sustainable procurement barometer 2026" class="button button-primary">Download</a></div>		</div>
+					<div class="banner-image">
+				<img width="220" height="120" src="https://ecovadis.com/wp-content/uploads/2026/05/revamp-Buyers-banner-1.webp" class="attachment-medium_large size-medium_large" alt="" decoding="async" srcset="https://ecovadis.com/wp-content/uploads/2026/05/revamp-Buyers-banner-1.webp 220w, https://ecovadis.com/wp-content/uploads/2026/05/revamp-Buyers-banner-1-110x60.webp 110w, https://ecovadis.com/wp-content/uploads/2026/05/revamp-Buyers-banner-1-150x82.webp 150w" sizes="(max-width: 220px) 100vw, 220px" />			</div>
+			</div>
+									</div>
+															</div>
+						</div>
+									</li>
+
+											<li>
+					<button data-gtmplacement="Top menu" type="button" aria-expanded="false" aria-haspopup="true" id="header-menu-2026-6a5c98f61bdc4-6a5c98f61bda1--menu-item" aria-controls="header-menu-2026-6a5c98f61bdc4-6a5c98f61bda1--submenu" class="menu-item menu-item-button">Suppliers<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></button>											<div class="submenu-wrapper">
+							<div class="scroll-container custom-scrollbar">
+								<div class="submenu-columns">
+																			
+										<div class="submenu-column submenu-column--links"
+										>
+																							<ul class="submenu-links">
+																											<li>
+															<span data-gtmplacement="Top menu" class="menu-item menu-item-span">Getting Started<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></span>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/suppliers/" class="menu-item menu-item-link">The Value of a Rating<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/suppliers/ecovadis-medals-and-badges/" class="menu-item menu-item-link">Medals & Recognition<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://resources.ecovadis.com/ecovadis-solution-materials/csr-rating-methodology-scoring-principles" class="menu-item menu-item-link">EcoVadis Ratings Scoring Principles<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/plans-pricing/?type=rate-my-company" class="menu-item menu-item-link">Plans & Pricing<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://portal.ecovadis-survey.com/registration/#/" class="menu-item menu-item-link">Start an Assessment<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																									</ul>
+																					</div>
+																			
+										<div class="submenu-column submenu-column--links"
+										>
+																							<ul class="submenu-links">
+																											<li>
+															<span data-gtmplacement="Top menu" class="menu-item menu-item-span">Grow Your Performance<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></span>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/solutions/academy/" class="menu-item menu-item-link">EcoVadis Academy<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/solutions/community/" class="menu-item menu-item-link">EcoVadis Community<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/events-webinars/#rated" class="menu-item menu-item-link">Supplier Webinars<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																									</ul>
+																					</div>
+																			
+										<div class="submenu-column submenu-column--card"
+										>
+																																			<div class="submenu-card">
+																											<div class="title">How EcoVadis gives suppliers a competitive edge</div>
+																										<div class='buttons-container'><a href="https://resources.ecovadis.com/customer-stories/how-ecovadis-provides-our-rated-customers-a-competitive-advantage" target="_blank" class="styled-link">Explore</a></div>																											<img width="416" height="217" src="https://ecovadis.com/wp-content/uploads/2026/05/revamp-Suppliers-banner-1-1.webp" class="attachment-medium_large size-medium_large" alt="" decoding="async" fetchpriority="high" srcset="https://ecovadis.com/wp-content/uploads/2026/05/revamp-Suppliers-banner-1-1.webp 416w, https://ecovadis.com/wp-content/uploads/2026/05/revamp-Suppliers-banner-1-1-300x156.webp 300w, https://ecovadis.com/wp-content/uploads/2026/05/revamp-Suppliers-banner-1-1-115x60.webp 115w, https://ecovadis.com/wp-content/uploads/2026/05/revamp-Suppliers-banner-1-1-150x78.webp 150w" sizes="(max-width: 416px) 100vw, 416px" />																									</div>
+																					</div>
+																	</div>
+
+															</div>
+						</div>
+									</li>
+
+											<li>
+					<button data-gtmplacement="Top menu" type="button" aria-expanded="false" aria-haspopup="true" id="header-menu-2026-6a5c98f61bdc4-6a5c98f61bda1--menu-item" aria-controls="header-menu-2026-6a5c98f61bdc4-6a5c98f61bda1--submenu" class="menu-item menu-item-button">Resources<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></button>											<div class="submenu-wrapper">
+							<div class="scroll-container custom-scrollbar">
+								<div class="submenu-columns">
+																			
+										<div class="submenu-column submenu-column--links"
+										>
+																							<ul class="submenu-links">
+																											<li>
+															<span data-gtmplacement="Top menu" class="menu-item menu-item-span">Get Started<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></span>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://resources.ecovadis.com/" class="menu-item menu-item-link">Resource Center<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://resources.ecovadis.com/whitepapers" class="menu-item menu-item-link">Whitepapers<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/events-webinars/" class="menu-item menu-item-link">Events and Webinars<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/blog/" class="menu-item menu-item-link">Blogs<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/glossary/" class="menu-item menu-item-link">Glossary - Terms <span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/regulations/" class="menu-item menu-item-link">Glossary - Regulations <span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																									</ul>
+																					</div>
+																			
+										<div class="submenu-column submenu-column--links"
+										>
+																							<ul class="submenu-links">
+																											<li>
+															<span data-gtmplacement="Top menu" class="menu-item menu-item-span">Featured Insights<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></span>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://resources.ecovadis.com/customer-stories" class="menu-item menu-item-link">Customer Stories<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/events-webinars/#sustain" class="menu-item menu-item-link">Sustain Conference 2026<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/insights/barometer/" class="menu-item menu-item-link">Sustainable Procurement Barometer<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com//insights/index-2026/" class="menu-item menu-item-link">Sustainability Index<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://resources.ecovadis.com/whitepapers/carbon-action-report-2025" class="menu-item menu-item-link">Carbon Action Report <span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																									</ul>
+																					</div>
+																			
+										<div class="submenu-column submenu-column--links"
+										>
+																							<ul class="submenu-links">
+																											<li>
+															<span data-gtmplacement="Top menu" class="menu-item menu-item-span">Support & Services<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></span>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://support.ecovadis.com/hc/en-us" class="menu-item menu-item-link">Help Center<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://resources.ecovadis.com/" class="menu-item menu-item-link">Solution Explainers<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/partnerships/" class="menu-item menu-item-link">Our Partners<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																									</ul>
+																					</div>
+																			
+										<div class="submenu-column submenu-column--card"
+										>
+																																			<div class="submenu-card">
+																											<div class="title">EcoVadis World Tour 2026</div>
+																										<div class='buttons-container'><a href="https://events.ecovadis.com/world-tour-2026/" target="_blank" class="styled-link">Explore</a></div>																											<img width="268" height="217" src="https://ecovadis.com/wp-content/uploads/2026/05/revamp-Knowledge-banner.webp" class="attachment-medium_large size-medium_large" alt="" decoding="async" srcset="https://ecovadis.com/wp-content/uploads/2026/05/revamp-Knowledge-banner.webp 268w, https://ecovadis.com/wp-content/uploads/2026/05/revamp-Knowledge-banner-74x60.webp 74w, https://ecovadis.com/wp-content/uploads/2026/05/revamp-Knowledge-banner-150x121.webp 150w" sizes="(max-width: 268px) 100vw, 268px" />																									</div>
+																					</div>
+																	</div>
+
+															</div>
+						</div>
+									</li>
+
+											<li>
+					<button data-gtmplacement="Top menu" type="button" aria-expanded="false" aria-haspopup="true" id="header-menu-2026-6a5c98f61bdc4-6a5c98f61bda1--menu-item" aria-controls="header-menu-2026-6a5c98f61bdc4-6a5c98f61bda1--submenu" class="menu-item menu-item-button">Company<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></button>											<div class="submenu-wrapper">
+							<div class="scroll-container custom-scrollbar">
+								<div class="submenu-columns">
+																			
+										<div class="submenu-column submenu-column--links"
+										>
+																							<ul class="submenu-links">
+																											<li>
+															<span data-gtmplacement="Top menu" class="menu-item menu-item-span">About EcoVadis<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></span>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/about-us/" class="menu-item menu-item-link">About Us<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/careers/" class="menu-item menu-item-link">Careers <span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/our-impact/" class="menu-item menu-item-link">Our Impact <span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/leadership/" class="menu-item menu-item-link">Leadership<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://resources.ecovadis.com/people-culture" target="_blank" rel="nofollow noopener noreferrer" class="menu-item menu-item-link">People & Culture<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/diversity-equity-and-inclusion-dei/" class="menu-item menu-item-link">Diversity, Equity and Inclusion <span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/contact-us/" class="menu-item menu-item-link">Contact Us<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																									</ul>
+																					</div>
+																			
+										<div class="submenu-column submenu-column--links"
+										>
+																							<ul class="submenu-links">
+																											<li>
+															<span data-gtmplacement="Top menu" class="menu-item menu-item-span">News & Ecosystem<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></span>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://resources.ecovadis.com/news-press" class="menu-item menu-item-link">Company News<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/trust-center/" class="menu-item menu-item-link">Trust Center<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/media-kit/" class="menu-item menu-item-link">Media Kit<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/sector-initiatives/" class="menu-item menu-item-link">Sector Initiatives<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																											<li>
+															<a data-gtmplacement="Top menu" href="https://ecovadis.com/partnerships/" class="menu-item menu-item-link">Our Partners<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>														</li>
+																									</ul>
+																					</div>
+																			
+										<div class="submenu-column submenu-column--card"
+										>
+																																			<div class="submenu-card">
+																											<div class="title">Need some extra support?</div>
+																										<div class='buttons-container'><a href="https://support.ecovadis.com/hc/en-us" target="_blank" class="styled-link">Help Center</a><a href="https://ecovadis.com/contact-us/" class="styled-link">Contact Us</a></div>																											<img width="416" height="245" src="https://ecovadis.com/wp-content/uploads/2026/05/revamp-Company-banner-1.webp" class="attachment-medium_large size-medium_large" alt="" decoding="async" srcset="https://ecovadis.com/wp-content/uploads/2026/05/revamp-Company-banner-1.webp 416w, https://ecovadis.com/wp-content/uploads/2026/05/revamp-Company-banner-1-300x177.webp 300w, https://ecovadis.com/wp-content/uploads/2026/05/revamp-Company-banner-1-102x60.webp 102w, https://ecovadis.com/wp-content/uploads/2026/05/revamp-Company-banner-1-150x88.webp 150w" sizes="(max-width: 416px) 100vw, 416px" />																									</div>
+																					</div>
+																	</div>
+
+															</div>
+						</div>
+									</li>
+
+											<li>
+					<a data-gtmplacement="Top menu" href="https://ecovadis.com/ai/" class="menu-item menu-item-link">AI<span class="weglot-no-translate" aria-hidden="true">&nbsp;</span></a>									</li>
+
+					</ul>
+	</nav>
+
+					<div class="menu-overlay-bottom">
+						<a href="https://ecovadis.com/get-started-now/" data-gtmplacement="Header" class="button button-header request-demo-button">Request a Demo</a><div class="language-switcher">
+<script>
+	window.LANGUAGE_MENU_ADDITIONAL_LINKS = [];
+</script>
+
+<!--Weglot 6.1--><aside data-wg-notranslate="" class="country-selector weglot-dropdown close_outside_click closed weglot-shortcode wg-" tabindex="0" aria-expanded="false" aria-label="Language selected: English"><input id="wg6a5c98f63623b9.367019421784453366241" class="weglot_choice" type="checkbox" name="menu"/><label data-l="en" tabindex="-1" for="wg6a5c98f63623b9.367019421784453366241" class="wgcurrent wg-li weglot-lang weglot-language flag-0 wg-en" data-code-language="wg-en" data-name-language="EN"><span class="wglanguage-name">EN</span></label><ul role="listbox" class="languages-dropdown tooltip tooltip--bottom"><li class="wg-li weglot-lang weglot-language flag-0 cn" data-code-language="cn"><a data-wg-notranslate="" class="weglot-language-cn" href="https://ecovadis.cn/" title="Language switcher : Chinese">CN</a></li><li data-l="fr" class="wg-li weglot-lang weglot-language flag-0 wg-fr" data-code-language="fr" role="option"><a title="Language switcher : French" class="weglot-language-fr" role="option" data-wg-notranslate="" href="https://ecovadis.com/fr/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf">FR</a></li><li data-l="de" class="wg-li weglot-lang weglot-language flag-0 wg-de" data-code-language="de" role="option"><a title="Language switcher : German" class="weglot-language-de" role="option" data-wg-notranslate="" href="https://ecovadis.com/de/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf">DE</a></li><li data-l="nl" class="wg-li weglot-lang weglot-language flag-0 wg-nl" data-code-language="nl" role="option"><a title="Language switcher : Dutch" class="weglot-language-nl" role="option" data-wg-notranslate="" href="https://ecovadis.com/nl/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf">NL</a></li><li data-l="ja" class="wg-li weglot-lang weglot-language flag-0 wg-ja" data-code-language="ja" role="option"><a title="Language switcher : Japanese" class="weglot-language-ja" role="option" data-wg-notranslate="" href="https://ecovadis.com/ja/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf">JA</a></li><li data-l="it" class="wg-li weglot-lang weglot-language flag-0 wg-it" data-code-language="it" role="option"><a title="Language switcher : Italian" class="weglot-language-it" role="option" data-wg-notranslate="" href="https://ecovadis.com/it/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf">IT</a></li><li data-l="pt" class="wg-li weglot-lang weglot-language flag-0 wg-pt" data-code-language="pt" role="option"><a title="Language switcher : Portuguese" class="weglot-language-pt" role="option" data-wg-notranslate="" href="https://ecovadis.com/pt/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf">PT</a></li><li data-l="es" class="wg-li weglot-lang weglot-language flag-0 wg-es" data-code-language="es" role="option"><a title="Language switcher : Spanish" class="weglot-language-es" role="option" data-wg-notranslate="" href="https://ecovadis.com/es/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf">ES</a></li></ul></aside>
+</div><a href="https://idp.ecovadis-survey.com/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dbellucci%26redirect_uri%3Dhttps%253A%252F%252Fwww.ecovadis-survey.com%252Fapp%252F%2523%252Fsso-callback%253F%26response_type%3Did_token%2520token%26scope%3Dopenid%2520profile%2520actinguserid%2520anakinapi%2520idpapi%2520offline_access%26response_mode%3Dfragment%26nonce%3Dvmixcf53ytt%26" data-gtmplacement="Header" class="header-link-button login-button">Login</a><a href="https://support.ecovadis.com/hc/en-us" target="_blank" data-gtmplacement="Header" class="header-link-button help-button">Help</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="header-right">
+				<div class="language-switcher">
+<script>
+	window.LANGUAGE_MENU_ADDITIONAL_LINKS = [];
+</script>
+
+<!--Weglot 6.1--><aside data-wg-notranslate="" class="country-selector weglot-dropdown close_outside_click closed weglot-shortcode wg-" tabindex="0" aria-expanded="false" aria-label="Language selected: English"><input id="wg6a5c98f63623b9.367019421784453366241" class="weglot_choice" type="checkbox" name="menu"/><label data-l="en" tabindex="-1" for="wg6a5c98f63623b9.367019421784453366241" class="wgcurrent wg-li weglot-lang weglot-language flag-0 wg-en" data-code-language="wg-en" data-name-language="EN"><span class="wglanguage-name">EN</span></label><ul role="listbox" class="languages-dropdown tooltip tooltip--bottom"><li class="wg-li weglot-lang weglot-language flag-0 cn" data-code-language="cn"><a data-wg-notranslate="" class="weglot-language-cn" href="https://ecovadis.cn/" title="Language switcher : Chinese">CN</a></li><li data-l="fr" class="wg-li weglot-lang weglot-language flag-0 wg-fr" data-code-language="fr" role="option"><a title="Language switcher : French" class="weglot-language-fr" role="option" data-wg-notranslate="" href="https://ecovadis.com/fr/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf">FR</a></li><li data-l="de" class="wg-li weglot-lang weglot-language flag-0 wg-de" data-code-language="de" role="option"><a title="Language switcher : German" class="weglot-language-de" role="option" data-wg-notranslate="" href="https://ecovadis.com/de/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf">DE</a></li><li data-l="nl" class="wg-li weglot-lang weglot-language flag-0 wg-nl" data-code-language="nl" role="option"><a title="Language switcher : Dutch" class="weglot-language-nl" role="option" data-wg-notranslate="" href="https://ecovadis.com/nl/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf">NL</a></li><li data-l="ja" class="wg-li weglot-lang weglot-language flag-0 wg-ja" data-code-language="ja" role="option"><a title="Language switcher : Japanese" class="weglot-language-ja" role="option" data-wg-notranslate="" href="https://ecovadis.com/ja/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf">JA</a></li><li data-l="it" class="wg-li weglot-lang weglot-language flag-0 wg-it" data-code-language="it" role="option"><a title="Language switcher : Italian" class="weglot-language-it" role="option" data-wg-notranslate="" href="https://ecovadis.com/it/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf">IT</a></li><li data-l="pt" class="wg-li weglot-lang weglot-language flag-0 wg-pt" data-code-language="pt" role="option"><a title="Language switcher : Portuguese" class="weglot-language-pt" role="option" data-wg-notranslate="" href="https://ecovadis.com/pt/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf">PT</a></li><li data-l="es" class="wg-li weglot-lang weglot-language flag-0 wg-es" data-code-language="es" role="option"><a title="Language switcher : Spanish" class="weglot-language-es" role="option" data-wg-notranslate="" href="https://ecovadis.com/es/wp-content/uploads/2024/01/EcoVadis-Methodology-Overview-v7.0.pdf">ES</a></li></ul></aside>
+</div><a href="https://idp.ecovadis-survey.com/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dbellucci%26redirect_uri%3Dhttps%253A%252F%252Fwww.ecovadis-survey.com%252Fapp%252F%2523%252Fsso-callback%253F%26response_type%3Did_token%2520token%26scope%3Dopenid%2520profile%2520actinguserid%2520anakinapi%2520idpapi%2520offline_access%26response_mode%3Dfragment%26nonce%3Dvmixcf53ytt%26" data-gtmplacement="Header" class="header-link-button login-button">Login</a><a href="https://support.ecovadis.com/hc/en-us" target="_blank" data-gtmplacement="Header" class="header-link-button help-button">Help</a><a href="https://ecovadis.com/get-started-now/" data-gtmplacement="Header" class="button button-header request-demo-button">Request a Demo</a>				<button
+					type="button"
+					class="button button-header"
+					data-action="menu-toggle"
+					aria-label="Menu toggle"
+					aria-expanded="false"
+				>
+					<span aria-hidden="true" data-state="closed">Menu</span>
+					<span aria-hidden="true" data-state="open">Close</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</header>
+
+<main class="subpage error404">
+    <main class="subpage">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-lg-6 content just-reveal jr-stagger jr-slide-left">
+                    <h2>Sorry. <br />
+This page doesn't exist.</h2>
+                    <a href="/" class="btn btn-default btn-link btn-brand">Go to homepage</a>
+                </div>
+                <div class="col-12 col-lg-6 background just-reveal jr-stagger jr-slide-right">
+                    <h1>
+                        <small>error</small>
+                        <span>404</span></h1>
+                </div>
+            </div>
+        </div>
+    </main>
+</main>
+
+
+<footer class="footer-2026">
+	<div class="footer-container">
+							<div class="footer-cta-buttons">
+									<div class="text">Let’s get started</div>
+													<a href="https://ecovadis.com/enterprise/" data-gtmplacement="Footer CTA bar" class="button button-footer">Assess my Suppliers</a>									<a href="https://ecovadis.com/suppliers/" data-gtmplacement="Footer CTA bar" class="button button-footer">Assess my Company</a>							</div>
+					<nav id="footer-main-menu-container" class="footer-main-menu-container">
+		<ul id="footer-main-menu" class="footer-main-menu">
+			<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f62767d-0-li" class="menu-item nav-item menu-item-0 menu-item-ID-0 menu-item-type-text menu-item-has-children dropdown"><span data-gtmplacement="Footer menu" class="menu-item menu-item-span">Buyers</span><div class='subpage-wrapper' id='footer-main-menu-6a5c98f627678-6a5c98f62767d-0-submenu-wrapper'><ul id="footer-main-menu-6a5c98f627678-6a5c98f62767d-0-submenu" aria-labelledby="footer-main-menu-6a5c98f627678-6a5c98f62767d-0-menu-item" class="submenu"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f6276af-0-li" class="menu-item nav-item menu-item-0 menu-item-ID-0 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/enterprise/" class="menu-item menu-item-link">Sustainability Intelligence Platform</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f6276af-1-li" class="menu-item nav-item menu-item-1 menu-item-ID-1 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/solutions/carbon/" class="menu-item menu-item-link">Scope 3 Carbon Management</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f6276af-2-li" class="menu-item nav-item menu-item-2 menu-item-ID-2 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/solutions/ratings/" class="menu-item menu-item-link">Trusted Sustainability Ratings</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f6276af-3-li" class="menu-item nav-item menu-item-3 menu-item-ID-3 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/solutions/ulula-worker-voice-supply-chain-transparency/" class="menu-item menu-item-link">Direct Worker Engagement</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f6276af-4-li" class="menu-item nav-item menu-item-4 menu-item-ID-4 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/solutions/risk-management/" class="menu-item menu-item-link">Risk Management Overview</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f6276af-5-li" class="menu-item nav-item menu-item-5 menu-item-ID-5 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/solutions/iq/" class="menu-item menu-item-link">Risk Mapping and Disclosure</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f6276af-6-li" class="menu-item nav-item menu-item-6 menu-item-ID-6 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/solutions/iq/vitals/" class="menu-item menu-item-link">Supplier Questionnaires</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f6276af-7-li" class="menu-item nav-item menu-item-7 menu-item-ID-7 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/solutions/regulations-compliance/" class="menu-item menu-item-link">Regulations & Compliance Overview</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f6276af-8-li" class="menu-item nav-item menu-item-8 menu-item-ID-8 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/solutions/cs3d-and-csrd-value-chain-compliance/" class="menu-item menu-item-link">CS3D and CSRD</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f6276af-9-li" class="menu-item nav-item menu-item-9 menu-item-ID-9 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/solutions/german-supply-chain-due-diligence-act-lksg/" class="menu-item menu-item-link">LkSG / German Supply Chain Act</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f6276af-10-li" class="menu-item nav-item menu-item-10 menu-item-ID-10 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/solutions/value-chain-scope-3-reporting-regulatory-compliance/" class="menu-item menu-item-link">Scope 3 Reporting & Compliance</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f6276af-11-li" class="menu-item nav-item menu-item-11 menu-item-ID-11 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/solutions/smart-compliance-with-modern-slavery-acts/" class="menu-item menu-item-link">Modern Slavery Acts</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f6276af-12-li" class="menu-item nav-item menu-item-12 menu-item-ID-12 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/solutions/ulula-worker-voice-supply-chain-transparency/" class="menu-item menu-item-link">Human Rights Due Diligence</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f6276af-13-li" class="menu-item nav-item menu-item-13 menu-item-ID-13 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/plans-pricing/?type=rate-my-suppliers" class="menu-item menu-item-link">Plans and Pricing</a></li></ul></div></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f62767d-1-li" class="menu-item nav-item menu-item-1 menu-item-ID-1 menu-item-type-text menu-item-has-children dropdown"><span data-gtmplacement="Footer menu" class="menu-item menu-item-span">Suppliers</span><div class='subpage-wrapper' id='footer-main-menu-6a5c98f627678-6a5c98f62767d-1-submenu-wrapper'><ul id="footer-main-menu-6a5c98f627678-6a5c98f62767d-1-submenu" aria-labelledby="footer-main-menu-6a5c98f627678-6a5c98f62767d-1-menu-item" class="submenu"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f62796f-0-li" class="menu-item nav-item menu-item-0 menu-item-ID-0 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/suppliers/" class="menu-item menu-item-link">The Value of a Rating</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f62796f-1-li" class="menu-item nav-item menu-item-1 menu-item-ID-1 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/suppliers/ecovadis-medals-and-badges/" class="menu-item menu-item-link">Medals & Recognition</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f62796f-2-li" class="menu-item nav-item menu-item-2 menu-item-ID-2 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://resources.ecovadis.com/ecovadis-solution-materials/csr-rating-methodology-scoring-principles" class="menu-item menu-item-link">EcoVadis Ratings Scoring Principles</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f62796f-3-li" class="menu-item nav-item menu-item-3 menu-item-ID-3 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://portal.ecovadis-survey.com/registration/#/" class="menu-item menu-item-link">Start an Assessment</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f62796f-4-li" class="menu-item nav-item menu-item-4 menu-item-ID-4 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/solutions/academy/" class="menu-item menu-item-link">EcoVadis Academy</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f62796f-5-li" class="menu-item nav-item menu-item-5 menu-item-ID-5 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/solutions/community/" class="menu-item menu-item-link">EcoVadis Community</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f62796f-6-li" class="menu-item nav-item menu-item-6 menu-item-ID-6 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/plans-pricing/?type=rate-my-company" class="menu-item menu-item-link">Plans & Pricing</a></li></ul></div></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f62767d-2-li" class="menu-item nav-item menu-item-2 menu-item-ID-2 menu-item-type-text menu-item-has-children dropdown"><span data-gtmplacement="Footer menu" class="menu-item menu-item-span">Resources</span><div class='subpage-wrapper' id='footer-main-menu-6a5c98f627678-6a5c98f62767d-2-submenu-wrapper'><ul id="footer-main-menu-6a5c98f627678-6a5c98f62767d-2-submenu" aria-labelledby="footer-main-menu-6a5c98f627678-6a5c98f62767d-2-menu-item" class="submenu"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627ada-0-li" class="menu-item nav-item menu-item-0 menu-item-ID-0 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://support.ecovadis.com/" target="_blank" rel="nofollow noopener noreferrer" class="menu-item menu-item-link">Help Center</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627ada-1-li" class="menu-item nav-item menu-item-1 menu-item-ID-1 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://resources.ecovadis.com/customer-stories" class="menu-item menu-item-link">Customer Stories</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627ada-2-li" class="menu-item nav-item menu-item-2 menu-item-ID-2 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://resources.ecovadis.com/" class="menu-item menu-item-link">Resource Center</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627ada-3-li" class="menu-item nav-item menu-item-3 menu-item-ID-3 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://resources.ecovadis.com/whitepapers" class="menu-item menu-item-link">Whitepapers</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627ada-4-li" class="menu-item nav-item menu-item-4 menu-item-ID-4 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/events-webinars/" class="menu-item menu-item-link">Events and Webinars</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627ada-5-li" class="menu-item nav-item menu-item-5 menu-item-ID-5 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/blog/" class="menu-item menu-item-link">Blogs</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627ada-6-li" class="menu-item nav-item menu-item-6 menu-item-ID-6 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/glossary/" class="menu-item menu-item-link">Glossary - Terms</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627ada-7-li" class="menu-item nav-item menu-item-7 menu-item-ID-7 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/regulations/" class="menu-item menu-item-link">Glossary - Regulations</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627ada-8-li" class="menu-item nav-item menu-item-8 menu-item-ID-8 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/events-webinars/#sustain" class="menu-item menu-item-link">Sustain Conference 2026</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627ada-9-li" class="menu-item nav-item menu-item-9 menu-item-ID-9 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/insights/barometer/" class="menu-item menu-item-link">Sustainable Procurement Barometer</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627ada-10-li" class="menu-item nav-item menu-item-10 menu-item-ID-10 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/insights/index-2026/" class="menu-item menu-item-link">Sustainability Risk & Performance Index</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627ada-11-li" class="menu-item nav-item menu-item-11 menu-item-ID-11 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://resources.ecovadis.com/whitepapers/carbon-action-report-2025" class="menu-item menu-item-link">Carbon Action Report </a></li></ul></div></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f62767d-3-li" class="menu-item nav-item menu-item-3 menu-item-ID-3 menu-item-type-text menu-item-has-children dropdown"><span data-gtmplacement="Footer menu" class="menu-item menu-item-span">Company</span><div class='subpage-wrapper' id='footer-main-menu-6a5c98f627678-6a5c98f62767d-3-submenu-wrapper'><ul id="footer-main-menu-6a5c98f627678-6a5c98f62767d-3-submenu" aria-labelledby="footer-main-menu-6a5c98f627678-6a5c98f62767d-3-menu-item" class="submenu"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-0-li" class="menu-item nav-item menu-item-0 menu-item-ID-0 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/about-us/" class="menu-item menu-item-link">About Us</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-1-li" class="menu-item nav-item menu-item-1 menu-item-ID-1 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/contact-us/" class="menu-item menu-item-link">Contact Us</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-2-li" class="menu-item nav-item menu-item-2 menu-item-ID-2 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/careers/" class="menu-item menu-item-link">Careers</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-3-li" class="menu-item nav-item menu-item-3 menu-item-ID-3 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/our-impact/" class="menu-item menu-item-link">Our Impact</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-4-li" class="menu-item nav-item menu-item-4 menu-item-ID-4 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/leadership/" class="menu-item menu-item-link">Leadership</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-5-li" class="menu-item nav-item menu-item-5 menu-item-ID-5 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://resources.ecovadis.com/people-culture" class="menu-item menu-item-link">People & Culture</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-6-li" class="menu-item nav-item menu-item-6 menu-item-ID-6 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/diversity-equity-and-inclusion-dei/" class="menu-item menu-item-link">Diversity, Equity & Inclusion</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-7-li" class="menu-item nav-item menu-item-7 menu-item-ID-7 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/ai/" class="menu-item menu-item-link">AI at EcoVadis</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-8-li" class="menu-item nav-item menu-item-8 menu-item-ID-8 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://resources.ecovadis.com/news-press" class="menu-item menu-item-link">Company News</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-9-li" class="menu-item nav-item menu-item-9 menu-item-ID-9 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/trust-center/" class="menu-item menu-item-link">Trust Center</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-10-li" class="menu-item nav-item menu-item-10 menu-item-ID-10 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/media-kit/" class="menu-item menu-item-link">Media Kit</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-11-li" class="menu-item nav-item menu-item-11 menu-item-ID-11 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/sector-initiatives/" class="menu-item menu-item-link">Sector Initiatives</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-12-li" class="menu-item nav-item menu-item-12 menu-item-ID-12 menu-item-type-custom"><a data-gtmplacement="Footer menu" href="https://ecovadis.com/partnerships/" class="menu-item menu-item-link">Our Partners</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-13-li" class="menu-item nav-item menu-item-13 menu-item-ID-13 menu-item-type-custom icon css-icon--linkedin"><a data-gtmplacement="Footer menu" href="https://www.linkedin.com/company/ecovadis/" target="_blank" rel="nofollow noopener noreferrer" class="menu-item menu-item-link">Linkedin</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-14-li" class="menu-item nav-item menu-item-14 menu-item-ID-14 menu-item-type-custom icon css-icon--instagram"><a data-gtmplacement="Footer menu" href="https://www.instagram.com/ecovadis/" target="_blank" rel="nofollow noopener noreferrer" class="menu-item menu-item-link">Instagram</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-15-li" class="menu-item nav-item menu-item-15 menu-item-ID-15 menu-item-type-custom icon css-icon--facebook"><a data-gtmplacement="Footer menu" href="https://www.facebook.com/ecovadis/" target="_blank" rel="nofollow noopener noreferrer" class="menu-item menu-item-link">Facebook</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="footer-main-menu-6a5c98f627678-6a5c98f627d21-16-li" class="menu-item nav-item menu-item-16 menu-item-ID-16 menu-item-type-custom icon css-icon--youtube"><a data-gtmplacement="Footer menu" href="https://www.youtube.com/ecovadis/" target="_blank" rel="nofollow noopener noreferrer" class="menu-item menu-item-link">YouTube</a></li></ul></div></li>		</ul>
+	</nav>
+
+		<div class="footer-ai-bar">
+							<a href="/" class="footer-logo">
+					<img width="108" height="20" src="https://ecovadis.com/wp-content/uploads/2026/05/revamp-logo-light.svg" class="attachment-full size-full" alt="" decoding="async" loading="lazy" />				</a>
+													<div class="footer-ai">
+											<span class="footer-ai-label">Ask your Ai about Ecovadis</span>
+					
+					<ul class="footer-ai-icons">
+													<li>
+																<a href="https://chatgpt.com/?q=What+is+EcoVadis%3F"
+								   target="_blank"
+								   rel="noopener noreferrer"
+								>
+																		<img src="https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/images/ai/chat-gpt-white.svg"
+									     alt="ChatGPT AI"
+									>
+								</a>
+							</li>
+													<li>
+																<a href="https://www.google.com/search?udm=50&#038;aep=11&#038;q=What+is+EcoVadis%3F"
+								   target="_blank"
+								   rel="noopener noreferrer"
+								>
+																		<img src="https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/images/ai/gemini-white.svg"
+									     alt="Gemini AI"
+									>
+								</a>
+							</li>
+													<li>
+																<a href="https://www.perplexity.ai/search/new?q=What+is+EcoVadis%3F"
+								   target="_blank"
+								   rel="noopener noreferrer"
+								>
+																		<img src="https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/images/ai/perplexity-white.svg"
+									     alt="Perplexity AI"
+									>
+								</a>
+							</li>
+													<li>
+																<a href="https://claude.ai/new/?q=What+is+EcoVadis%3F"
+								   target="_blank"
+								   rel="noopener noreferrer"
+								>
+																		<img src="https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/images/ai/claude-white.svg"
+									     alt="Claude AI"
+									>
+								</a>
+							</li>
+													<li>
+																<a href="https://x.com/i/grok?text=What+is+EcoVadis%3F"
+								   target="_blank"
+								   rel="noopener noreferrer"
+								>
+																		<img src="https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/images/ai/grok-white.svg"
+									     alt="Grok AI"
+									>
+								</a>
+							</li>
+											</ul>
+				</div>
+					</div>
+
+					<ul class="footer-links footer-links-mobile">
+																				<li>
+							<a href="https://ecovadis.com/contact-us/" class>Contact Us</a>						</li>
+																									<li>
+							<a href="https://ecovadis.com/plans-pricing/" class>Plans &amp; Pricing</a>						</li>
+																									<li>
+							<a href="https://ecovadis.com/about-us/" class>About us</a>						</li>
+												</ul>
+		
+		<div class="footer-bottom">
+			<div class="footer-copyright">
+				<div class="footer-logo-mobile">
+											<img width="108" height="20" src="https://ecovadis.com/wp-content/uploads/2026/05/revamp-logo-light.svg" class="attachment-full size-full" alt="" decoding="async" loading="lazy" />									</div>
+				<p>Copyright © 2026 EcoVadis ®</p>
+			</div>
+			<ul class="footer-legal">
+																					<li>
+							<a href="https://ecovadis.com/trust-center/rated-company-terms-and-conditions/"
+							   target="_self"
+							>User agreements</a>
+						</li>
+																	<li>
+							<a href="https://ecovadis.com/trust-center/data-privacy/"
+							   target="_self"
+							>Data Privacy</a>
+						</li>
+																	<li>
+							<a href="https://ecovadis.com/trust-center/legal/"
+							   target="_self"
+							>Legal</a>
+						</li>
+													<li><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></li>
+			</ul>
+		</div>
+	</div>
+
+</footer>
+
+	<div class="popups-container">
+								<div id="modal-popup-19173"
+			     tabindex="-1"
+			     role="dialog"
+			     aria-labelledby="modal-popup-19173"
+			     aria-hidden="true"
+			     data-show="true"
+				data-backdrop="true" data-trigger-type="session" data-timing-type="scrolling"				 class="modal modal-popup variant--green-2025 weglot-no-translate"
+			>
+				<div role="document" class="modal-dialog modal-dialog-centered position-v-middle position-h-center modal-lg"
+				>
+					<div class="modal-content">
+						<div class="modal-body">
+							<button
+								type="button"
+								class="close"
+								data-dismiss="modal"
+								aria-label="Close"
+							><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M8.495 1.077L1.077 8.495m0-7.418l7.418 7.418"/></svg></button>
+							<div class="content-wrapper">
+								<div class="scroll-content">
+																		<div class="row">
+																					<div class="content-column col-12"
+											>
+																																							<h2 class="column-title">CSRD Webinar: Future-Proof Your Business with Transparency</h2>
+																																								<div class="image-wrapper">
+															<img width="486" height="500" src="https://ecovadis.com/wp-content/uploads/2025/07/popup-hero-page.png" class="img-fluid" alt="" style="--image-width:auto" decoding="async" loading="lazy" srcset="https://ecovadis.com/wp-content/uploads/2025/07/popup-hero-page.png 486w, https://ecovadis.com/wp-content/uploads/2025/07/popup-hero-page-292x300.png 292w, https://ecovadis.com/wp-content/uploads/2025/07/popup-hero-page-58x60.png 58w, https://ecovadis.com/wp-content/uploads/2025/07/popup-hero-page-150x154.png 150w" sizes="auto, (max-width: 486px) 100vw, 486px" />														</div>
+																																								<div class="content"><p>Understand recent CSRD changes so you can meet new demands with confidence</p>
+</div>
+																																								<div class="buttons-container">
+																																															<a href="https://resources.ecovadis.com/webinars/csrd-deep-dive-future-proofing-your-business-with-transparency?internal_referrer=regulations-compliance"
+																   target="_blank"
+																   title="Watch now"
+																   data-popup="2025-07 Regulations Compliance (hero) [EN]"
+																   data-gtmplacement="popup-19173"
+																   class="btn btn-default btn-link modal-popup-link btn-green btn-reversed"
+																>Watch now</a>
+																													</div>
+																																																</div>
+																			</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+								<div id="modal-popup-19178"
+			     tabindex="-1"
+			     role="dialog"
+			     aria-labelledby="modal-popup-19178"
+			     aria-hidden="true"
+			     data-show="true"
+				data-backdrop="true" data-trigger-type="session" data-timing-type="scrolling"				 class="modal modal-popup variant--green-2025 weglot-no-translate"
+			>
+				<div role="document" class="modal-dialog modal-dialog-centered position-v-middle position-h-center modal-lg"
+				>
+					<div class="modal-content">
+						<div class="modal-body">
+							<button
+								type="button"
+								class="close"
+								data-dismiss="modal"
+								aria-label="Close"
+							><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M8.495 1.077L1.077 8.495m0-7.418l7.418 7.418"/></svg></button>
+							<div class="content-wrapper">
+								<div class="scroll-content">
+																		<div class="row">
+																					<div class="content-column col-12"
+											>
+																																							<h2 class="column-title">Ebook: Building an Ethical  Supply Chain</h2>
+																																								<div class="image-wrapper">
+															<img width="474" height="500" src="https://ecovadis.com/wp-content/uploads/2025/07/popup-modern-slavery.png" class="img-fluid" alt="" style="--image-width:auto" decoding="async" loading="lazy" srcset="https://ecovadis.com/wp-content/uploads/2025/07/popup-modern-slavery.png 474w, https://ecovadis.com/wp-content/uploads/2025/07/popup-modern-slavery-284x300.png 284w, https://ecovadis.com/wp-content/uploads/2025/07/popup-modern-slavery-57x60.png 57w, https://ecovadis.com/wp-content/uploads/2025/07/popup-modern-slavery-150x158.png 150w" sizes="auto, (max-width: 474px) 100vw, 474px" />														</div>
+																																								<div class="content"><p>Your guide to fighting modern slavery  in your supply chains</p>
+</div>
+																																								<div class="buttons-container">
+																																															<a href="https://resources.ecovadis.com/whitepapers/the-fight-against-modern-slavery-building-ethical-and-resilient-supply-chains"
+																   target="_blank"
+																   title="Get the Guide"
+																   data-popup="2025-07 Modern Slavery [EN]"
+																   data-gtmplacement="popup-19178"
+																   class="btn btn-default btn-link modal-popup-link btn-green btn-reversed"
+																>Get the Guide</a>
+																													</div>
+																																																</div>
+																			</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+								<div id="modal-popup-19179"
+			     tabindex="-1"
+			     role="dialog"
+			     aria-labelledby="modal-popup-19179"
+			     aria-hidden="true"
+			     data-show="true"
+				data-backdrop="true" data-trigger-type="session" data-timing-type="scrolling"				 class="modal modal-popup variant--green-2025 weglot-no-translate"
+			>
+				<div role="document" class="modal-dialog modal-dialog-centered position-v-middle position-h-center modal-lg"
+				>
+					<div class="modal-content">
+						<div class="modal-body">
+							<button
+								type="button"
+								class="close"
+								data-dismiss="modal"
+								aria-label="Close"
+							><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M8.495 1.077L1.077 8.495m0-7.418l7.418 7.418"/></svg></button>
+							<div class="content-wrapper">
+								<div class="scroll-content">
+																		<div class="row">
+																					<div class="content-column col-12"
+											>
+																																							<h2 class="column-title">Ebook: Confused by the Omnibus Package?</h2>
+																																								<div class="image-wrapper">
+															<img width="498" height="500" src="https://ecovadis.com/wp-content/uploads/2025/07/popup-csrd.png" class="img-fluid" alt="" style="--image-width:auto" decoding="async" loading="lazy" srcset="https://ecovadis.com/wp-content/uploads/2025/07/popup-csrd.png 498w, https://ecovadis.com/wp-content/uploads/2025/07/popup-csrd-300x300.png 300w, https://ecovadis.com/wp-content/uploads/2025/07/popup-csrd-150x151.png 150w, https://ecovadis.com/wp-content/uploads/2025/07/popup-csrd-60x60.png 60w" sizes="auto, (max-width: 498px) 100vw, 498px" />														</div>
+																																								<div class="content"><p>Find answers to your questions in this essential FAQ ebook.</p>
+</div>
+																																								<div class="buttons-container">
+																																															<a href="https://resources.ecovadis.com/supply-chain-risks-and-regulations/ecovadis-faq-omnibus-simplification-package?internal_referrer=cs3d-and-csrd-value-chain-compliance"
+																   target="_blank"
+																   title="Download Now"
+																   data-popup="2025-07 CSRD CS3D [EN]"
+																   data-gtmplacement="popup-19179"
+																   class="btn btn-default btn-link modal-popup-link btn-green btn-reversed"
+																>Download Now</a>
+																													</div>
+																																																</div>
+																			</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+								<div id="modal-popup-19180"
+			     tabindex="-1"
+			     role="dialog"
+			     aria-labelledby="modal-popup-19180"
+			     aria-hidden="true"
+			     data-show="true"
+				data-backdrop="true" data-trigger-type="session" data-timing-type="scrolling"				 class="modal modal-popup variant--green-2025 weglot-no-translate"
+			>
+				<div role="document" class="modal-dialog modal-dialog-centered position-v-middle position-h-center modal-lg"
+				>
+					<div class="modal-content">
+						<div class="modal-body">
+							<button
+								type="button"
+								class="close"
+								data-dismiss="modal"
+								aria-label="Close"
+							><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M8.495 1.077L1.077 8.495m0-7.418l7.418 7.418"/></svg></button>
+							<div class="content-wrapper">
+								<div class="scroll-content">
+																		<div class="row">
+																					<div class="content-column col-12"
+											>
+																																							<h2 class="column-title">Blog: Understand the Latest LkSG Updates</h2>
+																																								<div class="image-wrapper">
+															<img width="519" height="500" src="https://ecovadis.com/wp-content/uploads/2025/07/popup-lksg.png" class="img-fluid" alt="" style="--image-width:auto" decoding="async" loading="lazy" srcset="https://ecovadis.com/wp-content/uploads/2025/07/popup-lksg.png 519w, https://ecovadis.com/wp-content/uploads/2025/07/popup-lksg-300x289.png 300w, https://ecovadis.com/wp-content/uploads/2025/07/popup-lksg-62x60.png 62w, https://ecovadis.com/wp-content/uploads/2025/07/popup-lksg-150x145.png 150w" sizes="auto, (max-width: 519px) 100vw, 519px" />														</div>
+																																								<div class="content"><p>Curious about the latest developments? Check out our blog to learn more.</p>
+</div>
+																																								<div class="buttons-container">
+																																															<a href="https://resources.ecovadis.com/blog/fact-or-fiction-what-companies-really-need-to-know-now-about-germany-s-supply-chain-act?internal_referrer=german-supply-chain-due-diligence-act-lksg"
+																   target="_blank"
+																   title="Read More"
+																   data-popup="2025-07 LkSG Solution [EN]"
+																   data-gtmplacement="popup-19180"
+																   class="btn btn-default btn-link modal-popup-link btn-green btn-reversed"
+																>Read More</a>
+																													</div>
+																																																</div>
+																			</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+																																																																																												<div id="modal-popup-24674"
+			     tabindex="-1"
+			     role="dialog"
+			     aria-labelledby="modal-popup-24674"
+			     aria-hidden="true"
+			     data-show="true"
+				data-backdrop="false" data-trigger-type="session" data-timing-type="instantly"				 class="modal modal-popup variant--default background-disabled"
+			>
+				<div role="document" class="modal-dialog modal-dialog-centered position-v-bottom position-h-right modal-md"
+				>
+					<div class="modal-content">
+						<div class="modal-body">
+							<button
+								type="button"
+								class="close"
+								data-dismiss="modal"
+								aria-label="Close"
+							><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M8.495 1.077L1.077 8.495m0-7.418l7.418 7.418"/></svg></button>
+							<div class="content-wrapper">
+								<div class="scroll-content">
+																			<h2 class="">EcoVadis Sustain 2026 <br>is available on-demand!</h2>
+																		<div class="row">
+																					<div class="content-column col-12 col-lg text-center vertical-top"
+											>
+																																																				<div class="image-wrapper">
+															<img width="700" height="237" src="https://ecovadis.com/wp-content/uploads/2026/03/2025_12_18_Sustain2026_Uberflip-header-nodate.webp" class="img-fluid" alt="" style="--image-width:350px" decoding="async" loading="lazy" srcset="https://ecovadis.com/wp-content/uploads/2026/03/2025_12_18_Sustain2026_Uberflip-header-nodate.webp 700w, https://ecovadis.com/wp-content/uploads/2026/03/2025_12_18_Sustain2026_Uberflip-header-nodate-300x102.webp 300w, https://ecovadis.com/wp-content/uploads/2026/03/2025_12_18_Sustain2026_Uberflip-header-nodate-177x60.webp 177w, https://ecovadis.com/wp-content/uploads/2026/03/2025_12_18_Sustain2026_Uberflip-header-nodate-150x51.webp 150w" sizes="auto, (max-width: 700px) 100vw, 700px" />														</div>
+																																								<div class="content"><p>Gain insights from 30+ sustainability leaders, including superstars like Paul Polman, former CEO of Unilever, and Helena Helmersson, former CEO of H&amp;M Group. Learn how to build a sustained advantage through responsible business practices.</p>
+</div>
+																																								<div class="buttons-container">
+																																															<a href="https://resources.ecovadis.com/sustain-conference?utm_medium=referral&utm_source=ev10&utm_campaign=2026-03-eu-sustain"
+																   target="_blank"
+																   title="Watch On-Demand"
+																   data-popup="2026-03 Sustain on demand website pop up"
+																   data-gtmplacement="popup-24674"
+																   class="btn btn-default btn-link modal-popup-link btn-green"
+																>Watch On-Demand</a>
+																													</div>
+																																																</div>
+																			</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+								<div id="modal-popup-12161"
+			     tabindex="-1"
+			     role="dialog"
+			     aria-labelledby="modal-popup-12161"
+			     aria-hidden="true"
+			     data-show="true"
+				data-backdrop="false" data-trigger-type="session" data-timing-type="delayed" data-timing-delay="120"				 class="modal modal-popup variant--default background-disabled weglot-no-translate"
+			>
+				<div role="document" class="modal-dialog modal-dialog-centered position-v-bottom position-h-right modal-md"
+				>
+					<div class="modal-content">
+						<div class="modal-body">
+							<button
+								type="button"
+								class="close"
+								data-dismiss="modal"
+								aria-label="Close"
+							><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M8.495 1.077L1.077 8.495m0-7.418l7.418 7.418"/></svg></button>
+							<div class="content-wrapper">
+								<div class="scroll-content">
+																		<div class="row">
+																					<div class="content-column col-12 col-lg text-center vertical-top"
+											>
+																																							<h2 class="column-title">Ready to get started?</h2>
+																																																					<div class="content"><p><strong>Get detailed insights for compliance, improvement and acceleration on your sustainability journey!</strong></p>
+</div>
+																																								<div class="buttons-container">
+																																															<a href="https://ecovadis.com/contact-us/?utm_medium=referral&utm_source=ev-popup&utm_campaign=2024-04-contact-us-enterprise"
+																   target="_blank"
+																   title="Let's Talk"
+																   data-popup="2024-04 Contact Us &#8211; Enterprise [EN]"
+																   data-gtmplacement="popup-12161"
+																   class="btn btn-default btn-link modal-popup-link btn-green"
+																>Let's Talk</a>
+																													</div>
+																																																</div>
+																			</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+								<div id="modal-popup-12162"
+			     tabindex="-1"
+			     role="dialog"
+			     aria-labelledby="modal-popup-12162"
+			     aria-hidden="true"
+			     data-show="true"
+				data-backdrop="false" data-trigger-type="session" data-timing-type="delayed" data-timing-delay="120"				 class="modal modal-popup variant--default background-disabled weglot-no-translate"
+			>
+				<div role="document" class="modal-dialog modal-dialog-centered position-v-bottom position-h-right modal-md"
+				>
+					<div class="modal-content">
+						<div class="modal-body">
+							<button
+								type="button"
+								class="close"
+								data-dismiss="modal"
+								aria-label="Close"
+							><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M8.495 1.077L1.077 8.495m0-7.418l7.418 7.418"/></svg></button>
+							<div class="content-wrapper">
+								<div class="scroll-content">
+																		<div class="row">
+																					<div class="content-column col-12 col-lg text-center vertical-top"
+											>
+																																							<h2 class="column-title">Ready to get started?</h2>
+																																																					<div class="content"><p><strong>Get detailed insights for compliance, improvement and acceleration on your sustainability journey!</strong></p>
+</div>
+																																								<div class="buttons-container">
+																																															<a href="https://ecovadis.com/contact-us/?utm_medium=referral&utm_source=ev-popup&utm_campaign=2024-04-contact-us-plans-and-pricing"
+																   target="_blank"
+																   title="Let's Talk"
+																   data-popup="2024-04 Contact Us &#8211; Plans and Pricing [EN]"
+																   data-gtmplacement="popup-12162"
+																   class="btn btn-default btn-link modal-popup-link btn-green"
+																>Let's Talk</a>
+																													</div>
+																																																</div>
+																			</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+								<div id="modal-popup-12163"
+			     tabindex="-1"
+			     role="dialog"
+			     aria-labelledby="modal-popup-12163"
+			     aria-hidden="true"
+			     data-show="true"
+				data-backdrop="false" data-trigger-type="session" data-timing-type="delayed" data-timing-delay="120"				 class="modal modal-popup variant--default background-disabled weglot-no-translate"
+			>
+				<div role="document" class="modal-dialog modal-dialog-centered position-v-bottom position-h-right modal-md"
+				>
+					<div class="modal-content">
+						<div class="modal-body">
+							<button
+								type="button"
+								class="close"
+								data-dismiss="modal"
+								aria-label="Close"
+							><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M8.495 1.077L1.077 8.495m0-7.418l7.418 7.418"/></svg></button>
+							<div class="content-wrapper">
+								<div class="scroll-content">
+																		<div class="row">
+																					<div class="content-column col-12 col-lg text-center vertical-top"
+											>
+																																							<h2 class="column-title">Ready to get started?</h2>
+																																																					<div class="content"><p><strong>Get detailed insights for compliance, improvement and acceleration on your sustainability journey!</strong></p>
+</div>
+																																								<div class="buttons-container">
+																																															<a href="https://ecovadis.com/contact-us/?utm_medium=referral&utm_source=ev-popup&utm_campaign=2024-04-contact-us-about"
+																   target="_blank"
+																   title="Let's Talk"
+																   data-popup="2024-04 Contact Us &#8211; About [EN]"
+																   data-gtmplacement="popup-12163"
+																   class="btn btn-default btn-link modal-popup-link btn-green"
+																>Let's Talk</a>
+																													</div>
+																																																</div>
+																			</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+								<div id="modal-popup-12164"
+			     tabindex="-1"
+			     role="dialog"
+			     aria-labelledby="modal-popup-12164"
+			     aria-hidden="true"
+			     data-show="true"
+				data-backdrop="false" data-trigger-type="session" data-timing-type="delayed" data-timing-delay="120"				 class="modal modal-popup variant--default background-disabled weglot-no-translate"
+			>
+				<div role="document" class="modal-dialog modal-dialog-centered position-v-bottom position-h-right modal-md"
+				>
+					<div class="modal-content">
+						<div class="modal-body">
+							<button
+								type="button"
+								class="close"
+								data-dismiss="modal"
+								aria-label="Close"
+							><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M8.495 1.077L1.077 8.495m0-7.418l7.418 7.418"/></svg></button>
+							<div class="content-wrapper">
+								<div class="scroll-content">
+																		<div class="row">
+																					<div class="content-column col-12 col-lg text-center vertical-top"
+											>
+																																							<h2 class="column-title">Ready to get started?</h2>
+																																																					<div class="content"><p><strong>Get detailed insights for compliance, improvement and acceleration on your sustainability journey!</strong></p>
+</div>
+																																								<div class="buttons-container">
+																																															<a href="https://ecovadis.com/contact-us/?utm_medium=referral&utm_source=ev-popup&utm_campaign=2024-04-contact-us-sustainable-finance"
+																   target="_blank"
+																   title="Let's Talk"
+																   data-popup="2024-04 Contact Us &#8211; Sustainable Finance [EN]"
+																   data-gtmplacement="popup-12164"
+																   class="btn btn-default btn-link modal-popup-link btn-green"
+																>Let's Talk</a>
+																													</div>
+																																																</div>
+																			</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+								<div id="modal-popup-12165"
+			     tabindex="-1"
+			     role="dialog"
+			     aria-labelledby="modal-popup-12165"
+			     aria-hidden="true"
+			     data-show="true"
+				data-backdrop="false" data-trigger-type="session" data-timing-type="delayed" data-timing-delay="120"				 class="modal modal-popup variant--default background-disabled weglot-no-translate"
+			>
+				<div role="document" class="modal-dialog modal-dialog-centered position-v-bottom position-h-right modal-md"
+				>
+					<div class="modal-content">
+						<div class="modal-body">
+							<button
+								type="button"
+								class="close"
+								data-dismiss="modal"
+								aria-label="Close"
+							><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M8.495 1.077L1.077 8.495m0-7.418l7.418 7.418"/></svg></button>
+							<div class="content-wrapper">
+								<div class="scroll-content">
+																		<div class="row">
+																					<div class="content-column col-12 col-lg text-center vertical-top"
+											>
+																																							<h2 class="column-title">Ready to get started?</h2>
+																																																					<div class="content"><p><strong>Get detailed insights for compliance, improvement and acceleration on your sustainability journey!</strong></p>
+</div>
+																																								<div class="buttons-container">
+																																															<a href="https://ecovadis.com/contact-us/?utm_medium=referral&utm_source=ev-popup&utm_campaign=2024-04-contact-us-regulations-and-compliance"
+																   target="_blank"
+																   title="Let's Talk"
+																   data-popup="2024-04 Contact Us &#8211; Regulations and Compliance [EN]"
+																   data-gtmplacement="popup-12165"
+																   class="btn btn-default btn-link modal-popup-link btn-green"
+																>Let's Talk</a>
+																													</div>
+																																																</div>
+																			</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+								<div id="modal-popup-16535"
+			     tabindex="-1"
+			     role="dialog"
+			     aria-labelledby="modal-popup-16535"
+			     aria-hidden="true"
+			     data-show="true"
+				data-backdrop="false" data-trigger-type="session" data-timing-type="instantly"				 class="modal modal-popup variant--default background-disabled weglot-no-translate"
+			>
+				<div role="document" class="modal-dialog modal-dialog-centered position-v-bottom position-h-right modal-md"
+				>
+					<div class="modal-content">
+						<div class="modal-body">
+							<button
+								type="button"
+								class="close"
+								data-dismiss="modal"
+								aria-label="Close"
+							><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M8.495 1.077L1.077 8.495m0-7.418l7.418 7.418"/></svg></button>
+							<div class="content-wrapper">
+								<div class="scroll-content">
+																		<div class="row">
+																					<div class="content-column col-12 col-lg text-center vertical-top"
+											>
+																																							<h2 class="column-title">Free Carbon Risk Mapping Sample</h2>
+																																								<div class="image-wrapper">
+															<img width="200" height="200" src="https://ecovadis.com/wp-content/uploads/2023/03/Carbon-icons_Identify-Risk-1.svg" class="img-fluid" alt="" style="--image-width:100px" decoding="async" loading="lazy" />														</div>
+																																								<div class="content"><p>Uncover Your Carbon Emissions with EcoVadis’ Free Carbon Risk Mapping Sample.</p>
+</div>
+																																								<div class="buttons-container">
+																																															<a href="https://ecovadis.com/lp/free-carbon-risk-mapping-scope-3-emissions/"
+																   target="_blank"
+																   title="Get Started"
+																   data-popup="2025-03 Free Carbon Risk Mapping (US) [EN]"
+																   data-gtmplacement="popup-16535"
+																   class="btn btn-default btn-link modal-popup-link btn-green"
+																>Get Started</a>
+																													</div>
+																																																</div>
+																			</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+											<div id="modal-popup-16536"
+			     tabindex="-1"
+			     role="dialog"
+			     aria-labelledby="modal-popup-16536"
+			     aria-hidden="true"
+			     data-show="true"
+				data-backdrop="false" data-trigger-type="session" data-timing-type="instantly"				 class="modal modal-popup variant--default background-disabled"
+			>
+				<div role="document" class="modal-dialog modal-dialog-centered position-v-bottom position-h-right modal-md"
+				>
+					<div class="modal-content">
+						<div class="modal-body">
+							<button
+								type="button"
+								class="close"
+								data-dismiss="modal"
+								aria-label="Close"
+							><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M8.495 1.077L1.077 8.495m0-7.418l7.418 7.418"/></svg></button>
+							<div class="content-wrapper">
+								<div class="scroll-content">
+																		<div class="row">
+																					<div class="content-column col-12 col-lg text-center vertical-top"
+											>
+																																							<h2 class="column-title">Free Supplier Risk Mapping Sample</h2>
+																																								<div class="image-wrapper">
+															<img width="131" height="143" src="https://ecovadis.com/wp-content/uploads/2025/01/vitals.png" class="img-fluid" alt="" style="--image-width:100px" decoding="async" loading="lazy" srcset="https://ecovadis.com/wp-content/uploads/2025/01/vitals.png 131w, https://ecovadis.com/wp-content/uploads/2025/01/vitals-55x60.png 55w" sizes="auto, (max-width: 131px) 100vw, 131px" />														</div>
+																																								<div class="content"><p>Get a free sample mapping of ESG risks &amp; opportunities across 100 of your suppliers.</p>
+</div>
+																																								<div class="buttons-container">
+																																															<a href="https://ecovadis.com/lp/free-supplier-risk-mapping-modern-slavery/"
+																   target="_blank"
+																   title="Get Started"
+																   data-popup="2025-03 Free Supplier Risk Mapping (US) [EN] &#8211; Weglot translated"
+																   data-gtmplacement="popup-16536"
+																   class="btn btn-default btn-link modal-popup-link btn-green"
+																>Get Started</a>
+																													</div>
+																																																</div>
+																			</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+	<script>
+		POPUPS_ARRAY = [{"id":19173,"content_columns":[{"select_content_type":"content","content_alignment":"center","vertical_content_alignment":"top","title":"CSRD Webinar: Future-Proof Your Business with Transparency","image":{"ID":19174,"id":19174,"title":"popup-hero-page","filename":"popup-hero-page.png","filesize":"301573","url":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-hero-page.png","link":"https:\/\/ecovadis.com\/popup\/2025-07-test-popup\/popup-hero-page\/","alt":"","author":"1","description":"","caption":"","name":"popup-hero-page","status":"inherit","uploaded_to":19173,"date":"2025-07-14 08:58:16","modified":"2025-07-14 08:58:16","menu_order":0,"mime_type":"image\/png","type":"image","subtype":"png","icon":"https:\/\/ecovadis.com\/wp-includes\/images\/media\/default.png","width":486,"height":500,"sizes":{"thumbnail":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-hero-page-150x150.png","thumbnail-width":150,"thumbnail-height":150,"medium":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-hero-page-292x300.png","medium-width":292,"medium-height":300,"medium_large":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-hero-page.png","medium_large-width":486,"medium_large-height":500,"large":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-hero-page.png","large-width":486,"large-height":500,"1536x1536":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-hero-page.png","1536x1536-width":486,"1536x1536-height":500,"2048x2048":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-hero-page.png","2048x2048-width":486,"2048x2048-height":500,"logo_height":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-hero-page-58x60.png","logo_height-width":58,"logo_height-height":60,"logo":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-hero-page-150x154.png","logo-width":150,"logo-height":154,"fhd":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-hero-page.png","fhd-width":486,"fhd-height":500,"top_banner":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-hero-page.png","top_banner-width":486,"top_banner-height":500,"bootstrap_container":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-hero-page.png","bootstrap_container-width":486,"bootstrap_container-height":500}},"image_width":"","content":"<p>Understand recent CSRD changes so you can meet new demands with confidence<\/p>\n","buttons":[{"link":{"title":"Watch now","url":"https:\/\/resources.ecovadis.com\/webinars\/csrd-deep-dive-future-proofing-your-business-with-transparency?internal_referrer=regulations-compliance","target":"_blank"},"color":{"select_color":"current"},"trigger_pathmotion_frame":false}],"pardot_form_link":""}],"is_hidden":false,"background_disabled":false,"trigger":{"trigger":"session","show_each_x_days":""},"timing":{"timing":"scrolling","delayed_seconds":5}},{"id":19178,"content_columns":[{"select_content_type":"content","content_alignment":"center","vertical_content_alignment":"top","title":"Ebook: Building an Ethical \u2028Supply Chain","image":{"ID":19176,"id":19176,"title":"popup-modern-slavery","filename":"popup-modern-slavery.png","filesize":"319866","url":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-modern-slavery.png","link":"https:\/\/ecovadis.com\/popup\/2025-07-test-popup\/popup-modern-slavery\/","alt":"","author":"1","description":"","caption":"","name":"popup-modern-slavery","status":"inherit","uploaded_to":19173,"date":"2025-07-14 08:58:24","modified":"2025-07-14 08:58:24","menu_order":0,"mime_type":"image\/png","type":"image","subtype":"png","icon":"https:\/\/ecovadis.com\/wp-includes\/images\/media\/default.png","width":474,"height":500,"sizes":{"thumbnail":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-modern-slavery-150x150.png","thumbnail-width":150,"thumbnail-height":150,"medium":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-modern-slavery-284x300.png","medium-width":284,"medium-height":300,"medium_large":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-modern-slavery.png","medium_large-width":474,"medium_large-height":500,"large":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-modern-slavery.png","large-width":474,"large-height":500,"1536x1536":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-modern-slavery.png","1536x1536-width":474,"1536x1536-height":500,"2048x2048":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-modern-slavery.png","2048x2048-width":474,"2048x2048-height":500,"logo_height":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-modern-slavery-57x60.png","logo_height-width":57,"logo_height-height":60,"logo":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-modern-slavery-150x158.png","logo-width":150,"logo-height":158,"fhd":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-modern-slavery.png","fhd-width":474,"fhd-height":500,"top_banner":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-modern-slavery.png","top_banner-width":474,"top_banner-height":500,"bootstrap_container":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-modern-slavery.png","bootstrap_container-width":474,"bootstrap_container-height":500}},"image_width":"","content":"<p>Your guide to fighting modern slavery \u2028in your supply chains<\/p>\n","buttons":[{"link":{"title":"Get the Guide","url":"https:\/\/resources.ecovadis.com\/whitepapers\/the-fight-against-modern-slavery-building-ethical-and-resilient-supply-chains","target":"_blank"},"color":{"select_color":"current"},"trigger_pathmotion_frame":false}],"pardot_form_link":""}],"is_hidden":false,"background_disabled":false,"trigger":{"trigger":"session","show_each_x_days":""},"timing":{"timing":"scrolling","delayed_seconds":5}},{"id":19179,"content_columns":[{"select_content_type":"content","content_alignment":"center","vertical_content_alignment":"top","title":"Ebook: Confused by the Omnibus Package?","image":{"ID":19177,"id":19177,"title":"popup-csrd","filename":"popup-csrd.png","filesize":"294761","url":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-csrd.png","link":"https:\/\/ecovadis.com\/popup\/2025-07-test-popup\/popup-csrd\/","alt":"","author":"1","description":"","caption":"","name":"popup-csrd","status":"inherit","uploaded_to":19173,"date":"2025-07-14 08:58:28","modified":"2025-07-14 08:58:28","menu_order":0,"mime_type":"image\/png","type":"image","subtype":"png","icon":"https:\/\/ecovadis.com\/wp-includes\/images\/media\/default.png","width":498,"height":500,"sizes":{"thumbnail":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-csrd-150x150.png","thumbnail-width":150,"thumbnail-height":150,"medium":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-csrd-300x300.png","medium-width":300,"medium-height":300,"medium_large":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-csrd.png","medium_large-width":498,"medium_large-height":500,"large":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-csrd.png","large-width":498,"large-height":500,"1536x1536":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-csrd.png","1536x1536-width":498,"1536x1536-height":500,"2048x2048":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-csrd.png","2048x2048-width":498,"2048x2048-height":500,"logo_height":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-csrd-60x60.png","logo_height-width":60,"logo_height-height":60,"logo":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-csrd-150x151.png","logo-width":150,"logo-height":151,"fhd":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-csrd.png","fhd-width":498,"fhd-height":500,"top_banner":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-csrd.png","top_banner-width":498,"top_banner-height":500,"bootstrap_container":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-csrd.png","bootstrap_container-width":498,"bootstrap_container-height":500}},"image_width":"","content":"<p>Find answers to your questions in this essential FAQ ebook.<\/p>\n","buttons":[{"link":{"title":"Download Now","url":"https:\/\/resources.ecovadis.com\/supply-chain-risks-and-regulations\/ecovadis-faq-omnibus-simplification-package?internal_referrer=cs3d-and-csrd-value-chain-compliance","target":"_blank"},"color":{"select_color":"current"},"trigger_pathmotion_frame":false}],"pardot_form_link":""}],"is_hidden":false,"background_disabled":false,"trigger":{"trigger":"session","show_each_x_days":""},"timing":{"timing":"scrolling","delayed_seconds":5}},{"id":19180,"content_columns":[{"select_content_type":"content","content_alignment":"center","vertical_content_alignment":"top","title":"Blog: Understand the Latest LkSG Updates","image":{"ID":19175,"id":19175,"title":"popup-lksg","filename":"popup-lksg.png","filesize":"262977","url":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-lksg.png","link":"https:\/\/ecovadis.com\/popup\/2025-07-test-popup\/popup-lksg\/","alt":"","author":"1","description":"","caption":"","name":"popup-lksg","status":"inherit","uploaded_to":19173,"date":"2025-07-14 08:58:20","modified":"2025-07-14 08:58:20","menu_order":0,"mime_type":"image\/png","type":"image","subtype":"png","icon":"https:\/\/ecovadis.com\/wp-includes\/images\/media\/default.png","width":519,"height":500,"sizes":{"thumbnail":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-lksg-150x150.png","thumbnail-width":150,"thumbnail-height":150,"medium":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-lksg-300x289.png","medium-width":300,"medium-height":289,"medium_large":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-lksg.png","medium_large-width":519,"medium_large-height":500,"large":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-lksg.png","large-width":519,"large-height":500,"1536x1536":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-lksg.png","1536x1536-width":519,"1536x1536-height":500,"2048x2048":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-lksg.png","2048x2048-width":519,"2048x2048-height":500,"logo_height":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-lksg-62x60.png","logo_height-width":62,"logo_height-height":60,"logo":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-lksg-150x145.png","logo-width":150,"logo-height":145,"fhd":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-lksg.png","fhd-width":519,"fhd-height":500,"top_banner":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-lksg.png","top_banner-width":519,"top_banner-height":500,"bootstrap_container":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/07\/popup-lksg.png","bootstrap_container-width":519,"bootstrap_container-height":500}},"image_width":"","content":"<p>Curious about the latest developments? Check out our blog to learn more.<\/p>\n","buttons":[{"link":{"title":"Read More","url":"https:\/\/resources.ecovadis.com\/blog\/fact-or-fiction-what-companies-really-need-to-know-now-about-germany-s-supply-chain-act?internal_referrer=german-supply-chain-due-diligence-act-lksg","target":"_blank"},"color":{"select_color":"current"},"trigger_pathmotion_frame":false}],"pardot_form_link":""}],"is_hidden":false,"background_disabled":false,"trigger":{"trigger":"session","show_each_x_days":""},"timing":{"timing":"scrolling","delayed_seconds":5}},{"id":24674,"content_columns":[{"select_content_type":"content","content_alignment":"center","vertical_content_alignment":"top","title":"","image":{"ID":24676,"id":24676,"title":"2025_12_18_Sustain2026_Uberflip-header-nodate","filename":"2025_12_18_Sustain2026_Uberflip-header-nodate.webp","filesize":"17942","url":"https:\/\/ecovadis.com\/wp-content\/uploads\/2026\/03\/2025_12_18_Sustain2026_Uberflip-header-nodate.webp","link":"https:\/\/ecovadis.com\/popup\/2026-03-sustain-on-demand-website-pop-up\/2025_12_18_sustain2026_uberflip-header-nodate\/","alt":"","author":"1","description":"","caption":"","name":"2025_12_18_sustain2026_uberflip-header-nodate","status":"inherit","uploaded_to":24674,"date":"2026-03-19 14:15:28","modified":"2026-03-19 14:15:28","menu_order":0,"mime_type":"image\/webp","type":"image","subtype":"webp","icon":"https:\/\/ecovadis.com\/wp-includes\/images\/media\/default.png","width":700,"height":237,"sizes":{"thumbnail":"https:\/\/ecovadis.com\/wp-content\/uploads\/2026\/03\/2025_12_18_Sustain2026_Uberflip-header-nodate-150x150.webp","thumbnail-width":150,"thumbnail-height":150,"medium":"https:\/\/ecovadis.com\/wp-content\/uploads\/2026\/03\/2025_12_18_Sustain2026_Uberflip-header-nodate-300x102.webp","medium-width":300,"medium-height":102,"medium_large":"https:\/\/ecovadis.com\/wp-content\/uploads\/2026\/03\/2025_12_18_Sustain2026_Uberflip-header-nodate.webp","medium_large-width":700,"medium_large-height":237,"large":"https:\/\/ecovadis.com\/wp-content\/uploads\/2026\/03\/2025_12_18_Sustain2026_Uberflip-header-nodate.webp","large-width":700,"large-height":237,"1536x1536":"https:\/\/ecovadis.com\/wp-content\/uploads\/2026\/03\/2025_12_18_Sustain2026_Uberflip-header-nodate.webp","1536x1536-width":700,"1536x1536-height":237,"2048x2048":"https:\/\/ecovadis.com\/wp-content\/uploads\/2026\/03\/2025_12_18_Sustain2026_Uberflip-header-nodate.webp","2048x2048-width":700,"2048x2048-height":237,"logo_height":"https:\/\/ecovadis.com\/wp-content\/uploads\/2026\/03\/2025_12_18_Sustain2026_Uberflip-header-nodate-177x60.webp","logo_height-width":177,"logo_height-height":60,"logo":"https:\/\/ecovadis.com\/wp-content\/uploads\/2026\/03\/2025_12_18_Sustain2026_Uberflip-header-nodate-150x51.webp","logo-width":150,"logo-height":51,"fhd":"https:\/\/ecovadis.com\/wp-content\/uploads\/2026\/03\/2025_12_18_Sustain2026_Uberflip-header-nodate.webp","fhd-width":700,"fhd-height":237,"top_banner":"https:\/\/ecovadis.com\/wp-content\/uploads\/2026\/03\/2025_12_18_Sustain2026_Uberflip-header-nodate.webp","top_banner-width":700,"top_banner-height":237,"bootstrap_container":"https:\/\/ecovadis.com\/wp-content\/uploads\/2026\/03\/2025_12_18_Sustain2026_Uberflip-header-nodate.webp","bootstrap_container-width":700,"bootstrap_container-height":237}},"image_width":"350","content":"<p>Gain insights from 30+ sustainability leaders, including superstars like Paul Polman, former CEO of Unilever, and Helena Helmersson, former CEO of H&amp;M Group. Learn how to build a sustained advantage through responsible business practices.<\/p>\n","buttons":[{"link":{"title":"Watch On-Demand","url":"https:\/\/resources.ecovadis.com\/sustain-conference?utm_medium=referral&utm_source=ev10&utm_campaign=2026-03-eu-sustain","target":"_blank"},"color":{"select_color":"current"},"trigger_pathmotion_frame":false}],"pardot_form_link":""}],"is_hidden":false,"background_disabled":true,"trigger":{"trigger":"session","show_each_x_days":""},"timing":{"timing":"instantly","delayed_seconds":5}},{"id":12161,"content_columns":[{"select_content_type":"content","content_alignment":"center","vertical_content_alignment":"top","title":"Ready to get started?","image":false,"image_width":"300","content":"<p><strong>Get detailed insights for compliance, improvement and acceleration on your sustainability journey!<\/strong><\/p>\n","buttons":[{"link":{"title":"Let's Talk","url":"https:\/\/ecovadis.com\/contact-us\/?utm_medium=referral&utm_source=ev-popup&utm_campaign=2024-04-contact-us-enterprise","target":"_blank"},"color":{"select_color":"current"},"trigger_pathmotion_frame":false}],"pardot_form_link":""}],"is_hidden":false,"background_disabled":true,"trigger":{"trigger":"session","show_each_x_days":""},"timing":{"timing":"delayed","delayed_seconds":"120"}},{"id":12162,"content_columns":[{"select_content_type":"content","content_alignment":"center","vertical_content_alignment":"top","title":"Ready to get started?","image":false,"image_width":"300","content":"<p><strong>Get detailed insights for compliance, improvement and acceleration on your sustainability journey!<\/strong><\/p>\n","buttons":[{"link":{"title":"Let's Talk","url":"https:\/\/ecovadis.com\/contact-us\/?utm_medium=referral&utm_source=ev-popup&utm_campaign=2024-04-contact-us-plans-and-pricing","target":"_blank"},"color":{"select_color":"current"},"trigger_pathmotion_frame":false}],"pardot_form_link":""}],"is_hidden":false,"background_disabled":true,"trigger":{"trigger":"session","show_each_x_days":""},"timing":{"timing":"delayed","delayed_seconds":"120"}},{"id":12163,"content_columns":[{"select_content_type":"content","content_alignment":"center","vertical_content_alignment":"top","title":"Ready to get started?","image":false,"image_width":"300","content":"<p><strong>Get detailed insights for compliance, improvement and acceleration on your sustainability journey!<\/strong><\/p>\n","buttons":[{"link":{"title":"Let's Talk","url":"https:\/\/ecovadis.com\/contact-us\/?utm_medium=referral&utm_source=ev-popup&utm_campaign=2024-04-contact-us-about","target":"_blank"},"color":{"select_color":"current"},"trigger_pathmotion_frame":false}],"pardot_form_link":""}],"is_hidden":false,"background_disabled":true,"trigger":{"trigger":"session","show_each_x_days":""},"timing":{"timing":"delayed","delayed_seconds":"120"}},{"id":12164,"content_columns":[{"select_content_type":"content","content_alignment":"center","vertical_content_alignment":"top","title":"Ready to get started?","image":false,"image_width":"300","content":"<p><strong>Get detailed insights for compliance, improvement and acceleration on your sustainability journey!<\/strong><\/p>\n","buttons":[{"link":{"title":"Let's Talk","url":"https:\/\/ecovadis.com\/contact-us\/?utm_medium=referral&utm_source=ev-popup&utm_campaign=2024-04-contact-us-sustainable-finance","target":"_blank"},"color":{"select_color":"current"},"trigger_pathmotion_frame":false}],"pardot_form_link":""}],"is_hidden":false,"background_disabled":true,"trigger":{"trigger":"session","show_each_x_days":""},"timing":{"timing":"delayed","delayed_seconds":"120"}},{"id":12165,"content_columns":[{"select_content_type":"content","content_alignment":"center","vertical_content_alignment":"top","title":"Ready to get started?","image":false,"image_width":"300","content":"<p><strong>Get detailed insights for compliance, improvement and acceleration on your sustainability journey!<\/strong><\/p>\n","buttons":[{"link":{"title":"Let's Talk","url":"https:\/\/ecovadis.com\/contact-us\/?utm_medium=referral&utm_source=ev-popup&utm_campaign=2024-04-contact-us-regulations-and-compliance","target":"_blank"},"color":{"select_color":"current"},"trigger_pathmotion_frame":false}],"pardot_form_link":""}],"is_hidden":false,"background_disabled":true,"trigger":{"trigger":"session","show_each_x_days":""},"timing":{"timing":"delayed","delayed_seconds":"120"}},{"id":16535,"content_columns":[{"select_content_type":"content","content_alignment":"center","vertical_content_alignment":"top","title":"Free Carbon Risk Mapping Sample","image":{"ID":8209,"id":8209,"title":"Carbon icons_Identify Risk","filename":"Carbon-icons_Identify-Risk-1.svg","filesize":6553,"url":"https:\/\/ecovadis.com\/wp-content\/uploads\/2023\/03\/Carbon-icons_Identify-Risk-1.svg","link":"https:\/\/ecovadis.com\/translations_temp_websites\/carbon-icons_identify-risk-2\/","alt":"","author":"1","description":"","caption":"","name":"carbon-icons_identify-risk-2","status":"inherit","uploaded_to":6905,"date":"2023-03-09 20:30:14","modified":"2023-03-09 20:30:14","menu_order":0,"mime_type":"image\/svg+xml","type":"image","subtype":"svg+xml","icon":"https:\/\/ecovadis.com\/wp-includes\/images\/media\/default.png","width":200,"height":200,"sizes":{"thumbnail":"https:\/\/ecovadis.com\/wp-content\/uploads\/2023\/03\/Carbon-icons_Identify-Risk-1.svg","thumbnail-width":200,"thumbnail-height":200,"medium":"https:\/\/ecovadis.com\/wp-content\/uploads\/2023\/03\/Carbon-icons_Identify-Risk-1.svg","medium-width":200,"medium-height":200,"medium_large":"https:\/\/ecovadis.com\/wp-content\/uploads\/2023\/03\/Carbon-icons_Identify-Risk-1.svg","medium_large-width":200,"medium_large-height":200,"large":"https:\/\/ecovadis.com\/wp-content\/uploads\/2023\/03\/Carbon-icons_Identify-Risk-1.svg","large-width":200,"large-height":200,"1536x1536":"https:\/\/ecovadis.com\/wp-content\/uploads\/2023\/03\/Carbon-icons_Identify-Risk-1.svg","1536x1536-width":200,"1536x1536-height":200,"2048x2048":"https:\/\/ecovadis.com\/wp-content\/uploads\/2023\/03\/Carbon-icons_Identify-Risk-1.svg","2048x2048-width":200,"2048x2048-height":200,"logo_height":"https:\/\/ecovadis.com\/wp-content\/uploads\/2023\/03\/Carbon-icons_Identify-Risk-1.svg","logo_height-width":200,"logo_height-height":200,"logo":"https:\/\/ecovadis.com\/wp-content\/uploads\/2023\/03\/Carbon-icons_Identify-Risk-1.svg","logo-width":200,"logo-height":200,"fhd":"https:\/\/ecovadis.com\/wp-content\/uploads\/2023\/03\/Carbon-icons_Identify-Risk-1.svg","fhd-width":200,"fhd-height":200,"top_banner":"https:\/\/ecovadis.com\/wp-content\/uploads\/2023\/03\/Carbon-icons_Identify-Risk-1.svg","top_banner-width":200,"top_banner-height":200,"bootstrap_container":"https:\/\/ecovadis.com\/wp-content\/uploads\/2023\/03\/Carbon-icons_Identify-Risk-1.svg","bootstrap_container-width":200,"bootstrap_container-height":200}},"image_width":"100","content":"<p>Uncover Your Carbon Emissions with EcoVadis\u2019 Free Carbon Risk Mapping Sample.<\/p>\n","buttons":[{"link":{"title":"Get Started","url":"https:\/\/ecovadis.com\/lp\/free-carbon-risk-mapping-scope-3-emissions\/","target":"_blank"},"color":{"select_color":"current"},"trigger_pathmotion_frame":false}],"pardot_form_link":""}],"is_hidden":false,"background_disabled":true,"trigger":{"trigger":"session","show_each_x_days":""},"timing":{"timing":"instantly","delayed_seconds":5}},{"id":16536,"content_columns":[{"select_content_type":"content","content_alignment":"center","vertical_content_alignment":"top","title":"Free Supplier Risk Mapping Sample","image":{"ID":14943,"id":14943,"title":"vitals","filename":"vitals.png","filesize":1316,"url":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/01\/vitals.png","link":"https:\/\/ecovadis.com\/?attachment_id=14943","alt":"","author":"15","description":"","caption":"","name":"vitals-2","status":"inherit","uploaded_to":14830,"date":"2025-01-23 17:54:19","modified":"2025-01-23 17:54:19","menu_order":0,"mime_type":"image\/png","type":"image","subtype":"png","icon":"https:\/\/ecovadis.com\/wp-includes\/images\/media\/default.png","width":131,"height":143,"sizes":{"thumbnail":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/01\/vitals.png","thumbnail-width":131,"thumbnail-height":143,"medium":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/01\/vitals.png","medium-width":131,"medium-height":143,"medium_large":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/01\/vitals.png","medium_large-width":131,"medium_large-height":143,"large":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/01\/vitals.png","large-width":131,"large-height":143,"1536x1536":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/01\/vitals.png","1536x1536-width":131,"1536x1536-height":143,"2048x2048":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/01\/vitals.png","2048x2048-width":131,"2048x2048-height":143,"logo_height":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/01\/vitals-55x60.png","logo_height-width":55,"logo_height-height":60,"logo":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/01\/vitals.png","logo-width":131,"logo-height":143,"fhd":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/01\/vitals.png","fhd-width":131,"fhd-height":143,"top_banner":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/01\/vitals.png","top_banner-width":131,"top_banner-height":143,"bootstrap_container":"https:\/\/ecovadis.com\/wp-content\/uploads\/2025\/01\/vitals.png","bootstrap_container-width":131,"bootstrap_container-height":143}},"image_width":"100","content":"<p>Get a free sample mapping of ESG risks &amp; opportunities across 100 of your suppliers.<\/p>\n","buttons":[{"link":{"title":"Get Started","url":"https:\/\/ecovadis.com\/lp\/free-supplier-risk-mapping-modern-slavery\/","target":"_blank"},"color":{"select_color":"current"},"trigger_pathmotion_frame":false}],"pardot_form_link":""}],"is_hidden":false,"background_disabled":true,"trigger":{"trigger":"session","show_each_x_days":""},"timing":{"timing":"instantly","delayed_seconds":5}}];
+	</script>
+
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/wp-bootstrap-gulp/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script data-wp-strategy="defer" defer id="app-js" src="https://ecovadis.com/wp-content/themes/wp-bootstrap-gulp/dist/js/app.min.js?v=5112b530e9bd4de923cb7a14385a9f4d"></script>
+
+<script type="text/plain" class="optanon-category-C0004">
+(function(d,b,a,s,e){ var t = b.createElement(a),
+  fs = b.getElementsByTagName(a)[0]; t.async=1; t.id=e; t.src=s;
+  fs.parentNode.insertBefore(t, fs); })
+(window,document,'script',' https://tag.demandbase.com/0d9ce740fd634341.min.js','demandbase_js_lib');
+</script><!-- Start of HubSpot Embed Code -->
+<script type="text/plain" class="optanon-category-C0004" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/26964883.js"></script>
+<!-- End of HubSpot Embed Code -->
+<div class="modal fade"
+     id="uniqueFooterModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="uniqueFooterModal"
+     aria-hidden="true"
+>
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<button type="button" class="close"
+				        data-dismiss="modal"
+				        aria-label="Close"
+				>
+					<span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M8.495 1.077L1.077 8.495m0-7.418l7.418 7.418"/></svg></span>
+				</button>
+				<h2></h2>
+				<div class="subtitle"></div>
+
+				<div class="hbspt-form-container">
+					<div class="thank-you-message"></div>
+					<div class="modal-hubspot-form custom-scrollbar"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

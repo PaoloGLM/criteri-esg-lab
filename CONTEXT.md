@@ -441,6 +441,23 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
 - Redactar les primeres preguntes (Paolo lidera el contingut ètic)
 - Exemple existent: "«Si la teva empresa desaparegués demà, qui ho notaria de veritat —i per què? La resposta et diu més sobre el teu valor real que cap mètrica ESG.»"
 
+### P4. IA consultora ESG incrustada a la web (idea de futur, Q1 2027)
+
+**Concepte**: una IA entrenada com a experta en ESG, amb accés als 16 documents oficials de certificacions, tota la biblioteca d'informes processats, i el criteri ètic de Criteri (5 criteris + "Més enllà del Checkbox"). Els usuaris poden fer preguntes directament com una consultoria IA.
+
+**Cas d'ús**: un director de sostenibilitat entra a `criteriesg.com/consultoria` i pregunta "¿Cómo me afecta la revisión del CSRD si tengo EcoVadis Plata?". La IA respon amb coneixement específic, cross-reference i accions recomanades.
+
+**Nivells d'accés**:
+- Gratis: 3 preguntes/dia, respostes breus
+- Premium: preguntes il·limitades, cross-reference i accions
+- Ultra: preguntes + anàlisi personalitzada de la seva empresa
+
+**Diferenciador**: cap competidor ofereix una IA consultora amb criteri ètic propi + accés a informes reals + documents oficials de certificacions.
+
+**Implementació tècnica**: API route Next.js + z-ai-web-dev-sdk + RAG amb documents de certificacions + limitació per pla (Supabase).
+
+**Decisió**: NO implementar abans del llançament al setembre. Afegir com a funcionalitat Premium al Q1 2027 si hi ha demanda.
+
 ### P3. Nova pàgina web d'estàndards ESG (abans "certificacions")
 
 **Estat**: pendent de disseny i implementació. Esquema aprovat per Paolo (17 juliol 2026):

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>A4 — Mapa 16 estàndards (Open Graph 1200x630)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; background: #2C1810; }
+
+  .frame {
+    width: 1200px;
+    height: 630px;
+    background: #F5EFE6;
+    padding: 48px 60px 40px 60px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 22px;
+    color: #2C1810;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    border-top: 3px solid #2C1810;
+    padding-top: 14px;
+    gap: 32px;
+  }
+
+  .header-left { display: flex; flex-direction: column; }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8A5526;
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 540px;
+  }
+
+  .title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.05;
+    color: #2C1810;
+    letter-spacing: -0.015em;
+    max-width: 640px;
+  }
+
+  .title em {
+    font-style: italic;
+    font-weight: 400;
+    color: #5C3A1E;
+  }
+
+  .big-number {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 88px;
+    line-height: 0.9;
+    color: #2C1810;
+    letter-spacing: -0.04em;
+  }
+
+  .big-number sup {
+    font-size: 16px;
+    vertical-align: top;
+    color: #8A5526;
+    font-weight: 500;
+    margin-left: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Grid de 3 columnes més compacte */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid #2C1810;
+    padding-top: 0;
+  }
+
+  .col {
+    padding: 16px 18px 0 18px;
+    border-right: 1px solid rgba(44, 24, 16, 0.18);
+    position: relative;
+  }
+
+  .col::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+  }
+  .col-1::before { background: #5C3A1E; }
+  .col-2::before { background: #B87333; }
+  .col-3::before { background: #E8C99A; }
+
+  .col:first-child { padding-left: 0; }
+  .col:last-child { padding-right: 0; border-right: none; }
+
+  .col-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .col-1 .col-tag { color: #5C3A1E; }
+  .col-2 .col-tag { color: #B87333; }
+  .col-3 .col-tag { color: #8A6D2B; }
+
+  .col-title {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #2C1810;
+    letter-spacing: -0.012em;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .col-title em {
+    font-style: italic;
+    color: #8B7355;
+    font-weight: 400;
+    font-size: 13px;
+  }
+
+  .items { display: flex; flex-direction: column; }
+
+  .item {
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+    gap: 8px;
+    padding: 6.5px 0;
+    align-items: baseline;
+    border-bottom: 1px solid rgba(139, 115, 85, 0.22);
+  }
+  .item:last-child { border-bottom: none; }
+
+  .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #8B7355;
+    font-weight: 500;
+  }
+  .name {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #2C1810;
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+  }
+  .access {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+    padding: 2px 5px;
+    border-radius: 2px;
+    background: rgba(139, 115, 85, 0.1);
+    color: #8B7355;
+  }
+  .access.premium {
+    color: #FFFFFF;
+    background: #B87333;
+    font-weight: 600;
+  }
+
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    border-top: 1px solid #2C1810;
+    padding-top: 12px;
+    gap: 16px;
+  }
+
+  .legend {
+    display: flex;
+    gap: 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #5C3A1E;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 500;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-bar { width: 16px; height: 3px; }
+
+  .url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #8A5526;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="header">
+      <div class="header-left">
+        <div class="eyebrow">
+          <span>Criteri ESG · Mapa 1.0 · 2026</span>
+          <span>16 estándares · 3 categorías</span>
+        </div>
+        <h1 class="title">Los <em>16 estándares</em> que un director de sostenibilidad no debería confundir</h1>
+      </div>
+      <div class="big-number">16<sup>est.</sup></div>
+    </div>
+
+    <div class="grid">
+      <div class="col col-1">
+        <div class="col-tag">01 · Regulaciones</div>
+        <div class="col-title">Te obligan <em>— por ley</em></div>
+        <div class="items">
+          <div class="item"><div class="num">01</div><div class="name">CSRD / ESRS</div><div class="access">UE</div></div>
+          <div class="item"><div class="num">02</div><div class="name">CSDDD</div><div class="access">UE</div></div>
+          <div class="item"><div class="num">03</div><div class="name">SFDR</div><div class="access">UE</div></div>
+          <div class="item"><div class="num">04</div><div class="name">Taxonomía UE</div><div class="access">UE</div></div>
+          <div class="item"><div class="num">05</div><div class="name">EMAS</div><div class="access">UE</div></div>
+        </div>
+      </div>
+
+      <div class="col col-2">
+        <div class="col-tag">02 · Frameworks</div>
+        <div class="col-title">Te orientan <em>— cómo reportar</em></div>
+        <div class="items">
+          <div class="item"><div class="num">06</div><div class="name">GRI</div><div class="access">global</div></div>
+          <div class="item"><div class="num">07</div><div class="name">SASB</div><div class="access">global</div></div>
+          <div class="item"><div class="num">08</div><div class="name">TNFD</div><div class="access">global</div></div>
+          <div class="item"><div class="num">09</div><div class="name">TCFD</div><div class="access">global</div></div>
+          <div class="item"><div class="num">10</div><div class="name">ISO 26000</div><div class="access">global</div></div>
+        </div>
+      </div>
+
+      <div class="col col-3">
+        <div class="col-tag">03 · Certificaciones</div>
+        <div class="col-title">Te evalúan <em>— de mercado</em></div>
+        <div class="items">
+          <div class="item"><div class="num">11</div><div class="name">EcoVadis</div><div class="access premium">Premium</div></div>
+          <div class="item"><div class="num">12</div><div class="name">B Corp</div><div class="access premium">Premium</div></div>
+          <div class="item"><div class="num">13</div><div class="name">MSCI ESG</div><div class="access premium">Premium</div></div>
+          <div class="item"><div class="num">14</div><div class="name">CDP</div><div class="access premium">Premium</div></div>
+          <div class="item"><div class="num">15</div><div class="name">SGE 21</div><div class="access premium">Premium</div></div>
+          <div class="item"><div class="num">16</div><div class="name">Sustainalytics</div><div class="access premium">Premium</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="legend">
+        <div class="legend-item"><div class="legend-bar" style="background:#5C3A1E"></div><span>Regulaciones</span></div>
+        <div class="legend-item"><div class="legend-bar" style="background:#B87333"></div><span>Frameworks</span></div>
+        <div class="legend-item"><div class="legend-bar" style="background:#E8C99A"></div><span>Certificaciones</span></div>
+      </div>
+      <div class="url">criteriesg.com/estandares-esg</div>
+    </div>
+  </div>
+</body>
+</html>

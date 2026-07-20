@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>A14 quadrat — Semáforo metodológico</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1080px; background: #2C1810; }
+
+  .frame {
+    width: 1080px;
+    height: 1080px;
+    background: #F5EFE6;
+    padding: 60px 70px 50px 70px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 28px;
+    color: #2C1810;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    border-top: 3px solid #2C1810;
+    padding-top: 14px;
+    gap: 24px;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8A5526;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.08;
+    color: #2C1810;
+    letter-spacing: -0.018em;
+    max-width: 680px;
+  }
+
+  .title em {
+    font-style: italic;
+    color: #5C3A1E;
+    font-weight: 400;
+  }
+
+  .meta {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #8B7355;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    line-height: 1.5;
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 6px;
+  }
+
+  .rows {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 20px;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(139, 115, 85, 0.22);
+  }
+  .row:last-child { border-bottom: none; }
+
+  .row-label {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #2C1810;
+    letter-spacing: -0.012em;
+  }
+
+  .row-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .dots {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    opacity: 0.35;
+  }
+  .dot.g { background: #5C8A5C; }
+  .dot.y { background: #C9A961; }
+  .dot.r { background: #A0522D; }
+  .dot.active { opacity: 1; }
+
+  .row-desc {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: #5C3A1E;
+    font-style: italic;
+    line-height: 1.3;
+    flex: 1;
+  }
+
+  .side-quote {
+    margin-top: 8px;
+    padding: 22px 26px;
+    background: rgba(44, 24, 16, 0.04);
+    border-left: 3px solid #B87333;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .side-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .side-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #B87333;
+    font-weight: 600;
+  }
+
+  .side-example {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #2C1810;
+    line-height: 1.25;
+  }
+
+  .side-source {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #8B7355;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .side-grade {
+    text-align: right;
+  }
+
+  .side-grade-letter {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 56px;
+    color: #B87333;
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+
+  .side-grade-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #8A5526;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 600;
+    margin-top: 4px;
+    display: block;
+  }
+
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    border-top: 1px solid #2C1810;
+    padding-top: 12px;
+    gap: 16px;
+  }
+
+  .footer-note {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #5C3A1E;
+    line-height: 1.3;
+    max-width: 720px;
+  }
+
+  .url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #8A5526;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="header">
+      <div>
+        <div class="eyebrow">Criteri ESG · Metodología · 2026</div>
+        <h1 class="title">El <em>semáforo metodológico</em> — cómo evaluamos lo que leemos</h1>
+      </div>
+      <div class="meta">
+        5 dimensiones<br>
+        Por cada informe<br>
+        Transparente
+      </div>
+    </div>
+
+    <div class="body">
+      <div class="rows">
+        <div class="row">
+          <div class="row-label">Scope 3</div>
+          <div class="row-content">
+            <div class="dots"><div class="dot g"></div><div class="dot y active"></div><div class="dot r"></div></div>
+            <div class="row-desc">¿Cubre emisiones indirectas de la cadena de valor?</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">Plazos</div>
+          <div class="row-content">
+            <div class="dots"><div class="dot g active"></div><div class="dot y"></div><div class="dot r"></div></div>
+            <div class="row-desc">¿Las fechas son operativas o aspiracionales?</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">Fuentes</div>
+          <div class="row-content">
+            <div class="dots"><div class="dot g"></div><div class="dot y active"></div><div class="dot r"></div></div>
+            <div class="row-desc">¿Están referenciadas o son afirmaciones sin respaldo?</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">Granularidad</div>
+          <div class="row-content">
+            <div class="dots"><div class="dot g"></div><div class="dot y"></div><div class="dot r active"></div></div>
+            <div class="row-desc">¿Hay dato desagregado por sector / geografía / tamaño?</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-label">Verificación</div>
+          <div class="row-content">
+            <div class="dots"><div class="dot g"></div><div class="dot y active"></div><div class="dot r"></div></div>
+            <div class="row-desc">¿Está auditado externamente o es auto-reportado?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-quote">
+        <div class="side-left">
+          <div class="side-label">Ejemplo real</div>
+          <div class="side-example">Revisión de los ESRS · mayo 2026</div>
+          <div class="side-source">Comisión Europea · 47 pág.</div>
+        </div>
+        <div class="side-grade">
+          <span class="side-grade-letter">C</span>
+          <span class="side-grade-label">Débil</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-note">Cada informe que publicamos lleva su semáforo. Es nuestra forma de no confundir rigor con volumen.</div>
+      <div class="url">criteriesg.com</div>
+    </div>
+  </div>
+</body>
+</html>

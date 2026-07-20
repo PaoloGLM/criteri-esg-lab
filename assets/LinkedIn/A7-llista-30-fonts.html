@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>A7 — 30 fuentes que leemos cada semana</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; background: #2C1810; }
+
+  .frame {
+    width: 1080px;
+    height: 1350px;
+    background: #F5EFE6;
+    padding: 60px 70px 50px 70px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 36px;
+    color: #2C1810;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+  }
+
+  /* Header */
+  .header {
+    border-top: 3px solid #2C1810;
+    padding-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 28px;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8A5526;
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+
+  .title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 1.05;
+    color: #2C1810;
+    letter-spacing: -0.018em;
+    max-width: 740px;
+  }
+
+  .title em {
+    font-style: italic;
+    font-weight: 400;
+    color: #5C3A1E;
+  }
+
+  .big-number {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 96px;
+    line-height: 0.9;
+    color: #2C1810;
+    letter-spacing: -0.04em;
+  }
+
+  .big-number sup {
+    font-size: 16px;
+    vertical-align: top;
+    color: #8A5526;
+    font-weight: 500;
+    margin-left: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 17px;
+    color: #5C3A1E;
+    margin-top: 16px;
+    line-height: 1.4;
+    max-width: 720px;
+  }
+
+  /* Grid 5 categories en 2 columnes + 1 */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 28px 48px;
+    border-top: 1px solid #2C1810;
+    padding-top: 24px;
+  }
+
+  .cat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cat.span-2 { grid-column: span 2; }
+
+  .cat-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid;
+  }
+
+  .cat-1 .cat-header { border-bottom-color: #5C3A1E; }
+  .cat-2 .cat-header { border-bottom-color: #B87333; }
+  .cat-3 .cat-header { border-bottom-color: #8A6D2B; }
+  .cat-4 .cat-header { border-bottom-color: #5C3A1E; }
+  .cat-5 .cat-header { border-bottom-color: #B87333; }
+
+  .cat-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #8B7355;
+    font-weight: 500;
+  }
+
+  .cat-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    flex: 1;
+  }
+
+  .cat-1 .cat-tag { color: #5C3A1E; }
+  .cat-2 .cat-tag { color: #B87333; }
+  .cat-3 .cat-tag { color: #8A6D2B; }
+  .cat-4 .cat-tag { color: #5C3A1E; }
+  .cat-5 .cat-tag { color: #B87333; }
+
+  .cat-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    color: #8B7355;
+    font-weight: 500;
+  }
+
+  .sources {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 16px;
+  }
+
+  .source {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2C1810;
+    padding: 5px 0;
+    letter-spacing: -0.005em;
+    line-height: 1.2;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .source::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: #B87333;
+    flex-shrink: 0;
+    transform: translateY(-2px);
+  }
+
+  /* Footer */
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    border-top: 1px solid #2C1810;
+    padding-top: 16px;
+    gap: 24px;
+  }
+
+  .footer-note {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13.5px;
+    color: #5C3A1E;
+    font-weight: 400;
+    line-height: 1.3;
+    max-width: 600px;
+  }
+
+  .url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #8A5526;
+    letter-spacing: 0.1em;
+    text-align: right;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="header">
+      <div>
+        <div class="eyebrow">Criteri ESG · Transparencia · 2026</div>
+        <h1 class="title">Las <em>30 fuentes</em> que leemos cada semana</h1>
+        <p class="subtitle">No es una lista de "nice to have". Es nuestra rutina diaria. Si no te fías de una fuente, no la incluimos.</p>
+      </div>
+      <div class="big-number">30<sup>fuentes</sup></div>
+    </div>
+
+    <div class="grid">
+      <div class="cat cat-1">
+        <div class="cat-header">
+          <span class="cat-num">01</span>
+          <span class="cat-tag">Reguladores europeos</span>
+          <span class="cat-count">6 fuentes</span>
+        </div>
+        <div class="sources">
+          <div class="source">BCE</div>
+          <div class="source">ESRS Q&A Platform</div>
+          <div class="source">EFRAG</div>
+          <div class="source">Comisión UE · DG FISMA</div>
+          <div class="source">ESMA</div>
+          <div class="source">EIOPA</div>
+        </div>
+      </div>
+
+      <div class="cat cat-2">
+        <div class="cat-header">
+          <span class="cat-num">02</span>
+          <span class="cat-tag">Reguladores españoles</span>
+          <span class="cat-count">6 fuentes</span>
+        </div>
+        <div class="sources">
+          <div class="source">Banco de España</div>
+          <div class="source">CNMV</div>
+          <div class="source">MITECO</div>
+          <div class="source">ICEX España</div>
+          <div class="source">OECC</div>
+          <div class="source">CNE</div>
+        </div>
+      </div>
+
+      <div class="cat cat-3">
+        <div class="cat-header">
+          <span class="cat-num">03</span>
+          <span class="cat-tag">Frameworks</span>
+          <span class="cat-count">6 fuentes</span>
+        </div>
+        <div class="sources">
+          <div class="source">GRI</div>
+          <div class="source">SASB</div>
+          <div class="source">TNFD</div>
+          <div class="source">TCFD</div>
+          <div class="source">ISSB</div>
+          <div class="source">ISO 26000</div>
+        </div>
+      </div>
+
+      <div class="cat cat-4">
+        <div class="cat-header">
+          <span class="cat-num">04</span>
+          <span class="cat-tag">Ratings y certificaciones</span>
+          <span class="cat-count">6 fuentes</span>
+        </div>
+        <div class="sources">
+          <div class="source">EcoVadis</div>
+          <div class="source">MSCI ESG</div>
+          <div class="source">Sustainalytics</div>
+          <div class="source">CDP</div>
+          <div class="source">B Lab</div>
+          <div class="source">Forética · SGE 21</div>
+        </div>
+      </div>
+
+      <div class="cat cat-5 span-2">
+        <div class="cat-header">
+          <span class="cat-num">05</span>
+          <span class="cat-tag">ONGs, think tanks y academia</span>
+          <span class="cat-count">6 fuentes</span>
+        </div>
+        <div class="sources" style="grid-template-columns: 1fr 1fr 1fr;">
+          <div class="source">Ellen MacArthur Foundation</div>
+          <div class="source">Business & Human Rights</div>
+          <div class="source">Transparency Intl.</div>
+          <div class="source">PRI</div>
+          <div class="source">Climate Action 100+</div>
+          <div class="source">WWF</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-note">«No es una lista cerrada. Se actualiza cada trimestre con lo que aprendemos y descartamos.»</div>
+      <div class="url">criteriesg.com/fuentes</div>
+    </div>
+  </div>
+</body>
+</html>

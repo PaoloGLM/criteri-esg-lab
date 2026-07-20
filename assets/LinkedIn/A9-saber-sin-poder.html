@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>A9 — Saber sin poder demostrar</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; background: #1a0e07; }
+
+  .frame {
+    width: 1080px;
+    height: 1350px;
+    background: #2C1810;
+    padding: 70px 80px 60px 80px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 24px;
+    color: #F5EFE6;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+  }
+
+  /* Capçalera mínima */
+  .header {
+    border-top: 2px solid #B87333;
+    padding-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #D9A574;
+    font-weight: 500;
+  }
+
+  .header .right {
+    color: rgba(245, 239, 230, 0.4);
+    font-weight: 400;
+  }
+
+  /* Cos: cita centrada verticalment */
+  .body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 0;
+  }
+
+  .quote-mark {
+    font-family: 'Fraunces', serif;
+    font-size: 140px;
+    line-height: 0.7;
+    color: #B87333;
+    font-weight: 400;
+    margin-bottom: 8px;
+    opacity: 0.85;
+  }
+
+  .quote {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 78px;
+    line-height: 1.1;
+    color: #F5EFE6;
+    letter-spacing: -0.025em;
+    max-width: 920px;
+  }
+
+  .quote em {
+    font-style: italic;
+    color: #D9A574;
+    font-weight: 500;
+  }
+
+  .attribution {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(245, 239, 230, 0.55);
+    margin-top: 40px;
+    font-weight: 400;
+    max-width: 720px;
+    line-height: 1.4;
+    border-left: 2px solid #B87333;
+    padding-left: 16px;
+  }
+
+  /* Footer */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    border-top: 1px solid rgba(217, 165, 116, 0.3);
+    padding-top: 16px;
+  }
+
+  .footer-left {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(245, 239, 230, 0.55);
+    max-width: 700px;
+    line-height: 1.4;
+  }
+
+  .url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #D9A574;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="header">
+      <span>Criteri ESG · Reflexión</span>
+      <span class="right">Agosto 2026</span>
+    </div>
+
+    <div class="body">
+      <div class="quote-mark">«</div>
+      <p class="quote">Saber <em>sin poder demostrar</em></p>
+      <p class="attribution">— La frase que más escuchamos en conversaciones con directores de sostenibilidad. Tener demasiadas métricas sin un relato coherente es tan inútil como no tener ninguna.</p>
+    </div>
+
+    <div class="footer">
+      <div class="footer-left">El problema del ESG no es la falta de información. Es la falta de tiempo para procesarla y de criterio para decidir qué importa.</div>
+      <div class="url">criteriesg.com</div>
+    </div>
+  </div>
+</body>
+</html>

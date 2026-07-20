@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>A12 quadrat — On es perd el temps</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1080px; background: #2C1810; }
+
+  .frame {
+    width: 1080px;
+    height: 1080px;
+    background: #F5EFE6;
+    padding: 60px 70px 50px 70px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 28px;
+    color: #2C1810;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    border-top: 3px solid #2C1810;
+    padding-top: 14px;
+    gap: 24px;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8A5526;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.08;
+    color: #2C1810;
+    letter-spacing: -0.018em;
+    max-width: 680px;
+  }
+
+  .title em {
+    font-style: italic;
+    color: #5C3A1E;
+    font-weight: 400;
+  }
+
+  .meta {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #8B7355;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    line-height: 1.5;
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    padding-top: 8px;
+  }
+
+  .chart {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .bar-row { display: grid; grid-template-columns: 1fr; gap: 4px; }
+
+  .bar-label {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #5C3A1E;
+    font-weight: 500;
+  }
+
+  .bar-label .pct {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 500;
+    color: #2C1810;
+    letter-spacing: -0.02em;
+    text-transform: none;
+  }
+
+  .bar-track {
+    height: 42px;
+    background: rgba(139, 115, 85, 0.12);
+    border-radius: 1px;
+  }
+
+  .bar-fill {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 14px;
+    justify-content: flex-end;
+  }
+
+  .bar-1 .bar-fill { background: #5C3A1E; width: 60%; }
+  .bar-2 .bar-fill { background: #8A5526; width: 15%; }
+  .bar-3 .bar-fill { background: #B87333; width: 15%; }
+  .bar-4 .bar-fill { background: #E8C99A; width: 10%; }
+
+  .side-quote {
+    margin-top: 12px;
+    padding: 22px 26px;
+    background: rgba(184, 115, 51, 0.06);
+    border-left: 3px solid #B87333;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .side-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #B87333;
+    font-weight: 600;
+  }
+
+  .side-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.3;
+    color: #2C1810;
+    letter-spacing: -0.012em;
+  }
+
+  .side-text strong {
+    font-style: normal;
+    font-weight: 500;
+    color: #5C3A1E;
+  }
+
+  .side-source {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    color: #8B7355;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    border-top: 1px solid #2C1810;
+    padding-top: 12px;
+    gap: 16px;
+  }
+
+  .footer-note {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #5C3A1E;
+    line-height: 1.3;
+    max-width: 700px;
+  }
+
+  .url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #8A5526;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="header">
+      <div>
+        <div class="eyebrow">Criteri ESG · Estudio interno · 2026</div>
+        <h1 class="title">Dónde se va el tiempo de un <em>director de sostenibilidad</em></h1>
+      </div>
+      <div class="meta">
+        n = 12 entrevistas<br>
+        Empresas medianas y grandes<br>
+        España · 2026
+      </div>
+    </div>
+
+    <div class="body">
+      <div class="chart">
+        <div class="bar-row bar-1">
+          <div class="bar-label"><span>Recopilar información</span><span class="pct">60%</span></div>
+          <div class="bar-track"><div class="bar-fill"></div></div>
+        </div>
+        <div class="bar-row bar-2">
+          <div class="bar-label"><span>Leer informes</span><span class="pct">15%</span></div>
+          <div class="bar-track"><div class="bar-fill"></div></div>
+        </div>
+        <div class="bar-row bar-3">
+          <div class="bar-label"><span>Analizar</span><span class="pct">15%</span></div>
+          <div class="bar-track"><div class="bar-fill"></div></div>
+        </div>
+        <div class="bar-row bar-4">
+          <div class="bar-label"><span>Decidir</span><span class="pct">10%</span></div>
+          <div class="bar-track"><div class="bar-fill"></div></div>
+        </div>
+      </div>
+
+      <div class="side-quote">
+        <div class="side-label">Lo que escuchamos</div>
+        <div class="side-text">«Y el viernes me doy cuenta de que <strong>no he pensado nada</strong> en toda la semana.»</div>
+        <div class="side-source">— Directora de sostenibilidad · 600 empleados</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-note">Más información no genera más decisiones. Genera más ansiedad y menos capacidad de priorizar.</div>
+      <div class="url">criteriesg.com</div>
+    </div>
+  </div>
+</body>
+</html>

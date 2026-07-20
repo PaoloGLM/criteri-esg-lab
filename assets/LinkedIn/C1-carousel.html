@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>C1 — Carousel Què és Criteri ESG (5 pàgines)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2C1810;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .page {
+    width: 1080px;
+    height: 1080px;
+    background: #F5EFE6;
+    padding: 70px 80px 60px 80px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 28px;
+    color: #2C1810;
+    margin-bottom: 0;
+    page-break-after: always;
+    position: relative;
+  }
+
+  .page.dark { background: #2C1810; color: #F5EFE6; }
+
+  .header {
+    border-top: 3px solid #2C1810;
+    padding-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8A5526;
+    font-weight: 500;
+  }
+
+  .page.dark .header {
+    border-top-color: #B87333;
+    color: #D9A574;
+  }
+
+  .header .right {
+    color: rgba(139, 115, 85, 0.6);
+    font-weight: 400;
+  }
+  .page.dark .header .right {
+    color: rgba(245, 239, 230, 0.4);
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 0;
+  }
+
+  .footer {
+    border-top: 1px solid #2C1810;
+    padding-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+  }
+
+  .page.dark .footer {
+    border-top-color: rgba(217, 165, 116, 0.3);
+  }
+
+  .footer-note {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #5C3A1E;
+    line-height: 1.3;
+    max-width: 720px;
+  }
+
+  .page.dark .footer-note {
+    color: rgba(245, 239, 230, 0.55);
+  }
+
+  .url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #8A5526;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+  .page.dark .url { color: #D9A574; }
+
+  /* Pàgina 1 — portada */
+  .cover-pretitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: #D9A574;
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+
+  .cover-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 92px;
+    line-height: 0.98;
+    color: #F5EFE6;
+    letter-spacing: -0.03em;
+    max-width: 880px;
+  }
+
+  .cover-title em {
+    font-style: italic;
+    color: #D9A574;
+    font-weight: 400;
+  }
+
+  .cover-subtitle {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.4;
+    color: rgba(245, 239, 230, 0.75);
+    max-width: 760px;
+    margin-top: 32px;
+    font-style: italic;
+  }
+
+  .cover-subtitle strong {
+    color: #D9A574;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  /* Pàgina 2 — El problema */
+  .problem-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #B87333;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .problem-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 1.05;
+    color: #2C1810;
+    letter-spacing: -0.022em;
+    max-width: 880px;
+    margin-bottom: 36px;
+  }
+
+  .problem-title em {
+    font-style: italic;
+    color: #5C3A1E;
+    font-weight: 400;
+  }
+
+  .problem-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .problem-item {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 16px;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(139, 115, 85, 0.25);
+  }
+  .problem-item:last-child { border-bottom: none; }
+
+  .problem-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #B87333;
+    font-weight: 600;
+  }
+
+  .problem-text {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: #2C1810;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+  }
+
+  .problem-text em {
+    font-style: italic;
+    color: #5C3A1E;
+    font-weight: 500;
+  }
+
+  /* Pàgina 3 — La proposta */
+  .proposal-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 1.05;
+    color: #F5EFE6;
+    letter-spacing: -0.022em;
+    max-width: 880px;
+    margin-bottom: 44px;
+  }
+
+  .proposal-title em {
+    font-style: italic;
+    color: #D9A574;
+    font-weight: 400;
+  }
+
+  .proposal-three {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 28px;
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 20px;
+    border-top: 3px solid #B87333;
+  }
+
+  .step-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 56px;
+    color: #D9A574;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .step-verb {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 26px;
+    color: #F5EFE6;
+    letter-spacing: -0.012em;
+  }
+
+  .step-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: rgba(245, 239, 230, 0.7);
+    line-height: 1.45;
+    font-weight: 400;
+  }
+
+  /* Pàgina 4 — Què NO som */
+  .nosotros-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 60px;
+    line-height: 1.05;
+    color: #2C1810;
+    letter-spacing: -0.02em;
+    max-width: 880px;
+    margin-bottom: 36px;
+  }
+
+  .nosotros-title em {
+    font-style: italic;
+    color: #5C3A1E;
+    font-weight: 400;
+  }
+
+  .nosotros-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 32px;
+  }
+
+  .nosotros-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(139, 115, 85, 0.22);
+  }
+
+  .nosotros-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 600;
+  }
+
+  .nosotros-no .nosotros-label { color: #A0522D; }
+  .nosotros-si .nosotros-label { color: #5C8A5C; }
+
+  .nosotros-text {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    color: #2C1810;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+  }
+
+  .nosotros-no .nosotros-text { color: rgba(44, 24, 16, 0.55); text-decoration: line-through; text-decoration-color: rgba(160, 82, 45, 0.5); }
+  .nosotros-si .nosotros-text { color: #2C1810; font-weight: 500; }
+
+  /* Pàgina 5 — CTA */
+  .cta-pretitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: #D9A574;
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+
+  .cta-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 76px;
+    line-height: 1.05;
+    color: #F5EFE6;
+    letter-spacing: -0.025em;
+    max-width: 880px;
+    margin-bottom: 36px;
+  }
+
+  .cta-title em {
+    font-style: italic;
+    color: #D9A574;
+    font-weight: 400;
+  }
+
+  .cta-text {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.4;
+    color: rgba(245, 239, 230, 0.75);
+    max-width: 800px;
+    font-style: italic;
+    border-left: 3px solid #B87333;
+    padding-left: 20px;
+  }
+
+  .cta-signature {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(245, 239, 230, 0.6);
+    margin-top: 36px;
+  }
+
+  /* Paginació */
+  .pagination {
+    position: absolute;
+    bottom: 24px;
+    right: 80px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(139, 115, 85, 0.6);
+    letter-spacing: 0.15em;
+    font-weight: 500;
+  }
+  .page.dark .pagination {
+    color: rgba(245, 239, 230, 0.35);
+  }
+
+</style>
+</head>
+<body>
+
+<!-- Pàgina 1: Portada -->
+<div class="page dark">
+  <div class="header">
+    <span>Criteri ESG · Septiembre 2026</span>
+    <span class="right">01 / 05</span>
+  </div>
+  <div class="body">
+    <div class="cover-pretitle">— Qué es —</div>
+    <h1 class="cover-title">Un <em>filtro con criterio</em>.</h1>
+    <p class="cover-subtitle">No un agregador de informes. No una newsletter más. <strong>Un filtro con criterio</strong>: qué dice el informe, qué te afecta, qué has de hacer. Y nada más.</p>
+  </div>
+  <div class="footer">
+    <div class="footer-note">Una nueva forma de leer ESG. Sin ruido, sin prisa.</div>
+    <div class="url">criteriesg.com</div>
+  </div>
+  <div class="pagination">01 / 05</div>
+</div>
+
+<!-- Pàgina 2: El problema -->
+<div class="page">
+  <div class="header">
+    <span>Criteri ESG · El problema</span>
+    <span class="right">02 / 05</span>
+  </div>
+  <div class="body">
+    <div class="problem-label">— Por qué existimos —</div>
+    <h2 class="problem-title">El problema del ESG no es <em>la falta de información</em>.</h2>
+    <div class="problem-list">
+      <div class="problem-item">
+        <div class="problem-num">01</div>
+        <div class="problem-text">Cada semana salen <em>14 informes institucionales</em> sobre sostenibilidad. Todos importantes. Todos largos. Nadie tiene tiempo.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">02</div>
+        <div class="problem-text">Un director de sostenibilitat dedica el <em>60% del seu temps</em> a recopilar información. Solo el 10% a decidir.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">03</div>
+        <div class="problem-text">El problema no es <em>más información</em>. Es criterio para saber qué importa y qué hacer con ello.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-note">Más información no genera más decisiones. Genera más ansiedad.</div>
+    <div class="url">criteriesg.com</div>
+  </div>
+  <div class="pagination">02 / 05</div>
+</div>
+
+<!-- Pàgina 3: La proposta -->
+<div class="page dark">
+  <div class="header">
+    <span>Criteri ESG · Cómo lo resolvemos</span>
+    <span class="right">03 / 05</span>
+  </div>
+  <div class="body">
+    <h2 class="proposal-title">Tres pasos. <em>Nada más.</em></h2>
+    <div class="proposal-three">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-verb">Sintetitzar</div>
+        <div class="step-desc">Seleccionamos los 4-6 informes más relevantes de cada quincena y los sintetizamos en 7 minutos de lectura.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-verb">Creuar</div>
+        <div class="step-desc">Cruzamos cada informe con las certificaciones que ya tienes (EcoVadis, B Corp, MSCI, GRI, SGE 21...).</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-verb">Recomanar</div>
+        <div class="step-desc">Tres acciones concretas por informe. Operativas. Verificables. Sin promesas vacías.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-note">Filtrar, sintetizar, cruzar. Nada más.</div>
+    <div class="url">criteriesg.com</div>
+  </div>
+  <div class="pagination">03 / 05</div>
+</div>
+
+<!-- Pàgina 4: Què NO som -->
+<div class="page">
+  <div class="header">
+    <span>Criteri ESG · Lo que no somos</span>
+    <span class="right">04 / 05</span>
+  </div>
+  <div class="body">
+    <h2 class="nosotros-title">Lo que <em>no</em> somos.</h2>
+    <div class="nosotros-grid">
+      <div class="nosotros-row nosotros-no">
+        <div class="nosotros-label">No</div>
+        <div class="nosotros-text">Un agregador de informes</div>
+      </div>
+      <div class="nosotros-row nosotros-si">
+        <div class="nosotros-label">Sí</div>
+        <div class="nosotros-text">Un filtro con criterio</div>
+      </div>
+
+      <div class="nosotros-row nosotros-no">
+        <div class="nosotros-label">No</div>
+        <div class="nosotros-text">Una newsletter de noticias ESG</div>
+      </div>
+      <div class="nosotros-row nosotros-si">
+        <div class="nosotros-label">Sí</div>
+        <div class="nosotros-text">Una newsletter con conexiones entre informes</div>
+      </div>
+
+      <div class="nosotros-row nosotros-no">
+        <div class="nosotros-label">No</div>
+        <div class="nosotros-text">Una consultoría</div>
+      </div>
+      <div class="nosotros-row nosotros-si">
+        <div class="nosotros-label">Sí</div>
+        <div class="nosotros-text">Una herramienta para tu consultoría</div>
+      </div>
+
+      <div class="nosotros-row nosotros-no">
+        <div class="nosotros-label">No</div>
+        <div class="nosotros-text">Sustituimos al director de sostenibilidad</div>
+      </div>
+      <div class="nosotros-row nosotros-si">
+        <div class="nosotros-label">Sí</div>
+        <div class="nosotros-text">Le devolvemos el 60% de su tiempo</div>
+      </div>
+
+      <div class="nosotros-row nosotros-no">
+        <div class="nosotros-label">No</div>
+        <div class="nosotros-text">Promesas de ratings milagrosos</div>
+      </div>
+      <div class="nosotros-row nosotros-si">
+        <div class="nosotros-label">Sí</div>
+        <div class="nosotros-text">Criterio para decidir qué hacer</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-note">La honestidad es nuestro activo más grande en un mercado lleno de greenwashing.</div>
+    <div class="url">criteriesg.com</div>
+  </div>
+  <div class="pagination">04 / 05</div>
+</div>
+
+<!-- Pàgina 5: CTA -->
+<div class="page dark">
+  <div class="header">
+    <span>Criteri ESG · Llamada</span>
+    <span class="right">05 / 05</span>
+  </div>
+  <div class="body">
+    <div class="cta-pretitle">— Si reconoces esta situación —</div>
+    <h2 class="cta-title">Te <em>entendemos</em>.<br>Estamos <em>aquí</em>.</h2>
+    <p class="cta-text">No te pedimos que te suscribas todavía. Te pedimos que leas lo que publiquemos esta quincena y nos digas qué falla. La crítica constructiva es el primer acto de confianza.</p>
+    <p class="cta-signature">— Paolo G., fundador de Criteri ESG</p>
+  </div>
+  <div class="footer">
+    <div class="footer-note">Septiembre: acceso abierto a todo el contenido. Sin paywall. Sin tarjeta de crédito.</div>
+    <div class="url">criteriesg.com</div>
+  </div>
+  <div class="pagination">05 / 05</div>
+</div>
+
+</body>
+</html>

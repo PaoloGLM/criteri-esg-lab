@@ -420,6 +420,24 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
     - Si una clau es compromet, es regenera al dashboard corresponent (Supabase, Stripe, etc.) i s'actualitza al `.env` local.
     - Aquesta regla està alineada amb la regla 12 del CONTEXT ("Mai credencials al xat ni al repositori").
 
+16. **Tots els entregables a Google Drive (20 juliol 2026)** — Regla absoluta, no negociable:
+    - Qualsevol document que Z.ai-bot generi com a entregable per a Paolo (Word, PDF, Excel, PPT, PNG, ZIP, etc.) **S'HA DE pujar obligatòriament a Google Drive** a la carpeta `Criteri ESG` (veure decisió editorial 8 per credencials OAuth2).
+    - **NO n'hi ha prou amb guardar-ho a `/home/z/my-project/download/`**. Aquest directori local és invisible per a Paolo. Guardar-hi coses és com no guardar-les.
+    - El flux obligatori per a cada entregable és:
+      1. Generar el fitxer localment a `/home/z/my-project/download/` (pas tècnic).
+      2. Pujar-lo a Google Drive a la subcarpeta corresponent (`assets`, `dossiers`, `processats`, `ultra` segons el tipus). Si no existeix una subcarpeta adequada, crear-la.
+      3. Compartir el fitxer amb Paolo (si cal) o deixar-lo a la carpeta compartida `Criteri ESG`.
+      4. Confirmar a Paolo al xat que el fitxer és a Drive, indicant la ruta exacta dins de la carpeta `Criteri ESG`.
+    - **Subcarpetes recomanades dins `Criteri ESG`**:
+      - `assets/` — logos, imatges, gràfics, mockups, documents de disseny
+      - `dossiers/` — informes, articles, pla de comunicació, documents estratègics
+      - `originals/` — informes originals descarregats de fonts institucionals
+      - `processats/` — informes processats per Criteri ESG (sortida Z.ai-bot)
+      - `ultra/` — contingut exclusiu per a subscriptors Ultra
+      - Si cap encaixa, crear-ne una de nova i avisar Paolo.
+    - Aquesta regla està alineada amb la queixa recurrent de Paolo: "MAI puc accedir a `/home/z/my-project/download/`". La solució no és que Paolo aprengui a accedir-hi, és que Z.ai-bot ho pengi a Drive sempre.
+    - **Excepció**: els fitxers tècnics intermedis (scripts, HTML de treball, logs) no cal pujar-los. Només els entregables finals que Paolo necessita veure o descarregar.
+
 ---
 
 ## Feines pendents (16 juliol 2026)

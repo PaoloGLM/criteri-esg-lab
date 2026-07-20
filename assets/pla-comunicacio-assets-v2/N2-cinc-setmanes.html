@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>N2 — Cinc setmanes (countdown no comercial)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; background: #1a0e07; }
+
+  .frame {
+    width: 1080px;
+    height: 1350px;
+    background: #F5EFE6;
+    padding: 70px 80px 60px 80px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 36px;
+    color: #2C1810;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+  }
+
+  /* Header */
+  .header {
+    border-top: 3px solid #2C1810;
+    padding-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8A5526;
+    font-weight: 500;
+  }
+
+  /* Body: número gran tipus cartell suís */
+  .body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 0;
+  }
+
+  .pretext {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: #5C3A1E;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+
+  .number-row {
+    display: flex;
+    align-items: baseline;
+    gap: 28px;
+    margin-bottom: 30px;
+  }
+
+  .big-number {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 280px;
+    line-height: 0.85;
+    color: #2C1810;
+    letter-spacing: -0.06em;
+  }
+
+  .unit {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 42px;
+    color: #B87333;
+    font-style: italic;
+    letter-spacing: -0.01em;
+    padding-bottom: 28px;
+  }
+
+  .text {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.25;
+    color: #2C1810;
+    letter-spacing: -0.018em;
+    max-width: 760px;
+  }
+
+  .text em {
+    font-style: italic;
+    color: #5C3A1E;
+    font-weight: 500;
+  }
+
+  /* Footer */
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    border-top: 1px solid #2C1810;
+    padding-top: 16px;
+    gap: 24px;
+  }
+
+  .footer-note {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #5C3A1E;
+    line-height: 1.4;
+    max-width: 720px;
+  }
+
+  .url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #8A5526;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="header">
+      <span>Criteri ESG · Próximamente</span>
+      <span>Agosto 2026</span>
+    </div>
+
+    <div class="body">
+      <p class="pretext">— En —</p>
+      <div class="number-row">
+        <span class="big-number">5</span>
+        <span class="unit">semanas</span>
+      </div>
+      <p class="text">Una nueva forma de leer ESG. <em>Sin ruido, sin prisa.</em></p>
+    </div>
+
+    <div class="footer">
+      <div class="footer-note">Cinco semanas, cinco piezas. Mapa de estándares. Fuentes que leemos. Preguntas que nos hacemos. A poco a poco.</div>
+      <div class="url">criteriesg.com</div>
+    </div>
+  </div>
+</body>
+</html>

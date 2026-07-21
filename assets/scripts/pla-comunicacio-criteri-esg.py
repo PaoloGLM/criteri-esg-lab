@@ -368,7 +368,7 @@ peces = [
 
     ("W4·setembre", "dijous 25 set", "Consolidar", "LinkedIn empresa", "Post curt (8 línies)",
      "L'informe que sí hauries d'haver llegit aquest mes",
-     "Este mes la Comisión Europea ha publicado la revisión de los ESRS. 47 páginas.\n\nTe hemos hecho un resumen en 7 minutos con nota C · Débil en nuestro semáforo metodológico.\n\n¿Por qué C? Porque simplifica mucho, pero deja fuera el detalle granular que las empresas necesitan para implementar.\n\nSi tienes EcoVadis Plata, te afecta de una manera. Si tienes B Corp, de otra. Eso es lo que hacemos: cruzar el informe con tus certificaciones.",
+     "Este mes la Comisión Europea ha publicado la revisión de los ESRS. 47 páginas.\n\nTe damos un criterio claro en 5 minutos, con nota C · Débil en nuestro semáforo metodológico.\n\n¿Por qué C? Porque simplifica mucho, pero deja fuera el detalle granular que las empresas necesitan para implementar.\n\nSi tienes EcoVadis Plata, te afecta de una manera. Si tienes B Corp, de otra. Eso es lo que hacemos: cruzar el informe con tus certificaciones.",
      "Captura de l'informe amb cross-reference visible (versió retallada, sense dades sensibles)",
      "criteriesg.com/informes/esrs-revision-mayo-2026",
      "Clics + registres",
@@ -671,7 +671,7 @@ frases = [
     ("Superlatiu", "La mejor plataforma ESG", "Una plataforma ESG (entre altres)", "Si som la millor, que ho digui un tercer. No nosaltres."),
     ("Superlatiu", "Único en el mercado", "Hemos encontrado un hueco que otros no cubren.", "Humilitat + descripció concreta."),
     ("Buit", "Solución integral ESG", "Sintetitzar informes, creuar amb certificacions, recomanar accions.", "La paraula integral no vol dir res. Els verbs sí."),
-    ("Buit", "Valor añadido para tu negocio", "Estalviar 5 hores setmanals al teu equip.", "Concret, mesurable, verifiable."),
+    ("Buit", "Valor añadido para tu negocio", "Obtenir criteri clar d'un informe en 5 minuts.", "Concret, mesurable, verifiable."),
     ("Tòpic", "En un mundo cada vez más ESG...", "Hi ha 14 informes institucionals sobre ESG cada setmana.", "El tòpic no diu res. La dada sí."),
     ("Maniqueu", "Las empresas que no hagan ESG desaparecerán", "Las empresas que no procesen ESG perderán capacidad de decisión.", "No és el final del món, és una pèrdua de capacitat."),
     ("Maniqueu", "El futuro es sostenible o no es", "La pregunta no és si el futur és sostenible, és qui decidirà què vol dir sostenible.", "Matisos > eslògans."),

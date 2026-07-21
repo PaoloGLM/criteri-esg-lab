@@ -142,7 +142,7 @@ La web no es editarà com WordPress, però hi haurà 3 nivells d'edició segons 
 1. **Hero** — Claim principal + CTA prova gratuïta + CTA newsletter
 2. **4 cards de seccions** — Biblioteca, Certificacions, Autodiagnòstic, Newsletter (visibles a primera vista)
 3. **Últim informe publicat** — Card amb preview del darrer informe + CTA "Veure exemple complet"
-4. **Speed** — "5 minuts vs 5 hores" amb 3 KPIs
+4. **Speed** — "5 minuts per criteri clar" amb 3 KPIs
 5. **Format** — Els 7 blocs explicats (blocs 6 i 7 destacats com a diferenciador)
 6. **Diferencials** — "La informació és pública. Però és intractable." amb 3 stats
 7. **Help** — Grid de 6 certificacions (EcoVadis, B Corp, MSCI, CDP, GRI, CSRD/ESRS)

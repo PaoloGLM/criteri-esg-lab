@@ -27,7 +27,7 @@ L'estructura s'organitza en **1 targeta d'avaluació ràpida + 7 blocs narratius
 
 ### Propòsit
 
-Abans que el lector dediqui 7 minuts a llegir el resum, Criteri li dona una avaluació de 10 segons sobre la **qualitat metodològica** de l'informe original. Això resol el problema que la majoria d'agregadors ESG resumeixen conclusions optimistes sense qüestionar com s'han construït.
+Abans que el lector dediqui 5 minuts a llegir el resum, Criteri li dona una avaluació de 10 segons sobre la **qualitat metodològica** de l'informe original. Això resol el problema que la majoria d'agregadors ESG resumeixen conclusions optimistes sense qüestionar com s'han construït.
 
 ### Els 5 indicadors (cadascun: verd / groc / vermell)
 
@@ -178,9 +178,9 @@ Identificada visualment amb una capçalera diferenciada (capçalera pròpia amb 
 
 ### Eslògan
 
-**"Amb 7 minuts pots estalviar 5 hores de feina."**
+**"5 minuts per obtenir un criteri clar d'un informe."**
 
-Aquest eslògan defineix la proposta de valor de Criteri ESG: cada informe processat amb els 7 blocs permet a un professional estalviar les 5 hores que trigaria a llegir i analitzar el document original de 200 pàgines. El temps de lectura del nostre informe processat és d'aproximadament 7 minuts.
+Aquest eslògan defineix la proposta de valor de Criteri ESG: cada informe processat amb els 8 blocs (semàfor + 7 blocs narratius) té una longitud màxima de 1.100 paraules (objectiu: 1.000), el que es tradueix en 5 minuts de lectura a una velocitat mitjana de 200-220 paraules/minut. L'eslògan antic "7 minuts per estalviar 5 hores" està OBSOLET i no s'ha d'usar (veure decisió editorial 17 del CONTEXT.md).
 
 ### Exemple pilot
 
@@ -299,7 +299,7 @@ L'usuari Ultra fa 1 petició al mes on descriu la seva empresa i nosaltres li en
 **Criteri mai recomanarà vídeos per consumir, però sí processarà vídeos com a font d'informes.**
 
 La diferència és crucial:
-- **Recomanar per consumir**: "Mira aquest vídeo de 30 minuts" → rebutjat. Contradiu la proposta de valor ("amb 7 minuts estalvies 5 hores")
+- **Recomanar per consumir**: "Mira aquest vídeo de 30 minuts" → rebutjat. Contradiu la proposta de valor (5 minuts per criteri clar)
 - **Processar com a informe**: "Hem extret els 8 blocs d'aquesta presentació de la UE" → acceptat. Manté la proposta de valor
 
 ### Tractament de vídeos com a font d'informes

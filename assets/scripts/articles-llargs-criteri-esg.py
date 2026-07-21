@@ -415,13 +415,13 @@ add_body_no_indent("Cuando le digo a un director \"tienes 14 informes en la band
 
 add_body("El criterio no es una virtud personal. Es una estructura. Es saber que un informe de 47 páginas del BCE se reduce a tres ideas operativas. Es saber que la revisión de los ESRS te afecta de manera distinta si tienes EcoVadis Plata que si tienes B Corp. Es saber que el CSDDD cambia tu matriz de riesgo de proveedores aunque tu empresa no esté en el umbral de los 1.000 empleados.")
 
-add_body("El criterio se construye con tres pasos: filtrar (qué informes merecen tu atención), sintetizar (qué dicen realmente, en 7 minutos) y cruzar (con las certificaciones que ya tienes o que te faltan). Nada más. Si no haces los tres, no tienes criterio: tienes una bandeja de entrada llena.")
+add_body("El criterio se construye con tres pasos: filtrar (qué informes merecen tu atención), sintetizar (qué dicen realmente, en 5 minutos de lectura) y cruzar (con las certificaciones que ya tienes o que te faltan). Nada más. Si no haces los tres, no tienes criterio: tienes una bandeja de entrada llena.")
 
 add_h2("Una propuesta concreta")
 
 add_body_no_indent("No voy a proponer que leas más. Voy a proponer lo contrario: que leas menos, pero con criterio.")
 
-add_body("Criteri ESG no es un agregador. No recopilamos todos los informes para que tú los leas. Eso ya lo tienes. Lo que hacemos es seleccionar los 4-6 informes más relevantes de cada quincena, sintetizarlos en 7 minutos de lectura, cruzarlos con tus certificaciones (EcoVadis, B Corp, MSCI, GRI, SGE 21, las que tengas) y recomendarte tres acciones concretas. Nada más.")
+add_body("Criteri ESG no es un agregador. No recopilamos todos los informes para que tú los leas. Eso ya lo tienes. Lo que hacemos es seleccionar los 4-6 informes más relevantes de cada quincena, sintetizarlos en 5 minutos de lectura (1.000-1.100 palabras), cruzarlos con tus certificaciones (EcoVadis, B Corp, MSCI, GRI, SGE 21, las que tengas) y recomendarte tres acciones concretas. Nada más.")
 
 add_body("No es magia. Es criterio aplicado. Y se basa en algo simple: si un director de sostenibilidad dedicara el 60% de su tiempo a pensar en lugar de a recopilar, sus decisiones serían mejores. Y si las decisiones son mejores, el reporting mejora, los ratings mejoran, los comités de sostenibilidad dejan de ser trámites. El cambio no empieza por más datos: empieza por más tiempo para procesarlos.")
 
@@ -429,9 +429,9 @@ add_h2("Lo que no resolveremos")
 
 add_body_no_indent("Criteri ESG no resuelve todos los problemas de un director de sostenibilidad. No sustituye la conversación con el consejo. No redacta la memoria de sostenibilidad (todavía). No decide por ti qué certificaciones priorizar. No negocia con EcoVadis cuando el rating baja. No convence al CFO de que el presupuesto de sostenibilidad no se toca.")
 
-add_body("Lo que sí resolvemos: el 60% del tiempo que se va en recopilar, leer y estructurar. Las 5 horas semanales que un director dedica a tareas que no aportan valor estratégico. El tiempo que deberías estar dedicando a pensar.")
+add_body("Lo que sí resolvemos: el tiempo que se va en recopilar, leer y estructurar. Las horas semanales que un director dedica a tareas que no aportan valor estratégico. El tiempo que deberías estar dedicando a pensar.")
 
-add_body("Si reconoces esta situación, te entendemos. Estamos aquí para devolverte el 60%.")
+add_body("Si reconoces esta situación, te entendemos. Estamos para devolverte tiempo para pensar.")
 
 add_question_block("Pregunta para mejorar: ¿cuántas horas a la semana dedicas a leer informes que, una semana después, no recuerdas qué decían?")
 
@@ -481,7 +481,7 @@ add_page_break()
 add_eyebrow("Article 4 · 23 setembre 2026 · LinkedIn + Article web")
 add_h1("El semáforo metodológico: cómo evaluamos lo que leemos")
 
-add_meta("Por Criteri ESG · 7 minuts de lectura · Font: metodologia interna Criteri ESG")
+add_meta("Por Criteri ESG · 5 minuts de lectura · Font: metodologia interna Criteri ESG")
 
 add_body_no_indent("No todos los informes se crean igual. Un informe de 80 páginas del Banco Central Europeo sobre riesgo climático no es comparable con un press release de 3 páginas de MSCI anunciando un cambio metodológico. Y, sin embargo, los directores de sostenibilidad los reciben en la misma bandeja de entrada, los tratan con el mismo protocolo y les dedican el mismo tiempo. Esa igualdad de trato es un error.")
 

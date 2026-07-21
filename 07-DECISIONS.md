@@ -639,11 +639,11 @@
 - ⏳ Crear contingut propi en vídeo (webinars) — Phase Ultra 2027
 
 **Rao**:
-- Recomanar vídeos contradiu la proposta de valor ("amb 7 minuts estalvies 5 hores"). Demana més temps a l'usuari, no menys
+- Recomanar vídeos contradiu la proposta de valor ("5 minuts per criteri clar"). Demana més temps a l'usuari, no menys
 - YouTube està ple de greenwashing corporatiu. Recomanar sense auditar seria difondre'l
 - El cost de curació d'una secció regular és alt (30-60 minuts per vídeo) i el valor afegit baix (l'usuari ja pot buscar vídeos ell mateix)
 - Competidors (Bloomberg Green, GreenBiz) ja tenen canals propis de vídeo. Competir-hi és competir en el seu camp, no en el nostre
-- En canvi, processar vídeos institucionals com a informes és coherent amb el valor de Criteri: estalviar temps a l'usuari donant-li 7 minuts de lectura amb anàlisi crítica
+- En canvi, processar vídeos institucionals com a informes és coherent amb el valor de Criteri: donar 5 minuts de lectura amb criteri clar i anàlisi crítica
 
 **Alternatives considerades**:
 - Secció regular de vídeos recomanats → descartat per contradicció amb proposta de valor

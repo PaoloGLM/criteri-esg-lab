@@ -15,13 +15,13 @@ Abans de dir res a ningú, la marca ha d'estar impecable:
 
 - **Logo definitiu**: deixar de banda el logo provisional amb tipografia i tenir un logo real. Opcions: encarregar-ho a un dissenyador de Fiverr o 99designs (200-500€) o fer-ho amb IA generativa (0€)
 - **Kit de marca**: logo + paleta + tipografia + plantilles PowerPoint + plantilles xarxes socials. Tot en un ZIP descarregable
-- **Eslògan a tot arreu**: "Amb 7 minuts pots estalviar 5 hores de feina" — a la web, a la newsletter, al email signature, a les xarxes
+- **Eslògan a tot arreu**: "5 minuts per obtenir un criteri clar d'un informe" — a la web, a la newsletter, al email signature, a les xarxes
 
 ### 1.2 Construir audiència abans del llançament (agost)
 
 El pitjor error seria llançar al setembre amb 0 subscriptors. Cal sembrar a l'agost:
 
-- **LinkedIn personal de Paolo**: publicar 1 post per setmana a l'agost (4 posts) sobre temes ESG amb to professional. Cada post acaba amb: "Aviat: Criteri ESG. Una nova forma d'estalviar 5 hores a la setmana en anàlisi ESG."
+- **LinkedIn personal de Paolo**: publicar 1 post per setmana a l'agost (4 posts) sobre temes ESG amb to professional. Cada post acaba amb: "Aviat: Criteri ESG. Una nova forma d'obtenir un criteri clar en 5 minuts."
 - **Twitter/X**: retweet i comentari sobre notícies ESG del dia. Construir presència com a veu experta
 - **Grups de LinkedIn**: unir-se a 5-10 grups de Sustainability, ESG, CSRD, EcoVadis. Participar-hi amb comentaris valuosos (no autopromoció)
 - **Comunitats**: Reddit r/sustainability, r/ESG, r/CorporateSocialResponsibility. Respondre preguntes amb expertesa
@@ -48,7 +48,7 @@ El llançament no és un únic acte: és una campanya de 2 setmanes.
 
 **Dilluns (1 setembre)** — "Soft launch"
 - Newsletter #1 oficial a tots els subscriptors (100+ de la fase de pre-llançament)
-- Post LinkedIn anunciant el llançament: "Després de mesos de treball, avui llancem Criteri ESG. Una plataforma que sintetitza informes ESG en 7 minuts."
+- Post LinkedIn anunciant el llançament: "Després de mesos de treball, avui llancem Criteri ESG. Una plataforma que dona criteri clar sobre informes ESG en 5 minuts."
 - Thread a Twitter/X amb 5 tweets explicant el què, com i per què
 
 **Dijous (4 setembre)** — "Educació"
@@ -255,7 +255,7 @@ LinkedIn + Twitter + Reddit + newsletters + webinars + clústers + universitats 
 
 ### Consideració ètica (Kantiana)
 
-L'estratègia de màrqueting proposada és coherent amb el deure de ser honest: no manipulem (l'urgència de les 50 places és real), no falsegem testimonis (només publiquem els que els beta testers ens donen lliurement), i no prometem coses que no podem complir (l'eslògan "7 minuts per 5 hores" és verificable). La transparència és el nostre actiu més gran en un mercat on el greenwashing és la principal preocupació dels reguladors.
+L'estratègia de màrqueting proposada és coherent amb el deure de ser honest: no manipulem (l'urgència de les 50 places és real), no falsegem testimonis (només publiquem els que els beta testers ens donen lliurement), i no prometem coses que no podem complir (l'eslògan "5 minuts per criteri clar" és verificable: 1.000-1.100 paraules ÷ 200-220 paraules/minut). La transparència és el nostre actiu més gran en un mercat on el greenwashing és la principal preocupació dels reguladors.
 
 ---
 

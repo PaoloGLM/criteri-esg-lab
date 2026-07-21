@@ -190,7 +190,7 @@ L'anàlisi confirma que el mercat ESG a Catalunya i Espanya és **madur, fragmen
   - Passa el 60% del temps recopilant informació
 - **Pain principal:** "No tinc temps de llegir tots els informes que em afecten"
 - **Per què pagarà 39€/mes:**
-  - Per estalviar 5h/setmana = ~200€/mes de temps seu
+  - Per obtenir criteri clar en 5 minuts en lloc d'hores de lectura i anàlisi
   - Per no quedar malament davant del comitè de direcció
   - Perquè 39€ és el 0,5% del seu salari brut mensual
 

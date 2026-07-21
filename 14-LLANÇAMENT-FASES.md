@@ -150,7 +150,7 @@ Els mateixos apartats 1-4 i 6-7, però:
 - 29€ és competitiu vs Politico Pro (41€/mes) però premium vs Euractiv (gratis)
 
 **Per què 39€/mes estàndard?**
-- Coherent amb el valor percebut (estalvi 5h/setmana = 200€/mes de temps)
+- Coherent amb el valor percebut (5 minuts de criteri clar vs hores de lectura i anàlisi)
 - Per sota de "decisió meditada" (50€+)
 - Marge per descomptes anuals (15-20%)
 

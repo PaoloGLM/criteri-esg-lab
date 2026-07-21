@@ -191,7 +191,7 @@ src/
 
 - **Nom**: Criteri ESG
 - **Logo (provisional)**: `Criteri.` amb punt en coure (Fraunces 24px, weight 600)
-- **Eslògan**: "Amb 7 minuts pots estalviar 5 hores de feina."
+- **Eslògan**: "5 minuts per obtenir un criteri clar d'un informe." (Eslògan antic "7 minuts per estalviar 5 hores" OBSOLET — veure decisió editorial 17 del CONTEXT.md)
 - **Llengua**: bilingüe català/castellà (toggle al header). Traducció a euskera i gallec en fase posterior.
 
 ---

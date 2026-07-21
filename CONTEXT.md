@@ -438,6 +438,14 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
     - Aquesta regla està alineada amb la queixa recurrent de Paolo: "MAI puc accedir a `/home/z/my-project/download/`". La solució no és que Paolo aprengui a accedir-hi, és que Z.ai-bot ho pengi a Drive sempre.
     - **Excepció**: els fitxers tècnics intermedis (scripts, HTML de treball, logs) no cal pujar-los. Només els entregables finals que Paolo necessita veure o descarregar.
 
+17. **Longitud d'informes i temps de lectura (21 juliol 2026)** — Regla absoluta, no negociable:
+    - **L'eslògan oficial de Criteri ESG és**: «5 minuts per obtenir un criteri clar d'un informe».
+    - **NO és "7 minuts"**. L'eslògan antic «7 minuts per estalviar 5 hores» està **OBSOLET** i s'ha d'eliminar de tots els documents que encara el continguin (02-PRODUCTE.md, 17-MARKETING-LLANÇAMENT.md, 07-DECISIONS.md, 18-GUIA-NOU-MEMBRE.md, etc.). Veure `07-DECISIONS.md` per al detall de la correcció.
+    - **Regla de longitud**: els informes processats **no superaran mai les 1.100 paraules** i s'acostaran a **1.000 paraules** si és possible.
+    - **Justificació matemàtica**: un adult llegeix a una velocitat mitjana de 200-250 paraules per minut. 1.100 paraules ÷ 220 paraules/minut ≈ 5 minuts. Per tant, "5 minuts" és verificable i honest.
+    - **No dir mai** "estalviar 5 hores" ni "estalviar 60% del teu temps" sense context. El que sí es pot dir: "5 minuts per obtenir un criteri clar d'un informe de 47 pàgines".
+    - **Aplicació**: aquesta regla afecta totes les peces de comunicació (homepage, newsletter, LinkedIn, articles, mockups, presentacions). Cap text públic de Criteri ESG pot dir "7 minuts" sense mentir.
+
 ---
 
 ## Feines pendents (16 juliol 2026)

@@ -446,6 +446,22 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
     - **No dir mai** "estalviar 5 hores" ni "estalviar 60% del teu temps" sense context. El que sí es pot dir: "5 minuts per obtenir un criteri clar d'un informe de 47 pàgines".
     - **Aplicació**: aquesta regla afecta totes les peces de comunicació (homepage, newsletter, LinkedIn, articles, mockups, presentacions). Cap text públic de Criteri ESG pot dir "7 minuts" sense mentir.
 
+18. **Deploy a Vercel via deploy hook (21 juliol 2026)** — Procediment operatiu:
+    - El projecte de Vercel s'anomena "Criteri esg" (project ID: `prj_6wxd6SOUS5yt76IPSfVWxkcw8qeE`).
+    - Els deploys es fan via **deploy hook**, no via Vercel CLI amb token. Això és més simple i no requereix autenticació interactiva.
+    - El deploy hook URL està guardat al `.env` local amb la key `VERCEL_DEPLOY_HOOK`. **Mai** s'ha de commitar al GitHub (regla 15 de credencials).
+    - Per disparar un deploy, executar:
+      ```bash
+      HOOK_URL=$(grep VERCEL_DEPLOY_HOOK /home/z/my-project/.env | cut -d= -f2)
+      curl -s -X POST "$HOOK_URL" \
+        -H "Content-Type: application/json" \
+        -d '{"name": "Criteri ESG - descripció del deploy", "target": "production"}'
+      ```
+    - Vercel retorna `{"job": {"id": "...", "state": "PENDING"}}`. El build triga 2-5 minuts.
+    - La web de producció `criteriesg.com` està darrere de basic auth (`src/proxy.ts`) amb credencials definides a Vercel dashboard com `SITE_USERNAME` i `SITE_PASSWORD`. Aquestes credencials **no** són les de dev (`criteri:esg2026`) — es van canviar a la sessió d'auditoria de seguretat (Bloc A.2, juliol 2026).
+    - Per verificar el deploy, cal demanar a Paolo que validi obrint `criteriesg.com` o fer una captura amb Playwright passant les credencials correctes (que es troben al Vercel dashboard).
+    - Quan la web sigui pública al setembre 2026, el middleware `proxy.ts` s'eliminarà i ja no farà falta auth.
+
 ---
 
 ## Feines pendents (16 juliol 2026)

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Biblioteca d'informes redissenyada</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1440px; background: #F5EFE6; font-family: 'Inter', sans-serif; color: #2C1810; }
+
+  /* === HEADER === */
+  .header {
+    width: 1440px; height: 70px; background: #F5EFE6;
+    border-bottom: 1px solid #2C1810;
+    padding: 0 64px; display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 20;
+  }
+  .logo { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; color: #2C1810; letter-spacing: -0.015em; }
+  .logo .dot { color: #B87333; }
+  .nav { display: flex; gap: 36px; align-items: center; }
+  .nav a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: #5C3A1E; text-decoration: none; font-weight: 500; }
+  .nav .active { color: #B87333; }
+  .btn-cta { background: #B87333; color: #FFFFFF; padding: 10px 20px; font-family: 'Inter'; font-size: 12px; font-weight: 600; border: none; }
+
+  /* === PAGE HEADER === */
+  .page-header {
+    width: 1440px; padding: 64px 64px 32px 64px; background: #F5EFE6;
+    border-bottom: 1px solid #2C1810;
+  }
+  .page-header-eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.22em;
+    color: #8A5526; font-weight: 600; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .page-header-eyebrow::before { content: ''; width: 24px; height: 2px; background: #B87333; }
+
+  .page-header-title {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 48px;
+    line-height: 1.05; color: #2C1810; letter-spacing: -0.022em;
+    margin-bottom: 14px;
+  }
+  .page-header-title em { font-style: italic; color: #5C3A1E; font-weight: 400; }
+
+  .page-header-subtitle {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 18px; color: #5C3A1E; max-width: 720px; line-height: 1.4;
+  }
+
+  /* === CONTROLS === */
+  .controls {
+    width: 1440px; padding: 24px 64px; background: #F5EFE6;
+    border-bottom: 1px solid #C9B89A;
+    display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+  }
+
+  .filters-row {
+    display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: #8B7355; font-weight: 600;
+  }
+
+  .filter-chip {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.14em; font-weight: 500;
+    padding: 6px 12px; background: white; border: 1px solid #C9B89A;
+    color: #5C3A1E; cursor: pointer;
+  }
+  .filter-chip:hover { border-color: #B87333; color: #B87333; }
+  .filter-chip.active { background: #2C1810; color: #F5EFE6; border-color: #2C1810; }
+
+  .sort-select {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    padding: 6px 12px; background: white; border: 1px solid #C9B89A;
+    color: #5C3A1E; cursor: pointer;
+  }
+
+  /* === GRID D'INFORMES === */
+  .reports-grid {
+    width: 1440px; padding: 40px 64px 64px 64px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px;
+  }
+
+  /* === CARD DESTACADA (primer informe) === */
+  .card-featured {
+    grid-column: span 3;
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 0;
+    background: white; border: 1px solid #C9B89A;
+    margin-bottom: 12px;
+  }
+
+  .card-featured-content { padding: 32px; display: flex; flex-direction: column; gap: 16px; }
+
+  .card-featured-tag {
+    display: flex; gap: 8px; align-items: center;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    text-transform: uppercase; letter-spacing: 0.16em; font-weight: 600;
+    padding: 3px 8px;
+  }
+  .tag-reg { background: rgba(92, 58, 30, 0.12); color: #5C3A1E; }
+  .tag-free { background: rgba(92, 138, 92, 0.12); color: #4A6B3A; }
+  .tag-premium { background: #B87333; color: white; }
+  .tag-featured {
+    background: rgba(184, 115, 51, 0.1); color: #B87333;
+    border: 1px solid #B87333;
+  }
+
+  .card-featured-title {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 32px;
+    line-height: 1.1; color: #2C1810; letter-spacing: -0.018em;
+  }
+  .card-featured-title em { font-style: italic; color: #5C3A1E; font-weight: 400; }
+
+  .card-featured-meta {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: #8B7355; font-weight: 500;
+  }
+  .card-featured-meta strong { color: #2C1810; font-weight: 600; }
+
+  .card-featured-summary {
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    color: #2C1810; line-height: 1.55; max-width: 600px;
+  }
+
+  .card-featured-xref {
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+
+  .xref-chip {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600;
+    padding: 3px 8px; background: white; border: 1px solid #B87333;
+    color: #5C3A1E;
+  }
+
+  .card-featured-cta {
+    font-family: 'Inter', sans-serif; font-size: 13px;
+    color: #B87333; text-decoration: none;
+    border-bottom: 1px solid #B87333; padding-bottom: 4px;
+    align-self: flex-start; font-weight: 600;
+  }
+
+  /* Mini semàfor */
+  .card-featured-semafor {
+    background: #2C1810; color: #F5EFE6;
+    padding: 32px; display: flex; flex-direction: column; gap: 16px;
+    justify-content: center;
+  }
+
+  .mini-semafor-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+    text-transform: uppercase; letter-spacing: 0.22em;
+    color: #D9A574; font-weight: 600;
+  }
+
+  .mini-semafor-grade {
+    display: flex; align-items: baseline; gap: 14px;
+  }
+
+  .mini-semafor-letter {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 72px; color: #B87333; letter-spacing: -0.04em; line-height: 1;
+  }
+
+  .mini-semafor-label-text {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 22px; color: #F5EFE6;
+  }
+
+  .mini-semafor-dimensions {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+
+  .mini-dim {
+    display: grid; grid-template-columns: 90px 1fr;
+    gap: 10px; align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(217, 165, 116, 0.15);
+  }
+
+  .mini-dim-name {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: rgba(245, 239, 230, 0.6); font-weight: 500;
+  }
+
+  .mini-dim-dots { display: flex; gap: 4px; }
+
+  .dot { width: 8px; height: 8px; border-radius: 50%; opacity: 0.3; }
+  .dot.g { background: #5C8A5C; }
+  .dot.y { background: #C9A961; }
+  .dot.r { background: #A0522D; }
+  .dot.active { opacity: 1; }
+
+  /* === CARD NORMAL === */
+  .card {
+    background: white; border: 1px solid #C9B89A;
+    padding: 24px; display: flex; flex-direction: column; gap: 14px;
+    transition: all 0.2s;
+  }
+  .card:hover { border-color: #B87333; }
+
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+
+  .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  .card-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    color: #8B7355; font-weight: 500;
+  }
+
+  .card-title {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 18px;
+    line-height: 1.2; color: #2C1810; letter-spacing: -0.008em;
+  }
+  .card-title em { font-style: italic; color: #5C3A1E; font-weight: 400; }
+
+  .card-meta {
+    font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: #8B7355; font-weight: 500;
+  }
+  .card-meta strong { color: #2C1810; font-weight: 600; }
+
+  /* Mini semàfor inline (molt més compacte) */
+  .card-semafor {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 0;
+    border-top: 1px solid #C9B89A;
+    border-bottom: 1px solid #C9B89A;
+  }
+
+  .card-semafor-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 8.5px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: #8A5526; font-weight: 600;
+  }
+
+  .card-semafor-grade {
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: 18px; color: #B87333;
+    letter-spacing: -0.02em; line-height: 1;
+  }
+
+  .card-semafor-label-text {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 12px; color: #5C3A1E;
+  }
+
+  .card-semafor-dots {
+    margin-left: auto; display: flex; gap: 4px;
+  }
+
+  .card-summary {
+    font-family: 'Inter', sans-serif; font-size: 12px;
+    color: #5C3A1E; line-height: 1.5;
+  }
+
+  .card-xref {
+    display: flex; gap: 4px; flex-wrap: wrap;
+    margin-top: auto;
+  }
+
+  .card-xref-chip {
+    font-family: 'JetBrains Mono', monospace; font-size: 8px;
+    text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
+    padding: 2px 6px; background: rgba(184, 115, 51, 0.08);
+    color: #5C3A1E;
+  }
+  .card-xref-chip.impact-high { color: #A0522D; }
+  .card-xref-chip.impact-med { color: #8A6D2B; }
+  .card-xref-chip.impact-low { color: #8B7355; }
+
+  /* === FOOTER === */
+  .footer {
+    width: 1440px; padding: 40px 64px; background: #F5EFE6;
+    border-top: 1px solid #2C1810;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: #8B7355; font-weight: 500;
+  }
+  .footer-brand {
+    font-family: 'Fraunces', serif; font-size: 14px;
+    color: #2C1810; text-transform: none; letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+  .footer-brand .dot { color: #B87333; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">Criteri<span class="dot">.</span> ESG</div>
+  <div class="nav">
+    <a href="#" class="active">Biblioteca</a>
+    <a href="#">Estándares</a>
+    <a href="#">Qué hacemos</a>
+    <a href="#">Quiénes somos</a>
+    <button class="btn-cta">Acceder</button>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-eyebrow">Biblioteca · Informes procesados</div>
+  <h1 class="page-header-title">Todos los <em>informes Criteri</em>.</h1>
+  <p class="page-header-subtitle">Filtrados por certificación, ordenados por relevancia. Cada informe con semáforo metodológico, 8 bloques y cross-reference con tus estándares.</p>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="filters-row">
+    <span class="filter-label">Filtrar por certificación:</span>
+    <button class="filter-chip active">Todos</button>
+    <button class="filter-chip">GRI</button>
+    <button class="filter-chip">EcoVadis</button>
+    <button class="filter-chip">B Corp</button>
+    <button class="filter-chip">MSCI ESG</button>
+    <button class="filter-chip">CDP</button>
+    <button class="filter-chip">SGE 21</button>
+    <button class="filter-chip">CSRD / ESRS</button>
+  </div>
+  <select class="sort-select">
+    <option>Orden: Más recientes primero</option>
+    <option>Orden: Mejor semáforo primero</option>
+    <option>Orden: Mayor impacto primero</option>
+  </select>
+</div>
+
+<!-- GRID -->
+<div class="reports-grid">
+
+  <!-- CARD DESTACADA -->
+  <article class="card-featured">
+    <div class="card-featured-content">
+      <div class="card-featured-tag">
+        <span class="tag tag-featured">Último publicado</span>
+        <span class="tag tag-reg">Regulación</span>
+        <span class="tag tag-free">Gratis</span>
+      </div>
+      <h2 class="card-featured-title">Revisión de los ESRS: <em>simplificación del CSRD</em></h2>
+      <div class="card-featured-meta">
+        <strong>Comisión Europea</strong> · 6 mayo 2026 · 47 pág · ESRS Q&A Platform
+      </div>
+      <p class="card-featured-summary">La Comisión Europea reduce un 61% los datapoints obligatorios del CSRD. Se simplifica la arquitectura pero se mantiene la convergencia con GRI e ISSB. La revisión deja fuera el detalle granular que las empresas necesitan para implementar.</p>
+      <div class="card-featured-xref">
+        <span class="xref-chip">GRI · Alto</span>
+        <span class="xref-chip">EcoVadis · Medio</span>
+        <span class="xref-chip">MSCI · Medio</span>
+        <span class="xref-chip">B Corp · Bajo</span>
+        <span class="xref-chip">CDP · Medio</span>
+      </div>
+      <a href="#" class="card-featured-cta">Leer informe completo →</a>
+    </div>
+    <div class="card-featured-semafor">
+      <div class="mini-semafor-label">Semáforo</div>
+      <div class="mini-semafor-grade">
+        <span class="mini-semafor-letter">C</span>
+        <span class="mini-semafor-label-text">Débil</span>
+      </div>
+      <div class="mini-semafor-dimensions">
+        <div class="mini-dim"><span class="mini-dim-name">Scope 3</span><div class="mini-dim-dots"><div class="dot g"></div><div class="dot y active"></div><div class="dot r"></div></div></div>
+        <div class="mini-dim"><span class="mini-dim-name">Plazos</span><div class="mini-dim-dots"><div class="dot g active"></div><div class="dot y"></div><div class="dot r"></div></div></div>
+        <div class="mini-dim"><span class="mini-dim-name">Fuentes</span><div class="mini-dim-dots"><div class="dot g"></div><div class="dot y active"></div><div class="dot r"></div></div></div>
+        <div class="mini-dim"><span class="mini-dim-name">Granular.</span><div class="mini-dim-dots"><div class="dot g"></div><div class="dot y"></div><div class="dot r active"></div></div></div>
+        <div class="mini-dim"><span class="mini-dim-name">Verific.</span><div class="mini-dim-dots"><div class="dot g"></div><div class="dot y active"></div><div class="dot r"></div></div></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CARDS NORMALS -->
+  <article class="card">
+    <div class="card-top">
+      <div class="card-tags">
+        <span class="tag tag-reg">Regulación</span>
+        <span class="tag tag-free">Gratis</span>
+      </div>
+      <span class="card-num">02</span>
+    </div>
+    <h3 class="card-title">CSDDD Omnibus I: <em>enmiendas finales</em></h3>
+    <div class="card-meta"><strong>Comisión Europea</strong> · 15 marzo 2026 · 38 pág</div>
+    <div class="card-semafor">
+      <span class="card-semafor-label">Sem.</span>
+      <span class="card-semafor-grade">B</span>
+      <span class="card-semafor-label-text">Robusto</span>
+      <div class="card-semafor-dots">
+        <div class="dot g active"></div>
+        <div class="dot g active"></div>
+        <div class="dot y active"></div>
+        <div class="dot g active"></div>
+        <div class="dot y active"></div>
+      </div>
+    </div>
+    <p class="card-summary">Se estrecha el deber de diligencia en derechos humanos para empresas de más de 1.000 empleados. Las cadenas de suministro deben mapear riesgos y mitigar impactos. Entra en vigor 2027.</p>
+    <div class="card-xref">
+      <span class="card-xref-chip impact-high">CSDDD · Alto</span>
+      <span class="card-xref-chip impact-high">B Corp · Alto</span>
+      <span class="card-xref-chip impact-med">SGE 21 · Medio</span>
+      <span class="card-xref-chip impact-med">GRI · Medio</span>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-top">
+      <div class="card-tags">
+        <span class="tag" style="background:rgba(184,115,51,0.12);color:#B87333;">Rating</span>
+        <span class="tag tag-premium">Premium</span>
+      </div>
+      <span class="card-num">03</span>
+    </div>
+    <h3 class="card-title">EcoVadis Methodology Updates <em>Q1 2026</em></h3>
+    <div class="card-meta"><strong>EcoVadis</strong> · 15 abril 2026 · 28 pág</div>
+    <div class="card-semafor">
+      <span class="card-semafor-label">Sem.</span>
+      <span class="card-semafor-grade">B</span>
+      <span class="card-semafor-label-text">Robusto</span>
+      <div class="card-semafor-dots">
+        <div class="dot g active"></div>
+        <div class="dot y active"></div>
+        <div class="dot g active"></div>
+        <div class="dot y active"></div>
+        <div class="dot g active"></div>
+      </div>
+    </div>
+    <p class="card-summary">9 cambios metodológicos entre abril y mayo 2026. Se refuerza el reconocimiento a empresas que reportan con GRI Universal Standards. Impacto directo en scores de Sustainable Procurement.</p>
+    <div class="card-xref">
+      <span class="card-xref-chip impact-high">EcoVadis · Alto</span>
+      <span class="card-xref-chip impact-med">GRI · Medio</span>
+      <span class="card-xref-chip impact-med">CDP · Medio</span>
+      <span class="card-xref-chip impact-low">MSCI · Bajo</span>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-top">
+      <div class="card-tags">
+        <span class="tag" style="background:rgba(232,201,154,0.25);color:#8A6D2B;">Framework</span>
+        <span class="tag tag-free">Gratis</span>
+      </div>
+      <span class="card-num">04</span>
+    </div>
+    <h3 class="card-title">TNFD Status Report <em>2026</em></h3>
+    <div class="card-meta"><strong>TNFD</strong> · 28 febrero 2026 · 56 pág</div>
+    <div class="card-semafor">
+      <span class="card-semafor-label">Sem.</span>
+      <span class="card-semafor-grade">A</span>
+      <span class="card-semafor-label-text">Robusto fuerte</span>
+      <div class="card-semafor-dots">
+        <div class="dot g active"></div>
+        <div class="dot g active"></div>
+        <div class="dot g active"></div>
+        <div class="dot y active"></div>
+        <div class="dot g active"></div>
+      </div>
+    </div>
+    <p class="card-summary">El TNFD alcanza los 500 adopters globales. Se introduce la métrica de localización de impactos en biodiversidad. España se posiciona como líder europeo en adopción.</p>
+    <div class="card-xref">
+      <span class="card-xref-chip impact-high">TNFD · Alto</span>
+      <span class="card-xref-chip impact-med">GRI · Medio</span>
+      <span class="card-xref-chip impact-med">CDP · Medio</span>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-top">
+      <div class="card-tags">
+        <span class="tag" style="background:rgba(232,201,154,0.25);color:#8A6D2B;">Framework</span>
+        <span class="tag tag-free">Gratis</span>
+      </div>
+      <span class="card-num">05</span>
+    </div>
+    <h3 class="card-title">BCE Climate Risk Stress Test <em>2026</em></h3>
+    <div class="card-meta"><strong>BCE</strong> · 12 febrero 2026 · 89 pág</div>
+    <div class="card-semafor">
+      <span class="card-semafor-label">Sem.</span>
+      <span class="card-semafor-grade">B</span>
+      <span class="card-semafor-label-text">Robusto</span>
+      <div class="card-semafor-dots">
+        <div class="dot g active"></div>
+        <div class="dot g active"></div>
+        <div class="dot g active"></div>
+        <div class="dot y active"></div>
+        <div class="dot y active"></div>
+      </div>
+    </div>
+    <p class="card-summary">El 100% de los bancos significativos de la UE integran el riesgo climático. Se mantienen gaps clave en datos Scope 3. La banca española mejora respecto a 2025.</p>
+    <div class="card-xref">
+      <span class="card-xref-chip impact-high">TCFD · Alto</span>
+      <span class="card-xref-chip impact-med">MSCI · Medio</span>
+      <span class="card-xref-chip impact-low">CDP · Bajo</span>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-top">
+      <div class="card-tags">
+        <span class="tag" style="background:rgba(184,115,51,0.12);color:#B87333;">Rating</span>
+        <span class="tag tag-premium">Premium</span>
+      </div>
+      <span class="card-num">06</span>
+    </div>
+    <h3 class="card-title">MSCI ESG Ratings <em>Methodology 2026</em></h3>
+    <div class="card-meta"><strong>MSCI</strong> · 8 enero 2026 · 64 pág</div>
+    <div class="card-semafor">
+      <span class="card-semafor-label">Sem.</span>
+      <span class="card-semafor-grade">C</span>
+      <span class="card-semafor-label-text">Débil</span>
+      <div class="card-semafor-dots">
+        <div class="dot y active"></div>
+        <div class="dot g active"></div>
+        <div class="dot y active"></div>
+        <div class="dot r active"></div>
+        <div class="dot y active"></div>
+      </div>
+    </div>
+    <p class="card-summary">MSCI ajusta la ponderación de factores ESG y mejora la transparencia metodológica. Cambios afectan al score de empresas con alta exposición a riesgo climático físico.</p>
+    <div class="card-xref">
+      <span class="card-xref-chip impact-high">MSCI · Alto</span>
+      <span class="card-xref-chip impact-med">TCFD · Medio</span>
+      <span class="card-xref-chip impact-low">Sustainalytics · Bajo</span>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-top">
+      <div class="card-tags">
+        <span class="tag" style="background:rgba(232,201,154,0.25);color:#8A6D2B;">Framework</span>
+        <span class="tag tag-free">Gratis</span>
+      </div>
+      <span class="card-num">07</span>
+    </div>
+    <h3 class="card-title">B Corp New Standards <em>2026</em></h3>
+    <div class="card-meta"><strong>B Lab</strong> · 20 enero 2026 · 72 pág</div>
+    <div class="card-semafor">
+      <span class="card-semafor-label">Sem.</span>
+      <span class="card-semafor-grade">B</span>
+      <span class="card-semafor-label-text">Robusto</span>
+      <div class="card-semafor-dots">
+        <div class="dot g active"></div>
+        <div class="dot g active"></div>
+        <div class="dot y active"></div>
+        <div class="dot g active"></div>
+        <div class="dot y active"></div>
+      </div>
+    </div>
+    <p class="card-summary">B Lab publica los nuevos estándares que entrarán en vigor en 2027. Cambios en la ponderación del B Impact Assessment. Las empresas recertificadas en 2026 podrán transicionar gradualmente.</p>
+    <div class="card-xref">
+      <span class="card-xref-chip impact-high">B Corp · Alto</span>
+      <span class="card-xref-chip impact-med">SGE 21 · Medio</span>
+      <span class="card-xref-chip impact-low">GRI · Bajo</span>
+    </div>
+  </article>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand">Criteri<span class="dot">.</span> ESG</div>
+  <div>© 2026 · Barcelona · criteriesg.com</div>
+</div>
+
+</body>
+</html>

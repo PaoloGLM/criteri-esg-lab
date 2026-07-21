@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Estándares ESG redissenyada</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1440px; background: #F5EFE6; font-family: 'Inter', sans-serif; color: #2C1810; }
+
+  /* === HEADER === */
+  .header {
+    width: 1440px; height: 70px; background: #F5EFE6;
+    border-bottom: 1px solid #2C1810;
+    padding: 0 64px; display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 20;
+  }
+  .logo { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; color: #2C1810; letter-spacing: -0.015em; }
+  .logo .dot { color: #B87333; }
+  .nav { display: flex; gap: 36px; align-items: center; }
+  .nav a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: #5C3A1E; text-decoration: none; font-weight: 500; }
+  .nav .active { color: #B87333; }
+  .btn-cta { background: #B87333; color: #FFFFFF; padding: 10px 20px; font-family: 'Inter'; font-size: 12px; font-weight: 600; border: none; }
+
+  /* === PAGE HEADER === */
+  .page-header {
+    width: 1440px; padding: 64px 64px 32px 64px; background: #F5EFE6;
+    border-bottom: 1px solid #2C1810;
+    display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end;
+  }
+
+  .page-header-eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.22em;
+    color: #8A5526; font-weight: 600; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .page-header-eyebrow::before { content: ''; width: 24px; height: 2px; background: #B87333; }
+
+  .page-header-title {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 48px;
+    line-height: 1.05; color: #2C1810; letter-spacing: -0.022em;
+    margin-bottom: 14px;
+  }
+  .page-header-title em { font-style: italic; color: #5C3A1E; font-weight: 400; }
+
+  .page-header-subtitle {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 17px; color: #5C3A1E; max-width: 720px; line-height: 1.4;
+  }
+
+  .page-header-number {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 120px; color: #2C1810; letter-spacing: -0.05em;
+    line-height: 0.9;
+  }
+  .page-header-number sup {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: #B87333; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; vertical-align: top; margin-left: 6px;
+  }
+
+  /* === LEGEND (també filtres) === */
+  .legend {
+    width: 1440px; padding: 24px 64px; background: #F5EFE6;
+    border-bottom: 1px solid #C9B89A;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .legend-filters { display: flex; gap: 12px; align-items: center; }
+
+  .legend-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: #8B7355; font-weight: 600;
+    margin-right: 8px;
+  }
+
+  .legend-chip {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.14em; font-weight: 600;
+    padding: 8px 14px; background: white; border: 1px solid #C9B89A;
+    color: #5C3A1E; cursor: pointer;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .legend-chip:hover { border-color: #B87333; }
+  .legend-chip.active { background: #2C1810; color: #F5EFE6; border-color: #2C1810; }
+  .legend-chip.active .chip-bar { background: #B87333; }
+
+  .chip-bar { width: 18px; height: 4px; }
+  .chip-bar.reg { background: #5C3A1E; }
+  .chip-bar.fw { background: #B87333; }
+  .chip-bar.cert { background: #E8C99A; }
+
+  .legend-search {
+    font-family: 'Inter', sans-serif; font-size: 12px;
+    padding: 8px 14px; background: white; border: 1px solid #C9B89A;
+    color: #8B7355; width: 220px;
+  }
+  .legend-search::placeholder { color: #8B7355; font-style: italic; }
+
+  /* === GRID D'ESTÀNDARDS === */
+  .standards-grid {
+    width: 1440px; padding: 40px 64px 64px 64px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px;
+  }
+
+  .card {
+    background: white; border: 1px solid #C9B89A;
+    padding: 0; display: flex; flex-direction: column;
+    transition: all 0.2s; cursor: pointer;
+    position: relative;
+  }
+  .card:hover { border-color: #B87333; transform: translateY(-2px); }
+
+  /* Franja superior gruixuda amb el color de la categoria */
+  .card-stripe {
+    height: 6px;
+  }
+  .card-stripe.reg { background: #5C3A1E; }
+  .card-stripe.fw { background: #B87333; }
+  .card-stripe.cert { background: #E8C99A; }
+
+  .card-content {
+    padding: 20px;
+    display: flex; flex-direction: column; gap: 10px;
+    flex: 1;
+  }
+
+  .card-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid rgba(201, 184, 154, 0.5);
+    padding-bottom: 8px;
+  }
+
+  .card-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+    color: #8B7355; font-weight: 600; letter-spacing: 0.08em;
+  }
+
+  .card-access {
+    font-family: 'JetBrains Mono', monospace; font-size: 8.5px;
+    text-transform: uppercase; letter-spacing: 0.14em; font-weight: 600;
+    padding: 3px 7px;
+  }
+  .card-access.free { background: rgba(92, 138, 92, 0.12); color: #4A6B3A; }
+  .card-access.premium { background: #B87333; color: white; }
+
+  .card-name {
+    font-family: 'Fraunces', serif; font-weight: 500;
+    font-size: 19px; color: #2C1810; letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+
+  .card-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    text-transform: uppercase; letter-spacing: 0.18em; font-weight: 600;
+  }
+  .card-tag.reg { color: #5C3A1E; }
+  .card-tag.fw { color: #B87333; }
+  .card-tag.cert { color: #8A6D2B; }
+
+  .card-desc {
+    font-family: 'Inter', sans-serif; font-size: 11.5px;
+    color: #5C3A1E; line-height: 1.45;
+  }
+
+  .card-footer {
+    margin-top: auto; padding-top: 12px;
+    border-top: 1px solid rgba(201, 184, 154, 0.5);
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+
+  .card-count {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: #8B7355; font-weight: 500;
+  }
+  .card-count strong { color: #B87333; font-weight: 700; }
+
+  .card-link {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: #B87333; font-weight: 600; text-decoration: none;
+    border-bottom: 1px solid #B87333; padding-bottom: 2px;
+  }
+
+  /* === FOOTER === */
+  .footer {
+    width: 1440px; padding: 40px 64px; background: #F5EFE6;
+    border-top: 1px solid #2C1810;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: #8B7355; font-weight: 500;
+  }
+  .footer-brand {
+    font-family: 'Fraunces', serif; font-size: 14px;
+    color: #2C1810; text-transform: none; letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+  .footer-brand .dot { color: #B87333; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">Criteri<span class="dot">.</span> ESG</div>
+  <div class="nav">
+    <a href="#">Biblioteca</a>
+    <a href="#" class="active">Estándares</a>
+    <a href="#">Qué hacemos</a>
+    <a href="#">Quiénes somos</a>
+    <button class="btn-cta">Acceder</button>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div>
+    <div class="page-header-eyebrow">Estándares ESG · 2026</div>
+    <h1 class="page-header-title">Los <em>16 estándares</em> que un director de sostenibilidad no debería confundir.</h1>
+    <p class="page-header-subtitle">Una regulación te obliga. Un framework te orienta. Una certificación te evalúa. Confundirlas tiene consecuencias operativas reales.</p>
+  </div>
+  <div class="page-header-number">16<sup>est.</sup></div>
+</div>
+
+<!-- LEGEND + FILTRES -->
+<div class="legend">
+  <div class="legend-filters">
+    <span class="legend-label">Filtrar:</span>
+    <button class="legend-chip active"><div class="chip-bar reg"></div>Regulaciones (5)</button>
+    <button class="legend-chip active"><div class="chip-bar fw"></div>Frameworks (5)</button>
+    <button class="legend-chip active"><div class="chip-bar cert"></div>Certificaciones (6)</button>
+  </div>
+  <input class="legend-search" placeholder="Buscar estándar..." />
+</div>
+
+<!-- GRID -->
+<div class="standards-grid">
+
+  <!-- 5 REGULACIONS -->
+  <article class="card">
+    <div class="card-stripe reg"></div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="card-num">01</span>
+        <span class="card-access free">Gratis</span>
+      </div>
+      <span class="card-tag reg">Regulación · UE</span>
+      <h3 class="card-name">CSRD / ESRS</h3>
+      <p class="card-desc">Regulación europea de reporting. Obligatoria para >250 empleados desde 2024.</p>
+      <div class="card-footer">
+        <span class="card-count"><strong>7</strong> informes</span>
+        <a href="#" class="card-link">Ver →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-stripe reg"></div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="card-num">02</span>
+        <span class="card-access free">Gratis</span>
+      </div>
+      <span class="card-tag reg">Regulación · UE</span>
+      <h3 class="card-name">CSDDD</h3>
+      <p class="card-desc">Deber de diligencia en derechos humanos. Empresas >1000 empleados.</p>
+      <div class="card-footer">
+        <span class="card-count"><strong>4</strong> informes</span>
+        <a href="#" class="card-link">Ver →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-stripe reg"></div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="card-num">03</span>
+        <span class="card-access free">Gratis</span>
+      </div>
+      <span class="card-tag reg">Regulación · UE</span>
+      <h3 class="card-name">SFDR</h3>
+      <p class="card-desc">Regulación de disclosure financiero. Artículos 6, 8 y 9.</p>
+      <div class="card-footer">
+        <span class="card-count"><strong>3</strong> informes</span>
+        <a href="#" class="card-link">Ver →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-stripe reg"></div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="card-num">04</span>
+        <span class="card-access free">Gratis</span>
+      </div>
+      <span class="card-tag reg">Regulación · UE</span>
+      <h3 class="card-name">Taxonomía UE</h3>
+      <p class="card-desc">Clasificación de actividades económicas sostenibles. 6 objetivos.</p>
+      <div class="card-footer">
+        <span class="card-count"><strong>5</strong> informes</span>
+        <a href="#" class="card-link">Ver →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-stripe reg"></div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="card-num">05</span>
+        <span class="card-access free">Gratis</span>
+      </div>
+      <span class="card-tag reg">Regulación · UE</span>
+      <h3 class="card-name">EMAS</h3>
+      <p class="card-desc">Sistema comunitario de eco-gestión y auditoría. UE.</p>
+      <div class="card-footer">
+        <span class="card-count"><strong>2</strong> informes</span>
+        <a href="#" class="card-link">Ver →</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- 5 FRAMEWORKS -->
+  <article class="card">
+    <div class="card-stripe fw"></div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="card-num">06</span>
+        <span class="card-access free">Gratis</span>
+      </div>
+      <span class="card-tag fw">Framework · Global</span>
+      <h3 class="card-name">GRI</h3>
+      <p class="card-desc">Framework global más usado. 70%+ del IBEX 35 reporta con él.</p>
+      <div class="card-footer">
+        <span class="card-count"><strong>9</strong> informes</span>
+        <a href="#" class="card-link">Ver →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-stripe fw"></div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="card-num">07</span>
+        <span class="card-access free">Gratis</span>
+      </div>
+      <span class="card-tag fw">Framework · Global</span>
+      <h3 class="card-name">SASB</h3>
+      <p class="card-desc">Framework de reporting por industria. 77 industrias.</p>
+      <div class="card-footer">
+        <span class="card-count"><strong>3</strong> informes</span>
+        <a href="#" class="card-link">Ver →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-stripe fw"></div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="card-num">08</span>
+        <span class="card-access free">Gratis</span>
+      </div>
+      <span class="card-tag fw">Framework · Global</span>
+      <h3 class="card-name">TNFD</h3>
+      <p class="card-desc">Framework de naturaleza. Riesgos y dependencias.</p>
+      <div class="card-footer">
+        <span class="card-count"><strong>4</strong> informes</span>
+        <a href="#" class="card-link">Ver →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-stripe fw"></div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="card-num">09</span>
+        <span class="card-access free">Gratis</span>
+      </div>
+      <span class="card-tag fw">Framework · Global</span>
+      <h3 class="card-name">TCFD</h3>
+      <p class="card-desc">Framework climático. Recomendaciones de disclosure.</p>
+      <div class="card-footer">
+        <span class="card-count"><strong>6</strong> informes</span>
+        <a href="#" class="card-link">Ver →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-stripe fw"></div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="card-num">10</span>
+        <span class="card-access free">Gratis</span>
+      </div>
+      <span class="card-tag fw">Framework · Global</span>
+      <h3 class="card-name">ISO 26000</h3>
+      <p class="card-desc">Guía de responsabilidad social. No certificable.</p>
+      <div class="card-footer">
+        <span class="card-count"><strong>2</strong> informes</span>
+        <a href="#" class="card-link">Ver →</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- 6 CERTIFICACIONS -->
+  <article class="card">
+    <div class="card-stripe cert"></div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="card-num">11</span>
+        <span class="card-access premium">Premium</span>
+      </div>
+      <span class="card-tag cert">Certificación</span>
+      <h3 class="card-name">EcoVadis</h3>
+      <p class="card-desc">Rating de sostenibilidad para cadenas de suministro. Medallas Bronze-Platinum.</p>
+      <div class="card-footer">
+        <span class="card-count"><strong>7</strong> informes</span>
+        <a href="#" class="card-link">Ver →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-stripe cert"></div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="card-num">12</span>
+        <span class="card-access premium">Premium</span>
+      </div>
+      <span class="card-tag cert">Certificación</span>
+      <h3 class="card-name">B Corp</h3>
+      <p class="card-desc">Certificación de empresas con propósito. Score mínimo 80/200.</p>
+      <div class="card-footer">
+        <span class="card-count"><strong>5</strong> informes</span>
+        <a href="#" class="card-link">Ver →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-stripe cert"></div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="card-num">13</span>
+        <span class="card-access premium">Premium</span>
+      </div>
+      <span class="card-tag cert">Rating</span>
+      <h3 class="card-name">MSCI ESG</h3>
+      <p class="card-desc">Rating para inversores (AAA-CCC). Afecta al coste de capital.</p>
+      <div class="card-footer">
+        <span class="card-count"><strong>6</strong> informes</span>
+        <a href="#" class="card-link">Ver →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-stripe cert"></div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="card-num">14</span>
+        <span class="card-access premium">Premium</span>
+      </div>
+      <span class="card-tag cert">Certificación</span>
+      <h3 class="card-name">CDP</h3>
+      <p class="card-desc">Disclosure global de clima, agua y bosques. Puntuación A- a D-.</p>
+      <div class="card-footer">
+        <span class="card-count"><strong>3</strong> informes</span>
+        <a href="#" class="card-link">Ver →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-stripe cert"></div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="card-num">15</span>
+        <span class="card-access premium">Premium</span>
+      </div>
+      <span class="card-tag cert">Certificación</span>
+      <h3 class="card-name">SGE 21</h3>
+      <p class="card-desc">Sistema de Gestión Ética de Forética. Metodología española.</p>
+      <div class="card-footer">
+        <span class="card-count"><strong>3</strong> informes</span>
+        <a href="#" class="card-link">Ver →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-stripe cert"></div>
+    <div class="card-content">
+      <div class="card-header">
+        <span class="card-num">16</span>
+        <span class="card-access premium">Premium</span>
+      </div>
+      <span class="card-tag cert">Rating</span>
+      <h3 class="card-name">Sustainalytics</h3>
+      <p class="card-desc">Rating de riesgo ESG para inversores. 5 niveles.</p>
+      <div class="card-footer">
+        <span class="card-count"><strong>4</strong> informes</span>
+        <a href="#" class="card-link">Ver →</a>
+      </div>
+    </div>
+  </article>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand">Criteri<span class="dot">.</span> ESG</div>
+  <div>© 2026 · Barcelona · criteriesg.com</div>
+</div>
+
+</body>
+</html>

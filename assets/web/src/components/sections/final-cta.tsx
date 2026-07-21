@@ -1,144 +1,144 @@
 "use client";
 
 import { useLanguage } from "@/components/language-provider";
-import { useAuth } from "@/lib/auth-context";
-import { Button } from "@/components/ui/button";
-import { Mail, Sparkles, ArrowRight, Crown, CheckCircle2 } from "lucide-react";
 
 interface FinalCtaProps {
   onOpenRegister: () => void;
   onOpenPreus?: () => void;
 }
 
+/**
+ * FINAL — Variant 2 (Manifest Editorial)
+ *
+ * Dues seccions:
+ * 1. CITA ÈTICA (cream) — eyebrow + cita gran en cursiva + atribució
+ * 2. CTA FINAL (dark) — eyebrow + títol amb èmfasi + botó + nota
+ *
+ * El botó del CTA Final crida onOpenRegister (com abans).
+ *
+ * NOTA: la variant anterior tenia lgica condicional per a usuaris
+ * premium/free. En la variant 2, aquesta secció és més editorial
+ * (no pas un panell de gestió de newsletter). Mantenim el CTA simple
+ * per a tothom: si és premium, el botó "Acceso abierto en septiembre"
+ * és informatiu; si és free, obre preus; si és anònim, obre registre.
+ */
 export function FinalCta({ onOpenRegister, onOpenPreus }: FinalCtaProps) {
   const { t } = useLanguage();
-  const { user, plan } = useAuth();
+  void onOpenPreus;
 
-  const isPremium = user && plan === "premium";
-  const isFree = user && plan !== "premium";
+  const handleClick = () => {
+    onOpenRegister();
+  };
 
-  // Si l'usuari ja és Premium, tota la secció de CTA no té sentit:
-  // mostrem només una targeta de confirmació + accés a la biblioteca.
-  if (isPremium) {
-    return (
-      <section id="newsletter" className="border-b border-rule py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 lg:grid-cols-2">
-            <div className="rounded-lg border border-accent/30 bg-accent-soft/10 p-8">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-md bg-accent-soft/20 text-accent-deep">
-                <Crown className="h-5 w-5 text-accent" />
-              </div>
-              <p className="eyebrow mb-2">{t("cta.premium.badge")}</p>
-              <h3 className="mb-3 font-serif text-2xl font-semibold leading-tight text-primary sm:text-3xl">
-                {t("cta.premium.badge")}
-              </h3>
-              <p className="mb-6 text-sm leading-relaxed text-foreground/80">
-                {t("cta.newsletter.subscribed")} · {t("cta.premium.badge")}
-              </p>
-              <a
-                href="/informes"
-                className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-6 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-              >
-                {t("nav.informes")}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
-            </div>
-
-            <div className="rounded-lg border border-rule bg-card p-8">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-md bg-secondary text-accent-deep">
-                <Mail className="h-5 w-5" />
-              </div>
-              <p className="eyebrow mb-2">{t("cta.newsletter.manage")}</p>
-              <h3 className="mb-3 font-serif text-2xl font-semibold leading-tight text-primary sm:text-3xl">
-                {t("cta.newsletter.manage")}
-              </h3>
-              <p className="mb-6 text-sm leading-relaxed text-foreground/80">
-                {t("cta.newsletter.subscribed")}.
-              </p>
-              <a
-                href="/cuenta"
-                className="inline-flex h-11 items-center justify-center rounded-md border border-rule bg-background px-6 text-sm font-medium text-foreground hover:border-accent"
-              >
-                {t("cta.newsletter.manage")}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  // Si l'usuari és free, el primer card (newsletter) es converteix en
-  // "gestiona la teva subscripció" (perquè ja està subscrit en registrar-se)
-  // i el segon (Premium) es manté però amb CTA "Fes-te Premium".
   return (
-    <section id="newsletter" className="border-b border-rule py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-6 lg:grid-cols-2">
-          <div className="rounded-lg border border-rule bg-secondary/50 p-8">
-            <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-md bg-background text-accent-deep">
-              {isFree ? (
-                <CheckCircle2 className="h-5 w-5 text-accent" />
-              ) : (
-                <Mail className="h-5 w-5" />
-              )}
-            </div>
-            <p className="eyebrow mb-2">{t("cta.newsletter.eyebrow")}</p>
-            <h3 className="mb-3 font-serif text-2xl font-semibold leading-tight text-primary sm:text-3xl">
-              {isFree
-                ? t("cta.newsletter.manage")
-                : t("cta.newsletter.title")}
-            </h3>
-            <p className="mb-6 text-sm leading-relaxed text-foreground/80">
-              {isFree
-                ? t("cta.newsletter.subscribed")
-                : t("cta.newsletter.body")}
-            </p>
-            {isFree ? (
-              <a
-                href="/cuenta"
-                className="inline-flex h-11 items-center justify-center rounded-md border border-rule bg-background px-6 text-sm font-medium text-foreground hover:border-accent"
-              >
-                {t("cta.newsletter.manage")}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
-            ) : (
-              <Button variant="outline" size="lg" onClick={onOpenRegister} className="h-11 px-6">
-                {t("hero.cta.newsletter")}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            )}
-          </div>
-
-          <div className="relative overflow-hidden rounded-lg border border-accent bg-accent p-8 text-accent-foreground">
-            <div className="absolute -right-12 -top-12 h-48 w-48 rounded-full bg-accent-soft/20" />
-            <div className="relative">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-md bg-accent-foreground/15 text-accent-foreground">
-                <Sparkles className="h-5 w-5" />
-              </div>
-              <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-accent-foreground/80">
-                {t("cta.premium.eyebrow")}
-              </p>
-              <h3 className="mb-3 font-serif text-2xl font-semibold leading-tight sm:text-3xl">
-                {t("cta.premium.title")}
-              </h3>
-              <p className="mb-6 text-sm leading-relaxed text-accent-foreground/90">
-                {t("cta.premium.body")}
-              </p>
-              <Button
-                variant="secondary"
-                size="lg"
-                onClick={isFree ? (onOpenPreus || onOpenRegister) : onOpenRegister}
-                className="h-11 px-6"
-              >
-                {isFree ? t("cta.upgrade.button") : t("hero.cta.trial")}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
-          </div>
+    <>
+      {/* ===== CITA ÈTICA (cream) ===== */}
+      <section
+        className="flex flex-col items-center gap-8 px-6 py-28 text-center sm:px-8 sm:py-32 lg:py-36"
+        style={{
+          background: "#F5EFE6",
+          color: "#2C1810",
+          borderTop: "3px solid #2C1810",
+        }}
+      >
+        {/* Eyebrow amb barres a banda i banda */}
+        <div
+          className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase"
+          style={{ color: "#8A5526", letterSpacing: "0.22em" }}
+        >
+          <span style={{ width: "24px", height: "2px", background: "#B87333" }} />
+          {t("v2.cita.eyebrow")}
+          <span style={{ width: "24px", height: "2px", background: "#B87333" }} />
         </div>
-      </div>
-    </section>
+
+        {/* Cita gran amb èmfasi en cursiva */}
+        <p
+          className="font-serif font-normal"
+          style={{
+            color: "#2C1810",
+            letterSpacing: "-0.018em",
+            fontSize: "clamp(2rem, 3.6vw, 3rem)",
+            lineHeight: 1.2,
+            maxWidth: "1000px",
+          }}
+        >
+          {t("v2.cita.text.pre")}
+          <em className="italic font-medium" style={{ color: "#5C3A1E" }}>
+            {t("v2.cita.text.em")}
+          </em>
+          {t("v2.cita.text.post")}
+        </p>
+
+        {/* Atribució */}
+        <p
+          className="font-serif italic"
+          style={{
+            color: "#8B7355",
+            fontSize: "1rem",
+            marginTop: "0.5rem",
+          }}
+        >
+          {t("v2.cita.attribution")}
+        </p>
+      </section>
+
+      {/* ===== CTA FINAL (dark) ===== */}
+      <section
+        className="flex flex-col items-center gap-8 px-6 py-28 text-center sm:px-8 sm:py-32 lg:py-36"
+        style={{ background: "#2C1810", color: "#F5EFE6" }}
+      >
+        {/* Eyebrow */}
+        <div
+          className="font-mono text-[11px] font-semibold uppercase"
+          style={{ color: "#D9A574", letterSpacing: "0.3em" }}
+        >
+          {t("v2.ctafinal.eyebrow")}
+        </div>
+
+        {/* Títol amb èmfasi */}
+        <h2
+          className="font-serif font-normal"
+          style={{
+            color: "#F5EFE6",
+            letterSpacing: "-0.025em",
+            fontSize: "clamp(2.25rem, 4.6vw, 4rem)",
+            lineHeight: 1.1,
+            maxWidth: "1000px",
+          }}
+        >
+          {t("v2.ctafinal.title.pre")}
+          <em className="italic font-medium" style={{ color: "#D9A574" }}>
+            {t("v2.ctafinal.title.em")}
+          </em>
+          {t("v2.ctafinal.title.post")}
+        </h2>
+
+        {/* Botó */}
+        <button
+          onClick={handleClick}
+          className="mt-4 inline-flex items-center justify-center px-11 py-5 font-sans font-semibold transition-opacity hover:opacity-90"
+          style={{
+            background: "#B87333",
+            color: "#FFFFFF",
+            fontSize: "0.9375rem",
+            letterSpacing: "0.02em",
+          }}
+        >
+          {t("v2.ctafinal.button")}
+        </button>
+
+        {/* Nota */}
+        <p
+          className="font-serif italic"
+          style={{
+            color: "rgba(245, 239, 230, 0.5)",
+            fontSize: "0.9375rem",
+            marginTop: "0.5rem",
+          }}
+        >
+          {t("v2.ctafinal.note")}
+        </p>
+      </section>
+    </>
   );
 }

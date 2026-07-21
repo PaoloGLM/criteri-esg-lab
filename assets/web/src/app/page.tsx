@@ -7,7 +7,6 @@ import { Footer } from "@/components/site-footer";
 import { Hero } from "@/components/sections/hero";
 import { MidSections } from "@/components/sections/mid-sections";
 import { ReportsPreview } from "@/components/sections/reports-preview";
-import { FaqSection } from "@/components/sections/faq-section";
 import { FinalCta } from "@/components/sections/final-cta";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
@@ -74,7 +73,6 @@ export default function Home() {
           onOpenReport={handleOpenLatestReport}
         />
         <ReportsPreview onOpenReport={handleOpenReport} />
-        <FaqSection />
         <FinalCta
           onOpenRegister={() => openAuth("register")}
           onOpenPreus={openPreusOrAuth}

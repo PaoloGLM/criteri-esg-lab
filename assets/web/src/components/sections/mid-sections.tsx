@@ -1,172 +1,185 @@
 "use client";
 
 import { useLanguage } from "@/components/language-provider";
-import { Button } from "@/components/ui/button";
-import {
-  Layers,
-  Network,
-  Target,
-  ClipboardCheck,
-  FileText,
-  TrendingUp,
-  ArrowRight,
-  Eye,
-} from "lucide-react";
+import type { TranslationKey } from "@/lib/i18n";
 
 interface MidSectionsProps {
   onOpenRegister?: () => void;
   onOpenReport?: () => void;
 }
 
+/**
+ * MID SECTIONS — Variant 2 (Manifest Editorial)
+ *
+ * Dues seccions en cream (#F5EFE6), text #2C1810:
+ *
+ * 1. MANIFEST — Eyebrow + títol gran amb èmfasi en cursiva + paràgraf cos
+ * 2. 3 TESES — Secció amb 3 columnes (Sintetitzar / Creuar / Recomanar)
+ *    cada una amb número gran (01/02/03 en Fraunces coure), verb, descripció
+ *
+ * Regles de disseny:
+ * - Cada secció té border-top 3px solid #2C1810
+ * - Eyebrow en JetBrains Mono uppercase 0.22em letter-spacing color #8A5526
+ *   amb barres coure a banda i banda (estil "— EYEBROW —")
+ * - Títol Fraunces 38-56px amb èmfasi en cursiva
+ * - Cap icona a les tesis — només números grossos
+ */
 export function MidSections({ onOpenRegister, onOpenReport }: MidSectionsProps = {}) {
   const { t } = useLanguage();
-  void onOpenRegister; // mantingut per compatibilitat futura
+  void onOpenRegister;
+  void onOpenReport;
 
-  // Els 8 FormatBloc definits com a array per evitar repetició i facilitar
-  // la lectura de quins textos venen de i18n.
-  const formatBlocs: {
+  const theses: {
     num: string;
-    icon: React.ReactNode;
-    titleKey:
-      | "mid.format.bloc0.title"
-      | "mid.format.bloc1.title"
-      | "mid.format.bloc2.title"
-      | "mid.format.bloc3.title"
-      | "mid.format.bloc4.title"
-      | "mid.format.bloc5.title"
-      | "mid.format.bloc6.title"
-      | "mid.format.bloc7.title";
-    descKey:
-      | "mid.format.bloc0.desc"
-      | "mid.format.bloc1.desc"
-      | "mid.format.bloc2.desc"
-      | "mid.format.bloc3.desc"
-      | "mid.format.bloc4.desc"
-      | "mid.format.bloc5.desc"
-      | "mid.format.bloc6.desc"
-      | "mid.format.bloc7.desc";
-    highlighted?: boolean;
+    verbKey: TranslationKey;
+    descKey: TranslationKey;
   }[] = [
-    { num: "00", icon: <Target className="h-4 w-4" />, titleKey: "mid.format.bloc0.title", descKey: "mid.format.bloc0.desc", highlighted: true },
-    { num: "01", icon: <FileText className="h-4 w-4" />, titleKey: "mid.format.bloc1.title", descKey: "mid.format.bloc1.desc" },
-    { num: "02", icon: <TrendingUp className="h-4 w-4" />, titleKey: "mid.format.bloc2.title", descKey: "mid.format.bloc2.desc" },
-    { num: "03", icon: <Layers className="h-4 w-4" />, titleKey: "mid.format.bloc3.title", descKey: "mid.format.bloc3.desc" },
-    { num: "04", icon: <Target className="h-4 w-4" />, titleKey: "mid.format.bloc4.title", descKey: "mid.format.bloc4.desc" },
-    { num: "05", icon: <Network className="h-4 w-4" />, titleKey: "mid.format.bloc5.title", descKey: "mid.format.bloc5.desc" },
-    { num: "06", icon: <ClipboardCheck className="h-4 w-4" />, titleKey: "mid.format.bloc6.title", descKey: "mid.format.bloc6.desc", highlighted: true },
-    { num: "07", icon: <Network className="h-4 w-4" />, titleKey: "mid.format.bloc7.title", descKey: "mid.format.bloc7.desc", highlighted: true },
+    { num: "01", verbKey: "v2.theses.1.verb", descKey: "v2.theses.1.desc" },
+    { num: "02", verbKey: "v2.theses.2.verb", descKey: "v2.theses.2.desc" },
+    { num: "03", verbKey: "v2.theses.3.verb", descKey: "v2.theses.3.desc" },
   ];
 
   return (
     <>
-      {/* Speed section */}
-      <section className="border-b border-rule py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
-            <div className="lg:col-span-7">
-              <p className="eyebrow mb-3">{t("mid.speed.eyebrow")}</p>
-              <h2 className="font-serif text-3xl font-semibold leading-tight text-primary sm:text-4xl">
-                {t("mid.speed.title")}
-              </h2>
-              <div className="rule-accent my-5" />
-              <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
-                {t("mid.speed.body")}
-              </p>
-            </div>
-            <div className="lg:col-span-5">
-              <div className="grid grid-cols-3 gap-3">
-                <StatCard value={t("mid.speed.stat1.value")} label={t("mid.speed.stat1.label")} />
-                <StatCard value={t("mid.speed.stat2.value")} label={t("mid.speed.stat2.label")} />
-                <StatCard value={t("mid.speed.stat3.value")} label={t("mid.speed.stat3.label")} />
-              </div>
-            </div>
-          </div>
+      {/* ===== MANIFEST (cream) ===== */}
+      <section
+        className="flex flex-col items-center gap-10 px-6 py-24 text-center sm:px-8 sm:py-28 lg:py-32"
+        style={{
+          background: "#F5EFE6",
+          color: "#2C1810",
+          borderTop: "3px solid #2C1810",
+        }}
+      >
+        {/* Eyebrow amb barres */}
+        <div
+          className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase"
+          style={{ color: "#8A5526", letterSpacing: "0.22em" }}
+        >
+          <span style={{ width: "24px", height: "2px", background: "#B87333" }} />
+          {t("v2.manifest.eyebrow")}
+          <span style={{ width: "24px", height: "2px", background: "#B87333" }} />
         </div>
+
+        {/* Title amb èmfasi */}
+        <h2
+          className="font-serif font-normal"
+          style={{
+            color: "#2C1810",
+            letterSpacing: "-0.02em",
+            fontSize: "clamp(2rem, 4vw, 3.5rem)",
+            lineHeight: 1.15,
+            maxWidth: "1000px",
+          }}
+        >
+          {t("v2.manifest.title.pre")}
+          <em
+            className="italic font-medium"
+            style={{ color: "#5C3A1E" }}
+          >
+            {t("v2.manifest.title.em")}
+          </em>
+          {t("v2.manifest.title.post")}
+        </h2>
+
+        {/* Body */}
+        <p
+          className="font-serif italic font-normal"
+          style={{
+            color: "#5C3A1E",
+            fontSize: "clamp(1.0625rem, 1.4vw, 1.1875rem)",
+            lineHeight: 1.6,
+            maxWidth: "720px",
+          }}
+        >
+          {t("v2.manifest.body")}
+        </p>
       </section>
 
-      {/* Format section */}
-      <section className="border-b border-rule bg-secondary/30 py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10">
-            <p className="eyebrow mb-3">{t("mid.format.eyebrow")}</p>
-            <h2 className="font-serif text-3xl font-semibold leading-tight text-primary sm:text-4xl">
-              {t("mid.format.title")}
-            </h2>
-            <div className="rule-accent my-5" />
-            <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
-              {t("mid.format.body")}
-            </p>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {formatBlocs.map((b) => (
-              <FormatBloc
-                key={b.num}
-                num={b.num}
-                icon={b.icon}
-                title={t(b.titleKey)}
-                desc={t(b.descKey)}
-                highlighted={b.highlighted}
-              />
-            ))}
+      {/* ===== 3 TESES (cream) ===== */}
+      <section
+        className="px-6 py-24 sm:px-8 sm:py-28"
+        style={{
+          background: "#F5EFE6",
+          color: "#2C1810",
+          borderTop: "3px solid #2C1810",
+        }}
+      >
+        <div className="mx-auto max-w-6xl">
+          {/* Eyebrow */}
+          <div
+            className="mb-4 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase"
+            style={{ color: "#8A5526", letterSpacing: "0.22em" }}
+          >
+            <span style={{ width: "24px", height: "2px", background: "#B87333" }} />
+            {t("v2.theses.eyebrow")}
           </div>
 
-          <div className="mt-8 flex justify-center">
-            <Button
-              size="lg"
-              variant="default"
-              onClick={onOpenReport}
-              className="h-12 px-6 text-base"
-            >
-              <Eye className="mr-2 h-4 w-4" />
-              {t("format.exemple.cta")}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+          {/* Title */}
+          <h2
+            className="mb-14 font-serif font-medium"
+            style={{
+              color: "#2C1810",
+              letterSpacing: "-0.018em",
+              fontSize: "clamp(2rem, 3vw, 2.5rem)",
+              lineHeight: 1.1,
+              maxWidth: "800px",
+            }}
+          >
+            {t("v2.theses.title.pre")}
+            <em className="italic font-normal" style={{ color: "#5C3A1E" }}>
+              {t("v2.theses.title.em")}
+            </em>
+          </h2>
+
+          {/* Grid 3 columnes amb separadors verticals */}
+          <div className="grid gap-8 md:grid-cols-3 md:gap-0">
+            {theses.map((thesis, i) => (
+              <div
+                key={thesis.num}
+                className="flex flex-col gap-5 md:px-10"
+                style={{
+                  borderRight:
+                    i < theses.length - 1
+                      ? "1px solid rgba(44, 24, 16, 0.15)"
+                      : "none",
+                }}
+              >
+                <div
+                  className="font-serif font-light"
+                  style={{
+                    color: "#B87333",
+                    letterSpacing: "-0.04em",
+                    fontSize: "clamp(4rem, 7vw, 6rem)",
+                    lineHeight: 0.9,
+                  }}
+                >
+                  {thesis.num}
+                </div>
+                <div
+                  className="font-serif font-medium"
+                  style={{
+                    color: "#2C1810",
+                    letterSpacing: "-0.015em",
+                    fontSize: "clamp(1.5rem, 2.4vw, 2rem)",
+                  }}
+                >
+                  {t(thesis.verbKey)}
+                </div>
+                <p
+                  className="font-sans"
+                  style={{
+                    color: "#5C3A1E",
+                    fontSize: "0.875rem",
+                    lineHeight: 1.55,
+                  }}
+                >
+                  {t(thesis.descKey)}
+                </p>
+              </div>
+            ))}
           </div>
-          <p className="mt-3 text-center text-xs text-muted-foreground">
-            {t("format.exemple.note")}
-          </p>
         </div>
       </section>
     </>
-  );
-}
-
-function StatCard({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="rounded-md border border-rule bg-card p-4 text-center">
-      <div className="font-serif text-3xl font-semibold text-accent sm:text-4xl">{value}</div>
-      <div className="mt-1 text-xs leading-tight text-muted-foreground">{label}</div>
-    </div>
-  );
-}
-
-function FormatBloc({
-  num,
-  icon,
-  title,
-  desc,
-  highlighted,
-  wide,
-}: {
-  num: string;
-  icon: React.ReactNode;
-  title: string;
-  desc: string;
-  highlighted?: boolean;
-  wide?: boolean;
-}) {
-  return (
-    <div
-      className={`rounded-md border p-4 ${
-        highlighted ? "border-accent bg-accent-soft/15" : "border-rule bg-card"
-      } ${wide ? "lg:col-span-2" : ""}`}
-    >
-      <div className="mb-2 flex items-center gap-2">
-        <span className="font-mono text-xs text-accent-deep">{num}</span>
-        <span className="text-accent-deep">{icon}</span>
-      </div>
-      <h3 className="mb-1.5 font-serif text-base font-semibold leading-tight text-primary">{title}</h3>
-      <p className="text-xs leading-relaxed text-foreground/70">{desc}</p>
-    </div>
   );
 }

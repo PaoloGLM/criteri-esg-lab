@@ -1014,4 +1014,355 @@ export const translations = {
     ca: "Criteri ESG no és només una eina. És la convicció que les empreses poden ser agents de canvi —i que la tecnologia ha d'estar al servei del criteri humà.",
     es: "Criteri ESG no es solo una herramienta. Es la convicción de que las empresas pueden ser agentes de cambio —y que la tecnología debe estar al servicio del criterio humano.",
   },
+
+  // ============ HOMEPAGE VARIANT 2 — MANIFEST EDITORIAL ============
+  // (decisions editorials 14 + 17: llengua per defecte ES, eslògan "5 minuts")
+
+  // --- HERO (dark) ---
+  "v2.hero.eyebrow": {
+    ca: "CRITERI ESG · SETEMBRE 2026",
+    es: "CRITERI ESG · SEPTIEMBRE 2026",
+  },
+  "v2.hero.title.line1": {
+    ca: "No és la informació.",
+    es: "No es la información.",
+  },
+  "v2.hero.title.line2": {
+    ca: "És el criteri.",
+    es: "Es el criterio.",
+  },
+  "v2.hero.subtitle": {
+    ca: "Una nova forma de llegir ESG. Sense soroll, sense pressa, sense greenwashing.",
+    es: "Una nueva forma de leer ESG. Sin ruido, sin prisa, sin greenwashing.",
+  },
+  "v2.hero.cta.primary": {
+    ca: "Prova gratuïta 7 dies",
+    es: "Prueba gratis 7 días",
+  },
+  "v2.hero.cta.secondary": {
+    ca: "Veure un informe real →",
+    es: "Ver un informe real →",
+  },
+
+  // --- MANIFEST (cream) ---
+  "v2.manifest.eyebrow": {
+    ca: "EL QUE CREIEM",
+    es: "LO QUE CREEMOS",
+  },
+  "v2.manifest.title.pre": {
+    ca: "El problema de l'ESG no és ",
+    es: "El problema del ESG no es ",
+  },
+  "v2.manifest.title.em": {
+    ca: "la manca d'informació",
+    es: "la falta de información",
+  },
+  "v2.manifest.title.post": {
+    ca: ". És la manca de temps per processar-la i de criteri per decidir què importa.",
+    es: ". Es la falta de tiempo para procesarla y de criterio para decidir qué importa.",
+  },
+  "v2.manifest.body": {
+    ca: "Cada setmana surten 14 informes institucionals sobre sostenibilitat. Tots importants. Tots llargs. Ningú té temps. La solució no és més informació: és criteri.",
+    es: "Cada semana salen 14 informes institucionales sobre sostenibilidad. Todos importantes. Todos largos. Nadie tiene tiempo. La solución no es más información: es criterio.",
+  },
+
+  // --- 3 TESES (cream) ---
+  "v2.theses.eyebrow": {
+    ca: "COM HO RESOLEM",
+    es: "CÓMO LO RESOLVEMOS",
+  },
+  "v2.theses.title.pre": {
+    ca: "Tres passos. ",
+    es: "Tres pasos. ",
+  },
+  "v2.theses.title.em": {
+    ca: "Res més.",
+    es: "Nada más.",
+  },
+  "v2.theses.1.verb": { ca: "Sintetitzar", es: "Sintetizar" },
+  "v2.theses.1.desc": {
+    ca: "Els informes institucionals més rellevants, en 5 minuts de lectura. Amb semàfor metodològic propi de 5 dimensions.",
+    es: "Los informes institucionales más relevantes, en 5 minutos de lectura. Con semáforo metodológico propio de 5 dimensiones.",
+  },
+  "v2.theses.2.verb": { ca: "Creuar", es: "Cruzar" },
+  "v2.theses.2.desc": {
+    ca: "Cada informe creuat amb les teves certificacions: EcoVadis, B Corp, MSCI, GRI, SGE 21, Sustainalytics. Et diem què t'afecta i amb quina intensitat.",
+    es: "Cada informe cruzado con tus certificaciones: EcoVadis, B Corp, MSCI, GRI, SGE 21, Sustainalytics. Te decimos qué te afecta y con qué intensidad.",
+  },
+  "v2.theses.3.verb": { ca: "Recomanar", es: "Recomendar" },
+  "v2.theses.3.desc": {
+    ca: "Tres accions concretes per informe. Operatives. Verificables. El criteri aplicat a la teva decisió d'aquesta setmana.",
+    es: "Tres acciones concretas por informe. Operativas. Verificables. El criterio aplicado a tu decisión de esta semana.",
+  },
+
+  // --- INFORME DESTACAT (dark, 8 blocs) ---
+  "v2.ultim.eyebrow": {
+    ca: "ÚLTIM INFORME PUBLICAT",
+    es: "ÚLTIMO INFORME PUBLICADO",
+  },
+  "v2.ultim.title.pre": {
+    ca: "Així es veu un ",
+    es: "Así se ve un ",
+  },
+  "v2.ultim.title.em": {
+    ca: "informe Criteri",
+    es: "informe Criteri",
+  },
+  "v2.ultim.title.post": {
+    ca: ". Els 8 blocs.",
+    es: ". Los 8 bloques.",
+  },
+
+  // Fitxa tècnica (Bloc 1)
+  "v2.informe.tag": {
+    ca: "Regulació · Gratuït",
+    es: "Regulación · Gratis",
+  },
+  "v2.informe.title": {
+    ca: "Revisió dels ESRS: simplificació del CSRD",
+    es: "Revisión de los ESRS: simplificación del CSRD",
+  },
+  "v2.informe.meta.line1": {
+    ca: "Comissió Europea",
+    es: "Comisión Europea",
+  },
+  "v2.informe.meta.line2": {
+    ca: "6 maig 2026 · 47 pàg",
+    es: "6 mayo 2026 · 47 pág",
+  },
+  "v2.informe.meta.line3": {
+    ca: "ESRS Q&A Platform",
+    es: "ESRS Q&A Platform",
+  },
+
+  // Bloc 0: Semàfor
+  "v2.bloc0.label": {
+    ca: "BLOC 0 · SEMÀFOR METODOLÒGIC",
+    es: "BLOQUE 0 · SEMÁFORO METODOLÓGICO",
+  },
+  "v2.bloc0.grade": { ca: "C", es: "C" },
+  "v2.bloc0.grade.label": {
+    ca: "Dèbil",
+    es: "Débil",
+  },
+  "v2.bloc0.dim1": { ca: "Scope 3", es: "Scope 3" },
+  "v2.bloc0.dim2": { ca: "Terminis", es: "Plazos" },
+  "v2.bloc0.dim3": { ca: "Fonts", es: "Fuentes" },
+  "v2.bloc0.dim4": { ca: "Granularitat", es: "Granularidad" },
+  "v2.bloc0.dim5": { ca: "Verificació", es: "Verificación" },
+
+  // Bloc 2: 5 dades clau
+  "v2.bloc2.label": {
+    ca: "BLOC 2 · 5 DADES CLAU",
+    es: "BLOQUE 2 · 5 DATOS CLAVE",
+  },
+  "v2.bloc2.title": {
+    ca: "El que diu l'informe, en xifres",
+    es: "Lo que dice el informe, en cifras",
+  },
+  "v2.bloc2.d1": {
+    ca: "−61% de datapoints obligatoris del CSRD eliminats (de 1.144 a 446)",
+    es: "−61% de datapoints obligatorios del CSRD eliminados (de 1.144 a 446)",
+  },
+  "v2.bloc2.d1.strong": { ca: "−61%", es: "−61%" },
+  "v2.bloc2.d1.text": {
+    ca: " de datapoints obligatoris del CSRD eliminats (de 1.144 a 446)",
+    es: " de datapoints obligatorios del CSRD eliminados (de 1.144 a 446)",
+  },
+  "v2.bloc2.d2.strong": { ca: "3.700 M€", es: "3.700 M€" },
+  "v2.bloc2.d2.text": {
+    ca: " d'estalvi estimat per a empreses europees en 5 anys",
+    es: " de ahorro estimado para empresas europeas en 5 años",
+  },
+  "v2.bloc2.d3.strong": { ca: "2 categories", es: "2 categorías" },
+  "v2.bloc2.d3.text": {
+    ca: " d'estàndards ESRS: temàtics transversals i sectorials",
+    es: " de estándares ESRS: temáticos transversales y sectoriales",
+  },
+  "v2.bloc2.d4.strong": {
+    ca: "Convergència",
+    es: "Convergencia",
+  },
+  "v2.bloc2.d4.text": {
+    ca: " mantinguda amb GRI Universal Standards i ISSB",
+    es: " mantenida con GRI Universal Standards e ISSB",
+  },
+  "v2.bloc2.d5.strong": {
+    ca: "Aplicació",
+    es: "Aplicación",
+  },
+  "v2.bloc2.d5.text": {
+    ca: " escalonada: grans empreses (2024), cotitzades (2025), PIMEs (2026-2028)",
+    es: " escalonada: grandes empresas (2024), cotizadas (2025), PIMEs (2026-2028)",
+  },
+
+  // Bloc 3: Resum executiu
+  "v2.bloc3.label": {
+    ca: "BLOC 3 · RESUM EXECUTIU",
+    es: "BLOQUE 3 · RESUMEN EJECUTIVO",
+  },
+  "v2.bloc3.title": {
+    ca: "Què diu en llenguatge clar",
+    es: "Qué dice en lenguaje claro",
+  },
+  "v2.bloc3.body1": {
+    ca: "La Comissió Europea redueix un 61% els datapoints obligatoris del CSRD. Se simplifica l'arquitectura dels ESRS però es manté la convergència amb GRI i ISSB. L'estalvi estimat és de 3.700 M€ en 5 anys per a les empreses europees. L'aplicació s'escalonea per mida: grans empreses (2024), cotitzades (2025), PIMEs (2026-2028).",
+    es: "La Comisión Europea reduce un 61% los datapoints obligatorios del CSRD. Se simplifica la arquitectura de los ESRS pero se mantiene la convergencia con GRI e ISSB. El ahorro estimado es de 3.700 M€ en 5 años para las empresas europeas. La aplicación se escalona por tamaño: grandes empresas (2024), cotizadas (2025), PIMEs (2026-2028).",
+  },
+  "v2.bloc3.body2": {
+    ca: "La revisió respon a les queixes de l'Omnibus I sobre càrrega administrativa, però deixa fora el detall granular que moltes empreses necessiten per implementar.",
+    es: "La revisión responde a las quejas del Omnibus I sobre carga administrativa, pero deja fuera el detalle granular que muchas empresas necesitan para implementar.",
+  },
+  "v2.bloc3.body3.em": {
+    ca: "Més simple, però també més ambigu.",
+    es: "Más simple, pero también más ambiguo.",
+  },
+
+  // Bloc 4: Implicacions
+  "v2.bloc4.label": {
+    ca: "BLOC 4 · IMPLICACIONS",
+    es: "BLOQUE 4 · IMPLICACIONES",
+  },
+  "v2.bloc4.title": {
+    ca: "Per a empreses, reguladors, ciutadans",
+    es: "Para empresas, reguladores, ciudadanos",
+  },
+  "v2.bloc4.empresas.strong": { ca: "Empreses:", es: "Empresas:" },
+  "v2.bloc4.empresas.text": {
+    ca: " Menys reporting obligatori, però més interpretació subjectiva. Les empreses amb sistemes de reporting madurs (GRI, SASB) ho tenen més fàcil. Les que començaven des de zero perden la guia prescriptiva.",
+    es: " Menos reporting obligatorio, pero más interpretación subjetiva. Las empresas con sistemas de reporting maduros (GRI, SASB) lo tienen más fácil. Las que empezaban desde cero pierden la guía prescriptiva.",
+  },
+  "v2.bloc4.reguladores.strong": { ca: "Reguladors:", es: "Reguladores:" },
+  "v2.bloc4.reguladores.text": {
+    ca: " BCE, ESMA i EFRAG hauran d'emetre guies interpretatives per evitar divergències entre estats membres. Risc de fragmentació.",
+    es: " BCE, ESMA y EFRAG deberán emitir guías interpretativas para evitar divergencias entre estados miembros. Riesgo de fragmentación.",
+  },
+  "v2.bloc4.ciudadanos.strong": { ca: "Ciutadans:", es: "Ciudadanos:" },
+  "v2.bloc4.ciudadanos.text": {
+    ca: " Informes més curts i llegibles, però amb menys dada verificable. Perill de greenwashing augmentat per l'ambigüitat interpretativa.",
+    es: " Informes más cortos y legibles, pero con menos dato verificable. Peligro de greenwashing aumentado por la ambigüedad interpretativa.",
+  },
+  "v2.bloc4.mes.label": {
+    ca: "MÉS ENLLÀ DEL CHECKBOX",
+    es: "MÁS ALLÁ DEL CHECKBOX",
+  },
+  "v2.bloc4.mes.text": {
+    ca: "«La simplificació és un alleujament per al reporting, però què perd la societat quan desapareix la dada granular que permetia auditar promeses?»",
+    es: "«La simplificación es un alivio para el reporting, pero ¿qué pierde la sociedad cuando desaparece el dato granular que permitía auditar promesas?»",
+  },
+
+  // Bloc 5: Connexions
+  "v2.bloc5.label": {
+    ca: "BLOC 5 · CONNEXIONS",
+    es: "BLOQUE 5 · CONEXIONES",
+  },
+  "v2.bloc5.title": {
+    ca: "Relacions amb altres informes i actualitat",
+    es: "Relaciones con otros informes y actualidad",
+  },
+  "v2.bloc5.body.pre": {
+    ca: "Aquesta revisió arriba ",
+    es: "Esta revisión llega ",
+  },
+  "v2.bloc5.body.strong": {
+    ca: "3 mesos després del CSDDD Omnibus I",
+    es: "3 meses después del CSDDD Omnibus I",
+  },
+  "v2.bloc5.body.post": {
+    ca: " (març 2026), que ja enduriaa la diligència en drets humans. La paradoxa: menys reporting estructurat per prendre més decisions operatives. El BCE inclourà el risc climàtic en els test d'estrès de la banca espanyola des del Q4 2026 — les dades que ja no es reportaran via ESRS sí que es necessitaran per als test d'estrès.",
+    es: " (marzo 2026), que ya endurecía la diligencia en derechos humanos. La paradoja: menos reporting estructurado para tomar más decisiones operativas. El BCE incluirá el riesgo climático en los test de estrés de la banca española desde Q4 2026 — los datos que ya no se reportarán vía ESRS sí que se necesitarán para los test de estrés.",
+  },
+
+  // Bloc 6: Accions recomanades
+  "v2.bloc6.label": {
+    ca: "BLOC 6 · ACCIONS RECOMANADES ⭐",
+    es: "BLOQUE 6 · ACCIONES RECOMENDADAS ⭐",
+  },
+  "v2.bloc6.title": {
+    ca: "3 accions operatives per a aquesta setmana",
+    es: "3 acciones operativas para esta semana",
+  },
+  "v2.bloc6.a1": {
+    ca: "Auditar la matriu de materialitat vigent: quins datapoints eliminats et convé mantenir voluntàriament?",
+    es: "Auditar la matriz de materialidad vigente: ¿qué datapoints eliminados te conviene mantener voluntariamente?",
+  },
+  "v2.bloc6.a2": {
+    ca: "Renegociar el contracte d'assurance extern: l'abast es pot reduir, però el cost no sempre baixa proporcionalment.",
+    es: "Renegociar el contrato de assurance externo: el alcance puede reducirse, pero el coste no siempre baja proporcionalmente.",
+  },
+  "v2.bloc6.a3": {
+    ca: "Construir un dataset voluntari intern amb els datapoints eliminats però que els teus inversors o clients seguiran demanant (MSCI, Sustainalytics, EcoVadis).",
+    es: "Construir un dataset voluntario interno con los datapoints eliminados pero que tus inversores o clientes seguirán pidiendo (MSCI, Sustainalytics, EcoVadis).",
+  },
+
+  // Bloc 7: Cross-reference
+  "v2.bloc7.label": {
+    ca: "BLOC 7 · CROSS-REFERENCE ⭐",
+    es: "BLOQUE 7 · CROSS-REFERENCE ⭐",
+  },
+  "v2.bloc7.title": {
+    ca: "Com t'afecta segons les teves certificacions",
+    es: "Cómo te afecta según tus certificaciones",
+  },
+  "v2.bloc7.impact.alto": { ca: "Alt", es: "Alto" },
+  "v2.bloc7.impact.medio": { ca: "Mitjà", es: "Medio" },
+  "v2.bloc7.impact.bajo": { ca: "Baix", es: "Bajo" },
+
+  // Footer informe
+  "v2.informe.footer.text": {
+    ca: "5 minuts de lectura. 8 blocs que canvien el teu criteri sobre un informe de 47 pàgines.",
+    es: "5 minutos de lectura. 8 bloques que cambian tu criterio sobre un informe de 47 páginas.",
+  },
+  "v2.informe.footer.cta": {
+    ca: "Més detalls en l'informe complet →",
+    es: "Más detalles en el informe completo →",
+  },
+
+  // --- CITA ÈTICA (cream) ---
+  "v2.cita.eyebrow": {
+    ca: "MÉS ENLLÀ DEL CHECKBOX",
+    es: "MÁS ALLÁ DEL CHECKBOX",
+  },
+  "v2.cita.text.pre": {
+    ca: "Si la teva empresa ",
+    es: "Si tu empresa ",
+  },
+  "v2.cita.text.em": {
+    ca: "desaparegués demà",
+    es: "desapareciera mañana",
+  },
+  "v2.cita.text.post": {
+    ca: ", qui ho notaria de veritat —i per què?",
+    es: ", ¿quién lo notaría de verdad —y por qué?",
+  },
+  "v2.cita.attribution": {
+    ca: "— Pregunta de la quinzena · Criteri ESG",
+    es: "— Pregunta de la quincena · Criteri ESG",
+  },
+
+  // --- CTA FINAL (dark) ---
+  "v2.ctafinal.eyebrow": {
+    ca: "SI REONEIXES AQUESTA SITUACIÓ",
+    es: "SI RECONOCES ESTA SITUACIÓN",
+  },
+  "v2.ctafinal.title.pre": {
+    ca: "Et ",
+    es: "Te ",
+  },
+  "v2.ctafinal.title.em": {
+    ca: "entenem",
+    es: "entendemos",
+  },
+  "v2.ctafinal.title.post": {
+    ca: ". Estem per retornar-te temps per pensar.",
+    es: ". Estamos para devolverte tiempo para pensar.",
+  },
+  "v2.ctafinal.button": {
+    ca: "Accés obert al setembre",
+    es: "Acceso abierto en septiembre",
+  },
+  "v2.ctafinal.note": {
+    ca: "Sense targeta de crèdit. Sense paywall fins al novembre.",
+    es: "Sin tarjeta de crédito. Sin paywall hasta noviembre.",
+  },
 } as const;

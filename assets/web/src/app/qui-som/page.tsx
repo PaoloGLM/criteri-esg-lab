@@ -6,7 +6,6 @@ import { Footer } from "@/components/site-footer";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
-import { Heart, Cpu, Users, Mail } from "lucide-react";
 
 export default function QuiSomPage() {
   const { t } = useLanguage();
@@ -19,171 +18,112 @@ export default function QuiSomPage() {
     setAuthOpen(true);
   };
 
-  // Membres de l'equip (amb icona + claus i18n per rol i bio)
-  const teamMembers: {
-    name: string;
-    icon: React.ReactNode;
-    roleKey:
-      | "quisom.team.paolo.role"
-      | "quisom.team.techlead.role"
-      | "quisom.team.zai.role";
-    bioKey:
-      | "quisom.team.paolo.bio"
-      | "quisom.team.techlead.bio"
-      | "quisom.team.zai.bio";
-    isAI?: boolean;
-  }[] = [
-    {
-      name: "Paolo",
-      icon: <Heart className="h-5 w-5" />,
-      roleKey: "quisom.team.paolo.role",
-      bioKey: "quisom.team.paolo.bio",
-    },
-    {
-      name: "Tech Lead",
-      icon: <Cpu className="h-5 w-5" />,
-      roleKey: "quisom.team.techlead.role",
-      bioKey: "quisom.team.techlead.bio",
-    },
-    {
-      name: "Assistent d'IA",
-      icon: <Users className="h-5 w-5" />,
-      roleKey: "quisom.team.zai.role",
-      bioKey: "quisom.team.zai.bio",
-      isAI: true,
-    },
+  const teamMembers = [
+    { icon: "★", role: t("quisom.v2.team.01.role"), name: t("quisom.v2.team.01.name"), bio: t("quisom.v2.team.01.bio"), tag: t("quisom.v2.team.01.tag"), isAI: false },
+    { icon: "⚙", role: t("quisom.v2.team.02.role"), name: t("quisom.v2.team.02.name"), bio: t("quisom.v2.team.02.bio"), tag: t("quisom.v2.team.02.tag"), isAI: false },
+    { icon: "◆", role: t("quisom.v2.team.03.role"), name: t("quisom.v2.team.03.name"), bio: t("quisom.v2.team.03.bio"), tag: t("quisom.v2.team.03.tag"), isAI: true },
+  ];
+
+  const conviccions = [
+    { num: "01", name: t("quisom.v2.conviccio.01.name"), text: t("quisom.v2.conviccio.01.text") },
+    { num: "02", name: t("quisom.v2.conviccio.02.name"), text: t("quisom.v2.conviccio.02.text") },
+    { num: "03", name: t("quisom.v2.conviccio.03.name"), text: t("quisom.v2.conviccio.03.text") },
+    { num: "04", name: t("quisom.v2.conviccio.04.name"), text: t("quisom.v2.conviccio.04.text") },
+    { num: "05", name: t("quisom.v2.conviccio.05.name"), text: t("quisom.v2.conviccio.05.text") },
   ];
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <Header
-        onOpenPreus={() => setPreusOpen(true)}
-        onOpenAuth={(tab) => openAuth(tab || "register")}
-      />
+      <Header onOpenPreus={() => setPreusOpen(true)} onOpenAuth={(tab) => openAuth(tab || "register")} />
       <main className="flex-1">
-        {/* Page hero */}
-        <section className="border-b border-rule bg-secondary/30 py-12">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <p className="eyebrow mb-2">{t("quisom.page.eyebrow")}</p>
-            <h1 className="font-serif text-4xl font-semibold leading-tight text-primary sm:text-5xl">
-              {t("quisom.page.title")}
+        {/* 1. HERO */}
+        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-28">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="inline-block h-0.5 w-6" style={{ background: "#B87333" }} />
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#8A5526" }}>{t("quisom.v2.hero.eyebrow")}</p>
+            </div>
+            <h1 className="mb-6 max-w-5xl font-serif text-5xl font-medium leading-[1.05] tracking-tight text-primary sm:text-6xl lg:text-7xl">
+              {t("quisom.v2.hero.title.pre")}<em className="italic" style={{ color: "#5C3A1E" }}>{t("quisom.v2.hero.title.em")}</em>{t("quisom.v2.hero.title.post")}
             </h1>
-            <div className="rule-accent my-5" />
-            <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
-              {t("quisom.page.subtitle")}
-            </p>
+            <p className="max-w-3xl font-serif text-xl italic" style={{ color: "#5C3A1E" }}>{t("quisom.v2.hero.subtitle")}</p>
           </div>
         </section>
 
-        {/* Manifest */}
-        <section className="border-b border-rule py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-md border-l-2 border-accent bg-accent-soft/10 p-5">
-              <p className="mb-3 font-mono text-xs uppercase tracking-widest text-accent-deep">
-                {t("quisom.manifest.page.eyebrow")}
-              </p>
-              <p className="font-serif text-lg leading-relaxed text-foreground italic">
-                {t("quisom.manifest.page.body")}
-              </p>
+        {/* 2. MANIFEST */}
+        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <div className="border-l-4 p-6 lg:p-8" style={{ borderColor: "#B87333", background: "rgba(184,115,51,0.06)" }}>
+              <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#8A5526" }}>{t("quisom.v2.manifest.eyebrow")}</p>
+              <p className="max-w-4xl font-serif text-xl italic leading-relaxed text-primary sm:text-2xl">{t("quisom.manifest.page.body")}</p>
             </div>
           </div>
         </section>
 
-        {/* Equip */}
-        <section className="border-b border-rule bg-secondary/30 py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-10">
-              <p className="eyebrow mb-3">{t("quisom.team.eyebrow")}</p>
-              <h2 className="font-serif text-3xl font-semibold leading-tight text-primary sm:text-4xl">
-                {t("quisom.team.title")}
-              </h2>
-              <div className="rule-accent my-5" />
-              <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
-                {t("quisom.team.intro")}
-              </p>
+        {/* 3. EQUIP */}
+        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="inline-block h-0.5 w-6" style={{ background: "#B87333" }} />
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#8A5526" }}>{t("quisom.v2.team.eyebrow")}</p>
             </div>
-
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {teamMembers.map((member, i) => (
-                <div
-                  key={i}
-                  className={`flex flex-col rounded-md border p-5 ${
-                    member.isAI
-                      ? "border-accent/40 bg-accent-soft/10"
-                      : "border-rule bg-card"
-                  }`}
-                >
-                  <div className="mb-3 flex items-center gap-3">
-                    <span
-                      className={`inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full ${
-                        member.isAI
-                          ? "bg-accent/15 text-accent"
-                          : "bg-secondary text-accent-deep"
-                      }`}
-                    >
-                      {member.icon}
-                    </span>
-                    <div>
-                      <h3 className="font-serif text-lg font-semibold text-primary">
-                        {member.name}
-                      </h3>
-                      <p className="font-mono text-[10px] uppercase tracking-widest text-accent-deep">
-                        {t(member.roleKey)}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-sm leading-relaxed text-foreground/75">
-                    {t(member.bioKey)}
-                  </p>
+            <h2 className="mb-4 font-serif text-4xl font-medium leading-tight tracking-tight text-primary sm:text-5xl">
+              {t("quisom.v2.team.title.pre")}<em className="italic" style={{ color: "#5C3A1E" }}>{t("quisom.v2.team.title.em")}</em>{t("quisom.v2.team.title.post")}
+            </h2>
+            <p className="mb-12 max-w-3xl font-serif text-lg italic" style={{ color: "#5C3A1E" }}>{t("quisom.v2.team.intro")}</p>
+            <div className="grid gap-8 lg:grid-cols-3">
+              {teamMembers.map((member) => (
+                <div key={member.name} className="flex flex-col gap-4 border p-8" style={{ borderColor: "#C9B89A", background: "white" }}>
+                  <div className="flex h-14 w-14 items-center justify-center font-serif text-2xl font-medium" style={{ background: member.isAI ? "#B87333" : "#2C1810", color: "#F5EFE6" }}>{member.icon}</div>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#8A5526" }}>{member.role}</p>
+                  <h3 className="font-serif text-2xl font-medium text-primary" style={{ letterSpacing: "-0.012em" }}>{member.name}</h3>
+                  <p className="text-[13px] leading-relaxed" style={{ color: "#5C3A1E" }}>{member.bio}</p>
+                  <p className="mt-auto border-t pt-3 font-mono text-[9px] uppercase tracking-[0.16em]" style={{ borderColor: "#C9B89A", color: "#8B7355" }}>{member.tag}</p>
                 </div>
               ))}
             </div>
+          </div>
+        </section>
 
-            {/* CTA "Vols formar-ne part?" */}
-            <div className="mt-8 rounded-md border border-rule bg-card p-5">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <h3 className="mb-2 font-serif text-lg font-semibold text-primary">
-                    {t("quisom.team.join.title")}
-                  </h3>
-                  <p className="max-w-xl text-sm leading-relaxed text-foreground/75">
-                    {t("quisom.team.join.body")}
-                  </p>
+        {/* 4. LO QUE CREEMOS (dark) */}
+        <section style={{ background: "#2C1810", color: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="inline-block h-0.5 w-6" style={{ background: "#B87333" }} />
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#D9A574" }}>{t("quisom.v2.conviccions.eyebrow")}</p>
+            </div>
+            <h2 className="mb-12 font-serif text-4xl font-medium leading-tight tracking-tight sm:text-5xl" style={{ color: "#F5EFE6" }}>
+              {t("quisom.v2.conviccions.title.pre")}<em className="italic" style={{ color: "#D9A574" }}>{t("quisom.v2.conviccions.title.em")}</em>{t("quisom.v2.conviccions.title.post")}
+            </h2>
+            <div className="grid gap-8 sm:grid-cols-2 sm:gap-x-16">
+              {conviccions.map((c, i) => (
+                <div key={c.num} className="border-b py-5" style={{ borderBottomColor: "rgba(217,165,116,0.2)", gridColumn: i === 4 ? "span 2" : "auto" }}>
+                  <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#D9A574" }}>{c.num} · {c.name}</p>
+                  <p className="font-serif text-xl italic leading-snug" style={{ color: "#F5EFE6", letterSpacing: "-0.005em" }}>{c.text}</p>
                 </div>
-                <a
-                  href="mailto:info@criteriesg.com"
-                  className="inline-flex h-11 flex-shrink-0 items-center justify-center gap-2 rounded-md border border-rule bg-background px-6 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent-deep"
-                >
-                  <Mail className="h-4 w-4" />
-                  info@criteriesg.com
-                </a>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Tancament */}
-        <section className="border-b border-rule py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-md border-l-2 border-accent bg-accent-soft/10 p-5">
-              <p className="mb-2 font-mono text-xs uppercase tracking-widest text-accent-deep">
-                {t("quisom.page.closing.eyebrow")}
-              </p>
-              <p className="font-serif text-lg leading-relaxed text-foreground italic">
-                {t("quisom.page.closing.body")}
-              </p>
+        {/* 5. CLOSING */}
+        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+          <div className="mx-auto max-w-4xl px-6 py-24 text-center lg:px-8">
+            <div className="mb-6 flex items-center justify-center gap-3">
+              <span className="inline-block h-0.5 w-6" style={{ background: "#B87333" }} />
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#8A5526" }}>{t("quisom.v2.closing.eyebrow")}</p>
+              <span className="inline-block h-0.5 w-6" style={{ background: "#B87333" }} />
             </div>
+            <p className="font-serif text-3xl leading-snug text-primary sm:text-4xl" style={{ letterSpacing: "-0.015em" }}>
+              {t("quisom.v2.closing.text.pre")}<em className="italic font-medium" style={{ color: "#5C3A1E" }}>{t("quisom.v2.closing.text.em")}</em>{t("quisom.v2.closing.text.post")}
+            </p>
+            <button onClick={() => openAuth("register")} className="mt-8 px-9 py-4 text-sm font-semibold text-white" style={{ background: "#B87333" }}>{t("quisom.v2.closing.cta")}</button>
           </div>
         </section>
       </main>
       <Footer />
-
       <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
-      <PreusDialog
-        open={preusOpen}
-        onOpenChange={setPreusOpen}
-        onOpenRegister={() => openAuth("register")}
-      />
+      <PreusDialog open={preusOpen} onOpenChange={setPreusOpen} onOpenRegister={() => openAuth("register")} />
     </div>
   );
 }

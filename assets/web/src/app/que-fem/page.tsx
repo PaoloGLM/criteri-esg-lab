@@ -6,18 +6,6 @@ import { Footer } from "@/components/site-footer";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
-import {
-  Search,
-  Eye,
-  Target,
-  ClipboardCheck,
-  Network,
-  Cpu,
-  Scale,
-  Sprout,
-  Heart,
-  Users,
-} from "lucide-react";
 
 export default function QueFemPage() {
   const { t } = useLanguage();
@@ -30,294 +18,166 @@ export default function QueFemPage() {
     setAuthOpen(true);
   };
 
-  // Passos del procés (array per evitar repetició)
-  const processSteps: {
-    num: number;
-    icon: React.ReactNode;
-    titleKey:
-      | "quefem.process.step1.title"
-      | "quefem.process.step2.title"
-      | "quefem.process.step3.title"
-      | "quefem.process.step4.title"
-      | "quefem.process.step5.title";
-    bodyKey:
-      | "quefem.process.step1.body"
-      | "quefem.process.step2.body"
-      | "quefem.process.step3.body"
-      | "quefem.process.step4.body"
-      | "quefem.process.step5.body";
-  }[] = [
-    { num: 1, icon: <Search className="h-5 w-5" />, titleKey: "quefem.process.step1.title", bodyKey: "quefem.process.step1.body" },
-    { num: 2, icon: <Eye className="h-5 w-5" />, titleKey: "quefem.process.step2.title", bodyKey: "quefem.process.step2.body" },
-    { num: 3, icon: <Target className="h-5 w-5" />, titleKey: "quefem.process.step3.title", bodyKey: "quefem.process.step3.body" },
-    { num: 4, icon: <ClipboardCheck className="h-5 w-5" />, titleKey: "quefem.process.step4.title", bodyKey: "quefem.process.step4.body" },
-    { num: 5, icon: <Network className="h-5 w-5" />, titleKey: "quefem.process.step5.title", bodyKey: "quefem.process.step5.body" },
+  const semaforoDims = [
+    { name: t("quefem.semaforo.scope3") },
+    { name: t("quefem.semaforo.plazos") },
+    { name: t("quefem.semaforo.fuentes") },
+    { name: t("quefem.semaforo.granularidad") },
+    { name: t("quefem.semaforo.verificacion") },
   ];
 
-  // Els 8 blocs del format (reutilitzem les claus mid.format.*)
-  const formatBlocs: {
-    num: string;
-    titleKey:
-      | "mid.format.bloc0.title"
-      | "mid.format.bloc1.title"
-      | "mid.format.bloc2.title"
-      | "mid.format.bloc3.title"
-      | "mid.format.bloc4.title"
-      | "mid.format.bloc5.title"
-      | "mid.format.bloc6.title"
-      | "mid.format.bloc7.title";
-    descKey:
-      | "mid.format.bloc0.desc"
-      | "mid.format.bloc1.desc"
-      | "mid.format.bloc2.desc"
-      | "mid.format.bloc3.desc"
-      | "mid.format.bloc4.desc"
-      | "mid.format.bloc5.desc"
-      | "mid.format.bloc6.desc"
-      | "mid.format.bloc7.desc";
-    highlighted?: boolean;
-  }[] = [
-    { num: "0", titleKey: "mid.format.bloc0.title", descKey: "mid.format.bloc0.desc", highlighted: true },
-    { num: "1", titleKey: "mid.format.bloc1.title", descKey: "mid.format.bloc1.desc" },
-    { num: "2", titleKey: "mid.format.bloc2.title", descKey: "mid.format.bloc2.desc" },
-    { num: "3", titleKey: "mid.format.bloc3.title", descKey: "mid.format.bloc3.desc" },
-    { num: "4", titleKey: "mid.format.bloc4.title", descKey: "mid.format.bloc4.desc" },
-    { num: "5", titleKey: "mid.format.bloc5.title", descKey: "mid.format.bloc5.desc" },
-    { num: "6", titleKey: "mid.format.bloc6.title", descKey: "mid.format.bloc6.desc", highlighted: true },
-    { num: "7", titleKey: "mid.format.bloc7.title", descKey: "mid.format.bloc7.desc", highlighted: true },
+  const blocs = [
+    { num: "01", name: t("quefem.bloc.01.name"), desc: t("quefem.bloc.01.desc"), meta: t("quefem.bloc.01.meta"), star: false },
+    { num: "02", name: t("quefem.bloc.02.name"), desc: t("quefem.bloc.02.desc"), meta: t("quefem.bloc.02.meta"), star: false },
+    { num: "03", name: t("quefem.bloc.03.name"), desc: t("quefem.bloc.03.desc"), meta: t("quefem.bloc.03.meta"), star: false },
+    { num: "04", name: t("quefem.bloc.04.name"), desc: t("quefem.bloc.04.desc"), meta: t("quefem.bloc.04.meta"), star: false },
+    { num: "05", name: t("quefem.bloc.05.name"), desc: t("quefem.bloc.05.desc"), meta: t("quefem.bloc.05.meta"), star: false },
+    { num: "06", name: t("quefem.bloc.06.name"), desc: t("quefem.bloc.06.desc"), meta: t("quefem.bloc.06.meta"), star: true },
+    { num: "07", name: t("quefem.bloc.07.name"), desc: t("quefem.bloc.07.desc"), meta: t("quefem.bloc.07.meta"), star: true },
   ];
 
-  // Els 4 valors (reutilitzem les claus quisom.valors.*)
-  const valors: {
-    icon: React.ReactNode;
-    titleKey:
-      | "quisom.valors.etica.title"
-      | "quisom.valors.economia.title"
-      | "quisom.valors.dignitat.title"
-      | "quisom.valors.territori.title";
-    bodyKey:
-      | "quisom.valors.etica.body"
-      | "quisom.valors.economia.body"
-      | "quisom.valors.dignitat.body"
-      | "quisom.valors.territori.body";
-  }[] = [
-    { icon: <Scale className="h-4 w-4" />, titleKey: "quisom.valors.etica.title", bodyKey: "quisom.valors.etica.body" },
-    { icon: <Sprout className="h-4 w-4" />, titleKey: "quisom.valors.economia.title", bodyKey: "quisom.valors.economia.body" },
-    { icon: <Heart className="h-4 w-4" />, titleKey: "quisom.valors.dignitat.title", bodyKey: "quisom.valors.dignitat.body" },
-    { icon: <Users className="h-4 w-4" />, titleKey: "quisom.valors.territori.title", bodyKey: "quisom.valors.territori.body" },
+  const criteris = [
+    { num: "01", name: t("quefem.criteri.01.name"), text: t("quefem.criteri.01.text") },
+    { num: "02", name: t("quefem.criteri.02.name"), text: t("quefem.criteri.02.text") },
+    { num: "03", name: t("quefem.criteri.03.name"), text: t("quefem.criteri.03.text") },
+    { num: "04", name: t("quefem.criteri.04.name"), text: t("quefem.criteri.04.text") },
+    { num: "05", name: t("quefem.criteri.05.name"), text: t("quefem.criteri.05.text") },
+    { num: "06", name: t("quefem.criteri.06.name"), text: t("quefem.criteri.06.text") },
   ];
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <Header
-        onOpenPreus={() => setPreusOpen(true)}
-        onOpenAuth={(tab) => openAuth(tab || "register")}
-      />
+      <Header onOpenPreus={() => setPreusOpen(true)} onOpenAuth={(tab) => openAuth(tab || "register")} />
       <main className="flex-1">
-        {/* Page hero */}
-        <section className="border-b border-rule bg-secondary/30 py-12">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <p className="eyebrow mb-2">{t("quefem.eyebrow")}</p>
-            <h1 className="font-serif text-4xl font-semibold leading-tight text-primary sm:text-5xl">
-              {t("quefem.title")}
-            </h1>
-            <div className="rule-accent my-5" />
-            <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
-              {t("quefem.subtitle")}
+        {/* 1. HERO */}
+        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+            <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-end">
+              <div>
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="inline-block h-0.5 w-6" style={{ background: "#B87333" }} />
+                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#8A5526" }}>{t("quefem.hero.eyebrow")}</p>
+                </div>
+                <h1 className="font-serif text-5xl font-medium leading-[1.05] tracking-tight text-primary sm:text-6xl lg:text-7xl">
+                  {t("quefem.hero.title.pre")}<em className="italic" style={{ color: "#5C3A1E" }}>{t("quefem.hero.title.em")}</em>{t("quefem.hero.title.post")}
+                </h1>
+                <p className="mt-6 max-w-2xl font-serif text-lg italic" style={{ color: "#5C3A1E" }}>{t("quefem.hero.subtitle")}</p>
+              </div>
+              <div className="text-right font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "#8B7355" }}>
+                <p><strong className="font-semibold text-primary">192</strong> {t("quefem.hero.meta.fuentes")}</p>
+                <p><strong className="font-semibold text-primary">16</strong> {t("quefem.hero.meta.estandares")}</p>
+                <p><strong className="font-semibold text-primary">5</strong> {t("quefem.hero.meta.minutos")}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 2. EL PROCÉS */}
+        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="inline-block h-0.5 w-6" style={{ background: "#B87333" }} />
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#8A5526" }}>{t("quefem.proceso.eyebrow")}</p>
+            </div>
+            <h2 className="mb-12 font-serif text-4xl font-medium leading-tight tracking-tight text-primary sm:text-5xl">
+              {t("quefem.proceso.title.pre")}<em className="italic" style={{ color: "#5C3A1E" }}>{t("quefem.proceso.title.em")}</em>{t("quefem.proceso.title.post")}
+            </h2>
+            <div className="grid gap-0 border-t border-primary sm:grid-cols-3">
+              {[
+                { num: "01", verb: t("quefem.proceso.01.verb"), desc: t("quefem.proceso.01.desc") },
+                { num: "02", verb: t("quefem.proceso.02.verb"), desc: t("quefem.proceso.02.desc") },
+                { num: "03", verb: t("quefem.proceso.03.verb"), desc: t("quefem.proceso.03.desc") },
+              ].map((step, i) => (
+                <div key={step.num} className="flex flex-col gap-4 p-8" style={{ borderRight: i < 2 ? "1px solid rgba(44,24,16,0.15)" : "none" }}>
+                  <div className="font-serif text-6xl font-light leading-none" style={{ color: "#B87333", letterSpacing: "-0.04em" }}>{step.num}</div>
+                  <div className="font-serif text-3xl font-medium text-primary" style={{ letterSpacing: "-0.012em" }}>{step.verb}</div>
+                  <p className="text-sm leading-relaxed" style={{ color: "#5C3A1E" }}>{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 3. SEMÀFOR HERO (dark) */}
+        <section style={{ background: "#2C1810", color: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+            <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:items-center">
+              <div className="flex flex-col gap-5">
+                <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#D9A574" }}>{t("quefem.semaforo.eyebrow")}</p>
+                <h2 className="font-serif text-4xl font-medium leading-tight tracking-tight sm:text-5xl" style={{ color: "#F5EFE6" }}>
+                  {t("quefem.semaforo.title.pre")}<em className="italic" style={{ color: "#D9A574" }}>{t("quefem.semaforo.title.em")}</em>{t("quefem.semaforo.title.post")}
+                </h2>
+                <p className="max-w-md font-serif text-lg italic" style={{ color: "rgba(245,239,230,0.75)" }}>{t("quefem.semaforo.desc")}</p>
+              </div>
+              <div className="grid gap-5 sm:grid-cols-2">
+                {semaforoDims.map((dim, i) => (
+                  <div key={dim.name} className="flex flex-col gap-1.5 border-b py-4" style={{ borderBottomColor: "rgba(217,165,116,0.2)", gridColumn: i === 4 ? "span 2" : "auto" }}>
+                    <div className="font-serif text-lg font-medium" style={{ color: "#F5EFE6" }}>{dim.name}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 4. ESTRUCTURA DEL INFORME */}
+        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="inline-block h-0.5 w-6" style={{ background: "#B87333" }} />
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#8A5526" }}>{t("quefem.estructura.eyebrow")}</p>
+            </div>
+            <h2 className="mb-12 font-serif text-4xl font-medium leading-tight tracking-tight text-primary sm:text-5xl">
+              {t("quefem.estructura.title.pre")}<em className="italic" style={{ color: "#5C3A1E" }}>{t("quefem.estructura.title.em")}</em>{t("quefem.estructura.title.post")}
+            </h2>
+            <div className="grid gap-0 border-t border-primary sm:grid-cols-2">
+              {blocs.map((bloc, i) => (
+                <div key={bloc.num} className="flex flex-col gap-3 border-b border-r p-8" style={{ borderRightColor: i % 2 === 0 ? "rgba(44,24,16,0.15)" : "none", borderBottomColor: "rgba(44,24,16,0.15)", background: bloc.star ? "rgba(184,115,51,0.06)" : "transparent" }}>
+                  <div className="font-serif text-5xl font-light leading-none" style={{ color: "#B87333", letterSpacing: "-0.03em" }}>{bloc.num}</div>
+                  <div className="font-serif text-xl font-medium text-primary" style={{ letterSpacing: "-0.01em" }}>{bloc.name}{bloc.star && <span className="ml-2 text-base">⭐</span>}</div>
+                  <p className="text-[13px] leading-relaxed" style={{ color: "#5C3A1E" }}>{bloc.desc}</p>
+                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "#8B7355" }}>{bloc.meta}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 5. CRITERIOS Y VALORES */}
+        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="inline-block h-0.5 w-6" style={{ background: "#B87333" }} />
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#8A5526" }}>{t("quefem.criteris.eyebrow")}</p>
+            </div>
+            <h2 className="mb-12 font-serif text-4xl font-medium leading-tight tracking-tight text-primary sm:text-5xl">
+              {t("quefem.criteris.title.pre")}<em className="italic" style={{ color: "#5C3A1E" }}>{t("quefem.criteris.title.em")}</em>{t("quefem.criteris.title.post")}
+            </h2>
+            <div className="grid gap-8 sm:grid-cols-2 sm:gap-x-16">
+              {criteris.map((c) => (
+                <div key={c.num} className="border-b py-5" style={{ borderBottomColor: "rgba(201,184,154,0.5)" }}>
+                  <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#B87333" }}>{c.num} · {c.name}</p>
+                  <p className="font-serif text-xl italic leading-snug text-primary" style={{ letterSpacing: "-0.005em" }}>{c.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 6. MANIFEST (dark) */}
+        <section style={{ background: "#2C1810", color: "#F5EFE6" }}>
+          <div className="mx-auto max-w-4xl px-6 py-24 text-center lg:px-8 lg:py-28">
+            <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#D9A574" }}>{t("quefem.manifest.eyebrow")}</p>
+            <p className="font-serif text-3xl leading-snug sm:text-4xl" style={{ color: "#F5EFE6", letterSpacing: "-0.018em" }}>
+              {t("quefem.manifest.text.pre")}<em className="italic font-medium" style={{ color: "#D9A574" }}>{t("quefem.manifest.text.em")}</em>{t("quefem.manifest.text.post")}
             </p>
-          </div>
-        </section>
-
-        {/* Procés — 5 passos */}
-        <section className="border-b border-rule py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-10">
-              <p className="eyebrow mb-3">{t("quefem.process.eyebrow")}</p>
-              <h2 className="font-serif text-3xl font-semibold leading-tight text-primary sm:text-4xl">
-                {t("quefem.process.title")}
-              </h2>
-              <div className="rule-accent my-5" />
-              <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
-                {t("quefem.process.body")}
-              </p>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {processSteps.map((step) => (
-                <div
-                  key={step.num}
-                  className="rounded-md border border-rule bg-card p-5"
-                >
-                  <div className="mb-3 flex items-center gap-3">
-                    <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent-deep">
-                      {step.icon}
-                    </span>
-                    <span className="font-mono text-xs text-accent-deep">
-                      PAS {step.num}
-                    </span>
-                  </div>
-                  <h3 className="mb-2 font-serif text-base font-semibold text-primary">
-                    {t(step.titleKey)}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-foreground/75">
-                    {t(step.bodyKey)}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Format — 8 blocs */}
-        <section className="border-b border-rule bg-secondary/30 py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-10">
-              <p className="eyebrow mb-3">{t("quefem.format.eyebrow")}</p>
-              <h2 className="font-serif text-3xl font-semibold leading-tight text-primary sm:text-4xl">
-                {t("quefem.format.title")}
-              </h2>
-              <div className="rule-accent my-5" />
-              <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
-                {t("quefem.format.body")}
-              </p>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              {formatBlocs.map((b) => (
-                <div
-                  key={b.num}
-                  className={`rounded-md border p-4 ${
-                    b.highlighted
-                      ? "border-accent bg-accent-soft/15"
-                      : "border-rule bg-card"
-                  }`}
-                >
-                  <div className="mb-2 flex items-center gap-2">
-                    <span className="font-mono text-xs text-accent-deep">
-                      {b.num}
-                    </span>
-                  </div>
-                  <h3 className="mb-1.5 font-serif text-base font-semibold leading-tight text-primary">
-                    {t(b.titleKey)}
-                  </h3>
-                  <p className="text-xs leading-relaxed text-foreground/70">
-                    {t(b.descKey)}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Sistema d'IA + supervisió */}
-        <section className="border-b border-rule py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-md border border-accent/30 bg-card p-5">
-              <div className="mb-3 flex items-center gap-2">
-                <Cpu className="h-4 w-4 text-accent" />
-                <p className="font-mono text-xs uppercase tracking-widest text-accent-deep">
-                  {t("quisom.ai.title")}
-                </p>
-              </div>
-              <p className="text-base leading-relaxed text-foreground/80">
-                {t("quisom.ai.body")}
-              </p>
-              <div className="mt-4 flex items-start gap-2 rounded-md border border-rule bg-secondary/30 p-3">
-                <Users className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent-deep" />
-                <p className="text-xs leading-relaxed text-foreground/75">
-                  <strong className="text-accent-deep">{t("quisom.ai.supervision.title")}</strong>{" "}
-                  {t("quisom.ai.supervision.body")}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Criteris i valors */}
-        <section className="border-b border-rule bg-secondary/30 py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-10">
-              <p className="eyebrow mb-3">{t("quefem.valors.eyebrow")}</p>
-              <h2 className="font-serif text-3xl font-semibold leading-tight text-primary sm:text-4xl">
-                {t("quefem.valors.title")}
-              </h2>
-              <div className="rule-accent my-5" />
-              <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
-                {t("quefem.valors.intro")}
-              </p>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {valors.map((v, i) => (
-                <div
-                  key={i}
-                  className="rounded-md border border-rule bg-secondary/30 p-4"
-                >
-                  <div className="mb-2 flex items-center gap-2 text-accent-deep">
-                    {v.icon}
-                    <h4 className="font-serif text-sm font-semibold text-primary">
-                      {t(v.titleKey)}
-                    </h4>
-                  </div>
-                  <p className="text-xs leading-relaxed text-foreground/75">
-                    {t(v.bodyKey)}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Preguntes per millorar (Premium) */}
-        <section className="border-b border-rule py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-md border border-accent bg-accent-soft/15 p-5">
-              <div className="mb-3 flex items-center gap-2">
-                <Eye className="h-4 w-4 text-accent" />
-                <p className="font-mono text-xs uppercase tracking-widest text-accent-deep">
-                  {t("quefem.preguntes.eyebrow")}
-                </p>
-              </div>
-              <h2 className="mb-3 font-serif text-2xl font-semibold leading-tight text-primary sm:text-3xl">
-                {t("quefem.preguntes.title")}
-              </h2>
-              <p className="mb-4 text-sm leading-relaxed text-foreground/80">
-                {t("quefem.preguntes.intro")}
-              </p>
-              <div className="rounded-md border border-rule bg-background p-4">
-                <p className="mb-1 font-mono text-[10px] uppercase tracking-widest text-accent-deep">
-                  {t("quisom.preguntes.example.title")}
-                </p>
-                <p className="font-serif text-base italic leading-relaxed text-foreground">
-                  {t("quisom.preguntes.example.body")}
-                </p>
-              </div>
-              <p className="mt-3 text-xs font-medium text-accent-deep">
-                🔒 {t("quisom.preguntes.cta")}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Tancament */}
-        <section className="border-b border-rule bg-secondary/30 py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-md border-l-2 border-accent bg-accent-soft/10 p-5">
-              <p className="mb-2 font-mono text-xs uppercase tracking-widest text-accent-deep">
-                {t("quefem.closing.eyebrow")}
-              </p>
-              <p className="font-serif text-lg leading-relaxed text-foreground italic">
-                {t("quefem.closing.body")}
-              </p>
-            </div>
+            <p className="mt-6 font-serif text-sm italic" style={{ color: "rgba(245,239,230,0.5)" }}>— {t("quefem.manifest.attribution")}</p>
           </div>
         </section>
       </main>
       <Footer />
-
       <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
-      <PreusDialog
-        open={preusOpen}
-        onOpenChange={setPreusOpen}
-        onOpenRegister={() => openAuth("register")}
-      />
+      <PreusDialog open={preusOpen} onOpenChange={setPreusOpen} onOpenRegister={() => openAuth("register")} />
     </div>
   );
 }

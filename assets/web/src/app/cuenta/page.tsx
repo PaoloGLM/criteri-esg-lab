@@ -7,6 +7,7 @@ import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import { supabase } from "@/lib/supabase";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -55,6 +56,13 @@ import { useRouter } from "next/navigation";
 
 /**
  * /cuenta — Fase 2D redesign.
+=======
+import { useAuth } from "@/lib/auth-context";
+import { useRouter } from "next/navigation";
+
+/**
+ * /cuenta — Fase 2D redesign.
+>>>>>>> Stashed changes
  * Design: /home/z/my-project/scripts/informe-variants/cuenta-redissenyat.html
  *
  * - Sidebar dark (sticky) amb logo + user card + nav (6 items) + logout
@@ -64,6 +72,9 @@ import { useRouter } from "next/navigation";
 type StandarType = "reg" | "fw" | "cert";
 
 const ESTANDARES: { slug: string; name: string; type: StandarType }[] = [
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   { slug: "csrd-esrs", name: "CSRD / ESRS", type: "reg" },
   { slug: "csddd", name: "CSDDD", type: "reg" },
@@ -71,7 +82,10 @@ const ESTANDARES: { slug: string; name: string; type: StandarType }[] = [
   { slug: "taxonomia-ue", name: "Taxonomía UE", type: "reg" },
   { slug: "emas", name: "EMAS", type: "reg" },
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   // 5 Frameworks
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   { slug: "gri", name: "GRI", type: "fw" },
@@ -80,7 +94,10 @@ const ESTANDARES: { slug: string; name: string; type: StandarType }[] = [
   { slug: "tcfd", name: "TCFD", type: "fw" },
   { slug: "iso-26000", name: "ISO 26000", type: "fw" },
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   // 6 Certificaciones
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   { slug: "ecovadis", name: "EcoVadis", type: "cert" },
@@ -89,6 +106,7 @@ const ESTANDARES: { slug: string; name: string; type: StandarType }[] = [
   { slug: "cdp", name: "CDP", type: "cert" },
   { slug: "sge-21", name: "SGE 21", type: "cert" },
   { slug: "sustainalytics", name: "Sustainalytics", type: "cert" },
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 ];
 
@@ -122,6 +140,10 @@ const NAV_ITEMS: { num: string; href: string; labelKey: TranslationKey }[] = [
 >>>>>>> Stashed changes
 ];
 
+=======
+];
+
+>>>>>>> Stashed changes
 const INTERESSOS = [
   { id: "csrd", key: "form.interest.csrd" as const },
   { id: "ecovadis", key: "form.interest.ecovadis" as const },
@@ -141,9 +163,15 @@ const CAT_TYPE_COLOR: Record<StandarType, string> = {
 
 export default function CuentaPage() {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   const { user, session, loading, signOut, plan } = useAuth();
   const { t, lang } = useLanguage();
   const { toast } = useToast();
+=======
+  const { t } = useLanguage();
+  const { user, plan } = useAuth();
+  const router = useRouter();
+>>>>>>> Stashed changes
 =======
   const { t } = useLanguage();
   const { user, plan } = useAuth();
@@ -157,6 +185,7 @@ export default function CuentaPage() {
   const [selectedInteressos, setSelectedInteressos] = useState<string[]>(["csrd", "ecovadis", "taxonomy", "climate"]);
   const [newsletterLang, setNewsletterLang] = useState<"ca" | "es">("es");
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
@@ -384,6 +413,25 @@ export default function CuentaPage() {
     );
   };
 
+=======
+  const openAuth = (tab: "register" | "login" = "register") => {
+    setAuthTab(tab);
+    setAuthOpen(true);
+  };
+
+  const toggleEstandar = (slug: string) => {
+    setSelectedEstandards((prev) =>
+      prev.includes(slug) ? prev.filter((s) => s !== slug) : [...prev, slug]
+    );
+  };
+
+  const toggleInteres = (id: string) => {
+    setSelectedInteressos((prev) =>
+      prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]
+    );
+  };
+
+>>>>>>> Stashed changes
   // Si no hi ha usuari loguejat, mostrar CTA per accedir
   if (!user) {
     return (
@@ -400,6 +448,9 @@ export default function CuentaPage() {
             >
               {t("cuenta.v2.login_required.cta")}
             </button>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
           </div>
         </main>
@@ -410,6 +461,7 @@ export default function CuentaPage() {
     );
   }
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   // Authenticated — show the redesigned account page
   return (
@@ -486,6 +538,17 @@ export default function CuentaPage() {
     { id: "billing", num: "06", label: t("cuenta.v2.nav.billing") },
   ];
 
+=======
+  const navItems = [
+    { id: "perfil", num: "01", label: t("cuenta.v2.nav.perfil") },
+    { id: "newsletter", num: "02", label: t("cuenta.v2.nav.newsletter") },
+    { id: "plan", num: "03", label: t("cuenta.v2.nav.plan") },
+    { id: "estandares", num: "04", label: t("cuenta.v2.nav.estandares") },
+    { id: "intereses", num: "05", label: t("cuenta.v2.nav.intereses") },
+    { id: "billing", num: "06", label: t("cuenta.v2.nav.billing") },
+  ];
+
+>>>>>>> Stashed changes
   const userInitial = (user.email?.[0] || "U").toUpperCase();
   const isPremium = plan === "premium";
 
@@ -518,11 +581,15 @@ export default function CuentaPage() {
                 </div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#D9A574" }}>
                   {isPremium ? t("cuenta.v2.plan.premium") : t("cuenta.v2.plan.free")}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 </div>
               </div>
             </div>
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
             {/* Nav */}
             <nav className="flex flex-col gap-0.5">
@@ -995,6 +1062,23 @@ export default function CuentaPage() {
                     borderLeftColor: activeNav === item.id ? "#B87333" : "transparent",
                   }}
                 >
+=======
+            <nav className="flex flex-col gap-0.5">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    setActiveNav(item.id);
+                    document.getElementById(`card-${item.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
+                  className="grid grid-cols-[24px_1fr] items-baseline gap-3 border-l-2 px-4 py-3 text-left text-sm font-medium transition-colors"
+                  style={{
+                    color: activeNav === item.id ? "#F5EFE6" : "rgba(245,239,230,0.7)",
+                    background: activeNav === item.id ? "rgba(217,165,116,0.12)" : "transparent",
+                    borderLeftColor: activeNav === item.id ? "#B87333" : "transparent",
+                  }}
+                >
+>>>>>>> Stashed changes
                   <span className="font-mono text-[10px] font-semibold" style={{ color: activeNav === item.id ? "#D9A574" : "rgba(217,165,116,0.5)" }}>
                     {item.num}
                   </span>
@@ -1183,11 +1267,15 @@ export default function CuentaPage() {
                         {selected ? "✓" : ""}
                       </span>
                       {est.name}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                     </button>
                   );
                 })}
               </div>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
               {/* Legend */}
               <div
@@ -1298,6 +1386,8 @@ export default function CuentaPage() {
                       </span>
                       {t(opt.labelKey)}
 =======
+=======
+>>>>>>> Stashed changes
               <div className="mt-4 flex gap-6 font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#5C3A1E" }}>
                 <div className="flex items-center gap-2">
                   <span className="inline-block w-[18px] h-1" style={{ background: "#5C3A1E" }} />
@@ -1350,11 +1440,15 @@ export default function CuentaPage() {
                         {selected ? "✓" : ""}
                       </span>
                       {t(interes.key)}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                     </button>
                   );
                 })}
               </div>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
             </section>
 
@@ -1450,6 +1544,10 @@ export default function CuentaPage() {
                 {tr("Tancar sessió", "Cerrar sesión")}
               </Button>
             </div>
+=======
+            </div>
+
+>>>>>>> Stashed changes
 =======
             </div>
 

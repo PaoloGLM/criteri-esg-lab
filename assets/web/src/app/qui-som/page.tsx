@@ -7,6 +7,7 @@ import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import type { TranslationKey } from "@/lib/i18n";
 
 /**
@@ -28,6 +29,11 @@ import type { TranslationKey } from "@/lib/i18n";
 
 /**
  * /qui-som — Fase 2D redesign.
+=======
+
+/**
+ * /qui-som — Fase 2D redesign.
+>>>>>>> Stashed changes
  * Design: /home/z/my-project/scripts/informe-variants/qui-som-redissenyat.html
  *
  * 5 seccions:
@@ -38,6 +44,9 @@ import type { TranslationKey } from "@/lib/i18n";
  *   5. Closing (cream)
  *
  * CRITICAL: No inventar informació sobre Paolo. Usar textos existents del i18n.
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
  */
 export default function QuiSomPage() {
@@ -51,6 +60,7 @@ export default function QuiSomPage() {
     setAuthOpen(true);
   };
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   // 3 members — NO real names. Use existing bio i18n keys.
   const teamMembers: {
@@ -84,6 +94,8 @@ export default function QuiSomPage() {
       isAI: true,
     },
 =======
+=======
+>>>>>>> Stashed changes
   // 3 membres de l'equip (sense noms propis)
   const teamMembers = [
     { icon: "★", role: t("quisom.v2.team.01.role"), name: t("quisom.v2.team.01.name"), bio: t("quisom.v2.team.01.bio"), tag: t("quisom.v2.team.01.tag"), isAI: false },
@@ -98,6 +110,7 @@ export default function QuiSomPage() {
     { num: "03", name: t("quisom.v2.conviccio.03.name"), text: t("quisom.v2.conviccio.03.text") },
     { num: "04", name: t("quisom.v2.conviccio.04.name"), text: t("quisom.v2.conviccio.04.text") },
     { num: "05", name: t("quisom.v2.conviccio.05.name"), text: t("quisom.v2.conviccio.05.text") },
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
   ];
 
@@ -211,10 +224,35 @@ export default function QuiSomPage() {
             <p className="max-w-3xl font-serif text-xl italic" style={{ color: "#5C3A1E" }}>
               {t("quisom.v2.hero.subtitle")}
 >>>>>>> Stashed changes
+=======
+  ];
+
+  return (
+    <div className="flex min-h-screen flex-col bg-background">
+      <Header onOpenPreus={() => setPreusOpen(true)} onOpenAuth={(tab) => openAuth(tab || "register")} />
+      <main className="flex-1">
+        {/* === 1. HERO === */}
+        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-28">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="inline-block h-0.5 w-6" style={{ background: "#B87333" }} />
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#8A5526" }}>
+                {t("quisom.v2.hero.eyebrow")}
+              </p>
+            </div>
+            <h1 className="mb-6 max-w-5xl font-serif text-5xl font-medium leading-[1.05] tracking-tight text-primary sm:text-6xl lg:text-7xl">
+              {t("quisom.v2.hero.title.pre")}{" "}
+              <em className="italic" style={{ color: "#5C3A1E" }}>{t("quisom.v2.hero.title.em")}</em>
+              {t("quisom.v2.hero.title.post")}
+            </h1>
+            <p className="max-w-3xl font-serif text-xl italic" style={{ color: "#5C3A1E" }}>
+              {t("quisom.v2.hero.subtitle")}
+>>>>>>> Stashed changes
             </p>
           </div>
         </section>
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         {/* ===== MANIFEST HERO (box with copper left border) ===== */}
         <section
@@ -245,6 +283,8 @@ export default function QuiSomPage() {
                 }}
               >
 =======
+=======
+>>>>>>> Stashed changes
         {/* === 2. MANIFEST HERO === */}
         <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
@@ -256,6 +296,9 @@ export default function QuiSomPage() {
                 {t("quisom.v2.manifest.eyebrow")}
               </p>
               <p className="max-w-4xl font-serif text-xl italic leading-relaxed text-primary sm:text-2xl">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 {t("quisom.manifest.page.body")}
               </p>
@@ -263,6 +306,7 @@ export default function QuiSomPage() {
           </div>
         </section>
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         {/* ===== EQUIPO (3 cols, no real names) ===== */}
         <section
@@ -350,15 +394,46 @@ export default function QuiSomPage() {
                   style={{ borderColor: "#C9B89A", background: "white" }}
                 >
                   <div
+=======
+        {/* === 3. EQUIP === */}
+        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="inline-block h-0.5 w-6" style={{ background: "#B87333" }} />
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#8A5526" }}>
+                {t("quisom.v2.team.eyebrow")}
+              </p>
+            </div>
+            <h2 className="mb-4 font-serif text-4xl font-medium leading-tight tracking-tight text-primary sm:text-5xl">
+              {t("quisom.v2.team.title.pre")}{" "}
+              <em className="italic" style={{ color: "#5C3A1E" }}>{t("quisom.v2.team.title.em")}</em>
+              {t("quisom.v2.team.title.post")}
+            </h2>
+            <p className="mb-12 max-w-3xl font-serif text-lg italic" style={{ color: "#5C3A1E" }}>
+              {t("quisom.v2.team.intro")}
+            </p>
+            <div className="grid gap-8 lg:grid-cols-3">
+              {teamMembers.map((member) => (
+                <div
+                  key={member.name}
+                  className="flex flex-col gap-4 border p-8"
+                  style={{ borderColor: "#C9B89A", background: "white" }}
+                >
+                  <div
+>>>>>>> Stashed changes
                     className="flex h-14 w-14 items-center justify-center font-serif text-2xl font-medium"
                     style={{
                       background: member.isAI ? "#B87333" : "#2C1810",
                       color: "#F5EFE6",
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                     }}
                   >
                     {member.icon}
                   </div>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
                   <div
                     className="font-mono text-[10px] font-semibold uppercase"
@@ -389,6 +464,8 @@ export default function QuiSomPage() {
                   >
                     {t(member.bioKey)}
 =======
+=======
+>>>>>>> Stashed changes
                   <p className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#8A5526" }}>
                     {member.role}
                   </p>
@@ -403,6 +480,7 @@ export default function QuiSomPage() {
                     style={{ borderColor: "#C9B89A", color: "#8B7355" }}
                   >
                     {member.tag}
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
                   </p>
                   <div
@@ -527,10 +605,51 @@ export default function QuiSomPage() {
                   </p>
                   <p className="font-serif text-xl italic leading-snug" style={{ color: "#F5EFE6", letterSpacing: "-0.005em" }}>
                     {c.text}
+=======
+>>>>>>> Stashed changes
                   </p>
                 </div>
               ))}
             </div>
+<<<<<<< Updated upstream
+=======
+          </div>
+        </section>
+
+        {/* === 4. LO QUE CREEMOS (dark) === */}
+        <section style={{ background: "#2C1810", color: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="inline-block h-0.5 w-6" style={{ background: "#B87333" }} />
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#D9A574" }}>
+                {t("quisom.v2.conviccions.eyebrow")}
+              </p>
+            </div>
+            <h2 className="mb-12 font-serif text-4xl font-medium leading-tight tracking-tight sm:text-5xl" style={{ color: "#F5EFE6" }}>
+              {t("quisom.v2.conviccions.title.pre")}{" "}
+              <em className="italic" style={{ color: "#D9A574" }}>{t("quisom.v2.conviccions.title.em")}</em>
+              {t("quisom.v2.conviccions.title.post")}
+            </h2>
+            <div className="grid gap-8 sm:grid-cols-2 sm:gap-x-16">
+              {conviccions.map((c, i) => (
+                <div
+                  key={c.num}
+                  className="border-b py-5"
+                  style={{
+                    borderBottomColor: "rgba(217,165,116,0.2)",
+                    gridColumn: i === 4 ? "span 2" : "auto",
+                  }}
+                >
+                  <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#D9A574" }}>
+                    {c.num} · {c.name}
+                  </p>
+                  <p className="font-serif text-xl italic leading-snug" style={{ color: "#F5EFE6", letterSpacing: "-0.005em" }}>
+                    {c.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+>>>>>>> Stashed changes
           </div>
         </section>
 
@@ -543,6 +662,9 @@ export default function QuiSomPage() {
                 {t("quisom.v2.closing.eyebrow")}
               </p>
               <span className="inline-block h-0.5 w-6" style={{ background: "#B87333" }} />
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             </div>
             <p className="font-serif text-3xl leading-snug text-primary sm:text-4xl" style={{ letterSpacing: "-0.015em" }}>

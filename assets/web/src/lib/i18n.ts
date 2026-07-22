@@ -1367,6 +1367,7 @@ export const translations = {
   },
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   // =========================================================================
   // FASE 2B — INFORME DETALL (Variant A: sidebar sticky)
   // =========================================================================
@@ -1961,6 +1962,8 @@ export const translations = {
   "v2.quefem.process.3.verb": { ca: "Recomanar", es: "Recomendar" },
   "v2.quefem.process.3.desc": {
 =======
+=======
+>>>>>>> Stashed changes
   // ===== /que-fem (Fase 2D) =====
   "quefem.hero.eyebrow": { ca: "Què fem · Criteri ESG", es: "Qué hacemos · Criteri ESG" },
   "quefem.hero.title.pre": { ca: "Un ", es: "Un " },
@@ -1990,11 +1993,15 @@ export const translations = {
   },
   "quefem.proceso.03.verb": { ca: "Recomanar", es: "Recomendar" },
   "quefem.proceso.03.desc": {
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     ca: "Tres accions concretes per informe. Operatives. Verificables. El criteri aplicat a la teva decisió d'aquesta setmana.",
     es: "Tres acciones concretas por informe. Operativas. Verificables. El criterio aplicado a tu decisión de esta semana.",
   },
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   "v2.quefem.semafor.tag": {
     ca: "Bloc 0 · Diferenciador principal",
@@ -2446,6 +2453,8 @@ export const translations = {
   },
 >>>>>>> Stashed changes
 =======
+=======
+>>>>>>> Stashed changes
   "quefem.semaforo.eyebrow": { ca: "Bloc 0 · Diferenciador principal", es: "Bloque 0 · Diferenciador principal" },
   "quefem.semaforo.title.pre": { ca: "El semàfor ", es: "El semáforo " },
   "quefem.semaforo.title.em": { ca: "metodològic", es: "metodológico" },
@@ -2617,5 +2626,8 @@ export const translations = {
   "cuenta.v2.login_required.title": { ca: "Cal iniciar sessió", es: "Inicia sesión" },
   "cuenta.v2.login_required.body": { ca: "Necessites iniciar sessió per veure el teu compte.", es: "Necesitas iniciar sesión para ver tu cuenta." },
   "cuenta.v2.login_required.cta": { ca: "Accedir", es: "Acceder" },
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 } as const;

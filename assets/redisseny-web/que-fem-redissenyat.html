@@ -9,13 +9,7 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 1440px; background: #F5EFE6; font-family: 'Inter', sans-serif; color: #2C1810; }
 
-  /* HEADER */
-  .header {
-    width: 1440px; height: 70px; background: #F5EFE6;
-    border-bottom: 1px solid #2C1810;
-    padding: 0 64px; display: flex; align-items: center; justify-content: space-between;
-    position: sticky; top: 0; z-index: 20;
-  }
+  .header { width: 1440px; height: 70px; background: #F5EFE6; border-bottom: 1px solid #2C1810; padding: 0 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 20; }
   .logo { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; color: #2C1810; letter-spacing: -0.015em; }
   .logo .dot { color: #B87333; }
   .nav { display: flex; gap: 36px; align-items: center; }
@@ -23,203 +17,80 @@
   .nav .active { color: #B87333; }
   .btn-cta { background: #B87333; color: #FFFFFF; padding: 10px 20px; font-family: 'Inter'; font-size: 12px; font-weight: 600; border: none; }
 
-  /* HERO */
-  .hero {
-    padding: 80px 64px;
-    border-bottom: 1px solid #2C1810;
-    display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: end;
-  }
-  .hero-eyebrow {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    text-transform: uppercase; letter-spacing: 0.22em; color: #8A5526;
-    font-weight: 600; margin-bottom: 16px;
-    display: flex; align-items: center; gap: 12px;
-  }
+  .hero { padding: 80px 64px; border-bottom: 1px solid #2C1810; display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: end; }
+  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #8A5526; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
   .hero-eyebrow::before { content: ''; width: 24px; height: 2px; background: #B87333; }
-  .hero-title {
-    font-family: 'Fraunces', serif; font-weight: 500; font-size: 64px;
-    line-height: 1.05; color: #2C1810; letter-spacing: -0.022em; margin-bottom: 16px;
-  }
+  .hero-title { font-family: 'Fraunces', serif; font-weight: 500; font-size: 64px; line-height: 1.05; color: #2C1810; letter-spacing: -0.022em; margin-bottom: 16px; }
   .hero-title em { font-style: italic; color: #5C3A1E; font-weight: 400; }
-  .hero-subtitle {
-    font-family: 'Fraunces', serif; font-style: italic; font-size: 19px;
-    color: #5C3A1E; max-width: 600px; line-height: 1.4;
-  }
-  .hero-meta {
-    text-align: right;
-    font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    text-transform: uppercase; letter-spacing: 0.16em; color: #8B7355;
-    line-height: 1.7; font-weight: 500;
-  }
+  .hero-subtitle { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; color: #5C3A1E; max-width: 600px; line-height: 1.4; }
+  .hero-meta { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; color: #8B7355; line-height: 1.7; font-weight: 500; }
   .hero-meta strong { color: #2C1810; font-weight: 600; }
 
-  /* SECTION GENERIC */
   .section { padding: 80px 64px; border-bottom: 1px solid #2C1810; }
   .section.dark { background: #2C1810; color: #F5EFE6; border-bottom-color: #B87333; }
   .section.dark .section-eyebrow { color: #D9A574; }
   .section.dark .section-eyebrow::before { background: #B87333; }
   .section.dark .section-title { color: #F5EFE6; }
   .section.dark .section-title em { color: #D9A574; }
-
-  .section-eyebrow {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    text-transform: uppercase; letter-spacing: 0.22em; color: #8A5526;
-    font-weight: 600; margin-bottom: 16px;
-    display: flex; align-items: center; gap: 12px;
-  }
+  .section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #8A5526; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
   .section-eyebrow::before { content: ''; width: 24px; height: 2px; background: #B87333; }
-  .section-title {
-    font-family: 'Fraunces', serif; font-weight: 500; font-size: 42px;
-    line-height: 1.1; color: #2C1810; letter-spacing: -0.018em;
-    margin-bottom: 32px; max-width: 900px;
-  }
+  .section-title { font-family: 'Fraunces', serif; font-weight: 500; font-size: 42px; line-height: 1.1; color: #2C1810; letter-spacing: -0.018em; margin-bottom: 32px; max-width: 900px; }
   .section-title em { font-style: italic; color: #5C3A1E; font-weight: 400; }
 
-  /* SEMÀFOR HERO (la peça estrella) */
-  .semafor-hero {
-    background: #2C1810; color: #F5EFE6;
-    padding: 80px 64px;
-    display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: center;
-    border-bottom: 1px solid #B87333;
-  }
+  /* SEMÀFOR HERO */
+  .semafor-hero { background: #2C1810; color: #F5EFE6; padding: 80px 64px; display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: center; border-bottom: 1px solid #B87333; }
   .semafor-hero-left { display: flex; flex-direction: column; gap: 20px; }
-  .semafor-hero-tag {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    text-transform: uppercase; letter-spacing: 0.22em;
-    color: #D9A574; font-weight: 600;
-  }
-  .semafor-hero-title {
-    font-family: 'Fraunces', serif; font-weight: 500; font-size: 44px;
-    line-height: 1.1; color: #F5EFE6; letter-spacing: -0.018em;
-  }
+  .semafor-hero-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #D9A574; font-weight: 600; }
+  .semafor-hero-title { font-family: 'Fraunces', serif; font-weight: 500; font-size: 44px; line-height: 1.1; color: #F5EFE6; letter-spacing: -0.018em; }
   .semafor-hero-title em { font-style: italic; color: #D9A574; font-weight: 400; }
-  .semafor-hero-desc {
-    font-family: 'Fraunces', serif; font-style: italic; font-size: 17px;
-    color: rgba(245, 239, 230, 0.75); line-height: 1.5; max-width: 480px;
-  }
-  .semafor-hero-cta {
-    font-family: 'Inter', sans-serif; font-size: 13px; color: #D9A574;
-    text-decoration: none; border-bottom: 1px solid #B87333;
-    padding-bottom: 4px; align-self: flex-start; font-weight: 600;
-  }
-  .semafor-hero-dimensions {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px;
-  }
-  .sh-dim {
-    display: flex; flex-direction: column; gap: 6px;
-    padding: 16px 0; border-bottom: 1px solid rgba(217, 165, 116, 0.2);
-  }
-  .sh-dim-name {
-    font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500;
-    color: #F5EFE6;
-  }
-  .sh-dim-desc {
-    font-family: 'Inter', sans-serif; font-size: 13px;
-    color: rgba(245, 239, 230, 0.65); line-height: 1.45;
-  }
+  .semafor-hero-desc { font-family: 'Fraunces', serif; font-style: italic; font-size: 17px; color: rgba(245, 239, 230, 0.75); line-height: 1.5; max-width: 480px; }
+  .semafor-hero-cta { font-family: 'Inter', sans-serif; font-size: 13px; color: #D9A574; text-decoration: none; border-bottom: 1px solid #B87333; padding-bottom: 4px; align-self: flex-start; font-weight: 600; }
+  .semafor-hero-dimensions { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px; }
+  .sh-dim { display: flex; flex-direction: column; gap: 6px; padding: 16px 0; border-bottom: 1px solid rgba(217, 165, 116, 0.2); }
+  .sh-dim-name { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; color: #F5EFE6; }
+  .sh-dim-desc { font-family: 'Inter', sans-serif; font-size: 13px; color: rgba(245, 239, 230, 0.65); line-height: 1.45; }
+
+  /* PROCÉS (3 passos) */
+  .process-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border-top: 1px solid #2C1810; }
+  .process-step { padding: 32px; border-right: 1px solid rgba(44, 24, 16, 0.15); display: flex; flex-direction: column; gap: 16px; }
+  .process-step:last-child { border-right: none; }
+  .process-num { font-family: 'Fraunces', serif; font-weight: 300; font-size: 64px; color: #B87333; letter-spacing: -0.04em; line-height: 0.9; }
+  .process-verb { font-family: 'Fraunces', serif; font-weight: 500; font-size: 28px; color: #2C1810; letter-spacing: -0.012em; }
+  .process-desc { font-family: 'Inter', sans-serif; font-size: 14px; color: #5C3A1E; line-height: 1.55; }
 
   /* 7 BLOCS GRID */
-  .blocs-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-    border-top: 1px solid #2C1810;
-  }
-  .bloc-item {
-    padding: 32px; border-right: 1px solid rgba(44, 24, 16, 0.15);
-    border-bottom: 1px solid rgba(44, 24, 16, 0.15);
-    display: flex; flex-direction: column; gap: 12px;
-  }
+  .blocs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid #2C1810; }
+  .bloc-item { padding: 32px; border-right: 1px solid rgba(44, 24, 16, 0.15); border-bottom: 1px solid rgba(44, 24, 16, 0.15); display: flex; flex-direction: column; gap: 12px; }
   .bloc-item:nth-child(2n) { border-right: none; }
   .bloc-item.star { background: rgba(184, 115, 51, 0.06); }
-  .bloc-num {
-    font-family: 'Fraunces', serif; font-weight: 300;
-    font-size: 56px; color: #B87333; letter-spacing: -0.03em; line-height: 1;
-  }
-  .bloc-item.star .bloc-num { color: #B87333; }
-  .bloc-name {
-    font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px;
-    color: #2C1810; letter-spacing: -0.01em;
-  }
-  .bloc-item.star .bloc-name::after {
-    content: '⭐'; margin-left: 8px; font-size: 16px;
-  }
-  .bloc-desc {
-    font-family: 'Inter', sans-serif; font-size: 13px;
-    color: #5C3A1E; line-height: 1.5;
-  }
-  .bloc-meta {
-    font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    text-transform: uppercase; letter-spacing: 0.14em;
-    color: #8B7355; font-weight: 500; margin-top: 4px;
-  }
+  .bloc-num { font-family: 'Fraunces', serif; font-weight: 300; font-size: 56px; color: #B87333; letter-spacing: -0.03em; line-height: 1; }
+  .bloc-name { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; color: #2C1810; letter-spacing: -0.01em; }
+  .bloc-item.star .bloc-name::after { content: '⭐'; margin-left: 8px; font-size: 16px; }
+  .bloc-desc { font-family: 'Inter', sans-serif; font-size: 13px; color: #5C3A1E; line-height: 1.5; }
+  .bloc-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: #8B7355; font-weight: 500; margin-top: 4px; }
+
+  /* CRITERIS I VALORS */
+  .criteris-list { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 64px; }
+  .criteri { padding: 20px 0; border-bottom: 1px solid rgba(201, 184, 154, 0.5); }
+  .criteri-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: #B87333; font-weight: 600; margin-bottom: 8px; }
+  .criteri-text { font-family: 'Fraunces', serif; font-style: italic; font-size: 20px; line-height: 1.35; color: #2C1810; letter-spacing: -0.005em; }
+  .criteri-text em { color: #5C3A1E; font-weight: 500; font-style: normal; }
 
   /* MANIFEST */
-  .manifest-block {
-    padding: 100px 64px;
-    background: #2C1810; color: #F5EFE6;
-    border-bottom: 1px solid #B87333;
-    text-align: center;
-    display: flex; flex-direction: column; align-items: center; gap: 24px;
-  }
-  .manifest-eyebrow {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    text-transform: uppercase; letter-spacing: 0.22em;
-    color: #D9A574; font-weight: 600;
-  }
-  .manifest-text {
-    font-family: 'Fraunces', serif; font-weight: 400;
-    font-size: 40px; line-height: 1.2; color: #F5EFE6;
-    letter-spacing: -0.018em; max-width: 900px;
-  }
+  .manifest-block { padding: 100px 64px; background: #2C1810; color: #F5EFE6; border-bottom: 1px solid #B87333; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  .manifest-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #D9A574; font-weight: 600; }
+  .manifest-text { font-family: 'Fraunces', serif; font-weight: 400; font-size: 36px; line-height: 1.25; color: #F5EFE6; letter-spacing: -0.018em; max-width: 920px; }
   .manifest-text em { font-style: italic; color: #D9A574; font-weight: 500; }
-  .manifest-attribution {
-    font-family: 'Fraunces', serif; font-style: italic; font-size: 14px;
-    color: rgba(245, 239, 230, 0.5); margin-top: 16px;
-  }
-
-  /* CINC CONVICCIONS */
-  .conviccions {
-    padding: 80px 64px;
-    border-bottom: 1px solid #2C1810;
-  }
-  .conviccions-list {
-    display: flex; flex-direction: column; gap: 24px; margin-top: 32px;
-  }
-  .conviccio {
-    display: grid; grid-template-columns: 80px 1fr; gap: 32px;
-    align-items: baseline;
-    padding: 20px 0; border-bottom: 1px solid rgba(201, 184, 154, 0.5);
-  }
-  .conviccio:last-child { border-bottom: none; }
-  .conviccio-num {
-    font-family: 'Fraunces', serif; font-weight: 300;
-    font-size: 36px; color: #B87333; letter-spacing: -0.025em; line-height: 1;
-  }
-  .conviccio-text {
-    font-family: 'Fraunces', serif; font-style: italic;
-    font-size: 22px; line-height: 1.3; color: #2C1810; letter-spacing: -0.01em;
-  }
-  .conviccio-text em { color: #5C3A1E; font-weight: 500; font-style: normal; }
+  .manifest-attribution { font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; color: rgba(245, 239, 230, 0.5); margin-top: 16px; }
 
   /* FOOTER */
-  .footer {
-    width: 1440px; padding: 40px 64px; background: #F5EFE6;
-    border-top: 1px solid #2C1810;
-    display: flex; justify-content: space-between; align-items: baseline;
-    font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    text-transform: uppercase; letter-spacing: 0.16em;
-    color: #8B7355; font-weight: 500;
-  }
-  .footer-brand {
-    font-family: 'Fraunces', serif; font-size: 14px;
-    color: #2C1810; text-transform: none; letter-spacing: -0.01em;
-    font-weight: 500;
-  }
+  .footer { width: 1440px; padding: 40px 64px; background: #F5EFE6; border-top: 1px solid #2C1810; display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; color: #8B7355; font-weight: 500; }
+  .footer-brand { font-family: 'Fraunces', serif; font-size: 14px; color: #2C1810; text-transform: none; letter-spacing: -0.01em; font-weight: 500; }
   .footer-brand .dot { color: #B87333; }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="logo">Criteri<span class="dot">.</span> ESG</div>
   <div class="nav">
@@ -241,11 +112,34 @@
   <div class="hero-meta">
     <strong>192</strong> fuentes monitorizadas<br>
     <strong>16</strong> estándares cruzados<br>
-    <strong>5</strong> minuts de lectura por informe
+    <strong>5</strong> minutos de lectura por informe
   </div>
 </section>
 
-<!-- SEMÀFOR HERO (peça estrella) -->
+<!-- EL PROCÉS (3 passos) -->
+<section class="section">
+  <div class="section-eyebrow">El proceso</div>
+  <h2 class="section-title">Tres pasos. <em>Nada más.</em></h2>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="process-num">01</div>
+      <div class="process-verb">Sintetizar</div>
+      <p class="process-desc">Los informes institucionales más relevantes, en 5 minutos de lectura. Con semáforo metodológico propio de 5 dimensiones.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">02</div>
+      <div class="process-verb">Cruzar</div>
+      <p class="process-desc">Cada informe cruzado con tus certificaciones: EcoVadis, B Corp, MSCI, GRI, SGE 21, Sustainalytics. Te decimos qué te afecta y con qué intensidad.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">03</div>
+      <div class="process-verb">Recomendar</div>
+      <p class="process-desc">Tres acciones concretas por informe. Operativas. Verificables. El criterio aplicado a tu decisión de esta semana.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SEMÀFOR HERO -->
 <section class="semafor-hero">
   <div class="semafor-hero-left">
     <div class="semafor-hero-tag">Bloque 0 · Diferenciador principal</div>
@@ -254,26 +148,11 @@
     <a href="#" class="semafor-hero-cta">Ver ejemplo real →</a>
   </div>
   <div class="semafor-hero-dimensions">
-    <div class="sh-dim">
-      <div class="sh-dim-name">Scope 3</div>
-      <div class="sh-dim-desc">¿Cubre emisiones indirectas de la cadena de valor o solo las directas?</div>
-    </div>
-    <div class="sh-dim">
-      <div class="sh-dim-name">Plazos</div>
-      <div class="sh-dim-desc">¿Las fechas son operativas (con calendario) o aspiracionales?</div>
-    </div>
-    <div class="sh-dim">
-      <div class="sh-dim-name">Fuentes</div>
-      <div class="sh-dim-desc">¿Las afirmaciones están referenciadas o son sin respaldo?</div>
-    </div>
-    <div class="sh-dim">
-      <div class="sh-dim-name">Granularidad</div>
-      <div class="sh-dim-desc">¿Hay dato desagregado por sector, geografía y tamaño?</div>
-    </div>
-    <div class="sh-dim" style="grid-column: span 2;">
-      <div class="sh-dim-name">Verificación</div>
-      <div class="sh-dim-desc">¿Está auditado externamente o es auto-reportado?</div>
-    </div>
+    <div class="sh-dim"><div class="sh-dim-name">Scope 3</div><div class="sh-dim-desc">¿Cubre emisiones indirectas de la cadena de valor o solo las directas?</div></div>
+    <div class="sh-dim"><div class="sh-dim-name">Plazos</div><div class="sh-dim-desc">¿Las fechas son operativas (con calendario) o aspiracionales?</div></div>
+    <div class="sh-dim"><div class="sh-dim-name">Fuentes</div><div class="sh-dim-desc">¿Las afirmaciones están referenciadas o son sin respaldo?</div></div>
+    <div class="sh-dim"><div class="sh-dim-name">Granularidad</div><div class="sh-dim-desc">¿Hay dato desagregado por sector, geografía y tamaño?</div></div>
+    <div class="sh-dim" style="grid-column: span 2;"><div class="sh-dim-name">Verificación</div><div class="sh-dim-desc">¿Está auditado externamente o es auto-reportado?</div></div>
   </div>
 </section>
 
@@ -285,44 +164,76 @@
     <div class="bloc-item">
       <div class="bloc-num">01</div>
       <div class="bloc-name">Ficha técnica</div>
-      <div class="bloc-desc">Institución, data, tipus, pàgines, URL. 50 paraules per saber què estàs llegint.</div>
-      <div class="bloc-meta">50 paraules</div>
+      <div class="bloc-desc">Institución, fecha, tipo, páginas, URL. 50 palabras para saber qué estás leyendo.</div>
+      <div class="bloc-meta">50 palabras</div>
     </div>
     <div class="bloc-item">
       <div class="bloc-num">02</div>
       <div class="bloc-name">5 datos clave</div>
-      <div class="bloc-desc">Els punts quantitatius amb valor, context i pàgina citada. El que es queda al cap.</div>
-      <div class="bloc-meta">5 dades</div>
+      <div class="bloc-desc">Los puntos cuantitativos con valor, contexto y página citada. Lo que se queda en la cabeza.</div>
+      <div class="bloc-meta">5 datos</div>
     </div>
     <div class="bloc-item">
       <div class="bloc-num">03</div>
       <div class="bloc-name">Resumen ejecutivo</div>
-      <div class="bloc-desc">Què diu l'informe en llenguatge planer. 300 paraules per entendre el cor.</div>
-      <div class="bloc-meta">300 paraules</div>
+      <div class="bloc-desc">Qué dice el informe en lenguaje claro. 300 palabras para entender el corazón.</div>
+      <div class="bloc-meta">300 palabras</div>
     </div>
     <div class="bloc-item">
       <div class="bloc-num">04</div>
       <div class="bloc-name">Implicaciones</div>
-      <div class="bloc-desc">Per a empreses, reguladors i ciutadans. Amb subsecció 'Més enllà del Checkbox' (lent ètica).</div>
-      <div class="bloc-meta">450-540 paraules + subsecció ètica</div>
+      <div class="bloc-desc">Para empresas, reguladores y ciudadanos. Con subsección 'Más allá del Checkbox' (lente ética).</div>
+      <div class="bloc-meta">450-540 palabras + subsección ética</div>
     </div>
     <div class="bloc-item">
       <div class="bloc-num">05</div>
       <div class="bloc-name">Conexiones</div>
-      <div class="bloc-desc">Relacions amb altres informes i actualitat. El context que falta.</div>
-      <div class="bloc-meta">200-250 paraules</div>
+      <div class="bloc-desc">Relaciones con otros informes y actualidad. El contexto que falta.</div>
+      <div class="bloc-meta">200-250 palabras</div>
     </div>
     <div class="bloc-item star">
       <div class="bloc-num">06</div>
       <div class="bloc-name">Acciones recomendadas</div>
-      <div class="bloc-desc">3-5 accions concretes, operatives i verificables. El cor operatiu del producte.</div>
-      <div class="bloc-meta">3-5 accions · Bloc diferenciador</div>
+      <div class="bloc-desc">3-5 acciones concretas, operativas y verificables. El corazón operativo del producto.</div>
+      <div class="bloc-meta">3-5 acciones · Bloque diferenciador</div>
     </div>
     <div class="bloc-item star" style="grid-column: span 2;">
       <div class="bloc-num">07</div>
       <div class="bloc-name">Cross-reference</div>
-      <div class="bloc-desc">Mapatge amb EcoVadis, B Corp, MSCI, GRI, SGE 21, Sustainalytics i altres. La dada sense el teu context és soroll. La dada amb el teu context és decisió.</div>
-      <div class="bloc-meta">Per a les teves certificacions · Bloc diferenciador</div>
+      <div class="bloc-desc">Mapa con EcoVadis, B Corp, MSCI, GRI, SGE 21, Sustainalytics y otros. El dato sin tu contexto es ruido. El dato con tu contexto es decisión.</div>
+      <div class="bloc-meta">Para tus certificaciones · Bloque diferenciador</div>
+    </div>
+  </div>
+</section>
+
+<!-- CRITERIS I VALORS -->
+<section class="section">
+  <div class="section-eyebrow">Criterios y valores</div>
+  <h2 class="section-title">Lo que guía <em>cada decisión</em>.</h2>
+  <div class="criteris-list">
+    <div class="criteri">
+      <div class="criteri-num">01 · Honestidad</div>
+      <p class="criteri-text">Si no sabemos algo, lo decimos. Si una fuente no es fiable, lo señalamos. <em>Nunca inventamos datos.</em></p>
+    </div>
+    <div class="criteri">
+      <div class="criteri-num">02 · Criterio</div>
+      <p class="criteri-text">Todo lo que hacemos está hecho con solidez, con fuentes verificadas. <em>Damos ejemplo de criterio.</em></p>
+    </div>
+    <div class="criteri">
+      <div class="criteri-num">03 · Ética</div>
+      <p class="criteri-text">Aplicamos el principio kantiano y el del bien común en cada análisis. <em>La ética es fundamental.</em></p>
+    </div>
+    <div class="criteri">
+      <div class="criteri-num">04 · Transparencia</div>
+      <p class="criteri-text">Cada afirmación lleva su fuente. Cada nota del semáforo, su justificación. <em>El greenwashing no pasa aquí.</em></p>
+    </div>
+    <div class="criteri">
+      <div class="criteri-num">05 · Humildad</div>
+      <p class="criteri-text">No somos la solución final. Somos una herramienta al servicio del director de sostenibilidad. <em>Tú decides; nosotros filtramos.</em></p>
+    </div>
+    <div class="criteri">
+      <div class="criteri-num">06 · Sostenibilidad absoluta</div>
+      <p class="criteri-text">Los límites planetarios son físicos, no comunicativos. <em>No admitimos interpretaciones.</em></p>
     </div>
   </div>
 </section>
@@ -330,36 +241,8 @@
 <!-- MANIFEST -->
 <section class="manifest-block">
   <div class="manifest-eyebrow">Más allá del Checkbox</div>
-  <p class="manifest-text">La sostenibilitat no es mesura per la quantitat de formularis complimentats, <em>sinó per la traçabilitat de les promeses</em>.</p>
+  <p class="manifest-text">La sostenibilidad no se mide por la cantidad de formularios cumplimentados, <em>sino por la trazabilidad de las promesas</em>.</p>
   <p class="manifest-attribution">— Manifest Criteri ESG</p>
-</section>
-
-<!-- 5 CONVICCIONS -->
-<section class="conviccions">
-  <div class="section-eyebrow">Lo que creemos</div>
-  <h2 class="section-title">Cinco convicciones que <em>sostienen todo</em>.</h2>
-  <div class="conviccions-list">
-    <div class="conviccio">
-      <div class="conviccio-num">01</div>
-      <p class="conviccio-text">La <em>dignidad humana</em> no es negociable. Ninguna métrica ESG puede justificar un deterioro de las condiciones de trabajo.</p>
-    </div>
-    <div class="conviccio">
-      <div class="conviccio-num">02</div>
-      <p class="conviccio-text">La <em>justicia distributiva</em> importa. El valor creado debe repartirse entre quienes lo generan, no solo entre accionistas.</p>
-    </div>
-    <div class="conviccio">
-      <div class="conviccio-num">03</div>
-      <p class="conviccio-text">La <em>sostenibilidad absoluta</em> no admite interpretaciones. Los límites planetarios son físicos, no comunicativos.</p>
-    </div>
-    <div class="conviccio">
-      <div class="conviccio-num">04</div>
-      <p class="conviccio-text">La <em>co-decisión democrática</em> es un deber. Quienes afectan las decisiones deben tener voz en ellas.</p>
-    </div>
-    <div class="conviccio">
-      <div class="conviccio-num">05</div>
-      <p class="conviccio-text">El <em>arrelamiento territorial</em> cuenta. Una empresa que no deja vacío cuando desaparece no crea valor real.</p>
-    </div>
-  </div>
 </section>
 
 <!-- FOOTER -->

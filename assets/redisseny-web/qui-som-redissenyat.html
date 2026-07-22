@@ -9,13 +9,7 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 1440px; background: #F5EFE6; font-family: 'Inter', sans-serif; color: #2C1810; }
 
-  /* HEADER */
-  .header {
-    width: 1440px; height: 70px; background: #F5EFE6;
-    border-bottom: 1px solid #2C1810;
-    padding: 0 64px; display: flex; align-items: center; justify-content: space-between;
-    position: sticky; top: 0; z-index: 20;
-  }
+  .header { width: 1440px; height: 70px; background: #F5EFE6; border-bottom: 1px solid #2C1810; padding: 0 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 20; }
   .logo { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; color: #2C1810; letter-spacing: -0.015em; }
   .logo .dot { color: #B87333; }
   .nav { display: flex; gap: 36px; align-items: center; }
@@ -23,195 +17,63 @@
   .nav .active { color: #B87333; }
   .btn-cta { background: #B87333; color: #FFFFFF; padding: 10px 20px; font-family: 'Inter'; font-size: 12px; font-weight: 600; border: none; }
 
-  /* HERO */
-  .hero {
-    padding: 100px 64px;
-    border-bottom: 1px solid #2C1810;
-  }
-  .hero-eyebrow {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    text-transform: uppercase; letter-spacing: 0.22em; color: #8A5526;
-    font-weight: 600; margin-bottom: 16px;
-    display: flex; align-items: center; gap: 12px;
-  }
+  .hero { padding: 100px 64px; border-bottom: 1px solid #2C1810; }
+  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #8A5526; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
   .hero-eyebrow::before { content: ''; width: 24px; height: 2px; background: #B87333; }
-  .hero-title {
-    font-family: 'Fraunces', serif; font-weight: 500; font-size: 80px;
-    line-height: 1; color: #2C1810; letter-spacing: -0.025em; margin-bottom: 24px;
-    max-width: 1000px;
-  }
+  .hero-title { font-family: 'Fraunces', serif; font-weight: 500; font-size: 64px; line-height: 1.05; color: #2C1810; letter-spacing: -0.022em; margin-bottom: 16px; max-width: 1000px; }
   .hero-title em { font-style: italic; color: #5C3A1E; font-weight: 400; }
-  .hero-subtitle {
-    font-family: 'Fraunces', serif; font-style: italic; font-size: 22px;
-    color: #5C3A1E; max-width: 720px; line-height: 1.4;
-  }
+  .hero-subtitle { font-family: 'Fraunces', serif; font-style: italic; font-size: 20px; color: #5C3A1E; max-width: 760px; line-height: 1.4; }
 
-  /* HISTÒRIA (veu personal Paolo) */
-  .historia {
-    padding: 100px 64px;
-    border-bottom: 1px solid #2C1810;
-    display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start;
-  }
-  .historia-aside {
-    position: sticky; top: 90px;
-  }
-  .historia-photo {
-    background: #5C3A1E; color: #F5EFE6;
-    aspect-ratio: 1; width: 100%;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Fraunces', serif; font-size: 120px;
-    font-weight: 300; letter-spacing: -0.05em;
-    margin-bottom: 20px;
-  }
-  .historia-aside-name {
-    font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500;
-    color: #2C1810; margin-bottom: 4px; letter-spacing: -0.01em;
-  }
-  .historia-aside-role {
-    font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    text-transform: uppercase; letter-spacing: 0.18em;
-    color: #8A5526; font-weight: 600;
-  }
-  .historia-text {
-    font-family: 'Fraunces', serif; font-size: 19px;
-    line-height: 1.6; color: #2C1810;
-  }
-  .historia-text p { margin-bottom: 24px; }
-  .historia-text p:first-child {
-    font-size: 24px; font-style: italic; color: #5C3A1E;
-    border-left: 3px solid #B87333; padding-left: 20px;
-  }
-  .historia-text strong { color: #5C3A1E; font-weight: 600; }
+  /* MANIFEST HERO */
+  .manifest-hero { padding: 80px 64px; border-bottom: 1px solid #2C1810; }
+  .manifest-hero-box { border-left: 3px solid #B87333; padding: 24px 32px; background: rgba(184, 115, 51, 0.06); }
+  .manifest-hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #8A5526; font-weight: 600; margin-bottom: 12px; }
+  .manifest-hero-text { font-family: 'Fraunces', serif; font-style: italic; font-size: 22px; line-height: 1.45; color: #2C1810; max-width: 1000px; }
 
   /* EQUIP */
-  .equip {
-    padding: 80px 64px;
-    border-bottom: 1px solid #2C1810;
-  }
-  .section-eyebrow {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    text-transform: uppercase; letter-spacing: 0.22em; color: #8A5526;
-    font-weight: 600; margin-bottom: 16px;
-    display: flex; align-items: center; gap: 12px;
-  }
+  .equip { padding: 80px 64px; border-bottom: 1px solid #2C1810; }
+  .section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #8A5526; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
   .section-eyebrow::before { content: ''; width: 24px; height: 2px; background: #B87333; }
-  .section-title {
-    font-family: 'Fraunces', serif; font-weight: 500; font-size: 42px;
-    line-height: 1.1; color: #2C1810; letter-spacing: -0.018em;
-    margin-bottom: 48px; max-width: 900px;
-  }
+  .section-title { font-family: 'Fraunces', serif; font-weight: 500; font-size: 42px; line-height: 1.1; color: #2C1810; letter-spacing: -0.018em; margin-bottom: 16px; max-width: 900px; }
   .section-title em { font-style: italic; color: #5C3A1E; font-weight: 400; }
-  .equip-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
-  }
-  .member {
-    display: grid; grid-template-columns: 200px 1fr; gap: 32px;
-    align-items: start;
-  }
-  .member-photo {
-    background: #C9B89A; aspect-ratio: 1;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Fraunces', serif; font-size: 80px;
-    color: #5C3A1E; font-weight: 300;
-  }
-  .member-name {
-    font-family: 'Fraunces', serif; font-size: 28px; font-weight: 500;
-    color: #2C1810; letter-spacing: -0.012em; margin-bottom: 4px;
-  }
-  .member-role {
-    font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    text-transform: uppercase; letter-spacing: 0.18em;
-    color: #8A5526; font-weight: 600; margin-bottom: 16px;
-  }
-  .member-bio {
-    font-family: 'Fraunces', serif; font-style: italic;
-    font-size: 15px; line-height: 1.5; color: #5C3A1E;
-    margin-bottom: 12px;
-  }
-  .member-meta {
-    font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
-    text-transform: uppercase; letter-spacing: 0.14em;
-    color: #8B7355; font-weight: 500;
-  }
+  .section-intro { font-family: 'Fraunces', serif; font-style: italic; font-size: 17px; color: #5C3A1E; max-width: 720px; line-height: 1.5; margin-bottom: 48px; }
 
-  /* MANIFEST ÈTIC */
-  .manifest {
-    padding: 100px 64px;
-    background: #2C1810; color: #F5EFE6;
-    border-bottom: 1px solid #B87333;
-  }
+  .equip-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+  .member { background: white; border: 1px solid #C9B89A; padding: 32px; display: flex; flex-direction: column; gap: 16px; }
+  .member-icon { width: 56px; height: 56px; background: #2C1810; color: #F5EFE6; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; }
+  .member-name { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 500; color: #2C1810; letter-spacing: -0.012em; }
+  .member-role { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: #8A5526; font-weight: 600; margin-bottom: 8px; }
+  .member-bio { font-family: 'Inter', sans-serif; font-size: 13px; color: #5C3A1E; line-height: 1.55; }
+  .member-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.16em; color: #8B7355; font-weight: 500; margin-top: auto; padding-top: 12px; border-top: 1px solid #C9B89A; }
+  .member.ai .member-icon { background: #B87333; }
+
+  /* LO QUE CREEMOS */
+  .manifest { padding: 100px 64px; background: #2C1810; color: #F5EFE6; border-bottom: 1px solid #B87333; }
   .manifest .section-eyebrow { color: #D9A574; }
   .manifest .section-eyebrow::before { background: #B87333; }
   .manifest .section-title { color: #F5EFE6; }
   .manifest .section-title em { color: #D9A574; }
-  .manifest-list {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 32px 64px;
-    margin-top: 32px;
-  }
-  .manifest-item {
-    padding: 20px 0;
-    border-bottom: 1px solid rgba(217, 165, 116, 0.2);
-  }
-  .manifest-item-num {
-    font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    text-transform: uppercase; letter-spacing: 0.18em;
-    color: #D9A574; font-weight: 600; margin-bottom: 8px;
-  }
-  .manifest-item-text {
-    font-family: 'Fraunces', serif; font-style: italic;
-    font-size: 20px; line-height: 1.35; color: #F5EFE6; letter-spacing: -0.005em;
-  }
+  .manifest-list { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 64px; margin-top: 32px; }
+  .manifest-item { padding: 20px 0; border-bottom: 1px solid rgba(217, 165, 116, 0.2); }
+  .manifest-item-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: #D9A574; font-weight: 600; margin-bottom: 8px; }
+  .manifest-item-text { font-family: 'Fraunces', serif; font-style: italic; font-size: 20px; line-height: 1.35; color: #F5EFE6; letter-spacing: -0.005em; }
   .manifest-item-text em { color: #D9A574; font-weight: 500; font-style: normal; }
 
-  /* CITA */
-  .cita {
-    padding: 120px 64px;
-    text-align: center;
-    border-bottom: 1px solid #2C1810;
-    display: flex; flex-direction: column; align-items: center; gap: 24px;
-  }
-  .cita-eyebrow {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    text-transform: uppercase; letter-spacing: 0.22em;
-    color: #8A5526; font-weight: 600;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .cita-eyebrow::before, .cita-eyebrow::after {
-    content: ''; width: 24px; height: 2px; background: #B87333;
-  }
-  .cita-text {
-    font-family: 'Fraunces', serif; font-weight: 400;
-    font-size: 44px; line-height: 1.2; color: #2C1810;
-    letter-spacing: -0.018em; max-width: 1000px;
-  }
-  .cita-text em { font-style: italic; color: #5C3A1E; font-weight: 500; }
-  .cta-button {
-    background: #B87333; color: #FFFFFF;
-    padding: 16px 36px;
-    font-family: 'Inter'; font-size: 14px; font-weight: 600;
-    border: none; cursor: pointer; margin-top: 16px;
-  }
+  /* CLOSING */
+  .closing { padding: 100px 64px; text-align: center; border-bottom: 1px solid #2C1810; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  .closing-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #8A5526; font-weight: 600; display: flex; align-items: center; gap: 12px; }
+  .closing-eyebrow::before, .closing-eyebrow::after { content: ''; width: 24px; height: 2px; background: #B87333; }
+  .closing-text { font-family: 'Fraunces', serif; font-weight: 400; font-size: 32px; line-height: 1.3; color: #2C1810; letter-spacing: -0.015em; max-width: 900px; }
+  .closing-text em { font-style: italic; color: #5C3A1E; font-weight: 500; }
+  .cta-button { background: #B87333; color: #FFFFFF; padding: 16px 36px; font-family: 'Inter'; font-size: 14px; font-weight: 600; border: none; cursor: pointer; margin-top: 16px; }
 
-  /* FOOTER */
-  .footer {
-    width: 1440px; padding: 40px 64px; background: #F5EFE6;
-    border-top: 1px solid #2C1810;
-    display: flex; justify-content: space-between; align-items: baseline;
-    font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    text-transform: uppercase; letter-spacing: 0.16em;
-    color: #8B7355; font-weight: 500;
-  }
-  .footer-brand {
-    font-family: 'Fraunces', serif; font-size: 14px;
-    color: #2C1810; text-transform: none; letter-spacing: -0.01em;
-    font-weight: 500;
-  }
+  .footer { width: 1440px; padding: 40px 64px; background: #F5EFE6; border-top: 1px solid #2C1810; display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; color: #8B7355; font-weight: 500; }
+  .footer-brand { font-family: 'Fraunces', serif; font-size: 14px; color: #2C1810; text-transform: none; letter-spacing: -0.01em; font-weight: 500; }
   .footer-brand .dot { color: #B87333; }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="logo">Criteri<span class="dot">.</span> ESG</div>
   <div class="nav">
@@ -226,53 +88,52 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">Quiénes somos · 2026</div>
-  <h1 class="hero-title">Construimos un <em>filtro con criterio</em> para el ESG.</h1>
-  <p class="hero-subtitle">No somos una consultoría. No somos un agregador. Somos un equipo pequeño que cree que la información ESG necesita criterio para ser útil.</p>
+  <h1 class="hero-title">Ayudamos a las organizaciones a ser <em>más éticas, sostenibles y transformadoras</em>.</h1>
+  <p class="hero-subtitle">Esta es la gente que hay detrás. Un equipo pequeño que cree que las empresas pueden ser agentes de cambio —y que la tecnología debe estar al servicio del criterio humano.</p>
 </section>
 
-<!-- HISTÒRIA (Paolo) -->
-<section class="historia">
-  <aside class="historia-aside">
-    <div class="historia-photo">P</div>
-    <div class="historia-aside-name">Paolo G.</div>
-    <div class="historia-aside-role">Fundador · Barcelona</div>
-  </aside>
-  <div class="historia-text">
-    <p>«Hace ocho meses dejé mi trabajo para construir esto. Lo hice porque durante años fui el director de sostenibilidad que recibía 14 informes por semana y no tenía tiempo de leerlos.»</p>
-    <p>La solución no era más información: era <strong>criterio</strong>. Saber cuáles de los 14 importaban para mi empresa, qué decían realmente y qué tenía que hacer con ellos. Y sobre todo: cómo me afectaban según las certificaciones que ya tenía.</p>
-    <p>Eso es lo que construyo con Criteri ESG. Un filtro con criterio, no un agregador más. Un equipo pequeño que cree que la sostenibilidad no se mide por la cantidad de formularios cumplimentados, sino por la trazabilidad de las promesas.</p>
-    <p>Si reconoces esta situación, te entendemos. Estamos para devolverte tiempo para pensar.</p>
-    <p style="font-family: 'Fraunces', serif; font-style: italic; color: #8A5526; font-size: 16px;">— Paolo, julio 2026</p>
+<!-- MANIFEST HERO (del contingut real actual) -->
+<section class="manifest-hero">
+  <div class="manifest-hero-box">
+    <div class="manifest-hero-eyebrow">Manifest</div>
+    <p class="manifest-hero-text">La sensibilidad y la preocupación por el mundo que nos rodea es el motor que nos hace mover. Queremos ayudar y facilitar que las empresas, como agentes ciudadanos que construyen sociedad, sean las más eficientes, ejemplares y transformadoras posibles.</p>
   </div>
 </section>
 
-<!-- EQUIP -->
+<!-- EQUIP (3 membres, sense noms propis) -->
 <section class="equip">
   <div class="section-eyebrow">El equipo</div>
-  <h2 class="section-title">Dos personas. <em>Una convicción.</em></h2>
+  <h2 class="section-title">Combinamos lo mejor de la IA con la <em>mirada ética humana</em>.</h2>
+  <p class="section-intro">Hemos construido un sistema que combina lo mejor de la inteligencia artificial con la mirada ética de personas que conocen el sector ESG. La IA hace el trabajo pesado — investigación, síntesis, clasificación. Las personas aportamos criterio, contexto y juicio.</p>
+
   <div class="equip-grid">
     <div class="member">
-      <div class="member-photo">P</div>
-      <div>
-        <div class="member-name">Paolo G.</div>
-        <div class="member-role">Fundador · CEO · Director editorial</div>
-        <p class="member-bio">"Vine del mundo de la sostenibilidad corporativa. Sé lo que es recibir 14 informes por semana y no tener tiempo de leerlos. Criteri ESG es el filtro que yo necesitaba y no existía."</p>
-        <div class="member-meta">Ex director de sostenibilidad · Barcelona</div>
-      </div>
+      <div class="member-icon">★</div>
+      <div class="member-role">CEO · Estrategia y editorial</div>
+      <div class="member-name">Fundador</div>
+      <p class="member-bio">Combina formación en filosofía y gestión de empresas, con experiencia en consultoría ESG. Decide qué informes se procesan, firma la Carta del Director mensual y mantiene la coherencia editorial del proyecto. Su mirada ética es lo que diferencia a Criteri de otros servicios ESG.</p>
+      <div class="member-tag">Filosofía + ESG · Barcelona</div>
     </div>
+
     <div class="member">
-      <div class="member-photo">R</div>
-      <div>
-        <div class="member-name">La Roser</div>
-        <div class="member-role">Tech Lead · Diseño · Implementación</div>
-        <p class="member-bio">"Construyo la web, el sistema de informes y la integración con las certificaciones. Mi trabajo es que el criterio de Criteri ESG se vea y se sienta en cada pixel y cada línea de código."</p>
-        <div class="member-meta">Full-stack · Barcelona</div>
-      </div>
+      <div class="member-icon">⚙</div>
+      <div class="member-role">Tech Lead · Diseño y programación</div>
+      <div class="member-name">Tech Lead</div>
+      <p class="member-bio">Se encarga del desarrollo web (Next.js), la base de datos (Supabase), las integraciones técnicas (Stripe, Beehiiv, Google Drive) y el mantenimiento del agente de IA. Trabaja estrechamente con el fundador para que la tecnología esté siempre al servicio del criterio humano, no al revés.</p>
+      <div class="member-tag">Full-stack · Barcelona</div>
+    </div>
+
+    <div class="member ai">
+      <div class="member-icon">◆</div>
+      <div class="member-role">Asistente de IA · Investigación y síntesis</div>
+      <div class="member-name">Agente de IA</div>
+      <p class="member-bio">Hace el trabajo pesado —detección de fuentes, síntesis en 8 bloques, clasificación, corrector ortográfico— siempre bajo supervisión humana. No es un miembro del equipo en sentido estricto, pero sin ella no podríamos mantener el ritmo de publicación ni el coste por informe que tenemos.</p>
+      <div class="member-tag">IA · Supervisada por humano</div>
     </div>
   </div>
 </section>
 
-<!-- MANIFEST ÈTIC -->
+<!-- LO QUE CREEMOS (mantenir com està) -->
 <section class="manifest">
   <div class="section-eyebrow">Lo que creemos</div>
   <h2 class="section-title">Cinco convicciones que <em>sostienen todo</em>.</h2>
@@ -295,19 +156,18 @@
     </div>
     <div class="manifest-item" style="grid-column: span 2;">
       <div class="manifest-item-num">05 · Territorio</div>
-      <p class="manifest-item-text">El <em>arrelamiento territorial</em> cuenta. Una empresa que no deja vacío cuando desaparece no crea valor real.</p>
+      <p class="manifest-item-text">El <em>arraigo territorial</em> cuenta. Una empresa que no deja vacío cuando desaparece no crea valor real.</p>
     </div>
   </div>
 </section>
 
-<!-- CITA -->
-<section class="cita">
-  <div class="cita-eyebrow">Si quieres hablar con nosotros</div>
-  <p class="cita-text">info@criteriesg.com · <em>Barcelona</em></p>
+<!-- CLOSING -->
+<section class="closing">
+  <div class="closing-eyebrow">Criteri ESG</div>
+  <p class="closing-text">No es solo una herramienta. Es la convicción de que las empresas pueden ser <em>agentes de cambio</em> —y que la tecnología debe estar al servicio del criterio humano.</p>
   <button class="cta-button">Prueba gratis 7 días</button>
 </section>
 
-<!-- FOOTER -->
 <div class="footer">
   <div class="footer-brand">Criteri<span class="dot">.</span> ESG</div>
   <div>© 2026 · Barcelona · criteriesg.com</div>

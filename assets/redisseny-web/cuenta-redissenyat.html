@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>/cuenta redissenyat</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1440px; background: #F5EFE6; font-family: 'Inter', sans-serif; color: #2C1810; }
+
+  /* HEADER */
+  .header {
+    width: 1440px; height: 70px; background: #F5EFE6;
+    border-bottom: 1px solid #2C1810;
+    padding: 0 64px; display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 20;
+  }
+  .logo { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; color: #2C1810; letter-spacing: -0.015em; }
+  .logo .dot { color: #B87333; }
+  .nav { display: flex; gap: 36px; align-items: center; }
+  .nav a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: #5C3A1E; text-decoration: none; font-weight: 500; }
+  .btn-cta { background: #B87333; color: #FFFFFF; padding: 10px 20px; font-family: 'Inter'; font-size: 12px; font-weight: 600; border: none; }
+
+  /* LAYOUT */
+  .layout {
+    display: grid; grid-template-columns: 320px 1fr; gap: 0;
+    min-height: calc(100vh - 70px);
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    background: #2C1810; color: #F5EFE6;
+    padding: 48px 32px;
+    display: flex; flex-direction: column; gap: 32px;
+    position: sticky; top: 70px; height: calc(100vh - 70px);
+  }
+  .sidebar-brand {
+    font-family: 'Fraunces', serif; font-size: 22px;
+    color: #F5EFE6; font-weight: 600; letter-spacing: -0.015em;
+    padding-bottom: 24px; border-bottom: 1px solid rgba(217, 165, 116, 0.25);
+  }
+  .sidebar-brand .dot { color: #D9A574; }
+
+  .user-card {
+    display: flex; align-items: center; gap: 16px;
+  }
+  .user-avatar {
+    width: 56px; height: 56px;
+    background: #B87333; color: #FFFFFF;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-size: 24px; font-weight: 500;
+  }
+  .user-info { display: flex; flex-direction: column; gap: 4px; }
+  .user-name {
+    font-family: 'Fraunces', serif; font-size: 18px;
+    color: #F5EFE6; font-weight: 500; letter-spacing: -0.008em;
+  }
+  .user-plan {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: #D9A574; font-weight: 600;
+  }
+
+  .sidebar-nav {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .sidebar-nav-item {
+    display: grid; grid-template-columns: 24px 1fr;
+    gap: 12px; align-items: baseline;
+    padding: 12px 16px;
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    color: rgba(245, 239, 230, 0.7); font-weight: 500;
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .sidebar-nav-item:hover { color: #F5EFE6; background: rgba(217, 165, 116, 0.08); }
+  .sidebar-nav-item.active {
+    color: #F5EFE6; background: rgba(217, 165, 116, 0.12);
+    border-left-color: #B87333;
+  }
+  .sidebar-nav-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: rgba(217, 165, 116, 0.5); font-weight: 600;
+  }
+  .sidebar-nav-item.active .sidebar-nav-num { color: #D9A574; }
+
+  .sidebar-logout {
+    margin-top: auto;
+    padding: 12px 16px;
+    font-family: 'Inter', sans-serif; font-size: 13px;
+    color: rgba(245, 239, 230, 0.5); font-weight: 500;
+    text-decoration: none;
+    border-top: 1px solid rgba(217, 165, 116, 0.15);
+  }
+  .sidebar-logout:hover { color: #D9A574; }
+
+  /* MAIN */
+  .main {
+    padding: 48px 64px;
+    display: flex; flex-direction: column; gap: 32px;
+  }
+
+  .page-title {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 36px;
+    color: #2C1810; letter-spacing: -0.018em; margin-bottom: 8px;
+  }
+  .page-subtitle {
+    font-family: 'Fraunces', serif; font-style: italic; font-size: 16px;
+    color: #5C3A1E; margin-bottom: 16px;
+  }
+
+  /* ACTIVITAT (dashboard) */
+  .activitat {
+    background: white; border: 1px solid #C9B89A;
+    padding: 32px;
+  }
+  .activitat-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 24px; padding-bottom: 16px;
+    border-bottom: 1px solid #C9B89A;
+  }
+  .activitat-title {
+    font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500;
+    color: #2C1810; letter-spacing: -0.01em;
+  }
+  .activitat-period {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: #8B7355; font-weight: 500;
+  }
+  .activitat-stats {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px;
+  }
+  .stat { display: flex; flex-direction: column; gap: 8px; }
+  .stat-num {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 44px;
+    color: #B87333; letter-spacing: -0.025em; line-height: 1;
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: #5C3A1E; font-weight: 600;
+  }
+  .stat-desc {
+    font-family: 'Inter', sans-serif; font-size: 12px;
+    color: #8B7355; line-height: 1.4;
+  }
+
+  /* CARDS DE SECCIONS */
+  .section-card {
+    background: white; border: 1px solid #C9B89A;
+    padding: 32px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .section-card-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-bottom: 16px; border-bottom: 1px solid #C9B89A;
+  }
+  .section-card-title {
+    font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500;
+    color: #2C1810; letter-spacing: -0.01em;
+  }
+  .section-card-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: #B87333; font-weight: 600;
+  }
+
+  /* Form row */
+  .form-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: #8A5526; font-weight: 600;
+  }
+  .form-input {
+    background: #F5EFE6; border: 1px solid #C9B89A;
+    padding: 12px 16px;
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    color: #2C1810; font-weight: 500;
+  }
+  .form-input:focus { outline: none; border-color: #B87333; }
+
+  /* TOGGLE IDIOMA */
+  .lang-toggle {
+    display: inline-flex;
+    border: 1px solid #C9B89A;
+  }
+  .lang-option {
+    padding: 12px 24px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: #5C3A1E; font-weight: 600;
+    cursor: pointer; background: #F5EFE6;
+    border: none;
+  }
+  .lang-option.active {
+    background: #B87333; color: #FFFFFF;
+  }
+
+  /* PLA */
+  .plan-card {
+    background: #2C1810; color: #F5EFE6;
+    padding: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 24px;
+  }
+  .plan-info { display: flex; flex-direction: column; gap: 4px; }
+  .plan-name {
+    font-family: 'Fraunces', serif; font-size: 24px;
+    color: #F5EFE6; font-weight: 500; letter-spacing: -0.01em;
+  }
+  .plan-price {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: #D9A574; font-weight: 600;
+  }
+  .plan-cta {
+    background: #B87333; color: #FFFFFF;
+    padding: 12px 24px;
+    font-family: 'Inter'; font-size: 13px; font-weight: 600;
+    border: none; cursor: pointer;
+  }
+
+  /* CERTIFICACIONS */
+  .certs-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
+  }
+  .cert-chip {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px;
+    background: #F5EFE6; border: 1px solid #C9B89A;
+    font-family: 'Inter', sans-serif; font-size: 13px;
+    color: #2C1810; font-weight: 500; cursor: pointer;
+  }
+  .cert-chip.selected { background: #2C1810; color: #F5EFE6; border-color: #B87333; }
+  .cert-check {
+    width: 16px; height: 16px;
+    border: 1.5px solid #C9B89A;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+  }
+  .cert-chip.selected .cert-check { background: #B87333; border-color: #B87333; color: white; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">Criteri<span class="dot">.</span> ESG</div>
+  <div class="nav">
+    <a href="#">Biblioteca</a>
+    <a href="#">Estándares</a>
+    <a href="#">Qué hacemos</a>
+    <a href="#">Quiénes somos</a>
+    <button class="btn-cta">Cerrar sesión</button>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">Criteri<span class="dot">.</span> ESG</div>
+
+    <div class="user-card">
+      <div class="user-avatar">P</div>
+      <div class="user-info">
+        <div class="user-name">Paolo G.</div>
+        <div class="user-plan">Plan Free</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-nav-item active">
+        <span class="sidebar-nav-num">01</span>
+        <span>Mi actividad</span>
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <span class="sidebar-nav-num">02</span>
+        <span>Perfil</span>
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <span class="sidebar-nav-num">03</span>
+        <span>Newsletter</span>
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <span class="sidebar-nav-num">04</span>
+        <span>Mi plan</span>
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <span class="sidebar-nav-num">05</span>
+        <span>Mis certificaciones</span>
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <span class="sidebar-nav-num">06</span>
+        <span>Billing</span>
+      </a>
+    </nav>
+
+    <a href="#" class="sidebar-logout">← Cerrar sesión</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div>
+      <h1 class="page-title">Mi cuenta</h1>
+      <p class="page-subtitle">Tu actividad, tus preferencias y tus certificaciones en un solo lugar.</p>
+    </div>
+
+    <!-- ACTIVITAT -->
+    <section class="activitat">
+      <div class="activitat-header">
+        <h2 class="activitat-title">Tu actividad</h2>
+        <span class="activitat-period">Últimos 30 días</span>
+      </div>
+      <div class="activitat-stats">
+        <div class="stat">
+          <div class="stat-num">12</div>
+          <div class="stat-label">Informes leídos</div>
+          <div class="stat-desc">De 24 disponibles en la biblioteca</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Guardados</div>
+          <div class="stat-desc">Informes que has marcado para leer después</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Newsletter</div>
+          <div class="stat-desc">Ediciones recibidas desde septiembre</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERFIL -->
+    <section class="section-card">
+      <div class="section-card-header">
+        <h2 class="section-card-title">Perfil</h2>
+        <span class="section-card-num">02</span>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label">Nombre</label>
+          <input class="form-input" value="Paolo G." />
+        </div>
+        <div class="form-field">
+          <label class="form-label">Email</label>
+          <input class="form-input" value="paolo@criteriesg.com" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label">Empresa</label>
+          <input class="form-input" value="Criteri ESG" />
+        </div>
+        <div class="form-field">
+          <label class="form-label">Cargo</label>
+          <input class="form-input" value="Director de sostenibilidad" />
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section-card">
+      <div class="section-card-header">
+        <h2 class="section-card-title">Newsletter</h2>
+        <span class="section-card-num">03</span>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Idioma de la newsletter</label>
+        <div class="lang-toggle">
+          <button class="lang-option">CAT</button>
+          <button class="lang-option active">ES</button>
+        </div>
+      </div>
+      <p style="font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; color: #5C3A1E; line-height: 1.4;">
+        Recibes la newsletter bimensual (cada 2 semanas, los jueves a las 15:00h). Puedes cambiar el idioma en cualquier momento.
+      </p>
+    </section>
+
+    <!-- PLA -->
+    <section class="section-card">
+      <div class="section-card-header">
+        <h2 class="section-card-title">Mi plan</h2>
+        <span class="section-card-num">04</span>
+      </div>
+      <div class="plan-card">
+        <div class="plan-info">
+          <div class="plan-name">Plan Free</div>
+          <div class="plan-price">0€/mes · Acceso a informes antiguos + newsletter reducida</div>
+        </div>
+        <button class="plan-cta">Hazte Premium →</button>
+      </div>
+      <p style="font-family: 'Inter', sans-serif; font-size: 13px; color: #5C3A1E; line-height: 1.5;">
+        Con Premium accedes a todos los informes recientes (últimos 6 meses), cross-reference completo con tus certificaciones, acciones recomendadas y la newsletter completa. 29€/mes para los primeros 50 suscriptores (early bird hasta noviembre).
+      </p>
+    </section>
+
+    <!-- CERTIFICACIONS -->
+    <section class="section-card">
+      <div class="section-card-header">
+        <h2 class="section-card-title">Mis certificaciones</h2>
+        <span class="section-card-num">05</span>
+      </div>
+      <p style="font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; color: #5C3A1E; line-height: 1.4;">
+        Selecciona las certificaciones que ya tiene tu empresa. Te recomendaremos informes que te afectan directamente.
+      </p>
+      <div class="certs-grid">
+        <div class="cert-chip selected"><div class="cert-check">✓</div>EcoVadis</div>
+        <div class="cert-chip"><div class="cert-check"></div>B Corp</div>
+        <div class="cert-chip selected"><div class="cert-check">✓</div>GRI</div>
+        <div class="cert-chip"><div class="cert-check"></div>MSCI ESG</div>
+        <div class="cert-chip"><div class="cert-check"></div>CDP</div>
+        <div class="cert-chip"><div class="cert-check"></div>SGE 21</div>
+        <div class="cert-chip"><div class="cert-check"></div>Sustainalytics</div>
+        <div class="cert-chip"><div class="cert-check"></div>CSRD / ESRS</div>
+        <div class="cert-chip"><div class="cert-check"></div>CSDDD</div>
+        <div class="cert-chip"><div class="cert-check"></div>SFDR</div>
+        <div class="cert-chip"><div class="cert-check"></div>Taxonomía UE</div>
+        <div class="cert-chip"><div class="cert-check"></div>TNFD</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>

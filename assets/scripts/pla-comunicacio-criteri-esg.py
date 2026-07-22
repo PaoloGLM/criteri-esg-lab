@@ -336,9 +336,9 @@ peces = [
 
     ("W2·setembre", "dijous 11 set", "Consolidar", "LinkedIn empresa", "Post curt (8 línies)",
      "El que no ens diu l'informe",
-     "Esta semana hemos procesado 4 informes. Todos rigurosos. Todos útiles.\n\nPero todos dejan fuera la misma cosa: qué has de hacer tú.\n\nCuando un director de sostenibilidad cierra un informe, su pregunta no es '¿qué dice?' sino '¿y ahora qué?'. Y ese 'y ahora qué' depende de qué certificaciones tienes.\n\nPor eso hacemos cross-reference con EcoVadis, B Corp, MSCI, GRI, SGE 21...\n\nLa dato sin tu contexto es ruido. La dato con tu contexto es decisión.",
+     "Esta semana hemos procesado informes. Todos rigurosos. Todos útiles.\n\nPero todos dejan fuera la misma cosa: qué has de hacer tú.\n\nCuando un director de sostenibilidad cierra un informe, su pregunta no es '¿qué dice?' sino '¿y ahora qué?'. Y ese 'y ahora qué' depende de qué certificaciones tienes.\n\nPor eso hacemos cross-reference con EcoVadis, B Corp, MSCI, GRI, SGE 21...\n\nLa dato sin tu contexto es ruido. La dato con tu contexto es decisión.",
      "Captura d'un informe amb la secció cross-reference destacada (versió retallada)",
-     "criteriesg.com/informes · 'Lee los 4 informes'",
+     "criteriesg.com/informes · 'Lee los informes de esta semana'",
      "Clics + registres",
      "Paolo"),
 
@@ -376,8 +376,8 @@ peces = [
 
     ("W5·setembre", "dimarts 30 set", "Consolidar", "LinkedIn empresa + Newsletter interna", "Post balanç + newsletter curta",
      "Un mes després",
-     "Hace 30 días lanzamos Criteri ESG. No hemos vendido nada.\n\nHemos publicado 16 informes, 2 newsletters, 4 artículos. Hablamos con [X] directores de sostenibilidad.\n\nAprendizajes:\n1) El problema no es información, es criterio.\n2) Todo el mundo tiene EcoVadis, nadie lo lee igual.\n3) El CSRD sigue siendo una incógnita para el 80% de los directores.\n\nPróxima parada: cada quincena, una conexión entre informes que no encontraréis en ningún otro sitio.\n\nGracias a los que ya estáis. A los que aún no: os esperamos.",
-     "Visual amb 3 dades clau (16 informes, 2 newsletters, X converses) en format minimalista terra+coure",
+     "Hace 30 días lanzamos Criteri ESG. No hemos vendido nada.\n\nHemos publicado informes, newsletters y artículos. Hablamos con [X] directores de sostenibilidad.\n\nAprendizajes:\n1) El problema no es información, es criterio.\n2) Todo el mundo tiene EcoVadis, nadie lo lee igual.\n3) El CSRD sigue siendo una incógnita para el 80% de los directores.\n\nPróxima parada: una conexión entre informes que no encontraréis en ningún otro sitio.\n\nGracias a los que ya estáis. A los que aún no: os esperamos.",
+     "Visual amb 3 dades clau (informes, newsletters, converses) en format minimalista terra+coure",
      "criteriesg.com",
      "Tot",
      "Paolo"),

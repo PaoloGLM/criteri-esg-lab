@@ -421,7 +421,7 @@ add_h2("Una propuesta concreta")
 
 add_body_no_indent("No voy a proponer que leas más. Voy a proponer lo contrario: que leas menos, pero con criterio.")
 
-add_body("Criteri ESG no es un agregador. No recopilamos todos los informes para que tú los leas. Eso ya lo tienes. Lo que hacemos es seleccionar los 4-6 informes más relevantes de cada quincena, sintetizarlos en 5 minutos de lectura (1.000-1.100 palabras), cruzarlos con tus certificaciones (EcoVadis, B Corp, MSCI, GRI, SGE 21, las que tengas) y recomendarte tres acciones concretas. Nada más.")
+add_body("Criteri ESG no es un agregador. No recopilamos todos los informes para que tú los leas. Eso ya lo tienes. Lo que hacemos es seleccionar los informes más relevantes, sintetizarlos en 5 minutos de lectura, cruzarlos con tus certificaciones (EcoVadis, B Corp, MSCI, GRI, SGE 21, las que tengas) y recomendarte tres acciones concretas. Nada más.")
 
 add_body("No es magia. Es criterio aplicado. Y se basa en algo simple: si un director de sostenibilidad dedicara el 60% de su tiempo a pensar en lugar de a recopilar, sus decisiones serían mejores. Y si las decisiones son mejores, el reporting mejora, los ratings mejoran, los comités de sostenibilidad dejan de ser trámites. El cambio no empieza por más datos: empieza por más tiempo para procesarlos.")
 

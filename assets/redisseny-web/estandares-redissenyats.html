@@ -49,6 +49,17 @@
     font-family: 'Fraunces', serif; font-style: italic;
     font-size: 17px; color: #5C3A1E; max-width: 720px; line-height: 1.4;
   }
+  .page-header-subtitle-line1 { display: flex; gap: 10px; font-style: normal; margin-bottom: 14px; flex-wrap: wrap; }
+  .page-header-subtitle-line2 { display: block; }
+
+  .concept {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 16px; font-weight: 500;
+    padding: 6px 14px; letter-spacing: -0.005em;
+  }
+  .concept-reg { background: #5C3A1E; color: #F5EFE6; }
+  .concept-fw { background: #B87333; color: #F5EFE6; }
+  .concept-cert { background: #E8C99A; color: #5C3A1E; }
 
   .page-header-number {
     font-family: 'Fraunces', serif; font-weight: 300;
@@ -80,13 +91,20 @@
   .legend-chip {
     font-family: 'JetBrains Mono', monospace; font-size: 10px;
     text-transform: uppercase; letter-spacing: 0.14em; font-weight: 600;
-    padding: 8px 14px; background: white; border: 1px solid #C9B89A;
+    padding: 8px 14px;
     color: #5C3A1E; cursor: pointer;
     display: flex; align-items: center; gap: 8px;
   }
-  .legend-chip:hover { border-color: #B87333; }
+  .legend-chip.reg { background: rgba(92, 58, 30, 0.12); border: 1px solid #5C3A1E; }
+  .legend-chip.fw { background: rgba(184, 115, 51, 0.12); border: 1px solid #B87333; }
+  .legend-chip.cert { background: rgba(232, 201, 154, 0.25); border: 1px solid #E8C99A; color: #8A6D2B; }
+  .legend-chip:hover { transform: translateY(-1px); }
   .legend-chip.active { background: #2C1810; color: #F5EFE6; border-color: #2C1810; }
-  .legend-chip.active .chip-bar { background: #B87333; }
+  .legend-chip.active .chip-bar { background: #B87333 !important; }
+  .legend-chip.active.reg { background: #5C3A1E; border-color: #5C3A1E; }
+  .legend-chip.active.fw { background: #B87333; border-color: #B87333; }
+  .legend-chip.active.cert { background: #E8C99A; color: #5C3A1E; border-color: #E8C99A; }
+  .legend-chip.active.cert .chip-bar { background: #5C3A1E !important; }
 
   .chip-bar { width: 18px; height: 4px; }
   .chip-bar.reg { background: #5C3A1E; }
@@ -222,7 +240,14 @@
   <div>
     <div class="page-header-eyebrow">Estándares ESG · 2026</div>
     <h1 class="page-header-title">Los <em>16 estándares</em> que un director de sostenibilidad no debería confundir.</h1>
-    <p class="page-header-subtitle">Una regulación te obliga. Un framework te orienta. Una certificación te evalúa. Confundirlas tiene consecuencias operativas reales.</p>
+    <p class="page-header-subtitle">
+      <span class="page-header-subtitle-line1">
+        <span class="concept concept-reg">Una regulación te obliga</span>
+        <span class="concept concept-fw">Un framework te orienta</span>
+        <span class="concept concept-cert">Una certificación te evalúa</span>
+      </span>
+      <span class="page-header-subtitle-line2">Confundirlas tiene consecuencias operativas reales.</span>
+    </p>
   </div>
   <div class="page-header-number">16<sup>est.</sup></div>
 </div>
@@ -231,9 +256,9 @@
 <div class="legend">
   <div class="legend-filters">
     <span class="legend-label">Filtrar:</span>
-    <button class="legend-chip active"><div class="chip-bar reg"></div>Regulaciones (5)</button>
-    <button class="legend-chip active"><div class="chip-bar fw"></div>Frameworks (5)</button>
-    <button class="legend-chip active"><div class="chip-bar cert"></div>Certificaciones (6)</button>
+    <button class="legend-chip reg active"><div class="chip-bar reg"></div>Regulaciones (5)</button>
+    <button class="legend-chip fw active"><div class="chip-bar fw"></div>Frameworks (5)</button>
+    <button class="legend-chip cert active"><div class="chip-bar cert"></div>Certificaciones (6)</button>
   </div>
   <input class="legend-search" placeholder="Buscar estándar..." />
 </div>

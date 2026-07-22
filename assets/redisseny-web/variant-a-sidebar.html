@@ -371,12 +371,18 @@
   }
 
   .dim {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(217, 165, 116, 0.2);
+  }
+
+  .dim-top {
     display: grid;
     grid-template-columns: 110px 1fr auto;
     gap: 14px;
     align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(217, 165, 116, 0.2);
   }
 
   .dim-name {
@@ -409,6 +415,14 @@
   .dim-status.green { color: #5C8A5C; }
   .dim-status.yellow { color: #C9A961; }
   .dim-status.red { color: #A0522D; }
+
+  .dim-explanation {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: rgba(245, 239, 230, 0.6);
+    line-height: 1.4;
+    padding-left: 0;
+  }
 
   /* === BLOC 2: 5 dades clau === */
   .dades-list {
@@ -524,6 +538,17 @@
     max-width: 720px;
   }
   .mes-enlla-text em { color: #D9A574; font-weight: 500; font-style: normal; }
+
+  .mes-enlla-reflection {
+    margin-top: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(245, 239, 230, 0.75);
+    border-top: 1px solid rgba(217, 165, 116, 0.25);
+    padding-top: 16px;
+  }
+  .mes-enlla-reflection em { color: #D9A574; font-style: italic; font-weight: 500; }
 
   /* === BLOC 5: Connexions === */
   .connexions-text {
@@ -767,33 +792,48 @@
           <span class="semafor-letter">C</span>
           <span class="semafor-grade-label">Débil</span>
         </div>
-        <p class="semafor-desc">Rigoroso en arquitectura, pero deja fuera el detalle granular que las empresas necesitan para implementar.</p>
+        <p class="semafor-desc">Riguroso en arquitectura, pero deja fuera el detalle granular que las empresas necesitan para implementar.</p>
       </div>
       <div class="semafor-dimensions">
         <div class="dim">
-          <span class="dim-name">Scope 3</span>
-          <div class="dim-dots"><div class="dot g"></div><div class="dot y active"></div><div class="dot r"></div></div>
-          <span class="dim-status yellow">Débil</span>
+          <div class="dim-top">
+            <span class="dim-name">Scope 3</span>
+            <div class="dim-dots"><div class="dot g"></div><div class="dot y active"></div><div class="dot r"></div></div>
+            <span class="dim-status yellow">Débil</span>
+          </div>
+          <p class="dim-explanation">¿Cubre emisiones indirectas de la cadena de valor o solo las directas? En la mayoría de sectores, el Scope 3 es entre el 70% y el 90% de la huella total.</p>
         </div>
         <div class="dim">
-          <span class="dim-name">Plazos</span>
-          <div class="dim-dots"><div class="dot g active"></div><div class="dot y"></div><div class="dot r"></div></div>
-          <span class="dim-status green">Sólido</span>
+          <div class="dim-top">
+            <span class="dim-name">Plazos</span>
+            <div class="dim-dots"><div class="dot g active"></div><div class="dot y"></div><div class="dot r"></div></div>
+            <span class="dim-status green">Sólido</span>
+          </div>
+          <p class="dim-explanation">¿Las fechas son operativas (con calendario concreto y hitos) o aspiracionales? Un director que planifica inversiones no puede trabajar con «para 2050».</p>
         </div>
         <div class="dim">
-          <span class="dim-name">Fuentes</span>
-          <div class="dim-dots"><div class="dot g"></div><div class="dot y active"></div><div class="dot r"></div></div>
-          <span class="dim-status yellow">Débil</span>
+          <div class="dim-top">
+            <span class="dim-name">Fuentes</span>
+            <div class="dim-dots"><div class="dot g"></div><div class="dot y active"></div><div class="dot r"></div></div>
+            <span class="dim-status yellow">Débil</span>
+          </div>
+          <p class="dim-explanation">¿Las afirmaciones están referenciadas o son afirmaciones sin respaldo? El greenwashing vive de las afirmaciones sin fuente.</p>
         </div>
         <div class="dim">
-          <span class="dim-name">Granularidad</span>
-          <div class="dim-dots"><div class="dot g"></div><div class="dot y"></div><div class="dot r active"></div></div>
-          <span class="dim-status red">Crítico</span>
+          <div class="dim-top">
+            <span class="dim-name">Granularidad</span>
+            <div class="dim-dots"><div class="dot g"></div><div class="dot y"></div><div class="dot r active"></div></div>
+            <span class="dim-status red">Crítico</span>
+          </div>
+          <p class="dim-explanation">¿Hay dato desagregado por sector, geografía y tamaño, o todo agregado a nivel europeo? Un director de una PIME industrial no puede usar un dato agregado de la UE.</p>
         </div>
         <div class="dim">
-          <span class="dim-name">Verificación</span>
-          <div class="dim-dots"><div class="dot g"></div><div class="dot y active"></div><div class="dot r"></div></div>
-          <span class="dim-status yellow">Débil</span>
+          <div class="dim-top">
+            <span class="dim-name">Verificación</span>
+            <div class="dim-dots"><div class="dot g"></div><div class="dot y active"></div><div class="dot r"></div></div>
+            <span class="dim-status yellow">Débil</span>
+          </div>
+          <p class="dim-explanation">¿Está auditado externamente o es auto-reportado? La auto-verificación no es necesariamente mala, pero el director debe saber qué filtro ha pasado.</p>
         </div>
       </div>
     </section>
@@ -807,8 +847,7 @@
       <div class="dades-list">
         <div class="dada"><div class="dada-num"></div><div class="dada-text"><strong>−61%</strong> de datapoints obligatorios del CSRD eliminados (de 1.144 a 446)</div></div>
         <div class="dada"><div class="dada-num"></div><div class="dada-text"><strong>3.700 M€</strong> de ahorro estimado para empresas europeas en 5 años</div></div>
-        <div class="dada"><div class="dada-num"></div><div class="dada-text"><strong>2 categorías</strong> de estándares ESRS: temáticos transversales y sectoriales</div></div>
-        <div class="dada"><div class="dada-num"></div><div class="dada-text"><strong>Convergencia</strong> mantenida con GRI Universal Standards e ISSB</div></div>
+        <div class="dada"><div class="dada-num"></div><div class="dada-text"><strong>2 categorías</strong> de estándares ESRS: temáticos transversales y sectoriales. Convergencia mantenida con GRI Universal Standards e ISSB.</div></div>
         <div class="dada"><div class="dada-num"></div><div class="dada-text"><strong>Aplicación</strong> escalonada: grandes empresas (2024), cotizadas (2025), PIMEs (2026-2028)</div></div>
       </div>
     </section>
@@ -849,6 +888,7 @@
       <div class="mes-enlla">
         <div class="mes-enlla-label">Más allá del Checkbox</div>
         <p class="mes-enlla-text">«La simplificación es un alivio para el reporting, pero <em>¿qué pierde la sociedad</em> cuando desaparece el dato granular que permitía auditar promesas?»</p>
+        <p class="mes-enlla-reflection">Cuando un informe se reduce a la mitad, alguien decide qué se queda y qué se va. Esa decisión no es técnica: es política. Y casi nunca la toma el que después sufrirá las consecuencias. La pregunta no es si simplificar, sino <em>quién decide qué es prescindible</em>.</p>
       </div>
     </section>
 

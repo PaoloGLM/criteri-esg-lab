@@ -90,7 +90,7 @@
   /* === CARD DESTACADA (primer informe) === */
   .card-featured {
     grid-column: span 3;
-    display: grid; grid-template-columns: 1.2fr 1fr; gap: 0;
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 0;
     background: white; border: 1px solid #C9B89A;
     margin-bottom: 12px;
   }
@@ -153,8 +153,12 @@
   /* Mini semàfor */
   .card-featured-semafor {
     background: #2C1810; color: #F5EFE6;
-    padding: 32px; display: flex; flex-direction: column; gap: 16px;
-    justify-content: center;
+    padding: 20px 24px; display: flex; flex-direction: column; gap: 10px;
+    justify-content: space-between;
+  }
+
+  .mini-semafor-header {
+    display: flex; justify-content: space-between; align-items: baseline;
   }
 
   .mini-semafor-label {
@@ -163,44 +167,62 @@
     color: #D9A574; font-weight: 600;
   }
 
+  .mini-semafor-info {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: rgba(245, 239, 230, 0.4); font-weight: 500;
+    cursor: pointer; text-decoration: underline;
+    text-decoration-color: rgba(217, 165, 116, 0.5);
+    text-underline-offset: 3px;
+  }
+  .mini-semafor-info:hover { color: #D9A574; text-decoration-color: #B87333; }
+
   .mini-semafor-grade {
-    display: flex; align-items: baseline; gap: 14px;
+    display: flex; align-items: baseline; gap: 12px;
   }
 
   .mini-semafor-letter {
     font-family: 'Fraunces', serif; font-weight: 400;
-    font-size: 72px; color: #B87333; letter-spacing: -0.04em; line-height: 1;
+    font-size: 40px; color: #B87333; letter-spacing: -0.04em; line-height: 1;
   }
 
   .mini-semafor-label-text {
     font-family: 'Fraunces', serif; font-style: italic;
-    font-size: 22px; color: #F5EFE6;
+    font-size: 14px; color: #F5EFE6;
   }
 
   .mini-semafor-dimensions {
-    display: flex; flex-direction: column; gap: 6px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px;
   }
 
   .mini-dim {
-    display: grid; grid-template-columns: 90px 1fr;
-    gap: 10px; align-items: center;
-    padding: 4px 0;
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 8px; align-items: center;
+    padding: 3px 0;
     border-bottom: 1px solid rgba(217, 165, 116, 0.15);
   }
 
   .mini-dim-name {
-    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    font-family: 'JetBrains Mono', monospace; font-size: 8.5px;
     text-transform: uppercase; letter-spacing: 0.16em;
     color: rgba(245, 239, 230, 0.6); font-weight: 500;
   }
 
   .mini-dim-dots { display: flex; gap: 4px; }
 
-  .dot { width: 8px; height: 8px; border-radius: 50%; opacity: 0.3; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; opacity: 0.3; }
   .dot.g { background: #5C8A5C; }
   .dot.y { background: #C9A961; }
   .dot.r { background: #A0522D; }
   .dot.active { opacity: 1; }
+
+  .mini-semafor-footer {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 11px; color: rgba(245, 239, 230, 0.5);
+    line-height: 1.4;
+    padding-top: 8px;
+    border-top: 1px solid rgba(217, 165, 116, 0.2);
+  }
 
   /* === CARD NORMAL === */
   .card {
@@ -296,6 +318,146 @@
     font-weight: 500;
   }
   .footer-brand .dot { color: #B87333; }
+  /* === LOAD MORE === */
+  .load-more {
+    grid-column: span 3;
+    margin-top: 24px;
+    padding: 40px 0;
+    border-top: 1px solid #C9B89A;
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+  }
+  .load-more-btn {
+    background: transparent; color: #2C1810;
+    padding: 14px 36px;
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+    border: 1px solid #2C1810; cursor: pointer;
+    letter-spacing: 0.02em; transition: all 0.2s;
+  }
+  .load-more-btn:hover { background: #2C1810; color: #F5EFE6; }
+  .load-more-count {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: #8B7355; font-weight: 500;
+  }
+
+  /* === POPUP METODOLOGIA SEMÀFOR === */
+  .semafor-popup-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(44, 24, 16, 0.85);
+    z-index: 100;
+    display: none;
+    align-items: center; justify-content: center;
+    padding: 40px;
+  }
+  .semafor-popup-overlay.open { display: flex; }
+
+  .semafor-popup {
+    background: #F5EFE6;
+    max-width: 720px; width: 100%; max-height: 90vh;
+    overflow-y: auto;
+    padding: 48px;
+    position: relative;
+    border-top: 4px solid #B87333;
+  }
+
+  .popup-close {
+    position: absolute; top: 16px; right: 20px;
+    background: none; border: none;
+    font-size: 32px; color: #8B7355; cursor: pointer;
+    line-height: 1; padding: 0;
+  }
+  .popup-close:hover { color: #B87333; }
+
+  .popup-eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.22em;
+    color: #8A5526; font-weight: 600; margin-bottom: 12px;
+  }
+
+  .popup-title {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 32px;
+    line-height: 1.1; color: #2C1810; letter-spacing: -0.018em;
+    margin-bottom: 16px;
+  }
+  .popup-title em { font-style: italic; color: #5C3A1E; font-weight: 400; }
+
+  .popup-intro {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 16px; line-height: 1.55; color: #5C3A1E;
+    margin-bottom: 28px; padding-bottom: 24px;
+    border-bottom: 1px solid #C9B89A;
+  }
+
+  .popup-dimensions {
+    display: flex; flex-direction: column; gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .popup-dim {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(201, 184, 154, 0.5);
+  }
+  .popup-dim:last-child { border-bottom: none; }
+
+  .popup-dim-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 8px; gap: 16px;
+  }
+
+  .popup-dim-name {
+    font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500;
+    color: #2C1810; letter-spacing: -0.01em;
+  }
+
+  .popup-dim-question {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: #8A5526; font-weight: 600; text-align: right;
+  }
+
+  .popup-dim-explanation {
+    font-family: 'Inter', sans-serif; font-size: 13px;
+    color: #5C3A1E; line-height: 1.5;
+  }
+
+  .popup-grades {
+    display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px;
+    margin-bottom: 24px; padding: 20px;
+    background: #2C1810; color: #F5EFE6;
+  }
+
+  .popup-grade {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    text-align: center;
+  }
+
+  .grade-letter {
+    font-family: 'Fraunces', serif; font-weight: 500;
+    font-size: 36px; letter-spacing: -0.025em; line-height: 1;
+  }
+  .grade-letter.a { color: #5C8A5C; }
+  .grade-letter.b { color: #5C8A5C; }
+  .grade-letter.c { color: #C9A961; }
+  .grade-letter.d { color: #A0522D; }
+
+  .grade-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: #F5EFE6; font-weight: 600;
+  }
+
+  .grade-desc {
+    font-family: 'Inter', sans-serif; font-size: 10px;
+    color: rgba(245, 239, 230, 0.6); line-height: 1.3;
+  }
+
+  .popup-footer {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 14px; line-height: 1.5; color: #5C3A1E;
+    padding-top: 20px; border-top: 1px solid #C9B89A;
+  }
+  .popup-footer em { color: #B87333; font-weight: 500; }
+
 </style>
 </head>
 <body>
@@ -365,7 +527,10 @@
       <a href="#" class="card-featured-cta">Leer informe completo →</a>
     </div>
     <div class="card-featured-semafor">
-      <div class="mini-semafor-label">Semáforo</div>
+      <div class="mini-semafor-header">
+        <span class="mini-semafor-label">Semáforo</span>
+        <span class="mini-semafor-info">¿Cómo funciona? →</span>
+      </div>
       <div class="mini-semafor-grade">
         <span class="mini-semafor-letter">C</span>
         <span class="mini-semafor-label-text">Débil</span>
@@ -377,6 +542,7 @@
         <div class="mini-dim"><span class="mini-dim-name">Granular.</span><div class="mini-dim-dots"><div class="dot g"></div><div class="dot y"></div><div class="dot r active"></div></div></div>
         <div class="mini-dim"><span class="mini-dim-name">Verific.</span><div class="mini-dim-dots"><div class="dot g"></div><div class="dot y active"></div><div class="dot r"></div></div></div>
       </div>
+      <p class="mini-semafor-footer">«Riguroso en arquitectura, pero deja fuera el detalle granular.»</p>
     </div>
   </article>
 
@@ -563,9 +729,92 @@
     </div>
   </article>
 
+  <!-- Botó Carregar més -->
+  <div class="load-more">
+    <button class="load-more-btn">Cargar más informes</button>
+    <p class="load-more-count">Mostrando 7 de 24 informes</p>
+  </div>
+
 </div>
 
-<!-- FOOTER -->
+<!-- POPUP METODOLOGIA SEMÀFOR -->
+<div class="semafor-popup-overlay" id="semafor-popup">
+  <div class="semafor-popup">
+    <button class="popup-close" onclick="document.getElementById('semafor-popup').classList.remove('open')">×</button>
+    <div class="popup-eyebrow">Metodología · Semáforo Criteri ESG</div>
+    <h2 class="popup-title">Cómo evaluamos cada <em>informe</em></h2>
+    <p class="popup-intro">El semáforo no evalúa si el informe es bueno o malo. Evalúa si es útil para tomar decisiones operativas en una empresa concreta. Lo hace en 5 dimensiones, cada una con nota verde, amarilla o roja. La nota final va de A (robusto fuerte) a D (insuficiente).</p>
+    
+    <div class="popup-dimensions">
+      <div class="popup-dim">
+        <div class="popup-dim-header">
+          <span class="popup-dim-name">Scope 3</span>
+          <span class="popup-dim-question">¿Cubre emisiones indirectas?</span>
+        </div>
+        <p class="popup-dim-explanation">En la mayoría de sectores, el Scope 3 es entre el 70% y el 90% de la huella total. Un informe que lo ignora es técnicamente correcto pero operativamente inservible.</p>
+      </div>
+      <div class="popup-dim">
+        <div class="popup-dim-header">
+          <span class="popup-dim-name">Plazos</span>
+          <span class="popup-dim-question">¿Las fechas son operativas o aspiracionales?</span>
+        </div>
+        <p class="popup-dim-explanation">Un director que planifica inversiones para 2027 no puede trabajar con «para 2050». Exigimos calendario con años concretos y hitos intermedios.</p>
+      </div>
+      <div class="popup-dim">
+        <div class="popup-dim-header">
+          <span class="popup-dim-name">Fuentes</span>
+          <span class="popup-dim-question">¿Están referenciadas o son afirmaciones sin respaldo?</span>
+        </div>
+        <p class="popup-dim-explanation">El greenwashing vive de las afirmaciones sin fuente. Cada afirmación del informe debe llevar referencia verificable y accesible.</p>
+      </div>
+      <div class="popup-dim">
+        <div class="popup-dim-header">
+          <span class="popup-dim-name">Granularidad</span>
+          <span class="popup-dim-question">¿Hay dato desagregado por sector / geografía / tamaño?</span>
+        </div>
+        <p class="popup-dim-explanation">Un dato agregado a nivel europeo no lo puede usar una PIME industrial en Catalunya. La granularidad convierte un informe institucional en herramienta operativa.</p>
+      </div>
+      <div class="popup-dim">
+        <div class="popup-dim-header">
+          <span class="popup-dim-name">Verificación</span>
+          <span class="popup-dim-question">¿Está auditado externamente o es auto-reportado?</span>
+        </div>
+        <p class="popup-dim-explanation">La auto-verificación no es necesariamente mala, pero el director debe saber si lo que lee ha pasado por un filtro independiente o no.</p>
+      </div>
+    </div>
+
+    <div class="popup-grades">
+      <div class="popup-grade"><span class="grade-letter a">A</span><span class="grade-label">Robusto fuerte</span><span class="grade-desc">5 verdes</span></div>
+      <div class="popup-grade"><span class="grade-letter b">B</span><span class="grade-label">Robusto</span><span class="grade-desc">4 verdes + 1 amarilla</span></div>
+      <div class="popup-grade"><span class="grade-letter c">C</span><span class="grade-label">Débil</span><span class="grade-desc">Mezcla con hasta 1 roja</span></div>
+      <div class="popup-grade"><span class="grade-letter d">D</span><span class="grade-label">Insuficiente</span><span class="grade-desc">2 o más rojas</span></div>
+    </div>
+
+    <p class="popup-footer">El semáforo no es un juicio moral. Es un juicio operativo. <em>Cada informe que publicamos lleva el suyo</em>.</p>
+  </div>
+</div>
+
+<script>
+  // Obrir popup al clicar a "¿Cómo se calcula?" o al mateix semàfor
+  document.querySelectorAll('.mini-semafor-info, .card-semafor, .card-featured-semafor').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('semafor-popup').classList.add('open');
+    });
+  });
+  // Tancar clicant a l'overlay
+  document.querySelector('.semafor-popup-overlay').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      e.currentTarget.classList.remove('open');
+    }
+  });
+  // Tancar amb ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.getElementById('semafor-popup').classList.remove('open');
+    }
+  });
+</script>
 <div class="footer">
   <div class="footer-brand">Criteri<span class="dot">.</span> ESG</div>
   <div>© 2026 · Barcelona · criteriesg.com</div>

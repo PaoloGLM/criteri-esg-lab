@@ -1,228 +1,130 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
+import { useAuth } from "@/lib/auth-context";
 import { useLanguage } from "@/components/language-provider";
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 import { supabase } from "@/lib/supabase";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import {
+  Mail,
+  Building2,
+  User as UserIcon,
+  Crown,
+  Sparkles,
   Loader2,
   LogIn,
   LogOut,
+  Globe,
+  CheckCircle2,
+  ShieldCheck,
   Save,
+  X,
 } from "lucide-react";
-import type { TranslationKey } from "@/lib/i18n";
 
-/**
- * /cuenta — Fase 2D redesign.
- *
- * Design source: /home/z/my-project/scripts/informe-variants/cuenta-redissenyat.html
- *
- * Layout: 2 cols
- *   - Sidebar dark (sticky, 320px): brand + user card + nav (6 items) + logout
- *   - Main content (5 cards):
- *       01 Perfil         — form: Nombre, Email, Empresa, Sector profesional
- *       02 Newsletter     — CAT/ES toggle + description
- *       03 Mi plan        — dark card with "Plan Free" + "Hazte Premium →"
- *       04 Mis estándares ESG — 16 chips with category color stripe + legend
- *       05 Otros intereses — 8 chips from registration form
- *
- * CRITICAL:
- *   - NO "Actividad" section (we don't store activity data).
- *   - 16 standards are ESG standard categories (5 reg + 5 fw + 6 cert).
- *   - 8 interests are from registration form (DIFFERENT from the 16 standards).
- *   - Chips are clickable with useState to track selected/unselected.
- *   - Auth checks (useAuth) and Supabase persistence preserved.
- */
-
-// --- 16 ESG STANDARDS (same source as /estandares-esg) ---
-type StandarType = "reg" | "fw" | "cert";
-interface StandarChip {
-  slug: string;
-  name: string;
-  type: StandarType;
-}
-const STANDARDS: StandarChip[] = [
-  // 5 Regulaciones
-=======
-import { useAuth } from "@/lib/auth-context";
-import { useRouter } from "next/navigation";
-
-/**
- * /cuenta — Fase 2D redesign.
-=======
-import { useAuth } from "@/lib/auth-context";
-import { useRouter } from "next/navigation";
-
-/**
- * /cuenta — Fase 2D redesign.
->>>>>>> Stashed changes
- * Design: /home/z/my-project/scripts/informe-variants/cuenta-redissenyat.html
- *
- * - Sidebar dark (sticky) amb logo + user card + nav (6 items) + logout
- * - 5 cards: Perfil / Newsletter / Mi plan / Mis estándares ESG (16) / Otros intereses (8)
- * - Sense apartat Activitat (no emmagatzemarem de moment)
- */
-type StandarType = "reg" | "fw" | "cert";
-
-const ESTANDARES: { slug: string; name: string; type: StandarType }[] = [
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-  { slug: "csrd-esrs", name: "CSRD / ESRS", type: "reg" },
-  { slug: "csddd", name: "CSDDD", type: "reg" },
-  { slug: "sfdr", name: "SFDR", type: "reg" },
-  { slug: "taxonomia-ue", name: "Taxonomía UE", type: "reg" },
-  { slug: "emas", name: "EMAS", type: "reg" },
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  // 5 Frameworks
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-  { slug: "gri", name: "GRI", type: "fw" },
-  { slug: "sasb", name: "SASB", type: "fw" },
-  { slug: "tnfd", name: "TNFD", type: "fw" },
-  { slug: "tcfd", name: "TCFD", type: "fw" },
-  { slug: "iso-26000", name: "ISO 26000", type: "fw" },
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  // 6 Certificaciones
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-  { slug: "ecovadis", name: "EcoVadis", type: "cert" },
-  { slug: "b-corp", name: "B Corp", type: "cert" },
-  { slug: "msci-esg", name: "MSCI ESG", type: "cert" },
-  { slug: "cdp", name: "CDP", type: "cert" },
-  { slug: "sge-21", name: "SGE 21", type: "cert" },
-  { slug: "sustainalytics", name: "Sustainalytics", type: "cert" },
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+/**Llista d'interessos disponibles per al formulari d'edició.*/
+const INTEREST_OPTIONS: { id: string; label: string }[] = [
+  { id: "csrd", label: "CSRD/ESRS" },
+  { id: "ecovadis", label: "EcoVadis" },
+  { id: "bcorp", label: "B Corp" },
+  { id: "circular", label: "Economía circular" },
+  { id: "sfdr", label: "Inversión de impacto (SFDR)" },
+  { id: "bien", label: "Bien común" },
+  { id: "etica", label: "Ética empresarial" },
+  { id: "csddd", label: "Derechos Humanos y Cadena de Valor (CSDDD)" },
 ];
 
-const TYPE_BORDER: Record<StandarType, string> = {
-  reg: "#5C3A1E",
-  fw: "#B87333",
-  cert: "#E8C99A",
-};
-
-// --- 8 INTERESTS (from registration form, i18n keys form.interest.*) ---
-const INTEREST_IDS: { id: string; labelKey: TranslationKey }[] = [
-  { id: "csrd", labelKey: "form.interest.csrd" },
-  { id: "ecovadis", labelKey: "form.interest.ecovadis" },
-  { id: "bcorp", labelKey: "form.interest.bcorp" },
-  { id: "msci", labelKey: "form.interest.msci" },
-  { id: "taxonomy", labelKey: "form.interest.taxonomy" },
-  { id: "csddd", labelKey: "form.interest.csddd" },
-  { id: "humanrights", labelKey: "form.interest.humanrights" },
-  { id: "climate", labelKey: "form.interest.climate" },
-];
-
-// --- Sidebar nav items (anchor links to sections by id) ---
-const NAV_ITEMS: { num: string; href: string; labelKey: TranslationKey }[] = [
-  { num: "01", href: "#perfil", labelKey: "v2.cuenta.nav.perfil" },
-  { num: "02", href: "#newsletter", labelKey: "v2.cuenta.nav.newsletter" },
-  { num: "03", href: "#pla", labelKey: "v2.cuenta.nav.pla" },
-  { num: "04", href: "#estandares", labelKey: "v2.cuenta.nav.estandards" },
-  { num: "05", href: "#interessos", labelKey: "v2.cuenta.nav.interessos" },
-  { num: "06", href: "#billing", labelKey: "v2.cuenta.nav.billing" },
-=======
->>>>>>> Stashed changes
-];
-
-=======
-];
-
->>>>>>> Stashed changes
-const INTERESSOS = [
-  { id: "csrd", key: "form.interest.csrd" as const },
-  { id: "ecovadis", key: "form.interest.ecovadis" as const },
-  { id: "bcorp", key: "form.interest.bcorp" as const },
-  { id: "msci", key: "form.interest.msci" as const },
-  { id: "taxonomy", key: "form.interest.taxonomy" as const },
-  { id: "csddd", key: "form.interest.csddd" as const },
-  { id: "humanrights", key: "form.interest.humanrights" as const },
-  { id: "climate", key: "form.interest.climate" as const },
-];
-
-const CAT_TYPE_COLOR: Record<StandarType, string> = {
-  reg: "#5C3A1E",
-  fw: "#B87333",
-  cert: "#E8C99A",
+/**Tipus de fila de perfil llegida de la taula `profiles` de Supabase.*/
+type ProfileRow = {
+  full_name: string | null;
+  company: string | null;
+  interests: string[] | null;
+  newsletter_language: "es" | "ca" | null;
+  newsletter_subscribed: boolean | null;
+  gdpr_consent: boolean | null;
 };
 
 export default function CuentaPage() {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  const { user, session, loading, signOut, plan } = useAuth();
-  const { t, lang } = useLanguage();
+  const { user, session, loading, signOut } = useAuth();
+  const { lang } = useLanguage();
   const { toast } = useToast();
-=======
-  const { t } = useLanguage();
-  const { user, plan } = useAuth();
-  const router = useRouter();
->>>>>>> Stashed changes
-=======
-  const { t } = useLanguage();
-  const { user, plan } = useAuth();
-  const router = useRouter();
->>>>>>> Stashed changes
   const [authOpen, setAuthOpen] = useState(false);
-  const [authTab, setAuthTab] = useState<"register" | "login">("register");
   const [preusOpen, setPreusOpen] = useState(false);
-  const [activeNav, setActiveNav] = useState("perfil");
-  const [selectedEstandards, setSelectedEstandards] = useState<string[]>(["csrd-esrs", "gri", "ecovadis"]);
-  const [selectedInteressos, setSelectedInteressos] = useState<string[]>(["csrd", "ecovadis", "taxonomy", "climate"]);
-  const [newsletterLang, setNewsletterLang] = useState<"ca" | "es">("es");
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+  // Mode edició del perfil
+  const [isEditing, setIsEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
 
-  // Profile from `profiles` table
+  // Perfil llegit de la taula `profiles`. `profileRefreshKey` es fa servir
+  // per forçar un refresc explícit després de guardar (Problema 4).
   const [profile, setProfile] = useState<ProfileRow | null>(null);
   const [profileRefreshKey, setProfileRefreshKey] = useState(0);
 
-  // Form state — all editable in place
-  const [editName, setEditName] = useState("");
-  const [editCompany, setEditCompany] = useState("");
-  const [editLanguage, setEditLanguage] = useState<"es" | "ca">("es");
-  const [editInterests, setEditInterests] = useState<string[]>([]);
-  // Standards chips — local state only (no DB column yet)
-  const [editStandards, setEditStandards] = useState<string[]>([]);
-
+  // Metadata guardada a user.user_metadata (la que envia el form de registre).
+  // Es fa servir com a fallback mentre no s'hagi carregat la taula `profiles`.
   const meta = user?.user_metadata ?? {};
+
+  // Font de veritat preferida: taula `profiles`. Si encara no s'ha carregat,
+  // fem servir `user.user_metadata` per evitar parpelleigs.
   const fullName: string = profile?.full_name ?? (meta.full_name ?? "");
   const company: string = profile?.company ?? (meta.company ?? "");
+  // El plan no està a la taula profiles (està a subscriptions).
+  // Llegim de user_metadata.plan (enviat al registre) amb fallback 'free'.
+  // TODO: quan la Roser integri subscriptions, fer un JOIN per llegir el plan
+  // real de la taula subscriptions (permet canvis de plan via Stripe/Fiare).
+  const plan: "free" | "premium" =
+    (meta.plan as "free" | "premium" | undefined) ?? "free";
   const interests: string[] = Array.isArray(profile?.interests)
     ? profile.interests
     : Array.isArray(meta.interests)
       ? meta.interests
       : [];
+  // Defaults coherents amb el comportament del formulari de registre i amb
+  // l'onboarding d'usuaris OAuth (auth-context.tsx):
+  //   - newsletter_subscribed: true (tot usuari registrat la rep per defecte)
+  //   - newsletter_language: 'es' (la newsletter per defecte és en castellà,
+  //     decisió editorial de Paolo - CONTEXT decisió 12)
+  const newsletterSubscribed: boolean =
+    profile?.newsletter_subscribed ??
+    (meta.newsletter_subscribed === undefined
+      ? true
+      : Boolean(meta.newsletter_subscribed));
   const newsletterLanguage: "es" | "ca" =
     profile?.newsletter_language ?? (meta.newsletter_language ?? "es");
+  const gdprConsent: boolean =
+    profile?.gdpr_consent ?? Boolean(meta.gdpr_consent);
 
-  const email = user?.email ?? "";
-  const userPlan: "free" | "premium" = plan ?? (meta.plan ?? "free");
+  // Estat del formulari d'edició
+  const [editName, setEditName] = useState(fullName);
+  const [editCompany, setEditCompany] = useState(company);
+  const [editInterests, setEditInterests] = useState<string[]>(interests);
+  const [editLanguage, setEditLanguage] = useState<"es" | "ca">(newsletterLanguage);
 
-  // Display name (for sidebar avatar): first letter of full_name, fallback "U"
-  const avatarLetter = (fullName || "U").charAt(0).toUpperCase();
-
-  // tr helper for non-i18n admin strings
-  const tr = (ca: string, es: string) => (lang === "ca" ? ca : es);
-
-  // Load profile from Supabase
+  // Llegeix el perfil de la taula `profiles` quan canvia l'usuari o quan
+  // es força un refresc (després de guardar).
   useEffect(() => {
     if (!user) {
       setProfile(null);
@@ -246,30 +148,46 @@ export default function CuentaPage() {
     };
   }, [user, profileRefreshKey]);
 
-  // Initialize form state when profile loads
+  // Manté els camps d'edició sincronitzats amb les dades refreshed quan no
+  // s'està editant (perquè la pròxima vegada que es premi "Editar dades"
+  // els camps arrenquin amb els valors més recents).
   useEffect(() => {
+    if (!isEditing) {
+      setEditName(fullName);
+      setEditCompany(company);
+      setEditInterests(interests);
+      setEditLanguage(newsletterLanguage);
+    }
+  }, [fullName, company, interests, newsletterLanguage, isEditing]);
+
+  /**Helper de traducció inline CA/ES basat en l'idioma seleccionat al header.*/
+  const tr = (ca: string, es: string) => (lang === "ca" ? ca : es);
+
+  /**Entra en mode edició inicialitzant els camps amb els valors actuals.*/
+  const handleEditClick = () => {
     setEditName(fullName);
     setEditCompany(company);
     setEditInterests(interests);
     setEditLanguage(newsletterLanguage);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fullName, company, interests.join(","), newsletterLanguage]);
+    setSaveError(null);
+    setIsEditing(true);
+  };
 
-  /**Toggle an interest chip selected/unselected.*/
+  /**Cancel·la l'edició i torna al mode lectura.*/
+  const handleCancel = () => {
+    setIsEditing(false);
+    setSaveError(null);
+  };
+
+  /**Commuta un interès seleccionat dins el formulari d'edició.*/
   const toggleInterest = (id: string) => {
     setEditInterests((prev) =>
       prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
     );
   };
 
-  /**Toggle a standard chip selected/unselected (local state only).*/
-  const toggleStandard = (slug: string) => {
-    setEditStandards((prev) =>
-      prev.includes(slug) ? prev.filter((s) => s !== slug) : [...prev, slug]
-    );
-  };
-
-  /**Save changes to `profiles` table and Supabase Auth user_metadata.*/
+  /**Guarda els canvis a la taula `profiles` i a les metadades d'usuari de
+   * Supabase Auth perquè es reflecteixin immediatament (Problema 4).*/
   const handleSave = async () => {
     if (!user) return;
     setSaving(true);
@@ -282,19 +200,25 @@ export default function CuentaPage() {
         newsletter_language: editLanguage,
       };
 
+      // 1. Actualitza la taula `profiles`
       const { error: dbError } = await supabase
         .from("profiles")
         .update(payload)
         .eq("id", user.id);
       if (dbError) throw dbError;
 
+      // 2. Actualitza les metadades d'usuari a Supabase Auth perquè els
+      //    canvis també es reflecteixin a `user.user_metadata` immediatament.
       const { error: authError } = await supabase.auth.updateUser({
         data: payload,
       });
       if (authError) throw authError;
 
+      // 3. Refresca les dades locals llegint el perfil actualitzat de la
+      //    taula `profiles` perquè la UI es repinti amb els valors nous.
       setProfileRefreshKey((k) => k + 1);
 
+      setIsEditing(false);
       toast({
         title: tr("Canvis desats", "Cambios guardados"),
         description: tr(
@@ -313,14 +237,16 @@ export default function CuentaPage() {
     }
   };
 
-  // Loading state
+  // Mostra un spinner mentre es carrega la sessió
   if (loading) {
     return (
-      <div className="flex min-h-screen flex-col" style={{ background: "#F5EFE6" }}>
-        <Header onOpenPreus={() => setPreusOpen(true)} />
+      <div className="flex min-h-screen flex-col bg-background">
+        <Header
+          onOpenPreus={() => setPreusOpen(true)}
+        />
         <main className="flex flex-1 items-center justify-center">
-          <div className="flex flex-col items-center gap-3" style={{ color: "#8B7355" }}>
-            <Loader2 className="h-6 w-6 animate-spin" style={{ color: "#B87333" }} />
+          <div className="flex flex-col items-center gap-3 text-muted-foreground">
+            <Loader2 className="h-6 w-6 animate-spin text-accent" />
             <p className="text-sm">
               {tr("Carregant el teu compte…", "Cargando tu cuenta…")}
             </p>
@@ -331,1233 +257,538 @@ export default function CuentaPage() {
     );
   }
 
-  // Not authenticated — show login CTA
-  if (!user) {
-    return (
-      <div className="flex min-h-screen flex-col" style={{ background: "#F5EFE6", color: "#2C1810" }}>
-        <Header onOpenPreus={() => setPreusOpen(true)} />
-        <main className="flex flex-1 items-center justify-center px-4 py-16">
-          <div
-            className="w-full max-w-md text-center"
-            style={{
-              background: "white",
-              border: "1px solid #C9B89A",
-              padding: "32px",
-            }}
-          >
-            <div
-              className="mx-auto mb-3 flex items-center justify-center"
-              style={{
-                width: "56px",
-                height: "56px",
-                borderRadius: "50%",
-                background: "rgba(184, 115, 51, 0.15)",
-              }}
-            >
-              <LogIn className="h-6 w-6" style={{ color: "#B87333" }} />
-            </div>
-            <h2
-              className="mb-2 font-serif font-medium"
-              style={{ fontSize: "1.5rem", color: "#2C1810" }}
-            >
-              {tr("Inicia sessió", "Inicia sesión")}
-            </h2>
-            <p
-              className="mb-4"
-              style={{
-                fontSize: "0.875rem",
-                color: "#5C3A1E",
-                lineHeight: 1.5,
-              }}
-            >
-              {tr(
-                "Inicia sessió o crea un compte gratuït per accedir a la teva biblioteca d'informes ESG, els teus interessos guardats i la configuració de la newsletter.",
-                "Inicia sesión o crea una cuenta gratis para acceder a tu biblioteca de informes ESG, tus intereses guardados y la configuración de la newsletter."
-              )}
-            </p>
-            <Button
-              size="lg"
-              className="w-full"
-              onClick={() => setAuthOpen(true)}
-            >
-              <LogIn className="h-4 w-4" />
-              {tr(
-                "Iniciar sessió / Registrar-se",
-                "Iniciar sesión / Registrarse"
-              )}
-            </Button>
-            <p
-              className="mt-3"
-              style={{ fontSize: "0.75rem", color: "#8B7355" }}
-            >
-              {tr(
-                "Sense targeta de crèdit. Cancel·la quan vulguis.",
-                "Sin tarjeta de crédito. Cancela cuando quieras."
-              )}
-            </p>
-=======
-  const openAuth = (tab: "register" | "login" = "register") => {
-    setAuthTab(tab);
-    setAuthOpen(true);
-  };
-
-  const toggleEstandar = (slug: string) => {
-    setSelectedEstandards((prev) =>
-      prev.includes(slug) ? prev.filter((s) => s !== slug) : [...prev, slug]
-    );
-  };
-
-  const toggleInteres = (id: string) => {
-    setSelectedInteressos((prev) =>
-      prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]
-    );
-  };
-
-=======
-  const openAuth = (tab: "register" | "login" = "register") => {
-    setAuthTab(tab);
-    setAuthOpen(true);
-  };
-
-  const toggleEstandar = (slug: string) => {
-    setSelectedEstandards((prev) =>
-      prev.includes(slug) ? prev.filter((s) => s !== slug) : [...prev, slug]
-    );
-  };
-
-  const toggleInteres = (id: string) => {
-    setSelectedInteressos((prev) =>
-      prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]
-    );
-  };
-
->>>>>>> Stashed changes
-  // Si no hi ha usuari loguejat, mostrar CTA per accedir
+  // --- Sense usuari: mostra CTA per iniciar sessió ---
   if (!user) {
     return (
       <div className="flex min-h-screen flex-col bg-background">
-        <Header onOpenPreus={() => setPreusOpen(true)} onOpenAuth={(tab) => openAuth(tab || "register")} />
-        <main className="flex flex-1 items-center justify-center px-6">
-          <div className="text-center">
-            <h1 className="mb-4 font-serif text-3xl font-medium text-primary">{t("cuenta.v2.login_required.title")}</h1>
-            <p className="mb-8 font-serif text-lg italic" style={{ color: "#5C3A1E" }}>{t("cuenta.v2.login_required.body")}</p>
-            <button
-              onClick={() => openAuth("login")}
-              className="px-8 py-3 text-sm font-semibold text-white"
-              style={{ background: "#B87333" }}
-            >
-              {t("cuenta.v2.login_required.cta")}
-            </button>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-          </div>
+        <Header
+          onOpenPreus={() => setPreusOpen(true)}
+        />
+        <main className="flex flex-1 items-center justify-center px-4 py-16">
+          <Card className="w-full max-w-md border-rule bg-card text-center shadow-sm">
+            <CardHeader>
+              <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft/20">
+                <LogIn className="h-6 w-6 text-accent" />
+              </div>
+              <CardTitle className="font-serif text-2xl text-primary">
+                {tr("Inicia sessió", "Inicia sesión")}
+              </CardTitle>
+              <CardDescription>
+                {tr(
+                  "Inicia sessió o crea un compte gratuït per accedir a la teva biblioteca d'informes ESG, els teus interessos guardats i la configuració de la newsletter.",
+                  "Inicia sesión o crea una cuenta gratis para acceder a tu biblioteca de informes ESG, tus intereses guardados y la configuración de la newsletter."
+                )}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <Button
+                size="lg"
+                className="w-full"
+                onClick={() => setAuthOpen(true)}
+              >
+                <LogIn className="h-4 w-4" />
+                {tr(
+                  "Iniciar sessió / Registrar-se",
+                  "Iniciar sesión / Registrarse"
+                )}
+              </Button>
+              <p className="text-xs text-muted-foreground">
+                {tr(
+                  "Sense targeta de crèdit. Cancel·la quan vulguis.",
+                  "Sin tarjeta de crédito. Cancela cuando quieras."
+                )}
+              </p>
+            </CardContent>
+          </Card>
         </main>
         <Footer />
-        <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
-        <PreusDialog open={preusOpen} onOpenChange={setPreusOpen} onOpenRegister={() => openAuth("register")} />
+
+        <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab="login" />
+        <PreusDialog
+          open={preusOpen}
+          onOpenChange={setPreusOpen}
+          onOpenRegister={() => setAuthOpen(true)}
+        />
       </div>
     );
   }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  // Authenticated — show the redesigned account page
-  return (
-    <div
-      className="flex min-h-screen flex-col"
-      style={{ background: "#F5EFE6", color: "#2C1810" }}
-    >
-      <Header onOpenPreus={() => setPreusOpen(true)} />
-      <main className="flex-1">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-[320px_1fr]">
-          {/* ===== SIDEBAR (dark, sticky) ===== */}
-          <aside
-            className="flex flex-col gap-8 px-6 py-12 lg:sticky lg:top-[70px] lg:h-[calc(100vh-70px)]"
-            style={{
-              background: "#2C1810",
-              color: "#F5EFE6",
-              padding: "48px 32px",
-            }}
-          >
-            {/* Brand */}
-            <div
-              className="font-serif font-semibold"
-              style={{
-                fontSize: "1.375rem",
-                color: "#F5EFE6",
-                letterSpacing: "-0.015em",
-                paddingBottom: "24px",
-                borderBottom: "1px solid rgba(217, 165, 116, 0.25)",
-              }}
-            >
-              Criteri<span style={{ color: "#D9A574" }}>.</span> ESG
-            </div>
+  // --- Amb usuari: mostra les seves dades ---
+  const createdAt = user.created_at
+    ? new Date(user.created_at).toLocaleDateString(
+        lang === "ca" ? "ca-ES" : "es-ES",
+        {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }
+      )
+    : "—";
 
-            {/* User card */}
-            <div className="flex items-center gap-4">
-              <div
-                className="flex items-center justify-center font-serif font-medium"
-                style={{
-                  width: "56px",
-                  height: "56px",
-                  borderRadius: "50%",
-                  background: "#B87333",
-                  color: "#FFFFFF",
-                  fontSize: "1.5rem",
-                }}
-              >
-                {avatarLetter}
-              </div>
-              <div className="flex flex-col gap-1">
-                <div
-                  className="font-serif font-medium"
-                  style={{
-                    fontSize: "1.125rem",
-                    color: "#F5EFE6",
-                    letterSpacing: "-0.008em",
-                  }}
-                >
-                  {fullName || t("v2.cuenta.user.default")}
-                </div>
-                <div
-                  className="font-mono text-[10px] font-semibold uppercase"
-                  style={{ color: "#D9A574", letterSpacing: "0.18em" }}
-                >
-                  {userPlan === "premium"
-                    ? t("v2.cuenta.plan.premium")
-                    : t("v2.cuenta.plan.free")}
-=======
-  const navItems = [
-    { id: "perfil", num: "01", label: t("cuenta.v2.nav.perfil") },
-    { id: "newsletter", num: "02", label: t("cuenta.v2.nav.newsletter") },
-    { id: "plan", num: "03", label: t("cuenta.v2.nav.plan") },
-    { id: "estandares", num: "04", label: t("cuenta.v2.nav.estandares") },
-    { id: "intereses", num: "05", label: t("cuenta.v2.nav.intereses") },
-    { id: "billing", num: "06", label: t("cuenta.v2.nav.billing") },
-  ];
-
-=======
-  const navItems = [
-    { id: "perfil", num: "01", label: t("cuenta.v2.nav.perfil") },
-    { id: "newsletter", num: "02", label: t("cuenta.v2.nav.newsletter") },
-    { id: "plan", num: "03", label: t("cuenta.v2.nav.plan") },
-    { id: "estandares", num: "04", label: t("cuenta.v2.nav.estandares") },
-    { id: "intereses", num: "05", label: t("cuenta.v2.nav.intereses") },
-    { id: "billing", num: "06", label: t("cuenta.v2.nav.billing") },
-  ];
-
->>>>>>> Stashed changes
-  const userInitial = (user.email?.[0] || "U").toUpperCase();
-  const isPremium = plan === "premium";
+  const provider =
+    user.app_metadata?.provider ??
+    (session?.user?.identities?.[0]?.provider ?? "email");
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <Header onOpenPreus={() => setPreusOpen(true)} onOpenAuth={(tab) => openAuth(tab || "register")} />
+      <Header
+        onOpenPreus={() => setPreusOpen(true)}
+      />
       <main className="flex-1">
-        <div className="grid lg:grid-cols-[320px_1fr]">
-          {/* === SIDEBAR === */}
-          <aside
-            className="sticky top-[70px] hidden h-[calc(100vh-70px)] flex-col p-12 lg:flex"
-            style={{ background: "#2C1810", color: "#F5EFE6" }}
-          >
-            <div className="mb-8 pb-6 border-b" style={{ borderColor: "rgba(217,165,116,0.25)" }}>
-              <div className="font-serif text-xl font-semibold" style={{ color: "#F5EFE6", letterSpacing: "-0.015em" }}>
-                Criteri<span style={{ color: "#D9A574" }}>.</span> ESG
-              </div>
-            </div>
+        <section className="border-b border-rule bg-secondary/30 py-12">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <p className="eyebrow mb-2">
+              {tr("El meu compte", "Mi cuenta")}
+            </p>
+            <h1 className="font-serif text-4xl font-semibold leading-tight text-primary sm:text-5xl">
+              {tr("Hola", "Hola")}
+              {fullName ? `, ${fullName.split(" ")[0]}` : ""}.
+            </h1>
+            <div className="rule-accent my-5" />
+            <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
+              {tr(
+                "Gestiona la teva subscripció i dades",
+                "Gestiona tu suscripción y datos"
+              )}
+            </p>
+          </div>
+        </section>
 
-            <div className="mb-8 flex items-center gap-4">
-              <div
-                className="flex h-14 w-14 items-center justify-center rounded-full font-serif text-2xl font-medium"
-                style={{ background: "#B87333", color: "#FFFFFF" }}
-              >
-                {userInitial}
-              </div>
-              <div className="flex flex-col gap-1">
-                <div className="font-serif text-lg font-medium" style={{ color: "#F5EFE6" }}>
-                  {user.email?.split("@")[0] || "Usuario"}
-                </div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#D9A574" }}>
-                  {isPremium ? t("cuenta.v2.plan.premium") : t("cuenta.v2.plan.free")}
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-                </div>
-              </div>
-            </div>
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            {/* Nav */}
-            <nav className="flex flex-col gap-0.5">
-              {NAV_ITEMS.map((item) => (
-                <a
-                  key={item.num}
-                  href={item.href}
-                  className="grid items-baseline gap-3 px-4 py-3 font-sans text-sm font-medium no-underline transition-colors"
-                  style={{
-                    gridTemplateColumns: "24px 1fr",
-                    color: "rgba(245, 239, 230, 0.7)",
-                    borderLeft: "2px solid transparent",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#F5EFE6";
-                    e.currentTarget.style.background = "rgba(217, 165, 116, 0.08)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "rgba(245, 239, 230, 0.7)";
-                    e.currentTarget.style.background = "transparent";
-                  }}
-                >
-                  <span
-                    className="font-mono text-[10px] font-semibold"
-                    style={{ color: "rgba(217, 165, 116, 0.5)" }}
+        <section className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
+          {isEditing ? (
+            /* ===== Mode edició: formulari editable ===== */
+            <Card className="border-rule bg-card">
+              <CardHeader>
+                <CardTitle className="font-serif text-xl text-primary">
+                  {tr("Editar dades", "Editar datos")}
+                </CardTitle>
+                <CardDescription>
+                  {tr(
+                    "Actualitza el teu nom, empresa, interessos i idioma de la newsletter.",
+                    "Actualiza tu nombre, empresa, intereses e idioma de la newsletter."
+                  )}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {/* Nom */}
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="edit-name"
+                    className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground"
                   >
-                    {item.num}
-                  </span>
-                  <span>{t(item.labelKey)}</span>
-                </a>
-              ))}
-            </nav>
-
-            {/* Logout */}
-            <button
-              onClick={() => signOut()}
-              className="mt-auto border-0 bg-transparent p-0 text-left font-sans text-[13px] font-medium"
-              style={{
-                color: "rgba(245, 239, 230, 0.5)",
-                borderTop: "1px solid rgba(217, 165, 116, 0.15)",
-                paddingTop: "12px",
-                cursor: "pointer",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = "#D9A574";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = "rgba(245, 239, 230, 0.5)";
-              }}
-            >
-              {t("v2.cuenta.nav.logout")}
-            </button>
-          </aside>
-
-          {/* ===== MAIN CONTENT ===== */}
-          <div
-            className="flex flex-col gap-8 px-6 py-12 sm:px-12 lg:px-16"
-            style={{ padding: "48px 64px" }}
-          >
-            {/* Page title */}
-            <div>
-              <h1
-                className="font-serif font-medium"
-                style={{
-                  fontSize: "clamp(2rem, 3vw, 2.25rem)",
-                  color: "#2C1810",
-                  letterSpacing: "-0.018em",
-                  marginBottom: "8px",
-                }}
-              >
-                {t("v2.cuenta.page.title")}
-              </h1>
-              <p
-                className="font-serif italic"
-                style={{
-                  fontSize: "1rem",
-                  color: "#5C3A1E",
-                  marginBottom: "16px",
-                }}
-              >
-                {t("v2.cuenta.page.subtitle")}
-              </p>
-            </div>
-
-            {/* ===== 01 PERFIL ===== */}
-            <section
-              id="perfil"
-              className="flex flex-col gap-5"
-              style={{
-                background: "white",
-                border: "1px solid #C9B89A",
-                padding: "32px",
-                scrollMarginTop: "90px",
-              }}
-            >
-              <div
-                className="flex items-baseline justify-between pb-4"
-                style={{ borderBottom: "1px solid #C9B89A" }}
-              >
-                <h2
-                  className="font-serif font-medium"
-                  style={{
-                    fontSize: "1.375rem",
-                    color: "#2C1810",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {t("v2.cuenta.card.perfil.title")}
-                </h2>
-                <span
-                  className="font-mono text-[10px] font-semibold uppercase"
-                  style={{ color: "#B87333", letterSpacing: "0.18em" }}
-                >
-                  01
-                </span>
-              </div>
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                <div className="flex flex-col gap-1.5">
-                  <label
-                    className="font-mono text-[10px] font-semibold uppercase"
-                    style={{ color: "#8A5526", letterSpacing: "0.16em" }}
-                  >
-                    {t("v2.cuenta.perfil.name")}
-                  </label>
-                  <input
+                    {tr("Nom", "Nombre")}
+                  </Label>
+                  <Input
+                    id="edit-name"
                     value={editName}
                     onChange={(e) => setEditName(e.target.value)}
-                    placeholder={tr("El teu nom", "Tu nombre")}
-                    className="font-sans text-sm font-medium"
-                    style={{
-                      background: "#F5EFE6",
-                      border: "1px solid #C9B89A",
-                      padding: "12px 16px",
-                      color: "#2C1810",
-                    }}
+                    placeholder={tr(
+                      "El teu nom complet",
+                      "Tu nombre completo"
+                    )}
+                    autoComplete="name"
                   />
                 </div>
-                <div className="flex flex-col gap-1.5">
-                  <label
-                    className="font-mono text-[10px] font-semibold uppercase"
-                    style={{ color: "#8A5526", letterSpacing: "0.16em" }}
+
+                {/* Empresa */}
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="edit-company"
+                    className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground"
                   >
-                    {t("v2.cuenta.perfil.email")}
-                  </label>
-                  <input
-                    value={email}
-                    readOnly
-                    className="font-sans text-sm font-medium"
-                    style={{
-                      background: "#F5EFE6",
-                      border: "1px solid #C9B89A",
-                      padding: "12px 16px",
-                      color: "#2C1810",
-                      opacity: 0.7,
-                    }}
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label
-                    className="font-mono text-[10px] font-semibold uppercase"
-                    style={{ color: "#8A5526", letterSpacing: "0.16em" }}
-                  >
-                    {t("v2.cuenta.perfil.empresa")}
-                  </label>
-                  <input
+                    {tr("Empresa", "Empresa")}
+                  </Label>
+                  <Input
+                    id="edit-company"
                     value={editCompany}
                     onChange={(e) => setEditCompany(e.target.value)}
-                    placeholder={t("v2.cuenta.perfil.empresa.placeholder")}
-                    className="font-sans text-sm font-medium"
-                    style={{
-                      background: "#F5EFE6",
-                      border: "1px solid #C9B89A",
-                      padding: "12px 16px",
-                      color: "#2C1810",
-                    }}
+                    placeholder={tr("La teva empresa", "Tu empresa")}
+                    autoComplete="organization"
                   />
                 </div>
-                <div className="flex flex-col gap-1.5">
-                  <label
-                    className="font-mono text-[10px] font-semibold uppercase"
-                    style={{ color: "#8A5526", letterSpacing: "0.16em" }}
-                  >
-                    {t("v2.cuenta.perfil.sector")}
-                  </label>
-                  <input
-                    defaultValue={t("v2.cuenta.perfil.sector.default")}
-                    className="font-sans text-sm font-medium"
-                    style={{
-                      background: "#F5EFE6",
-                      border: "1px solid #C9B89A",
-                      padding: "12px 16px",
-                      color: "#2C1810",
-                    }}
-                  />
-                </div>
-              </div>
-            </section>
 
-            {/* ===== 02 NEWSLETTER ===== */}
-            <section
-              id="newsletter"
-              className="flex flex-col gap-5"
-              style={{
-                background: "white",
-                border: "1px solid #C9B89A",
-                padding: "32px",
-                scrollMarginTop: "90px",
-              }}
-            >
-              <div
-                className="flex items-baseline justify-between pb-4"
-                style={{ borderBottom: "1px solid #C9B89A" }}
-              >
-                <h2
-                  className="font-serif font-medium"
-                  style={{
-                    fontSize: "1.375rem",
-                    color: "#2C1810",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {t("v2.cuenta.card.newsletter.title")}
-                </h2>
-                <span
-                  className="font-mono text-[10px] font-semibold uppercase"
-                  style={{ color: "#B87333", letterSpacing: "0.18em" }}
-                >
-                  02
-                </span>
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label
-                  className="font-mono text-[10px] font-semibold uppercase"
-                  style={{ color: "#8A5526", letterSpacing: "0.16em" }}
-                >
-                  {t("v2.cuenta.newsletter.lang.label")}
-                </label>
-                <div
-                  className="inline-flex"
-                  style={{ border: "1px solid #C9B89A", width: "fit-content" }}
-                >
-                  <button
-                    onClick={() => setEditLanguage("ca")}
-                    className="font-mono text-[11px] font-semibold uppercase"
-                    style={{
-                      padding: "12px 24px",
-                      letterSpacing: "0.18em",
-                      border: "none",
-                      cursor: "pointer",
-                      background: editLanguage === "ca" ? "#B87333" : "#F5EFE6",
-                      color: editLanguage === "ca" ? "#FFFFFF" : "#5C3A1E",
-                    }}
-                  >
-                    CAT
-                  </button>
-                  <button
-                    onClick={() => setEditLanguage("es")}
-                    className="font-mono text-[11px] font-semibold uppercase"
-                    style={{
-                      padding: "12px 24px",
-                      letterSpacing: "0.18em",
-                      border: "none",
-                      cursor: "pointer",
-                      background: editLanguage === "es" ? "#B87333" : "#F5EFE6",
-                      color: editLanguage === "es" ? "#FFFFFF" : "#5C3A1E",
-                    }}
-                  >
-                    ES
-                  </button>
-                </div>
-              </div>
-              <p
-                className="font-serif italic"
-                style={{
-                  fontSize: "0.875rem",
-                  color: "#5C3A1E",
-                  lineHeight: 1.4,
-                }}
-              >
-                {t("v2.cuenta.newsletter.desc")}
-              </p>
-            </section>
+                <Separator />
 
-            {/* ===== 03 MI PLAN ===== */}
-            <section
-              id="pla"
-              className="flex flex-col gap-5"
-              style={{
-                background: "white",
-                border: "1px solid #C9B89A",
-                padding: "32px",
-                scrollMarginTop: "90px",
-              }}
-            >
-              <div
-                className="flex items-baseline justify-between pb-4"
-                style={{ borderBottom: "1px solid #C9B89A" }}
-              >
-                <h2
-                  className="font-serif font-medium"
-                  style={{
-                    fontSize: "1.375rem",
-                    color: "#2C1810",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {t("v2.cuenta.card.pla.title")}
-                </h2>
-                <span
-                  className="font-mono text-[10px] font-semibold uppercase"
-                  style={{ color: "#B87333", letterSpacing: "0.18em" }}
-                >
-                  03
-                </span>
-              </div>
-              <div
-                className="flex items-center justify-between gap-6"
-                style={{
-                  background: "#2C1810",
-                  color: "#F5EFE6",
-                  padding: "24px",
-                }}
-              >
-                <div className="flex flex-col gap-1">
-                  <div
-                    className="font-serif font-medium"
-                    style={{
-                      fontSize: "1.5rem",
-                      color: "#F5EFE6",
-                      letterSpacing: "-0.01em",
-                    }}
-                  >
-                    {userPlan === "premium"
-                      ? t("v2.cuenta.plan.premium")
-                      : t("v2.cuenta.pla.free.name")}
-                  </div>
-                  <div
-                    className="font-mono text-[11px] font-semibold uppercase"
-                    style={{ color: "#D9A574", letterSpacing: "0.16em" }}
-                  >
-                    {userPlan === "premium"
-                      ? tr(
-                          "Accés il·limitat · Facturació activa",
-                          "Acceso ilimitado · Facturación activa"
-                        )
-                      : t("v2.cuenta.pla.free.price")}
+                {/* Interessos */}
+                <div className="space-y-3">
+                  <Label className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                    {tr("Interessos", "Intereses")}
+                  </Label>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {INTEREST_OPTIONS.map((opt) => {
+                      const checked = editInterests.includes(opt.id);
+                      return (
+                        <div
+                          key={opt.id}
+                          className="flex items-start gap-2.5 rounded-md border border-rule bg-secondary/30 px-3 py-2"
+                        >
+                          <Checkbox
+                            id={`interest-${opt.id}`}
+                            checked={checked}
+                            onCheckedChange={() => toggleInterest(opt.id)}
+                            className="mt-0.5"
+                          />
+                          <Label
+                            htmlFor={`interest-${opt.id}`}
+                            className="cursor-pointer text-sm font-normal leading-snug text-foreground"
+                          >
+                            {opt.label}
+                          </Label>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
-                {userPlan === "free" && (
-                  <button
-                    onClick={() => setPreusOpen(true)}
-                    className="font-sans text-[13px] font-semibold"
-                    style={{
-                      background: "#B87333",
-                      color: "#FFFFFF",
-                      padding: "12px 24px",
-                      border: "none",
-                      cursor: "pointer",
-                      whiteSpace: "nowrap",
-                    }}
+
+                <Separator />
+
+                {/* Idioma de la newsletter — mateix text en CA i ES (Problema 3) */}
+                <div className="space-y-2">
+                  <Label className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                    Idioma de la newsletter
+                  </Label>
+                  <Select
+                    value={editLanguage}
+                    onValueChange={(v) => setEditLanguage(v as "es" | "ca")}
                   >
-                    {t("v2.cuenta.pla.cta")}
-                  </button>
+                    <SelectTrigger className="w-full sm:w-60">
+                      <Globe className="h-3.5 w-3.5 text-accent" />
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="es">Español</SelectItem>
+                      <SelectItem value="ca">Català</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {saveError && (
+                  <p className="text-sm text-destructive" role="alert">
+                    {saveError}
+                  </p>
                 )}
-              </div>
-              {userPlan === "free" && (
-                <p
-                  className="font-sans"
-                  style={{
-                    fontSize: "0.8125rem",
-                    color: "#5C3A1E",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {t("v2.cuenta.pla.desc")}
-                </p>
-              )}
-            </section>
-
-            {/* ===== 04 MIS ESTÁNDARES ESG (16 chips) ===== */}
-            <section
-              id="estandares"
-              className="flex flex-col gap-5"
-              style={{
-                background: "white",
-                border: "1px solid #C9B89A",
-                padding: "32px",
-                scrollMarginTop: "90px",
-              }}
-            >
-              <div
-                className="flex items-baseline justify-between pb-4"
-                style={{ borderBottom: "1px solid #C9B89A" }}
-              >
-                <h2
-                  className="font-serif font-medium"
-                  style={{
-                    fontSize: "1.375rem",
-                    color: "#2C1810",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {t("v2.cuenta.card.estandards.title")}
-                </h2>
-                <span
-                  className="font-mono text-[10px] font-semibold uppercase"
-                  style={{ color: "#B87333", letterSpacing: "0.18em" }}
-                >
-                  04
-                </span>
-              </div>
-              <p
-                className="font-serif italic"
-                style={{
-                  fontSize: "0.875rem",
-                  color: "#5C3A1E",
-                  lineHeight: 1.4,
-                }}
-              >
-                {t("v2.cuenta.estandards.desc")}
-              </p>
-              <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
-                {STANDARDS.map((s) => {
-                  const selected = editStandards.includes(s.slug);
-                  return (
-                    <button
-                      key={s.slug}
-                      onClick={() => toggleStandard(s.slug)}
-                      className="flex items-center gap-2.5 text-left font-sans text-[13px] font-medium"
-                      style={{
-                        padding: "12px 14px",
-                        background: selected ? "#2C1810" : "#F5EFE6",
-                        color: selected ? "#F5EFE6" : "#2C1810",
-                        border: selected
-                          ? "1px solid #B87333"
-                          : "1px solid #C9B89A",
-                        borderLeft: `4px solid ${TYPE_BORDER[s.type]}`,
-                        cursor: "pointer",
-                      }}
-                    >
-                      <span
-                        className="flex items-center justify-center"
-                        style={{
-                          width: "16px",
-                          height: "16px",
-                          border: selected
-                            ? "1.5px solid #B87333"
-                            : "1.5px solid #C9B89A",
-                          background: selected ? "#B87333" : "transparent",
-                          color: selected ? "white" : "transparent",
-                          fontSize: "11px",
-                        }}
-                      >
-                        ✓
-                      </span>
-                      {s.name}
-=======
-            <nav className="flex flex-col gap-0.5">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    setActiveNav(item.id);
-                    document.getElementById(`card-${item.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }}
-                  className="grid grid-cols-[24px_1fr] items-baseline gap-3 border-l-2 px-4 py-3 text-left text-sm font-medium transition-colors"
-                  style={{
-                    color: activeNav === item.id ? "#F5EFE6" : "rgba(245,239,230,0.7)",
-                    background: activeNav === item.id ? "rgba(217,165,116,0.12)" : "transparent",
-                    borderLeftColor: activeNav === item.id ? "#B87333" : "transparent",
-                  }}
-                >
-=======
-            <nav className="flex flex-col gap-0.5">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    setActiveNav(item.id);
-                    document.getElementById(`card-${item.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }}
-                  className="grid grid-cols-[24px_1fr] items-baseline gap-3 border-l-2 px-4 py-3 text-left text-sm font-medium transition-colors"
-                  style={{
-                    color: activeNav === item.id ? "#F5EFE6" : "rgba(245,239,230,0.7)",
-                    background: activeNav === item.id ? "rgba(217,165,116,0.12)" : "transparent",
-                    borderLeftColor: activeNav === item.id ? "#B87333" : "transparent",
-                  }}
-                >
->>>>>>> Stashed changes
-                  <span className="font-mono text-[10px] font-semibold" style={{ color: activeNav === item.id ? "#D9A574" : "rgba(217,165,116,0.5)" }}>
-                    {item.num}
-                  </span>
-                  <span>{item.label}</span>
-                </button>
-              ))}
-            </nav>
-
-            <button
-              onClick={() => router.push("/")}
-              className="mt-auto border-t pt-3 text-left text-[13px] font-medium"
-              style={{ borderColor: "rgba(217,165,116,0.15)", color: "rgba(245,239,230,0.5)" }}
-            >
-              ← {t("cuenta.v2.logout")}
-            </button>
-          </aside>
-
-          {/* === MAIN === */}
-          <div className="flex flex-col gap-8 p-12" style={{ background: "#F5EFE6" }}>
-            <div>
-              <h1 className="mb-2 font-serif text-4xl font-medium text-primary" style={{ letterSpacing: "-0.018em" }}>
-                {t("cuenta.v2.page.title")}
-              </h1>
-              <p className="font-serif text-base italic" style={{ color: "#5C3A1E" }}>
-                {t("cuenta.v2.page.subtitle")}
-              </p>
-            </div>
-
-            {/* CARD 01: PERFIL */}
-            <div id="card-perfil" className="border p-8" style={{ borderColor: "#C9B89A", background: "white" }}>
-              <div className="mb-5 flex justify-between border-b pb-4" style={{ borderColor: "#C9B89A" }}>
-                <h2 className="font-serif text-xl font-medium text-primary" style={{ letterSpacing: "-0.01em" }}>
-                  {t("cuenta.v2.perfil.title")}
-                </h2>
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#B87333" }}>01</span>
-              </div>
-              <div className="grid gap-6 sm:grid-cols-2">
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#8A5526" }}>
-                    {t("cuenta.v2.perfil.nombre")}
-                  </label>
-                  <input
-                    className="border p-3 text-sm font-medium text-primary"
-                    style={{ background: "#F5EFE6", borderColor: "#C9B89A" }}
-                    defaultValue={user.email?.split("@")[0] || ""}
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#8A5526" }}>
-                    {t("cuenta.v2.perfil.email")}
-                  </label>
-                  <input
-                    className="border p-3 text-sm font-medium text-primary"
-                    style={{ background: "#F5EFE6", borderColor: "#C9B89A" }}
-                    defaultValue={user.email || ""}
-                    disabled
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#8A5526" }}>
-                    {t("cuenta.v2.perfil.empresa")}
-                  </label>
-                  <input
-                    className="border p-3 text-sm font-medium text-primary"
-                    style={{ background: "#F5EFE6", borderColor: "#C9B89A" }}
-                    placeholder={t("cuenta.v2.perfil.empresa_placeholder")}
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#8A5526" }}>
-                    {t("cuenta.v2.perfil.sector")}
-                  </label>
-                  <input
-                    className="border p-3 text-sm font-medium text-primary"
-                    style={{ background: "#F5EFE6", borderColor: "#C9B89A" }}
-                    placeholder={t("cuenta.v2.perfil.sector_placeholder")}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* CARD 02: NEWSLETTER */}
-            <div id="card-newsletter" className="border p-8" style={{ borderColor: "#C9B89A", background: "white" }}>
-              <div className="mb-5 flex justify-between border-b pb-4" style={{ borderColor: "#C9B89A" }}>
-                <h2 className="font-serif text-xl font-medium text-primary" style={{ letterSpacing: "-0.01em" }}>
-                  {t("cuenta.v2.newsletter.title")}
-                </h2>
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#B87333" }}>02</span>
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#8A5526" }}>
-                  {t("cuenta.v2.newsletter.idioma")}
-                </label>
-                <div className="inline-flex border" style={{ borderColor: "#C9B89A" }}>
-                  {(["ca", "es"] as const).map((lang) => (
-                    <button
-                      key={lang}
-                      onClick={() => setNewsletterLang(lang)}
-                      className="px-6 py-3 font-mono text-[11px] uppercase tracking-[0.18em] font-semibold"
-                      style={{
-                        background: newsletterLang === lang ? "#B87333" : "#F5EFE6",
-                        color: newsletterLang === lang ? "#FFFFFF" : "#5C3A1E",
-                      }}
-                    >
-                      {lang.toUpperCase()}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <p className="mt-4 font-serif text-sm italic leading-relaxed" style={{ color: "#5C3A1E" }}>
-                {t("cuenta.v2.newsletter.desc")}
-              </p>
-            </div>
-
-            {/* CARD 03: MI PLAN */}
-            <div id="card-plan" className="border p-8" style={{ borderColor: "#C9B89A", background: "white" }}>
-              <div className="mb-5 flex justify-between border-b pb-4" style={{ borderColor: "#C9B89A" }}>
-                <h2 className="font-serif text-xl font-medium text-primary" style={{ letterSpacing: "-0.01em" }}>
-                  {t("cuenta.v2.plan.title")}
-                </h2>
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#B87333" }}>03</span>
-              </div>
-              <div
-                className="flex items-center justify-between gap-6 p-6"
-                style={{ background: "#2C1810", color: "#F5EFE6" }}
-              >
-                <div className="flex flex-col gap-1">
-                  <div className="font-serif text-2xl font-medium" style={{ color: "#F5EFE6", letterSpacing: "-0.01em" }}>
-                    {isPremium ? t("cuenta.v2.plan.premium") : t("cuenta.v2.plan.free")}
-                  </div>
-                  <div className="font-mono text-[11px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#D9A574" }}>
-                    {isPremium ? t("cuenta.v2.plan.premium_desc") : t("cuenta.v2.plan.free_desc")}
-                  </div>
-                </div>
-                {!isPremium && (
-                  <button
-                    onClick={() => setPreusOpen(true)}
-                    className="px-6 py-3 text-[13px] font-semibold text-white"
-                    style={{ background: "#B87333" }}
-                  >
-                    {t("cuenta.v2.plan.upgrade")}
-                  </button>
-                )}
-              </div>
-              <p className="mt-4 text-[13px] leading-relaxed" style={{ color: "#5C3A1E" }}>
-                {t("cuenta.v2.plan.premium_info")}
-              </p>
-            </div>
-
-            {/* CARD 04: MIS ESTÁNDARES ESG (16) */}
-            <div id="card-estandares" className="border p-8" style={{ borderColor: "#C9B89A", background: "white" }}>
-              <div className="mb-5 flex justify-between border-b pb-4" style={{ borderColor: "#C9B89A" }}>
-                <h2 className="font-serif text-xl font-medium text-primary" style={{ letterSpacing: "-0.01em" }}>
-                  {t("cuenta.v2.estandares.title")}
-                </h2>
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#B87333" }}>04</span>
-              </div>
-              <p className="mb-4 font-serif text-sm italic leading-relaxed" style={{ color: "#5C3A1E" }}>
-                {t("cuenta.v2.estandares.desc")}
-              </p>
-              <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
-                {ESTANDARES.map((est) => {
-                  const selected = selectedEstandards.includes(est.slug);
-                  return (
-                    <button
-                      key={est.slug}
-                      onClick={() => toggleEstandar(est.slug)}
-                      className="flex items-center gap-2.5 border-l-4 p-3 text-left text-[13px] font-medium"
-                      style={{
-                        borderColor: CAT_TYPE_COLOR[est.type],
-                        background: selected ? "#2C1810" : "#F5EFE6",
-                        color: selected ? "#F5EFE6" : "#2C1810",
-                        border: selected ? "1px solid #B87333" : "1px solid #C9B89A",
-                        borderLeftColor: CAT_TYPE_COLOR[est.type],
-                        borderLeftWidth: "4px",
-                      }}
-                    >
-                      <span
-                        className="flex h-4 w-4 items-center justify-center text-[11px]"
-                        style={{
-                          background: selected ? "#B87333" : "transparent",
-                          border: selected ? "1px solid #B87333" : "1.5px solid #C9B89A",
-                          color: "white",
-                        }}
-                      >
-                        {selected ? "✓" : ""}
-                      </span>
-                      {est.name}
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-                    </button>
-                  );
-                })}
-              </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-              {/* Legend */}
-              <div
-                className="flex flex-wrap gap-6 font-mono text-[9.5px] font-semibold uppercase"
-                style={{
-                  color: "#5C3A1E",
-                  letterSpacing: "0.16em",
-                  marginTop: "8px",
-                }}
-              >
-                <div className="flex items-center gap-2">
-                  <span
-                    style={{ width: "18px", height: "4px", background: "#5C3A1E" }}
-                  />
-                  {t("v2.cuenta.estandards.legend.reg")}
-                </div>
-                <div className="flex items-center gap-2">
-                  <span
-                    style={{ width: "18px", height: "4px", background: "#B87333" }}
-                  />
-                  {t("v2.cuenta.estandards.legend.fw")}
-                </div>
-                <div className="flex items-center gap-2">
-                  <span
-                    style={{ width: "18px", height: "4px", background: "#E8C99A" }}
-                  />
-                  {t("v2.cuenta.estandards.legend.cert")}
-                </div>
-              </div>
-            </section>
-
-            {/* ===== 05 OTROS INTERESES (8 chips) ===== */}
-            <section
-              id="interessos"
-              className="flex flex-col gap-5"
-              style={{
-                background: "white",
-                border: "1px solid #C9B89A",
-                padding: "32px",
-                scrollMarginTop: "90px",
-              }}
-            >
-              <div
-                className="flex items-baseline justify-between pb-4"
-                style={{ borderBottom: "1px solid #C9B89A" }}
-              >
-                <h2
-                  className="font-serif font-medium"
-                  style={{
-                    fontSize: "1.375rem",
-                    color: "#2C1810",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {t("v2.cuenta.card.interessos.title")}
-                </h2>
-                <span
-                  className="font-mono text-[10px] font-semibold uppercase"
-                  style={{ color: "#B87333", letterSpacing: "0.18em" }}
-                >
-                  05
-                </span>
-              </div>
-              <p
-                className="font-serif italic"
-                style={{
-                  fontSize: "0.875rem",
-                  color: "#5C3A1E",
-                  lineHeight: 1.4,
-                }}
-              >
-                {t("v2.cuenta.interessos.desc")}
-              </p>
-              <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
-                {INTEREST_IDS.map((opt) => {
-                  const selected = editInterests.includes(opt.id);
-                  return (
-                    <button
-                      key={opt.id}
-                      onClick={() => toggleInterest(opt.id)}
-                      className="flex items-center gap-2.5 text-left font-sans text-[13px] font-medium"
-                      style={{
-                        padding: "12px 14px",
-                        background: selected
-                          ? "rgba(184, 115, 51, 0.12)"
-                          : "#F5EFE6",
-                        color: selected ? "#5C3A1E" : "#2C1810",
-                        border: selected
-                          ? "1px solid #B87333"
-                          : "1px solid #C9B89A",
-                        cursor: "pointer",
-                      }}
-                    >
-                      <span
-                        className="flex items-center justify-center"
-                        style={{
-                          width: "16px",
-                          height: "16px",
-                          border: selected
-                            ? "1.5px solid #B87333"
-                            : "1.5px solid #C9B89A",
-                          background: selected ? "#B87333" : "transparent",
-                          color: selected ? "white" : "transparent",
-                          fontSize: "11px",
-                        }}
-                      >
-                        ✓
-                      </span>
-                      {t(opt.labelKey)}
-=======
-=======
->>>>>>> Stashed changes
-              <div className="mt-4 flex gap-6 font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#5C3A1E" }}>
-                <div className="flex items-center gap-2">
-                  <span className="inline-block w-[18px] h-1" style={{ background: "#5C3A1E" }} />
-                  <span>{t("cuenta.v2.estandares.legend.reg")}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="inline-block w-[18px] h-1" style={{ background: "#B87333" }} />
-                  <span>{t("cuenta.v2.estandares.legend.fw")}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="inline-block w-[18px] h-1" style={{ background: "#E8C99A" }} />
-                  <span>{t("cuenta.v2.estandares.legend.cert")}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* CARD 05: OTROS INTERESES (8) */}
-            <div id="card-intereses" className="border p-8" style={{ borderColor: "#C9B89A", background: "white" }}>
-              <div className="mb-5 flex justify-between border-b pb-4" style={{ borderColor: "#C9B89A" }}>
-                <h2 className="font-serif text-xl font-medium text-primary" style={{ letterSpacing: "-0.01em" }}>
-                  {t("cuenta.v2.intereses.title")}
-                </h2>
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#B87333" }}>05</span>
-              </div>
-              <p className="mb-4 font-serif text-sm italic leading-relaxed" style={{ color: "#5C3A1E" }}>
-                {t("cuenta.v2.intereses.desc")}
-              </p>
-              <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
-                {INTERESSOS.map((interes) => {
-                  const selected = selectedInteressos.includes(interes.id);
-                  return (
-                    <button
-                      key={interes.id}
-                      onClick={() => toggleInteres(interes.id)}
-                      className="flex items-center gap-2.5 p-3 text-left text-[13px] font-medium"
-                      style={{
-                        background: selected ? "rgba(184,115,51,0.12)" : "#F5EFE6",
-                        border: selected ? "1px solid #B87333" : "1px solid #C9B89A",
-                        color: selected ? "#5C3A1E" : "#2C1810",
-                      }}
-                    >
-                      <span
-                        className="flex h-4 w-4 items-center justify-center text-[11px]"
-                        style={{
-                          background: selected ? "#B87333" : "transparent",
-                          border: selected ? "1px solid #B87333" : "1.5px solid #C9B89A",
-                          color: "white",
-                        }}
-                      >
-                        {selected ? "✓" : ""}
-                      </span>
-                      {t(interes.key)}
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-                    </button>
-                  );
-                })}
-              </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            </section>
-
-            {/* ===== 06 BILLING (placeholder card — keep simple) ===== */}
-            <section
-              id="billing"
-              className="flex flex-col gap-5"
-              style={{
-                background: "white",
-                border: "1px solid #C9B89A",
-                padding: "32px",
-                scrollMarginTop: "90px",
-              }}
-            >
-              <div
-                className="flex items-baseline justify-between pb-4"
-                style={{ borderBottom: "1px solid #C9B89A" }}
-              >
-                <h2
-                  className="font-serif font-medium"
-                  style={{
-                    fontSize: "1.375rem",
-                    color: "#2C1810",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {t("v2.cuenta.nav.billing")}
-                </h2>
-                <span
-                  className="font-mono text-[10px] font-semibold uppercase"
-                  style={{ color: "#B87333", letterSpacing: "0.18em" }}
-                >
-                  06
-                </span>
-              </div>
-              <p
-                className="font-serif italic"
-                style={{
-                  fontSize: "0.875rem",
-                  color: "#5C3A1E",
-                  lineHeight: 1.5,
-                }}
-              >
-                {userPlan === "premium"
-                  ? tr(
-                      "Gestiona la teva subscripció, factura i mètode de pagament. Per canvis, escriu-nos a info@criteriesg.com.",
-                      "Gestiona tu suscripción, factura y método de pago. Para cambios, escríbenos a info@criteriesg.com."
-                    )
-                  : tr(
-                      "Encara no ets Premium. Quan ho siguis, aquí podràs gestionar la teva subscripció i factures.",
-                      "Aún no eres Premium. Cuando lo seas, aquí podrás gestionar tu suscripción y facturas."
+              </CardContent>
+            </Card>
+          ) : (
+            /* ===== Mode lectura: grid de cards existent ===== */
+            <div className="grid gap-6 md:grid-cols-3">
+              {/* Perfil bàsic */}
+              <Card className="border-rule bg-card md:col-span-2">
+                <CardHeader>
+                  <CardTitle className="font-serif text-xl text-primary">
+                    {tr("Dades personals", "Datos personales")}
+                  </CardTitle>
+                  <CardDescription>
+                    {tr(
+                      "Informació bàsica del teu perfil a Criteri ESG.",
+                      "Información básica de tu perfil en Criteri ESG."
                     )}
-              </p>
-            </section>
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <DataRow
+                    icon={<UserIcon className="h-4 w-4 text-accent" />}
+                    label={tr("Nom", "Nombre")}
+                    value={fullName || "—"}
+                  />
+                  <Separator />
+                  <DataRow
+                    icon={<Mail className="h-4 w-4 text-accent" />}
+                    label="Email"
+                    value={user.email ?? "—"}
+                  />
+                  <Separator />
+                  <DataRow
+                    icon={<Building2 className="h-4 w-4 text-accent" />}
+                    label={tr("Empresa", "Empresa")}
+                    value={company || "—"}
+                  />
+                  <Separator />
+                  <DataRow
+                    icon={<ShieldCheck className="h-4 w-4 text-accent" />}
+                    label={tr("Mètode d'accés", "Método de acceso")}
+                    value={
+                      provider === "google"
+                        ? "Google"
+                        : tr(
+                            "Email + contrasenya",
+                            "Email + contraseña"
+                          )
+                    }
+                  />
+                  <Separator />
+                  <DataRow
+                    icon={<CheckCircle2 className="h-4 w-4 text-accent" />}
+                    label={tr("Compte creat el", "Cuenta creada el")}
+                    value={createdAt}
+                  />
+                </CardContent>
+              </Card>
 
-            {/* Save / error */}
-            {saveError && (
-              <p
-                className="text-sm"
-                style={{ color: "#A04020" }}
-                role="alert"
+              {/* Pla */}
+              <Card
+                className={`border-rule bg-card ${
+                  plan === "premium" ? "ring-1 ring-accent/40" : ""
+                }`}
               >
-                {saveError}
-              </p>
+                <CardHeader>
+                  <div className="mb-1 flex items-center gap-2">
+                    {plan === "premium" ? (
+                      <Crown className="h-4 w-4 text-accent" />
+                    ) : (
+                      <Sparkles className="h-4 w-4 text-accent" />
+                    )}
+                    <CardTitle className="font-serif text-lg text-primary">
+                      {tr("Pla actual", "Plan actual")}
+                    </CardTitle>
+                  </div>
+                  <CardDescription>
+                    {plan === "premium"
+                      ? tr(
+                          "Subscrit al pla Premium.",
+                          "Suscrito al plan Premium."
+                        )
+                      : tr(
+                          "Estàs al pla gratuït.",
+                          "Estás en el plan gratis."
+                        )}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div>
+                    <span
+                      className={`inline-block rounded-full px-3 py-0.5 font-mono text-[10px] uppercase tracking-widest ${
+                        plan === "premium"
+                          ? "bg-accent text-accent-foreground"
+                          : "bg-secondary text-muted-foreground"
+                      }`}
+                    >
+                      {plan === "premium" ? "Premium" : tr("Gratis", "Gratis")}
+                    </span>
+                  </div>
+                  {plan === "free" ? (
+                    <Button
+                      size="sm"
+                      className="w-full"
+                      onClick={() => setPreusOpen(true)}
+                    >
+                      <Crown className="h-3.5 w-3.5" />
+                      {tr("Pujar a Premium", "Subir a Premium")}
+                    </Button>
+                  ) : (
+                    <p className="text-xs leading-relaxed text-muted-foreground">
+                      {tr(
+                        "Tens accés il·limitat als informes, cross-references i descàrregues PDF.",
+                        "Tienes acceso ilimitado a los informes, cross-references y descargas PDF."
+                      )}
+                    </p>
+                  )}
+                </CardContent>
+              </Card>
+
+              {/* Interessos */}
+              <Card className="border-rule bg-card md:col-span-2">
+                <CardHeader>
+                  <CardTitle className="font-serif text-xl text-primary">
+                    {tr("Interessos", "Intereses")}
+                  </CardTitle>
+                  <CardDescription>
+                    {tr(
+                      "Temàtiques ESG que t'interessen.",
+                      "Temáticas ESG que te interesan."
+                    )}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {interests.length === 0 ? (
+                    <div className="rounded-md border-l-2 border-accent bg-accent-soft/10 p-3">
+                      <div className="flex items-start gap-2">
+                        <Sparkles className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
+                        <div className="flex-1">
+                          <p className="text-sm font-medium text-primary">
+                            {tr(
+                              "Encara no has seleccionat cap interès.",
+                              "Aún no has seleccionado ningún interés."
+                            )}
+                          </p>
+                          <p className="mt-1 text-xs leading-relaxed text-foreground/75">
+                            {tr(
+                              "Si selecciones interessos et podrem personalitzar més les newsletters i avisar-te primer dels informes que t'afecten.",
+                              "Si seleccionas intereses podremos personalizar más las newsletters y avisarte primero de los informes que te afectan."
+                            )}
+                          </p>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="mt-3"
+                            onClick={handleEditClick}
+                          >
+                            {tr("Selecciona interessos", "Selecciona intereses")}
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex flex-wrap gap-2">
+                      {interests.map((id) => (
+                        <span
+                          key={id}
+                          className="inline-flex items-center gap-1 rounded-md border border-rule bg-secondary/50 px-2.5 py-1 text-xs text-foreground"
+                        >
+                          <CheckCircle2 className="h-3 w-3 text-accent" />
+                          {interestLabel(id)}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+
+              {/* Newsletter / Estat de la subscripció */}
+              <Card className="border-rule bg-card">
+                <CardHeader>
+                  <CardTitle className="font-serif text-lg text-primary">
+                    {tr(
+                      "Estat de la subscripció",
+                      "Estado de la suscripción"
+                    )}
+                  </CardTitle>
+                  <CardDescription>
+                    {tr(
+                      "Preferències de la newsletter quinzenal.",
+                      "Preferencias de la newsletter quincenal."
+                    )}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-3 text-sm">
+                  <div className="flex items-center justify-between">
+                    <span className="text-muted-foreground">
+                      {tr("Estat", "Estado")}
+                    </span>
+                    <span
+                      className={`font-medium ${
+                        newsletterSubscribed
+                          ? "text-accent"
+                          : "text-muted-foreground"
+                      }`}
+                    >
+                      {newsletterSubscribed
+                        ? tr("Subscrit", "Suscrito")
+                        : tr("No subscrit", "No suscrito")}
+                    </span>
+                  </div>
+                  <Separator />
+                  <div className="flex items-center justify-between">
+                    <span className="text-muted-foreground">
+                      {/* Idioma de la newsletter — mateix text en CA i ES */}
+                      Idioma de la newsletter
+                    </span>
+                    <span className="flex items-center gap-1 font-medium">
+                      <Globe className="h-3.5 w-3.5 text-accent" />
+                      {newsletterLanguage === "ca" ? "Català" : "Español"}
+                    </span>
+                  </div>
+                  <Separator />
+                  <div className="flex items-center justify-between">
+                    <span className="text-muted-foreground">
+                      {tr("Consentiment GDPR", "Consentimiento GDPR")}
+                    </span>
+                    <span
+                      className={`font-medium ${
+                        gdprConsent ? "text-accent" : "text-muted-foreground"
+                      }`}
+                    >
+                      {gdprConsent ? tr("Acceptat", "Aceptado") : "—"}
+                    </span>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          )}
+
+          {/* Accions */}
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-end">
+            {isEditing ? (
+              <>
+                <Button
+                  variant="outline"
+                  onClick={handleCancel}
+                  disabled={saving}
+                >
+                  <X className="h-4 w-4" />
+                  {tr("Cancel·lar", "Cancelar")}
+                </Button>
+                <Button onClick={handleSave} disabled={saving}>
+                  {saving ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Save className="h-4 w-4" />
+                  )}
+                  {tr("Desar canvis", "Guardar cambios")}
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button variant="outline" onClick={handleEditClick}>
+                  {tr("Editar dades", "Editar datos")}
+                </Button>
+                <Button variant="destructive" onClick={() => signOut()}>
+                  <LogOut className="h-4 w-4" />
+                  {tr("Tancar sessió", "Cerrar sesión")}
+                </Button>
+              </>
             )}
-            <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
-              <Button
-                onClick={handleSave}
-                disabled={saving}
-                style={{
-                  background: "#B87333",
-                  color: "#FFFFFF",
-                  border: "none",
-                }}
-              >
-                {saving ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                ) : (
-                  <Save className="h-4 w-4" />
-                )}
-                {tr("Desar canvis", "Guardar cambios")}
-              </Button>
-              <Button
-                variant="outline"
-                onClick={() => signOut()}
-                style={{
-                  borderColor: "#C9B89A",
-                  color: "#5C3A1E",
-                  background: "transparent",
-                }}
-              >
-                <LogOut className="h-4 w-4" />
-                {tr("Tancar sessió", "Cerrar sesión")}
-              </Button>
-            </div>
-=======
-            </div>
-
->>>>>>> Stashed changes
-=======
-            </div>
-
->>>>>>> Stashed changes
           </div>
-        </div>
+        </section>
       </main>
       <Footer />
-      <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
-      <PreusDialog open={preusOpen} onOpenChange={setPreusOpen} onOpenRegister={() => openAuth("register")} />
+
+      <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab="login" />
+      <PreusDialog
+        open={preusOpen}
+        onOpenChange={setPreusOpen}
+        onOpenRegister={() => setAuthOpen(true)}
+      />
     </div>
   );
+}
+
+/**Fila amb icona, label i valor per a la taula de dades del compte.*/
+function DataRow({
+  icon,
+  label,
+  value,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="flex items-start gap-3">
+      <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md bg-accent-soft/15">
+        {icon}
+      </span>
+      <div className="min-w-0 flex-1">
+        <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+          {label}
+        </p>
+        <p className="truncate text-sm font-medium text-foreground">{value}</p>
+      </div>
+    </div>
+  );
+}
+
+/**Traducció llegible de l'id d'interès al label mostrat al formulari.*/
+function interestLabel(id: string): string {
+  const map: Record<string, string> = {
+    csrd: "CSRD/ESRS",
+    ecovadis: "EcoVadis",
+    bcorp: "B Corp",
+    circular: "Economía circular",
+    sfdr: "Inversión de impacto (SFDR)",
+    bien: "Bien común",
+    etica: "Ética empresarial",
+    csddd: "Derechos Humanos y Cadena de Valor (CSDDD)",
+  };
+  return map[id] ?? id;
 }

@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
 import { useRouter } from "next/navigation";
+import { ArrowRight, Lock } from "lucide-react";
 
 type StandarType = "reg" | "fw" | "cert";
 type AccessType = "free" | "premium";
@@ -22,472 +23,158 @@ interface Standar {
 }
 
 const STANDARDS: Standar[] = [
-  // 5 REGULACIONS (01-05)
-  { slug: "csrd-esrs", name: "CSRD / ESRS", type: "reg", access: "free", count: 7,
-    descCa: "Regulació europea de reporting. Obligatòria per a >250 empleats des de 2024.",
-    descEs: "Regulación europea de reporting. Obligatoria para >250 empleados desde 2024." },
-  { slug: "csddd", name: "CSDDD", type: "reg", access: "free", count: 4,
-    descCa: "Deure de diligència en drets humans. Empreses >1000 empleats.",
-    descEs: "Deber de diligencia en derechos humanos. Empresas >1000 empleados." },
-  { slug: "sfdr", name: "SFDR", type: "reg", access: "free", count: 3,
-    descCa: "Regulació de disclosure financer. Articles 6, 8 i 9.",
-    descEs: "Regulación de disclosure financiero. Artículos 6, 8 y 9." },
-  { slug: "taxonomia-ue", name: "Taxonomia UE", type: "reg", access: "free", count: 5,
-    descCa: "Classificació d'activitats econòmiques sostenibles. 6 objectius.",
-    descEs: "Clasificación de actividades económicas sostenibles. 6 objetivos." },
-  { slug: "emas", name: "EMAS", type: "reg", access: "free", count: 2,
-    descCa: "Sistema comunitari d'eco-gestió i auditoria. UE.",
-    descEs: "Sistema comunitario de eco-gestión y auditoría. UE." },
-
-  // 5 FRAMEWORKS (06-10)
-  { slug: "gri", name: "GRI", type: "fw", access: "free", count: 9,
-    descCa: "Framework global més usat. 70%+ de l'IBEX 35 hi reporta.",
-    descEs: "Framework global más usado. 70%+ del IBEX 35 reporta con él." },
-  { slug: "sasb", name: "SASB", type: "fw", access: "free", count: 3,
-    descCa: "Framework de reporting per industria. 77 indústries.",
-    descEs: "Framework de reporting por industria. 77 industrias." },
-  { slug: "tnfd", name: "TNFD", type: "fw", access: "free", count: 4,
-    descCa: "Framework de natura. Riscos i dependències.",
-    descEs: "Framework de naturaleza. Riesgos y dependencias." },
-  { slug: "tcfd", name: "TCFD", type: "fw", access: "free", count: 6,
-    descCa: "Framework climàtic. Recomanacions de disclosure.",
-    descEs: "Framework climático. Recomendaciones de disclosure." },
-  { slug: "iso-26000", name: "ISO 26000", type: "fw", access: "free", count: 2,
-    descCa: "Guia de responsabilitat social. No certificable.",
-    descEs: "Guía de responsabilidad social. No certificable." },
-
-  // 6 CERTIFICACIONS (11-16)
+  { slug: "csrd-esrs", name: "CSRD / ESRS", type: "reg", access: "free", count: 10,
+    descCa: "Directiva de reporting de sostenibilitat de la UE. Afecta ~11.500 empreses espanyoles. Defineix què han de publicar i com. Aplicació progressiva des de 2025.",
+    descEs: "Directiva de reporting de sostenibilidad de la UE. Afecta a ~11.500 empresas españolas. Define qué deben publicar y cómo. Aplicación progresiva desde 2025." },
+  { slug: "gri", name: "GRI", type: "fw", access: "free", count: 8,
+    descCa: "Global Reporting Initiative. Estàndard de reporting més usat a Espanya. El 70%+ de l'IBEX 35 hi reporta. Universal + Topic + Sector Standards.",
+    descEs: "Global Reporting Initiative. Estándar de reporting más usado en España. El 70%+ del IBEX 35 reporta con él. Universal + Topic + Sector Standards." },
   { slug: "ecovadis", name: "EcoVadis", type: "cert", access: "premium", count: 7,
-    descCa: "Rating de sostenibilitat per a cadenes de subministrament. Medalles Bronze-Platinum.",
-    descEs: "Rating de sostenibilidad para cadenas de suministro. Medallas Bronze-Platinum." },
+    descCa: "Rating de sostenibilitat (medalla Bronze a Platinum). El més demandat per cadenes de subministrament. 4 àrees: Environment, Labor, Ethics, Procurement.",
+    descEs: "Rating de sostenibilidad (medalla Bronze a Platinum). El más demandado por cadenas de suministro. 4 áreas: Environment, Labor, Ethics, Procurement." },
   { slug: "b-corp", name: "B Corp", type: "cert", access: "premium", count: 5,
-    descCa: "Certificació d'empreses amb propòsit. Score mínim 80/200.",
-    descEs: "Certificación de empresas con propósito. Score mínimo 80/200." },
+    descCa: "Certificació d'empreses amb propòsit de B Lab. 400+ a Espanya. Score mínim 80/200 en B Impact Assessment. 5 àrees: gobernança, treballadors, comunitat, entorn, clients.",
+    descEs: "Certificación de empresas con propósito de B Lab. 400+ en España. Score mínimo 80/200 en B Impact Assessment. 5 áreas: gobernanza, trabajadores, comunidad, entorno, clientes." },
   { slug: "msci-esg", name: "MSCI ESG", type: "cert", access: "premium", count: 6,
-    descCa: "Rating per a inversors (AAA-CCC). Afacta al cost de capital.",
-    descEs: "Rating para inversores (AAA-CCC). Afecta al coste de capital." },
+    descCa: "Rating ESG per a inversors (AAA-CCC). Totes les cotitzades de l'IBEX 35 el monitoritzen. Afecta al cost de capital. Avalua exposició a riscos ESG i gestió.",
+    descEs: "Rating ESG para inversores (AAA-CCC). Todas las cotizadas del IBEX 35 lo monitorizan. Afecta al coste de capital. Evalúa exposición a riesgos ESG y gestión." },
+  { slug: "csddd", name: "CSDDD", type: "reg", access: "free", count: 4,
+    descCa: "Directiva de due diligence en drets humans i cadena de valor. Obliga a identificar, prevenir i mitigar impactes. Empreses +1.000 empleats i facturació >450M€.",
+    descEs: "Directiva de due diligence en derechos humanos y cadena de valor. Obliga a identificar, prevenir y mitigar impactos. Empresas +1.000 empleados y facturación >450M€." },
+  { slug: "sfdr", name: "SFDR", type: "reg", access: "free", count: 3,
+    descCa: "Reglament de divulgació de finances sostenibles. Classifica productes en article 6, 8 o 9. Obliga gestores i asseguradores a reportar impacte sostenible.",
+    descEs: "Reglamento de divulgación de finanzas sostenibles. Clasifica productos en artículo 6, 8 o 9. Obliga a gestoras y aseguradoras a reportar impacto sostenible." },
+  { slug: "taxonomia-ue", name: "Taxonomía UE", type: "reg", access: "free", count: 5,
+    descCa: "Classificació d'activitats econòmiques sostenibles. Defineix què és 'verd' amb criteris tècnics. 6 objectius: clima, aigua, economia circular, contaminació, biodiversitat.",
+    descEs: "Clasificación de actividades económicas sostenibles. Define qué es 'verde' con criterios técnicos. 6 objetivos: clima, agua, economía circular, contaminación, biodiversidad." },
   { slug: "cdp", name: "CDP", type: "cert", access: "premium", count: 3,
-    descCa: "Disclosure global de clima, aigua i boscos. Puntuació A- a D-.",
-    descEs: "Disclosure global de clima, agua y bosques. Puntuación A- a D-." },
+    descCa: "Sistema de disclosure global per a clima, aigua i boscos. Les empreses responen qüestionaris i reben puntuació A- a D-. Usat per inversors i compradors corporatius.",
+    descEs: "Sistema de disclosure global para clima, agua y bosques. Las empresas responden cuestionarios y reciben puntuación A- a D-. Usado por inversores y compradores corporativos." },
   { slug: "sge-21", name: "SGE 21", type: "cert", access: "premium", count: 3,
-    descCa: "Sistema de Gestió Ètica de Forética. Metodologia espanyola.",
-    descEs: "Sistema de Gestión Ética de Forética. Metodología española." },
+    descCa: "Sistema de Gestió Ètica de Forética. Metodologia espanyola per a la RSE. Usada per Ferrovial, Repsol, Bankinter. Certificable per auditoria. Alineada amb ISO 26000.",
+    descEs: "Sistema de Gestión Ética de Forética. Metodología española para la RSE. Usada por Ferrovial, Repsol, Bankinter. Certificable por auditoría. Alineada con ISO 26000." },
   { slug: "sustainalytics", name: "Sustainalytics", type: "cert", access: "premium", count: 4,
-    descCa: "Rating de risc ESG per a inversors. 5 nivells.",
-    descEs: "Rating de riesgo ESG para inversores. 5 niveles." },
+    descCa: "Rating de risc ESG per a inversors. Escala de 5 nivells (Negligible a Severe). Competidor de MSCI ESG. Usat per les cotitzades de l'IBEX 35.",
+    descEs: "Rating de riesgo ESG para inversores. Escala de 5 niveles (Negligible a Severe). Competidor de MSCI ESG. Usado por las cotizadas del IBEX 35." },
+  { slug: "sasb", name: "SASB", type: "fw", access: "free", count: 3,
+    descCa: "Sustainability Accounting Standards Board. Estàndards de reporting financer-sostenibilitat per sector (77 indústries). Crecient en cotitzades. Integrat en ISSB.",
+    descEs: "Sustainability Accounting Standards Board. Estándares de reporting financiero-sostenibilidad por sector (77 industrias). Creciente en cotizadas. Integrado en ISSB." },
+  { slug: "tnfd", name: "TNFD", type: "fw", access: "free", count: 2,
+    descCa: "Taskforce on Nature-related Financial Disclosures. Framework per reportar dependències i impactes sobre la natura. Llançat el 2023. Complementa TCFD.",
+    descEs: "Taskforce on Nature-related Financial Disclosures. Framework para reportar dependencias e impactes sobre la naturaleza. Lanzado en 2023. Complementa TCFD." },
+  { slug: "tcfd", name: "TCFD", type: "fw", access: "free", count: 4,
+    descCa: "Taskforce on Climate-related Financial Disclosures. Framework per reportar riscos i oportunitats climàtiques. 4 pilars: gobernança, estratègia, riscos, mètriques. Base de l'ESRS E1.",
+    descEs: "Taskforce on Climate-related Financial Disclosures. Framework para reportar riesgos y oportunidades climáticas. 4 pilares: gobernanza, estrategia, riesgos, métricas. Base del ESRS E1." },
+  { slug: "emas", name: "EMAS", type: "reg", access: "free", count: 2,
+    descCa: "Sistema comunitari d'eco-gestió i auditoria de la UE. Certificació voluntària però regulada. Més exigent que ISO 14001: inclou declaració ambiental validada. ~4.000 organitzacions.",
+    descEs: "Sistema comunitario de eco-gestión y auditoría de la UE. Certificación voluntaria pero regulada. Más exigente que ISO 14001: incluye declaración ambiental validada. ~4.000 organizaciones." },
+  { slug: "iso-26000", name: "ISO 26000", type: "fw", access: "free", count: 2,
+    descCa: "Guia internacional de responsabilitat social. No certificable però serveix de marc de referència. 7 àrees: gobernança, drets humans, pràctiques laborals, medi ambient, consumidors, comunitat.",
+    descEs: "Guía internacional de responsabilidad social. No certificable pero sirve de marco de referencia. 7 áreas: gobernanza, derechos humanos, prácticas laborales, medio ambiente, consumidores, comunidad." },
 ];
 
-const STRIPE_COLOR: Record<StandarType, string> = {
-  reg: "#5C3A1E",
-  fw: "#B87333",
-  cert: "#E8C99A",
+const TYPE_CONFIG: Record<StandarType, { borderColor: string; badgeBg: string; badgeColor: string; labelCa: string; labelEs: string }> = {
+  reg: { borderColor: "#5C3A1E", badgeBg: "rgba(92,58,30,0.15)", badgeColor: "#5C3A1E", labelCa: "Regulació", labelEs: "Regulación" },
+  fw: { borderColor: "#B87333", badgeBg: "rgba(184,115,51,0.12)", badgeColor: "#B87333", labelCa: "Framework", labelEs: "Framework" },
+  cert: { borderColor: "#E8C99A", badgeBg: "rgba(232,201,154,0.25)", badgeColor: "#8A6D2B", labelCa: "Certificació", labelEs: "Certificación" },
 };
 
-const TAG_COLOR: Record<StandarType, string> = {
-  reg: "#5C3A1E",
-  fw: "#B87333",
-  cert: "#8A6D2B",
-};
-
-/**
- * ESTÀNDARDS ESG — redissenyats
- *
- * Layout:
- *  - Page header 2 cols: text (eyebrow + title + 3 conceptes amb fons colors) + "16" gran
- *  - Legend/filter bar: 3 toggle chips amb color bars + search input
- *  - Grid 4 cols de 16 cards amb franja superior 6px del color de la categoria
- */
 export default function EstandaresPage() {
-  const { t, lang } = useLanguage();
+  const { lang, t } = useLanguage();
   const router = useRouter();
   const [authOpen, setAuthOpen] = useState(false);
   const [preusOpen, setPreusOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [activeFilters, setActiveFilters] = useState<Set<StandarType>>(
-    new Set(["reg", "fw", "cert"])
-  );
 
   const tr = (ca: string, es: string) => (lang === "ca" ? ca : es);
-
-  const toggleFilter = (type: StandarType) => {
-    setActiveFilters((prev) => {
-      const next = new Set(prev);
-      if (next.has(type)) {
-        next.delete(type);
-      } else {
-        next.add(type);
-      }
-      // Si cap filtre actiu, mostra tots
-      if (next.size === 0) {
-        next.add("reg");
-        next.add("fw");
-        next.add("cert");
-      }
-      return next;
-    });
-  };
-
-  const filteredStandards = useMemo(() => {
-    return STANDARDS.filter((s) => {
-      if (!activeFilters.has(s.type)) return false;
-      if (searchQuery) {
-        const q = searchQuery.toLowerCase();
-        return (
-          s.name.toLowerCase().includes(q) ||
-          s.descCa.toLowerCase().includes(q) ||
-          s.descEs.toLowerCase().includes(q)
-        );
-      }
-      return true;
-    });
-  }, [activeFilters, searchQuery]);
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <Header
         onOpenPreus={() => setPreusOpen(true)}
-        onOpenAuth={() => setAuthOpen(true)}
+        onOpenAuth={(tab) => { setAuthOpen(true); }}
       />
       <main className="flex-1">
-        {/* PAGE HEADER */}
-        <section
-          className="border-b bg-background px-6 pb-8 pt-16 sm:px-8 lg:px-12"
-          style={{ borderColor: "#2C1810" }}
-        >
-          <div
-            className="grid items-end gap-8"
-            style={{ gridTemplateColumns: "minmax(0, 1fr) auto" }}
-          >
-            <div>
-              <div
-                className="mb-3.5 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase"
-                style={{ color: "#8A5526", letterSpacing: "0.22em" }}
-              >
-                <span style={{ width: "24px", height: "2px", background: "#B87333" }} />
-                {t("v2.estandards.eyebrow")}
+        {/* Page hero */}
+        <section className="border-b border-rule bg-secondary/30 py-12">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <p className="eyebrow mb-2">{tr("ESTÀNARDS ESG", "ESTÁNDARES ESG")}</p>
+            <h1 className="font-serif text-4xl font-semibold leading-tight text-primary sm:text-5xl">
+              {tr("Els teus estàndards, el nostre cross-reference.", "Tus estándares, nuestro cross-reference.")}
+            </h1>
+            <div className="rule-accent my-5" />
+            <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
+              {tr(
+                "Cada informe es mapeja amb regulacions, frameworks i certificacions. Selecciona el teu per veure quins informes t'afecten i quines accions prendre.",
+                "Cada informe se mapea con regulaciones, frameworks y certificaciones. Selecciona el tuyo para ver qué informes te afectan y qué acciones tomar."
+              )}
+            </p>
+          </div>
+        </section>
+
+        {/* Legend */}
+        <section className="py-6">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-wrap gap-6">
+              <div className="flex items-center gap-2.5">
+                <span className="inline-block w-1.5 h-5 rounded-sm" style={{ background: "#5C3A1E" }} />
+                <span className="text-xs">{tr("Regulacions (obligatòries)", "Regulaciones (obligatorias)")}</span>
               </div>
-              <h1
-                className="mb-3.5 font-serif font-medium"
-                style={{
-                  color: "#2C1810",
-                  fontSize: "clamp(2rem, 4.5vw, 3rem)",
-                  letterSpacing: "-0.022em",
-                  lineHeight: 1.05,
-                }}
-              >
-                {t("v2.estandards.title.pre")}{" "}
-                <em
-                  className="italic font-normal"
-                  style={{ color: "#5C3A1E" }}
-                >
-                  {t("v2.estandards.title.em")}
-                </em>{" "}
-                {t("v2.estandards.title.post")}
-              </h1>
-              <div
-                className="font-serif italic"
-                style={{
-                  color: "#5C3A1E",
-                  fontSize: "1.0625rem",
-                  maxWidth: "720px",
-                  lineHeight: 1.4,
-                }}
-              >
-                {/* 3 conceptes amb colors diferents */}
-                <div className="mb-3.5 flex flex-wrap gap-2.5 not-italic">
-                  <span
-                    className="font-serif italic"
-                    style={{
-                      background: "#5C3A1E",
-                      color: "#F5EFE6",
-                      padding: "6px 14px",
-                      fontSize: "1rem",
-                      fontWeight: 500,
-                      letterSpacing: "-0.005em",
-                    }}
-                  >
-                    {t("v2.estandards.concept.reg")}
-                  </span>
-                  <span
-                    className="font-serif italic"
-                    style={{
-                      background: "#B87333",
-                      color: "#F5EFE6",
-                      padding: "6px 14px",
-                      fontSize: "1rem",
-                      fontWeight: 500,
-                      letterSpacing: "-0.005em",
-                    }}
-                  >
-                    {t("v2.estandards.concept.fw")}
-                  </span>
-                  <span
-                    className="font-serif italic"
-                    style={{
-                      background: "#E8C99A",
-                      color: "#5C3A1E",
-                      padding: "6px 14px",
-                      fontSize: "1rem",
-                      fontWeight: 500,
-                      letterSpacing: "-0.005em",
-                    }}
-                  >
-                    {t("v2.estandards.concept.cert")}
-                  </span>
-                </div>
-                <span className="block">
-                  {t("v2.estandards.subtitle.line2")}
-                </span>
+              <div className="flex items-center gap-2.5">
+                <span className="inline-block w-1.5 h-5 rounded-sm" style={{ background: "#B87333" }} />
+                <span className="text-xs">{tr("Frameworks (estàndards de reporting)", "Frameworks (estándares de reporting)")}</span>
               </div>
-            </div>
-            {/* Number 16 gegant */}
-            <div
-              className="hidden font-serif sm:block"
-              style={{
-                color: "#2C1810",
-                fontSize: "clamp(5rem, 10vw, 7.5rem)",
-                fontWeight: 300,
-                letterSpacing: "-0.05em",
-                lineHeight: 0.9,
-              }}
-            >
-              16<sup
-                className="font-mono"
-                style={{
-                  fontSize: "12px",
-                  color: "#B87333",
-                  fontWeight: 500,
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                  verticalAlign: "top",
-                  marginLeft: "6px",
-                }}
-              >
-                {tr("est.", "est.")}
-              </sup>
+              <div className="flex items-center gap-2.5">
+                <span className="inline-block w-1.5 h-5 rounded-sm" style={{ background: "#E8C99A" }} />
+                <span className="text-xs">{tr("Certificacions i ratings", "Certificaciones y ratings")}</span>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* LEGEND / FILTERS */}
-        <section
-          className="flex flex-wrap items-center justify-between gap-4 border-b bg-background px-6 py-5 sm:px-8 lg:px-12"
-          style={{ borderColor: "#C9B89A" }}
-        >
-          <div className="flex flex-wrap items-center gap-3">
-            <span
-              className="mr-2 font-mono text-[10px] font-semibold uppercase"
-              style={{ color: "#8B7355", letterSpacing: "0.18em" }}
-            >
-              {t("v2.estandards.legend.label")}
-            </span>
-            {([
-              { type: "reg" as const, label: t("v2.estandards.legend.reg"), color: "#5C3A1E" },
-              { type: "fw" as const, label: t("v2.estandards.legend.fw"), color: "#B87333" },
-              { type: "cert" as const, label: t("v2.estandards.legend.cert"), color: "#E8C99A" },
-            ]).map((chip) => {
-              const isActive = activeFilters.has(chip.type);
-              const activeBg =
-                chip.type === "reg"
-                  ? "#5C3A1E"
-                  : chip.type === "fw"
-                    ? "#B87333"
-                    : "#E8C99A";
-              const activeColor = chip.type === "cert" ? "#5C3A1E" : "#F5EFE6";
-              return (
-                <button
-                  key={chip.type}
-                  onClick={() => toggleFilter(chip.type)}
-                  className="flex cursor-pointer items-center gap-2 font-mono text-[10px] font-semibold uppercase transition-transform hover:-translate-y-0.5"
-                  style={{
-                    padding: "8px 14px",
-                    letterSpacing: "0.14em",
-                    background: isActive
-                      ? activeBg
-                      : chip.type === "reg"
-                        ? "rgba(92, 58, 30, 0.12)"
-                        : chip.type === "fw"
-                          ? "rgba(184, 115, 51, 0.12)"
-                          : "rgba(232, 201, 154, 0.25)",
-                    border: "1px solid",
-                    borderColor: isActive
-                      ? activeBg
-                      : chip.type === "reg"
-                        ? "#5C3A1E"
-                        : chip.type === "fw"
-                          ? "#B87333"
-                          : "#E8C99A",
-                    color: isActive
-                      ? activeColor
-                      : chip.type === "cert"
-                        ? "#8A6D2B"
-                        : "#5C3A1E",
-                  }}
-                >
-                  <span
-                    style={{
-                      width: "18px",
-                      height: "4px",
-                      background: isActive
-                        ? chip.type === "cert"
-                          ? "#5C3A1E"
-                          : "#B87333"
-                        : chip.color,
-                    }}
-                  />
-                  {chip.label}
-                </button>
-              );
-            })}
-          </div>
-          <input
-            type="search"
-            placeholder={t("v2.estandards.search.placeholder")}
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="font-sans"
-            style={{
-              padding: "8px 14px",
-              background: "#FFFFFF",
-              border: "1px solid #C9B89A",
-              color: "#8B7355",
-              width: "220px",
-              fontSize: "12px",
-            }}
-          />
-        </section>
-
-        {/* GRID D'ESTÀNDARDS (4 cols) */}
-        <section className="bg-background px-6 pb-16 pt-10 sm:px-8 lg:px-12">
-          <div
-            className="grid gap-5"
-            style={{ gridTemplateColumns: "repeat(4, minmax(0, 1fr))" }}
-          >
-            {filteredStandards.map((s, idx) => (
-              <button
-                key={s.slug}
-                onClick={() => router.push(`/estandares-esg/${s.slug}`)}
-                className="group flex cursor-pointer flex-col text-left transition-all hover:-translate-y-0.5"
-                style={{
-                  background: "#FFFFFF",
-                  border: "1px solid #C9B89A",
-                }}
-              >
-                {/* Franja superior 6px */}
-                <div
-                  style={{
-                    height: "6px",
-                    background: STRIPE_COLOR[s.type],
-                  }}
-                  aria-hidden
-                />
-                <div className="flex flex-1 flex-col gap-2.5 p-5">
-                  {/* Header: num + access badge */}
+        {/* Grid de estàndards */}
+        <section className="pb-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {STANDARDS.map((s) => {
+                const cfg = TYPE_CONFIG[s.type];
+                return (
                   <div
-                    className="flex items-baseline justify-between border-b pb-2"
-                    style={{ borderColor: "rgba(201, 184, 154, 0.5)" }}
+                    key={s.slug}
+                    onClick={() => router.push(`/estandares-esg/${s.slug}`)}
+                    className="relative cursor-pointer rounded-lg border border-rule bg-card p-5 transition-all hover:shadow-md hover:-translate-y-0.5"
+                    style={{ borderLeft: `8px solid ${cfg.borderColor}` }}
                   >
-                    <span
-                      className="font-mono text-[9.5px] font-semibold"
-                      style={{
-                        color: "#8B7355",
-                        letterSpacing: "0.08em",
-                      }}
-                    >
-                      {String(idx + 1).padStart(2, "0")}
-                    </span>
-                    <span
-                      className="font-mono text-[8.5px] font-semibold uppercase"
-                      style={{
-                        background:
+                    <div className="mb-2 flex items-center gap-1.5">
+                      <span
+                        className="inline-block rounded-full px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider"
+                        style={{ background: cfg.badgeBg, color: cfg.badgeColor }}
+                      >
+                        {tr(cfg.labelCa, cfg.labelEs)}
+                      </span>
+                      <span
+                        className={`inline-block rounded-full px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider ${
                           s.access === "free"
-                            ? "rgba(92, 138, 92, 0.12)"
-                            : "#B87333",
-                        color: s.access === "free" ? "#4A6B3A" : "#FFFFFF",
-                        padding: "3px 7px",
-                        letterSpacing: "0.14em",
-                      }}
-                    >
-                      {s.access === "free"
-                        ? t("v2.estandards.access.free")
-                        : t("v2.estandards.access.premium")}
-                    </span>
+                            ? "bg-[#5C8A5C]/12 text-[#4A6B3A]"
+                            : "bg-foreground/8 text-foreground"
+                        }`}
+                      >
+                        {s.access === "free" ? (lang === "ca" ? "Gratuït" : "Gratis") : "Premium"}
+                      </span>
+                    </div>
+                    <h3 className="mb-1.5 font-serif text-base font-semibold text-primary">{s.name}</h3>
+                    <p className="mb-3 text-xs leading-relaxed text-muted-foreground" style={{ display: "-webkit-box", WebkitLineClamp: 4, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+                      {tr(s.descCa, s.descEs)}
+                    </p>
+                    <p className="font-mono text-[10px] uppercase tracking-wider text-accent font-semibold">
+                      {s.count} {tr("informes cross-ref", "informes cross-ref")}
+                    </p>
+                    {s.access === "premium" && (
+                      <Lock className="absolute right-4 top-4 h-3.5 w-3.5 text-muted-foreground/50" />
+                    )}
                   </div>
-
-                  {/* Tag categoria */}
-                  <span
-                    className="font-mono text-[9px] font-semibold uppercase"
-                    style={{
-                      color: TAG_COLOR[s.type],
-                      letterSpacing: "0.18em",
-                    }}
-                  >
-                    {s.type === "reg"
-                      ? t("v2.estandards.tag.reg.ue")
-                      : s.type === "fw"
-                        ? t("v2.estandards.tag.fw.global")
-                        : s.name === "MSCI ESG" || s.name === "Sustainalytics"
-                          ? t("v2.estandards.tag.rating")
-                          : t("v2.estandards.tag.cert")}
-                  </span>
-
-                  {/* Name */}
-                  <h3
-                    className="font-serif font-medium"
-                    style={{
-                      color: "#2C1810",
-                      fontSize: "1.1875rem",
-                      letterSpacing: "-0.01em",
-                      lineHeight: 1.15,
-                    }}
-                  >
-                    {s.name}
-                  </h3>
-
-                  {/* Description */}
-                  <p
-                    className="font-sans"
-                    style={{
-                      color: "#5C3A1E",
-                      fontSize: "0.718rem",
-                      lineHeight: 1.45,
-                    }}
-                  >
-                    {tr(s.descCa, s.descEs)}
-                  </p>
-
-                  {/* Footer */}
-                  <div
-                    className="mt-auto flex items-baseline justify-between border-t pt-3"
-                    style={{ borderColor: "rgba(201, 184, 154, 0.5)" }}
-                  >
-                    <span
-                      className="font-mono text-[9px] font-medium uppercase"
-                      style={{
-                        color: "#8B7355",
-                        letterSpacing: "0.14em",
-                      }}
-                    >
-                      <strong style={{ color: "#B87333", fontWeight: 700 }}>
-                        {s.count}
-                      </strong>{" "}
-                      {t("v2.estandards.card.count")}
-                    </span>
-                    <span
-                      className="font-mono text-[9px] font-semibold uppercase transition-colors group-hover:text-accent-deep"
-                      style={{
-                        color: "#B87333",
-                        letterSpacing: "0.14em",
-                        borderBottom: "1px solid #B87333",
-                        paddingBottom: "2px",
-                      }}
-                    >
-                      {t("v2.estandards.card.link")}
-                    </span>
-                  </div>
-                </div>
-              </button>
-            ))}
+                );
+              })}
+            </div>
           </div>
         </section>
       </main>

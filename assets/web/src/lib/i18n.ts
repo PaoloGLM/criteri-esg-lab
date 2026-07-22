@@ -1365,4 +1365,544 @@ export const translations = {
     ca: "Sense targeta de crèdit. Sense paywall fins al novembre.",
     es: "Sin tarjeta de crédito. Sin paywall hasta noviembre.",
   },
+
+  // =========================================================================
+  // FASE 2B — INFORME DETALL (Variant A: sidebar sticky)
+  // =========================================================================
+
+  // Breadcrumb
+  "v2.detall.breadcrumb.biblioteca": { ca: "Biblioteca", es: "Biblioteca" },
+  "v2.detall.breadcrumb.informes": { ca: "Informes", es: "Informes" },
+  "v2.detall.breadcrumb.right": {
+    ca: "5 min · 8 blocs",
+    es: "5 min · 8 bloques",
+  },
+
+  // Sidebar
+  "v2.detall.sidebar.index_label": {
+    ca: "Índex de l'informe",
+    es: "Índice del informe",
+  },
+  "v2.detall.sidebar.nav.0": { ca: "Semàfor metodològic", es: "Semáforo metodológico" },
+  "v2.detall.sidebar.nav.1": { ca: "Fitxa tècnica", es: "Ficha técnica" },
+  "v2.detall.sidebar.nav.2": { ca: "5 dades clau", es: "5 datos clave" },
+  "v2.detall.sidebar.nav.3": { ca: "Resum executiu", es: "Resumen ejecutivo" },
+  "v2.detall.sidebar.nav.4": { ca: "Implicacions", es: "Implicaciones" },
+  "v2.detall.sidebar.nav.5": { ca: "Connexions", es: "Conexiones" },
+  "v2.detall.sidebar.nav.6": { ca: "Accions recomanades", es: "Acciones recomendadas" },
+  "v2.detall.sidebar.nav.7": { ca: "Cross-reference", es: "Cross-reference" },
+  "v2.detall.sidebar.semafor.label": { ca: "Semàfor", es: "Semáforo" },
+  "v2.detall.sidebar.semafor.grade": { ca: "C", es: "C" },
+  "v2.detall.sidebar.semafor.label_text": { ca: "Dèbil", es: "Débil" },
+  "v2.detall.sidebar.progress.label": { ca: "Lectura · 5 min", es: "Lectura · 5 min" },
+
+  // Tags
+  "v2.detall.tag.regulacio": { ca: "Regulació", es: "Regulación" },
+  "v2.detall.tag.gratis": { ca: "Gratuït", es: "Gratis" },
+
+  // Header informe (Bloc 1 fitxa tècnica)
+  "v2.detall.title.pre": { ca: "Revisió dels ESRS:", es: "Revisión de los ESRS:" },
+  "v2.detall.title.em": {
+    ca: "simplificació del CSRD",
+    es: "simplificación del CSRD",
+  },
+  "v2.detall.meta.comissio": { ca: "Comissió Europea", es: "Comisión Europea" },
+  "v2.detall.meta.date": { ca: "6 maig 2026", es: "6 mayo 2026" },
+  "v2.detall.meta.pages": { ca: "47 pàg", es: "47 pág" },
+  "v2.detall.meta.platform": { ca: "ESRS Q&A Platform", es: "ESRS Q&A Platform" },
+
+  // Bloc 0: Semàfor
+  "v2.detall.bloc0.label": {
+    ca: "BLOC 0 · SEMÀFOR METODOLÒGIC",
+    es: "BLOQUE 0 · SEMÁFORO METODOLÓGICO",
+  },
+  "v2.detall.bloc0.grade": { ca: "C", es: "C" },
+  "v2.detall.bloc0.grade_label": { ca: "Dèbil", es: "Débil" },
+  "v2.detall.bloc0.desc": {
+    ca: "Rigurós en arquitectura, però deixa fora el detall granular que les empreses necessiten per implementar.",
+    es: "Riguroso en arquitectura, pero deja fuera el detalle granular que las empresas necesitan para implementar.",
+  },
+  "v2.detall.bloc0.dim1.status": { ca: "Dèbil", es: "Débil" },
+  "v2.detall.bloc0.dim2.status": { ca: "Sòlid", es: "Sólido" },
+  "v2.detall.bloc0.dim3.status": { ca: "Dèbil", es: "Débil" },
+  "v2.detall.bloc0.dim4.status": { ca: "Crític", es: "Crítico" },
+  "v2.detall.bloc0.dim5.status": { ca: "Dèbil", es: "Débil" },
+  "v2.detall.bloc0.dim1.exp": {
+    ca: "Esmenta el Scope 3 però no n'exigeix la quantificació: deixa a cada empresa decidir com el tracta. En sectors industrials on el Scope 3 supera el 80% de l'empremta, això equival a una invitació al buit.",
+    es: "Menciona el Scope 3 pero no exige su cuantificación: deja a cada empresa decidir cómo lo trata. En sectores industriales donde el Scope 3 supera el 80% de la huella, esto equivale a una invitación al vacío.",
+  },
+  "v2.detall.bloc0.dim2.exp": {
+    ca: "Calendari clar i operatiu: grans empreses des de l'exercici 2024, cotitzades des de 2025, PIMEs amb calendari escalonat 2026-2028. Cada empresa sap exactament quan li toca.",
+    es: "Calendario claro y operativo: grandes empresas desde ejercicio 2024, cotizadas desde 2025, PIMEs con calendario escalonado 2026-2028. Cada empresa sabe exactamente cuándo le toca.",
+  },
+  "v2.detall.bloc0.dim3.exp": {
+    ca: "Cada canvi normatiu cita l'ESRS original corresponent, però les interpretacions tècniques (Q&A) es publiquen a part a l'ESRS Q&A Platform. Per seguir el fil necessites creuar dos documents.",
+    es: "Cada cambio normativo cita el ESRS original correspondiente, pero las interpretaciones técnicas (Q&A) se publican aparte en el ESRS Q&A Platform. Para seguir el hilo necesitas cruzar dos documentos.",
+  },
+  "v2.detall.bloc0.dim4.exp": {
+    ca: "Tota la dada és agregada a nivell UE. No hi ha desagregació per sector, país ni mida d'empresa. Una PIME industrial espanyola no pot extreure conclusions operatives per al seu cas concret.",
+    es: "Todo el dato es agregado a nivel UE. No hay desagregación por sector, país ni tamaño de empresa. Una PIME industrial española no puede extraer conclusiones operativas para su caso concreto.",
+  },
+  "v2.detall.bloc0.dim5.exp": {
+    ca: "La revisió preveu assurance extern limitat des de 2024 i raonable des de 2028, però els criteris d'auditoria no es detallen. Cada estat membre pot interpretar l'abast de manera diferent.",
+    es: "La revisión prevé assurance externo limitado desde 2024 y razonable desde 2028, pero los criterios de auditoría no se detallan. Cada estado miembro puede interpretar el alcance de manera diferente.",
+  },
+
+  // Bloc 2: 5 dades clau
+  "v2.detall.bloc2.label": {
+    ca: "BLOC 02 · 5 DADES CLAU",
+    es: "BLOQUE 02 · 5 DATOS CLAVE",
+  },
+  "v2.detall.bloc2.title": {
+    ca: "El que diu l'informe, en xifres",
+    es: "Lo que dice el informe, en cifras",
+  },
+  "v2.detall.bloc2.d1.strong": { ca: "−61%", es: "−61%" },
+  "v2.detall.bloc2.d1.text": {
+    ca: " de datapoints obligatoris del CSRD eliminats (de 1.144 a 446)",
+    es: " de datapoints obligatorios del CSRD eliminados (de 1.144 a 446)",
+  },
+  "v2.detall.bloc2.d2.strong": { ca: "3.700 M€", es: "3.700 M€" },
+  "v2.detall.bloc2.d2.text": {
+    ca: " d'estalvi estimat per a empreses europees en 5 anys",
+    es: " de ahorro estimado para empresas europeas en 5 años",
+  },
+  "v2.detall.bloc2.d3.strong": { ca: "2 categories", es: "2 categorías" },
+  "v2.detall.bloc2.d3.text": {
+    ca: " d'estàndards ESRS: temàtics transversals i sectorials. Convergència mantinguda amb GRI Universal Standards i ISSB.",
+    es: " de estándares ESRS: temáticos transversales y sectoriales. Convergencia mantenida con GRI Universal Standards e ISSB.",
+  },
+  "v2.detall.bloc2.d4.strong": { ca: "Aplicació", es: "Aplicación" },
+  "v2.detall.bloc2.d4.text": {
+    ca: " escalonada: grans empreses (2024), cotitzades (2025), PIMEs (2026-2028)",
+    es: " escalonada: grandes empresas (2024), cotizadas (2025), PIMEs (2026-2028)",
+  },
+
+  // Bloc 3: Resum executiu
+  "v2.detall.bloc3.label": {
+    ca: "BLOC 03 · RESUM EXECUTIU",
+    es: "BLOQUE 03 · RESUMEN EJECUTIVO",
+  },
+  "v2.detall.bloc3.title": {
+    ca: "Què diu en",
+    es: "Qué dice en",
+  },
+  "v2.detall.bloc3.title.em": {
+    ca: "llenguatge clar",
+    es: "lenguaje claro",
+  },
+  "v2.detall.bloc3.body1": {
+    ca: "La Comissió Europea redueix un 61% els datapoints obligatoris del CSRD. Se simplifica l'arquitectura dels ESRS però es manté la convergència amb GRI i ISSB. L'estalvi estimat és de 3.700 M€ en 5 anys per a les empreses europees. L'aplicació s'escaloneja per mida: grans empreses (2024), cotitzades (2025), PIMEs (2026-2028).",
+    es: "La Comisión Europea reduce un 61% los datapoints obligatorios del CSRD. Se simplifica la arquitectura de los ESRS pero se mantiene la convergencia con GRI e ISSB. El ahorro estimado es de 3.700 M€ en 5 años para las empresas europeas. La aplicación se escalona por tamaño: grandes empresas (2024), cotizadas (2025), PIMEs (2026-2028).",
+  },
+  "v2.detall.bloc3.body2": {
+    ca: "La revisió respon a les queixes de l'Omnibus I sobre càrrega administrativa, però deixa fora el detall granular que moltes empreses necessiten per implementar.",
+    es: "La revisión responde a las quejas del Omnibus I sobre carga administrativa, pero deja fuera el detalle granular que muchas empresas necesitan para implementar.",
+  },
+  "v2.detall.bloc3.body3.em": {
+    ca: "Més simple, però també més ambigu.",
+    es: "Más simple, pero también más ambiguo.",
+  },
+
+  // Bloc 4: Implicacions
+  "v2.detall.bloc4.label": {
+    ca: "BLOC 04 · IMPLICACIONS",
+    es: "BLOQUE 04 · IMPLICACIONES",
+  },
+  "v2.detall.bloc4.title.pre": {
+    ca: "Per a empreses, reguladors,",
+    es: "Para empresas, reguladores,",
+  },
+  "v2.detall.bloc4.title.em": { ca: "ciutadans", es: "ciudadanos" },
+  "v2.detall.bloc4.empresas.label": { ca: "Empreses", es: "Empresas" },
+  "v2.detall.bloc4.empresas.text": {
+    ca: "Menys reporting obligatori, però més interpretació subjectiva. Les empreses amb sistemes madurs (GRI, SASB) ho tenen més fàcil. Les que començaven des de zero perden la guia prescriptiva.",
+    es: "Menos reporting obligatorio, pero más interpretación subjetiva. Las empresas con sistemas maduros (GRI, SASB) lo tienen más fácil. Las que empezaban desde cero pierden la guía prescriptiva.",
+  },
+  "v2.detall.bloc4.reguladors.label": { ca: "Reguladors", es: "Reguladores" },
+  "v2.detall.bloc4.reguladors.text": {
+    ca: "BCE, ESMA i EFRAG hauran d'emetre guies interpretatives per evitar divergències entre estats membres. Risc de fragmentació.",
+    es: "BCE, ESMA y EFRAG deberán emitir guías interpretativas para evitar divergencias entre estados miembros. Riesgo de fragmentación.",
+  },
+  "v2.detall.bloc4.ciutadans.label": { ca: "Ciutadans", es: "Ciudadanos" },
+  "v2.detall.bloc4.ciutadans.text": {
+    ca: "Informes més curts i llegibles, però amb menys dada verificable. Perill de greenwashing augmentat per l'ambigüitat interpretativa.",
+    es: "Informes más cortos y legibles, pero con menos dato verificable. Peligro de greenwashing aumentado por la ambigüedad interpretativa.",
+  },
+  "v2.detall.bloc4.mes.label": {
+    ca: "MÉS ENLLÀ DEL CHECKBOX",
+    es: "MÁS ALLÁ DEL CHECKBOX",
+  },
+  "v2.detall.bloc4.mes.question": {
+    ca: "«La simplificació és un alleujament per al reporting, però",
+    es: "«La simplificación es un alivio para el reporting, pero",
+  },
+  "v2.detall.bloc4.mes.question.em": {
+    ca: "què perd la societat",
+    es: "¿qué pierde la sociedad",
+  },
+  "v2.detall.bloc4.mes.question.post": {
+    ca: " quan desapareix la dada granular que permetia auditar promeses?»",
+    es: " cuando desaparece el dato granular que permitía auditar promesas?»",
+  },
+  "v2.detall.bloc4.mes.reflection": {
+    ca: "Quan un informe es redueix a la meitat, algú decideix què es queda i què se'n va. Aquesta decisió no és tècnica: és política. I gairebé mai la pren el que després patirà les conseqüències. La pregunta no és si simplificar, sinó",
+    es: "Cuando un informe se reduce a la mitad, alguien decide qué se queda y qué se va. Esa decisión no es técnica: es política. Y casi nunca la toma el que después sufrirá las consecuencias. La pregunta no es si simplificar, sino",
+  },
+  "v2.detall.bloc4.mes.reflection.em": {
+    ca: "qui decideix què és prescindible",
+    es: "quién decide qué es prescindible",
+  },
+  "v2.detall.bloc4.mes.reflection.post": { ca: ".", es: "." },
+
+  // Bloc 5: Connexions
+  "v2.detall.bloc5.label": {
+    ca: "BLOC 05 · CONNEXIONS",
+    es: "BLOQUE 05 · CONEXIONES",
+  },
+  "v2.detall.bloc5.title.pre": {
+    ca: "Relacions amb altres",
+    es: "Relaciones con otros",
+  },
+  "v2.detall.bloc5.title.em": {
+    ca: "informes i actualitat",
+    es: "informes y actualidad",
+  },
+  "v2.detall.bloc5.body.pre": {
+    ca: "Aquesta revisió arriba ",
+    es: "Esta revisión llega ",
+  },
+  "v2.detall.bloc5.body.strong": {
+    ca: "3 mesos després del CSDDD Omnibus I",
+    es: "3 meses después del CSDDD Omnibus I",
+  },
+  "v2.detall.bloc5.body.post": {
+    ca: " (març 2026), que ja enduriaa la diligència en drets humans. La paradoxa: menys reporting estructurat per prendre més decisions operatives. El BCE inclourà el risc climàtic en els test d'estrès de la banca espanyola des del Q4 2026 — les dades que ja no es reportaran via ESRS sí que es necessitaran per als test d'estrès.",
+    es: " (marzo 2026), que ya endurecía la diligencia en derechos humanos. La paradoja: menos reporting estructurado para tomar más decisiones operativas. El BCE incluirá el riesgo climático en los test de estrés de la banca española desde Q4 2026 — los datos que ya no se reportarán vía ESRS sí que se necesitarán para los test de estrés.",
+  },
+
+  // Bloc 6: Accions recomanades
+  "v2.detall.bloc6.label": {
+    ca: "BLOC 06 · ACCIONS RECOMANADES ⭐",
+    es: "BLOQUE 06 · ACCIONES RECOMENDADAS ⭐",
+  },
+  "v2.detall.bloc6.title.pre": {
+    ca: "3 accions operatives per a",
+    es: "3 acciones operativas para",
+  },
+  "v2.detall.bloc6.title.em": {
+    ca: "aquesta setmana",
+    es: "esta semana",
+  },
+  "v2.detall.bloc6.a1": {
+    ca: "Auditar la matriu de materialitat vigent: quins datapoints eliminats et convé mantenir voluntàriament?",
+    es: "Auditar la matriz de materialidad vigente: ¿qué datapoints eliminados te conviene mantener voluntariamente?",
+  },
+  "v2.detall.bloc6.a2": {
+    ca: "Renegociar el contracte d'assurance extern: l'abast es pot reduir, però el cost no sempre baixa proporcionalment.",
+    es: "Renegociar el contrato de assurance externo: el alcance puede reducirse, pero el coste no siempre baja proporcionalmente.",
+  },
+  "v2.detall.bloc6.a3": {
+    ca: "Construir un dataset voluntari intern amb els datapoints eliminats però que els teus inversors o clients seguiran demanant (MSCI, Sustainalytics, EcoVadis).",
+    es: "Construir un dataset voluntario interno con los datapoints eliminados pero que tus inversores o clientes seguirán pidiendo (MSCI, Sustainalytics, EcoVadis).",
+  },
+
+  // Bloc 7: Cross-reference
+  "v2.detall.bloc7.label": {
+    ca: "BLOC 07 · CROSS-REFERENCE ⭐",
+    es: "BLOQUE 07 · CROSS-REFERENCE ⭐",
+  },
+  "v2.detall.bloc7.title.pre": {
+    ca: "Com t'afecta segons les teves",
+    es: "Cómo te afecta según tus",
+  },
+  "v2.detall.bloc7.title.em": {
+    ca: "certificacions",
+    es: "certificaciones",
+  },
+  "v2.detall.bloc7.col.cert": { ca: "Certificació", es: "Certificación" },
+  "v2.detall.bloc7.col.cat": { ca: "Categoria", es: "Categoría" },
+  "v2.detall.bloc7.col.how": {
+    ca: "Com t'afecta",
+    es: "Cómo te afecta",
+  },
+  "v2.detall.bloc7.col.impact": { ca: "Impacte", es: "Impacto" },
+  "v2.detall.bloc7.impact.high": { ca: "Alt", es: "Alto" },
+  "v2.detall.bloc7.impact.med": { ca: "Mitjà", es: "Medio" },
+  "v2.detall.bloc7.impact.low": { ca: "Baix", es: "Bajo" },
+  "v2.detall.bloc7.row1.cert": { ca: "GRI", es: "GRI" },
+  "v2.detall.bloc7.row1.cat": { ca: "Framework", es: "Framework" },
+  "v2.detall.bloc7.row1.text": {
+    ca: "Interoperabilitat ESRS-GRI reforçada en aquesta revisió. Les empreses que ja reporten amb GRI Universal Standards hi guanyen.",
+    es: "Interoperabilidad ESRS-GRI reforzada en esta revisión. Las empresas que ya reportan con GRI Universal Standards ganan.",
+  },
+  "v2.detall.bloc7.row2.cert": { ca: "EcoVadis", es: "EcoVadis" },
+  "v2.detall.bloc7.row2.cat": { ca: "Certificació", es: "Certificación" },
+  "v2.detall.bloc7.row2.text": {
+    ca: "La reducció del 61% en datapoints afecta el score de Sustainable Procurement. Les empreses amb GRI mantenen avantatge.",
+    es: "La reducción del 61% en datapoints afecta al score de Sustainable Procurement. Las empresas con GRI mantienen ventaja.",
+  },
+  "v2.detall.bloc7.row3.cert": { ca: "MSCI ESG", es: "MSCI ESG" },
+  "v2.detall.bloc7.row3.cat": { ca: "Rating", es: "Rating" },
+  "v2.detall.bloc7.row3.text": {
+    ca: "La convergència amb ISSB impacta en la metodologia de rating. Les empreses amb SBTi verificades mantenen score.",
+    es: "La convergencia con ISSB impacta en la metodología de rating. Las empresas con SBTi verificadas mantienen score.",
+  },
+  "v2.detall.bloc7.row4.cert": { ca: "B Corp", es: "B Corp" },
+  "v2.detall.bloc7.row4.cat": { ca: "Certificació", es: "Certificación" },
+  "v2.detall.bloc7.row4.text": {
+    ca: "La simplificació pot facilitar el procés de recertificació. El B Impact Assessment no es veu directament afectat.",
+    es: "La simplificación puede facilitar el proceso de recertificación. El B Impact Assessment no se ve directamente afectado.",
+  },
+  "v2.detall.bloc7.row5.cert": { ca: "CDP", es: "CDP" },
+  "v2.detall.bloc7.row5.cat": { ca: "Certificació", es: "Certificación" },
+  "v2.detall.bloc7.row5.text": {
+    ca: "Les dades climàtiques eliminades del CSRD poden seguir sent necessàries per al qüestionari CDP Climate Change.",
+    es: "Los datos climáticos eliminados del CSRD pueden seguir siendo necesarios para el cuestionario CDP Climate Change.",
+  },
+  "v2.detall.bloc7.row6.cert": { ca: "SGE 21", es: "SGE 21" },
+  "v2.detall.bloc7.row6.cat": { ca: "Certificació", es: "Certificación" },
+  "v2.detall.bloc7.row6.text": {
+    ca: "Alineada amb ISO 26000, no es veu afectada directament per la revisió ESRS.",
+    es: "Alineada con ISO 26000, no se ve afectada directamente por la revisión ESRS.",
+  },
+
+  // Footer informe
+  "v2.detall.footer.text": {
+    ca: "5 minuts de lectura. 8 blocs que canvien el teu criteri sobre un informe de 47 pàgines.",
+    es: "5 minutos de lectura. 8 bloques que cambian tu criterio sobre un informe de 47 páginas.",
+  },
+  "v2.detall.footer.prev": {
+    ca: "← Informe anterior",
+    es: "← Informe anterior",
+  },
+  "v2.detall.footer.next": {
+    ca: "Següent informe →",
+    es: "Siguiente informe →",
+  },
+
+  // =========================================================================
+  // FASE 2C — BIBLIOTECA
+  // =========================================================================
+  "v2.biblioteca.eyebrow": {
+    ca: "Biblioteca · Informes processats",
+    es: "Biblioteca · Informes procesados",
+  },
+  "v2.biblioteca.title.pre": { ca: "Tots els", es: "Todos los" },
+  "v2.biblioteca.title.em": {
+    ca: "informes Criteri",
+    es: "informes Criteri",
+  },
+  "v2.biblioteca.title.post": { ca: ".", es: "." },
+  "v2.biblioteca.subtitle": {
+    ca: "Filtrats per certificació, ordenats per rellevància. Cada informe amb semàfor metodològic, 8 blocs i cross-reference amb els teus estàndards.",
+    es: "Filtrados por certificación, ordenados por relevancia. Cada informe con semáforo metodológico, 8 bloques y cross-reference con tus estándares.",
+  },
+  "v2.biblioteca.filter.label": {
+    ca: "Filtrar per certificació:",
+    es: "Filtrar por certificación:",
+  },
+  "v2.biblioteca.filter.tots": { ca: "Tots", es: "Todos" },
+  "v2.biblioteca.sort.recent": {
+    ca: "Ordre: Més recents primer",
+    es: "Orden: Más recientes primero",
+  },
+  "v2.biblioteca.sort.best": {
+    ca: "Ordre: Millor semàfor primer",
+    es: "Orden: Mejor semáforo primero",
+  },
+  "v2.biblioteca.sort.impact": {
+    ca: "Ordre: Major impacte primer",
+    es: "Orden: Mayor impacto primero",
+  },
+  "v2.biblioteca.destacada.tag.ultim": {
+    ca: "Últim publicat",
+    es: "Último publicado",
+  },
+  "v2.biblioteca.destacada.cta": {
+    ca: "Llegir informe complet →",
+    es: "Leer informe completo →",
+  },
+  "v2.biblioteca.semafor.info": {
+    ca: "Com funciona? →",
+    es: "¿Cómo funciona? →",
+  },
+  "v2.biblioteca.semafor.footer": {
+    ca: "«Rigurós en arquitectura, però deixa fora el detall granular.»",
+    es: "«Riguroso en arquitectura, pero deja fuera el detalle granular.»",
+  },
+  "v2.biblioteca.card.semafor.label": {
+    ca: "Sem.",
+    es: "Sem.",
+  },
+  "v2.biblioteca.load_more": {
+    ca: "Carregar més informes",
+    es: "Cargar más informes",
+  },
+  "v2.biblioteca.count": {
+    ca: "Mostrant 7 de 24 informes",
+    es: "Mostrando 7 de 24 informes",
+  },
+  "v2.biblioteca.tag.rating": { ca: "Rating", es: "Rating" },
+  "v2.biblioteca.tag.framework": { ca: "Framework", es: "Framework" },
+  "v2.biblioteca.tag.regulacio": { ca: "Regulació", es: "Regulación" },
+  "v2.biblioteca.tag.premium": { ca: "Premium", es: "Premium" },
+  "v2.biblioteca.tag.ultim": {
+    ca: "Últim publicat",
+    es: "Último publicado",
+  },
+  "v2.biblioteca.xref.impact.high": { ca: "Alt", es: "Alto" },
+  "v2.biblioteca.xref.impact.med": { ca: "Mitjà", es: "Medio" },
+  "v2.biblioteca.xref.impact.low": { ca: "Baix", es: "Bajo" },
+
+  // =========================================================================
+  // FASE 2C — POPUP METODOLOGIA SEMÀFOR (GENÈRIC)
+  // =========================================================================
+  "v2.popup.eyebrow": {
+    ca: "Metodologia · Semàfor Criteri ESG",
+    es: "Metodología · Semáforo Criteri ESG",
+  },
+  "v2.popup.title.pre": { ca: "Com avaluem cada", es: "Cómo evaluamos cada" },
+  "v2.popup.title.em": { ca: "informe", es: "informe" },
+  "v2.popup.intro": {
+    ca: "El semàfor no avalua si l'informe és bo o dolent. Avalua si és útil per prendre decisions operatives en una empresa concreta. Ho fa en 5 dimensions, cadascuna amb nota verda, groga o vermella. La nota final va de A (robust fort) a D (insuficient).",
+    es: "El semáforo no evalúa si el informe es bueno o malo. Evalúa si es útil para tomar decisiones operativas en una empresa concreta. Lo hace en 5 dimensiones, cada una con nota verde, amarilla o roja. La nota final va de A (robusto fuerte) a D (insuficiente).",
+  },
+  "v2.popup.dim.1.name": { ca: "Scope 3", es: "Scope 3" },
+  "v2.popup.dim.1.question": {
+    ca: "Cobreix emissions indirectes?",
+    es: "¿Cubre emisiones indirectas?",
+  },
+  "v2.popup.dim.1.exp": {
+    ca: "En la majoria de sectors, el Scope 3 és entre el 70% i el 90% de l'empremta total. Un informe que l'ignora és tècnicament correcte però operativament inservible.",
+    es: "En la mayoría de sectores, el Scope 3 es entre el 70% y el 90% de la huella total. Un informe que lo ignora es técnicamente correcto pero operativamente inservible.",
+  },
+  "v2.popup.dim.2.name": { ca: "Terminis", es: "Plazos" },
+  "v2.popup.dim.2.question": {
+    ca: "Les dates són operatives o aspiracionals?",
+    es: "¿Las fechas son operativas o aspiracionales?",
+  },
+  "v2.popup.dim.2.exp": {
+    ca: "Un director que planifica inversions per al 2027 no pot treballar amb «per al 2050». Exigim calendari amb anys concrets i fites intermèdies.",
+    es: "Un director que planifica inversiones para 2027 no puede trabajar con «para 2050». Exigimos calendario con años concretos y hitos intermedios.",
+  },
+  "v2.popup.dim.3.name": { ca: "Fonts", es: "Fuentes" },
+  "v2.popup.dim.3.question": {
+    ca: "Estan referenciades o són afirmacions sense suport?",
+    es: "¿Están referenciadas o son afirmaciones sin respaldo?",
+  },
+  "v2.popup.dim.3.exp": {
+    ca: "El greenwashing viu de les afirmacions sense font. Cada afirmació de l'informe ha de portar referència verificable i accessible.",
+    es: "El greenwashing vive de las afirmaciones sin fuente. Cada afirmación del informe debe llevar referencia verificable y accesible.",
+  },
+  "v2.popup.dim.4.name": { ca: "Granularitat", es: "Granularidad" },
+  "v2.popup.dim.4.question": {
+    ca: "Hi ha dada desagregada per sector / geografia / mida?",
+    es: "¿Hay dato desagregado por sector / geografía / tamaño?",
+  },
+  "v2.popup.dim.4.exp": {
+    ca: "Una dada agregada a nivell europeu no la pot fer servir una PIME industrial a Catalunya. La granularitat converteix un informe institucional en eina operativa.",
+    es: "Un dato agregado a nivel europeo no lo puede usar una PIME industrial en Cataluña. La granularidad convierte un informe institucional en herramienta operativa.",
+  },
+  "v2.popup.dim.5.name": { ca: "Verificació", es: "Verificación" },
+  "v2.popup.dim.5.question": {
+    ca: "Està auditat externament o és auto-reportat?",
+    es: "¿Está auditado externamente o es auto-reportado?",
+  },
+  "v2.popup.dim.5.exp": {
+    ca: "L'auto-verificació no és necessàriament dolenta, però el director ha de saber si el que llegeix ha passat per un filtre independent o no.",
+    es: "La auto-verificación no es necesariamente mala, pero el director debe saber si lo que lee ha pasado por un filtro independiente o no.",
+  },
+  "v2.popup.grade.a.label": {
+    ca: "Robust fort",
+    es: "Robusto fuerte",
+  },
+  "v2.popup.grade.a.desc": { ca: "5 verds", es: "5 verdes" },
+  "v2.popup.grade.b.label": { ca: "Robust", es: "Robusto" },
+  "v2.popup.grade.b.desc": {
+    ca: "4 verds + 1 groga",
+    es: "4 verdes + 1 amarilla",
+  },
+  "v2.popup.grade.c.label": { ca: "Dèbil", es: "Débil" },
+  "v2.popup.grade.c.desc": {
+    ca: "Mixta amb fins a 1 vermella",
+    es: "Mezcla con hasta 1 roja",
+  },
+  "v2.popup.grade.d.label": { ca: "Insuficient", es: "Insuficiente" },
+  "v2.popup.grade.d.desc": {
+    ca: "2 o més vermelles",
+    es: "2 o más rojas",
+  },
+  "v2.popup.footer.pre": {
+    ca: "El semàfor no és un judici moral. És un judici operatiu.",
+    es: "El semáforo no es un juicio moral. Es un juicio operativo.",
+  },
+  "v2.popup.footer.em": {
+    ca: "Cada informe que publiquem porta el seu",
+    es: "Cada informe que publicamos lleva el suyo",
+  },
+
+  // =========================================================================
+  // FASE 2C — ESTÀNDARDS ESG
+  // =========================================================================
+  "v2.estandards.eyebrow": {
+    ca: "Estàndards ESG · 2026",
+    es: "Estándares ESG · 2026",
+  },
+  "v2.estandards.title.pre": { ca: "Els", es: "Los" },
+  "v2.estandards.title.em": {
+    ca: "16 estàndards",
+    es: "16 estándares",
+  },
+  "v2.estandards.title.post": {
+    ca: "que un director de sostenibilitat no hauria de confondre.",
+    es: "que un director de sostenibilidad no debería confundir.",
+  },
+  "v2.estandards.concept.reg": {
+    ca: "Una regulació t'obliga",
+    es: "Una regulación te obliga",
+  },
+  "v2.estandards.concept.fw": {
+    ca: "Un framework t'orienta",
+    es: "Un framework te orienta",
+  },
+  "v2.estandards.concept.cert": {
+    ca: "Una certificació t'avalua",
+    es: "Una certificación te evalúa",
+  },
+  "v2.estandards.subtitle.line2": {
+    ca: "Confondre-les té conseqüències operatives reals.",
+    es: "Confundirlas tiene consecuencias operativas reales.",
+  },
+  "v2.estandards.legend.label": { ca: "Filtrar:", es: "Filtrar:" },
+  "v2.estandards.legend.reg": {
+    ca: "Regulacions (5)",
+    es: "Regulaciones (5)",
+  },
+  "v2.estandards.legend.fw": {
+    ca: "Frameworks (5)",
+    es: "Frameworks (5)",
+  },
+  "v2.estandards.legend.cert": {
+    ca: "Certificacions (6)",
+    es: "Certificaciones (6)",
+  },
+  "v2.estandards.search.placeholder": {
+    ca: "Cercar estàndard...",
+    es: "Buscar estándar...",
+  },
+  "v2.estandards.access.free": { ca: "Gratuït", es: "Gratis" },
+  "v2.estandards.access.premium": { ca: "Premium", es: "Premium" },
+  "v2.estandards.card.count": {
+    ca: "informes",
+    es: "informes",
+  },
+  "v2.estandards.card.link": { ca: "Veure →", es: "Ver →" },
+  "v2.estandards.tag.reg.ue": { ca: "Regulació · UE", es: "Regulación · UE" },
+  "v2.estandards.tag.fw.global": {
+    ca: "Framework · Global",
+    es: "Framework · Global",
+  },
+  "v2.estandards.tag.cert": { ca: "Certificació", es: "Certificación" },
+  "v2.estandards.tag.rating": { ca: "Rating", es: "Rating" },
 } as const;

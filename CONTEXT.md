@@ -536,3 +536,33 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
 **Documents oficials descarregats**: 15 dels 16 a `/criteri-esg-lab/certifications/`. Pendent: B Corp (la web bloqueja la descàrrega automàtica).
 
 **Mockup HTML**: accessible a `https://www.criteriesg.com/estandares-mockup.html`
+
+---
+
+## Estat del redisseny web (22 juliol 2026)
+
+### Resum
+
+El redisseny web s'ha fet per fases. L'estat actual és:
+
+**Implementat i deployat:**
+- ✅ Fase 2A: Homepage (variant 2 manifest editorial) — commit 88a6134
+- ✅ Fase 2D: /que-fem, /qui-som, /cuenta — commit 7d64c56
+- ✅ Banner "2 mesos Premium gratis" al hero i registre — commit f665ba7
+- ✅ Semaforo popup component
+- ✅ Build script arreglat (next build sense cp standalone)
+
+**Pendent d'implementar en React:**
+- ❌ Fase 2B: /informes/[slug] (informe detall amb sidebar + 8 blocs) — HTML validat a /redisseny-web/variant-a-sidebar.html
+- ❌ Fase 2C: /informes (biblioteca amb card destacada + load more) — HTML validat a /redisseny-web/biblioteca-redissenyada.html
+- ❌ Fase 2C: /estandares-esg (grid 4 cols amb 16 cards) — HTML validat a /redisseny-web/estandares-redissenyats.html
+- ❌ Fase 2E: /preus — HTML validat a /redisseny-web/preus-redissenyat.html
+- ❌ Fase 2E: /mas-alla-del-checkbox — HTML validat a /redisseny-web/mas-alla-del-checkbox-redissenyat.html
+
+**Prova paleta verda (no implementada):**
+- Homepage amb paleta verda (#1F6F5F, #2FA084, #6FCF97, #EEEEEE) + logo nou
+- Capture a Drive: /redisseny-web/prova-paleta-verda/
+- Paolo ha demanat prova amb verd fort #1F6F5F al hero
+
+### Lliçó apresa
+Els commits del subagent per Fase 2B+2C es van perdre per operacions de stash/reset. Cal SEMPRE verificar que els commits existeixen amb `git log` abans de fer `git stash` o `git checkout`. Els HTML mockups validats estan guardats al repo i a Drive, de manera que la re-implementació és possible.

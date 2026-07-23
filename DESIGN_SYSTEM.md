@@ -521,3 +521,69 @@ Tot bilingüe via `t()`. Eliminat el "Qui som" duplicat que apareixia a Producte
 - Sempre que s'afegeixi un component nou recurrent (afegir a la secció 4).
 
 **Qui és responsable d'actualitzar-lo**: l'agent que faci el canvi. No es pot pujar codi nou sense haver consultat aquest document primer.
+
+---
+
+## Actualització 22 juliol 2026 — Fase 2 (redisseny web)
+
+### Estat actual del redisseny
+
+| Pàgina | Fase | Estat React | Estat Deploy |
+|--------|------|-------------|--------------|
+| Homepage | 2A | ✅ Implementada | ✅ Deployada |
+| /que-fem | 2D | ✅ Implementada | ✅ Deployada |
+| /qui-som | 2D | ✅ Implementada | ✅ Deployada |
+| /cuenta | 2D | ✅ Implementada | ✅ Deployada |
+| /informes/[slug] | 2B | ❌ Pendent | ❌ No deployada |
+| /informes (biblioteca) | 2C | ❌ Pendent | ❌ No deployada |
+| /estandares-esg | 2C | ❌ Pendent | ❌ No deployada |
+| /preus | 2E | ❌ HTML validat | ❌ No implementada |
+| /mas-alla-del-checkbox | 2E | ❌ HTML validat | ❌ No implementada |
+
+### Sistema visual consolidat (Fase 2)
+
+**Paleta terra+coure (actual, en producció):**
+- `#2C1810` — dark primari (fons hero, manifest, sidebar compte)
+- `#5C3A1E` — secundari (headers taula, text secondary)
+- `#B87333` — accent (CTAs, eyebrows, números)
+- `#E8C99A` — accent clar (certificacions, badges suaus)
+- `#F5EFE6` — background clar
+- `#D9A574` — text sobre dark
+- `#C9B89A` — rule/border
+- `#8B7355` — muted text
+- `#8A5526` — hover/deep accent
+
+**Tipografia:**
+- Fraunces (display, headings, èmfasi italic)
+- Inter (body, UI)
+- JetBrains Mono (eyebrows, meta, labels uppercase)
+
+**Layout canònic:**
+- `border-top: 3px solid #2C1810` (o coure en dark) marca inici de secció
+- Eyebrow en mono uppercase 0.22em letter-spacing
+- Títol en Fraunces 38-56px amb `<em>` italic per èmfasi
+- Dark per impacte (hero, manifest, sidebar compte)
+- Clar per lectura (informes, biblioteca, estàndards)
+
+**Prova paleta verda (no implementada, en prova):**
+- `#1F6F5F` — teal fosc (substitueix #2C1810)
+- `#2FA084` — verd mitjà (substitueix #B87333)
+- `#6FCF97` — verd clar (substitueix #E8C99A)
+- `#EEEEEE` — gris clar (substitueix #F5EFE6)
+- Logo nou verd integrat
+- Capture a Drive: /redisseny-web/prova-paleta-verda/
+
+### Banner 2 mesos Premium gratis
+- Afegit al hero de la homepage (subtle, dins requadre coure)
+- Afegit al formulari de registre (auth-dialog)
+- Text ES: "Durante los dos primeros meses de Criteri ESG disfrutarás de las ventajas Premium sin coste."
+
+### Eslògan oficial (decisió editorial 17)
+- "5 minuts per obtenir un criteri clar d'un informe"
+- NO "7 minuts" (obsolet)
+- Informes: max 1.100 paraules, objectiu 1.000
+
+### Deploy
+- Via Vercel deploy hook (decisió editorial 18)
+- Hook URL al .env local (VERCEL_DEPLOY_HOOK)
+- Build script: `next build` (sense cp standalone)

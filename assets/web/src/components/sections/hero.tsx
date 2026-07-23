@@ -166,7 +166,6 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
           )}
         </div>
       </div>
-
       {/* Banner: 2 mesos Premium gratis */}
       <div
         className="relative mx-auto mt-12 w-full max-w-3xl px-6 py-4 text-center"

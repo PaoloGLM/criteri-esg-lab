@@ -166,6 +166,23 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
           )}
         </div>
       </div>
+
+      {/* Banner: 2 mesos Premium gratis */}
+      <div
+        className="relative mx-auto mt-12 w-full max-w-3xl px-6 py-4 text-center"
+        style={{
+          background: "rgba(184,115,51,0.15)",
+          border: "1px solid #B87333",
+          borderRadius: "2px",
+        }}
+      >
+        <p
+          className="font-serif text-base italic sm:text-lg"
+          style={{ color: "#F5EFE6" }}
+        >
+          {t("v2.hero.free_premium_banner")}
+        </p>
+      </div>
     </section>
   );
 }

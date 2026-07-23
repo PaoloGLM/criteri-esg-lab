@@ -383,6 +383,19 @@ function AuthDialogInner({
           </div>
         ) : (
           <form onSubmit={handleRegister} className="space-y-4">
+            {/* Banner Premium gratis 2 mesos */}
+            <div
+              className="px-4 py-3 text-center"
+              style={{
+                background: "rgba(184,115,51,0.1)",
+                border: "1px solid #B87333",
+                borderRadius: "4px",
+              }}
+            >
+              <p className="font-serif text-sm italic" style={{ color: "#5C3A1E" }}>
+                {t("auth.register.free_premium_banner")}
+              </p>
+            </div>
             {/* Google */}
             <Button
               type="button"

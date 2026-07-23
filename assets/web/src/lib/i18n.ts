@@ -1366,1211 +1366,88 @@ export const translations = {
     es: "Sin tarjeta de crédito. Sin paywall hasta noviembre.",
   },
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  // =========================================================================
-  // FASE 2B — INFORME DETALL (Variant A: sidebar sticky)
-  // =========================================================================
-
-  // Breadcrumb
-  "v2.detall.breadcrumb.biblioteca": { ca: "Biblioteca", es: "Biblioteca" },
-  "v2.detall.breadcrumb.informes": { ca: "Informes", es: "Informes" },
-  "v2.detall.breadcrumb.right": {
-    ca: "5 min · 8 blocs",
-    es: "5 min · 8 bloques",
+  // ===== BANNER 2 MESOS PREMIUM GRATIS =====
+  "v2.hero.free_premium_banner": {
+    ca: "Durant els dos primers mesos de Criteri ESG gaudiràs de les avantatges Premium sense cost.",
+    es: "Durante los dos primeros meses de Criteri ESG disfrutarás de las ventajas Premium sin coste.",
+  },
+  "auth.register.free_premium_banner": {
+    ca: "Durant els dos primers mesos de Criteri ESG gaudiràs de les avantatges Premium sense cost.",
+    es: "Durante los dos primeros meses de Criteri ESG disfrutarás de las ventajas Premium sin coste.",
   },
 
-  // Sidebar
-  "v2.detall.sidebar.index_label": {
-    ca: "Índex de l'informe",
-    es: "Índice del informe",
-  },
-  "v2.detall.sidebar.nav.0": { ca: "Semàfor metodològic", es: "Semáforo metodológico" },
-  "v2.detall.sidebar.nav.1": { ca: "Fitxa tècnica", es: "Ficha técnica" },
-  "v2.detall.sidebar.nav.2": { ca: "5 dades clau", es: "5 datos clave" },
-  "v2.detall.sidebar.nav.3": { ca: "Resum executiu", es: "Resumen ejecutivo" },
-  "v2.detall.sidebar.nav.4": { ca: "Implicacions", es: "Implicaciones" },
-  "v2.detall.sidebar.nav.5": { ca: "Connexions", es: "Conexiones" },
-  "v2.detall.sidebar.nav.6": { ca: "Accions recomanades", es: "Acciones recomendadas" },
-  "v2.detall.sidebar.nav.7": { ca: "Cross-reference", es: "Cross-reference" },
-  "v2.detall.sidebar.semafor.label": { ca: "Semàfor", es: "Semáforo" },
-  "v2.detall.sidebar.semafor.grade": { ca: "C", es: "C" },
-  "v2.detall.sidebar.semafor.label_text": { ca: "Dèbil", es: "Débil" },
-  "v2.detall.sidebar.progress.label": { ca: "Lectura · 5 min", es: "Lectura · 5 min" },
-
-  // Tags
-  "v2.detall.tag.regulacio": { ca: "Regulació", es: "Regulación" },
-  "v2.detall.tag.gratis": { ca: "Gratuït", es: "Gratis" },
-
-  // Header informe (Bloc 1 fitxa tècnica)
-  "v2.detall.title.pre": { ca: "Revisió dels ESRS:", es: "Revisión de los ESRS:" },
-  "v2.detall.title.em": {
-    ca: "simplificació del CSRD",
-    es: "simplificación del CSRD",
-  },
-  "v2.detall.meta.comissio": { ca: "Comissió Europea", es: "Comisión Europea" },
-  "v2.detall.meta.date": { ca: "6 maig 2026", es: "6 mayo 2026" },
-  "v2.detall.meta.pages": { ca: "47 pàg", es: "47 pág" },
-  "v2.detall.meta.platform": { ca: "ESRS Q&A Platform", es: "ESRS Q&A Platform" },
-
-  // Bloc 0: Semàfor
-  "v2.detall.bloc0.label": {
-    ca: "BLOC 0 · SEMÀFOR METODOLÒGIC",
-    es: "BLOQUE 0 · SEMÁFORO METODOLÓGICO",
-  },
-  "v2.detall.bloc0.grade": { ca: "C", es: "C" },
-  "v2.detall.bloc0.grade_label": { ca: "Dèbil", es: "Débil" },
-  "v2.detall.bloc0.desc": {
-    ca: "Rigurós en arquitectura, però deixa fora el detall granular que les empreses necessiten per implementar.",
-    es: "Riguroso en arquitectura, pero deja fuera el detalle granular que las empresas necesitan para implementar.",
-  },
-  "v2.detall.bloc0.dim1.status": { ca: "Dèbil", es: "Débil" },
-  "v2.detall.bloc0.dim2.status": { ca: "Sòlid", es: "Sólido" },
-  "v2.detall.bloc0.dim3.status": { ca: "Dèbil", es: "Débil" },
-  "v2.detall.bloc0.dim4.status": { ca: "Crític", es: "Crítico" },
-  "v2.detall.bloc0.dim5.status": { ca: "Dèbil", es: "Débil" },
-  "v2.detall.bloc0.dim1.exp": {
-    ca: "Esmenta el Scope 3 però no n'exigeix la quantificació: deixa a cada empresa decidir com el tracta. En sectors industrials on el Scope 3 supera el 80% de l'empremta, això equival a una invitació al buit.",
-    es: "Menciona el Scope 3 pero no exige su cuantificación: deja a cada empresa decidir cómo lo trata. En sectores industriales donde el Scope 3 supera el 80% de la huella, esto equivale a una invitación al vacío.",
-  },
-  "v2.detall.bloc0.dim2.exp": {
-    ca: "Calendari clar i operatiu: grans empreses des de l'exercici 2024, cotitzades des de 2025, PIMEs amb calendari escalonat 2026-2028. Cada empresa sap exactament quan li toca.",
-    es: "Calendario claro y operativo: grandes empresas desde ejercicio 2024, cotizadas desde 2025, PIMEs con calendario escalonado 2026-2028. Cada empresa sabe exactamente cuándo le toca.",
-  },
-  "v2.detall.bloc0.dim3.exp": {
-    ca: "Cada canvi normatiu cita l'ESRS original corresponent, però les interpretacions tècniques (Q&A) es publiquen a part a l'ESRS Q&A Platform. Per seguir el fil necessites creuar dos documents.",
-    es: "Cada cambio normativo cita el ESRS original correspondiente, pero las interpretaciones técnicas (Q&A) se publican aparte en el ESRS Q&A Platform. Para seguir el hilo necesitas cruzar dos documentos.",
-  },
-  "v2.detall.bloc0.dim4.exp": {
-    ca: "Tota la dada és agregada a nivell UE. No hi ha desagregació per sector, país ni mida d'empresa. Una PIME industrial espanyola no pot extreure conclusions operatives per al seu cas concret.",
-    es: "Todo el dato es agregado a nivel UE. No hay desagregación por sector, país ni tamaño de empresa. Una PIME industrial española no puede extraer conclusiones operativas para su caso concreto.",
-  },
-  "v2.detall.bloc0.dim5.exp": {
-    ca: "La revisió preveu assurance extern limitat des de 2024 i raonable des de 2028, però els criteris d'auditoria no es detallen. Cada estat membre pot interpretar l'abast de manera diferent.",
-    es: "La revisión prevé assurance externo limitado desde 2024 y razonable desde 2028, pero los criterios de auditoría no se detallan. Cada estado miembro puede interpretar el alcance de manera diferente.",
-  },
-
-  // Bloc 2: 5 dades clau
-  "v2.detall.bloc2.label": {
-    ca: "BLOC 02 · 5 DADES CLAU",
-    es: "BLOQUE 02 · 5 DATOS CLAVE",
-  },
-  "v2.detall.bloc2.title": {
-    ca: "El que diu l'informe, en xifres",
-    es: "Lo que dice el informe, en cifras",
-  },
-  "v2.detall.bloc2.d1.strong": { ca: "−61%", es: "−61%" },
-  "v2.detall.bloc2.d1.text": {
-    ca: " de datapoints obligatoris del CSRD eliminats (de 1.144 a 446)",
-    es: " de datapoints obligatorios del CSRD eliminados (de 1.144 a 446)",
-  },
-  "v2.detall.bloc2.d2.strong": { ca: "3.700 M€", es: "3.700 M€" },
-  "v2.detall.bloc2.d2.text": {
-    ca: " d'estalvi estimat per a empreses europees en 5 anys",
-    es: " de ahorro estimado para empresas europeas en 5 años",
-  },
-  "v2.detall.bloc2.d3.strong": { ca: "2 categories", es: "2 categorías" },
-  "v2.detall.bloc2.d3.text": {
-    ca: " d'estàndards ESRS: temàtics transversals i sectorials. Convergència mantinguda amb GRI Universal Standards i ISSB.",
-    es: " de estándares ESRS: temáticos transversales y sectoriales. Convergencia mantenida con GRI Universal Standards e ISSB.",
-  },
-  "v2.detall.bloc2.d4.strong": { ca: "Aplicació", es: "Aplicación" },
-  "v2.detall.bloc2.d4.text": {
-    ca: " escalonada: grans empreses (2024), cotitzades (2025), PIMEs (2026-2028)",
-    es: " escalonada: grandes empresas (2024), cotizadas (2025), PIMEs (2026-2028)",
-  },
-
-  // Bloc 3: Resum executiu
-  "v2.detall.bloc3.label": {
-    ca: "BLOC 03 · RESUM EXECUTIU",
-    es: "BLOQUE 03 · RESUMEN EJECUTIVO",
-  },
-  "v2.detall.bloc3.title": {
-    ca: "Què diu en",
-    es: "Qué dice en",
-  },
-  "v2.detall.bloc3.title.em": {
-    ca: "llenguatge clar",
-    es: "lenguaje claro",
-  },
-  "v2.detall.bloc3.body1": {
-    ca: "La Comissió Europea redueix un 61% els datapoints obligatoris del CSRD. Se simplifica l'arquitectura dels ESRS però es manté la convergència amb GRI i ISSB. L'estalvi estimat és de 3.700 M€ en 5 anys per a les empreses europees. L'aplicació s'escaloneja per mida: grans empreses (2024), cotitzades (2025), PIMEs (2026-2028).",
-    es: "La Comisión Europea reduce un 61% los datapoints obligatorios del CSRD. Se simplifica la arquitectura de los ESRS pero se mantiene la convergencia con GRI e ISSB. El ahorro estimado es de 3.700 M€ en 5 años para las empresas europeas. La aplicación se escalona por tamaño: grandes empresas (2024), cotizadas (2025), PIMEs (2026-2028).",
-  },
-  "v2.detall.bloc3.body2": {
-    ca: "La revisió respon a les queixes de l'Omnibus I sobre càrrega administrativa, però deixa fora el detall granular que moltes empreses necessiten per implementar.",
-    es: "La revisión responde a las quejas del Omnibus I sobre carga administrativa, pero deja fuera el detalle granular que muchas empresas necesitan para implementar.",
-  },
-  "v2.detall.bloc3.body3.em": {
-    ca: "Més simple, però també més ambigu.",
-    es: "Más simple, pero también más ambiguo.",
-  },
-
-  // Bloc 4: Implicacions
-  "v2.detall.bloc4.label": {
-    ca: "BLOC 04 · IMPLICACIONS",
-    es: "BLOQUE 04 · IMPLICACIONES",
-  },
-  "v2.detall.bloc4.title.pre": {
-    ca: "Per a empreses, reguladors,",
-    es: "Para empresas, reguladores,",
-  },
-  "v2.detall.bloc4.title.em": { ca: "ciutadans", es: "ciudadanos" },
-  "v2.detall.bloc4.empresas.label": { ca: "Empreses", es: "Empresas" },
-  "v2.detall.bloc4.empresas.text": {
-    ca: "Menys reporting obligatori, però més interpretació subjectiva. Les empreses amb sistemes madurs (GRI, SASB) ho tenen més fàcil. Les que començaven des de zero perden la guia prescriptiva.",
-    es: "Menos reporting obligatorio, pero más interpretación subjetiva. Las empresas con sistemas maduros (GRI, SASB) lo tienen más fácil. Las que empezaban desde cero pierden la guía prescriptiva.",
-  },
-  "v2.detall.bloc4.reguladors.label": { ca: "Reguladors", es: "Reguladores" },
-  "v2.detall.bloc4.reguladors.text": {
-    ca: "BCE, ESMA i EFRAG hauran d'emetre guies interpretatives per evitar divergències entre estats membres. Risc de fragmentació.",
-    es: "BCE, ESMA y EFRAG deberán emitir guías interpretativas para evitar divergencias entre estados miembros. Riesgo de fragmentación.",
-  },
-  "v2.detall.bloc4.ciutadans.label": { ca: "Ciutadans", es: "Ciudadanos" },
-  "v2.detall.bloc4.ciutadans.text": {
-    ca: "Informes més curts i llegibles, però amb menys dada verificable. Perill de greenwashing augmentat per l'ambigüitat interpretativa.",
-    es: "Informes más cortos y legibles, pero con menos dato verificable. Peligro de greenwashing aumentado por la ambigüedad interpretativa.",
-  },
-  "v2.detall.bloc4.mes.label": {
-    ca: "MÉS ENLLÀ DEL CHECKBOX",
-    es: "MÁS ALLÁ DEL CHECKBOX",
-  },
-  "v2.detall.bloc4.mes.question": {
-    ca: "«La simplificació és un alleujament per al reporting, però",
-    es: "«La simplificación es un alivio para el reporting, pero",
-  },
-  "v2.detall.bloc4.mes.question.em": {
-    ca: "què perd la societat",
-    es: "¿qué pierde la sociedad",
-  },
-  "v2.detall.bloc4.mes.question.post": {
-    ca: " quan desapareix la dada granular que permetia auditar promeses?»",
-    es: " cuando desaparece el dato granular que permitía auditar promesas?»",
-  },
-  "v2.detall.bloc4.mes.reflection": {
-    ca: "Quan un informe es redueix a la meitat, algú decideix què es queda i què se'n va. Aquesta decisió no és tècnica: és política. I gairebé mai la pren el que després patirà les conseqüències. La pregunta no és si simplificar, sinó",
-    es: "Cuando un informe se reduce a la mitad, alguien decide qué se queda y qué se va. Esa decisión no es técnica: es política. Y casi nunca la toma el que después sufrirá las consecuencias. La pregunta no es si simplificar, sino",
-  },
-  "v2.detall.bloc4.mes.reflection.em": {
-    ca: "qui decideix què és prescindible",
-    es: "quién decide qué es prescindible",
-  },
-  "v2.detall.bloc4.mes.reflection.post": { ca: ".", es: "." },
-
-  // Bloc 5: Connexions
-  "v2.detall.bloc5.label": {
-    ca: "BLOC 05 · CONNEXIONS",
-    es: "BLOQUE 05 · CONEXIONES",
-  },
-  "v2.detall.bloc5.title.pre": {
-    ca: "Relacions amb altres",
-    es: "Relaciones con otros",
-  },
-  "v2.detall.bloc5.title.em": {
-    ca: "informes i actualitat",
-    es: "informes y actualidad",
-  },
-  "v2.detall.bloc5.body.pre": {
-    ca: "Aquesta revisió arriba ",
-    es: "Esta revisión llega ",
-  },
-  "v2.detall.bloc5.body.strong": {
-    ca: "3 mesos després del CSDDD Omnibus I",
-    es: "3 meses después del CSDDD Omnibus I",
-  },
-  "v2.detall.bloc5.body.post": {
-    ca: " (març 2026), que ja enduriaa la diligència en drets humans. La paradoxa: menys reporting estructurat per prendre més decisions operatives. El BCE inclourà el risc climàtic en els test d'estrès de la banca espanyola des del Q4 2026 — les dades que ja no es reportaran via ESRS sí que es necessitaran per als test d'estrès.",
-    es: " (marzo 2026), que ya endurecía la diligencia en derechos humanos. La paradoja: menos reporting estructurado para tomar más decisiones operativas. El BCE incluirá el riesgo climático en los test de estrés de la banca española desde Q4 2026 — los datos que ya no se reportarán vía ESRS sí que se necesitarán para los test de estrés.",
-  },
-
-  // Bloc 6: Accions recomanades
-  "v2.detall.bloc6.label": {
-    ca: "BLOC 06 · ACCIONS RECOMANADES ⭐",
-    es: "BLOQUE 06 · ACCIONES RECOMENDADAS ⭐",
-  },
-  "v2.detall.bloc6.title.pre": {
-    ca: "3 accions operatives per a",
-    es: "3 acciones operativas para",
-  },
-  "v2.detall.bloc6.title.em": {
-    ca: "aquesta setmana",
-    es: "esta semana",
-  },
-  "v2.detall.bloc6.a1": {
-    ca: "Auditar la matriu de materialitat vigent: quins datapoints eliminats et convé mantenir voluntàriament?",
-    es: "Auditar la matriz de materialidad vigente: ¿qué datapoints eliminados te conviene mantener voluntariamente?",
-  },
-  "v2.detall.bloc6.a2": {
-    ca: "Renegociar el contracte d'assurance extern: l'abast es pot reduir, però el cost no sempre baixa proporcionalment.",
-    es: "Renegociar el contrato de assurance externo: el alcance puede reducirse, pero el coste no siempre baja proporcionalmente.",
-  },
-  "v2.detall.bloc6.a3": {
-    ca: "Construir un dataset voluntari intern amb els datapoints eliminats però que els teus inversors o clients seguiran demanant (MSCI, Sustainalytics, EcoVadis).",
-    es: "Construir un dataset voluntario interno con los datapoints eliminados pero que tus inversores o clientes seguirán pidiendo (MSCI, Sustainalytics, EcoVadis).",
-  },
-
-  // Bloc 7: Cross-reference
-  "v2.detall.bloc7.label": {
-    ca: "BLOC 07 · CROSS-REFERENCE ⭐",
-    es: "BLOQUE 07 · CROSS-REFERENCE ⭐",
-  },
-  "v2.detall.bloc7.title.pre": {
-    ca: "Com t'afecta segons les teves",
-    es: "Cómo te afecta según tus",
-  },
-  "v2.detall.bloc7.title.em": {
-    ca: "certificacions",
-    es: "certificaciones",
-  },
-  "v2.detall.bloc7.col.cert": { ca: "Certificació", es: "Certificación" },
-  "v2.detall.bloc7.col.cat": { ca: "Categoria", es: "Categoría" },
-  "v2.detall.bloc7.col.how": {
-    ca: "Com t'afecta",
-    es: "Cómo te afecta",
-  },
-  "v2.detall.bloc7.col.impact": { ca: "Impacte", es: "Impacto" },
-  "v2.detall.bloc7.impact.high": { ca: "Alt", es: "Alto" },
-  "v2.detall.bloc7.impact.med": { ca: "Mitjà", es: "Medio" },
-  "v2.detall.bloc7.impact.low": { ca: "Baix", es: "Bajo" },
-  "v2.detall.bloc7.row1.cert": { ca: "GRI", es: "GRI" },
-  "v2.detall.bloc7.row1.cat": { ca: "Framework", es: "Framework" },
-  "v2.detall.bloc7.row1.text": {
-    ca: "Interoperabilitat ESRS-GRI reforçada en aquesta revisió. Les empreses que ja reporten amb GRI Universal Standards hi guanyen.",
-    es: "Interoperabilidad ESRS-GRI reforzada en esta revisión. Las empresas que ya reportan con GRI Universal Standards ganan.",
-  },
-  "v2.detall.bloc7.row2.cert": { ca: "EcoVadis", es: "EcoVadis" },
-  "v2.detall.bloc7.row2.cat": { ca: "Certificació", es: "Certificación" },
-  "v2.detall.bloc7.row2.text": {
-    ca: "La reducció del 61% en datapoints afecta el score de Sustainable Procurement. Les empreses amb GRI mantenen avantatge.",
-    es: "La reducción del 61% en datapoints afecta al score de Sustainable Procurement. Las empresas con GRI mantienen ventaja.",
-  },
-  "v2.detall.bloc7.row3.cert": { ca: "MSCI ESG", es: "MSCI ESG" },
-  "v2.detall.bloc7.row3.cat": { ca: "Rating", es: "Rating" },
-  "v2.detall.bloc7.row3.text": {
-    ca: "La convergència amb ISSB impacta en la metodologia de rating. Les empreses amb SBTi verificades mantenen score.",
-    es: "La convergencia con ISSB impacta en la metodología de rating. Las empresas con SBTi verificadas mantienen score.",
-  },
-  "v2.detall.bloc7.row4.cert": { ca: "B Corp", es: "B Corp" },
-  "v2.detall.bloc7.row4.cat": { ca: "Certificació", es: "Certificación" },
-  "v2.detall.bloc7.row4.text": {
-    ca: "La simplificació pot facilitar el procés de recertificació. El B Impact Assessment no es veu directament afectat.",
-    es: "La simplificación puede facilitar el proceso de recertificación. El B Impact Assessment no se ve directamente afectado.",
-  },
-  "v2.detall.bloc7.row5.cert": { ca: "CDP", es: "CDP" },
-  "v2.detall.bloc7.row5.cat": { ca: "Certificació", es: "Certificación" },
-  "v2.detall.bloc7.row5.text": {
-    ca: "Les dades climàtiques eliminades del CSRD poden seguir sent necessàries per al qüestionari CDP Climate Change.",
-    es: "Los datos climáticos eliminados del CSRD pueden seguir siendo necesarios para el cuestionario CDP Climate Change.",
-  },
-  "v2.detall.bloc7.row6.cert": { ca: "SGE 21", es: "SGE 21" },
-  "v2.detall.bloc7.row6.cat": { ca: "Certificació", es: "Certificación" },
-  "v2.detall.bloc7.row6.text": {
-    ca: "Alineada amb ISO 26000, no es veu afectada directament per la revisió ESRS.",
-    es: "Alineada con ISO 26000, no se ve afectada directamente por la revisión ESRS.",
-  },
-
-  // Footer informe
-  "v2.detall.footer.text": {
-    ca: "5 minuts de lectura. 8 blocs que canvien el teu criteri sobre un informe de 47 pàgines.",
-    es: "5 minutos de lectura. 8 bloques que cambian tu criterio sobre un informe de 47 páginas.",
-  },
-  "v2.detall.footer.prev": {
-    ca: "← Informe anterior",
-    es: "← Informe anterior",
-  },
-  "v2.detall.footer.next": {
-    ca: "Següent informe →",
-    es: "Siguiente informe →",
-  },
-
-  // =========================================================================
-  // FASE 2C — BIBLIOTECA
-  // =========================================================================
-  "v2.biblioteca.eyebrow": {
-    ca: "Biblioteca · Informes processats",
-    es: "Biblioteca · Informes procesados",
-  },
-  "v2.biblioteca.title.pre": { ca: "Tots els", es: "Todos los" },
-  "v2.biblioteca.title.em": {
-    ca: "informes Criteri",
-    es: "informes Criteri",
-  },
-  "v2.biblioteca.title.post": { ca: ".", es: "." },
-  "v2.biblioteca.subtitle": {
-    ca: "Filtrats per certificació, ordenats per rellevància. Cada informe amb semàfor metodològic, 8 blocs i cross-reference amb els teus estàndards.",
-    es: "Filtrados por certificación, ordenados por relevancia. Cada informe con semáforo metodológico, 8 bloques y cross-reference con tus estándares.",
-  },
-  "v2.biblioteca.filter.label": {
-    ca: "Filtrar per certificació:",
-    es: "Filtrar por certificación:",
-  },
-  "v2.biblioteca.filter.tots": { ca: "Tots", es: "Todos" },
-  "v2.biblioteca.sort.recent": {
-    ca: "Ordre: Més recents primer",
-    es: "Orden: Más recientes primero",
-  },
-  "v2.biblioteca.sort.best": {
-    ca: "Ordre: Millor semàfor primer",
-    es: "Orden: Mejor semáforo primero",
-  },
-  "v2.biblioteca.sort.impact": {
-    ca: "Ordre: Major impacte primer",
-    es: "Orden: Mayor impacto primero",
-  },
-  "v2.biblioteca.destacada.tag.ultim": {
-    ca: "Últim publicat",
-    es: "Último publicado",
-  },
-  "v2.biblioteca.destacada.cta": {
-    ca: "Llegir informe complet →",
-    es: "Leer informe completo →",
-  },
-  "v2.biblioteca.semafor.info": {
-    ca: "Com funciona? →",
-    es: "¿Cómo funciona? →",
-  },
-  "v2.biblioteca.semafor.footer": {
-    ca: "«Rigurós en arquitectura, però deixa fora el detall granular.»",
-    es: "«Riguroso en arquitectura, pero deja fuera el detalle granular.»",
-  },
-  "v2.biblioteca.card.semafor.label": {
-    ca: "Sem.",
-    es: "Sem.",
-  },
-  "v2.biblioteca.load_more": {
-    ca: "Carregar més informes",
-    es: "Cargar más informes",
-  },
-  "v2.biblioteca.count": {
-    ca: "Mostrant 7 de 24 informes",
-    es: "Mostrando 7 de 24 informes",
-  },
-  "v2.biblioteca.tag.rating": { ca: "Rating", es: "Rating" },
-  "v2.biblioteca.tag.framework": { ca: "Framework", es: "Framework" },
-  "v2.biblioteca.tag.regulacio": { ca: "Regulació", es: "Regulación" },
-  "v2.biblioteca.tag.premium": { ca: "Premium", es: "Premium" },
-  "v2.biblioteca.tag.ultim": {
-    ca: "Últim publicat",
-    es: "Último publicado",
-  },
-  "v2.biblioteca.xref.impact.high": { ca: "Alt", es: "Alto" },
-  "v2.biblioteca.xref.impact.med": { ca: "Mitjà", es: "Medio" },
-  "v2.biblioteca.xref.impact.low": { ca: "Baix", es: "Bajo" },
-
-  // =========================================================================
-  // FASE 2C — POPUP METODOLOGIA SEMÀFOR (GENÈRIC)
-  // =========================================================================
-  "v2.popup.eyebrow": {
-    ca: "Metodologia · Semàfor Criteri ESG",
-    es: "Metodología · Semáforo Criteri ESG",
-  },
-  "v2.popup.title.pre": { ca: "Com avaluem cada", es: "Cómo evaluamos cada" },
+  // ===== POPUP SEMÀFOR =====
+  "v2.popup.eyebrow": { ca: "Metodologia · Semàfor Criteri ESG", es: "Metodología · Semáforo Criteri ESG" },
+  "v2.popup.title.pre": { ca: "Com avaluem cada ", es: "Cómo evaluamos cada " },
   "v2.popup.title.em": { ca: "informe", es: "informe" },
   "v2.popup.intro": {
-    ca: "El semàfor no avalua si l'informe és bo o dolent. Avalua si és útil per prendre decisions operatives en una empresa concreta. Ho fa en 5 dimensions, cadascuna amb nota verda, groga o vermella. La nota final va de A (robust fort) a D (insuficient).",
-    es: "El semáforo no evalúa si el informe es bueno o malo. Evalúa si es útil para tomar decisiones operativas en una empresa concreta. Lo hace en 5 dimensiones, cada una con nota verde, amarilla o roja. La nota final va de A (robusto fuerte) a D (insuficiente).",
+    ca: "El semàfor no evalúa si un informe és bo o dolent. Evalúa si és útil per prendre decisions operatives en una empresa concreta. Ho fa en 5 dimensions, cadascuna amb nota verd, groga o vermella. La nota final va d'A (robust fort) a D (insuficient).",
+    es: "El semáforo no evalúa si un informe es bueno o malo. Evalúa si es útil para tomar decisiones operativas en una empresa concreta. Lo hace en 5 dimensiones, cada una con nota verde, amarilla o roja. La nota final va de A (robusto fuerte) a D (insuficiente).",
   },
   "v2.popup.dim.1.name": { ca: "Scope 3", es: "Scope 3" },
-  "v2.popup.dim.1.question": {
-    ca: "Cobreix emissions indirectes?",
-    es: "¿Cubre emisiones indirectas?",
-  },
-  "v2.popup.dim.1.exp": {
-    ca: "En la majoria de sectors, el Scope 3 és entre el 70% i el 90% de l'empremta total. Un informe que l'ignora és tècnicament correcte però operativament inservible.",
-    es: "En la mayoría de sectores, el Scope 3 es entre el 70% y el 90% de la huella total. Un informe que lo ignora es técnicamente correcto pero operativamente inservible.",
-  },
+  "v2.popup.dim.1.question": { ca: "¿Cobreix emissions indirectes?", es: "¿Cubre emisiones indirectas?" },
+  "v2.popup.dim.1.exp": { ca: "En la majoria de sectors, el Scope 3 és entre el 70% i el 90% de l'empremta total. Un informe que l'ignora és tècnicament correcte però operativament inservible.", es: "En la mayoría de sectores, el Scope 3 es entre el 70% y el 90% de la huella total. Un informe que lo ignora es técnicamente correcto pero operativamente inservible." },
   "v2.popup.dim.2.name": { ca: "Terminis", es: "Plazos" },
-  "v2.popup.dim.2.question": {
-    ca: "Les dates són operatives o aspiracionals?",
-    es: "¿Las fechas son operativas o aspiracionales?",
-  },
-  "v2.popup.dim.2.exp": {
-    ca: "Un director que planifica inversions per al 2027 no pot treballar amb «per al 2050». Exigim calendari amb anys concrets i fites intermèdies.",
-    es: "Un director que planifica inversiones para 2027 no puede trabajar con «para 2050». Exigimos calendario con años concretos y hitos intermedios.",
-  },
+  "v2.popup.dim.2.question": { ca: "¿Les dates són operatives o aspiracionals?", es: "¿Las fechas son operativas o aspiracionales?" },
+  "v2.popup.dim.2.exp": { ca: "Un director que planifica inversions per al 2027 no pot treballar amb «per al 2050». Exigim calendari amb anys concrets i fites intermèdies.", es: "Un director que planifica inversiones para 2027 no puede trabajar con «para 2050». Exigimos calendario con años concretos y hitos intermedios." },
   "v2.popup.dim.3.name": { ca: "Fonts", es: "Fuentes" },
-  "v2.popup.dim.3.question": {
-    ca: "Estan referenciades o són afirmacions sense suport?",
-    es: "¿Están referenciadas o son afirmaciones sin respaldo?",
-  },
-  "v2.popup.dim.3.exp": {
-    ca: "El greenwashing viu de les afirmacions sense font. Cada afirmació de l'informe ha de portar referència verificable i accessible.",
-    es: "El greenwashing vive de las afirmaciones sin fuente. Cada afirmación del informe debe llevar referencia verificable y accesible.",
-  },
+  "v2.popup.dim.3.question": { ca: "¿Estan referenciades o són afirmacions sense suport?", es: "¿Están referenciadas o son afirmaciones sin respaldo?" },
+  "v2.popup.dim.3.exp": { ca: "El greenwashing viu de les afirmacions sense font. Cada afirmació de l'informe ha de portar referència verificable i accessible.", es: "El greenwashing vive de las afirmaciones sin fuente. Cada afirmación del informe debe llevar referencia verificable y accesible." },
   "v2.popup.dim.4.name": { ca: "Granularitat", es: "Granularidad" },
-  "v2.popup.dim.4.question": {
-    ca: "Hi ha dada desagregada per sector / geografia / mida?",
-    es: "¿Hay dato desagregado por sector / geografía / tamaño?",
-  },
-  "v2.popup.dim.4.exp": {
-    ca: "Una dada agregada a nivell europeu no la pot fer servir una PIME industrial a Catalunya. La granularitat converteix un informe institucional en eina operativa.",
-    es: "Un dato agregado a nivel europeo no lo puede usar una PIME industrial en Cataluña. La granularidad convierte un informe institucional en herramienta operativa.",
-  },
+  "v2.popup.dim.4.question": { ca: "¿Hi ha dada desagregada per sector / geografia / mida?", es: "¿Hay dato desagregado por sector / geografía / tamaño?" },
+  "v2.popup.dim.4.exp": { ca: "Una dada agregada a nivell europeu no la pot usar una PIME industrial a Catalunya. La granularitat converteix un informe institucional en eina operativa.", es: "Un dato agregado a nivel europeo no lo puede usar una PIME industrial en Cataluña. La granularidad convierte un informe institucional en herramienta operativa." },
   "v2.popup.dim.5.name": { ca: "Verificació", es: "Verificación" },
-  "v2.popup.dim.5.question": {
-    ca: "Està auditat externament o és auto-reportat?",
-    es: "¿Está auditado externamente o es auto-reportado?",
-  },
-  "v2.popup.dim.5.exp": {
-    ca: "L'auto-verificació no és necessàriament dolenta, però el director ha de saber si el que llegeix ha passat per un filtre independent o no.",
-    es: "La auto-verificación no es necesariamente mala, pero el director debe saber si lo que lee ha pasado por un filtro independiente o no.",
-  },
-  "v2.popup.grade.a.label": {
-    ca: "Robust fort",
-    es: "Robusto fuerte",
-  },
+  "v2.popup.dim.5.question": { ca: "¿Està auditat externament o és auto-reportat?", es: "¿Está auditado externamente o es auto-reportado?" },
+  "v2.popup.dim.5.exp": { ca: "L'autoverificació no és necessàriament dolenta, però el director ha de saber si el que llegeix ha passat per un filtre independent o no.", es: "La autoverificación no es necesariamente mala, pero el director debe saber si lo que lee ha pasado por un filtro independiente o no." },
+  "v2.popup.grade.a.label": { ca: "Robust fort", es: "Robusto fuerte" },
   "v2.popup.grade.a.desc": { ca: "5 verds", es: "5 verdes" },
   "v2.popup.grade.b.label": { ca: "Robust", es: "Robusto" },
-  "v2.popup.grade.b.desc": {
-    ca: "4 verds + 1 groga",
-    es: "4 verdes + 1 amarilla",
-  },
-  "v2.popup.grade.c.label": { ca: "Dèbil", es: "Débil" },
-  "v2.popup.grade.c.desc": {
-    ca: "Mixta amb fins a 1 vermella",
-    es: "Mezcla con hasta 1 roja",
-  },
+  "v2.popup.grade.b.desc": { ca: "4 verds + 1 groc", es: "4 verdes + 1 amarillo" },
+  "v2.popup.grade.c.label": { ca: "Feble", es: "Débil" },
+  "v2.popup.grade.c.desc": { ca: "Barreja amb fins a 1 vermell", es: "Mezcla con hasta 1 rojo" },
   "v2.popup.grade.d.label": { ca: "Insuficient", es: "Insuficiente" },
-  "v2.popup.grade.d.desc": {
-    ca: "2 o més vermelles",
-    es: "2 o más rojas",
-  },
-  "v2.popup.footer.pre": {
-    ca: "El semàfor no és un judici moral. És un judici operatiu.",
-    es: "El semáforo no es un juicio moral. Es un juicio operativo.",
-  },
-  "v2.popup.footer.em": {
-    ca: "Cada informe que publiquem porta el seu",
-    es: "Cada informe que publicamos lleva el suyo",
-  },
-
-  // =========================================================================
-  // FASE 2C — ESTÀNDARDS ESG
-  // =========================================================================
-  "v2.estandards.eyebrow": {
-    ca: "Estàndards ESG · 2026",
-    es: "Estándares ESG · 2026",
-  },
-  "v2.estandards.title.pre": { ca: "Els", es: "Los" },
-  "v2.estandards.title.em": {
-    ca: "16 estàndards",
-    es: "16 estándares",
-  },
-  "v2.estandards.title.post": {
-    ca: "que un director de sostenibilitat no hauria de confondre.",
-    es: "que un director de sostenibilidad no debería confundir.",
-  },
-  "v2.estandards.concept.reg": {
-    ca: "Una regulació t'obliga",
-    es: "Una regulación te obliga",
-  },
-  "v2.estandards.concept.fw": {
-    ca: "Un framework t'orienta",
-    es: "Un framework te orienta",
-  },
-  "v2.estandards.concept.cert": {
-    ca: "Una certificació t'avalua",
-    es: "Una certificación te evalúa",
-  },
-  "v2.estandards.subtitle.line2": {
-    ca: "Confondre-les té conseqüències operatives reals.",
-    es: "Confundirlas tiene consecuencias operativas reales.",
-  },
-  "v2.estandards.legend.label": { ca: "Filtrar:", es: "Filtrar:" },
-  "v2.estandards.legend.reg": {
-    ca: "Regulacions (5)",
-    es: "Regulaciones (5)",
-  },
-  "v2.estandards.legend.fw": {
-    ca: "Frameworks (5)",
-    es: "Frameworks (5)",
-  },
-  "v2.estandards.legend.cert": {
-    ca: "Certificacions (6)",
-    es: "Certificaciones (6)",
-  },
-  "v2.estandards.search.placeholder": {
-    ca: "Cercar estàndard...",
-    es: "Buscar estándar...",
-  },
-  "v2.estandards.access.free": { ca: "Gratuït", es: "Gratis" },
-  "v2.estandards.access.premium": { ca: "Premium", es: "Premium" },
-  "v2.estandards.card.count": {
-    ca: "informes",
-    es: "informes",
-  },
-  "v2.estandards.card.link": { ca: "Veure →", es: "Ver →" },
-  "v2.estandards.tag.reg.ue": { ca: "Regulació · UE", es: "Regulación · UE" },
-  "v2.estandards.tag.fw.global": {
-    ca: "Framework · Global",
-    es: "Framework · Global",
-  },
-  "v2.estandards.tag.cert": { ca: "Certificació", es: "Certificación" },
-  "v2.estandards.tag.rating": { ca: "Rating", es: "Rating" },
-<<<<<<< Updated upstream
-=======
-
-  // =========================================================================
-  // FASE 2D — /que-fem + /qui-som + /cuenta
-  // (decisions editorials 14 + 17: ES per defecte, "5 minuts" com a eslògan)
-  // =========================================================================
-
-  // --- /que-fem (Qué hacemos) ---
-  "v2.quefem.hero.eyebrow": {
-    ca: "Què fem · Criteri ESG",
-    es: "Qué hacemos · Criteri ESG",
-  },
-  "v2.quefem.hero.title.pre": { ca: "Un ", es: "Un " },
-  "v2.quefem.hero.title.em": {
-    ca: "filtre amb criteri",
-    es: "filtro con criterio",
-  },
-  "v2.quefem.hero.title.post": {
-    ca: " per a decisions ètiques.",
-    es: " para decisiones éticas.",
-  },
-  "v2.quefem.hero.subtitle": {
-    ca: "Sintetitzem, creuem i recomanem. Tres passos sobre els informes institucionals que afecten la teva empresa. Res més.",
-    es: "Sintetizamos, cruzamos y recomendamos. Tres pasos sobre los informes institucionales que afectan a tu empresa. Nada más.",
-  },
-  "v2.quefem.hero.meta.sources": {
-    ca: "fonts monitoritzades",
-    es: "fuentes monitorizadas",
-  },
-  "v2.quefem.hero.meta.standards": {
-    ca: "estàndards creuats",
-    es: "estándares cruzados",
-  },
-  "v2.quefem.hero.meta.reading": {
-    ca: "minuts de lectura per informe",
-    es: "minutos de lectura por informe",
-  },
-
-  "v2.quefem.process.eyebrow": { ca: "El procés", es: "El proceso" },
-  "v2.quefem.process.title.pre": { ca: "Tres passos. ", es: "Tres pasos. " },
-  "v2.quefem.process.title.em": { ca: "Res més.", es: "Nada más." },
-  "v2.quefem.process.1.verb": { ca: "Sintetitzar", es: "Sintetizar" },
-  "v2.quefem.process.1.desc": {
-    ca: "Els informes institucionals més rellevants, en 5 minuts de lectura. Amb semàfor metodològic propi de 5 dimensions.",
-    es: "Los informes institucionales más relevantes, en 5 minutos de lectura. Con semáforo metodológico propio de 5 dimensiones.",
-  },
-  "v2.quefem.process.2.verb": { ca: "Creuar", es: "Cruzar" },
-  "v2.quefem.process.2.desc": {
-    ca: "Cada informe creuat amb les teves certificacions: EcoVadis, B Corp, MSCI, GRI, SGE 21, Sustainalytics. Et diem què t'afecta i amb quina intensitat.",
-    es: "Cada informe cruzado con tus certificaciones: EcoVadis, B Corp, MSCI, GRI, SGE 21, Sustainalytics. Te decimos qué te afecta y con qué intensidad.",
-  },
-  "v2.quefem.process.3.verb": { ca: "Recomanar", es: "Recomendar" },
-  "v2.quefem.process.3.desc": {
-=======
-=======
->>>>>>> Stashed changes
-  // ===== /que-fem (Fase 2D) =====
-  "quefem.hero.eyebrow": { ca: "Què fem · Criteri ESG", es: "Qué hacemos · Criteri ESG" },
-  "quefem.hero.title.pre": { ca: "Un ", es: "Un " },
-  "quefem.hero.title.em": { ca: "filtre amb criteri", es: "filtro con criterio" },
-  "quefem.hero.title.post": { ca: " per a decisions ètiques.", es: " para decisiones éticas." },
-  "quefem.hero.subtitle": {
-    ca: "Sintetitzem, creuem i recomanem. Tres passos sobre els informes institucionals que afecten la teva empresa. Res més.",
-    es: "Sintetizamos, cruzamos y recomendamos. Tres pasos sobre los informes institucionales que afectan a tu empresa. Nada más.",
-  },
-  "quefem.hero.meta.fuentes": { ca: "fonts monitoritzades", es: "fuentes monitorizadas" },
-  "quefem.hero.meta.estandares": { ca: "estàndards creuats", es: "estándares cruzados" },
-  "quefem.hero.meta.minutos": { ca: "minuts de lectura per informe", es: "minutos de lectura por informe" },
-
-  "quefem.proceso.eyebrow": { ca: "El procés", es: "El proceso" },
-  "quefem.proceso.title.pre": { ca: "Tres passos. ", es: "Tres pasos. " },
-  "quefem.proceso.title.em": { ca: "Res més.", es: "Nada más." },
-  "quefem.proceso.title.post": { ca: "", es: "" },
-  "quefem.proceso.01.verb": { ca: "Sintetitzar", es: "Sintetizar" },
-  "quefem.proceso.01.desc": {
-    ca: "Els informes institucionals més rellevants, en 5 minuts de lectura. Amb semàfor metodològic propi de 5 dimensions.",
-    es: "Los informes institucionales más relevantes, en 5 minutos de lectura. Con semáforo metodológico propio de 5 dimensiones.",
-  },
-  "quefem.proceso.02.verb": { ca: "Creuar", es: "Cruzar" },
-  "quefem.proceso.02.desc": {
-    ca: "Cada informe creuat amb les teves certificacions: EcoVadis, B Corp, MSCI, GRI, SGE 21, Sustainalytics. Et diem què t'afecta i amb quina intensitat.",
-    es: "Cada informe cruzado con tus certificaciones: EcoVadis, B Corp, MSCI, GRI, SGE 21, Sustainalytics. Te decimos qué te afecta y con qué intensidad.",
-  },
-  "quefem.proceso.03.verb": { ca: "Recomanar", es: "Recomendar" },
-  "quefem.proceso.03.desc": {
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-    ca: "Tres accions concretes per informe. Operatives. Verificables. El criteri aplicat a la teva decisió d'aquesta setmana.",
-    es: "Tres acciones concretas por informe. Operativas. Verificables. El criterio aplicado a tu decisión de esta semana.",
-  },
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  "v2.quefem.semafor.tag": {
-    ca: "Bloc 0 · Diferenciador principal",
-    es: "Bloque 0 · Diferenciador principal",
-  },
-  "v2.quefem.semafor.title.pre": { ca: "El semàfor ", es: "El semáforo " },
-  "v2.quefem.semafor.title.em": {
-    ca: "metodològic",
-    es: "metodológico",
-  },
-  "v2.quefem.semafor.title.post": { ca: ".", es: "." },
-  "v2.quefem.semafor.desc": {
-    ca: "No avaluem si un informe és bo o dolent. Avaluem si és útil per prendre decisions operatives en una empresa concreta. Cinc dimensions, una nota de A a D. Transparent.",
-    es: "No evaluamos si un informe es bueno o malo. Evaluamos si es útil para tomar decisiones operativas en una empresa concreta. Cinco dimensiones, una nota de A a D. Transparente.",
-  },
-  "v2.quefem.semafor.cta": {
-    ca: "Veure exemple real →",
-    es: "Ver ejemplo real →",
-  },
-  "v2.quefem.semafor.dim1.name": { ca: "Scope 3", es: "Scope 3" },
-  "v2.quefem.semafor.dim1.desc": {
-    ca: "¿Cobreix emissions indirectes de la cadena de valor o només les directes?",
-    es: "¿Cubre emisiones indirectas de la cadena de valor o solo las directas?",
-  },
-  "v2.quefem.semafor.dim2.name": { ca: "Terminis", es: "Plazos" },
-  "v2.quefem.semafor.dim2.desc": {
-    ca: "¿Les dates són operatives (amb calendari) o aspiracionals?",
-    es: "¿Las fechas son operativas (con calendario) o aspiracionales?",
-  },
-  "v2.quefem.semafor.dim3.name": { ca: "Fonts", es: "Fuentes" },
-  "v2.quefem.semafor.dim3.desc": {
-    ca: "¿Les afirmacions estan referenciades o són sense suport?",
-    es: "¿Las afirmaciones están referenciadas o son sin respaldo?",
-  },
-  "v2.quefem.semafor.dim4.name": { ca: "Granularitat", es: "Granularidad" },
-  "v2.quefem.semafor.dim4.desc": {
-    ca: "¿Hi ha dada desagregada per sector, geografia i mida?",
-    es: "¿Hay dato desagregado por sector, geografía y tamaño?",
-  },
-  "v2.quefem.semafor.dim5.name": { ca: "Verificació", es: "Verificación" },
-  "v2.quefem.semafor.dim5.desc": {
-    ca: "¿Està auditat externament o és auto-reportat?",
-    es: "¿Está auditado externamente o es auto-reportado?",
-  },
-
-  "v2.quefem.blocs.eyebrow": {
-    ca: "Estructura de l'informe",
-    es: "Estructura del informe",
-  },
-  "v2.quefem.blocs.title.pre": { ca: "Set blocs més. ", es: "Siete bloques más. " },
-  "v2.quefem.blocs.title.em": {
-    ca: "Vuit en total.",
-    es: "Ocho en total.",
-  },
-  "v2.quefem.blocs.1.name": { ca: "Fitxa tècnica", es: "Ficha técnica" },
-  "v2.quefem.blocs.1.desc": {
-    ca: "Institució, data, tipus, pàgines, URL. 50 paraules per saber què estàs llegint.",
-    es: "Institución, fecha, tipo, páginas, URL. 50 palabras para saber qué estás leyendo.",
-  },
-  "v2.quefem.blocs.1.meta": { ca: "50 paraules", es: "50 palabras" },
-  "v2.quefem.blocs.2.name": { ca: "5 dades clau", es: "5 datos clave" },
-  "v2.quefem.blocs.2.desc": {
-    ca: "Els punts quantitatius amb valor, context i pàgina citada. El que es queda al cap.",
-    es: "Los puntos cuantitativos con valor, contexto y página citada. Lo que se queda en la cabeza.",
-  },
-  "v2.quefem.blocs.2.meta": { ca: "5 dades", es: "5 datos" },
-  "v2.quefem.blocs.3.name": { ca: "Resum executiu", es: "Resumen ejecutivo" },
-  "v2.quefem.blocs.3.desc": {
-    ca: "Què diu l'informe en llenguatge clar. 300 paraules per entendre el cor.",
-    es: "Qué dice el informe en lenguaje claro. 300 palabras para entender el corazón.",
-  },
-  "v2.quefem.blocs.3.meta": { ca: "300 paraules", es: "300 palabras" },
-  "v2.quefem.blocs.4.name": { ca: "Implicacions", es: "Implicaciones" },
-  "v2.quefem.blocs.4.desc": {
-    ca: "Per a empreses, reguladors i ciutadans. Amb subsecció 'Més enllà del Checkbox' (lent ètica).",
-    es: "Para empresas, reguladores y ciudadanos. Con subsección 'Más allá del Checkbox' (lente ética).",
-  },
-  "v2.quefem.blocs.4.meta": {
-    ca: "450-540 paraules + subsecció ètica",
-    es: "450-540 palabras + subsección ética",
-  },
-  "v2.quefem.blocs.5.name": { ca: "Connexions", es: "Conexiones" },
-  "v2.quefem.blocs.5.desc": {
-    ca: "Relacions amb altres informes i actualitat. El context que falta.",
-    es: "Relaciones con otros informes y actualidad. El contexto que falta.",
-  },
-  "v2.quefem.blocs.5.meta": { ca: "200-250 paraules", es: "200-250 palabras" },
-  "v2.quefem.blocs.6.name": { ca: "Accions recomanades", es: "Acciones recomendadas" },
-  "v2.quefem.blocs.6.desc": {
-    ca: "3-5 accions concretes, operatives i verificables. El cor operatiu del producte.",
-    es: "3-5 acciones concretas, operativas y verificables. El corazón operativo del producto.",
-  },
-  "v2.quefem.blocs.6.meta": {
-    ca: "3-5 accions · Bloc diferenciador",
-    es: "3-5 acciones · Bloque diferenciador",
-  },
-  "v2.quefem.blocs.7.name": { ca: "Cross-reference", es: "Cross-reference" },
-  "v2.quefem.blocs.7.desc": {
-    ca: "Mapa amb EcoVadis, B Corp, MSCI, GRI, SGE 21, Sustainalytics i altres. La dada sense el teu context és soroll. La dada amb el teu context és decisió.",
-    es: "Mapa con EcoVadis, B Corp, MSCI, GRI, SGE 21, Sustainalytics y otros. El dato sin tu contexto es ruido. El dato con tu contexto es decisión.",
-  },
-  "v2.quefem.blocs.7.meta": {
-    ca: "Per a les teves certificacions · Bloc diferenciador",
-    es: "Para tus certificaciones · Bloque diferenciador",
-  },
-
-  "v2.quefem.valors.eyebrow": {
-    ca: "Criteris i valors",
-    es: "Criterios y valores",
-  },
-  "v2.quefem.valors.title.pre": {
-    ca: "El que guia ",
-    es: "Lo que guía ",
-  },
-  "v2.quefem.valors.title.em": {
-    ca: "cada decisió",
-    es: "cada decisión",
-  },
-  "v2.quefem.valors.1.num": { ca: "01 · Honestedat", es: "01 · Honestidad" },
-  "v2.quefem.valors.1.pre": {
-    ca: "Si no sabem alguna cosa, ho diem. Si una font no és fiable, ho senyalitzem. ",
-    es: "Si no sabemos algo, lo decimos. Si una fuente no es fiable, lo señalamos. ",
-  },
-  "v2.quefem.valors.1.em": {
-    ca: "Mai inventem dades.",
-    es: "Nunca inventamos datos.",
-  },
-  "v2.quefem.valors.2.num": { ca: "02 · Criteri", es: "02 · Criterio" },
-  "v2.quefem.valors.2.pre": {
-    ca: "Tot el que fem està fet amb solidesa, amb fonts verificades. ",
-    es: "Todo lo que hacemos está hecho con solidez, con fuentes verificadas. ",
-  },
-  "v2.quefem.valors.2.em": {
-    ca: "Donem exemple de criteri.",
-    es: "Damos ejemplo de criterio.",
-  },
-  "v2.quefem.valors.3.num": { ca: "03 · Ètica", es: "03 · Ética" },
-  "v2.quefem.valors.3.pre": {
-    ca: "Apliquem el principi kantià i el del bé comú en cada anàlisi. ",
-    es: "Aplicamos el principio kantiano y el del bien común en cada análisis. ",
-  },
-  "v2.quefem.valors.3.em": {
-    ca: "L'ètica és fonamental.",
-    es: "La ética es fundamental.",
-  },
-  "v2.quefem.valors.4.num": { ca: "04 · Transparència", es: "04 · Transparencia" },
-  "v2.quefem.valors.4.pre": {
-    ca: "Cada afirmació porta la seva font. Cada nota del semàfor, la seva justificació. ",
-    es: "Cada afirmación lleva su fuente. Cada nota del semáforo, su justificación. ",
-  },
-  "v2.quefem.valors.4.em": {
-    ca: "El greenwashing no passa aquí.",
-    es: "El greenwashing no pasa aquí.",
-  },
-  "v2.quefem.valors.5.num": { ca: "05 · Humilitat", es: "05 · Humildad" },
-  "v2.quefem.valors.5.pre": {
-    ca: "No som la solució final. Som una eina al servei del director de sostenibilitat. ",
-    es: "No somos la solución final. Somos una herramienta al servicio del director de sostenibilidad. ",
-  },
-  "v2.quefem.valors.5.em": {
-    ca: "Tu decides; nosaltres filtrem.",
-    es: "Tú decides; nosotros filtramos.",
-  },
-  "v2.quefem.valors.6.num": {
-    ca: "06 · Sostenibilitat absoluta",
-    es: "06 · Sostenibilidad absoluta",
-  },
-  "v2.quefem.valors.6.pre": {
-    ca: "Els límits planetaris són físics, no comunicatius. ",
-    es: "Los límites planetarios son físicos, no comunicativos. ",
-  },
-  "v2.quefem.valors.6.em": {
-    ca: "No admetem interpretacions.",
-    es: "No admitimos interpretaciones.",
-  },
-
-  "v2.quefem.manifest.eyebrow": {
-    ca: "Més enllà del Checkbox",
-    es: "Más allá del Checkbox",
-  },
-  "v2.quefem.manifest.text.pre": {
-    ca: "La sostenibilitat no es mesura per la quantitat de formularis complimentats, ",
-    es: "La sostenibilidad no se mide por la cantidad de formularios cumplimentados, ",
-  },
-  "v2.quefem.manifest.text.em": {
-    ca: "sinó per la traçabilitat de les promeses",
-    es: "sino por la trazabilidad de las promesas",
-  },
-  "v2.quefem.manifest.text.post": { ca: ".", es: "." },
-  "v2.quefem.manifest.attribution": {
-    ca: "— Manifest Criteri ESG",
-    es: "— Manifest Criteri ESG",
-  },
-
-  // --- /qui-som (Quiénes somos) ---
-  "v2.quisom.hero.eyebrow": {
-    ca: "Qui som · 2026",
-    es: "Quiénes somos · 2026",
-  },
-  "v2.quisom.hero.title.pre": {
-    ca: "Ajudem les organitzacions a ser ",
-    es: "Ayudamos a las organizaciones a ser ",
-  },
-  "v2.quisom.hero.title.em": {
-    ca: "més ètiques, sostenibles i transformadores",
-    es: "más éticas, sostenibles y transformadoras",
-  },
-  "v2.quisom.hero.title.post": { ca: ".", es: "." },
-  "v2.quisom.hero.subtitle": {
-    ca: "Aquesta és la gent que hi ha al darrere. Un equip petit que creu que les empreses poden ser agents de canvi —i que la tecnologia ha d'estar al servei del criteri humà.",
-    es: "Esta es la gente que hay detrás. Un equipo pequeño que cree que las empresas pueden ser agentes de cambio —y que la tecnología debe estar al servicio del criterio humano.",
-  },
-
-  "v2.quisom.manifest.eyebrow": {
-    ca: "Manifest",
-    es: "Manifest",
-  },
-
-  "v2.quisom.equip.eyebrow": { ca: "L'equip", es: "El equipo" },
-  "v2.quisom.equip.title.pre": {
-    ca: "Combinem el millor de la IA amb la ",
-    es: "Combinamos lo mejor de la IA con la ",
-  },
-  "v2.quisom.equip.title.em": {
-    ca: "mirada ètica humana",
-    es: "mirada ética humana",
-  },
-  "v2.quisom.equip.title.post": { ca: ".", es: "." },
-  "v2.quisom.equip.intro": {
-    ca: "Hem construït un sistema que combina el millor de la intel·ligència artificial amb la mirada ètica de persones que coneixen el sector ESG. La IA fa la feina pesada — investigació, síntesi, classificació. Les persones aportem criteri, context i judici.",
-    es: "Hemos construido un sistema que combina lo mejor de la inteligencia artificial con la mirada ética de personas que conocen el sector ESG. La IA hace el trabajo pesado — investigación, síntesis, clasificación. Las personas aportamos criterio, contexto y juicio.",
-  },
-
-  "v2.quisom.member.1.role": {
-    ca: "CEO · Estratègia i editorial",
-    es: "CEO · Estrategia y editorial",
-  },
-  "v2.quisom.member.1.name": { ca: "Fundador", es: "Fundador" },
-  "v2.quisom.member.1.tag": {
-    ca: "Filosofia + ESG · Barcelona",
-    es: "Filosofía + ESG · Barcelona",
-  },
-  "v2.quisom.member.2.role": {
-    ca: "Tech Lead · Disseny i programació",
-    es: "Tech Lead · Diseño y programación",
-  },
-  "v2.quisom.member.2.name": { ca: "Tech Lead", es: "Tech Lead" },
-  "v2.quisom.member.2.tag": {
-    ca: "Full-stack · Barcelona",
-    es: "Full-stack · Barcelona",
-  },
-  "v2.quisom.member.3.role": {
-    ca: "Assistent d'IA · Recerca i síntesi",
-    es: "Asistente de IA · Investigación y síntesis",
-  },
-  "v2.quisom.member.3.name": {
-    ca: "Agent d'IA",
-    es: "Agente de IA",
-  },
-  "v2.quisom.member.3.tag": {
-    ca: "IA · Supervisada per humà",
-    es: "IA · Supervisada por humano",
-  },
-
-  "v2.quisom.conviccions.eyebrow": {
-    ca: "El que creiem",
-    es: "Lo que creemos",
-  },
-  "v2.quisom.conviccions.title.pre": {
-    ca: "Cinc conviccions que ",
-    es: "Cinco convicciones que ",
-  },
-  "v2.quisom.conviccions.title.em": {
-    ca: "sostenen tot",
-    es: "sostienen todo",
-  },
-  "v2.quisom.conviccions.title.post": { ca: ".", es: "." },
-  "v2.quisom.conviccions.1.num": { ca: "01 · Dignitat", es: "01 · Dignidad" },
-  "v2.quisom.conviccions.1.pre": { ca: "La ", es: "La " },
-  "v2.quisom.conviccions.1.em": {
-    ca: "dignitat humana",
-    es: "dignidad humana",
-  },
-  "v2.quisom.conviccions.1.post": {
-    ca: " no és negociable. Cap mètrica ESG pot justificar un deteriorament de les condicions de treball.",
-    es: " no es negociable. Ninguna métrica ESG puede justificar un deterioro de las condiciones de trabajo.",
-  },
-  "v2.quisom.conviccions.2.num": { ca: "02 · Justícia", es: "02 · Justicia" },
-  "v2.quisom.conviccions.2.pre": { ca: "La ", es: "La " },
-  "v2.quisom.conviccions.2.em": {
-    ca: "justícia distributiva",
-    es: "justicia distributiva",
-  },
-  "v2.quisom.conviccions.2.post": {
-    ca: " importa. El valor creat s'ha de repartir entre qui el generen, no només entre accionistes.",
-    es: " importa. El valor creado debe repartirse entre quienes lo generan, no solo entre accionistas.",
-  },
-  "v2.quisom.conviccions.3.num": {
-    ca: "03 · Sostenibilitat",
-    es: "03 · Sostenibilidad",
-  },
-  "v2.quisom.conviccions.3.pre": { ca: "La ", es: "La " },
-  "v2.quisom.conviccions.3.em": {
-    ca: "sostenibilitat absoluta",
-    es: "sostenibilidad absoluta",
-  },
-  "v2.quisom.conviccions.3.post": {
-    ca: " no admet interpretacions. Els límits planetaris són físics, no comunicatius.",
-    es: " no admite interpretaciones. Los límites planetarios son físicos, no comunicativos.",
-  },
-  "v2.quisom.conviccions.4.num": { ca: "04 · Democràcia", es: "04 · Democracia" },
-  "v2.quisom.conviccions.4.pre": { ca: "La ", es: "La " },
-  "v2.quisom.conviccions.4.em": {
-    ca: "co-decisió democràtica",
-    es: "co-decisión democrática",
-  },
-  "v2.quisom.conviccions.4.post": {
-    ca: " és un deure. Qui afecta les decisions ha de tenir veu en elles.",
-    es: " es un deber. Quienes afectan las decisiones deben tener voz en ellas.",
-  },
-  "v2.quisom.conviccions.5.num": { ca: "05 · Territori", es: "05 · Territorio" },
-  "v2.quisom.conviccions.5.pre": { ca: "L'", es: "El " },
-  "v2.quisom.conviccions.5.em": {
-    ca: "arrelament territorial",
-    es: "arraigo territorial",
-  },
-  "v2.quisom.conviccions.5.post": {
-    ca: " compta. Una empresa que no deixa buit quan desapareix no crea valor real.",
-    es: " cuenta. Una empresa que no deja vacío cuando desaparece no crea valor real.",
-  },
-
-  "v2.quisom.closing.eyebrow": { ca: "Criteri ESG", es: "Criteri ESG" },
-  "v2.quisom.closing.text.pre": {
-    ca: "No és només una eina. És la convicció que les empreses poden ser ",
-    es: "No es solo una herramienta. Es la convicción de que las empresas pueden ser ",
-  },
-  "v2.quisom.closing.text.em": {
-    ca: "agents de canvi",
-    es: "agentes de cambio",
-  },
-  "v2.quisom.closing.text.post": {
-    ca: " —i que la tecnologia ha d'estar al servei del criteri humà.",
-    es: " —y que la tecnología debe estar al servicio del criterio humano.",
-  },
-  "v2.quisom.closing.button": {
-    ca: "Prova gratuïta 7 dies",
-    es: "Prueba gratis 7 días",
-  },
-
-  // --- /cuenta (Mi cuenta) ---
-  "v2.cuenta.page.title": { ca: "El meu compte", es: "Mi cuenta" },
-  "v2.cuenta.page.subtitle": {
-    ca: "Les teves preferències i les teves certificacions en un sol lloc.",
-    es: "Tus preferencias y tus certificaciones en un solo lugar.",
-  },
-  "v2.cuenta.brand": { ca: "Criteri ESG", es: "Criteri ESG" },
-  "v2.cuenta.user.default": { ca: "Usuari", es: "Usuario" },
-  "v2.cuenta.plan.free": { ca: "Pla Free", es: "Plan Free" },
-  "v2.cuenta.plan.premium": { ca: "Pla Premium", es: "Plan Premium" },
-
-  "v2.cuenta.nav.perfil": { ca: "Perfil", es: "Perfil" },
-  "v2.cuenta.nav.newsletter": { ca: "Newsletter", es: "Newsletter" },
-  "v2.cuenta.nav.pla": { ca: "El meu pla", es: "Mi plan" },
-  "v2.cuenta.nav.estandards": {
-    ca: "Els meus estàndards ESG",
-    es: "Mis estándares ESG",
-  },
-  "v2.cuenta.nav.interessos": {
-    ca: "Altres interessos",
-    es: "Otros intereses",
-  },
-  "v2.cuenta.nav.billing": { ca: "Billing", es: "Billing" },
-  "v2.cuenta.nav.logout": {
-    ca: "← Tancar sessió",
-    es: "← Cerrar sesión",
-  },
-
-  "v2.cuenta.card.perfil.title": { ca: "Perfil", es: "Perfil" },
-  "v2.cuenta.card.newsletter.title": { ca: "Newsletter", es: "Newsletter" },
-  "v2.cuenta.card.pla.title": { ca: "El meu pla", es: "Mi plan" },
-  "v2.cuenta.card.estandards.title": {
-    ca: "Els meus estàndards ESG",
-    es: "Mis estándares ESG",
-  },
-  "v2.cuenta.card.interessos.title": {
-    ca: "Altres interessos",
-    es: "Otros intereses",
-  },
-
-  "v2.cuenta.perfil.name": { ca: "Nom", es: "Nombre" },
-  "v2.cuenta.perfil.email": { ca: "Email", es: "Email" },
-  "v2.cuenta.perfil.empresa": { ca: "Empresa", es: "Empresa" },
-  "v2.cuenta.perfil.empresa.placeholder": {
-    ca: "Nom de la teva empresa",
-    es: "Nombre de tu empresa",
-  },
-  "v2.cuenta.perfil.sector": {
-    ca: "Sector professional",
-    es: "Sector profesional",
-  },
-  "v2.cuenta.perfil.sector.default": {
-    ca: "Director de sostenibilitat",
-    es: "Director de sostenibilidad",
-  },
-
-  "v2.cuenta.newsletter.lang.label": {
-    ca: "Idioma de la newsletter",
-    es: "Idioma de la newsletter",
-  },
-  "v2.cuenta.newsletter.desc": {
-    ca: "Rep la newsletter bimensual (cada 2 setmanes, els dijous a les 15:00h). Pots canviar l'idioma en qualsevol moment.",
-    es: "Recibes la newsletter bimensual (cada 2 semanas, los jueves a las 15:00h). Puedes cambiar el idioma en cualquier momento.",
-  },
-
-  "v2.cuenta.pla.free.name": { ca: "Pla Free", es: "Plan Free" },
-  "v2.cuenta.pla.free.price": {
-    ca: "0€/mes · Accés a informes antics + newsletter reduïda",
-    es: "0€/mes · Acceso a informes antiguos + newsletter reducida",
-  },
-  "v2.cuenta.pla.cta": {
-    ca: "Fes-te Premium →",
-    es: "Hazte Premium →",
-  },
-  "v2.cuenta.pla.desc": {
-    ca: "Amb Premium accedeixes a tots els informes recents (últims 6 mesos), cross-reference complet amb les teves certificacions, accions recomanades i la newsletter completa. 29€/mes per als primers 50 subscriptors (early bird fins a novembre).",
-    es: "Con Premium accedes a todos los informes recientes (últimos 6 meses), cross-reference completo con tus certificaciones, acciones recomendadas y la newsletter completa. 29€/mes para los primeros 50 suscriptores (early bird hasta noviembre).",
-  },
-
-  "v2.cuenta.estandards.desc": {
-    ca: "Selecciona els estàndards que ja té la teva empresa. Et recomanarem informes que t'afecten directament.",
-    es: "Selecciona los estándares que ya tiene tu empresa. Te recomendaremos informes que te afectan directamente.",
-  },
-  "v2.cuenta.estandards.legend.reg": {
-    ca: "Regulacions (5)",
-    es: "Regulaciones (5)",
-  },
-  "v2.cuenta.estandards.legend.fw": {
-    ca: "Frameworks (5)",
-    es: "Frameworks (5)",
-  },
-  "v2.cuenta.estandards.legend.cert": {
-    ca: "Certificacions (6)",
-    es: "Certificaciones (6)",
-  },
-
-  "v2.cuenta.interessos.desc": {
-    ca: "Altres temes que t'interessen. Els usem per millorar les recomanacions de la newsletter.",
-    es: "Otros temas que te interesan. Los usamos para mejorar las recomendaciones de la newsletter.",
-  },
->>>>>>> Stashed changes
-=======
-=======
->>>>>>> Stashed changes
-  "quefem.semaforo.eyebrow": { ca: "Bloc 0 · Diferenciador principal", es: "Bloque 0 · Diferenciador principal" },
-  "quefem.semaforo.title.pre": { ca: "El semàfor ", es: "El semáforo " },
-  "quefem.semaforo.title.em": { ca: "metodològic", es: "metodológico" },
-  "quefem.semaforo.title.post": { ca: ".", es: "." },
-  "quefem.semaforo.desc": {
-    ca: "No avaluem si un informe és bo o dolent. Avaluem si és útil per prendre decisions operatives en una empresa concreta. Cinc dimensions, una nota d'A a D. Transparent.",
-    es: "No evaluamos si un informe es bueno o malo. Evaluamos si es útil para tomar decisiones operativas en una empresa concreta. Cinco dimensiones, una nota de A a D. Transparente.",
-  },
-  "quefem.semaforo.scope3": { ca: "¿Cobreix emissions indirectes de la cadena de valor o només les directes?", es: "¿Cubre emisiones indirectas de la cadena de valor o solo las directas?" },
-  "quefem.semaforo.plazos": { ca: "¿Les dates són operatives (amb calendari) o aspiracionals?", es: "¿Las fechas son operativas (con calendario) o aspiracionales?" },
-  "quefem.semaforo.fuentes": { ca: "¿Les afirmacions estan referenciades o són sense suport?", es: "¿Las afirmaciones están referenciadas o son sin respaldo?" },
-  "quefem.semaforo.granularidad": { ca: "¿Hi ha dada desagregada per sector, geografia i mida?", es: "¿Hay dato desagregado por sector, geografía y tamaño?" },
-  "quefem.semaforo.verificacion": { ca: "¿Està auditat externament o és auto-reportat?", es: "¿Está auditado externamente o es auto-reportado?" },
-
-  "quefem.estructura.eyebrow": { ca: "Estructura de l'informe", es: "Estructura del informe" },
-  "quefem.estructura.title.pre": { ca: "Set blocs més. ", es: "Siete bloques más. " },
-  "quefem.estructura.title.em": { ca: "Vuit en total.", es: "Ocho en total." },
-  "quefem.estructura.title.post": { ca: "", es: "" },
-  "quefem.bloc.01.name": { ca: "Fitxa tècnica", es: "Ficha técnica" },
-  "quefem.bloc.01.desc": { ca: "Institució, data, tipus, pàgines, URL. 50 paraules per saber què estàs llegint.", es: "Institución, fecha, tipo, páginas, URL. 50 palabras para saber qué estás leyendo." },
-  "quefem.bloc.01.meta": { ca: "50 paraules", es: "50 palabras" },
-  "quefem.bloc.02.name": { ca: "5 dades clau", es: "5 datos clave" },
-  "quefem.bloc.02.desc": { ca: "Els punts quantitatius amb valor, context i pàgina citada. El que es queda al cap.", es: "Los puntos cuantitativos con valor, contexto y página citada. Lo que se queda en la cabeza." },
-  "quefem.bloc.02.meta": { ca: "5 dades", es: "5 datos" },
-  "quefem.bloc.03.name": { ca: "Resum executiu", es: "Resumen ejecutivo" },
-  "quefem.bloc.03.desc": { ca: "Què diu l'informe en llenguatge clar. 300 paraules per entendre el cor.", es: "Qué dice el informe en lenguaje claro. 300 palabras para entender el corazón." },
-  "quefem.bloc.03.meta": { ca: "300 paraules", es: "300 palabras" },
-  "quefem.bloc.04.name": { ca: "Implicacions", es: "Implicaciones" },
-  "quefem.bloc.04.desc": { ca: "Per a empreses, reguladors i ciutadans. Amb subsecció 'Més enllà del Checkbox' (lent ètica).", es: "Para empresas, reguladores y ciudadanos. Con subsección 'Más allá del Checkbox' (lente ética)." },
-  "quefem.bloc.04.meta": { ca: "450-540 paraules + subsecció ètica", es: "450-540 palabras + subsección ética" },
-  "quefem.bloc.05.name": { ca: "Connexions", es: "Conexiones" },
-  "quefem.bloc.05.desc": { ca: "Relacions amb altres informes i actualitat. El context que falta.", es: "Relaciones con otros informes y actualidad. El contexto que falta." },
-  "quefem.bloc.05.meta": { ca: "200-250 paraules", es: "200-250 palabras" },
-  "quefem.bloc.06.name": { ca: "Accions recomanades", es: "Acciones recomendadas" },
-  "quefem.bloc.06.desc": { ca: "3-5 accions concretes, operatives i verificables. El cor operatiu del producte.", es: "3-5 acciones concretas, operativas y verificables. El corazón operativo del producto." },
-  "quefem.bloc.06.meta": { ca: "3-5 accions · Bloc diferenciador", es: "3-5 acciones · Bloque diferenciador" },
-  "quefem.bloc.07.name": { ca: "Cross-reference", es: "Cross-reference" },
-  "quefem.bloc.07.desc": { ca: "Mapatge amb EcoVadis, B Corp, MSCI, GRI, SGE 21, Sustainalytics i altres. La dada sense el teu context és soroll. La dada amb el teu context és decisió.", es: "Mapa con EcoVadis, B Corp, MSCI, GRI, SGE 21, Sustainalytics y otros. El dato sin tu contexto es ruido. El dato con tu contexto es decisión." },
-  "quefem.bloc.07.meta": { ca: "Per a les teves certificacions · Bloc diferenciador", es: "Para tus certificaciones · Bloque diferenciador" },
-
-  "quefem.criteris.eyebrow": { ca: "Criteris i valors", es: "Criterios y valores" },
-  "quefem.criteris.title.pre": { ca: "El que guia ", es: "Lo que guía " },
-  "quefem.criteris.title.em": { ca: "cada decisió", es: "cada decisión" },
-  "quefem.criteris.title.post": { ca: ".", es: "." },
-  "quefem.criteri.01.name": { ca: "Honestitat", es: "Honestidad" },
-  "quefem.criteri.01.text": { ca: "Si no sabem una cosa, ho diem. Si una font no és fiable, ho senyalem. Mai inventem dades.", es: "Si no sabemos algo, lo decimos. Si una fuente no es fiable, lo señalamos. Nunca inventamos datos." },
-  "quefem.criteri.02.name": { ca: "Criteri", es: "Criterio" },
-  "quefem.criteri.02.text": { ca: "Tot el que fem està fet amb solidesa, amb fonts verificades. Donem exemple de criteri.", es: "Todo lo que hacemos está hecho con solidez, con fuentes verificadas. Damos ejemplo de criterio." },
-  "quefem.criteri.03.name": { ca: "Ètica", es: "Ética" },
-  "quefem.criteri.03.text": { ca: "Apliquem el principi kantiana i el del bé comú en cada anàlisi. L'ètica és fonamental.", es: "Aplicamos el principio kantiano y el del bien común en cada análisis. La ética es fundamental." },
-  "quefem.criteri.04.name": { ca: "Transparència", es: "Transparencia" },
-  "quefem.criteri.04.text": { ca: "Cada afirmació porta la seva font. Cada nota del semàfor, la seva justificació. El greenwashing no passa aquí.", es: "Cada afirmación lleva su fuente. Cada nota del semáforo, su justificación. El greenwashing no pasa aquí." },
-  "quefem.criteri.05.name": { ca: "Humilitat", es: "Humildad" },
-  "quefem.criteri.05.text": { ca: "No som la solució final. Som una eina al servei del director de sostenibilitat. Tu decideixes; nosaltres filtrem.", es: "No somos la solución final. Somos una herramienta al servicio del director de sostenibilidad. Tú decides; nosotros filtramos." },
-  "quefem.criteri.06.name": { ca: "Sostenibilitat absoluta", es: "Sostenibilidad absoluta" },
-  "quefem.criteri.06.text": { ca: "Els límits planetaris són físics, no comunicatius. No admetem interpretacions.", es: "Los límites planetarios son físicos, no comunicativos. No admitimos interpretaciones." },
-
-  "quefem.manifest.eyebrow": { ca: "Més enllà del Checkbox", es: "Más allá del Checkbox" },
-  "quefem.manifest.text.pre": { ca: "La sostenibilitat no es mesura per la quantitat de formularis complimentats, ", es: "La sostenibilidad no se mide por la cantidad de formularios cumplimentados, " },
-  "quefem.manifest.text.em": { ca: "sinó per la traçabilitat de les promeses", es: "sino por la trazabilidad de las promesas" },
-  "quefem.manifest.text.post": { ca: ".", es: "." },
-  "quefem.manifest.attribution": { ca: "Manifest Criteri ESG", es: "Manifest Criteri ESG" },
+  "v2.popup.grade.d.desc": { ca: "2 o més vermells", es: "2 o más rojos" },
+  "v2.popup.footer.pre": { ca: "El semàfor no és un judici moral. És un judici operatiu. ", es: "El semáforo no es un juicio moral. Es un juicio operativo. " },
+  "v2.popup.footer.em": { ca: "Cada informe que publiquem porta el seu", es: "Cada informe que publicamos lleva el suyo" },
 
   // ===== /qui-som (Fase 2D) =====
   "quisom.v2.hero.eyebrow": { ca: "Qui som · 2026", es: "Quiénes somos · 2026" },
   "quisom.v2.hero.title.pre": { ca: "Ajudem les organitzacions a ser ", es: "Ayudamos a las organizaciones a ser " },
   "quisom.v2.hero.title.em": { ca: "més ètiques, sostenibles i transformadores", es: "más éticas, sostenibles y transformadoras" },
   "quisom.v2.hero.title.post": { ca: ".", es: "." },
-  "quisom.v2.hero.subtitle": {
-    ca: "Aquesta és la gent que hi ha al darrere. Un equip petit que creu que les empreses poden ser agents de canvi —i que la tecnologia ha d'estar al servei del criteri humà.",
-    es: "Esta es la gente que hay detrás. Un equipo pequeño que cree que las empresas pueden ser agentes de cambio —y que la tecnología debe estar al servicio del criterio humano.",
-  },
+  "quisom.v2.hero.subtitle": { ca: "Aquesta és la gent que hi ha al darrere.", es: "Esta es la gente que hay detrás." },
   "quisom.v2.manifest.eyebrow": { ca: "Manifest", es: "Manifest" },
   "quisom.v2.team.eyebrow": { ca: "L'equip", es: "El equipo" },
   "quisom.v2.team.title.pre": { ca: "Combinem el millor de la IA amb la ", es: "Combinamos lo mejor de la IA con la " },
   "quisom.v2.team.title.em": { ca: "mirada ètica humana", es: "mirada ética humana" },
   "quisom.v2.team.title.post": { ca: ".", es: "." },
-  "quisom.v2.team.intro": {
-    ca: "Hem construït un sistema que combina el millor de la intel·ligència artificial amb la mirada ètica de persones que coneixen el sector ESG. La IA fa la feina pesada — recerca, síntesi, classificació. Les persones aportem criteri, context i judici.",
-    es: "Hemos construido un sistema que combina lo mejor de la inteligencia artificial con la mirada ética de personas que conocen el sector ESG. La IA hace el trabajo pesado — investigación, síntesis, clasificación. Las personas aportamos criterio, contexto y juicio.",
-  },
+  "quisom.v2.team.intro": { ca: "La IA fa la feina pesada. Les persones aportem criteri.", es: "La IA hace el trabajo pesado. Las personas aportamos criterio." },
   "quisom.v2.team.01.role": { ca: "CEO · Estratègia i editorial", es: "CEO · Estrategia y editorial" },
   "quisom.v2.team.01.name": { ca: "Fundador", es: "Fundador" },
-  "quisom.v2.team.01.bio": {
-    ca: "Combina formació en filosofia i gestió d'empreses, amb experiència en consultoria ESG. Decideix quins informes es processen, firma la Carta del Director mensual i manté la coherència editorial del projecte. La seva mirada ètica és el que diferencia Criteri d'altres serveis ESG.",
-    es: "Combina formación en filosofía y gestión de empresas, con experiencia en consultoría ESG. Decide qué informes se procesan, firma la Carta del Director mensual y mantiene la coherencia editorial del proyecto. Su mirada ética es lo que diferencia a Criteri de otros servicios ESG.",
-  },
+  "quisom.v2.team.01.bio": { ca: "Combina formació en filosofia i gestió d'empreses, amb experiència en consultoria ESG.", es: "Combina formación en filosofía y gestión de empresas, con experiencia en consultoría ESG." },
   "quisom.v2.team.01.tag": { ca: "Filosofia + ESG · Barcelona", es: "Filosofía + ESG · Barcelona" },
   "quisom.v2.team.02.role": { ca: "Tech Lead · Disseny i programació", es: "Tech Lead · Diseño y programación" },
   "quisom.v2.team.02.name": { ca: "Tech Lead", es: "Tech Lead" },
-  "quisom.v2.team.02.bio": {
-    ca: "S'encarrega del desenvolupament web (Next.js), la base de dades (Supabase), les integracions tècniques (Stripe, Beehiiv, Google Drive) i el manteniment de l'agent d'IA. Treballa estretament amb el fundador perquè la tecnologia estigui sempre al servei del criteri humà, no al revés.",
-    es: "Se encarga del desarrollo web (Next.js), la base de datos (Supabase), las integraciones técnicas (Stripe, Beehiiv, Google Drive) y el mantenimiento del agente de IA. Trabaja estrechamente con el fundador para que la tecnología esté siempre al servicio del criterio humano, no al revés.",
-  },
+  "quisom.v2.team.02.bio": { ca: "S'encarrega del desenvolupament web, la base de dades i les integracions tècniques.", es: "Se encarga del desarrollo web, la base de datos y las integraciones técnicas." },
   "quisom.v2.team.02.tag": { ca: "Full-stack · Barcelona", es: "Full-stack · Barcelona" },
   "quisom.v2.team.03.role": { ca: "Assistent d'IA · Recerca i síntesi", es: "Asistente de IA · Investigación y síntesis" },
   "quisom.v2.team.03.name": { ca: "Agent d'IA", es: "Agente de IA" },
-  "quisom.v2.team.03.bio": {
-    ca: "Fa la feina pesada —detecció de fonts, síntesi en 8 blocs, classificació, corrector ortogràfic— sempre sota supervisió humana. No és un membre de l'equip en sentit estricte, però sense ella no podríem mantenir el ritme de publicació ni el cost per informe que tenim.",
-    es: "Hace el trabajo pesado —detección de fuentes, síntesis en 8 bloques, clasificación, corrector ortográfico— siempre bajo supervisión humana. No es un miembro del equipo en sentido estricto, pero sin ella no podríamos mantener el ritmo de publicación ni el coste por informe que tenemos.",
-  },
+  "quisom.v2.team.03.bio": { ca: "Fa la feina pesada sempre sota supervisió humana.", es: "Hace el trabajo pesado siempre bajo supervisión humana." },
   "quisom.v2.team.03.tag": { ca: "IA · Supervisada per humà", es: "IA · Supervisada por humano" },
   "quisom.v2.conviccions.eyebrow": { ca: "El que creiem", es: "Lo que creemos" },
   "quisom.v2.conviccions.title.pre": { ca: "Cinc conviccions que ", es: "Cinco convicciones que " },
   "quisom.v2.conviccions.title.em": { ca: "sostenen tot", es: "sostienen todo" },
   "quisom.v2.conviccions.title.post": { ca: ".", es: "." },
   "quisom.v2.conviccio.01.name": { ca: "Dignitat", es: "Dignidad" },
-  "quisom.v2.conviccio.01.text": { ca: "La dignitat humana no és negociable. Cap mètrica ESG pot justificar un deteriorament de les condicions de treball.", es: "La dignidad humana no es negociable. Ninguna métrica ESG puede justificar un deterioro de las condiciones de trabajo." },
+  "quisom.v2.conviccio.01.text": { ca: "La dignitat humana no és negociable.", es: "La dignidad humana no es negociable." },
   "quisom.v2.conviccio.02.name": { ca: "Justícia", es: "Justicia" },
-  "quisom.v2.conviccio.02.text": { ca: "La justícia distributiva importa. El valor creat s'ha de repartir entre qui el genera, no només entre accionistes.", es: "La justicia distributiva importa. El valor creado debe repartirse entre quienes lo generan, no solo entre accionistas." },
+  "quisom.v2.conviccio.02.text": { ca: "La justícia distributiva importa.", es: "La justicia distributiva importa." },
   "quisom.v2.conviccio.03.name": { ca: "Sostenibilitat", es: "Sostenibilidad" },
-  "quisom.v2.conviccio.03.text": { ca: "La sostenibilitat absoluta no admet interpretacions. Els límits planetaris són físics, no comunicatius.", es: "La sostenibilidad absoluta no admite interpretaciones. Los límites planetarios son físicos, no comunicativos." },
+  "quisom.v2.conviccio.03.text": { ca: "La sostenibilitat absoluta no admet interpretacions.", es: "La sostenibilidad absoluta no admite interpretaciones." },
   "quisom.v2.conviccio.04.name": { ca: "Democràcia", es: "Democracia" },
-  "quisom.v2.conviccio.04.text": { ca: "La co-decisió democràtica és un deure. Qui afecta les decisions ha de tenir-hi veu.", es: "La co-decisión democrática es un deber. Quienes afectan las decisiones deben tener voz en ellas." },
+  "quisom.v2.conviccio.04.text": { ca: "La co-decisió democràtica és un deure.", es: "La co-decisión democrática es un deber." },
   "quisom.v2.conviccio.05.name": { ca: "Territori", es: "Territorio" },
-  "quisom.v2.conviccio.05.text": { ca: "L'arrelament territorial compta. Una empresa que no deixa buit quan desapareix no crea valor real.", es: "El arraigo territorial cuenta. Una empresa que no deja vacío cuando desaparece no crea valor real." },
+  "quisom.v2.conviccio.05.text": { ca: "L'arrelament territorial compta.", es: "El arraigo territorial cuenta." },
   "quisom.v2.closing.eyebrow": { ca: "Criteri ESG", es: "Criteri ESG" },
   "quisom.v2.closing.text.pre": { ca: "No és només una eina. És la convicció que les empreses poden ser ", es: "No es solo una herramienta. Es la convicción de que las empresas pueden ser " },
   "quisom.v2.closing.text.em": { ca: "agents de canvi", es: "agentes de cambio" },
@@ -2590,14 +1467,11 @@ export const translations = {
   "cuenta.v2.plan.free": { ca: "Pla Free", es: "Plan Free" },
   "cuenta.v2.plan.premium": { ca: "Pla Premium", es: "Plan Premium" },
   "cuenta.v2.plan.free_desc": { ca: "0€/mes · Accés a informes antics + newsletter reduïda", es: "0€/mes · Acceso a informes antiguos + newsletter reducida" },
-  "cuenta.v2.plan.premium_desc": { ca: "29€/mes · Accés complet + cross-reference + accions", es: "29€/mes · Acceso completo + cross-reference + acciones" },
+  "cuenta.v2.plan.premium_desc": { ca: "29€/mes · Accés complet", es: "29€/mes · Acceso completo" },
   "cuenta.v2.plan.upgrade": { ca: "Fes-te Premium →", es: "Hazte Premium →" },
-  "cuenta.v2.plan.premium_info": {
-    ca: "Amb Premium accedeixes a tots els informes recents (últims 6 mesos), cross-reference complet amb les teves certificacions, accions recomanades i la newsletter completa. 29€/mes per als primers 50 subscriptors (early bird fins al novembre).",
-    es: "Con Premium accedes a todos los informes recientes (últimos 6 meses), cross-reference completo con tus certificaciones, acciones recomendadas y la newsletter completa. 29€/mes para los primeros 50 suscriptores (early bird hasta noviembre).",
-  },
-  "cuenta.v2.perfil.title": { ca: "Perfil", es: "Perfil" },
+  "cuenta.v2.plan.premium_info": { ca: "Amb Premium accedeixes a tots els informes recents i cross-reference complet.", es: "Con Premium accedes a todos los informes recientes y cross-reference completo." },
   "cuenta.v2.plan.title": { ca: "El meu pla", es: "Mi plan" },
+  "cuenta.v2.perfil.title": { ca: "Perfil", es: "Perfil" },
   "cuenta.v2.perfil.nombre": { ca: "Nom", es: "Nombre" },
   "cuenta.v2.perfil.email": { ca: "Email", es: "Email" },
   "cuenta.v2.perfil.empresa": { ca: "Empresa", es: "Empresa" },
@@ -2606,28 +1480,91 @@ export const translations = {
   "cuenta.v2.perfil.sector_placeholder": { ca: "Director de sostenibilitat", es: "Director de sostenibilidad" },
   "cuenta.v2.newsletter.title": { ca: "Newsletter", es: "Newsletter" },
   "cuenta.v2.newsletter.idioma": { ca: "Idioma de la newsletter", es: "Idioma de la newsletter" },
-  "cuenta.v2.newsletter.desc": {
-    ca: "Reps la newsletter bimensual (cada 2 setmanes, els dijous a les 15:00h). Pots canviar l'idioma en qualsevol moment.",
-    es: "Recibes la newsletter bimensual (cada 2 semanas, los jueves a las 15:00h). Puedes cambiar el idioma en cualquier momento.",
-  },
+  "cuenta.v2.newsletter.desc": { ca: "Reps la newsletter bimensual.", es: "Recibes la newsletter bimensual." },
   "cuenta.v2.estandares.title": { ca: "Els meus estàndards ESG", es: "Mis estándares ESG" },
-  "cuenta.v2.estandares.desc": {
-    ca: "Selecciona els estàndards que ja té la teva empresa. Et recomanarem informes que t'afecten directament.",
-    es: "Selecciona los estándares que ya tiene tu empresa. Te recomendaremos informes que te afectan directamente.",
-  },
+  "cuenta.v2.estandares.desc": { ca: "Selecciona els estàndards que ja té la teva empresa.", es: "Selecciona los estándares que ya tiene tu empresa." },
   "cuenta.v2.estandares.legend.reg": { ca: "Regulacions (5)", es: "Regulaciones (5)" },
   "cuenta.v2.estandares.legend.fw": { ca: "Frameworks (5)", es: "Frameworks (5)" },
   "cuenta.v2.estandares.legend.cert": { ca: "Certificacions (6)", es: "Certificaciones (6)" },
   "cuenta.v2.intereses.title": { ca: "Altres interessos", es: "Otros intereses" },
-  "cuenta.v2.intereses.desc": {
-    ca: "Altres temes que t'interessen. Els fem servir per millorar les recomanacions de la newsletter.",
-    es: "Otros temas que te interesan. Los usamos para mejorar las recomendaciones de la newsletter.",
-  },
+  "cuenta.v2.intereses.desc": { ca: "Altres temes que t'interessen.", es: "Otros temas que te interesan." },
   "cuenta.v2.login_required.title": { ca: "Cal iniciar sessió", es: "Inicia sesión" },
   "cuenta.v2.login_required.body": { ca: "Necessites iniciar sessió per veure el teu compte.", es: "Necesitas iniciar sesión para ver tu cuenta." },
   "cuenta.v2.login_required.cta": { ca: "Accedir", es: "Acceder" },
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+  "quefem.semaforo.scope3": { ca: "Scope 3", es: "Scope 3" },
+  "quefem.semaforo.plazos": { ca: "Terminis", es: "Plazos" },
+  "quefem.semaforo.fuentes": { ca: "Fonts", es: "Fuentes" },
+  "quefem.semaforo.granularidad": { ca: "Granularitat", es: "Granularidad" },
+  "quefem.semaforo.verificacion": { ca: "Verificació", es: "Verificación" },
+
+  // ===== /que-fem claus completes =====
+  "quefem.hero.eyebrow": { ca: "Què fem · Criteri ESG", es: "Qué hacemos · Criteri ESG" },
+  "quefem.hero.title.pre": { ca: "Un ", es: "Un " },
+  "quefem.hero.title.em": { ca: "filtre amb criteri", es: "filtro con criterio" },
+  "quefem.hero.title.post": { ca: " per a decisions ètiques.", es: " para decisiones éticas." },
+  "quefem.hero.subtitle": { ca: "Sintetitzem, creuem i recomanem. Res més.", es: "Sintetizamos, cruzamos y recomendamos. Nada más." },
+  "quefem.hero.meta.fuentes": { ca: "fonts monitoritzades", es: "fuentes monitorizadas" },
+  "quefem.hero.meta.estandares": { ca: "estàndards creuats", es: "estándares cruzados" },
+  "quefem.hero.meta.minutos": { ca: "minuts de lectura per informe", es: "minutos de lectura por informe" },
+  "quefem.proceso.eyebrow": { ca: "El procés", es: "El proceso" },
+  "quefem.proceso.title.pre": { ca: "Tres passos. ", es: "Tres pasos. " },
+  "quefem.proceso.title.em": { ca: "Res més.", es: "Nada más." },
+  "quefem.proceso.title.post": { ca: "", es: "" },
+  "quefem.proceso.01.verb": { ca: "Sintetitzar", es: "Sintetizar" },
+  "quefem.proceso.01.desc": { ca: "Informes rellevants en 5 minuts amb semàfor.", es: "Informes relevantes en 5 minutos con semáforo." },
+  "quefem.proceso.02.verb": { ca: "Creuar", es: "Cruzar" },
+  "quefem.proceso.02.desc": { ca: "Creuat amb les teves certificacions.", es: "Cruzado con tus certificaciones." },
+  "quefem.proceso.03.verb": { ca: "Recomanar", es: "Recomendar" },
+  "quefem.proceso.03.desc": { ca: "Tres accions concretes per informe.", es: "Tres acciones concretas por informe." },
+  "quefem.semaforo.eyebrow": { ca: "Bloc 0 · Diferenciador", es: "Bloque 0 · Diferenciador" },
+  "quefem.semaforo.title.pre": { ca: "El semàfor ", es: "El semáforo " },
+  "quefem.semaforo.title.em": { ca: "metodològic", es: "metodológico" },
+  "quefem.semaforo.title.post": { ca: ".", es: "." },
+  "quefem.semaforo.desc": { ca: "Avaluem si és útil per decisions operatives.", es: "Evaluamos si es útil para decisiones operativas." },
+  "quefem.estructura.eyebrow": { ca: "Estructura de l'informe", es: "Estructura del informe" },
+  "quefem.estructura.title.pre": { ca: "Set blocs més. ", es: "Siete bloques más. " },
+  "quefem.estructura.title.em": { ca: "Vuit en total.", es: "Ocho en total." },
+  "quefem.estructura.title.post": { ca: "", es: "" },
+  "quefem.bloc.01.name": { ca: "Fitxa tècnica", es: "Ficha técnica" },
+  "quefem.bloc.01.desc": { ca: "Institució, data, tipus, pàgines, URL.", es: "Institución, fecha, tipo, páginas, URL." },
+  "quefem.bloc.01.meta": { ca: "50 paraules", es: "50 palabras" },
+  "quefem.bloc.02.name": { ca: "5 dades clau", es: "5 datos clave" },
+  "quefem.bloc.02.desc": { ca: "Punts quantitatius amb valor i context.", es: "Puntos cuantitativos con valor y contexto." },
+  "quefem.bloc.02.meta": { ca: "5 dades", es: "5 datos" },
+  "quefem.bloc.03.name": { ca: "Resum executiu", es: "Resumen ejecutivo" },
+  "quefem.bloc.03.desc": { ca: "Què diu en llenguatge clar.", es: "Qué dice en lenguaje claro." },
+  "quefem.bloc.03.meta": { ca: "300 paraules", es: "300 palabras" },
+  "quefem.bloc.04.name": { ca: "Implicacions", es: "Implicaciones" },
+  "quefem.bloc.04.desc": { ca: "Per a empreses, reguladors i ciutadans.", es: "Para empresas, reguladores y ciudadanos." },
+  "quefem.bloc.04.meta": { ca: "450-540 paraules", es: "450-540 palabras" },
+  "quefem.bloc.05.name": { ca: "Connexions", es: "Conexiones" },
+  "quefem.bloc.05.desc": { ca: "Relacions amb altres informes.", es: "Relaciones con otros informes." },
+  "quefem.bloc.05.meta": { ca: "200-250 paraules", es: "200-250 palabras" },
+  "quefem.bloc.06.name": { ca: "Accions recomanades", es: "Acciones recomendadas" },
+  "quefem.bloc.06.desc": { ca: "3-5 accions operatives i verificables.", es: "3-5 acciones operativas y verificables." },
+  "quefem.bloc.06.meta": { ca: "Bloc diferenciador", es: "Bloque diferenciador" },
+  "quefem.bloc.07.name": { ca: "Cross-reference", es: "Cross-reference" },
+  "quefem.bloc.07.desc": { ca: "Mapatge amb certificacions.", es: "Mapa con certificaciones." },
+  "quefem.bloc.07.meta": { ca: "Bloc diferenciador", es: "Bloque diferenciador" },
+  "quefem.criteris.eyebrow": { ca: "Criteris i valors", es: "Criterios y valores" },
+  "quefem.criteris.title.pre": { ca: "El que guia ", es: "Lo que guía " },
+  "quefem.criteris.title.em": { ca: "cada decisió", es: "cada decisión" },
+  "quefem.criteris.title.post": { ca: ".", es: "." },
+  "quefem.criteri.01.name": { ca: "Honestitat", es: "Honestidad" },
+  "quefem.criteri.01.text": { ca: "Si no sabem una cosa, ho diem. Mai inventem dades.", es: "Si no sabemos algo, lo decimos. Nunca inventamos datos." },
+  "quefem.criteri.02.name": { ca: "Criteri", es: "Criterio" },
+  "quefem.criteri.02.text": { ca: "Tot amb solidesa i fonts verificades.", es: "Todo con solidez y fuentes verificadas." },
+  "quefem.criteri.03.name": { ca: "Ètica", es: "Ética" },
+  "quefem.criteri.03.text": { ca: "Principi kantiano i bé comú en cada anàlisi.", es: "Principio kantiano y bien común en cada análisis." },
+  "quefem.criteri.04.name": { ca: "Transparència", es: "Transparencia" },
+  "quefem.criteri.04.text": { ca: "Cada afirmació porta la seva font.", es: "Cada afirmación lleva su fuente." },
+  "quefem.criteri.05.name": { ca: "Humilitat", es: "Humildad" },
+  "quefem.criteri.05.text": { ca: "Som una eina, no la solució final.", es: "Somos una herramienta, no la solución final." },
+  "quefem.criteri.06.name": { ca: "Sostenibilitat absoluta", es: "Sostenibilidad absoluta" },
+  "quefem.criteri.06.text": { ca: "Els límits planetaris són físics.", es: "Los límites planetarios son físicos." },
+  "quefem.manifest.eyebrow": { ca: "Més enllà del Checkbox", es: "Más allá del Checkbox" },
+  "quefem.manifest.text.pre": { ca: "La sostenibilitat no es mesura per formularis, ", es: "La sostenibilidad no se mide por formularios, " },
+  "quefem.manifest.text.em": { ca: "sinó per la traçabilitat de les promeses", es: "sino por la trazabilidad de las promesas" },
+  "quefem.manifest.text.post": { ca: ".", es: "." },
+  "quefem.manifest.attribution": { ca: "Manifest Criteri ESG", es: "Manifest Criteri ESG" },
 } as const;

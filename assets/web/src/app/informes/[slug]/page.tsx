@@ -176,64 +176,88 @@ export default function InformeSlugPage() {
         onOpenPreus={() => setPreusOpen(true)}
       />
       <main className="flex-1">
-        {/* Capçalera de l'informe */}
-        <section className="border-b border-rule bg-secondary/30">
-          <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-            <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-              Informes &gt; {report.institution}
+        {/* Breadcrumb */}
+        <div className="border-b border-rule px-6 py-4 lg:px-8" style={{ background: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl flex justify-between items-baseline">
+            <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "#8B7355" }}>
+              <a href="/informes" style={{ color: "#8A5526" }}>Biblioteca</a>
+              <span style={{ color: "#C9B89A", margin: "0 12px" }}>/</span>
+              <a href="/informes" style={{ color: "#8A5526" }}>Informes</a>
+              <span style={{ color: "#C9B89A", margin: "0 12px" }}>/</span>
+              <span style={{ color: "#2C1810" }}>{report.title}</span>
             </p>
-            <p className="eyebrow mt-4">
-              {report.institution} · {formatDate(report.date, lang)} · {report.pages}{" "}
-              {lang === "ca" ? "pàgines" : "páginas"}
-            </p>
-            <h1 className="mt-3 font-serif text-3xl font-semibold leading-tight text-primary sm:text-4xl">
-              {report.title}
-            </h1>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <Badge
-                variant="secondary"
-                className="bg-accent-soft/30 text-[10px] text-accent-deep"
-              >
-                {getTypeLabel(report.type)}
-              </Badge>
-              <Badge
-                variant="outline"
-                className="border-rule text-[10px] text-foreground/70"
-              >
-                <Globe className="mr-1 h-2.5 w-2.5" />
-                {getScopeLabel(report.scope)}
-              </Badge>
-              {showFreeBadge ? (
-                <Badge
-                  variant="outline"
-                  className="border-accent bg-accent-soft/20 text-[10px] text-accent-deep"
-                >
-                  {lang === "ca" ? "Accés obert" : "Acceso abierto"}
-                </Badge>
-              ) : (
-                <Badge
-                  variant="outline"
-                  className="border-muted-foreground text-[10px] text-muted-foreground"
-                >
-                  <Lock className="mr-1 h-2.5 w-2.5" />
-                  Premium
-                </Badge>
-              )}
-              {report.certifications.slice(0, 4).map((cert) => (
-                <Badge
-                  key={cert}
-                  variant="outline"
-                  className="border-accent/40 text-accent-deep"
-                >
-                  {cert}
-                </Badge>
-              ))}
-            </div>
+            <span className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#8A5526" }}>5 min · 8 bloques</span>
           </div>
-        </section>
+        </div>
 
-        {/* Cos: pantalla de bloqueig (registre), preview+upgrade (Premium), o 8 blocs */}
-        {isLockedRegister ? (
+        {/* Layout: sidebar + main */}
+        <div className="grid lg:grid-cols-[280px_1fr]">
+          {/* SIDEBAR */}
+          <aside className="sticky top-[70px] hidden h-[calc(100vh-70px)] flex-col gap-8 overflow-y-auto p-10 lg:flex" style={{ background: "#F5EFE6", borderRight: "1px solid #C9B89A" }}>
+            <div className="flex flex-col gap-2.5">
+              <p className="font-mono text-[9px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#8A5526" }}>Índice del informe</p>
+              <nav className="flex flex-col">
+                {[
+                  { num: "00", name: lang === "ca" ? "Semàfor metodològic" : "Semáforo metodológico" },
+                  { num: "01", name: lang === "ca" ? "Fitxa tècnica" : "Ficha técnica" },
+                  { num: "02", name: lang === "ca" ? "5 dades clau" : "5 datos clave" },
+                  { num: "03", name: lang === "ca" ? "Resum executiu" : "Resumen ejecutivo" },
+                  { num: "04", name: lang === "ca" ? "Implicacions" : "Implicaciones" },
+                  { num: "05", name: lang === "ca" ? "Connexions" : "Conexiones" },
+                  { num: "06", name: lang === "ca" ? "Accions recomanades" : "Acciones recomendadas" },
+                  { num: "07", name: "Cross-reference" },
+                ].map((item) => (
+                  <a key={item.num} href={`#bloc-${item.num}`} className="grid grid-cols-[24px_1fr] gap-2.5 items-baseline py-2 border-b" style={{ borderBottomColor: "rgba(201,184,154,0.5)", textDecoration: "none" }}>
+                    <span className="font-mono text-[10px] font-medium" style={{ color: "#8B7355" }}>{item.num}</span>
+                    <span className="font-serif text-[13px] font-medium text-primary">{item.name}</span>
+                  </a>
+                ))}
+              </nav>
+            </div>
+
+            {/* Mini semàfor */}
+            {content?.semafor && (
+              <div className="p-4 flex flex-col gap-2" style={{ background: "#2C1810", color: "#F5EFE6" }}>
+                <p className="font-mono text-[8.5px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#D9A574" }}>Semáforo</p>
+                <div className="flex items-baseline gap-2.5">
+                  <span className="font-serif text-4xl font-normal" style={{ color: "#B87333", letterSpacing: "-0.04em" }}>{content.semafor.grade}</span>
+                  <span className="font-serif text-sm italic" style={{ color: "#F5EFE6" }}>{content.semafor.gradeLabel}</span>
+                </div>
+              </div>
+            )}
+
+            {/* Progress */}
+            <div className="flex flex-col gap-1">
+              <p className="font-mono text-[8.5px] uppercase tracking-[0.16em] font-medium" style={{ color: "#8B7355" }}>Lectura · 5 min</p>
+              <div className="h-1 overflow-hidden" style={{ background: "rgba(201,184,154,0.3)" }}>
+                <div className="h-full" style={{ background: "#B87333", width: "40%" }} />
+              </div>
+            </div>
+          </aside>
+
+          {/* MAIN CONTENT */}
+          <div className="p-8 lg:p-12" style={{ background: "#F5EFE6" }}>
+            {/* Header de l'informe (fitxa tècnica) */}
+            <header className="border-b border-primary pb-6 mb-10" id="bloc-1">
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "rgba(92,58,30,0.12)", color: "#5C3A1E" }}>{getTypeLabel(report.type)}</span>
+                {showFreeBadge ? (
+                  <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "rgba(92,138,92,0.12)", color: "#4A6B3A" }}>{lang === "ca" ? "Gratis" : "Gratis"}</span>
+                ) : (
+                  <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "#B87333", color: "white" }}>Premium</span>
+                )}
+              </div>
+              <h1 className="mb-4 font-serif text-4xl font-medium leading-tight text-primary" style={{ letterSpacing: "-0.022em" }}>{report.title}</h1>
+              <div className="flex flex-wrap gap-8 font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "#8B7355" }}>
+                <span><strong className="text-primary">{report.institution}</strong></span>
+                <span>{formatDate(report.date, lang)}</span>
+                <span>{report.pages} {lang === "ca" ? "pàg" : "pág"}</span>
+                <span>{getScopeLabel(report.scope)}</span>
+              </div>
+            </header>
+
+            {/* Cos: pantalla de bloqueig (registre), preview+upgrade (Premium), o 8 blocs */}
+            {isLockedRegister ? (
           // Informe > 6 mesos, cal registre — pantalla genèrica simple
           <LockScreen
             isPremium={false}
@@ -547,6 +571,8 @@ export default function InformeSlugPage() {
             </div>
           </div>
         )}
+          </div>
+        </div>
       </main>
       <Footer />
       {dialogs}

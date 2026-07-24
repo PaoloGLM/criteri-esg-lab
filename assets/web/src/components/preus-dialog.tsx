@@ -20,12 +20,12 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
 
   const handleCta = () => {
     onOpenChange(false);
-    onOpenRegister();
+    window.location.href = "/pagament";
   };
 
   const handleFiareForm = () => {
     onOpenChange(false);
-    window.location.href = "/fiare-form-mockup.html";
+    window.location.href = "/pagament";
   };
 
   // Preus amb desglossament base + IVA (21%)

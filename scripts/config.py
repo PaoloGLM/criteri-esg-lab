@@ -79,7 +79,7 @@ def get_service_account_email() -> str:
 
 def find_informes_root(drive_service) -> str:
     """
-    Busca la carpeta 'informes' dins de 'Criteri ESG' al Drive.
+    Busca la carpeta pare 'Informes' o 'informes' al Drive del service account.
     Retorna el folder ID. Es guarda a state/drive-state.json per no cercar cada vegada.
     """
     state_file = STATE_DIR / "drive-state.json"
@@ -89,24 +89,24 @@ def find_informes_root(drive_service) -> str:
         if "informes_folder_id" in state:
             return state["informes_folder_id"]
 
-    # Buscar carpeta 'informes' al root del Drive del service account
-    results = drive_service.files().list(
-        q="name='informes' and mimeType='application/vnd.google-apps.folder' and trashed=false",
-        spaces="drive",
-        fields="files(id, name, parents)",
-    ).execute()
-    files = results.get("files", [])
-    if not files:
-        raise FileNotFoundError(
-            "Carpeta 'informes' no trobada al Drive. Crea-la i comparteix-la amb: "
-            + get_service_account_email()
-        )
-    folder_id = files[0]["id"]
+    # Buscar carpeta 'informes' o 'Informes' al root del Drive del service account
+    for name in ["informes", "Informes", "INFORMES"]:
+        results = drive_service.files().list(
+            q=f"name='{name}' and mimeType='application/vnd.google-apps.folder' and trashed=false",
+            spaces="drive",
+            fields="files(id, name, parents)",
+        ).execute()
+        files = results.get("files", [])
+        if files:
+            folder_id = files[0]["id"]
+            with open(state_file, "w") as f:
+                json.dump({"informes_folder_id": folder_id}, f, indent=2)
+            return folder_id
 
-    # Guardar per futures crides
-    with open(state_file, "w") as f:
-        json.dump({"informes_folder_id": folder_id}, f, indent=2)
-    return folder_id
+    raise FileNotFoundError(
+        "Carpeta 'informes' (o 'Informes') no trobada al Drive. Crea-la i comparteix-la amb: "
+        + get_service_account_email()
+    )
 
 
 def get_subfolder_id(drive_service, key: str) -> str:

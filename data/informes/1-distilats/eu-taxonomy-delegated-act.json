@@ -1,0 +1,282 @@
+{
+  "slug": "eu-taxonomy-delegated-act",
+  "title": "Taxonomy delegated act",
+  "institution": "Comissió Europea",
+  "filename_original": "eu-taxonomy-delegated-act.pdf",
+  "generated_at": "2026-07-24T21:06:38",
+  "content_ca": {
+    "semafor": {
+      "grade": "C",
+      "gradeLabel": "Millorable",
+      "indicators": [
+        {
+          "name": "Cobertura Scope 3",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "Es menciona el 'value chain cap' però no hi ha detalls sobre la cobertura específica de les emissions de la cadena de subministrament."
+        },
+        {
+          "name": "Termes temporals",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "S'especifiquen les dates del procés de consulta i els passos següents, però no hi ha compromisos a llarg termini."
+        },
+        {
+          "name": "Fonts independents",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Es reconeix explícitament el paper d'EFRAG com a cos assessor independent."
+        },
+        {
+          "name": "Granularitat",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "S'ofereixen dades concretes sobre la reducció de datapoints (60% obligatoris, 70% totals) i costos (30%)."
+        },
+        {
+          "name": "Verificació externa",
+          "status": "vermell",
+          "label": "Ignorat",
+          "note": "No es fa cap menció a mecanismes de verificació externa de les informacions ESG."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "60%",
+        "label": "Reducció de datapoints obligatoris",
+        "page": "1"
+      },
+      {
+        "value": "30%",
+        "label": "Reducció de costos de reportatge",
+        "page": "1"
+      },
+      {
+        "value": "1 mes",
+        "label": "Període de consulta pública",
+        "page": "1"
+      },
+      {
+        "value": "1000",
+        "label": "Límit d'empleats per al 'value chain cap'",
+        "page": "1"
+      },
+      {
+        "value": "4 mesos",
+        "label": "Període de revisió institucional",
+        "page": "1"
+      }
+    ],
+    "resumExecutiu": "La Comissió Europea ha llançat una consulta pública sobre els estàndards revisats de reportatge de sostenibilitat (ESRS) i un estàndard voluntari per a empreses més petites. Aquestes noves normes pretenen reduir la càrrega administrativa en un 30% i disminuir en més del 60% els datapoints obligatoris, tot preservant la qualitat de les divulgacions. Les noves normes introdueixen flexibilitats i simplifiquen l'avaluació de materialitat. També s'incorpora un 'value chain cap' per limitar les sol·licituds d'informació a les cadenes de subministrament. El procés es basa en assessorament tècnic d'EFRAG, però es detecta una manca de mecanismos de verificació externa i un enfocament massa centrat en la reducció de càrrega sense un compromís clar amb la profunditat de la informació ESG.",
+    "implicacions": {
+      "empreses": "Les empreses de la UE es troben davant d'un panorama de reducció significativa de la càrrega de reportatge ESG, amb un 30% de reducció de costos i menys datapoints obligatoris. No obstant això, la simplificació podria comprometre la qualitat i comparabilitat de la informació, especialment per a les empreses que han de gestionar sol·licituds de la seva cadena de subministrament sota el nou 'value chain cap'.",
+      "reguladors": "Els reguladors han d'equilibrar la reducció de càrrega administrativa amb la necessitat d'informació ESG fiable i comparable. La dependència d'EFRAG com a font tècnica és positiva, però es necessitarà un seguiment estricte per assegurar que la simplificació no doli la substància de la divulgació de sostenibilitat.",
+      "ciutadans": "Els ciutadans i la societat civil poden veure reduïda la transparència sobre l'impacte ambiental i social de les empreses, especialment amb la reducció de datapoints i l'absència de mecanismos de verificació externa. El 'value chain cap' limita la capacitat d'accedir a informació sobre les pràctiques de les cadenes de subministrament, afectant la rendició de comptes."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Sostenibilitat absoluta",
+      "body": "La simplificació dels estàndards de reportatge ESG, tot que redueix la càrrega administrativa, corre el risc de diluir la substància de la informació necessària per a una transició ecològica real. La reducció de més del 60% dels datapoints obligatoris podria minvar la capacitat d'avaluar l'impacte ambiental i social de les empreses, especialment en àrees crítiques com les emissions de Scope 3. La Comissió hauria de prioritzar la qualitat de la informació sobre la reducció de costos per garantir que el reportatge ESG serveixi com a eina efectiva per a la sostenibilitat absoluta, no com un simple exerci de compliance."
+    },
+    "connexions": [
+      {
+        "type": "Contradicció",
+        "target": "Reducció de càrrega administrativa",
+        "desc": "La reducció dràstica de datapoints (60%) i costos (30%) sembla contradictòria amb la necessitat d'informació ESG detallada per a una transició ecològica real, especialment per a les emissions de Scope 3 que són crucials però es deixen en un segon pla."
+      },
+      {
+        "type": "Evolució",
+        "target": "CSRD simplificat",
+        "desc": "Aquesta iniciativa representa una evolució cap a un CSRD més simplificat, alineat amb l'Omnibus I, que busca reduir el nombre d'empreses subjectes a la directiva mentre manté alguns elements clau de reportatge de sostenibilitat."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Revisar el criteri de materialitat",
+        "desc": "Desenvolupar un criteri de materialitat més robust que no comprometiixi la cobertura d'impactes ambientals i socials clau, especialment en emissions de Scope 3 i drets humans.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Establir mecanismes de verificació externa",
+        "desc": "Implementar un sistema de verificació externa independent per assegurar la qualitat i fiabilitat de les informacions ESG reportades, contrarestant el risc de greenwashing.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Desenvolupar guies sectorials específiques",
+        "desc": "Crear guies detallades per a diferents sectors per assegurar que la simplificació no resulti en una pèrdua d'informació rellevant per a cadenes de valor específiques.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "04",
+        "title": "Monitoritzar l'impacte de la simplificació",
+        "desc": "Establir un sistema de seguiment per avaluar l'impacte real de la reducció de datapoints en la qualitat de la informació ESG i la capacitat de prendre decisions basades en dades.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "05",
+        "title": "Ampliar el període de transició",
+        "desc": "Implementar un període de transició gradual per permetre a les empreses adaptar-se als nous estàndars sense comprometre la qualitat inicial de les seves informacions.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "CSRD",
+        "criterion": "Article 8a - Materialitat assessment",
+        "impact": "La simplificació de l'avaluació de materialitat podria resultar en una pèrdua de cobertura d'impactes menys evidents però igualment rellevants."
+      },
+      {
+        "framework": "Taxonomy Regulation",
+        "criterion": "Article 3 - Environmental objectives",
+        "impact": "La reducció de datapoints podria dificultar la verificació de l'alignament amb els objectius mediambientals de la taxonomia."
+      },
+      {
+        "framework": "EFSG Guidelines",
+        "criterion": "Principle 3 - Materiality",
+        "impact": "Els nous estàndars poden comprometre el principi de materialitat en la seva aplicació pràctica, tot i que mantenen el concepte teòric."
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Reporte amb algunes limitacions",
+      "indicators": [
+        {
+          "name": "Cobertura Scope 3",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "Es menciona el 'value chain cap' però no hi ha detalls sobre la cobertura específica de les emissions Scope 3"
+        },
+        {
+          "name": "Termes temporals",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "S'indiquen clarament els terminis per a la consulta pública fins al 3 de juny i el procés d'adopció"
+        },
+        {
+          "name": "Fonts independents",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Es reconeix explícitament el paper d'EFRAG com a cos assessor independent"
+        },
+        {
+          "name": "Granularitat",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "S'ofereixen dades concretes sobre la reducció de datapoints (60%+ obligatoris, 70%+ totals)"
+        },
+        {
+          "name": "Verificació externa",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Es descriu el procés de verificació a través del procediment sense objecció del Parlament i Consell"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "60%",
+        "label": "Reducció de datapoints obligatoris",
+        "page": "1"
+      },
+      {
+        "value": "70%",
+        "label": "Reducció total de datapoints",
+        "page": "1"
+      },
+      {
+        "value": "30%",
+        "label": "Reducció de costos de reportatge",
+        "page": "1"
+      },
+      {
+        "value": "1 mes",
+        "label": "Període de consulta pública",
+        "page": "1"
+      },
+      {
+        "value": "1000",
+        "label": "Límit d'empleats per al value chain cap",
+        "page": "1"
+      }
+    ],
+    "resumExecutiu": "La Comissió Europea ha llançat una consulta pública sobre els estàndards revisats de reportatge de sostenibilitat (ESRS) i un estàndard voluntari per a empreses més petites. Aquestes noves normes busquen reduir la càrrega administrativa per a les empreses de la UE mantenint la qualitat de les divulgacions de sostenibilitat. Els ESRS revisats redueixen els datapoints obligatoris en més del 60% i els datapoints totals en més del 70%, amb una reducció esperada de costos de reportatge superior al 30%. Els estàndars es basen en l'assessorament tècnic d'EFRAG i inclouen noves flexibilitats per a les empreses. Es proposa un 'value chain cap' per limitar les exigències a cadenes de valor amb menys de 1000 empleats.",
+    "implicacions": {
+      "empreses": "Les empreses de la UE es beneficiaran d'una reducció significativa de la càrrega de reportatge (30%+ en costos), però hauran d'adaptar-se als nous estàndars simplificats. El 'value chain cap' limitarà les exigències a proveïdors més petits, però les empreses subjectes a CSRD hauran de determinar quins aspectes de la seva cadena de valor són materials.",
+      "reguladors": "Els reguladors hauran de supervisar la implementació d'aquests estàndars més simplificats mentre asseguren que no es comprometen els objectius polítics de la CSRD. El procés de verificació a través del procediment sense objecció manté un control democràtic sobre els estàndars.",
+      "ciutadans": "Els ciutadans podran esperar informació de sostenibilitat més concisa i accessible, però amb menys detall. Els estàndars voluntaris per a PIMEs podrien millorar la transparència en empreses anteriorment no cobertes, encara que amb menor granularitat."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Justícia distributiva",
+      "body": "Els nous estàndars busquen equilibrar la transparença amb la viabilitat econòmica, reduint la càrrega per a les empreses mentre mantenen la qualitat de la informació. El 'value chain cap' representa un intent de justícia distributiva, evitant que les grans corporacions transferin una càrrega desproporcionada a les seves cadenes de valor més petites. Tanmateix, la simplificació excessiva podria minvar la capacitat d'identificar riscos materials."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "CSRD",
+        "desc": "Aquests estàndars representen una evolució de la CSRD, simplificant els requisits mantenint els objectius polítics principals de transparença en sostenibilitat."
+      },
+      {
+        "type": "Complement",
+        "target": "Omnibus I simplification package",
+        "desc": "Els nous ESRS complementen el paquet de simplificació Omnibus I, tots dos orientats a reduir la càrrega administrativa de la sostenibilitat a la UE."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Participar en la consulta pública",
+        "desc": "Les empreses i altres parts interessades haurien de participar en la consulta pública abans del 3 de juny per influir en els estàndars finals.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "02",
+        "title": "Revisar processos de reportatge",
+        "desc": "Les empreses subjectes a CSRD haurien de començar a revisar els seus processos de reportatge per adaptar-se als nous estàndars simplificats.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Desenvolupar polítiques de cadena de valor",
+        "desc": "Les grans empreses haurien de desenvolupar polítiques sobre com gestionar les noves limitacions de sol·licitud d'informació a proveïdors més petits.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "04",
+        "title": "Explorar aplicació de l'estàndard voluntari",
+        "desc": "Les empreses no subjectes a CSRD haurien d'explorar com podrien beneficiar-se de l'aplicació de l'estàndard voluntari millorant la seva transparença ESG.",
+        "effort": "Baix",
+        "impact": "Baix"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "CSRD",
+        "criterion": "Requisits de reportatge de sostenibilitat",
+        "impact": "Els nous estàndars simplifiquen els requisits existents de la CSRD reduint significativament el nombre de datapoints obligatoris"
+      },
+      {
+        "framework": "Taxonomy Regulation",
+        "criterion": "Activitats econòmiques sostenibles",
+        "impact": "Els estàndars revisats poden facilitar la classificació d'activitats d'acord amb la taxonomia europea"
+      },
+      {
+        "framework": "EU Green Deal",
+        "criterion": "Transparència financera",
+        "impact": "Aquests estàndars contribueixen als objectius del Green Deal millorant la transparença financiera relacionada amb la sostenibilitat"
+      }
+    ]
+  }
+}

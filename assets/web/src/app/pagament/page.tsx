@@ -17,17 +17,10 @@ export default function PagamentPage() {
   const [authTab, setAuthTab] = useState<"register" | "login">("register");
   const [preusOpen, setPreusOpen] = useState(false);
   const [method, setMethod] = useState<"stripe" | "fiare" | null>(null);
+  const [uploadedFile, setUploadedFile] = useState<string | null>(null);
 
   const openAuth = (tab: "register" | "login" = "register") => { setAuthTab(tab); setAuthOpen(true); };
   const tr = (ca: string, es: string) => (lang === "ca" ? ca : es);
-
-  // Preus
-  const annualTotal = 348;
-  const annualBase = 287.60;
-  const annualIva = 60.40;
-  const monthlyTotal = 39;
-  const monthlyBase = 32.23;
-  const monthlyIva = 6.77;
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -63,25 +56,21 @@ export default function PagamentPage() {
             </div>
             <div className="border-t pt-3" style={{ borderColor: "#C9B89A" }}>
               <div className="flex justify-between text-sm py-1" style={{ color: "#5C3A1E" }}>
-                <span>{tr("Base imposable", "Base imponible")}</span>
-                <span>287,60 €</span>
+                <span>{tr("Base imposable", "Base imponible")}</span><span>287,60 €</span>
               </div>
               <div className="flex justify-between text-sm py-1" style={{ color: "#5C3A1E" }}>
-                <span>IVA (21%)</span>
-                <span>60,40 €</span>
+                <span>IVA (21%)</span><span>60,40 €</span>
               </div>
               <div className="flex justify-between font-semibold text-base py-2 border-t mt-1" style={{ color: "#2C1810", borderColor: "#C9B89A" }}>
-                <span>{tr("Total", "Total")}</span>
-                <span>348,00 €</span>
+                <span>{tr("Total", "Total")}</span><span>348,00 €</span>
               </div>
               <p className="text-xs mt-2" style={{ color: "#8B7355" }}>{tr("Equival a 29 €/mes. IVA deduïble per a empreses.", "Equivale a 29 €/mes. IVA deducible para empresas.")}</p>
             </div>
           </div>
 
-          {/* Selector mètode de pagament */}
-          {!method ? (
+          {/* Selector mètode de pagament (només si no s'ha triat) */}
+          {!method && (
             <div className="grid gap-4 sm:grid-cols-2">
-              {/* Stripe */}
               <button onClick={() => setMethod("stripe")} className="flex flex-col gap-3 border p-6 text-left transition-colors hover:border-accent" style={{ borderColor: "#C9B89A", background: "white" }}>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded flex items-center justify-center" style={{ background: "#2C1810" }}>
@@ -95,7 +84,6 @@ export default function PagamentPage() {
                 <p className="text-sm" style={{ color: "#5C3A1E" }}>{tr("Paga amb targeta de crèdit/dèbit. Accés Premium actiu immediatament.", "Paga con tarjeta de crédito/débito. Acceso Premium activo inmediatamente.")}</p>
               </button>
 
-              {/* Fiare */}
               <button onClick={() => setMethod("fiare")} className="flex flex-col gap-3 border p-6 text-left transition-colors hover:border-accent" style={{ borderColor: "#C9B89A", background: "white" }}>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded flex items-center justify-center" style={{ background: "#B87333" }}>
@@ -109,7 +97,10 @@ export default function PagamentPage() {
                 <p className="text-sm" style={{ color: "#5C3A1E" }}>{tr("Paga per transferència bancària a Fiare. Accés Premium activat en rebre el pagament.", "Paga por transferencia bancaria a Fiare. Acceso Premium activado al recibir el pago.")}</p>
               </button>
             </div>
-          ) : method === "stripe" ? (
+          )}
+
+          {/* Formulari Stripe */}
+          {method === "stripe" && (
             <div className="border p-6" style={{ borderColor: "#C9B89A", background: "white" }}>
               <div className="flex justify-between items-center mb-6">
                 <h2 className="font-serif text-xl font-medium text-primary">{tr("Pagament amb targeta", "Pago con tarjeta")}</h2>
@@ -151,7 +142,10 @@ export default function PagamentPage() {
                 <p className="text-xs text-center" style={{ color: "#8B7355" }}>{tr("Pagament segur processat per Stripe. Dades encriptades.", "Pago seguro procesado por Stripe. Datos encriptados.")}</p>
               </div>
             </div>
-          ) : (
+          )}
+
+          {/* Formulari Fiare */}
+          {method === "fiare" && (
             <div className="border p-6" style={{ borderColor: "#C9B89A", background: "white" }}>
               <div className="flex justify-between items-center mb-6">
                 <h2 className="font-serif text-xl font-medium text-primary">{tr("Transferència a Fiare", "Transferencia a Fiare")}</h2>
@@ -159,7 +153,7 @@ export default function PagamentPage() {
               </div>
               <div className="space-y-4">
                 <div className="p-4" style={{ background: "rgba(184,115,51,0.06)", border: "1px solid #B87333" }}>
-                  <p className="font-serif text-sm italic" style={{ color: "#5C3A1E" }}>{tr("Per activar el teu accés Premium, realitza la transferència amb les següents dades i envia el justificant a info@criteriesg.com. L'accés s'activarà en 1-2 dies hàbils.", "Para activar tu acceso Premium, realiza la transferencia con los siguientes datos y envía el justificante a info@criteriesg.com. El acceso se activará en 1-2 días hábiles.")}</p>
+                  <p className="font-serif text-sm italic" style={{ color: "#5C3A1E" }}>{tr("Per activar el teu accés Premium, realitza la transferència amb les següents dades i puja el justificant a continuació. L'accés s'activarà en 1-2 dies hàbils.", "Para activar tu acceso Premium, realiza la transferencia con los siguientes datos y sube el justificante a continuación. El acceso se activará en 1-2 días hábiles.")}</p>
                 </div>
                 <div className="space-y-3">
                   <div className="grid grid-cols-[140px_1fr] gap-2 py-2 border-b" style={{ borderBottomColor: "#C9B89A" }}>
@@ -194,15 +188,29 @@ export default function PagamentPage() {
                     <span>{tr("Total a transferir", "Total a transferir")}</span><span>348,00 €</span>
                   </div>
                 </div>
-                <div className="flex gap-3">
-                  <a href="mailto:info@criteriesg.com?subject=Justificant Premium Early Bird" className="flex-1 py-3 text-center text-sm font-semibold text-white" style={{ background: "#B87333" }}>
-                    {tr("Enviar justificant", "Enviar justificante")}
-                  </a>
-                  <button onClick={() => { navigator.clipboard?.writeText("ES77 2100 3000 7422 0123 4567"); }} className="px-4 py-3 text-sm font-semibold border" style={{ borderColor: "#2C1810", color: "#2C1810", background: "transparent" }}>
-                    {tr("Copiar IBAN", "Copiar IBAN")}
-                  </button>
+
+                {/* Pujar justificant */}
+                <div className="border-t pt-4" style={{ borderColor: "#C9B89A" }}>
+                  <label className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold block mb-2" style={{ color: "#8A5526" }}>{tr("Pujar justificant de transferència", "Subir justificante de transferencia")}</label>
+                  {uploadedFile ? (
+                    <div className="flex items-center justify-between p-3 border" style={{ borderColor: "#B87333", background: "rgba(184,115,51,0.06)" }}>
+                      <span className="text-sm text-primary">{uploadedFile}</span>
+                      <button onClick={() => setUploadedFile(null)} className="font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "#8A5526" }}>✕ {tr("Treure", "Quitar")}</button>
+                    </div>
+                  ) : (
+                    <label className="flex flex-col items-center justify-center gap-2 p-8 border-2 border-dashed cursor-pointer" style={{ borderColor: "#C9B89A", background: "#F5EFE6" }}>
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8B7355" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                      <span className="text-sm" style={{ color: "#8B7355" }}>{tr("Arrossega el fitxer aquí o fes clic per seleccionar", "Arrastra el archivo aquí o haz clic para seleccionar")}</span>
+                      <span className="font-mono text-[9px] uppercase tracking-[0.14em]" style={{ color: "#8B7355" }}>PDF, JPG, PNG · {tr("màx 10 MB", "máx 10 MB")}</span>
+                      <input type="file" accept=".pdf,.jpg,.jpeg,.png" className="hidden" onChange={(e) => { if (e.target.files?.[0]) setUploadedFile(e.target.files[0].name); }} />
+                    </label>
+                  )}
                 </div>
-                <p className="text-xs text-center" style={{ color: "#8B7355" }}>{tr("Un cop rebem el justificant, activarem el teu accés Premium en 1-2 dies hàbils.", "Una vez recibamos el justificante, activaremos tu acceso Premium en 1-2 días hábiles.")}</p>
+
+                <button disabled={!uploadedFile} className="w-full py-3.5 text-sm font-semibold text-white disabled:opacity-50" style={{ background: "#B87333" }}>
+                  {uploadedFile ? tr("Enviar justificant", "Enviar justificante") : tr("Puja el justificant per continuar", "Sube el justificante para continuar")}
+                </button>
+                <p className="text-xs text-center" style={{ color: "#8B7355" }}>{tr("El justificant es guardarà al nostre Drive i revisarem la transferència en 1-2 dies hàbils.", "El justificante se guardará en nuestro Drive y revisaremos la transferencia en 1-2 días hábiles.")}</p>
               </div>
             </div>
           )}

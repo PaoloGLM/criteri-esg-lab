@@ -126,7 +126,7 @@ export default function PreusPage() {
                     ))}
                   </div>
                   <button
-                    onClick={() => plan.disabled ? null : plan.featured ? setPreusOpen(true) : openAuth("register")}
+                    onClick={() => plan.disabled ? null : plan.featured ? window.location.href = "/pagament" : openAuth("register")}
                     className="mt-auto py-3.5 text-sm font-semibold"
                     style={{ background: plan.featured ? "#B87333" : "transparent", color: plan.featured ? "white" : "#2C1810", border: plan.featured ? "none" : "1px solid #2C1810", opacity: plan.disabled ? 0.5 : 1, cursor: plan.disabled ? "not-allowed" : "pointer" }}
                   >{plan.cta}</button>

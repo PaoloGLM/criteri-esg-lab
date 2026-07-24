@@ -289,26 +289,34 @@ export default function InformeSlugPage() {
           </div>
         ) : (
           <div className="space-y-0">
-            {/* Bloc 0 — Semàfor (dark, full-width) */}
+            {/* Bloc 0 — Semáforo (dark, full-width) amb explicacions + link popup */}
             <section id="bloc-0" className="scroll-mt-20" style={{ background: "#2C1810", color: "#F5EFE6", margin: "0 -32px", padding: "48px 32px" }}>
               <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:items-center">
                 <div className="flex flex-col gap-4">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#D9A574" }}>Bloque 0 · Sem\u00e1foro metodol\u00f3gico</p>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#D9A574" }}>Bloque 0 · Semáforo metodológico</p>
                   <div className="flex items-baseline gap-4">
                     <span className="font-serif text-[100px] font-normal leading-none" style={{ color: "#B87333", letterSpacing: "-0.04em" }}>{content.semafor.grade}</span>
                     <span className="font-serif text-2xl italic" style={{ color: "#F5EFE6" }}>{content.semafor.gradeLabel}</span>
                   </div>
+                  <button onClick={() => setPopupOpen(true)} className="self-start font-mono text-[10px] uppercase tracking-[0.14em] font-semibold mt-2" style={{ color: "#D9A574", borderBottom: "1px solid #B87333", paddingBottom: "3px" }}>
+                    {lang === "ca" ? "Com es valora el semàfor? →" : "¿Cómo se valora el semáforo? →"}
+                  </button>
                 </div>
-                <div className="grid gap-0">
+                <div className="flex flex-col gap-0">
                   {content.semafor.indicators.map((ind) => (
-                    <div key={ind.name} className="grid grid-cols-[120px_1fr_auto] items-center gap-3 py-2.5 border-b" style={{ borderBottomColor: "rgba(217,165,116,0.2)" }}>
-                      <span className="font-serif text-sm font-medium" style={{ color: "#F5EFE6" }}>{ind.name}</span>
-                      <div className="flex gap-1.5">
-                        <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#5C8A5C", opacity: ind.status === "verd" ? 1 : 0.3 }} />
-                        <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#C9A961", opacity: ind.status === "groc" ? 1 : 0.3 }} />
-                        <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#A0522D", opacity: ind.status === "vermell" ? 1 : 0.3 }} />
+                    <div key={ind.name} className="flex flex-col gap-1 py-3 border-b" style={{ borderBottomColor: "rgba(217,165,116,0.2)" }}>
+                      <div className="grid grid-cols-[1fr_auto] items-center gap-3">
+                        <span className="font-serif text-base font-medium" style={{ color: "#F5EFE6" }}>{ind.name}</span>
+                        <div className="flex items-center gap-2">
+                          <div className="flex gap-1.5">
+                            <span className="w-3 h-3 rounded-full" style={{ background: "#5C8A5C", opacity: ind.status === "verd" ? 1 : 0.3 }} />
+                            <span className="w-3 h-3 rounded-full" style={{ background: "#C9A961", opacity: ind.status === "groc" ? 1 : 0.3 }} />
+                            <span className="w-3 h-3 rounded-full" style={{ background: "#A0522D", opacity: ind.status === "vermell" ? 1 : 0.3 }} />
+                          </div>
+                          <span className="font-mono text-[9px] uppercase tracking-[0.14em] font-semibold" style={{ color: ind.status === "verd" ? "#5C8A5C" : ind.status === "groc" ? "#C9A961" : "#A0522D" }}>{ind.label}</span>
+                        </div>
                       </div>
-                      <span className="font-mono text-[9px] uppercase tracking-[0.14em] font-semibold" style={{ color: ind.status === "verd" ? "#5C8A5C" : ind.status === "groc" ? "#C9A961" : "#A0522D" }}>{ind.label}</span>
+                      <p className="text-[12px] leading-relaxed mt-1" style={{ color: "rgba(245,239,230,0.55)" }}>{ind.note}</p>
                     </div>
                   ))}
                 </div>

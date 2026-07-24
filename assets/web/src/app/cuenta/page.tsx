@@ -169,6 +169,11 @@ export default function CuentaPage() {
                 {!isPremium && <button onClick={() => setPreusOpen(true)} className="px-6 py-3 text-[13px] font-semibold text-white" style={{ background: "#B87333" }}>{t("cuenta.v2.plan.upgrade")}</button>}
               </div>
               <p className="mt-4 text-[13px] leading-relaxed" style={{ color: "#5C3A1E" }}>{t("cuenta.v2.plan.premium_info")}</p>
+              {isPremium && (
+                <a href="/eines/avaluador" className="mt-4 inline-block font-serif text-sm italic hover:underline" style={{ color: "#B87333" }}>
+                  {t("avaluador.cta.from_cuenta")}
+                </a>
+              )}
             </div>
 
             {/* 04 ESTÁNDARES */}

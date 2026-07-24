@@ -1567,4 +1567,57 @@ export const translations = {
   "quefem.manifest.text.em": { ca: "sinó per la traçabilitat de les promeses", es: "sino por la trazabilidad de las promesas" },
   "quefem.manifest.text.post": { ca: ".", es: "." },
   "quefem.manifest.attribution": { ca: "Manifest Criteri ESG", es: "Manifest Criteri ESG" },
+
+  // ============ /eines/avaluador ============
+  "avaluador.eyebrow": { ca: "Eines · Generador d'informes", es: "Herramientas · Generador de informes" },
+  "avaluador.title": {
+    ca: "Genera un informe Criteri ESG a partir de qualsevol document",
+    es: "Genera un informe Criteri ESG a partir de cualquier documento",
+  },
+  "avaluador.subtitle": {
+    ca: "Enganxa el text d'un informe ESG institucional i obtindràs els 8 blocs: semàfor, dades clau, implicacions, accions i cross-references.",
+    es: "Pega el texto de un informe ESG institucional y obtendrás los 8 bloques: semáforo, datos clave, implicaciones, acciones y cross-references.",
+  },
+  "avaluador.premium.required.title": { ca: "Funció Premium", es: "Función Premium" },
+  "avaluador.premium.required.body": {
+    ca: "El generador d'informes és exclusiu per a subscriptors Premium. Fes-te Premium per generar informes a partir de qualsevol document ESG.",
+    es: "El generador de informes es exclusivo para suscriptores Premium. Hazte Premium para generar informes a partir de cualquier documento ESG.",
+  },
+  "avaluador.premium.required.cta": { ca: "Veure preus", es: "Ver precios" },
+  "avaluador.form.title": { ca: "Dades de l'informe", es: "Datos del informe" },
+  "avaluador.form.title.label": { ca: "Títol", es: "Título" },
+  "avaluador.form.title.placeholder": { ca: "Ex: Revisió dels ESRS (maig 2026)", es: "Ej: Revisión de los ESRS (mayo 2026)" },
+  "avaluador.form.institution.label": { ca: "Institució", es: "Institución" },
+  "avaluador.form.institution.placeholder": { ca: "Ex: Comissió Europea", es: "Ej: Comisión Europea" },
+  "avaluador.form.source.label": { ca: "Text de l'informe", es: "Texto del informe" },
+  "avaluador.form.source.placeholder": {
+    ca: "Enganxa aquí el text de l'informe (mínim 500 caràcters, màx 30.000).",
+    es: "Pega aquí el texto del informe (mínimo 500 caracteres, máx 30.000).",
+  },
+  "avaluador.form.source.help": {
+    ca: "Més text = millor qualitat. Si portes un PDF, copia'n les pàgines clau.",
+    es: "Más texto = mejor calidad. Si traes un PDF, copia sus páginas clave.",
+  },
+  "avaluador.form.lang.label": { ca: "Idioma de sortida", es: "Idioma de salida" },
+  "avaluador.form.submit": { ca: "Generar informe", es: "Generar informe" },
+  "avaluador.form.processing": { ca: "Generant informe… (pot trigar 30-60 segons)", es: "Generando informe… (puede tardar 30-60 segundos)" },
+  "avaluador.form.error": {
+    ca: "Error generant l'informe. Torna-ho a provar o escriu-nos a info@criteriesg.com.",
+    es: "Error generando el informe. Inténtalo de nuevo o escríbenos a info@criteriesg.com.",
+  },
+  "avaluador.result.title": { ca: "Informe generat", es: "Informe generado" },
+  "avaluador.result.subtitle": {
+    ca: "Aquest és l'informe generat per l'IA a partir del text que has proporcionat. Revisa sempre les dades abans d'usar-les.",
+    es: "Este es el informe generado por la IA a partir del texto que has proporcionado. Revisa siempre los datos antes de usarlos.",
+  },
+  "avaluador.result.download": { ca: "Descarregar JSON", es: "Descargar JSON" },
+  "avaluador.result.new": { ca: "Generar un altre informe", es: "Generar otro informe" },
+  "avaluador.result.disclaimer": {
+    ca: "Avís: aquest informe ha estat generat per IA. Criteri ESG no es fa responsable de les inexactituds. Verifica amb la font original.",
+    es: "Aviso: este informe ha sido generado por IA. Criteri ESG no se hace responsable de las inexactitudes. Verifica con la fuente original.",
+  },
+  "avaluador.cta.from_cuenta": {
+    ca: "Obre el generador d'informes →",
+    es: "Abrir el generador de informes →",
+  },
 } as const;

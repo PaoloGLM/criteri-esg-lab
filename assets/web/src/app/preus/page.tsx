@@ -4,14 +4,12 @@ import { useState } from "react";
 import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
 import { AuthDialog } from "@/components/auth-dialog";
-import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
 
 export default function PreusPage() {
   const { lang } = useLanguage();
   const [authOpen, setAuthOpen] = useState(false);
   const [authTab, setAuthTab] = useState<"register" | "login">("register");
-  const [preusOpen, setPreusOpen] = useState(false);
 
   const openAuth = (tab: "register" | "login" = "register") => { setAuthTab(tab); setAuthOpen(true); };
   const tr = (ca: string, es: string) => (lang === "ca" ? ca : es);
@@ -91,7 +89,7 @@ export default function PreusPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <Header onOpenPreus={() => setPreusOpen(true)} onOpenAuth={(tab) => openAuth(tab || "register")} />
+      <Header onOpenAuth={(tab) => openAuth(tab || "register")} />
       <main className="flex-1">
         {/* HERO */}
         <section className="border-b border-rule text-center" style={{ background: "#F5EFE6" }}>
@@ -126,7 +124,7 @@ export default function PreusPage() {
                     ))}
                   </div>
                   <button
-                    onClick={() => plan.disabled ? null : plan.featured ? window.location.href = "/pagament" : openAuth("register")}
+                    onClick={() => plan.disabled ? null : plan.featured ? window.location.href = "/pagament?plan=premium&period=annual" : openAuth("register")}
                     className="mt-auto py-3.5 text-sm font-semibold"
                     style={{ background: plan.featured ? "#B87333" : "transparent", color: plan.featured ? "white" : "#2C1810", border: plan.featured ? "none" : "1px solid #2C1810", opacity: plan.disabled ? 0.5 : 1, cursor: plan.disabled ? "not-allowed" : "pointer" }}
                   >{plan.cta}</button>
@@ -191,7 +189,6 @@ export default function PreusPage() {
       </main>
       <Footer />
       <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
-      <PreusDialog open={preusOpen} onOpenChange={setPreusOpen} onOpenRegister={() => openAuth("register")} />
     </div>
   );
 }

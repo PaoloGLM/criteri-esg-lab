@@ -385,12 +385,16 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
     - **Justificació**: aquestes 5 fonts cobreixen forats detectats en temàtiques clau (economia circular, drets humans operatius, governança anti-corrupció, dubtes tècnics CSRD). Sense elles, els informes perdia força en aquestes àrees.
     - Vegeu `16-BASE-DADES-FONTS.md` v2.1 per al detall complet.
 
-11. **Flux de treball confirmat (15 juliol 2026)** — Funcionament del cicle setmanal de processament d'informes:
-    1. **Z.ai-bot** revisa totes les fonts (192 actualment) dos cops a la setmana (dilluns i dijous al matí) per detectar nous informes.
-    2. **Z.ai-bot** publica els informes detectats a la web i en crea l'informe propi amb els 8 blocs (Semàfor + 7 blocs narratius) per a cadascun.
-    3. **Z.ai-bot** proposa a Paolo els 5-6 informes més rellevants per a la newsletter bimensual.
-    4. **Paolo** selecciona els informes que realment tenen pes per a la newsletter, i fa la revisió editorial dels informes creats per Z.ai-bot (per si s'han de millorar).
-    5. **Regla clara**: tots els informes detectats van a la web. Tots els informes detectats tenen el seu informe creat per Z.ai-bot amb els 8 blocs. **No tots** els informes detectats ni creats van a la newsletter. Només Paolo selecciona els que hi van, i Paolo és qui determina si els informes creats per Z.ai-bot estan bé. Aquesta és la part humana principal del procés.
+11. **Flux de creació d'informes (24 juliol 2026, substitueix el del 15 juliol)** — Pipeline de 7 passos amb tres actors (GLM, Gemini, Paolo). Cada pas escriu a una carpeta pròpia de Google Drive:
+    1. **GLM detecta** informes nous a les fonts → `Drive /informes/0-originals/`
+    2. **GLM destil·la** la informació dels 8 apartats (segons METODOLOGIA.md) → `/informes/1-distilats/`
+    3. **Gemini revisa** l'original + el destil·lat, fa propostes de valor + advocat del diable → `/informes/2-aportacions-gemini/`
+    4. **GLM redacta** l'informe final, decidint què és rellevant de Gemini → `/informes/3-fets/`
+    5. **Gemini revisa** ortografia (CA + ES) i corregeix → `/informes/4-revisats-ortografia/`
+    6. **Paolo valida** l'informe → `/informes/5-validats-paolo/`
+    7. **GLM puja** els validats a la web → `/informes/6-publicats/`
+    
+    **Regla clara**: GLM mai publica sense validació de Paolo. Tots els informes detectats van a la web. Tots tenen els 8 blocs. **No tots** van a la newsletter — només Paolo selecciona els que hi van. Veure `07-DECISIONS.md` i `04-WEB.md` per al detall complet.
 
 12. **Newsletter per defecte en castellà (16 juliol 2026)** — IMPORTANT, NO CONFONDRE:
     - La **web** (`<html lang="ca">` + LanguageProvider per defecte) és en **català**. Això és una decisió tècnica coherent amb l'origen del projecte.

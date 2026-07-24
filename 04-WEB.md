@@ -21,61 +21,69 @@
 | Email | Resend (transaccional) + Beehiiv (newsletter) |
 | Pagaments | Stripe |
 | LLM | z-ai-web-dev-sdk (GLM) — provider principal, disseny modular per canviar si cal |
-| Crawler | Scrapy + BeautifulSoup + Vercel Cron |
+| LLM crític/corrector | Google Gemini 2.0 Pro (API) |
+| Crawler | Scripts Python propis (GLM) — sense Vercel Cron |
 
-## Arquitectura d'automatització (definida 5 juliol 2026)
+## Arquitectura d'automatització (flux GLM + Gemini + Paolo, redefinida 24 juliol 2026)
+
+> **Nota**: Aquesta arquitectura substitueix la definida el 5 juliol 2026 (crawler Vercel Cron + Supabase com a CMS + LanguageTool). Aquella queda descartada.
 
 ### Visió general
 
+El flux de creació d'informes és un **pipeline de 7 passos** amb tres actors: **GLM** (Z.ai-bot), **Gemini** (Google) i **Paolo**. Cada pas escriu el seu output a una carpeta de Google Drive perquè qualsevol pas intermedi sigui auditable.
+
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                     Font institucional                       │
-│   (UE, WEF, Forética, Banc d'Espanya, OECD, IPCC, etc.)    │
-└──────────────────────────┬──────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────────┐
-│  Crawler automàtic (Vercel Cron, dilluns + dijous matí)     │
-│  - Scrapy + BeautifulSoup                                   │
-│  - Detecta nous informes via RSS / scraping de pàgines      │
-│  - Descarrega PDF → Google Drive /originals/                │
-└──────────────────────────┬──────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────────┐
-│  Backend (Next.js API routes + Supabase)                    │
-│  - Rep notificació de PDF nou                               │
-│  - Extreu text (PyMuPDF / pdfplumber)                       │
-│  - Crida API a Z.ai-bot amb el text del PDF                 │
-└──────────────────────────┬──────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────────┐
-│  Z.ai-bot API                                               │
-│  - Rep text del PDF                                         │
-│  - Genera els 8 blocs (Semàfor + 7 blocs) en JSON           │
-│  - Passa corrector LanguageTool automàticament              │
-│  - Retorna JSON + log del corrector                         │
-└──────────────────────────┬──────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────────┐
-│  Backend rep JSON                                           │
-│  - Aplica plantilla HTML oficial                            │
-│  - Genera PDF via Playwright                                │
-│  - Guarda a Supabase (taula informes) + Drive (processats/) │
-│  - Notifica en Paolo per revisió                            │
-└──────────────────────────┬──────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────────┐
-│  Revisió humana (Paolo o Roser)                             │
-│  - Revisa els 8 blocs                                       │
-│  - Aprova o demana canvis                                   │
-│  - Si aprova → publica a la web automàticament              │
-└──────────────────────────┬──────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────────┐
-│  Publicació                                                 │
-│  - Web (/informes/[slug])                                   │
-│  - Drive (processats/)                                      │
-│  - Notificació a subscriptors (si és informe destacat)      │
-└─────────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────────┐
+│  1. GLM detecta                                                │
+│     - Revisa fonts institucionals (192 a 16-BASE-DADES-FONTS)  │
+│ - Descarrega PDFs nous                                         │
+│     - Output: Google Drive /informes/0-originals/              │
+└────────────────────────────┬───────────────────────────────────┘
+                             ↓
+┌────────────────────────────────────────────────────────────────┐
+│  2. GLM destil·la                                              │
+│     - Llegeix cada PDF (PyMuPDF / pdfplumber)                  │
+│     - Extreu els 8 apartats segons METODOLOGIA.md              │
+│     - Output: /informes/1-distilats/<slug>.json                │
+└────────────────────────────┬───────────────────────────────────┘
+                             ↓
+┌────────────────────────────────────────────────────────────────┐
+│  3. Gemini revisa                                              │
+│     - Rep l'PDF original + el destil·lat de GLM                │
+│     - Fa propostes de valor per afegir o modificar             │
+│     - Fa d'advocat del diable (contradiccions, mancances)      │
+│     - Output: /informes/2-aportacions-gemini/<slug>.json       │
+└────────────────────────────┬───────────────────────────────────┘
+                             ↓
+┌────────────────────────────────────────────────────────────────┐
+│  4. GLM redacta                                                │
+│     - Llegeix destil·lat + aportacions de Gemini               │
+│     - Decideix què és rellevant i què no                       │
+│     - Redacta els 8 blocs seguint METODOLOGIA.md + veu ètica   │
+│     - Output: /informes/3-fets/<slug>.md                       │
+└────────────────────────────┬───────────────────────────────────┘
+                             ↓
+┌────────────────────────────────────────────────────────────────┐
+│  5. Gemini ortografia                                          │
+│     - Rep l'informe redactat per GLM                           │
+│     - Revisa ortografia CA + ES                                │
+│     - Canvia el que calgui directament                         │
+│     - Output: /informes/4-revisats-ortografia/<slug>.md        │
+└────────────────────────────┬───────────────────────────────────┘
+                             ↓
+┌────────────────────────────────────────────────────────────────┐
+│  6. Paolo valida                                               │
+│     - Llegeix els 8 blocs (CA + ES)                            │
+│     - Aprova → mou a /informes/5-validats-paolo/               │
+│     - Demana canvis → retorna a /informes/3-fets/ amb notes    │
+└────────────────────────────┬───────────────────────────────────┘
+                             ↓
+┌────────────────────────────────────────────────────────────────┐
+│  7. GLM puja                                                   │
+│     - Llegeix /informes/5-validats-paolo/                      │
+│     - Publica a la web (informes/[slug])                       │
+│     - Mou a /informes/6-publicats/                             │
+└────────────────────────────────────────────────────────────────┘
 ```
 
 ### Newsletter (cada 2 setmanes, dijous 15:00h)
@@ -83,7 +91,7 @@
 ```
 Dijous 12:00h — Script selecciona els 3-4 millors informes del període
                     ↓
-Z.ai-bot API genera HTML del butlletí amb:
+GLM genera HTML del butlletí amb:
   - Notícies ESG (apartat 6, fonts no territorials ES)
   - Inversió ESG (apartat 7, fonts imparcials)
   - 3-4 informes destacats amb connexions
@@ -94,25 +102,22 @@ Esborrany a Beehiiv per revisió de Paolo
 Paolo aprova → Beehiiv envia a les 15:00h
 ```
 
-### Edició de contingut (CMS)
-
-La web no es editarà com WordPress, però hi haurà 3 nivells d'edició segons el tipus de contingut:
+### Edició de contingut
 
 | Tipus de contingut | Com s'edita | Qui |
 |--------------------|-------------|-----|
-| **Informes** (els 8 blocs) | Panell de Supabase (taula `informes`) | Paolo o Roser |
+| **Informes** (els 8 blocs) | Carpeta Drive `/informes/5-validats-paolo/` → GLM puja | GLM puja, Paolo valida |
 | **Pàgines estàtiques** (Sobre nosaltres, FAQ, preus) | Edició via GitHub (markdown al repo) | Roser o Z.ai-bot |
 | **Carta del Director** | GitHub (`assets/cartes-director/YYYY-MM.md`) | Paolo |
-| **Configuració** (preus, dates, idiomes) | Variables d'entorn + taula `config` a Supabase | Roser |
+| **Configuració** (preus, dates, idiomes) | Variables d'entorn | Roser |
 
-**Supabase com a CMS per a informes**: en Paolo podrà afegir/editar informes directament des del panell web de Supabase (supabase.com/dashboard), sense tocar codi. La Roser crearà la taula `informes` amb els camps dels 8 blocs i la web Next.js la llegirà via API.
+### Principis ètics del flux
 
-### Principis ètics de l'automatització
-
-1. **Cap informe publicat sense revisió humana**: la Z.ai-bot genera, però en Paolo (o la Roser) revisa abans de publicar. Sempre.
-2. **Transparència sobre automatització**: cada informe duu nota al footer indicant que ha estat processat amb assistència d'IA i revisat per l'equip Criteri.
-3. **Provider d'IA intercanviable**: l'arquitectura es dissenya modularment per poder canviar de provider (Z.ai, OpenAI, Anthropic) sense haver de refer el backend. Evitem vendor lock-in.
-4. **Corrector obligatori**: tot text generat passa pel LanguageTool abans de guardar-se a Supabase. El log es guarda al camp `corrector_log` de l'informe.
+1. **Cap informe publicat sense validació humana**: GLM mai publica sense que Paolo hagi aprovat (pas 6). Sempre.
+2. **Transparència sobre automatització**: cada informe duu nota al footer indicant que ha estat processat amb assistència d'IA (GLM + Gemini) i revisat per Paolo.
+3. **Doble rol de Gemini**: Gemini actua dues vegades, amb rols oposats — **crític** (pas 3, abans de la redacció) i **corrector** (pas 5, després). Així s'evita que GLM redacti sense contestació i que publiqui sense revisió.
+4. **Auditabilitat**: cada pas té una carpeta pròpia a Drive. Paolo pot inspeccionar qualsevol pas intermedi si sospita d'un error.
+5. **Provider intercanviable**: tant GLM com Gemini es poden substituir per un altre provider si cal (no hi ha vendor lock-in irrompible).
 
 ## Arquitectura de pàgines (planificada)
 
@@ -318,5 +323,6 @@ Taules principals:
 
 ## Històric de canvis
 
-- **5 juliol 2026** — Definida **arquitectura d'automatització** completa: crawler Vercel Cron + Z.ai-bot API + Supabase com a CMS + revisió humana obligatòria. Provider d'IA modular (no vendor lock-in). Decisió d'integrar API des de l'inici (no semiautomàtic).
+- **24 juliol 2026** — **Arquitectura d'automatització redefinida**: flux GLM + Gemini + Paolo en 7 passos amb carpetes separades a Google Drive. Substitueix l'arquitectura del 5 juliol (crawler Vercel Cron + Supabase CMS + LanguageTool), que queda descartada. Gemini té doble rol: crític (pas 3) i corrector (pas 5). Paolo valida sempre abans de publicar (pas 6).
+- **5 juliol 2026** — Definida arquitectura d'automatització anterior (crawler Vercel Cron + Z.ai-bot API + Supabase com a CMS + revisió humana obligatòria). **Descartada el 24 juliol 2026**.
 - **25 juny 2026** — Homepage operativa amb 12 seccions, 2 modals, bilingüisme CAT/ES. Verificada amb Agent Browser

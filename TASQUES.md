@@ -25,11 +25,31 @@
 - Mockup aprovat: /home/z/my-project/download/estandares-mockup.png
 - Esquema al CONTEXT.md (P3)
 
-### P4 — Integració Gemini API (a partir de dimarts 22 juliol)
-- Paolo crearà API key a Google AI Studio
-- Escriure scripts: gemini-distill.py i gemini-validate.py
-- Flux: GLM detecta → Gemini destil·la → GLM redacta → Gemini valida → Paolo aprova
-- Model: Gemini 2.0 Pro (configurable)
+### P4 — Flux de creació d'informes (GLM + Gemini + Paolo)
+
+**7 passos** (decidit 24 juliol 2026, substitueix la versió anterior de P4):
+
+1. **GLM detecta** informes nous a les fonts i els posa a una carpeta de Google Drive
+2. **GLM destil·la** la informació dels 8 apartats (segons METODOLOGIA.md) i els posa a una altra carpeta de Drive
+3. **Gemini revisa** l'informe original + el destil·lat de GLM, fa propostes de valor per afegir o modificar i fa d'advocat del diable. Ho posa a la carpeta
+4. **GLM llegeix** les aportacions de Gemini, decideix què és rellevant i què no, i elabora l'informe final. El posa a una altra carpeta d'informes fets
+5. **Gemini revisa** ortogràficament l'informe (català i castellà) i canvia el que calgui
+6. **Paolo llegeix** els informes creats i els valida
+7. **GLM puja** els informes validats a la web
+
+**Estructura de carpetes a Drive**:
+- `informes/0-originals/` — PDFs descarregats per GLM al pas 1
+- `informes/1-distilats/` — destil·lats dels 8 apartats (pas 2)
+- `informes/2-aportacions-gemini/` — propostes + advocat del diable (pas 3)
+- `informes/3-fets/` — informes redactats per GLM (pas 4)
+- `informes/4-revisats-ortografia/` — informes amb ortografia corregida per Gemini (pas 5)
+- `informes/5-validats-paolo/` — informes que Paolo ha validat (pas 6), pendents de pujar
+- `informes/6-publicats/` — informes ja pujats a la web (pas 7)
+
+**Pendents per implementar**:
+- Paolo: crear API key de Gemini a Google AI Studio (variable `GEMINI_API_KEY`)
+- GLM: scripts `glm-detecta.py`, `glm-distil·la.py`, `gemini-revisa.py`, `glm-redacta.py`, `gemini-ortografia.py`, `glm-puja.py`
+- GLM: estructura de carpetes a Google Drive
 
 ### P5 — Descarregar B Corp B Impact Assessment
 - La web de B Corp bloqueja la descàrrega automàtica (403)

@@ -28,12 +28,13 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
     window.location.href = "/fiare-form-mockup.html";
   };
 
-  // Preu Premium segons el toggle
-  const premiumPrice = period === "monthly" ? "39 €" : "440 €";
+  // Preus amb desglossament base + IVA (21%)
+  // Early bird anual: 348€/any = 29€/mes. Base = 348/1.21 = 287.60€. IVA = 60.40€
+  // Normal mensual: 39€/mes. Base = 39/1.21 = 32.23€. IVA = 6.77€
+  const premiumPrice = period === "monthly" ? "39 €" : "348 €";
   const premiumPeriodLabel = period === "monthly" ? t("preus.period.month") : t("preus.period.year");
-  const premiumSubprice = period === "monthly"
-    ? (t("preus.premium.subprice.monthly") as string)
-    : (t("preus.premium.subprice") as string);
+  const premiumBase = period === "monthly" ? "32,23 €" : "287,60 €";
+  const premiumIva = period === "monthly" ? "6,77 €" : "60,40 €";
   const premiumCta = period === "monthly"
     ? (t("preus.premium.cta.monthly") as string)
     : (t("preus.premium.cta") as string);
@@ -121,7 +122,7 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
             cta={premiumCta}
             onCta={handleCta}
             highlighted
-            subprice={premiumSubprice}
+            subprice={`Base: ${premiumBase} · IVA (21%): ${premiumIva}`}
           />
 
           {/* Ultra */}
@@ -163,9 +164,11 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
             </div>
             <div className="flex flex-col items-start gap-2 sm:items-end">
               <div className="flex items-baseline gap-2">
-                <span className="font-serif text-4xl font-semibold text-accent">{t("preus.earlybird.price")}</span>
+                <span className="font-serif text-4xl font-semibold text-accent">348 €</span>
                 <span className="text-xs text-muted-foreground">/ {t("preus.earlybird.period")}</span>
               </div>
+              <p className="text-xs font-medium text-accent-deep mt-1">Base: 287,60 € · IVA (21%): 60,40 €</p>
+              <p className="text-xs text-muted-foreground mt-1">= 29 €/mes · 50 places · Només anual</p>
               <Button onClick={handleCta} className="w-full sm:w-auto">
                 {t("preus.earlybird.cta")}
               </Button>

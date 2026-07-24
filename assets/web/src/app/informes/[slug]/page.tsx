@@ -6,6 +6,7 @@ import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
+import { SemaforoPopup } from "@/components/sections/semaforo-popup";
 import { useLanguage } from "@/components/language-provider";
 import { useAuth } from "@/lib/auth-context";
 import {
@@ -60,6 +61,7 @@ export default function InformeSlugPage() {
     setAuthOpen(true);
   };
   const [preusOpen, setPreusOpen] = useState(false);
+  const [popupOpen, setPopupOpen] = useState(false);
 
   const report = reports.find((r) => r.slug === slug);
 
@@ -426,6 +428,7 @@ export default function InformeSlugPage() {
       </main>
       <Footer />
       {dialogs}
+      <SemaforoPopup open={popupOpen} onClose={() => setPopupOpen(false)} />
     </div>
   );
 }

@@ -25,9 +25,16 @@
 - Mockup aprovat: /home/z/my-project/download/estandares-mockup.png
 - Esquema al CONTEXT.md (P3)
 
-### P4 — Flux de creació d'informes (GLM + Gemini + Paolo) — IMPLEMENTAT
+### P4 — Flux de creació d'informes (GLM + Gemini + Paolo) — PARCIALMENT IMPLEMENTAT
 
 **Flux oficial**: veure `scripts/FLUX-INFORMES.md` per al detall complet.
+
+**Estat actual (juliol 2026)**:
+- ✅ Passos 1-4 funcionen (GLM detecta, GLM destil·la, Gemini revisa, GLM redacta)
+- ⏸ **Pendent**: disseny de l'informe PDF — tancar amb la Roser. Veure `scripts/PENDENT-DISSENY-INFORME.md`
+- ⏸ Passos 5-7 congelats fins que el disseny estigui tancat
+
+**No processar més informes** fins que el disseny de la plantilla PDF estigui validat per la Roser.
 
 **7 passos** (cada pas escriu a una carpeta de Drive per auditabilitat):
 

@@ -1,0 +1,72 @@
+{
+  "slug": "eu-taxonomy-delegated-act",
+  "title": "Taxonomy delegated act",
+  "institution": "Comissió Europea",
+  "generated_at": "2026-07-25T06:54:39",
+  "aportacions": {
+    "propostes": [
+      {
+        "bloc": "2-dadesClau",
+        "tipus": "afegir",
+        "proposta": "Afegir dada sobre el percentatge de reducció de datapoints totals (70%) a més dels obligatoris (60%)",
+        "justificacio": "L'original especifica que 'The draft revised ESRS reduce mandatory datapoints by over 60% and total datapoints by over 70%', però només es mostra el 60% al destil·lat, oferint una imatge incompleta de l'abast de la simplificació."
+      },
+      {
+        "bloc": "0-semafor",
+        "tipus": "modificar",
+        "proposta": "Canviar l'estat de 'Granularitat' de verd a groc, ja que la reducció de datapoints podria afectar negativament la qualitat i detall de la informació",
+        "justificacio": "Tot que es quantifiquen les dades de reducció, una reducció de més del 60% dels datapoints obligatoris podria indicar una pèrdua de granularitat rellevant, no només una simplificació administrativa."
+      },
+      {
+        "bloc": "4-implicacions",
+        "tipus": "modificar",
+        "proposta": "Afegir una secció d'implicacions per a les PIME i les organitzacions de la cadena de subministrament",
+        "justificacio": "L'original esmenta específicament el 'value chain cap' que limita les sol·licituds d'informació a empreses amb menys de 1000 empleats, però aquestes implicacions no es reflecteixen en les implicacions del destil·lat."
+      },
+      {
+        "bloc": "4b-mesEnlla",
+        "tipus": "afegir",
+        "proposta": "Afegir una anàlisi sota el criteri 'Co-decisió' sobre la participació limitada dels interessats en el procés",
+        "justificacio": "L'original indica un període de consulta d'un mes fins al 3 de juny, que és un període molt curt per un procés tan important, suggerint una participació ciutadana limitada i una possible manca de co-decisió genuina."
+      },
+      {
+        "bloc": "5-connexions",
+        "tipus": "afegir",
+        "proposta": "Afegir connexió amb l'Omnibus I i la reducció d'empreses subjectes a la CSRD",
+        "justificacio": "L'original esmenta específicament que els estàndards 'build on the Omnibus I simplification package, which streamlines sustainability reporting in the EU and reduces the number of companies in scope of the Corporate Sustainability Reporting Directive', però aquesta connexió no es reflecteix al destil·lat."
+      },
+      {
+        "bloc": "2-dadesClau",
+        "tipus": "afegir",
+        "proposta": "Afegir dada sobre el període de transició i entrada en vigor dels estàndards",
+        "justificacio": "L'original detalla els passos següents: 'The Commission will then adopt the two delegated acts as soon as possible after the consultation closes. They will subsequently be transmitted to the European Parliament and the Council for scrutiny under the no-objection procedure (two months, extendable by a further two months at the request of either institution) before entering into force', però aquesta informació temporal no es reflecteix al destil·lat."
+      }
+    ],
+    "advocat_diable": [
+      {
+        "tipus": "greenwashing",
+        "bloc_afectat": "2-dadesClau",
+        "observacio": "La reducció del 60% dels datapoints obligatoris podria ser una estratègia de greenwashing que redueix la càrrega de reportatge però també la transparència real, permetent a les empreses ocultar impactes negatius menys evidents però significatius.",
+        "evidencia_original": "'The draft revised ESRS reduce mandatory datapoints by over 60% and total datapoints by over 70%' amb l'objectiu declarat de 'cut administrative burden for EU businesses while preserving the quality of sustainability disclosures', però sense explicar com es manté la qualitat amb tan poca informació."
+      },
+      {
+        "tipus": "mancanca",
+        "bloc_afectat": "0-semafor",
+        "observacio": "El destil·lat no avalua la coherència dels estàndars revisats amb els objectius de sostenibilitat absoluta de l'Acord de París i els Objectius de Desenvolupament Sostenible de les Nacions Unides.",
+        "evidencia_original": "L'original no menciona cap anàlisi d'impacte sobre com la reducció de datapoints afectarà la capacitat de rastrejar el progrés cap als objectius climàtics i de desenvolupament sostenible."
+      },
+      {
+        "tipus": "contradiccio",
+        "bloc_afectat": "4-implicacions",
+        "observacio": "Hi ha una contradicció entre la reducció de datapoints i l'afirmació que es 'preserving the quality of sustainability disclosures', ja que menys dades dificulten una avaluació completa de l'impacte ambiental i social.",
+        "evidencia_original": "'These standards aim to cut administrative burden for EU businesses while preserving the quality of sustainability disclosures' vs 'The draft revised ESRS reduce mandatory datapoints by over 60% and total datapoints by over 70%'."
+      },
+      {
+        "tipus": "criteri_oblidat",
+        "bloc_afectat": "4b-mesEnlla",
+        "observacio": "El destil·lat no aborda el criteri de 'justícia distributiva' en com la simplificació afectarà diferentment a sectors i empreses de mida diferent, especialment les PIME que encara hauran de complir amb les sol·licituds de la cadena de subministrament.",
+        "evidencia_original": "L'original esmenta el 'value chain cap' però no analitza les implicacions equitatives d'aquesta mesura per a diferents actors del mercat."
+      }
+    ]
+  }
+}

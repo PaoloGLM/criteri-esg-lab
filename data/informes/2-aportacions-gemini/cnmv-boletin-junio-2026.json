@@ -2,76 +2,71 @@
   "slug": "cnmv-boletin-junio-2026",
   "title": "Boletin junio 2026",
   "institution": "CNMV (Comisión Nacional del Mercado de Valores)",
-  "generated_at": "2026-07-25T06:56:11",
+  "generated_at": "2026-07-25T08:15:16",
+  "model": "gemini-2.5-flash (vertex-ai europe-west1)",
   "aportacions": {
     "propostes": [
       {
-        "bloc": "semafor",
+        "bloc": "0-semafor",
         "tipus": "modificar",
-        "proposta": "Afegir un nou indicador sobre la transparència de la informació ASG de les empreses sota supervisió de la CNMV, amb un enfocament específic en la qualitat de les dades de clima i diversitat.",
-        "justificacio": "L'informe original conté informació detallada sobre les IIC sostenibles (gràfic 13) i les seves característiques, però el destil·lat no reflecteix aquesta informació, que és crucial per a una avaluació completa de la transparència ASG."
+        "proposta": "La nota per 'Termes temporals' hauria de ser: 'L'informe es refereix a períodes de reporting passats (fins a febrer/abril de 2026) i a la situació actual del mercat, sense establir objectius de sostenibilitat futurs ni horitzons temporals clars per a ASG'.",
+        "justificacio": "El destil·lat actualment indica que 'S'esmenten objectius temporals de sostenibilitat', cosa que no es correspon amb l'anàlisi de l'informe original que se centra en l'evolució recent dels mercats."
       },
       {
-        "bloc": "dadesClau",
+        "bloc": "2-dadesClau",
+        "tipus": "modificar",
+        "proposta": "Per al valor '474.000 milions d'euros', afegir el context 'fins a febrer de 2026' i per al '3,3% Creuació del patrimoni dels fons', indicar que la dada no es troba explícitament al text proporcionat de l'informe original, o especificar la font exacta si prové d'una taula/gràfic no inclòs en l'extracte.",
+        "justificacio": "Proporcionar el context temporal 'fins a febrer de 2026' és crucial, ja que l'informe indica que no s'hi observen els efectes de la guerra. La dada del 3,3% no està present en l'extracte, la qual cosa pot generar dubtes sobre la seva verificació."
+      },
+      {
+        "bloc": "3-resum",
+        "tipus": "modificar",
+        "proposta": "Ajustar la descripció del rendiment sectorial per reflectir la nuance geogràfica de l'original: 'Els mercats borsaris van experimentar caigudes acusades al març, però es van recuperar de forma desigual, amb millors resultats als EUA i Japó, especialment en sectors com el tecnològic, l'energia i la defensa. En canvi, els sectors industrials europeus, més dependents de l'energia, van mostrar un comportament més feble'.",
+        "justificacio": "El destil·lat generalitza el rendiment sectorial sense la important distinció geogràfica que fa l'informe original, falsejant la realitat que alguns sectors tecnològics van beneficiar-se en certes regions."
+      },
+      {
+        "bloc": "5-connexions",
+        "tipus": "modificar",
+        "proposta": "Modificar la 'Contradicció' sobre el 'Creixement sostenible' a: 'L'informe esmenta l'existència d'IIC sostenibles (Institucions d'Inversió Col·lectiva sostenibles) en el Gràfic 13, però no proporciona una anàlisi detallada de com aquestes inversions contribueixen a objectius de sostenibilitat reals ni els criteris utilitzats per a aquesta classificació, centrant-se principalment en aspectes financers generals'.",
+        "justificacio": "L'informe original sí que fa una referència a les 'IIC sostenibles', tot i que de forma superficial. Ignorar-ho completament en el destil·lat és una omissió important. La proposta ajusta la crítica per ser més precisa."
+      },
+      {
+        "bloc": "6-accions",
         "tipus": "afegir",
-        "proposta": "Incloure dades sobre l'evolució dels fons sostenibles i la seva participació en el total de fons d'inversió, amb referència específica al gràfic 13 de l'informe original.",
-        "justificacio": "L'informe original conté informació valuosa sobre les IIC sostenibles (patrimoni i partícipes) que no es reflecteix en les dades clau del destil·lat, a pesar de ser un indicador important de l'evolució del mercat financer en relació amb els criteris ASG."
-      },
-      {
-        "bloc": "resumExecutiu",
-        "tipus": "modificar",
-        "proposta": "Afegir informació sobre l'impacte de la guerra a l'Iran en els mercats de criptoactives i materies primeres, tal com es detalla en l'informe original (seccions 2.3 i 2.4).",
-        "justificacio": "L'informe original conté anàlisis específics sobre aquests sectors que no es reflecteixen en el resum executiu del destil·lat, oferint una visió més completa de l'impacte del conflicte geopolític en diferents segments del mercat."
-      },
-      {
-        "bloc": "implicacions",
-        "tipus": "modificar",
-        "proposta": "En la secció 'empreses', afegir informació sobre com els sectors energètics i utilities han resistit millor a causa de la seva composició en l'Ibex 35, tal com es detalla a pàgina 17 de l'informe original.",
-        "justificacio": "L'informe original ofereix informació específica sobre la resistència relativa del mercat espanyol que no es transmet en el destil·lat, important per a les empreses que operen en aquests sectors."
-      },
-      {
-        "bloc": "accions",
-        "tipus": "afegir",
-        "proposta": "Afegir una nova acció sobre la millora de l'anàlisi de la volatilitat entre classes d'actius, referent al Gràfic 6 de l'informe original sobre indicadors de correlació.",
-        "justificacio": "L'informe original conté informació valuosa sobre la correlació entre classes d'actius que no es reflecteix en les accions proposades, malgrat ser un element important per a la gestió de riscos en contextos d'incertesa."
-      },
-      {
-        "bloc": "crossRefs",
-        "tipus": "modificar",
-        "proposta": "Afegir una referència a la Directiva CSDDD sobre diligència deguda en matèria de sostenibilitat, que es menciona a les sigles de l'informe original però no es relaciona amb cap criteri específic.",
-        "justificacio": "La CSDDD és un marc regulador important per a les empreses i no es reflecteix adequadament en les referències creuades, tot i que està present a l'informe original."
+        "proposta": "Afegir una acció: '06. Analitzar en profunditat les IIC sostenibles: Desenvolupar una anàlisi més detallada sobre els criteris, l'impacte real i la contribució de les Institucions d'Inversió Col·lectiva sostenibles als objectius ASG, més enllà del seu patrimoni i partícips.' Esforç: Alt, Impacte: Alt.",
+        "justificacio": "Donada la menció de les 'IIC sostenibles' en l'original i la crítica a la manca d'anàlisi, proposar una acció específica per aprofundir en aquest tema milloraria significativament la rellevància ESG del destil·lat."
       }
     ],
     "advocat_diable": [
       {
-        "tipus": "mancanca",
-        "bloc_afectat": "semafor",
-        "observacio": "L'informe no avalua la integritat de la informació ASG presentada per les empreses, ni la seva conformitat amb estàndards globals com les TCFD o SASB. El semàfor només analitza la quantitat d'informació, no la seva qualitat o utilitat per als inversors.",
-        "evidencia_original": "L'informe original no conté cap avaluació de la qualitat o conformitat de les dades ASG amb estàndards específics, només menciona la quantitat d'informació disponible."
+        "tipus": "greenwashing",
+        "bloc_afectat": "5-connexions",
+        "observacio": "La menció de 'IIC sostenibles' en un gràfic (Gràfic 13) sense cap anàlisi qualitativa ni discussió en el text principal sobre els criteris de sostenibilitat, el seu impacte real o la seva contribució a objectius ASG, podria ser percebuda com una forma de greenwashing o una inclusió superficial per complir amb la tendència ESG sense un compromís profund.",
+        "evidencia_original": "Gráfico 13 Patrimonio y partícipes de las IIC sostenibles 41"
       },
       {
-        "tipus": "greenwashing",
-        "bloc_afectat": "dadesClau",
-        "observacio": "L'informe presenta dades positives sobre el creixement dels fons d'inversió i els sostenibles, però no analitza si aquestes inversions realment contribueixen a objectius de sostenibilitat o si es tracta de 'greenwashing' financer. No hi ha cap anàlisi de l'impacte real d'aquestes inversions.",
-        "evidencia_original": "L'informe original menciona el creixement dels fons sostenibles però no analitza l'impacte real de les seves inversions en els objectius de sostenibilitat, ni verifica si les empreses en què invertien complien amb els seus compromisos ASG."
+        "tipus": "mancanca",
+        "bloc_afectat": "0-semafor",
+        "observacio": "L'informe no estableix cap objectiu o meta quantificable relacionada amb ASG per al mercat espanyol o per a la CNMV mateixa. La manca de 'Termes temporals' per a la sostenibilitat, com s'indica al semàfor del destil·lat, és un símptoma d'aquesta absència de compromisos concrets.",
+        "evidencia_original": "L'informe original no conté objectius ASG ni horitzons temporals definits per a la sostenibilitat."
       },
       {
         "tipus": "criteri_oblidat",
-        "bloc_afectat": "implicacions",
-        "observacio": "L'informe no tracta adequadament l'impacte de la volatilitat dels mercats en les persones més vulnerables, com els petits inversors o els jubilats que depenen de les seves inversions per a la seva subsistència. Falta una anàlisis de justícia social en l'assignació de riscos i beneficis.",
-        "evidencia_original": "L'informe original no conté cap anàlisi sobre l'impacte social de la volatilitat dels mercats ni com afecta a diferents segments de la població, centrant-se només en l'impacte macroeconòmic."
+        "bloc_afectat": "4b-mesEnlla",
+        "observacio": "Tot i que el destil·lat apunta a la 'Justícia distributiva' en el context de rendiments sectorials, l'informe original omet completament qualsevol consideració sobre la 'Sostenibilitat absoluta'. No es qüestiona si el model de creixement financer actual és sostenible dins dels límits planetaris, ni s'aborden els riscos sistèmics més enllà dels financers.",
+        "evidencia_original": "L'informe destaca el creixement dels fons d'inversió però no analitza com aquestes inversions contribueixen a objectius de sostenibilitat real, centrant-se només en aspectes financers."
       },
       {
-        "tipus": "contradiccio",
-        "bloc_afectat": "resumExecutiu",
-        "observacio": "L'informe destaca la recuperació dels mercats després de la guerra a l'Iran, però no analitza com aquesta recuperació es distribueix entre diferents sectors i tipus d'inversors, creant una narrativa que podria ocultar desigualtats significatives en la distribució de beneficis.",
-        "evidencia_original": "L'informe original menciona que 'les subides se concentraron sobre todo en EE. UU. y Japón, y en sectores como el tecnológico, el de la energía y el de la defensa', però no explora les implicacions d'aquesta distribució desigual."
+        "tipus": "mancanca",
+        "bloc_afectat": "3-resum",
+        "observacio": "La declaració 'Las opiniones expresadas en los artículos del Boletín reflejan exclusivamente el criterio de los autores y no deben ser atribuidas a la Comisión Nacional del Mercado de Valores' (CNMV) genera una ambigüitat sobre el grau de suport institucional als resultats i les implicacions de l'informe. Això pot diluir la responsabilitat i l'autoritat de les conclusions, especialment en temes sensibles com els riscos sistèmics o les recomanacions regulatòries implícites.",
+        "evidencia_original": "Las opiniones expresadas en los artículos del Boletín reflejan exclusivamente el criterio de los autores y no deben ser atribuidas a la Comisión Nacional del Mercado de Valores."
       },
       {
-        "tipus": "font_no_verificada",
-        "bloc_afectat": "dadesClau",
-        "observacio": "L'informe presenta dades sobre creixement i participació de mercats sense especificar metodologies de càlcul o fonts de dades, la qual cosa dificulta la verificació independent d'aquestes dades.",
-        "evidencia_original": "L'informe original no especifica les metodologies utilitzades per calcular les dades presentades, com el '3,3%' de creació del patrimoni dels fons o el '87,8%' de participació de les entitats de crèdit en les comissions."
+        "tipus": "criteri_oblidat",
+        "bloc_afectat": "4-implicacions",
+        "observacio": "L'informe se centra en les implicacions per a empreses, reguladors i ciutadans inversors. No obstant això, oblida el criteri de 'co-decisió' o 'arrelament', ja que no es menciona cap implicació o mecanisme per a la participació de la societat civil, treballadors o comunitats afectades per les dinàmiques dels mercats financers descrites.",
+        "evidencia_original": "El bloc 'implicacions' de l'informe original (i el destil·lat) no conté cap referència a la participació d'altres stakeholders més enllà dels inversors."
       }
     ]
   }

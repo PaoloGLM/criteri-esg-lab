@@ -127,7 +127,7 @@ INSTITUCIÓ: {distilat_data['institution']}
 Genera el JSON crític ara."""
 
     print(f"  → Cridant Gemini 2.5 Flash (crític + advocat del diable)...")
-    aportacions = call_gemini_json(SYSTEM_PROMPT, user_prompt, temperature=0.7, max_tokens=8000)
+    aportacions = call_gemini_json(SYSTEM_PROMPT, user_prompt, temperature=0.7, max_tokens=16000)
 
     # Guardar
     output = {

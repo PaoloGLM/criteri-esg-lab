@@ -100,17 +100,31 @@ def call_gemini(system_prompt: str, user_prompt: str, temperature: float = 0.6, 
 
 
 def call_gemini_json(system_prompt: str, user_prompt: str, temperature: float = 0.6, max_tokens: int = 4000) -> dict:
-    """Crida Gemini i parseja la resposta com a JSON (gràcies a response_mime_type i response_schema)."""
+    """Crida Gemini i parseja la resposta com a JSON amb tolerància a errors."""
     text = call_gemini(system_prompt, user_prompt, temperature, max_tokens)
+
+    # Intent 1: parsejar directament
     try:
         return json.loads(text)
-    except json.JSONDecodeError as e:
-        # Fallback: extreure JSON de la resposta
-        import re
-        m = re.search(r"\{[\s\S]*\}", text)
-        if m:
+    except json.JSONDecodeError:
+        pass
+
+    # Intent 2: extreure el primer {...} de la resposta
+    import re
+    m = re.search(r"\{[\s\S]*\}", text)
+    if m:
+        try:
             return json.loads(m.group(0))
-        raise Exception(f"JSON parse failed: {e}. Resposta: {text[:300]}")
+        except json.JSONDecodeError:
+            pass
+
+    # Intent 3: reparar problemes comuns (comes finals, comes entre elements)
+    try:
+        # Treure comes finals abans de } o ]
+        fixed = re.sub(r",\s*([}\]])", r"\1", text)
+        return json.loads(fixed)
+    except json.JSONDecodeError as e:
+        raise Exception(f"JSON parse failed: {e}. Resposta (300 chars): {text[:300]}")
 
 
 if __name__ == "__main__":

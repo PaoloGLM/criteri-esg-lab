@@ -40,51 +40,58 @@ def get_token() -> str:
     return creds.token
 
 
-def call_gemini(system_prompt: str, user_prompt: str, temperature: float = 0.6, max_tokens: int = 4000) -> str:
-    """Crida Gemini 2.5 Flash i retorna la resposta de text."""
+def call_gemini(system_prompt: str, user_prompt: str, temperature: float = 0.6, max_tokens: int = 4000, force_text: bool = False) -> str:
+    """Crida Gemini 2.5 Flash i retorna la resposta de text.
+
+    Si force_text=True, no aplica response_schema ni response_mime_type (per a sortides de text lliure com Markdown).
+    """
     token = get_token()
     url = f"https://{LOCATION}-aiplatform.googleapis.com/v1/projects/{PROJECT_ID}/locations/{LOCATION}/publishers/google/models/{MODEL}:generateContent"
     headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+
+    gen_config = {
+        "temperature": temperature,
+        "maxOutputTokens": max_tokens,
+    }
+    if not force_text:
+        gen_config["response_mime_type"] = "application/json"
+        gen_config["response_schema"] = {
+            "type": "OBJECT",
+            "properties": {
+                "propostes": {
+                    "type": "ARRAY",
+                    "items": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "bloc": {"type": "STRING"},
+                            "tipus": {"type": "STRING"},
+                            "proposta": {"type": "STRING"},
+                            "justificacio": {"type": "STRING"},
+                        },
+                        "required": ["bloc", "tipus", "proposta", "justificacio"],
+                    },
+                },
+                "advocat_diable": {
+                    "type": "ARRAY",
+                    "items": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "tipus": {"type": "STRING"},
+                            "bloc_afectat": {"type": "STRING"},
+                            "observacio": {"type": "STRING"},
+                            "evidencia_original": {"type": "STRING"},
+                        },
+                        "required": ["tipus", "bloc_afectat", "observacio", "evidencia_original"],
+                    },
+                },
+            },
+            "required": ["propostes", "advocat_diable"],
+        }
+
     payload = {
         "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
         "system_instruction": {"parts": [{"text": system_prompt}]},
-        "generationConfig": {
-            "temperature": temperature,
-            "maxOutputTokens": max_tokens,
-            "response_mime_type": "application/json",
-            "response_schema": {
-                "type": "OBJECT",
-                "properties": {
-                    "propostes": {
-                        "type": "ARRAY",
-                        "items": {
-                            "type": "OBJECT",
-                            "properties": {
-                                "bloc": {"type": "STRING"},
-                                "tipus": {"type": "STRING"},
-                                "proposta": {"type": "STRING"},
-                                "justificacio": {"type": "STRING"},
-                            },
-                            "required": ["bloc", "tipus", "proposta", "justificacio"],
-                        },
-                    },
-                    "advocat_diable": {
-                        "type": "ARRAY",
-                        "items": {
-                            "type": "OBJECT",
-                            "properties": {
-                                "tipus": {"type": "STRING"},
-                                "bloc_afectat": {"type": "STRING"},
-                                "observacio": {"type": "STRING"},
-                                "evidencia_original": {"type": "STRING"},
-                            },
-                            "required": ["tipus", "bloc_afectat", "observacio", "evidencia_original"],
-                        },
-                    },
-                },
-                "required": ["propostes", "advocat_diable"],
-            },
-        },
+        "generationConfig": gen_config,
     }
 
     r = requests.post(url, headers=headers, json=payload, timeout=120)

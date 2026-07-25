@@ -22,17 +22,21 @@ REVISATS_DIR.mkdir(parents=True, exist_ok=True)
 
 SYSTEM_PROMPT = """Ets un corrector ortogràfic i d'estil expert en català i castellà.
 
-Rebs un informe en format Markdown i l'has de corregir:
+Rebs un informe en format Markdown i l'has de RETORNAR CORREGIT — no llistar les correccions.
 
+CORREGEIX directament sobre el text:
 1. **Errors ortogràfics** (majúscules, accents, dièresis, etc.)
 2. **Errors gramaticals** (concordança, temps verbals, etc.)
-3. **Anglicismes innecessaris** — mantén els tècnicament necessaris (ESG, KPI, etc.) però substitueix els que tenen equivalent natural (ex: "stakeholder" → "part interessada", "disclosure" → "divulgació")
+3. **Anglicismes innecessaris** — substitueix per equivalents naturals (ex: "datapoints" → "punts de dades", "value chain cap" → "límit de la cadena de valor", "disclosure" → "divulgació", "reporting" → "presentació d'informes")
 4. **Errors de traducció** (compara les dues versions si pot inferir coherència)
 5. **Puntuació** (comes, punts, comes entre clàusules)
 
-REGLA CRÍTICA: **NO modifiquis el contingut ni l'estructura**. Només corregeixes ortografia/estil. Conserves el front-matter YAML intacte.
+REGLA CRÍTICA:
+- **NO modifiquis el contingut ni l'estructura**. Només corregeixes ortografia/estil.
+- **Conserves el front-matter YAML intacte**.
+- **NO tornis un JSON ni una llista de correccions**. Torna el Markdown sencer corregit.
 
-Torna DIRECTAMENT el Markdown corregit (sense comentaris, sense explicacions, sense "Aquí tens la versió corregida:"). El primer caràcter de la teva resposta ha de ser el `---` del front-matter."""
+La teva resposta ha de ser EXACTAMENT el Markdown corregit, començant pel `---` del front-matter. Sense comentaris, sense explicacions, sense "Aquí tens la versió corregida:"."""
 
 
 def correct_one(md_path: Path) -> bool:
@@ -58,7 +62,7 @@ def correct_one(md_path: Path) -> bool:
 
 Torna el Markdown corregit (començant per ---)."""
 
-    corrected = call_gemini(SYSTEM_PROMPT, user_prompt, temperature=0.2, max_tokens=8000)
+    corrected = call_gemini(SYSTEM_PROMPT, user_prompt, temperature=0.2, max_tokens=16000, force_text=True)
 
     # Netejar: si Gemini ha afegit text abans del ---
     if "---" in corrected:

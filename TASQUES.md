@@ -25,31 +25,36 @@
 - Mockup aprovat: /home/z/my-project/download/estandares-mockup.png
 - Esquema al CONTEXT.md (P3)
 
-### P4 — Flux de creació d'informes (GLM + Gemini + Paolo)
+### P4 — Flux de creació d'informes (GLM + Gemini + Paolo) — IMPLEMENTAT
 
-**7 passos** (decidit 24 juliol 2026, substitueix la versió anterior de P4):
+**Flux oficial**: veure `scripts/FLUX-INFORMES.md` per al detall complet.
 
-1. **GLM detecta** informes nous a les fonts i els posa a una carpeta de Google Drive
-2. **GLM destil·la** la informació dels 8 apartats (segons METODOLOGIA.md) i els posa a una altra carpeta de Drive
-3. **Gemini revisa** l'informe original + el destil·lat de GLM, fa propostes de valor per afegir o modificar i fa d'advocat del diable. Ho posa a la carpeta
-4. **GLM llegeix** les aportacions de Gemini, decideix què és rellevant i què no, i elabora l'informe final. El posa a una altra carpeta d'informes fets
-5. **Gemini revisa** ortogràficament l'informe (català i castellà) i canvia el que calgui
-6. **Paolo llegeix** els informes creats i els valida
-7. **GLM puja** els informes validats a la web
+**7 passos** (cada pas escriu a una carpeta de Drive per auditabilitat):
 
-**Estructura de carpetes a Drive**:
-- `informes/0-originals/` — PDFs descarregats per GLM al pas 1
-- `informes/1-distilats/` — destil·lats dels 8 apartats (pas 2)
-- `informes/2-aportacions-gemini/` — propostes + advocat del diable (pas 3)
-- `informes/3-fets/` — informes redactats per GLM (pas 4)
-- `informes/4-revisats-ortografia/` — informes amb ortografia corregida per Gemini (pas 5)
-- `informes/5-validats-paolo/` — informes que Paolo ha validat (pas 6), pendents de pujar
-- `informes/6-publicats/` — informes ja pujats a la web (pas 7)
+1. **GLM detecta** informes nous → `Drive /informes/0-originals/`
+2. **GLM destil·la** (8 apartats segons METODOLOGIA.md) → `/informes/1-distilats/`
+3. **Gemini revisa** (crític + advocat del diable) → `/informes/2-aportacions-gemini/`
+4. **GLM redacta** (Markdown CA+ES integrant aportacions) → `/informes/3-fets/`
+5. **Gemini ortografia** (corregeix Markdown CA+ES) → genera PDF amb plantilla oficial → `/informes/4-revisats-ortografia/`
+6. **Paolo valida** (llegeix el PDF, mou els aprovats) → `/informes/5-validats-paolo/`
+7. **GLM puja** els validats a la web → `/informes/6-publicats/`
 
-**Pendents per implementar**:
-- Paolo: crear API key de Gemini a Google AI Studio (variable `GEMINI_API_KEY`)
-- GLM: scripts `glm-detecta.py`, `glm-distil·la.py`, `gemini-revisa.py`, `glm-redacta.py`, `gemini-ortografia.py`, `glm-puja.py`
-- GLM: estructura de carpetes a Google Drive
+**Actors i eines**:
+- GLM (Z.ai-bot) — passos 1, 2, 4, 7 — via `z-ai-web-dev-sdk`
+- **Gemini 2.5 Flash** (NO 2.0-flash, retirat per Google) — passos 3, 5 — via **Vertex AI europe-west1** amb Service Account `criteri-bot@criteri-esg.iam.gserviceaccount.com` (rol `Vertex AI User`)
+- Paolo — pas 6 (validació humana obligatòria)
+
+**Pujada a Drive**: OAuth d'usuari (no Service Account, que no té quota). Tokens a `/home/z/my-project/.gcp-oauth-tokens.json`, es refresquen automàticament.
+
+**PDFs a carpeta 4**: generats amb la **plantilla HTML oficial** Criteri ESG (paleta terra+coure, fonts Fraunces+Inter+JetBrains Mono). Paolo només ha de obrir el PDF i validar.
+
+**Scripts** (a `/scripts/`):
+- `02-glm-distilla.py`, `03-gemini-revisa.py`, `04-glm-redacta.py`, `05-gemini-ortografia.py`
+- `genera-pdf-informe.py` (Markdown → HTML oficial → PDF via weasyprint)
+- `puja-a-drive.py` (puja PDFs i MDs a Drive carpeta 4)
+- `drive_user_client.py` (client OAuth Drive)
+- `gemini_client.py` (client Vertex AI)
+- `glm_client.py` (client GLM via subprocess Node)
 
 ### P5 — Descarregar B Corp B Impact Assessment
 - La web de B Corp bloqueja la descàrrega automàtica (403)

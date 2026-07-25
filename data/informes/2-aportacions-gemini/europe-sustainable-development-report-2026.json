@@ -1,0 +1,72 @@
+{
+  "slug": "europe-sustainable-development-report-2026",
+  "title": "Sustainable development report 2026",
+  "institution": "EUROPE",
+  "generated_at": "2026-07-25T06:55:30",
+  "aportacions": {
+    "propostes": [
+      {
+        "bloc": "semafor",
+        "tipus": "modificar",
+        "proposta": "Afegir un nou indicador sobre la participació ciutadana en la presa de decisions sobre ODS",
+        "justificacio": "L'informe original menciona la importància del 'whole-of-society approach' (pàgina 1) però el destil·lat no reflecteix com es mesura la participació ciutadana, que és un criteri clau per a l'èxit de la implementació dels ODS."
+      },
+      {
+        "bloc": "dadesClau",
+        "tipus": "afegir",
+        "proposta": "Incloure dades sobre els nivells de desigualtat d'ingressos i índex de Gini",
+        "justificacio": "L'informe original dedica una secció completa al 'Leave-no-one-behind Index' (pàgina 12) i inclou dades sobre 'Severe material and social deprivation rate' (pàgina 13), però aquestes dades no apareixen al destil·lat, malgrat la seva rellevància per avaluar la justícia social."
+      },
+      {
+        "bloc": "resumExecutiu",
+        "tipus": "modificar",
+        "proposta": "Afegir informació sobre l'Índex de Transbordament Internacional (International Spillover Index)",
+        "justificacio": "L'informe original destaca l'importància de l'impacte exterior de les polítiques europees (pàgina 16) amb figures com 'SDG Index score vs International Spillover Index score by region' (pàgina 18), però aquest aspecte crucial no es menciona al resum executiu del destil·lat."
+      },
+      {
+        "bloc": "implicacions",
+        "tipus": "modificar",
+        "proposta": "Afegir una secció específica per a la societat civil i organitzacions no governamentals",
+        "justificacio": "L'informe original reconeix el paper de múltiples actors en la implementació dels ODS (pàgina 1), incloent 'a whole-of-society approach', però el destil·lat només considera empreses, reguladors i ciutadans, ometent el paper específic de la societat civil."
+      },
+      {
+        "bloc": "accions",
+        "tipus": "afegir",
+        "proposta": "Afegir una acció sobre millorar la recopilació de dades desagregades per a grups vulnerables",
+        "justificacio": "L'informe original destaca la importància de dades desagregades per mesurar el progrés (pàgina 1) i inclou un 'Leave-no-one-behind Index' (pàgina 12), però el destil·lat no proposa accions concretes per millorar aquest aspecte metodològic."
+      },
+      {
+        "bloc": "crossRefs",
+        "tipus": "afegir",
+        "proposta": "Afegir referència a l'Índex de Suport al Multilateralisme Basat en les Nacions Unides (UN-MI)",
+        "justificacio": "L'informe original inclou una taula detallada sobre 'Index of countries' support for UN-based multilateralism' (pàgina 6) amb dades específiques per països europeus, però aquesta mesura important per avaluar el lideratge global no es reflecteix al destil·lat."
+      }
+    ],
+    "advocat_diable": [
+      {
+        "tipus": "mancanca",
+        "bloc_afectat": "semafor",
+        "observacio": "El semàfor no avalua adequadament la transparença de les dades i metodologies utilitzades, malgrat que l'informe original destaca l'ús de 'natural language processing techniques, large language models and artificial intelligence' per a l'analítica, sense discutir els biaos potencials d'aquestes tecnologies.",
+        "evidencia_original": "We also leveraged natural language processing techniques, large language models and artificial intelligence for analytical editing purposes, notably the European Commission's Joint Research Centre SDG Mapper (JRC SDG Mapper) and tools developed by Mistral AI."
+      },
+      {
+        "tipus": "contradiccio",
+        "bloc_afectat": "connexions",
+        "observacio": "L'informe presenta una contradicció entre l'afirmació que 'Europa manté la seva posició de líder global en desenvolupament sostenible' i les dades originals que mostren 'delays in payment of dues to the United Nations, G20 and large countries, 2020–2024' (pàgina 7), la qual cosa qüestiona el compromís real de la UE amb les institucions multilaterals.",
+        "evidencia_original": "Figure 1.3 | Delays in payment of dues to the United Nations, G20 and large countries, 2020–2024"
+      },
+      {
+        "tipus": "criteri_oblidat",
+        "bloc_afectat": "resumExecutiu",
+        "observacio": "L'informe no aborda adequadament el principi de co-decisió, malgrat que l'original destaca la necessitat de 'new ways of working within governments, along with a whole-of-society approach'. El destil·lat no reflecteix com les decisions sobre ODS estan sent preses i qui hi participa, la qualés és crucial per a la governança sostenible.",
+        "evidencia_original": "Implementing this agenda would inevitably require new ways of working within governments, along with a whole-of-society approach and a vast partnership bringing together highly diverse actors."
+      },
+      {
+        "tipus": "greenwashing",
+        "bloc_afectat": "dadesClau",
+        "observacio": "La dada sobre '300 mil milions d'euros mobilitzats per Global Gateway' no va acompanyada d'informació sobre com es mesura l'impacte real d'aquestes inversions en els ODS, ni sobre possibles efectes negatius que podrien tenir en altres àrees, com es discuteix a l'original sobre 'negative spillovers minimized'.",
+        "evidencia_original": "What counts more, perhaps, is whether countries are working in the right direction, recognising that there is a need for real systemic change and that this requires a holistic approach to policy objectives, with synergies maximised and negative spillovers minimised."
+      }
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "slug": "cnmv-plan-actividades-2026",
+  "title": "Plan actividades 2026",
+  "institution": "CNMV (Comisión Nacional del Mercado de Valores)",
+  "generated_at": "2026-07-25T06:56:51",
+  "aportacions": {
+    "propostes": [
+      {
+        "bloc": "semafor",
+        "tipus": "modificar",
+        "proposta": "Afegir un nou indicador sobre 'Materialitat dels factors ESG' amb estat groc, ja que l'informe reconeix la sostenibilitat com a part de l'agenda europea però no estableix prioritats basades en la materialitat.",
+        "justificacio": "L'absència d'aquest indicador reflecteix una manca d'estratègia ESG integral, ja que no es prioritzen els factors ambientals i socials més rellevants per a la supervisió financiera."
+      },
+      {
+        "bloc": "dadesClau",
+        "tipus": "afegir",
+        "proposta": "Afegir dades sobre l'impacte de les iniciatives de sostenibilitat i les reduccions d'emissions, ja que l'informe original menciona 'transició ecològica' però no quantifica els impactes.",
+        "justificacio": "La manca de dades quantificables sobre impactes ESG dificulta l'avaluació real de l'estratègia de sostenibilitat de la CNMV."
+      },
+      {
+        "bloc": "resumExecutiu",
+        "tipus": "modificar",
+        "proposta": "Incorporar una secció específica sobre estratègia ESG que inclogui compromisos concretos de reducció d'emissions i objectius de sostenibilitat, tal com esmenta l'original en la seva introducció.",
+        "justificacio": "El resum actual és massa genèric sobre ESG i no reflecteix el compromís que l'original atribueix a la CNMV amb la transició ecològica."
+      },
+      {
+        "bloc": "implicacions",
+        "tipus": "modificar",
+        "proposta": "Afegir una secció específica sobre 'Implicacions ESG' per a empreses i entitats financeres, detallant els requisits de divulgació i les noves normatives.",
+        "justificacio": "L'actual destil·lat no abasta adequadament les implicacions de les noves normatives ESG com la CSRD i SFDR, que sí que es mencionen a l'original."
+      },
+      {
+        "bloc": "accions",
+        "tipus": "afegir",
+        "proposta": "Incorporar una nova acció específica sobre 'Desenvolupament d'un marc de supervisió ESG' que inclogui la creaci d'indicators de materialitat i sistemes de verificació.",
+        "justificacio": "L'informe original parla de 'finançament sostenible' com a part de l'agenda europea, però el destil·lat no inclou cap acció concreta en aquest sentit."
+      },
+      {
+        "bloc": "crossRefs",
+        "tipus": "modificar",
+        "proposta": "Afegir una referència específica a l'estratègia de UE de 'Unió d'Estalvis i Inversions' (Savings and Investment Union) i el seu impacte en els mercats de capitals.",
+        "justificacio": "L'original dedica una secció completa al marc normatiu europeu, incloent la SIU, que no es reflecteix adequadament al destil·lat."
+      }
+    ],
+    "advocat_diable": [
+      {
+        "tipus": "mancanca",
+        "bloc_afectat": "semafor",
+        "observacio": "L'informe no aborda la co-decisió en l'elaboració de l'estratègia ESG, tot i que la CNMV és una institució pública que hauria d'involucrar els grups d'interès en el procés.",
+        "evidencia_original": "L'original menciona 'el treball conjunt de tot l'equip de la CNMV, incloent els seus òrgans de govern, Consell i Comitè Executiu, i del diàleg amb els participants del mercat', però no reflecteix una participació ciutadana o de la societat civil."
+      },
+      {
+        "tipus": "greenwashing",
+        "bloc_afectat": "resumExecutiu",
+        "observacio": "L'informe parla de compromís amb la sostenibilitat però no estableix objectius concrets de reducció d'emissions ni indica com es mesurarà l'impacte positiu, la qual cosa podria constituir greenwashing.",
+        "evidencia_original": "L'original es refereix a 'la transició ecològica' com a part de l'agenda europea, però no detalla cap objectiu concret o mecanisme per assolir-ho."
+      },
+      {
+        "tipus": "contradiccio",
+        "bloc_afectat": "connexions",
+        "observacio": "Mentre l'informe destaca iniciatives per protegir els inversors contra el frau i el greenwashing, no estableix mesures específiques per garantir la qualitat de les recomanacions d'inversió basades en IA, que podrien augmentar els riscos per als inversors minoristes.",
+        "evidencia_original": "L'original menciona 'el desenvolupament de la intel·ligència artificial' com un avança destacat, però no detalla com es supervisaran les seves aplicacions en l'àmbit financer."
+      },
+      {
+        "tipus": "criteri_oblidat",
+        "bloc_afectat": "mesEnllaCheckbox",
+        "observacio": "L'informe no aborda la justícia distributiva en l'accés als mercats de capitals, especialment per a petits inversors i empreses de menor mida, tot i que menciona aquestes últimes com a prioritat.",
+        "evidencia_original": "L'original parla d'impulsar 'empreses de menor mida' i 'millorar l'accés dels inversors minoristes', però no estableix com es garantirà una distribució justa dels beneficis d'aquestes polítiques."
+      }
+    ]
+  }
+}

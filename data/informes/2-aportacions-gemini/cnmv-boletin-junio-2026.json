@@ -1,0 +1,78 @@
+{
+  "slug": "cnmv-boletin-junio-2026",
+  "title": "Boletin junio 2026",
+  "institution": "CNMV (Comisión Nacional del Mercado de Valores)",
+  "generated_at": "2026-07-25T06:56:11",
+  "aportacions": {
+    "propostes": [
+      {
+        "bloc": "semafor",
+        "tipus": "modificar",
+        "proposta": "Afegir un nou indicador sobre la transparència de la informació ASG de les empreses sota supervisió de la CNMV, amb un enfocament específic en la qualitat de les dades de clima i diversitat.",
+        "justificacio": "L'informe original conté informació detallada sobre les IIC sostenibles (gràfic 13) i les seves característiques, però el destil·lat no reflecteix aquesta informació, que és crucial per a una avaluació completa de la transparència ASG."
+      },
+      {
+        "bloc": "dadesClau",
+        "tipus": "afegir",
+        "proposta": "Incloure dades sobre l'evolució dels fons sostenibles i la seva participació en el total de fons d'inversió, amb referència específica al gràfic 13 de l'informe original.",
+        "justificacio": "L'informe original conté informació valuosa sobre les IIC sostenibles (patrimoni i partícipes) que no es reflecteix en les dades clau del destil·lat, a pesar de ser un indicador important de l'evolució del mercat financer en relació amb els criteris ASG."
+      },
+      {
+        "bloc": "resumExecutiu",
+        "tipus": "modificar",
+        "proposta": "Afegir informació sobre l'impacte de la guerra a l'Iran en els mercats de criptoactives i materies primeres, tal com es detalla en l'informe original (seccions 2.3 i 2.4).",
+        "justificacio": "L'informe original conté anàlisis específics sobre aquests sectors que no es reflecteixen en el resum executiu del destil·lat, oferint una visió més completa de l'impacte del conflicte geopolític en diferents segments del mercat."
+      },
+      {
+        "bloc": "implicacions",
+        "tipus": "modificar",
+        "proposta": "En la secció 'empreses', afegir informació sobre com els sectors energètics i utilities han resistit millor a causa de la seva composició en l'Ibex 35, tal com es detalla a pàgina 17 de l'informe original.",
+        "justificacio": "L'informe original ofereix informació específica sobre la resistència relativa del mercat espanyol que no es transmet en el destil·lat, important per a les empreses que operen en aquests sectors."
+      },
+      {
+        "bloc": "accions",
+        "tipus": "afegir",
+        "proposta": "Afegir una nova acció sobre la millora de l'anàlisi de la volatilitat entre classes d'actius, referent al Gràfic 6 de l'informe original sobre indicadors de correlació.",
+        "justificacio": "L'informe original conté informació valuosa sobre la correlació entre classes d'actius que no es reflecteix en les accions proposades, malgrat ser un element important per a la gestió de riscos en contextos d'incertesa."
+      },
+      {
+        "bloc": "crossRefs",
+        "tipus": "modificar",
+        "proposta": "Afegir una referència a la Directiva CSDDD sobre diligència deguda en matèria de sostenibilitat, que es menciona a les sigles de l'informe original però no es relaciona amb cap criteri específic.",
+        "justificacio": "La CSDDD és un marc regulador important per a les empreses i no es reflecteix adequadament en les referències creuades, tot i que està present a l'informe original."
+      }
+    ],
+    "advocat_diable": [
+      {
+        "tipus": "mancanca",
+        "bloc_afectat": "semafor",
+        "observacio": "L'informe no avalua la integritat de la informació ASG presentada per les empreses, ni la seva conformitat amb estàndards globals com les TCFD o SASB. El semàfor només analitza la quantitat d'informació, no la seva qualitat o utilitat per als inversors.",
+        "evidencia_original": "L'informe original no conté cap avaluació de la qualitat o conformitat de les dades ASG amb estàndards específics, només menciona la quantitat d'informació disponible."
+      },
+      {
+        "tipus": "greenwashing",
+        "bloc_afectat": "dadesClau",
+        "observacio": "L'informe presenta dades positives sobre el creixement dels fons d'inversió i els sostenibles, però no analitza si aquestes inversions realment contribueixen a objectius de sostenibilitat o si es tracta de 'greenwashing' financer. No hi ha cap anàlisi de l'impacte real d'aquestes inversions.",
+        "evidencia_original": "L'informe original menciona el creixement dels fons sostenibles però no analitza l'impacte real de les seves inversions en els objectius de sostenibilitat, ni verifica si les empreses en què invertien complien amb els seus compromisos ASG."
+      },
+      {
+        "tipus": "criteri_oblidat",
+        "bloc_afectat": "implicacions",
+        "observacio": "L'informe no tracta adequadament l'impacte de la volatilitat dels mercats en les persones més vulnerables, com els petits inversors o els jubilats que depenen de les seves inversions per a la seva subsistència. Falta una anàlisis de justícia social en l'assignació de riscos i beneficis.",
+        "evidencia_original": "L'informe original no conté cap anàlisi sobre l'impacte social de la volatilitat dels mercats ni com afecta a diferents segments de la població, centrant-se només en l'impacte macroeconòmic."
+      },
+      {
+        "tipus": "contradiccio",
+        "bloc_afectat": "resumExecutiu",
+        "observacio": "L'informe destaca la recuperació dels mercats després de la guerra a l'Iran, però no analitza com aquesta recuperació es distribueix entre diferents sectors i tipus d'inversors, creant una narrativa que podria ocultar desigualtats significatives en la distribució de beneficis.",
+        "evidencia_original": "L'informe original menciona que 'les subides se concentraron sobre todo en EE. UU. y Japón, y en sectores como el tecnológico, el de la energía y el de la defensa', però no explora les implicacions d'aquesta distribució desigual."
+      },
+      {
+        "tipus": "font_no_verificada",
+        "bloc_afectat": "dadesClau",
+        "observacio": "L'informe presenta dades sobre creixement i participació de mercats sense especificar metodologies de càlcul o fonts de dades, la qual cosa dificulta la verificació independent d'aquestes dades.",
+        "evidencia_original": "L'informe original no especifica les metodologies utilitzades per calcular les dades presentades, com el '3,3%' de creació del patrimoni dels fons o el '87,8%' de participació de les entitats de crèdit en les comissions."
+      }
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "slug": "unepfi-strategy-2026-2029",
+  "title": "Strategy 2026 2029",
+  "institution": "UNEP FI (UN Environment Programme Finance Initiative)",
+  "generated_at": "2026-07-25T06:58:24",
+  "aportacions": {
+    "propostes": [
+      {
+        "bloc": "0-semafor",
+        "tipus": "modificar",
+        "proposta": "Afegir un nou indicador sobre la quantificació d'impactes específics per avaluar la real efectivitat de l'estratègia",
+        "justificacio": "L'actual semàfor no reflecteix la manca d'objectius quantificables d'impacte, que és un element crucial per avaluar realment l'eficàcia d'una estratègia ESG"
+      },
+      {
+        "bloc": "2-dadesClau",
+        "tipus": "afegir",
+        "proposta": "Incloure dades sobre el nombre de membres que han assolit objectius específics en les darreres estratègies i el percentatge de progressió mitjà",
+        "justificacio": "L'original menciona que cada marc té els seus propis models de seguiment i informes de progrés biennals, però aquestes dades no es reflecteixen en el destil·lat, que seria valuós per avaluar l'efectivitat passada"
+      },
+      {
+        "bloc": "4-implicacions",
+        "tipus": "modificar",
+        "proposta": "Afegir una secció específica sobre 'implicacions per a la justícia social i distribució' que abordi com es garanteix que els beneficis es distribueixin equitativament",
+        "justificacio": "El destil·lat ja reconeix que l'estratègia no aborda directament aquest aspecte, però no ofereix cap proposta per millorar-lo, mentre que l'original esmenta explícitament 'economies inclusives'"
+      },
+      {
+        "bloc": "5-connexions",
+        "tipus": "afegir",
+        "proposta": "Incloure una connexió sobre l'alineament amb els límits planetaris i l'aplicació del concepte de 'sostenibilitat absoluta'",
+        "justificacio": "L'original esmenta la necessitat d'entendre els impactes en el planeta i la societat, però el destil·lat no connecta això amb els límits planetaris ni amb la necessitat d'una transició realment sostenible"
+      },
+      {
+        "bloc": "6-accions",
+        "tipus": "modificar",
+        "proposta": "Afegir una nova acció específica sobre 'desenvolupar mecanismes de verificació externa independent' amb esforç mitjà i impacte alt",
+        "justificacio": "L'original parla de models de seguiment i informes de progrés, però el destil·lat destaca la manca de verificació externa formal, que és crucial per garantir la credibilitat de l'estratègia"
+      },
+      {
+        "bloc": "7-crossRefs",
+        "tipus": "afegir",
+        "proposta": "Incloure una referència al marc de 'science-based targets' (SBTi) per a les institucions financeres",
+        "justificacio": "L'original esmenta explícitament 'normes i recursos basats en ciència', però aquesta connexió no es reflecteix en el destil·lat, tot i que és crucial per l'ambició climàtica de l'estratègia"
+      }
+    ],
+    "advocat_diable": [
+      {
+        "tipus": "mancanca",
+        "bloc_afectat": "0-semafor",
+        "observacio": "L'avaluació semàfor ignora completament la manca d'objectius específics de reducció d'emissions o altres indicadors d'impacte ambiental concrets, tot i que l'original parla de 'sustainability integration com a component central de models de negoci resilients'",
+        "evidencia_original": "Sustainability integration is not a nice-to-have, but rather a core aspect of prudent risk management for financial institutions. It's imperative to understand the impacts of portfolios, financial products, and services on the planet and society"
+      },
+      {
+        "tipus": "greenwashing",
+        "bloc_afectat": "2-dadesClau",
+        "observacio": "Les dades sobre cobertura (50% de bancs globals, 30% d'asseguradores) poden ser enganyoses sense context sobre la profunditat real de la integració de sostenibilitat en aquestes institucions",
+        "evidencia_original": "The Principles for Responsible Banking and the Principles for Sustainable Insurance are the main frameworks to support the global finance sector to catalyze integration of sustainability into financial market practice"
+      },
+      {
+        "tipus": "criteri_oblidat",
+        "bloc_afectat": "4-implicacions",
+        "observacio": "L'estratègia no aborda explícitament la justícia distributiva i com assegurar que els beneficis de la transició sostenible arribin a les comunitats més vulnerables, tot i que parla d'economies 'inclusives'",
+        "evidencia_original": "A community of leading financial institutions can support their clients and customers while also engaging with investors, key stakeholders, and civil society, contributing to the transition to resilient and inclusive economies"
+      },
+      {
+        "tipus": "contradiccio",
+        "bloc_afectat": "5-connexions",
+        "observacio": "L'estratègia promou un canvi sistèmic però no aborda les contradiccions inherents entre el model econòmic actual basat en el creixement continu i els límits planetaris",
+        "evidencia_original": "The transition is no longer a theoretical exercise. It is a core component of resilient business models, strengthened fiduciary duty, and long-term competitiveness"
+      }
+    ]
+  }
+}

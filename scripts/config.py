@@ -89,8 +89,8 @@ def find_informes_root(drive_service) -> str:
         if "informes_folder_id" in state:
             return state["informes_folder_id"]
 
-    # Buscar carpeta 'informes' o 'Informes' al root del Drive del service account
-    for name in ["informes", "Informes", "INFORMES"]:
+    # Buscar carpeta pare (provem diversos noms possibles)
+    for name in ["Criteri ESG Informes", "informes", "Informes", "INFORMES"]:
         results = drive_service.files().list(
             q=f"name='{name}' and mimeType='application/vnd.google-apps.folder' and trashed=false",
             spaces="drive",
@@ -104,7 +104,7 @@ def find_informes_root(drive_service) -> str:
             return folder_id
 
     raise FileNotFoundError(
-        "Carpeta 'informes' (o 'Informes') no trobada al Drive. Crea-la i comparteix-la amb: "
+        "Carpeta 'Criteri ESG Informes' (o 'informes') no trobada al Drive. Crea-la i comparteix-la amb: "
         + get_service_account_email()
     )
 

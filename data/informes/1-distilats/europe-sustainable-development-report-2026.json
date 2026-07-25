@@ -1,0 +1,299 @@
+{
+  "slug": "europe-sustainable-development-report-2026",
+  "title": "Sustainable development report 2026",
+  "institution": "EUROPE",
+  "filename_original": "2026-04-22_europe-sustainable-development-report-2026.pdf",
+  "generated_at": "2026-07-25T06:49:16",
+  "content_ca": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Progresseix però amb limitacions",
+      "indicators": [
+        {
+          "name": "Cobertura Scope 3",
+          "status": "groc",
+          "label": "Esmentat però no detallat",
+          "note": "L'informe menciona emissions de GHG però no proporciona detalls específics sobre l'abast 3"
+        },
+        {
+          "name": "Termes temporals",
+          "status": "verd",
+          "label": "Definits clarament",
+          "note": "L'informe estableix objectius a curt i llarg termini, incloent 2030 i 2050"
+        },
+        {
+          "name": "Fonts independents",
+          "status": "verd",
+          "label": "Diversificades",
+          "note": "Utilitza múltiples fonts de dades institucionals i acadèmiques"
+        },
+        {
+          "name": "Granularitat",
+          "status": "verd",
+          "label": "Alta",
+          "note": "Proporciona anàlisis detallades per països i regions europees"
+        },
+        {
+          "name": "Verificació externa",
+          "status": "groc",
+          "label": "Parcial",
+          "note": "Té contribucions d'experts però no una verificació externa formal"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "7a edició",
+        "label": "Edició de l'informe",
+        "page": "1"
+      },
+      {
+        "value": "2050",
+        "label": "Objectiu de neutralitat de carboni",
+        "page": "2"
+      },
+      {
+        "value": "300 mil milions d'euros",
+        "label": "Inversions mobilitzades per Global Gateway",
+        "page": "6"
+      },
+      {
+        "value": "450 milions",
+        "label": "Població de mercat interior europeu",
+        "page": "2"
+      },
+      {
+        "value": "1% creixement projectat",
+        "label": "Creixement econòmic Eurozone 2025-2027",
+        "page": "2"
+      }
+    ],
+    "resumExecutiu": "L'Europe Sustainable Development Report 2026 presenta una avaluació actualitzada del progrés europeu en els Objectius de Desenvolupament Sostenible (ODS). Europa manté la seva posició de líder global en desenvolupament sostenible, amb països europeus ocupant 19 dels 20 primers llocs en l'Índex ODS global. No obstant això, l'informe revela una estagnació en la implementació, especialment després del canvi en la Comissió von der Leyen (2024-2029), on els ODS ja no s'esmenten explícitament en el programa de treball. El document destaca com les prioritats polítiques s'estan desplaçant cap a la defensa i la competitivitat, amb un risc de dilució dels objectius de reducció de la pobresa. Tot i això, iniciatives com la Global Gateway han mobilitzat més de 300 mil milions d'euros per a inversions sostenibles. L'informe crida a un lideratge europeu renovat per superar els reptes geopolítics i accelerar la transició cap a una economia verda i digital.",
+    "implicacions": {
+      "empreses": "Les empreses europees han d'adaptar-se a un entorn polític canviant on la sostenibilitat pot perdre protagonisme. Hi ha una oportunitat per liderar en tecnologies verdes i digitals, però han de gestionar el risc de canvis en la regulació i les polítiques públiques. La manca d'aliançes polítiques estables per als ODS podria crear incertesa per a les inversions a llarg termini en sostenibilitat.",
+      "reguladors": "Els reguladors europeus han de trobar un equilibri entre la seguretat i la competitivitat, mantenint l'ambició climàtica i social. L'informe suggereix que la UE ha de reforçar el seu paper com a líder en multilateralisme i sostenibilitat, especialment davant l'oposició dels EUA. Hi ha una necessitat urgent d'alinear el marc financer plurianual amb els ODS per evitar una dilució dels objectius.",
+      "ciutadans": "Els ciutadans europeus es troben davant d'un futur amb reptes significatius: creixement econòmic lent, canvis climàtics i tensions geopolítiques. L'informe subratlla la importància de mantenir el compromís amb el principi 'deixar ningú enrere', especialment davant l'augment de la desigualtat. Els ciutadans han d'exigir un lideratge polític que mantingui la sostenibilitat com a prioritat fonamental per al benestar a llarg termini."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Justícia distributiva",
+      "body": "L'informe revela com les prioritats polítiques europees estan canviant, amb un enfocament creixent en la defensa i la competitivitat que podria diluir els objectius de reducció de la pobresa i la justícia social. El principi 'deixar ningú enrere' està perdent atenció explícita, mentre que les desigualtats persistents i la manca d'avançament en molts ODS socials mostren que la justícia distributiva no està sent prioritzada adequadament en la nova agenda política europea."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "European Green Deal",
+        "desc": "L'informe mostra com el European Green Deal va representar un punt d'inflexió en l'engagement europeu amb la sostenibilitat, però la seva implementació està ara en risc de ser minada per nous focus polítics."
+      },
+      {
+        "type": "Contradicció",
+        "target": "Global Gateway",
+        "desc": "Mentre la Global Gateway mobilitza 300 mil milions d'euros per inversions sostenibles, l'absència de referència als ODS en les polítiques actuals crea una contradicció entre les declaracions d'intenció i l'acció política efectiva."
+      },
+      {
+        "type": "Complement",
+        "target": "Recovery and Resilience Facility",
+        "desc": "L'informe destaca com les iniciatives de recuperació post-COVID estan alineades amb els OGS, però aquestes accions semblen aïlles sense un marc polític coherent que les integri en una estratègia sostenible a llarg termini."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Reforçar el lideratge polític en ODS",
+        "desc": "La UE ha de restaurar explícitament els ODS com a marc central de les seves polítiques, especialment en el proper marc financer plurianual i en les guies polítiques de la Comissió.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Mantener el principi 'Deixar ningú enrere'",
+        "desc": "Prioritzar polítiques que redueixin la desigualtat i assegurin que els beneficis de la transició verda arribin primer als grups més vulnerables.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Reforçar la cooperació multilateral",
+        "desc": "Contrarestar l'oposició als ODS per part d'altres potències mitjançant una defensa activa del multilateralisme basat en regles i la cooperació internacional.",
+        "effort": "Alt",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "04",
+        "title": "Millorar la recopilació de dades",
+        "desc": "Desenvolupar sistemes de seguiment més granulars per a ODS, especialment per a emissions d'abast 3 i indicis socials.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "05",
+        "title": "Integrar sostenibilitat en inversions",
+        "desc": "Assegurar que les inversions en tecnologies digitals i infraestructures estiguin alineades amb els ODS i promoguin una transició justa.",
+        "effort": "Baix",
+        "impact": "Alt"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "ONU ODS",
+        "criterion": "ODS 13: Acció pel clima",
+        "impact": "L'informe mostra progresses limitats en la transició energètica europea, amb riscos de desacceleració política."
+      },
+      {
+        "framework": "UE Green Deal",
+        "criterion": "Neutralitat de carboni 2050",
+        "impact": "Tot i l'objectiu declarat, l'informe posa en dubte la coherència de les polítiques actuals per assolir-lo."
+      },
+      {
+        "framework": "Agenda 2030",
+        "criterion": "Principi de 'Deixar ningú enrere'",
+        "impact": "L'informament detecta una disminució en l'atenció a aquest principi en les polítiques europees actuals."
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Reporte amb algunes mancances però amb contingut valuós",
+      "indicators": [
+        {
+          "name": "Cobertura Scope 3",
+          "status": "groc",
+          "label": "Esmentat però no quantificat",
+          "note": "L'informe tracta emissions però no especifica cobertura Scope 3"
+        },
+        {
+          "name": "Termes temporals",
+          "status": "verd",
+          "label": "Objectius temporals clars",
+          "note": "L'informe estableix objectius per 2030 i 2050"
+        },
+        {
+          "name": "Fonts independents",
+          "status": "verd",
+          "label": "Fonts diversificades",
+          "note": "Utilitza múltiples fonts institucionals i independents"
+        },
+        {
+          "name": "Granularitat",
+          "status": "verd",
+          "label": "Anàlisi detallat",
+          "note": "Proporciona dades desagregades per països i indicadors"
+        },
+        {
+          "name": "Verificació externa",
+          "status": "groc",
+          "label": "Verificació parcial",
+          "note": "Té contribucions d'experts però no verificació externa formal"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "7ena edició",
+        "label": "Edició de l'informe",
+        "page": "1"
+      },
+      {
+        "value": "2030",
+        "label": "Objectiu temporal principal",
+        "page": "1"
+      },
+      {
+        "value": "450M",
+        "label": "Població de la UE",
+        "page": "2"
+      },
+      {
+        "value": "€300B",
+        "label": "Inversions Global Gateway",
+        "page": "vi"
+      },
+      {
+        "value": "1%",
+        "label": "Creuç projectat Eurozone 2025-2027",
+        "page": "2"
+      }
+    ],
+    "resumExecutiu": "L'Europe Sustainable Development Report 2026 presenta una avaluació actualitzada del progrés europeu en els Objectius de Desenvolupament Sostenible (ODS). Europa manté la seva posició com a líder global en desenvolupament sostenible, amb països europeus ocupant 19 dels 20 primers llocs en l'Índex ODS global. No obstant això, l'informe revela una preocupant estancament en la implementació dels ODS a Europa, amb un canvi en les prioritats polítiques cap a la defensa i la competitivitat, en detriment de l'agenda de sostenibilitat. La segona Comissió von der Leyen (2024-2029) ha reduït significativament les referències als ODS en els seus documents oficials, en contrast amb el període anterior. L'informe destaca la necessitat de reforçar el lideratge europeu tant a nivell intern com global, especialment en un context de competició geopolítica i disminució del compromís amb el multilateralisme basat en les Nacions Unides.",
+    "implicacions": {
+      "empreses": "Les empreses europees han d'adaptar-se a un entorn polític canviant on la sostenibilitat pot perdre prioritat. La reducció de referències als ODS en la política de la UE podria significar menys suport per a iniciatives verdes i més pressió per a resultats a curt termini. Les empreses haurien d'integrar els ODS en les seves estratègies per mantenir competitivitat i prepar-se per possibles canvis en la regulació.",
+      "reguladors": "Els reguladors europeus han d'enfrontar-se a la tensió entre noves prioritats geopolítiques i l'agenda de sostenibilitat. L'estancament en la implementació dels ODS requereix mecanismes de governança més forts i un enfocament renovat en la 'no deixar a ningú enrere'. La UE necessita mantenir el seu lideratge global en polítiques verdes davant l'oposició creixent dels EUA.",
+      "ciutadans": "Els ciutadans europeus es troben en un creuament on els beneficis del benestar social i ambiental poden veure's compromesos per nous enfocaments polítics. L'estancament en la implementació dels ODS podria afectar la qualitat de vida, especialment per als grups més vulnerables. La participació ciutadana i la pressió per a polítiques sostenibles són crucials per mantenir l'agenda de desenvolupament sostenible a la prioritat política."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Justícia distributiva",
+      "body": "L'informe destaca com l'agenda de desenvolupament sostenible està sent diluïda per nous enfocaments polítics que priorititzen la competitivitat i la defensa sobre la justícia social i ambiental. La reducció de referències als ODS en documents oficials de la UE, especialment a l'objectiu de 'no deixar a ningú enrere', representa un risc per a la justícia distributiva. Els recursos destinats a desenvolupament sostenible estan sent desplaçats cap a altres àrees, mentre que les desigualtats persisten i fins i tot augmenten en alguns sectors."
+    },
+    "connexions": [
+      {
+        "type": "Contradicció",
+        "target": "Política de la UE",
+        "desc": "La UE presenta informes voluntaris sobre ODS a l'ONU mentre redueix les referències a aquests en els seus programes de treball anuals, creant una contradicció entre el discurs internacional i les accions polítiques internes."
+      },
+      {
+        "type": "Evolució",
+        "target": "Context geopolitic",
+        "desc": "L'oposició creixent dels EUA als ODS i el multilateralisme basat en l'ONU ha forçat un reenquadrament de la política exterior europea, amb un enfocament més en la competitivitat que en la cooperació global."
+      },
+      {
+        "type": "Complement",
+        "target": "Inversions Global Gateway",
+        "desc": "La iniciativa Global Gateway de la UE es presenta com un complement a l'agenda de desenvolupament sostenible, amb més de 300 mil milions d'euros destinats a inversions sostenibles, tot i que la seva alineació exacta amb els ODs no està clarament especificada."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Reforçar el marc institucional per als ODS",
+        "desc": "Establir un mecanisme dedicat a la implementació dels ODS a nivell de UE, amb assignació de responsabilitats clars i seguiment regular del progrés.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Mantenir finançament per a la sostenibilitat",
+        "desc": "Assegurar que el Marc Financer Plurianual mantingui i incrementi el finançament per a polítiques relacionades amb els ODS, especialment en zones socials i ambientals vulnerables.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Reforçar el lideratge global en multilateralisme",
+        "desc": "Posicionar la UE com a líder en promoció del multilateralisme basat en l'ONU i els ODS, contrarestant la tendència de desvinculació d'altres potències.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "04",
+        "title": "Millorar la recopilació de dades desagregades",
+        "desc": "Desenvolupar sistemes millors per a la recopilació i anàlisi de dades desagregades que permetin identificar i abordar les desigualtats dins dels ODS.",
+        "effort": "Baix",
+        "impact": "Alt"
+      },
+      {
+        "num": "05",
+        "title": "Fomentar la participació ciutadana",
+        "desc": "Crear espais de participació ciutadana estructurats per involucrar a la societat civil en la implementació i seguiment dels ODS a nivell europeu i nacional.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "ONU ODS",
+        "criterion": "ODS 17: Aliances per assolir els objectius",
+        "impact": "L'informe analitza el paper de la UE en la promoció dels ODS a nivell global, destacant la disminució del lideratge en aquest àmbit."
+      },
+      {
+        "framework": "UE Green Deal",
+        "criterion": "Neutralitat climàtica 2050",
+        "impact": "L'informe reconeix els avenços del Green Deal però alerta sobre el risc de dilució d'aquesta política en el nou context polític."
+      },
+      {
+        "framework": "Agenda 2030",
+        "criterion": "Principi de 'no deixar a ningú enrere'",
+        "impact": "L'informe assenyala com aquest principi està perdent protagonisme en la política de la UE, amb riscos per a la cohesió social."
+      }
+    ]
+  }
+}

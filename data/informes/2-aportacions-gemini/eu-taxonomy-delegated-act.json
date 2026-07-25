@@ -2,70 +2,89 @@
   "slug": "eu-taxonomy-delegated-act",
   "title": "Taxonomy delegated act",
   "institution": "Comissió Europea",
-  "generated_at": "2026-07-25T06:54:39",
+  "generated_at": "2026-07-25T08:09:32",
+  "model": "gemini-2.5-flash (vertex-ai europe-west1)",
   "aportacions": {
     "propostes": [
       {
-        "bloc": "2-dadesClau",
-        "tipus": "afegir",
-        "proposta": "Afegir dada sobre el percentatge de reducció de datapoints totals (70%) a més dels obligatoris (60%)",
-        "justificacio": "L'original especifica que 'The draft revised ESRS reduce mandatory datapoints by over 60% and total datapoints by over 70%', però només es mostra el 60% al destil·lat, oferint una imatge incompleta de l'abast de la simplificació."
-      },
-      {
-        "bloc": "0-semafor",
+        "bloc": "semafor",
         "tipus": "modificar",
-        "proposta": "Canviar l'estat de 'Granularitat' de verd a groc, ja que la reducció de datapoints podria afectar negativament la qualitat i detall de la informació",
-        "justificacio": "Tot que es quantifiquen les dades de reducció, una reducció de més del 60% dels datapoints obligatoris podria indicar una pèrdua de granularitat rellevant, no només una simplificació administrativa."
+        "proposta": "Modificar la nota de 'Cobertura Scope 3' per incloure: 'Es menciona el 'value chain cap' que limita la informació a proveïdors amb menys de 1000 empleats, creant un buit potencial en la cobertura detallada de les emissions de la cadena de subministrament (Scope 3).'",
+        "justificacio": "Aclara la implicació directa del 'value chain cap' en la cobertura de Scope 3, que és crucial per a una avaluació completa de l'impacte."
       },
       {
-        "bloc": "4-implicacions",
+        "bloc": "dadesClau",
+        "tipus": "afegir",
+        "proposta": "Afegir una dada clau: {\"value\": \"70%\", \"label\": \"Reducció de datapoints totals\", \"page\": \"1\"}",
+        "justificacio": "El destil·lat menciona el 70% en el semàfor i el resum executiu, però no en les dades clau, sent una reducció significativa i rellevant."
+      },
+      {
+        "bloc": "dadesClau",
+        "tipus": "afegir",
+        "proposta": "Afegir una dada clau: {\"value\": \"2026\", \"label\": \"Any de publicació de l'actualització\", \"page\": \"1\"}",
+        "justificacio": "La data de publicació és un context temporal important que ajuda a situar la notícia i els seus impactes."
+      },
+      {
+        "bloc": "resumExecutiu",
         "tipus": "modificar",
-        "proposta": "Afegir una secció d'implicacions per a les PIME i les organitzacions de la cadena de subministrament",
-        "justificacio": "L'original esmenta específicament el 'value chain cap' que limita les sol·licituds d'informació a empreses amb menys de 1000 empleats, però aquestes implicacions no es reflecteixen en les implicacions del destil·lat."
+        "proposta": "Modificar el text per incloure: 'Aquestes noves normes es basen en el paquet de simplificació Omnibus I, que va reduir el nombre d'empreses dins l'abast de la CSRD. També s'han realitzat ajustos dirigits a l'assessorament d'EFRAG per part de la Comissió per alleujar encara més la càrrega de reportatge.'",
+        "justificacio": "El paquet Omnibus I és un context clau per entendre la direcció de la simplificació, i la menció dels 'ajustos dirigits' per part de la Comissió afegeix una capa important de matís sobre el procés de decisió."
       },
       {
-        "bloc": "4b-mesEnlla",
-        "tipus": "afegir",
-        "proposta": "Afegir una anàlisi sota el criteri 'Co-decisió' sobre la participació limitada dels interessats en el procés",
-        "justificacio": "L'original indica un període de consulta d'un mes fins al 3 de juny, que és un període molt curt per un procés tan important, suggerint una participació ciutadana limitada i una possible manca de co-decisió genuina."
+        "bloc": "implicacions",
+        "tipus": "modificar",
+        "proposta": "Modificar la secció 'empreses' per diferenciar: 'Les empreses de la UE subjectes a CSRD es beneficien de la reducció de càrrega. Les empreses més petites (PIMES) no subjectes a CSRD es beneficien d'un estàndard voluntari i de la protecció del 'value chain cap', que limita les sol·licituds d'informació de grans empreses cap a elles. No obstant això, la simplificació podria comprometre la qualitat i comparabilitat de la informació global.'",
+        "justificacio": "Aclara les implicacions per a diferents tipus d'empreses, especialment el rol del 'value chain cap' per a les PIMES, un punt important de l'original."
       },
       {
-        "bloc": "5-connexions",
-        "tipus": "afegir",
-        "proposta": "Afegir connexió amb l'Omnibus I i la reducció d'empreses subjectes a la CSRD",
-        "justificacio": "L'original esmenta específicament que els estàndards 'build on the Omnibus I simplification package, which streamlines sustainability reporting in the EU and reduces the number of companies in scope of the Corporate Sustainability Reporting Directive', però aquesta connexió no es reflecteix al destil·lat."
+        "bloc": "mesEnllaCheckbox",
+        "tipus": "modificar",
+        "proposta": "Modificar el text per subratllar que 'La reducció de més del 60% dels datapoints obligatoris, juntament amb el 'value chain cap' que limita la informació de cadenes de subministrament, podria minvar la capacitat d'avaluar l'impacte ambiental i social de les empreses, especialment en àrees crítiques com les emissions de Scope 3.'",
+        "justificacio": "Connecta de manera més directa el 'value chain cap' amb la preocupació per la sostenibilitat absoluta i la cobertura de Scope 3, reforçant l'argument crític."
       },
       {
-        "bloc": "2-dadesClau",
+        "bloc": "connexions",
         "tipus": "afegir",
-        "proposta": "Afegir dada sobre el període de transició i entrada en vigor dels estàndards",
-        "justificacio": "L'original detalla els passos següents: 'The Commission will then adopt the two delegated acts as soon as possible after the consultation closes. They will subsequently be transmitted to the European Parliament and the Council for scrutiny under the no-objection procedure (two months, extendable by a further two months at the request of either institution) before entering into force', però aquesta informació temporal no es reflecteix al destil·lat."
+        "proposta": "Afegir una connexió de tipus 'Contradicció': {\"type\": \"Contradicció\", \"target\": \"Assessorament d'EFRAG vs. Ajustos de la Comissió\", \"desc\": \"La Comissió va realitzar 'ajustos dirigits' a l'assessorament d'EFRAG per 'alleujar encara més la càrrega', la qual cosa podria ser vist com una contradicció amb l'objectiu de preservar la qualitat de les divulgacions ESG, ja que EFRAG és el cos assessor independent tècnic.\"}",
+        "justificacio": "Destaca una tensió important entre el paper de l'expert independent (EFRAG) i la decisió política (Comissió) de reduir encara més la càrrega."
+      },
+      {
+        "bloc": "crossRefs",
+        "tipus": "afegir",
+        "proposta": "Afegir una referència creuada: {\"framework\": \"Omnibus I simplification package\", \"criterion\": \"Reduction of companies in scope of CSRD\", \"impact\": \"Aquesta iniciativa continua la tendència de simplificació iniciada per l'Omnibus I, reduint l'abast i la càrrega de reportatge.\"}",
+        "justificacio": "L'Omnibus I és esmentat a l'original com a base de la simplificació, per tant, és una referència creuada pertinent."
       }
     ],
     "advocat_diable": [
       {
         "tipus": "greenwashing",
-        "bloc_afectat": "2-dadesClau",
-        "observacio": "La reducció del 60% dels datapoints obligatoris podria ser una estratègia de greenwashing que redueix la càrrega de reportatge però també la transparència real, permetent a les empreses ocultar impactes negatius menys evidents però significatius.",
-        "evidencia_original": "'The draft revised ESRS reduce mandatory datapoints by over 60% and total datapoints by over 70%' amb l'objectiu declarat de 'cut administrative burden for EU businesses while preserving the quality of sustainability disclosures', però sense explicar com es manté la qualitat amb tan poca informació."
+        "bloc_afectat": "3-resum|4-implicacions",
+        "observacio": "L'informe emfatitza la 'preservació de la qualitat de les divulgacions' mentre redueix dràsticament els datapoints (60-70%) i els costos (30%). Aquesta afirmació pot ser considerada greenwashing, ja que no es detalla com es mantindrà la qualitat amb menys informació, suggerint que la simplificació preval sobre la robustesa i la comparabilitat real de les dades ESG.",
+        "evidencia_original": "These standards aim to cut administrative burden for EU businesses while preserving the quality of sustainability disclosures. [...] The draft revised ESRS reduce mandatory datapoints by over 60% and total datapoints by over 70%. [...] Overall, these changes are expected to reduce reporting costs per company by more than 30%."
       },
       {
         "tipus": "mancanca",
-        "bloc_afectat": "0-semafor",
-        "observacio": "El destil·lat no avalua la coherència dels estàndars revisats amb els objectius de sostenibilitat absoluta de l'Acord de París i els Objectius de Desenvolupament Sostenible de les Nacions Unides.",
-        "evidencia_original": "L'original no menciona cap anàlisi d'impacte sobre com la reducció de datapoints afectarà la capacitat de rastrejar el progrés cap als objectius climàtics i de desenvolupament sostenible."
-      },
-      {
-        "tipus": "contradiccio",
-        "bloc_afectat": "4-implicacions",
-        "observacio": "Hi ha una contradicció entre la reducció de datapoints i l'afirmació que es 'preserving the quality of sustainability disclosures', ja que menys dades dificulten una avaluació completa de l'impacte ambiental i social.",
-        "evidencia_original": "'These standards aim to cut administrative burden for EU businesses while preserving the quality of sustainability disclosures' vs 'The draft revised ESRS reduce mandatory datapoints by over 60% and total datapoints by over 70%'."
+        "bloc_afectat": "3-resum",
+        "observacio": "No es proporciona cap metodologia o base de càlcul per a la 'reducció del 30% dels costos de reportatge' ni per a com es mesurarà la 'preservació de la qualitat de les divulgacions'. Aquestes afirmacions es presenten com a fets sense un suport empíric o un pla de seguiment clar dins del document.",
+        "evidencia_original": "Overall, these changes are expected to reduce reporting costs per company by more than 30%."
       },
       {
         "tipus": "criteri_oblidat",
-        "bloc_afectat": "4b-mesEnlla",
-        "observacio": "El destil·lat no aborda el criteri de 'justícia distributiva' en com la simplificació afectarà diferentment a sectors i empreses de mida diferent, especialment les PIME que encara hauran de complir amb les sol·licituds de la cadena de subministrament.",
-        "evidencia_original": "L'original esmenta el 'value chain cap' però no analitza les implicacions equitatives d'aquesta mesura per a diferents actors del mercat."
+        "bloc_afectat": "4-implicacions|5-connexions",
+        "observacio": "El 'value chain cap' pot tenir implicacions per a la justícia distributiva de la càrrega de reportatge. Tot i que pretén protegir les pimes, també podria limitar la capacitat de les grans empreses per obtenir dades completes de la seva cadena de subministrament, desplaçant potencialment la càrrega o la responsabilitat d'avaluar l'impacte ESG a altres actors o simplement amagant-la.",
+        "evidencia_original": "Crucially, it introduces a 'value chain cap': CSRD in-scope companies cannot require value-chain partners with 1000 employees or fewer to provide information beyond what is set out in the voluntary standard."
+      },
+      {
+        "tipus": "contradiccio",
+        "bloc_afectat": "3-resum|semafor",
+        "observacio": "Hi ha una contradicció entre la dependència declarada d'EFRAG com a 'cos assessor independent' i el fet que la Comissió realitzés 'ajustos dirigits a l'assessorament d'EFRAG per alleujar encara més la càrrega'. Això suggereix que la prioritat política de reducció de càrrega va prevaldre sobre l'assessorament tècnic independent, podent comprometre la integritat del procés.",
+        "evidencia_original": "The revised ESRS largely build on technical advice from the European Financial Reporting Advisory Groups (EFRAG) , the Commission's independent multi-stakeholder advisory body on reporting standards. [...] The Commission is proposing targeted adjustments to EFRAG's advice to further ease the reporting burden without undermining the CSRD's policy objectives."
+      },
+      {
+        "tipus": "criteri_oblidat",
+        "bloc_afectat": "2-dadesClau",
+        "observacio": "El període d'una consulta pública d'un sol mes ('one-month Have-Your-Say') per a canvis tan substancials en els estàndards de reportatge pot ser insuficient per a una co-decisió significativa i per recollir un feedback representatiu i ben fonamentat de tots els stakeholders, especialment aquells amb menys recursos.",
+        "evidencia_original": "Today the Commission has launched a one-month 'Have-Your-Say' public feedback on draft final versions of revised European Sustainability Reporting Standards (ESRS) and a voluntary reporting standard for smaller companies."
       }
     ]
   }

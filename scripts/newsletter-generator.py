@@ -94,37 +94,38 @@ CSS = """
   }
   .masthead-meta strong { color: #B87333; font-weight: 600; }
 
-  /* === Editorial d'obertura === */
+  /* === Editorial d'obertura (MARRÓ FORT com hero homepage) === */
   .editorial-open {
-    padding: 20px;
-    background: rgba(184, 115, 51, 0.06);
-    border-left: 3px solid #B87333;
-    border-radius: 0 4px 4px 0;
+    padding: 24px;
+    background: #2C1810;
+    color: #F5EFE6;
+    border-bottom: 2px solid #B87333;
+    border-radius: 4px;
     margin-bottom: 24px;
   }
   .editorial-open-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: #8A5526;
+    font-size: 11px;
+    color: #D9A574;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .editorial-open-text {
     font-family: 'Fraunces', serif;
     font-style: italic;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.55;
-    color: #2C1810;
+    color: #F5EFE6;
   }
   .editorial-open-sign {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
-    color: #8B7355;
+    color: rgba(245, 239, 230, 0.6);
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    margin-top: 8px;
+    margin-top: 12px;
   }
 
   /* === Section header (anatomia canònica) === */
@@ -147,73 +148,76 @@ CSS = """
     margin-top: 8px;
   }
 
-  /* === Hero / Informe destacat === */
+  /* === Hero / Informe destacat (MARRÓ FORT com hero homepage) === */
   .hero {
-    padding-bottom: 20px;
-    border-bottom: 1px solid #C9B89A;
+    padding: 32px 24px;
+    background: #2C1810;
+    color: #F5EFE6;
+    border-bottom: 4px solid #B87333;
+    border-radius: 4px;
     margin-bottom: 24px;
   }
   .hero-eyebrow {
     display: inline-block;
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
-    color: #FFFFFF;
-    background: #B87333;
+    color: #2C1810;
+    background: #D9A574;
     text-transform: uppercase;
     letter-spacing: 0.18em;
     font-weight: 700;
     padding: 4px 12px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
   .hero-title {
     font-family: 'Fraunces', serif;
-    font-size: 26px;
-    font-weight: 600;
-    line-height: 1.15;
-    color: #2C1810;
-    margin-bottom: 12px;
-    letter-spacing: -0.015em;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #F5EFE6;
+    margin-bottom: 14px;
+    letter-spacing: -0.018em;
   }
-  .hero-title em { font-style: italic; color: #B87333; font-weight: 500; }
+  .hero-title em { font-style: italic; color: #D9A574; font-weight: 500; }
   .hero-deck {
     font-family: 'Fraunces', serif;
     font-size: 15px;
     font-style: italic;
     line-height: 1.5;
-    color: #5C3A1E;
-    margin-bottom: 16px;
+    color: rgba(245, 239, 230, 0.75);
+    margin-bottom: 18px;
   }
   .hero-meta {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
-    color: #5C3A1E;
+    color: rgba(245, 239, 230, 0.6);
     text-transform: uppercase;
     letter-spacing: 0.12em;
   }
-  .hero-meta .sep { color: #C9B89A; margin: 0 8px; }
-  .hero-meta strong { color: #2C1810; }
+  .hero-meta .sep { color: rgba(217, 165, 116, 0.5); margin: 0 8px; }
+  .hero-meta strong { color: #D9A574; }
 
-  /* Semàfor inline a l'hero */
+  /* Semàfor inline a l'hero (sobre marró fort) */
   .semafor-inline {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-top: 14px;
-    padding: 10px 14px;
-    background: #FFFFFF;
-    border-radius: 4px;
+    margin-top: 18px;
+    padding: 12px 16px;
+    background: rgba(245, 239, 230, 0.06);
     border-left: 3px solid #B87333;
+    border-radius: 0 4px 4px 0;
   }
   .semafor-grade {
     font-family: 'Fraunces', serif;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 700;
-    color: #B87333;
+    color: #D9A574;
   }
   .semafor-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
-    color: #8A5526;
+    color: #D9A574;
     text-transform: uppercase;
     letter-spacing: 0.14em;
     font-weight: 600;
@@ -355,13 +359,13 @@ CSS = """
   }
   .mes-enlla-body strong { color: #B87333; }
 
-  /* === Acció recomanada === */
+  /* === Acció recomanada (MARRÓ FORT amb detall verd, com a la web) === */
   .accio {
-    background: #FFFFFF;
-    border: 1px solid #C9B89A;
-    border-left: 3px solid #5C8A5C;
+    background: #2C1810;
+    color: #F5EFE6;
+    border-left: 4px solid #5C8A5C;
     border-radius: 4px;
-    padding: 18px;
+    padding: 22px 24px;
     margin: 24px 0;
   }
   .accio-eyebrow {
@@ -371,26 +375,25 @@ CSS = """
     text-transform: uppercase;
     letter-spacing: 0.18em;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .accio-title {
     font-family: 'Fraunces', serif;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
-    color: #2C1810;
-    margin-bottom: 8px;
+    color: #F5EFE6;
+    margin-bottom: 10px;
     line-height: 1.3;
   }
   .accio-desc {
     font-size: 13px;
-    color: #2C1810;
+    color: rgba(245, 239, 230, 0.85);
     line-height: 1.6;
-    opacity: 0.85;
   }
   .accio-tags {
     display: flex;
     gap: 8px;
-    margin-top: 10px;
+    margin-top: 12px;
   }
   .accio-tag {
     font-family: 'JetBrains Mono', monospace;
@@ -401,36 +404,60 @@ CSS = """
     letter-spacing: 0.1em;
     font-weight: 600;
   }
-  .tag-esforc-baix { background: rgba(92, 138, 92, 0.15); color: #5C8A5C; }
-  .tag-esforc-mitja { background: rgba(201, 169, 97, 0.20); color: #8a7340; }
-  .tag-esforc-alt { background: rgba(160, 82, 45, 0.15); color: #A0522D; }
+  .tag-esforc-baix { background: rgba(92, 138, 92, 0.20); color: #7FB47F; }
+  .tag-esforc-mitja { background: rgba(201, 169, 97, 0.25); color: #D9A574; }
+  .tag-esforc-alt { background: rgba(160, 82, 45, 0.30); color: #C9704F; }
 
-  /* === CTA Premium === */
+  /* === CTA Premium (MARRÓ FORT com final-cta de la web) === */
   .cta-block {
-    background: #B87333;
-    color: #FFFFFF;
-    padding: 24px;
+    background: #2C1810;
+    color: #F5EFE6;
+    padding: 32px 24px;
     border-radius: 4px;
     margin: 24px 0;
+    text-align: center;
+  }
+  .cta-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #D9A574;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-weight: 600;
+    margin-bottom: 14px;
   }
   .cta-title {
     font-family: 'Fraunces', serif;
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-size: 22px;
+    font-weight: 500;
+    color: #F5EFE6;
+    margin-bottom: 12px;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
   }
-  .cta-text { font-size: 13px; opacity: 0.95; line-height: 1.5; margin-bottom: 16px; }
+  .cta-title em { font-style: italic; color: #D9A574; font-weight: 500; }
+  .cta-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(245, 239, 230, 0.75);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .cta-button {
     display: inline-block;
-    background: #FFFFFF;
-    color: #B87333;
-    padding: 12px 24px;
+    background: #B87333;
+    color: #FFFFFF;
+    padding: 14px 28px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     font-weight: 700;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     border-radius: 2px;
   }
 
@@ -476,25 +503,28 @@ CSS = """
     font-weight: 700;
   }
 
-  /* === Footer (estil web footer) === */
+  /* === Footer (MARRÓ FORT com footer web) === */
   .news-footer {
     text-align: center;
-    padding: 24px 0;
-    border-top: 1px solid #C9B89A;
+    padding: 28px 20px;
+    background: #2C1810;
+    color: rgba(245, 239, 230, 0.7);
+    border-radius: 4px;
     margin-top: 24px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
-    color: #8B7355;
   }
   .news-footer-brand {
     font-family: 'Fraunces', serif;
-    font-size: 18px;
-    color: #2C1810;
+    font-size: 20px;
+    color: #F5EFE6;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
   }
-  .news-footer-brand .dot { color: #B87333; }
-  .news-footer-meta a { color: #8A5526; text-decoration: none; }
+  .news-footer-brand .dot { color: #D9A574; }
+  .news-footer-meta a { color: #D9A574; text-decoration: none; }
+  .news-footer-meta a:hover { text-decoration: underline; }
 """
 
 
@@ -644,7 +674,8 @@ def build_premium_html(data: dict) -> str:
 
   <!-- CTA Premium (a la versió Premium convida a convidar amics) -->
   <div class="cta-block">
-    <div class="cta-title">Criteri ESG només funciona si es comparteix</div>
+    <div class="cta-eyebrow">▸ Criteri ESG</div>
+    <h2 class="cta-title">Criteri només funciona <em>si es comparteix</em></h2>
     <p class="cta-text">Si aquesta newsletter t'ha estat útil, comparteix-la amb un company que treballi en sostenibilitat. Cada subscriptor ens ajuda a mantenir la veu editorial independent.</p>
     <a href="https://criteriesg.com" class="cta-button">Comparteix Criteri ESG →</a>
   </div>
@@ -783,7 +814,8 @@ def build_free_html(data: dict) -> str:
 
   <!-- CTA Premium final -->
   <div class="cta-block">
-    <div class="cta-title">Fes-te Premium per 290€/any</div>
+    <div class="cta-eyebrow">▸ Fes-te Premium</div>
+    <h2 class="cta-title">290€/any per <em>criteri clar</em> cada setmana</h2>
     <p class="cta-text">Accés als informes complets, cross-reference amb EcoVadis/B Corp/MSCI/GRI, accions recomanades, connexions setmanals i la lent ètica "Més enllà del Checkbox". 50 places early bird disponibles.</p>
     <a href="https://criteriesg.com/preus" class="cta-button">Veure preus →</a>
   </div>

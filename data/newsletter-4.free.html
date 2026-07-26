@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criteri ESG — Newsletter #4</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Reset mínim per email */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #F5EFE6;  /* --background */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #2C1810;  /* --foreground */
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+  }
+  .container { max-width: 640px; margin: 0 auto; padding: 24px 20px; }
+
+  /* === Tipografia === */
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+  .mono { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+
+  /* Eyebrow (.eyebrow del DESIGN_SYSTEM) */
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8A5526;  /* --accent-deep */
+  }
+
+  /* Rule accent (filet coure 48px) */
+  .rule-accent { height: 2px; background: #B87333; border: none; width: 48px; margin: 12px 0; }
+  .rule { height: 1px; background: #C9B89A; border: none; width: 100%; margin: 16px 0; }
+
+  /* === Masthead === */
+  .masthead {
+    padding-bottom: 12px;
+    border-bottom: 2px solid #2C1810;
+    margin-bottom: 24px;
+  }
+  .masthead-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .masthead-brand {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #2C1810;
+    letter-spacing: -0.02em;
+  }
+  .masthead-brand .dot { color: #B87333; }
+  .masthead-tagline {
+    font-family: 'Fraunces', serif;
+    font-size: 12px;
+    font-style: italic;
+    color: #5C3A1E;
+    margin-left: 8px;
+    font-weight: 400;
+  }
+  .masthead-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #5C3A1E;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+  .masthead-meta strong { color: #B87333; font-weight: 600; }
+
+  /* === Editorial d'obertura (MARRÓ FORT com hero homepage) === */
+  .editorial-open {
+    padding: 24px;
+    background: #2C1810;
+    color: #F5EFE6;
+    border-bottom: 2px solid #B87333;
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+  .editorial-open-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #D9A574;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .editorial-open-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.55;
+    color: #F5EFE6;
+  }
+  .editorial-open-sign {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(245, 239, 230, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-top: 12px;
+  }
+
+  /* === Section header (anatomia canònica) === */
+  .section-header {
+    margin: 24px 0 14px 0;
+  }
+  .section-header h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #2C1810;
+    line-height: 1.2;
+    margin-top: 4px;
+  }
+  .section-subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #5C3A1E;
+    margin-top: 8px;
+  }
+
+  /* === Hero / Informe destacat (MARRÓ FORT com hero homepage) === */
+  .hero {
+    padding: 32px 24px;
+    background: #2C1810;
+    color: #F5EFE6;
+    border-bottom: 4px solid #B87333;
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #2C1810;
+    background: #D9A574;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    padding: 4px 12px;
+    margin-bottom: 14px;
+  }
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #F5EFE6;
+    margin-bottom: 14px;
+    letter-spacing: -0.018em;
+  }
+  .hero-title em { font-style: italic; color: #D9A574; font-weight: 500; }
+  .hero-deck {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.5;
+    color: rgba(245, 239, 230, 0.75);
+    margin-bottom: 18px;
+  }
+  .hero-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(245, 239, 230, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .hero-meta .sep { color: rgba(217, 165, 116, 0.5); margin: 0 8px; }
+  .hero-meta strong { color: #D9A574; }
+
+  /* Semàfor inline a l'hero (sobre marró fort) */
+  .semafor-inline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+    padding: 12px 16px;
+    background: rgba(245, 239, 230, 0.06);
+    border-left: 3px solid #B87333;
+    border-radius: 0 4px 4px 0;
+  }
+  .semafor-grade {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #D9A574;
+  }
+  .semafor-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #D9A574;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+  }
+  .semafor-dots {
+    display: flex;
+    gap: 6px;
+    margin-left: auto;
+  }
+  .semafor-dot {
+    width: 12px; height: 12px; border-radius: 50%;
+  }
+  .semafor-dot.verd { background: #5C8A5C; }
+  .semafor-dot.groc { background: #C9A961; }
+  .semafor-dot.vermell { background: #A0522D; }
+
+  /* === Articles secundaris (grid 3 col, igual que reports-preview) === */
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 14px 0 24px 0;
+  }
+  @media (max-width: 540px) { .articles-grid { grid-template-columns: 1fr; } }
+  .article-card {
+    background: #FFFFFF;
+    border: 1px solid #C9B89A;
+    border-top: 2px solid #B87333;
+    border-radius: 4px;
+    padding: 14px;
+    transition: border-color 0.2s;
+  }
+  .article-source {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #8A5526;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .article-title {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2C1810;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .article-summary {
+    font-size: 12px;
+    color: #2C1810;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    opacity: 0.85;
+  }
+  .article-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #B87333;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+  }
+  .article-xref {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #8B7355;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid #E5DDD0;
+  }
+  .article-xref strong { color: #8A5526; }
+
+  /* === Connexió de la setmana === */
+  .connection-week {
+    background: #2C1810;
+    color: #F5EFE6;
+    padding: 24px;
+    border-radius: 4px;
+    margin: 24px 0;
+  }
+  .connection-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #D9A574;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .connection-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #F5EFE6;
+    margin-bottom: 14px;
+    line-height: 1.25;
+  }
+  .connection-body {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(245, 239, 230, 0.9);
+    margin-bottom: 12px;
+  }
+  .connection-body strong { color: #D9A574; }
+
+  /* === Més enllà del Checkbox (diferencial competitiu) === */
+  .mes-enlla {
+    background: rgba(184, 115, 51, 0.10);
+    border: 1px solid #B87333;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 24px 0;
+  }
+  .mes-enlla-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #B87333;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .mes-enlla-criteri {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: #5C3A1E;
+    margin-bottom: 10px;
+  }
+  .mes-enlla-body {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #2C1810;
+  }
+  .mes-enlla-body strong { color: #B87333; }
+
+  /* === Acció recomanada (MARRÓ FORT amb detall verd, com a la web) === */
+  .accio {
+    background: #2C1810;
+    color: #F5EFE6;
+    border-left: 4px solid #5C8A5C;
+    border-radius: 4px;
+    padding: 22px 24px;
+    margin: 24px 0;
+  }
+  .accio-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #5C8A5C;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .accio-title {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #F5EFE6;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .accio-desc {
+    font-size: 13px;
+    color: rgba(245, 239, 230, 0.85);
+    line-height: 1.6;
+  }
+  .accio-tags {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .accio-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    padding: 3px 8px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+  .tag-esforc-baix { background: rgba(92, 138, 92, 0.20); color: #7FB47F; }
+  .tag-esforc-mitja { background: rgba(201, 169, 97, 0.25); color: #D9A574; }
+  .tag-esforc-alt { background: rgba(160, 82, 45, 0.30); color: #C9704F; }
+
+  /* === CTA Premium (MARRÓ FORT com final-cta de la web) === */
+  .cta-block {
+    background: #2C1810;
+    color: #F5EFE6;
+    padding: 32px 24px;
+    border-radius: 4px;
+    margin: 24px 0;
+    text-align: center;
+  }
+  .cta-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #D9A574;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .cta-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #F5EFE6;
+    margin-bottom: 12px;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+  .cta-title em { font-style: italic; color: #D9A574; font-weight: 500; }
+  .cta-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(245, 239, 230, 0.75);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #B87333;
+    color: #FFFFFF;
+    padding: 14px 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    border-radius: 2px;
+  }
+
+  /* === Lock per versió Free (els apartats Premium bloquejats) === */
+  .locked-section {
+    background: rgba(139, 115, 85, 0.08);
+    border: 1px dashed #C9B89A;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 24px 0;
+    text-align: center;
+  }
+  .locked-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #8B7355;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .locked-title {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: #5C3A1E;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .locked-desc {
+    font-size: 12px;
+    color: #8B7355;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .locked-cta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #B87333;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+  }
+
+  /* === Footer (MARRÓ FORT com footer web) === */
+  .news-footer {
+    text-align: center;
+    padding: 28px 20px;
+    background: #2C1810;
+    color: rgba(245, 239, 230, 0.7);
+    border-radius: 4px;
+    margin-top: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+  }
+  .news-footer-brand {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    color: #F5EFE6;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .news-footer-brand .dot { color: #D9A574; }
+  .news-footer-meta a { color: #D9A574; text-decoration: none; }
+  .news-footer-meta a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Masthead -->
+  <div class="masthead">
+    <div class="masthead-row">
+      <div class="masthead-brand">Criteri<span class="dot">.</span> ESG<span class="masthead-tagline">Intel·ligència ESG per a decisions ètiques</span></div>
+      <div class="masthead-meta">
+        <strong>EDICIÓ #4</strong> · 29 JULIOL 2026 · BARCELONA
+      </div>
+    </div>
+  </div>
+
+  <!-- Editorial d'obertura -->
+  <div class="editorial-open">
+    <div class="editorial-open-label">▸ Editorial</div>
+    <p class="editorial-open-text">Aquesta setmana la Comissió Europea ha simplificat el CSRD i l'ESMA ha publicat els seus principis contra el greenwashing. Tots dos moviments van en la mateixa direcció: menys càrrega administrativa, però més rigor en allò que es publica. La pregunta és si les empreses estaran a l'alçada.</p>
+    <div class="editorial-open-sign">— Paolo, Criteri ESG</div>
+  </div>
+
+  <!-- Informe destacat -->
+  <div class="section-header">
+    <p class="eyebrow">Informe destacat</p>
+    <hr class="rule-accent">
+  </div>
+
+  <div class="hero">
+    <div class="hero-eyebrow">▸ COMISSIÓ EUROPEA</div>
+    <h1 class="hero-title">La Comissió Europea <em>simplifica</em> el CSRD: 61% menys de datapoints obligatoris</h1>
+    <p class="hero-deck">Un canvi que estalviarà 3.700 milions d'euros a les empreses europees en cinc anys, però que obliga a reinvertir l'estalvi en qualitat de dades per no perdre reputació davant certificacions com EcoVadis o MSCI.</p>
+    <div class="hero-meta">
+      <span><strong>Sintetitzat per</strong> Criteri ESG</span>
+      <span class="sep">·</span>
+      <span>5 minuts de lectura</span>
+      <span class="sep">·</span>
+      <span>47 pàgines originals</span>
+    </div>
+    <div class="semafor-inline">
+      <span class="semafor-grade">C</span>
+      <span class="semafor-label">Feble metodològicament</span>
+      <div class="semafor-dots"><span class="semafor-dot groc"></span><span class="semafor-dot groc"></span><span class="semafor-dot verd"></span><span class="semafor-dot vermell"></span><span class="semafor-dot groc"></span></div>
+    </div>
+  </div>
+
+  <!-- També aquesta setmana -->
+  <div class="section-header">
+    <p class="eyebrow">També aquesta setmana</p>
+    <h2 class="serif" style="font-size: 22px; font-weight: 600; color: #2C1810; margin-top: 4px;">Informes que has de conèixer</h2>
+    <hr class="rule-accent">
+  </div>
+
+  <div class="articles-grid">
+    
+    <div class="article-card">
+      <div class="article-source">ESMA</div>
+      <h3 class="article-title">ESMA publica 4 principis contra greenwashing en fons ESG</h3>
+      <p class="article-summary">Els fons amb 'ESG' al nom han de tenir mínim 80% d'inversions alineades. Precisió, prova, comparabilitat i actualització són els 4 principis.</p>
+      <a href="https://criteriesg.com/informes/esma-work-programme-2026" class="article-link">Llegir resum complet →</a>
+      <div class="article-xref">↔ <strong>Cross-ref:</strong> ESMA → SFDR Article 8/9</div>
+    </div>
+    <div class="article-card">
+      <div class="article-source">EcoVadis</div>
+      <h3 class="article-title">Actualització de criteris EcoVadis 2026</h3>
+      <p class="article-summary">Revisió anual amb canvis en Environment i Procurement. Les empreses que renoven al Q4 han d'adaptar la documentació.</p>
+      <a href="https://criteriesg.com/informes/ecovadis-methodology-q1-2026" class="article-link">Llegir resum complet →</a>
+      <div class="article-xref">↔ <strong>Cross-ref:</strong> EcoVadis → GRI Universal 2021</div>
+    </div>
+    <div class="article-card">
+      <div class="article-source">EFRAG</div>
+      <h3 class="article-title">Esborrany ESRS S4 sobre drets humans</h3>
+      <p class="article-summary">Consulta pública sobre l'estàndard sectorial de drets humans a la cadena de subministrament. 47 pàgines, 18 requisits de disclosure. Termini: 15 gener 2027.</p>
+      <a href="https://criteriesg.com/informes/efrag-work-programme-2026" class="article-link">Llegir resum complet →</a>
+      <div class="article-xref">↔ <strong>Cross-ref:</strong> ESRS S4 → CSDDD due diligence</div>
+    </div>
+  </div>
+
+  <!-- Connexió de la setmana (LOCKED) -->
+  <div class="section-header">
+    <p class="eyebrow">Connexió de la setmana</p>
+    <hr class="rule-accent">
+  </div>
+
+  <div class="locked-section">
+    <div class="locked-label">◆ Contingut Premium</div>
+    <p class="locked-title">Simplificació CSRD + 4 principis ESMA + ESRS S4: el triangle regulador europeu es tanca</p>
+    <p class="locked-desc">Criteri ESG creua els informes d'aquesta setmana per identificar patrons i riscos transversals. La connexió d'aquesta setmana relaciona els 4 informes destacats amb el marc regulador europeu.</p>
+    <a href="https://criteriesg.com/preus" class="locked-cta">Desbloqueja amb Premium →</a>
+  </div>
+
+  <!-- Més enllà del Checkbox (LOCKED) -->
+  <div class="section-header">
+    <p class="eyebrow">Més enllà del Checkbox</p>
+    <hr class="rule-accent">
+  </div>
+
+  <div class="locked-section">
+    <div class="locked-label">◆ Contingut Premium</div>
+    <p class="locked-title">Anàlisi ètica: Justícia distributiva</p>
+    <p class="locked-desc">Criteri ESG aplica un dels 5 criteris ètics propis (dignitat, justícia distributiva, sostenibilitat absoluta, co-decisió, arrelament) a un dels informes de la setmana. Una lent diferent dels marcs ESG anglosaxons.</p>
+    <a href="https://criteriesg.com/preus" class="locked-cta">Desbloqueja amb Premium →</a>
+  </div>
+
+  <!-- Acció recomanada (LOCKED) -->
+  <div class="section-header">
+    <p class="eyebrow">Acció recomanada</p>
+    <hr class="rule-accent">
+  </div>
+
+  <div class="locked-section">
+    <div class="locked-label">◆ Contingut Premium</div>
+    <p class="locked-title">Una acció operativa per aquesta setmana</p>
+    <p class="locked-desc">Cada setmana, Criteri ESG extreu una acció concreta dels informes sintetitzats. Esforç i impacte estimats per ajudar-te a prioritzar.</p>
+    <a href="https://criteriesg.com/preus" class="locked-cta">Desbloqueja amb Premium →</a>
+  </div>
+
+  <!-- CTA Premium final -->
+  <div class="cta-block">
+    <div class="cta-eyebrow">▸ Fes-te Premium</div>
+    <h2 class="cta-title">290€/any per <em>criteri clar</em> cada setmana</h2>
+    <p class="cta-text">Accés als informes complets, cross-reference amb EcoVadis/B Corp/MSCI/GRI, accions recomanades, connexions setmanals i la lent ètica "Més enllà del Checkbox". 50 places early bird disponibles.</p>
+    <a href="https://criteriesg.com/preus" class="cta-button">Veure preus →</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="news-footer">
+    <div class="news-footer-brand">Criteri<span class="dot">.</span> ESG</div>
+    <div class="news-footer-meta">
+      <a href="https://criteriesg.com">criteriesg.com</a> · Barcelona · Rep aquesta newsletter perquè t'hi vas subscriure · <a href="{{UNSUBSCRIBE_URL}}">Cancel·lar</a> · <a href="{{PREFERENCES_URL}}">Preferències</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,27 +1,20 @@
 """
-Genera una newsletter Criteri ESG i la puja com a draft a Beehiiv.
+Genera DUES versions de la newsletter Criteri ESG (Premium + Free) i les puja a Drive.
 
-Flux:
-1. Selecciona els 3-4 informes destacats del període (de /data/informes/5-validats-paolo/)
-2. Cerca notícies ESG (fonts El País, Expansión, El Economista, Cinco Días, El Confidencial — màx 7 dies)
-3. Cerca articles d'inversió ESG (Sustainalytics, Morningstar, ESMA, Banc d'Espanya, Ropes & Gray, Funds Society — màx 20 dies)
-4. Genera la connexió de la setmana (anàlisi transversal)
-5. Genera la nota editorial
-6. Aplica la plantilla HTML estil A v2
-7. Crea draft a Beehiiv via API
-8. Avisa Paolo per email (pendent d'integrar Resend)
+Diferències vs versió anterior:
+1. Aplica disseny coherent amb DESIGN_SYSTEM.md (web)
+2. Estructura d'apartats redissenyada (veure REFLEXIO-NEWSLETTER.md)
+3. Genera dues versions: premium.html (completa) i free.html (reduïda)
+4. Pujada a Drive /Criteri ESG/newsletters/
 
 Ús:
     scripts/.venv/bin/python scripts/newsletter-generator.py [edition_number]
-    scripts/.venv/bin/python scripts/newsletter-generator.py 1
 """
 import os
 import sys
 import json
-import time
 import re
 from pathlib import Path
-from datetime import datetime, timedelta
 
 sys.path.insert(0, "/home/z/my-project/criteri-esg-lab/scripts")
 from dotenv import load_dotenv
@@ -30,74 +23,150 @@ load_dotenv(Path("/home/z/my-project/criteri-esg-lab/assets/web/.env.local"))
 from beehiiv_client import create_draft, PUBLICATION_ID
 from drive_user_client import get_user_drive_service, get_criteri_subfolder_id, upload_file
 
-# === Plantilla HTML estil A v2 ===
-# Simplificada per Beehiiv (sense @page, sense A4 — Beehiiv no suporta CSS de print)
-# Adaptada per ser responsive dins de clients d'email
 
-TEMPLATE_HTML = """<!DOCTYPE html>
-<html lang="{{LANG}}">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Criteri ESG — Newsletter #{{EDITION}}</title>
-<style>
+# === CSS compartida (basada en DESIGN_SYSTEM.md) ===
+# Tokens idèntics als de la web per coherència visual
+CSS = """
+  /* Reset mínim per email */
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    background: #F5EFE6;
+    background: #F5EFE6;  /* --background */
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #2C1810;
+    color: #2C1810;  /* --foreground */
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
   }
-  .container { max-width: 640px; margin: 0 auto; padding: 20px; }
+  .container { max-width: 640px; margin: 0 auto; padding: 24px 20px; }
 
-  /* Masthead */
+  /* === Tipografia === */
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+  .mono { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+
+  /* Eyebrow (.eyebrow del DESIGN_SYSTEM) */
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8A5526;  /* --accent-deep */
+  }
+
+  /* Rule accent (filet coure 48px) */
+  .rule-accent { height: 2px; background: #B87333; border: none; width: 48px; margin: 12px 0; }
+  .rule { height: 1px; background: #C9B89A; border: none; width: 100%; margin: 16px 0; }
+
+  /* === Masthead === */
   .masthead {
+    padding-bottom: 12px;
+    border-bottom: 2px solid #2C1810;
+    margin-bottom: 24px;
+  }
+  .masthead-row {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #2C1810;
-    margin-bottom: 20px;
     flex-wrap: wrap;
+    gap: 8px;
   }
   .masthead-brand {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
     color: #2C1810;
     letter-spacing: -0.02em;
   }
   .masthead-brand .dot { color: #B87333; }
-  .masthead-meta {
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 9px;
-    color: #5C3A24;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
+  .masthead-tagline {
+    font-family: 'Fraunces', serif;
+    font-size: 12px;
+    font-style: italic;
+    color: #5C3A1E;
+    margin-left: 8px;
+    font-weight: 400;
   }
-  .masthead-meta strong { color: #B87333; }
+  .masthead-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #5C3A1E;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+  .masthead-meta strong { color: #B87333; font-weight: 600; }
 
-  /* Hero */
-  .hero {
+  /* === Editorial d'obertura === */
+  .editorial-open {
+    padding: 20px;
+    background: rgba(184, 115, 51, 0.06);
+    border-left: 3px solid #B87333;
+    border-radius: 0 4px 4px 0;
     margin-bottom: 24px;
+  }
+  .editorial-open-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #8A5526;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .editorial-open-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.55;
+    color: #2C1810;
+  }
+  .editorial-open-sign {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #8B7355;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-top: 8px;
+  }
+
+  /* === Section header (anatomia canònica) === */
+  .section-header {
+    margin: 24px 0 14px 0;
+  }
+  .section-header h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #2C1810;
+    line-height: 1.2;
+    margin-top: 4px;
+  }
+  .section-subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #5C3A1E;
+    margin-top: 8px;
+  }
+
+  /* === Hero / Informe destacat === */
+  .hero {
     padding-bottom: 20px;
     border-bottom: 1px solid #C9B89A;
+    margin-bottom: 24px;
   }
   .hero-eyebrow {
     display: inline-block;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
+    font-size: 10px;
     color: #FFFFFF;
     background: #B87333;
     text-transform: uppercase;
     letter-spacing: 0.18em;
     font-weight: 700;
-    padding: 3px 10px;
+    padding: 4px 12px;
     margin-bottom: 12px;
   }
   .hero-title {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Fraunces', serif;
     font-size: 26px;
     font-weight: 600;
     line-height: 1.15;
@@ -107,95 +176,99 @@ TEMPLATE_HTML = """<!DOCTYPE html>
   }
   .hero-title em { font-style: italic; color: #B87333; font-weight: 500; }
   .hero-deck {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 14px;
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
     font-style: italic;
     line-height: 1.5;
-    color: #5C3A24;
-    margin-bottom: 12px;
+    color: #5C3A1E;
+    margin-bottom: 16px;
   }
   .hero-meta {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    color: #5C3A24;
+    font-size: 10px;
+    color: #5C3A1E;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
   }
-  .hero-meta .sep { color: #C9B89A; margin: 0 6px; }
+  .hero-meta .sep { color: #C9B89A; margin: 0 8px; }
   .hero-meta strong { color: #2C1810; }
 
-  /* Section header */
-  .section-header {
+  /* Semàfor inline a l'hero */
+  .semafor-inline {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin: 24px 0 14px 0;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #2C1810;
-    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: #FFFFFF;
+    border-radius: 4px;
+    border-left: 3px solid #B87333;
   }
-  .section-header .num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    color: #FFFFFF;
-    background: #2C1810;
-    padding: 3px 8px;
+  .semafor-grade {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
     font-weight: 700;
+    color: #B87333;
   }
-  .section-header .title {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 17px;
+  .semafor-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #8A5526;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
     font-weight: 600;
-    color: #2C1810;
   }
-  .section-header .subtitle {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 12px;
-    font-style: italic;
-    color: #5C3A24;
+  .semafor-dots {
+    display: flex;
+    gap: 6px;
     margin-left: auto;
   }
+  .semafor-dot {
+    width: 12px; height: 12px; border-radius: 50%;
+  }
+  .semafor-dot.verd { background: #5C8A5C; }
+  .semafor-dot.groc { background: #C9A961; }
+  .semafor-dot.vermell { background: #A0522D; }
 
-  /* 3-col articles */
-  .three-col {
+  /* === Articles secundaris (grid 3 col, igual que reports-preview) === */
+  .articles-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 14px;
-    margin: 14px 0;
+    margin: 14px 0 24px 0;
   }
-  @media (max-width: 540px) { .three-col { grid-template-columns: 1fr; } }
+  @media (max-width: 540px) { .articles-grid { grid-template-columns: 1fr; } }
   .article-card {
+    background: #FFFFFF;
+    border: 1px solid #C9B89A;
     border-top: 2px solid #B87333;
-    padding-top: 8px;
-  }
-  .article-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: #B87333;
-    font-weight: 700;
-    margin-bottom: 4px;
+    border-radius: 4px;
+    padding: 14px;
+    transition: border-color 0.2s;
   }
   .article-source {
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
     color: #8A5526;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 4px;
+    letter-spacing: 0.14em;
+    margin-bottom: 6px;
+    font-weight: 600;
   }
   .article-title {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Fraunces', serif;
     font-size: 15px;
     font-weight: 600;
     color: #2C1810;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     line-height: 1.3;
   }
   .article-summary {
     font-size: 12px;
-    color: #5C3A24;
+    color: #2C1810;
     line-height: 1.5;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    opacity: 0.85;
   }
   .article-link {
     font-family: 'JetBrains Mono', monospace;
@@ -203,128 +276,150 @@ TEMPLATE_HTML = """<!DOCTYPE html>
     color: #B87333;
     text-decoration: none;
     text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+  }
+  .article-xref {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #8B7355;
+    text-transform: uppercase;
     letter-spacing: 0.1em;
-    font-weight: 600;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid #E5DDD0;
   }
+  .article-xref strong { color: #8A5526; }
 
-  /* News items (llista) */
-  .news-item {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 16px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid #E5DDD0;
-  }
-  .news-item:last-child { border-bottom: none; }
-  .news-marker {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 18px;
-    color: #B87333;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .news-content { flex: 1; }
-  .news-content h3 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: #2C1810;
-    margin-bottom: 6px;
-    line-height: 1.3;
-  }
-  .news-summary {
-    font-size: 13px;
-    color: #2C1810;
-    line-height: 1.6;
-    margin-bottom: 6px;
-  }
-  .news-source {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: #8A5526;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .news-source strong { color: #2C1810; }
-
-  /* Connexió de la setmana */
+  /* === Connexió de la setmana === */
   .connection-week {
-    background: rgba(184,115,51,0.06);
-    border: 1px solid #B87333;
-    border-radius: 4px;
-    padding: 20px;
-    margin: 24px 0;
-  }
-  .connection-week-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: #B87333;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  .connection-week-title {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 19px;
-    font-weight: 600;
-    color: #2C1810;
-    margin-bottom: 12px;
-    line-height: 1.25;
-  }
-  .connection-week-body {
-    font-size: 13px;
-    line-height: 1.65;
-    color: #2C1810;
-    margin-bottom: 10px;
-  }
-  .connection-week-body strong { color: #B87333; }
-
-  /* Editorial note */
-  .editorial-note {
     background: #2C1810;
     color: #F5EFE6;
-    padding: 20px;
-    margin: 24px 0;
+    padding: 24px;
     border-radius: 4px;
+    margin: 24px 0;
   }
-  .editorial-note-eyebrow {
+  .connection-eyebrow {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     color: #D9A574;
     text-transform: uppercase;
     letter-spacing: 0.18em;
     font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .connection-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #F5EFE6;
+    margin-bottom: 14px;
+    line-height: 1.25;
+  }
+  .connection-body {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(245, 239, 230, 0.9);
+    margin-bottom: 12px;
+  }
+  .connection-body strong { color: #D9A574; }
+
+  /* === Més enllà del Checkbox (diferencial competitiu) === */
+  .mes-enlla {
+    background: rgba(184, 115, 51, 0.10);
+    border: 1px solid #B87333;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 24px 0;
+  }
+  .mes-enlla-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #B87333;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .mes-enlla-criteri {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: #5C3A1E;
     margin-bottom: 10px;
   }
-  .editorial-note-text {
-    font-family: 'Fraunces', Georgia, serif;
-    font-style: italic;
+  .mes-enlla-body {
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 1.65;
+    color: #2C1810;
   }
-  .editorial-note-text strong { color: #D9A574; font-style: normal; }
+  .mes-enlla-body strong { color: #B87333; }
 
-  /* CTA */
+  /* === Acció recomanada === */
+  .accio {
+    background: #FFFFFF;
+    border: 1px solid #C9B89A;
+    border-left: 3px solid #5C8A5C;
+    border-radius: 4px;
+    padding: 18px;
+    margin: 24px 0;
+  }
+  .accio-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #5C8A5C;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .accio-title {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #2C1810;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .accio-desc {
+    font-size: 13px;
+    color: #2C1810;
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+  .accio-tags {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .accio-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    padding: 3px 8px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+  .tag-esforc-baix { background: rgba(92, 138, 92, 0.15); color: #5C8A5C; }
+  .tag-esforc-mitja { background: rgba(201, 169, 97, 0.20); color: #8a7340; }
+  .tag-esforc-alt { background: rgba(160, 82, 45, 0.15); color: #A0522D; }
+
+  /* === CTA Premium === */
   .cta-block {
     background: #B87333;
     color: #FFFFFF;
-    padding: 20px;
+    padding: 24px;
     border-radius: 4px;
     margin: 24px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
   }
   .cta-title {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 18px;
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
   }
-  .cta-text { font-size: 12px; opacity: 0.9; line-height: 1.5; }
+  .cta-text { font-size: 13px; opacity: 0.95; line-height: 1.5; margin-bottom: 16px; }
   .cta-button {
     display: inline-block;
     background: #FFFFFF;
@@ -335,123 +430,230 @@ TEMPLATE_HTML = """<!DOCTYPE html>
     font-weight: 700;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     border-radius: 2px;
   }
 
-  /* Footer */
+  /* === Lock per versió Free (els apartats Premium bloquejats) === */
+  .locked-section {
+    background: rgba(139, 115, 85, 0.08);
+    border: 1px dashed #C9B89A;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 24px 0;
+    text-align: center;
+  }
+  .locked-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #8B7355;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .locked-title {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: #5C3A1E;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .locked-desc {
+    font-size: 12px;
+    color: #8B7355;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .locked-cta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #B87333;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+  }
+
+  /* === Footer (estil web footer) === */
   .news-footer {
     text-align: center;
     padding: 24px 0;
     border-top: 1px solid #C9B89A;
+    margin-top: 24px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     color: #8B7355;
   }
   .news-footer-brand {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 16px;
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
     color: #2C1810;
     font-weight: 600;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
   .news-footer-brand .dot { color: #B87333; }
-  .news-footer-meta a {
-    color: #8A5526;
-    text-decoration: none;
-  }
-</style>
+  .news-footer-meta a { color: #8A5526; text-decoration: none; }
+"""
+
+
+def render_articles(articles: list) -> str:
+    """Renderitza els articles secundaris amb cross-reference."""
+    html = ""
+    for a in articles[:3]:
+        xref_html = ""
+        if a.get("xref"):
+            xref_html = f'<div class="article-xref">↔ <strong>Cross-ref:</strong> {a["xref"]}</div>'
+        html += f"""
+    <div class="article-card">
+      <div class="article-source">{a['source']}</div>
+      <h3 class="article-title">{a['title']}</h3>
+      <p class="article-summary">{a['summary']}</p>
+      <a href="{a.get('url', '#')}" class="article-link">Llegir resum complet →</a>
+      {xref_html}
+    </div>"""
+    return html
+
+
+def render_semafor_dots(statuses: list) -> str:
+    """Renderitza els 5 punts del semàfor."""
+    html = '<div class="semafor-dots">'
+    for s in statuses:
+        html += f'<span class="semafor-dot {s}"></span>'
+    html += '</div>'
+    return html
+
+
+def build_premium_html(data: dict) -> str:
+    """Construeix l'HTML de la versió Premium (completa)."""
+    edition = data["edition"]
+    date = data["date"]
+    lang = data["lang"]
+
+    hero = data["hero"]
+    articles = data["secondary_articles"]
+    connection = data["connection_week"]
+    mes_enlla = data["mes_enlla_checkbox"]
+    accio = data["accio_recomanada"]
+
+    return f"""<!DOCTYPE html>
+<html lang="{lang}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criteri ESG — Newsletter #{edition} (Premium)</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>{CSS}</style>
 </head>
 <body>
 <div class="container">
 
   <!-- Masthead -->
   <div class="masthead">
-    <div class="masthead-brand">Criteri<span class="dot">.</span> ESG <span style="font-family: 'Fraunces', serif; font-size: 11px; font-style: italic; color: #5C3A24; margin-left: 10px; font-weight: 400;">Intel·ligència ESG per a decisions ètiques</span></div>
-    <div class="masthead-meta">
-      <span><strong>EDICIÓ #{{EDITION}}</strong></span>
-      <span> · </span>
-      <span>{{DATE}}</span>
-      <span> · </span>
-      <span>BARCELONA</span>
+    <div class="masthead-row">
+      <div class="masthead-brand">Criteri<span class="dot">.</span> ESG<span class="masthead-tagline">Intel·ligència ESG per a decisions ètiques</span></div>
+      <div class="masthead-meta">
+        <strong>EDICIÓ #{edition}</strong> · {date} · BARCELONA · PREMIUM
+      </div>
     </div>
   </div>
 
-  <!-- Hero / Informe destacat -->
+  <!-- Editorial d'obertura -->
+  <div class="editorial-open">
+    <div class="editorial-open-label">▸ Editorial</div>
+    <p class="editorial-open-text">{data['editorial_open']}</p>
+    <div class="editorial-open-sign">— Paolo, Criteri ESG</div>
+  </div>
+
+  <!-- Informe destacat -->
+  <div class="section-header">
+    <p class="eyebrow">Informe destacat</p>
+    <hr class="rule-accent">
+  </div>
+
   <div class="hero">
-    <div class="hero-eyebrow">▸ INFORME DESTACAT · {{HERO_SOURCE}}</div>
-    <h1 class="hero-title">{{HERO_TITLE}}</h1>
-    <p class="hero-deck">{{HERO_DECK}}</p>
+    <div class="hero-eyebrow">▸ {hero['source']}</div>
+    <h1 class="hero-title">{hero['title']}</h1>
+    <p class="hero-deck">{hero['deck']}</p>
     <div class="hero-meta">
       <span><strong>Sintetitzat per</strong> Criteri ESG</span>
       <span class="sep">·</span>
-      <span>{{HERO_READ_TIME}} minuts de lectura</span>
+      <span>{hero['read_time']} minuts de lectura</span>
       <span class="sep">·</span>
-      <span>{{HERO_PAGES}} pàgines originals</span>
+      <span>{hero['pages']} pàgines originals</span>
+    </div>
+    <div class="semafor-inline">
+      <span class="semafor-grade">{hero['semafor_grade']}</span>
+      <span class="semafor-label">{hero['semafor_label']}</span>
+      {render_semafor_dots(hero['semafor_statuses'])}
     </div>
   </div>
 
   <!-- També aquesta setmana -->
   <div class="section-header">
-    <span class="num">02</span>
-    <span class="title">També aquesta setmana</span>
-    <span class="subtitle">Tres informes més que has de conèixer</span>
+    <p class="eyebrow">També aquesta setmana</p>
+    <h2 class="serif" style="font-size: 22px; font-weight: 600; color: #2C1810; margin-top: 4px;">Informes que has de conèixer</h2>
+    <hr class="rule-accent">
   </div>
 
-  <div class="three-col">
-    {{SECONDARY_ARTICLES}}
-  </div>
-
-  <!-- Notícies ESG -->
-  <div class="section-header">
-    <span class="num">06</span>
-    <span class="title">Notícies ESG</span>
-    <span class="subtitle">El què passa al món, amb perspectiva</span>
-  </div>
-
-  <div class="news-list">
-    {{NEWS_ESG}}
+  <div class="articles-grid">
+    {render_articles(articles)}
   </div>
 
   <!-- Connexió de la setmana -->
-  <div class="connection-week">
-    <div class="connection-week-eyebrow">◆ CONNEXIÓ DE LA SETMANA</div>
-    <h2 class="connection-week-title">{{CONNECTION_TITLE}}</h2>
-    <p class="connection-week-body">{{CONNECTION_BODY_1}}</p>
-    <p class="connection-week-body">{{CONNECTION_BODY_2}}</p>
-  </div>
-
-  <!-- Inversió ESG -->
   <div class="section-header">
-    <span class="num">07</span>
-    <span class="title">Inversió ESG</span>
-    <span class="subtitle">Anàlisi sectorial i regulació</span>
+    <p class="eyebrow">Connexió de la setmana</p>
+    <hr class="rule-accent">
   </div>
 
-  <div class="news-list">
-    {{INVESTMENT_ESG}}
+  <div class="connection-week">
+    <div class="connection-eyebrow">◆ Anàlisi transversal</div>
+    <h2 class="connection-title">{connection['title']}</h2>
+    <p class="connection-body">{connection['body_1']}</p>
+    <p class="connection-body">{connection['body_2']}</p>
   </div>
 
-  <!-- Nota editorial -->
-  <div class="editorial-note">
-    <div class="editorial-note-eyebrow">▸ NOTA EDITORIAL</div>
-    <p class="editorial-note-text">{{EDITORIAL_NOTE}}</p>
+  <!-- Més enllà del Checkbox (diferencial) -->
+  <div class="section-header">
+    <p class="eyebrow">Més enllà del Checkbox</p>
+    <hr class="rule-accent">
   </div>
 
-  <!-- CTA Premium -->
-  <div class="cta-block">
-    <div>
-      <div class="cta-title">Accedeix als {{TOTAL_REPORTS}} informes complets</div>
-      <p class="cta-text">7 blocs estructurats, cross-reference amb EcoVadis/B Corp/MSCI/GRI, accions recomanades. Disponible per a subscriptors Premium.</p>
+  <div class="mes-enlla">
+    <div class="mes-enlla-eyebrow">◆ Lens ètica Criteri</div>
+    <p class="mes-enlla-criteri">Criteri aplicat: <strong>{mes_enlla['criteri']}</strong></p>
+    <p class="mes-enlla-body">{mes_enlla['body']}</p>
+  </div>
+
+  <!-- Acció recomanada -->
+  <div class="section-header">
+    <p class="eyebrow">Acció recomanada</p>
+    <hr class="rule-accent">
+  </div>
+
+  <div class="accio">
+    <div class="accio-eyebrow">▸ Operativa per a aquesta setmana</div>
+    <h3 class="accio-title">{accio['title']}</h3>
+    <p class="accio-desc">{accio['desc']}</p>
+    <div class="accio-tags">
+      <span class="accio-tag tag-esforc-{accio['effort'].lower()}">Esforç: {accio['effort']}</span>
+      <span class="accio-tag tag-esforc-{accio['impact'].lower()}">Impacte: {accio['impact']}</span>
     </div>
-    <a href="https://criteriesg.com/preus" class="cta-button">Prova 7 dies →</a>
+  </div>
+
+  <!-- CTA Premium (a la versió Premium convida a convidar amics) -->
+  <div class="cta-block">
+    <div class="cta-title">Criteri ESG només funciona si es comparteix</div>
+    <p class="cta-text">Si aquesta newsletter t'ha estat útil, comparteix-la amb un company que treballi en sostenibilitat. Cada subscriptor ens ajuda a mantenir la veu editorial independent.</p>
+    <a href="https://criteriesg.com" class="cta-button">Comparteix Criteri ESG →</a>
   </div>
 
   <!-- Footer -->
   <div class="news-footer">
     <div class="news-footer-brand">Criteri<span class="dot">.</span> ESG</div>
     <div class="news-footer-meta">
-      <a href="https://criteriesg.com">criteriesg.com</a> · Barcelona · Rep aquesta newsletter perquè t'hi vas subscriure · <a href="{{UNSUBSCRIBE_URL}}">Cancel·lar</a> · <a href="{{PREFERENCES_URL}}">Preferències</a>
+      <a href="https://criteriesg.com">criteriesg.com</a> · Barcelona · Rep aquesta newsletter perquè ets subscriptor Premium · <a href="{{{{UNSUBSCRIBE_URL}}}}">Cancel·lar</a> · <a href="{{{{PREFERENCES_URL}}}}">Preferències</a>
     </div>
   </div>
 
@@ -460,126 +662,204 @@ TEMPLATE_HTML = """<!DOCTYPE html>
 </html>"""
 
 
-def render_template(replacements: dict) -> str:
-    """Aplica les substitucions al template."""
-    html = TEMPLATE_HTML
-    for key, value in replacements.items():
-        html = html.replace(f"{{{{{key}}}}}", value)
-    return html
+def build_free_html(data: dict) -> str:
+    """Construeix l'HTML de la versió Free (reduïda).
+    Manté: masthead, editorial obertura, hero, articles secundaris.
+    Bloqueja: connexió setmana, més enllà checkbox, acció recomanada.
+    Afegeix CTA Premium.
+    """
+    edition = data["edition"]
+    date = data["date"]
+    lang = data["lang"]
 
+    hero = data["hero"]
+    articles = data["secondary_articles"]
+    connection = data["connection_week"]
+    mes_enlla = data["mes_enlla_checkbox"]
+    accio = data["accio_recomanada"]
 
-def render_secondary_articles(articles: list) -> str:
-    """Renderitza els 3 articles secundaris en grid."""
-    html = ""
-    for i, a in enumerate(articles[:3], start=3):
-        html += f"""
-    <div class="article-card">
-      <div class="article-num">{i:02d}</div>
-      <div class="article-source">{a['source']}</div>
-      <h3 class="article-title">{a['title']}</h3>
-      <p class="article-summary">{a['summary']}</p>
-      <a href="{a.get('url', '#')}" class="article-link">Llegir resum complet →</a>
-    </div>"""
-    return html
+    return f"""<!DOCTYPE html>
+<html lang="{lang}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criteri ESG — Newsletter #{edition}</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>{CSS}</style>
+</head>
+<body>
+<div class="container">
 
-
-def render_news_items(items: list, marker: str = "▸") -> str:
-    """Renderitza una llista de notícies."""
-    html = ""
-    for item in items:
-        sources = " · ".join(f"<strong>{s}</strong>" if i == 0 else s for i, s in enumerate(item.get("sources", [])))
-        html += f"""
-    <div class="news-item">
-      <div class="news-marker">{marker}</div>
-      <div class="news-content">
-        <h3>{item['title']}</h3>
-        <p class="news-summary">{item['summary']}</p>
-        <p class="news-source">Fonts: {sources}</p>
+  <!-- Masthead -->
+  <div class="masthead">
+    <div class="masthead-row">
+      <div class="masthead-brand">Criteri<span class="dot">.</span> ESG<span class="masthead-tagline">Intel·ligència ESG per a decisions ètiques</span></div>
+      <div class="masthead-meta">
+        <strong>EDICIÓ #{edition}</strong> · {date} · BARCELONA
       </div>
-    </div>"""
-    return html
+    </div>
+  </div>
+
+  <!-- Editorial d'obertura -->
+  <div class="editorial-open">
+    <div class="editorial-open-label">▸ Editorial</div>
+    <p class="editorial-open-text">{data['editorial_open']}</p>
+    <div class="editorial-open-sign">— Paolo, Criteri ESG</div>
+  </div>
+
+  <!-- Informe destacat -->
+  <div class="section-header">
+    <p class="eyebrow">Informe destacat</p>
+    <hr class="rule-accent">
+  </div>
+
+  <div class="hero">
+    <div class="hero-eyebrow">▸ {hero['source']}</div>
+    <h1 class="hero-title">{hero['title']}</h1>
+    <p class="hero-deck">{hero['deck']}</p>
+    <div class="hero-meta">
+      <span><strong>Sintetitzat per</strong> Criteri ESG</span>
+      <span class="sep">·</span>
+      <span>{hero['read_time']} minuts de lectura</span>
+      <span class="sep">·</span>
+      <span>{hero['pages']} pàgines originals</span>
+    </div>
+    <div class="semafor-inline">
+      <span class="semafor-grade">{hero['semafor_grade']}</span>
+      <span class="semafor-label">{hero['semafor_label']}</span>
+      {render_semafor_dots(hero['semafor_statuses'])}
+    </div>
+  </div>
+
+  <!-- També aquesta setmana -->
+  <div class="section-header">
+    <p class="eyebrow">També aquesta setmana</p>
+    <h2 class="serif" style="font-size: 22px; font-weight: 600; color: #2C1810; margin-top: 4px;">Informes que has de conèixer</h2>
+    <hr class="rule-accent">
+  </div>
+
+  <div class="articles-grid">
+    {render_articles(articles)}
+  </div>
+
+  <!-- Connexió de la setmana (LOCKED) -->
+  <div class="section-header">
+    <p class="eyebrow">Connexió de la setmana</p>
+    <hr class="rule-accent">
+  </div>
+
+  <div class="locked-section">
+    <div class="locked-label">◆ Contingut Premium</div>
+    <p class="locked-title">{connection['title']}</p>
+    <p class="locked-desc">Criteri ESG creua els informes d'aquesta setmana per identificar patrons i riscos transversals. La connexió d'aquesta setmana relaciona els 4 informes destacats amb el marc regulador europeu.</p>
+    <a href="https://criteriesg.com/preus" class="locked-cta">Desbloqueja amb Premium →</a>
+  </div>
+
+  <!-- Més enllà del Checkbox (LOCKED) -->
+  <div class="section-header">
+    <p class="eyebrow">Més enllà del Checkbox</p>
+    <hr class="rule-accent">
+  </div>
+
+  <div class="locked-section">
+    <div class="locked-label">◆ Contingut Premium</div>
+    <p class="locked-title">Anàlisi ètica: {mes_enlla['criteri']}</p>
+    <p class="locked-desc">Criteri ESG aplica un dels 5 criteris ètics propis (dignitat, justícia distributiva, sostenibilitat absoluta, co-decisió, arrelament) a un dels informes de la setmana. Una lent diferent dels marcs ESG anglosaxons.</p>
+    <a href="https://criteriesg.com/preus" class="locked-cta">Desbloqueja amb Premium →</a>
+  </div>
+
+  <!-- Acció recomanada (LOCKED) -->
+  <div class="section-header">
+    <p class="eyebrow">Acció recomanada</p>
+    <hr class="rule-accent">
+  </div>
+
+  <div class="locked-section">
+    <div class="locked-label">◆ Contingut Premium</div>
+    <p class="locked-title">Una acció operativa per aquesta setmana</p>
+    <p class="locked-desc">Cada setmana, Criteri ESG extreu una acció concreta dels informes sintetitzats. Esforç i impacte estimats per ajudar-te a prioritzar.</p>
+    <a href="https://criteriesg.com/preus" class="locked-cta">Desbloqueja amb Premium →</a>
+  </div>
+
+  <!-- CTA Premium final -->
+  <div class="cta-block">
+    <div class="cta-title">Fes-te Premium per 290€/any</div>
+    <p class="cta-text">Accés als informes complets, cross-reference amb EcoVadis/B Corp/MSCI/GRI, accions recomanades, connexions setmanals i la lent ètica "Més enllà del Checkbox". 50 places early bird disponibles.</p>
+    <a href="https://criteriesg.com/preus" class="cta-button">Veure preus →</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="news-footer">
+    <div class="news-footer-brand">Criteri<span class="dot">.</span> ESG</div>
+    <div class="news-footer-meta">
+      <a href="https://criteriesg.com">criteriesg.com</a> · Barcelona · Rep aquesta newsletter perquè t'hi vas subscriure · <a href="{{{{UNSUBSCRIBE_URL}}}}">Cancel·lar</a> · <a href="{{{{PREFERENCES_URL}}}}">Preferències</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>"""
 
 
-# === Exemple de dades per al primer test ===
+# === Dades d'exemple per a la primera newsletter ===
 # En producció, aquestes dades vindran de:
 # - informes publicats (Drive /5-validats-paolo/)
-# - search de notícies via web_search (El País, Expansión, etc.)
-# - search d'inversió ESG via web_search (Sustainalytics, ESMA, etc.)
+# - cerca web per fonts ESG
+# - redacció per GLM dels apartats editorials (editorial obertura, connexió, més enllà)
 
 EXAMPLE_DATA = {
     "edition": "1",
     "date": "29 JULIOL 2026",
     "lang": "ca",
+    "editorial_open": "Aquesta setmana la Comissió Europea ha simplificat el CSRD i l'ESMA ha publicat els seus principis contra el greenwashing. Tots dos moviments van en la mateixa direcció: menys càrrega administrativa, però més rigor en allò que es publica. La pregunta és si les empreses estaran a l'alçada.",
     "hero": {
         "source": "COMISSIÓ EUROPEA",
         "title": "La Comissió Europea <em>simplifica</em> el CSRD: 61% menys de datapoints obligatoris",
         "deck": "Un canvi que estalviarà 3.700 milions d'euros a les empreses europees en cinc anys, però que obliga a reinvertir l'estalvi en qualitat de dades per no perdre reputació davant certificacions com EcoVadis o MSCI.",
         "read_time": "5",
         "pages": "47",
+        "semafor_grade": "C",
+        "semafor_label": "Feble metodològicament",
+        "semafor_statuses": ["groc", "groc", "verd", "vermell", "groc"],
     },
     "secondary_articles": [
         {
-            "source": "EcoVadis",
-            "title": "Actualització de criteris EcoVadis 2026",
-            "summary": "Revisió anual dels criteris amb canvis en Environment i Procurement. Les empreses que renoven al Q4 han d'adaptar la documentació.",
-            "url": "https://criteriesg.com/informes/ecovadis-methodology-q1-2026",
+            "source": "ESMA",
+            "title": "ESMA publica 4 principis contra greenwashing en fons ESG",
+            "summary": "Els fons amb 'ESG' al nom han de tenir mínim 80% d'inversions alineades. Precisió, prova, comparabilitat i actualització són els 4 principis.",
+            "url": "https://criteriesg.com/informes/esma-work-programme-2026",
+            "xref": "ESMA → SFDR Article 8/9",
         },
         {
-            "source": "Banc Central Europeu",
-            "title": "Climate risk in EU banking",
-            "summary": "Stress test climàtic anual del sistema bancari europeu. 110 bancs avaluats, focus en risc físic i de transició. Resultats preocupants per al sector immobiliari.",
-            "url": "https://criteriesg.com/informes/ecb-climate-risk-2026",
+            "source": "EcoVadis",
+            "title": "Actualització de criteris EcoVadis 2026",
+            "summary": "Revisió anual amb canvis en Environment i Procurement. Les empreses que renoven al Q4 han d'adaptar la documentació.",
+            "url": "https://criteriesg.com/informes/ecovadis-methodology-q1-2026",
+            "xref": "EcoVadis → GRI Universal 2021",
         },
         {
             "source": "EFRAG",
             "title": "Esborrany ESRS S4 sobre drets humans",
-            "summary": "Consulta pública sobre l'estàndard sectorial de drets humans a la cadena de suministre. 47 pàgines, 18 requisits de disclosure. Termini: 15 gener 2027.",
+            "summary": "Consulta pública sobre l'estàndard sectorial de drets humans a la cadena de subministrament. 47 pàgines, 18 requisits de disclosure. Termini: 15 gener 2027.",
             "url": "https://criteriesg.com/informes/efrag-work-programme-2026",
-        },
-    ],
-    "news_esg": [
-        {
-            "title": "L'onada de calor que afecta Europa hauria estat \"impossible\" fa 50 anys segons un estudi de World Weather Attribution",
-            "summary": "L'onada de calor extrema que afecta Europa occidental és 200 vegades més probable avui per les emissions d'origen humà, segons l'anàlisi de World Weather Attribution. L'estudi conclou que hauria estat \"virtualment impossible\" sense el canvi climàtic.",
-            "sources": ["El País (29 juliol 2026)", "World Weather Attribution", "CNN Español"],
-        },
-        {
-            "title": "Obligació legal de calcular la huella de carboni a Espanya: el Reial Decret 214/2025 entra en vigor per a grans empreses",
-            "summary": "Des del 12 de juny de 2025, les empreses espanyoles que elaboraven l'Estat d'Informació No Financera (EINF) estan obligades a calcular, publicar i elaborar un pla de reducció d'emissions al Registre Oficial de Huella de Carboni.",
-            "sources": ["El Economista", "MITECO (RD 214/2025)", "Pacto Mundial ONU Espanya"],
-        },
-        {
-            "title": "El 23% dels fons Article 8 i el 3% dels Article 9 exposats a risc de greenwashing segons l'ESMA",
-            "summary": "L'European Securities and Markets Authority (ESMA) manté la lluita contra el greenwashing com a objectiu clau 2026-2028. Un informe de Funds Society sobre dades ESMA revela que el 23% dels fons Article 8 i el 3% dels Article 9 estan exposats a risc de pràctiques enganyoses.",
-            "sources": ["El Economista", "Funds Society", "ESMA (informe temàtic 2026-2028)"],
+            "xref": "ESRS S4 → CSDDD due diligence",
         },
     ],
     "connection_week": {
-        "title": "Onada de calor + ESMA greenwashing + RD 214/2025: tres senyals que conflueixen en risc climàtic",
-        "body_1": "Aquesta setmana s'ha vist clarament com el reporting ESG no és papereria. L'onada de calor mostra el cost humà del canvi climàtic. L'ESMA adverteix que molts fons \"sostenibles\" no ho són realment. I el RD 214/2025 obliga les empreses espanyoles a tenir plans de reducció d'emissions verificats.",
-        "body_2": "Per a les empreses: <strong>la doble materialitat és ara evident</strong>. El risc físic (operacions, treballadors, supply chain) i el risc regulatori (sancions, pèrdua d'accés a finançament Article 9) estan connectats. Les que no adaptin ràpidament els seus plans es trobaran amb ambdós alhora.",
+        "title": "Simplificació CSRD + 4 principis ESMA + ESRS S4: el triangle regulador europeu es tanca",
+        "body_1": "Aquesta setmana s'ha vist clarament com la regulació europea ESG es tanca en un triangle: <strong>menys dades obligatòries</strong> (revisió ESRS), <strong>més rigor en allò que es publica</strong> (principis ESMA), i <strong>més profunditat sectorial</strong> (ESRS S4 drets humans). Les empreses que s'ho mirin com a càrrega administrativa perdran; les que ho vegin com a oportunitat per estructurar la sostenibilitat, guanyaran.",
+        "body_2": "El missatge operatiu: <strong>dedica menys recursos a recollir dades que no usaràs, i més a interpretar les que sí</strong>. La diferència competitiva ja no és qui té més dades, sinó qui les sap llegir.",
     },
-    "investment_esg": [
-        {
-            "title": "SFDR 2.0: la proposta de la Comissió reclassificarà el 40% dels fons Article 9 actuals",
-            "summary": "La proposta SFDR 2.0 (publicada el novembre 2025) elimina les categories Article 8/9 i les substitueix per tres: \"Sustainable\", \"Sustainable Focus\" i \"ESG Collection\". Segons l'anàlisi independent de Sustainalytics, el 40% dels fons Article 9 actuals no superarien els nous criteris d'exclusió.",
-            "sources": ["Sustainalytics (anàlisi d'impacte 2026)", "Morningstar (estimació de fluxos)", "Comissió Europea (proposta novembre 2025)"],
-        },
-        {
-            "title": "ESMA publica 4 principis contra greenwashing; els fons amb terminis \"ESG\" al nom han de tenir 80% d'inversions sostenibles",
-            "summary": "L'ESMA manté la lluita contra el greenwashing com a prioritat estratègica 2026-2028. Ha publicat quatre principis perquè les declaracions de sostenibilitat siguin \"clares, justes i no enganyoses\": precisió, prova, comparabilitat i actualització.",
-            "sources": ["ESMA (thematic note 2026-2028)", "Ropes & Gray (anàlisi legal)", "Paul Hastings (client alert)"],
-        },
-        {
-            "title": "El Banc d'Espanya adverteix sobre riscos de greenwashing en green bonds i demana millora en estàndards de verificació",
-            "summary": "El Banc d'Espanya ha publicat una anàlisi sobre els riscos de greenwashing en el mercat de green bonds. L'informe, elaborat en col·laboració amb l'ESMA, identifica les àrees més exposades al risc de pràctiques enganyoses al llarg de la cadena de valor.",
-            "sources": ["Banc d'Espanya (informe preliminar)", "ESMA (informe final 2024)", "ICMA (market integrity report)"],
-        },
-    ],
-    "editorial_note": "Aquesta setmana hem vist com el clima real (onada de calor) i la regulació europea (SFDR 2.0, ESMA, RD 214/2025) convergeixen en un mateix missatge: <strong>la sostenibilitat ja no és reputacional, és operativa i financera</strong>. Les empreses que no adaptin ràpidament els seus plans es trobaran amb dos problemes simultanis: risc físic i pèrdua d'accés a finançament Article 9. Aquesta és la tasca de Criteri ESG: ajudar-te a veure ambdues cares alhora.",
-    "total_reports": "5",
-    "unsubscribe_url": "*|UNSUB:http://criteriesg.com/unsubscribe|*",
-    "preferences_url": "*|UPDATE_PROFILE|*",
+    "mes_enlla_checkbox": {
+        "criteri": "Justícia distributiva",
+        "body": "La simplificació del CSRD reparteix els beneficis de manera asimètrica: les grans corporacions amb capacitat de lobbying guanyen alleugeriment; les comunitats afectades pels seus impactes perden informació verificable per exercir drets. Eliminar granularitat sectorial converteix la sostenibilitat en variable relativa ('miller que l'any passat') en lloc d'absoluta ('compatible amb els límits planetaris'). Sense referents absoluts, el reporting esdevé exercici de millora contínua sense sostre, insuficient per aturar la deterioració ecològica real.",
+    },
+    "accio_recomanada": {
+        "title": "Audita la teva matriu de materialitat abans del tancament anual",
+        "desc": "Identifica quins datapoints eliminats pel CSRD revisat eren realment materials per al teu sector i mantén-los de forma voluntària amb documentació interna. Així conservaràs la comparabilitat amb anys anteriors i la traçabilitat per a auditories EcoVadis i MSCI, que encara esperen granularitat.",
+        "effort": "Mitjà",
+        "impact": "Alt",
+    },
 }
 
 
@@ -588,70 +868,59 @@ def main():
     data = EXAMPLE_DATA
     data["edition"] = edition
 
-    print(f"=== Generant newsletter #{{edition}} ===")
+    print(f"=== Generant newsletter #{edition} ===")
     print(f"Data: {data['date']}")
     print(f"Hero: {data['hero']['title'][:80]}...")
     print()
 
-    # Renderitzar HTML
-    replacements = {
-        "EDITION": data["edition"],
-        "DATE": data["date"],
-        "LANG": data["lang"],
-        "HERO_SOURCE": data["hero"]["source"],
-        "HERO_TITLE": data["hero"]["title"],
-        "HERO_DECK": data["hero"]["deck"],
-        "HERO_READ_TIME": data["hero"]["read_time"],
-        "HERO_PAGES": data["hero"]["pages"],
-        "SECONDARY_ARTICLES": render_secondary_articles(data["secondary_articles"]),
-        "NEWS_ESG": render_news_items(data["news_esg"], "▸"),
-        "CONNECTION_TITLE": data["connection_week"]["title"],
-        "CONNECTION_BODY_1": data["connection_week"]["body_1"],
-        "CONNECTION_BODY_2": data["connection_week"]["body_2"],
-        "INVESTMENT_ESG": render_news_items(data["investment_esg"], "€"),
-        "EDITORIAL_NOTE": data["editorial_note"],
-        "TOTAL_REPORTS": data["total_reports"],
-        "UNSUBSCRIBE_URL": data["unsubscribe_url"],
-        "PREFERENCES_URL": data["preferences_url"],
-    }
+    # Generar versió Premium
+    print("→ Generant versió Premium...")
+    premium_html = build_premium_html(data)
+    premium_path = Path(f"/home/z/my-project/criteri-esg-lab/data/newsletter-{edition}.premium.html")
+    premium_path.parent.mkdir(parents=True, exist_ok=True)
+    premium_path.write_text(premium_html, encoding="utf-8")
+    print(f"  ✓ Premium: {premium_path.name} ({len(premium_html)/1024:.1f} KB)")
 
-    html = render_template(replacements)
+    # Generar versió Free
+    print("→ Generant versió Free...")
+    free_html = build_free_html(data)
+    free_path = Path(f"/home/z/my-project/criteri-esg-lab/data/newsletter-{edition}.free.html")
+    free_path.write_text(free_html, encoding="utf-8")
+    print(f"  ✓ Free: {free_path.name} ({len(free_html)/1024:.1f} KB)")
 
-    # Guardar HTML local per preview
-    output_path = Path(f"/home/z/my-project/criteri-esg-lab/data/newsletter-{edition}.html")
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(html, encoding="utf-8")
-    print(f"  ✓ HTML guardat: {output_path} ({len(html)/1024:.1f} KB)")
-
-    # Pujar a Drive /Criteri ESG/newsletters/
+    # Pujar ambdues a Drive /Criteri ESG/newsletters/
+    print("\n→ Pujant a Drive /Criteri ESG/newsletters/...")
     try:
         drive = get_user_drive_service()
         newsletters_folder_id = get_criteri_subfolder_id(drive, "newsletters")
-        upload_file(drive, output_path, f"newsletter-{edition}.html", newsletters_folder_id, mime_type="text/html")
-        print(f"  ✓ Pujat a Drive /Criteri ESG/newsletters/")
+        upload_file(drive, premium_path, f"newsletter-{edition}.premium.html", newsletters_folder_id, mime_type="text/html")
+        print(f"  ✓ newsletter-{edition}.premium.html pujat")
+        upload_file(drive, free_path, f"newsletter-{edition}.free.html", newsletters_folder_id, mime_type="text/html")
+        print(f"  ✓ newsletter-{edition}.free.html pujat")
     except Exception as e:
         print(f"  ⚠ Drive (no crític): {e}")
 
-    # Crear draft a Beehiiv (intentar, però sabrem que falla al pla free)
-    subject = f"Criteri ESG — Newsletter #{edition} · {data['date'].title()}"
-    preview = data["hero"]["title"].replace("<em>", "").replace("</em>", "")[:140]
+    # PDFs per preview local
+    print("\n→ Generant PDFs de preview...")
+    import subprocess
+    for path in [premium_path, free_path]:
+        pdf_path = path.with_suffix(".pdf")
+        try:
+            subprocess.run(["weasyprint", str(path), str(pdf_path)], capture_output=True, timeout=60)
+            # Copiar a /download perquè Paolo els pugui veure
+            dest = Path("/home/z/my-project/download") / pdf_path.name
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_bytes(pdf_path.read_bytes())
+            print(f"  ✓ {pdf_path.name} ({pdf_path.stat().st_size/1024:.1f} KB)")
+        except Exception as e:
+            print(f"  ⚠ PDF {path.name}: {e}")
 
-    print(f"\n  → Creant draft a Beehiiv...")
-    print(f"    Subject: {subject}")
-    print(f"    Preview: {preview[:80]}...")
-
-    try:
-        result = create_draft(
-            title=f"Newsletter Criteri ESG #{edition} ({data['date']})",
-            subject_line=subject,
-            preview_text=preview,
-            subtitle=f"Edició #{edition} · {data['date']}",
-            html_content=html,
-        )
-        print(f"  ✓ Draft creat a Beehiiv!")
-        print(f"  → Paolo: obre Beehiiv, revisa l'esborrany i clica 'Send'")
-    except Exception as e:
-        print(f"  ✗ Error creant draft: {e}")
+    print(f"\n=== Resum newsletter #{edition} ===")
+    print(f"  Premium (completa): {len(premium_html)/1024:.1f} KB")
+    print(f"  Free (reduïda):     {len(free_html)/1024:.1f} KB")
+    print(f"  Diferència:         {(len(premium_html)-len(free_html))/1024:.1f} KB")
+    print(f"\n→ Paolo: obre Beehiiv → New Post → HTML Snippet → enganxa l'HTML")
+    print(f"  Crea 2 esborranys: un per a subscriptors Premium, un per a Free")
 
 
 if __name__ == "__main__":

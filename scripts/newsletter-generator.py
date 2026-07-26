@@ -28,6 +28,7 @@ from dotenv import load_dotenv
 load_dotenv(Path("/home/z/my-project/criteri-esg-lab/assets/web/.env.local"))
 
 from beehiiv_client import create_draft, PUBLICATION_ID
+from drive_user_client import get_user_drive_service, get_criteri_subfolder_id, upload_file
 
 # === Plantilla HTML estil A v2 ===
 # Simplificada per Beehiiv (sense @page, sense A4 — Beehiiv no suporta CSS de print)
@@ -622,7 +623,16 @@ def main():
     output_path.write_text(html, encoding="utf-8")
     print(f"  ✓ HTML guardat: {output_path} ({len(html)/1024:.1f} KB)")
 
-    # Crear draft a Beehiiv
+    # Pujar a Drive /Criteri ESG/newsletters/
+    try:
+        drive = get_user_drive_service()
+        newsletters_folder_id = get_criteri_subfolder_id(drive, "newsletters")
+        upload_file(drive, output_path, f"newsletter-{edition}.html", newsletters_folder_id, mime_type="text/html")
+        print(f"  ✓ Pujat a Drive /Criteri ESG/newsletters/")
+    except Exception as e:
+        print(f"  ⚠ Drive (no crític): {e}")
+
+    # Crear draft a Beehiiv (intentar, però sabrem que falla al pla free)
     subject = f"Criteri ESG — Newsletter #{edition} · {data['date'].title()}"
     preview = data["hero"]["title"].replace("<em>", "").replace("</em>", "")[:140]
 

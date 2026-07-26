@@ -1,0 +1,59 @@
+# Organització de Google Drive
+
+> **Document de referència.** Qualsevol script que pugi o llegeixi de Drive ha de seguir aquesta organització.
+
+## Dues carpetes arrel
+
+### `Criteri ESG` (ID: `1HGRugtsRGDN3su_n_dbd9y1p8VkyuUgG`)
+Per **tot el que no sigui el flux d'informes**: newsletters, documents, assets de la web, anàlisi competència, etc.
+
+Subcarpetes:
+- `newsletters/` — HTML de cada newsletter generada
+- `redisseny-web/` — mockups i HTML del redisseny de la web
+- `homepage-redisseny/` — variants de homepage
+- `LinkedIn/` — assets per posts LinkedIn
+- `ANÀLISI COMPETÈNCIA/` — documents d'anàlisi
+- `ADMINISTRACIÓ/` — factures, documents legals
+- `assets/` — assets gràfics (logos, paleta, etc.)
+- `dossiers/` — dossiers temàtics
+- `ultra/` — contingut per Ultra
+- `processats/` — informes processats antics (legacy)
+
+### `Criteri ESG Informes` (ID: `1nSgtu2pcourGRMrS1KIspgVarlRldbnS`)
+**Vinculada a l'API de Gemini/Vertex AI**. S'utilitza **només** pel flux de producció d'informes (passos 1-7 del flux).
+
+Subcarpetes (les 7 del flux):
+- `0-originals/` — PDFs originals descarregats (pas 1)
+- `1-distilats/` — JSON destil·lats per GLM (pas 2)
+- `2-aportacions-gemini/` — JSON d'aportacions crítiques de Gemini (pas 3)
+- `3-fets/` — Markdown CA+ES redactats per GLM (pas 4)
+- `4-revisats-ortografia/` — Markdown corregits per Gemini + PDF final (pas 5)
+- `5-validats-paolo/` — informes validats per Paolo (pas 6)
+- `6-publicats/` — informes pujats a la web (pas 7)
+
+## Funcions al codi (`scripts/drive_user_client.py`)
+
+| Funció | Carpeta arrel | Ús |
+|--------|---------------|-----|
+| `find_criteri_root(drive)` | `Criteri ESG` | Obtenir ID de l'arrel "no informes" |
+| `find_informes_root(drive)` | `Criteri ESG Informes` | Obtenir ID de l'arrel "informes" |
+| `get_criteri_subfolder_id(drive, name)` | `Criteri ESG/<name>` | Subcarpeta de "no informes" (ex: `newsletters`) |
+| `get_subfolder_id(drive, name)` | `Criteri ESG Informes/<name>` | Subcarpeta del flux d'informes (ex: `4-revisats-ortografia`) |
+
+## Exemples d'ús
+
+```python
+# Pujar una newsletter a la carpeta correcta
+drive = get_user_drive_service()
+folder_id = get_criteri_subfolder_id(drive, "newsletters")
+upload_file(drive, html_path, "newsletter-1.html", folder_id, mime_type="text/html")
+
+# Pujar un PDF d'informe (pas 5 del flux)
+drive = get_user_drive_service()
+folder_id = get_subfolder_id(drive, "4-revisats-ortografia")
+upload_file(drive, pdf_path, "eu-taxonomy.ca.pdf", folder_id, mime_type="application/pdf")
+```
+
+## Pujada a Drive
+
+Sempre via **OAuth d'usuari** (no Service Account, que no té quota). Tokens a `/home/z/my-project/.gcp-oauth-tokens.json`, es refresquen automàticament via `drive_user_client.py`.

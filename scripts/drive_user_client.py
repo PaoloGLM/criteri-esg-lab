@@ -106,7 +106,7 @@ def find_folder_id(drive, name: str, parent_id: str = None) -> str | None:
 
 
 def find_informes_root(drive) -> str:
-    """Busca la carpeta pare 'Criteri ESG Informes' (o variants)."""
+    """Busca la carpeta 'Criteri ESG Informes' (vinculada a Gemini/Vertex AI, flux d'informes)."""
     for name in ["Criteri ESG Informes", "Informes", "informes"]:
         folder_id = find_folder_id(drive, name)
         if folder_id:
@@ -117,9 +117,38 @@ def find_informes_root(drive) -> str:
     )
 
 
+def find_criteri_root(drive) -> str:
+    """Busca la carpeta 'Criteri ESG' (pare, per tot el que NO sigui informes:
+    newsletters, documents, assets, etc.)."""
+    folder_id = find_folder_id(drive, "Criteri ESG")
+    if folder_id:
+        return folder_id
+    raise FileNotFoundError(
+        "Carpeta 'Criteri ESG' no trobada al Drive de l'usuari."
+    )
+
+
 def get_subfolder_id(drive, name: str) -> str:
     """Busca una subcarpeta dins de 'Criteri ESG Informes'. La crea si no existeix."""
     parent_id = find_informes_root(drive)
+    folder_id = find_folder_id(drive, name, parent_id)
+    if folder_id:
+        return folder_id
+
+    # Crear
+    file_metadata = {
+        "name": name,
+        "mimeType": "application/vnd.google-apps.folder",
+        "parents": [parent_id],
+    }
+    created = drive.files().create(body=file_metadata, fields="id").execute()
+    return created["id"]
+
+
+def get_criteri_subfolder_id(drive, name: str) -> str:
+    """Busca una subcarpeta dins de 'Criteri ESG' (no informes). La crea si no existeix.
+    Útil per a newsletters, documents, assets, etc."""
+    parent_id = find_criteri_root(drive)
     folder_id = find_folder_id(drive, name, parent_id)
     if folder_id:
         return folder_id

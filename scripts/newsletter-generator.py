@@ -94,19 +94,19 @@ CSS = """
   }
   .masthead-meta strong { color: #B87333; font-weight: 600; }
 
-  /* === Editorial d'obertura (MARRÓ FORT com hero homepage) === */
+  /* === Editorial d'obertura (terra clara amb filet coure) === */
   .editorial-open {
-    padding: 24px;
-    background: #2C1810;
-    color: #F5EFE6;
-    border-bottom: 2px solid #B87333;
-    border-radius: 4px;
+    padding: 22px 24px;
+    background: #FFFFFF;
+    color: #2C1810;
+    border-left: 3px solid #B87333;
+    border-radius: 0 4px 4px 0;
     margin-bottom: 24px;
   }
   .editorial-open-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #D9A574;
+    font-size: 10px;
+    color: #8A5526;
     text-transform: uppercase;
     letter-spacing: 0.18em;
     font-weight: 600;
@@ -115,17 +115,17 @@ CSS = """
   .editorial-open-text {
     font-family: 'Fraunces', serif;
     font-style: italic;
-    font-size: 16px;
-    line-height: 1.55;
-    color: #F5EFE6;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #2C1810;
   }
   .editorial-open-sign {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
-    color: rgba(245, 239, 230, 0.6);
+    color: #8B7355;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    margin-top: 12px;
+    margin-top: 10px;
   }
 
   /* === Section header (anatomia canònica) === */
@@ -408,11 +408,11 @@ CSS = """
   .tag-esforc-mitja { background: rgba(201, 169, 97, 0.25); color: #D9A574; }
   .tag-esforc-alt { background: rgba(160, 82, 45, 0.30); color: #C9704F; }
 
-  /* === CTA Premium (MARRÓ FORT com final-cta de la web) === */
+  /* === CTA Premium (coure fort amb botó blanc, com a la web) === */
   .cta-block {
-    background: #2C1810;
-    color: #F5EFE6;
-    padding: 32px 24px;
+    background: #B87333;
+    color: #FFFFFF;
+    padding: 28px 24px;
     border-radius: 4px;
     margin: 24px 0;
     text-align: center;
@@ -420,27 +420,27 @@ CSS = """
   .cta-eyebrow {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
-    color: #D9A574;
+    color: rgba(255, 255, 255, 0.75);
     text-transform: uppercase;
     letter-spacing: 0.3em;
     font-weight: 600;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
   .cta-title {
     font-family: 'Fraunces', serif;
     font-size: 22px;
     font-weight: 500;
-    color: #F5EFE6;
+    color: #FFFFFF;
     margin-bottom: 12px;
     line-height: 1.25;
     letter-spacing: -0.015em;
   }
-  .cta-title em { font-style: italic; color: #D9A574; font-weight: 500; }
+  .cta-title em { font-style: italic; color: #2C1810; font-weight: 500; }
   .cta-text {
     font-family: 'Fraunces', serif;
     font-style: italic;
     font-size: 14px;
-    color: rgba(245, 239, 230, 0.75);
+    color: rgba(255, 255, 255, 0.9);
     line-height: 1.5;
     margin-bottom: 20px;
     max-width: 480px;
@@ -449,8 +449,8 @@ CSS = """
   }
   .cta-button {
     display: inline-block;
-    background: #B87333;
-    color: #FFFFFF;
+    background: #FFFFFF;
+    color: #B87333;
     padding: 14px 28px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;

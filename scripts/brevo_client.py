@@ -102,6 +102,62 @@ def add_contact(email: str, list_id: int, attributes: dict = None) -> bool:
     return r.status_code in (200, 201, 204)
 
 
+def create_campaign_draft(
+    subject: str,
+    html_content: str,
+    list_id: int,
+    sender_email: str = None,
+    sender_name: str = None,
+) -> int:
+    """
+    Crea una campanya en estat esborrany (NO envia).
+    Paolo pot editar-la al dashboard de Brevo i enviar-la quan vulgui.
+
+    Retorna l'ID de la campanya creada.
+    """
+    sender_email = sender_email or SENDER_EMAIL
+    sender_name = sender_name or SENDER_NAME
+
+    campaign_data = {
+        "name": subject,
+        "subject": subject,
+        "sender": {"name": sender_name, "email": sender_email},
+        "type": "classic",
+        "htmlContent": html_content,
+        "recipients": {"listIds": [list_id]},
+        # No passem scheduledAt — Paolo decideix quan enviar al dashboard
+    }
+
+    r = requests.post(
+        f"{BASE_URL}/emailCampaigns",
+        headers=_headers(),
+        json=campaign_data,
+        timeout=30,
+    )
+    if r.status_code not in (200, 201):
+        raise Exception(f"Error creant campanya: {r.status_code}: {r.text[:300]}")
+
+    campaign_id = r.json()["id"]
+    print(f"  ✓ Esborrany creat: ID {campaign_id}")
+    print(f"  → Paolo: obre Brevo → Campanyes → revisa i envia")
+    return campaign_id
+
+
+def send_campaign(campaign_id: int) -> bool:
+    """Envia una campanya existent. Normalment ho fa Paolo al dashboard."""
+    r = requests.post(
+        f"{BASE_URL}/emailCampaigns/{campaign_id}/sendNow",
+        headers=_headers(),
+        timeout=30,
+    )
+    if r.status_code in (200, 201, 204):
+        print(f"  ✓ Campanya {campaign_id} enviada!")
+        return True
+    else:
+        print(f"  ✗ HTTP {r.status_code}: {r.text[:300]}")
+        return False
+
+
 def create_and_send_campaign(
     subject: str,
     html_content: str,

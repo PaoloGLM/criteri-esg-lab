@@ -433,6 +433,13 @@ export default function InformeSlugPage() {
         )}
           </div>
         </div>
+
+        {/* Disclaimer IA */}
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-6">
+          <p className="text-center font-serif text-xs italic leading-relaxed text-foreground/60">
+            Criteri ESG aplica un flux de doble revisió per a cada informe: GLM redacta, Gemini fa d&apos;advocat del diable, i l&apos;equip humà valida sempre cada bloc abans de publicar.
+          </p>
+        </div>
       </main>
       <Footer />
       {dialogs}

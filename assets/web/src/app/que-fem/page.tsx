@@ -164,6 +164,26 @@ export default function QueFemPage() {
           </div>
         </section>
 
+        {/* 5b. COM PROCESSAM CADA INFORME */}
+        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+          <div className="mx-auto max-w-4xl px-6 py-20 lg:px-8 lg:py-24">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="inline-block h-0.5 w-6" style={{ background: "#B87333" }} />
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#8A5526" }}>Com processem cada informe</p>
+            </div>
+            <h2 className="mb-6 font-serif text-3xl font-medium leading-tight text-primary sm:text-4xl">
+              Doble revisió d&apos;IA amb validació humana
+            </h2>
+            <div className="rule-accent mb-6" />
+            <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
+              Cada informe Criteri ESG passa per un flux de doble revisió d&apos;IA amb validació humana obligatòria. Detecció d&apos;informes originals, redacció d&apos;informes propis, advocat del diable, revisió ortogràfica i finalment l&apos;equip humà valida sempre cada bloc abans de publicar. La IA sempre està supervisada.
+            </p>
+            <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#8A5526" }}>
+              Providers: Agent GLM 5.2 i API Gemini 2.5 Flash
+            </p>
+          </div>
+        </section>
+
         {/* 6. MANIFEST (dark) */}
         <section style={{ background: "#2C1810", color: "#F5EFE6" }}>
           <div className="mx-auto max-w-4xl px-6 py-24 text-center lg:px-8 lg:py-28">

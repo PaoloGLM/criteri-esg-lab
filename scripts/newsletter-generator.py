@@ -647,17 +647,26 @@ def build_premium_html(data: dict) -> str:
 <!-- Container 680px -->
 <table role="presentation" width="680" cellpadding="0" cellspacing="0" border="0" class="container" style="width:680px;max-width:680px;background:#F5EFE6;">
 
-  <!-- ============ MASTHEAD (marró clar amb border coure) ============ -->
+  <!-- ============ MASTHEAD (apilat verticalment per evitar trencament) ============ -->
   <tr>
     <td style="background:#F5EFE6;padding:24px 32px;border-bottom:2px solid #2C1810;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <!-- Fila 1: Logo a l'esquerra, edició a la dreta -->
         <tr>
-          <td align="left" style="font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:700;color:#2C1810;letter-spacing:-0.02em;">
+          <td align="left" style="font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:700;color:#2C1810;letter-spacing:-0.02em;padding-bottom:6px;">
             Criteri<span style="color:#B87333;">.</span> ESG
-            <span style="font-family:'Fraunces',serif;font-size:12px;font-style:italic;color:#5C3A1E;margin-left:10px;font-weight:400;">Intel·ligència ESG per a decisions ètiques</span>
+          </td>
+          <td align="right" style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#5C3A1E;text-transform:uppercase;letter-spacing:0.16em;padding-bottom:6px;">
+            <strong style="color:#B87333;font-weight:600;">EDICIÓ #{edition}</strong>
+          </td>
+        </tr>
+        <!-- Fila 2: Tagline a l'esquerra, data+ciutat+tipus a la dreta -->
+        <tr>
+          <td align="left" style="font-family:'Fraunces',serif;font-size:12px;font-style:italic;color:#5C3A1E;font-weight:400;">
+            Intel·ligència ESG per a decisions ètiques
           </td>
           <td align="right" style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#5C3A1E;text-transform:uppercase;letter-spacing:0.16em;">
-            <strong style="color:#B87333;font-weight:600;">EDICIÓ #{edition}</strong> · {date} · BARCELONA · PREMIUM
+            {date} · BARCELONA · PREMIUM
           </td>
         </tr>
       </table>
@@ -875,17 +884,24 @@ def build_free_html(data: dict) -> str:
 
 <table role="presentation" width="680" cellpadding="0" cellspacing="0" border="0" class="container" style="width:680px;max-width:680px;background:#F5EFE6;">
 
-  <!-- MASTHEAD -->
+  <!-- MASTHEAD (apilat verticalment) -->
   <tr>
     <td style="background:#F5EFE6;padding:24px 32px;border-bottom:2px solid #2C1810;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td align="left" style="font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:700;color:#2C1810;letter-spacing:-0.02em;">
+          <td align="left" style="font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:700;color:#2C1810;letter-spacing:-0.02em;padding-bottom:6px;">
             Criteri<span style="color:#B87333;">.</span> ESG
-            <span style="font-family:'Fraunces',serif;font-size:12px;font-style:italic;color:#5C3A1E;margin-left:10px;font-weight:400;">Intel·ligència ESG per a decisions ètiques</span>
+          </td>
+          <td align="right" style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#5C3A1E;text-transform:uppercase;letter-spacing:0.16em;padding-bottom:6px;">
+            <strong style="color:#B87333;font-weight:600;">EDICIÓ #{edition}</strong>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" style="font-family:'Fraunces',serif;font-size:12px;font-style:italic;color:#5C3A1E;font-weight:400;">
+            Intel·ligència ESG per a decisions ètiques
           </td>
           <td align="right" style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#5C3A1E;text-transform:uppercase;letter-spacing:0.16em;">
-            <strong style="color:#B87333;font-weight:600;">EDICIÓ #{edition}</strong> · {date} · BARCELONA
+            {date} · BARCELONA
           </td>
         </tr>
       </table>

@@ -20,7 +20,7 @@ sys.path.insert(0, "/home/z/my-project/criteri-esg-lab/scripts")
 from dotenv import load_dotenv
 load_dotenv(Path("/home/z/my-project/criteri-esg-lab/assets/web/.env.local"))
 
-from beehiiv_client import create_draft, PUBLICATION_ID
+from brevo_client import create_campaign_draft, send_campaign, get_or_create_list, add_contact, send_test_email
 from drive_user_client import get_user_drive_service, get_criteri_subfolder_id, upload_file
 
 
@@ -1121,8 +1121,35 @@ def main():
     print(f"  Premium (completa): {len(premium_html)/1024:.1f} KB")
     print(f"  Free (reduïda):     {len(free_html)/1024:.1f} KB")
     print(f"  Diferència:         {(len(premium_html)-len(free_html))/1024:.1f} KB")
-    print(f"\n→ Paolo: obre Beehiiv → New Post → HTML Snippet → enganxa l'HTML")
-    print(f"  Crea 2 esborranys: un per a subscriptors Premium, un per a Free")
+
+    # Crear drafts a Brevo (flux en 2 passos: draft → Paolo valida → send)
+    print(f"\n→ Creant drafts a Brevo...")
+    try:
+        list_id = get_or_create_list("Criteri ESG Newsletter")
+        subject_premium = f"Criteri ESG — Newsletter #{edition} · {data['date'].title()} (Premium)"
+        subject_free = f"Criteri ESG — Newsletter #{edition} · {data['date'].title()}"
+
+        print(f"  → Creant draft Premium...")
+        premium_id = create_campaign_draft(
+            subject=subject_premium,
+            html_content=premium_html,
+            list_id=list_id,
+        )
+
+        print(f"  → Creant draft Free...")
+        free_id = create_campaign_draft(
+            subject=subject_free,
+            html_content=free_html,
+            list_id=list_id,
+        )
+
+        print(f"\n✓ Drafts creats a Brevo:")
+        print(f"  Premium: Campaign ID {premium_id}")
+        print(f"  Free:    Campaign ID {free_id}")
+        print(f"\n→ Paolo: obre Brevo → Campanyes → revisa els 2 esborranys")
+        print(f"  Pots editar text, assumpte, llista. Clica 'Send' quan estiguis a punt.")
+    except Exception as e:
+        print(f"  ⚠ Brevo (no crític): {e}")
 
 
 if __name__ == "__main__":

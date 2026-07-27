@@ -541,183 +541,50 @@ CSS = """
 
 
 def render_articles(articles: list) -> str:
-    """Renderitza els articles secundaris amb cross-reference."""
+    """Renderitza els articles secundaris amb cross-reference (table-based per email)."""
     html = ""
     for a in articles[:3]:
         xref_html = ""
         if a.get("xref"):
-            xref_html = f'<div class="article-xref">↔ <strong>Cross-ref:</strong> {a["xref"]}</div>'
+            xref_html = f'<tr><td style="padding-top:8px;border-top:1px solid #E5DDD0;font-family:\'JetBrains Mono\',monospace;font-size:9px;color:#8B7355;text-transform:uppercase;letter-spacing:0.1em;">↔ <strong style="color:#8A5526;">Cross-ref:</strong> {a["xref"]}</td></tr>'
         html += f"""
-    <div class="article-card">
-      <div class="article-source">{a['source']}</div>
-      <h3 class="article-title">{a['title']}</h3>
-      <p class="article-summary">{a['summary']}</p>
-      <a href="{a.get('url', '#')}" class="article-link">Llegir resum complet →</a>
-      {xref_html}
-    </div>"""
+      <td valign="top" width="33%" style="padding:14px;background:#FFFFFF;border:1px solid #C9B89A;border-top:2px solid #B87333;border-radius:4px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr><td style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#8A5526;text-transform:uppercase;letter-spacing:0.14em;font-weight:600;margin-bottom:6px;padding-bottom:6px;">{a['source']}</td></tr>
+          <tr><td style="font-family:'Fraunces',Georgia,serif;font-size:15px;font-weight:600;color:#2C1810;line-height:1.3;padding-bottom:8px;">{a['title']}</td></tr>
+          <tr><td style="font-size:12px;color:#2C1810;line-height:1.5;padding-bottom:10px;opacity:0.85;">{a['summary']}</td></tr>
+          <tr><td><a href="{a.get('url', '#')}" style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#B87333;text-decoration:none;text-transform:uppercase;letter-spacing:0.12em;font-weight:600;">Llegir resum complet →</a></td></tr>
+          {xref_html}
+        </table>
+      </td>"""
     return html
 
 
+def render_articles_table(articles: list) -> str:
+    """Envoltori table-based pels 3 articles (grid 3 col → table 3 col)."""
+    cells = render_articles(articles)
+    # Per mobile: cada article en una fila (table responsive)
+    return f"""
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;border-spacing:14px 0;">
+      <tr>{cells}</tr>
+    </table>
+    <!--[if mso]></td></tr></table><![endif]-->"""
+
+
 def render_semafor_dots(statuses: list) -> str:
-    """Renderitza els 5 punts del semàfor."""
-    html = '<div class="semafor-dots">'
+    """Renderitza els 5 punts del semàfor (table-based)."""
+    html = '<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-left:auto;"><tr>'
+    color_map = {"verd": "#5C8A5C", "groc": "#C9A961", "vermell": "#A0522D"}
     for s in statuses:
-        html += f'<span class="semafor-dot {s}"></span>'
-    html += '</div>'
+        color = color_map.get(s, "#C9A961")
+        html += f'<td style="padding:0 3px;"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:{color};"></span></td>'
+    html += '</tr></table>'
     return html
 
 
 def build_premium_html(data: dict) -> str:
-    """Construeix l'HTML de la versió Premium (completa)."""
-    edition = data["edition"]
-    date = data["date"]
-    lang = data["lang"]
-
-    hero = data["hero"]
-    articles = data["secondary_articles"]
-    connection = data["connection_week"]
-    mes_enlla = data["mes_enlla_checkbox"]
-    accio = data["accio_recomanada"]
-
-    return f"""<!DOCTYPE html>
-<html lang="{lang}">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Criteri ESG — Newsletter #{edition} (Premium)</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>{CSS}</style>
-</head>
-<body>
-<div class="container">
-
-  <!-- Masthead (full-width marró clar) -->
-  <div class="masthead section-full">
-    <div class="masthead-row">
-      <div class="masthead-brand">Criteri<span class="dot">.</span> ESG<span class="masthead-tagline">Intel·ligència ESG per a decisions ètiques</span></div>
-      <div class="masthead-meta">
-        <strong>EDICIÓ #{edition}</strong> · {date} · BARCELONA · PREMIUM
-      </div>
-    </div>
-  </div>
-
-  <!-- Editorial d'obertura (clara amb marge) -->
-  <div class="section-narrow" style="padding-top: 24px;">
-    <div class="editorial-open">
-      <div class="editorial-open-label">▸ Editorial</div>
-      <p class="editorial-open-text">{data['editorial_open']}</p>
-      <div class="editorial-open-sign">— Paolo, Criteri ESG</div>
-    </div>
-  </div>
-
-  <!-- Informe destacat -->
-  <div class="section-narrow">
-    <div class="section-header">
-      <p class="eyebrow">Informe destacat</p>
-      <hr class="rule-accent">
-    </div>
-  </div>
-
-  <div class="hero section-full">
-    <div class="hero-eyebrow">▸ {hero['source']}</div>
-    <h1 class="hero-title">{hero['title']}</h1>
-    <p class="hero-deck">{hero['deck']}</p>
-    <div class="hero-meta">
-      <span><strong>Sintetitzat per</strong> Criteri ESG</span>
-      <span class="sep">·</span>
-      <span>{hero['read_time']} minuts de lectura</span>
-      <span class="sep">·</span>
-      <span>{hero['pages']} pàgines originals</span>
-    </div>
-    <div class="semafor-inline">
-      <span class="semafor-grade">{hero['semafor_grade']}</span>
-      <span class="semafor-label">{hero['semafor_label']}</span>
-      {render_semafor_dots(hero['semafor_statuses'])}
-    </div>
-  </div>
-
-  <!-- També aquesta setmana -->
-  <div class="section-narrow">
-    <div class="section-header">
-      <p class="eyebrow">També aquesta setmana</p>
-      <h2 class="serif" style="font-size: 22px; font-weight: 600; color: #2C1810; margin-top: 4px;">Informes que has de conèixer</h2>
-      <hr class="rule-accent">
-    </div>
-    <div class="articles-grid">
-      {render_articles(articles)}
-    </div>
-  </div>
-
-  <!-- Connexió de la setmana (full-width marró fort) -->
-  <div class="section-narrow">
-    <div class="section-header">
-      <p class="eyebrow">Connexió de la setmana</p>
-      <hr class="rule-accent">
-    </div>
-  </div>
-  <div class="connection-week section-full">
-    <div class="connection-eyebrow">◆ Anàlisi transversal</div>
-    <h2 class="connection-title">{connection['title']}</h2>
-    <p class="connection-body">{connection['body_1']}</p>
-    <p class="connection-body">{connection['body_2']}</p>
-  </div>
-
-  <!-- Més enllà del Checkbox -->
-  <div class="section-narrow">
-    <div class="section-header">
-      <p class="eyebrow">Més enllà del Checkbox</p>
-      <hr class="rule-accent">
-    </div>
-    <div class="mes-enlla">
-      <div class="mes-enlla-eyebrow">◆ Lens ètica Criteri</div>
-      <p class="mes-enlla-criteri">Criteri aplicat: <strong>{mes_enlla['criteri']}</strong></p>
-      <p class="mes-enlla-body">{mes_enlla['body']}</p>
-    </div>
-  </div>
-
-  <!-- Acció recomanada (full-width marró fort) -->
-  <div class="section-narrow">
-    <div class="section-header">
-      <p class="eyebrow">Acció recomanada</p>
-      <hr class="rule-accent">
-    </div>
-  </div>
-  <div class="accio section-full">
-    <div class="accio-eyebrow">▸ Operativa per a aquesta setmana</div>
-    <h3 class="accio-title">{accio['title']}</h3>
-    <p class="accio-desc">{accio['desc']}</p>
-    <div class="accio-tags">
-      <span class="accio-tag tag-esforc-{accio['effort'].lower()}">Esforç: {accio['effort']}</span>
-      <span class="accio-tag tag-esforc-{accio['impact'].lower()}">Impacte: {accio['impact']}</span>
-    </div>
-  </div>
-
-  <!-- CTA Premium -->
-  <div class="cta-block section-full">
-    <div class="cta-eyebrow">▸ Criteri ESG</div>
-    <h2 class="cta-title">Criteri només funciona <em>si es comparteix</em></h2>
-    <p class="cta-text">Si aquesta newsletter t'ha estat útil, comparteix-la amb un company que treballi en sostenibilitat. Cada subscriptor ens ajuda a mantenir la veu editorial independent.</p>
-    <a href="https://criteriesg.com" class="cta-button">Comparteix Criteri ESG →</a>
-  </div>
-
-  <!-- Footer (full-width marró fort) -->
-  <div class="news-footer section-full">
-    <div class="news-footer-brand">Criteri<span class="dot">.</span> ESG</div>
-    <div class="news-footer-meta">
-      <a href="https://criteriesg.com">criteriesg.com</a> · Barcelona · Rep aquesta newsletter perquè ets subscriptor Premium · <a href="{{{{UNSUBSCRIBE_URL}}}}">Cancel·lar</a> · <a href="{{{{PREFERENCES_URL}}}}">Preferències</a>
-    </div>
-  </div>
-
-</div>
-</body>
-</html>"""
-
-
-def build_free_html(data: dict) -> str:
-    """Construeix l'HTML de la versió Free (reduïda).
-    Manté: masthead, editorial obertura, hero, articles secundaris.
-    Bloqueja: connexió setmana, més enllà checkbox, acció recomanada.
-    Afegeix CTA Premium.
+    """Construeix l'HTML de la versió Premium (completa).
+    HTML 100% table-based + inline CSS per compatibilitat màxima amb Gmail, Outlook, Hotmail.
     """
     edition = data["edition"]
     date = data["date"]
@@ -729,134 +596,410 @@ def build_free_html(data: dict) -> str:
     mes_enlla = data["mes_enlla_checkbox"]
     accio = data["accio_recomanada"]
 
+    # Color per esforç/impacte
+    def tag_color(val):
+        v = val.lower()
+        if "baix" in v: return "#5C8A5C"
+        if "mitj" in v: return "#8a7340"
+        return "#A0522D"
+    def tag_bg(val):
+        v = val.lower()
+        if "baix" in v: return "rgba(92,138,92,0.20)"
+        if "mitj" in v: return "rgba(201,169,97,0.25)"
+        return "rgba(160,82,45,0.30)"
+
     return f"""<!DOCTYPE html>
-<html lang="{lang}">
+<html lang="{lang}" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Criteri ESG — Newsletter #{edition}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Criteri ESG — Newsletter #{edition} (Premium)</title>
+<!--[if mso]>
+<xml>
+<o:OfficeDocumentSettings>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>{CSS}</style>
+<style>
+  /* Reset mínim per clients de correu */
+  body {{ margin: 0; padding: 0; width: 100% !important; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }}
+  table {{ border-collapse: collapse; }}
+  img {{ border: 0; max-width: 100%; height: auto; display: block; }}
+  a {{ text-decoration: none; }}
+  /* Responsive: a mobile, les taules s'adapten */
+  @media only screen and (max-width: 600px) {{
+    .container {{ width: 100% !important; }}
+    .articles-row td {{ display: block !important; width: 100% !important; box-sizing: border-box; padding-bottom: 14px; }}
+    .hero-title {{ font-size: 22px !important; }}
+    .connection-title {{ font-size: 17px !important; }}
+  }}
+</style>
 </head>
-<body>
-<div class="container">
+<body style="margin:0;padding:0;background:#F5EFE6;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:#2C1810;line-height:1.5;">
 
-  <!-- Masthead (full-width marró clar) -->
-  <div class="masthead section-full">
-    <div class="masthead-row">
-      <div class="masthead-brand">Criteri<span class="dot">.</span> ESG<span class="masthead-tagline">Intel·ligència ESG per a decisions ètiques</span></div>
-      <div class="masthead-meta">
-        <strong>EDICIÓ #{edition}</strong> · {date} · BARCELONA
-      </div>
-    </div>
-  </div>
+<!-- Wrapper outer table (fons terra) -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F5EFE6;">
+<tr><td align="center" style="padding:0;">
 
-  <!-- Editorial d'obertura (clara amb marge) -->
-  <div class="section-narrow" style="padding-top: 24px;">
-    <div class="editorial-open">
-      <div class="editorial-open-label">▸ Editorial</div>
-      <p class="editorial-open-text">{data['editorial_open']}</p>
-      <div class="editorial-open-sign">— Paolo, Criteri ESG</div>
-    </div>
-  </div>
+<!-- Container 680px -->
+<table role="presentation" width="680" cellpadding="0" cellspacing="0" border="0" class="container" style="width:680px;max-width:680px;background:#F5EFE6;">
 
-  <!-- Informe destacat -->
-  <div class="section-narrow">
-    <div class="section-header">
-      <p class="eyebrow">Informe destacat</p>
-      <hr class="rule-accent">
-    </div>
-  </div>
+  <!-- ============ MASTHEAD (marró clar amb border coure) ============ -->
+  <tr>
+    <td style="background:#F5EFE6;padding:24px 32px;border-bottom:2px solid #2C1810;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td align="left" style="font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:700;color:#2C1810;letter-spacing:-0.02em;">
+            Criteri<span style="color:#B87333;">.</span> ESG
+            <span style="font-family:'Fraunces',serif;font-size:12px;font-style:italic;color:#5C3A1E;margin-left:10px;font-weight:400;">Intel·ligència ESG per a decisions ètiques</span>
+          </td>
+          <td align="right" style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#5C3A1E;text-transform:uppercase;letter-spacing:0.16em;">
+            <strong style="color:#B87333;font-weight:600;">EDICIÓ #{edition}</strong> · {date} · BARCELONA · PREMIUM
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
 
-  <div class="hero section-full">
-    <div class="hero-eyebrow">▸ {hero['source']}</div>
-    <h1 class="hero-title">{hero['title']}</h1>
-    <p class="hero-deck">{hero['deck']}</p>
-    <div class="hero-meta">
-      <span><strong>Sintetitzat per</strong> Criteri ESG</span>
-      <span class="sep">·</span>
-      <span>{hero['read_time']} minuts de lectura</span>
-      <span class="sep">·</span>
-      <span>{hero['pages']} pàgines originals</span>
-    </div>
-    <div class="semafor-inline">
-      <span class="semafor-grade">{hero['semafor_grade']}</span>
-      <span class="semafor-label">{hero['semafor_label']}</span>
-      {render_semafor_dots(hero['semafor_statuses'])}
-    </div>
-  </div>
+  <!-- ============ EDITORIAL D'OBERTURA (card blanca amb filet coure) ============ -->
+  <tr><td style="padding:24px 32px 0 32px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#FFFFFF;border-left:3px solid #B87333;border-radius:0 4px 4px 0;">
+      <tr><td style="padding:22px 24px;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8A5526;text-transform:uppercase;letter-spacing:0.18em;font-weight:600;margin:0 0 10px 0;">▸ Editorial</p>
+        <p style="font-family:'Fraunces',serif;font-style:italic;font-size:15px;line-height:1.6;color:#2C1810;margin:0;">{data['editorial_open']}</p>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8B7355;text-transform:uppercase;letter-spacing:0.14em;margin:10px 0 0 0;">— Paolo, Criteri ESG</p>
+      </td></tr>
+    </table>
+  </td></tr>
 
-  <!-- També aquesta setmana -->
-  <div class="section-narrow">
-    <div class="section-header">
-      <p class="eyebrow">També aquesta setmana</p>
-      <h2 class="serif" style="font-size: 22px; font-weight: 600; color: #2C1810; margin-top: 4px;">Informes que has de conèixer</h2>
-      <hr class="rule-accent">
-    </div>
-    <div class="articles-grid">
-      {render_articles(articles)}
-    </div>
-  </div>
+  <!-- ============ SECTION HEADER: Informe destacat ============ -->
+  <tr><td style="padding:24px 32px 0 32px;">
+    <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#8A5526;margin:0 0 8px 0;">Informe destacat</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:48px;height:2px;background:#B87333;"><tr><td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>
+  </td></tr>
 
-  <!-- Connexió de la setmana (LOCKED) -->
-  <div class="section-narrow">
-    <div class="section-header">
-      <p class="eyebrow">Connexió de la setmana</p>
-      <hr class="rule-accent">
-    </div>
-    <div class="locked-section">
-      <div class="locked-label">◆ Contingut Premium</div>
-      <p class="locked-title">{connection['title']}</p>
-      <p class="locked-desc">Criteri ESG creua els informes d'aquesta setmana per identificar patrons i riscos transversals. La connexió d'aquesta setmana relaciona els 4 informes destacats amb el marc regulador europeu.</p>
-      <a href="https://criteriesg.com/preus" class="locked-cta">Desbloqueja amb Premium →</a>
-    </div>
-  </div>
+  <!-- ============ HERO (marró fort full-width) ============ -->
+  <tr>
+    <td style="background:#2C1810;color:#F5EFE6;padding:32px 32px;border-bottom:4px solid #B87333;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr><td>
+          <p style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;color:#2C1810;background:#D9A574;text-transform:uppercase;letter-spacing:0.18em;font-weight:700;padding:4px 12px;margin:0 0 14px 0;">▸ {hero['source']}</p>
+        </td></tr>
+        <tr><td style="font-family:'Fraunces',serif;font-size:28px;font-weight:500;line-height:1.1;color:#F5EFE6;margin:0 0 14px 0;letter-spacing:-0.018em;padding-bottom:14px;" class="hero-title">
+          {hero['title']}
+        </td></tr>
+        <tr><td style="font-family:'Fraunces',serif;font-size:15px;font-style:italic;line-height:1.5;color:rgba(245,239,230,0.75);padding-bottom:18px;">
+          {hero['deck']}
+        </td></tr>
+        <tr><td style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,239,230,0.6);text-transform:uppercase;letter-spacing:0.12em;padding-bottom:18px;">
+          <strong style="color:#D9A574;">Sintetitzat per</strong> Criteri ESG · {hero['read_time']} minuts de lectura · {hero['pages']} pàgines originals
+        </td></tr>
+        <!-- Semàfor inline -->
+        <tr><td>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:rgba(245,239,230,0.06);border-left:3px solid #B87333;border-radius:0 4px 4px 0;">
+            <tr><td style="padding:12px 16px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+                <td style="font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:#D9A574;vertical-align:middle;">{hero['semafor_grade']}</td>
+                <td style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#D9A574;text-transform:uppercase;letter-spacing:0.14em;font-weight:600;vertical-align:middle;padding-left:12px;">{hero['semafor_label']}</td>
+                <td align="right" style="vertical-align:middle;">
+                  {render_semafor_dots(hero['semafor_statuses'])}
+                </td>
+              </tr></table>
+            </td></tr>
+          </table>
+        </td></tr>
+      </table>
+    </td>
+  </tr>
 
-  <!-- Més enllà del Checkbox (LOCKED) -->
-  <div class="section-narrow">
-    <div class="section-header">
-      <p class="eyebrow">Més enllà del Checkbox</p>
-      <hr class="rule-accent">
-    </div>
-    <div class="locked-section">
-      <div class="locked-label">◆ Contingut Premium</div>
-      <p class="locked-title">Anàlisi ètica: {mes_enlla['criteri']}</p>
-      <p class="locked-desc">Criteri ESG aplica un dels 5 criteris ètics propis (dignitat, justícia distributiva, sostenibilitat absoluta, co-decisió, arrelament) a un dels informes de la setmana. Una lent diferent dels marcs ESG anglosaxons.</p>
-      <a href="https://criteriesg.com/preus" class="locked-cta">Desbloqueja amb Premium →</a>
-    </div>
-  </div>
+  <!-- ============ SECTION HEADER + ARTICLES (3 col table) ============ -->
+  <tr><td style="padding:24px 32px 0 32px;">
+    <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#8A5526;margin:0 0 4px 0;">També aquesta setmana</p>
+    <p style="font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:#2C1810;margin:4px 0 8px 0;">Informes que has de conèixer</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:48px;height:2px;background:#B87333;"><tr><td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>
+  </td></tr>
+  <tr><td style="padding:14px 32px 24px 32px;">
+    <!--[if mso]><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><![endif]-->
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="articles-row" style="border-collapse:separate;border-spacing:7px 0;">
+      <tr>{render_articles(articles)}</tr>
+    </table>
+  </td></tr>
 
-  <!-- Acció recomanada (LOCKED) -->
-  <div class="section-narrow">
-    <div class="section-header">
-      <p class="eyebrow">Acció recomanada</p>
-      <hr class="rule-accent">
-    </div>
-    <div class="locked-section">
-      <div class="locked-label">◆ Contingut Premium</div>
-      <p class="locked-title">Una acció operativa per aquesta setmana</p>
-      <p class="locked-desc">Cada setmana, Criteri ESG extreu una acció concreta dels informes sintetitzats. Esforç i impacte estimats per ajudar-te a prioritzar.</p>
-      <a href="https://criteriesg.com/preus" class="locked-cta">Desbloqueja amb Premium →</a>
-    </div>
-  </div>
+  <!-- ============ SECTION HEADER: Connexió de la setmana ============ -->
+  <tr><td style="padding:0 32px;">
+    <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#8A5526;margin:0 0 8px 0;">Connexió de la setmana</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:48px;height:2px;background:#B87333;"><tr><td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>
+  </td></tr>
 
-  <!-- CTA Premium final -->
-  <div class="cta-block section-full">
-    <div class="cta-eyebrow">▸ Fes-te Premium</div>
-    <h2 class="cta-title">290€/any per <em>criteri clar</em> cada setmana</h2>
-    <p class="cta-text">Accés als informes complets, cross-reference amb EcoVadis/B Corp/MSCI/GRI, accions recomanades, connexions setmanals i la lent ètica "Més enllà del Checkbox". 50 places early bird disponibles.</p>
-    <a href="https://criteriesg.com/preus" class="cta-button">Veure preus →</a>
-  </div>
+  <!-- ============ CONNEXIÓ SETMANA (marró fort full-width) ============ -->
+  <tr>
+    <td style="background:#2C1810;color:#F5EFE6;padding:24px 32px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#D9A574;text-transform:uppercase;letter-spacing:0.18em;font-weight:700;margin:0 0 12px 0;">◆ Anàlisi transversal</p>
+      <p style="font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:#F5EFE6;margin:0 0 14px 0;line-height:1.25;" class="connection-title">{connection['title']}</p>
+      <p style="font-size:14px;line-height:1.65;color:rgba(245,239,230,0.9);margin:0 0 12px 0;">{connection['body_1']}</p>
+      <p style="font-size:14px;line-height:1.65;color:rgba(245,239,230,0.9);margin:0;">{connection['body_2']}</p>
+    </td>
+  </tr>
 
-  <!-- Footer (full-width marró fort) -->
-  <div class="news-footer section-full">
-    <div class="news-footer-brand">Criteri<span class="dot">.</span> ESG</div>
-    <div class="news-footer-meta">
-      <a href="https://criteriesg.com">criteriesg.com</a> · Barcelona · Rep aquesta newsletter perquè t'hi vas subscriure · <a href="{{{{UNSUBSCRIBE_URL}}}}">Cancel·lar</a> · <a href="{{{{PREFERENCES_URL}}}}">Preferències</a>
-    </div>
-  </div>
+  <!-- ============ SECTION HEADER: Més enllà del Checkbox ============ -->
+  <tr><td style="padding:24px 32px 0 32px;">
+    <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#8A5526;margin:0 0 8px 0;">Més enllà del Checkbox</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:48px;height:2px;background:#B87333;"><tr><td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>
+  </td></tr>
 
-</div>
+  <!-- ============ MÉS ENLLÀ DEL CHECKBOX (coure suau) ============ -->
+  <tr><td style="padding:14px 32px 24px 32px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:rgba(184,115,51,0.10);border:1px solid #B87333;border-radius:4px;">
+      <tr><td style="padding:20px;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#B87333;text-transform:uppercase;letter-spacing:0.18em;font-weight:700;margin:0 0 8px 0;">◆ Lens ètica Criteri</p>
+        <p style="font-family:'Fraunces',serif;font-size:13px;font-style:italic;color:#5C3A1E;margin:0 0 10px 0;">Criteri aplicat: <strong style="color:#2C1810;">{mes_enlla['criteri']}</strong></p>
+        <p style="font-size:14px;line-height:1.65;color:#2C1810;margin:0;">{mes_enlla['body']}</p>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- ============ SECTION HEADER: Acció recomanada ============ -->
+  <tr><td style="padding:0 32px;">
+    <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#8A5526;margin:0 0 8px 0;">Acció recomanada</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:48px;height:2px;background:#B87333;"><tr><td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>
+  </td></tr>
+
+  <!-- ============ ACCIÓ RECOMANADA (marró fort amb vora verda) ============ -->
+  <tr>
+    <td style="background:#2C1810;color:#F5EFE6;border-left:4px solid #5C8A5C;padding:22px 32px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#5C8A5C;text-transform:uppercase;letter-spacing:0.18em;font-weight:700;margin:0 0 10px 0;">▸ Operativa per a aquesta setmana</p>
+      <p style="font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#F5EFE6;margin:0 0 10px 0;line-height:1.3;">{accio['title']}</p>
+      <p style="font-size:13px;color:rgba(245,239,230,0.85);line-height:1.6;margin:0 0 12px 0;">{accio['desc']}</p>
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+        <td style="background:{tag_bg(accio['effort'])};font-family:'JetBrains Mono',monospace;font-size:9px;padding:3px 8px;border-radius:8px;text-transform:uppercase;letter-spacing:0.1em;font-weight:600;color:{tag_color(accio['effort'])};">Esforç: {accio['effort']}</td>
+        <td style="width:8px;">&nbsp;</td>
+        <td style="background:{tag_bg(accio['impact'])};font-family:'JetBrains Mono',monospace;font-size:9px;padding:3px 8px;border-radius:8px;text-transform:uppercase;letter-spacing:0.1em;font-weight:600;color:{tag_color(accio['impact'])};">Impacte: {accio['impact']}</td>
+      </tr></table>
+    </td>
+  </tr>
+
+  <!-- ============ CTA PREMIUM (coure fort) ============ -->
+  <tr>
+    <td style="background:#B87333;color:#FFFFFF;padding:28px 32px;text-align:center;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.3em;font-weight:600;margin:0 0 12px 0;">▸ Criteri ESG</p>
+      <p style="font-family:'Fraunces',serif;font-size:22px;font-weight:500;color:#FFFFFF;margin:0 0 12px 0;line-height:1.25;letter-spacing:-0.015em;">Criteri només funciona <em style="font-style:italic;color:#2C1810;font-weight:500;">si es comparteix</em></p>
+      <p style="font-family:'Fraunces',serif;font-style:italic;font-size:14px;color:rgba(255,255,255,0.9);line-height:1.5;margin:0 0 20px 0;">Si aquesta newsletter t'ha estat útil, comparteix-la amb un company que treballi en sostenibilitat. Cada subscriptor ens ajuda a mantenir la veu editorial independent.</p>
+      <a href="https://criteriesg.com" style="display:inline-block;background:#FFFFFF;color:#B87333;padding:14px 28px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:0.14em;border-radius:2px;">Comparteix Criteri ESG →</a>
+    </td>
+  </tr>
+
+  <!-- ============ FOOTER (marró fort full-width) ============ -->
+  <tr>
+    <td style="background:#2C1810;color:rgba(245,239,230,0.7);padding:28px 32px;text-align:center;">
+      <p style="font-family:'Fraunces',serif;font-size:20px;color:#F5EFE6;font-weight:600;margin:0 0 10px 0;letter-spacing:-0.01em;">Criteri<span style="color:#D9A574;">.</span> ESG</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,239,230,0.7);margin:0;">
+        <a href="https://criteriesg.com" style="color:#D9A574;text-decoration:none;">criteriesg.com</a> · Barcelona · Rep aquesta newsletter perquè ets subscriptor Premium · <a href="{{{{UNSUBSCRIBE_URL}}}}" style="color:#D9A574;text-decoration:none;">Cancel·lar</a> · <a href="{{{{PREFERENCES_URL}}}}" style="color:#D9A574;text-decoration:none;">Preferències</a>
+      </p>
+    </td>
+  </tr>
+
+</table>
+<!-- /Container -->
+
+</td></tr>
+</table>
+<!-- /Wrapper -->
+
+</body>
+</html>"""
+
+
+def build_free_html(data: dict) -> str:
+    """Construeix l'HTML de la versió Free (reduïda).
+    HTML 100% table-based + inline CSS.
+    Manté: masthead, editorial obertura, hero, articles secundaris.
+    Bloqueja: connexió setmana, més enllà checkbox, acció recomanada.
+    """
+    edition = data["edition"]
+    date = data["date"]
+    lang = data["lang"]
+
+    hero = data["hero"]
+    articles = data["secondary_articles"]
+    connection = data["connection_week"]
+    mes_enlla = data["mes_enlla_checkbox"]
+
+    # Helper per locked sections
+    def locked_section(title: str, desc: str) -> str:
+        return f"""
+  <tr><td style="padding:14px 32px 24px 32px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:rgba(139,115,85,0.08);border:1px dashed #C9B89A;border-radius:4px;">
+      <tr><td style="padding:20px;text-align:center;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8B7355;text-transform:uppercase;letter-spacing:0.18em;font-weight:600;margin:0 0 8px 0;">◆ Contingut Premium</p>
+        <p style="font-family:'Fraunces',serif;font-size:17px;font-style:italic;color:#5C3A1E;margin:0 0 8px 0;line-height:1.4;">{title}</p>
+        <p style="font-size:12px;color:#8B7355;margin:0 0 14px 0;line-height:1.5;">{desc}</p>
+        <a href="https://criteriesg.com/preus" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#B87333;text-decoration:none;text-transform:uppercase;letter-spacing:0.12em;font-weight:700;">Desbloqueja amb Premium →</a>
+      </td></tr>
+    </table>
+  </td></tr>"""
+
+    return f"""<!DOCTYPE html>
+<html lang="{lang}" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Criteri ESG — Newsletter #{edition}</title>
+<!--[if mso]>
+<xml>
+<o:OfficeDocumentSettings>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body {{ margin: 0; padding: 0; width: 100% !important; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }}
+  table {{ border-collapse: collapse; }}
+  img {{ border: 0; max-width: 100%; height: auto; display: block; }}
+  a {{ text-decoration: none; }}
+  @media only screen and (max-width: 600px) {{
+    .container {{ width: 100% !important; }}
+    .articles-row td {{ display: block !important; width: 100% !important; box-sizing: border-box; padding-bottom: 14px; }}
+    .hero-title {{ font-size: 22px !important; }}
+  }}
+</style>
+</head>
+<body style="margin:0;padding:0;background:#F5EFE6;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:#2C1810;line-height:1.5;">
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F5EFE6;">
+<tr><td align="center" style="padding:0;">
+
+<table role="presentation" width="680" cellpadding="0" cellspacing="0" border="0" class="container" style="width:680px;max-width:680px;background:#F5EFE6;">
+
+  <!-- MASTHEAD -->
+  <tr>
+    <td style="background:#F5EFE6;padding:24px 32px;border-bottom:2px solid #2C1810;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td align="left" style="font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:700;color:#2C1810;letter-spacing:-0.02em;">
+            Criteri<span style="color:#B87333;">.</span> ESG
+            <span style="font-family:'Fraunces',serif;font-size:12px;font-style:italic;color:#5C3A1E;margin-left:10px;font-weight:400;">Intel·ligència ESG per a decisions ètiques</span>
+          </td>
+          <td align="right" style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#5C3A1E;text-transform:uppercase;letter-spacing:0.16em;">
+            <strong style="color:#B87333;font-weight:600;">EDICIÓ #{edition}</strong> · {date} · BARCELONA
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- EDITORIAL D'OBERTURA -->
+  <tr><td style="padding:24px 32px 0 32px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#FFFFFF;border-left:3px solid #B87333;border-radius:0 4px 4px 0;">
+      <tr><td style="padding:22px 24px;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8A5526;text-transform:uppercase;letter-spacing:0.18em;font-weight:600;margin:0 0 10px 0;">▸ Editorial</p>
+        <p style="font-family:'Fraunces',serif;font-style:italic;font-size:15px;line-height:1.6;color:#2C1810;margin:0;">{data['editorial_open']}</p>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8B7355;text-transform:uppercase;letter-spacing:0.14em;margin:10px 0 0 0;">— Paolo, Criteri ESG</p>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- SECTION HEADER: Informe destacat -->
+  <tr><td style="padding:24px 32px 0 32px;">
+    <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#8A5526;margin:0 0 8px 0;">Informe destacat</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:48px;height:2px;background:#B87333;"><tr><td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>
+  </td></tr>
+
+  <!-- HERO -->
+  <tr>
+    <td style="background:#2C1810;color:#F5EFE6;padding:32px 32px;border-bottom:4px solid #B87333;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr><td>
+          <p style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;color:#2C1810;background:#D9A574;text-transform:uppercase;letter-spacing:0.18em;font-weight:700;padding:4px 12px;margin:0 0 14px 0;">▸ {hero['source']}</p>
+        </td></tr>
+        <tr><td style="font-family:'Fraunces',serif;font-size:28px;font-weight:500;line-height:1.1;color:#F5EFE6;letter-spacing:-0.018em;padding-bottom:14px;" class="hero-title">
+          {hero['title']}
+        </td></tr>
+        <tr><td style="font-family:'Fraunces',serif;font-size:15px;font-style:italic;line-height:1.5;color:rgba(245,239,230,0.75);padding-bottom:18px;">
+          {hero['deck']}
+        </td></tr>
+        <tr><td style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,239,230,0.6);text-transform:uppercase;letter-spacing:0.12em;padding-bottom:18px;">
+          <strong style="color:#D9A574;">Sintetitzat per</strong> Criteri ESG · {hero['read_time']} minuts de lectura · {hero['pages']} pàgines originals
+        </td></tr>
+        <tr><td>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:rgba(245,239,230,0.06);border-left:3px solid #B87333;border-radius:0 4px 4px 0;">
+            <tr><td style="padding:12px 16px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+                <td style="font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:#D9A574;vertical-align:middle;">{hero['semafor_grade']}</td>
+                <td style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#D9A574;text-transform:uppercase;letter-spacing:0.14em;font-weight:600;vertical-align:middle;padding-left:12px;">{hero['semafor_label']}</td>
+                <td align="right" style="vertical-align:middle;">
+                  {render_semafor_dots(hero['semafor_statuses'])}
+                </td>
+              </tr></table>
+            </td></tr>
+          </table>
+        </td></tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- SECTION HEADER + ARTICLES -->
+  <tr><td style="padding:24px 32px 0 32px;">
+    <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#8A5526;margin:0 0 4px 0;">També aquesta setmana</p>
+    <p style="font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:#2C1810;margin:4px 0 8px 0;">Informes que has de conèixer</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:48px;height:2px;background:#B87333;"><tr><td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>
+  </td></tr>
+  <tr><td style="padding:14px 32px 24px 32px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="articles-row" style="border-collapse:separate;border-spacing:7px 0;">
+      <tr>{render_articles(articles)}</tr>
+    </table>
+  </td></tr>
+
+  <!-- CONNEXIÓ DE LA SETMANA (LOCKED) -->
+  <tr><td style="padding:0 32px;">
+    <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#8A5526;margin:0 0 8px 0;">Connexió de la setmana</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:48px;height:2px;background:#B87333;"><tr><td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>
+  </td></tr>
+  {locked_section(connection['title'], "Criteri ESG creua els informes d'aquesta setmana per identificar patrons i riscos transversals. La connexió d'aquesta setmana relaciona els 4 informes destacats amb el marc regulador europeu.")}
+
+  <!-- MÉS ENLLÀ DEL CHECKBOX (LOCKED) -->
+  <tr><td style="padding:0 32px;">
+    <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#8A5526;margin:0 0 8px 0;">Més enllà del Checkbox</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:48px;height:2px;background:#B87333;"><tr><td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>
+  </td></tr>
+  {locked_section(f"Anàlisi ètica: {mes_enlla['criteri']}", "Criteri ESG aplica un dels 5 criteris ètics propis (dignitat, justícia distributiva, sostenibilitat absoluta, co-decisió, arrelament) a un dels informes de la setmana. Una lent diferent dels marcs ESG anglosaxons.")}
+
+  <!-- ACCIÓ RECOMANADA (LOCKED) -->
+  <tr><td style="padding:0 32px;">
+    <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#8A5526;margin:0 0 8px 0;">Acció recomanada</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:48px;height:2px;background:#B87333;"><tr><td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>
+  </td></tr>
+  {locked_section("Una acció operativa per aquesta setmana", "Cada setmana, Criteri ESG extreu una acció concreta dels informes sintetitzats. Esforç i impacte estimats per ajudar-te a prioritzar.")}
+
+  <!-- CTA PREMIUM FINAL -->
+  <tr>
+    <td style="background:#B87333;color:#FFFFFF;padding:28px 32px;text-align:center;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.3em;font-weight:600;margin:0 0 12px 0;">▸ Fes-te Premium</p>
+      <p style="font-family:'Fraunces',serif;font-size:22px;font-weight:500;color:#FFFFFF;margin:0 0 12px 0;line-height:1.25;letter-spacing:-0.015em;">290€/any per <em style="font-style:italic;color:#2C1810;font-weight:500;">criteri clar</em> cada setmana</p>
+      <p style="font-family:'Fraunces',serif;font-style:italic;font-size:14px;color:rgba(255,255,255,0.9);line-height:1.5;margin:0 0 20px 0;">Accés als informes complets, cross-reference amb EcoVadis/B Corp/MSCI/GRI, accions recomanades, connexions setmanals i la lent ètica "Més enllà del Checkbox". 50 places early bird disponibles.</p>
+      <a href="https://criteriesg.com/preus" style="display:inline-block;background:#FFFFFF;color:#B87333;padding:14px 28px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:0.14em;border-radius:2px;">Veure preus →</a>
+    </td>
+  </tr>
+
+  <!-- FOOTER -->
+  <tr>
+    <td style="background:#2C1810;color:rgba(245,239,230,0.7);padding:28px 32px;text-align:center;">
+      <p style="font-family:'Fraunces',serif;font-size:20px;color:#F5EFE6;font-weight:600;margin:0 0 10px 0;letter-spacing:-0.01em;">Criteri<span style="color:#D9A574;">.</span> ESG</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,239,230,0.7);margin:0;">
+        <a href="https://criteriesg.com" style="color:#D9A574;text-decoration:none;">criteriesg.com</a> · Barcelona · Rep aquesta newsletter perquè t'hi vas subscriure · <a href="{{{{UNSUBSCRIBE_URL}}}}" style="color:#D9A574;text-decoration:none;">Cancel·lar</a> · <a href="{{{{PREFERENCES_URL}}}}" style="color:#D9A574;text-decoration:none;">Preferències</a>
+      </p>
+    </td>
+  </tr>
+
+</table>
+
+</td></tr>
+</table>
+
 </body>
 </html>"""
 

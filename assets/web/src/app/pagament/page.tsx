@@ -18,6 +18,9 @@ export default function PagamentPage() {
   const [preusOpen, setPreusOpen] = useState(false);
   const [method, setMethod] = useState<"stripe" | "fiare" | null>(null);
   const [uploadedFile, setUploadedFile] = useState<string | null>(null);
+  const [fileData, setFileData] = useState<{ base64: string; name: string; type: string } | null>(null);
+  const [validating, setValidating] = useState(false);
+  const [result, setResult] = useState<{ success: boolean; message: string } | null>(null);
 
   const openAuth = (tab: "register" | "login" = "register") => { setAuthTab(tab); setAuthOpen(true); };
   const tr = (ca: string, es: string) => (lang === "ca" ? ca : es);
@@ -195,20 +198,76 @@ export default function PagamentPage() {
                   {uploadedFile ? (
                     <div className="flex items-center justify-between p-3 border" style={{ borderColor: "#B87333", background: "rgba(184,115,51,0.06)" }}>
                       <span className="text-sm text-primary">{uploadedFile}</span>
-                      <button onClick={() => setUploadedFile(null)} className="font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "#8A5526" }}>✕ {tr("Treure", "Quitar")}</button>
+                      <button onClick={() => { setUploadedFile(null); setFileData(null); setResult(null); }} className="font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "#8A5526" }}>✕ {tr("Treure", "Quitar")}</button>
                     </div>
                   ) : (
                     <label className="flex flex-col items-center justify-center gap-2 p-8 border-2 border-dashed cursor-pointer" style={{ borderColor: "#C9B89A", background: "#F5EFE6" }}>
                       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8B7355" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                       <span className="text-sm" style={{ color: "#8B7355" }}>{tr("Arrossega el fitxer aquí o fes clic per seleccionar", "Arrastra el archivo aquí o haz clic para seleccionar")}</span>
                       <span className="font-mono text-[9px] uppercase tracking-[0.14em]" style={{ color: "#8B7355" }}>PDF, JPG, PNG · {tr("màx 10 MB", "máx 10 MB")}</span>
-                      <input type="file" accept=".pdf,.jpg,.jpeg,.png" className="hidden" onChange={(e) => { if (e.target.files?.[0]) setUploadedFile(e.target.files[0].name); }} />
+                      <input type="file" accept=".pdf,.jpg,.jpeg,.png" className="hidden" onChange={async (e) => {
+                        if (e.target.files?.[0]) {
+                          const file = e.target.files[0];
+                          setUploadedFile(file.name);
+                          setResult(null);
+                          const reader = new FileReader();
+                          reader.onload = () => {
+                            const base64 = (reader.result as string).split(",")[1];
+                            setFileData({ base64, name: file.name, type: file.type });
+                          };
+                          reader.readAsDataURL(file);
+                        }
+                      }} />
                     </label>
                   )}
                 </div>
 
-                <button disabled={!uploadedFile} className="w-full py-3.5 text-sm font-semibold text-white disabled:opacity-50" style={{ background: "#B87333" }}>
-                  {uploadedFile ? tr("Enviar justificant", "Enviar justificante") : tr("Puja el justificant per continuar", "Sube el justificante para continuar")}
+                {/* Resultat validació */}
+                {result && (
+                  <div className="p-4 border" style={{
+                    background: result.success ? "rgba(92,138,92,0.10)" : "rgba(160,82,45,0.10)",
+                    borderColor: result.success ? "#5C8A5C" : "#A0522D",
+                  }}>
+                    <p className="text-sm" style={{ color: result.success ? "#5C8A5C" : "#A0522D" }}>
+                      {result.success ? "✓ " : "✗ "}{result.message}
+                    </p>
+                  </div>
+                )}
+
+                {/* Botó validar */}
+                <button
+                  disabled={!fileData || validating}
+                  onClick={async () => {
+                    if (!fileData || !user) return;
+                    setValidating(true);
+                    setResult(null);
+                    try {
+                      const res = await fetch("/api/validate-fiare", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          fileBase64: fileData.base64,
+                          fileName: fileData.name,
+                          fileType: fileData.type,
+                          userEmail: user.email,
+                          userId: user.id,
+                        }),
+                      });
+                      const data = await res.json();
+                      if (data.success) {
+                        setResult({ success: true, message: tr("Justificant validat. Accés Premium activat!", "¡Justificante validado! ¡Acceso Premium activado!") });
+                      } else {
+                        setResult({ success: false, message: data.message || tr("No s'ha pogut validar el justificant.", "No se ha podido validar el justificante.") });
+                      }
+                    } catch (e) {
+                      setResult({ success: false, message: tr("Error validant. Escriu-nos a info@criteriesg.com.", "Error validando. Escríbenos a info@criteriesg.com.") });
+                    }
+                    setValidating(false);
+                  }}
+                  className="w-full py-3.5 text-sm font-semibold text-white disabled:opacity-50"
+                  style={{ background: "#B87333" }}
+                >
+                  {validating ? tr("Validant justificant...", "Validando justificante...") : uploadedFile ? tr("Enviar justificant", "Enviar justificante") : tr("Puja el justificant per continuar", "Sube el justificante para continuar")}
                 </button>
                 <p className="text-xs text-center" style={{ color: "#8B7355" }}>{tr("El justificant es guardarà a la nostra base de dades per a la seva revisió.", "El justificante se guardará en nuestra base de datos para su revisión.")}</p>
               </div>

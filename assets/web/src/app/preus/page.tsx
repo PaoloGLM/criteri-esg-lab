@@ -34,7 +34,8 @@ export default function PreusPage() {
       tag: tr("Recomanat", "Recomendado"),
       name: "Premium", price: "29€", unit: tr("/ mes · pagament anual", "/ mes · pago anual"),
       earlyBird: tr("Early bird · 50 places · Només anual", "Early bird · 50 plazas · Solo anual"),
-      originalPrice: tr("Preu normal: 39€/mes · Early bird: 348€/any (29€/mes)", "Precio normal: 39€/mes · Early bird: 348€/año (29€/mes)"),
+      originalPrice: tr("Preu normal: 39€/mes", "Precio normal: 39€/mes"),
+      earlyBirdPrice: tr("Early bird: 348€/any (29€/mes)", "Early bird: 348€/año (29€/mes)"),
       desc: tr("Per al director de sostenibilitat que necessita criteri per decidir què fer cada setmana.", "Para el director de sostenibilidad que necesita criterio para decidir qué hacer cada semana."),
       features: [
         { text: tr("Tot lo de Free", "Todo lo de Free"), ok: true },
@@ -114,6 +115,7 @@ export default function PreusPage() {
                     <span className="font-mono text-[11px] uppercase tracking-[0.16em]" style={{ color: plan.featured ? "rgba(245,239,230,0.6)" : "#8B7355" }}>{plan.unit}</span>
                   </div>
                   {plan.originalPrice && <p className="font-mono text-[11px]" style={{ color: plan.featured ? "rgba(245,239,230,0.4)" : "#8B7355", textDecoration: "line-through" }}>{plan.originalPrice}</p>}
+                  {plan.earlyBirdPrice && <p className="font-mono text-[11px]" style={{ color: plan.featured ? "rgba(245,239,230,0.7)" : "#8A5526" }}>{plan.earlyBirdPrice}</p>}
                   <p className="font-serif text-sm italic leading-relaxed border-y py-4" style={{ color: plan.featured ? "rgba(245,239,230,0.75)" : "#5C3A1E", borderColor: plan.featured ? "rgba(217,165,116,0.25)" : "#C9B89A" }}>{plan.desc}</p>
                   <div className="flex flex-col gap-2.5">
                     {plan.features.map((f) => (

@@ -91,7 +91,7 @@ export default function PagamentPage() {
                   </div>
                   <div>
                     <h3 className="font-serif text-lg font-medium text-primary">{tr("Transferència", "Transferencia")}</h3>
-                    <p className="font-mono text-[9px] uppercase tracking-[0.14em]" style={{ color: "#8B7355" }}>Fiare · {tr("1-2 dies", "1-2 días")}</p>
+                    <p className="font-mono text-[9px] uppercase tracking-[0.14em]" style={{ color: "#8B7355" }}>Fiare · {tr("Immediata", "Inmediata")}</p>
                   </div>
                 </div>
                 <p className="text-sm" style={{ color: "#5C3A1E" }}>{tr("Paga per transferència bancària a Fiare. Accés Premium activat en rebre el pagament.", "Paga por transferencia bancaria a Fiare. Acceso Premium activado al recibir el pago.")}</p>
@@ -153,7 +153,7 @@ export default function PagamentPage() {
               </div>
               <div className="space-y-4">
                 <div className="p-4" style={{ background: "rgba(184,115,51,0.06)", border: "1px solid #B87333" }}>
-                  <p className="font-serif text-sm italic" style={{ color: "#5C3A1E" }}>{tr("Per activar el teu accés Premium, realitza la transferència amb les següents dades i puja el justificant a continuació. L'accés s'activarà en 1-2 dies hàbils.", "Para activar tu acceso Premium, realiza la transferencia con los siguientes datos y sube el justificante a continuación. El acceso se activará en 1-2 días hábiles.")}</p>
+                  <p className="font-serif text-sm italic" style={{ color: "#5C3A1E" }}>{tr("Per activar el teu accés Premium, realitza la TRANSFERÈNCIA IMMEDIATA amb les següents dades i puja el justificant a continuació. L'accés s'activarà en uns segons.", "Para activar tu acceso Premium, realiza la TRANSFERENCIA INMEDIATA con los siguientes datos y sube el justificante a continuación. El acceso se activará en unos segundos.")}</p>
                 </div>
                 <div className="space-y-3">
                   <div className="grid grid-cols-[140px_1fr] gap-2 py-2 border-b" style={{ borderBottomColor: "#C9B89A" }}>
@@ -210,7 +210,7 @@ export default function PagamentPage() {
                 <button disabled={!uploadedFile} className="w-full py-3.5 text-sm font-semibold text-white disabled:opacity-50" style={{ background: "#B87333" }}>
                   {uploadedFile ? tr("Enviar justificant", "Enviar justificante") : tr("Puja el justificant per continuar", "Sube el justificante para continuar")}
                 </button>
-                <p className="text-xs text-center" style={{ color: "#8B7355" }}>{tr("El justificant es guardarà al nostre Drive i revisarem la transferència en 1-2 dies hàbils.", "El justificante se guardará en nuestro Drive y revisaremos la transferencia en 1-2 días hábiles.")}</p>
+                <p className="text-xs text-center" style={{ color: "#8B7355" }}>{tr("El justificant es guardarà a la nostra base de dades per a la seva revisió.", "El justificante se guardará en nuestra base de datos para su revisión.")}</p>
               </div>
             </div>
           )}

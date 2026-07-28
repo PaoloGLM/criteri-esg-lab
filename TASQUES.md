@@ -1,81 +1,70 @@
-# TASQUES — Recordatoris ràpids per Z.ai-bot
+# TASQUES — Gestió de feines Criteri ESG
 
-> Quan Paolo vol deixar una feina ràpida, escriu una línia aquí.
-> Quan vol deixar una feina gran, crea un GitHub Issue.
-> Z.ai-bot llegeix aquest fitxer a l'inici de cada sessió.
+> **Únic document de tasques**. Actualitzat per GLM en cada sessió.
+> Paolo llegeix això a l'inici de cada sessió per veure on som.
+> Format: 3 seccions — Pendents, En curs, Completades.
 
 ---
 
 ## Pendents
 
-### P1 — Repensar la newsletter perquè sigui diferencial (gratis + Premium)
-- Versió gratis: resum executiu + 1 connexió + CTA Premium
-- Versió Premium: informe complet + cross-reference + accions + notícies ESG + inversió ESG
-- Plataforma: Beehiiv
-- Freqüència: bimensual, dijous 15:00h
+### P1 — Disseny PDF dels informes (tancar amb la Roser)
+- La plantilla actual serveix com a base però no és el disseny final
+- Passos 1-4 del flux funcionen; cal tancar el disseny del PDF del pas 5
+- Veure `scripts/PENDENT-DISSENY-INFORME.md`
 
-### P2 — Preguntes ètiques per treballar en equip
-- Definir format concret (quantitat, periodicitat, format de resposta)
-- Decidir si és apartat de newsletter Premium o eina independent
-- Redactar primeres preguntes (Paolo lidera el contingut ètic)
+### P1 — Compte Stripe
+- Crear compte i configurar per pagaments amb targeta
+- El botó Stripe del formulari /pagament encara no funciona
 
-### P3 — Implementar pàgina /estandares-esg
-- Pàgina principal: grid de 12 estàndards amb 3 colors (regulacions, frameworks, certificacions)
-- Pàgina de detall /[slug]: taula cross-reference + filtres + accions recomanades
-- Mockup aprovat: /home/z/my-project/download/estandares-mockup.png
-- Esquema al CONTEXT.md (P3)
+### P1 — Política de privacitat (revisió legal)
+- Revisió específica abans del llançament (setembre 2026)
+- Cal cobrir: IA al processament, transferències internacionals, 3 mètodes de login
+- Pressupost: 200-400€ amb advocat digital
 
-### P4 — Flux de creació d'informes (GLM + Gemini + Paolo) — PARCIALMENT IMPLEMENTAT
+### P2 — GDPR compliance del flux d'informes
+- GLM (Hong Kong) processa text als passos 2 i 4
+- Decisió de Paolo: GLM es manté per als passos 2 i 4, Gemini només per contrast i revisió
+- Cal documentar-ho a la política de privacitat de forma transparent
+- Veure `scripts/PENDENT-GDPR-COMPLIANCE.md`
 
-**Flux oficial**: veure `scripts/FLUX-INFORMES.md` per al detall complet.
+### P2 — 24 informes pendents de processar
+- 29 PDFs originals a Drive, 5 processats (passos 2-3 fets)
+- Pendents de disseny PDF per continuar
 
-**Estat actual (juliol 2026)**:
-- ✅ Passos 1-4 funcionen (GLM detecta, GLM destil·la, Gemini revisa, GLM redacta)
-- ⏸ **Pendent**: disseny de l'informe PDF — tancar amb la Roser. Veure `scripts/PENDENT-DISSENY-INFORME.md`
-- ⏸ Passos 5-7 congelats fins que el disseny estigui tancat
+### P2 — Cron newsletter (Vercel)
+- Dijous 12:00h: generar HTML + crear drafts a Brevo automàticament
+- Paolo revisa i envia
 
-**No processar més informes** fins que el disseny de la plantilla PDF estigui validat per la Roser.
+### P3 — Formulari newsletter independent a la web
+- Ara els subscriptors s'apunten via registre d'usuari
+- Cal un formulari independent (només email) a la homepage que cridi /api/brevo-subscribe
 
-**7 passos** (cada pas escriu a una carpeta de Drive per auditabilitat):
-
-1. **GLM detecta** informes nous → `Drive /informes/0-originals/`
-2. **GLM destil·la** (8 apartats segons METODOLOGIA.md) → `/informes/1-distilats/`
-3. **Gemini revisa** (crític + advocat del diable) → `/informes/2-aportacions-gemini/`
-4. **GLM redacta** (Markdown CA+ES integrant aportacions) → `/informes/3-fets/`
-5. **Gemini ortografia** (corregeix Markdown CA+ES) → genera PDF amb plantilla oficial → `/informes/4-revisats-ortografia/`
-6. **Paolo valida** (llegeix el PDF, mou els aprovats) → `/informes/5-validats-paolo/`
-7. **GLM puja** els validats a la web → `/informes/6-publicats/`
-
-**Actors i eines**:
-- GLM (Z.ai-bot) — passos 1, 2, 4, 7 — via `z-ai-web-dev-sdk`
-- **Gemini 2.5 Flash** (NO 2.0-flash, retirat per Google) — passos 3, 5 — via **Vertex AI europe-west1** amb Service Account `criteri-bot@criteri-esg.iam.gserviceaccount.com` (rol `Vertex AI User`)
-- Paolo — pas 6 (validació humana obligatòria)
-
-**Pujada a Drive**: OAuth d'usuari (no Service Account, que no té quota). Tokens a `/home/z/my-project/.gcp-oauth-tokens.json`, es refresquen automàticament.
-
-**PDFs a carpeta 4**: generats amb la **plantilla HTML oficial** Criteri ESG (paleta terra+coure, fonts Fraunces+Inter+JetBrains Mono). Paolo només ha de obrir el PDF i validar.
-
-**Scripts** (a `/scripts/`):
-- `02-glm-distilla.py`, `03-gemini-revisa.py`, `04-glm-redacta.py`, `05-gemini-ortografia.py`
-- `genera-pdf-informe.py` (Markdown → HTML oficial → PDF via weasyprint)
-- `puja-a-drive.py` (puja PDFs i MDs a Drive carpeta 4)
-- `drive_user_client.py` (client OAuth Drive)
-- `gemini_client.py` (client Vertex AI)
-- `glm_client.py` (client GLM via subprocess Node)
-
-### P5 — Descarregar B Corp B Impact Assessment
-- La web de B Corp bloqueja la descàrrega automàtica (403)
-- Paolo ha de descarregar-lo manualment des de https://www.bcorporation.net/en-us/standards/
-- Guardar a /criteri-esg-lab/certifications/b-impact-assessment.pdf
-
-### P6 — Processar 5 informes pilot amb 8 blocs complets
-- Els blocs 3 i 5 tenen placeholder en alguns informes
-- Seguir METODOLOGIA.md rigorosament
-- Passar corrector LanguageTool
-- Paolo farà validació final
+### P3 — Pla de comunicació LinkedIn
+- 10 assets redissenyats a Drive, pendents de publicar
 
 ---
 
-## Completades
+## En curs
 
-_(buida)_
+_(cap)_
+
+---
+
+## Completades (juliol 2026)
+
+- ✅ Newsletter redissenyada (HTML table-based, 2 versions Premium/Free)
+- ✅ Migració Beehiiv → Brevo (flux 2 passos: draft + send)
+- ✅ Disclaimer IA al footer dels informes
+- ✅ Secció "Com processem cada informe" a /que-fem
+- ✅ Pàgina /preus com a pàgina independent (no popup)
+- ✅ Pàgina /pagament (Stripe + Fiare amb validació OCR Gemini)
+- ✅ Validació automàtica de justificants Fiare (Gemini OCR, 4/5 camps)
+- ✅ Registre d'usuaris integrat amb Brevo (email + Google OAuth)
+- ✅ Flux d'informes passos 1-4 funcionant (GLM + Gemini + Drive)
+- ✅ Semàfor metodològic amb popup integrat
+- ✅ Generador d'informes /eines/avaluador (Premium)
+- ✅ Corrector ortogràfic automatitzat (scripts/corrector.py)
+- ✅ Pàgina /mas-alla-del-checkbox (preguntes ètiques)
+- ✅ Supabase configurat (auth + BD)
+- ✅ Deploy a Vercel via git push

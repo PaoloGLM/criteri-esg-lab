@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>/cuenta redissenyat</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1440px; background: #F5EFE6; font-family: 'Inter', sans-serif; color: #2C1810; }
+
+  .header { width: 1440px; height: 70px; background: #F5EFE6; border-bottom: 1px solid #2C1810; padding: 0 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 20; }
+  .logo { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; color: #2C1810; letter-spacing: -0.015em; }
+  .logo .dot { color: #B87333; }
+  .nav { display: flex; gap: 36px; align-items: center; }
+  .nav a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: #5C3A1E; text-decoration: none; font-weight: 500; }
+  .btn-cta { background: #B87333; color: #FFFFFF; padding: 10px 20px; font-family: 'Inter'; font-size: 12px; font-weight: 600; border: none; }
+
+  .layout { display: grid; grid-template-columns: 320px 1fr; gap: 0; min-height: calc(100vh - 70px); }
+
+  /* SIDEBAR */
+  .sidebar { background: #2C1810; color: #F5EFE6; padding: 48px 32px; display: flex; flex-direction: column; gap: 32px; position: sticky; top: 70px; height: calc(100vh - 70px); }
+  .sidebar-brand { font-family: 'Fraunces', serif; font-size: 22px; color: #F5EFE6; font-weight: 600; letter-spacing: -0.015em; padding-bottom: 24px; border-bottom: 1px solid rgba(217, 165, 116, 0.25); }
+  .sidebar-brand .dot { color: #D9A574; }
+
+  .user-card { display: flex; align-items: center; gap: 16px; }
+  .user-avatar { width: 56px; height: 56px; background: #B87333; color: #FFFFFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 24px; font-weight: 500; }
+  .user-info { display: flex; flex-direction: column; gap: 4px; }
+  .user-name { font-family: 'Fraunces', serif; font-size: 18px; color: #F5EFE6; font-weight: 500; letter-spacing: -0.008em; }
+  .user-plan { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: #D9A574; font-weight: 600; }
+
+  .sidebar-nav { display: flex; flex-direction: column; gap: 2px; }
+  .sidebar-nav-item { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: baseline; padding: 12px 16px; font-family: 'Inter', sans-serif; font-size: 14px; color: rgba(245, 239, 230, 0.7); font-weight: 500; text-decoration: none; border-left: 2px solid transparent; transition: all 0.2s; }
+  .sidebar-nav-item:hover { color: #F5EFE6; background: rgba(217, 165, 116, 0.08); }
+  .sidebar-nav-item.active { color: #F5EFE6; background: rgba(217, 165, 116, 0.12); border-left-color: #B87333; }
+  .sidebar-nav-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(217, 165, 116, 0.5); font-weight: 600; }
+  .sidebar-nav-item.active .sidebar-nav-num { color: #D9A574; }
+
+  .sidebar-logout { margin-top: auto; padding: 12px 16px; font-family: 'Inter', sans-serif; font-size: 13px; color: rgba(245, 239, 230, 0.5); font-weight: 500; text-decoration: none; border-top: 1px solid rgba(217, 165, 116, 0.15); }
+  .sidebar-logout:hover { color: #D9A574; }
+
+  /* MAIN */
+  .main { padding: 48px 64px; display: flex; flex-direction: column; gap: 32px; }
+  .page-title { font-family: 'Fraunces', serif; font-weight: 500; font-size: 36px; color: #2C1810; letter-spacing: -0.018em; margin-bottom: 8px; }
+  .page-subtitle { font-family: 'Fraunces', serif; font-style: italic; font-size: 16px; color: #5C3A1E; margin-bottom: 16px; }
+
+  /* CARDS */
+  .section-card { background: white; border: 1px solid #C9B89A; padding: 32px; display: flex; flex-direction: column; gap: 20px; }
+  .section-card-header { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 16px; border-bottom: 1px solid #C9B89A; }
+  .section-card-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; color: #2C1810; letter-spacing: -0.01em; }
+  .section-card-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: #B87333; font-weight: 600; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; color: #8A5526; font-weight: 600; }
+  .form-input { background: #F5EFE6; border: 1px solid #C9B89A; padding: 12px 16px; font-family: 'Inter', sans-serif; font-size: 14px; color: #2C1810; font-weight: 500; }
+  .form-input:focus { outline: none; border-color: #B87333; }
+
+  .lang-toggle { display: inline-flex; border: 1px solid #C9B89A; }
+  .lang-option { padding: 12px 24px; font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: #5C3A1E; font-weight: 600; cursor: pointer; background: #F5EFE6; border: none; }
+  .lang-option.active { background: #B87333; color: #FFFFFF; }
+
+  .plan-card { background: #2C1810; color: #F5EFE6; padding: 24px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+  .plan-info { display: flex; flex-direction: column; gap: 4px; }
+  .plan-name { font-family: 'Fraunces', serif; font-size: 24px; color: #F5EFE6; font-weight: 500; letter-spacing: -0.01em; }
+  .plan-price { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: #D9A574; font-weight: 600; }
+  .plan-cta { background: #B87333; color: #FFFFFF; padding: 12px 24px; font-family: 'Inter'; font-size: 13px; font-weight: 600; border: none; cursor: pointer; }
+
+  /* ESTÀNDARDS - 16 chips amb colors per categoria */
+  .estandards-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; }
+  .estandar-chip { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #F5EFE6; border: 1px solid #C9B89A; border-left: 4px solid; font-family: 'Inter', sans-serif; font-size: 13px; color: #2C1810; font-weight: 500; cursor: pointer; }
+  .estandar-chip.reg { border-left-color: #5C3A1E; }
+  .estandar-chip.fw { border-left-color: #B87333; }
+  .estandar-chip.cert { border-left-color: #E8C99A; }
+  .estandar-chip.selected { background: #2C1810; color: #F5EFE6; border-color: #B87333; }
+  .estandar-check { width: 16px; height: 16px; border: 1.5px solid #C9B89A; display: flex; align-items: center; justify-content: center; font-size: 11px; }
+  .estandar-chip.selected .estandar-check { background: #B87333; border-color: #B87333; color: white; }
+
+  /* INTERESSOS - chips més simples */
+  .interessos-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; }
+  .interes-chip { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #F5EFE6; border: 1px solid #C9B89A; font-family: 'Inter', sans-serif; font-size: 13px; color: #2C1810; font-weight: 500; cursor: pointer; }
+  .interes-chip.selected { background: rgba(184, 115, 51, 0.12); border-color: #B87333; color: #5C3A1E; }
+  .interes-check { width: 16px; height: 16px; border: 1.5px solid #C9B89A; display: flex; align-items: center; justify-content: center; font-size: 11px; }
+  .interes-chip.selected .interes-check { background: #B87333; border-color: #B87333; color: white; }
+
+  /* LLEGENDA */
+  .legend { display: flex; gap: 24px; margin-top: 8px; font-family: 'JetBrains Mono', monospace; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.16em; color: #5C3A1E; font-weight: 600; }
+  .legend-item { display: flex; align-items: center; gap: 8px; }
+  .legend-bar { width: 18px; height: 4px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">Criteri<span class="dot">.</span> ESG</div>
+  <div class="nav">
+    <a href="#">Biblioteca</a>
+    <a href="#">Estándares</a>
+    <a href="#">Qué hacemos</a>
+    <a href="#">Quiénes somos</a>
+    <button class="btn-cta">Cerrar sesión</button>
+  </div>
+</div>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">Criteri<span class="dot">.</span> ESG</div>
+
+    <div class="user-card">
+      <div class="user-avatar">P</div>
+      <div class="user-info">
+        <div class="user-name">Usuario</div>
+        <div class="user-plan">Plan Free</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-nav-item active"><span class="sidebar-nav-num">01</span><span>Perfil</span></a>
+      <a href="#" class="sidebar-nav-item"><span class="sidebar-nav-num">02</span><span>Newsletter</span></a>
+      <a href="#" class="sidebar-nav-item"><span class="sidebar-nav-num">03</span><span>Mi plan</span></a>
+      <a href="#" class="sidebar-nav-item"><span class="sidebar-nav-num">04</span><span>Mis estándares ESG</span></a>
+      <a href="#" class="sidebar-nav-item"><span class="sidebar-nav-num">05</span><span>Otros intereses</span></a>
+      <a href="#" class="sidebar-nav-item"><span class="sidebar-nav-num">06</span><span>Billing</span></a>
+    </nav>
+
+    <a href="#" class="sidebar-logout">← Cerrar sesión</a>
+  </aside>
+
+  <main class="main">
+    <div>
+      <h1 class="page-title">Mi cuenta</h1>
+      <p class="page-subtitle">Tus preferencias y tus certificaciones en un solo lugar.</p>
+    </div>
+
+    <!-- PERFIL -->
+    <section class="section-card">
+      <div class="section-card-header">
+        <h2 class="section-card-title">Perfil</h2>
+        <span class="section-card-num">01</span>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label">Nombre</label>
+          <input class="form-input" value="Usuario" />
+        </div>
+        <div class="form-field">
+          <label class="form-label">Email</label>
+          <input class="form-input" value="usuario@empresa.com" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label">Empresa</label>
+          <input class="form-input" value="" placeholder="Nombre de tu empresa" />
+        </div>
+        <div class="form-field">
+          <label class="form-label">Sector profesional</label>
+          <input class="form-input" value="Director de sostenibilidad" />
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section-card">
+      <div class="section-card-header">
+        <h2 class="section-card-title">Newsletter</h2>
+        <span class="section-card-num">02</span>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Idioma de la newsletter</label>
+        <div class="lang-toggle">
+          <button class="lang-option">CAT</button>
+          <button class="lang-option active">ES</button>
+        </div>
+      </div>
+      <p style="font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; color: #5C3A1E; line-height: 1.4;">
+        Recibes la newsletter bimensual (cada 2 semanas, los jueves a las 15:00h). Puedes cambiar el idioma en cualquier momento.
+      </p>
+    </section>
+
+    <!-- PLA -->
+    <section class="section-card">
+      <div class="section-card-header">
+        <h2 class="section-card-title">Mi plan</h2>
+        <span class="section-card-num">03</span>
+      </div>
+      <div class="plan-card">
+        <div class="plan-info">
+          <div class="plan-name">Plan Free</div>
+          <div class="plan-price">0€/mes · Acceso a informes antiguos + newsletter reducida</div>
+        </div>
+        <button class="plan-cta">Hazte Premium →</button>
+      </div>
+      <p style="font-family: 'Inter', sans-serif; font-size: 13px; color: #5C3A1E; line-height: 1.5;">
+        Con Premium accedes a todos los informes recientes (últimos 6 meses), cross-reference completo con tus certificaciones, acciones recomendadas y la newsletter completa. 29€/mes para los primeros 50 suscriptores (early bird hasta noviembre).
+      </p>
+    </section>
+
+    <!-- MIS ESTÀNDARDS ESG (16) -->
+    <section class="section-card">
+      <div class="section-card-header">
+        <h2 class="section-card-title">Mis estándares ESG</h2>
+        <span class="section-card-num">04</span>
+      </div>
+      <p style="font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; color: #5C3A1E; line-height: 1.4;">
+        Selecciona los estándares que ya tiene tu empresa. Te recomendaremos informes que te afectan directamente.
+      </p>
+      <div class="estandards-grid">
+        <!-- 5 Regulacions -->
+        <div class="estandar-chip reg"><div class="estandar-check">✓</div>CSRD / ESRS</div>
+        <div class="estandar-chip reg"><div class="estandar-check"></div>CSDDD</div>
+        <div class="estandar-chip reg"><div class="estandar-check"></div>SFDR</div>
+        <div class="estandar-chip reg"><div class="estandar-check"></div>Taxonomía UE</div>
+        <div class="estandar-chip reg"><div class="estandar-check"></div>EMAS</div>
+        <!-- 5 Frameworks -->
+        <div class="estandar-chip fw"><div class="estandar-check">✓</div>GRI</div>
+        <div class="estandar-chip fw"><div class="estandar-check"></div>SASB</div>
+        <div class="estandar-chip fw"><div class="estandar-check"></div>TNFD</div>
+        <div class="estandar-chip fw"><div class="estandar-check"></div>TCFD</div>
+        <div class="estandar-chip fw"><div class="estandar-check"></div>ISO 26000</div>
+        <!-- 6 Certificacions -->
+        <div class="estandar-chip cert"><div class="estandar-check">✓</div>EcoVadis</div>
+        <div class="estandar-chip cert"><div class="estandar-check"></div>B Corp</div>
+        <div class="estandar-chip cert"><div class="estandar-check"></div>MSCI ESG</div>
+        <div class="estandar-chip cert"><div class="estandar-check"></div>CDP</div>
+        <div class="estandar-chip cert"><div class="estandar-check"></div>SGE 21</div>
+        <div class="estandar-chip cert"><div class="estandar-check"></div>Sustainalytics</div>
+      </div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-bar" style="background:#5C3A1E"></div><span>Regulaciones (5)</span></div>
+        <div class="legend-item"><div class="legend-bar" style="background:#B87333"></div><span>Frameworks (5)</span></div>
+        <div class="legend-item"><div class="legend-bar" style="background:#E8C99A"></div><span>Certificaciones (6)</span></div>
+      </div>
+    </section>
+
+    <!-- ALTRES INTERESSOS (8 del formulari, no duplicats) -->
+    <section class="section-card">
+      <div class="section-card-header">
+        <h2 class="section-card-title">Otros intereses</h2>
+        <span class="section-card-num">05</span>
+      </div>
+      <p style="font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; color: #5C3A1E; line-height: 1.4;">
+        Otros temas que te interesan. Los usamos para mejorar las recomendaciones de la newsletter.
+      </p>
+      <div class="interessos-grid">
+        <div class="interes-chip selected"><div class="interes-check">✓</div>CSRD / ESRS</div>
+        <div class="interes-chip selected"><div class="interes-check">✓</div>EcoVadis</div>
+        <div class="interes-chip"><div class="interes-check"></div>B Corp</div>
+        <div class="interes-chip"><div class="interes-check"></div>MSCI ESG</div>
+        <div class="interes-chip selected"><div class="interes-check">✓</div>Taxonomía UE</div>
+        <div class="interes-chip"><div class="interes-check"></div>CSDDD</div>
+        <div class="interes-chip"><div class="interes-check"></div>Derechos humanos</div>
+        <div class="interes-chip selected"><div class="interes-check">✓</div>Cambio climático</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>

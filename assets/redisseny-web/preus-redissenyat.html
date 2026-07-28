@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>/preus redissenyat</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1440px; background: #F5EFE6; font-family: 'Inter', sans-serif; color: #2C1810; }
+
+  .header { width: 1440px; height: 70px; background: #F5EFE6; border-bottom: 1px solid #2C1810; padding: 0 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 20; }
+  .logo { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; color: #2C1810; letter-spacing: -0.015em; }
+  .logo .dot { color: #B87333; }
+  .nav { display: flex; gap: 36px; align-items: center; }
+  .nav a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: #5C3A1E; text-decoration: none; font-weight: 500; }
+  .btn-cta { background: #B87333; color: #FFFFFF; padding: 10px 20px; font-family: 'Inter'; font-size: 12px; font-weight: 600; border: none; }
+
+  /* HERO */
+  .hero { padding: 80px 64px; border-bottom: 1px solid #2C1810; text-align: center; }
+  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #8A5526; font-weight: 600; margin-bottom: 16px; }
+  .hero-title { font-family: 'Fraunces', serif; font-weight: 500; font-size: 56px; line-height: 1.05; color: #2C1810; letter-spacing: -0.022em; margin-bottom: 16px; }
+  .hero-title em { font-style: italic; color: #5C3A1E; font-weight: 400; }
+  .hero-subtitle { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; color: #5C3A1E; max-width: 720px; margin: 0 auto; line-height: 1.4; }
+
+  /* PLA - TARIFES */
+  .plans { padding: 80px 64px; border-bottom: 1px solid #2C1810; }
+  .plans-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; max-width: 1200px; margin: 0 auto; }
+  
+  .plan { background: white; border: 1px solid #C9B89A; padding: 40px 32px; display: flex; flex-direction: column; gap: 20px; position: relative; }
+  .plan.featured { background: #2C1810; color: #F5EFE6; border-color: #B87333; transform: scale(1.03); }
+  
+  .plan-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.22em; font-weight: 600; }
+  .plan:nth-child(1) .plan-tag { color: #4A6B3A; }
+  .plan:nth-child(2) .plan-tag { color: #D9A574; }
+  .plan:nth-child(3) .plan-tag { color: #8B7355; }
+  
+  .plan-name { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 500; color: #2C1810; letter-spacing: -0.015em; }
+  .plan.featured .plan-name { color: #F5EFE6; }
+  
+  .plan-price { display: flex; align-items: baseline; gap: 8px; }
+  .plan-price-num { font-family: 'Fraunces', serif; font-size: 56px; font-weight: 400; color: #B87333; letter-spacing: -0.03em; line-height: 1; }
+  .plan-price-unit { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: #8B7355; font-weight: 500; }
+  .plan.featured .plan-price-unit { color: rgba(245,239,230,0.6); }
+  
+  .plan-price-original { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8B7355; text-decoration: line-through; }
+  .plan.featured .plan-price-original { color: rgba(245,239,230,0.4); }
+  
+  .plan-desc { font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; line-height: 1.5; color: #5C3A1E; padding: 16px 0; border-top: 1px solid #C9B89A; border-bottom: 1px solid #C9B89A; }
+  .plan.featured .plan-desc { color: rgba(245,239,230,0.75); border-color: rgba(217,165,116,0.25); }
+  
+  .plan-features { display: flex; flex-direction: column; gap: 10px; }
+  .plan-feature { display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: baseline; font-family: 'Inter', sans-serif; font-size: 13px; color: #2C1810; line-height: 1.4; }
+  .plan.featured .plan-feature { color: #F5EFE6; }
+  .plan-feature-icon { color: #B87333; font-weight: 600; }
+  .plan-feature.disabled { color: #8B7355; opacity: 0.6; }
+  .plan.featured .plan-feature.disabled { color: rgba(245,239,230,0.4); }
+  
+  .plan-cta { background: #B87333; color: #FFFFFF; padding: 14px 28px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; border: none; cursor: pointer; margin-top: auto; text-align: center; }
+  .plan:not(.featured) .plan-cta { background: transparent; color: #2C1810; border: 1px solid #2C1810; }
+  .plan:not(.featured) .plan-cta:hover { background: #2C1810; color: #F5EFE6; }
+  
+  .plan-early-bird { position: absolute; top: -12px; right: 24px; background: #B87333; color: white; padding: 4px 12px; font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 600; }
+
+  /* COMPARATIVA */
+  .compare { padding: 80px 64px; border-bottom: 1px solid #2C1810; }
+  .compare-title { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 500; color: #2C1810; letter-spacing: -0.015em; margin-bottom: 32px; text-align: center; }
+  .compare-table { width: 100%; border-collapse: collapse; max-width: 1000px; margin: 0 auto; }
+  .compare-table th { background: #5C3A1E; color: #F5EFE6; padding: 14px 16px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; font-weight: 600; }
+  .compare-table th:not(:first-child) { text-align: center; }
+  .compare-table td { padding: 14px 16px; border-bottom: 1px solid #C9B89A; font-family: 'Inter', sans-serif; font-size: 13px; color: #2C1810; }
+  .compare-table td:not(:first-child) { text-align: center; }
+  .compare-table tr:hover { background: rgba(184,115,51,0.04); }
+  .compare-yes { color: #5C8A5C; font-weight: 600; }
+  .compare-no { color: #8B7355; opacity: 0.5; }
+
+  /* FAQ */
+  .faq { padding: 80px 64px; border-bottom: 1px solid #2C1810; }
+  .faq-title { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 500; color: #2C1810; letter-spacing: -0.015em; margin-bottom: 32px; text-align: center; }
+  .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+  .faq-item { padding: 20px 0; border-bottom: 1px solid #C9B89A; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-question { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; color: #2C1810; margin-bottom: 8px; }
+  .faq-answer { font-family: 'Inter', sans-serif; font-size: 14px; color: #5C3A1E; line-height: 1.55; }
+
+  /* CTA FINAL */
+  .cta-final { padding: 80px 64px; background: #2C1810; color: #F5EFE6; text-align: center; }
+  .cta-final-title { font-family: 'Fraunces', serif; font-size: 40px; font-weight: 400; line-height: 1.15; color: #F5EFE6; letter-spacing: -0.018em; max-width: 800px; margin: 0 auto 24px; }
+  .cta-final-title em { font-style: italic; color: #D9A574; font-weight: 500; }
+  .cta-final-button { background: #B87333; color: #FFFFFF; padding: 18px 40px; font-family: 'Inter'; font-size: 15px; font-weight: 600; border: none; cursor: pointer; }
+  .cta-final-note { font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; color: rgba(245,239,230,0.5); margin-top: 12px; }
+
+  .footer { width: 1440px; padding: 40px 64px; background: #F5EFE6; border-top: 1px solid #2C1810; display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; color: #8B7355; font-weight: 500; }
+  .footer-brand { font-family: 'Fraunces', serif; font-size: 14px; color: #2C1810; text-transform: none; letter-spacing: -0.01em; font-weight: 500; }
+  .footer-brand .dot { color: #B87333; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">Criteri<span class="dot">.</span> ESG</div>
+  <div class="nav">
+    <a href="#">Biblioteca</a>
+    <a href="#">Estándares</a>
+    <a href="#">Qué hacemos</a>
+    <a href="#">Quiénes somos</a>
+    <button class="btn-cta">Acceder</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Planes · Criteri ESG</div>
+  <h1 class="hero-title">Tres planes. <em>Una convicción.</em></h1>
+  <p class="hero-subtitle">Acceso libre en septiembre y octubre. A partir de noviembre, elige el plan que mejor encaje con tu equipo. Sin permanencia. Sin letra pequeña.</p>
+</section>
+
+<!-- PLANS -->
+<section class="plans">
+  <div class="plans-grid">
+    
+    <!-- FREE -->
+    <div class="plan">
+      <div class="plan-tag">Gratis para siempre</div>
+      <h2 class="plan-name">Free</h2>
+      <div class="plan-price">
+        <span class="plan-price-num">0€</span>
+        <span class="plan-price-unit">/ mes</span>
+      </div>
+      <p class="plan-desc">Para quien empieza a explorar el ESG y quiere entender el paisaje sin compromiso.</p>
+      <div class="plan-features">
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span><span>Acceso a informes antiguos (>6 meses)</span></div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span><span>Newsletter reducida (bimensual)</span></div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span><span>Página de estándares ESG completa</span></div>
+        <div class="plan-feature disabled"><span class="plan-feature-icon">—</span><span>Informes recientes (últimos 6 meses)</span></div>
+        <div class="plan-feature disabled"><span class="plan-feature-icon">—</span><span>Cross-reference con certificaciones</span></div>
+        <div class="plan-feature disabled"><span class="plan-feature-icon">—</span><span>Acciones recomendadas</span></div>
+      </div>
+      <button class="plan-cta">Empieza gratis</button>
+    </div>
+    
+    <!-- PREMIUM (featured) -->
+    <div class="plan featured">
+      <div class="plan-early-bird">Early bird · 50 plazas</div>
+      <div class="plan-tag">Recomendado</div>
+      <h2 class="plan-name">Premium</h2>
+      <div class="plan-price">
+        <span class="plan-price-num">29€</span>
+        <span class="plan-price-unit">/ mes</span>
+      </div>
+      <p class="plan-price-original">Precio normal: 39€/mes</p>
+      <p class="plan-desc">Para el director de sostenibilidad que necesita criterio para decidir qué hacer cada semana.</p>
+      <div class="plan-features">
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span><span>Todo lo de Free</span></div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span><span>Acceso a todos los informes recientes</span></div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span><span>Cross-reference con tus certificaciones</span></div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span><span>Acciones recomendadas operativas</span></div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span><span>Newsletter completa (bimensual)</span></div>
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span><span>Semáforo metodológico completo</span></div>
+      </div>
+      <button class="plan-cta">Hazte Premium</button>
+    </div>
+    
+    <!-- ULTRA -->
+    <div class="plan">
+      <div class="plan-tag">Disponible abril 2027</div>
+      <h2 class="plan-name">Ultra</h2>
+      <div class="plan-price">
+        <span class="plan-price-num">89€</span>
+        <span class="plan-price-unit">/ mes</span>
+      </div>
+      <p class="plan-desc">Para consultorías y equipos que necesitan análisis personalizado y formatos adicionales.</p>
+      <div class="plan-features">
+        <div class="plan-feature"><span class="plan-feature-icon">✓</span><span>Todo lo de Premium</span></div>
+        <div class="plan-feature disabled"><span class="plan-feature-icon">·</span><span>Conexiones personalizadas mensuales</span></div>
+        <div class="plan-feature disabled"><span class="plan-feature-icon">·</span><span>Formato PPT para presentaciones</span></div>
+        <div class="plan-feature disabled"><span class="plan-feature-icon">·</span><span>Podcast exclusivo</span></div>
+        <div class="plan-feature disabled"><span class="plan-feature-icon">·</span><span>Análisis personalizado de empresa</span></div>
+        <div class="plan-feature disabled"><span class="plan-feature-icon">·</span><span>Soporte prioritario</span></div>
+      </div>
+      <button class="plan-cta" disabled style="opacity: 0.5; cursor: not-allowed;">Avísame cuando esté disponible</button>
+    </div>
+    
+  </div>
+</section>
+
+<!-- COMPARATIVA -->
+<section class="compare">
+  <h2 class="compare-title">Comparativa detallada</h2>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Característica</th>
+        <th>Free</th>
+        <th>Premium</th>
+        <th>Ultra</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Informes antiguos (>6 meses)</td><td class="compare-yes">✓</td><td class="compare-yes">✓</td><td class="compare-yes">✓</td></tr>
+      <tr><td>Informes recientes (últimos 6 meses)</td><td class="compare-no">—</td><td class="compare-yes">✓</td><td class="compare-yes">✓</td></tr>
+      <tr><td>Semáforo metodológico</td><td class="compare-yes">✓</td><td class="compare-yes">✓</td><td class="compare-yes">✓</td></tr>
+      <tr><td>Cross-reference con certificaciones</td><td class="compare-no">—</td><td class="compare-yes">✓</td><td class="compare-yes">✓</td></tr>
+      <tr><td>Acciones recomendadas</td><td class="compare-no">—</td><td class="compare-yes">✓</td><td class="compare-yes">✓</td></tr>
+      <tr><td>Newsletter completa</td><td class="compare-no">—</td><td class="compare-yes">✓</td><td class="compare-yes">✓</td></tr>
+      <tr><td>Preguntas éticas + dinámicas de grupo</td><td class="compare-no">—</td><td class="compare-yes">✓</td><td class="compare-yes">✓</td></tr>
+      <tr><td>Conexiones personalizadas mensuales</td><td class="compare-no">—</td><td class="compare-no">—</td><td class="compare-yes">✓</td></tr>
+      <tr><td>Formato PPT</td><td class="compare-no">—</td><td class="compare-no">—</td><td class="compare-yes">✓</td></tr>
+      <tr><td>Podcast exclusivo</td><td class="compare-no">—</td><td class="compare-no">—</td><td class="compare-yes">✓</td></tr>
+      <tr><td>Análisis personalizado de empresa</td><td class="compare-no">—</td><td class="compare-no">—</td><td class="compare-yes">✓</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <h2 class="faq-title">Preguntas frecuentes</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h3 class="faq-question">¿Cuándo se activa el paywall?</h3>
+      <p class="faq-answer">En noviembre de 2026. Durante septiembre y octubre, todo el contenido es gratuito. A partir de noviembre, los informes recientes (últimos 6 meses) y las secciones premium de la newsletter requerirán suscripción Premium.</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="faq-question">¿Qué pasa con los 50 primeros suscriptores Premium?</h3>
+      <p class="faq-answer">Conservan el precio de 29€/mes durante todo el primer año (12 meses). A partir del mes 13, pasan al precio estándar de 39€/mes. El contador de plazas restantes será visible en la web.</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="faq-question">¿Hay permanencia?</h3>
+      <p class="faq-answer">No. Puedes cancelar en cualquier momento y conservarás el acceso hasta el final del periodo facturado. Sin penalizaciones, sin llamadas para retenerte.</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="faq-question">¿Puedo probar Premium antes de pagar?</h3>
+      <p class="faq-answer">Sí. Cualquier usuario nuevo puede probar Premium gratis durante 7 días. Se requiere tarjeta, pero no se cobra hasta el día 8. Puedes cancelar antes sin coste.</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="faq-question">¿Cuándo estará disponible Ultra?</h3>
+      <p class="faq-answer">Abril de 2027, 6 meses después del lanzamiento. Lo retrasamos a propósito: necesitamos afinar los formatos premium (PPT, podcast, conexiones personalizadas) antes de venderlos. No queremos prometer lo que no podemos cumplir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <h2 class="cta-final-title">Si trabajas en sostenibilidad, <em>te entendemos</em>.<br>Estamos para devolverte tiempo para pensar.</h2>
+  <button class="cta-final-button">Acceso abierto en septiembre</button>
+  <p class="cta-final-note">Sin tarjeta de crédito. Sin paywall hasta noviembre.</p>
+</section>
+
+<div class="footer">
+  <div class="footer-brand">Criteri<span class="dot">.</span> ESG</div>
+  <div>© 2026 · Barcelona · criteriesg.com</div>
+</div>
+
+</body>
+</html>

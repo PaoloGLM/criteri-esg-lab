@@ -1,0 +1,50 @@
+name: Newsletter Setmanal
+
+on:
+  schedule:
+    - cron: '0 12 * * 4'
+  workflow_dispatch:
+
+jobs:
+  generate-newsletter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+      BREVO_SENDER_EMAIL: info@criteriesg.com
+      BREVO_SENDER_NAME: Criteri ESG
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt pdfplumber google-auth requests python-dotenv
+
+      - name: Write GCP service account
+        run: |
+          echo "$GCP_SERVICE_ACCOUNT" > /tmp/gcp-service-account.json
+          echo "GCP_SERVICE_ACCOUNT_PATH=/tmp/gcp-service-account.json" >> $GITHUB_ENV
+
+      - name: Write .env.local
+        run: |
+          cat > assets/web/.env.local << ENV
+          GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
+          GCP_SERVICE_ACCOUNT_PATH=/tmp/gcp-service-account.json
+          BREVO_API_KEY=${{ secrets.BREVO_API_KEY }}
+          BREVO_SENDER_EMAIL=info@criteriesg.com
+          BREVO_SENDER_NAME=Criteri ESG
+          ENV
+
+      - name: Generate newsletter
+        run: |
+          WEEK=$(date +%V)
+          EDITION=$((WEEK - 35 + 1))
+          if [ $EDITION -lt 1 ]; then EDITION=1; fi
+          python scripts/newsletter-generator.py $EDITION

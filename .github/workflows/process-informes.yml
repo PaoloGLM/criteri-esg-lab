@@ -1,0 +1,67 @@
+name: Processar Informes
+
+on:
+  schedule:
+    - cron: '0 8 * * 1,4'
+  workflow_dispatch:
+
+jobs:
+  process-informes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+      BREVO_SENDER_EMAIL: info@criteriesg.com
+      BREVO_SENDER_NAME: Criteri ESG
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt pdfplumber google-auth requests python-dotenv
+
+      - name: Write GCP service account
+        run: |
+          echo "$GCP_SERVICE_ACCOUNT" > /tmp/gcp-service-account.json
+          echo "GCP_SERVICE_ACCOUNT_PATH=/tmp/gcp-service-account.json" >> $GITHUB_ENV
+
+      - name: Write .env.local
+        run: |
+          cat > assets/web/.env.local << ENV
+          GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
+          GCP_SERVICE_ACCOUNT_PATH=/tmp/gcp-service-account.json
+          BREVO_API_KEY=${{ secrets.BREVO_API_KEY }}
+          BREVO_SENDER_EMAIL=info@criteriesg.com
+          BREVO_SENDER_NAME=Criteri ESG
+          ENV
+
+      - name: Descarregar PDFs originals de Drive
+        run: python scripts/download-originals.py
+
+      - name: Processar informes pendents (passos 2-5)
+        run: |
+          python scripts/run-pas2-batch.py || true
+          python scripts/03-gemini-revisa.py || true
+          for f in data/informes/1-distilats/*.json; do
+            slug=$(basename "$f" .json)
+            python scripts/04-glm-redacta.py "$slug" || true
+          done
+          for f in data/informes/3-fets/*.ca.md; do
+            slug=$(basename "$f" .ca.md)
+            python scripts/05-gemini-ortografia.py "$slug" || true
+          done
+
+      - name: Commit resultats
+        run: |
+          git config --global user.name "Criteri ESG Bot"
+          git config --global user.email "davidbm.eno@gmail.com"
+          git add data/informes/ || true
+          git commit -m "Informes processats automaticament (GitHub Actions)" || true
+          git push || true

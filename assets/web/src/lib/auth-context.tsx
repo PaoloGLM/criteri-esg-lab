@@ -153,6 +153,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (typeof window !== "undefined") {
           window.localStorage.removeItem(onboardingKey);
         }
+      } else {
+        // Apuntar a Brevo per a la newsletter
+        try {
+          await fetch("/api/brevo-subscribe", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: session.user.email || "",
+              name: meta.full_name || meta.name || "",
+              lang: "es",
+            }),
+          });
+        } catch (e) {
+          console.warn("[auth-context] No s'ha pogut apuntar a Brevo:", e);
+        }
       }
     })();
   }, [session?.user]);

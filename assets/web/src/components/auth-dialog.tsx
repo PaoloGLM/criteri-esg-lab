@@ -198,6 +198,23 @@ function AuthDialogInner({
       return;
     }
 
+    // Apuntar a Brevo per a la newsletter (no bloqueja el registre si falla)
+    if (regNewsletter) {
+      try {
+        await fetch("/api/brevo-subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: regEmail.trim(),
+            name: regName.trim(),
+            lang: regNewsletterLang,
+          }),
+        });
+      } catch (e) {
+        console.warn("[auth] No s'ha pogut apuntar a Brevo:", e);
+      }
+    }
+
     if (data.session) {
       toast({
         title: t("auth.toast.welcome"),

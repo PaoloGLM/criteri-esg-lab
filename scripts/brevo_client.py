@@ -19,7 +19,7 @@ import requests
 from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv(Path("/home/z/my-project/criteri-esg-lab/assets/web/.env.local"))
+load_dotenv(Path(__file__).resolve().parent.parent / "assets" / "web" / ".env.local")
 
 API_KEY = os.getenv("BREVO_API_KEY", "")
 SENDER_EMAIL = os.getenv("BREVO_SENDER_EMAIL", "info@criteriesg.com")

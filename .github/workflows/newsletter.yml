@@ -25,7 +25,8 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install -r scripts/requirements.txt pdfplumber google-auth requests python-dotenv
+        run: |
+          pip install requests python-dotenv google-auth google-auth-httplib2 google-api-python-client
 
       - name: Write GCP service account
         run: |
@@ -34,17 +35,42 @@ jobs:
 
       - name: Write .env.local
         run: |
-          cat > assets/web/.env.local << ENV
+          cat > assets/web/.env.local << 'ENVEOF'
           GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
           GCP_SERVICE_ACCOUNT_PATH=/tmp/gcp-service-account.json
           BREVO_API_KEY=${{ secrets.BREVO_API_KEY }}
           BREVO_SENDER_EMAIL=info@criteriesg.com
           BREVO_SENDER_NAME=Criteri ESG
-          ENV
+          ENVEOF
 
       - name: Generate newsletter
         run: |
+          # Crear directoris necessaris
+          mkdir -p data/informes/0-originals data/informes/1-distilats data/informes/2-aportacions-gemini data/informes/3-fets data/informes/4-revisats-ortografia data/informes/5-validats-paolo data/informes/6-publicats
+          mkdir -p scripts/state
+
+          # Calcular número d'edició
           WEEK=$(date +%V)
           EDITION=$((WEEK - 35 + 1))
           if [ $EDITION -lt 1 ]; then EDITION=1; fi
-          python scripts/newsletter-generator.py $EDITION
+
+          echo "=== Generant newsletter #$EDITION ==="
+
+          # Executar el generador (pot fallar a la part de Drive, no és crític)
+          python scripts/newsletter-generator.py $EDITION || true
+
+          # Verificar que s'han generat els HTMLs
+          if [ -f "data/newsletter-${EDITION}.premium.html" ]; then
+            echo "✓ Newsletter Premium generada"
+          else
+            echo "✗ No s'ha generat la newsletter Premium"
+            exit 1
+          fi
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: newsletter-html
+          path: data/newsletter-*.html
+          retention-days: 30

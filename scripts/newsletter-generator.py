@@ -16,12 +16,19 @@ import json
 import re
 from pathlib import Path
 
-sys.path.insert(0, "/home/z/my-project/criteri-esg-lab/scripts")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 from dotenv import load_dotenv
-load_dotenv(Path("/home/z/my-project/criteri-esg-lab/assets/web/.env.local"))
+load_dotenv(PROJECT_ROOT / "assets" / "web" / ".env.local")
 
 from brevo_client import create_campaign_draft, send_campaign, get_or_create_list, add_contact, send_test_email
-from drive_user_client import get_user_drive_service, get_criteri_subfolder_id, upload_file
+
+# Drive és opcional: si no hi ha OAuth tokens (GitHub Actions), es salta la pujada
+try:
+    from drive_user_client import get_user_drive_service, get_criteri_subfolder_id, upload_file
+    DRIVE_AVAILABLE = True
+except Exception:
+    DRIVE_AVAILABLE = False
 
 
 # === CSS compartida (basada en DESIGN_SYSTEM.md) ===
@@ -1078,7 +1085,7 @@ def main():
     # Generar versió Premium
     print("→ Generant versió Premium...")
     premium_html = build_premium_html(data)
-    premium_path = Path(f"/home/z/my-project/criteri-esg-lab/data/newsletter-{edition}.premium.html")
+    premium_path = PROJECT_ROOT / f"data/newsletter-{edition}.premium.html"
     premium_path.parent.mkdir(parents=True, exist_ok=True)
     premium_path.write_text(premium_html, encoding="utf-8")
     print(f"  ✓ Premium: {premium_path.name} ({len(premium_html)/1024:.1f} KB)")
@@ -1086,21 +1093,24 @@ def main():
     # Generar versió Free
     print("→ Generant versió Free...")
     free_html = build_free_html(data)
-    free_path = Path(f"/home/z/my-project/criteri-esg-lab/data/newsletter-{edition}.free.html")
+    free_path = PROJECT_ROOT / f"data/newsletter-{edition}.free.html"
     free_path.write_text(free_html, encoding="utf-8")
     print(f"  ✓ Free: {free_path.name} ({len(free_html)/1024:.1f} KB)")
 
-    # Pujar ambdues a Drive /Criteri ESG/newsletters/
-    print("\n→ Pujant a Drive /Criteri ESG/newsletters/...")
-    try:
-        drive = get_user_drive_service()
-        newsletters_folder_id = get_criteri_subfolder_id(drive, "newsletters")
-        upload_file(drive, premium_path, f"newsletter-{edition}.premium.html", newsletters_folder_id, mime_type="text/html")
-        print(f"  ✓ newsletter-{edition}.premium.html pujat")
-        upload_file(drive, free_path, f"newsletter-{edition}.free.html", newsletters_folder_id, mime_type="text/html")
-        print(f"  ✓ newsletter-{edition}.free.html pujat")
-    except Exception as e:
-        print(f"  ⚠ Drive (no crític): {e}")
+    # Pujar ambdues a Drive /Criteri ESG/newsletters/ (opcional)
+    if DRIVE_AVAILABLE:
+        print("\n→ Pujant a Drive /Criteri ESG/newsletters/...")
+        try:
+            drive = get_user_drive_service()
+            newsletters_folder_id = get_criteri_subfolder_id(drive, "newsletters")
+            upload_file(drive, premium_path, f"newsletter-{edition}.premium.html", newsletters_folder_id, mime_type="text/html")
+            print(f"  ✓ newsletter-{edition}.premium.html pujat")
+            upload_file(drive, free_path, f"newsletter-{edition}.free.html", newsletters_folder_id, mime_type="text/html")
+            print(f"  ✓ newsletter-{edition}.free.html pujat")
+        except Exception as e:
+            print(f"  ⚠ Drive (no crític): {e}")
+    else:
+        print("\n· Drive no disponible (GitHub Actions). Els HTMLs es guarden com a artifacts.")
 
     # PDFs per preview local
     print("\n→ Generant PDFs de preview...")

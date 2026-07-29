@@ -27,37 +27,23 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: |
-          pip install requests python-dotenv google-auth google-auth-httplib2 google-api-python-client
+        run: pip install requests python-dotenv google-auth google-auth-httplib2 google-api-python-client
 
       - name: Write credentials
         run: |
-          # Service Account
           echo "$GCP_SERVICE_ACCOUNT" > /tmp/gcp-service-account.json
-
-          # OAuth tokens (per pujar a Drive com a usuari)
+          mkdir -p /home/runner
           echo "$GCP_OAUTH_TOKENS" | base64 -d > /home/runner/.gcp-oauth-tokens.json
           echo "$GCP_OAUTH_CLIENT" | base64 -d > /home/runner/.gcp-oauth-client.json
 
-          # .env.local
-          cat > assets/web/.env.local << 'ENVEOF'
-          GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
-          GCP_SERVICE_ACCOUNT_PATH=/tmp/gcp-service-account.json
-          GCP_OAUTH_TOKENS_PATH=/home/runner/.gcp-oauth-tokens.json
-          GCP_OAUTH_CLIENT_PATH=/home/runner/.gcp-oauth-client.json
-          BREVO_API_KEY=${{ secrets.BREVO_API_KEY }}
-          BREVO_SENDER_EMAIL=info@criteriesg.com
-          BREVO_SENDER_NAME=Criteri ESG
-          ENVEOF
+          printf 'GEMINI_API_KEY=%s\nGCP_SERVICE_ACCOUNT_PATH=/tmp/gcp-service-account.json\nGCP_OAUTH_TOKENS_PATH=/home/runner/.gcp-oauth-tokens.json\nGCP_OAUTH_CLIENT_PATH=/home/runner/.gcp-oauth-client.json\nBREVO_API_KEY=%s\nBREVO_SENDER_EMAIL=info@criteriesg.com\nBREVO_SENDER_NAME=Criteri ESG\n' "$GEMINI_API_KEY" "$BREVO_API_KEY" > assets/web/.env.local
 
       - name: Generate newsletter
         run: |
           mkdir -p data scripts/state
-
           WEEK=$(date +%V)
           EDITION=$((WEEK - 35 + 1))
           if [ $EDITION -lt 1 ]; then EDITION=1; fi
-
           echo "=== Generant newsletter #$EDITION ==="
           python scripts/newsletter-generator.py $EDITION
 

@@ -16,10 +16,12 @@ import json
 import re
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from dotenv import load_dotenv
-load_dotenv(PROJECT_ROOT / "assets" / "web" / ".env.local")
+_env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets", "web", ".env.local")
+if os.path.exists(_env_path):
+    load_dotenv(_env_path)
 
 from brevo_client import create_campaign_draft, send_campaign, get_or_create_list, add_contact, send_test_email
 
@@ -1085,7 +1087,8 @@ def main():
     # Generar versió Premium
     print("→ Generant versió Premium...")
     premium_html = build_premium_html(data)
-    premium_path = PROJECT_ROOT / f"data/newsletter-{edition}.premium.html"
+    os.makedirs("data", exist_ok=True)
+    premium_path = Path(f"data/newsletter-{edition}.premium.html")
     premium_path.parent.mkdir(parents=True, exist_ok=True)
     premium_path.write_text(premium_html, encoding="utf-8")
     print(f"  ✓ Premium: {premium_path.name} ({len(premium_html)/1024:.1f} KB)")
@@ -1093,7 +1096,7 @@ def main():
     # Generar versió Free
     print("→ Generant versió Free...")
     free_html = build_free_html(data)
-    free_path = PROJECT_ROOT / f"data/newsletter-{edition}.free.html"
+    free_path = Path(f"data/newsletter-{edition}.free.html")
     free_path.write_text(free_html, encoding="utf-8")
     print(f"  ✓ Free: {free_path.name} ({len(free_html)/1024:.1f} KB)")
 

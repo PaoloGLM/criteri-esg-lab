@@ -9,16 +9,26 @@ Aquesta és la manera de pujar arxius al Drive de l'usuari real (que
 sí té quota), no pas a la carpeta buida del Service Account.
 """
 import json
+import os
 import time
 import requests
 import io
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Carregar .env.local si existeix
+_env_path = Path(__file__).resolve().parent.parent / "assets" / "web" / ".env.local"
+if _env_path.exists():
+    load_dotenv(_env_path)
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseUpload
 from google.oauth2.credentials import Credentials
 
-OAUTH_TOKENS_PATH = Path("/home/z/my-project/.gcp-oauth-tokens.json")
-OAUTH_CLIENT_PATH = Path("/home/z/my-project/.gcp-oauth-client.json")
+# Paths als fitxers OAuth — configurables via variables d'entorn
+# Per defecte: /home/z/my-project/.gcp-oauth-*.json (workspace local)
+# A GitHub Actions: /home/runner/.gcp-oauth-*.json (escrits pel workflow)
+OAUTH_TOKENS_PATH = Path(os.environ.get("GCP_OAUTH_TOKENS_PATH", "/home/z/my-project/.gcp-oauth-tokens.json"))
+OAUTH_CLIENT_PATH = Path(os.environ.get("GCP_OAUTH_CLIENT_PATH", "/home/z/my-project/.gcp-oauth-client.json"))
 
 # Caché
 _creds_cache = {"creds": None, "expires": 0}

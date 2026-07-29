@@ -13,11 +13,11 @@ import sys
 import time
 from pathlib import Path
 
-sys.path.insert(0, "/home/z/my-project/criteri-esg-lab/scripts")
+sys.path.insert(0, "./scripts")
 from gemini_client import call_gemini
 
-FETS_DIR = Path("/home/z/my-project/criteri-esg-lab/data/informes/3-fets")
-REVISATS_DIR = Path("/home/z/my-project/criteri-esg-lab/data/informes/4-revisats-ortografia")
+FETS_DIR = Path("./data/informes/3-fets")
+REVISATS_DIR = Path("./data/informes/4-revisats-ortografia")
 REVISATS_DIR.mkdir(parents=True, exist_ok=True)
 
 SYSTEM_PROMPT = """Ets un corrector ortogràfic i d'estil expert en català i castellà.

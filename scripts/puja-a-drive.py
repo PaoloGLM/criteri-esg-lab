@@ -14,10 +14,10 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, "/home/z/my-project/criteri-esg-lab/scripts")
+sys.path.insert(0, "./scripts")
 from drive_user_client import get_user_drive_service, get_subfolder_id, upload_file, list_files_in_folder
 
-REVISATS_DIR = Path("/home/z/my-project/criteri-esg-lab/data/informes/4-revisats-ortografia")
+REVISATS_DIR = Path("./data/informes/4-revisats-ortografia")
 
 # CSS bàsica per al PDF
 CSS = """

@@ -3,7 +3,7 @@ Test ràpid de connexió a Gemini i Google Drive.
 Verifica que tot està configurat correctament abans de començar amb el flux.
 """
 import sys
-sys.path.insert(0, "/home/z/my-project/criteri-esg-lab/scripts")
+sys.path.insert(0, "./scripts")
 
 from config import (
     get_gemini_client,

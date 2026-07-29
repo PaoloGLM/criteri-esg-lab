@@ -2,7 +2,7 @@
 import os, sys, json, requests
 from pathlib import Path
 from dotenv import load_dotenv
-load_dotenv(Path("/home/z/my-project/criteri-esg-lab/assets/web/.env.local"))
+load_dotenv(Path("./assets/web/.env.local"))
 
 API_KEY = os.getenv("BEEHIIV_API_KEY", "")
 PUB_ID = os.getenv("BEEHIIV_PUBLICATION_ID", "")

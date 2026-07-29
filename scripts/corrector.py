@@ -8,7 +8,7 @@ Revisa textos en català i castellà i reporta errors.
 import sys, os, json, requests, time
 from pathlib import Path
 from dotenv import load_dotenv
-load_dotenv(Path("/home/z/my-project/criteri-esg-lab/assets/web/.env.local"))
+load_dotenv(Path("./assets/web/.env.local"))
 
 SERVICE_ACCOUNT_PATH = "/home/z/my-project/.gcp-service-account.json"
 

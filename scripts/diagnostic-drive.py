@@ -1,6 +1,6 @@
 """Diagnòstic: quines carpetes veu el Service Account i de quin tipus són."""
 import sys
-sys.path.insert(0, "/home/z/my-project/criteri-esg-lab/scripts")
+sys.path.insert(0, "./scripts")
 from config import get_drive_service, get_service_account_email, find_informes_root, DRIVE_FOLDERS
 
 drive = get_drive_service()

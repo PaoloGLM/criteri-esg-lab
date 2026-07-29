@@ -2,7 +2,7 @@
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-load_dotenv(Path("/home/z/my-project/criteri-esg-lab/assets/web/.env.local"))
+load_dotenv(Path("./assets/web/.env.local"))
 from google import genai
 
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))

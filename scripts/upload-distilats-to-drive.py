@@ -7,11 +7,11 @@ editor, hauria de funcionar.
 import sys
 import io
 from pathlib import Path
-sys.path.insert(0, "/home/z/my-project/criteri-esg-lab/scripts")
+sys.path.insert(0, "./scripts")
 from config import get_drive_service, get_subfolder_id
 from googleapiclient.http import MediaIoBaseUpload
 
-LOCAL_DIR = Path("/home/z/my-project/criteri-esg-lab/data/informes/1-distilats")
+LOCAL_DIR = Path("./data/informes/1-distilats")
 drive = get_drive_service()
 
 # ID de la carpeta 1-distilats (la busquem via get_subfolder_id)

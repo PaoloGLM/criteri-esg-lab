@@ -18,11 +18,11 @@ import json
 import time
 from pathlib import Path
 
-sys.path.insert(0, "/home/z/my-project/criteri-esg-lab/scripts")
+sys.path.insert(0, "./scripts")
 from glm_client import call_glm_direct
 import pdfplumber
 
-DATA_DIR = Path("/home/z/my-project/criteri-esg-lab/data/informes")
+DATA_DIR = Path("./data/informes")
 ORIGINALS_DIR = DATA_DIR / "0-originals"
 DISTILATS_DIR = DATA_DIR / "1-distilats"
 DISTILATS_DIR.mkdir(parents=True, exist_ok=True)

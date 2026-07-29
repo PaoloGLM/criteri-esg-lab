@@ -14,7 +14,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-DATA_DIR = Path("/home/z/my-project/criteri-esg-lab/data/informes")
+DATA_DIR = Path("./data/informes")
 REVISATS_DIR = DATA_DIR / "4-revisats-ortografia"
 
 # === Plantilla HTML (basada en pilot-informe-foretica) ===

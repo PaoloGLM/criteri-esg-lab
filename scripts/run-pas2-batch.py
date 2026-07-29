@@ -7,7 +7,7 @@ import subprocess
 import time
 from pathlib import Path
 
-DATA_DIR = Path("/home/z/my-project/criteri-esg-lab/data/informes")
+DATA_DIR = Path("./data/informes")
 ORIGINALS_DIR = DATA_DIR / "0-originals"
 DISTILATS_DIR = DATA_DIR / "1-distilats"
 
@@ -35,7 +35,7 @@ for i, pdf in enumerate(pendings, 1):
     try:
         result = subprocess.run(
             ["scripts/.venv/bin/python", "scripts/02-glm-distilla.py", pdf.stem],
-            cwd="/home/z/my-project/criteri-esg-lab",
+            cwd=".",
             timeout=600,
             capture_output=False,
         )

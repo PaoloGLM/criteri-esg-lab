@@ -778,3 +778,36 @@ Stage Summary:
 - Sistema visual consistent amb Fase 2A (paleta, tipografia, layout canònic).
 - PENDENT: Paolo valida les dues fases → si OK, implementació al codi React/Tailwind + deploy per cada una.
 - Si Paolo prefereix una variant concreta de la Fase 2B (A o B), caldrà iterar-la si hi ha algun detall a ajustar abans de implementar-la.
+
+---
+Task ID: 2026-07-30-exits
+Agent: GLM (main)
+Task: Apuntar èxits + arreglar paths per GitHub Actions
+
+Work Log:
+- Newsletter workflow funcionant a GitHub Actions (provat per Paolo, ✓ verd)
+- Tots els scripts Python arreglats: paths hardcoded /home/z/my-project/criteri-esg-lab → rutes relatives
+- Workflow process-informes.yml actualitzat amb mateix patró que newsletter
+- .env.local escrit amb printf (sense espais YAML)
+- OAuth tokens escrits a /home/runner/.gcp-oauth-*.json
+
+ÈXITS ACONSEGUITS (juliol 2026):
+1. Web completa operativa (15+ pàgines, bilingüe CAT/ES, deploy automàtic)
+2. Newsletter automatitzada (GitHub Actions → Drive + Brevo, 0€, sense xat)
+3. Flux d'informes passos 1-5 funcionant (GLM + Gemini + Drive)
+4. Validació justificants Fiare amb Gemini OCR (automàtica)
+5. Registre d'usuaris integrat amb Brevo (email + Google OAuth)
+6. Generador d'informes /eines/avaluador (Premium)
+7. Corrector ortogràfic automatitzat
+8. Disclaimer IA + secció "Com processem cada informe"
+9. Pàgina /preus com a pàgina independent
+10. Pàgina /pagament (Stripe + Fiare)
+11. Semàfor metodològic amb popup
+12. Supabase configurat (auth + BD)
+13. 2 workflows GitHub Actions (newsletter + informes)
+14. Scripts d'arrencada automàtica (setup.sh)
+15. TASQUES.md actualitzat com a únic document de gestió
+
+Stage Summary:
+Newsletter workflow ✓ funcionant. Workflow informes arreglat (paths relatius).
+Tots els scripts Python netejats de paths hardcoded. Pendents: provar workflow informes, disseny PDF, Stripe, privacitat.

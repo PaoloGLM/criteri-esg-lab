@@ -15,10 +15,10 @@ import json
 import time
 from pathlib import Path
 
-sys.path.insert(0, "/home/z/my-project/criteri-esg-lab/scripts")
+sys.path.insert(0, "./scripts")
 from gemini_client import call_gemini_json
 
-DATA_DIR = Path("/home/z/my-project/criteri-esg-lab/data/informes")
+DATA_DIR = Path("./data/informes")
 ORIGINALS_DIR = DATA_DIR / "0-originals"
 DISTILATS_DIR = DATA_DIR / "1-distilats"
 APORTACIONS_DIR = DATA_DIR / "2-aportacions-gemini"

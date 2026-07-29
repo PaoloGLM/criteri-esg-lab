@@ -1,10 +1,10 @@
 """Descarrega els PDFs de Drive a local (fa servir la carpeta 0-originals per ID conegut)."""
 import sys
 from pathlib import Path
-sys.path.insert(0, "/home/z/my-project/criteri-esg-lab/scripts")
+sys.path.insert(0, "./scripts")
 from config import get_drive_service
 
-LOCAL_DIR = Path("/home/z/my-project/criteri-esg-lab/data/informes/0-originals")
+LOCAL_DIR = Path("./data/informes/0-originals")
 LOCAL_DIR.mkdir(parents=True, exist_ok=True)
 
 drive = get_drive_service()

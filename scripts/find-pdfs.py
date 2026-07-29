@@ -1,6 +1,6 @@
 """Buscar TOTS els PDFs accessibles per el Service Account."""
 import sys
-sys.path.insert(0, "/home/z/my-project/criteri-esg-lab/scripts")
+sys.path.insert(0, "./scripts")
 from config import get_drive_service
 
 drive = get_drive_service()

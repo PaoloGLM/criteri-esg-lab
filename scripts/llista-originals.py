@@ -1,6 +1,6 @@
 """Llista els PDFs a Drive /informes/0-originals/ i quins ja estan destil·lats a /1-distilats/."""
 import sys
-sys.path.insert(0, "/home/z/my-project/criteri-esg-lab/scripts")
+sys.path.insert(0, "./scripts")
 from config import get_drive_service, get_subfolder_id
 
 drive = get_drive_service()

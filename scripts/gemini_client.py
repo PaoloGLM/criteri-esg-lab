@@ -9,7 +9,7 @@ import os
 import json
 from pathlib import Path
 
-sys.path.insert(0, "/home/z/my-project/criteri-esg-lab/scripts")
+sys.path.insert(0, "./scripts")
 from config import GCP_SERVICE_ACCOUNT_PATH
 
 from google.oauth2 import service_account

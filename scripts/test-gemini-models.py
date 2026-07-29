@@ -1,10 +1,10 @@
 """Test Gemini amb la key nova. Prova diversos models."""
 import os, sys
-sys.path.insert(0, "/home/z/my-project/criteri-esg-lab/scripts")
+sys.path.insert(0, "./scripts")
 from dotenv import load_dotenv
 from pathlib import Path
 
-load_dotenv(Path("/home/z/my-project/criteri-esg-lab/assets/web/.env.local"))
+load_dotenv(Path("./assets/web/.env.local"))
 
 from google import genai
 from google.genai import types

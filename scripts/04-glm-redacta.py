@@ -1,10 +1,10 @@
 """
-Pas 4 del flux: GLM redacta l'informe final integrant les aportacions de Gemini.
+Pas 4 del flux: GLM redacta → Gemini
 
 Per cada informe:
 1. Llegeix el destil·lat (pas 2)
 2. Llegeix les aportacions de Gemini (pas 3)
-3. Crida GLM amb rol de redactor: decideix què és rellevant de Gemini i què no
+3. Crida Gemini amb rol de redactor
 4. Genera l'informe final en Markdown (CA + ES)
 5. Guarda a /data/informes/3-fets/<slug>.md
 
@@ -14,12 +14,11 @@ Per cada informe:
 import sys
 import os
 import json
-import subprocess
-import tempfile
 import time
 from pathlib import Path
 
 sys.path.insert(0, "./scripts")
+from gemini_client import call_gemini
 
 DATA_DIR = Path("./data/informes")
 DISTILATS_DIR = DATA_DIR / "1-distilats"
@@ -27,180 +26,42 @@ APORTACIONS_DIR = DATA_DIR / "2-aportacions-gemini"
 FETS_DIR = DATA_DIR / "3-fets"
 FETS_DIR.mkdir(parents=True, exist_ok=True)
 
-NODE_SCRIPT = r"""
-const ZAI = require('z-ai-web-dev-sdk').default;
-const fs = require('fs');
-
-async function main() {
-  const inputPath = process.argv[2];
-  const input = JSON.parse(fs.readFileSync(inputPath, 'utf-8'));
-
-  const systemPrompt = [
-    "Ets el redactor principal de Criteri ESG. La teva feina és redactar l'informe final.",
-    "Tens dos inputs:",
-    "  1. Un destil·lat inicial fet per GLM (pas 2)",
-    "  2. Aportacions crítiques fetes per Gemini (pas 3): propostes + advocat del diable",
-    "",
-    "Per a cadascuna de les aportacions de Gemini, decideix:",
-    "  - Si l'incorpores a l'informe final (i com)",
-    "  - Si la descartes (i per què)",
-    "",
-    "Veu editorial Criteri ESG:",
-    "- Mediterrània, crítica amb el greenwashing, propera a cooperatives i B Corps",
-    '- "Més enllà del Checkbox": tria 1-2 dels 5 criteris ètics (dignitat, justícia distributiva,',
-    "  sostenibilitat absoluta, co-decisió democràtica, arrelament territorial)",
-    "- MAI esmentar Economia del Bé Comú ni Economia Ciutadana públicament",
-    "- Longitud màxima: 1.100 paraules (permet '5 minuts per criteri clar')",
-    "",
-    "Format de sortida: Markdown amb aquesta estructura exacta:",
-    "",
-    "---",
-    "slug: <slug>",
-    "title: <títol>",
-    "institution: <institució>",
-    "date: <data>",
-    "lang: ca",
-    "---",
-    "",
-    "# <títol>",
-    "",
-    "## Bloc 0 — Semàfor Metodològic",
-    "",
-    "Nota global: <lletra A-D> · <etiqueta>",
-    "",
-    "- **Cobertura Scope 3**: <color> — <nota breu>",
-    "- **Termes temporals**: <color> — <nota breu>",
-    "- **Fonts independents**: <color> — <nota breu>",
-    "- **Granularitat**: <color> — <nota breu>",
-    "- **Verificació externa**: <color> — <nota breu>",
-    "",
-    "## Bloc 1 — Fitxa tècnica",
-    "",
-    "- Institució: ...",
-    "- Data: ...",
-    "- Tipus: ...",
-    "- Pàgines: ...",
-    "- Àmbit: ...",
-    "- URL: ...",
-    "",
-    "## Bloc 2 — 5 dades clau",
-    "",
-    "1. **<valor>** — <context> (p. X)",
-    "2. ...",
-    "",
-    "## Bloc 3 — Resum executiu",
-    "",
-    "<~300 paraules>",
-    "",
-    "## Bloc 4 — Implicacions",
-    "",
-    "### Empreses",
-    "<~150 paraules>",
-    "### Reguladors",
-    "<~150 paraules>",
-    "### Ciutadans",
-    "<~150 paraules>",
-    "",
-    "### Més enllà del Checkbox",
-    "Criteri: <criteri triat>",
-    "<~150 paraules>",
-    "",
-    "## Bloc 5 — Connexions",
-    "",
-    "- **<tipus>** — <target>: <desc>",
-    "",
-    "## Bloc 6 — Accions recomanades",
-    "",
-    "01. **<títol>** — <desc>",
-    "   - Esforç: <Baix/Mitjà/Alt> · Impacte: <Baix/Mitjà/Alt>",
-    "",
-    "## Bloc 7 — Cross-reference",
-    "",
-    "- **<framework>** — <criteri>: <impacte>",
-    "",
-    "---",
-    "Processat amb assistència d'IA (GLM + Gemini) i pendent de validació per Paolo."
-  ].join("\n");
-
-  const userPrompt = [
-    "Redacta l'informe final integrant el destil·lat i les aportacions crítiques.",
-    "",
-    "TÍTOL: " + input.title,
-    "INSTITUCIÓ: " + input.institution,
-    "",
-    "=== DESTIL·LAT INICIAL ===",
-    input.destilat,
-    "=== FI ===",
-    "",
-    "=== APORTACIONS DE GEMINI ===",
-    input.aportacions,
-    "=== FI ===",
-    "",
-    "Idioma de sortida: " + input.lang + " (ca=català, es=castellà).",
-    "",
-    "Redacta el Markdown ara (amb el front-matter YAML al principi)."
-  ].join("\n");
-
-  try {
-    const zai = await ZAI.create();
-    const completion = await zai.chat.completions.create({
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: userPrompt },
-      ],
-      temperature: 0.4,
-    });
-
-    const content = completion.choices[0]?.message?.content || '';
-    process.stdout.write(content);
-  } catch (e) {
-    process.stderr.write('Error: ' + e.message);
-    process.exit(1);
-  }
-}
-
-main();
-"""
-
-
-def call_glm_redactor(title: str, institution: str, destilat: str, aportacions: str, lang: str = "ca") -> str:
-    """Crida GLM per redactar l'informe final. Retorna Markdown."""
-    payload = {
-        "title": title,
-        "institution": institution,
-        "destilat": destilat,
-        "aportacions": aportacions,
-        "lang": lang,
-    }
-
-    with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
-        json.dump(payload, f)
-        payload_path = f.name
-
-    with tempfile.NamedTemporaryFile(mode="w", suffix=".js", delete=False) as f:
-        f.write(NODE_SCRIPT)
-        script_path = f.name
-
-    try:
-        result = subprocess.run(
-            ["node", script_path, payload_path],
-            capture_output=True,
-            text=True,
-            timeout=600,
-            cwd="/home/z/my-project",
-            env={"PATH": "/usr/local/bin:/usr/bin:/bin", "NODE_PATH": "/home/z/my-project/node_modules"},
-        )
-
-        if result.returncode != 0:
-            raise Exception(f"Node error: {result.stderr[:500]}")
-
-        return result.stdout
-    finally:
-        try:
-            os.unlink(payload_path)
-            os.unlink(script_path)
-        except:
-            pass
+def call_gemini_redactor(title: str, institution: str, destilat: str, aportacions: str, lang: str = "ca") -> str:
+    """Crida Gemini per redactar l'informe final. Retorna Markdown."""
+    lang_instr = "Escriu l'informe en català." if lang == "ca" else "Escribe el informe en castellano."
+    system_prompt = (
+        "Ets el redactor principal de Criteri ESG. La teva feina és redactar l'informe final.\n"
+        "Tens dos inputs:\n"
+        "  1. Un destil·lat inicial (pas 2)\n"
+        "  2. Aportacions crítiques fetes per Gemini (pas 3): propostes + advocat del diable\n\n"
+        "Per a cadascuna de les aportacions, decideix:\n"
+        "  - Si l'incorpores a l'informe final (i com)\n"
+        "  - Si la descartes (i per què)\n\n"
+        "Veu editorial Criteri ESG:\n"
+        "- Mediterrània, crítica amb el greenwashing, propera a cooperatives i B Corps\n"
+        '- "Més enllà del Checkbox": tria 1-2 dels 5 criteris ètics (dignitat, justícia distributiva,\n'
+        "  sostenibilitat absoluta, co-decisió democràtica, arrelament territorial)\n"
+        "- MAI esmentar Economia del Bé Comú ni Economia Ciutadana públicament\n"
+        "- Longitud màxima: 1.100 paraules (permet '5 minuts per criteri clar')\n\n"
+        "Format de sortida: Markdown amb estructura de 8 blocs:\n"
+        "## Bloc 0 — Semàfor Metodològic\n"
+        "## Bloc 1 — Fitxa tècnica\n"
+        "## Bloc 2 — 5 dades clau\n"
+        "## Bloc 3 — Resum executiu (~300 paraules)\n"
+        "## Bloc 4 — Implicacions (Empreses, Reguladors, Ciutadans, Més enllà del Checkbox)\n"
+        "## Bloc 5 — Connexions\n"
+        "## Bloc 6 — Accions recomanades\n"
+        "## Bloc 7 — Cross-reference\n\n"
+        "Inclou front-matter YAML al principi (slug, title, institution, date, lang)."
+    )
+    user_prompt = (
+        f"Redacta l'informe final integrant el destil·lat i les aportacions crítiques.\n\n"
+        f"TÍTOL: {title}\nINSTITUCIÓ: {institution}\n{lang_instr}\n\n"
+        f"=== DESTIL·LAT INICIAL ===\n{destilat[:8000]}\n=== FI ===\n\n"
+        f"=== APORTACIONS DE GEMINI ===\n{aportacions[:8000]}\n=== FI ===\n\n"
+        f"Redacta el Markdown ara (amb el front-matter YAML al principi)."
+    )
+    return call_gemini(system_prompt, user_prompt, temperature=0.4, max_tokens=8000, force_text=True)
 
 
 def process_one(slug: str) -> bool:
@@ -237,7 +98,7 @@ def process_one(slug: str) -> bool:
 
     # Redactar CA
     print(f"  → Redactant versió catalana...")
-    md_ca = call_glm_redactor(
+    md_ca = call_gemini_redactor(
         distilat_data["title"],
         distilat_data["institution"],
         destilat_str,
@@ -251,7 +112,7 @@ def process_one(slug: str) -> bool:
 
     # Redactar ES
     print(f"  → Redactant versió castellana...")
-    md_es = call_glm_redactor(
+    md_es = call_gemini_redactor(
         distilat_data["title"],
         distilat_data["institution"],
         destilat_str,
@@ -267,7 +128,7 @@ def process_one(slug: str) -> bool:
 def main():
     target = sys.argv[1] if len(sys.argv) > 1 else None
 
-    print("=== Pas 4: GLM redacta (integra aportacions de Gemini) ===\n")
+    print("=== Pas 4: Gemini redacta (integra aportacions de Gemini) ===\n")
     print(f"Destil·lats: {DISTILATS_DIR}")
     print(f"Aportacions: {APORTACIONS_DIR}")
     print(f"Destinació: {FETS_DIR}\n")

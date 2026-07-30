@@ -1,10 +1,10 @@
 """
-Pas 2 del flux: GLM destil·la (VERSIO LOCAL, sense Drive pels outputs).
+Pas 2 del flux: GLM destil·la → Gemini.
 
 Per cada PDF a /data/informes/0-originals/:
 1. Llegeix el PDF localment
 2. Extreu el text amb pdfplumber
-3. Crida GLM directament (subprocess Node)
+3. Crida Gemini via Vertex AI
 4. Guarda el ReportBlock JSON a /data/informes/1-distilats/
 
 Ús:
@@ -19,7 +19,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, "./scripts")
-from glm_client import call_glm_direct
+from gemini_client import call_gemini
 import pdfplumber
 
 DATA_DIR = Path("./data/informes")
@@ -120,13 +120,48 @@ def process_one_pdf(pdf_path: Path) -> bool:
         return False
     print(f"  ✓ Text extret ({len(text)} chars)")
 
-    # 2. Cridar GLM (català i castellà)
+    # 2. Cridar Gemini (català i castellà)
+
+    def _distill(lang):
+        lang_instr = "Escriu tot el contingut en català." if lang == "ca" else "Escribe todo el contenido en castellano."
+        sp = (
+            "Ets un analista ESG expert de Criteri ESG. Sintetitza informes institucionals ESG en 8 blocs accionables.\n\n"
+            "Genera EXCLUSIVAMENT un objecte JSON vàlid amb aquesta estructura (sense markdown, sense text fora del JSON):\n"
+            '{"semafor":{"grade":"A"|"B"|"C"|"D","gradeLabel":"...","indicators":['
+            '{"name":"Cobertura Scope 3","status":"verd"|"groc"|"vermell","label":"...","note":"..."},...]},'
+            '"dadesClau":[{"value":"...","label":"...","page":"..."}],'
+            '"resumExecutiu":"...","implicacions":{"empreses":"...","reguladors":"...","ciutadans":"..."},'
+            '"mesEnllaCheckbox":{"criteri":"...","body":"..."},'
+            '"connexions":[{"type":"Evolució|Complement|Contradicció","target":"...","desc":"..."}],'
+            '"accions":[{"num":"01","title":"...","desc":"...","effort":"Baix|Mitjà|Alt","impact":"Baix|Mitjà|Alt"}],'
+            '"crossRefs":[{"framework":"...","criterion":"...","impact":"..."}]}\n\n'
+            "Criteris semàfor: verd=Quantificat, groc=Esmentat, vermell=Ignorat. "
+            "grade: A=5v, B=4v+1g, C≤1r, D=2+r.\n"
+            "Llargàries: resumExecutiu ~300p, implicacions ~150p cadascun, mesEnllaCheckbox ~150p, "
+            "dadesClau 5, accions 4-5, connexions 2-3, crossRefs 2-3.\n"
+            'Veu editorial mediterrània. "Més enllà del Checkbox" usa 1-2 criteris ètics '
+            '(dignitat, justícia, sostenibilitat, co-decisió, arrelament). '
+            "MAI esmentar Economia del Bé Comú ni Economia Ciutadana públicament."
+        )
+        up = (
+            f"Analitza el següent informe i genera el ReportBlock JSON.\n\n"
+            f"TÍTOL: {meta['title']}\nINSTITUCIÓ: {meta['institution']}\n{lang_instr}\n\n"
+            f"=== TEXT ===\n{text[:28000]}\n=== FI ===\n\nGenera el JSON ara."
+        )
+        raw = call_gemini(sp, up, temperature=0.4, max_tokens=8000, force_text=True)
+        import re
+        m = re.search(r'```(?:json)?\s*([\s\S]*?)```', raw)
+        if m: raw = m.group(1).strip()
+        m = re.search(r'\{[\s\S]*\}', raw)
+        if m: raw = m.group(0)
+        return json.loads(raw)
+
     print(f"  → Generant versió catalana...")
-    report_ca = call_glm_direct(meta["title"], meta["institution"], text, "ca")
-    time.sleep(2)
+    report_ca = _distill("ca")
+    time.sleep(1)
 
     print(f"  → Generant versió castellana...")
-    report_es = call_glm_direct(meta["title"], meta["institution"], text, "es")
+    report_es = _distill("es")
 
     # 3. Guardar JSON combinat
     output = {
@@ -146,7 +181,7 @@ def process_one_pdf(pdf_path: Path) -> bool:
 def main():
     target = sys.argv[1] if len(sys.argv) > 1 else None
 
-    print("=== Pas 2: GLM destil·la (LOCAL) ===\n")
+    print("=== Pas 2: Gemini destil·la (LOCAL) ===\n")
     print(f"PDFs originals: {ORIGINALS_DIR}")
     print(f"Destinació: {DISTILATS_DIR}\n")
 

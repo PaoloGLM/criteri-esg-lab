@@ -1062,8 +1062,8 @@ export const translations = {
     es: ". Es la falta de tiempo para procesarla y de criterio para decidir qué importa.",
   },
   "v2.manifest.body": {
-    ca: "Cada setmana surten 14 informes institucionals sobre sostenibilitat. Tots importants. Tots llargs. Ningú té temps. La solució no és més informació: és criteri.",
-    es: "Cada semana salen 14 informes institucionales sobre sostenibilidad. Todos importantes. Todos largos. Nadie tiene tiempo. La solución no es más información: es criterio.",
+    ca: "Cada setmana surten uns 10 informes institucionals sobre sostenibilitat. Tots importants. Tots llargs. Ningú té temps. La solució no és llegir-los tots: és conèixer les dades rellevants.",
+    es: "Cada semana salen unos 10 informes institucionales sobre sostenibilidad. Todos importantes. Todos largos. Nadie tiene tiempo. La solución no es leerlos todos: es conocer los datos relevantes.",
   },
 
   // --- 3 TESES (cream) ---
@@ -1358,8 +1358,8 @@ export const translations = {
     es: ". Estamos para devolverte tiempo para pensar.",
   },
   "v2.ctafinal.button": {
-    ca: "Accés obert al setembre",
-    es: "Acceso abierto en septiembre",
+    ca: "Accés obert fins al novembre",
+    es: "Acceso abierto hasta noviembre",
   },
   "v2.ctafinal.note": {
     ca: "Sense targeta de crèdit. Sense paywall fins al novembre.",

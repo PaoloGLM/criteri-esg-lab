@@ -43,7 +43,7 @@ export default function MasAllaCheckboxPage() {
         <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
           <div className="mx-auto max-w-3xl px-6 py-16 text-center">
             <p className="font-serif text-lg italic leading-relaxed text-primary">
-              {tr("Cada quinzena publiquem una pregunta que no té resposta única. La pregunta i la nostra reflexió són públiques. La dinàmica de grup per treballar-la amb el teu equip està reservada a subscriptors Premium.", "Cada quincena publicamos una pregunta que no tiene respuesta única. La pregunta y nuestra reflexión son públicas. La dinámica de grupo para trabajarla con tu equipo está reservada a suscriptores Premium.")}
+              {tr("Cada mes publiquem una pregunta que no té resposta única. La pregunta i la nostra reflexió són públiques. La dinàmica de grup per treballar-la amb el teu equip està reservada a subscriptors Premium.", "Cada mes publicamos una pregunta que no tiene respuesta única. La pregunta y nuestra reflexión son públicas. La dinámica de grupo para trabajarla con tu equipo está reservada a suscriptores Premium.")}
             </p>
             <div className="mt-8 flex justify-center gap-12 font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "#8B7355" }}>
               <span><strong className="text-primary">5</strong> {tr("preguntes", "preguntas")}</span>
@@ -84,12 +84,12 @@ export default function MasAllaCheckboxPage() {
               <div className="flex flex-col gap-4">
                 <p className="font-mono text-[11px] uppercase tracking-[0.22px] font-semibold" style={{ color: "#D9A574" }}>{tr("Com funciona", "Cómo funciona")}</p>
                 <h2 className="font-serif text-4xl font-medium leading-tight" style={{ color: "#F5EFE6" }}>{tr("Pregunta + ", "Pregunta + ")}<em className="italic" style={{ color: "#D9A574" }}>{tr("reflexió", "reflexión")}</em>{tr(" + dinàmica", " + dinámica")}</h2>
-                <p className="max-w-md font-serif text-lg italic" style={{ color: "rgba(245,239,230,0.75)" }}>{tr("Cada quinzena, una pregunta que no es resol amb un KPI. La pregunta i la nostra reflexió són sempre públiques. La dinàmica per treballar-la amb el teu equip està reservada a Premium.", "Cada quincena, una pregunta que no se resuelve con un KPI. La pregunta y nuestra reflexión son siempre públicas. La dinámica para trabajarla con tu equipo está reservada a Premium.")}</p>
+                <p className="max-w-md font-serif text-lg italic" style={{ color: "rgba(245,239,230,0.75)" }}>{tr("Cada mes, una pregunta que no es resol amb un KPI. La pregunta i la nostra reflexió són sempre públiques. La dinàmica per treballar-la amb el teu equip està reservada a Premium.", "Cada mes, una pregunta que no se resuelve con un KPI. La pregunta y nuestra reflexión son siempre públicas. La dinámica para trabajarla con tu equipo está reservada a Premium.")}</p>
               </div>
               <div className="flex flex-col gap-4">
                 {[
                   { n: "01", t: tr("La pregunta", "La pregunta"), d: tr("Oberta, sense resposta única, formulada per crear incomoditat productiva. Visible per a tothom.", "Abierta, sin respuesta única, formulada para crear incomodidad productiva. Visible para todos.") },
-                  { n: "02", t: tr("La reflexió", "La reflexión"), d: tr("200-300 paraules des de la veu editorial de Criteri ESG. No és la resposta: és un marc per pensar. Visible per a tothom.", "200-300 palabras desde la voz editorial de Criteri ESG. No es la respuesta: es un marco para pensar. Visible para todos.") },
+                  { n: "02", t: tr("La reflexió", "La reflexión"), d: tr("200-300 paraules des de la veu editorial de Criteri ESG. No és la resposta: és un marc per pensar.", "200-300 palabras desde la voz editorial de Criteri ESG. No es la respuesta: es un marco para pensar.") },
                   { n: "03", t: tr("La dinàmica", "La dinámica"), d: tr("Proposta pràctica per fer amb el teu equip (30-90 min). Tres tipus: generació d'idees, dos bàndols, adopció de personatges. Reservada a Premium.", "Propuesta práctica para hacer con tu equipo (30-90 min). Tres tipos: generación de ideas, dos bandos, adopción de personajes. Reservada a Premium.") },
                 ].map((item) => (
                   <div key={item.n} className="grid grid-cols-[32px_1fr] gap-4 border-b py-4" style={{ borderColor: "rgba(217,165,116,0.2)" }}>

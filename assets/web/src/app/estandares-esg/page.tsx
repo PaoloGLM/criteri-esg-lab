@@ -8,114 +8,114 @@ import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
 import { useRouter } from "next/navigation";
-import { Lock } from "lucide-react";
-import { STANDARDS, TYPE_CONFIG } from "@/lib/standards-data";
+import { STANDARDS, TYPE_CONFIG, type StandarType } from "@/lib/standards-data";
 
 export default function EstandaresPage() {
   const { lang } = useLanguage();
   const router = useRouter();
   const [authOpen, setAuthOpen] = useState(false);
+  const [authTab, setAuthTab] = useState<"register" | "login">("register");
   const [preusOpen, setPreusOpen] = useState(false);
+  const [filterReg, setFilterReg] = useState(true);
+  const [filterFw, setFilterFw] = useState(true);
+  const [filterCert, setFilterCert] = useState(true);
+  const [search, setSearch] = useState("");
+
+  const openAuth = (tab: "register" | "login" = "register") => { setAuthTab(tab); setAuthOpen(true); };
+
+  const filtered = STANDARDS.filter((s) => {
+    if (s.type === "reg" && !filterReg) return false;
+    if (s.type === "fw" && !filterFw) return false;
+    if (s.type === "cert" && !filterCert) return false;
+    if (search && !s.name.toLowerCase().includes(search.toLowerCase())) return false;
+    return true;
+  });
 
   const tr = (ca: string, es: string) => (lang === "ca" ? ca : es);
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <Header
-        onOpenPreus={() => setPreusOpen(true)}
-        onOpenAuth={(tab) => { setAuthOpen(true); }}
-      />
+      <Header onOpenPreus={() => setPreusOpen(true)} onOpenAuth={(tab) => openAuth(tab || "register")} />
       <main className="flex-1">
-        {/* Page hero */}
-        <section className="border-b border-rule bg-secondary/30 py-12">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <p className="eyebrow mb-2">{tr("ESTÀNARDS ESG", "ESTÁNDARES ESG")}</p>
-            <h1 className="font-serif text-4xl font-semibold leading-tight text-primary sm:text-5xl">
-              {tr("Els teus estàndards, el nostre cross-reference.", "Tus estándares, nuestro cross-reference.")}
-            </h1>
-            <div className="rule-accent my-5" />
-            <p className="max-w-2xl text-base leading-relaxed text-foreground/80">
-              {tr(
-                "Cada informe es mapeja amb regulacions, frameworks i certificacions. Selecciona el teu per veure quins informes t'afecten i quines accions prendre.",
-                "Cada informe se mapea con regulaciones, frameworks y certificaciones. Selecciona el tuyo para ver qué informes te afectan y qué acciones tomar."
-              )}
-            </p>
-          </div>
-        </section>
-
-        {/* Legend */}
-        <section className="py-6">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-wrap gap-6">
-              <div className="flex items-center gap-2.5">
-                <span className="inline-block w-1.5 h-5 rounded-sm" style={{ background: "#5C3A1E" }} />
-                <span className="text-xs">{tr("Regulacions (obligatòries)", "Regulaciones (obligatorias)")}</span>
+        {/* PAGE HEADER — disseny Paolo */}
+        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+              <div>
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="inline-block h-0.5 w-6" style={{ background: "#B87333" }} />
+                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#8A5526" }}>Estándares ESG · 2026</p>
+                </div>
+                <h1 className="mb-4 font-serif text-5xl font-medium leading-tight tracking-tight text-primary">
+                  {lang === "ca" ? "Els " : "Los "}<em className="italic" style={{ color: "#5C3A1E" }}>{lang === "ca" ? "16 estàndards" : "16 estándares"}</em>{lang === "ca" ? " que un director de sostenibilitat no hauria de confondre." : " que un director de sostenibilidad no debería confundir."}
+                </h1>
+                {/* 3 conceptes amb colors */}
+                <div className="mb-4 flex flex-wrap gap-2.5">
+                  <span className="font-serif text-base italic font-medium px-3.5 py-1.5" style={{ background: "#5C3A1E", color: "#F5EFE6" }}>{lang === "ca" ? "Una regulació t'obliga" : "Una regulación te obliga"}</span>
+                  <span className="font-serif text-base italic font-medium px-3.5 py-1.5" style={{ background: "#B87333", color: "#F5EFE6" }}>{lang === "ca" ? "Un framework t'orienta" : "Un framework te orienta"}</span>
+                  <span className="font-serif text-base italic font-medium px-3.5 py-1.5" style={{ background: "#E8C99A", color: "#5C3A1E" }}>{lang === "ca" ? "Una certificació t'avalua" : "Una certificación te evalúa"}</span>
+                </div>
+                <p className="font-serif text-lg italic" style={{ color: "#5C3A1E" }}>{lang === "ca" ? "Confondre-les té conseqüències operatives reals." : "Confundirlas tiene consecuencias operativas reales."}</p>
               </div>
-              <div className="flex items-center gap-2.5">
-                <span className="inline-block w-1.5 h-5 rounded-sm" style={{ background: "#B87333" }} />
-                <span className="text-xs">{tr("Frameworks (estàndards de reporting)", "Frameworks (estándares de reporting)")}</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <span className="inline-block w-1.5 h-5 rounded-sm" style={{ background: "#E8C99A" }} />
-                <span className="text-xs">{tr("Certificacions i ratings", "Certificaciones y ratings")}</span>
-              </div>
+              <div className="font-serif text-[120px] font-light leading-none text-primary" style={{ letterSpacing: "-0.05em" }}>16<sup className="font-mono text-[12px] font-medium" style={{ color: "#B87333", letterSpacing: "0.15em", textTransform: "uppercase", verticalAlign: "top", marginLeft: "6px" }}>est.</sup></div>
             </div>
           </div>
         </section>
 
-        {/* Grid de estàndards */}
-        <section className="pb-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {STANDARDS.map((s) => {
+        {/* LEGEND + FILTRES */}
+        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl px-6 py-4 lg:px-8">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#8B7355" }}>{lang === "ca" ? "Filtrar:" : "Filtrar:"}</span>
+                <button onClick={() => setFilterReg(!filterReg)} className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-3.5 py-2 border" style={{ background: filterReg ? "#2C1810" : "white", color: filterReg ? "#F5EFE6" : "#5C3A1E", borderColor: filterReg ? "#2C1810" : "#C9B89A" }}>
+                  <span className="inline-block w-[18px] h-1" style={{ background: "#5C3A1E" }} />{lang === "ca" ? "Regulacions (5)" : "Regulaciones (5)"}
+                </button>
+                <button onClick={() => setFilterFw(!filterFw)} className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-3.5 py-2 border" style={{ background: filterFw ? "#2C1810" : "white", color: filterFw ? "#F5EFE6" : "#5C3A1E", borderColor: filterFw ? "#2C1810" : "#C9B89A" }}>
+                  <span className="inline-block w-[18px] h-1" style={{ background: "#B87333" }} />Frameworks (5)
+                </button>
+                <button onClick={() => setFilterCert(!filterCert)} className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-3.5 py-2 border" style={{ background: filterCert ? "#2C1810" : "white", color: filterCert ? "#F5EFE6" : "#5C3A1E", borderColor: filterCert ? "#2C1810" : "#C9B89A" }}>
+                  <span className="inline-block w-[18px] h-1" style={{ background: "#E8C99A" }} />{lang === "ca" ? "Certificacions (6)" : "Certificaciones (6)"}
+                </button>
+              </div>
+              <input type="text" placeholder={lang === "ca" ? "Cercar estàndard..." : "Buscar estándar..."} value={search} onChange={(e) => setSearch(e.target.value)} className="border px-3.5 py-2 text-sm" style={{ background: "white", borderColor: "#C9B89A", color: "#2C1810", width: "220px" }} />
+            </div>
+          </div>
+        </section>
+
+        {/* GRID */}
+        <section className="py-10" style={{ background: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {filtered.map((s, i) => {
                 const cfg = TYPE_CONFIG[s.type];
                 return (
-                  <div
-                    key={s.slug}
-                    onClick={() => router.push(`/estandares-esg/${s.slug}`)}
-                    className="relative cursor-pointer rounded-lg border border-rule bg-card p-5 transition-all hover:shadow-md hover:-translate-y-0.5 flex flex-col"
-                    style={{ borderLeft: `8px solid ${cfg.borderColor}` }}
-                  >
-                    <div className="mb-3 flex items-center gap-1.5">
-                      <span
-                        className="inline-block rounded-full px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider"
-                        style={{ background: cfg.badgeBg, color: cfg.badgeColor }}
-                      >
-                        {tr(cfg.labelCa, cfg.labelEs)}
-                      </span>
-                      <span
-                        className={`inline-block rounded-full px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider ${
-                          s.access === "free"
-                            ? "bg-[#5C8A5C]/12 text-[#4A6B3A]"
-                            : "bg-foreground/8 text-foreground"
-                        }`}
-                      >
-                        {s.access === "free" ? (lang === "ca" ? "Gratuït" : "Gratis") : "Premium"}
-                      </span>
+                  <div key={s.slug} className="flex cursor-pointer flex-col border" style={{ borderColor: "#C9B89A", background: "white" }} onClick={() => router.push(`/estandares-esg/${s.slug}`)}>
+                    <div className="h-1.5" style={{ background: cfg.borderColor }} />
+                    <div className="flex flex-col gap-2.5 p-5">
+                      <div className="flex justify-between border-b pb-2" style={{ borderColor: "rgba(201,184,154,0.5)" }}>
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono text-[9.5px] font-semibold" style={{ color: "#8B7355" }}>{String(i + 1).padStart(2, "0")}</span>
+                          {/* Logo local */}
+                          <Image
+                            src={s.logo}
+                            alt={`Logo ${s.name}`}
+                            width={60}
+                            height={24}
+                            className="h-6 w-auto object-contain"
+                            unoptimized
+                          />
+                        </div>
+                        <span className="font-mono text-[8.5px] uppercase tracking-[0.14em] font-semibold px-1.5 py-0.5" style={{ background: s.access === "free" ? "rgba(92,138,92,0.12)" : "#B87333", color: s.access === "free" ? "#4A6B3A" : "white" }}>{s.access === "free" ? (lang === "ca" ? "Gratis" : "Gratis") : "Premium"}</span>
+                      </div>
+                      <span className="font-mono text-[9px] uppercase tracking-[0.18em] font-semibold" style={{ color: cfg.borderColor }}>{tr(cfg.labelCa, cfg.labelEs)}</span>
+                      <h3 className="font-serif text-lg font-medium text-primary" style={{ letterSpacing: "-0.01em" }}>{s.name}</h3>
+                      <p className="text-[11.5px] leading-relaxed" style={{ color: "#5C3A1E", display: "-webkit-box", WebkitLineClamp: 4, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{tr(s.descCa, s.descEs)}</p>
+                      <div className="mt-auto flex justify-between border-t pt-3" style={{ borderColor: "rgba(201,184,154,0.5)" }}>
+                        <span className="font-mono text-[9px] uppercase tracking-[0.14em]" style={{ color: "#8B7355" }}><strong style={{ color: "#B87333", fontWeight: 700 }}>{s.count}</strong> {lang === "ca" ? "informes" : "informes"}</span>
+                        <span className="font-mono text-[9px] uppercase tracking-[0.14em] font-semibold" style={{ color: "#B87333", borderBottom: "1px solid #B87333", paddingBottom: "2px" }}>Ver →</span>
+                      </div>
                     </div>
-
-                    {/* Logo */}
-                    <div className="mb-3 flex h-12 items-center justify-start">
-                      <Image
-                        src={s.logo}
-                        alt={`Logo ${s.name}`}
-                        width={120}
-                        height={48}
-                        className="max-h-12 w-auto object-contain"
-                        unoptimized
-                      />
-                    </div>
-
-                    <h3 className="mb-1.5 font-serif text-base font-semibold text-primary">{s.name}</h3>
-                    <p className="mb-3 text-xs leading-relaxed text-muted-foreground flex-1" style={{ display: "-webkit-box", WebkitLineClamp: 4, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
-                      {tr(s.descCa, s.descEs)}
-                    </p>
-                    <p className="font-mono text-[10px] uppercase tracking-wider text-accent font-semibold">
-                      {s.count} {tr("informes cross-ref", "informes cross-ref")}
-                    </p>
-                    {s.access === "premium" && (
-                      <Lock className="absolute right-4 top-4 h-3.5 w-3.5 text-muted-foreground/50" />
-                    )}
                   </div>
                 );
               })}
@@ -124,13 +124,8 @@ export default function EstandaresPage() {
         </section>
       </main>
       <Footer />
-
-      <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab="register" />
-      <PreusDialog
-        open={preusOpen}
-        onOpenChange={setPreusOpen}
-        onOpenRegister={() => setAuthOpen(true)}
-      />
+      <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
+      <PreusDialog open={preusOpen} onOpenChange={setPreusOpen} onOpenRegister={() => openAuth("register")} />
     </div>
   );
 }

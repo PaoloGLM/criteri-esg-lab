@@ -1,0 +1,294 @@
+{
+  "slug": "cnmv-plan-actividades-2026",
+  "title": "Plan actividades 2026",
+  "institution": "CNMV (Comisión Nacional del Mercado de Valores)",
+  "filename_original": "2026-06-30_cnmv-plan-actividades-2026.pdf",
+  "generated_at": "2026-07-25T06:52:13",
+  "content_ca": {
+    "semafor": {
+      "grade": "C",
+      "gradeLabel": "Millorable",
+      "indicators": [
+        {
+          "name": "Cobertura Scope 3",
+          "status": "vermell",
+          "label": "No tractat",
+          "note": "L'informe no menciona emissions de Scope 3 ni estratègies per a la seva reducció."
+        },
+        {
+          "name": "Termes temporals",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "S'esmenten objectius a llarg termini (2030) però sense compromisos específics i amb horitzons poc clars."
+        },
+        {
+          "name": "Fonts independents",
+          "status": "groc",
+          "label": "Parcial",
+          "note": "Algunes iniciatives inclouen col·laboracions però no hi ha un marc robust de verificació externa."
+        },
+        {
+          "name": "Granularitat",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "S'ofereixen dades específiques sobre mercats, inversions i iniciatives."
+        },
+        {
+          "name": "Verificació externa",
+          "status": "vermell",
+          "label": "No tractat",
+          "note": "No es descriuen mecanismes de verificació externa dels informes ESG."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "60 iniciatives",
+        "label": "Nombre total d'iniciatives planificades per 2026",
+        "page": "15"
+      },
+      {
+        "value": "476.000 milions d'euros",
+        "label": "Patrimoni gestionat per IICs (màxim històric)",
+        "page": "6"
+      },
+      {
+        "value": "49%",
+        "label": "Revalorització de l'Ibex 35 (més alta entre grans índexs)",
+        "page": "6"
+      },
+      {
+        "value": "31%",
+        "label": "Increment en emissions de renta fixa",
+        "page": "6"
+      },
+      {
+        "value": "9",
+        "label": "Prioritats estratègiques definides a CNMV 2030",
+        "page": "14"
+      }
+    ],
+    "resumExecutiu": "El Plan de actividades 2026 de la CNMV presenta un marc estratègic centrat en tres àrees principals: protecció del inversor, impuls dels mercats de capitals i millora institucional. L'informe destaca un context de mercats financers amb rècords històrics, però també identifica riscos significatius com la volatilitat dels criptoactius, els desafiaments tecnològics i el greenwashing. Malgrat la menció de la sostenibilitat com a part de l'agenda normativa europea, l'informe mostra una aproximació superficial als criteris ESG, amb escassa referència a la materialitat dels factors ambientals i socials. Les iniciatives proposades se centren principalment en la supervisió tradicional i l'adaptació a noves tecnologies, però manquen d'una estratègia ESG integral i amb objectius ambiciosos de reducció d'emissions o impacte positiu en la societat.",
+    "implicacions": {
+      "empreses": "Les empreses cotitzades i entitats financeres hauran d'adaptar-se a noves normatives sobre sostenibilitat i transparencia, especialment en relació amb el greenwashing i la gestió de riscos tecnològics. La CNMV reforçarà la supervisió sobre l'ús d'intel·ligència artificial i la gestió de conflictes d'interessos en la distribució de productes.",
+      "reguladors": "Els reguladors hauran de coordinar-se per abordar els nous riscos dels mercats financers, especialment en l'àmbit dels criptoactius i la intel·ligència artificial. La participació en iniciatives europees com el Market Integration Package serà clau per garantir la coherència normativa.",
+      "ciutadans": "Els ciutadans es beneficiaran de noves mesures de protecció contra el frau financer i l'educació financèria, especialment en relació amb noves tecnologies i criptoactius. No obstant, l'informe no aborda de manera adequada la necessitat d'augmentar l'accés dels inversors minoristes als mercats de capitals amb productes sostenibles."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Sostenibilitat absoluta",
+      "body": "L'informe es limita a esmentar la sostenibilitat com a part de l'agenda normativa europea, però no estableix objectius concrets per a la reducció d'emissions ni per a la promoció d'inversions verdes. L'aproximació és superficial i no reflecteix un compromís real amb la transició ecològica, centrant-se més en la regulació que en l'impacte positiu."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "CNMV 2030",
+        "desc": "Aquest plan d'activitats és la concretització de l'estratègia a llarg termini presentada el 2025, amb iniciatives específiques per a cada una de les 9 prioritats estratègiques."
+      },
+      {
+        "type": "Contradicció",
+        "target": "Protecció del inversor",
+        "desc": "Mentre l'informe destaca iniciatives per protegir els inversors contra el frau i el greenwashing, no estableix mesures específiques per garantir la qualitat de les recomanacions d'inversió basades en IA, que podrien augmentar els riscos per als inversors minoristes."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Desenvolupar guies específiques contra el frau en línia i criptofrau",
+        "desc": "Crear materials educatius per ajudar els ciutadans a identificar i protegir-se de noves formes de frau financer.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Implementar eines d'IA per supervisar activitats de finfluencers",
+        "desc": "Utilitzar intel·ligència artificial per detectar recomanacions d'inversió enganyoses a xarxes socials.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Revisar el Codi de govern de les societats cotitzades",
+        "desc": "Actualitzar el marc de governança per adaptar-lo a noves realitats i millorar la protecció dels inversors.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "04",
+        "title": "Crear un punt d'accés únic contra el frau financer",
+        "desc": "Desenvolupar una plataforma centralitzada d'informació i denúncies per a víctimes de frau financer.",
+        "effort": "Baix",
+        "impact": "Alt"
+      },
+      {
+        "num": "05",
+        "title": "Estudiar models d'IA per a l'assessorament d'inversions",
+        "desc": "Analitzar l'eficàcia de diferents eines d'intel·ligència artificial en la prestació de serveis d'assessorament financer.",
+        "effort": "Alt",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "CSRD",
+        "criterion": "Transparència en informació de sostenibilitat",
+        "impact": "L'informe no reflecteix adequadament els requisits de la CSRD sobre divulgació d'informació ESG."
+      },
+      {
+        "framework": "MiCA",
+        "criterion": "Regulació de criptoactius",
+        "impact": "La CNMV es prepara per supervisar l'aplicació de la regulació europea de criptoactius, però sense detallar les seves estratègies específiques."
+      },
+      {
+        "framework": "Directiva SFDR",
+        "criterion": "Classificació de productes financers sostenibles",
+        "impact": "L'informe esmenta la revisió del SFDR però no estableix com s'implementaran els canvis a la supervisió espanyola."
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "C",
+      "gradeLabel": "Rendiment acceptable amb àrees de millora",
+      "indicators": [
+        {
+          "name": "Cobertura Scope 3",
+          "status": "vermell",
+          "label": "No abordat",
+          "note": "L'informe no menciona emissions de Scope 3 ni factors de carboni relacionats amb les inversions."
+        },
+        {
+          "name": "Termes temporals",
+          "status": "groc",
+          "label": "Esmentat però no detallat",
+          "note": "S'esmenten objectius a 2030 però no s'estableixen terminis específics per a les accions climàtiques."
+        },
+        {
+          "name": "Fonts independents",
+          "status": "groc",
+          "label": "Algunes fonts",
+          "note": "Es fan referències a estudis i dades externes però no a verificació independent de dades ESG."
+        },
+        {
+          "name": "Granularitat",
+          "status": "groc",
+          "label": "General",
+          "note": "L'informe aborda conceptes ESG de manera general sense desglossar dades específiques."
+        },
+        {
+          "name": "Verificació externa",
+          "status": "vermell",
+          "label": "No present",
+          "note": "No hi ha cap menció a verificació externa de les dades o informes ESG."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "60 iniciatives",
+        "label": "Total d'iniciatives planificades per 2026",
+        "page": "15"
+      },
+      {
+        "value": "9 prioritats estratègiques",
+        "label": "Pilars de l'estratègia CNMV 2030",
+        "page": "14"
+      },
+      {
+        "value": "+49%",
+        "label": "Revalorització de l'Ibex 35 el 2025",
+        "page": "6"
+      },
+      {
+        "value": "476.000M€",
+        "label": "Patrimoni gestionat per IICs a finals de 2025",
+        "page": "6"
+      },
+      {
+        "value": "4 billons$",
+        "label": "Capitalització màxima del mercat de criptoactius",
+        "page": "6"
+      }
+    ],
+    "resumExecutiu": "El Plan de actividades 2026 de la CNMV presenta una estratègia centrada en tres àrees principals: protecció de l'inversor, impuls dels mercats de capitals i millora institucional. L'informe destaca un context de mercats financers resilients amb rècords en l'Ibex 35 (+49%) i en els actius en gestió de les IICs (476.000M€). La CNMV es compromet a combatre el frau financer, especialment en línia i mitjançant xarxes socials, i a impulsar l'accés de les pimes als mercats de capitals. S'incorpora l'ús de la intel·ligència artificial per a la supervisió i es reforça la ciberseguridad. Tot i això, l'informe mostra limitacions significatives en l'abordatge de factors ESG, amb una cobertura insuficient de qüestions mediambientals i socials, reflectint una aproximació que prioritza l'estabilitat financiera sobre la sostenibilitat integral.",
+    "implicacions": {
+      "empreses": "Les empreses cotitzades hauran d'adaptar-se a noves normatives sobre transparència i governança, especialment en l'àmbit digital. La CNMV impulsarà la revisió del Codi de governança i exigirà major transparència en la comunicació de productes sostenibles, amb especial atenció al greenwashing. Les pimes trobaran suport per accedir a finançació de mercats, però també hauran de complir amb noves exigències de divulgació.",
+      "reguladors": "Els reguladors hauran de coordinar-se per abordar nous reptes com els criptoactives i l'ús de la intel·ligència financera. La CNMV participarà en iniciatives europees com l'acció supervisora comuna d'ESMA i implementarà noves tecnologies per a la detecció de frau. La regulació haurà d'evolucionar per protegir els inversors davant noves formes de comercialització digital.",
+      "ciutadans": "Els ciutadans es beneficiaran de majors mesures de protecció contra el frau financer, especialment en línia i relacionat amb criptoactius. S'implementarà un punt d'accés únic per a informació sobre frau i s'augmentarà l'educació financiera, especialment per als joves. Tanmateix, els ciutadans hauran de ser més crítics amb les inversions presentsades com sostenibles, ja que l'informe no aborda adequadament el greenwashing."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Justícia distributiva",
+      "body": "L'informe revela una preocupació per la protecció de l'inversor minorista davant noves formes de frau, però no aborda com les desigualtats econòmiques poden afectar l'accés a la informació financiera. La CNMV centra els seus esforços en la protecció individual sense considerar com les estructures del mercat poden perpetuar desavantatges per als sectors més vulnerables. L'educació financiera es presenta com una solució individualitzada sense qüestionar les causes estructurals de la vulnerabilitat financera."
+    },
+    "connexions": [
+      {
+        "type": "Contradicció",
+        "target": "Creixement del mercat de criptoactius",
+        "desc": "L'informe destaca el creixement del mercat de criptoactius fins a 4 billons de dòlars, mentre que alhora anuncia mesures per combatre el criptofrau, mostrant una tensió entre l'acceptació d'aquests actius i els riscos associats."
+      },
+      {
+        "type": "Evolució",
+        "target": "Ús de la intel·ligència artificial",
+        "desc": "La CNMV evoluciona cap a l'adopció de la intel·ligència artificial tant per a la supervisió de finfluencers com per a l'automatització de controls, reflectint una adaptació als nous tecnologies per millorar la supervisió financiera."
+      },
+      {
+        "type": "Complement",
+        "target": "Protecció del inversor",
+        "desc": "Les iniciatives de protecció del inversor complementen l'objectiu d'impulsar els mercats de capitals, ja que una major protecció pot fomentar la confiança i la participació d'inversors minoristes."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Guia sobre frau on line i criptofrau",
+        "desc": "Desenvolupar guies específiques per ajudar el públic a identificar comportaments sospitosos i protegir-se de estafes relacionades amb criptoactius i intel·ligència artificial.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Punt d'accés únic contra el frau",
+        "desc": "Crear una web de referència amb informació i orientació per a ciutadans sobre com identificar i denunciar estafes financeres.",
+        "effort": "Baix",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Anàlisi de models d'IA per a assessorament",
+        "desc": "Realitzar un estudi empíric per avaluar el potencial de models d'IA en la prestació d'assessorament d'inversions.",
+        "effort": "Alt",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "04",
+        "title": "Reforç de supervisió d'entitats de capital risc",
+        "desc": "Implementar nous controls automàtics per millorar la supervisió de les entitats de capital risc, especialment en la detecció de conflictes d'interessos.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "05",
+        "title": "Document de bones pràctiques sobre IA",
+        "desc": "Elaborar un document de bones pràctiques per a entitats supervisades sobre l'ús adequat de la intel·ligència artificial.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "CSRD",
+        "criterion": "Transparència en informació de sostenibilitat",
+        "impact": "L'informe no aborda adequadament els requisits de la CSRD, centrant-se en aspectes financers sense detallar les obligacions de divulgació ESG."
+      },
+      {
+        "framework": "MiCA",
+        "criterion": "Regulació de criptoactius",
+        "impact": "La CNMV menciona la regulació MiCA com un context important però no detalla com implementarà les seves provisions en la supervisió espanyola."
+      },
+      {
+        "framework": "Retail Investment Strategy",
+        "criterion": "Protecció de l'inversor minorista",
+        "impact": "Les iniciatives de protecció de l'inversor alineades parcialment amb els objectius de la RIS, especialment en l'educació financiera i la simplificació de l'experiència d'inversió."
+      }
+    ]
+  }
+}

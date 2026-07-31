@@ -6,6 +6,7 @@ import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
+import { SemaforoPopup } from "@/components/sections/semaforo-popup";
 import { useLanguage } from "@/components/language-provider";
 import { useAuth } from "@/lib/auth-context";
 import {
@@ -60,6 +61,7 @@ export default function InformeSlugPage() {
     setAuthOpen(true);
   };
   const [preusOpen, setPreusOpen] = useState(false);
+  const [popupOpen, setPopupOpen] = useState(false);
 
   const report = reports.find((r) => r.slug === slug);
 
@@ -176,64 +178,88 @@ export default function InformeSlugPage() {
         onOpenPreus={() => setPreusOpen(true)}
       />
       <main className="flex-1">
-        {/* Capçalera de l'informe */}
-        <section className="border-b border-rule bg-secondary/30">
-          <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-            <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-              Informes &gt; {report.institution}
+        {/* Breadcrumb */}
+        <div className="border-b border-rule px-6 py-4 lg:px-8" style={{ background: "#F5EFE6" }}>
+          <div className="mx-auto max-w-7xl flex justify-between items-baseline">
+            <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "#8B7355" }}>
+              <a href="/informes" style={{ color: "#8A5526" }}>Biblioteca</a>
+              <span style={{ color: "#C9B89A", margin: "0 12px" }}>/</span>
+              <a href="/informes" style={{ color: "#8A5526" }}>Informes</a>
+              <span style={{ color: "#C9B89A", margin: "0 12px" }}>/</span>
+              <span style={{ color: "#2C1810" }}>{report.title}</span>
             </p>
-            <p className="eyebrow mt-4">
-              {report.institution} · {formatDate(report.date, lang)} · {report.pages}{" "}
-              {lang === "ca" ? "pàgines" : "páginas"}
-            </p>
-            <h1 className="mt-3 font-serif text-3xl font-semibold leading-tight text-primary sm:text-4xl">
-              {report.title}
-            </h1>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <Badge
-                variant="secondary"
-                className="bg-accent-soft/30 text-[10px] text-accent-deep"
-              >
-                {getTypeLabel(report.type)}
-              </Badge>
-              <Badge
-                variant="outline"
-                className="border-rule text-[10px] text-foreground/70"
-              >
-                <Globe className="mr-1 h-2.5 w-2.5" />
-                {getScopeLabel(report.scope)}
-              </Badge>
-              {showFreeBadge ? (
-                <Badge
-                  variant="outline"
-                  className="border-accent bg-accent-soft/20 text-[10px] text-accent-deep"
-                >
-                  {lang === "ca" ? "Accés obert" : "Acceso abierto"}
-                </Badge>
-              ) : (
-                <Badge
-                  variant="outline"
-                  className="border-muted-foreground text-[10px] text-muted-foreground"
-                >
-                  <Lock className="mr-1 h-2.5 w-2.5" />
-                  Premium
-                </Badge>
-              )}
-              {report.certifications.slice(0, 4).map((cert) => (
-                <Badge
-                  key={cert}
-                  variant="outline"
-                  className="border-accent/40 text-accent-deep"
-                >
-                  {cert}
-                </Badge>
-              ))}
-            </div>
+            <span className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#8A5526" }}>5 min · 8 bloques</span>
           </div>
-        </section>
+        </div>
 
-        {/* Cos: pantalla de bloqueig (registre), preview+upgrade (Premium), o 8 blocs */}
-        {isLockedRegister ? (
+        {/* Layout: sidebar + main */}
+        <div className="grid lg:grid-cols-[280px_1fr]">
+          {/* SIDEBAR */}
+          <aside className="sticky top-[70px] hidden h-[calc(100vh-70px)] flex-col gap-8 overflow-y-auto p-10 lg:flex" style={{ background: "#F5EFE6", borderRight: "1px solid #C9B89A" }}>
+            <div className="flex flex-col gap-2.5">
+              <p className="font-mono text-[9px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#8A5526" }}>Índice del informe</p>
+              <nav className="flex flex-col">
+                {[
+                  { num: "00", name: lang === "ca" ? "Semàfor metodològic" : "Semáforo metodológico" },
+                  { num: "01", name: lang === "ca" ? "Fitxa tècnica" : "Ficha técnica" },
+                  { num: "02", name: lang === "ca" ? "5 dades clau" : "5 datos clave" },
+                  { num: "03", name: lang === "ca" ? "Resum executiu" : "Resumen ejecutivo" },
+                  { num: "04", name: lang === "ca" ? "Implicacions" : "Implicaciones" },
+                  { num: "05", name: lang === "ca" ? "Connexions" : "Conexiones" },
+                  { num: "06", name: lang === "ca" ? "Accions recomanades" : "Acciones recomendadas" },
+                  { num: "07", name: "Cross-reference" },
+                ].map((item) => (
+                  <a key={item.num} href={`#bloc-${item.num}`} className="grid grid-cols-[24px_1fr] gap-2.5 items-baseline py-2 border-b" style={{ borderBottomColor: "rgba(201,184,154,0.5)", textDecoration: "none" }}>
+                    <span className="font-mono text-[10px] font-medium" style={{ color: "#8B7355" }}>{item.num}</span>
+                    <span className="font-serif text-[13px] font-medium text-primary">{item.name}</span>
+                  </a>
+                ))}
+              </nav>
+            </div>
+
+            {/* Mini semàfor */}
+            {content?.semafor && (
+              <div className="p-4 flex flex-col gap-2" style={{ background: "#2C1810", color: "#F5EFE6" }}>
+                <p className="font-mono text-[8.5px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#D9A574" }}>Semáforo</p>
+                <div className="flex items-baseline gap-2.5">
+                  <span className="font-serif text-4xl font-normal" style={{ color: "#B87333", letterSpacing: "-0.04em" }}>{content.semafor.grade}</span>
+                  <span className="font-serif text-sm italic" style={{ color: "#F5EFE6" }}>{content.semafor.gradeLabel}</span>
+                </div>
+              </div>
+            )}
+
+            {/* Progress */}
+            <div className="flex flex-col gap-1">
+              <p className="font-mono text-[8.5px] uppercase tracking-[0.16em] font-medium" style={{ color: "#8B7355" }}>Lectura · 5 min</p>
+              <div className="h-1 overflow-hidden" style={{ background: "rgba(201,184,154,0.3)" }}>
+                <div className="h-full" style={{ background: "#B87333", width: "40%" }} />
+              </div>
+            </div>
+          </aside>
+
+          {/* MAIN CONTENT */}
+          <div className="p-8 lg:p-12" style={{ background: "#F5EFE6" }}>
+            {/* Header de l'informe (fitxa tècnica) */}
+            <header className="border-b border-primary pb-6 mb-10" id="bloc-1">
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "rgba(92,58,30,0.12)", color: "#5C3A1E" }}>{getTypeLabel(report.type)}</span>
+                {showFreeBadge ? (
+                  <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "rgba(92,138,92,0.12)", color: "#4A6B3A" }}>{lang === "ca" ? "Gratis" : "Gratis"}</span>
+                ) : (
+                  <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "#B87333", color: "white" }}>Premium</span>
+                )}
+              </div>
+              <h1 className="mb-4 font-serif text-4xl font-medium leading-tight text-primary" style={{ letterSpacing: "-0.022em" }}>{report.title}</h1>
+              <div className="flex flex-wrap gap-8 font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "#8B7355" }}>
+                <span><strong className="text-primary">{report.institution}</strong></span>
+                <span>{formatDate(report.date, lang)}</span>
+                <span>{report.pages} {lang === "ca" ? "pàg" : "pág"}</span>
+                <span>{getScopeLabel(report.scope)}</span>
+              </div>
+            </header>
+
+            {/* Cos: pantalla de bloqueig (registre), preview+upgrade (Premium), o 8 blocs */}
+            {isLockedRegister ? (
           // Informe > 6 mesos, cal registre — pantalla genèrica simple
           <LockScreen
             isPremium={false}
@@ -262,294 +288,162 @@ export default function InformeSlugPage() {
             </div>
           </div>
         ) : (
-          <div className="mx-auto max-w-4xl space-y-8 px-4 py-12 sm:px-6 lg:px-8">
-            {/* Bloc 0 — Semàfor Metodològic (destacat) */}
-            <Bloc
-              num="0"
-              icon={<Gauge className="h-4 w-4" />}
-              title={lang === "ca" ? "Semàfor Metodològic" : "Semáforo Metodológico"}
-              highlighted
-            >
-              <div className="rounded-md border border-accent/30 bg-accent-soft/10 p-4">
-                <div className="mb-4 flex items-baseline justify-between gap-3">
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-accent-deep">
-                    {lang === "ca" ? "Nota global" : "Nota global"}
-                  </p>
-                  <span className="rounded-md bg-accent px-3 py-1 text-right font-serif text-base font-bold text-accent-foreground">
-                    {content.semafor.grade} · {content.semafor.gradeLabel}
-                  </span>
+          <div className="space-y-0">
+            {/* Bloc 0 — Semáforo (dark, full-width) amb explicacions + link popup */}
+            <section id="bloc-0" className="scroll-mt-20" style={{ background: "#2C1810", color: "#F5EFE6", margin: "0 -32px", padding: "48px 32px" }}>
+              <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:items-center">
+                <div className="flex flex-col gap-4">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#D9A574" }}>Bloque 0 · Semáforo metodológico</p>
+                  <div className="flex items-baseline gap-4">
+                    <span className="font-serif text-[100px] font-normal leading-none" style={{ color: "#B87333", letterSpacing: "-0.04em" }}>{content.semafor.grade}</span>
+                    <span className="font-serif text-2xl italic" style={{ color: "#F5EFE6" }}>{content.semafor.gradeLabel}</span>
+                  </div>
+                  <button onClick={() => setPopupOpen(true)} className="self-start font-mono text-[10px] uppercase tracking-[0.14em] font-semibold mt-2" style={{ color: "#D9A574", borderBottom: "1px solid #B87333", paddingBottom: "3px" }}>
+                    {lang === "ca" ? "Com es valora el semàfor? →" : "¿Cómo se valora el semáforo? →"}
+                  </button>
                 </div>
-                <div className="space-y-2">
+                <div className="flex flex-col gap-0">
                   {content.semafor.indicators.map((ind) => (
-                    <SemaforRow
-                      key={ind.name}
-                      name={ind.name}
-                      status={ind.status}
-                      label={ind.label}
-                      note={ind.note}
-                    />
+                    <div key={ind.name} className="flex flex-col gap-1 py-3 border-b" style={{ borderBottomColor: "rgba(217,165,116,0.2)" }}>
+                      <div className="grid grid-cols-[1fr_auto] items-center gap-3">
+                        <span className="font-serif text-base font-medium" style={{ color: "#F5EFE6" }}>{ind.name}</span>
+                        <div className="flex items-center gap-2">
+                          <div className="flex gap-1.5">
+                            <span className="w-3 h-3 rounded-full" style={{ background: "#5C8A5C", opacity: ind.status === "verd" ? 1 : 0.3 }} />
+                            <span className="w-3 h-3 rounded-full" style={{ background: "#C9A961", opacity: ind.status === "groc" ? 1 : 0.3 }} />
+                            <span className="w-3 h-3 rounded-full" style={{ background: "#A0522D", opacity: ind.status === "vermell" ? 1 : 0.3 }} />
+                          </div>
+                          <span className="font-mono text-[9px] uppercase tracking-[0.14em] font-semibold" style={{ color: ind.status === "verd" ? "#5C8A5C" : ind.status === "groc" ? "#C9A961" : "#A0522D" }}>{ind.label}</span>
+                        </div>
+                      </div>
+                      <p className="text-[12px] leading-relaxed mt-1" style={{ color: "rgba(245,239,230,0.55)" }}>{ind.note}</p>
+                    </div>
                   ))}
                 </div>
               </div>
-            </Bloc>
-
-            {/* Bloc 1 — Fitxa tècnica */}
-            <Bloc
-              num="1"
-              icon={<FileText className="h-4 w-4" />}
-              title={lang === "ca" ? "Fitxa tècnica" : "Ficha técnica"}
-            >
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <Datum
-                  label={lang === "ca" ? "Institució" : "Institución"}
-                  value={report.institution}
-                />
-                <Datum
-                  label={lang === "ca" ? "Data" : "Fecha"}
-                  value={formatDate(report.date, lang)}
-                />
-                <Datum
-                  label={lang === "ca" ? "Tipus" : "Tipo"}
-                  value={getTypeLabel(report.type)}
-                />
-                <Datum
-                  label={lang === "ca" ? "Pàgines" : "Páginas"}
-                  value={String(report.pages)}
-                />
-                <Datum
-                  label={lang === "ca" ? "Àmbit" : "Ámbito"}
-                  value={getScopeLabel(report.scope)}
-                />
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                    URL
-                  </p>
-                  <a
-                    href={report.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-sm font-medium text-accent-deep hover:underline"
-                  >
-                    <span className="font-mono">
-                      {report.url.replace(/^https?:\/\//, "").slice(0, 28)}…
-                    </span>
-                    <ExternalLink className="h-3 w-3 flex-shrink-0" />
-                  </a>
-                </div>
-              </div>
-            </Bloc>
+            </section>
 
             {/* Bloc 2 — 5 dades clau */}
-            <Bloc
-              num="2"
-              icon={<TrendingUp className="h-4 w-4" />}
-              title={lang === "ca" ? "5 dades clau" : "5 datos clave"}
-            >
+            <section id="bloc-2" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#C9B89A" }}>
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#B87333" }}>Bloque 02 \u00b7 5 datos clave</p>
+              <h2 className="mb-6 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "El que diu l'informe, en xifres" : "Lo que dice el informe, en cifras"}</h2>
               <div className="grid gap-4 sm:grid-cols-2">
                 {content.dadesClau.map((d, i) => (
-                  <div
-                    key={i}
-                    className="rounded-md border border-rule bg-background p-4"
-                  >
-                    <p className="font-serif text-3xl font-semibold text-accent">
-                      {d.value}
-                    </p>
-                    <p className="mt-1 text-sm leading-relaxed text-foreground/80">
-                      {d.label}
-                    </p>
-                    {d.page && (
-                      <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                        {d.page}
-                      </p>
-                    )}
+                  <div key={i} className="grid grid-cols-[24px_1fr] gap-3 items-baseline py-3 border-b" style={{ borderBottomColor: "rgba(201,184,154,0.5)" }}>
+                    <span className="font-mono text-[11px] font-semibold" style={{ color: "#B87333" }}>{String(i + 1).padStart(2, "0")}</span>
+                    <p className="text-sm text-primary"><strong className="font-serif text-lg font-semibold" style={{ color: "#5C3A1E" }}>{d.value}</strong> {d.label}</p>
                   </div>
                 ))}
               </div>
-            </Bloc>
+            </section>
 
             {/* Bloc 3 — Resum executiu */}
-            <Bloc
-              num="3"
-              icon={<Layers className="h-4 w-4" />}
-              title={lang === "ca" ? "Resum executiu" : "Resumen ejecutivo"}
-            >
-              <p className="text-sm leading-relaxed text-foreground/80">
-                {content.resumExecutiu}
-              </p>
-            </Bloc>
+            <section id="bloc-3" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#C9B89A" }}>
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#B87333" }}>Bloque 03 \u00b7 Resumen ejecutivo</p>
+              <h2 className="mb-4 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Qu\u00e8 diu en llenguatge clar" : "Qu\u00e9 dice en lenguaje claro"}</h2>
+              <p className="font-serif text-base leading-relaxed text-primary">{content.resumExecutiu}</p>
+            </section>
 
-            {/* Bloc 4 — Implicacions + Més enllà del Checkbox */}
-            <Bloc
-              num="4"
-              icon={<Target className="h-4 w-4" />}
-              title={lang === "ca" ? "Implicacions" : "Implicaciones"}
-            >
-              <div className="grid gap-4 md:grid-cols-3">
-                <ImplicationBlock
-                  label={lang === "ca" ? "Empreses" : "Empresas"}
-                  body={content.implicacions.empreses}
-                />
-                <ImplicationBlock
-                  label={lang === "ca" ? "Reguladors" : "Reguladores"}
-                  body={content.implicacions.reguladors}
-                />
-                <ImplicationBlock
-                  label={lang === "ca" ? "Ciutadans" : "Ciudadanos"}
-                  body={content.implicacions.ciutadans}
-                />
-              </div>
-
-              <div className="mt-4 rounded-md border border-accent bg-accent-soft/15 p-4">
-                <div className="mb-2 flex items-center gap-2">
-                  <Compass className="h-4 w-4 text-accent" />
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-accent-deep">
-                    {lang === "ca" ? "Més enllà del Checkbox" : "Más allá del Checkbox"}
-                  </p>
+            {/* Bloc 4 — Implicacions + M\u00e9s enll\u00e0 */}
+            <section id="bloc-4" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#C9B89A" }}>
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#B87333" }}>Bloque 04 \u00b7 Implicaciones</p>
+              <h2 className="mb-6 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Per a empreses, reguladors, ciutadans" : "Para empresas, reguladores, ciudadanos"}</h2>
+              <div className="grid gap-6 sm:grid-cols-3">
+                <div className="flex flex-col gap-2 pt-4 border-t-2" style={{ borderTopColor: "#5C3A1E" }}>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#5C3A1E" }}>{lang === "ca" ? "Empreses" : "Empresas"}</span>
+                  <p className="text-[13px] leading-relaxed text-primary">{content.implicacions.empreses}</p>
                 </div>
-                <p className="mb-2 text-sm italic text-accent-deep">
-                  {content.mesEnllaCheckbox.criteri}
-                </p>
-                <p className="text-sm leading-relaxed text-foreground/80">
-                  {content.mesEnllaCheckbox.body}
-                </p>
+                <div className="flex flex-col gap-2 pt-4 border-t-2" style={{ borderTopColor: "#B87333" }}>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#B87333" }}>{lang === "ca" ? "Reguladors" : "Reguladores"}</span>
+                  <p className="text-[13px] leading-relaxed text-primary">{content.implicacions.reguladors}</p>
+                </div>
+                <div className="flex flex-col gap-2 pt-4 border-t-2" style={{ borderTopColor: "#E8C99A" }}>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#8A6D2B" }}>{lang === "ca" ? "Ciutadans" : "Ciudadanos"}</span>
+                  <p className="text-[13px] leading-relaxed text-primary">{content.implicacions.ciutadans}</p>
+                </div>
               </div>
-            </Bloc>
+              <div className="mt-6 p-6" style={{ background: "#2C1810", color: "#F5EFE6", borderLeft: "4px solid #B87333" }}>
+                <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#D9A574" }}>M\u00e1s all\u00e1 del Checkbox</p>
+                <p className="font-serif text-lg italic" style={{ color: "#F5EFE6" }}>{content.mesEnllaCheckbox.criteri}</p>
+                <p className="mt-3 text-sm leading-relaxed" style={{ color: "rgba(245,239,230,0.75)" }}>{content.mesEnllaCheckbox.body}</p>
+              </div>
+            </section>
 
             {/* Bloc 5 — Connexions */}
-            <Bloc
-              num="5"
-              icon={<Network className="h-4 w-4" />}
-              title={lang === "ca" ? "Connexions" : "Conexiones"}
-            >
-              <div className="space-y-2">
-                {content.connexions.map((c, i) => {
-                  const isContradiction =
-                    c.type === "Contradicció" || c.type === "Contradicción";
-                  const isComplement =
-                    c.type === "Complement" || c.type === "Complemento";
-                  const badgeClass = isContradiction
-                    ? "border-[#A0522D]/40 bg-[#A0522D]/10 text-[#A0522D]"
-                    : isComplement
-                      ? "border-[#5C8A5C]/40 bg-[#5C8A5C]/10 text-[#5C8A5C]"
-                      : "border-accent/40 bg-accent-soft/20 text-accent-deep";
-                  return (
-                    <div
-                      key={i}
-                      className="rounded-md border border-rule bg-background p-4"
-                    >
-                      <div className="mb-2 flex flex-wrap items-center gap-2">
-                        <Badge variant="secondary" className={badgeClass}>
-                          {c.type}
-                        </Badge>
-                        <span className="font-serif text-sm font-semibold text-primary">
-                          {c.target}
-                        </span>
-                      </div>
-                      <p className="text-sm leading-relaxed text-foreground/75">
-                        {c.desc}
-                      </p>
+            <section id="bloc-5" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#C9B89A" }}>
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#B87333" }}>Bloque 05 \u00b7 Conexiones</p>
+              <h2 className="mb-4 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Relacions amb altres informes" : "Relaciones con otros informes"}</h2>
+              <div className="space-y-3">
+                {content.connexions.map((c, i) => (
+                  <div key={i} className="border p-4" style={{ borderColor: "#C9B89A", background: "white" }}>
+                    <div className="mb-2 flex flex-wrap items-center gap-2">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-2 py-0.5" style={{ background: c.type.includes("Contrad") ? "rgba(160,82,45,0.15)" : c.type.includes("Complement") ? "rgba(92,138,92,0.15)" : "rgba(184,115,51,0.12)", color: c.type.includes("Contrad") ? "#A0522D" : c.type.includes("Complement") ? "#4A6B3A" : "#8A5526" }}>{c.type}</span>
+                      <span className="font-serif text-sm font-semibold text-primary">{c.target}</span>
                     </div>
-                  );
-                })}
+                    <p className="text-sm leading-relaxed" style={{ color: "#5C3A1E" }}>{c.desc}</p>
+                  </div>
+                ))}
               </div>
-            </Bloc>
+            </section>
 
             {/* Bloc 6 — Accions recomanades (destacat) */}
-            <Bloc
-              num="6"
-              icon={<ClipboardCheck className="h-4 w-4" />}
-              title={lang === "ca" ? "Accions recomanades" : "Acciones recomendadas"}
-              highlighted
-            >
-              <div className="grid gap-4 sm:grid-cols-2">
+            <section id="bloc-6" className="scroll-mt-20" style={{ background: "rgba(184,115,51,0.06)", margin: "0 -32px", padding: "48px 32px", borderTop: "1px solid #B87333", borderBottom: "1px solid #B87333" }}>
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#B87333" }}>Bloque 06 \u00b7 Acciones recomendadas \u2b50</p>
+              <h2 className="mb-6 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "3 accions operatives per aquesta setmana" : "3 acciones operativas para esta semana"}</h2>
+              <div className="grid gap-8 sm:grid-cols-3">
                 {content.accions.map((a) => (
-                  <div
-                    key={a.num}
-                    className="rounded-md border border-accent/40 bg-background p-4"
-                  >
-                    <div className="mb-2 flex items-baseline gap-3">
-                      <span className="font-serif text-3xl font-semibold text-accent">
-                        {a.num}
-                      </span>
-                      <div className="flex min-w-0 items-center gap-1.5">
-                        <Check className="h-3.5 w-3.5 flex-shrink-0 text-accent" />
-                        <h4 className="font-serif text-base font-semibold leading-tight text-primary">
-                          {a.title}
-                        </h4>
-                      </div>
-                    </div>
-                    <p className="mb-3 text-sm leading-relaxed text-foreground/80">
-                      {a.desc}
-                    </p>
-                    <div className="flex flex-wrap items-center gap-2 font-mono text-[10px] uppercase tracking-widest">
-                      <span className="text-muted-foreground">
-                        {lang === "ca" ? "Esforç" : "Esfuerzo"}: {a.effort}
-                      </span>
-                      <span className="text-muted-foreground">·</span>
-                      <span className="text-accent-deep">
-                        {lang === "ca" ? "Impacte" : "Impacto"}: {a.impact}
-                      </span>
-                    </div>
+                  <div key={a.num} className="flex flex-col gap-4">
+                    <div className="w-11 h-11 rounded-full flex items-center justify-center font-serif text-xl font-semibold text-white" style={{ background: "#B87333" }}>{a.num}</div>
+                    <p className="text-sm font-medium leading-relaxed text-primary">{a.desc || a.title}</p>
                   </div>
                 ))}
               </div>
-            </Bloc>
+            </section>
 
-            {/* Bloc 7 — Cross-reference (destacat) */}
-            <Bloc
-              num="7"
-              icon={<BookOpen className="h-4 w-4" />}
-              title={
-                lang === "ca"
-                  ? "Cross-reference amb certificacions"
-                  : "Cross-reference con certificaciones"
-              }
-              highlighted
-            >
-              <div className="grid gap-4 sm:grid-cols-2">
-                {content.crossRefs.map((cr, i) => (
-                  <div
-                    key={i}
-                    className="rounded-md border border-accent/40 bg-background p-4"
-                  >
-                    <div className="mb-2 flex items-baseline justify-between gap-2">
-                      <span className="font-serif text-lg font-semibold text-accent">
-                        {cr.framework}
-                      </span>
-                      <span className="font-mono text-[10px] uppercase tracking-widest text-accent-deep">
-                        {lang === "ca" ? "Impacte" : "Impacto"}: {cr.impact}
-                      </span>
-                    </div>
-                    <p className="text-sm leading-relaxed text-foreground/80">
-                      {cr.criterion}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </Bloc>
+            {/* Bloc 7 — Cross-reference */}
+            <section id="bloc-7" className="scroll-mt-20 py-8">
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#B87333" }}>Bloque 07 \u00b7 Cross-reference \u2b50</p>
+              <h2 className="mb-4 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Com t'afecta segons les teves certificacions" : "C\u00f3mo te afecta seg\u00fan tus certificaciones"}</h2>
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr>
+                    <th className="text-left font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3" style={{ background: "#5C3A1E", color: "#F5EFE6" }}>Certificaci\u00f3n</th>
+                    <th className="text-left font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3" style={{ background: "#5C3A1E", color: "#F5EFE6" }}>{lang === "ca" ? "Com t'afecta" : "C\u00f3mo te afecta"}</th>
+                    <th className="text-left font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3" style={{ background: "#5C3A1E", color: "#F5EFE6" }}>Impacto</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {content.crossRefs.map((cr, i) => (
+                    <tr key={i} className="border-b" style={{ borderBottomColor: "#C9B89A" }}>
+                      <td className="p-3.5"><span className="font-serif text-[15px] font-semibold text-primary">{cr.framework}</span></td>
+                      <td className="p-3.5 text-[13px] leading-relaxed" style={{ color: "#2C1810" }}>{cr.criterion}</td>
+                      <td className="p-3.5"><span className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-2.5 py-1" style={{ background: cr.impact === "Alto" || cr.impact === "Alt" ? "rgba(160,82,45,0.15)" : cr.impact === "Medio" || cr.impact === "Mitj\u00e0" ? "rgba(201,169,97,0.18)" : "rgba(139,115,85,0.1)", color: cr.impact === "Alto" || cr.impact === "Alt" ? "#A0522D" : cr.impact === "Medio" || cr.impact === "Mitj\u00e0" ? "#8A6D2B" : "#8B7355" }}>{cr.impact}</span></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </section>
 
-            {/* Nota final + CTA a la font original */}
-            <div className="flex flex-col gap-3 rounded-md border border-rule bg-card p-5 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-xs leading-relaxed text-muted-foreground">
-                {lang === "ca"
-                  ? "Criteri ESG no és font oficial. Consulta sempre el document original per a decisions compliance."
-                  : "Criteri ESG no es fuente oficial. Consulta siempre el documento original para decisiones compliance."}
-              </p>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => window.open(report.url, "_blank")}
-                className="flex-shrink-0"
-              >
-                <ExternalLink className="mr-2 h-3.5 w-3.5" />
-                {lang === "ca" ? "Veure font original" : "Ver fuente original"}
-              </Button>
+            {/* Footer */}
+            <div className="mt-8 pt-6 border-t flex justify-between items-baseline" style={{ borderTopColor: "#2C1810" }}>
+              <p className="font-serif text-sm italic" style={{ color: "#5C3A1E" }}>5 minutos de lectura. 8 bloques que cambian tu criterio sobre un informe de {report.pages} p\u00e1ginas.</p>
+              <button onClick={() => window.open(report.url, "_blank")} className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold" style={{ color: "#8A5526", borderBottom: "1px solid #B87333", paddingBottom: "4px" }}>{lang === "ca" ? "Veure font original \u2192" : "Ver fuente original \u2192"}</button>
             </div>
           </div>
         )}
+          </div>
+        </div>
+
+        {/* Disclaimer IA */}
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-6">
+          <p className="text-center font-serif text-xs italic leading-relaxed text-foreground/60">
+            Criteri ESG aplica un flux de doble revisió per a cada informe: GLM redacta, Gemini fa d&apos;advocat del diable, i l&apos;equip humà valida sempre cada bloc abans de publicar.
+          </p>
+        </div>
       </main>
       <Footer />
       {dialogs}
+      <SemaforoPopup open={popupOpen} onClose={() => setPopupOpen(false)} />
     </div>
   );
 }

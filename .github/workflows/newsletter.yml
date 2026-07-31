@@ -1,0 +1,56 @@
+name: Newsletter Setmanal
+
+on:
+  schedule:
+    - cron: '0 12 * * 4'
+  workflow_dispatch:
+
+jobs:
+  generate-newsletter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      GCP_OAUTH_TOKENS: ${{ secrets.GCP_OAUTH_TOKENS }}
+      GCP_OAUTH_CLIENT: ${{ secrets.GCP_OAUTH_CLIENT }}
+      BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+      BREVO_SENDER_EMAIL: info@criteriesg.com
+      BREVO_SENDER_NAME: Criteri ESG
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests python-dotenv google-auth google-auth-httplib2 google-api-python-client
+
+      - name: Write credentials
+        run: |
+          echo "$GCP_SERVICE_ACCOUNT" > /tmp/gcp-service-account.json
+          mkdir -p /home/runner
+          echo "$GCP_OAUTH_TOKENS" | base64 -d > /home/runner/.gcp-oauth-tokens.json
+          echo "$GCP_OAUTH_CLIENT" | base64 -d > /home/runner/.gcp-oauth-client.json
+
+          printf 'GEMINI_API_KEY=%s\nGCP_SERVICE_ACCOUNT_PATH=/tmp/gcp-service-account.json\nGCP_OAUTH_TOKENS_PATH=/home/runner/.gcp-oauth-tokens.json\nGCP_OAUTH_CLIENT_PATH=/home/runner/.gcp-oauth-client.json\nBREVO_API_KEY=%s\nBREVO_SENDER_EMAIL=info@criteriesg.com\nBREVO_SENDER_NAME=Criteri ESG\n' "$GEMINI_API_KEY" "$BREVO_API_KEY" > assets/web/.env.local
+
+      - name: Generate newsletter
+        run: |
+          mkdir -p data scripts/state
+          WEEK=$(date +%V)
+          EDITION=$((WEEK - 35 + 1))
+          if [ $EDITION -lt 1 ]; then EDITION=1; fi
+          echo "=== Generant newsletter #$EDITION ==="
+          python scripts/newsletter-generator.py $EDITION
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: newsletter-html
+          path: data/newsletter-*.html
+          retention-days: 30

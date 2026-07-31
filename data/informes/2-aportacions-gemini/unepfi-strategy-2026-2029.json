@@ -1,0 +1,91 @@
+{
+  "slug": "unepfi-strategy-2026-2029",
+  "title": "Strategy 2026 2029",
+  "institution": "UNEP FI (UN Environment Programme Finance Initiative)",
+  "generated_at": "2026-07-25T08:16:45",
+  "model": "gemini-2.5-flash (vertex-ai europe-west1)",
+  "aportacions": {
+    "propostes": [
+      {
+        "bloc": "0-semafor",
+        "tipus": "modificar",
+        "proposta": "Actualitzar la nota de 'Verificació externa' per reflectir que el seguiment del progrés és intern per a cada marc de UNEP FI i per als seus membres, però no hi ha menció d'una verificació externa formal de l'estratègia global de UNEP FI.",
+        "justificacio": "Aclara la naturalesa del seguiment esmentat a l'original, evitant la confusió amb una verificació externa de l'organització mateixa i millorant la precisió."
+      },
+      {
+        "bloc": "0-semafor",
+        "tipus": "afegir",
+        "proposta": "Afegir un indicador per a 'Finançament d'emissions (Scope 3)' per avaluar si l'estratègia detalla com abordarà els 'impacts of portfolios' (impactes de portfoli), que són emissions Scope 3.",
+        "justificacio": "L'original esmenta 'impacts of portfolios' que implica Scope 3, però el destil·lat no ho recull com a indicador específic, sent crucial en finances sostenibles i per a una cobertura completa."
+      },
+      {
+        "bloc": "2-dadesClau",
+        "tipus": "afegir",
+        "proposta": "Afegir la dada que l'estratègia es va elaborar a partir d'una enquesta a 'més de 250 membres i stakeholders clau' i 'entrevistes amb més de 30 stakeholders externs'.",
+        "justificacio": "Proporciona context sobre la robustesa i la base de dades per a la creació de l'estratègia, millorant la granularitat i la credibilitat."
+      },
+      {
+        "bloc": "2-dadesClau",
+        "tipus": "afegir",
+        "proposta": "Afegir la dada que UNEP FI va ser 'Fundada el 1992'.",
+        "justificacio": "Aporta context històric i d'experiència de l'organització, ressaltant la seva trajectòria en el camp de les finances sostenibles."
+      },
+      {
+        "bloc": "3-resumExecutiu",
+        "tipus": "modificar",
+        "proposta": "Ampliar la descripció del 'business case' de la sostenibilitat, incloent 'fiduciary duty enfortit' i 'competitivitat a llarg termini' com a components clau de models de negoci resilients.",
+        "justificacio": "Reforça la justificació econòmica de la sostenibilitat tal com s'exposa a l'informe original, donant una visió més completa dels drivers estratègics."
+      },
+      {
+        "bloc": "4-implicacions",
+        "tipus": "afegir",
+        "proposta": "En la secció 'empreses', especificar que el suport personalitzat per als membres inclou l'accés a 'recursos i eines per a la implementació', 'grups pilot per provar materials' i 'activitats d'aprenentatge entre iguals'.",
+        "justificacio": "Detalla els beneficis concrets que reben els membres, fent la implicació més tangible i comprensible."
+      },
+      {
+        "bloc": "6-accions",
+        "tipus": "modificar",
+        "proposta": "En l'acció 05 'Millorar la transparència i rendició de comptes', especificar que es refereix principalment a 'avaluar el progrés dels membres' en la implementació dels marcs, no necessàriament a la rendició de comptes de UNEP FI com a organització.",
+        "justificacio": "Aclara l'abast de l'acció segons l'informe original, distingint entre el seguiment dels membres i la verificació de l'organització, augmentant la precisió."
+      },
+      {
+        "bloc": "7-crossRefs",
+        "tipus": "modificar",
+        "proposta": "En l'apartat TCFD, reformular l'impacte per indicar que l'estratègia aborda la 'gestió de riscos i impactes de sostenibilitat' de manera general, la qual cosa inclou conceptes del TCFD sense esmentar-lo explícitament.",
+        "justificacio": "Fa la connexió més precisa, ja que l'original parla de gestió de riscos i impactes sense anomenar el TCFD, evitant una inferència no explícita."
+      }
+    ],
+    "advocat_diable": [
+      {
+        "tipus": "greenwashing",
+        "bloc_afectat": "resumExecutiu, semafor",
+        "observacio": "La visió d'un sector financer que 'impacta positivament' i 'enforteix la resiliència' és ambiciosa, però la manca d'indicadors clars i quantificables per a aquests impactes sistèmics pot diluir la responsabilitat real i el potencial de 'greenwashing', ja que l'èxit es podria mesurar en activitat (nombre de membres, marcs) més que en resultats tangibles a gran escala.",
+        "evidencia_original": "Vision: A global financial sector that positively impacts and serves people and the planet, strengthening resilience, fostering inclusive economies and contributing to society’s goals..."
+      },
+      {
+        "tipus": "criteri_oblidat",
+        "bloc_afectat": "implicacions, accions",
+        "observacio": "Tot i l'èmfasi en 'economies inclusives', l'estratègia no aborda explícitament la justícia distributiva dels beneficis i càrregues de la transició ni el mecanisme de co-decisió per a les comunitats més afectades. La participació de la societat civil sembla orientada a 'l'alineació estratègica' més que a la influència directa en les decisions, oblidant la dignitat i l'arrelament de les comunitats.",
+        "evidencia_original": "Vision: ...fostering inclusive economies..., Strategic driver 5: Multi-stakeholders convening... to facilitate strategic alignment on delivering sustainable economies."
+      },
+      {
+        "tipus": "mancanca",
+        "bloc_afectat": "semafor, resumExecutiu, accions",
+        "observacio": "L'informe esmenta el seguiment intern del progrés dels membres a través dels seus propis marcs, però hi ha una manca de detall sobre un procés formal i independent de verificació externa de l'efectivitat global de l'estratègia de UNEP FI. Això planteja dubtes sobre la robustesa de la rendició de comptes a nivell de l'organització i la credibilitat dels seus èxits.",
+        "evidencia_original": "Monitoring progress: UNEP FI will monitor key indicators from 2026 to 2029. Each UNEP FI framework has its own models and/or biannual progress reports to track members’ progress."
+      },
+      {
+        "tipus": "greenwashing",
+        "bloc_afectat": "mesEnllaCheckbox, connexions",
+        "observacio": "L'estratègia no resol la tensió fonamental entre el model econòmic actual basat en el creixement continu i els límits planetaris absoluts. Enfocar-se en la 'competitivitat' i 'oportunitats de negoci' sense una clara priorització dels límits ecològics pot ser percebut com un 'greenwashing' que manté l'status quo amb lleugeres modificacions, sense abordar la sostenibilitat absoluta.",
+        "evidencia_original": "The transition is no longer a theoretical exercise. It is a core component of resilient business models, strengthened fiduciary duty, and long-term competitiveness."
+      },
+      {
+        "tipus": "mancanca",
+        "bloc_afectat": "dadesClau, resumExecutiu",
+        "observacio": "Les dades sobre el nombre de membres i actius sota gestió, tot i ser impressionants, manquen de contextualització respecte al volum total del sector financer global. No s'especifica quin percentatge representen aquests membres en termes de compromís real amb la sostenibilitat profunda, podent sobreestimar l'abast i l'impacte real de la iniciativa.",
+        "evidencia_original": "UNEP FI’s unique network, of more than 550 financial institutions..., Principles for Responsible Banking (PRB), representing almost 50% of global banking assets, Principles for Sustainable Insurance (PSI), representing 30% of global insurance premium."
+      }
+    ]
+  }
+}

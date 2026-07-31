@@ -1,0 +1,289 @@
+{
+  "slug": "unepfi-strategy-2026-2029",
+  "title": "Strategy 2026 2029",
+  "institution": "UNEP FI (UN Environment Programme Finance Initiative)",
+  "filename_original": "2026-06-30_unepfi-strategy-2026-2029.pdf",
+  "generated_at": "2026-07-25T06:53:16",
+  "content_ca": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Bona cobertura amb algunes àrees millorables",
+      "indicators": [
+        {
+          "name": "Cobertura Scope 3",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "L'estratègia parla d'impacts de portfolis però no detalla específicament la cobertura d'emissions Scope 3"
+        },
+        {
+          "name": "Termes temporals",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Estratègia definida per un període concret 2026-2029 amb indicadors de seguiment"
+        },
+        {
+          "name": "Fonts independents",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "S'esmenten explícitament les fonts independents com a part del procés d'elaboració"
+        },
+        {
+          "name": "Granularitat",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "L'informe detalla objectius específics i drivers estratègics amb accions concretes"
+        },
+        {
+          "name": "Verificació externa",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "Es parla de seguiment però no es detalla un procés de verificació externa formal"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "550+ institucions financeres",
+        "label": "Membres de la xarxa",
+        "page": "5"
+      },
+      {
+        "value": "USD 100+ trilions",
+        "label": "Actius sota gestió dels membres",
+        "page": "6"
+      },
+      {
+        "value": "50%",
+        "label": "Actius bancaris globals coberts pels Principis de Banca Responsable",
+        "page": "5"
+      },
+      {
+        "value": "30%",
+        "label": "Primes asseguradores globals cobertes pels Principis d'Assegurança Sostenible",
+        "page": "5"
+      },
+      {
+        "value": "66 països",
+        "label": "Cobertura geogràfica de l'estratègia",
+        "page": "1"
+      }
+    ],
+    "resumExecutiu": "L'estratègia 2026-2029 de UNEP FI presenta un marc amb dos pilars principals: canvi sistèmic i canvi institucional, impulsats per cinc drivers estratègics. La iniciativa busca mobilitzar i alinear finances privades per assolir els Objectius de Desenvolupament Sostenible de l'ONU, amb una visió d'un sector financer global que impacti positivament en persones i planeta. L'estratègia destaca la integració de la sostenibilitat com a component central de models de negoci resilients i gestió prudent de riscos. Tot i tenir una cobertura geogràfica àmplia i un nombre significatiu d'institucions membres, l'estratègia podria millorar en la quantificació d'impactes específics i en la transparència dels mecanismes de verificació externa.",
+    "implicacions": {
+      "empreses": "Les institucions financeres membres tenen l'oportunitat d'accedir a expertise global, contribuir al desenvolupament de marcs de sostenibilitat i participar en fòrums que promouen millors pràctiques. L'estratègia ofereix suport personalitzat per implementar marcs de sostenibilitat i participar en la transició econòmica, però requereix un compromís actiu i la integració real de la sostenibilitat en els models de negoci.",
+      "reguladors": "L'estratègia promou la coherència i interoperabilitat de polítiques i regulacions, oferint marcs basats en millors pràctiques de la indústria. UNEP FI busca facilitar el diàleg estratègic amb reguladors per crear entorns habilitants per a la finança sostenible, tot i que la implementació efectiva dependrà de la voluntat política i la capacitat regulatòria de cada jurisdicció.",
+      "ciutadans": "Els ciutadans es beneficien indirectament a través d'un sistema financer més responsable que contribueix a economies inclusives i resilients, i que alinea les inversions amb els Objectius de Desenvolupament Sostenible. No obstant això, l'estratègia no aborda directament com assegurar que els beneficis d'aquesta transició es distribueixen equitativament entre la població."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Sostenibilitat absoluta",
+      "body": "L'estratègia de UNEP FI es mou més enllà del simple marc de referència ESG tradicional. Tot i que estableix marcs per a la banca responsable i assegurances sostenibles, no es compromet explícitament amb límits planetaris absoluts ni amb una transició que garanteix la viabilitat ecològica a llarg termini. L'enfocis es manté dins del marc del desenvolupament sostenible convencional, sense abordar les contradiccions inherents entre crecimento econòmic continu i límits ecolòtics."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "Principis de Banca Responsable i Assegurances Sostenible",
+        "desc": "L'estratègia 2026-2029 representa una evolució dels marcs existents, amb un enfoc més fort en l'adaptació regional i l'implicació de múltiples parts interessades per accelerar el canvi sistèmic."
+      },
+      {
+        "type": "Contradicció",
+        "target": "Creixement econòmic continu",
+        "desc": "L'estratègia promou una transició cap a economies inclusives i baixes en carboni, però no aborda explícitament les tensions entre el model econòmic actual basat en el creixement continu i els límits planetaris."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Desenvolupar marcs de referència basats en ciència",
+        "desc": "Crear i actualitzar normes i recursos per a institucions financeres que estiguin alineats amb la recerca científica i els acords globals.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Fomentar l'adaptació regional de guies",
+        "desc": "Adaptar les guies globals i formació a necessitats geogràfiques diverses, equilibrant normes internacionals amb contextos regionals i nacionals.",
+        "effort": "Alt",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "03",
+        "title": "Promoure la coherència política i regulatòria",
+        "desc": "Facilitar el diàleg amb reguladors i responsables de polítiques per crear entorns habilitants per a la finança sostenible.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "04",
+        "title": "Construir xarxes multiactor",
+        "desc": "Desenvolupar xarxes que connectin institucions financeres amb actors de l'economia real, sector públic i societat civil.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "05",
+        "title": "Millorar la transparència i rendició de comptes",
+        "desc": "Desenvolupar models de seguiment per avaluar el progrés dels membres en la implementació de marcs de sostenibilitat.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "ODS de l'ONU",
+        "criterion": "Aliniament global per al desenvolupament sostenible",
+        "impact": "L'estratègia està explícitament dissenyada per mobilitzar finances privades en suport dels ODS"
+      },
+      {
+        "framework": "Principis de Banca Responsable",
+        "criterion": "Integració de sostenibilitat en estratègia de negoci",
+        "impact": "Un dels marcs principals que l'estratègia busca implementar i millorar"
+      },
+      {
+        "framework": "TCFD",
+        "criterion": "Gestió de riscos relacionats amb el clima",
+        "impact": "L'estratègia aborda la gestió de riscos relacionats amb la sostenibilitat, tot i no esmentar específicament el TCFD"
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Bona cobertura amb algunes omissions",
+      "indicators": [
+        {
+          "name": "Cobertura Scope 3",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "L'estratègia menciona la gestió d'impactes però no especifica cobertura de Scope 3"
+        },
+        {
+          "name": "Termes temporals",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Estratègia definida per període 2026-2029 amb indicadors de seguiment"
+        },
+        {
+          "name": "Fonts independents",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "S'esmenten enquestes a 250+ membres i 30+ parts interessades externes"
+        },
+        {
+          "name": "Granularitat",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Detalls dels 5 motors estratègics i objectius específics"
+        },
+        {
+          "name": "Verificació externa",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "Es parla de seguiment però no es detallen mecanismes de verificació externa"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "550+",
+        "label": "Institucions financeres membres",
+        "page": "5"
+      },
+      {
+        "value": "USD 100+ trilions",
+        "label": "Actius sota gestió dels membres",
+        "page": "6"
+      },
+      {
+        "value": "50%",
+        "label": "Actius bancaris globals coberts per PRB",
+        "page": "5"
+      },
+      {
+        "value": "30%",
+        "label": "Primes d'assegurances globals cobertes per PSI",
+        "page": "5"
+      },
+      {
+        "value": "5",
+        "label": "Motors estratègics",
+        "page": "2"
+      }
+    ],
+    "resumExecutiu": "L'estratègia 2026-2029 de UNEP FI presenta una visió ambiciosa per transformar el sector financer en un agent de canvi positiu per a les persones i el planeta. L'organització estructura la seva estratègia en dos pilars: canvi sistèmic i canvi institucional, amb cinc motors estratègics que busquen fomentar banques responsables i assegurances sostenibles. L'estratègia es basa en marcs com els Principis per a Banques Responsables i els Principis per a Assegurances Sostenibles, que cobreixen una part significativa dels actius globals. Malgrat la seva àmplia cobertura, l'estratègia no aborda detalladament la mesuració d'impactes específics com les emissions de Scope 3, i el seguiment es basa principalment en informes de progrés dels membres sense verificació externa detallada.",
+    "implicacions": {
+      "empreses": "Les institucions financeres membres tenen l'oportunitat d'accedir a una xarxa global d'experts, recursos i marcs per integrar la sostenibilitat en les seves estratègies. L'estratègia ofereix suport pràctic per gestionar riscos i oportunitats de sostenibilitat, millorar la competitivitat i contribuir a la transició econòmica.",
+      "reguladors": "UNEP FI busca fomentar l'engatjament polític i facilitar diàlegs estratègics amb reguladors i estandarditzadors per crear entorns habilitants per a les pràctiques de finançament sostenible, promovent la coherència i interoperabilitat de polítiques.",
+      "ciutadans": "L'estratègia té el potencial d'impactar positivament la societat mitjançant la promoció d'economies inclusives i resilientes, alineades amb els Objectius de Desenvolupament Sostenible de les Nacions Unides, tot i que no detalla com es mesurarà directament aquest impacte en les comunitats."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Sostenibilitat absoluta",
+      "body": "L'estratègia de UNEP FI es mou més enllà del simple compliment normatiu en reconèixer la necessitat d'un canvi fonamental en els sistemes financers. Els cinc motors estratègics demanen una transformació profunda que va més enllà de la gestió de riscos, buscant reorientar el flux de capital cap a solucions que realment contribueixin a una economia sostenible i inclusiva. No obstant això, la manca d'indicadors específics sobre impacte ambiental i social real limita la seva efectivitat en garantir una sostenibilitat absoluta."
+    },
+    "connexions": [
+      {
+        "type": "Complement",
+        "target": "Objectius de Desenvolupament Sostenible",
+        "desc": "L'estratègia de UNEP FI està explícitament alineada amb els ODS, buscant mobilitzar i alinear finançament privat per assolir aquests objectius globals."
+      },
+      {
+        "type": "Evolució",
+        "target": "Principis per a Banques Responsables",
+        "desc": "L'estratègia 2026-2029 representa una evolució dels Principis per a Banques Responsables, enfocant-se més en la implementació pràctica i el seguiment de l'impacte real."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Desenvolupar marcs i guies per a la implementació",
+        "desc": "Crear i actualitzar recursos tècnics per ajudar les institucions financeres a integrar la sostenibilitat en les seves estratègies i operacions diàries.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Fomentar la participació regional",
+        "desc": "Adaptar les guies i recursos a contextos regionals específics, equilibrant normes globals amb prioritats locals.",
+        "effort": "Alt",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "03",
+        "title": "Establir diàlegs amb reguladors",
+        "desc": "Facilitar el diàleg estratègic amb responsables de polítiques i reguladors per crear entorns habilitants per al finançament sostenible.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "04",
+        "title": "Crear xarxes d'aprenentatge entre iguals",
+        "desc": "Desenvolupar comunitats de pràctica i estudis de cas per promoure l'aprenentatge entre membres i compartir millors pràctiques.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "05",
+        "title": "Monitoritzar el progrés dels membres",
+        "desc": "Establir indicadors clau per seguir l'avanç en la implementació dels principis de sostenibilitat per part dels membres.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "Principis per a Banques Responsables",
+        "criterion": "Integració de sostenibilitat en la gestió de riscos",
+        "impact": "Alta"
+      },
+      {
+        "framework": "Objectius de Desenvolupament Sostenible de l'ONU",
+        "criterion": "ODS 13 (Acció pel clima)",
+        "impact": "Mitjana"
+      },
+      {
+        "framework": "Marco de la ONU para las finanzas sostenibles",
+        "criterion": "Alineación con marcos globales",
+        "impact": "Alta"
+      }
+    ]
+  }
+}

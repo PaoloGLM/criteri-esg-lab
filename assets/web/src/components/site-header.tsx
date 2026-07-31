@@ -46,15 +46,15 @@ export function Header({ onOpenPreus, onOpenAuth }: HeaderProps = {}) {
           <a href="/que-fem" className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground">
             {t("nav.quefem")}
           </a>
+          <a href="/mas-alla-del-checkbox" className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground">
+            {lang === "ca" ? "Més enllà" : "Más allá"}
+          </a>
           <a href="/estandares-esg" className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground">
             {t("nav.estandares")}
           </a>
-          <button
-            onClick={onOpenPreus}
-            className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground"
-          >
+          <a href="/preus" className="editorial-link text-sm font-medium text-foreground/80 hover:text-foreground">
             {t("nav.preus")}
-          </button>
+          </a>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -167,15 +167,15 @@ export function Header({ onOpenPreus, onOpenAuth }: HeaderProps = {}) {
           <a href="/que-fem" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">
             {t("nav.quefem")}
           </a>
+          <a href="/mas-alla-del-checkbox" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">
+            {lang === "ca" ? "Més enllà" : "Más allá"}
+          </a>
           <a href="/estandares-esg" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">
             {t("nav.estandares")}
           </a>
-          <button
-            onClick={() => { setMobileOpen(false); onOpenPreus?.(); }}
-            className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary"
-          >
+          <a href="/preus" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">
             {t("nav.preus")}
-          </button>
+          </a>
           {user ? (
             <>
               <a href="/cuenta" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-left text-sm font-medium text-foreground/80 hover:bg-secondary">

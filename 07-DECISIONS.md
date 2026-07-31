@@ -666,64 +666,42 @@
 
 ---
 
-## 5 juliol 2026 — Arquitectura d'automatització: API des de l'inici (no semiautomàtic)
+## 5 juliol 2026 — Arquitectura d'automatització (DESCARTADA 24 juliol 2026)
 
-**Decisió**: S'integrarà l'API de Z.ai-bot al backend des del llançament (setembre 2026), no pas en mode semiautomàtic. La Roser implementarà la integració durant juliol-agost 2026.
+> **Nota**: Aquesta decisió va ser **substituïda el 24 juliol 2026** per la decisió "Flux de creació d'informes: GLM + Gemini + Paolo (7 passos)". Veure més avall.
 
-**Arquitectura completa** (documentada al `04-WEB.md`):
+**Decisió original (descartada)**: S'integraria l'API de Z.ai-bot al backend des del llançament amb crawler Vercel Cron + Supabase com a CMS + LanguageTool per a correcció ortogràfica.
 
-1. **Crawler automàtic** (Vercel Cron, dilluns + dijous matí): Scrapy + BeautifulSoup detecten nous informes a les fonts catalogades, descarreguen PDFs a Google Drive `/originals/`
-2. **Backend Next.js + Supabase**: rep notificació de PDF nou, extreu text (PyMuPDF), crida Z.ai-bot API
-3. **Z.ai-bot API**: rep text del PDF, genera els 8 blocs (Semàfor + 7 blocs) en JSON, passa corrector LanguageTool, retorna JSON + log
-4. **Backend**: aplica plantilla HTML, genera PDF via Playwright, guarda a Supabase + Drive `/processats/`, notifica en Paolo
-5. **Revisió humana obligatòria**: en Paolo (o la Roser) revisa abans de publicar. Sempre.
-6. **Publicació**: web `/informes/[slug]` + Drive + notificació a subscriptors si és destacat
+**Raó del descart**: l'arquitectura suposava vendor lock-in massa rígid amb Supabase com a CMS i LanguageTool com a únic corrector. El nou flux (24 juliol 2026) reparteix responsabilitats entre GLM i Gemini, i deixa Google Drive com a magatzem auditable de cada pas intermedi.
 
-**CMS**: Supabase actua com a CMS per als informes. En Paolo pot editar informes des del panell web de Supabase sense tocar codi. La Roser crea la taula `informes` amb els camps dels 8 blocs.
+---
 
-**Principis ètics**:
-1. Cap informe publicat sense revisió humana
-2. Transparència: cada informe duu nota al footer sobre processat amb IA + revisat per equip
-3. Provider d'IA intercanviable (no vendor lock-in): arquitectura modular per poder canviar de provider
-4. Corrector LanguageTool obligatori, log guardat al camp `corrector_log` de cada informe
+## 24 juliol 2026 — Flux de creació d'informes: GLM + Gemini + Paolo (7 passos)
 
-**Rao**:
-- En Paolo preferia integrar API des de l'inici encara que hi hagués un cost addicional, per evitar dependre d'acció humana per cada informe
-- L'opció semiautomàtica (en Paolo demana processar informes al xat) hauria estat un coll d'ampolla que hauria limitat l'escalabilitat
-- El cost d'IA al llançament és baix (1-4€/mes per 4-8 informes/mes) i justifica l'automatització
+**Decisió**: El flux de creació d'informes és un pipeline de 7 passos amb tres actors — GLM (Z.ai-bot), Gemini (Google) i Paolo. Cada pas escriu el seu output a una carpeta pròpia de Google Drive.
 
-**Costos estimats**:
+**Els 7 passos**:
 
-| Concepte | Llançament (set-dec 2026) | Creixement (gen-juny 2027) | Ultra (juliol 2027+) |
-|----------|---------------------------|-----------------------------|----------------------|
-| Vercel (hosting + Cron) | 0€ | 0-20€ | 20€ |
-| Supabase (auth + BD) | 0€ | 0€ | 25€ |
-| Beehiiv (newsletter) | 25€ | 35€ | 50€ |
-| Google Drive | 0€ | 0€ | 2€ |
-| GitHub | 0€ | 0€ | 0€ |
-| Domini | 1€ | 1€ | 1€ |
-| **Z.ai-bot API (processar informes)** | **1-4€** | **20-50€** | **50-100€** |
-| Resend (email transaccional) | 0€ (gratuït fins 3.000/mes) | 20€ | 20€ |
-| LanguageTool API | 0€ | 0€ | 5€ |
-| Whisper (transcriure vídeos, 2027) | — | — | 5-15€ |
-| **Total mensual** | **~30-35€** | **~80-130€** | **~180-240€** |
+1. **GLM detecta** informes nous a les fonts i els posa a `Drive /informes/0-originals/`
+2. **GLM destil·la** la informació dels 8 apartats (segons METODOLOGIA.md) → `/informes/1-distilats/`
+3. **Gemini revisa** l'informe original + el destil·lat de GLM, fa propostes de valor per afegir o modificar i fa d'advocat del diable → `/informes/2-aportacions-gemini/`
+4. **GLM redacta** l'informe final, decidint què és rellevant de les aportacions de Gemini i què no → `/informes/3-fets/`
+5. **Gemini revisa** ortogràficament l'informe (català i castellà) i canvia el que calgui → `/informes/4-revisats-ortografia/`
+6. **Paolo llegeix** els informes creats i els valida → `/informes/5-validats-paolo/`
+7. **GLM puja** els informes validats a la web → `/informes/6-publicats/`
 
-**Alternatives considerades**:
-- Semiautomàtic (en Paolo demana al xat) → descartat per limitar escalabilitat
-- CMS headless de pagament (Sanity, Contentful) → descartat per cost addicional innecessari; Supabase n'hi prou
-- WordPress → descartat per incoherent amb stack Next.js
-- Vendor lock-in amb Z.ai → descartat per risc; arquitectura modular per permetre canvi de provider
+**Principis**:
+- Cap informe publicat sense validació humana (pas 6).
+- Gemini té dos rols diferenciats: **crític** (pas 3, abans de la redacció) i **corrector** (pas 5, després).
+- Cada pas té una carpeta pròpia a Drive per auditar qualsevol pas intermedi.
+- GLM mai publica sense que Paolo hagi aprovat.
 
-**Consideració ètica (Kantiana i del Bé Comú)**:
-- **Kant**: tractar la IA com a dependència oculta seria deshonest amb els subscriptors. Si el servei depèn d'IA, cal dir-ho (footer dels informes) i tenir pla B (provider intercanviable)
-- **Bé comú**: la transparència sobre automatització i costos serveix el bé comú. Amagar-los per fer el projecte més atractiu seria èticament reprovable
-- **Pla B ètic**: cap informe publicat sense revisió humana. La IA genera, l'equip revisa. Garanteix qualitat i evita dependència cega
+**Pendents d'implementació** (veure `TASQUES.md` P4):
+- Paolo: crear API key de Gemini a Google AI Studio → variable d'entorn `GEMINI_API_KEY`
+- GLM: scripts Python per a cada pas
+- GLM: estructura de carpetes a Google Drive
 
-**Impacte**:
-- Documentat al `04-WEB.md` secció "Arquitectura d'automatització"
-- Stack tècnic actualitzat (LLM + Crawler)
-- La Roser haurà d'implementar: crawler + integració API + taula `informes` a Supabase + plantilla HTML dinàmica
-- Estimat esforç Roser: 2-3 setmanes (juliol-agost 2026)
+**Substitueix**: la decisió del 5 juliol 2026 (crawler Vercel Cron + Supabase CMS + LanguageTool).
 
 **Estat**: Activa
 

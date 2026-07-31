@@ -2,28 +2,35 @@
 
 > **Document intern.** Especifica exactament com es construeix cada bloc dels 8 que composen un informe Criteri ESG. Serveix perquè Paolo pugui auditar la riguresa del procés.
 >
-> **Data**: 17 juliol 2026
+> **Data**: 17 juliol 2026 (flux actualitzat 24 juliol 2026)
 > **Basat en**: `02-PRODUCTE.md`, `CONTEXT.md`, i l'informe pilot real (`revisio-esrs-maig-2026`)
 
 ---
 
-## Visió general del procés
+## Visió general del procés (flux DeepSeek + Gemini + Paolo, actualitzat 31 juliol 2026)
 
 ```
-Font institucional (PDF/web, 30-200 pàgines)
-         ↓
-    Detecció automàtica (agent IA, dilluns i dijous)
-         ↓
-    Curació humana (Paolo decideix si es processa)
-         ↓
-    Lectura completa + extracció de dades (agent IA)
-         ↓
-    Redacció dels 8 blocs (agent IA amb supervisió humana)
-         ↓
-    Validació editorial (Paolo revisa i corregeix)
-         ↓
-    Publicació a la web (tots els informes) + proposta per newsletter
+1. DeepSeek detecta  →  informes nous a les fonts →  Google Drive /informes/0-originals/
+                          ↓
+2. DeepSeek destil·la  →  estructura general dels 8 apartats  →  /informes/1-distilats/
+                          ↓
+3. Gemini analitza  →  RESUM EXECUTIU d'alta precisió + propostes de valor + advocat del diable  →  /informes/2-aportacions-gemini/
+                          ↓
+4. DeepSeek redacta  →  informe final integrant el resum i les aportacions de Gemini  →  /informes/3-fets/
+                          ↓
+5. Gemini ortografia  →  revisió ortogràfica CA + ES  →  /informes/4-revisats-ortografia/
+                          ↓
+6. Paolo valida  →  llegeix i aprova/rebutja  →  /informes/5-validats-paolo/
+                          ↓
+7. Publicació  →  web + Supabase  →  /informes/6-publicats/
 ```
+
+**Principis del flux**:
+- Cap informe es publica sense validació humana de Paolo.
+- Gemini té tres rols diferenciats: **sintetitzador del resum executiu** (pas 3), **crític** (pas 3, abans de la redacció) i **corrector** (pas 5, després).
+- El **resum executiu del bloc 3** el genera **Gemini** (no DeepSeek). DeepSeek l'integra directament a la redacció final (pas 4).
+- Cada pas té una carpeta pròpia a Google Drive perquè Paolo pot auditar qualsevol pas intermedi.
+- Cap informe saltat de pas 1 a pas 7.
 
 ---
 
@@ -357,9 +364,9 @@ Els documents oficials estan a `/criteri-esg-lab/certifications/`. Veure `certif
 
 ## Procés de validació humana (Paolo)
 
-Després que l'agent IA generi els 8 blocs:
+Després que DeepSeek redacti l'informe (pas 4) i Gemini faci la revisió ortogràfica (pas 5):
 
-1. **Paolo rep l'informe complet** (8 blocs en català i castellà)
+1. **Paolo rep l'informe complet** (8 blocs en català i castellà) a `/informes/4-revisats-ortografia/`
 2. **Revisa cada bloc** verificant:
    - Semàfor: els colors estan justificats amb evidència?
    - Dades clau: les xifres són correctes i les pàgines citades existeixen?
@@ -369,25 +376,19 @@ Després que l'agent IA generi els 8 blocs:
    - Connexions: les relacions identificades són reals?
    - Accions: són accionables i específiques?
    - Cross-reference: els impactes estan ben calibrats?
-3. **Corregeix o demana canvis** a l'agent IA
-4. **Aprova** → l'informe es publica a la web
+3. **Corregeix o demana canvis** a DeepSeek (passa l'informe a `/informes/3-fets/` amb notes)
+4. **Aprova** → mou l'informe a `/informes/5-validats-paolo/`. Es publicarà a la web (pas 7)
 5. **Selecciona per newsletter**: decideix si l'informe va a la propera newsletter (màx. 4 per newsletter)
 
 ### Regla fonamental
 
-**Tots els informes detectats es publiquen a la web. Tots tenen els 8 blocs. No tots van a la newsletter. Només Paolo selecciona els que hi van, i Paolo és qui determina si els informes creats per l'agent IA estan bé. Aquesta és la part humana principal del procés.**
+**Tots els informes detectats es publiquen a la web. Tots tenen els 8 blocs. No tots van a la newsletter. Només Paolo selecciona els que hi van, i Paolo és qui determina si els informes creats estan bé. Aquesta és la part humana principal del procés.**
 
 ---
 
-## Corrector ortogràfic obligatori
+## Corrector ortogràfic (pas 5 del flux, fet per Gemini)
 
-Abans de publicar, tots els textos en català i castellà passen pel corrector LanguageTool:
-
-```bash
-python3 /home/z/my-project/scripts/corrector.py <fitxer> [ca|es]
-```
-
-Si hi ha errors manuals pendents, l'informe no es publica fins que es revisen.
+La revisió ortogràfica la fa Gemini 2.0 Pro sobre els 8 blocs en català i castellà, abans que Paolo validi. Aquesta substitueix el corrector LanguageTool que es feia servir abans.
 
 ---
 

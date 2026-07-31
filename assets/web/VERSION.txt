@@ -1,0 +1,31 @@
+Criteri ESG — Versió final del redisseny web
+Data: 23 juliol 2026
+
+Aquesta és la versió final del redisseny web. Totes les pàgines estan implementades en React/Tailwind.
+
+Pàgines implementades:
+- / (homepage) — Fase 2A, variant 2 manifest editorial
+- /que-fem — Fase 2D
+- /qui-som — Fase 2D  
+- /cuenta — Fase 2D
+- /informes (biblioteca) — Fase 2C
+- /informes/[slug] (informe detall) — Fase 2B
+- /estandares-esg — Fase 2C
+- /estandares-esg/[slug] (detall estàndard) — existent
+- /preus — Fase 2E
+- /mas-alla-del-checkbox — Fase 2E
+- /mas-alla-del-checkbox/[num] — Fase 2E
+
+Components:
+- SemaforoPopup (popup metodologia semàfor)
+- PreusDialog (dialog de preus amb base+IVA)
+- AuthDialog (registre/login amb banner 2 mesos Premium gratis)
+
+Sistema visual:
+- Paleta terra+coure: #2C1810, #5C3A1E, #B87333, #E8C99A, #F5EFE6
+- Tipografia: Fraunces (headings), Inter (body), JetBrains Mono (meta)
+- Italic <em> per èmfasi
+- Dark per impacte, crema per lectura
+- Eslògan: "5 minuts per criteri clar" (decisió editorial 17)
+
+NO MODIFICAR sense acord amb Paolo.

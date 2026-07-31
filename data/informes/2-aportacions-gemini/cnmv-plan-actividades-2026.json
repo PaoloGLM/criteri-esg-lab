@@ -1,0 +1,85 @@
+{
+  "slug": "cnmv-plan-actividades-2026",
+  "title": "Plan actividades 2026",
+  "institution": "CNMV (Comisión Nacional del Mercado de Valores)",
+  "generated_at": "2026-07-25T08:16:04",
+  "model": "gemini-2.5-flash (vertex-ai europe-west1)",
+  "aportacions": {
+    "propostes": [
+      {
+        "bloc": "0-semafor",
+        "tipus": "afegir",
+        "proposta": "Afegir un indicador per a 'Objectius ESG quantificables' amb estatus 'vermell' i nota 'L'informe esmenta la sostenibilitat, però no estableix objectius numèrics clars ni KPI per a l'impacte ambiental o social, més enllà de la conformitat regulatòria.'",
+        "justificacio": "El destil·lat ja assenyala la superficialitat de l'enfocament ESG. Un indicador explícit en el semàfor reforçaria aquesta crítica i destacaria una mancança estructural en el pla."
+      },
+      {
+        "bloc": "2-dadesClau",
+        "tipus": "afegir",
+        "proposta": "Afegir la dada: '32 accions' amb l'etiqueta 'Nombre total d'accions estratègiques per 2026' i pàgina '5'.",
+        "justificacio": "L'informe original (p. 5) especifica '32 acciones y 60 iniciativas'. El destil·lat només recull les 60 iniciatives. Afegir les accions proporciona una visió més completa de l'estructura i l'abast del pla."
+      },
+      {
+        "bloc": "2-dadesClau",
+        "tipus": "modificar",
+        "proposta": "Modificar la dada '476.000 milions d'euros' per 'Patrimoni gestionat per IICs (màxim històric, +13% interanual, amb 5,5 milions d'inversors)' i pàgina '6'.",
+        "justificacio": "L'original (p. 6) proporciona context important sobre el creixement (+13% respecte a 2024) i el nombre d'inversors (5,5 milions), que són dades clau per entendre la magnitud i l'impacte d'aquesta xifra."
+      },
+      {
+        "bloc": "2-dadesClau",
+        "tipus": "afegir",
+        "proposta": "Afegir la dada: '53.200 milions d'euros' amb l'etiqueta 'Patrimoni gestionat en capital risc (+20% interanual)' i pàgina '6'.",
+        "justificacio": "El creixement significatiu del capital risc és una dada econòmica important de l'original (p. 6) que no apareix al destil·lat i que il·lustra la dinàmica del mercat."
+      },
+      {
+        "bloc": "3-resumExecutiu",
+        "tipus": "modificar",
+        "proposta": "Al final del resum, afegir: 'Malgrat esmentar el 'desarrollo sostenible' i la 'financiación sostenible' com a objectius (p. 5, 11), el pla no detalla com la CNMV mesurarà el seu propi impacte o el del mercat en la transició ecològica o la justícia social, més enllà de la supervisió de la conformitat regulatòria.'",
+        "justificacio": "Aclarir que, tot i les mencions generals a la sostenibilitat, l'informe manca de mecanismes concrets de mesura i responsabilitat, reforçant la crítica a la superficialitat ESG i la manca d'ambició."
+      },
+      {
+        "bloc": "4-implicacions",
+        "tipus": "afegir",
+        "proposta": "A la secció 'ciutadans', afegir: 'L'informe no especifica com es garantirà la inclusió financera de col·lectius vulnerables ni com es promourà activament la inversió en projectes amb impacte social positiu.'",
+        "justificacio": "Aquesta addició subratlla la manca de consideració per la justícia distributiva i la dignitat en l'àmbit de la inclusió financera, un criteri ètic oblidat en el destil·lat i l'original."
+      },
+      {
+        "bloc": "7-crossRefs",
+        "tipus": "afegir",
+        "proposta": "Afegir una referència a 'Taxonomia de la UE' amb el criteri 'Classificació d'activitats econòmiques sostenibles' i impacte 'L'informe no detalla com la CNMV supervisarà l'aplicació de la Taxonomia ni com promourà l'orientació de capital cap a activitats verdaderament sostenibles.'",
+        "justificacio": "La Taxonomia és un pilar fonamental de la finança sostenible europea, i la seva absència o la manca de detall sobre la seva implementació per part de la CNMV és una omissió significativa en un informe que esmenta la 'financiación sostenible'."
+      }
+    ],
+    "advocat_diable": [
+      {
+        "tipus": "greenwashing",
+        "bloc_afectat": "3-resumExecutiu",
+        "observacio": "L'informe utilitza termes com 'desarrollo sostenible' i 'financiación sostenible' sense proporcionar objectius quantificables, estratègies clares o mecanismes de mesura del progrés. Això podria ser interpretat com un intent de complir formalment amb l'agenda ESG sense un compromís profund ni una estratègia d'impacte real.",
+        "evidencia_original": "contribuir al desarrollo sostenible y competitivo de nuestros mercados (p. 5), Avanzar en la financiación sostenible (p. 11)"
+      },
+      {
+        "tipus": "criteri_oblidat",
+        "bloc_afectat": "4-implicacions",
+        "observacio": "L'informe no aborda de manera explícita la justícia distributiva ni la dignitat en l'accés als mercats de capitals. Se centra en la protecció contra el frau, però no en com la CNMV pot promoure activament una distribució més equitativa del capital o l'accés a oportunitats d'inversió per a col·lectius menys afavorits o vulnerables.",
+        "evidencia_original": "En materia de protección del inversor, prestaremos especial atención al fraude financiero... (p. 5). Los ciudadanos se beneficiarán de nuevas medidas de protección contra el fraude financiero y la educación financeria... (destil·lat, implicacions)"
+      },
+      {
+        "tipus": "mancanca",
+        "bloc_afectat": "0-semafor",
+        "observacio": "Hi ha una absència notable de compromisos i objectius concrets per a la reducció d'emissions (especialment Scope 3) o per a la promoció activa d'inversions verdes més enllà de la mera supervisió regulatòria. Això indica una manca de visió proactiva en la transició ecològica i un enfocament purament reactiu a la regulació existent.",
+        "evidencia_original": "L'informe no menciona emissions de Scope 3 ni estratègies per a la seva reducció. (destil·lat, semafor note)"
+      },
+      {
+        "tipus": "contradiccio",
+        "bloc_afectat": "5-connexions",
+        "observacio": "L'informe destaca la 'Protección del inversor' com una àrea estratègica, però al mateix temps, la connexió 'Contradicción' assenyala una mancança en mesures específiques per garantir la qualitat de les recomanacions d'inversió basades en IA, les quals podrien augmentar els riscos per als inversors minoristes. Això representa una inconsistència entre l'objectiu declarat i les accions detallades.",
+        "evidencia_original": "En materia de protección del inversor, prestaremos especial atención al fraude financiero... (p. 5). Mientras el informe destaca iniciativas para proteger los inversores contra el fraude y el greenwashing, no establece medidas específicas para garantizar la calidad de las recomendaciones de inversión basadas en IA... (destil·lat, connexions)"
+      },
+      {
+        "tipus": "mancanca",
+        "bloc_afectat": "0-semafor",
+        "observacio": "Tot i que l'informe és un pla intern, la manca de mecanismes de verificació externa dels informes ESG (com assenyala el semàfor) és una deficiència metodològica important, ja que genera una dependència total de l'autodeclaració i la supervisió interna sense un control independent que n'avaluï la rigorositat.",
+        "evidencia_original": "No es descriuen mecanismes de verificació externa dels informes ESG. (destil·lat, semafor note)"
+      }
+    ]
+  }
+}

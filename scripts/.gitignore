@@ -1,0 +1,11 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# State local (no pujar a git)
+state/
+
+# Caches
+.cache/

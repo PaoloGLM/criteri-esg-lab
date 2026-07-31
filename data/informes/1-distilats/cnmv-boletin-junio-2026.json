@@ -1,0 +1,277 @@
+{
+  "slug": "cnmv-boletin-junio-2026",
+  "title": "Boletin junio 2026",
+  "institution": "CNMV (Comisión Nacional del Mercado de Valores)",
+  "filename_original": "2026-06-30_cnmv-boletin-junio-2026.pdf",
+  "generated_at": "2026-07-25T06:50:24",
+  "content_ca": {
+    "semafor": {
+      "grade": "C",
+      "gradeLabel": "Informació limitada sobre ASG",
+      "indicators": [
+        {
+          "name": "Cobertura Scope 3",
+          "status": "vermell",
+          "label": "No cobert",
+          "note": "L'informe no menciona emissions de l'Scope 3 ni la seva importància en l'anàlisi ASG."
+        },
+        {
+          "name": "Termes temporals",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "S'esmenten objectius temporals de sostenibilitat però sense especificació clara dels horitzons."
+        },
+        {
+          "name": "Fonts independents",
+          "status": "groc",
+          "label": "Parcial",
+          "note": "L'informe es basa en dades pròpies de la CNMV i algunes fonts externes, però no verifica amb auditors independents."
+        },
+        {
+          "name": "Granularitat",
+          "status": "groc",
+          "label": "Limitada",
+          "note": "L'informe ofereix dades agregades sobre ASG però sense desglossament detallat per empresa o sector."
+        },
+        {
+          "name": "Verificació externa",
+          "status": "vermell",
+          "label": "No present",
+          "note": "No hi ha cap menció a verificació externa de les dades ASG presentades."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "474.000 milions d'euros",
+        "label": "Patrimoni dels fons d'inversió",
+        "page": "17"
+      },
+      {
+        "value": "3,3%",
+        "label": "Creuació del patrimoni dels fons",
+        "page": "17"
+      },
+      {
+        "value": "40%",
+        "label": "Representació de les IIC comercialitzades a Espanya",
+        "page": "17"
+      },
+      {
+        "value": "87,8%",
+        "label": "Participació de les entitats de crèdit en les comissions",
+        "page": "18"
+      },
+      {
+        "value": "22,8%",
+        "label": "Creixement del patrimoni assessorat per EAF",
+        "page": "18"
+      }
+    ],
+    "resumExecutiu": "El Boletí de la CNMV de juny 2026 analitza l'evolució dels mercats financers en un context de gran incertesa, amb l'inici de la guerra a l'Iran com a punt d'inflexió. Els mercats borsaris van experimentar caigudes acusades al març, però es van recuperar de forma desigual, amb millors resultats als EUA i Japó. Els mercats de renda fixa van veure un repunt dels tipus d'interès, amb primes de risc moderades. A Espanya, l'Ibex 35 va mostrar una resistència relativa, amb un guany del 5,1% en l'any. Els fons d'inversió van continuar creixent, amb un patrimón de 474.000 milions d'euros. El sector de serveis d'inversió es manté estable, amb les entitats de crèdit dominant les comissions. La regulació europea de criptoactives (MiCA) comença a tenir impacte en el sector.",
+    "implicacions": {
+      "empreses": "Les empreses han d'adaptar les seves estratègies a un entorn de major volatilitat i incertesa geopolítica. Els sectors energètics i financers han resistit millor, mentre que els industrials i tecnològics han patit més. L'aplicació de noves regulacions com la MiCA exigirà ajustos en els models de negoci.",
+      "reguladors": "Els reguladors han de vigilar la creixent correlació entre actius i la volatilitat dels mercats, especialment en derivats i mercats de divises. La implementació de la MiCA requereix un seguiment proper per assegurar la conformitat i la protecció dels inversors.",
+      "ciutadans": "Els ciutadans inversors han de ser conscients de la major volatilitat dels mercats i l'impacte dels factors geopolítics en les seves inversions. La diversificació i el consell professional són més importants mai en aquest context d'incertesa."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Justícia distributiva",
+      "body": "L'informe revela una distribució desigual dels beneficis en els mercats financers, amb sectors tecnològics i financers acumulant guanys mentre altres patixen. Aquesta asimetria reflecteix una justícia distributiva qüestionable, on els beneficis no es reparteixen equitativament entre els diferents sectors de l'economia i els inversors."
+    },
+    "connexions": [
+      {
+        "type": "Contradicció",
+        "target": "Creixement sostenible",
+        "desc": "L'informe destaca el creixement dels fons d'inversió però no analitza com aquestes inversions contribueixen a objectius de sostenibilitat real, centrant-se només en aspectes financers."
+      },
+      {
+        "type": "Evolució",
+        "target": "Regulació de criptoactius",
+        "desc": "L'informe mostra l'evolució cap a una major regulació dels criptoactius amb l'aplicació de MiCA, que està canviant el panorama del sector financer."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Millorar la transparència ASG",
+        "desc": "Desenvolupar un marc més detallat per a la comunicació de dades ASG, incloent-hi cobertura de l'Scope 3 i verificació externa.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Diversificar les inversions",
+        "desc": "Promoure la diversificació de les inversions per reduir la dependència de sectors específics i mitigar riscos geopolítics.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "03",
+        "title": "Monitoritzar la volatilitat",
+        "desc": "Establir un sistema de monitorització més estricte de la volatilitat en mercats derivats i de divises.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "04",
+        "title": "Formació en ASG",
+        "desc": "Implementar programes de formació específics per a professionals financers en anàlisi i gestió de factors ASG.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "05",
+        "title": "Anàlisi sectorial",
+        "desc": "Desenvolupar anàlisis més detallades de l'impacte ASG per sector per identificar oportunitats i riscos específics.",
+        "effort": "Alt",
+        "impact": "Alt"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "CSRD",
+        "criterion": "Informació no financiera",
+        "impact": "L'informe no compleix plenament amb els requisits de detall de la CSRD sobre informació ASG."
+      },
+      {
+        "framework": "MiCA",
+        "criterion": "Regulació de criptoactius",
+        "impact": "L'informe reflecteix l'impacte inicial de la regulació MiCA en el mercat espanyol."
+      },
+      {
+        "framework": "SFDR",
+        "criterion": "Classificació de productes financers",
+        "impact": "L'informe no analitza adequadament com els productes financers es classifiquen sota el SFDR."
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "C",
+      "gradeLabel": "Rendiment ESG limitat",
+      "indicators": [
+        {
+          "name": "Cobertura Scope 3",
+          "status": "vermell",
+          "label": "No tractada",
+          "note": "L'informe no aborda les emissions de scope 3 ni els impactes externs de les inversions."
+        },
+        {
+          "name": "Termes temporals",
+          "status": "groc",
+          "label": "Esmentada però no detallada",
+          "note": "S'esmenten objectius de sostenibilitat però sense horitzons temporals específics."
+        },
+        {
+          "name": "Fonts independents",
+          "status": "groc",
+          "label": "Parcial",
+          "note": "Algunes dades són de fonts pròpies de la CNMV, sense verificació externa."
+        },
+        {
+          "name": "Granularitat",
+          "status": "groc",
+          "label": "General",
+          "note": "L'informe ofereix una visió general dels mercats sense desglossar dades ESG detallades."
+        },
+        {
+          "name": "Verificació externa",
+          "status": "vermell",
+          "label": "Absent",
+          "note": "No hi ha cap menció a verificacions externes de les dades ESG presentades."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "474.000 milions d'euros",
+        "label": "Patrimó dels fons d'inversió",
+        "page": "17"
+      },
+      {
+        "value": "3,3%",
+        "label": "Creixement del patrimó dels fons",
+        "page": "17"
+      },
+      {
+        "value": "40%",
+        "label": "Participació de les IIC estrangeres",
+        "page": "17"
+      },
+      {
+        "value": "22,8%",
+        "label": "Increment del patrimoni assessorat per EAF",
+        "page": "18"
+      },
+      {
+        "value": "0,25",
+        "label": "Indicador d'estrès dels mercats financers",
+        "page": "19"
+      }
+    ],
+    "resumExecutiu": "El Boletí de la CNMV de juny 2026 analitza l'evolució dels mercats financers durant el primer trimestre de 2026, marcada per l'inici del conflicte a l'Iran com a punt d'inflexió. Els mercats borsàters van experimentar caídes acusades i un repunt de la volatilitat, però es van recuperar progressivament de forma desigual, amb millors resultats als EUA i Japó. Els mercats de renda fixa van veure un increment generalitzat dels tipus d'interès, amb primes de risc moderades. A Espanya, l'impacte ha estat més limitat gràcies a la composició de l'Ibex 35, amb un major pes de companyies energètiques i financeres. Els fons d'inversió han continuat creixent, amb un patrimó de 474.000 milions d'euros. La regulació europea sobre criptoactives (MiCA) comença a tenir implicacions en l'estratègia de les entitats financeres.",
+    "implicacions": {
+      "empreses": "Les empreses han de gestionar l'augment de la volatilitat i la incertesa geopolítica, especialment les exposades a sectors energètics i industrials. La composició sectorial esdevé un factor clau per a la resiliència financera.",
+      "reguladors": "Els reguladors han de monitoritzar l'estrès sistèmic i la correlació entre actius, garantint el funcionament ordenat de les infraestructures financeres davant de xocs geopolítics.",
+      "ciutadans": "Els inversors individuals han de ser conscients de la major volatilitat i la necessitat de diversificar les inversions, considerant l'impacte diferencial dels sectors davant de conflictes globals."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Justícia distributiva",
+      "body": "L'informe revela com els beneficis de la recuperació borsària s'han concentrat en sectors específics (tecnologia, energia, defensa) i regions (EUA, Japó), mentre que altres sectors i mercats més dependents de l'energia han patit més. Aquesta distribució desigual dels beneficis planteja qüestions sobre la justícia en l'accés als rendiments financers i l'equitat en l'impacte econòmic dels conflictes globals."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "Regulació de criptoactius",
+        "desc": "L'informe esmenta l'aplicació de MiCA com a nou marc regulador, indicant una evolució cap a una major supervisió dels actius digitals."
+      },
+      {
+        "type": "Contradicció",
+        "target": "Sostenibilitat del creixement financer",
+        "desc": "L'augment del patrimó dels fons d'inversió contrasta amb la falta d'anàlisi sobre l'impacte ESG real d'aquestes inversions, especialment en sectors com l'energia."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Desenvolupar informes ESG integrats",
+        "desc": "Incloure anàlisis detallades de l'impacte ESG en les inversions i els riscos associats als canvis climàtics i geopolítics.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Millorar la transparència en la gestió de riscos",
+        "desc": "Publicar indicadors més granulars sobre la gestió de riscos ESG i els mecanismes de mitigació implementats.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "03",
+        "title": "Establir objectius de sostenibilitat amb horitzons temporals",
+        "desc": "Definir objectius concrets i plazos per a la reducció de carboni i altres impactes ESG en les invicions.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "04",
+        "title": "Implementar verificacions externes",
+        "desc": "Sol·licitar verificacions independents de les dades ESG per garantir la seva fiabilitat i evitar el greenwashing.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "CSRD",
+        "criterion": "Informació sobre sostenibilitat",
+        "impact": "L'informe no compleix amb els requisits de detall i verificació de la CSRD sobre informació de sostenibilitat."
+      },
+      {
+        "framework": "SFDR",
+        "criterion": "Classificació de productes financers",
+        "impact": "L'informe no ofereix una classificació adequada dels productes segons el seu impacte ambiental."
+      }
+    ]
+  }
+}

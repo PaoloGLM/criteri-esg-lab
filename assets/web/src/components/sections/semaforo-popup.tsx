@@ -105,8 +105,9 @@ export function SemaforoPopup({ open, onClose }: SemaforoPopupProps) {
   ] as const;
 
   const gradeColor = (g: string) => {
-    if (g === "a" || g === "b") return "#5C8A5C";
-    if (g === "c") return "#C9A961";
+    // A = verd, B/C = taronja, D = vermell
+    if (g === "a") return "#5C8A5C";
+    if (g === "b" || g === "c") return "#C9A961";
     return "#A0522D";
   };
 
@@ -267,20 +268,23 @@ export function SemaforoPopup({ open, onClose }: SemaforoPopupProps) {
             ))}
           </div>
 
-          {/* Footer */}
+          {/* Footer — frase contínua, sense trencament entre pre/em */}
           <p
             className="border-t pt-5 font-serif italic"
             style={{
               color: "#5C3A1E",
               fontSize: "0.875rem",
-              lineHeight: 1.5,
+              lineHeight: 1.55,
               borderColor: "#C9B89A",
+              // Evita que una sola paraula quedi aïllada a la línia següent
+              hyphens: "auto",
+              textWrap: "pretty" as React.CSSProperties["textWrap"],
             }}
           >
-            {t("v2.popup.footer.pre")}{" "}
+            <span style={{ marginRight: "0.25em" }}>{t("v2.popup.footer.pre").trim()}</span>
             <em
               className="not-italic font-medium"
-              style={{ color: "#B87333" }}
+              style={{ color: "#B87333", whiteSpace: "nowrap" }}
             >
               {t("v2.popup.footer.em")}.
             </em>

@@ -1407,8 +1407,8 @@ export const translations = {
   "v2.popup.grade.c.desc": { ca: "Barreja amb fins a 1 vermell", es: "Mezcla con hasta 1 rojo" },
   "v2.popup.grade.d.label": { ca: "Insuficient", es: "Insuficiente" },
   "v2.popup.grade.d.desc": { ca: "2 o més vermells", es: "2 o más rojos" },
-  "v2.popup.footer.pre": { ca: "El semàfor no és un judici moral. És un judici operatiu. ", es: "El semáforo no es un juicio moral. Es un juicio operativo. " },
-  "v2.popup.footer.em": { ca: "Cada informe que publiquem porta el seu", es: "Cada informe que publicamos lleva el suyo" },
+  "v2.popup.footer.pre": { ca: "El semàfor no és un judici moral, sinó operatiu. ", es: "El semáforo no es un juicio moral, sino operativo. " },
+  "v2.popup.footer.em": { ca: "Cada informe que publiquem porta el seu semàfor visible", es: "Cada informe que publicamos lleva su semáforo visible" },
 
   // ===== /qui-som (Fase 2D) =====
   "quisom.v2.hero.eyebrow": { ca: "Qui som · 2026", es: "Quiénes somos · 2026" },

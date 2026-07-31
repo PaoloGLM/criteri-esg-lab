@@ -253,3 +253,25 @@ export function getMonthsAgo(isoDate: string): number {
 export function isFreeAccess(isoDate: string): boolean {
   return getMonthsAgo(isoDate) >= 6;
 }
+
+/**
+ * COLOR DE LA NOTA DEL SEMÀFOR (font única de veritat)
+ *
+ * A  = verd    (#5C8A5C)  — robust fort
+ * B  = taronja (#C9A961)  — robust / acceptable
+ * C  = taronja (#C9A961)  — feble
+ * D  = vermell  (#A0522D)  — insuficient
+ *
+ * Pantone aproximats:
+ *   verd     ≈ Pantone 7743 C  (o PMS 5555)
+ *   taronja  ≈ Pantone 7505 C  (o PMS 7567)
+ *   vermell  ≈ Pantone 7522 C  (o PMS 4775)
+ *
+ * Aquesta funció és l'ÚNICA font de veritat pel color de la nota.
+ * Totes les pàgines que mostren la lletra A/B/C/D han de fer-la servir.
+ */
+export function getGradeColor(grade: SemaforGrade | string | undefined): string {
+  if (grade === "A") return "#5C8A5C"; // verd
+  if (grade === "B" || grade === "C") return "#C9A961"; // taronja
+  return "#A0522D"; // vermell (D o desconegut)
+}

@@ -14,6 +14,7 @@ import {
   getTypeLabel,
   formatDate,
   isFreeAccess,
+  getGradeColor,
   type Report,
 } from "@/lib/reports";
 import { getReportContent } from "@/lib/reports-content";
@@ -159,13 +160,13 @@ export default function InformesPage() {
                   style={{ background: "#2C1810", color: "#F5EFE6" }}
                   onClick={(e) => { e.stopPropagation(); setPopupOpen(true); }}
                 >
-                  <p className="font-mono text-[9.5px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#D9A574" }}>Semáforo</p>
+                  <p className="font-mono text-[9.5px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#D9A574" }}>{lang === "ca" ? "Semàfor" : "Semáforo"}</p>
                   <div className="flex items-baseline gap-3">
-                    <span className="font-serif text-5xl font-normal" style={{ color: "#B87333", letterSpacing: "-0.04em" }}>
+                    <span className="font-serif text-5xl font-normal" style={{ color: getGradeColor(getSemaforo(featuredReport.slug)?.grade), letterSpacing: "-0.04em" }}>
                       {getSemaforo(featuredReport.slug)?.grade || "B"}
                     </span>
                     <span className="font-serif text-lg italic" style={{ color: "#F5EFE6" }}>
-                      {getSemaforo(featuredReport.slug)?.gradeLabel || "Robusto"}
+                      {getSemaforo(featuredReport.slug)?.gradeLabel || (lang === "ca" ? "Robust" : "Robusto")}
                     </span>
                   </div>
                   <div className="flex flex-col gap-1">
@@ -209,9 +210,9 @@ export default function InformesPage() {
                     </p>
                     {/* Mini semàfor inline */}
                     <div className="flex items-center gap-2.5 border-y py-2" style={{ borderColor: "#C9B89A" }}>
-                      <span className="font-mono text-[8.5px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#8A5526" }}>Sem.</span>
-                      <span className="font-serif text-lg font-bold" style={{ color: "#B87333" }}>{semafor?.grade || "B"}</span>
-                      <span className="font-serif text-xs italic" style={{ color: "#5C3A1E" }}>{semafor?.gradeLabel || "Robusto"}</span>
+                      <span className="font-mono text-[8.5px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#8A5526" }}>{lang === "ca" ? "Sem." : "Sem."}</span>
+                      <span className="font-serif text-lg font-bold" style={{ color: getGradeColor(semafor?.grade) }}>{semafor?.grade || "B"}</span>
+                      <span className="font-serif text-xs italic" style={{ color: "#5C3A1E" }}>{semafor?.gradeLabel || (lang === "ca" ? "Robust" : "Robusto")}</span>
                       <div className="ml-auto flex gap-1">
                         {(semafor?.indicators || []).slice(0, 5).map((ind, i) => (
                           <span key={i} className="inline-block w-2 h-2 rounded-full" style={{ background: dotColors[ind.status] || dotColors.groc, opacity: 0.8 }} />

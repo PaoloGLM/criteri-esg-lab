@@ -24,12 +24,25 @@ Subcarpetes:
 
 Subcarpetes (les 7 del flux):
 - `0-originals/` — PDFs originals descarregats (pas 1)
-- `1-distilats/` — JSON destil·lats per GLM (pas 2)
+  - `0-originals/pendents/` — PDFs nous per processar (encara no destil·lats) ⭐
+  - `0-originals/processats/` — PDFs que ja han passat tot el flux (publicats) ⭐
+- `1-distilats/` — JSON destil·lats (pas 2)
 - `2-aportacions-gemini/` — JSON d'aportacions crítiques de Gemini (pas 3)
-- `3-fets/` — Markdown CA+ES redactats per GLM (pas 4)
+- `3-fets/` — Markdown CA+ES redactats (pas 4)
 - `4-revisats-ortografia/` — Markdown corregits per Gemini + PDF final (pas 5)
 - `5-validats-paolo/` — informes validats per Paolo (pas 6)
 - `6-publicats/` — informes pujats a la web (pas 7)
+
+### Opció A — Separació pendents / processats (31 juliol 2026)
+
+A la revisió bimensual de fonts, **només cal mirar `0-originals/pendents/`** per veure què falta processar.
+
+Regla operativa:
+1. Quan es detecta un PDF nou a una font → es descarrega a `0-originals/pendents/`
+2. Passa pel flux (passos 2-6) i es publica (pas 7)
+3. Al publicar-se → el PDF original es mou de `pendents/` a `processats/` (script `mou-original-processat.py`)
+
+Així els PDFs processats i els pendents queden sempre ben identificats.
 
 ## Funcions al codi (`scripts/drive_user_client.py`)
 

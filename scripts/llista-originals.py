@@ -1,4 +1,4 @@
-"""Llista els PDFs a Drive /informes/0-originals/ i quins ja estan destil·lats a /1-distilats/."""
+"""Llista els PDFs a Drive /informes/0-originals/ separats en pendents i processats."""
 import sys
 sys.path.insert(0, "./scripts")
 from config import get_drive_service, get_subfolder_id
@@ -7,18 +7,45 @@ drive = get_drive_service()
 originals_id = get_subfolder_id(drive, "0_originals")
 distilats_id = get_subfolder_id(drive, "1_distilats")
 
-# Llistar PDFs a 0-originals
-print("=== PDFs a /informes/0-originals/ ===")
-results = drive.files().list(
-    q=f"'{originals_id}' in parents and trashed=false",
-    spaces="drive",
-    fields="files(id, name, mimeType, size, modifiedTime)",
-    pageSize=200,
-    orderBy="name",
-).execute()
-originals = results.get("files", [])
-print(f"Total: {len(originals)} arxius\n")
-for f in originals:
+# Subcarpetes dins de 0-originals (Opció A)
+def find_subfolder(parent_id: str, name: str) -> str | None:
+    results = drive.files().list(
+        q=f"name='{name}' and mimeType='application/vnd.google-apps.folder' "
+          f"and '{parent_id}' in parents and trashed=false",
+        spaces="drive",
+        fields="files(id, name)",
+    ).execute()
+    files = results.get("files", [])
+    return files[0]["id"] if files else None
+
+
+def list_pdfs(folder_id: str) -> list:
+    if not folder_id:
+        return []
+    results = drive.files().list(
+        q=f"'{folder_id}' in parents and trashed=false",
+        spaces="drive",
+        fields="files(id, name, mimeType, size, modifiedTime)",
+        pageSize=200,
+        orderBy="name",
+    ).execute()
+    return results.get("files", [])
+
+
+pendents_id = find_subfolder(originals_id, "pendents")
+processats_id = find_subfolder(originals_id, "processats")
+
+print("=== PENDENTS (per processar) ===")
+pendents = [f for f in list_pdfs(pendents_id) if f.get("mimeType") == "application/pdf"]
+print(f"Total: {len(pendents)} PDFs\n")
+for f in pendents:
+    size_mb = int(f.get("size", 0)) / 1024 / 1024
+    print(f"  • {f['name']} ({size_mb:.1f} MB)")
+
+print("\n=== PROCESSATS (ja publicats) ===")
+processats = [f for f in list_pdfs(processats_id) if f.get("mimeType") == "application/pdf"]
+print(f"Total: {len(processats)} PDFs\n")
+for f in processats:
     size_mb = int(f.get("size", 0)) / 1024 / 1024
     print(f"  • {f['name']} ({size_mb:.1f} MB)")
 
@@ -37,4 +64,6 @@ for f in distilats:
 
 # Informe
 print("\n=== Resum ===")
-print(f"  Pendents de destil·lar: {len(originals) - len(distilats)}")
+print(f"  Pendents de destil·lar: {len(pendents)}")
+print(f"  Processats (publicats): {len(processats)}")
+print(f"  Destil·lats existents:  {len(distilats)}")

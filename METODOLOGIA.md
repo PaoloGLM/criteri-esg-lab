@@ -7,27 +7,28 @@
 
 ---
 
-## Visió general del procés (flux GLM + Gemini + Paolo, 24 juliol 2026)
+## Visió general del procés (flux DeepSeek + Gemini + Paolo, actualitzat 31 juliol 2026)
 
 ```
-1. GLM detecta  →  informes nous a les fonts →  Google Drive /informes/0-originals/
+1. DeepSeek detecta  →  informes nous a les fonts →  Google Drive /informes/0-originals/
                           ↓
-2. GLM destil·la  →  destil·lació dels 8 apartats  →  /informes/1-distilats/
+2. DeepSeek destil·la  →  estructura general dels 8 apartats  →  /informes/1-distilats/
                           ↓
-3. Gemini revisa  →  propostes de valor + advocat del diable  →  /informes/2-aportacions-gemini/
+3. Gemini analitza  →  RESUM EXECUTIU d'alta precisió + propostes de valor + advocat del diable  →  /informes/2-aportacions-gemini/
                           ↓
-4. GLM redacta  →  informe final integrant les aportacions  →  /informes/3-fets/
+4. DeepSeek redacta  →  informe final integrant el resum i les aportacions de Gemini  →  /informes/3-fets/
                           ↓
 5. Gemini ortografia  →  revisió ortogràfica CA + ES  →  /informes/4-revisats-ortografia/
                           ↓
 6. Paolo valida  →  llegeix i aprova/rebutja  →  /informes/5-validats-paolo/
                           ↓
-7. GLM puja  →  publicació a la web  →  /informes/6-publicats/
+7. Publicació  →  web + Supabase  →  /informes/6-publicats/
 ```
 
 **Principis del flux**:
-- GLM mai publica sense validació humana de Paolo.
-- Gemini té dos rols diferenciats: **crític** (pas 3, abans de la redacció) i **corrector** (pas 5, després).
+- Cap informe es publica sense validació humana de Paolo.
+- Gemini té tres rols diferenciats: **sintetitzador del resum executiu** (pas 3), **crític** (pas 3, abans de la redacció) i **corrector** (pas 5, després).
+- El **resum executiu del bloc 3** el genera **Gemini** (no DeepSeek). DeepSeek l'integra directament a la redacció final (pas 4).
 - Cada pas té una carpeta pròpia a Google Drive perquè Paolo pot auditar qualsevol pas intermedi.
 - Cap informe saltat de pas 1 a pas 7.
 
@@ -363,7 +364,7 @@ Els documents oficials estan a `/criteri-esg-lab/certifications/`. Veure `certif
 
 ## Procés de validació humana (Paolo)
 
-Després que GLM redacti l'informe (pas 4) i Gemini faci la revisió ortogràfica (pas 5):
+Després que DeepSeek redacti l'informe (pas 4) i Gemini faci la revisió ortogràfica (pas 5):
 
 1. **Paolo rep l'informe complet** (8 blocs en català i castellà) a `/informes/4-revisats-ortografia/`
 2. **Revisa cada bloc** verificant:
@@ -375,13 +376,13 @@ Després que GLM redacti l'informe (pas 4) i Gemini faci la revisió ortogràfic
    - Connexions: les relacions identificades són reals?
    - Accions: són accionables i específiques?
    - Cross-reference: els impactes estan ben calibrats?
-3. **Corregeix o demana canvis** a GLM (passa l'informe a `/informes/3-fets/` amb notes)
-4. **Aprova** → mou l'informe a `/informes/5-validats-paolo/`. GLM el pujarà a la web (pas 7)
+3. **Corregeix o demana canvis** a DeepSeek (passa l'informe a `/informes/3-fets/` amb notes)
+4. **Aprova** → mou l'informe a `/informes/5-validats-paolo/`. Es publicarà a la web (pas 7)
 5. **Selecciona per newsletter**: decideix si l'informe va a la propera newsletter (màx. 4 per newsletter)
 
 ### Regla fonamental
 
-**Tots els informes detectats es publiquen a la web. Tots tenen els 8 blocs. No tots van a la newsletter. Només Paolo selecciona els que hi van, i Paolo és qui determina si els informes creats per GLM estan bé. Aquesta és la part humana principal del procés.**
+**Tots els informes detectats es publiquen a la web. Tots tenen els 8 blocs. No tots van a la newsletter. Només Paolo selecciona els que hi van, i Paolo és qui determina si els informes creats estan bé. Aquesta és la part humana principal del procés.**
 
 ---
 

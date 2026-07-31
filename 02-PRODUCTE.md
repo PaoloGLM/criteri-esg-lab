@@ -235,6 +235,14 @@ Els subscriptors Ultra tenen accés a 3 formats addicionals per a cada informe:
 - **Personalització**: segons interessos declarats (CSRD, EcoVadis, B Corp, etc.)
 - **Contingut**: recopilació temàtica dels informes del mes + anàlisi transversal
 
+### Format 4 — FAQs automàtiques per informe (2027, DECIDIT 31 juliol 2026)
+
+- **Format**: bloc de 5 preguntes freqüents amb respostes breus per a cada informe
+- **Generació**: automàtica al pipeline (Gemini), basada únicament en el text de l'informe original
+- **On es mostren**: pàgina de l'informe a la web, secció exclusiva per a subscriptors Ultra
+- **Valor**: l'usuari resol dubtes operatius sense llegir l'informe sencer
+- **Estat**: idea aprovada, NO implementar abans de 2027
+
 ## Connexions personalitzades mensuals
 
 Els subscriptors Ultra tenen dret a 1 petició mensual de connexions personalitzades.
@@ -271,7 +279,7 @@ L'usuari Ultra fa 1 petició al mes on descriu la seva empresa i nosaltres li en
 |--------|------|-----------|
 | **Free** | 0€ | Newsletter + acceso a informes >6 meses |
 | **Premium** | 39€/mes (pagament anual: 468€/any) — Early bird: 290€/any (50 places) | Tot Free + arxiu complet + cerca + alertes + cross-reference + accions recomanades + Preguntes per millorar (reflexió ètica mensual) |
-| **Ultra** | 89€/mes | Tot Premium + **podcast** + **PPT editable** + **dossier mensual temàtic** + **1 connexió personalitzada/mes** |
+| **Ultra** | 89€/mes | Tot Premium + **podcast** + **PPT editable** + **dossier mensual temàtic** + **FAQs per informe** + **1 connexió personalitzada/mes** |
 | **Equip B2B** | 199€/mes | Ultra per a 5 usuaris + API + dashboard d'equip |
 
 ## Fonts de dades que cobrim
@@ -459,6 +467,7 @@ Mètode de pagament: Transferència bancària (Fiare Banca Ètica)
 
 ## Històric de canvis
 
+- **31 juliol 2026** — Afegit **Format 4 Ultra: FAQs automàtiques per informe** (5 preguntes/respostes generades per Gemini al pipeline, exclusives per a subscriptors Ultra, previstes per 2027). Actualitzada la taula de nivells.
 - **5 juliol 2026** — **Política de contingut audiovisual**: Criteri no recomanarà vídeos per consumir, però sí processarà vídeos institucionals com a font d'informes (transcriure + 8 blocs). "Vídeo de la quinzena" a newsletter previst per 2027.
 - **4 juliol 2026** — Canvi de marc conceptual: "Economia Civil" → **Economia del Bé Comú (Felber) + Economia Ciutadana (Sasia, Deusto)**. Nous 5 criteris operacionals per "Més enllà del Checkbox": dignitat humana, justícia distributiva, sostenibilitat absoluta, co-decisió democràtica, arrelament territorial.
 - **4 juliol 2026** — Afegida **Carta del Director mensual**: peça editorial escrita per Paolo, 400-600 paraules, a l'inici de l'última newsletter del mes. Empremta humana ètica, complementària al "Més enllà del Checkbox".

@@ -385,16 +385,16 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
     - **Justificació**: aquestes 5 fonts cobreixen forats detectats en temàtiques clau (economia circular, drets humans operatius, governança anti-corrupció, dubtes tècnics CSRD). Sense elles, els informes perdia força en aquestes àrees.
     - Vegeu `16-BASE-DADES-FONTS.md` v2.1 per al detall complet.
 
-11. **Flux de creació d'informes (24 juliol 2026, substitueix el del 15 juliol)** — Pipeline de 7 passos amb tres actors (GLM, Gemini, Paolo). Cada pas escriu a una carpeta pròpia de Google Drive:
-    1. **GLM detecta** informes nous a les fonts → `Drive /informes/0-originals/`
-    2. **GLM destil·la** la informació dels 8 apartats (segons METODOLOGIA.md) → `/informes/1-distilats/`
-    3. **Gemini revisa** l'original + el destil·lat, fa propostes de valor + advocat del diable → `/informes/2-aportacions-gemini/`
-    4. **GLM redacta** l'informe final, decidint què és rellevant de Gemini → `/informes/3-fets/`
-    5. **Gemini revisa** ortografia (CA + ES) i corregeix → `/informes/4-revisats-ortografia/`
+### Flux de creació d'informes (Model híbrid DeepSeek + Gemini)
+    1. **DeepSeek detecta** informes nous a les fonts → `Drive /informes/0-originals/`
+    2. **DeepSeek destil·la** l'estructura general (semàfor, dades clau, implicacions, accions) → `/informes/1-distilats/`
+    3. **Gemini analitza** i genera el **Resum Executiu** d'alta precisió + **Aportacions crítiques i Advocat del diable** → `/informes/2-aportacions-gemini/`
+    4. **DeepSeek redacta** l'informe final integrant el destil·lat i el resum/aportacions de Gemini → `/informes/3-fets/` (màxim 1.100 paraules)
+    5. **Gemini revisa** ortografia (CA + ES) i s'aplica el corrector → `/informes/4-revisats-ortografia/`
     6. **Paolo valida** l'informe → `/informes/5-validats-paolo/`
-    7. **GLM puja** els validats a la web → `/informes/6-publicats/`
+    7. **Publicació** a la web i Supabase → `/informes/6-publicats/`
     
-    **Regla clara**: GLM mai publica sense validació de Paolo. Tots els informes detectats van a la web. Tots tenen els 8 blocs. **No tots** van a la newsletter — només Paolo selecciona els que hi van. Veure `07-DECISIONS.md` i `04-WEB.md` per al detall complet.
+    **Regla clara**: cap informe es publica sense validació de Paolo. Tots els informes detectats van a la web. Tots tenen els 8 blocs. **No tots** van a la newsletter — només Paolo selecciona els que hi van. Veure `07-DECISIONS.md` i `04-WEB.md` per al detall complet.
 
 12. **Newsletter per defecte en castellà (16 juliol 2026)** — IMPORTANT, NO CONFONDRE:
     - La **web** (`<html lang="ca">` + LanguageProvider per defecte) és en **català**. Això és una decisió tècnica coherent amb l'origen del projecte.
@@ -503,6 +503,24 @@ Criteri té una veu editorial pròpia basada en 5 criteris ètics (dignitat huma
 **Implementació tècnica**: API route Next.js + z-ai-web-dev-sdk + RAG amb documents de certificacions + limitació per pla (Supabase).
 
 **Decisió**: NO implementar abans del llançament al setembre. Afegir com a funcionalitat Premium al Q1 2027 si hi ha demanda.
+
+### P5. Subscripció Ultra 2027 — Àudios i FAQs automàtiques (DECIDIT 31 juliol 2026)
+
+**Concepte**: per al llançament de la subscripció **Ultra** (prevista per a abril 2027), s'afegeixen dues funcionalitats diferencials al paquet de valor:
+
+1. **Resums en àudio / Podcast (2027)**:
+   - Cada informe processat genera una "píndola d'àudio" de ~5 minuts amb el resum executiu.
+   - Es preveu utilitzar TTS neuronal (veus de Gemini/Vertex AI o OpenAI) integrat al pipeline d'informes.
+   - Valor per a l'usuari Ultra: escoltar el criteri clar mentre es desplaça, sense llegir.
+   - **Estat**: idea aprovada, NO implementar abans de 2027.
+
+2. **FAQs automàtiques per informe (2027)**:
+   - Per a cada informe, es generen automàticament 5 preguntes freqüents (FAQ) amb respostes basades **únicament** en el text de l'informe original (estil NotebookLM).
+   - Es generen al pipeline (Gemini) i es publiquen a la pàgina de l'informe per a subscriptors Ultra.
+   - Valor: consulta ràpida de dubtes operatius sense llegir l'informe sencer.
+   - **Estat**: idea aprovada, NO implementar abans de 2027.
+
+**Nota**: ambdues funcionalitats s'inspiren en les capacitats de Gemini/NotebookLM i formen part del paquet diferencial Ultra. Veure `02-PRODUCTE.md` per al detall del pla.
 
 ### P3. Pàgina d'estàndards ESG (IMPLEMENTADA 19 juliol 2026)
 

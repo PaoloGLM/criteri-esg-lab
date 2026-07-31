@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 120" width="240" height="120">
+  <rect width="240" height="120" fill="#FFFFFF"/>
+  <rect x="20" y="30" width="80" height="60" fill="#2E5B3A" rx="4"/>
+  <text x="60" y="60" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">SGE</text>
+  <text x="60" y="80" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">21</text>
+  <text x="115" y="58" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#2E5B3A">SGE 21</text>
+  <text x="115" y="76" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="500" fill="#6B7280">Sistema de Gestión</text>
+  <text x="115" y="89" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="500" fill="#6B7280">Ética · Forética</text>
+</svg>

@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
+import Image from "next/image";
 import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
 import { AuthDialog } from "@/components/auth-dialog";
@@ -10,89 +11,8 @@ import { useLanguage } from "@/components/language-provider";
 import { useAuth } from "@/lib/auth-context";
 import { Lock, ArrowRight, Crown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-type StandarType = "reg" | "fw" | "cert";
-
-interface StandarDetail {
-  slug: string;
-  name: string;
-  type: StandarType;
-  issuerCa: string;
-  issuerEs: string;
-  descCa: string;
-  descEs: string;
-  icon: string;
-  xrefRows: {
-    reportTitle: string;
-    date: string;
-    criterionCa: string;
-    criterionEs: string;
-    impact: "high" | "med";
-  }[];
-  actions: {
-    num: string;
-    textCa: string;
-    textEs: string;
-    sourceCa: string;
-    sourceEs: string;
-  }[];
-}
-
-const TYPE_CONFIG: Record<StandarType, { color: string; bg: string; borderColor: string; labelCa: string; labelEs: string }> = {
-  reg: { color: "#5C3A1E", bg: "rgba(92,58,30,0.15)", borderColor: "#5C3A1E", labelCa: "Regulació", labelEs: "Regulación" },
-  fw: { color: "#B87333", bg: "rgba(184,115,51,0.12)", borderColor: "#B87333", labelCa: "Framework", labelEs: "Framework" },
-  cert: { color: "#8A6D2B", bg: "rgba(232,201,154,0.25)", borderColor: "#E8C99A", labelCa: "Certificació", labelEs: "Certificación" },
-};
-
-const STANDARDS_DETAIL: Record<string, StandarDetail> = {
-  "b-corp": {
-    slug: "b-corp",
-    name: "B Corp",
-    type: "cert",
-    issuerCa: "B Lab · Empreses amb propòsit",
-    issuerEs: "B Lab · Empresas con propósito",
-    descCa: "B Corp avalua l'impacte positiu d'una empresa en els seus treballadors, comunitat i medi ambient. Requiereix un score mínim de 80/200 en el B Impact Assessment. La certificació inclou 5 àrees: gobernança, treballadors, comunitat, entorn i clients.",
-    descEs: "B Corp evalúa el impacto positivo de una empresa en sus trabajadores, comunidad y medio ambiente. Requiere un score mínimo de 80/200 en el B Impact Assessment. La certificación incluye 5 áreas: gobernanza, trabajadores, comunidad, entorno y clientes.",
-    icon: "🌱",
-    xrefRows: [
-      { reportTitle: "Revisió dels ESRS: simplificació del CSRD", date: "6 may 2026",
-        criterionCa: "La simplificació de datapoints pot facilitar el procés de certificació B Corp en reduir la càrrega de reporting paral·lel",
-        criterionEs: "La simplificación de datapoints puede facilitar el proceso de certificación B Corp al reducir la carga de reporting paralelo",
-        impact: "med" },
-      { reportTitle: "EFRAG Sustainability Reporting Work Programme 2026", date: "12 feb 2026",
-        criterionCa: "Convergència ESRS-GRI: les empreses B Corp que ja reporten amb GRI tindran menys treball duplicat en ESRS",
-        criterionEs: "Convergencia ESRS-GRI: las empresas B Corp que ya reportan con GRI tendrán menos trabajo duplicado en ESRS",
-        impact: "high" },
-      { reportTitle: "CSDDD Omnibus I: esmenes finals", date: "15 mar 2026",
-        criterionCa: "El deure de diligència en drets humans reforça el pilar 'Comunitat' del B Impact Assessment",
-        criterionEs: "El deber de diligencia en derechos humanos refuerza el pilar 'Comunidad' del B Impact Assessment",
-        impact: "high" },
-      { reportTitle: "B Corp New Standards 2026", date: "22 abr 2026",
-        criterionCa: "Nous performance requirements: alineació amb CSRD. Les empreses B Corp han de verificar compatibilitat amb reporting ESRS",
-        criterionEs: "Nuevos performance requirements: alineación con CSRD. Las empresas B Corp deben verificar compatibilidad con reporting ESRS",
-        impact: "high" },
-      { reportTitle: "EU Taxonomy Delegated Act 2026", date: "28 mar 2026",
-        criterionCa: "Activitats alineades amb Taxonomia UE poden comptar com a evidència per al pilar 'Entorn' de B Corp",
-        criterionEs: "Actividades alineadas con Taxonomía UE pueden contar como evidencia para el pilar 'Entorno' de B Corp",
-        impact: "med" },
-    ],
-    actions: [
-      { num: "1", textCa: "Auditar la compatibilitat entre els nous B Corp Performance Requirements i el reporting ESRS vigent abans del proper cicle de certificació",
-        textEs: "Auditar la compatibilidad entre los nuevos B Corp Performance Requirements y el reporting ESRS vigente antes del próximo ciclo de certificación",
-        sourceCa: "Font: B Corp New Standards 2026", sourceEs: "Fuente: B Corp New Standards 2026" },
-      { num: "2", textCa: "Aprofitar la convergència ESRS-GRI per reduir treball duplicat en el B Impact Assessment",
-        textEs: "Aprovechar la convergencia ESRS-GRI para reducir trabajo duplicado en el B Impact Assessment",
-        sourceCa: "Font: EFRAG Work Programme 2026", sourceEs: "Fuente: EFRAG Work Programme 2026" },
-      { num: "3", textCa: "Documentar el deure de diligència en drets humans com a evidència per al pilar 'Comunitat' de B Corp",
-        textEs: "Documentar el deber de diligencia en derechos humanos como evidencia para el pilar 'Comunidad' de B Corp",
-        sourceCa: "Font: CSDDD Omnibus I", sourceEs: "Fuente: CSDDD Omnibus I" },
-      { num: "4", textCa: "Mapejar activitats alineades amb Taxonomia UE com a evidència per al pilar 'Entorn' del B Impact Assessment",
-        textEs: "Mapear actividades alineadas con Taxonomía UE como evidencia para el pilar 'Entorno' del B Impact Assessment",
-        sourceCa: "Font: EU Taxonomy Delegated Act 2026", sourceEs: "Fuente: EU Taxonomy Delegated Act 2026" },
-    ],
-  },
-  // Placeholder per a altres estàndards (es faran servir les mateixes dades que B Corp com a demo)
-};
+import { TYPE_CONFIG } from "@/lib/standards-data";
+import { STANDARDS_DETAIL } from "@/lib/standards-details";
 
 export default function EstandarDetailPage() {
   const params = useParams();
@@ -106,14 +26,10 @@ export default function EstandarDetailPage() {
 
   const tr = (ca: string, es: string) => (lang === "ca" ? ca : es);
 
-  const detail = STANDARDS_DETAIL[slug];
-
-  // Per a estàndards sense detall encara, usar B Corp com a demo
-  const effectiveDetail = detail || STANDARDS_DETAIL["b-corp"];
-  const isDemo = !detail;
+  const effectiveDetail = STANDARDS_DETAIL[slug];
 
   const isPremium = user && plan === "premium";
-  const isPremiumContent = effectiveDetail?.type === "cert";
+  const isPremiumContent = effectiveDetail?.access === "premium";
 
   // Ordenar files
   const sortedRows = useMemo(() => {
@@ -175,18 +91,26 @@ export default function EstandarDetailPage() {
               <a href="/estandares-esg" className="text-accent-deep hover:underline">{tr("Estàndards ESG", "Estándares ESG")}</a> &gt; {effectiveDetail.name}
             </p>
             <div className="flex items-start gap-5">
+              {/* Logo */}
               <div
-                className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl text-2xl"
-                style={{ background: cfg.bg, border: `1px solid ${cfg.borderColor}` }}
+                className="flex h-20 w-32 flex-shrink-0 items-center justify-center rounded-xl bg-white p-2 shadow-sm"
+                style={{ border: `1px solid ${cfg.borderColor}` }}
               >
-                {effectiveDetail.icon}
+                <Image
+                  src={effectiveDetail.logo}
+                  alt={`Logo ${effectiveDetail.name}`}
+                  width={120}
+                  height={60}
+                  className="max-h-16 w-auto object-contain"
+                  unoptimized
+                />
               </div>
-              <div>
+              <div className="flex-1">
                 <h1 className="font-serif text-4xl font-semibold leading-tight text-primary sm:text-5xl">
                   {effectiveDetail.name}
                 </h1>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  <span className="inline-block rounded-full px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider" style={{ background: cfg.bg, color: cfg.color }}>
+                  <span className="inline-block rounded-full px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider" style={{ background: cfg.badgeBg, color: cfg.badgeColor }}>
                     {tr(cfg.labelCa, cfg.labelEs)}
                   </span>
                   {"  "}{tr(effectiveDetail.issuerCa, effectiveDetail.issuerEs)}
@@ -216,7 +140,7 @@ export default function EstandarDetailPage() {
                 <option>Maig 2026</option>
               </select>
               <select className="rounded-md border border-rule bg-card px-3.5 py-2 text-sm text-foreground cursor-pointer">
-                <option>{tr("Tots els impactes", "Todos los impactos")}</option>
+                <option>{tr("Tots els impactes", "Todos los impactes")}</option>
                 <option>{tr("Alt", "Alto")}</option>
                 <option>{tr("Mitjà", "Medio")}</option>
                 <option>{tr("Baix", "Bajo")}</option>

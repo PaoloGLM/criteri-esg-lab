@@ -1,10 +1,9 @@
-"""Diagnòstic: quines carpetes veu el Service Account i de quin tipus són."""
+"""Diagnòstic: quines carpetes veu l'OAuth d'usuari (visió completa del Drive)."""
 import sys
 sys.path.insert(0, "./scripts")
-from config import get_drive_service, get_service_account_email, find_informes_root, DRIVE_FOLDERS
+from drive_user_client import get_user_drive_service, find_informes_root
 
-drive = get_drive_service()
-print(f"Service Account: {get_service_account_email()}\n")
+drive = get_user_drive_service()
 
 # 1. Buscar Shared Drives (unitats compartides)
 print("=== Shared Drives accessibles ===")
@@ -19,12 +18,11 @@ try:
 except Exception as e:
     print(f"  Error: {e}")
 
-# 2. Buscar carpeta 'informes'
-print("\n=== Carpeta 'informes' ===")
+# 2. Buscar carpeta 'Criteri ESG Informes'
+print("\n=== Carpeta 'Criteri ESG Informes' ===")
 try:
     folder_id = find_informes_root(drive)
     print(f"  ✓ Trobada (ID: {folder_id})")
-    # Detalls
     info = drive.files().get(fileId=folder_id, fields="id,name,mimeType,parents,driveId").execute()
     print(f"  Nom: {info.get('name')}")
     print(f"  DriveId: {info.get('driveId', '(cap - és My Drive)')}")

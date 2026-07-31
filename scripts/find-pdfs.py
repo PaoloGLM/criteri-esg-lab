@@ -1,9 +1,9 @@
-"""Buscar TOTS els PDFs accessibles per el Service Account."""
+"""Buscar TOTS els PDFs accessibles per OAuth d'usuari (visió completa)."""
 import sys
 sys.path.insert(0, "./scripts")
-from config import get_drive_service
+from drive_user_client import get_user_drive_service
 
-drive = get_drive_service()
+drive = get_user_drive_service()
 results = drive.files().list(
     q="mimeType='application/pdf' and trashed=false",
     spaces="drive",

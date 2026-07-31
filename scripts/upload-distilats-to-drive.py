@@ -1,18 +1,16 @@
 """Puja TOTS els JSONs locals de /data/informes/1-distilats/ a Drive /1-distilats/.
 
-Fa servir supportsAllDrives i intenta pujar com a fill de la carpeta compartida.
-Si la carpeta és un Shared Drive o està compartida amb el Service Account com a
-editor, hauria de funcionar.
+Fa servir OAuth d'usuari (visió completa del Drive), com tots els scripts operatius.
 """
 import sys
 import io
 from pathlib import Path
 sys.path.insert(0, "./scripts")
-from config import get_drive_service, get_subfolder_id
+from drive_user_client import get_user_drive_service, get_subfolder_id
 from googleapiclient.http import MediaIoBaseUpload
 
 LOCAL_DIR = Path("./data/informes/1-distilats")
-drive = get_drive_service()
+drive = get_user_drive_service()
 
 # ID de la carpeta 1-distilats (la busquem via get_subfolder_id)
 try:

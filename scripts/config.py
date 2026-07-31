@@ -54,7 +54,13 @@ def get_gemini_client():
 
 
 def get_drive_service():
-    """Retorna service de Google Drive autenticat amb Service Account."""
+    """DEPRECAT — NO USAR PER A DRIVE.
+
+    Aquesta funció (Service Account) només veu les carpetes compartides amb el bot,
+    no el Drive complet de l'usuari. Per a qualsevol operació de Drive, utilitzar
+    `drive_user_client.get_user_drive_service()` (OAuth d'usuari, visió completa).
+    El Service Account queda reservat exclusivament per a Gemini/Vertex AI.
+    """
     if not Path(GCP_SERVICE_ACCOUNT_PATH).exists():
         raise FileNotFoundError(
             f"Service Account JSON no trobat a {GCP_SERVICE_ACCOUNT_PATH}. "

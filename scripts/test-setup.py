@@ -5,14 +5,12 @@ Verifica que tot està configurat correctament abans de començar amb el flux.
 import sys
 sys.path.insert(0, "./scripts")
 
-from config import (
-    get_gemini_client,
-    get_drive_service,
-    get_service_account_email,
+from drive_user_client import (
+    get_user_drive_service,
     find_informes_root,
     get_subfolder_id,
-    DRIVE_FOLDERS,
 )
+from config import get_gemini_client, DRIVE_FOLDERS
 
 
 def test_gemini():
@@ -40,18 +38,16 @@ def test_gemini():
 
 
 def test_drive():
-    """Test: Service Account pot accedir a la carpeta 'informes' i crear/llistar subcarpetes."""
-    print("\n=== Test Google Drive ===")
+    """Test: OAuth d'usuari pot accedir a la carpeta 'Criteri ESG Informes' i les subcarpetes."""
+    print("\n=== Test Google Drive ===\n")
     try:
-        sa_email = get_service_account_email()
-        print(f"  Service Account email: {sa_email}")
+        drive = get_user_drive_service()
+        print("  ✓ OAuth d'usuari OK")
 
-        drive = get_drive_service()
-
-        # Buscar carpeta 'informes'
+        # Buscar carpeta 'Criteri ESG Informes'
         try:
             folder_id = find_informes_root(drive)
-            print(f"  ✓ Carpeta 'informes' trobada (ID: {folder_id})")
+            print(f"  ✓ Carpeta 'Criteri ESG Informes' trobada (ID: {folder_id})")
         except FileNotFoundError as e:
             print(f"  ✗ {e}")
             return False
@@ -69,7 +65,7 @@ def test_drive():
         all_ok = True
         for key, expected_name in DRIVE_FOLDERS.items():
             try:
-                sub_id = get_subfolder_id(drive, key)
+                sub_id = get_subfolder_id(drive, expected_name)
                 status = "✓ existeix" if expected_name in existing else "✓ creada"
                 print(f"  {status}: {expected_name} (ID: {sub_id})")
             except Exception as e:

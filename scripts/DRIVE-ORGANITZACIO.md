@@ -69,4 +69,19 @@ upload_file(drive, pdf_path, "eu-taxonomy.ca.pdf", folder_id, mime_type="applica
 
 ## Pujada a Drive
 
-Sempre via **OAuth d'usuari** (no Service Account, que no té quota). Tokens a `/home/z/my-project/.gcp-oauth-tokens.json`, es refresquen automàticament via `drive_user_client.py`.
+**Única via d'accés a Drive: OAuth d'usuari** (`drive_user_client.py`). Tokens a `google_token.json`, es refresquen automàticament.
+
+⚠️ **El Service Account (`criteri-bot@...`) NO s'usa per a Drive** — només té visió parcial (el que se li ha compartit) i no té quota de pujada. Queda reservat exclusivament per a **Gemini/Vertex AI** (`gemini_client.py`). `config.get_drive_service()` està deprecat.
+
+## Scripts de Drive (tots amb OAuth d'usuari)
+
+| Script | Funció |
+|--------|--------|
+| `drive_user_client.py` | Client central (autenticació, cerca, pujada, llistat) |
+| `download-originals.py` | Baixa PDFs de `0-originals/pendents/` a local |
+| `llista-originals.py` | Llista pendents + processats + destil·lats |
+| `mou-original-processat.py` | Mou un PDF de `pendents/` a `processats/` (pas 7) |
+| `puja-a-drive.py` | Puja informes corregits (pas 5) a `4-revisats-ortografia/` |
+| `upload-distilats-to-drive.py` | Puja JSONs destil·lats (pas 2) a `1-distilats/` |
+| `find-pdfs.py` | Diagnòstic: tots els PDFs accessibles |
+| `diagnostic-drive.py` | Diagnòstic: carpetes visibles |

@@ -1,11 +1,11 @@
 """Llista els PDFs a Drive /informes/0-originals/ separats en pendents i processats."""
 import sys
 sys.path.insert(0, "./scripts")
-from config import get_drive_service, get_subfolder_id
+from drive_user_client import get_user_drive_service, find_informes_root, find_folder_id
 
-drive = get_drive_service()
-originals_id = get_subfolder_id(drive, "0_originals")
-distilats_id = get_subfolder_id(drive, "1_distilats")
+drive = get_user_drive_service()
+originals_id = find_folder_id(drive, "0-originals", find_informes_root(drive))
+distilats_id = find_folder_id(drive, "1-distilats", find_informes_root(drive))
 
 # Subcarpetes dins de 0-originals (Opció A)
 def find_subfolder(parent_id: str, name: str) -> str | None:

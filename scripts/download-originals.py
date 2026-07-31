@@ -1,13 +1,13 @@
-"""Descarrega els PDFs de Drive a local (fa servir la carpeta 0-originals per ID conegut)."""
+"""Descarrega els PDFs de Drive a local (fa servir la carpeta 0-originals/pendents per ID conegut)."""
 import sys
 from pathlib import Path
 sys.path.insert(0, "./scripts")
-from config import get_drive_service
+from drive_user_client import get_user_drive_service
 
 LOCAL_DIR = Path("./data/informes/0-originals")
 LOCAL_DIR.mkdir(parents=True, exist_ok=True)
 
-drive = get_drive_service()
+drive = get_user_drive_service()
 
 # ID de la carpeta 0-originals (trobat abans via find-pdfs.py)
 ORIGINALS_FOLDER_ID = "1v6pULB8Zm94m7VmuSjT3NPncN3jhqlAP"

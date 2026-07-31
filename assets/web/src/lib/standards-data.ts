@@ -23,10 +23,10 @@ export interface Standar {
   access: AccessType;
   descCa: string;
   descEs: string;
-  count: number;
   logo: string;
   issuerCa: string;
   issuerEs: string;
+  // count s'obté via getStandardsWithCounts() — derivat de xrefRows.length, mai hardcoded
 }
 
 export interface XrefRow {
@@ -48,6 +48,11 @@ export interface Action {
 export interface StandarDetail extends Standar {
   xrefRows: XrefRow[];
   actions: Action[];
+  count: number; // = xrefRows.length, sempre derivat
+}
+
+export interface StandarWithCount extends Standar {
+  count: number; // derivat de STANDARDS_DETAIL[slug].xrefRows.length
 }
 
 // ============ LLISTA ESTÀNDARDS (per a la pàgina índex) ============
@@ -57,7 +62,6 @@ export const STANDARDS: Standar[] = [
     name: "CSRD / ESRS",
     type: "reg",
     access: "free",
-    count: 10,
     logo: "/logos-estandards/csrd-esrs.png",
     issuerCa: "Comissió Europea · EFRAG",
     issuerEs: "Comisión Europea · EFRAG",
@@ -69,7 +73,6 @@ export const STANDARDS: Standar[] = [
     name: "GRI",
     type: "fw",
     access: "free",
-    count: 8,
     logo: "/logos-estandards/gri.png",
     issuerCa: "Global Reporting Initiative · Amsterdam",
     issuerEs: "Global Reporting Initiative · Ámsterdam",
@@ -81,7 +84,6 @@ export const STANDARDS: Standar[] = [
     name: "EcoVadis",
     type: "cert",
     access: "premium",
-    count: 7,
     logo: "/logos-estandards/ecovadis.jpg",
     issuerCa: "EcoVadis · París",
     issuerEs: "EcoVadis · París",
@@ -93,7 +95,6 @@ export const STANDARDS: Standar[] = [
     name: "B Corp",
     type: "cert",
     access: "premium",
-    count: 5,
     logo: "/logos-estandards/b-corp.svg",
     issuerCa: "B Lab Global · Estats Units",
     issuerEs: "B Lab Global · Estados Unidos",
@@ -105,7 +106,6 @@ export const STANDARDS: Standar[] = [
     name: "MSCI ESG",
     type: "cert",
     access: "premium",
-    count: 6,
     logo: "/logos-estandards/msci-esg.svg",
     issuerCa: "MSCI Inc. · Nova York",
     issuerEs: "MSCI Inc. · Nueva York",
@@ -117,7 +117,6 @@ export const STANDARDS: Standar[] = [
     name: "CSDDD",
     type: "reg",
     access: "free",
-    count: 4,
     logo: "/logos-estandards/csddd.png",
     issuerCa: "Comissió Europea · DG Justice",
     issuerEs: "Comisión Europea · DG Justice",
@@ -129,7 +128,6 @@ export const STANDARDS: Standar[] = [
     name: "SFDR",
     type: "reg",
     access: "free",
-    count: 3,
     logo: "/logos-estandards/sfdr.png",
     issuerCa: "Comissió Europea · DG FISMA",
     issuerEs: "Comisión Europea · DG FISMA",
@@ -141,7 +139,6 @@ export const STANDARDS: Standar[] = [
     name: "Taxonomía UE",
     type: "reg",
     access: "free",
-    count: 5,
     logo: "/logos-estandards/taxonomia-ue.png",
     issuerCa: "Comissió Europea · DG FISMA",
     issuerEs: "Comisión Europea · DG FISMA",
@@ -153,7 +150,6 @@ export const STANDARDS: Standar[] = [
     name: "CDP",
     type: "cert",
     access: "premium",
-    count: 3,
     logo: "/logos-estandards/cdp.png",
     issuerCa: "CDP · Londres",
     issuerEs: "CDP · Londres",
@@ -165,7 +161,6 @@ export const STANDARDS: Standar[] = [
     name: "SGE 21",
     type: "cert",
     access: "premium",
-    count: 3,
     logo: "/logos-estandards/sge-21.svg",
     issuerCa: "Forética · Madrid",
     issuerEs: "Forética · Madrid",
@@ -177,7 +172,6 @@ export const STANDARDS: Standar[] = [
     name: "Sustainalytics",
     type: "cert",
     access: "premium",
-    count: 4,
     logo: "/logos-estandards/sustainalytics.svg",
     issuerCa: "Morningstar Sustainalytics · Amsterdam",
     issuerEs: "Morningstar Sustainalytics · Ámsterdam",
@@ -189,7 +183,6 @@ export const STANDARDS: Standar[] = [
     name: "SASB",
     type: "fw",
     access: "free",
-    count: 3,
     logo: "/logos-estandards/sasb.png",
     issuerCa: "IFRS Foundation · ISSB",
     issuerEs: "IFRS Foundation · ISSB",
@@ -201,7 +194,6 @@ export const STANDARDS: Standar[] = [
     name: "TNFD",
     type: "fw",
     access: "free",
-    count: 2,
     logo: "/logos-estandards/tnfd.png",
     issuerCa: "Taskforce on Nature-related Financial Disclosures",
     issuerEs: "Taskforce on Nature-related Financial Disclosures",
@@ -213,7 +205,6 @@ export const STANDARDS: Standar[] = [
     name: "TCFD",
     type: "fw",
     access: "free",
-    count: 4,
     logo: "/logos-estandards/tcfd.png",
     issuerCa: "Financial Stability Board (FSB) · 2017",
     issuerEs: "Financial Stability Board (FSB) · 2017",
@@ -225,7 +216,6 @@ export const STANDARDS: Standar[] = [
     name: "EMAS",
     type: "reg",
     access: "free",
-    count: 2,
     logo: "/logos-estandards/emas.png",
     issuerCa: "Comissió Europea · DG ENV",
     issuerEs: "Comisión Europea · DG ENV",
@@ -237,7 +227,6 @@ export const STANDARDS: Standar[] = [
     name: "ISO 26000",
     type: "fw",
     access: "free",
-    count: 2,
     logo: "/logos-estandards/iso-26000.svg",
     issuerCa: "ISO · Ginebra (2010)",
     issuerEs: "ISO · Ginebra (2010)",
@@ -245,3 +234,30 @@ export const STANDARDS: Standar[] = [
     descEs: "Guía internacional de responsabilidad social publicada por ISO en 2010. NO certificable (a diferencia de la mayoría de estándares ISO). Marco de referencia con 7 áreas núcleo: gobernanza organizativa, derechos humanos, prácticas laborales, medio ambiente, prácticas justas de operación, asuntos de consumidores, participación y desarrollo de la comunidad. 36 esferas de acción. Adoptado por 80+ países como estándar nacional. Base de estándares certificables posteriores: ISO 26000-based SGE 21, ISO 20400 (sustainable procurement), ISO 37101 (desarrollo sostenible comunitario). Revisión en curso (2025-2026).",
   },
 ];
+
+// ============ HELPER: count sempre derivat de xrefRows ============
+// Aquesta funció és l'ÚNICA font de veritat per al nombre d'informes per estàndard.
+// Mai facis servir un count hardcoded — sempre deriva'l de STANDARDS_DETAIL.
+//
+// Ús:
+//   import { getStandardsWithCounts } from "@/lib/standards-data";
+//   const standards = getStandardsWithCounts(); // [{...standar, count: N}, ...]
+//
+// Actualització: quan s'afegeix una xrefRow nova a standards-details.ts,
+// el count s'actualitza automàticament a la pàgina índex. Sense sync manual.
+
+import { STANDARDS_DETAIL } from "./standards-details";
+
+export function getStandardsWithCounts(): StandarWithCount[] {
+  return STANDARDS.map((s) => {
+    const detail = STANDARDS_DETAIL[s.slug];
+    const count = detail ? detail.xrefRows.length : 0;
+    return { ...s, count };
+  });
+}
+
+// Helper alternatiu per obtenir el count d'un sol estàndard
+export function getStandarCount(slug: string): number {
+  const detail = STANDARDS_DETAIL[slug];
+  return detail ? detail.xrefRows.length : 0;
+}

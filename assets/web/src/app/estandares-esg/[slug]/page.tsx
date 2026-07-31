@@ -86,22 +86,22 @@ export default function EstandarDetailPage() {
       <main className="flex-1">
         {/* Hero */}
         <section className="border-b border-rule bg-secondary/30 py-12">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8">
             <p className="mb-4 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
               <a href="/estandares-esg" className="text-accent-deep hover:underline">{tr("Estàndards ESG", "Estándares ESG")}</a> &gt; {effectiveDetail.name}
             </p>
-            <div className="flex items-start gap-5">
-              {/* Logo */}
+            <div className="flex items-start gap-8">
+              {/* Logo GRAN */}
               <div
-                className="flex h-20 w-32 flex-shrink-0 items-center justify-center rounded-xl bg-white p-2 shadow-sm"
+                className="flex h-32 w-64 flex-shrink-0 items-center justify-center rounded-xl bg-white p-4 shadow-sm"
                 style={{ border: `1px solid ${cfg.borderColor}` }}
               >
                 <Image
                   src={effectiveDetail.logo}
                   alt={`Logo ${effectiveDetail.name}`}
-                  width={120}
-                  height={60}
-                  className="max-h-16 w-auto object-contain"
+                  width={240}
+                  height={110}
+                  className="max-h-24 w-auto object-contain"
                   unoptimized
                 />
               </div>
@@ -115,7 +115,7 @@ export default function EstandarDetailPage() {
                   </span>
                   {"  "}{tr(effectiveDetail.issuerCa, effectiveDetail.issuerEs)}
                 </p>
-                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-foreground/75">
+                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-foreground/75">
                   {tr(effectiveDetail.descCa, effectiveDetail.descEs)}
                 </p>
               </div>
@@ -125,7 +125,7 @@ export default function EstandarDetailPage() {
 
         {/* Cross-reference table */}
         <section className="py-12">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8">
             {/* Filtres */}
             <div className="mb-6 flex flex-wrap items-center gap-3">
               <span className="font-mono text-[10px] uppercase tracking-widest text-accent-deep font-semibold">
@@ -228,7 +228,7 @@ export default function EstandarDetailPage() {
 
         {/* Accions recomanades */}
         <section className="border-t border-rule bg-secondary/30 py-12">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8">
             <h2 className="mb-6 font-serif text-2xl font-semibold text-primary">
               {tr(`Accions recomanades relacionades amb ${effectiveDetail.name}`, `Acciones recomendadas relacionadas con ${effectiveDetail.name}`)}
             </h2>

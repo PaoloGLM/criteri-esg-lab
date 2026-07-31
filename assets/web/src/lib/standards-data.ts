@@ -31,10 +31,23 @@ export interface Standar {
 
 export interface XrefRow {
   reportTitle: string;
+  // NOU: slug del report a /informes/[slug] per linkar directament
+  // Si no es posa, el títol queda sense link (per reports externs no publicats encara)
+  reportSlug?: string;
   date: string;
   criterionCa: string;
   criterionEs: string;
   impact: "high" | "med";
+  // NOU: camps opcionals per enriquir el cross-reference (pilot B Corp)
+  // Pilar del framework afectat (ex B Corp: "Governance", "Workers", "Community", "Environment", "Customers")
+  pillar?: string;
+  // Sub-àrea específica dins del pilar (ex B Corp BIA: "Mission & Engagement")
+  subArea?: string;
+  // Què ha de fer l'empresa certificada (acció concreta)
+  actionCa?: string;
+  actionEs?: string;
+  // Termini d'acció (ex: "Pròxima recertificació", "FY2026", "Q4 2026")
+  deadline?: string;
 }
 
 export interface Action {

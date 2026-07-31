@@ -43,6 +43,36 @@
 ### P3 — Pla de comunicació LinkedIn
 - 10 assets redissenyats a Drive, pendents de publicar
 
+### P3 — Eina 'Accions recomanades' autònoma (futura)
+- La secció 'Accions recomanades per estàndard' ha estat **eliminada de la UI** (commit d'agost 2026)
+- El model de dades es manté (`actions` a `standards-details.ts`) per si es recupera
+- **Nou enfocament preferit**: integrar l'acció concreta dins de cada cross-reference (camp `action` per xrefRow) en lloc d'accions genèriques
+- **Futura eina a oferir**: una eina autònoma que generi plans d'acció personalitzats per empresa, creuant els seus estàndards certificats + els informes publicats
+- Podria ser un producte Premium addicional o un mòdul dins del dashboard d'usuari
+- Quan es recuperi, pensar en:
+  - Accions amb termini concret (deadline) + responsable
+  - Exportació a calendari / Asana / Trello
+  - Notificacions per email quan un informe nou afecti un estàndard certificat per l'usuari
+
+### P3 — Cross-reference enriquit per a tots els estàndards
+- Pilot B Corp completat (agost 2026): 5 informes linkats + pilar BIA + acció concreta + termini
+- Pendent d'aplicar el mateix patró als altres 15 estàndards:
+  - **GRI**: Topic Standards (200/300/400) com a pilars
+  - **CSRD/ESRS**: ESRS E1-E5, S1-S4, G1 com a pilars
+  - **EcoVadis**: 4 àrees (Environment, Labor, Ethics, Procurement)
+  - **MSCI ESG**: 10 temes materials
+  - **CSDDD**: drets humans, clima, cadena de valor
+  - **SFDR**: PAI indicators
+  - **Taxonomia UE**: 6 objectius ambientals
+  - **CDP**: 3 mòduls (Climate, Water, Forests)
+  - **SGE 21**: 4 àrees Forética
+  - **Sustainalytics**: categories de risc ESG
+  - **SASB**: 77 indústries
+  - **TNFD**: 4 pilars + LEAP
+  - **TCFD**: 4 pilars
+  - **EMAS**: aspectes ambientals
+  - **ISO 26000**: 7 àrees nucli
+
 ---
 
 ## En curs

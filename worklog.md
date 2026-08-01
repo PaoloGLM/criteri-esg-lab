@@ -811,3 +811,25 @@ Work Log:
 Stage Summary:
 Newsletter workflow ✓ funcionant. Workflow informes arreglat (paths relatius).
 Tots els scripts Python netejats de paths hardcoded. Pendents: provar workflow informes, disseny PDF, Stripe, privacitat.
+
+---
+Task ID: 2026-08-01-onboarding-roser
+Agent: Hermes (Roser)
+Task: Onboarding de la Roser — màquina Windows, GitHub, Drive i OAuth
+
+Work Log:
+- Repo clonat a C:/Users/roser/criteri-esg-lab (branch main, remote PaoloGLM/criteri-esg-lab)
+- Verificat permís d'escriptura de roserpasc a GitHub (push de prova a branca temporal, esborrada després)
+- Identitat git local configurada: Roser Pascual <iaiarous.pg@gmail.com>
+- Credencials col·locades a assets/web/.env.local (gitignored, 10 variables verificades)
+- OAuth propi de la Roser creat i autoritzat (Google Cloud Console → OAuth client 'Hermes Criteri ESG' → Desktop app)
+- Token guardat a C:/Users/roser/AppData/Local/hermes/google_token.json — només scope drive
+- Drive verificat com a writer a les dues carpetes arrel:
+  * Criteri ESG (1HGRugtsRGDN3su_n_dbd9y1p8VkyuUgG)
+  * Criteri ESG Informes (1nSgtu2pcourGRMrS1KIspgVarlRldbnS) + 7 subcarpetes del flux
+- git pull/push operatius des de la màquina de la Roser
+
+Stage Summary:
+Entorn de la Roser complet: repo, credencials, OAuth Drive i accés a les dues carpetes.
+A punt per treballar en paral·lel amb Paolo (ritual: git pull abans, commit petit i push després de cada tasca).
+

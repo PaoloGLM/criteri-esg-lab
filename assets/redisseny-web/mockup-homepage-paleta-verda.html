@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mockup · Homepage Criteri ESG — Paleta verda · Monomakh</title>
+<title>Mockup · Homepage Criteri ESG — Paleta verda · Monomakh + Lexend</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Monomakh&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Monomakh&family=Lexend+Deca:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   /* ============ TOKENS ============ */
   :root {
@@ -19,17 +19,33 @@
     --ink-deep: #19574B;     /* derivat: seccions fosques / footer */
     --line: rgba(31, 111, 95, 0.22);
     --radius: 10px;
-    --font: "Monomakh", system-ui, -apple-system, sans-serif;
+    --font-display: "Monomakh", system-ui, -apple-system, sans-serif;
+    --font-body: "Lexend Deca", system-ui, -apple-system, sans-serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: var(--font);
+    font-family: var(--font-body);
     background: var(--bg);
     color: var(--ink);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+  }
+
+  /* Tipografia curta/decorativa: títols, capçalera, labels, números, botons */
+  h1, h2, h3, h4, blockquote,
+  .brand-mark, .brand-name, .brand-name em,
+  .nav-links a, .nav-actions .login,
+  .eyebrow, .eyebrow-dark,
+  .btn, .hero .sub, .banner,
+  .tag, .paper-meta,
+  .semafor .label, .semafor .grade, .semafor .grade-label, .dim .dname,
+  .bloc-num, .dada .n, .quote-box .qlabel,
+  .accio .cnum, .chip, .paper-foot a,
+  .cita .attr, .cta-final .note,
+  .foot-col h5, .foot-col a, .foot-bottom {
+    font-family: var(--font-display);
   }
 
   .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
@@ -64,7 +80,7 @@
   .nav-actions .login { color: var(--ink); text-decoration: none; font-size: 0.9rem; font-weight: 400; }
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    font-family: var(--font); font-weight: 400; font-size: 0.9rem;
+    font-family: var(--font-display); font-weight: 400; font-size: 0.9rem;
     border: none; cursor: pointer; text-decoration: none;
     transition: transform .12s ease, opacity .15s;
   }
@@ -131,7 +147,7 @@
     letter-spacing: -0.025em; line-height: 1.12;
   }
   h2.sec-title .hl { color: var(--accent); }
-  .sec-body { max-width: 720px; font-weight: 400; font-size: 1.05rem; color: var(--ink-soft); line-height: 1.7; margin-top: 22px; }
+  .sec-body { max-width: 720px; font-weight: 300; font-size: 1.05rem; color: var(--ink-soft); line-height: 1.7; margin-top: 22px; }
 
   /* Manifest centrat */
   .manifest { text-align: center; }
@@ -151,7 +167,7 @@
     color: var(--highlight); line-height: 1; letter-spacing: -0.04em;
   }
   .thesis h3 { font-size: 1.45rem; font-weight: 400; margin: 18px 0 12px; color: var(--ink); }
-  .thesis p { font-size: 0.92rem; font-weight: 400; color: var(--ink-soft); line-height: 1.65; }
+  .thesis p { font-size: 0.92rem; font-weight: 300; color: var(--ink-soft); line-height: 1.65; }
 
   /* ============ INFORME DESTACAT ============ */
   .informe {
@@ -209,23 +225,23 @@
   .bloc:last-child { border-bottom: none; }
   .bloc-num { font-size: 0.6rem; font-weight: 400; letter-spacing: 0.2em; color: var(--ink); }
   .bloc h4 { font-size: 1.05rem; font-weight: 400; margin: 8px 0 14px; color: var(--ink); }
-  .bloc p { font-size: 0.82rem; font-weight: 400; color: var(--ink-soft); line-height: 1.65; }
+  .bloc p { font-size: 0.82rem; font-weight: 300; color: var(--ink-soft); line-height: 1.65; }
   .bloc p + p { margin-top: 10px; }
-  .bloc p strong { color: var(--ink); font-weight: 400; }
+  .bloc p strong { color: var(--ink); font-weight: 600; }
 
   .dades { display: flex; flex-direction: column; }
   .dada { display: grid; grid-template-columns: 26px 1fr; gap: 10px; padding: 8px 0; border-bottom: 1px dotted rgba(62, 131, 116, 0.35); align-items: baseline; }
   .dada:last-child { border-bottom: none; }
   .dada .n { font-size: 0.62rem; font-weight: 400; color: var(--ink); }
-  .dada .t { font-size: 0.78rem; font-weight: 400; color: var(--ink-soft); }
-  .dada .t strong { color: var(--ink); font-weight: 400; }
+  .dada .t { font-size: 0.78rem; font-weight: 300; color: var(--ink-soft); }
+  .dada .t strong { color: var(--ink); font-weight: 600; }
 
   .quote-box {
     margin-top: 16px; padding: 16px 18px;
     background: var(--ink); color: var(--bg); border-left: 3px solid var(--highlight); border-radius: 0 8px 8px 0;
   }
   .quote-box .qlabel { font-size: 0.55rem; font-weight: 400; letter-spacing: 0.2em; color: var(--highlight); margin-bottom: 6px; }
-  .quote-box p { font-size: 0.78rem; font-weight: 400; color: rgba(238,238,238,.9); font-style: normal; }
+  .quote-box p { font-size: 0.78rem; font-weight: 300; color: rgba(238,238,238,.9); font-style: normal; }
 
   .accions { display: flex; flex-direction: column; gap: 12px; }
   .accio { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: baseline; }
@@ -250,7 +266,7 @@
     display: flex; align-items: center; justify-content: space-between; gap: 20px;
     padding: 22px 30px;
   }
-  .paper-foot p { font-size: 0.85rem; font-weight: 400; color: rgba(238,238,238,.85); }
+  .paper-foot p { font-size: 0.85rem; font-weight: 300; color: rgba(238,238,238,.85); }
   .paper-foot a { color: var(--highlight); font-weight: 400; font-size: 0.88rem; text-decoration: none; white-space: nowrap; }
   .paper-foot a:hover { text-decoration: underline; }
 
@@ -277,7 +293,7 @@
   .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
   .foot-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
   .foot-brand .brand-mark { background: var(--highlight); color: var(--ink); }
-  footer p.desc { font-size: 0.85rem; font-weight: 400; color: rgba(238,238,238,.7); max-width: 300px; }
+  footer p.desc { font-size: 0.85rem; font-weight: 300; color: rgba(238,238,238,.7); max-width: 300px; }
   .foot-col h5 { font-size: 0.7rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--highlight); margin-bottom: 16px; }
   .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
   .foot-col a { color: rgba(238,238,238,.85); text-decoration: none; font-size: 0.88rem; font-weight: 400; }

@@ -277,22 +277,23 @@ export function getGradeColor(grade: SemaforGrade | string | undefined): string 
 }
 
 /**
- * CALCUL AUTOMÀTICA DE LA NOTA (millora Gemini agost 2026)
+ * CALCUL AUTOMÀTICA DE LA NOTA (regles oficials v3 — segons Paolo, agost 2026)
  *
- * Escala ponderada: verd=2, groc=1, vermell=0 (màxim 10 punts amb 5 indicadors)
+ * Regles (consistenteix amb el popup "¿Cómo se valora el semáforo?"):
  *
- * Regla d'assignació (exhaustiva per a totes les 24 combinacions possibles):
- *   A (Robust fort): 9-10 punts          → 5 verds, o 4 verds + 1 groc perfecte
- *   B (Robust):      7-8 punts           → 4 verds + 1 groc, o 3 verds + 2 grocs
- *   C (Feble):       5-6 punts, ≤1 vermell
- *   D (Insuficient): ≤4 punts O 2+ vermells (independentment dels punts)
+ *   1. 2+ vermells → D SEMPRE (veto, independentment dels punts)
+ *   2. 1 vermell → màxim C (mai A ni B)
+ *   3. 0 vermells → depèn del score (verd=2, groc=1, vermell=0; màx 10 amb 5 indicadors):
+ *        A (Robust fort): 9-10 punts  → 5V (10), 4V+1G (9)
+ *        B (Robust):      7-8 punts   → 3V+2G (8), 2V+3G (7)
+ *        C (Feble):       5-6 punts   → 1V+4G (6), 5G (5)
+ *        D (Insuficient): ≤4 punts   → (impossible amb 5 indicadors i 0 vermells, però per seguretat)
  *
- * Aquesta funció garanteix que qualsevol combinació d'indicators té una assignació
- * unívoca. Abans hi havia combinacions sense cobertura (ex: 3V+2G no encaixava).
+ * Amb 1 vermell (4 indicadors no-rojos, màx 8 punts):
+ *   - Score >= 5 → C  (ex: 4V+1R=8→C, 3V+1G+1R=7→C, 2V+2G+1R=6→C, 1V+3G+1R=5→C)
+ *   - Score <= 4 → D  (ex: 4G+1R=4→D)
  *
- * NOTA: si un informe té hardcoded un grade al seu content (reports-content.ts),
- * aquest grade es manté per compatibilitat amb el contingut editorial revisat.
- * Però per informes nous o recàlculs, aquesta funció és la font de veritat.
+ * Aquesta funció és l'ÚNICA font de veritat pel càlcul de la nota.
  */
 export function computeGrade(indicators: { status: SemaforStatus }[]): SemaforGrade {
   if (!indicators || indicators.length === 0) return "D";
@@ -301,16 +302,22 @@ export function computeGrade(indicators: { status: SemaforStatus }[]): SemaforGr
   const grocs = indicators.filter(i => i.status === "groc").length;
   const vermells = indicators.filter(i => i.status === "vermell").length;
 
-  // Regla D: 2 o més vermells → D sempre (independentment dels punts)
+  // Regla 1: 2+ vermells → D sempre
   if (vermells >= 2) return "D";
 
-  // Escala ponderada
-  const score = (verds * 2) + (grocs * 1) + (vermells * 0);
+  // Score ponderat
+  const score = (verds * 2) + (grocs * 1);
 
-  if (score >= 9) return "A";  // 5V (10) o 4V+1G perfecte (8... esperi, 4*2+1=9)
-  if (score >= 7) return "B";  // 4V+1G (9... no), 3V+2G (8), 4V+1R (8, però no té 2+ vermells)
-  if (score >= 5) return "C";  // 3V+1G+1R (7... hauria de ser B?), 2V+3G (7)
-  return "D";                   // ≤4 punts
+  // Regla 2: 1 vermell → màxim C
+  if (vermells === 1) {
+    return score >= 5 ? "C" : "D";
+  }
+
+  // Regla 3: 0 vermells → per score
+  if (score >= 9) return "A";   // 5V (10), 4V+1G (9)
+  if (score >= 7) return "B";   // 3V+2G (8), 2V+3G (7)
+  if (score >= 5) return "C";   // 1V+4G (6), 5G (5)
+  return "D";                    // ≤4 (impossible amb 5 indicadors i 0 vermells)
 }
 
 /**

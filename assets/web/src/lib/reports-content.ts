@@ -242,7 +242,7 @@ const revisioEsrs_es: ReportBlock = {
 
 const ecbClimate_ca: ReportBlock = {
   semafor: {
-    grade: "B",
+    grade: "C",
     gradeLabel: "Acceptable amb matisos",
     indicators: [
       {
@@ -356,7 +356,7 @@ const ecbClimate_ca: ReportBlock = {
 
 const ecbClimate_es: ReportBlock = {
   semafor: {
-    grade: "B",
+    grade: "C",
     gradeLabel: "Aceptable con matices",
     indicators: [
       {
@@ -474,7 +474,7 @@ const ecbClimate_es: ReportBlock = {
 
 const efrag_ca: ReportBlock = {
   semafor: {
-    grade: "B",
+    grade: "C",
     gradeLabel: "Acceptable amb matisos",
     indicators: [
       {
@@ -588,7 +588,7 @@ const efrag_ca: ReportBlock = {
 
 const efrag_es: ReportBlock = {
   semafor: {
-    grade: "B",
+    grade: "C",
     gradeLabel: "Aceptable con matices",
     indicators: [
       {
@@ -706,7 +706,7 @@ const efrag_es: ReportBlock = {
 
 const ecovadis_ca: ReportBlock = {
   semafor: {
-    grade: "B",
+    grade: "C",
     gradeLabel: "Acceptable amb matisos",
     indicators: [
       {
@@ -820,7 +820,7 @@ const ecovadis_ca: ReportBlock = {
 
 const ecovadis_es: ReportBlock = {
   semafor: {
-    grade: "B",
+    grade: "C",
     gradeLabel: "Aceptable con matices",
     indicators: [
       {

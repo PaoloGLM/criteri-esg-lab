@@ -552,43 +552,61 @@
       </div>
     </div>
 
-    <h3>Escala ponderada (mejora Gemini · ago 2026)</h3>
-    <p class="lead">Cada indicador puntúa: <strong>verde = 2, amarillo = 1, rojo = 0</strong>. Con 6 indicadores, máximo = 12 puntos. La nota se calcula automáticamente:</p>
+    <h3>Escala ponderada v3 (reglas oficiales · ago 2026)</h3>
+    <p class="lead">Cada indicador puntúa: <strong>verde = 2, amarillo = 1, rojo = 0</strong>. La nota se calcula con 3 reglas:</p>
+
+    <div class="callout gemini">
+      <strong>Reglas oficiales (v3):</strong>
+      <ol style="margin: 8px 0 0 24px;">
+        <li><strong>0 rojos</strong> para optar a A o B (por score)</li>
+        <li><strong>1 rojo</strong> → como mucho C (nunca A ni B)</li>
+        <li><strong>2+ rojos</strong> → siempre D (veto, sin importar el score)</li>
+      </ol>
+    </div>
 
     <table class="dims-table" style="margin: 16px 0;">
       <thead>
         <tr>
           <th>Nota</th>
+          <th>Rojos</th>
           <th>Puntos</th>
-          <th>Combinaciones válidas (con 6 indicadores)</th>
+          <th>Combinaciones válidas (con 5 indicadores)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="dim-name" style="color: #5C8A5C;">A · Robusto fuerte</td>
-          <td class="dim-q">11-12</td>
-          <td class="dim-desc">6 verdes (12) · 5 verdes + 1 amarillo (11)</td>
+          <td class="dim-q">0</td>
+          <td class="dim-q">9-10</td>
+          <td class="dim-desc">5 verdes (10) · 4 verdes + 1 amarillo (9)</td>
         </tr>
         <tr>
           <td class="dim-name" style="color: #C9A961;">B · Robusto</td>
-          <td class="dim-q">9-10</td>
-          <td class="dim-desc">5V+1R · 4V+2G · 4V+1G+1R · 3V+3G</td>
+          <td class="dim-q">0</td>
+          <td class="dim-q">7-8</td>
+          <td class="dim-desc">3V+2G (8) · 2V+3G (7)</td>
         </tr>
         <tr>
           <td class="dim-name" style="color: #C9A961;">C · Débil</td>
-          <td class="dim-q">6-8</td>
-          <td class="dim-desc">Combinaciones con ≤1 rojo y score 6-8</td>
+          <td class="dim-q">0-1</td>
+          <td class="dim-q">5-6</td>
+          <td class="dim-desc">1V+4G (6) · 5G (5) — o con 1 rojo y score ≥5: 4V+1R, 3V+1G+1R, 2V+2G+1R, 1V+3G+1R</td>
         </tr>
         <tr>
           <td class="dim-name" style="color: #A0522D;">D · Insuficiente</td>
-          <td class="dim-q">≤5 O 2+ rojos</td>
-          <td class="dim-desc">Cualquier combinación con 2+ rojos (veto), o score ≤5</td>
+          <td class="dim-q">2+</td>
+          <td class="dim-q">≤4</td>
+          <td class="dim-desc"><strong>2+ rojos siempre D</strong> (veto) — o 1 rojo con score ≤4 (4G+1R) — o 0 rojos con score ≤4 (imposible con 5 indicadores)</td>
         </tr>
       </tbody>
     </table>
 
     <div class="callout">
-      <strong>Regla veto:</strong> 2 o más rojos automáticamente = D, independientemente de los puntos. Razón: un estándar con 2 dimensiones críticas en rojo no es operativo, aunque las otras 4 sean verdes.
+      <strong>Regla veto:</strong> 2 o más rojos automáticamente = D, independientemente de los puntos. Razón: un estándar con 2 dimensiones críticas en rojo no es operativo, aunque las otras 3 sean verdes.
+    </div>
+
+    <div class="callout">
+      <strong>Regla 1 rojo:</strong> con 1 rojo nunca se puede obtener A ni B. Como mucho C (si los otros 4 indicadores suman ≥5 puntos). Esto evita que un informe con un fallo crítico se catalogue como "robusto".
     </div>
 
     <div class="callout">

@@ -14,10 +14,10 @@ const revisioEsrs_ca: ReportBlock = {
     gradeLabel: "Feble metodològicament",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialitat de l'impacte principal",
         status: "groc",
         label: "Esmentat",
-        note: "Es manté l'obligació però es simplifica la granularitat de categories upstream i downstream.",
+        note: "Es manté l'obligació de reporting sobre impactes materials (doble materialitat), però es simplifica la granularitat de categories upstream i downstream.",
       },
       {
         name: "Termes temporals",
@@ -128,10 +128,10 @@ const revisioEsrs_es: ReportBlock = {
     gradeLabel: "Débil metodológicamente",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialidad del impacto principal",
         status: "groc",
         label: "Mencionado",
-        note: "Se mantiene la obligación pero se simplifica la granularidad de categorías upstream y downstream.",
+        note: "Se mantiene la obligación de reporting sobre impactos materiales (doble materialidad), pero se simplifica la granularidad de categorías upstream y downstream.",
       },
       {
         name: "Términos temporales",
@@ -246,10 +246,10 @@ const ecbClimate_ca: ReportBlock = {
     gradeLabel: "Acceptable amb matisos",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialitat de l'impacte principal",
         status: "vermell",
         label: "Ignorat",
-        note: "El BCE admet que el 78% dels bancs no disposa de dades fiables sobre emissions Scope 3 dels seus clients corporatius.",
+        note: "El BCE admet que el 78% dels bancs no disposa de dades fiables sobre l'impacte climàtic dels seus clients corporatius (préstecs i inversions).",
       },
       {
         name: "Termes temporals",
@@ -360,10 +360,10 @@ const ecbClimate_es: ReportBlock = {
     gradeLabel: "Aceptable con matices",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialidad del impacto principal",
         status: "vermell",
         label: "Ignorado",
-        note: "El BCE admite que el 78% de los bancos no dispone de datos fiables sobre emisiones Scope 3 de sus clientes corporativos.",
+        note: "El BCE admite que el 78% de los bancos no dispone de datos fiables sobre el impacto climático de sus clientes corporativos (préstamos e inversiones).",
       },
       {
         name: "Términos temporales",
@@ -478,10 +478,10 @@ const efrag_ca: ReportBlock = {
     gradeLabel: "Acceptable amb matisos",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialitat de l'impacte principal",
         status: "groc",
         label: "Esmentat",
-        note: "Consta com a prioritat d'interoperabilitat amb GRI però sense ampliació de datapoints obligatoris.",
+        note: "Consta com a prioritat d'interoperabilitat amb GRI per identificar impactes materials, però sense ampliació de datapoints obligatoris.",
       },
       {
         name: "Termes temporals",
@@ -592,10 +592,10 @@ const efrag_es: ReportBlock = {
     gradeLabel: "Aceptable con matices",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialidad del impacto principal",
         status: "groc",
         label: "Mencionado",
-        note: "Consta como prioridad de interoperabilidad con GRI pero sin ampliación de datapoints obligatorios.",
+        note: "Consta como prioridad de interoperabilidad con GRI para identificar impactos materiales, pero sin ampliación de datapoints obligatorios.",
       },
       {
         name: "Términos temporales",
@@ -710,10 +710,10 @@ const ecovadis_ca: ReportBlock = {
     gradeLabel: "Acceptable amb matisos",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialitat de l'impacte principal",
         status: "groc",
         label: "Esmentat",
-        note: "Reconeixement de reporting Scope 3 via GRI però no es quantifica per a pimes sense capacitat de mesurar.",
+        note: "Reconeixement d'impactes materials a les 4 àrees (Environment, Labor, Ethics, Procurement) però sense ponderació sectorial específica per a pimes.",
       },
       {
         name: "Termes temporals",
@@ -824,10 +824,10 @@ const ecovadis_es: ReportBlock = {
     gradeLabel: "Aceptable con matices",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialidad del impacto principal",
         status: "groc",
         label: "Mencionado",
-        note: "Reconocimiento de reporting Scope 3 vía GRI pero no se cuantifica para pymes sin capacidad de medir.",
+        note: "Reconocimiento de impactos materiales en las 4 áreas (Environment, Labor, Ethics, Procurement) pero sin ponderación sectorial específica para pymes.",
       },
       {
         name: "Términos temporales",
@@ -942,10 +942,10 @@ const tnfd_ca: ReportBlock = {
     gradeLabel: "Acceptable amb matisos",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialitat de l'impacte principal",
         status: "groc",
         label: "Esmentat",
-        note: "El concepte equivalent —dependència i impacte en natura al value chain— és recomanat però opcional.",
+        note: "El concepte clau —dependència i impacte en natura al value chain— és recomanat però opcional. La materialitat és sectorial però no exigida.",
       },
       {
         name: "Termes temporals",
@@ -1056,10 +1056,10 @@ const tnfd_es: ReportBlock = {
     gradeLabel: "Aceptable con matices",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialidad del impacto principal",
         status: "groc",
         label: "Mencionado",
-        note: "El concepto equivalente —dependencia e impacto en naturaleza en value chain— es recomendado pero opcional.",
+        note: "El concepto clave —dependencia e impacto en naturaleza en value chain— es recomendado pero opcional. La materialidad es sectorial pero no exigida.",
       },
       {
         name: "Términos temporales",
@@ -1174,10 +1174,10 @@ const bcorp_ca: ReportBlock = {
     gradeLabel: "Rigorós",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialitat de l'impacte principal",
         status: "verd",
         label: "Quantificat",
-        note: "El nou Environment standard exigeix quantificació Scope 3 categories 1 i 11 per a totes les B Corps.",
+        note: "El nou Environment standard exigeix quantificació d'impactes materials per als 5 pilars BIA (Governance, Workers, Community, Environment, Customers) per a totes les B Corps.",
       },
       {
         name: "Termes temporals",
@@ -1288,10 +1288,10 @@ const bcorp_es: ReportBlock = {
     gradeLabel: "Riguroso",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialidad del impacto principal",
         status: "verd",
         label: "Cuantificado",
-        note: "El nuevo Environment standard exige cuantificación Scope 3 categorías 1 y 11 para todas las B Corps.",
+        note: "El nuevo Environment standard exige cuantificación de impactos materiales para los 5 pilares BIA (Governance, Workers, Community, Environment, Customers) para todas las B Corps.",
       },
       {
         name: "Términos temporales",
@@ -1406,10 +1406,10 @@ const csddd_ca: ReportBlock = {
     gradeLabel: "Feble metodològicament",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialitat de l'impacte principal",
         status: "groc",
         label: "Esmentat",
-        note: "S'estén la due diligence als socis comercials però amb thresholds d'empleats i volum més alts que limiten cobertura real.",
+        note: "S'estén la due diligence als socis comercials per identificar impactes materials en drets humans, però amb thresholds d'empleats i volum més alts que limiten cobertura real.",
       },
       {
         name: "Termes temporals",
@@ -1520,10 +1520,10 @@ const csddd_es: ReportBlock = {
     gradeLabel: "Débil metodológicamente",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialidad del impacto principal",
         status: "groc",
         label: "Mencionado",
-        note: "Se extiende la due diligence a socios comerciales pero con thresholds de empleados y volumen más altos que limitan la cobertura real.",
+        note: "Se extiende la due diligence a socios comerciales para identificar impactos materiales en derechos humanos, pero con thresholds de empleados y volumen más altos que limitan la cobertura real.",
       },
       {
         name: "Términos temporales",
@@ -1638,10 +1638,10 @@ const iea_ca: ReportBlock = {
     gradeLabel: "Rigorós",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialitat de l'impacte principal",
         status: "verd",
         label: "Quantificat",
-        note: "Anàlisi completa d'emissions per font primària, regió i sector, amb descomposició fins a nivell subregional.",
+        note: "Anàlisi completa d'emissions per font primària, regió i sector, amb descomposició fins a nivell subregional. Materialitat energètica ben coberta.",
       },
       {
         name: "Termes temporals",
@@ -1752,10 +1752,10 @@ const iea_es: ReportBlock = {
     gradeLabel: "Riguroso",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialidad del impacto principal",
         status: "verd",
         label: "Cuantificado",
-        note: "Análisis completo de emisiones por fuente primaria, región y sector, con descomposición hasta nivel subregional.",
+        note: "Análisis completo de emisiones por fuente primaria, región y sector, con descomposición hasta nivel subregional. Materialidad energética bien cubierta.",
       },
       {
         name: "Términos temporales",
@@ -1870,10 +1870,10 @@ const euTaxonomy_ca: ReportBlock = {
     gradeLabel: "Acceptable amb matisos",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialitat de l'impacte principal",
         status: "groc",
         label: "Esmentat",
-        note: "Es manté l'enfocament en activitatsTaxonomia però es redueix el nombre de criteris de no-fortament-perjudicial (DNSH).",
+        note: "Es manté l'enfocament en activitats materials per a la Taxonomia (contribució substancial + DNSH) però es redueix el nombre de criteris de no-fortament-perjudicial.",
       },
       {
         name: "Termes temporals",
@@ -1984,10 +1984,10 @@ const euTaxonomy_es: ReportBlock = {
     gradeLabel: "Aceptable con matices",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialidad del impacto principal",
         status: "groc",
         label: "Mencionado",
-        note: "Se mantiene el enfoque en actividades Taxonomía pero se reduce el número de criterios de no-fortemente-perjudicial (DNSH).",
+        note: "Se mantiene el enfoque en actividades materiales para la Taxonomía (contribución sustancial + DNSH) pero se reduce el número de criterios de no-fuertemente-perjudicial.",
       },
       {
         name: "Términos temporales",
@@ -2102,10 +2102,10 @@ const europeSDR_ca: ReportBlock = {
     gradeLabel: "Rigorós",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialitat de l'impacte principal",
         status: "verd",
         label: "Quantificat",
-        note: "Cobertura completa de 41 països europeus amb 17 ODS i 169 targets; anàlisi d'spill-over effects internacionals.",
+        note: "Cobertura completa de 41 països europeus amb 17 ODS i 169 targets; anàlisi d'spill-over effects internacionals. Materialitat social ben coberta.",
       },
       {
         name: "Termes temporals",
@@ -2216,10 +2216,10 @@ const europeSDR_es: ReportBlock = {
     gradeLabel: "Riguroso",
     indicators: [
       {
-        name: "Cobertura Scope 3",
+        name: "Materialidad del impacto principal",
         status: "verd",
         label: "Cuantificado",
-        note: "Cobertura completa de 41 países europeos con 17 ODS y 169 targets; análisis de spill-over effects internacionales.",
+        note: "Cobertura completa de 41 países europeos con 17 ODS y 169 targets; análisis de spill-over effects internacionales. Materialidad social bien cubierta.",
       },
       {
         name: "Términos temporales",

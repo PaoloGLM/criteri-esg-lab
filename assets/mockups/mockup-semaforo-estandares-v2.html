@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criteri ESG — Semáforo Metodológico v2 (mejoras Gemini)</title>
+<style>
+  :root {
+    --bg: #F5EFE6;
+    --bg-card: #FFFFFF;
+    --bg-dark: #2C1810;
+    --bg-dark-2: #3D2418;
+    --primary: #2C1810;
+    --secondary: #5C3A1E;
+    --accent: #B87333;
+    --accent-soft: #D9A574;
+    --rule: #C9B89A;
+    --text-muted: #8B7355;
+    --text-body: #5C3A1E;
+    --green: #5C8A5C;
+    --green-soft: rgba(92,138,92,0.12);
+    --orange: #C9A961;
+    --orange-soft: rgba(201,169,97,0.18);
+    --red: #A0522D;
+    --red-soft: rgba(160,82,45,0.15);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--bg);
+    color: var(--primary);
+    line-height: 1.55;
+    font-size: 16px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    background: var(--bg-dark);
+    color: var(--bg);
+    padding: 56px 0 48px;
+    border-bottom: 4px solid var(--accent);
+  }
+  header .eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  header h1 {
+    font-size: 38px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  header h1 em { font-style: italic; color: var(--accent-soft); }
+  header .subtitle {
+    font-size: 17px;
+    color: rgba(245,239,230,0.75);
+    font-style: italic;
+    max-width: 700px;
+  }
+  header .badge-gemini {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    margin-top: 16px;
+    font-weight: 700;
+  }
+
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section h2 {
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin-bottom: 8px;
+    color: var(--primary);
+  }
+  section h2 em { color: var(--accent); font-style: italic; }
+  section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 32px;
+    margin-bottom: 8px;
+    color: var(--primary);
+  }
+  section .lead {
+    color: var(--text-body);
+    font-size: 16px;
+    margin-bottom: 32px;
+    max-width: 720px;
+  }
+
+  .thesis {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-left: 6px solid var(--accent);
+    padding: 32px;
+    margin: 24px 0 40px;
+  }
+  .thesis .label {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .thesis p {
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--primary);
+    font-style: italic;
+  }
+  .thesis p strong { font-style: normal; color: var(--accent); }
+
+  .dimensions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .dimension-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    padding: 20px;
+    border-top: 3px solid var(--accent);
+  }
+  .dimension-card.highlight {
+    border-top-color: var(--green);
+    background: rgba(92,138,92,0.04);
+  }
+  .dimension-card .num {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.18em;
+    margin-bottom: 8px;
+  }
+  .dimension-card .new-tag {
+    display: inline-block;
+    background: var(--green);
+    color: white;
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    margin-left: 8px;
+    font-weight: 700;
+  }
+  .dimension-card h4 {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--primary);
+  }
+  .dimension-card .question {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .dimension-card p {
+    font-size: 13px;
+    color: var(--text-body);
+    line-height: 1.5;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+  }
+
+  .standard-block {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    margin: 24px 0;
+    overflow: hidden;
+  }
+  .standard-header {
+    background: var(--bg-dark);
+    color: var(--bg);
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .standard-header .badge {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    border: 1px solid var(--accent);
+    padding: 4px 10px;
+    font-weight: 600;
+  }
+  .standard-header h3 {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    flex: 1;
+    margin: 0;
+  }
+  .standard-header .issuer {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  .dims-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .dims-table th {
+    background: rgba(184,115,51,0.08);
+    color: var(--accent);
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 2px solid var(--accent);
+  }
+  .dims-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    font-size: 14px;
+  }
+  .dims-table tr:last-child td { border-bottom: none; }
+  .dims-table .dim-name {
+    font-weight: 600;
+    color: var(--primary);
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+  }
+  .dims-table .dim-q {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+  .dims-table .dim-desc {
+    color: var(--text-body);
+    font-family: 'Helvetica', sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .semaforo-example {
+    background: var(--bg-dark-2);
+    color: var(--bg);
+    padding: 24px 32px;
+    border-top: 1px solid var(--rule);
+  }
+  .semaforo-example .label {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .semaforo-example .grade-display {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .semaforo-example .grade-letter {
+    font-size: 72px;
+    line-height: 1;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+  }
+  .semaforo-example .grade-label {
+    font-size: 18px;
+    font-style: italic;
+    color: var(--bg);
+  }
+  .semaforo-example .score-formula {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--accent-soft);
+    margin-bottom: 20px;
+    padding: 8px 12px;
+    background: rgba(217,165,116,0.1);
+    border-left: 2px solid var(--accent);
+  }
+  .semaforo-example .indicators {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .semaforo-example .indicator-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(217,165,116,0.15);
+    align-items: center;
+  }
+  .semaforo-example .indicator-name {
+    font-size: 14px;
+    color: var(--bg);
+  }
+  .semaforo-example .indicator-status {
+    display: flex;
+    gap: 6px;
+  }
+  .semaforo-example .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    opacity: 0.3;
+  }
+  .semaforo-example .dot.active { opacity: 1; }
+  .semaforo-example .indicator-tag {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    padding: 2px 8px;
+  }
+  .dot-green { background: var(--green); }
+  .dot-orange { background: var(--orange); }
+  .dot-red { background: var(--red); }
+
+  .callout {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
+    padding: 20px 24px;
+    margin: 16px 0;
+    font-size: 14px;
+    color: var(--text-body);
+    font-family: 'Helvetica', sans-serif;
+    line-height: 1.5;
+  }
+  .callout strong { color: var(--primary); }
+  .callout.gemini {
+    border-left-color: var(--green);
+    background: rgba(92,138,92,0.05);
+  }
+
+  .argument-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin: 24px 0;
+  }
+  .argument-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    padding: 24px;
+    position: relative;
+  }
+  .argument-card .num {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-family: 'Georgia', serif;
+    font-size: 36px;
+    color: var(--accent-soft);
+    font-weight: 300;
+    line-height: 1;
+  }
+  .argument-card h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--primary);
+    padding-right: 40px;
+  }
+  .argument-card p {
+    font-size: 13px;
+    color: var(--text-body);
+    line-height: 1.55;
+    font-family: 'Helvetica', sans-serif;
+  }
+
+  .cta-final {
+    background: var(--bg-dark);
+    color: var(--bg);
+    padding: 48px 32px;
+    text-align: center;
+    margin-top: 32px;
+  }
+  .cta-final h3 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    font-style: italic;
+    letter-spacing: -0.01em;
+  }
+  .cta-final p {
+    color: rgba(245,239,230,0.75);
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 15px;
+  }
+
+  .pantone-row {
+    display: flex;
+    gap: 12px;
+    margin: 16px 0;
+    flex-wrap: wrap;
+  }
+  .pantone-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    padding: 8px 14px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+  }
+  .pantone-chip .swatch {
+    width: 18px;
+    height: 18px;
+    border-radius: 2px;
+  }
+  .pantone-chip .label { color: var(--text-body); }
+  .pantone-chip .code { color: var(--accent); font-weight: 700; }
+
+  @media (max-width: 700px) {
+    header h1 { font-size: 28px; }
+    .dims-table { font-size: 12px; }
+    .dims-table th, .dims-table td { padding: 8px; }
+    .standard-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .semaforo-example .indicator-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="eyebrow">Mockup · Semáforo Metodológico v2</div>
+    <h1>El mismo semáforo que usamos para los informes, <em>ahora aplicado a tus certificaciones</em>.</h1>
+    <p class="subtitle">Propuesta interna · Criteri ESG · Agosto 2026 · v2 con mejoras Gemini</p>
+    <div class="badge-gemini">v2 · Mejoras aplicadas: escala ponderada + dimensión 1 adaptativa</div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <h2>La tesis, en una frase</h2>
+    <div class="thesis">
+      <div class="label">Por qué tiene sentido</div>
+      <p>Una empresa certificada B Corp, evaluada por EcoVadis y monitorizada por MSCI no necesita <strong>otro rating</strong>. Necesita saber, cada vez que sale un informe relevante, <strong>si su certificación sigue siendo válida, si debe ajustarla o si está en riesgo</strong>. El semáforo responde a esa pregunta en 5 segundos.</p>
+    </div>
+
+    <p class="lead">El semáforo que ya usamos para evaluar informes institucionales (A/B/C/D según 5 dimensiones) se puede aplicar directamente a los estándares ESG. La lógica es la misma: no juzgamos si el estándar es "bueno o malo", juzgamos <strong>si es operativo para una empresa concreta en un momento concreto</strong>.</p>
+
+    <div class="callout gemini">
+      <strong>Mejoras v2 (ago 2026, tras revisión Gemini):</strong>
+      <ol style="margin: 8px 0 0 24px;">
+        <li><strong>Escala ponderada cuantitativa</strong> (verde=2, amarillo=1, rojo=0; máximo 10). Cubre las 243 combinaciones posibles sin ambigüedad.</li>
+        <li><strong>Dimensión 1 adaptativa</strong>: ya no siempre 'Scope 3'. Ahora es 'Materialidad del impacto principal' — se adapta al ámbito del informe (climático, social, governance).</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Las 6 dimensiones (comunes a los 3 estándares)</h2>
+    <p class="lead">La mejora Gemini añade una 6ª dimensión ('Materialidad del impacto principal') para corregir el sesgo ambiental del Scope 3 fijo. Las 5 originales se mantienen:</p>
+
+    <div class="dimensions-grid">
+      <div class="dimension-card highlight">
+        <div class="num">01 <span class="new-tag">Nueva</span></div>
+        <h4>Materialidad del impacto principal</h4>
+        <div class="question">¿Cubre la métrica clave de su ámbito (no solo climático)?</div>
+        <p><strong>Informe climático</strong> → exigimos Scope 3 (70-90% de la huella). <strong>Informe social</strong> → exigimos dato de derechos humanos o brecha salarial. <strong>Informe de gobernanza</strong> → exigimos composición del board y política de remuneración. La métrica clave depende del ámbito.</p>
+      </div>
+      <div class="dimension-card">
+        <div class="num">02</div>
+        <h4>Cobertura material</h4>
+        <div class="question">¿El estándar cubre los temas que importan a tu sector?</div>
+        <p>B Corp evalúa 5 pilares; EcoVadis 4 áreas; MSCI 10 temas. Si tu sector tiene impacto en biodiversidad y tu estándar no la cubre, hay un hueco material.</p>
+      </div>
+      <div class="dimension-card">
+        <div class="num">03</div>
+        <h4>Profundidad metodológica</h4>
+        <div class="question">¿Los criterios son verificables o aspiracionales?</div>
+        <p>EcoVadis pide evidencia documental; B Corp tiene preguntas cuantitativas; MSCI usa datos públicos. Cuanto más verificable, más robusto el estándar.</p>
+      </div>
+      <div class="dimension-card">
+        <div class="num">04</div>
+        <h4>Actualización temporal</h4>
+        <div class="question">¿La última revisión recoge la regulación vigente?</div>
+        <p>CSDDD, CSRD, SFDR han cambiado en 2025-2026. Si el estándar no se ha actualizado, su valor operativo cae.</p>
+      </div>
+      <div class="dimension-card">
+        <div class="num">05</div>
+        <h4>Reconocimiento de mercado</h4>
+        <div class="question">¿Lo piden clientes, inversores o reguladores?</div>
+        <p>MSCI es exigido por inversores; EcoVadis por compradores corporativos; B Corp por consumidores y talento. Sin demanda, el estándar no genera valor.</p>
+      </div>
+      <div class="dimension-card">
+        <div class="num">06</div>
+        <h4>Coste-beneficio operativo</h4>
+        <div class="question">¿El esfuerzo de mantenerlo compensa vs. el valor que aporta?</div>
+        <p>Una medalla EcoVadis Gold cuesta 5-15k€/año + 200h internas. Si no genera negocio diferencial, no es sostenible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Los colores del semáforo</h2>
+    <p class="lead">Mismos Pantone que usamos en la web, para coherencia visual:</p>
+    <div class="pantone-row">
+      <div class="pantone-chip">
+        <div class="swatch" style="background: #5C8A5C;"></div>
+        <span class="label">A · Robusto fuerte</span>
+        <span class="code">#5C8A5C · PMS 7743 C</span>
+      </div>
+      <div class="pantone-chip">
+        <div class="swatch" style="background: #C9A961;"></div>
+        <span class="label">B / C · Aceptable / Débil</span>
+        <span class="code">#C9A961 · PMS 7505 C</span>
+      </div>
+      <div class="pantone-chip">
+        <div class="swatch" style="background: #A0522D;"></div>
+        <span class="label">D · Insuficiente</span>
+        <span class="code">#A0522D · PMS 7522 C</span>
+      </div>
+    </div>
+
+    <h3>Escala ponderada (mejora Gemini · ago 2026)</h3>
+    <p class="lead">Cada indicador puntúa: <strong>verde = 2, amarillo = 1, rojo = 0</strong>. Con 6 indicadores, máximo = 12 puntos. La nota se calcula automáticamente:</p>
+
+    <table class="dims-table" style="margin: 16px 0;">
+      <thead>
+        <tr>
+          <th>Nota</th>
+          <th>Puntos</th>
+          <th>Combinaciones válidas (con 6 indicadores)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="dim-name" style="color: #5C8A5C;">A · Robusto fuerte</td>
+          <td class="dim-q">11-12</td>
+          <td class="dim-desc">6 verdes (12) · 5 verdes + 1 amarillo (11)</td>
+        </tr>
+        <tr>
+          <td class="dim-name" style="color: #C9A961;">B · Robusto</td>
+          <td class="dim-q">9-10</td>
+          <td class="dim-desc">5V+1R · 4V+2G · 4V+1G+1R · 3V+3G</td>
+        </tr>
+        <tr>
+          <td class="dim-name" style="color: #C9A961;">C · Débil</td>
+          <td class="dim-q">6-8</td>
+          <td class="dim-desc">Combinaciones con ≤1 rojo y score 6-8</td>
+        </tr>
+        <tr>
+          <td class="dim-name" style="color: #A0522D;">D · Insuficiente</td>
+          <td class="dim-q">≤5 O 2+ rojos</td>
+          <td class="dim-desc">Cualquier combinación con 2+ rojos (veto), o score ≤5</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>Regla veto:</strong> 2 o más rojos automáticamente = D, independientemente de los puntos. Razón: un estándar con 2 dimensiones críticas en rojo no es operativo, aunque las otras 4 sean verdes.
+    </div>
+
+    <div class="callout">
+      <strong>Criterio de asignación:</strong> el semáforo no evalúa la "calidad" del estándar (todos son legítimos), sino <strong>su utilidad operativa para una empresa concreta en un momento concreto</strong>. Un estándar puede ser "A" para una PIME industrial catalana y "C" para una cotizada del IBEX 35.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Caso 1 · <em>EcoVadis</em></h2>
+    <p class="lead">El rating más demandado por cadenas de suministro. 130.000+ empresas evaluadas. El semáforo evalúa si la medalla (Bronze/Platinum) refleja realmente el rendimiento ESG de la empresa.</p>
+
+    <div class="standard-block">
+      <div class="standard-header">
+        <span class="badge">Certificación</span>
+        <h3>EcoVadis · 4 áreas · 21 criterios</h3>
+        <span class="issuer">EcoVadis · París</span>
+      </div>
+
+      <table class="dims-table">
+        <thead>
+          <tr>
+            <th style="width: 22%;">Dimensión semáforo</th>
+            <th style="width: 20%;">Pregunta operativa</th>
+            <th>Qué miramos en EcoVadis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="dim-name">Materialidad del impacto principal</td>
+            <td class="dim-q">¿Métrica clave del sector cubierta?</td>
+            <td class="dim-desc">Si empresa industrial: exigimos datos de huella ambiental cuantitativos. Si servicios: exigimos métricas laborales (rotación, brecha salarial). EcoVadis cubre ambos, pero con profundidad desigual según área.</td>
+          </tr>
+          <tr>
+            <td class="dim-name">Cobertura material</td>
+            <td class="dim-q">¿Las 4 áreas cubren tu sector?</td>
+            <td class="dim-desc">Environment, Labor & Human Rights, Ethics, Sustainable Procurement. Si eres industria extractiva, la cobertura ambiental es crítica; si eres servicios, la laboral pesa más.</td>
+          </tr>
+          <tr>
+            <td class="dim-name">Profundidad metodológica</td>
+            <td class="dim-q">¿Evidencia documental o auto-reportado?</td>
+            <td class="dim-desc">EcoVadis pide documentos (políticas, KPIs, certificaciones) que valida un analista. Cuanto más verificable, más robusto. Las 21 sub-preguntas tienen peso distinto según madurez.</td>
+          </tr>
+          <tr>
+            <td class="dim-name">Actualización temporal</td>
+            <td class="dim-q">¿Incorpora CSDDD, SBTi, ESRS?</td>
+            <td class="dim-desc">Versión 2026 incluye Action Plans obligatorios para Platinum y exige SBTi targets. Si tu scorecard aún usa metodología pre-2024, está desactualizado.</td>
+          </tr>
+          <tr>
+            <td class="dim-name">Reconocimiento de mercado</td>
+            <td class="dim-q">¿Lo exigen tus clientes Tier-1?</td>
+            <td class="dim-desc">Empresas como Schneider Electric, L'Oréal, Sanofi exigen EcoVadis a proveedores. Si tu cliente principal lo pide, la medalla es de hecho obligatoria.</td>
+          </tr>
+          <tr>
+            <td class="dim-name">Coste-beneficio operativo</td>
+            <td class="dim-q">¿Genera negocio diferencial?</td>
+            <td class="dim-desc">Coste: 1.500-15.000€/año según tamaño + 100-200h internas para recopilar evidencia. Si la medalla abre 2-3 contratos nuevos al año, compensa; si no, es gasto.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="semaforo-example">
+        <div class="label">Ejemplo aplicado · Empresa industrial catalana, 250 empleados</div>
+        <div class="grade-display">
+          <span class="grade-letter" style="color: #C9A961;">B</span>
+          <span class="grade-label">Aceptable con matices · Silver Medal</span>
+        </div>
+        <div class="score-formula">Score: 2V × 2 + 3G × 1 + 1R × 0 = 7 puntos → B (9-10 = A, 7-8 = B)</div>
+        <div class="indicators">
+          <div class="indicator-row">
+            <span class="indicator-name">Materialidad del impacto principal</span>
+            <div class="indicator-status">
+              <span class="dot dot-green active"></span>
+              <span class="dot dot-orange"></span>
+              <span class="dot dot-red"></span>
+            </div>
+            <span class="indicator-tag" style="color: #5C8A5C;">Verde (2p)</span>
+          </div>
+          <div class="indicator-row">
+            <span class="indicator-name">Cobertura material</span>
+            <div class="indicator-status">
+              <span class="dot dot-green"></span>
+              <span class="dot dot-orange active"></span>
+              <span class="dot dot-red"></span>
+            </div>
+            <span class="indicator-tag" style="color: #C9A961;">Amarillo (1p)</span>
+          </div>
+          <div class="indicator-row">
+            <span class="indicator-name">Profundidad metodológica</span>
+            <div class="indicator-status">
+              <span class="dot dot-green"></span>
+              <span class="dot dot-orange active"></span>
+              <span class="dot dot-red"></span>
+            </div>
+            <span class="indicator-tag" style="color: #C9A961;">Amarillo (1p)</span>
+          </div>
+          <div class="indicator-row">
+            <span class="indicator-name">Actualización temporal</span>
+            <div class="indicator-status">
+              <span class="dot dot-green active"></span>
+              <span class="dot dot-orange"></span>
+              <span class="dot dot-red"></span>
+            </div>
+            <span class="indicator-tag" style="color: #5C8A5C;">Verde (2p)</span>
+          </div>
+          <div class="indicator-row">
+            <span class="indicator-name">Reconocimiento de mercado</span>
+            <div class="indicator-status">
+              <span class="dot dot-green"></span>
+              <span class="dot dot-orange active"></span>
+              <span class="dot dot-red"></span>
+            </div>
+            <span class="indicator-tag" style="color: #C9A961;">Amarillo (1p)</span>
+          </div>
+          <div class="indicator-row">
+            <span class="indicator-name">Coste-beneficio</span>
+            <div class="indicator-status">
+              <span class="dot dot-green active"></span>
+              <span class="dot dot-orange"></span>
+              <span class="dot dot-red"></span>
+            </div>
+            <span class="indicator-tag" style="color: #5C8A5C;">Verde (2p)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Lectura del semáforo B (7 puntos):</strong> la empresa mantiene Silver Medal, pero tres dimensiones en amarillo indican <strong>riesgo de caer a Bronze</strong> si no renueva con metodología actualizada. Recomendación: priorizar actualización documental y verificar que los clientes Tier-1 siguen exigiendo EcoVadis.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Caso 2 · <em>B Corp</em></h2>
+    <p class="lead">Certificación de empresas con propósito. 9.500+ empresas en 100 países. El semáforo evalúa si el score BIA (80-200) refleja impacto real o es optimización de cuestionario.</p>
+
+    <div class="standard-block">
+      <div class="standard-header">
+        <span class="badge">Certificación</span>
+        <h3>B Corp · 5 pilares · B Impact Assessment</h3>
+        <span class="issuer">B Lab Global · Estados Unidos</span>
+      </div>
+
+      <table class="dims-table">
+        <thead>
+          <tr>
+            <th style="width: 22%;">Dimensión semáforo</th>
+            <th style="width: 20%;">Pregunta operativa</th>
+            <th>Qué miramos en B Corp</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="dim-name">Materialidad del impacto principal</td>
+            <td class="dim-q">¿Métrica clave del sector cubierta?</td>
+            <td class="dim-desc">B Corp evalúa 5 pilares pero el peso ambiental (~20%) puede ser insuficiente para industria con impacto ambiental alto. Verificamos si el pilar correspondiente al impacto principal del sector está bien cubierto.</td>
+          </tr>
+          <tr>
+            <td class="dim-name">Cobertura material</td>
+            <td class="dim-q">¿Los 5 pilares cubren tu impacto real?</td>
+            <td class="dim-desc">Governance, Workers, Community, Environment, Customers. Si tu impacto principal es ambiental (industria), el pilar Environment pesa poco en BIA (~20%). Hueco material posible.</td>
+          </tr>
+          <tr>
+            <td class="dim-name">Profundidad metodológica</td>
+            <td class="dim-q">¿Score 80+ refleja impacto o es optimización?</td>
+            <td class="dim-desc">BIA tiene 250+ preguntas, algunas auto-reportadas sin evidencia externa. Score 80-100 puede ser "questionnaire optimization". Verificamos consistencia con reporting ESRS/GRI.</td>
+          </tr>
+          <tr>
+            <td class="dim-name">Actualización temporal</td>
+            <td class="dim-q">¿Performance Requirements V2.1 alineados con CSRD?</td>
+            <td class="dim-desc">B Lab Standards 2026 introduce performance requirements obligatorios alineados con CSRD. Empresas recertificándose en 2026-2027 deben pasar gap analysis. Riesgo de pérdida.</td>
+          </tr>
+          <tr>
+            <td class="dim-name">Reconocimiento de mercado</td>
+            <td class="dim-q">¿Diferencia vs. competidores no-B Corp?</td>
+            <td class="dim-desc">400+ empresas en España (5ª comunidad mundial). Fuerte en consumo (Danone, Nespresso), servicios profesionales y talento. Menos relevante en B2B industrial.</td>
+          </tr>
+          <tr>
+            <td class="dim-name">Coste-beneficio operativo</td>
+            <td class="dim-q">¿500-50.000€/año + modificación estatutaria?</td>
+            <td class="dim-desc">Coste según facturación + 300-500h primer ciclo + 100h recertificación. Requiere modificación estatutaria (compromiso con propósito). No reversible sin salir de B Corp.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="semaforo-example">
+        <div class="label">Ejemplo aplicado · Empresa de servicios profesionales, 80 empleados</div>
+        <div class="grade-display">
+          <span class="grade-letter" style="color: #5C8A5C;">A</span>
+          <span class="grade-label">Robusto fuerte · Score 112/200</span>
+        </div>
+        <div class="score-formula">Score: 5V × 2 + 1G × 1 + 0R × 0 = 11 puntos → A (11-12 = A)</div>
+        <div class="indicators">
+          <div class="indicator-row">
+            <span class="indicator-name">Materialidad del impacto principal</span>
+            <div class="indicator-status">
+              <span class="dot dot-green active"></span>
+              <span class="dot dot-orange"></span>
+              <span class="dot dot-red"></span>
+            </div>
+            <span class="indicator-tag" style="color: #5C8A5C;">Verde (2p)</span>
+          </div>
+          <div class="indicator-row">
+            <span class="indicator-name">Cobertura material</span>
+            <div class="indicator-status">
+              <span class="dot dot-green active"></span>
+              <span class="dot dot-orange"></span>
+              <span class="dot dot-red"></span>
+            </div>
+            <span class="indicator-tag" style="color: #5C8A5C;">Verde (2p)</span>
+          </div>
+          <div class="indicator-row">
+            <span class="indicator-name">Profundidad metodológica</span>
+            <div class="indicator-status">
+              <span class="dot dot-green active"></span>
+              <span class="dot dot-orange"></span>
+              <span class="dot dot-red"></span>
+            </div>
+            <span class="indicator-tag" style="color: #5C8A5C;">Verde (2p)</span>
+          </div>
+          <div class="indicator-row">
+            <span class="indicator-name">Actualización temporal</span>
+            <div class="indicator-status">
+              <span class="dot dot-green"></span>
+              <span class="dot dot-orange active"></span>
+              <span class="dot dot-red"></span>
+            </div>
+            <span class="indicator-tag" style="color: #C9A961;">Amarillo (1p)</span>
+          </div>
+          <div class="indicator-row">
+            <span class="indicator-name">Reconocimiento de mercado</span>
+            <div class="indicator-status">
+              <span class="dot dot-green active"></span>
+              <span class="dot dot-orange"></span>
+              <span class="dot dot-red"></span>
+            </div>
+            <span class="indicator-tag" style="color: #5C8A5C;">Verde (2p)</span>
+          </div>
+          <div class="indicator-row">
+            <span class="indicator-name">Coste-beneficio</span>
+            <div class="indicator-status">
+              <span class="dot dot-green active"></span>
+              <span class="dot dot-orange"></span>
+              <span class="dot dot-red"></span>
+            </div>
+            <span class="indicator-tag" style="color: #5C8A5C;">Verde (2p)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Lectura del semáforo A (11 puntos):</strong> score 112/200 sólido, pero el amarillo en actualización temporal indica <strong>riesgo por la transición a Performance Requirements V2.1</strong>. Recomendación: hacer gap analysis antes de la próxima recertificación (3 años) para identificar pilares que pueden perder puntos.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Caso 3 · <em>MSCI ESG</em></h2>
+    <p class="lead">Rating para inversores (AAA-CCC). Todas las cotizadas del IBEX 35 lo monitorizan. El semáforo evalúa si el rating refleja riesgos reales o es ruido metodológico.</p>
+
+    <div class="standard-block">
+      <div class="standard-header">
+        <span class="badge">Rating</span>
+        <h3>MSCI ESG · 10 temas · 35 categorías</h3>
+        <span class="issuer">MSCI Inc. · Nueva York</span>
+      </div>
+
+      <table class="dims-table">
+        <thead>
+          <tr>
+            <th style="width: 22%;">Dimensión semáforo</th>
+            <th style="width: 20%;">Pregunta operativa</th>
+            <th>Qué miramos en MSCI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="dim-name">Materialidad del impacto principal</td>
+            <td class="dim-q">¿El tema clave del sector está bien cubierto?</td>
+            <td class="dim-desc">Para utilities: exigimos Climate Change detallado. Para bancos: exigimos Financial Inclusion. MSCI tiene 10 temas materiales; verificamos que el del sector esté bien modelado.</td>
+          </tr>
+          <tr>
+            <td class="dim-name">Cobertura material</td>
+            <td class="dim-q">¿Los 10 temas capturan tu riesgo ESG real?</td>
+            <td class="dim-desc">Climate Change, Natural Capital, Pollution, Human Capital, etc. Para una cotizada energética, Climate Change pesa 40%; para un banco, Financial Inclusion. Verificamos alineación con sector.</td>
+          </tr>
+          <tr>
+            <td class="dim-name">Profundidad metodológica</td>
+            <td class="dim-q">¿Datos públicos + news screening o verificación?</td>
+            <td class="dim-desc">MSCI usa disclosure público + screening de controversias en medios. No audita. Una empresa puede tener rating AA con problemas no publicados. Verificamos consistencia con reporting ESRS.</td>
+          </tr>
+          <tr>
+            <td class="dim-name">Actualización temporal</td>
+            <td class="dim-q">¿Trimestral, integra SBTi y CSDDD?</td>
+            <td class="dim-desc">MSCI actualiza trimestral. 2026: nuevos criterios para Implied Temperature Rise (ITR). Sin SBTi verificado, penalización -1 notch en Climate. CSDDD se integra en pilar Social.</td>
+          </tr>
+          <tr>
+            <td class="dim-name">Reconocimiento de mercado</td>
+            <td class="dim-q">¿Lo usan tus inversores institucionales?</td>
+            <td class="dim-desc">BlackRock, Vanguard, Norges Bank usan MSCI para screening ESG. Rating CCC puede aumentar spread de deuda 30-50 bp. Para cotizadas, es de facto obligatorio.</td>
+          </tr>
+          <tr>
+            <td class="dim-name">Coste-beneficio operativo</td>
+            <td class="dim-q">¿Coste de capital vs. esfuerzo de mejorar rating?</td>
+            <td class="dim-desc">MSCI es gratuito para la empresa evaluada (paga el inversor). Pero mejorar rating requiere disclosure público de calidad + gestión activa de controversias. ROI directo en coste de capital.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="semaforo-example">
+        <div class="label">Ejemplo aplicado · Cotizada IBEX 35, sector utilities</div>
+        <div class="grade-display">
+          <span class="grade-letter" style="color: #A0522D;">D</span>
+          <span class="grade-label">Insuficiente · Rating BBB (rezagado)</span>
+        </div>
+        <div class="score-formula">Score: 1V × 2 + 1G × 1 + 4R × 0 = 3 puntos → D por score (≤5) Y veto por 2+ rojos (4 rojos)</div>
+        <div class="indicators">
+          <div class="indicator-row">
+            <span class="indicator-name">Materialidad del impacto principal</span>
+            <div class="indicator-status">
+              <span class="dot dot-green"></span>
+              <span class="dot dot-orange active"></span>
+              <span class="dot dot-red"></span>
+            </div>
+            <span class="indicator-tag" style="color: #C9A961;">Amarillo (1p)</span>
+          </div>
+          <div class="indicator-row">
+            <span class="indicator-name">Cobertura material</span>
+            <div class="indicator-status">
+              <span class="dot dot-green"></span>
+              <span class="dot dot-orange"></span>
+              <span class="dot dot-red active"></span>
+            </div>
+            <span class="indicator-tag" style="color: #A0522D;">Rojo (0p)</span>
+          </div>
+          <div class="indicator-row">
+            <span class="indicator-name">Profundidad metodológica</span>
+            <div class="indicator-status">
+              <span class="dot dot-green"></span>
+              <span class="dot dot-orange"></span>
+              <span class="dot dot-red active"></span>
+            </div>
+            <span class="indicator-tag" style="color: #A0522D;">Rojo (0p)</span>
+          </div>
+          <div class="indicator-row">
+            <span class="indicator-name">Actualización temporal</span>
+            <div class="indicator-status">
+              <span class="dot dot-green"></span>
+              <span class="dot dot-orange"></span>
+              <span class="dot dot-red active"></span>
+            </div>
+            <span class="indicator-tag" style="color: #A0522D;">Rojo (0p)</span>
+          </div>
+          <div class="indicator-row">
+            <span class="indicator-name">Reconocimiento de mercado</span>
+            <div class="indicator-status">
+              <span class="dot dot-green active"></span>
+              <span class="dot dot-orange"></span>
+              <span class="dot dot-red"></span>
+            </div>
+            <span class="indicator-tag" style="color: #5C8A5C;">Verde (2p)</span>
+          </div>
+          <div class="indicator-row">
+            <span class="indicator-name">Coste-beneficio</span>
+            <div class="indicator-status">
+              <span class="dot dot-green"></span>
+              <span class="dot dot-orange"></span>
+              <span class="dot dot-red active"></span>
+            </div>
+            <span class="indicator-tag" style="color: #A0522D;">Rojo (0p)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Lectura del semáforo D (3 puntos + 4 rojos):</strong> rating BBB rezagado con doble criterio D (score ≤5 y veto por 2+ rojos). <strong>Riesgo significativo de exclusión de índices ESG y aumento de coste de capital</strong>. La empresa no publica datos suficientes, no ha integrado SBTi, y el impacto financiero es directo. Acción prioritaria: mejorar disclosure público y establecer target SBTi verificado.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Por qué este semáforo es útil (5 argumentos)</h2>
+    <p class="lead">No es un rating más. Es una herramienta operativa para directores de sostenibilidad y CFOs:</p>
+
+    <div class="argument-grid">
+      <div class="argument-card">
+        <span class="num">01</span>
+        <h4>Responde en 5 segundos</h4>
+        <p>El director no tiene tiempo de leer 200 páginas de metodología. El semáforo le dice si su certificación sigue siendo válida o está en riesgo, en una sola letra y 6 indicadores.</p>
+      </div>
+      <div class="argument-card">
+        <span class="num">02</span>
+        <h4>Comparable entre estándares</h4>
+        <p>Misma escala A/B/C/D para B Corp, EcoVadis, MSCI. El director puede comparar de un vistazo qué certificación está en mejor forma y cuál requiere atención.</p>
+      </div>
+      <div class="argument-card">
+        <span class="num">03</span>
+        <h4>Se actualiza con informes</h4>
+        <p>Cada vez que Criteri ESG procesa un informe nuevo que afecta a un estándar, el semáforo se recalcula. No es estático: vive con el ecosistema regulatorio.</p>
+      </div>
+      <div class="argument-card">
+        <span class="num">04</span>
+        <h4>Justifica inversión</h4>
+        <p>Un semáforo D con 3 rojos justifica inversión inmediata. Un A con 5 verdes permite reasignar presupuesto a otras áreas. Argumento para el comité de dirección.</p>
+      </div>
+      <div class="argument-card">
+        <span class="num">05</span>
+        <h4>Diferencial vs. competencia</h4>
+        <p>Ningún competidor ofrece esto. Los ratings (MSCI, Sustainalytics) evalúan empresas. Nosotros evaluamos <strong>si el rating en sí es útil</strong>. Capa meta que no existe en el mercado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Qué apartados faltaría determinar</h2>
+    <p class="lead">Para implementar el semáforo de estándares en producción, hay que cerrar estos 6 puntos:</p>
+
+    <table class="dims-table">
+      <thead>
+        <tr>
+          <th style="width: 28%;">Apartado</th>
+          <th style="width: 32%;">Pregunta abierta</th>
+          <th>Propuesta de Criteri</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="dim-name">1. Frecuencia de actualización</td>
+          <td class="dim-q">¿Mensual, trimestral o por evento?</td>
+          <td class="dim-desc">Por evento: cuando se publica un informe nuevo que afecta al estándar, se recalcula. Más eficiente que calendario fijo.</td>
+        </tr>
+        <tr>
+          <td class="dim-name">2. Personalización por empresa</td>
+          <td class="dim-q">¿Mismo semáforo para todas las empresas o por sector/tamaño?</td>
+          <td class="dim-desc">Por sector. Una PIME industrial y una cotizada de servicios tienen contextos distintos. El usuario configura su perfil al registrarse.</td>
+        </tr>
+        <tr>
+          <td class="dim-name">3. Pesos de las 6 dimensiones</td>
+          <td class="dim-q">¿Todas valen lo mismo o hay pesos diferenciados?</td>
+          <td class="dim-desc">Pesos iguales (verde=2 para todas) para simplicidad. Si se quiere sofisticar: materialidad principal 3p, reconocimiento mercado 2,5p, resto 1,5p cada una.</td>
+        </tr>
+        <tr>
+          <td class="dim-name">4. Acceso y paywall</td>
+          <td class="dim-q">¿Gratuito, freemium o solo Premium?</td>
+          <td class="dim-desc">Freemium: semáforo actual gratuito (con login), histórico y comparativa entre estándares solo Premium. Igual que el modelo actual de informes.</td>
+        </tr>
+        <tr>
+          <td class="dim-name">5. Validación humana</td>
+          <td class="dim-q">¿100% algorítmico o con revisión editorial?</td>
+          <td class="dim-desc">Híbrido: algoritmo calcula, editor de Criteri valida antes de publicar. Igual que el flujo actual de informes (paso 4 del flux de 7 passos).</td>
+        </tr>
+        <tr>
+          <td class="dim-name">6. Integración con cross-reference</td>
+          <td class="dim-q">¿El semáforo aparece en la página del estándar y en la del informe?</td>
+          <td class="dim-desc">En ambas. En la página del estándar: semáforo agregado. En la del informe: cómo afecta ese informe específico al semáforo del estándar.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="cta-final">
+  <div class="container">
+    <h3>"El semáforo no es un juicio moral. Es operativo."</h3>
+    <p>Cada estándar que un director mantiene lleva su semáforo visible. Cuando un informe nuevo lo afecta, el semáforo se recalcula. Es la única manera de saber, en tiempo real, si la inversión en certificación sigue teniendo sentido.</p>
+  </div>
+</div>
+
+</body>
+</html>

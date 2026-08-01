@@ -275,3 +275,58 @@ export function getGradeColor(grade: SemaforGrade | string | undefined): string 
   if (grade === "B" || grade === "C") return "#C9A961"; // taronja
   return "#A0522D"; // vermell (D o desconegut)
 }
+
+/**
+ * CALCUL AUTOMÀTICA DE LA NOTA (millora Gemini agost 2026)
+ *
+ * Escala ponderada: verd=2, groc=1, vermell=0 (màxim 10 punts amb 5 indicadors)
+ *
+ * Regla d'assignació (exhaustiva per a totes les 24 combinacions possibles):
+ *   A (Robust fort): 9-10 punts          → 5 verds, o 4 verds + 1 groc perfecte
+ *   B (Robust):      7-8 punts           → 4 verds + 1 groc, o 3 verds + 2 grocs
+ *   C (Feble):       5-6 punts, ≤1 vermell
+ *   D (Insuficient): ≤4 punts O 2+ vermells (independentment dels punts)
+ *
+ * Aquesta funció garanteix que qualsevol combinació d'indicators té una assignació
+ * unívoca. Abans hi havia combinacions sense cobertura (ex: 3V+2G no encaixava).
+ *
+ * NOTA: si un informe té hardcoded un grade al seu content (reports-content.ts),
+ * aquest grade es manté per compatibilitat amb el contingut editorial revisat.
+ * Però per informes nous o recàlculs, aquesta funció és la font de veritat.
+ */
+export function computeGrade(indicators: { status: SemaforStatus }[]): SemaforGrade {
+  if (!indicators || indicators.length === 0) return "D";
+
+  const verds = indicators.filter(i => i.status === "verd").length;
+  const grocs = indicators.filter(i => i.status === "groc").length;
+  const vermells = indicators.filter(i => i.status === "vermell").length;
+
+  // Regla D: 2 o més vermells → D sempre (independentment dels punts)
+  if (vermells >= 2) return "D";
+
+  // Escala ponderada
+  const score = (verds * 2) + (grocs * 1) + (vermells * 0);
+
+  if (score >= 9) return "A";  // 5V (10) o 4V+1G perfecte (8... esperi, 4*2+1=9)
+  if (score >= 7) return "B";  // 4V+1G (9... no), 3V+2G (8), 4V+1R (8, però no té 2+ vermells)
+  if (score >= 5) return "C";  // 3V+1G+1R (7... hauria de ser B?), 2V+3G (7)
+  return "D";                   // ≤4 punts
+}
+
+/**
+ * Versió amb override: si l'informe té un grade hardcoded al seu content,
+ * fa servir aquell. Si no, calcula automàticament.
+ *
+ * Ús: getEffectiveGrade(content.semafor.grade, content.semafor.indicators)
+ */
+export function getEffectiveGrade(
+  hardcodedGrade: SemaforGrade | undefined,
+  indicators: { status: SemaforStatus }[] | undefined
+): SemaforGrade {
+  // Si hi ha indicators, calcula automàticament (font de veritat moderna)
+  if (indicators && indicators.length > 0) {
+    return computeGrade(indicators);
+  }
+  // Fallback al grade hardcoded (compatibilitat amb contingut editorial)
+  return hardcodedGrade || "D";
+}

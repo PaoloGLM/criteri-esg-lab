@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mockup · Homepage Criteri ESG — Proposta 2 · Antracita & salvia</title>
+<title>Mockup · Homepage Criteri ESG — Proposta 2 · Antracita & salvia (Newsreader + DM Sans + JetBrains Mono)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Monomakh&family=Lexend+Deca:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   /* ============ TOKENS ============ */
   :root {
@@ -19,8 +19,9 @@
     --ink-deep: #141B18;     /* derivat: seccions fosques / footer */
     --line: rgba(38, 49, 43, 0.22);
     --radius: 10px;
-    --font-display: "Monomakh", system-ui, -apple-system, sans-serif;
-    --font-body: "Lexend Deca", system-ui, -apple-system, sans-serif;
+    --font-display: "Newsreader", Georgia, serif;
+    --font-body: "DM Sans", system-ui, -apple-system, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,19 +34,25 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Tipografia curta/decorativa: títols, capçalera, labels, números, botons */
+  /* Tipografia editorial (Newsreader): títols, capçalera, textos curts */
   h1, h2, h3, h4, blockquote,
   .brand-mark, .brand-name, .brand-name em,
   .nav-links a, .nav-actions .login,
-  .eyebrow, .eyebrow-dark,
   .btn, .hero .sub, .banner,
+  .semafor .grade, .semafor .grade-label,
+  .cita .attr, .cta-final .note,
+  .foot-col a, .foot-bottom {
+    font-family: var(--font-display);
+  }
+
+  /* Tipografia tècnica (JetBrains Mono): labels, eyebrows, meta, chips */
+  .eyebrow, .eyebrow-dark,
   .tag, .paper-meta,
-  .semafor .label, .semafor .grade, .semafor .grade-label, .dim .dname,
+  .semafor .label, .dim .dname,
   .bloc-num, .dada .n, .quote-box .qlabel,
   .accio .cnum, .chip, .paper-foot a,
-  .cita .attr, .cta-final .note,
-  .foot-col h5, .foot-col a, .foot-bottom {
-    font-family: var(--font-display);
+  .foot-col h5 {
+    font-family: var(--font-mono);
   }
 
   .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }

@@ -12,7 +12,7 @@
   :root {
     --ink: #26312B;          /* text principal */
     --accent: #5E8772;       /* accent mig */
-    --highlight: #AAC9B6;    /* highlights + logo */
+    --highlight: #C2A83C;    /* highlights + logo (mostassa suau) */
     --bg: #F2F5F1;           /* fons */
     --bg-paper: #FFFFFF;
     --ink-soft: #4A5F53;     /* derivat: text secundari */
@@ -124,8 +124,8 @@
   .hero .btn-line { background: transparent; color: var(--bg); padding: 14px 6px; border-bottom: 2px solid var(--highlight); border-radius: 0; font-weight: 400; }
   .banner {
     margin-top: 40px; padding: 14px 26px;
-    background: rgba(170, 201, 182, 0.12);
-    border: 1px solid rgba(170, 201, 182, 0.45);
+    background: rgba(194, 168, 60, 0.12);
+    border: 1px solid rgba(194, 168, 60, 0.45);
     border-radius: var(--radius);
     font-size: 0.95rem; font-weight: 400; color: var(--bg);
   }
@@ -214,9 +214,9 @@
   .dim .dname { font-size: 0.8rem; font-weight: 400; }
   .dots { display: flex; gap: 7px; }
   .dot { width: 11px; height: 11px; border-radius: 50%; }
-  .dot.g { background: var(--highlight); }
-  .dot.y { background: var(--accent); }
-  .dot.r { background: var(--ink); }
+  .dot.g { background: var(--accent); }          /* verd: salvia */
+  .dot.y { background: var(--highlight); }       /* groc: mostassa */
+  .dot.r { background: #A0522D; }                /* vermell: terrós */
   .dot.off { opacity: 0.18; }
 
   .paper-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); }
@@ -256,7 +256,7 @@
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip {
     font-size: 0.68rem; font-weight: 400; letter-spacing: 0.04em;
-    background: var(--bg); border: 1px solid var(--highlight); color: var(--ink);
+    background: var(--bg); border: 1px solid var(--accent); color: var(--ink);
     padding: 5px 12px; border-radius: 20px;
   }
   .chip span { color: var(--accent); font-weight: 400; margin-left: 6px; }

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criteri ESG — Mockup amb Newsreader + DM Sans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400;1,9..40,500&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,300;1,6..72,400;1,6..72,500;1,6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5EFE6;
+    --fg: #2C1810;
+    --coure: #B87333;
+    --coure-clar: #D9A574;
+    --coure-fosc: #8A5526;
+    --sorra: #C9B89A;
+    --targeta: #FFFFFF;
+    --terra-suau: #EFE7DA;
+    --hero-bg: #2C1810;
+    --hero-text: #F5EFE6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 32px; background: var(--bg); border-bottom: 1px solid var(--sorra);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .logo {
+    font-family: 'Newsreader', serif; font-size: 24px; font-weight: 600;
+    color: var(--fg); letter-spacing: -0.02em;
+  }
+  .logo .dot { color: var(--coure); }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+    color: var(--fg); text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--coure); }
+  .btn-register {
+    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+    background: var(--coure); color: #fff; border: none; padding: 10px 20px;
+    border-radius: 6px; cursor: pointer; transition: background 0.2s;
+  }
+  .btn-register:hover { background: var(--coure-fosc); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--hero-bg); color: var(--hero-text);
+    text-align: center; padding: 80px 24px 100px;
+    display: flex; flex-direction: column; align-items: center;
+    position: relative;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 1px; background: var(--coure);
+  }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.3em;
+    color: var(--coure-clar); border: 1px solid rgba(217, 165, 116, 0.4);
+    padding: 8px 16px; margin-bottom: 32px;
+  }
+  .hero h1 {
+    font-family: 'Newsreader', serif; font-weight: 400;
+    font-size: clamp(3rem, 8.6vw, 7.75rem); line-height: 0.98;
+    letter-spacing: -0.035em; max-width: 1100px; margin-bottom: 32px;
+  }
+  .hero h1 em {
+    font-style: italic; font-weight: 500; color: var(--coure-clar);
+  }
+  .hero-subtitle {
+    font-family: 'Newsreader', serif; font-style: italic; font-weight: 400;
+    font-size: clamp(1.125rem, 2vw, 1.5rem); line-height: 1.4;
+    color: rgba(245, 239, 230, 0.7); max-width: 700px; margin-bottom: 40px;
+  }
+  .hero-ctas {
+    display: flex; gap: 20px; align-items: center; flex-wrap: wrap; justify-content: center;
+  }
+  .btn-primary {
+    font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
+    background: var(--coure); color: #fff; border: none;
+    padding: 14px 32px; border-radius: 8px; cursor: pointer;
+    display: flex; align-items: center; gap: 8px; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--coure-fosc); }
+  .btn-ghost {
+    font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500;
+    color: rgba(245, 239, 230, 0.85); background: none; border: none;
+    cursor: pointer; text-decoration: underline;
+    text-underline-offset: 4px; text-decoration-color: var(--coure);
+  }
+  .btn-ghost:hover { color: var(--coure-clar); }
+
+  /* ── MID SECTIONS ── */
+  .mid-sections {
+    padding: 80px 32px; max-width: 1100px; margin: 0 auto;
+  }
+  .card-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px; margin-top: 40px;
+  }
+  .card {
+    background: var(--targeta); border-radius: 10px; padding: 36px 32px;
+    border: 1px solid var(--sorra); transition: box-shadow 0.2s;
+  }
+  .card:hover { box-shadow: 0 4px 20px rgba(44, 24, 16, 0.08); }
+  .card-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600;
+    color: var(--coure); margin-bottom: 12px; letter-spacing: 0.05em;
+  }
+  .card h3 {
+    font-family: 'Newsreader', serif; font-size: 22px; font-weight: 600;
+    color: var(--fg); margin-bottom: 10px; letter-spacing: -0.01em;
+  }
+  .card p {
+    font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.6;
+    color: var(--muted-fg, #6B5B4E);
+  }
+  .section-title {
+    font-family: 'Newsreader', serif; font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500; letter-spacing: -0.025em; margin-bottom: 12px;
+  }
+  .section-subtitle {
+    font-family: 'DM Sans', sans-serif; font-size: 17px; color: #6B5B4E;
+    max-width: 600px;
+  }
+
+  /* ── REPORTS PREVIEW ── */
+  .reports-section {
+    padding: 80px 32px; background: var(--terra-suau);
+  }
+  .reports-section .section-title { color: var(--fg); }
+  .reports-list {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px; max-width: 1100px; margin: 40px auto 0;
+  }
+  .report-card {
+    background: var(--targeta); border-radius: 10px; padding: 32px 28px;
+    border: 1px solid var(--sorra); cursor: pointer; transition: box-shadow 0.2s;
+  }
+  .report-card:hover { box-shadow: 0 4px 20px rgba(44, 24, 16, 0.08); }
+  .report-date {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
+    color: var(--coure); text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .report-card h3 {
+    font-family: 'Newsreader', serif; font-size: 20px; font-weight: 600;
+    color: var(--fg); margin-bottom: 8px; letter-spacing: -0.01em;
+  }
+  .report-card p {
+    font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.5; color: #6B5B4E;
+  }
+  .report-meta {
+    display: flex; gap: 16px; margin-top: 16px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--coure-fosc);
+  }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    padding: 80px 32px; text-align: center;
+    background: var(--coure); color: #fff;
+  }
+  .final-cta h2 {
+    font-family: 'Newsreader', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 500; letter-spacing: -0.02em; margin-bottom: 16px;
+  }
+  .final-cta p {
+    font-family: 'DM Sans', sans-serif; font-size: 17px; opacity: 0.9;
+    max-width: 500px; margin: 0 auto 28px; line-height: 1.5;
+  }
+  .final-cta .btn-primary {
+    background: var(--fg); color: var(--coure); font-weight: 600;
+  }
+  .final-cta .btn-primary:hover { background: #1a0f0a; }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    padding: 48px 32px; border-top: 1px solid var(--sorra);
+    background: var(--terra-suau); text-align: center;
+  }
+  .site-footer p {
+    font-family: 'DM Sans', sans-serif; font-size: 13px; color: #6B5B4E;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hero { padding: 60px 16px 80px; }
+    .mid-sections, .reports-section, .final-cta { padding: 48px 16px; }
+    .card-grid, .reports-list { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo">Criteri<span class="dot">.</span></div>
+  <nav class="nav-links">
+    <a href="#">Què fem</a>
+    <a href="#">Informes</a>
+    <a href="#">Estàndards ESG</a>
+    <a href="#">Qui som</a>
+    <a href="#">Preus</a>
+    <a href="#">Contacte</a>
+    <button class="btn-register">Registra't gratis</button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">NOVETATS SETMANALS · CONTEXT REAL</div>
+  <h1>
+    <span style="display:block;">No és la informació.</span>
+    <span style="display:block;"><em>És el criteri.</em></span>
+  </h1>
+  <p class="hero-subtitle">
+    Cada setmana surten uns 10 informes institucionals sobre sostenibilitat.
+    Tots importants. Tots llargs. Ningú té temps.
+    La solució no és llegir-los tots: és conèixer les dades rellevants.
+  </p>
+  <div class="hero-ctas">
+    <button class="btn-primary">
+      Prova gratis 7 dies <span style="font-size:18px;">→</span>
+    </button>
+    <button class="btn-ghost">Veure un informe real →</button>
+  </div>
+</section>
+
+<!-- MID SECTIONS -->
+<section class="mid-sections">
+  <h2 class="section-title">5 minuts per obtenir un criteri clar</h2>
+  <p class="section-subtitle">
+    Transformem informes institucionals de 50+ pàgines en resums accionables de 1.100 paraules.
+  </p>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-num">01 — SEMÀFOR</div>
+      <h3>Semàfor Metodològic</h3>
+      <p>5 indicadors visuals (Scope 3, terminis, fonts, granularitat, verificació) amb nota A-D. Cap competidor ho fa.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">02 — RESUM</div>
+      <h3>Resum Executiu precís</h3>
+      <p>~300 paraules en llenguatge planer. Llegir-ho no et portarà més de 2 minuts.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">03 — ACCIONS</div>
+      <h3>Accions Recomanades</h3>
+      <p>3-5 accions concretes amb esforç i impacte calibrats. Passa de la lectura a l'acció en 1 minut.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">04 — CROSS-REF</div>
+      <h3>Cross-Reference amb certificacions</h3>
+      <p>Mapeig amb EcoVadis, B Corp, MSCI i GRI. Saps exactament quin criteri afecta la teva certificació.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">05 — ÈTICA</div>
+      <h3>Més enllà del Checkbox</h3>
+      <p>Anàlisi ètica des de 5 criteris (dignitat, justícia, sostenibilitat, co-decisió, arrelament).</p>
+    </div>
+    <div class="card">
+      <div class="card-num">06 — CONNEXIONS</div>
+      <h3>Connexions entre informes</h3>
+      <p>Relacionem cada informe amb d'altres publicats i amb l'actualitat. Visió transversal que cap butlletí ofereix.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REPORTS PREVIEW -->
+<section class="reports-section">
+  <h2 class="section-title">Últims informes processats</h2>
+  <div class="reports-list">
+    <div class="report-card">
+      <div class="report-date">CMNV · Juny 2026</div>
+      <h3>Boletín trimestral — Plan de actividades 2026</h3>
+      <p>La CNMV actualitza el seu pla d'activitats. Supervisió de finances sostenibles i reporting CSRD.</p>
+      <div class="report-meta">
+        <span>⏱ 5 min</span><span>📊 7 blocs</span><span>🔗 EcoVadis</span>
+      </div>
+    </div>
+    <div class="report-card">
+      <div class="report-date">UNEP FI · Juny 2026</div>
+      <h3>Strategy 2026-2029 — Principis de Banca Responsable</h3>
+      <p>La UNEP FI publica l'estratègia per als propers 4 anys amb 6 prioritats climàtiques.</p>
+      <div class="report-meta">
+        <span>⏱ 5 min</span><span>📊 7 blocs</span><span>🔗 MSCI</span>
+      </div>
+    </div>
+    <div class="report-card">
+      <div class="report-date">UE · Juliol 2026</div>
+      <h3>Reglament Delegat de la Taxonomia — Clima i biodiversitat</h3>
+      <p>Nous criteris tècnics per a activitats alineades amb la taxonomia europea.</p>
+      <div class="report-meta">
+        <span>⏱ 5 min</span><span>📊 7 blocs</span><span>🔗 GRI</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Comença amb 2 mesos gratis</h2>
+  <p>Prova Criteri ESG durant setembre i octubre sense cap compromís. Premium complet, sense targeta.</p>
+  <button class="btn-primary">Registra't gratis ara →</button>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>© 2026 Criteri ESG · Barcelona · <span style="font-family:'Newsreader',serif;font-weight:600;">Criteri.</span></p>
+</footer>
+
+</body>
+</html>

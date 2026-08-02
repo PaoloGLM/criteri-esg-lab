@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criteri ESG — Mockup fidel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400;1,9..40,500&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,200;1,6..72,300;1,6..72,400;1,6..72,500;1,6..72,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: #F5EFE6; color: #2C1810; -webkit-font-smoothing: antialiased; }
+  /* ── HEADER ── */
+  .site-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 32px; background: #F5EFE6; border-bottom: 1px solid #C9B89A; position: sticky; top: 0; z-index: 50; }
+  .logo { font-family: 'Newsreader', serif; font-size: 24px; font-weight: 600; color: #2C1810; letter-spacing: -0.02em; }
+  .logo-dot { color: #B87333; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: #2C1810; text-decoration: none; }
+  .nav-links a:hover { color: #B87333; }
+  .btn-nav { font-size: 13px; font-weight: 600; background: #B87333; color: #fff; border: none; padding: 8px 18px; border-radius: 6px; cursor: pointer; }
+  .btn-nav:hover { background: #8A5526; }
+
+  /* ── HERO ── */
+  .hero { background: #2C1810; color: #F5EFE6; text-align: center; padding: 96px 24px 110px; display: flex; flex-direction: column; align-items: center; position: relative; }
+  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: #B87333; }
+  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3em; color: #D9A574; border: 1px solid rgba(217, 165, 116, 0.4); padding: 8px 16px; margin-bottom: 36px; }
+  .hero h1 { font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(3rem, 8.6vw, 7.75rem); line-height: 0.98; letter-spacing: -0.035em; max-width: 1200px; margin-bottom: 32px; }
+  .hero h1 em { font-style: italic; font-weight: 500; color: #D9A574; }
+  .hero-subtitle { font-family: 'Newsreader', serif; font-style: italic; font-weight: 400; font-size: clamp(1.125rem, 2vw, 1.5rem); line-height: 1.4; color: rgba(245, 239, 230, 0.7); max-width: 760px; margin-bottom: 44px; }
+  .hero-banner { margin-bottom: 20px; font-size: 14px; color: rgba(245, 239, 230, 0.8); max-width: 520px; font-style: italic; }
+  .hero-ctas { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; justify-content: center; }
+  .btn-primary { font-size: 15px; font-weight: 600; background: #B87333; color: #fff; border: none; padding: 14px 34px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+  .btn-primary:hover { background: #8A5526; }
+  .btn-ghost { font-size: 15px; font-weight: 500; color: rgba(245, 239, 230, 0.85); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 5px; text-decoration-color: #B87333; }
+  .btn-ghost:hover { color: #D9A574; }
+
+  /* ── MANIFEST ── */
+  .manifest { background: #F5EFE6; color: #2C1810; text-align: center; padding: 100px 24px; border-top: 3px solid #2C1810; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+  .eyebrow-bar { display: flex; align-items: center; gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; text-transform: uppercase; color: #8A5526; letter-spacing: 0.22em; }
+  .eyebrow-bar .bar { width: 24px; height: 2px; background: #B87333; }
+  .manifest h2 { font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.15; letter-spacing: -0.02em; max-width: 1000px; }
+  .manifest h2 em { font-style: italic; font-weight: 500; color: #5C3A1E; }
+  .manifest-body { font-family: 'Newsreader', serif; font-style: italic; font-weight: 400; font-size: clamp(1.0625rem, 1.4vw, 1.1875rem); line-height: 1.6; color: #5C3A1E; max-width: 720px; }
+
+  /* ── 3 TESES ── */
+  .theses { background: #F5EFE6; border-top: 3px solid #2C1810; padding: 100px 24px; }
+  .theses-inner { max-width: 1200px; margin: 0 auto; }
+  .theses-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; text-transform: uppercase; color: #8A5526; letter-spacing: 0.22em; }
+  .theses h2 { font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(2rem, 3vw, 2.5rem); line-height: 1.1; letter-spacing: -0.018em; max-width: 800px; margin-bottom: 56px; }
+  .theses h2 em { font-style: italic; font-weight: 400; color: #5C3A1E; }
+  .theses-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .thesis-card { padding: 0 40px; display: flex; flex-direction: column; gap: 20px; border-right: 1px solid rgba(44, 24, 16, 0.15); }
+  .thesis-card:last-child { border-right: none; }
+  .thesis-num { font-family: 'Newsreader', serif; font-weight: 200; color: #B87333; font-size: clamp(4rem, 7vw, 6rem); line-height: 0.9; letter-spacing: -0.04em; }
+  .thesis-verb { font-family: 'Newsreader', serif; font-weight: 500; color: #2C1810; font-size: clamp(1.5rem, 2.4vw, 2rem); letter-spacing: -0.015em; }
+  .thesis-desc { color: #5C3A1E; font-size: 0.875rem; line-height: 1.55; }
+
+  /* ── INFORME PREVIEW ── */
+  .report-preview { background: #2C1810; border-top: 3px solid #B87333; padding: 100px 24px; color: #F5EFE6; }
+  .report-preview-inner { max-width: 1200px; margin: 0 auto; }
+  .report-preview h2 { font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(2rem, 3.4vw, 2.75rem); line-height: 1.1; letter-spacing: -0.018em; max-width: 1000px; margin-top: 0; margin-bottom: 32px; }
+  .report-preview h2 em { font-style: italic; font-weight: 400; color: #D9A574; }
+  .report-card { background: #F5EFE6; color: #2C1810; border: 1px solid #C9B89A; overflow: hidden; }
+  /* Header info */
+  .report-header { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; padding: 24px 32px; border-bottom: 1px solid #2C1810; }
+  .report-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: #5C3A1E; background: rgba(184, 115, 51, 0.12); padding: 4px 10px; display: inline-block; margin-bottom: 8px; }
+  .report-header h3 { font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.15; letter-spacing: -0.015em; max-width: 700px; }
+  .report-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: #8B7355; text-align: right; line-height: 1.7; }
+  /* Bloc 0: Semàfor (dark) */
+  .bloc0 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding: 24px 32px; background: #2C1810; color: #F5EFE6; }
+  .bloc0-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.22em; color: #D9A574; margin-bottom: 12px; }
+  .bloc0-grade-row { display: flex; align-items: baseline; gap: 16px; }
+  .bloc0-grade { font-family: 'Newsreader', serif; font-weight: 500; color: #B87333; font-size: clamp(4rem, 6vw, 5rem); line-height: 1; letter-spacing: -0.04em; }
+  .bloc0-grade-label { font-family: 'Newsreader', serif; font-style: italic; font-weight: 400; font-size: 1.375rem; }
+  .bloc0-dims { display: flex; flex-direction: column; gap: 8px; }
+  .bloc0-dim { display: grid; grid-template-columns: 100px 1fr; align-items: center; gap: 12px; }
+  .bloc0-dim-label { font-family: 'Newsreader', serif; font-weight: 500; font-size: 0.8125rem; letter-spacing: -0.005em; }
+  .bloc0-dim-dots { display: flex; gap: 6px; }
+  .bloc0-dot { width: 10px; height: 10px; border-radius: 50%; }
+  /* Body 2 columnes */
+  .bloc-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); }
+  .bloc-col { display: flex; flex-direction: column; }
+  .bloc-col-left { border-right: 1px solid #C9B89A; }
+  .bloc-col-right { background: rgba(217, 165, 116, 0.04); }
+  .bloc { padding: 24px 32px; border-bottom: 1px solid #C9B89A; }
+  .bloc-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: #B87333; margin-bottom: 6px; }
+  .bloc-title { font-family: 'Newsreader', serif; font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.008em; margin-bottom: 16px; color: #2C1810; }
+  .bloc-text { font-size: 0.75rem; line-height: 1.55; color: #5C3A1E; }
+  .bloc-text strong { color: #5C3A1E; font-weight: 600; }
+  .bloc-text em { font-family: 'Newsreader', serif; font-style: italic; }
+  /* Dades clau */
+  .dada-row { display: grid; grid-template-columns: 24px 1fr; align-items: baseline; gap: 8px; padding: 6px 0; border-bottom: 1px dotted rgba(139, 115, 85, 0.3); }
+  .dada-row:last-child { border-bottom: none; }
+  .dada-num { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 600; color: #B87333; }
+  .dada-text { font-size: 0.72rem; line-height: 1.4; }
+  .dada-text strong { color: #5C3A1E; font-weight: 600; }
+  /* Més enllà del Checkbox */
+  .checkbox-box { padding: 12px 16px; background: #2C1810; color: #F5EFE6; border-left: 3px solid #B87333; margin-top: 12px; }
+  .checkbox-box-label { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: #D9A574; margin-bottom: 6px; }
+  .checkbox-box-text { font-family: 'Newsreader', serif; font-style: italic; font-size: 0.75rem; line-height: 1.4; color: rgba(245, 239, 230, 0.85); }
+  /* Accions (fons coure) */
+  .accions-box { padding: 24px 32px; background: rgba(184, 115, 51, 0.06); border-bottom: 1px solid #C9B89A; }
+  .accio-row { display: grid; grid-template-columns: 20px 1fr; align-items: baseline; gap: 12px; margin-bottom: 10px; }
+  .accio-num { width: 20px; height: 20px; border-radius: 50%; background: #B87333; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .accio-text { font-size: 0.75rem; line-height: 1.45; font-weight: 500; color: #2C1810; }
+  /* Cross-reference xips */
+  .xref-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .xref-chip { background: #fff; border: 1px solid #B87333; color: #5C3A1E; padding: 4px 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.05em; }
+  .xref-impact { color: #B87333; font-weight: 500; margin-left: 6px; }
+  /* Footer informe */
+  .report-footer { padding: 24px 32px; background: #2C1810; color: #F5EFE6; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; border-top: 1px solid #B87333; }
+  .report-footer-text { font-size: 0.75rem; color: rgba(245, 239, 230, 0.7); max-width: 500px; }
+  .report-footer-cta { font-size: 13px; font-weight: 600; color: #B87333; background: none; border: 1px solid #B87333; padding: 10px 20px; cursor: pointer; }
+
+  /* ── FINAL CTA ── */
+  .final-cta { background: #B87333; color: #fff; text-align: center; padding: 80px 24px; }
+  .final-cta-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.22em; color: rgba(255,255,255,0.7); margin-bottom: 16px; display: flex; align-items: center; justify-content: center; gap: 12px; }
+  .final-cta-eyebrow .bar { width: 24px; height: 2px; background: rgba(255,255,255,0.5); }
+  .final-cta h2 { font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(1.8rem, 3.5vw, 2.8rem); letter-spacing: -0.02em; margin-bottom: 12px; }
+  .final-cta h2 em { font-style: italic; font-weight: 400; }
+  .final-cta-note { font-size: 15px; opacity: 0.85; margin-bottom: 24px; }
+  .final-cta .btn-primary { background: #2C1810; color: #B87333; }
+  .final-cta .btn-primary:hover { background: #1a0f0a; }
+
+  /* ── FOOTER ── */
+  .site-footer { background: #2C1810; color: #F5EFE6; padding: 48px 32px; text-align: center; border-top: 1px solid #B87333; }
+  .site-footer p { font-size: 13px; opacity: 0.6; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .bloc-body { grid-template-columns: 1fr; }
+    .bloc-col-left { border-right: none; }
+    .bloc0, .report-header { grid-template-columns: 1fr; }
+    .report-meta { text-align: left; }
+    .theses-grid { grid-template-columns: 1fr; }
+    .thesis-card { border-right: none; border-bottom: 1px solid rgba(44,24,16,0.1); padding: 32px 16px; }
+    .thesis-card:last-child { border-bottom: none; }
+    .hero, .manifest, .theses, .report-preview, .final-cta { padding: 64px 16px; }
+    .hero-ctas { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo">Criteri<span class="logo-dot">.</span></div>
+  <nav class="nav-links">
+    <a href="#">Qué hacemos</a><a href="#">Informes</a><a href="#">Estándares ESG</a><a href="#">Quiénes somos</a><a href="#">Precios</a>
+    <button class="btn-nav">Regístrate gratis</button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">CRITERI ESG · SEPTIEMBRE 2026</div>
+  <h1>
+    <span style="display:block;">No es la información.</span>
+    <span style="display:block;"><em>Es el criterio.</em></span>
+  </h1>
+  <p class="hero-subtitle">Una nueva forma de leer ESG. Sin ruido, sin prisa, sin greenwashing.</p>
+  <p class="hero-banner">Durante los dos primeros meses de Criteri ESG disfrutarás de las ventajas Premium sin coste.</p>
+  <div class="hero-ctas">
+    <button class="btn-primary">Prueba gratis 7 días <span style="font-size:17px;">→</span></button>
+    <button class="btn-ghost">Ver un informe real →</button>
+  </div>
+</section>
+
+<!-- MANIFEST -->
+<section class="manifest">
+  <div class="eyebrow-bar"><span class="bar"></span>LO QUE CREEMOS<span class="bar"></span></div>
+  <h2>El problema del ESG no es <em>la falta de información</em>. Es la falta de tiempo para procesarla y de criterio para decidir qué importa.</h2>
+  <p class="manifest-body">Cada semana salen unos 10 informes institucionales sobre sostenibilidad. Todos importantes. Todos largos. Nadie tiene tiempo. La solución no es leerlos todos: es conocer los datos relevantes.</p>
+</section>
+
+<!-- 3 TESES -->
+<section class="theses">
+  <div class="theses-inner">
+    <div class="theses-eyebrow"><span class="bar"></span>CÓMO LO RESOLVEMOS</div>
+    <h2>Tres pasos. <em>Nada más.</em></h2>
+    <div class="theses-grid">
+      <div class="thesis-card">
+        <div class="thesis-num">01</div>
+        <div class="thesis-verb">Sintetizar</div>
+        <p class="thesis-desc">Los informes institucionales más relevantes, en 5 minutos de lectura. Con semáforo metodológico propio de 5 dimensiones.</p>
+      </div>
+      <div class="thesis-card">
+        <div class="thesis-num">02</div>
+        <div class="thesis-verb">Cruzar</div>
+        <p class="thesis-desc">Cada informe cruzado con tus certificaciones: EcoVadis, B Corp, MSCI, GRI, SGE 21, Sustainalytics. Te decimos qué te afecta y con qué intensidad.</p>
+      </div>
+      <div class="thesis-card">
+        <div class="thesis-num">03</div>
+        <div class="thesis-verb">Recomendar</div>
+        <p class="thesis-desc">Tres acciones concretas por informe. Operativas. Verificables. El criterio aplicado a tu decisión de esta semana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFORME PREVIEW (Blocs 0-7) -->
+<section class="report-preview">
+  <div class="report-preview-inner">
+    <div class="eyebrow-bar" style="margin-bottom:16px;"><span class="bar"></span>ÚLTIMO INFORME PUBLICADO</div>
+    <h2>Así se ve un <em>informe Criteri</em>. Los 8 bloques.</h2>
+
+    <div class="report-card">
+      <!-- Header: fitxa tècnica -->
+      <div class="report-header">
+        <div>
+          <span class="report-tag">Regulación · Gratis</span>
+          <h3>Revisión de los ESRS: simplificación del CSRD</h3>
+        </div>
+        <div class="report-meta">Comisión Europea<br>6 mayo 2026 · 47 pág<br>ESRS Q&amp;A Platform</div>
+      </div>
+
+      <!-- Bloc 0: Semàfor -->
+      <div class="bloc0">
+        <div>
+          <div class="bloc0-label">BLOQUE 0 · SEMÁFORO METODOLÓGICO</div>
+          <div class="bloc0-grade-row">
+            <span class="bloc0-grade">C</span>
+            <span class="bloc0-grade-label">Débil</span>
+          </div>
+        </div>
+        <div class="bloc0-dims">
+          <div class="bloc0-dim"><span class="bloc0-dim-label">Scope 3</span><div class="bloc0-dim-dots"><span class="bloc0-dot" style="background:#5C8A5C;opacity:0.3"></span><span class="bloc0-dot" style="background:#C9A961"></span><span class="bloc0-dot" style="background:#A0522D;opacity:0.3"></span></div></div>
+          <div class="bloc0-dim"><span class="bloc0-dim-label">Plazos</span><div class="bloc0-dim-dots"><span class="bloc0-dot" style="background:#5C8A5C"></span><span class="bloc0-dot" style="background:#C9A961;opacity:0.3"></span><span class="bloc0-dot" style="background:#A0522D;opacity:0.3"></span></div></div>
+          <div class="bloc0-dim"><span class="bloc0-dim-label">Fuentes</span><div class="bloc0-dim-dots"><span class="bloc0-dot" style="background:#5C8A5C;opacity:0.3"></span><span class="bloc0-dot" style="background:#C9A961"></span><span class="bloc0-dot" style="background:#A0522D;opacity:0.3"></span></div></div>
+          <div class="bloc0-dim"><span class="bloc0-dim-label">Granularidad</span><div class="bloc0-dim-dots"><span class="bloc0-dot" style="background:#5C8A5C;opacity:0.3"></span><span class="bloc0-dot" style="background:#C9A961;opacity:0.3"></span><span class="bloc0-dot" style="background:#A0522D"></span></div></div>
+          <div class="bloc0-dim"><span class="bloc0-dim-label">Verificación</span><div class="bloc0-dim-dots"><span class="bloc0-dot" style="background:#5C8A5C;opacity:0.3"></span><span class="bloc0-dot" style="background:#C9A961"></span><span class="bloc0-dot" style="background:#A0522D;opacity:0.3"></span></div></div>
+        </div>
+      </div>
+
+      <!-- Body 2 columnes -->
+      <div class="bloc-body">
+        <!-- Columna esquerra -->
+        <div class="bloc-col bloc-col-left">
+          <div class="bloc">
+            <div class="bloc-num">BLOQUE 2 · 5 DATOS CLAVE</div>
+            <div class="bloc-title">Lo que dice el informe, en cifras</div>
+            <div class="dada-row"><span class="dada-num">01</span><span class="dada-text"><strong>−61%</strong> de datapoints obligatorios del CSRD eliminados (de 1.144 a 446)</span></div>
+            <div class="dada-row"><span class="dada-num">02</span><span class="dada-text"><strong>3.700 M€</strong> de ahorro estimado para empresas europeas en 5 años</span></div>
+            <div class="dada-row"><span class="dada-num">03</span><span class="dada-text"><strong>2 categorías</strong> de estándares ESRS: temáticos transversales y sectoriales</span></div>
+            <div class="dada-row"><span class="dada-num">04</span><span class="dada-text"><strong>Convergencia</strong> mantenida con GRI Universal Standards e ISSB</span></div>
+            <div class="dada-row"><span class="dada-num">05</span><span class="dada-text"><strong>Aplicación</strong> escalonada: grandes empresas (2024), cotizadas (2025), PIMEs (2026-2028)</span></div>
+          </div>
+          <div class="bloc">
+            <div class="bloc-num">BLOQUE 3 · RESUMEN EJECUTIVO</div>
+            <div class="bloc-title">Qué dice en lenguaje claro</div>
+            <div class="bloc-text">
+              <p>La Comisión Europea reduce un 61% los datapoints obligatorios del CSRD. Se simplifica la arquitectura de los ESRS pero se mantiene la convergencia con GRI e ISSB. El ahorro estimado es de 3.700 M€ en 5 años para las empresas europeas. La aplicación se escalona por tamaño: grandes empresas (2024), cotizadas (2025), PIMEs (2026-2028).</p>
+              <p class="mt-2">La revisión responde a las quejas del Omnibus I sobre carga administrativa, pero deja fuera el detalle granular que muchas empresas necesitan para implementar. <em>Más simple, pero también más ambiguo.</em></p>
+            </div>
+          </div>
+        </div>
+        <!-- Columna dreta -->
+        <div class="bloc-col bloc-col-right">
+          <div class="bloc">
+            <div class="bloc-num">BLOQUE 4 · IMPLICACIONES</div>
+            <div class="bloc-title">Para empresas, reguladores, ciudadanos</div>
+            <div class="bloc-text">
+              <p><strong>Empresas:</strong> Menos reporting obligatorio, pero más interpretación subjetiva. Las empresas con sistemas de reporting maduros (GRI, SASB) lo tienen más fácil. Las que empezaban desde cero pierden la guía prescriptiva.</p>
+              <p style="margin-top:8px;"><strong>Reguladores:</strong> BCE, ESMA y EFRAG deberán emitir guías interpretativas para evitar divergencias entre estados miembros. Riesgo de fragmentación.</p>
+              <p style="margin-top:8px;"><strong>Ciudadanos:</strong> Informes más cortos y legibles, pero con menos dato verificable. Peligro de greenwashing aumentado por la ambigüedad interpretativa.</p>
+            </div>
+            <div class="checkbox-box">
+              <div class="checkbox-box-label">MÁS ALLÁ DEL CHECKBOX</div>
+              <p class="checkbox-box-text">«La simplificación es un alivio para el reporting, pero ¿qué pierde la sociedad cuando desaparece el dato granular que permitía auditar promesas?»</p>
+            </div>
+          </div>
+          <div class="bloc">
+            <div class="bloc-num">BLOQUE 5 · CONEXIONES</div>
+            <div class="bloc-title">Relaciones con otros informes y actualidad</div>
+            <div class="bloc-text">Esta revisión llega <strong>3 meses después del CSDDD Omnibus I</strong> (marzo 2026), que ya endurecía la diligencia en derechos humanos. La paradoja: menos reporting estructurado para tomar más decisiones operativas. El BCE incluirá el riesgo climático en los test de estrés de la banca española desde Q4 2026 — los datos que ya no se reportarán vía ESRS sí que se necesitarán para los test de estrés.</div>
+          </div>
+          <div class="accions-box">
+            <div class="bloc-num">BLOQUE 6 · ACCIONES RECOMENDADAS ⭐</div>
+            <div class="bloc-title">3 acciones operativas para esta semana</div>
+            <div class="accio-row"><span class="accio-num">1</span><span class="accio-text">Auditar la matriz de materialidad vigente: ¿qué datapoints eliminados te conviene mantener voluntariamente?</span></div>
+            <div class="accio-row"><span class="accio-num">2</span><span class="accio-text">Renegociar el contrato de assurance externo: el alcance puede reducirse, pero el coste no siempre baja proporcionalmente.</span></div>
+            <div class="accio-row"><span class="accio-num">3</span><span class="accio-text">Construir un dataset voluntario interno con los datapoints eliminados pero que tus inversores o clientes seguirán pidiendo (MSCI, Sustainalytics, EcoVadis).</span></div>
+          </div>
+          <div class="bloc">
+            <div class="bloc-num">BLOQUE 7 · CROSS-REFERENCE ⭐</div>
+            <div class="bloc-title">Cómo te afecta según tus certificaciones</div>
+            <div class="xref-chips">
+              <span class="xref-chip">GRI<span class="xref-impact">· Alto</span></span>
+              <span class="xref-chip">EcoVadis<span class="xref-impact">· Medio</span></span>
+              <span class="xref-chip">MSCI<span class="xref-impact">· Medio</span></span>
+              <span class="xref-chip">B Corp<span class="xref-impact">· Bajo</span></span>
+              <span class="xref-chip">CDP<span class="xref-impact">· Medio</span></span>
+              <span class="xref-chip">SGE 21<span class="xref-impact">· Bajo</span></span>
+              <span class="xref-chip">Sustainalytics<span class="xref-impact">· Bajo</span></span>
+              <span class="xref-chip">TNFD<span class="xref-impact">· Medio</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer informe -->
+      <div class="report-footer">
+        <p class="report-footer-text">5 minutos de lectura. 8 bloques que cambian tu criterio sobre un informe de 47 páginas.</p>
+        <button class="report-footer-cta">Más detalles en el informe completo →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-eyebrow"><span class="bar"></span>SI RECONOCES ESTA SITUACIÓN</div>
+  <h2>Te <em>entendemos</em>. Estamos para devolverte tiempo para pensar.</h2>
+  <p class="final-cta-note">Sin tarjeta de crédito. Sin paywall hasta noviembre.</p>
+  <button class="btn-primary">Acceso abierto hasta noviembre →</button>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>© 2026 Criteri ESG · <span style="font-family:'Newsreader',serif;font-weight:600;">Criteri.</span></p>
+</footer>
+
+</body>
+</html>

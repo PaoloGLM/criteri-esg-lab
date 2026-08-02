@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criteri ESG — Mockup (Newsreader + DM Sans)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400;1,9..40,500&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,200;1,6..72,300;1,6..72,400;1,6..72,500;1,6..72,600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #F5EFE6; color: #2C1810;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER (terra clar) ── */
+  .site-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 32px; background: #F5EFE6; border-bottom: 1px solid #C9B89A;
+    position: sticky; top: 0; z-index: 50;
+  }
+  .logo {
+    font-family: 'Newsreader', serif; font-size: 24px; font-weight: 600;
+    color: #2C1810; letter-spacing: -0.02em;
+  }
+  .logo-dot { color: #B87333; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; color: #2C1810;
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #B87333; }
+  .btn-nav {
+    font-size: 13px; font-weight: 600; background: #B87333; color: #fff;
+    border: none; padding: 8px 18px; border-radius: 6px; cursor: pointer;
+  }
+  .btn-nav:hover { background: #8A5526; }
+
+  /* ── HERO (dark) — exactament com el codi real ── */
+  .hero {
+    background: #2C1810; color: #F5EFE6; text-align: center;
+    padding: 96px 24px 110px; display: flex; flex-direction: column;
+    align-items: center; position: relative;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 1px; background: #B87333;
+  }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.3em;
+    color: #D9A574; border: 1px solid rgba(217, 165, 116, 0.4);
+    padding: 8px 16px; margin-bottom: 36px;
+  }
+  .hero h1 {
+    font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(3rem, 8.6vw, 7.75rem);
+    line-height: 0.98; letter-spacing: -0.035em; max-width: 1200px; margin-bottom: 32px;
+  }
+  .hero h1 em {
+    font-style: italic; font-weight: 500; color: #D9A574;
+  }
+  .hero-subtitle {
+    font-family: 'Newsreader', serif; font-style: italic; font-weight: 400;
+    font-size: clamp(1.125rem, 2vw, 1.5rem); line-height: 1.4;
+    color: rgba(245, 239, 230, 0.7); max-width: 760px; margin-bottom: 44px;
+  }
+  .hero-ctas {
+    display: flex; gap: 20px; align-items: center; flex-wrap: wrap;
+    justify-content: center; margin-top: 16px;
+  }
+  .btn-primary {
+    font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
+    background: #B87333; color: #fff; border: none;
+    padding: 14px 34px; border-radius: 8px; cursor: pointer;
+    display: flex; align-items: center; gap: 8px; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #8A5526; }
+  .btn-ghost {
+    font-size: 15px; font-weight: 500; color: rgba(245, 239, 230, 0.85);
+    background: none; border: none; cursor: pointer;
+    text-decoration: underline; text-underline-offset: 5px;
+    text-decoration-color: #B87333; transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: #D9A574; }
+
+  /* ── MANIFEST (cream, border-top dark) ── */
+  .manifest {
+    background: #F5EFE6; color: #2C1810; text-align: center;
+    padding: 100px 24px; border-top: 3px solid #2C1810;
+    display: flex; flex-direction: column; align-items: center; gap: 40px;
+  }
+  .manifest-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-weight: 600; text-transform: uppercase;
+    color: #8A5526; letter-spacing: 0.22em;
+  }
+  .manifest-eyebrow .bar {
+    width: 24px; height: 2px; background: #B87333;
+  }
+  .manifest h2 {
+    font-family: 'Newsreader', serif; font-weight: 400;
+    font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.15;
+    letter-spacing: -0.02em; max-width: 1000px;
+  }
+  .manifest h2 em {
+    font-style: italic; font-weight: 500; color: #5C3A1E;
+  }
+  .manifest-body {
+    font-family: 'Newsreader', serif; font-style: italic; font-weight: 400;
+    font-size: clamp(1.0625rem, 1.4vw, 1.1875rem); line-height: 1.6;
+    color: #5C3A1E; max-width: 720px;
+  }
+
+  /* ── 3 TESES (cream, 3 columnes, números grossos) ── */
+  .theses {
+    background: #F5EFE6; border-top: 3px solid #2C1810;
+    padding: 100px 24px;
+  }
+  .theses-inner { max-width: 1200px; margin: 0 auto; }
+  .theses-eyebrow {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-weight: 600; text-transform: uppercase;
+    color: #8A5526; letter-spacing: 0.22em;
+  }
+  .theses-eyebrow .bar { width: 24px; height: 2px; background: #B87333; }
+  .theses h2 {
+    font-family: 'Newsreader', serif; font-weight: 500;
+    font-size: clamp(2rem, 3vw, 2.5rem); line-height: 1.1;
+    letter-spacing: -0.018em; max-width: 800px; margin-bottom: 56px;
+  }
+  .theses h2 em { font-style: italic; font-weight: 400; color: #5C3A1E; }
+  .theses-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  }
+  .thesis-card {
+    padding: 0 40px; display: flex; flex-direction: column; gap: 20px;
+    border-right: 1px solid rgba(44, 24, 16, 0.15);
+  }
+  .thesis-card:last-child { border-right: none; }
+  .thesis-num {
+    font-family: 'Newsreader', serif; font-weight: 200;
+    color: #B87333; font-size: clamp(4rem, 7vw, 6rem);
+    line-height: 0.9; letter-spacing: -0.04em;
+  }
+  .thesis-verb {
+    font-family: 'Newsreader', serif; font-weight: 500;
+    color: #2C1810; font-size: clamp(1.5rem, 2.4vw, 2rem);
+    letter-spacing: -0.015em;
+  }
+  .thesis-desc {
+    color: #5C3A1E; font-size: 0.875rem; line-height: 1.55;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .theses-grid { grid-template-columns: 1fr; }
+    .thesis-card { border-right: none; border-bottom: 1px solid rgba(44,24,16,0.1); padding: 32px 16px; }
+    .thesis-card:last-child { border-bottom: none; }
+    .hero { padding: 64px 16px 80px; }
+    .manifest, .theses { padding: 64px 16px; }
+  }
+  @media (max-width: 480px) {
+    .hero-ctas { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo">Criteri<span class="logo-dot">.</span></div>
+  <nav class="nav-links">
+    <a href="#">Qué hacemos</a>
+    <a href="#">Informes</a>
+    <a href="#">Estándares ESG</a>
+    <a href="#">Quiénes somos</a>
+    <a href="#">Precios</a>
+    <button class="btn-nav">Regístrate gratis</button>
+  </nav>
+</header>
+
+<!-- HERO — exactament com el codi real -->
+<section class="hero">
+  <div class="hero-eyebrow">INTELIGENCIA ESG · SERVICIO DE PRENSA</div>
+  <h1>
+    <span style="display:block;">No es la información.</span>
+    <span style="display:block;"><em>Es el criterio.</em></span>
+  </h1>
+  <p class="hero-subtitle">
+    Sintetizamos informes institucionales sobre sostenibilidad y los convertimos en
+    resúmenes accionables de 1.100 palabras. Sin greenwashing. Sin sesgo corporativo.
+  </p>
+  <div class="hero-ctas">
+    <button class="btn-primary">Probar gratis 7 días <span style="font-size:17px;">→</span></button>
+    <button class="btn-ghost">Ver un informe real →</button>
+  </div>
+</section>
+
+<!-- MANIFEST — exactament com el codi real (mid-sections.tsx secció 1) -->
+<section class="manifest">
+  <div class="manifest-eyebrow">
+    <span class="bar"></span>
+    5 MINUTS PER CRITERI CLAR
+    <span class="bar"></span>
+  </div>
+  <h2>
+    No podemos leer 10 informes de 50 páginas al día.
+    <em>Pero sí podemos leer uno de 1.100 palabras.</em>
+    Eso es Criteri.
+  </h2>
+  <p class="manifest-body">
+    Cada semana, nuestro equipo de analistas y nuestro sistema de IA procesan los informes
+    institucionales europeos más relevantes y los destilan en 8 bloques accionables.
+    Cinco minutos. Un criterio claro. Sin ruido.
+  </p>
+</section>
+
+<!-- 3 TESES — exactament com el codi real (mid-sections.tsx secció 2) -->
+<section class="theses">
+  <div class="theses-inner">
+    <div class="theses-eyebrow">
+      <span class="bar"></span>
+      QUÈ FEM
+    </div>
+    <h2>
+      Procesamos informes institucionales y
+      <em>los convertimos en criterio claro</em>
+    </h2>
+    <div class="theses-grid">
+      <div class="thesis-card">
+        <div class="thesis-num">01</div>
+        <div class="thesis-verb">Sintetizar</div>
+        <p class="thesis-desc">
+          Leemos el informe original, extraemos las 5 ideas clave y las contextualizamos
+          para el marco ESG europeo.
+        </p>
+      </div>
+      <div class="thesis-card">
+        <div class="thesis-num">02</div>
+        <div class="thesis-verb">Cruzar</div>
+        <p class="thesis-desc">
+          Conectamos cada dato con otros informes, certificaciones (EcoVadis, B Corp, MSCI)
+          y con la actualidad regulatoria.
+        </p>
+      </div>
+      <div class="thesis-card">
+        <div class="thesis-num">03</div>
+        <div class="thesis-verb">Recomendar</div>
+        <p class="thesis-desc">
+          Traducimos las implicaciones en acciones concretas, con nivel de esfuerzo e impacto
+          calibrados para tu empresa.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

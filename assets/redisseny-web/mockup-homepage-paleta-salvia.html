@@ -13,6 +13,7 @@
     --ink: #26312B;          /* text principal */
     --accent: #5E8772;       /* accent mig */
     --highlight: #E3CE58;    /* highlights + logo (groc clar càlid) */
+    --verd-clar: #AAC9B6;    /* verd clar salvia (frase hero + números) */
     --bg: #F2F5F1;           /* fons */
     --bg-paper: #FFFFFF;
     --ink-soft: #4A5F53;     /* derivat: text secundari */
@@ -45,12 +46,12 @@
     font-family: var(--font-display);
   }
 
-  /* Números amb la tipografia serif (Newsreader) i coure càlid, com la referència */
+  /* Números amb la tipografia serif (Newsreader) i verd clar, com la referència */
   .thesis .num, .dada .n, .accio .cnum {
     font-family: var(--font-display);
   }
   .thesis .num, .dada .n {
-    color: var(--highlight);
+    color: var(--verd-clar);
   }
 
   /* Tipografia tècnica (JetBrains Mono): labels, eyebrows, meta, chips */
@@ -129,7 +130,7 @@
     font-weight: 400; letter-spacing: -0.03em; line-height: 1.04;
     max-width: 900px;
   }
-  .hero h1 .hl { color: var(--highlight); }
+  .hero h1 .hl { color: var(--verd-clar); }
   .hero .sub {
     font-size: clamp(1.05rem, 1.9vw, 1.35rem); font-weight: 400;
     color: rgba(242, 245, 241, 0.85); max-width: 680px;
@@ -179,7 +180,7 @@
   .thesis + .thesis { border-left: 1px solid var(--line); }
   .thesis .num {
     font-size: clamp(3.4rem, 6vw, 4.8rem); font-weight: 400;
-    color: var(--highlight); line-height: 1; letter-spacing: -0.04em;
+    color: var(--verd-clar); line-height: 1; letter-spacing: -0.04em;
   }
   .thesis h3 { font-size: 1.45rem; font-weight: 400; margin: 18px 0 12px; color: var(--ink); }
   .thesis p { font-size: 0.92rem; font-weight: 300; color: var(--ink-soft); line-height: 1.5; }
@@ -247,7 +248,7 @@
   .dades { display: flex; flex-direction: column; }
   .dada { display: grid; grid-template-columns: 26px 1fr; gap: 10px; padding: 8px 0; border-bottom: 1px dotted rgba(74, 95, 83, 0.35); align-items: baseline; }
   .dada:last-child { border-bottom: none; }
-  .dada .n { font-size: 0.62rem; font-weight: 400; color: var(--highlight); }
+  .dada .n { font-size: 0.62rem; font-weight: 400; color: var(--verd-clar); }
   .dada .t { font-size: 0.78rem; font-weight: 300; color: var(--ink-soft); }
   .dada .t strong { color: var(--ink); font-weight: 600; }
 
@@ -262,7 +263,7 @@
   .accio { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: baseline; }
   .accio .cnum {
     width: 22px; height: 22px; border-radius: 50%;
-    background: var(--highlight); color: var(--ink);
+    background: var(--verd-clar); color: var(--ink);
     font-size: 0.68rem;
     display: grid; place-items: center;
   }

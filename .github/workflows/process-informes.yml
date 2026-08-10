@@ -2,7 +2,7 @@ name: Processar Informes
 
 on:
   schedule:
-    - cron: '0 8 * * 1,4'
+    - cron: '0 8 * * *'
   workflow_dispatch:
 
 jobs:
@@ -21,15 +21,12 @@ jobs:
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 
     steps:
-      - uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4.2.0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
       - name: Install dependencies
         run: pip install requests python-dotenv google-auth google-auth-httplib2 google-api-python-client PyMuPDF
-
       - name: Write credentials
         run: |
           echo "$GCP_SERVICE_ACCOUNT" > /tmp/gcp-service-account.json
@@ -38,41 +35,34 @@ jobs:
           echo "$GCP_OAUTH_CLIENT" | base64 -d > /home/runner/.gcp-oauth-client.json
 
           printf 'GEMINI_API_KEY=%s\nGCP_SERVICE_ACCOUNT_PATH=/tmp/gcp-service-account.json\nGCP_OAUTH_TOKENS_PATH=/home/runner/.gcp-oauth-tokens.json\nGCP_OAUTH_CLIENT_PATH=/home/runner/.gcp-oauth-client.json\nBREVO_API_KEY=%s\nBREVO_SENDER_EMAIL=info@criteriesg.com\nBREVO_SENDER_NAME=Criteri ESG\n' "$GEMINI_API_KEY" "$BREVO_API_KEY" > assets/web/.env.local
-
       - name: Descarregar PDFs originals de Drive
         continue-on-error: true
         run: |
           mkdir -p data/informes/0-originals data/informes/1-distilats data/informes/2-aportacions-gemini data/informes/3-fets data/informes/4-revisats-ortografia scripts/state
           python scripts/download-originals.py || echo "Download failed, continuing with existing PDFs"
-
       - name: Processar informes pendents (passos 2-5)
         run: |
           echo "=== Pas 2: GLM destil·la ==="
           python scripts/run-pas2-batch.py || true
-
           echo "=== Pas 3: Gemini revisa ==="
           python scripts/03-gemini-revisa.py || true
-
           echo "=== Pas 4: GLM redacta ==="
           for f in data/informes/1-distilats/*.json; do
             [ -f "$f" ] || continue
             slug=$(basename "$f" .json)
             python scripts/04-glm-redacta.py "$slug" || true
           done
-
           echo "=== Pas 5: Gemini ortografia ==="
           for f in data/informes/3-fets/*.ca.md; do
             [ -f "$f" ] || continue
             slug=$(basename "$f" .ca.md)
             python scripts/05-gemini-ortografia.py "$slug" || true
           done
-
           echo "=== Resum ==="
           echo "Destil·lats: $(ls data/informes/1-distilats/*.json 2>/dev/null | wc -l)"
           echo "Revisats: $(ls data/informes/2-aportacions-gemini/*.json 2>/dev/null | wc -l)"
           echo "Fets: $(ls data/informes/3-fets/*.md 2>/dev/null | wc -l)"
           echo "Corregits: $(ls data/informes/4-revisats-ortografia/*.md 2>/dev/null | wc -l)"
-
       - name: Commit resultats
         run: |
           git config --global user.name "Criteri ESG Bot"
@@ -80,7 +70,6 @@ jobs:
           git add data/informes/ || true
           git commit -m "Informes processats automaticament (GitHub Actions)" || true
           git push || true
-
       - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v4

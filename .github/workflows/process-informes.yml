@@ -18,6 +18,7 @@ jobs:
       BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
       BREVO_SENDER_EMAIL: info@criteriesg.com
       BREVO_SENDER_NAME: Criteri ESG
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 
     steps:
       - uses: actions/checkout@v4
@@ -39,9 +40,10 @@ jobs:
           printf 'GEMINI_API_KEY=%s\nGCP_SERVICE_ACCOUNT_PATH=/tmp/gcp-service-account.json\nGCP_OAUTH_TOKENS_PATH=/home/runner/.gcp-oauth-tokens.json\nGCP_OAUTH_CLIENT_PATH=/home/runner/.gcp-oauth-client.json\nBREVO_API_KEY=%s\nBREVO_SENDER_EMAIL=info@criteriesg.com\nBREVO_SENDER_NAME=Criteri ESG\n' "$GEMINI_API_KEY" "$BREVO_API_KEY" > assets/web/.env.local
 
       - name: Descarregar PDFs originals de Drive
+        continue-on-error: true
         run: |
           mkdir -p data/informes/0-originals data/informes/1-distilats data/informes/2-aportacions-gemini data/informes/3-fets data/informes/4-revisats-ortografia scripts/state
-          python scripts/download-originals.py
+          python scripts/download-originals.py || echo "Download failed, continuing with existing PDFs"
 
       - name: Processar informes pendents (passos 2-5)
         run: |

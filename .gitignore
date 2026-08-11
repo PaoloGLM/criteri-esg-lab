@@ -1,2 +1,18 @@
+# Secrets — NO pujar mai a GitHub
 .gcp-service-account.json
+.gcp-oauth-client.json
+.gcp-oauth-tokens.json
+service-account.json
+.env.local
+.env
+
+# Directoris d'entorn
 .hermes/
+scripts/.venv/
+__pycache__/
+*.pyc
+
+# Artefactes generats (ja són al Drive)
+paquet-*.zip
+informe-unepfi-*.html
+data/newsletter-*.pdf

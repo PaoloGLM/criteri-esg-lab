@@ -18,6 +18,21 @@ load_dotenv(ENV_FILE)
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 GEMINI_MODEL = "gemini-2.0-pro"  # configurable; alternativa: gemini-2.5-pro
 
+# === OpenRouter (Nemotron 3 Ultra) ===
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+OPENROUTER_MODEL = "nvidia/nemotron-3-ultra:free"
+
+def get_openrouter_client():
+    """Retorna client OpenAI/OpenRouter configurat."""
+    if not OPENROUTER_API_KEY:
+        raise ValueError(
+            "OPENROUTER_API_KEY no configurada. Crea-la a https://openrouter.ai/keys "
+            "i posa-la a assets/web/.env.local"
+        )
+    from openai import OpenAI
+    return OpenAI(base_url=OPENROUTER_BASE_URL, api_key=OPENROUTER_API_KEY)
+
 # === Google Drive ===
 GCP_SERVICE_ACCOUNT_PATH = os.getenv(
     "GCP_SERVICE_ACCOUNT_PATH",

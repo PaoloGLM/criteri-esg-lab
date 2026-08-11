@@ -1,18 +1,18 @@
 """
-Client de Google Drive amb OAuth d'usuari (no Service Account).
+Client de Google Drive per Criteri ESG.
 
-Fa servir els tokens d'/home/z/my-project/.gcp-oauth-tokens.json i el
-client OAuth d'/home/z/my-project/.gcp-oauth-client.json. Refresca el
-access_token automàticament quan caduca.
+Prioritat:
+1. OAuth d'usuari (tokens a .gcp-oauth-tokens.json) — accés al Drive personal,
+   NO caduca (mode production des d'agost 2026).
+2. Service Account (service-account.json) — fallback per a CI/GitHub Actions.
 
-Aquesta és la manera de pujar arxius al Drive de l'usuari real (que
-sí té quota), no pas a la carpeta buida del Service Account.
+Ús en scripts: from drive_user_client import get_user_drive_service
 """
 import json
 import os
 import time
-import requests
 import io
+import requests
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -20,15 +20,18 @@ from dotenv import load_dotenv
 _env_path = Path(__file__).resolve().parent.parent / "assets" / "web" / ".env.local"
 if _env_path.exists():
     load_dotenv(_env_path)
+
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseUpload
 from google.oauth2.credentials import Credentials
+from google.oauth2 import service_account
 
-# Paths als fitxers OAuth — configurables via variables d'entorn
-# Per defecte: /home/z/my-project/.gcp-oauth-*.json (workspace local)
-# A GitHub Actions: /home/runner/.gcp-oauth-*.json (escrits pel workflow)
-OAUTH_TOKENS_PATH = Path(os.environ.get("GCP_OAUTH_TOKENS_PATH", "/home/z/my-project/.gcp-oauth-tokens.json"))
-OAUTH_CLIENT_PATH = Path(os.environ.get("GCP_OAUTH_CLIENT_PATH", "/home/z/my-project/.gcp-oauth-client.json"))
+BASE_DIR = Path(__file__).resolve().parent
+OAUTH_TOKENS_PATH = BASE_DIR / ".gcp-oauth-tokens.json"
+OAUTH_CLIENT_PATH = BASE_DIR / ".gcp-oauth-client.json"
+SERVICE_ACCOUNT_PATH = BASE_DIR / "service-account.json"
+
+DRIVE_SCOPES = ["https://www.googleapis.com/auth/drive"]
 
 # Caché
 _creds_cache = {"creds": None, "expires": 0}
@@ -63,44 +66,67 @@ def _refresh_token() -> dict:
         raise Exception(f"Refresh token failed: HTTP {r.status_code}: {r.text[:300]}")
 
     new_tokens = r.json()
-    # Combinar amb els existents (el refresh_token no es torna a enviar)
     tokens.update({
         "access_token": new_tokens["access_token"],
         "expires_in": new_tokens["expires_in"],
-        "expires_at": int(time.time()) + new_tokens["expires_in"] - 60,  # marge 60s
+        "expires_at": int(time.time()) + new_tokens["expires_in"] - 60,
     })
     OAUTH_TOKENS_PATH.write_text(json.dumps(tokens, indent=2))
     return tokens
 
 
-def get_user_credentials() -> Credentials:
-    """Retorna credencials OAuth d'usuari vàlides. Caché 50 min."""
-    if _creds_cache["creds"] and time.time() < _creds_cache["expires"]:
-        return _creds_cache["creds"]
-
+def _get_user_oauth_creds() -> Credentials | None:
+    """Credencials OAuth d'usuari (si hi ha tokens vàlids)."""
+    if not OAUTH_TOKENS_PATH.exists():
+        return None
     tokens = json.loads(OAUTH_TOKENS_PATH.read_text())
     now = int(time.time())
 
     # Si el token caduca en menys de 5 min, refrescar
     if tokens.get("expires_at", 0) - now < 300:
-        print("  → Refrescant OAuth token...")
-        tokens = _refresh_token()
+        try:
+            print("  → Refrescant OAuth token...")
+            tokens = _refresh_token()
+        except Exception as e:
+            print(f"  ⚠ No s'ha pogut refrescar: {e}")
+            return None
 
-    creds = Credentials(
+    client = _load_client_info()
+    return Credentials(
         token=tokens["access_token"],
         refresh_token=tokens["refresh_token"],
         token_uri="https://oauth2.googleapis.com/token",
-        client_id=_load_client_info()["client_id"],
-        client_secret=_load_client_info()["client_secret"],
-        scopes=["https://www.googleapis.com/auth/drive"],
+        client_id=client["client_id"],
+        client_secret=client["client_secret"],
+        scopes=DRIVE_SCOPES,
     )
-    _creds_cache["creds"] = creds
-    _creds_cache["expires"] = tokens["expires_at"] - 60
-    return creds
+
+
+def _get_service_account_creds() -> Credentials | None:
+    """Credencials de Service Account (fallback)."""
+    if not SERVICE_ACCOUNT_PATH.exists():
+        return None
+    return service_account.Credentials.from_service_account_file(
+        str(SERVICE_ACCOUNT_PATH), scopes=DRIVE_SCOPES
+    )
+
+
+def get_user_credentials() -> Credentials:
+    """Retorna credencials vàlides: OAuth usuari, o Service Account com a fallback."""
+    creds = _get_user_oauth_creds()
+    if creds:
+        return creds
+    creds = _get_service_account_creds()
+    if creds:
+        return creds
+    raise FileNotFoundError(
+        "No hi ha credencials Google: falta .gcp-oauth-tokens.json (OAuth usuari) "
+        "o service-account.json (Service Account)."
+    )
 
 
 def get_user_drive_service():
-    """Retorna un servei Drive autenticat amb OAuth d'usuari."""
+    """Retorna un servei Drive autenticat."""
     creds = get_user_credentials()
     return build("drive", "v3", credentials=creds)
 
@@ -116,26 +142,26 @@ def find_folder_id(drive, name: str, parent_id: str = None) -> str | None:
 
 
 def find_informes_root(drive) -> str:
-    """Busca la carpeta 'Criteri ESG Informes' (vinculada a Gemini/Vertex AI, flux d'informes)."""
+    """Busca la carpeta 'Criteri ESG Informes' (flux d'informes)."""
     for name in ["Criteri ESG Informes", "Informes", "informes"]:
         folder_id = find_folder_id(drive, name)
         if folder_id:
             return folder_id
-    raise FileNotFoundError(
-        "Carpeta 'Criteri ESG Informes' no trobada al Drive de l'usuari. "
-        "Crea-la o comprova que el OAuth token té accés."
-    )
-
-
-def find_criteri_root(drive) -> str:
-    """Busca la carpeta 'Criteri ESG' (pare, per tot el que NO sigui informes:
-    newsletters, documents, assets, etc.)."""
+    # Si no existeix, buscar 'Criteri ESG'
     folder_id = find_folder_id(drive, "Criteri ESG")
     if folder_id:
         return folder_id
     raise FileNotFoundError(
-        "Carpeta 'Criteri ESG' no trobada al Drive de l'usuari."
+        "Carpeta 'Criteri ESG Informes' o 'Criteri ESG' no trobada al Drive."
     )
+
+
+def find_criteri_root(drive) -> str:
+    """Busca la carpeta 'Criteri ESG' (pare)."""
+    folder_id = find_folder_id(drive, "Criteri ESG")
+    if folder_id:
+        return folder_id
+    raise FileNotFoundError("Carpeta 'Criteri ESG' no trobada al Drive.")
 
 
 def get_subfolder_id(drive, name: str) -> str:
@@ -144,8 +170,6 @@ def get_subfolder_id(drive, name: str) -> str:
     folder_id = find_folder_id(drive, name, parent_id)
     if folder_id:
         return folder_id
-
-    # Crear
     file_metadata = {
         "name": name,
         "mimeType": "application/vnd.google-apps.folder",
@@ -156,14 +180,11 @@ def get_subfolder_id(drive, name: str) -> str:
 
 
 def get_criteri_subfolder_id(drive, name: str) -> str:
-    """Busca una subcarpeta dins de 'Criteri ESG' (no informes). La crea si no existeix.
-    Útil per a newsletters, documents, assets, etc."""
+    """Busca una subcarpeta dins de 'Criteri ESG'. La crea si no existeix."""
     parent_id = find_criteri_root(drive)
     folder_id = find_folder_id(drive, name, parent_id)
     if folder_id:
         return folder_id
-
-    # Crear
     file_metadata = {
         "name": name,
         "mimeType": "application/vnd.google-apps.folder",
@@ -176,13 +197,13 @@ def get_criteri_subfolder_id(drive, name: str) -> str:
 def upload_file(drive, local_path: Path, drive_filename: str, folder_id: str, mime_type: str = None) -> str:
     """Puja un arxiu local a Drive. Retorna l'ID de l'arxiu creat."""
     if mime_type is None:
-        # Detectar per extensió
         ext = local_path.suffix.lower()
         mime_type = {
             ".pdf": "application/pdf",
             ".json": "application/json",
             ".md": "text/markdown",
             ".txt": "text/plain",
+            ".zip": "application/zip",
         }.get(ext, "application/octet-stream")
 
     media = MediaIoBaseUpload(
@@ -191,46 +212,15 @@ def upload_file(drive, local_path: Path, drive_filename: str, folder_id: str, mi
         resumable=False,
     )
     metadata = {"name": drive_filename, "parents": [folder_id]}
-    result = drive.files().create(body=metadata, media_body=media, fields="id").execute()
-    return result["id"]
+    result = drive.files().create(body=metadata, media_body=media, fields="id, webViewLink").execute()
+    return result
 
 
-def list_files_in_folder(drive, folder_id: str) -> list:
-    """Llista els arxius d'una carpeta."""
-    r = drive.files().list(
-        q=f"'{folder_id}' in parents and trashed=false",
-        spaces="drive",
-        fields="files(id,name,size)",
-        pageSize=200,
-    ).execute()
-    return r.get("files", [])
-
-
-if __name__ == "__main__":
-    print("=== Test OAuth Drive client ===")
-    try:
-        drive = get_user_drive_service()
-        # Llistar primers 5 arxius del Drive de l'usuari
-        r = drive.files().list(pageSize=5, fields="files(id,name,mimeType)").execute()
-        print(f"\n✓ Connexió OK. Primers 5 arxius del Drive de l'usuari:")
-        for f in r.get("files", []):
-            print(f"  - {f['name']} ({f['mimeType']})")
-
-        # Buscar carpeta 'Criteri ESG Informes'
-        try:
-            folder_id = find_informes_root(drive)
-            print(f"\n✓ Carpeta 'Criteri ESG Informes' trobada (ID: {folder_id})")
-
-            # Llistar subcarpetes
-            r = drive.files().list(
-                q=f"'{folder_id}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false",
-                fields="files(id,name)",
-            ).execute()
-            print(f"  Subcarpetes:")
-            for f in r.get("files", []):
-                print(f"    - {f['name']} (ID: {f['id']})")
-        except FileNotFoundError as e:
-            print(f"\n✗ {e}")
-
-    except Exception as e:
-        print(f"\n✗ Error: {e}")
+def share_file_with_email(drive, file_id: str, email: str, role: str = "writer") -> None:
+    """Comparteix un fitxer de Drive amb un email concret."""
+    body = {
+        "type": "user",
+        "role": role,
+        "emailAddress": email,
+    }
+    drive.permissions().create(fileId=file_id, body=body).execute()

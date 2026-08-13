@@ -52,7 +52,19 @@ def get_gemini_client_with_fallback():
     return None, GEMINI_FREE_MODEL
 
 def call_gemini_with_fallback(system_prompt: str, user_prompt: str, temperature: float = 0.2, max_tokens: int = 16000) -> str:
-    """Crida Gemini free via REST directe amb espera de 60s al 429/503."""
+    """Crida Gemini per corregir ortografia.
+
+    Per defecte usa el model gratuït (REST directe, espera 60s al 429/503).
+    Si la variable d'entorn ORTOGRAFIA_MODEL=paid, usa gemini-3.6-flash (de
+    pagament) per desbloquejar quan la quota free està exhaurida.
+    """
+    import os as _os
+    if _os.environ.get("ORTOGRAFIA_MODEL", "free") == "paid":
+        from gemini_paid_client import call_gemini_paid
+        return call_gemini_paid(
+            system_prompt, user_prompt,
+            temperature=temperature, max_tokens=max_tokens,
+        )
     return call_gemini_free(
         system_prompt, user_prompt,
         temperature=temperature, max_tokens=max_tokens,
@@ -120,7 +132,7 @@ def main():
     target = sys.argv[1] if len(sys.argv) > 1 else None
 
     print("=== Pas 5: Gemini corregeix ortografia (CA + ES) ===\n")
-    print(f"Models: {GEMINI_MODELS[0]} (primari) -> {GEMINI_MODELS[1]} (fallback)\n")
+    print(f"Models: {GEMINI_MODELS[0]} (gratuït) — o gemini-3.6-flash si ORTOGRAFIA_MODEL=paid\n")
     print(f"Fets: {FETS_DIR}")
     print(f"Destinació: {REVISATS_DIR}\n")
 

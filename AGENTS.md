@@ -71,10 +71,12 @@ Com a nova iniciativa d'integració d'Hermes en el projecte, s'activen les segü
 
 ## 5. El Flux d'Informes (7 Passos)
 
-1.  **GLM Detecta**: PDFs a `/0-originals/`
-2.  **GLM Destil·la**: JSON a `/1-distilats/`
-3.  **Gemini Revisa**: JSON a `/2-aportacions-gemini/` (Revisió crítica i advocat del diable)
-4.  **GLM Redacta**: Markdown a `/3-fets/` (Màxim 1.100 paraules)
-5.  **Gemini Ortografia**: Markdown corregit i PDF a `/4-revisats-ortografia/`
+1.  **Gemini free Detecta**: PDFs a `/0-originals/`
+2.  **DeepSeek v4 Pro Destil·la**: JSON a `/1-distilats/`
+3.  **Gemini 3.6 Flash Revisa** (API de pagament): JSON a `/2-aportacions-gemini/` (Revisió crítica i advocat del diable)
+4.  **DeepSeek v4 Pro Redacta**: Markdown a `/3-fets/` (Màxim 1.100 paraules)
+5.  **Gemini free Ortografia**: Markdown corregit i PDF a `/4-revisats-ortografia/`
 6.  **Paolo Valida**: Mou manualment a `/5-validats-paolo/`
-7.  **GLM Puja a la web**: Publica a la base de dades i mou a `/6-publicats/`
+7.  **DeepSeek v4 Pro Puja a la web**: Publica a la base de dades i mou a `/6-publicats/`
+
+> Flux complet amb actors i detalls: `scripts/FLUX-INFORMES.md`.

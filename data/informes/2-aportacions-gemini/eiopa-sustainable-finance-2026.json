@@ -1,0 +1,67 @@
+{
+  "slug": "eiopa-sustainable-finance-2026",
+  "title": "Sustainable finance 2026",
+  "institution": "EIOPA",
+  "generated_at": "2026-08-13T22:02:21",
+  "model": "gemini-3.6-flash (API de pagament)",
+  "aportacions": {
+    "propostes": [
+      {
+        "bloc": "2-dadesClau",
+        "tipus": "afegir",
+        "proposta": "Afegir la dada explícita de la bretxa de protecció global no assegurada de 150.000 milions d'euros (el 54,7% del total de pèrdues de 274.000 milions no estava assegurat el 2024).",
+        "justificacio": "L'original dona les pèrdues totals (€274bn) i les assegurades (€124bn). El destil·lat diu al semàfor que la bretxa de protecció 'no té cap xifra concreta', quan es dedueix directament del text original (€150bn no assegurats)."
+      },
+      {
+        "bloc": "2-dadesClau",
+        "tipus": "afegir",
+        "proposta": "Incloure el detall normatiu que la majoria d'asseguradores queden fora de l'abast obligatori del reporti ESRS ('including most insurance undertakings') i depenen de futurs estàndards voluntaris.",
+        "justificacio": "És una dada de context regulatori crítica de la pàgina 1 de l'original que condiciona la capacitat real dels supervisors i inversors per obtenir dades de qualitat."
+      },
+      {
+        "bloc": "3-resum",
+        "tipus": "modificar",
+        "proposta": "Explicitar que la resiliència davant catàstrofes naturals és presentada per EIOPA com un factor clau de competitivitat econòmica i de continuïtat de les cadenes de subministrament ('supply chains').",
+        "justificacio": "El resum actual enfoca la resiliència només com a estabilitat financera i 'dignitat', però l'original emfatitza l'impacte en la interrupció de negoci i la resiliència de les cadenes de subministrament europees."
+      },
+      {
+        "bloc": "2-dadesClau",
+        "tipus": "modificar",
+        "proposta": "Desglossar la bretxa entre elegibilitat (48,6%) i alineació real (10,7%) en exposicions no financeres.",
+        "justificacio": "Mostrar aquesta diferència de gairebé 38 punts percentuals evidencia que el problema principal no és la manca d'activitats potencialment sostenibles, sinó el no compliment dels criteris tècnics de la Taxonomia (DNSH i salvaguardes)."
+      },
+      {
+        "bloc": "6-accions",
+        "tipus": "modificar",
+        "proposta": "A l'acció 03, afegir la necessitat de superar la dependència exclusiva de dades històriques mitjançant models prospectius ('forward-looking models').",
+        "justificacio": "L'original emfatitza textualment que la dependència d'informació històrica és una limitació crítica per a la supervisió del risc climàtic accelerat."
+      }
+    ],
+    "advocat_diable": [
+      {
+        "tipus": "contradiccio",
+        "bloc_afectat": "5-connexions",
+        "observacio": "EIOPA dona suport ferm a l'agenda de simplificació i reducció de càrregues ('Bolder, Simpler, Faster'), mentre alhora admet que la reducció de l'abast de les empreses sotmeses a ESRS deixa la majoria d'asseguradores fora de l'obligació de reportar. És una contradicció demanar una millor avaluació dels riscos climàtics mentre s'aplaudeixen retallades en la transparència obligatòria.",
+        "evidencia_original": "Taking into account the reduced scope of undertakings required to report on the ESRS... future voluntary standards for companies outside of the scope of the ESRS, including most insurance undertakings."
+      },
+      {
+        "tipus": "greenwashing",
+        "bloc_afectat": "0-semafor",
+        "observacio": "L'informe presenta com un 'avenç' (marcat en verd al destil·lat) el fet que el 4,5% dels actius directes estiguin alineats amb la Taxonomia. En termes de sostenibilitat absoluta, que més del 95% del capital d'asseguradores i fons de pensions estigui en actius NO alineats és un indicador d'inacció estructural i risc sistèmic, no pas un motiu de satisfacció.",
+        "evidencia_original": "EIOPA’s analysis revealed that 4.5% of insurers’ direct corporate bond and equity investments were aligned with the Taxonomy."
+      },
+      {
+        "tipus": "criteri_oblidat",
+        "bloc_afectat": "4-implicacions",
+        "observacio": "Manca de consideració de la justícia distributiva i l'arrelament territorial en la bretxa de protecció. L'informe tracta la manca d'assegurança com un problema de solvència per a les entitats financeres. Tanmateix, quan el risc climàtic augmenta, la resposta del mercat privat sol ser l'encariment de pòlisses o la desinversió/retirada de zones de risc (inassegurabilitat), transferint tot el cost a les comunitats vulnerables i a les arques públiques sense proposar mecanismes de solidaritat ni co-decisió.",
+        "evidencia_original": "The business models and solvency of (re)insurers and pension funds face growing threats... a persistent and widening insurance protection gap against natural catastrophes..."
+      },
+      {
+        "tipus": "mancanca",
+        "bloc_afectat": "6-accions",
+        "observacio": "L'informe confia l'acció de les entitats financeres al paper voluntari de l'stewardship (diàleg actiu i vot). No s'esmenta cap mesura prudencial penalitzadora o vincolant (com recàrrecs de capital en Solvència II per finançar actius d'alta intensitat en carboni), basant la transició en la voluntat dels propis inversors.",
+        "evidencia_original": "...alignment of incentives that can be used through their stewardship role, leveraging their influence to encourage companies to operate responsibly..."
+      }
+    ]
+  }
+}

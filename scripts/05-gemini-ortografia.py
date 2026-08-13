@@ -18,7 +18,8 @@ import os
 from pathlib import Path
 
 sys.path.insert(0, "./scripts")
-from config import call_gemini_safe, GEMINI_FREE_API_KEY
+from gemini_free_client import call_gemini_free
+from config import GEMINI_FREE_MODEL
 
 FETS_DIR = Path("./data/informes/3-fets")
 REVISATS_DIR = Path("./data/informes/4-revisats-ortografia")
@@ -43,45 +44,19 @@ REGLA CRITICA:
 La teva resposta ha de ser EXACTAMENT el Markdown corregit, començant pel `---` del front-matter. Sense comentaris, sense explicacions, sense "Aqui tens la versio corregida:"."""
 
 GEMINI_MODELS = [
-    "gemini-3-flash-preview",
-    "gemini-flash-lite-latest",
+    GEMINI_FREE_MODEL,  # gemini-3-flash-preview (gratuït, REST directe)
 ]
 
 def get_gemini_client_with_fallback():
-    """Retorna client Gemini (clau free tier) i prova els models en ordre."""
-    from google import genai
-
-    client = genai.Client(api_key=GEMINI_FREE_API_KEY)
-    for model in GEMINI_MODELS:
-        try:
-            _ = client.models.generate_content(model=model, contents="Test")
-            print(f"  -> Model Gemini actiu: {model}")
-            return client, model
-        except Exception as e:
-            print(f"  -> Model {model} no disponible: {e}")
-            continue
-
-    raise Exception("Cap model Gemini disponible")
+    """Retorna el model Gemini free actiu (REST directe, no SDK)."""
+    return None, GEMINI_FREE_MODEL
 
 def call_gemini_with_fallback(system_prompt: str, user_prompt: str, temperature: float = 0.2, max_tokens: int = 16000) -> str:
-    """Crida Gemini amb fallback entre models i espera de 60s al 429 (call_gemini_safe)."""
-    from google import genai
-
-    client = genai.Client(api_key=GEMINI_FREE_API_KEY)
-    for model in GEMINI_MODELS:
-        try:
-            return call_gemini_safe(
-                client, model, system_prompt, user_prompt,
-                temperature=temperature, max_tokens=max_tokens,
-            )
-        except Exception as e:
-            error_str = str(e)
-            if "quota" in error_str.lower() or "limit" in error_str.lower() or "429" in error_str:
-                print(f"  -> Model {model} al limit (call_gemini_safe ja ha esperat 60s), provant seguent...")
-                continue
-            raise
-
-    raise Exception("Tots els models Gemini han fallat")
+    """Crida Gemini free via REST directe amb espera de 60s al 429/503."""
+    return call_gemini_free(
+        system_prompt, user_prompt,
+        temperature=temperature, max_tokens=max_tokens,
+    )
 
 
 def correct_one(md_path: Path) -> bool:

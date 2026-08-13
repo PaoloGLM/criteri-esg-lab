@@ -23,7 +23,7 @@ from pathlib import Path
 from datetime import datetime
 
 sys.path.insert(0, "./scripts")
-from config import get_gemini_free_client, FONT_URLS, GEMINI_FREE_MODEL
+from config import FONT_URLS, GEMINI_FREE_MODEL
 
 ORIGINALS_DIR = Path("./data/informes/0-originals")
 ORIGINALS_DIR.mkdir(parents=True, exist_ok=True)
@@ -43,14 +43,14 @@ def save_state(filepath: Path, data: dict):
     filepath.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
 def get_gemini_client():
-    return get_gemini_free_client()
+    # Client REST directe (no SDK — el SDK 2.16 trunca respostes amb models 3.x)
+    return None
 
 def call_gemini(system_prompt: str, user_prompt: str, temperature: float = 0.3, max_tokens: int = 8000) -> str:
-    # Usa call_gemini_safe (retry 429 amb espera de 60s) definit a config.py
-    from config import call_gemini_safe
-    client = get_gemini_free_client()
-    return call_gemini_safe(
-        client, DETECTION_MODEL, system_prompt, user_prompt,
+    # Usa gemini_free_client (REST directe, retry 429/503 amb espera de 60s)
+    from gemini_free_client import call_gemini_free
+    return call_gemini_free(
+        system_prompt, user_prompt,
         temperature=temperature, max_tokens=max_tokens,
     )
 

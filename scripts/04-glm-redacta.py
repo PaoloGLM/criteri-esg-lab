@@ -61,7 +61,7 @@ def call_deepseek_redactor(title: str, institution: str, destilat: str, aportaci
         f"=== APORTACIONS DE GEMINI ===\n{aportacions[:8000]}\n=== FI ===\n\n"
         f"Redacta el Markdown ara (amb el front-matter YAML al principi)."
     )
-    return call_deepseek(system_prompt, user_prompt, temperature=0.4, max_tokens=8000)
+    return call_deepseek(system_prompt, user_prompt, temperature=0.4, max_tokens=16000)
 
 
 def process_one(slug: str) -> bool:

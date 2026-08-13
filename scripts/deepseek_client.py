@@ -16,6 +16,30 @@ from config import get_deepseek_client, DEEPSEEK_MODEL
 
 DEEPSEEK_MODEL_NAME = DEEPSEEK_MODEL  # deepseek-v4-pro
 
+# Comptatge de tokens per càlcul de costos (data/informes/state/token-usage.json)
+USAGE_FILE = Path(__file__).resolve().parent.parent / "data" / "informes" / "state" / "token-usage.json"
+
+
+def _record_usage(model: str, provider: str, prompt_tokens: int, completion_tokens: int):
+    import json as _json
+    import time as _time
+    USAGE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    entry = {
+        "ts": _time.strftime("%Y-%m-%dT%H:%M:%S"),
+        "model": model,
+        "provider": provider,
+        "prompt_tokens": prompt_tokens,
+        "completion_tokens": completion_tokens,
+    }
+    data = []
+    if USAGE_FILE.exists():
+        try:
+            data = _json.loads(USAGE_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            data = []
+    data.append(entry)
+    USAGE_FILE.write_text(_json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
 
 def call_deepseek(system_prompt: str, user_prompt: str, temperature: float = 0.4, max_tokens: int = 8000) -> str:
     client = get_deepseek_client()
@@ -28,7 +52,18 @@ def call_deepseek(system_prompt: str, user_prompt: str, temperature: float = 0.4
         temperature=temperature,
         max_tokens=max_tokens,
     )
-    return response.choices[0].message.content
+    try:
+        u = response.usage
+        _record_usage(DEEPSEEK_MODEL_NAME, "deepseek", u.prompt_tokens or 0, u.completion_tokens or 0)
+    except Exception:
+        pass
+    content = response.choices[0].message.content or ""
+    if not content.strip():
+        # Si el thinking mode esgota el límit i content queda buit, fer servir reasoning_content
+        rc = getattr(response.choices[0].message, "reasoning_content", None)
+        if rc and rc.strip():
+            content = rc
+    return content
 
 
 def call_deepseek_json(system_prompt: str, user_prompt: str, temperature: float = 0.4, max_tokens: int = 8000) -> dict:

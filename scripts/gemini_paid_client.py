@@ -23,6 +23,30 @@ from config import GEMINI_API_KEY, GEMINI_PAID_MODEL
 
 API_BASE = "https://generativelanguage.googleapis.com/v1beta"
 
+# Comptatge de tokens (mateix fitxer que deepseek_client per consolidar costos)
+USAGE_FILE = Path(__file__).resolve().parent.parent / "data" / "informes" / "state" / "token-usage.json"
+
+
+def _record_usage(model: str, provider: str, prompt_tokens: int, completion_tokens: int):
+    import json as _json
+    import time as _time
+    USAGE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    entry = {
+        "ts": _time.strftime("%Y-%m-%dT%H:%M:%S"),
+        "model": model,
+        "provider": provider,
+        "prompt_tokens": prompt_tokens,
+        "completion_tokens": completion_tokens,
+    }
+    data = []
+    if USAGE_FILE.exists():
+        try:
+            data = _json.loads(USAGE_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            data = []
+    data.append(entry)
+    USAGE_FILE.write_text(_json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
 
 def call_gemini_paid(system_prompt: str, user_prompt: str, temperature: float = 0.7, max_tokens: int = 16000, timeout: int = 120) -> str:
     """Crida Gemini 3.6 Flash via REST. Amb retry 429 (espera 60s)."""
@@ -50,9 +74,23 @@ def call_gemini_paid(system_prompt: str, user_prompt: str, temperature: float = 
             if not candidates:
                 raise Exception(f"Gemini sense candidates: {json.dumps(data)[:300]}")
             parts = candidates[0].get("content", {}).get("parts", [])
+            # Comptatge de tokens per càlcul de costos
+            try:
+                um = data.get("usageMetadata", {})
+                _record_usage(
+                    GEMINI_PAID_MODEL, "gemini-paid",
+                    um.get("promptTokenCount", 0),
+                    um.get("candidatesTokenCount", 0),
+                )
+            except Exception:
+                pass
             return "".join(p.get("text", "") for p in parts)
         if r.status_code == 429:
             print(f"[!] Error 429: Quota saturada. Esperant 60 segons abans de reintentar...")
+            time.sleep(60)
+            continue
+        if r.status_code == 503:
+            print(f"[!] Error 503: Model saturat temporalment. Esperant 60 segons abans de reintentar...")
             time.sleep(60)
             continue
         raise Exception(f"Gemini HTTP {r.status_code}: {r.text[:500]}")

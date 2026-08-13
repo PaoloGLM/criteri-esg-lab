@@ -148,13 +148,18 @@ def process_one_pdf(pdf_path: Path) -> bool:
             f"TÍTOL: {meta['title']}\nINSTITUCIÓ: {meta['institution']}\n{lang_instr}\n\n"
             f"=== TEXT ===\n{text[:28000]}\n=== FI ===\n\nGenera el JSON ara."
         )
-        raw = call_deepseek(sp, up, temperature=0.4, max_tokens=8000)
+        raw = call_deepseek(sp, up, temperature=0.4, max_tokens=16000)
         import re
         m = re.search(r'```(?:json)?\s*([\s\S]*?)```', raw)
         if m: raw = m.group(1).strip()
         m = re.search(r'\{[\s\S]*\}', raw)
         if m: raw = m.group(0)
-        return json.loads(raw)
+        try:
+            return json.loads(raw)
+        except json.JSONDecodeError:
+            # Reparació: comes finals abans de } o ]
+            fixed = re.sub(r",\s*([}\]])", r"\1", raw)
+            return json.loads(fixed)
 
     print(f"  → Generant versió catalana...")
     report_ca = _distill("ca")

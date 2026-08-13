@@ -9,7 +9,8 @@ Per cada .md a /data/informes/3-fets/:
 Us:
     scripts/.venv/bin/python scripts/05-gemini-ortografia.py [slug]
 
-Fallback: Si Gemini 3.6 flash arriba al seu limit, passa a Gemini 3.5 Flash.
+Fallback: Si el model primari falla per quota (429), espera 60 segons i reintenta.
+Si el model no existeix, prova amb el següent de la llista.
 """
 import sys
 import time
@@ -17,7 +18,7 @@ import os
 from pathlib import Path
 
 sys.path.insert(0, "./scripts")
-from gemini_client import call_gemini
+from config import call_gemini_safe, GEMINI_FREE_API_KEY
 
 FETS_DIR = Path("./data/informes/3-fets")
 REVISATS_DIR = Path("./data/informes/4-revisats-ortografia")
@@ -42,54 +43,44 @@ REGLA CRITICA:
 La teva resposta ha de ser EXACTAMENT el Markdown corregit, començant pel `---` del front-matter. Sense comentaris, sense explicacions, sense "Aqui tens la versio corregida:"."""
 
 GEMINI_MODELS = [
-    "gemini-3.6-flash",
-    "gemini-3.5-flash",
+    "gemini-3-flash-preview",
+    "gemini-flash-lite-latest",
 ]
 
 def get_gemini_client_with_fallback():
-    """Retorna client Gemini intentant models en ordre de preferencia."""
-    from gemini_client import get_gemini_client as get_client_base
+    """Retorna client Gemini (clau free tier) i prova els models en ordre."""
     from google import genai
-    
+
+    client = genai.Client(api_key=GEMINI_FREE_API_KEY)
     for model in GEMINI_MODELS:
         try:
-            client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
-            # Test rapid
             _ = client.models.generate_content(model=model, contents="Test")
             print(f"  -> Model Gemini actiu: {model}")
-            return genai.Client(api_key=os.environ.get("GEMINI_API_KEY")), model
+            return client, model
         except Exception as e:
             print(f"  -> Model {model} no disponible: {e}")
             continue
-    
+
     raise Exception("Cap model Gemini disponible")
 
 def call_gemini_with_fallback(system_prompt: str, user_prompt: str, temperature: float = 0.2, max_tokens: int = 16000) -> str:
-    """Crida Gemini amb fallback automatic entre models."""
+    """Crida Gemini amb fallback entre models i espera de 60s al 429 (call_gemini_safe)."""
     from google import genai
-    
+
+    client = genai.Client(api_key=GEMINI_FREE_API_KEY)
     for model in GEMINI_MODELS:
         try:
-            client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
-            response = client.models.generate_content(
-                model=model,
-                contents=[
-                    {"role": "user", "parts": [{"text": system_prompt}]},
-                    {"role": "user", "parts": [{"text": user_prompt}]}
-                ],
-                config={
-                    "temperature": temperature,
-                    "maxOutputTokens": max_tokens,
-                }
+            return call_gemini_safe(
+                client, model, system_prompt, user_prompt,
+                temperature=temperature, max_tokens=max_tokens,
             )
-            return response.text
         except Exception as e:
             error_str = str(e)
             if "quota" in error_str.lower() or "limit" in error_str.lower() or "429" in error_str:
-                print(f"  -> Model {model} al limit, provant següent...")
+                print(f"  -> Model {model} al limit (call_gemini_safe ja ha esperat 60s), provant seguent...")
                 continue
             raise
-    
+
     raise Exception("Tots els models Gemini han fallat")
 
 
@@ -154,7 +145,7 @@ def main():
     target = sys.argv[1] if len(sys.argv) > 1 else None
 
     print("=== Pas 5: Gemini corregeix ortografia (CA + ES) ===\n")
-    print(f"Models: gemini-3.6-flash (primari) -> gemini-3.5-flash (fallback)\n")
+    print(f"Models: {GEMINI_MODELS[0]} (primari) -> {GEMINI_MODELS[1]} (fallback)\n")
     print(f"Fets: {FETS_DIR}")
     print(f"Destinació: {REVISATS_DIR}\n")
 

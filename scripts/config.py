@@ -143,6 +143,38 @@ def get_service_account_email() -> str:
     return data.get("client_email", "")
 
 
+def call_gemini_safe(client, model, system_prompt, user_prompt, temperature=0.3, max_tokens=8000):
+    """
+    Crida Gemini amb gestió d'errors 429: si es bloqueja, espera 60 segons
+    i reintenta (política de paciència per al pla gratuït).
+    """
+    import time
+    # Importem l'excepció directament des del paquet genai
+    from google.genai.errors import APIError
+
+    while True:
+        try:
+            response = client.models.generate_content(
+                model=model,
+                contents=user_prompt,
+                config={
+                    "system_instruction": system_prompt,
+                    "temperature": temperature,
+                    "max_output_tokens": max_tokens,
+                },
+            )
+            return response.text
+        except APIError as e:
+            # Comprovem si és un error de limitació (429)
+            if e.code == 429:
+                print(f"[!] Error 429: Quota saturada. Esperant 60 segons abans de reintentar...")
+                time.sleep(60)
+            else:
+                # Si és un altre error, pugem l'excepció
+                raise e
+
+
+
 def find_informes_root(drive_service) -> str:
     """
     Busca la carpeta pare 'Informes' o 'informes' al Drive del service account.

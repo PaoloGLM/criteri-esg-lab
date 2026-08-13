@@ -46,17 +46,13 @@ def get_gemini_client():
     return get_gemini_free_client()
 
 def call_gemini(system_prompt: str, user_prompt: str, temperature: float = 0.3, max_tokens: int = 8000) -> str:
+    # Usa call_gemini_safe (retry 429 amb espera de 60s) definit a config.py
+    from config import call_gemini_safe
     client = get_gemini_free_client()
-    response = client.models.generate_content(
-        model=DETECTION_MODEL,
-        contents=user_prompt,
-        config={
-            "system_instruction": system_prompt,
-            "temperature": temperature,
-            "max_output_tokens": max_tokens,
-        },
+    return call_gemini_safe(
+        client, DETECTION_MODEL, system_prompt, user_prompt,
+        temperature=temperature, max_tokens=max_tokens,
     )
-    return response.text
 
 def fetch_font_page(url: str) -> list:
     try:

@@ -216,6 +216,24 @@ def upload_file(drive, local_path: Path, drive_filename: str, folder_id: str, mi
     return result
 
 
+def list_files_in_folder(drive, folder_id: str) -> list:
+    """Llista els fitxers d'una carpeta de Drive. Retorna [{'id','name','webViewLink'}]."""
+    results = []
+    page_token = None
+    while True:
+        resp = drive.files().list(
+            q=f"'{folder_id}' in parents and trashed=false",
+            fields="nextPageToken, files(id, name, webViewLink)",
+            pageSize=100,
+            pageToken=page_token,
+        ).execute()
+        results.extend(resp.get("files", []))
+        page_token = resp.get("nextPageToken")
+        if not page_token:
+            break
+    return results
+
+
 def share_file_with_email(drive, file_id: str, email: str, role: str = "writer") -> None:
     """Comparteix un fitxer de Drive amb un email concret."""
     body = {

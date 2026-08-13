@@ -129,13 +129,21 @@ def process_one(slug: str) -> bool:
         pdf_name = f"{slug}.{lang}.pdf"
         md_name = md_path.name
 
-        # Convertir a PDF (local)
-        with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
-            pdf_path = Path(tmp.name)
+        # Convertir a PDF (local) — si ja existeix el PDF de genera-pdf-informe.py, usar-lo
+        existing_pdf = REVISATS_DIR / f"{slug}.{lang}.pdf"
+        if existing_pdf.exists():
+            print(f"  → Usant PDF ja generat: {existing_pdf.name}")
+            pdf_path = existing_pdf
+            reuse = True
+        else:
+            with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
+                pdf_path = Path(tmp.name)
+            reuse = False
         try:
-            print(f"  → Convertint {md_path.name} a PDF...")
-            md_to_pdf(md_path, pdf_path)
-            print(f"  ✓ PDF generat ({pdf_path.stat().st_size/1024:.1f} KB)")
+            if not reuse:
+                print(f"  → Convertint {md_path.name} a PDF...")
+                md_to_pdf(md_path, pdf_path)
+                print(f"  ✓ PDF generat ({pdf_path.stat().st_size/1024:.1f} KB)")
 
             # Pujar PDF
             if pdf_name in existing:
@@ -157,7 +165,8 @@ def process_one(slug: str) -> bool:
                 upload_file(drive, md_path, md_name, folder_4_id, mime_type="text/markdown")
                 print(f"  ✓ MD també pujat")
         finally:
-            pdf_path.unlink(missing_ok=True)
+            if not reuse:
+                pdf_path.unlink(missing_ok=True)
 
     return ok
 

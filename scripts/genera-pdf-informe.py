@@ -494,22 +494,52 @@ def generate_html(report: dict) -> str:
 
 
 def html_to_pdf(html: str, pdf_path: Path):
-    """Converteix HTML a PDF amb weasyprint."""
+    """Converteix HTML a PDF.
+
+    Backend preferit a Windows: Edge/Chrome headless (weasyprint falla
+    per libgobject-2.0-0 absent). Detecta el navegador disponible.
+    """
+    import shutil
+
+    # Possibles ubicacions del navegador (Windows) — Chrome primer (verificat 13-agost-2026)
+    browsers = [
+        shutil.which("chrome"),
+        r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+        r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+        shutil.which("msedge"),
+        r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+        r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
+    ]
+    browser = next((b for b in browsers if b and Path(b).exists()), None)
+    if not browser:
+        raise Exception(
+            "Cap navegador (Edge/Chrome) disponible per generar PDF. "
+            "Instal·la Microsoft Edge o Chrome."
+        )
+
     with tempfile.NamedTemporaryFile(mode="w", suffix=".html", delete=False, encoding="utf-8") as f:
         f.write(html)
         html_path = f.name
+    profile_dir = tempfile.mkdtemp(prefix="hermes-pdf-profile-")
 
     try:
         result = subprocess.run(
-            ["weasyprint", html_path, str(pdf_path)],
+            [
+                browser, "--headless", "--disable-gpu", "--no-pdf-header-footer",
+                f"--user-data-dir={profile_dir}",
+                f"--print-to-pdf={str(pdf_path.resolve())}",
+                Path(html_path).as_uri(),
+            ],
             capture_output=True,
             text=True,
             timeout=120,
         )
-        if result.returncode != 0:
-            raise Exception(f"Weasyprint error: {result.stderr[:300]}")
+        if result.returncode != 0 or not pdf_path.exists():
+            raise Exception(f"Error navegador: {result.stderr[:300]}")
     finally:
         Path(html_path).unlink(missing_ok=True)
+        import shutil as _shutil
+        _shutil.rmtree(profile_dir, ignore_errors=True)
 
 
 def main():

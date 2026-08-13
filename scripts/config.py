@@ -23,6 +23,14 @@ GEMINI_MODEL = "gemini-3-flash-preview"  # gratuït (free tier); alternativa PRO
 GEMINI_FREE_API_KEY = os.getenv("GEMINI_FREE_API_KEY", "")
 GEMINI_FREE_MODEL = "gemini-3-flash-preview"
 
+# === Gemini 3.6 Flash (API de pagament — pas 3, revisió crítica) ===
+GEMINI_PAID_MODEL = "gemini-3.6-flash"  # només pas 3 per contenir costos
+
+# === DeepSeek v4 Pro (passos 2, 4 i 7) ===
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
+DEEPSEEK_MODEL = "deepseek-v4-pro"
+DEEPSEEK_BASE_URL = "https://api.deepseek.com"
+
 # === OpenRouter (Nemotron 3 Ultra) ===
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
@@ -111,6 +119,16 @@ def get_gemini_free_client():
         )
     from google import genai
     return genai.Client(api_key=GEMINI_FREE_API_KEY)
+
+
+def get_deepseek_client():
+    """Retorna client OpenAI-compatible per DeepSeek v4 Pro (API oficial)."""
+    if not DEEPSEEK_API_KEY:
+        raise ValueError(
+            "DEEPSEEK_API_KEY no configurada. Posa-la a assets/web/.env.local"
+        )
+    from openai import OpenAI
+    return OpenAI(base_url=DEEPSEEK_BASE_URL, api_key=DEEPSEEK_API_KEY)
 
 
 def get_drive_service():

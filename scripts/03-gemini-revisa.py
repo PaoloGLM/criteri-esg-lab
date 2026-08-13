@@ -1,14 +1,16 @@
 """
-Pas 3 del flux: Nemotron 3 Ultra revisa (critic + advocat del diable).
+Pas 3 del flux: Gemini 3.6 Flash revisa (critic + advocat del diable).
 
 Per cada JSON a /data/informes/1-distilats/:
 1. Llegeix el JSON (destil·lat del pas 2)
 2. Llegeix el PDF original associat
-3. Crida Nemotron 3 Ultra amb rol de critic + advocat del diable
+3. Crida Gemini 3.6 Flash amb rol de critic + advocat del diable
 4. Guarda les propostes a /data/informes/2-aportacions-gemini/
 
-Us:
+Ús:
     scripts/.venv/bin/python scripts/03-gemini-revisa.py [slug]
+
+Model: gemini-3.6-flash (API de pagament, clau GEMINI_API_KEY — compte PRO).
 """
 import sys
 import json
@@ -16,7 +18,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, "./scripts")
-from nemotron_client import call_nemotron_json
+from gemini_paid_client import call_gemini_paid_json
 
 DATA_DIR = Path("./data/informes")
 ORIGINALS_DIR = DATA_DIR / "0-originals"
@@ -83,16 +85,16 @@ def extract_text_from_pdf(pdf_path: Path, max_chars: int = 15000) -> str:
 
 
 def process_one(distilat_path: Path) -> bool:
-    """Processa un destil·lat amb Nemotron 3 Ultra."""
+    """Processa un destil·lat amb Gemini 3.6 Flash (API de pagament)."""
     slug = distilat_path.stem
     output_path = APORTACIONS_DIR / f"{slug}.json"
 
-    # Si ja existeix, esborrar i refer (perque ara es Nemotron real, no GLM/Gemini)
+    # Si ja existeix, esborrar i refer (ara amb Gemini 3.6 Flash)
     if output_path.exists():
-        print(f"  · Ja existia, refent amb Nemotron: {slug}")
+        print(f"  · Ja existia, refent amb Gemini 3.6 Flash: {slug}")
         output_path.unlink()
 
-    print(f"\n=== Revisant amb Nemotron 3 Ultra: {slug} ===")
+    print(f"\n=== Revisant amb Gemini 3.6 Flash: {slug} ===")
     distilat_data = json.loads(distilat_path.read_text(encoding="utf-8"))
 
     # Trobar PDF original
@@ -125,8 +127,8 @@ INSTITUCIO: {distilat_data['institution']}
 
 Genera el JSON critic ara."""
 
-    print(f"  -> Cridant Nemotron 3 Ultra (critic + advocat del diable)...")
-    aportacions = call_nemotron_json(SYSTEM_PROMPT, user_prompt, temperature=0.7, max_tokens=16000)
+    print(f"  -> Cridant Gemini 3.6 Flash (critic + advocat del diable)...")
+    aportacions = call_gemini_paid_json(SYSTEM_PROMPT, user_prompt, temperature=0.7, max_tokens=16000)
 
     # Guardar
     output = {
@@ -134,7 +136,7 @@ Genera el JSON critic ara."""
         "title": distilat_data["title"],
         "institution": distilat_data["institution"],
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
-        "model": "nemotron-3-ultra:free (via OpenRouter)",
+        "model": "gemini-3.6-flash (API de pagament)",
         "aportacions": aportacions,
     }
     output_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -147,8 +149,8 @@ Genera el JSON critic ara."""
 def main():
     target = sys.argv[1] if len(sys.argv) > 1 else None
 
-    print("=== Pas 3: Nemotron 3 Ultra (critic + advocat del diable) ===\n")
-    print(f"Model: nemotron-3-ultra:free via OpenRouter\n")
+    print("=== Pas 3: Gemini 3.6 Flash (critic + advocat del diable) ===\n")
+    print(f"Model: gemini-3.6-flash (API de pagament)\n")
     print(f"Destil·lats: {DISTILATS_DIR}")
     print(f"Destinació: {APORTACIONS_DIR}\n")
 

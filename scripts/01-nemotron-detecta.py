@@ -1,5 +1,5 @@
 """ 
-Pas 1 del flux: Nemotron 3 Ultra detecta informes nous a les fonts institucionals.
+Pas 1 del flux: Gemini detecta informes nous a les fonts institucionals.
 
 1. Cerca a les fonts institucionals establertes (veure config.py: FONT_URLS)
 2. Per cada PDF nou trobat:
@@ -11,7 +11,8 @@ Pas 1 del flux: Nemotron 3 Ultra detecta informes nous a les fonts institucional
 Us:
     scripts/.venv/bin/python scripts/01-nemotron-detecta.py
 
-Configuracio: Necessita OPENROUTER_API_KEY al .env.local per Nemotron 3 Ultra.
+Configuracio: Necessita GEMINI_FREE_API_KEY al .env.local (clau free tier AIza...)
+per usar gemini-3-flash-preview (gratuit). Si falta, cau a GEMINI_API_KEY.
 """
 import sys
 import json
@@ -22,7 +23,7 @@ from pathlib import Path
 from datetime import datetime
 
 sys.path.insert(0, "./scripts")
-from config import get_openrouter_client, FONT_URLS
+from config import get_gemini_free_client, FONT_URLS, GEMINI_FREE_MODEL
 
 ORIGINALS_DIR = Path("./data/informes/0-originals")
 ORIGINALS_DIR.mkdir(parents=True, exist_ok=True)
@@ -31,7 +32,7 @@ STATE_DIR.mkdir(parents=True, exist_ok=True)
 PENDING_FILE = Path("./data/informes/state/pending_detection.json")
 HISTORY_FILE = Path("./data/informes/state/detection_history.json")
 
-NEMOTRON_MODEL = "nvidia/nemotron-3-ultra:free"
+DETECTION_MODEL = GEMINI_FREE_MODEL  # gemini-3-flash-preview (gratuit)
 
 def load_state(filepath: Path, default=None):
     if filepath.exists():
@@ -41,23 +42,21 @@ def load_state(filepath: Path, default=None):
 def save_state(filepath: Path, data: dict):
     filepath.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
-def get_openrouter_client():
-    from config import get_openrouter_client as get_client
-    return get_client()
+def get_gemini_client():
+    return get_gemini_free_client()
 
-def call_nemotron(system_prompt: str, user_prompt: str, temperature: float = 0.3, max_tokens: int = 8000) -> str:
-    import openai
-    client = get_openrouter_client()
-    response = client.chat.completions.create(
-        model=NEMOTRON_MODEL,
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt}
-        ],
-        temperature=temperature,
-        max_tokens=max_tokens,
+def call_gemini(system_prompt: str, user_prompt: str, temperature: float = 0.3, max_tokens: int = 8000) -> str:
+    client = get_gemini_free_client()
+    response = client.models.generate_content(
+        model=DETECTION_MODEL,
+        contents=user_prompt,
+        config={
+            "system_instruction": system_prompt,
+            "temperature": temperature,
+            "max_output_tokens": max_tokens,
+        },
     )
-    return response.choices[0].message.content
+    return response.text
 
 def fetch_font_page(url: str) -> list:
     try:
@@ -99,8 +98,8 @@ def processar_font(font_name: str, font_url: str, history: set) -> list:
     return []
 
 def main():
-    print("=== Pas 1: Nemotron 3 Ultra - Deteccio d'informes nous ===\n")
-    print(f"Model: {NEMOTRON_MODEL} (via OpenRouter)")
+    print("=== Pas 1: Gemini - Deteccio d'informes nous ===\n")
+    print(f"Model: {DETECTION_MODEL} (via Gemini free tier)")
     print(f"Fonts configurades: {len(FONT_URLS)}\n")
     
     history = set(load_state(HISTORY_FILE, {}).get("processed_urls", []))

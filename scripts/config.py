@@ -6,6 +6,7 @@ Defineix els noms de les carpetes de Google Drive i el model de Gemini per defec
 """
 import os
 import json
+import re
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -16,7 +17,11 @@ load_dotenv(ENV_FILE)
 
 # === Gemini ===
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-GEMINI_MODEL = "gemini-2.0-pro"  # configurable; alternativa: gemini-2.5-pro
+GEMINI_MODEL = "gemini-3-flash-preview"  # gratuït (free tier); alternativa PRO: gemini-3.1-pro-preview (pagament)
+
+# === Gemini free tier (detecció i tasques de recerca, sense cost) ===
+GEMINI_FREE_API_KEY = os.getenv("GEMINI_FREE_API_KEY", "")
+GEMINI_FREE_MODEL = "gemini-3-flash-preview"
 
 # === OpenRouter (Nemotron 3 Ultra) ===
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
@@ -57,6 +62,31 @@ STATE_DIR = Path(__file__).resolve().parent / "state"
 STATE_DIR.mkdir(exist_ok=True)
 
 
+def load_font_urls() -> dict:
+    """Carrega les fonts institucionals des de 16-BASE-DADES-FONTS.md.
+
+    Retorna {nom_font: url} llegint les taules markdown del document viu
+    (v2.1, 192 fonts). Si el fitxer no existeix, retorna un diccionari buit.
+    """
+    fonts_file = PROJECT_ROOT / "16-BASE-DADES-FONTS.md"
+    urls = {}
+    if not fonts_file.exists():
+        print(f"[config] AVÍS: {fonts_file.name} no trobat; FONT_URLS buit.")
+        return urls
+    for line in fonts_file.read_text(encoding="utf-8").splitlines():
+        # Format: | # | Font | Tipus | URL | Periodicitat | ID Drive |
+        m = re.match(r"^\|\s*\d+\s*\|\s*([^|]+?)\s*\|\s*[^|]*\s*\|\s*(https?://\S+?)\s*\|", line)
+        if m:
+            name = m.group(1).strip()
+            url = m.group(2).strip()
+            if name and url:
+                urls[name] = url
+    return urls
+
+
+FONT_URLS = load_font_urls()
+
+
 def get_gemini_client():
     """Retorna client de Gemini (paquet nou google-genai) autenticat."""
     if not GEMINI_API_KEY:
@@ -66,6 +96,21 @@ def get_gemini_client():
         )
     from google import genai
     return genai.Client(api_key=GEMINI_API_KEY)
+
+
+def get_gemini_free_client():
+    """Retorna client de Gemini amb la clau free tier (GEMINI_FREE_API_KEY).
+
+    Usar per a tasques de recerca/detecció que no han de generar despesa:
+    el model per defecte és gemini-3-flash-preview (gratuït).
+    """
+    if not GEMINI_FREE_API_KEY:
+        raise ValueError(
+            "GEMINI_FREE_API_KEY no configurada. Posa la clau free tier (AIza...) "
+            "a assets/web/.env.local com a GEMINI_FREE_API_KEY"
+        )
+    from google import genai
+    return genai.Client(api_key=GEMINI_FREE_API_KEY)
 
 
 def get_drive_service():

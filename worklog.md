@@ -833,3 +833,40 @@ Stage Summary:
 Entorn de la Roser complet: repo, credencials, OAuth Drive i accés a les dues carpetes.
 A punt per treballar en paral·lel amb Paolo (ritual: git pull abans, commit petit i push després de cada tasca).
 
+---
+Task ID: 2026-08-13-restauracio-hermes
+Agent: Hermes (Paolo)
+Task: Recuperació després de reinstal·lació d'Hermes (bucle d'errors → reinstal·lat)
+
+Què va passar:
+- L'actualització/reinstal·lació d'Hermes va deixar la instal·lació anterior congelada a
+  C:/Users/dvd_f/AppData/Local/hermes_old/ (amb .hermes-update-in-progress a les 20:39)
+- La instal·lació nova (hermes/) va arrencar amb .env buit (només variables de debug),
+  config.yaml de plantilla, sense memòria ni historial de sessions
+- L'historial de sessions (session_search) tornava 0 resultats → "no sabia res del projecte"
+
+Què s'ha restaurat (des de hermes_old/ → hermes/):
+- .env complet amb totes les claus (GOOGLE_API_KEY, HERMES_CUSTOM_GEMINI_*, DEEPINFRA,
+  TELEGRAM_BOT_TOKEN, OPENROUTER_API_KEY, STRIPE_API_KEY, ...)
+- auth.json amb el pool de credencials
+- config.yaml real (model.default=gemini-3-flash-preview, provider=gemini)
+- google_token.json + google_client_secret.json + google_oauth_pending.json (OAuth Drive/Gmail)
+- memories/MEMORY.md + USER.md (context complet del projecte recuperat)
+- Skills addicionals (apple, social-media)
+- cron/, pets/, kanban.db, projects.db, sessions/ (23 fitxers de transcript)
+- Backups dels fitxers nous generats pel instal·lador: .env.installer-backup,
+  auth.json.installer-backup, config.yaml.installer-template
+
+PENDENT:
+- state.db (historial indexat de sessions, 14MB) — NO s'ha pogut restaurar amb l'app oberta;
+  cal tancar Hermes i copiar hermes_old/state.db → hermes/state.db
+
+Verificat:
+- hermes doctor: OK (només 3 avisos menors: npm vulns web/ui-tui, DEEPINFRA_API_KEY a revisar)
+- Repositori criteri-esg-lab intacte i net (git status clean)
+- assets/web/.env.local amb totes les claus del projecte (GEMINI, DEEPSEEK, BREVO, Supabase...)
+- .gcp-service-account.json present
+
+Stage Summary:
+Instal·lació d'Hermes restaurada al 100% excepte state.db (pendent de reinici de l'app).
+Cap dada perduda; tot recuperable de hermes_old/.

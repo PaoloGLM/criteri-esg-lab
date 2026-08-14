@@ -71,17 +71,15 @@ def find_original_pdf(slug: str, distilat_data: dict) -> Path | None:
     return None
 
 
-def extract_text_from_pdf(pdf_path: Path, max_chars: int = 15000) -> str:
-    """Extreu text d'un PDF."""
+def extract_text_from_pdf(pdf_path: Path) -> str:
+    """Extreu TOT el text d'un PDF (sense truncar). Els models tenen 1M de context."""
     import pdfplumber
     text = ""
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
             page_text = page.extract_text() or ""
             text += page_text + "\n\n"
-            if len(text) > max_chars:
-                break
-    return text[:max_chars]
+    return text
 
 
 def process_one(distilat_path: Path) -> bool:
@@ -107,10 +105,10 @@ def process_one(distilat_path: Path) -> bool:
     original_text = extract_text_from_pdf(pdf_path)
     print(f"  Text original: {len(original_text)} chars")
 
-    # Destil·lat com a string JSON
+    # Destil·lat com a string JSON (sencer, sense truncar)
     destilat_str = json.dumps({
         "content_ca": distilat_data.get("content_ca"),
-    }, ensure_ascii=False, indent=2)[:15000]
+    }, ensure_ascii=False, indent=2)
 
     user_prompt = f"""Analitza el destil·lat següent i compara'l amb l'informe original.
 

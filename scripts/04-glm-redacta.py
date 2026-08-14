@@ -57,8 +57,8 @@ def call_deepseek_redactor(title: str, institution: str, destilat: str, aportaci
     user_prompt = (
         f"Redacta l'informe final integrant el destil·lat i les aportacions crítiques.\n\n"
         f"TÍTOL: {title}\nINSTITUCIÓ: {institution}\n{lang_instr}\n\n"
-        f"=== DESTIL·LAT INICIAL ===\n{destilat[:8000]}\n=== FI ===\n\n"
-        f"=== APORTACIONS DE GEMINI ===\n{aportacions[:8000]}\n=== FI ===\n\n"
+        f"=== DESTIL·LAT INICIAL ===\n{destilat}\n=== FI ===\n\n"
+        f"=== APORTACIONS DE GEMINI ===\n{aportacions}\n=== FI ===\n\n"
         f"Redacta el Markdown ara (amb el front-matter YAML al principi)."
     )
     return call_deepseek(system_prompt, user_prompt, temperature=0.4, max_tokens=16000)
@@ -87,14 +87,14 @@ def process_one(slug: str) -> bool:
     distilat_data = json.loads(distilat_path.read_text(encoding="utf-8"))
     aportacions_data = json.loads(aportacions_path.read_text(encoding="utf-8"))
 
-    # Destil·lat com a string JSON
+    # Destil·lat com a string JSON (sencer)
     destilat_str = json.dumps({
         "content_ca": distilat_data.get("content_ca"),
         "content_es": distilat_data.get("content_es"),
-    }, ensure_ascii=False, indent=2)[:10000]
+    }, ensure_ascii=False, indent=2)
 
-    # Aportacions de Gemini
-    aportacions_str = json.dumps(aportacions_data.get("aportacions"), ensure_ascii=False, indent=2)[:10000]
+    # Aportacions de Gemini (senceres)
+    aportacions_str = json.dumps(aportacions_data.get("aportacions"), ensure_ascii=False, indent=2)
 
     # Redactar CA
     print(f"  → Redactant versió catalana...")

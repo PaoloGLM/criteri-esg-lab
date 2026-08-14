@@ -28,16 +28,19 @@ DISTILATS_DIR = DATA_DIR / "1-distilats"
 DISTILATS_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def extract_text_from_pdf(pdf_path: Path, max_chars: int = 30000) -> str:
-    """Extreu text d'un PDF amb pdfplumber. Màx 30.000 caràcters."""
+def extract_text_from_pdf(pdf_path: Path) -> str:
+    """Extreu TOT el text d'un PDF amb pdfplumber (sense truncar).
+
+    Abans limitava a 30.000 caràcters (límit històric dels models de context
+    curt). Els models actuals (DeepSeek v4 Pro, Gemini 3.6 Flash) tenen 1M de
+    tokens de context, així que un PDF de 100 pàgines hi cap sencer.
+    """
     text = ""
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
             page_text = page.extract_text() or ""
             text += page_text + "\n\n"
-            if len(text) > max_chars:
-                break
-    return text[:max_chars]
+    return text
 
 
 def slugify(filename: str) -> str:
@@ -146,7 +149,7 @@ def process_one_pdf(pdf_path: Path) -> bool:
         up = (
             f"Analitza el següent informe i genera el ReportBlock JSON.\n\n"
             f"TÍTOL: {meta['title']}\nINSTITUCIÓ: {meta['institution']}\n{lang_instr}\n\n"
-            f"=== TEXT ===\n{text[:28000]}\n=== FI ===\n\nGenera el JSON ara."
+            f"=== TEXT ===\n{text}\n=== FI ===\n\nGenera el JSON ara."
         )
         raw = call_deepseek(sp, up, temperature=0.4, max_tokens=16000)
         import re

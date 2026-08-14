@@ -1,0 +1,299 @@
+{
+  "slug": "ecb-climate-risk-2026",
+  "title": "Climate risk 2026",
+  "institution": "European Central Bank",
+  "filename_original": "ecb-climate-risk-2026.pdf",
+  "generated_at": "2026-08-14T18:03:30",
+  "content_ca": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Quantificació sòlida dels riscos climàtics amb una llacuna en la petjada d'abast 3",
+      "indicators": [
+        {
+          "name": "Cobertura d'emissions finançades (Scope 3)",
+          "status": "groc",
+          "label": "Esmentada indirectament",
+          "note": "L'informe no quantifica les emissions de cartera per abast 3; s'utilitzen intensitats sectorials d'emissions i energètiques per assignar inversions verdes, sense desglossar l'abast de les emissions."
+        },
+        {
+          "name": "Risc de transició",
+          "status": "verd",
+          "label": "Quantificat en PD i CET1",
+          "note": "Impacte de 74 pb sobre CET1; augment mitjà de PD del 50%, fins al 91% en sectors d'alta intensitat energètica."
+        },
+        {
+          "name": "Risc físic agut",
+          "status": "verd",
+          "label": "Quantificat amb escenari granular",
+          "note": "Impacte addicional de 77 pb; 2.786 municipis afectats, 36% de l'exposició creditícia i 6,4% d'empreses directament afectades."
+        },
+        {
+          "name": "Escenaris climàtics NGFS/EBA",
+          "status": "verd",
+          "label": "Combinació quantitativa",
+          "note": "Escenari advers EBA combinat amb NGFS NDC, incloent impacte macroeconòmic i transicions energètiques."
+        },
+        {
+          "name": "Evidència causal amb DiD/RDD",
+          "status": "verd",
+          "label": "Models economètrics granulars",
+          "note": "Increment de PD de 0,7-2,0 pp per a empreses inundades; efectes locals significatius."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "74 pb",
+        "label": "Impacte del risc de transició sobre CET1",
+        "page": "Secció 2.3"
+      },
+      {
+        "value": "77 pb",
+        "label": "Impacte addicional del risc físic agut",
+        "page": "Box 1 / Conclusions"
+      },
+      {
+        "value": "2.786 municipis",
+        "label": "Municipis afectats per inundacions",
+        "page": "Box 1"
+      },
+      {
+        "value": "91 %",
+        "label": "Augment mitjà de PD en alta intensitat energètica",
+        "page": "Secció 2.3"
+      },
+      {
+        "value": "36 %",
+        "label": "Exposició creditícia en municipis afectats",
+        "page": "Box 1"
+      }
+    ],
+    "resumExecutiu": "L'article del BCE integra el risc climàtic en l'exercici d'estrès de la UE de 2025 i obre la porta a avaluar la resiliència bancària en un horitzó curt. Combina l'escenari advers de l'EBA amb els escenaris NDC del NGFS i estén els resultats oficials amb models top-down per al risc de crèdit de les societats no financeres. En l'àmbit de transició, les inversions verdes derivades dels objectius de reducció d'emissions redueixen la rendibilitat i augmenten el palanquejament, especialment en mineria, manufactura, generació elèctrica i aigua. Això eleva la probabilitat d'impagament mitjana un 50%, amb una mediana del 91% en sectors d'alta intensitat energètica. L'impacte agregat sobre el capital CET1 és de 74 punts bàsics. El risc físic agut, analitzat focalitzant-se en inundacions, afegeix 77 punts bàsics addicionals i actua per tres canals: danys directes, disrupcions locals i deteriorament macroeconòmic. L'escenari granular identifica 2.786 municipis afectats, que representen el 36% de l'exposició creditícia; dins de cada municipi, el 6,4% d'empreses amb més risc es consideren directament afectades. Les estimacions causals amb diferències-en-diferències i regressió discontínua mostren increments de la probabilitat de deterioració creditícia d'entre 0,1 i 0,2 punts percentuals per a empreses ubicades en municipis afectats, i de 0,7 a 2,0 punts per a empreses directament inundades. La conclusió rellevant és que els bancs més exposats a pèrdues climàtiques no coincideixen necessàriament amb els més vulnerables en l'avaluació general, la qual cosa justifica integrar ambdós riscos en les avaluacions ordinàries d'estabilitat financera.",
+    "implicacions": {
+      "empreses": "Per a les empreses, l'informe envia un senyal clar: la transició climàtica no és neutra per al balanç. Les companyies d'alta intensitat energètica —mineria, manufactura, generació elèctrica i aigua— han d'anticipar un doble xoc: més endeutament per finançar inversions verdes i una rendibilitat més feble per amortitzacions i despeses financeres. Això pot encarir el crèdit i reduir la capacitat de maniobra. Les firmes ubicades en municipis amb risc d'inundació també veuen deteriorar la seva qualitat creditícia encara que no resultin directament afectades, per la disrupció del transport i dels serveis locals. La planificació ha d'incorporar la resiliència física i la transició energètica com a variables centrals, no només com a requisits de compliment, per evitar racionament de crèdit o pèrdua de competitivitat.",
+      "reguladors": "Els reguladors europeus tenen ara una base quantitativa per justificar la integració progressiva del clima als stress tests. L'informe confirma que els xocs de transició i físics aguts poden materialitzar-se a curt termini i que cal capturar-los amb escenaris combinats, models top-down i dades granulars. Cal harmonitzar metodologies entre EBA, EIOPA i ESMA, tal com preveuen les guies conjuntes, i garantir la proporcionalitat per evitar càrregues desproporcionades a entitats petites. També cal ampliar la granularitat territorial i incorporar altres perills com sequeres o incendis, perquè l'exposició varia per país i sector. Finalment, la feblesa de la relació entre pèrdues climàtiques i vulnerabilitats del marc advers recomana no oblidar bosses de risc no detectades.",
+      "ciutadans": "La ciutadania hauria de saber que el risc climàtic no és només un debat de llarg termini: pot afectar l'estabilitat financera i, per tant, l'accés al crèdit i al finançament de l'habitatge i les empreses. Les inundacions i les transicions abruptes poden degradar la qualitat creditícia de municipis sencers, fins i tot d'empreses no directament afectades, amb possibles efectes sobre l'ocupació i els serveis locals. Això exigeix polítiques de transició justa i arrelament territorial perquè les comunitats vulnerables no assumeixin desproporcionadament els costos. La transparència de les avaluacions climàtiques ajuda a retre comptes i a implicar la ciutadania en decisions que afecten l'economia real."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Justícia i arrelament",
+      "body": "L'exercici del BCE quantifica danys i pèrdues, però no pregunta qui decideix com es gestionen els territoris més exposats. La justícia demana que la informació sobre risc físic no serveixi només per racionalitzar el crèdit o desinvertir, sinó per activar mecanismes de co-decisió amb comunitats locals. L'arrelament, entès com el dret a mantenir projectes de vida i activitat econòmica al territori, queda amenaçat si les dades s'usen per excloure municipis sencers. Un exercici realment més enllà del checkbox hauria de vincular les mètriques de pèrdua esperada amb plans de transició justa, finançament de resiliència i participació ciutadana, evitant que l'adaptació al clima esdevingui una nova font de desigualtat territorial."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "ESAs Joint Consultation Paper on ESG stress testing (2025)",
+        "desc": "L'article avança la integració obligatòria del clima en els stress tests europeus prevista per a 2027 i dóna suport empíric a les guies conjuntes d'ESAs."
+      },
+      {
+        "type": "Complement",
+        "target": "NGFS Climate Scenarios Phase V",
+        "desc": "Els escenaris NDC del NGFS nodreixen la modelització de transició i física, i l'article els combina amb l'escenari advers EBA per obtenir impactes de curt termini."
+      },
+      {
+        "type": "Contradicció",
+        "target": "EBA 2025 adverse scenario",
+        "desc": "El marc advers vigent no captura el risc climàtic; l'exercici revela bosses de risc no detectades, ja que els bancs més exposats al clima no coincideixen amb els més vulnerables."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Integrar el clima a l'EU-wide stress test 2027",
+        "desc": "Formalitzar la incorporació de riscos de transició i físics aguts al proper exercici europeu, aprofitant escenaris NGFS, AnaCredit i models top-down ja validats.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Publicar emissions finançades per abast",
+        "desc": "Exigir a les entitats el desglossament Scope 1, 2 i 3 per sector i municipi, per calibrar correctament el risc de transició i evitar dependre només d'intensitats sectorials.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Ampliar la granulometria del risc físic",
+        "desc": "Incorporar sequeres, incendis i altres perills amb dades geospacials obertes i models RDD/DiD per cobrir heterogeneïtat local.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "04",
+        "title": "Crear protocols de co-decisió territorial",
+        "desc": "Vincular les pèrdues estimades a plans de transició justa i resiliència local amb participació ciutadana i ajuts condicionats.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "05",
+        "title": "Harmonitzar models causals entre supervisors",
+        "desc": "Estandarditzar les estimacions DiD/RDD i els llindars de materialitat per comparar resultats entre bancs i països.",
+        "effort": "Baix",
+        "impact": "Alt"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "csrd-esrs",
+        "criterion": "ESRS E1 - Canvi climàtic",
+        "impact": "L'article ofereix mètriques quantitatives d'impacte creditici, però no connecta amb el desglossament d'emissions Scope 1-2-3 que exigeix ESRS E1."
+      },
+      {
+        "framework": "tcfd",
+        "criterion": "Gestió de riscos i mètriques",
+        "impact": "Reforça la necessitat de quantificar risc de transició i físic, però no es tradueix encara en divulgació TCFD per a bancs."
+      },
+      {
+        "framework": "csddd",
+        "criterion": "Diligència deguda i cadena de valor",
+        "impact": "La granularitat local i els efectes indirectes sobre comunitats connecten amb la diligència deguda ambiental; falta integrar la perspectiva social."
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Cuantificación climática sólida con mención cualitativa en naturaleza",
+      "indicators": [
+        {
+          "name": "Riesgo de transición",
+          "status": "verd",
+          "label": "Impacto CET1 -74 pb",
+          "note": "Modelo top-down con escenario NGFS NDCs e inversiones verdes sectoriales."
+        },
+        {
+          "name": "Riesgo físico agudo",
+          "status": "verd",
+          "label": "Impacto CET1 -77 pb",
+          "note": "Análisis granular de inundaciones con DiD y RDD sobre datos AnaCredit."
+        },
+        {
+          "name": "Granularidad territorial y sectorial",
+          "status": "verd",
+          "label": "2.786 municipios afectados",
+          "note": "Desglose NUTS 4 y exposiciones por intensidad energética."
+        },
+        {
+          "name": "Horizonte de corto plazo",
+          "status": "verd",
+          "label": "2025-2027",
+          "note": "Integra choques climáticos en el marco temporal del stress test."
+        },
+        {
+          "name": "Biodiversidad y riesgos naturales",
+          "status": "groc",
+          "label": "Solo mención cualitativa",
+          "note": "Se mencionan biodiversidad y deforestación, pero no se cuantifican."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "74 pb",
+        "label": "Impacto adicional del riesgo de transición en CET1",
+        "page": "Sección 2.3"
+      },
+      {
+        "value": "77 pb",
+        "label": "Impacto adicional del riesgo físico agudo en CET1",
+        "page": "Box 1"
+      },
+      {
+        "value": "487 pb",
+        "label": "Depleción total de capital con escenario EBA+NGFS",
+        "page": "Box 1"
+      },
+      {
+        "value": "+91%",
+        "label": "Aumento mediano de PD en sectores de alta intensidad energética",
+        "page": "Sección 2.3"
+      },
+      {
+        "value": "2.786 municipios / 36% exposición",
+        "label": "Alcance del riesgo físico granular",
+        "page": "Box 1"
+      }
+    ],
+    "resumExecutiu": "El artículo del BCE publicado en el Macroprudential Bulletin de noviembre de 2025 amplía la prueba de resistencia de la UE de 2025 para incorporar riesgos climáticos de transición y físicos agudos al riesgo de crédito de las sociedades no financieras mediante modelos top-down. Combina el escenario adverso de la EBA con el escenario NGFS NDCs en un horizonte 2025-2027. La transición exige inversiones verdes que elevan el apalancamiento y reducen la rentabilidad, sobre todo en sectores de alta intensidad energética: el apalancamiento sube 4,33 puntos porcentuales y la rentabilidad cae 8,41 puntos. La probabilidad de impago media aumenta un 50% y hasta un 91% en los sectores más expuestos, con un impacto añadido sobre el capital CET1 de 74 puntos básicos. El riesgo físico agudo, modelizado como inundaciones fluviales con datos granulares NUTS 4 y AnaCredit, añade 77 puntos básicos de depleción de capital, elevando el impacto combinado a 487 puntos básicos. El escenario identifica 2.786 municipios afectados que concentran el 36% de la exposición crediticia. Las estimaciones DiD y RDD confirman que tanto las empresas directamente inundadas como las que operan en municipios afectados sufren deterioro crediticio. Los bancos más expuestos al riesgo climático no siempre coinciden con los más vulnerables en la evaluación general. El informe concluye que ambos riesgos tienen un efecto moderado pero relevante y deben integrarse en las evaluaciones periódicas de estabilidad financiera, especialmente ante la futura incorporación gradual de los riesgos ESG a partir de 2027.",
+    "implicacions": {
+      "empresas": "Para las empresas, especialmente las de alta y media intensidad energética, la descarbonización no es indolora: las inversiones verdes elevan deuda, reducen rentabilidad y aumentan la probabilidad de impago, con efectos sectoriales muy diferenciados. Las compañías deben anticipar un encarecimiento del crédito y una mayor vigilancia bancaria sobre sus exposiciones climáticas. Además, incluso las empresas no directamente afectadas por una inundación sufren deterioro crediticio si operan en municipios afectados, lo que obliga a revisar la resiliencia de las cadenas de suministro locales y los planes de continuidad. La granularidad del análisis aconseja incorporar la localización física y la intensidad energética en la planificación financiera y en la relación con las entidades de crédito. No basta con cumplir formalmente la taxonomía: importa demostrar una senda de inversión coherente y datos de exposición geoespacial.",
+      "reguladors": "Los supervisores deben consolidar la integración de los riesgos climáticos en las pruebas de resistencia ordinarias, evitando que la visión a largo plazo desplace los choques agudos y de transición a corto plazo. Las ESAs prevén directrices comunes para 2026 y una integración gradual a partir de 2027; los resultados del BCE refuerzan la necesidad de armonizar escenarios, definiciones de datos y modelos top-down. El hallazgo de que los bancos más expuestos al clima no son los mismos que los más vulnerables en el test convencional exige no depender de una única métrica de vulnerabilidad. También conviene ampliar la cobertura a sequías e incendios y asegurar la proporcionalidad sin sacrificar granularidad territorial. El uso de AnaCredit y datos NUTS 4 es una buena base, pero requiere inversión en calidad geoespacial y en capacidades analíticas compartidas.",
+      "ciutadans": "Los ciudadanos reciben el impacto indirecto del riesgo climático a través de la estabilidad financiera, el acceso al crédito y la vitalidad de sus territorios. Las inundaciones deterioran la calidad crediticia local incluso de empresas no inundadas, lo que puede traducirse en restricciones de financiación para pymes, pérdida de empleo y menor inversión en municipios ya expuestos. La transición hacia sectores menos intensivos debe gestionarse con criterios de justicia para evitar que los costes recaigan sobre trabajadores y comarcas dependientes de la energía tradicional. El informe no cuantifica estos efectos sociales, pero su lógica territorial invita a incorporar la cohesión social y la participación ciudadana en el diseño de escenarios. La transparencia sobre los riesgos climáticos bancarios también protege a ahorradores y pensionistas, que necesitan saber cómo el cambio climático puede afectar al valor de sus inversiones y a la solidez de las entidades."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Justicia y arrelamiento",
+      "body": "Más allá del check-box regulatorio, la integración del riesgo climático en las pruebas de resistencia debería incorporar criterios de justicia y arrelamiento. No basta con cuantificar puntos básicos de capital: hay que preguntarse quién soporta el coste de la transición en sectores intensivos en energía y qué comunidades quedan atrapadas en territorios expuestos a inundaciones. La dignidad de las personas trabajadoras y de las pymes locales exige métricas que capturen la cohesión territorial, la calidad del empleo y la participación de los afectados en las decisiones de descarbonización. Sin estos criterios, el análisis climático puede acabar legitimando una transición tecnocrática que protege el capital financiero pero abandona a los territorios frágiles. La co-decisión con los actores locales debería formar parte del diseño de escenarios y de las respuestas prudenciales."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "ECB economy-wide climate stress test (2021)",
+        "desc": "Este artículo recoge la metodología top-down sectorial y la extiende con el escenario NGFS NDCs y el análisis de riesgos físicos agudos."
+      },
+      {
+        "type": "Complement",
+        "target": "Fit-for-55 climate scenario analysis (ESAs/ECB 2024)",
+        "desc": "Utiliza el enfoque de proyección de probabilidades de impago a partir de rentabilidad y apalancamiento, con ajustes para inversiones verdes."
+      },
+      {
+        "type": "Evolució",
+        "target": "EBA 2025 EU-wide stress test",
+        "desc": "Parte de los resultados oficiales del stress test y añade una capa climática que no estaba incluida en el escenario adverso de la EBA."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Desplegar escenarios climáticos de corto plazo en el ciclo de pruebas de resistencia",
+        "desc": "Integrar los escenarios NGFS de corto plazo en los ejercicios internos de ICAAP y en las pruebas de sensibilidad supervisoras.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Mejorar la granularidad geográfica y sectorial de las carteras crediticias",
+        "desc": "Invertir en datos geoespaciales y en la segmentación por intensidad energética para captar exposiciones locales y sectoriales.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Diferenciar la medición de riesgos de transición y físicos por sector y territorio",
+        "desc": "Evitar métricas únicas de vulnerabilidad y comparar los resultados climáticos con los del stress test convencional.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "04",
+        "title": "Incorporar criterios de justicia territorial y co-decisión en la planificación de la transición",
+        "desc": "Añadir métricas de cohesión social, empleo y participación local a los análisis climáticos para no dejar atrás a los territorios frágiles.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "05",
+        "title": "Publicar resultados de sensibilidad climática junto al stress test oficial",
+        "desc": "Institucionalizar la transparencia sobre impactos de transición y físicos para inversores, supervisores y ciudadanos.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "csrd-esrs",
+        "criterion": "ESRS E1 Cambio climático",
+        "impact": "La cuantificación de riesgos de transición y físicos y su impacto en capital ofrece una base para los análisis de materialidad financiera que exige la CSRD."
+      },
+      {
+        "framework": "tcfd",
+        "criterion": "Estrategia y gestión de riesgos",
+        "impact": "Ayuda a las entidades a evaluar la resiliencia de su estrategia ante escenarios climáticos, alineado con las recomendaciones del TCFD."
+      },
+      {
+        "framework": "tnfd",
+        "criterion": "Riesgos relacionados con la naturaleza",
+        "impact": "Aunque el informe se centra en clima, menciona biodiversidad y deforestación, conectando con la necesidad de evaluar dependencias e impactos naturales."
+      }
+    ]
+  }
+}

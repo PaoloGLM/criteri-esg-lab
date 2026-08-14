@@ -144,6 +144,32 @@ def esc(s):
     return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
 
 
+def md_table_to_rows(body: str) -> list:
+    """Converteix taules Markdown a llistes de files (diccionaris per capçalera).
+
+    Accepta qualsevol nombre de columnes. Retorna [] si no hi ha cap taula.
+    Exemple:
+        | # | Títol | Descripció | Esforç | Impacte |
+        |---|-------|------------|--------|---------|
+        | 01 | X | Y | Mitjà | Alt |
+    → [{"#": "01", "Títol": "X", "Descripció": "Y", "Esforç": "Mitjà", "Impacte": "Alt"}]
+    """
+    rows = []
+    lines = [l.strip() for l in body.split("\n") if l.strip().startswith("|")]
+    if len(lines) < 2:
+        return rows
+    # Capçalera: primera línia, separador: segona
+    header = [c.strip() for c in lines[0].strip("|").split("|")]
+    if not all(re.match(r"^:?-+:?$", c) for c in [x.strip() for x in lines[1].strip("|").split("|")]):
+        return rows  # no és una taula Markdown vàlida
+    for line in lines[2:]:
+        cells = [c.strip() for c in line.strip("|").split("|")]
+        if len(cells) != len(header):
+            continue
+        rows.append({h: cells[i] for i, h in enumerate(header)})
+    return rows
+
+
 def md_to_html(text):
     """Converteix Markdown bàsic a HTML (per als textos de GLM que venen en MD)."""
     if not text:
@@ -201,22 +227,55 @@ def parse_md_to_reportblock(md_text: str, lang: str = "ca") -> dict:
         lines = section.strip().split("\n")
         title = lines[0].strip()
         body = "\n".join(lines[1:]).strip()
+        title_es = title.replace("Bloque", "Bloc", 1)  # normalitza "Bloque 0" → "Bloc 0" (castellà)
 
-        if title.startswith("Bloc 0") or "Semàfor" in title:
-            # Nota global
+        if title_es.startswith("Bloc 0") or "Semàfor" in title_es:
+            # Nota global (format antic) o Grau:/Grado: (format nou, CA i ES)
             m = re.search(r"(?:Nota global|Global)[:\s]*([A-D])\s*[·-]?\s*(.+?)(?:\n|$)", body)
+            if not m:
+                m = re.search(r"\*?\*?Grau:?\*?\*?\s*([A-D])\s*[·—-]?\s*(.+?)(?:\n|$)", body)
+            if not m:
+                m = re.search(r"\*?\*?Grado:?\*?\*?\s*([A-D])\s*[·—-]?\s*(.+?)(?:\n|$)", body)
             if m:
                 result["semafor"]["grade"] = m.group(1)
                 result["semafor"]["gradeLabel"] = m.group(2).strip()
-            # Indicators
-            for line in body.split("\n"):
-                m = re.match(r"-\s*\*\*([^*]+)\*\*:\s*(\w+)\s*[—-]\s*(.+)", line)
-                if m:
-                    name = m.group(1).strip()
-                    status_str = m.group(2).strip().lower()
-                    note = m.group(3).strip()
-                    # Mapejar status
-                    status_map = {"verd": "verd", "groc": "groc", "vermell": "vermell", "verda": "verd", "groga": "groc", "vermella": "vermell"}
+            # Indicators: format antic (llistes) o format nou (taula)
+            table_rows = md_table_to_rows(body)
+            if table_rows:
+                for row in table_rows:
+                    # Columnes possibles: Indicador/Indicador|Estat|Nota (ca) o Indicador|Estado|Nota (es)
+                    name = row.get("Indicador") or row.get("Indicador") or ""
+                    status_str = row.get("Estat") or row.get("Estado") or ""
+                    note = row.get("Nota", "")
+                    if not name:
+                        continue
+                    status_map = {"verd": "verd", "groc": "groc", "vermell": "vermell", "verda": "verd", "groga": "groc", "vermella": "vermell", "verde": "verd", "amarillo": "groc", "rojo": "vermell"}
+                    status = status_map.get(status_str.strip().lower(), "groc")
+                    label_map = {"verd": "Quantificat", "groc": "Esmentat", "vermell": "Ignorat"}
+                    result["semafor"]["indicators"].append({
+                        "name": name,
+                        "status": status,
+                        "label": label_map.get(status, "Esmentat"),
+                        "note": note,
+                    })
+            else:
+                for line in body.split("\n"):
+                    # Format antic: - **Nom**: estat — nota (CA)
+                    m = re.match(r"-\s*\*\*([^*]+)\*\*:\s*(\w+)\s*[—-]\s*(.+)", line)
+                    if m:
+                        name = m.group(1).strip()
+                        status_str = m.group(2).strip().lower()
+                        note = m.group(3).strip()
+                    else:
+                        # Format ES: - **Verde** · Nombre: valor — cuantificado
+                        m = re.match(r"-\s*\*\*(Verde|Amarillo|Rojo|Verd|Groc|Vermell|verde|amarillo|rojo)\*\*\s*[·•]\s*([^:]+):\s*(.+)", line)
+                        if m:
+                            name = m.group(2).strip()
+                            status_str = m.group(1).strip().lower()
+                            note = m.group(3).strip()
+                        else:
+                            continue
+                    status_map = {"verd": "verd", "groc": "groc", "vermell": "vermell", "verda": "verd", "groga": "groc", "vermella": "vermell", "verde": "verd", "amarillo": "groc", "rojo": "vermell"}
                     status = status_map.get(status_str, "groc")
                     label_map = {"verd": "Quantificat", "groc": "Esmentat", "vermell": "Ignorat"}
                     result["semafor"]["indicators"].append({
@@ -226,10 +285,10 @@ def parse_md_to_reportblock(md_text: str, lang: str = "ca") -> dict:
                         "note": note,
                     })
 
-        elif title.startswith("Bloc 1") or "Fitxa" in title:
+        elif title_es.startswith("Bloc 1") or "Fitxa" in title_es:
             result["fitxa"] = body
 
-        elif title.startswith("Bloc 2") or "dades clau" in title.lower():
+        elif title_es.startswith("Bloc 2") or "dades clau" in title_es.lower():
             # Buscar entrades "1. **valor** — label (p. X)"
             for line in body.split("\n"):
                 m = re.match(r"\d+\.\s*\*\*([^*]+)\*\*\s*[—-]\s*(.+?)(?:\s*\(p\.\s*([^)]+)\))?$", line)
@@ -240,16 +299,19 @@ def parse_md_to_reportblock(md_text: str, lang: str = "ca") -> dict:
                         "page": m.group(3) or "",
                     })
 
-        elif title.startswith("Bloc 3") or "Resum" in title:
+        elif title_es.startswith("Bloc 3") or "Resum" in title_es:
             result["resumExecutiu"] = body
 
-        elif title.startswith("Bloc 4") or "Implicacions" in title:
-            # Subseccions
-            for sub in re.split(r"^### ", body, flags=re.MULTILINE)[1:]:
+        elif title_es.startswith("Bloc 4") or "Implicacions" in title_es:
+            # Subseccions: format antic (### Empreses) o format nou (**Empreses**)
+            # Normalitzar: convertir negretes de subsecció a headers temporals
+            # (captura també la "línia dura" de Markdown: **Empreses** seguit de 2 espais)
+            body_norm = re.sub(r"^\*\*(.+?)\*\*[ \t]*\r?$", r"### \1", body, flags=re.MULTILINE)
+            for sub in re.split(r"^### ", body_norm, flags=re.MULTILINE)[1:]:
                 sub_lines = sub.split("\n")
                 sub_title = sub_lines[0].strip().lower()
                 sub_body = "\n".join(sub_lines[1:]).strip()
-                if "empresa" in sub_title:
+                if "empres" in sub_title:
                     result["implicacions"]["empreses"] = sub_body
                 elif "regulador" in sub_title:
                     result["implicacions"]["reguladors"] = sub_body
@@ -263,7 +325,17 @@ def parse_md_to_reportblock(md_text: str, lang: str = "ca") -> dict:
                         sub_body = re.sub(r"Criteri:\s*.+?\n", "", sub_body, count=1)
                     result["mesEnllaCheckbox"]["body"] = sub_body.strip()
 
-        elif title.startswith("Bloc 5") or "Connexions" in title:
+        elif title_es.startswith("Bloc 5") or "Connexions" in title_es:
+            # Format nou (taula): | Tipus | Objectiu | Descripció |
+            table_rows = md_table_to_rows(body)
+            if table_rows:
+                for row in table_rows:
+                    typ = row.get("Tipus") or row.get("Tipo") or row.get("Type") or ""
+                    target = row.get("Objectiu") or row.get("Objetivo") or row.get("Target") or ""
+                    desc = row.get("Descripció") or row.get("Descripcion") or row.get("Descripción") or ""
+                    if typ or target or desc:
+                        result["connexions"].append({"type": typ, "target": target, "desc": desc})
+            # Format antic: - **Type** — target: desc
             for line in body.split("\n"):
                 m = re.match(r"-\s*\*\*([^*]+)\*\*\s*[—-]\s*([^:]+):\s*(.+)", line)
                 if m:
@@ -272,22 +344,83 @@ def parse_md_to_reportblock(md_text: str, lang: str = "ca") -> dict:
                         "target": m.group(2).strip(),
                         "desc": m.group(3).strip(),
                     })
+                else:
+                    # Format nou (llista): - **Evolució:** X → Y  o  - **Complement:** X → Y
+                    # Nota: el dos punts pot anar DINS (**Evolució:**) o FORA (**Evolució**:) de la negreta
+                    m2 = re.match(r"-\s*\*\*([^*]+?)\*?\*?:\*?\*?\s*(.+)", line)
+                    if m2:
+                        typ = m2.group(1).strip()
+                        rest = m2.group(2).strip()
+                        # Separar target / desc si hi ha fletxa
+                        if "→" in rest or "->" in rest:
+                            parts = re.split(r"\s*(?:→|->)\s*", rest, maxsplit=1)
+                            target, desc = parts[0], parts[1] if len(parts) > 1 else ""
+                        else:
+                            target, desc = rest, ""
+                        result["connexions"].append({"type": typ, "target": target, "desc": desc})
 
-        elif title.startswith("Bloc 6") or "Accions" in title:
-            # Format: 01. **títol** — desc\n   - Esforç: X · Impacte: Y
-            blocks = re.split(r"\n(?=\d+\.)", body)
-            for block in blocks:
-                m = re.match(r"(\d+)\.\s*\*\*([^*]+)\*\*\s*[—-]\s*(.+?)(?:\n\s*-\s*Esfor[:ç]c?\s*:\s*(\w+)\s*[·-]\s*Impacte?\s*:\s*(\w+))?", block.strip())
-                if m:
+        elif title_es.startswith("Bloc 6") or "Accions" in title_es:
+            # Format nou: taula | # | Títol | Descripció | Esforç | Impacte |
+            table_rows = md_table_to_rows(body)
+            if table_rows:
+                for row in table_rows:
+                    num = row.get("#") or row.get("Nº") or row.get("Num") or ""
+                    t = row.get("Títol") or row.get("Titulo") or row.get("Título") or ""
+                    desc = row.get("Descripció") or row.get("Descripcion") or row.get("Descripción") or ""
+                    effort = row.get("Esforç") or row.get("Esfuerzo") or "Mitjà"
+                    impact = row.get("Impacte") or row.get("Impacto") or "Mitjà"
+                    if not t:
+                        continue
                     result["accions"].append({
-                        "num": m.group(1),
-                        "title": m.group(2).strip(),
-                        "desc": m.group(3).strip(),
-                        "effort": m.group(4) or "Mitjà",
-                        "impact": m.group(5) or "Mitjà",
+                        "num": num,
+                        "title": t,
+                        "desc": desc,
+                        "effort": effort,
+                        "impact": impact,
                     })
+            else:
+                # Format ES: **01 — Títol**\ndesc\n*Esfuerzo: Medio | Impacto: Alto*
+                blocks = re.split(r"\n\s*\n", body)
+                for block in blocks:
+                    m = re.match(
+                        r"\*\*(\d+)\s*[—-]\s*(.+?)\*\*[ \t]*\r?\n+(.+?)\n\*Esfuerzo:?\s*:?\s*(.+?)\s*[|·]\s*Impacto:?\s*:?\s*(.+?)\*",
+                        block.strip(),
+                    )
+                    if m:
+                        result["accions"].append({
+                            "num": m.group(1),
+                            "title": m.group(2).strip(),
+                            "desc": m.group(3).strip(),
+                            "effort": m.group(4).strip(),
+                            "impact": m.group(5).strip(),
+                        })
+                        continue
+                    # Format antic: 01. **títol** — desc\n   - Esforç: X · Impacte: Y
+                    m = re.match(r"(\d+)\.\s*\*\*([^*]+)\*\*\s*[—-]\s*(.+?)(?:\n\s*-\s*Esfor[:ç]c?\s*:\s*(\w+)\s*[·-]\s*Impacte?\s*:\s*(\w+))?", block.strip())
+                    if m:
+                        result["accions"].append({
+                            "num": m.group(1),
+                            "title": m.group(2).strip(),
+                            "desc": m.group(3).strip(),
+                            "effort": m.group(4) or "Mitjà",
+                            "impact": m.group(5) or "Mitjà",
+                        })
 
-        elif title.startswith("Bloc 7") or "Cross" in title or "cross" in title:
+        elif title_es.startswith("Bloc 7") or "Cross" in title_es or "cross" in title_es:
+            # Format nou (taula): | Marc de referència | Criteri | Impacte |
+            table_rows = md_table_to_rows(body)
+            if table_rows:
+                for row in table_rows:
+                    framework = row.get("Marc de referència") or row.get("Marco de referencia") or row.get("Marco de referencia") or row.get("Marc") or row.get("Framework") or row.get("Marco") or ""
+                    criterion = row.get("Criteri") or row.get("Criterio") or ""
+                    impact = row.get("Impacte") or row.get("Impacto") or ""
+                    if framework:
+                        result["crossRefs"].append({
+                            "framework": framework,
+                            "criterion": criterion,
+                            "impact": impact,
+                        })
+            # Format antic: - **Marc** — criteri: impact
             for line in body.split("\n"):
                 m = re.match(r"-\s*\*\*([^*]+)\*\*\s*[—-]\s*([^:]+):\s*(.+)", line)
                 if m:

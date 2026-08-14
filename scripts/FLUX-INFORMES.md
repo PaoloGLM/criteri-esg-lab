@@ -42,6 +42,30 @@ Els PDFs es generen amb la **plantilla HTML oficial Criteri ESG** (basada en `pi
 
 Script: `scripts/genera-pdf-informe.py <slug> <ca|es>`
 
+## Format canònic del Markdown (pas 4) — CRÍTIC per al PDF
+
+El parser `parse_md_to_reportblock` (a `genera-pdf-informe.py`) accepta **dos formats** per a cada bloc (el format "vell" de llistes i el format "nou" de taules que genera DeepSeek). El prompt del pas 4 NO fixa el format intern — DeepSeek tendeix a taules. **No canviïs el parser sense re-verificar els 3 casos de test** (EIOPA CA/ES nous + UNEPFI antic).
+
+Resum de formats acceptats per bloc:
+
+| Bloc | Format vell (llistes) | Format nou (DeepSeek) |
+|------|----------------------|----------------------|
+| 0 Semàfor | `- **Nom**: estat — nota` + `Nota global: A · ...` | Taula `\| Indicador \| Estat \| Nota \|` + `**Grau: A** — ...` (ES: `**Grado: B**`, indicadors `- **Verde** · Nombre: valor — nota`) |
+| 1 Fitxa | Llista `- Clau: valor` | Llista `- Clau: valor` |
+| 2 Dades clau | `1. **valor** — label (p. X)` | `1. **valor** — label (p. X)` (idèntic) |
+| 3 Resum | Paràgraf | Paràgraf |
+| 4 Implicacions | `### Empreses` / `### Reguladors` / `### Ciutadans` / `### Més enllà` | `**Empreses**` (negreta, també amb 2 espais de línia dura) |
+| 5 Connexions | `- **Type** — target: desc` | `- **Evolució:** X → Y` (dos punts dins o fora de la negreta) o taula |
+| 6 Accions | `01. **títol** — desc` + `- Esforç: X · Impacte: Y` | Taula `\| # \| Títol \| Descripció \| Esforç \| Impacte \|` o `**01 — Títol**\ndesc\n*Esfuerzo: X \| Impacto: Y*` (ES) |
+| 7 Cross-ref | `- **Marc** — criteri: impact` | Taula `\| Marc \| Criteri \| Impacte \|` (CA/ES) |
+
+**Normes del parser**:
+- Els títols de bloc es normalitzen: `Bloque` (ES) → `Bloc` abans de comparar
+- El grau accepta `Nota global:` / `Grau:` / `Grado:`
+- Els estats accepten català (verd/groc/vermell) i castellà (verde/amarillo/rojo)
+- Els fitxers poden tenir `
+\n` (CRLF) — els regex ho tenen en compte
+
 ## Scripts (tots a `/scripts/`)
 
 | Script | Pas | Què fa |

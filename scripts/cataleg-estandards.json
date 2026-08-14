@@ -1,0 +1,18 @@
+[
+  {"slug": "csrd-esrs", "name": "CSRD / ESRS", "type": "reg", "issuer": "Comissió Europea · EFRAG"},
+  {"slug": "gri", "name": "GRI", "type": "fw", "issuer": "Global Reporting Initiative · Amsterdam"},
+  {"slug": "ecovadis", "name": "EcoVadis", "type": "cert", "issuer": "EcoVadis · París"},
+  {"slug": "b-corp", "name": "B Corp", "type": "cert", "issuer": "B Lab Global · Estats Units"},
+  {"slug": "msci-esg", "name": "MSCI ESG", "type": "cert", "issuer": "MSCI Inc. · Nova York"},
+  {"slug": "csddd", "name": "CSDDD", "type": "reg", "issuer": "Comissió Europea · DG Justice"},
+  {"slug": "sfdr", "name": "SFDR", "type": "reg", "issuer": "Comissió Europea · DG FISMA"},
+  {"slug": "taxonomia-ue", "name": "Taxonomía UE", "type": "reg", "issuer": "Comissió Europea · DG FISMA"},
+  {"slug": "cdp", "name": "CDP", "type": "cert", "issuer": "CDP · Londres"},
+  {"slug": "sge-21", "name": "SGE 21", "type": "cert", "issuer": "Forética · Madrid"},
+  {"slug": "sustainalytics", "name": "Sustainalytics", "type": "cert", "issuer": "Morningstar Sustainalytics · Amsterdam"},
+  {"slug": "sasb", "name": "SASB", "type": "fw", "issuer": "IFRS Foundation · ISSB"},
+  {"slug": "tnfd", "name": "TNFD", "type": "fw", "issuer": "Taskforce on Nature-related Financial Disclosures"},
+  {"slug": "tcfd", "name": "TCFD", "type": "fw", "issuer": "Financial Stability Board (FSB)"},
+  {"slug": "emas", "name": "EMAS", "type": "reg", "issuer": "Comissió Europea · Medi Ambient"},
+  {"slug": "iso-26000", "name": "ISO 26000", "type": "cert", "issuer": "ISO · Ginebra"}
+]

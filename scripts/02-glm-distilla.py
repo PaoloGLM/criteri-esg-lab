@@ -27,6 +27,21 @@ ORIGINALS_DIR = DATA_DIR / "0-originals"
 DISTILATS_DIR = DATA_DIR / "1-distilats"
 DISTILATS_DIR.mkdir(parents=True, exist_ok=True)
 
+CATALEG_PATH = Path(__file__).resolve().parent / "cataleg-estandards.json"
+
+
+def load_cataleg() -> list:
+    """Carrega el catàleg oficial dels 16 estàndards ESG (font única de veritat)."""
+    return json.loads(CATALEG_PATH.read_text(encoding="utf-8"))
+
+
+def cataleg_as_prompt() -> str:
+    """Retorna el catàleg formatat per al prompt (slug + nom)."""
+    lines = []
+    for e in load_cataleg():
+        lines.append(f"- {e['slug']} ({e['name']})")
+    return "\n".join(lines)
+
 
 def extract_text_from_pdf(pdf_path: Path) -> str:
     """Extreu TOT el text d'un PDF amb pdfplumber (sense truncar).
@@ -144,7 +159,10 @@ def process_one_pdf(pdf_path: Path) -> bool:
             "dadesClau 5, accions 4-5, connexions 2-3, crossRefs 2-3.\n"
             'Veu editorial mediterrània. "Més enllà del Checkbox" usa 1-2 criteris ètics '
             '(dignitat, justícia, sostenibilitat, co-decisió, arrelament). '
-            "MAI esmentar Economia del Bé Comú ni Economia Ciutadana públicament."
+            "MAI esmentar Economia del Bé Comú ni Economia Ciutadana públicament.\n\n"
+            "CROSS-REFERENCES (Bloc crossRefs): tria NOMÉS d'aquest catàleg oficial, "
+            "posant el nom exacte a 'framework'. No inventis frameworks fora d'aquesta llista.\n"
+            f"{cataleg_as_prompt()}\n"
         )
         up = (
             f"Analitza el següent informe i genera el ReportBlock JSON.\n\n"

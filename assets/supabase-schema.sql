@@ -121,6 +121,31 @@ create table if not exists public.informes (
   created_at timestamptz default now()
 );
 
+-- 7. Taula estandards (catàleg oficial de 16 estàndards ESG)
+create table if not exists public.estandards (
+  slug text primary key,
+  name text not null,
+  type text not null check (type in ('reg', 'fw', 'cert')),
+  issuer text,
+  created_at timestamptz default now()
+);
+
+-- 8. Taula informe_estandard (cross-reference: quin informe afecta quin estàndard)
+-- Font única de veritat per al Bloc 7 de l'informe i les pàgines /estandares-esg/[slug]
+create table if not exists public.informe_estandard (
+  id uuid primary key default gen_random_uuid(),
+  informe_slug text references public.informes(slug) on delete cascade not null,
+  estandard_slug text references public.estandards(slug) on delete cascade not null,
+  criterion text,
+  impact text check (impact in ('high', 'med', 'low')),
+  pillar text,
+  sub_area text,
+  action text,
+  deadline text,
+  created_at timestamptz default now(),
+  unique (informe_slug, estandard_slug)
+);
+
 -- ============================================
 -- ROW LEVEL SECURITY (RLS)
 -- ============================================
@@ -166,6 +191,20 @@ alter table public.informes enable row level security;
 create policy "Anyone can read published informes" on public.informes
   for select using (status = 'published');
 create policy "Service role manages informes" on public.informes
+  for all using (auth.role() = 'service_role');
+
+-- Estandards: lectura pública, escriptura només service role
+alter table public.estandards enable row level security;
+create policy "Anyone can read estandards" on public.estandards
+  for select using (true);
+create policy "Service role manages estandards" on public.estandards
+  for all using (auth.role() = 'service_role');
+
+-- informe_estandard: lectura pública, escriptura només service role
+alter table public.informe_estandard enable row level security;
+create policy "Anyone can read informe_estandard" on public.informe_estandard
+  for select using (true);
+create policy "Service role manages informe_estandard" on public.informe_estandard
   for all using (auth.role() = 'service_role');
 
 -- ============================================

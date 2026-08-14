@@ -98,3 +98,10 @@ _(cap)_
 - ✅ Pàgina /mas-alla-del-checkbox (preguntes ètiques)
 - ✅ Supabase configurat (auth + BD)
 - ✅ Deploy a Vercel via git push
+
+## PENDENTS (14-08-2026)
+
+- ⏳ **Pendent de Paolo**: passarà una informació per valorar si pot servir per EMMAGATZEMAR INFORMACIÓ i crear un SISTEMA DE DADES (avaluar quan arribi)
+- ⏳ Fitxes d'expert: crear les 15 restants (GRI feta com a plantilla) → Paolo les validarà TOTES
+- ⏳ Integrar fitxes d'expert al pipeline: pas 2 identifica 3-4 estàndards → carrega fitxes → crossRef enriquit → escriure a taula informe_estandard de Supabase
+- ⏳ Revisió mensual de fitxes (cron) o quan el pas 1 detecti canvis a les fonts oficials

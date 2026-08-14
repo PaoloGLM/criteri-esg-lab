@@ -99,6 +99,28 @@ create table if not exists public.report_views (
   user_agent text
 );
 
+-- 6. Taula informes (publicació del pipeline — pas 7)
+-- Cada informe publicat: metadades + contingut dels 8 blocs en CA i ES
+create table if not exists public.informes (
+  slug text primary key,
+  title text not null,
+  institution text not null,
+  date text not null,
+  pages integer default 0,
+  type text default 'official' check (type in ('regulatory', 'framework', 'rating', 'industry', 'official')),
+  scope text default 'EU' check (scope in ('CAT', 'ES', 'EU', 'GLOBAL')),
+  tags text[] default '{}',
+  certifications text[] default '{}',
+  summary text,
+  url text,
+  content_ca jsonb,
+  content_es jsonb,
+  status text not null default 'published' check (status in ('draft', 'validated', 'published', 'archived')),
+  published_at timestamptz default now(),
+  updated_at timestamptz default now(),
+  created_at timestamptz default now()
+);
+
 -- ============================================
 -- ROW LEVEL SECURITY (RLS)
 -- ============================================
@@ -137,6 +159,14 @@ create policy "Users can view own report views" on public.report_views
   for select using (auth.uid() = user_id);
 create policy "Users can insert own report views" on public.report_views
   for insert with check (auth.uid() = user_id);
+
+-- Informes: lectura pública (els informes publicats són de domini públic),
+-- escriptura/edició només via service role (scripts del pas 7)
+alter table public.informes enable row level security;
+create policy "Anyone can read published informes" on public.informes
+  for select using (status = 'published');
+create policy "Service role manages informes" on public.informes
+  for all using (auth.role() = 'service_role');
 
 -- ============================================
 -- TRIGGER: crear perfil automàticament al registre

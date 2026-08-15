@@ -227,7 +227,7 @@ def parse_md_to_reportblock(md_text: str, lang: str = "ca") -> dict:
         lines = section.strip().split("\n")
         title = lines[0].strip()
         body = "\n".join(lines[1:]).strip()
-        title_es = title.replace("Bloque", "Bloc", 1)  # normalitza "Bloque 0" → "Bloc 0" (castellà)
+        title_es = title.replace("Bloque", "Bloc", 1).lstrip("#").strip()  # normalitza "## Bloque 0" → "Bloc 0" (castellà + treu ##)
 
         if title_es.startswith("Bloc 0") or "Semàfor" in title_es:
             # Nota global (format antic) o Grau:/Grado: (format nou, CA i ES)
@@ -305,8 +305,18 @@ def parse_md_to_reportblock(md_text: str, lang: str = "ca") -> dict:
         elif title_es.startswith("Bloc 4") or "Implicacions" in title_es:
             # Subseccions: format antic (### Empreses) o format nou (**Empreses**)
             # Normalitzar: convertir negretes de subsecció a headers temporals
-            # (captura també la "línia dura" de Markdown: **Empreses** seguit de 2 espais)
-            body_norm = re.sub(r"^\*\*(.+?)\*\*[ \t]*\r?$", r"### \1", body, flags=re.MULTILINE)
+            # (captura també la "línia dura" de Markdown: **Empreses** seguit de 2 espais,
+            #  i la variant amb punt: **Empreses.** text a la mateixa línia)
+            # Regla: es normalitzen les negretes CURTES (subseccions) o les que
+            # contenen "més enllà"/"más allá" (checkbox). Les negretes llargues que
+            # no són subseccions (ex: **Criterios éticos: ...**) es deixen intactes.
+            def _norm_subsection(m):
+                label = m.group(1)
+                if len(label) <= 30 or "enllà" in label or "allà" in label or "allá" in label or "alla" in label:
+                    return f"### {label}\n"
+                return m.group(0)
+
+            body_norm = re.sub(r"^\*\*(.+?)\*\*\.?[ \t]*(?=\r?$| )", _norm_subsection, body, flags=re.MULTILINE)
             for sub in re.split(r"^### ", body_norm, flags=re.MULTILINE)[1:]:
                 sub_lines = sub.split("\n")
                 sub_title = sub_lines[0].strip().lower()
@@ -315,14 +325,14 @@ def parse_md_to_reportblock(md_text: str, lang: str = "ca") -> dict:
                     result["implicacions"]["empreses"] = sub_body
                 elif "regulador" in sub_title:
                     result["implicacions"]["reguladors"] = sub_body
-                elif "ciutada" in sub_title:
+                elif "ciutada" in sub_title or "ciudad" in sub_title:
                     result["implicacions"]["ciutadans"] = sub_body
                 elif "checkbox" in sub_title or "enll" in sub_title:
                     # Més enllà del checkbox
-                    m = re.search(r"Criteri:\s*(.+?)(?:\n|$)", sub_body)
+                    m = re.search(r"(?:Criteri|Criterios? éticos?|Criterios?)\s*:\s*(.+?)(?:\n|$)", sub_body)
                     if m:
                         result["mesEnllaCheckbox"]["criteri"] = m.group(1).strip()
-                        sub_body = re.sub(r"Criteri:\s*.+?\n", "", sub_body, count=1)
+                        sub_body = re.sub(r"(?:Criteri|Criterios? éticos?|Criterios?)\s*:\s*.+?\n", "", sub_body, count=1)
                     result["mesEnllaCheckbox"]["body"] = sub_body.strip()
 
         elif title_es.startswith("Bloc 5") or "Connexions" in title_es:
@@ -379,32 +389,80 @@ def parse_md_to_reportblock(md_text: str, lang: str = "ca") -> dict:
                         "impact": impact,
                     })
             else:
-                # Format ES: **01 — Títol**\ndesc\n*Esfuerzo: Medio | Impacto: Alto*
-                blocks = re.split(r"\n\s*\n", body)
-                for block in blocks:
+                # Format inline nou (una acció per línia): 1. **títol** — Esforç: X; Impacte: Y. desc
+                inline_found = False
+                for line in body.split("\n"):
+                    line = line.strip()
                     m = re.match(
-                        r"\*\*(\d+)\s*[—-]\s*(.+?)\*\*[ \t]*\r?\n+(.+?)\n\*Esfuerzo:?\s*:?\s*(.+?)\s*[|·]\s*Impacto:?\s*:?\s*(.+?)\*",
-                        block.strip(),
+                        r"(\d+)[.)]\s*\*\*([^*]+)\*\*\s*[—-]\s*Esfor[:ç]c?\s*:\s*(\w+)\s*[;·]\s*Impacte?\s*:\s*(\w+)[.;:]?\s*(.*)",
+                        line,
                     )
                     if m:
+                        inline_found = True
                         result["accions"].append({
                             "num": m.group(1),
                             "title": m.group(2).strip(),
-                            "desc": m.group(3).strip(),
-                            "effort": m.group(4).strip(),
-                            "impact": m.group(5).strip(),
+                            "desc": m.group(5).strip(),
+                            "effort": m.group(3).strip(),
+                            "impact": m.group(4).strip(),
                         })
-                        continue
-                    # Format antic: 01. **títol** — desc\n   - Esforç: X · Impacte: Y
-                    m = re.match(r"(\d+)\.\s*\*\*([^*]+)\*\*\s*[—-]\s*(.+?)(?:\n\s*-\s*Esfor[:ç]c?\s*:\s*(\w+)\s*[·-]\s*Impacte?\s*:\s*(\w+))?", block.strip())
-                    if m:
-                        result["accions"].append({
-                            "num": m.group(1),
-                            "title": m.group(2).strip(),
-                            "desc": m.group(3).strip(),
-                            "effort": m.group(4) or "Mitjà",
-                            "impact": m.group(5) or "Mitjà",
-                        })
+                if inline_found:
+                    pass  # ja processat amb format inline per línia
+                else:
+                    # Format ES: **01 — Títol**\ndesc\n*Esfuerzo: Medio | Impacto: Alto*
+                    blocks = re.split(r"\n\s*\n", body)
+                    for block in blocks:
+                        m = re.match(
+                            r"\*\*(\d+)\s*[—-]\s*(.+?)\*\*[ \t]*\r?\n+(.+?)\n\*Esfuerzo:?\s*:?\s*(.+?)\s*[|·]\s*Impacto:?\s*:?\s*(.+?)\*",
+                            block.strip(),
+                        )
+                        if m:
+                            result["accions"].append({
+                                "num": m.group(1),
+                                "title": m.group(2).strip(),
+                                "desc": m.group(3).strip(),
+                                "effort": m.group(4).strip(),
+                                "impact": m.group(5).strip(),
+                            })
+                            continue
+                        # Format antic: 01. **títol** — desc\n   - Esforç: X · Impacte: Y
+                        m = re.match(r"(\d+)\.\s*\*\*([^*]+)\*\*\s*[—-]\s*(.+?)(?:\n\s*-\s*Esfor[:ç]c?\s*:\s*(\w+)\s*[·-]\s*Impacte?\s*:\s*(\w+))?", block.strip())
+                        if m:
+                            result["accions"].append({
+                                "num": m.group(1),
+                                "title": m.group(2).strip(),
+                                "desc": m.group(3).strip(),
+                                "effort": m.group(4) or "Mitjà",
+                                "impact": m.group(5) or "Mitjà",
+                            })
+                            continue
+                        # Format inline (un bloc per línia): 1. **títol** — Esforç: Alt; Impacte: Alt. desc
+                        m = re.match(
+                            r"(\d+)[.)]\s*\*\*([^*]+)\*\*\s*[—-]\s*Esfor[:ç]c?\s*:\s*(\w+)\s*[;·]\s*Impacte?\s*:\s*(\w+)[.;:]?\s*(.*)",
+                            block.strip(),
+                        )
+                        if m:
+                            result["accions"].append({
+                                "num": m.group(1),
+                                "title": m.group(2).strip(),
+                                "desc": m.group(5).strip(),
+                                "effort": m.group(3).strip(),
+                                "impact": m.group(4).strip(),
+                            })
+                            continue
+                        # Format ES inline: 01 **títol** — desc. Esfuerzo alto, impacto alto.
+                        m = re.match(
+                            r"(\d+)\s*\*\*([^*]+)\*\*\s*[—-]\s*(.+?)\.\s*Esfuerzo\s+(\w+),\s*impacto\s+(\w+)\.?\s*$",
+                            block.strip(),
+                        )
+                        if m:
+                            result["accions"].append({
+                                "num": m.group(1),
+                                "title": m.group(2).strip(),
+                                "desc": m.group(3).strip(),
+                                "effort": m.group(4).strip(),
+                                "impact": m.group(5).strip(),
+                            })
 
         elif title_es.startswith("Bloc 7") or "Cross" in title_es or "cross" in title_es:
             # Format nou (taula): | Marc de referència | Criteri | Impacte |
@@ -421,6 +479,7 @@ def parse_md_to_reportblock(md_text: str, lang: str = "ca") -> dict:
                             "impact": impact,
                         })
             # Format antic: - **Marc** — criteri: impact
+            # Format nou: - **CSRD/ESRS:** text (dos punts DINS la negreta)
             for line in body.split("\n"):
                 m = re.match(r"-\s*\*\*([^*]+)\*\*\s*[—-]\s*([^:]+):\s*(.+)", line)
                 if m:
@@ -428,6 +487,14 @@ def parse_md_to_reportblock(md_text: str, lang: str = "ca") -> dict:
                         "framework": m.group(1).strip(),
                         "criterion": m.group(2).strip(),
                         "impact": m.group(3).strip(),
+                    })
+                    continue
+                m = re.match(r"-\s*\*\*([^*:]+):\*\*\s*(.+)", line)
+                if m:
+                    result["crossRefs"].append({
+                        "framework": m.group(1).strip(),
+                        "criterion": "",
+                        "impact": m.group(2).strip(),
                     })
 
     return result

@@ -2,65 +2,59 @@
   "slug": "eiopa-sustainable-finance-2026",
   "title": "Sustainable finance 2026",
   "institution": "EIOPA",
-  "generated_at": "2026-08-13T22:02:21",
+  "generated_at": "2026-08-15T17:11:59",
   "model": "gemini-3.6-flash (API de pagament)",
   "aportacions": {
     "propostes": [
       {
         "bloc": "2-dadesClau",
         "tipus": "afegir",
-        "proposta": "Afegir la dada explícita de la bretxa de protecció global no assegurada de 150.000 milions d'euros (el 54,7% del total de pèrdues de 274.000 milions no estava assegurat el 2024).",
-        "justificacio": "L'original dona les pèrdues totals (€274bn) i les assegurades (€124bn). El destil·lat diu al semàfor que la bretxa de protecció 'no té cap xifra concreta', quan es dedueix directament del text original (€150bn no assegurats)."
-      },
-      {
-        "bloc": "2-dadesClau",
-        "tipus": "afegir",
-        "proposta": "Incloure el detall normatiu que la majoria d'asseguradores queden fora de l'abast obligatori del reporti ESRS ('including most insurance undertakings') i depenen de futurs estàndards voluntaris.",
-        "justificacio": "És una dada de context regulatori crítica de la pàgina 1 de l'original que condiciona la capacitat real dels supervisors i inversors per obtenir dades de qualitat."
+        "proposta": "Afegir com a dada clau independent la xifra del 48,6% corresponent a la proporció d'exposicions no financeres elegibles per a la Taxonomia en les carteres de les asseguradores de l'EEE.",
+        "justificacio": "L'informe original (p. 1) detalla específicament que en analitzar només les exposicions no financeres, l'elegibilitat s'eleva fins al 48,6%, una xifra rellevant que al destil·lat només s'esmenta de manera secundària dins de la dada del 20,5%."
       },
       {
         "bloc": "3-resum",
         "tipus": "modificar",
-        "proposta": "Explicitar que la resiliència davant catàstrofes naturals és presentada per EIOPA com un factor clau de competitivitat econòmica i de continuïtat de les cadenes de subministrament ('supply chains').",
-        "justificacio": "El resum actual enfoca la resiliència només com a estabilitat financera i 'dignitat', però l'original emfatitza l'impacte en la interrupció de negoci i la resiliència de les cadenes de subministrament europees."
+        "proposta": "Explicitar al resum executiu que la reducció de l'abast de la CSRD/ESRS fa que la majoria de les entitats asseguradores quedin fora de l'abast obligatori de les ESRS i hagin de dependre d'estàndards voluntaris futurs.",
+        "justificacio": "L'informe original (p. 1-2) indica literalment que la reducció de l'abast afecta de ple el sector, deixant fora 'including most insurance undertakings', fet indispensable per comprendre el suport d'EIOPA a la coherència amb Solvència II i als estàndards voluntaris."
       },
       {
-        "bloc": "2-dadesClau",
+        "bloc": "0-semafor",
         "tipus": "modificar",
-        "proposta": "Desglossar la bretxa entre elegibilitat (48,6%) i alineació real (10,7%) en exposicions no financeres.",
-        "justificacio": "Mostrar aquesta diferència de gairebé 38 punts percentuals evidencia que el problema principal no és la manca d'activitats potencialment sostenibles, sinó el no compliment dels criteris tècnics de la Taxonomia (DNSH i salvaguardes)."
+        "proposta": "A l'indicador 'Bretxa de protecció d'assegurances', indicar que, tot i no haver-hi mètrica regional europea, es dedueix una bretxa global no assegurada de 150 mil milions d'euros a partir de les dades de 2024 proporcionades.",
+        "justificacio": "L'original (p. 1) indica €274 mil milions en pèrdues econòmiques globals i €124 mil milions coberts per assegurances, de la qual cosa es deriva directament una bretxa no assegurada de €150 mil milions."
       },
       {
-        "bloc": "6-accions",
+        "bloc": "4-implicacions",
         "tipus": "modificar",
-        "proposta": "A l'acció 03, afegir la necessitat de superar la dependència exclusiva de dades històriques mitjançant models prospectius ('forward-looking models').",
-        "justificacio": "L'original emfatitza textualment que la dependència d'informació històrica és una limitació crítica per a la supervisió del risc climàtic accelerat."
+        "proposta": "A l'apartat d'empreses, concretar que l'increment de catàstrofes naturals amenaça directament la solvència i els models de negoci tant de les (re)asseguradores com dels fons de pensions ocupacionals (IORPs).",
+        "justificacio": "A la pàgina 1 de l'original s'alerta explícitament: 'The business models and solvency of (re)insurers and pension funds face growing threats from natural catastrophes'."
+      },
+      {
+        "bloc": "7-crossRefs",
+        "tipus": "afegir",
+        "proposta": "Incloure la referència institucional a la declaració pública d'EIOPA d'abril de 2025 titulada 'Bolder, Simpler, Faster: EIOPA’s views for better regulation and supervision'.",
+        "justificacio": "Aquesta declaració es cita explícitament a l'original (p. 1) com la posició de referència d'EIOPA respecte a la simplificació regulatòria i la reducció de càrregues."
       }
     ],
     "advocat_diable": [
       {
         "tipus": "contradiccio",
-        "bloc_afectat": "5-connexions",
-        "observacio": "EIOPA dona suport ferm a l'agenda de simplificació i reducció de càrregues ('Bolder, Simpler, Faster'), mentre alhora admet que la reducció de l'abast de les empreses sotmeses a ESRS deixa la majoria d'asseguradores fora de l'obligació de reportar. És una contradicció demanar una millor avaluació dels riscos climàtics mentre s'aplaudeixen retallades en la transparència obligatòria.",
-        "evidencia_original": "Taking into account the reduced scope of undertakings required to report on the ESRS... future voluntary standards for companies outside of the scope of the ESRS, including most insurance undertakings."
-      },
-      {
-        "tipus": "greenwashing",
-        "bloc_afectat": "0-semafor",
-        "observacio": "L'informe presenta com un 'avenç' (marcat en verd al destil·lat) el fet que el 4,5% dels actius directes estiguin alineats amb la Taxonomia. En termes de sostenibilitat absoluta, que més del 95% del capital d'asseguradores i fons de pensions estigui en actius NO alineats és un indicador d'inacció estructural i risc sistèmic, no pas un motiu de satisfacció.",
-        "evidencia_original": "EIOPA’s analysis revealed that 4.5% of insurers’ direct corporate bond and equity investments were aligned with the Taxonomy."
+        "bloc_afectat": "3-resum / 4-implicacions",
+        "observacio": "Existeix una contradicció manifesta entre el suport ferm d'EIOPA a la simplificació i reducció de càrregues de divulgació ('Bolder, Simpler, Faster') i la seva queixa simultània per la manca de dades i les limitacions de modelització que impedeixen una supervisió eficaç. La reducció d'exigències d'informació empitjora directament les llacunes de dades que el mateix supervisor lamenta.",
+        "evidencia_original": "EIOPA strongly supports the objectives of simplification and burden reduction... Data gaps and modelling limitations still constrain effective assessment, monitoring and supervision of natural catastrophe risks."
       },
       {
         "tipus": "criteri_oblidat",
-        "bloc_afectat": "4-implicacions",
-        "observacio": "Manca de consideració de la justícia distributiva i l'arrelament territorial en la bretxa de protecció. L'informe tracta la manca d'assegurança com un problema de solvència per a les entitats financeres. Tanmateix, quan el risc climàtic augmenta, la resposta del mercat privat sol ser l'encariment de pòlisses o la desinversió/retirada de zones de risc (inassegurabilitat), transferint tot el cost a les comunitats vulnerables i a les arques públiques sense proposar mecanismes de solidaritat ni co-decisió.",
-        "evidencia_original": "The business models and solvency of (re)insurers and pension funds face growing threats... a persistent and widening insurance protection gap against natural catastrophes..."
+        "bloc_afectat": "0-semafor / 3-resum",
+        "observacio": "Oblit de la vinculació obligatòria i risc de desprotecció: EIOPA admet que la majoria de les entitats asseguradores quedaran fora de l'abast obligatori de les ESRS i dependran d'estàndards voluntaris. Això deixa la divulgació de riscos de sostenibilitat a la voluntarietat del sector, sense garantir mecanismes de co-decisió ni obligatorietat per protegir els consumidors davant la creixent bretxa de protecció.",
+        "evidencia_original": "...future voluntary standards for companies outside of the scope of the ESRS, including most insurance undertakings."
       },
       {
-        "tipus": "mancanca",
-        "bloc_afectat": "6-accions",
-        "observacio": "L'informe confia l'acció de les entitats financeres al paper voluntari de l'stewardship (diàleg actiu i vot). No s'esmenta cap mesura prudencial penalitzadora o vincolant (com recàrrecs de capital en Solvència II per finançar actius d'alta intensitat en carboni), basant la transició en la voluntat dels propis inversors.",
-        "evidencia_original": "...alignment of incentives that can be used through their stewardship role, leveraging their influence to encourage companies to operate responsibly..."
+        "tipus": "greenwashing",
+        "bloc_afectat": "2-dadesClau / 3-resum",
+        "observacio": "Biaix d'enquadrament optimista (narrativa de progrés insuficient): es presenta com una millora que la quota d'inversions alineades amb la Taxonomia hagi pujat al 10,7% en exposicions no financeres (i al 4,5% en inversions directes totals), emmascarant el fet que més del 89% de les exposicions no financeres i el 95,5% de les inversions directes totals continuen financiant activitats no alineades amb la Taxonomia de la UE.",
+        "evidencia_original": "EIOPA showed that in 2024 the share of green investments in the portfolios of EEA insurers has edged higher. EIOPA’s analysis revealed that 4.5% of insurers’ direct corporate bond and equity investments were aligned with the Taxonomy."
       }
     ]
   }

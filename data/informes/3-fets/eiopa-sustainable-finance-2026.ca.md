@@ -1,78 +1,76 @@
 ---
-slug: sustainable-finance-2026
-title: "Sustainable finance 2026"
-institution: "EIOPA"
-date: 2025-04-15
+slug: sustainable-finance-2026-eiopa
+title: "Sustainable finance 2026: la resiliència que no arriba"
+institution: EIOPA
+date: 2026-03-27
 lang: ca
 ---
 
 ## Bloc 0 — Semàfor Metodològic
 
-**Grau: A** — Totalment quantificat (amb una dada deduïda, no explícita)
+**Grau: C** — Atenció: bretxa rellevant encara oberta. Quantificació parcial, tensions normatives no resoltes.
 
-| Indicador | Estat | Nota |
-|-----------|-------|------|
-| Pèrdues econòmiques per catàstrofes naturals | Verd | €274bn el 2024, dada concreta. |
-| Pèrdues assegurades per catàstrofes naturals | Verd | €124bn, un 45,3% del total. |
-| Bretxa de protecció d'assegurances | Verd | Es dedueix: €150bn no assegurats (54,7% del total). No s'explicita, però és calculable. |
-| Alineació taxonòmica d'inversions directes corporatives | Verd | 4,5% alineades. Però **més del 95% no estan alineades**; xifra que cal llegir com a inacció estructural, no com a avenç. |
-| Alineació taxonòmica en exposicions no financeres | Verd | 10,7% el 2024 vs 5,7% el 2022; elegibilitat del 48,6%, una bretxa de gairebé 38 punts. |
+| Indicador | Estat | Observació |
+|---|---|---|
+| Pèrdues per catàstrofes naturals | 🟢 Quantificat | €274 mil milions totals; €124 mil milions assegurades; bretxa implícita de €150 mil milions. |
+| Inversions alineades amb la Taxonomia | 🟢 Quantificat, amb context crític | 4,5% directe; 10,7% no financer. Però el 95,5% i el 89,3% restants no estan alineats. |
+| Bretxa de protecció d'assegurances | 🟡 Esmentat, derivable | Sense xifra regional europea; es deriva una bretxa global no assegurada de €150 mil milions. |
+| Dades i models de risc | 🟡 Esmentat | Limitacions admeses; contradicció amb l'agenda de simplificació que pot agreujar les llacunes. |
+| Cobertura Scope 3 | 🔴 Ignorat | No s'esmenten emissions de cadena de valor. |
+| Obligatorietat ESRS per a asseguradores | 🔴 Ignorat | La majoria d'entitats asseguradores queden fora de l'abast obligatori i dependran d'estàndards voluntaris. |
 
 ## Bloc 1 — Fitxa tècnica
 
-- **Document:** Sustainable finance 2026 (EIOPA)
-- **Tipus:** Informe de supervisió i polítiques de sostenibilitat
-- **Àmbit:** Unió Europea; asseguradores i fons de pensions
-- **Dades de referència:** 2024 (pèrdues per catàstrofes); 2022 i 2024 (alineació taxonòmica)
-- **Font:** Web d'EIOPA (original en anglès)
-- **Accés:** Públic
+- Institució: EIOPA
+- Publicació: Revista Eurofi, març de 2026
+- Àmbit: Espai Econòmic Europeu (EEE)
+- Tipus: Article tècnic / posicionament supervisor
+- Data d'anàlisi: 2026-03-27
+- Idioma original: Anglès
 
 ## Bloc 2 — 5 dades clau
 
-1. **€274bn** — Pèrdues econòmiques globals per catàstrofes naturals el 2024 (p.1)
-2. **€124bn** — Pèrdues assegurades per catàstrofes naturals el 2024, un 45,3% (p.1)
-3. **€150bn** — Pèrdues NO assegurades (54,7%): la bretxa de protecció real, deduïda de les dues anteriors (p.1)
-4. **4,5%** — Inversions directes en bons i accions corporatives alineades amb la taxonomia (p.1)
-5. **10,7% (2024) vs 5,7% (2022)** — Alineació en exposicions no financeres; elegibilitat del 48,6%, mostrant una bretxa elegibilitat-alineació de gairebé 38 punts (p.1)
+1. **€274 mil milions / €124 mil milions** — Pèrdues econòmiques globals per catàstrofes naturals el 2024 i part assegurada (p. 1). Bretxa no assegurada implícita: €150 mil milions.
+2. **4,5%** — Inversions directes en bons corporatius i renda variable d'asseguradores de l'EEE alineades amb la Taxonomia (p. 1). El 95,5% no ho està.
+3. **10,7%** — Exposicions no financeres alineades amb la Taxonomia, pujant des del 5,7% el 2022 (p. 1). El 89,3% no ho està.
+4. **20,5%** — Inversions directes elegibles per a la Taxonomia en carteres d'asseguradores (p. 1).
+5. **48,6%** — Exposicions no financeres elegibles per a la Taxonomia (p. 1).
 
 ## Bloc 3 — Resum executiu
 
-L'informe d'EIOPA sobre finances sostenibles 2026 posa xifres a un desequilibri creixent: el 2024 les pèrdues econòmiques globals per catàstrofes naturals van assolir 274.000 milions d'euros, dels quals només 124.000 milions estaven assegurats. Això deixa 150.000 milions d'euros sense cobrir (54,7%), una bretxa de protecció que EIOPA qualifica de persistent i creixent, i que amenaça l'estabilitat financera, la resiliència de les economies i, sobretot, la continuïtat de les cadenes de subministrament i la competitivitat europea. Europa s'escalfa més ràpid que altres regions, i el paper de les asseguradores i fons de pensions com a inversors de llarg termini esdevé estructural. Tanmateix, les dades d'alineació amb la taxonomia mostren una inacció profunda: només el 4,5% de les inversions directes en bons i accions corporatives estan alineades, i en exposicions no financeres l'alineació és del 10,7% (2024), tot i que l'elegibilitat arriba al 48,6%. Aquesta bretxa de gairebé 38 punts percentuals indica que el problema no és la manca d'activitats elegibles, sinó el no compliment dels criteris tècnics. La reforma del marc de divulgació demana simplificació, però EIOPA mateixa admet que la majoria d'asseguradores quedaran fora de l'abast obligatori de l'ESRS, una contradicció que debilita la supervisió. Més enllà del compliment formal, cal que les mètriques protegeixin persones i territoris: la resiliència climàtica no és només una variable financera, sinó una condició de dignitat col·lectiva, justícia intergeneracional i justícia distributiva. Sense dades sòlides ni arrelament comunitari, el risc és que la sostenibilitat es quedi en un tràmit buit.
+EIOPA situa les finances sostenibles com a prioritat de supervisió passada, present i futura, però l'article de la revista Eurofi de març de 2026 revela tensions no resoltes. Les pèrdues globals per catàstrofes naturals creixen: 274 mil milions d'euros el 2024, dels quals només 124 mil milions estaven assegurades, deixant una bretxa implícita de 150 mil milions. Europa s'escalfa més de pressa i la bretxa de protecció és persistent i creixent. Les asseguradores i fons de pensions tenen un paper clau com a inversors institucionals de llarg termini, però la seva solvència i models de negoci estan directament amenaçats.
+
+Les dades mostren una millora modesta: el 4,5% de les inversions directes en bons i renda variable de l'EEE estaven alineades amb la Taxonomia; el 10,7% en exposicions no financeres, des del 5,7% el 2022. No obstant això, el 95,5% i el 89,3% respectivament continuen finançant activitats no alineades. L'elegibilitat arriba al 20,5% directe i al 48,6% no financer, indicant un potencial de transició encara no mobilitzat.
+
+EIOPA dóna suport a la simplificació "Bolder, Simpler, Faster", però adverteix que no ha de sacrificar informació clau. La reducció de l'abast de la CSRD/ESRS deixa fora la majoria d'entitats asseguradores, que dependran d'estàndards voluntaris futurs. Això crea una contradicció: reclamar més dades i models mentre es redueix l'obligatorietat de divulgació pot agreujar les llacunes existents. Cal que els requisits ESRS siguin proporcionals, coherents amb Solvència II i interoperables, però sense externalitzar la desprotecció sobre consumidors i cadenes de subministrament.
 
 ## Bloc 4 — Implicacions
 
-**Empreses**  
-Les asseguradores i fons de pensions han de revisar l'exposició a actius vulnerables al clima i millorar la qualitat de les dades. Com a inversors de llarg termini, tenen l'oportunitat d'influir en les participades mitjançant l'stewardship, però cal anar més enllà del diàleg voluntari: la pressió normativa i reputacional augmentarà si no integren la sostenibilitat en la governança i la gestió de riscos. La manca d'obligació de reportar per a la majoria d'asseguradores pot ser un avantatge a curt termini, però un risc a llarg termini.
+**Empreses.** Les (re)asseguradores i els fons de pensions ocupacionals (IORPs) afronten amenaces creixents per a la seva solvència i models de negoci a causa de catàstrofes naturals. Han d'integrar riscos de sostenibilitat en la gestió i la solvència, millorar la qualitat de dades i exercir una administració responsable. Però no poden refugiar-se en estàndards voluntaris per evitar la transparència: la divulgació obligatòria bàsica és condició per a la resiliència sistèmica.
 
-**Reguladors**  
-Cal equilibrar la simplificació amb la necessitat de dades robustes. La reducció de l'abast de l'ESRS deixa la majoria d'asseguradores fora de l'obligació de reportar, cosa que contradiu l'objectiu d'avaluació de riscos. Calen estàndards proporcionals i incentius prudencials vinculants, com recàrrecs de capital per a actius intensius en carboni, per corregir la inacció estructural. També s'ha de reforçar la supervisió de la bretxa de protecció i promoure la qualitat i accessibilitat de la informació sobre riscos naturals.
+**Reguladors.** La simplificació és legítima, però no pot buidar la informació clau. Cal garantir que els requisits ESRS mantinguin un nucli obligatori per a les entitats financeres, encara que siguin mitjanes o petites, perquè la seva exposició indirecta a riscos climàtics és sistèmica. La coherència amb Solvència II i la interoperabilitat internacional és necessària, però no suficient. Els supervisors han de tancar les llacunes de dades i fomentar models prospectius, evitant que la simplificació esdevingui una excusa per a menys supervisió.
 
-**Ciutadans**  
-Les persones pateixen directament l'impacte de les catàstrofes i la bretxa d'assegurança. Quan el mercat privat encareix pòlisses o es retira de zones de risc, el cost recau sobre les comunitats vulnerables i les arques públiques. Cal garantir que la protecció davant riscos climàtics no sigui un luxe, sinó una garantia de dignitat i continuïtat de vida. Els ciutadans tenen dret a saber com les seves pensions i estalvis contribueixen a la transició i a exigir mecanismes de solidaritat i co-decisió territorial.
+**Ciutadans.** La bretxa de protecció implica que consumidors, empreses locals i administracions assumeixen pèrdues no assegurades. Si la majoria d'asseguradores queden fora de l'obligació de reportar, la capacitat de la ciutadania per avaluar els riscos i exigir responsabilitats es redueix. La transició sostenible ha de traduir-se en menys disrupcions i més continuïtat, no en una desprotecció silenciosa.
 
-**Més enllà del Checkbox**  
-La bretxa de protecció no és només una qüestió de solvència financera, sinó de justícia distributiva i arrelament territorial. El mercat privat tendeix a retirar-se de les zones més exposades, transferint el risc a les comunitats i als pressupostos públics. Calen mecanismes de solidaritat i co-decisió democràtica que condicionin les inversions institucionals a la creació de valor compartit i que garanteixin que ningú quedi enrere. La sostenibilitat no pot ser un tràmit formal: les mètriques han de servir per protegir persones i territoris, no només carteres.
+**Més enllà del Checkbox.** Apliquem dos criteris ètics: la **justícia distributiva** i la **co-decisió democràtica**. La justícia distributiva exigeix que la bretxa de protecció no recaigui sobre les llars i les economies locals més vulnerables; una assegurança que només cobreix els riscos rendibles és insuficient. La co-decisió democràtica implica que deixar la majoria d'asseguradores fora de l'abast obligatori de les ESRS i dependre d'estàndards voluntaris equival a privatitzar la definició de què és material i sostenible. Sense veu de les parts afectades ni obligatorietat, el greenwashing troba portes obertes. La resiliència no s'aconsegueix amb percentatges d'inversió verda, sinó amb dades fiables, models prospectius i una distribució equitativa de la protecció, decidida amb participació i no per defecte.
 
 ## Bloc 5 — Connexions
 
-- **Evolució:** Declaració pública d'EIOPA "Bolder, Simpler, Faster" (abril 2025) → El text evoluciona des de la posició de simplificació cap a una alerta concreta: no sacrificar dades de sostenibilitat clau.
-- **Complement:** Normes ESRS i requisits de Solvència II → EIOPA demana coherència i interoperabilitat perquè les asseguradores puguin avaluar riscos amb una mateixa base.
-- **Contradicció:** Agenda de simplificació normativa de la UE → Tot i donar suport a la simplificació, EIOPA reconeix que la majoria d'asseguradores quedaran fora de l'ESRS obligatori, una falla que debilita l'avaluació de riscos i la transparència.
+- **Evolució — Taxonomia UE:** La quota d'inversions no financeres alineades passa del 5,7% el 2022 al 10,7% el 2024; l'elegibilitat arriba al 48,6%, mostrant un potencial encara no realitzat.
+- **Complement — Solvència II:** EIOPA defensa la coherència entre ESRS i Solvència II, però cal que aquesta coherència no dilueixi la sostenibilitat en mera prudència.
+- **Contradicció — Simplificació "Bolder, Simpler, Faster":** Es reconeix la necessitat de reduir càrregues, però alhora es reclamen més dades; la reducció d'abast pot agreujar les llacunes.
 
 ## Bloc 6 — Accions recomanades
 
-| # | Títol | Descripció | Esforç | Impacte |
-|---|-------|------------|--------|---------|
-| 01 | Mesurar i publicar la bretxa de protecció per país i perill | Exigir dades granulades sobre assegurança de catàstrofes per detectar zones en risc d'inassegurabilitat i orientar polítiques de solidaritat. | Mitjà | Alt |
-| 02 | Harmonitzar ESRS amb Solvència II i estàndards internacionals | Garantir coherència tècnica i interoperabilitat per evitar doble càrrega i afavorir l'avaluació integrada de riscos. | Mitjà | Alt |
-| 03 | Desenvolupar models prospectius (forward-looking) i escenaris de risc climàtic | Invertir en capacitat supervisora i models forward-looking per superar la dependència de dades històriques i millorar la supervisió del risc accelerat. | Alt | Alt |
-| 04 | Enfortir l'stewardship de les inversions institucionals | Utilitzar el poder de vot i el diàleg actiu, però sense limitar-se al voluntarisme: cal exigir rendició de comptes i resultats mesurables. | Baix | Mitjà |
-| 05 | Introduir incentius prudencials vinculants | Considerar recàrrecs de capital en Solvència II per a actius intensius en carboni, per corregir la inacció estructural i incentivar la transició. | Alt | Alt |
+1. **Millorar la qualitat i accessibilitat de dades sobre catàstrofes naturals** — Esforç: Alt; Impacte: Alt. Sense dades, la simplificació és cega.
+2. **Desenvolupar models prospectius** — Esforç: Alt; Impacte: Alt. Superar la dependència de dades històriques.
+3. **Garantir un nucli obligatori de divulgació ESRS per a entitats financeres, incloses les mitjanes asseguradores** — Esforç: Alt; Impacte: Alt. Evitar que la voluntarietat buidi la supervisió.
+4. **Reforçar el paper inversor sostenible sense maquillatge** — Esforç: Mitjà; Impacte: Mitjà. Supervisar l'alineació real, no només l'elegibilitat.
+5. **Tancar la bretxa de protecció amb mecanismes de co-decisió i finançament públic-privat** — Esforç: Alt; Impacte: Alt. La resiliència no pot ser un luxe.
 
 ## Bloc 7 — Cross-reference
 
-| Framework | Criteri | Impacte |
-|-----------|---------|---------|
-| ESRS | Proporcionalitat i coherència amb estàndards voluntaris | Facilita el compliment sense perdre dades crítiques, però l'exclusió de la majoria d'asseguradores genera una llacuna de transparència. |
-| Solvència II | Integració de riscos climàtics en requeriments de capital | Pot corregir la inacció estructural si s'introdueixen recàrrecs prudencials vinculants. |
-| Criteris ètics de Criteri ESG | Justícia distributiva i arrelament territorial | Dona marc per avaluar qui assumeix el cost de la bretxa de protecció i com es decideixen les polítiques de resiliència. |
+- **CSRD/ESRS:** Proporcionalitat i coherència amb Solvència II, però sense excloure la majoria d'asseguradores de l'obligatorietat; cal un estàndard voluntari només per a la part no sistèmica.
+- **Taxonomia UE:** Mesurar alineació i elegibilitat per a carteres d'asseguradores; evitar presentar l'augment del 10,7% com a èxit quan el 89,3% roman no alineat.
+- **SFDR:** La reforma del marc de divulgació ha de preservar la transparència per a inversors i supervisors; la simplificació no pot buidar la informació clau.
+- **Bolder, Simpler, Faster (EIOPA, abril de 2025):** Referència institucional citada a l'original; cal contrastar-la amb les demandes de més dades i models, per no caure en una contradicció pràctica.

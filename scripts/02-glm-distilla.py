@@ -160,6 +160,17 @@ def process_one_pdf(pdf_path: Path) -> bool:
             'Veu editorial mediterrània. "Més enllà del Checkbox" usa 1-2 criteris ètics '
             '(dignitat, justícia, sostenibilitat, co-decisió, arrelament). '
             "MAI esmentar Economia del Bé Comú ni Economia Ciutadana públicament.\n\n"
+            "ENTORN TANCAT (regles de verificació de fonts):\n"
+            "1. Totes les dades, xifres i afirmacions han de provenir EXCLUSIVAMENT del text "
+            "entre === TEXT === i === FI ===.\n"
+            "2. Cada dada del bloc dadesClau ha d'incloure el camp 'page' amb el número de pàgina "
+            "on apareix al document original (o 'p. X' si no hi ha paginació clara).\n"
+            "3. MAI utilitzis coneixement extern per omplir buits. MAI especulis ni dedueixis "
+            "dades que no apareguin al text.\n"
+            "4. Si una dada del document és ambigua, reflecteix-la com a tal; no la resolguis "
+            "amb suposicions.\n"
+            "5. Si el document no conté informació per a un bloc, deixa'l amb contingut mínim "
+            "honest en lloc d'inventar-lo.\n\n"
             "CROSS-REFERENCES (Bloc crossRefs): tria NOMÉS d'aquest catàleg oficial, "
             "posant el nom exacte a 'framework'. No inventis frameworks fora d'aquesta llista.\n"
             f"{cataleg_as_prompt()}\n"
@@ -169,18 +180,26 @@ def process_one_pdf(pdf_path: Path) -> bool:
             f"TÍTOL: {meta['title']}\nINSTITUCIÓ: {meta['institution']}\n{lang_instr}\n\n"
             f"=== TEXT ===\n{text}\n=== FI ===\n\nGenera el JSON ara."
         )
-        raw = call_deepseek(sp, up, temperature=0.4, max_tokens=16000)
+        raw = call_deepseek(sp, up, temperature=0.2, max_tokens=16000)
         import re
         m = re.search(r'```(?:json)?\s*([\s\S]*?)```', raw)
         if m: raw = m.group(1).strip()
-        m = re.search(r'\{[\s\S]*\}', raw)
-        if m: raw = m.group(0)
+        # Extreure el primer objecte JSON vàlid (tolerant a text abans/després)
+        def _first_json(text: str) -> dict:
+            decoder = json.JSONDecoder()
+            for m in re.finditer(r'\{', text):
+                try:
+                    obj, _ = decoder.raw_decode(text[m.start():])
+                    return obj
+                except json.JSONDecodeError:
+                    continue
+            raise json.JSONDecodeError("Cap objecte JSON trobat", text, 0)
         try:
-            return json.loads(raw)
+            return _first_json(raw)
         except json.JSONDecodeError:
             # Reparació: comes finals abans de } o ]
             fixed = re.sub(r",\s*([}\]])", r"\1", raw)
-            return json.loads(fixed)
+            return _first_json(fixed)
 
     print(f"  → Generant versió catalana...")
     report_ca = _distill("ca")

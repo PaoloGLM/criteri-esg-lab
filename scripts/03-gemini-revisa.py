@@ -56,7 +56,13 @@ Torna un objecte JSON amb aquesta estructura exacta:
   ]
 }
 
-Sigues critic i específic. No aportis genèriques. Minim 5 propostes i 3 observacions d'advocat del diable."""
+Sigues critic i específic. No aportis genèriques. Minim 5 propostes i 3 observacions d'advocat del diable.
+
+ENTORN TANCAT (regles de verificació):
+1. Totes les propostes i observacions han de fonamentar-se EXCLUSIVAMENT en el destil·lat i l'informe original que reps. MAI afegeixis coneixement extern ni dades que no apareguin a l'original.
+2. Cada proposta que es refereixi a una dada de l'original ha d'indicar-ne la font (p. N o secció) a 'justificacio' o 'evidencia_original'.
+3. Si identifiques una dada important de l'original que falta al destil·lat, cita-la literalment a 'evidencia_original'.
+4. MAI inventis dades, xifres ni fonts que no estiguin a l'original per justificar una crítica."""
 
 def find_original_pdf(slug: str, distilat_data: dict) -> Path | None:
     """Troba el PDF original associat a un destil·lat."""

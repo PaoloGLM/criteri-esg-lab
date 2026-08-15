@@ -3,289 +3,296 @@
   "title": "Sustainable finance 2026",
   "institution": "EIOPA",
   "filename_original": "eiopa-sustainable-finance-2026.pdf",
-  "generated_at": "2026-08-13T22:01:21",
+  "generated_at": "2026-08-15T17:07:34",
   "content_ca": {
     "semafor": {
-      "grade": "B",
-      "gradeLabel": "Majoritàriament quantificat, amb una llacuna rellevant",
+      "grade": "C",
+      "gradeLabel": "Atenció: bretxa rellevant encara oberta",
       "indicators": [
         {
-          "name": "Pèrdues econòmiques per catàstrofes naturals",
+          "name": "Pèrdues per catàstrofes naturals",
           "status": "verd",
           "label": "Quantificat",
-          "note": "€274bn en pèrdues globals el 2024, dada concreta al text."
+          "note": "EIOPA cita €274 mil milions en pèrdues globals i €124 mil milions assegurades el 2024."
         },
         {
-          "name": "Pèrdues assegurades per catàstrofes naturals",
+          "name": "Inversions alineades amb la Taxonomia",
           "status": "verd",
           "label": "Quantificat",
-          "note": "€124bn assegurats, un 45% del total, dada concreta."
-        },
-        {
-          "name": "Alineació taxonòmica d'inversions directes corporatives",
-          "status": "verd",
-          "label": "Quantificat",
-          "note": "4,5% d'inversions directes en bons i accions corporatives alineades."
-        },
-        {
-          "name": "Alineació taxonòmica en exposicions no financeres",
-          "status": "verd",
-          "label": "Quantificat",
-          "note": "10,7% el 2024, més del doble que el 5,7% de 2022."
+          "note": "4,5% de bons corporatius i renda variable directes; 10,7% en exposicions no financeres, des de 5,7% el 2022."
         },
         {
           "name": "Bretxa de protecció d'assegurances",
           "status": "groc",
           "label": "Esmentat",
-          "note": "Es descriu com persistent i creixent, però sense cap xifra concreta."
+          "note": "Es descriu com a persistent i creixent, però sense xifra específica al text."
+        },
+        {
+          "name": "Dades i models de risc",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "S'admeten limitacions de dades i modelització, sense mètriques quantitatives."
+        },
+        {
+          "name": "Cobertura Scope 3",
+          "status": "vermell",
+          "label": "Ignorat",
+          "note": "El text no esmenta emissions de cadena de valor ni abast 3."
         }
       ]
     },
     "dadesClau": [
       {
-        "value": "€274bn",
-        "label": "Pèrdues econòmiques globals per catàstrofes naturals (2024)",
-        "page": "p.1"
+        "value": "€274 mil milions",
+        "label": "Pèrdues econòmiques globals per catàstrofes naturals el 2024",
+        "page": "p. 1"
       },
       {
-        "value": "€124bn",
-        "label": "Pèrdues assegurades per catàstrofes naturals (2024)",
-        "page": "p.1"
+        "value": "€124 mil milions",
+        "label": "Part assegurada de les pèrdues per catàstrofes naturals el 2024",
+        "page": "p. 1"
       },
       {
         "value": "4,5%",
-        "label": "Inversions directes en bons i accions corporatives alineades amb la taxonomia",
-        "page": "p.1"
+        "label": "Inversions directes en bons corporatius i renda variable d'asseguradores de l'EEE alineades amb la Taxonomia",
+        "page": "p. 1"
       },
       {
-        "value": "10,7% (2024); 5,7% (2022)",
-        "label": "Inversions no financeres alineades amb la taxonomia",
-        "page": "p.1"
+        "value": "10,7%",
+        "label": "Inversions no financeres alineades amb la Taxonomia, pujant des de 5,7% el 2022",
+        "page": "p. 1"
       },
       {
-        "value": "20,5% (48,6% no financeres)",
-        "label": "Inversions directes elegibles per a la taxonomia",
-        "page": "p.1"
+        "value": "20,5%",
+        "label": "Inversions directes elegibles per a la Taxonomia; 48,6% en exposicions no financeres",
+        "page": "p. 1"
       }
     ],
-    "resumExecutiu": "L'informe d'EIOPA posa en relleu que les pèrdues econòmiques per catàstrofes naturals escalen a un ritme insostenible: 274.000 milions d'euros el 2024, dels quals només 124.000 milions estaven assegurats. Europa s'escalfa més ràpid que altres regions i la bretxa de protecció s'eixampla, amenaçant l'estabilitat financera i la resiliència de les economies. En aquest context, les asseguradores i els fons de pensions tenen un paper estructural: canalitzen capital a llarg termini i poden exercir una influència decisiva mitjançant l'stewardship. Les dades recollides per EIOPA mostren avenços tímids en inversions alineades amb la taxonomia, amb un 4,5% en exposicions corporatives directes i un 10,7% en no financeres, tot i que l'elegibilitat encara supera de llarg l'alineació efectiva. La reforma del marc de divulgació ha de simplificar sense perdre informació clau, garantint coherència amb Solvència II i interoperabilitat internacional. Però el repte més profund és cultural i ètic: cal anar més enllà del compliment formal i fer que les dades, els models i les decisions protegeixin les persones i els territoris. La resiliència climàtica no és només una variable financera, sinó una condició de dignitat col·lectiva i de futur habitable.",
+    "resumExecutiu": "EIOPA situa les finances sostenibles com a prioritat de supervisió passada, present i futura. L’article de la revista Eurofi de març de 2026 adverteix que les pèrdues econòmiques globals per catàstrofes naturals augmenten ràpidament: 274 mil milions d’euros el 2024, amb 124 mil milions assegurades. Europa s’escalfa més de pressa i pateix una bretxa de protecció d’assegurances persistent i creixent, que erosiona la resiliència econòmica i l’estabilitat financera. Les asseguradores i fons de pensions tenen un paper clau com a inversors institucionals de llarg termini: canalitzen capital cap a projectes sostenibles i poden exercir una administració responsable. Les dades recollides per EIOPA mostren una millora modesta de la inversió verda: el 4,5% de les inversions directes en bons corporatius i renda variable de les asseguradores de l’EEE estaven alineades amb la Taxonomia; en exposicions no financeres, la quota puja al 10,7%, des del 5,7% el 2022. Un 20,5% addicional era elegible. EIOPA dóna suport a la simplificació i reducció de càrregues del marc de divulgació, però no a costa de perdre informació clau de sostenibilitat per a la valoració de riscos. Cal que els requisits ESRS siguin proporcionals, coherents amb Solvència II i interoperables amb estàndards internacionals. Les llacunes de dades i models limiten la supervisió; millorar l’accessibilitat, la consistència i la qualitat de la informació és un primer pas crucial.",
     "implicacions": {
-      "empreses": "Les asseguradores i fons de pensions han de revisar la seva exposició a actius vulnerables al clima i reforçar la qualitat de les dades. Tenen l'oportunitat d'actuar com a inversors de llarg termini i influir en les companyies participades. La pressió normativa i reputacional augmentarà si no integren la sostenibilitat en la governança i en la gestió de riscos. Les entitats que adoptin models prospectius i una divulgació sòlida podran accedir a capital i mantenir la confiança de clients i supervisors.",
-      "reguladors": "Els reguladors han d'equilibrar la simplificació normativa amb la necessitat de dades de sostenibilitat robustes. Calen estàndards proporcionals, coherents amb Solvència II i interoperables internacionalment. També han de reforçar la supervisió de la bretxa de protecció i promoure la qualitat i accessibilitat de la informació sobre riscos naturals. La coordinació entre autoritats europees i nacionals és clau per evitar arbitratge i garantir una avaluació homogènia dels riscos climàtics.",
-      "ciutadans": "Les persones pateixen directament l'impacte de les catàstrofes naturals i la bretxa d'assegurança. Una major transparència i accés a dades els permet exigir millors polítiques públiques i productes més justos. La protecció davant riscos climàtics no hauria de ser un luxe, sinó una garantia de dignitat i continuïtat de vida. Els ciutadans també tenen dret a saber com les seves pensions i estalvis contribueixen a la transició sostenible i a demanar rendició de comptes."
+      "empreses": "Les asseguradores i fons de pensions han d’integrar els riscos de sostenibilitat en models de negoci i solvència. La pressió reguladora i la bretxa de protecció fan que la millora de la qualitat de dades sobre catàstrofes naturals i inversions alineades amb la Taxonomia esdevingui condició per a una supervisió eficaç i per canalitzar capital a llarg termini sense perdre resiliència.",
+      "reguladors": "Els supervisors europeus han de garantir que la simplificació del marc de divulgació no buidi la informació clau. Cal assegurar proporcionalitat i coherència entre ESRS, Solvència II i estàndards internacionals, i impulsar la interoperabilitat. També cal tancar les llacunes de dades i models per fer una avaluació prospectiva dels riscos, més enllà de la dependència de dades històriques.",
+      "ciutadans": "Una protecció insuficient contra catàstrofes naturals afecta la continuïtat de negocis, les cadenes de subministrament i l’estabilitat financera. Millorar la resiliència climàtica i reduir la bretxa d’assegurança protegeix consumidors i economies locals davant xocs creixents, i assegura que la transició sostenible es tradueixi en menys disrupcions i més continuïtat."
     },
     "mesEnllaCheckbox": {
-      "criteri": "Dignitat i justícia intergeneracional",
-      "body": "Quan parlem de bretxa de protecció, no parlem només de números. La manca d'assegurança davant catàstrofes naturals deixa famílies i territoris exposats a pèrdues que podrien evitar-se. Des d'una ètica de la dignitat i la justícia intergeneracional, cal garantir que la transició cap a una economia resilient no deixi ningú enrere. Això vol dir fer accessibles les dades, fer participar els territoris en la decisió i condicionar les inversions institucionals a la creació de valor compartit. Sense una base informativa sòlida i sense arrelament comunitari, el risc és que la sostenibilitat es quedi en un tràmit formal. Cal anar més enllà del checkbox i exigir que les mètriques serveixin per protegir persones, no només carteres."
+      "criteri": "Sostenibilitat i justícia",
+      "body": "Més enllà de la mera divulgació, la resiliència davant catàstrofes naturals planteja un criteri de justícia: qui queda desprotegit quan la bretxa d’assegurança creix? La simplificació normativa és legítima, però no pot externalitzar els riscos sobre consumidors i cadenes de subministrament. La sostenibilitat exigeix dades fiables, models prospectius i una distribució equitativa de la protecció, no només quotes d’inversió verda."
     },
     "connexions": [
       {
         "type": "Evolució",
-        "target": "Declaració pública d'EIOPA 'Bolder, Simpler, Faster' (abril 2025)",
-        "desc": "El text evoluciona des de la posició de simplificació cap a una alerta concreta: no sacrificar dades de sostenibilitat clau."
+        "target": "Taxonomia UE",
+        "desc": "La quota d’inversions no financeres alineades amb la Taxonomia passa del 5,7% el 2022 al 10,7% el 2024, mostrant una adopció gradual."
       },
       {
         "type": "Complement",
-        "target": "Normes ESRS i requisits de Solvència II",
-        "desc": "EIOPA demana coherència i interoperabilitat perquè les asseguradores puguin avaluar riscos amb una mateixa base."
+        "target": "Solvència II",
+        "desc": "EIOPA defensa que els requisits ESRS siguin coherents amb Solvència II, ja que la informació de sostenibilitat alimenta la valoració prudencial de riscos."
       },
       {
         "type": "Contradicció",
-        "target": "Agenda de simplificació normativa de la UE",
-        "desc": "Tot i donar suport a la simplificació, adverteix que una reducció excessiva pot minar l'avaluació de riscos."
+        "target": "Simplificació del marc de divulgació",
+        "desc": "Es reconeix la necessitat de reduir càrregues, però s’adverteix que la simplificació no ha de reduir la informació clau de sostenibilitat."
       }
     ],
     "accions": [
       {
         "num": "01",
-        "title": "Mesurar i publicar la bretxa de protecció per país i perill",
-        "desc": "Exigir dades granulades sobre assegurança de catàstrofes per orientar polítiques públiques i privades, reduint la ceguesa estadística.",
-        "effort": "Mitjà",
-        "impact": "Alt"
-      },
-      {
-        "num": "02",
-        "title": "Harmonitzar ESRS amb Solvència II i estàndards internacionals",
-        "desc": "Garantir coherència tècnica i interoperabilitat per evitar doble càrrega i afavorir l'avaluació integrada de riscos.",
-        "effort": "Mitjà",
-        "impact": "Alt"
-      },
-      {
-        "num": "03",
-        "title": "Desenvolupar models prospectius i escenaris de risc climàtic",
-        "desc": "Invertir en capacitat supervisora i models forward-looking per superar la dependència de dades històriques.",
+        "title": "Millorar la qualitat de les dades",
+        "desc": "Reforçar l’accessibilitat, consistència i qualitat de la informació sobre catàstrofes naturals i riscos climàtics per fonamentar la supervisió.",
         "effort": "Alt",
         "impact": "Alt"
       },
       {
-        "num": "04",
-        "title": "Enfortir l'stewardship de les inversions institucionals",
-        "desc": "Utilitzar el poder de vot i el diàleg actiu per impulsar la transició empresarial cap a models sostenibles.",
-        "effort": "Baix",
+        "num": "02",
+        "title": "Desenvolupar models prospectius",
+        "desc": "Superar la dependència de dades històriques amb models que millorin la precisió de les avaluacions de risc futures.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Reforçar el paper inversor sostenible",
+        "desc": "Aprofitar la posició d’asseguradores i fons de pensions com a inversors institucionals de llarg termini per canalitzar capital cap a projectes sostenibles.",
+        "effort": "Mitjà",
         "impact": "Mitjà"
+      },
+      {
+        "num": "04",
+        "title": "Garantir coherència normativa",
+        "desc": "Assegurar que els requisits ESRS siguin proporcionals, coherents amb Solvència II i interoperables amb estàndards internacionals.",
+        "effort": "Baix",
+        "impact": "Alt"
+      },
+      {
+        "num": "05",
+        "title": "Tancar la bretxa de protecció",
+        "desc": "Reduir la bretxa d’assegurança contra catàstrofes naturals per reforçar la resiliència econòmica i l’estabilitat financera.",
+        "effort": "Alt",
+        "impact": "Alt"
       }
     ],
     "crossRefs": [
       {
-        "framework": "ESRS",
-        "criterion": "Proporcionalitat i coherència amb estàndards voluntaris",
-        "impact": "Facilita el compliment sense perdre dades crítiques per a asseguradores i fons de pensions."
+        "framework": "csrd-esrs",
+        "criterion": "Requisits ESRS proporcionals i coherents amb Solvència II; interoperabilitat amb estàndards internacionals.",
+        "impact": "Assegura informació clau per a la valoració prudencial de riscos sense càrregues desproporcionades."
       },
       {
-        "framework": "Solvència II",
-        "criterion": "Integració de riscos de sostenibilitat",
-        "impact": "Reforça l'avaluació de solvència i estabilitat financera a llarg termini."
+        "framework": "taxonomia-ue",
+        "criterion": "Inversions alineades i elegibles amb la Taxonomia en carteres d’asseguradores.",
+        "impact": "Permet mesurar la canalització de capital sostenible i monitorar la transició."
       },
       {
-        "framework": "SFDR",
-        "criterion": "Disponibilitat d'informació sobre sostenibilitat",
-        "impact": "Garanteix que la reforma no debiliti l'avaluació de riscos per part d'inversors institucionals."
+        "framework": "sfdr",
+        "criterion": "Reforma del marc de divulgació de finances sostenibles.",
+        "impact": "La simplificació no ha de buidar la informació de sostenibilitat per a inversors i supervisors."
       }
     ]
   },
   "content_es": {
     "semafor": {
       "grade": "B",
-      "gradeLabel": "Mayoría de indicadores cuantificados, un aspecto mencionado",
+      "gradeLabel": "Cobertura cuantitativa mayoritaria con un aspecto mencionado",
       "indicators": [
         {
-          "name": "Alineación con la Taxonomía (directa)",
+          "name": "Pérdidas globales por catástrofes naturales",
           "status": "verd",
           "label": "Cuantificado",
-          "note": "4,5% de inversiones directas en bonos corporativos y acciones alineados con la Taxonomía."
+          "note": "El texto cifra 274 000 M€ en pérdidas globales en 2024."
         },
         {
-          "name": "Alineación con la Taxonomía (no financiera)",
+          "name": "Pérdidas aseguradas por catástrofes naturales",
           "status": "verd",
           "label": "Cuantificado",
-          "note": "10,7% de exposiciones no financieras alineadas, frente al 5,7% en 2022."
+          "note": "El texto cifra 124 000 M€ asegurados en 2024."
         },
         {
-          "name": "Elegibilidad para la Taxonomía",
+          "name": "Inversiones directas alineadas con la Taxonomía",
           "status": "verd",
           "label": "Cuantificado",
-          "note": "20,5% de inversiones directas elegibles; 48,6% en exposiciones no financieras."
+          "note": "El 4,5 % de las inversiones directas en bonos y acciones corporativas estaba alineado con la Taxonomía."
         },
         {
-          "name": "Pérdidas por catástrofes naturales",
+          "name": "Exposiciones no financieras alineadas con la Taxonomía",
           "status": "verd",
           "label": "Cuantificado",
-          "note": "Pérdidas globales de 274.000 M€ en 2024, de las cuales 124.000 M€ aseguradas."
+          "note": "El 10,7 % de las exposiciones no financieras estaba alineado, frente al 5,7 % en 2022."
         },
         {
-          "name": "Datos y modelización prospectiva",
+          "name": "Brecha de protección aseguradora",
           "status": "groc",
           "label": "Mencionado",
-          "note": "Se señalan limitaciones de datos y modelización, sin métrica específica."
+          "note": "Se describe como persistente y creciente, sin cuantificación en el texto."
         }
       ]
     },
     "dadesClau": [
       {
-        "value": "4,5%",
-        "label": "inversiones directas en bonos corporativos y acciones alineadas con la Taxonomía",
-        "page": "Eurofi Magazine - Marzo 2026"
+        "value": "€274 mil millones",
+        "label": "Pérdidas económicas globales por catástrofes naturales en 2024",
+        "page": "p. 1"
       },
       {
-        "value": "10,7%",
-        "label": "inversiones no financieras alineadas con la Taxonomía (desde el 5,7% en 2022)",
-        "page": "Eurofi Magazine - Marzo 2026"
+        "value": "€124 mil millones",
+        "label": "Pérdidas aseguradas por catástrofes naturales en 2024",
+        "page": "p. 1"
       },
       {
-        "value": "20,5%",
-        "label": "inversiones directas elegibles para la Taxonomía (48,6% en no financieras)",
-        "page": "Eurofi Magazine - Marzo 2026"
+        "value": "4,5 %",
+        "label": "Inversiones directas en bonos y acciones corporativas alineadas con la Taxonomía",
+        "page": "p. 1"
       },
       {
-        "value": "274.000 M€",
-        "label": "pérdidas globales por catástrofes naturales en 2024",
-        "page": "Eurofi Magazine - Marzo 2026"
+        "value": "10,7 %",
+        "label": "Exposiciones no financieras alineadas con la Taxonomía, frente al 5,7 % en 2022",
+        "page": "p. 1"
       },
       {
-        "value": "124.000 M€",
-        "label": "pérdidas aseguradas por catástrofes naturales en 2024",
-        "page": "Eurofi Magazine - Marzo 2026"
+        "value": "20,5 % y 48,6 %",
+        "label": "Inversiones directas elegibles y exposiciones no financieras elegibles para la Taxonomía",
+        "page": "p. 1"
       }
     ],
-    "resumExecutiu": "EIOPA presenta las finanzas sostenibles como prioridad supervisora pasada, presente y futura. En 2024, las catástrofes naturales supusieron pérdidas globales estimadas en 274.000 millones de euros, de los cuales solo 124.000 millones estaban asegurados. Europa sufre un calentamiento acelerado y una creciente brecha de protección aseguradora, lo que amenaza la solvencia de aseguradoras y fondos de pensiones y la estabilidad financiera. El artículo defiende el papel de estos inversores institucionales para canalizar capital a largo plazo hacia la transición. Los datos de EIOPA muestran avances: el 4,5% de las inversiones directas en bonos corporativos y acciones de aseguradoras del EEE estaba alineado con la Taxonomía; en exposiciones no financieras, el 10,7% (desde el 5,7% en 2022) y el 20,5% directo era elegible. EIOPA apoya la simplificación y reducción de cargas de divulgación, pero advierte que no debe sacrificar la información clave de sostenibilidad. Pide que los requisitos ESRS sean proporcionales al tamaño y naturaleza de las empresas, coherentes con las normas voluntarias y con Solvencia II, e interoperables con estándares internacionales. Subraya que las lagunas de datos y las limitaciones de modelización dificultan la supervisión eficaz; mejorar la accesibilidad, consistencia y calidad de la información es esencial, junto con modelos prospectivos. Concluye que la resiliencia ante catástrofes naturales es fuente de fortaleza económica y competitividad a largo plazo, y que los riesgos de sostenibilidad siguen siendo parte integral de los mandatos prudencial y de protección del consumidor.",
+    "resumExecutiu": "EIOPA aborda las finanzas sostenibles como prioridad supervisora presente y futura. El artículo señala que las pérdidas económicas globales por catástrofes naturales crecen rápidamente: en 2024 alcanzaron 274 000 millones de euros, de los cuales 124 000 millones estaban asegurados. Europa sufre un calentamiento acelerado y una brecha de protección aseguradora persistente y cada vez mayor, lo que debilita la resiliencia económica y la estabilidad financiera. Los modelos de negocio y la solvencia de (re)aseguradoras y fondos de pensiones afrontan amenazas crecientes. A la vez, el sector puede apoyar la transición mediante inversión institucional a largo plazo y el ejercicio de su papel como administrador. Con datos recogidos en el EEE, EIOPA muestra que en 2024 la proporción de inversiones verdes en carteras aseguradoras mejoró ligeramente: el 4,5 % de las inversiones directas en bonos y acciones corporativas estaba alineado con la Taxonomía, mientras que en exposiciones no financieras la alineación fue del 10,7 % frente al 5,7 % en 2022, y la elegibilidad directa del 20,5 % y del 48,6 % en no financieras. Sobre la reforma del marco de divulgación, EIOPA apoya la simplificación y reducción de cargas, pero advierte que no debe sacrificarse información clave de sostenibilidad. Pide que los requisitos de reporte ESRS sean proporcionados al tamaño y naturaleza de las empresas y coherentes con Solvencia II y con estándares internacionales. Concluye que la resiliencia ante catástrofes naturales es fuente de fortaleza económica y competitividad, y que la UE está insuficientemente protegida. Quedan limitaciones de datos y modelos; por ello, EIOPA continuará integrando los riesgos de sostenibilidad en su labor supervisora, regulatoria y de seguimiento de riesgos.",
     "implicacions": {
-      "empreses": "Las aseguradoras y fondos de pensiones deben integrar los riesgos de sostenibilidad en su solvencia, suscripción y gestión de activos. El artículo revela avances modestos en alineación con la Taxonomía, lo que exige acelerar la inversión sostenible sin perder rentabilidad ni solidez. También deben afrontar la creciente brecha de protección: una demanda insuficiente de cobertura incrementa su exposición reputacional y regulatoria, y reduce su papel contracíclico ante catástrofes. Necesitan mejorar la calidad y granularidad de sus datos climáticos, adoptar modelos forward-looking y reforzar su función de stewardship para influir en la transición de las empresas participadas. La simplificación normativa puede aliviar cargas, pero no debe erosionar la información indispensable para evaluar riesgos; las entidades deben prepararse para requisitos proporcionados y coherentes con Solvencia II y las futuras normas voluntarias. En conjunto, la gestión activa del riesgo climático y la transparencia son condiciones de resiliencia, continuidad de negocio y competitividad.",
-      "reguladors": "EIOPA y los supervisores nacionales deben priorizar la resiliencia ante catástrofes y la integración de riesgos de sostenibilidad. El artículo insta a mejorar la accesibilidad, consistencia y calidad de los datos, superando lagunas y limitaciones de modelización mediante enfoques prospectivos que eviten depender solo de información histórica. La reforma de divulgación debe simplificar, pero preservando la disponibilidad de información clave; EIOPA pide que el ESRS sea proporcional para empresas dentro de su alcance y coherente con las normas voluntarias para fuera, incluida la mayoría de aseguradoras. También exige consistencia con Solvencia II e interoperabilidad internacional. Los supervisores deben vigilar la brecha de protección y su impacto en la estabilidad financiera y la protección del consumidor, fomentando mercados de seguros inclusivos. Las recomendaciones sugieren un enfoque basado en riesgo que alinee los mandatos prudenciales, de conducta y de estabilidad con la sostenibilidad.",
-      "ciutadans": "Los ciudadanos europeos son los más expuestos a la creciente frecuencia y gravedad de catástrofes naturales: en 2024 las pérdidas globales alcanzaron 274.000 millones de euros y más de la mitad no estaba asegurada. La brecha de protección aseguradora persistente y creciente significa que familias y comunidades soportan una parte desproporcionada del coste, debilitando su capacidad de recuperación y aumentando la desigualdad. Una supervisión financiera que priorice la sostenibilidad debe traducirse en productos asequibles, información clara y solvencia que proteja sus ahorros y pensiones a largo plazo. La simplificación normativa no puede hacerse a costa de la transparencia que permite a la ciudadanía confiar en que sus inversiones y seguros no agravan los riesgos climáticos. La resiliencia ante desastres no es solo macroeconómica: es la defensa de la dignidad, la continuidad de los modos de vida y la justicia intergeneracional."
+      "empresas": "Para (re)aseguradoras y fondos de pensiones, el texto implica integrar los riesgos climáticos y de catástrofes naturales en modelos de negocio y solvencia. Deben aprovechar su posición como inversores institucionales de largo plazo para canalizar capital hacia proyectos sostenibles y ejercer influencia mediante su papel de administración. También necesitan información de sostenibilidad fiable y proporcionada para evaluar correctamente los riesgos y evitar cargas desproporcionadas. La mejora de la alineación con la Taxonomía en carteras, del 5,7 % al 10,7 % en exposiciones no financieras, sugiere un avance, pero persiste la brecha de protección aseguradora, por lo que las entidades deben reforzar la continuidad de negocio y la resiliencia de las cadenas de suministro.",
+      "reguladores": "EIOPA defiende una regulación más simple y rápida, pero sin perder datos esenciales de sostenibilidad. Los supervisores deben garantizar que los requisitos ESRS sean proporcionados al tamaño y naturaleza de las empresas, y coherentes con Solvencia II y con estándares internacionales. Han de mejorar la accesibilidad, consistencia y calidad de la información sobre riesgos de catástrofes naturales, y fomentar modelos prospectivos que superen la dependencia de datos históricos. La prioridad supervisora debe integrarse en los mandatos prudencial, de protección del consumidor y de estabilidad financiera. También deben abordar la brecha de protección aseguradora como elemento que mina la resiliencia y la competitividad europea.",
+      "ciutadans": "El artículo subraya que la insuficiente protección frente a catástrofes naturales amenaza la economía y el modo de vida. Para la ciudadanía, la persistente y creciente brecha de protección aseguradora implica mayor exposición financiera ante fenómenos climáticos, con riesgos para la continuidad de empresas y cadenas de suministro. Una supervisión centrada en la sostenibilidad y en la protección del consumidor puede traducirse en productos más resilientes y en mejor gestión de riesgos. El impulso a inversiones sostenibles y a la divulgación proporcionada debería permitir decisiones más informadas. En última instancia, una transición ordenada y una mayor resiliencia ante catástrofes protegen la estabilidad financiera y el bienestar cotidiano."
     },
     "mesEnllaCheckbox": {
-      "criteri": "Sostenibilidad y justicia intergeneracional",
-      "body": "Más allá del cumplimiento formal, la supervisión sostenible de EIOPA plantea una pregunta ética: ¿qué información, cobertura y prudencia se deben a las generaciones futuras? Los datos de alineación con la Taxonomía y la brecha de protección revelan que el sistema financiero aún no cubre suficientemente los riesgos climáticos para la ciudadanía. La simplificación normativa no debe vaciar de contenido la exigencia de sostenibilidad: hay que preservar la información que permite a cada persona decidir con dignidad sobre sus ahorros y a las comunidades mantener su arraigo tras una catástrofe. La co-decisión entre supervisores, entidades y sociedad civil es necesaria para que los modelos prospectivos no se limiten a métricas de capital, sino que orienten la inversión hacia una economía que proteja la vida y el territorio. La resiliencia no es solo técnica: es una forma de justicia ecológica y social."
+      "criteri": "sostenibilidad y justicia intergeneracional",
+      "body": "El artículo invita a superar un enfoque de cumplimiento formal: no basta con etiquetar inversiones como verdes o simplificar reportes si se pierde la capacidad de evaluar riesgos. El criterio ético de sostenibilidad exige datos accesibles, coherentes y prospectivos para proteger la economía real y a las generaciones futuras. La justicia intergeneracional refuerza la necesidad de cerrar la brecha de protección aseguradora: las pérdidas no aseguradas recaen sobre hogares, empresas y administraciones, ampliando desigualdades ante eventos climáticos. El papel de administración de aseguradoras y fondos de pensiones permite influir para que las empresas actúen responsablemente y apoyen la creación de valor sostenible. La simplificación regulatoria no debería debilitar la transparencia; debe combinar proporcionalidad con información clave, de modo que el deber fiduciario y la rendición de cuentas no dependan de marcar casillas, sino de integrar la sostenibilidad en la gestión real del riesgo."
     },
     "connexions": [
       {
-        "type": "Evolució",
-        "target": "Taxonomía UE 2022-2024",
-        "desc": "La alineación no financiera de las carteras aseguradoras del EEE pasa del 5,7% en 2022 al 10,7% en 2024, señalando un avance moderado."
+        "type": "Complement",
+        "target": "Declaración pública de EIOPA de abril de 2025 'Bolder, Simpler, Faster'",
+        "desc": "El artículo reafirma el apoyo a la simplificación y reducción de cargas regulatorias, complementando la visión de EIOPA para una mejor regulación y supervisión."
       },
       {
-        "type": "Complement",
-        "target": "Solvencia II",
-        "desc": "EIOPA pide coherencia entre el ESRS y Solvencia II para integrar los riesgos de sostenibilidad en la supervisión prudencial."
+        "type": "Evolució",
+        "target": "Alineación con la Taxonomía en exposiciones no financieras 2022-2024",
+        "desc": "La proporción alineada en exposiciones no financieras sube del 5,7 % en 2022 al 10,7 % en 2024, reflejando una evolución positiva aunque moderada."
       },
       {
         "type": "Contradicció",
-        "target": "Agenda de simplificación 'Bolder, Simpler, Faster'",
-        "desc": "La reducción del alcance de ESRS puede chocar con la necesidad de datos clave de sostenibilidad para supervisar riesgos y protección del consumidor."
+        "target": "Brecha de protección aseguradora frente a pérdidas crecientes",
+        "desc": "Mientras las pérdidas globales y aseguradas por catástrofes aumentan, la brecha de protección se mantiene y se amplía, evidenciando una contradicción entre exposición y cobertura."
       }
     ],
     "accions": [
       {
         "num": "01",
-        "title": "Mejorar la disponibilidad y calidad de datos climáticos",
-        "desc": "Impulsar la accesibilidad, consistencia y granularidad de los datos de riesgos de catástrofes y sostenibilidad para supervisión.",
-        "effort": "Mitjà",
+        "title": "Mejorar calidad y accesibilidad de datos sobre riesgos de catástrofes naturales",
+        "desc": "Poner en marcha iniciativas supervisoras para aumentar la accesibilidad, consistencia y calidad de la información sobre exposiciones y pérdidas.",
+        "effort": "Alt",
         "impact": "Alt"
       },
       {
         "num": "02",
-        "title": "Desarrollar modelos prospectivos de riesgo",
-        "desc": "Superar la dependencia de información histórica con modelos forward-looking que mejoren la evaluación y supervisión de catástrofes.",
+        "title": "Desarrollar modelos prospectivos de evaluación de riesgos",
+        "desc": "Impulsar modelos forward-looking que reduzcan la dependencia de datos históricos y mejoren la precisión de las evaluaciones.",
         "effort": "Alt",
         "impact": "Alt"
       },
       {
         "num": "03",
-        "title": "Garantizar la proporcionalidad y coherencia del ESRS",
-        "desc": "Asegurar que los requisitos de divulgación sean proporcionados y coherentes con las normas voluntarias y Solvencia II, preservando información clave.",
+        "title": "Asegurar proporcionalidad en los requisitos ESRS",
+        "desc": "Aplicar requisitos de reporte proporcionados al tamaño y naturaleza de las empresas, coherentes con Solvencia II y con estándares internacionales.",
         "effort": "Mitjà",
-        "impact": "Alt"
+        "impact": "Mitjà"
       },
       {
         "num": "04",
-        "title": "Reducir la brecha de protección aseguradora",
-        "desc": "Diseñar medidas para ampliar la cobertura de catástrofes naturales en Europa, mejorando la resiliencia económica y social.",
-        "effort": "Alt",
-        "impact": "Alt"
+        "title": "Fomentar la alineación de carteras con la Taxonomía",
+        "desc": "Continuar supervisando y divulgando la cuota de inversiones alineadas y elegibles para orientar capital hacia actividades sostenibles.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
       },
       {
         "num": "05",
-        "title": "Acelerar la inversión alineada con la Taxonomía",
-        "desc": "Fomentar carteras aseguradoras más alineadas con la Taxonomía mediante incentivos prudenciales y de transparencia.",
-        "effort": "Mitjà",
-        "impact": "Mitjà"
+        "title": "Abordar la brecha de protección aseguradora",
+        "desc": "Integrar la reducción de la brecha de protección contra catástrofes naturales en la actividad supervisora y regulatoria para reforzar la resiliencia.",
+        "effort": "Alt",
+        "impact": "Alt"
       }
     ],
     "crossRefs": [
       {
-        "framework": "Taxonomía UE",
-        "criterion": "Inversión sostenible",
-        "impact": "El 4,5% directo y el 10,7% no financiero alineados evidencian avance limitado y espacio para acelerar la inversión verde."
+        "framework": "csrd-esrs",
+        "criterion": "Proporcionalidad y coherencia de los requisitos de reporte de sostenibilidad con el tamaño y naturaleza de las empresas, y con Solvencia II y estándares internacionales.",
+        "impact": "Condiciona la disponibilidad de información clave para que aseguradoras y fondos de pensiones evalúen los riesgos de sostenibilidad sin cargas desproporcionadas."
       },
       {
-        "framework": "ESRS/CSRD",
-        "criterion": "Divulgación de información de sostenibilidad",
-        "impact": "La proporcionalidad y la coherencia con Solvencia II condicionan la utilidad de los datos para supervisión y comparabilidad."
+        "framework": "taxonomia-ue",
+        "criterion": "Medición de inversiones alineadas y elegibles en carteras de aseguradoras del EEE.",
+        "impact": "Permite cuantificar la orientación de capital sostenible: 4,5 % directo alineado, 10,7 % no financiero alineado, 20,5 % directo elegible y 48,6 % no financiero elegible."
       },
       {
-        "framework": "Solvencia II",
-        "criterion": "Gestión de riesgos climáticos",
-        "impact": "La integración de riesgos de sostenibilidad en el capital regulatorio exige datos y modelos prospectivos consistentes con ESRS."
+        "framework": "sfdr",
+        "criterion": "Simplificación del marco de divulgación de finanzas sostenibles sin sacrificar información clave.",
+        "impact": "Afecta la transparencia, la reducción de cargas y la capacidad de supervisión y evaluación de riesgos de sostenibilidad."
       }
     ]
   }

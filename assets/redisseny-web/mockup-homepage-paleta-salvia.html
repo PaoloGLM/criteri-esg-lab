@@ -216,16 +216,16 @@
   .paper-meta { text-align: right; font-size: 0.62rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); line-height: 1.9; }
 
   .semafor {
-    background: var(--bg); color: var(--ink);
+    background: var(--ink); color: var(--bg);
     display: grid; grid-template-columns: minmax(190px, 0.9fr) minmax(0, 2.2fr); gap: 16px 36px;
     align-items: center;
     padding: 22px 30px;
-    border-bottom: 1px solid var(--ink);
+    border-bottom: 1px solid rgba(242, 245, 241, 0.2);
   }
-  .semafor .label { font-size: 0.6rem; font-weight: 400; letter-spacing: 0.22em; color: var(--ink); }
+  .semafor .label { font-size: 0.6rem; font-weight: 400; letter-spacing: 0.22em; color: var(--bg); }
   .semafor .grade-row { display: flex; align-items: baseline; gap: 14px; margin-top: 6px; }
-  .semafor .grade { font-size: 3.6rem; font-weight: 400; color: var(--ink); line-height: 0.95; letter-spacing: -0.03em; }
-  .semafor .grade-label { font-size: 1.1rem; font-weight: 400; color: var(--ink); }
+  .semafor .grade { font-size: 3.6rem; font-weight: 400; color: var(--bg); line-height: 0.95; letter-spacing: -0.03em; }
+  .semafor .grade-label { font-size: 1.1rem; font-weight: 400; color: var(--bg); }
   .dims { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px 30px; }
   .dim { display: grid; grid-template-columns: 100px 1fr; align-items: center; gap: 10px; }
   .dim .dname { font-size: 0.78rem; font-weight: 400; }

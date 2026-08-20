@@ -870,3 +870,22 @@ Verificat:
 Stage Summary:
 Instal·lació d'Hermes restaurada al 100% excepte state.db (pendent de reinici de l'app).
 Cap dada perduda; tot recuperable de hermes_old/.
+
+
+---
+Task ID: redisseny-landing-salvia-v14
+Agent: Hermes (assistent Roser)
+Task: Redisseny de la landing (paleta antracita i salvia) — VERSIO DEFINITIVA
+
+Work Log:
+- Iteracio del mockup salvia v1 a v14 (paleta, tipografies, semafor, blocs, header, textos, CTA)
+- Documents oficials creats: PALETA-COLORS.md (paleta v7 + semafor amb regles del web real) i TIPOGRAFIES.md (Newsreader + DM Sans + JetBrains Mono)
+- Semafor bloc 0 amb regles del web real: C per getGradeColor (#C9A961), dots #5C8A5C/#C9A961/#A0522D, fons ink amb text clar
+- Blocs renumerats 1-8; bloc 5 'Mes enlla del Checkbox' i bloc 8 'Cross-reference' tractats com el semafor (foscs)
+- Header verd fosc amb menu en JetBrains Mono (com l'eyebrow), banner amb contorn verd clar
+- Tots els commits pujats a GitHub (origin/main)
+
+Stage Summary:
+- VERSIO DEFINITIVA de la landing: assets/redisseny-web/mockup-homepage-paleta-salvia.html (v14)
+- PENDENT: validacio d'en Paolo (CEO) i pujada a la web
+- Repo sincronitzat amb origin/main

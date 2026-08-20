@@ -42,6 +42,8 @@ Dots inactius: `opacity 0.18` sobre el mateix color.
 
 ## 3. Tipografia associada (per a la web)
 
+> Vegeu el document complet: [`TIPOGRAFIES.md`](TIPOGRAFIES.md)
+
 | Família | Rol |
 |---|---|
 | **Newsreader** (serif, amb itàliques) | Títols, capçalera, textos curts, números decoratius |

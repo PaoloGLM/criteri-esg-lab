@@ -30,11 +30,15 @@
 
 ## 2. Semàfor metodològic (Bloc 0 dels informes)
 
+> Colors del web real (`getGradeColor` + indicadors a `src/lib/reports.ts` i `src/app/informes/[slug]/page.tsx`)
+
 | Estat | Color | Hex | Ús |
 |---|---|---|---|
-| 🟢 Verd (g) | Salvia | `#5E8772` | Dimensió correcta / robusta |
-| 🟡 Groc (y) | Groc pàl·lid | `#F5E381` | Dimensió parcial / a vigilar |
+| 🟢 Verd (g) | Verd | `#5C8A5C` | Dimensió correcta / robusta |
+| 🟡 Groc (y) | Taronja | `#C9A961` | Dimensió parcial / a vigilar |
 | 🔴 Vermell (r) | Terrós | `#A0522D` | Dimensió feble / insuficient |
+
+**Lletra de la nota (C, B, A, D)**: es pinta segons la regla `getGradeColor` del web real — A → `#5C8A5C` (verd) · B o C → `#C9A961` (taronja) · D o desconegut → `#A0522D` (vermell).
 
 Dots inactius: `opacity 0.18` sobre el mateix color.
 

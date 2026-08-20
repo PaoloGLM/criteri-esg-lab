@@ -75,7 +75,7 @@
   .nav {
     display: flex; align-items: center; justify-content: space-between;
     height: 76px;
-    font-family: var(--font-display);  /* Newsreader: igual que els títols dels blocs (h4) */
+    font-family: var(--font-mono);  /* JetBrains Mono: igual que l'eyebrow "Criteri ESG · Setembre 2026" */
   }
   .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
   .brand-mark {
@@ -93,6 +93,12 @@
     padding: 6px 0; border-bottom: 2px solid transparent; transition: border-color .15s;
   }
   .nav-links a:hover { border-color: var(--highlight); }
+  /* Ítems del menú (presents i futurs) en JetBrains Mono com l'eyebrow "Criteri ESG · Setembre 2026" */
+  header.site .nav-links a,
+  header.site .nav-actions .login,
+  header.site .nav-actions .btn {
+    font-family: var(--font-mono);
+  }
   .nav-actions { display: flex; align-items: center; gap: 20px; }
   .nav-actions .login { color: var(--verd-clar); text-decoration: underline; font-size: 0.9rem; font-weight: 400; }
   .btn {

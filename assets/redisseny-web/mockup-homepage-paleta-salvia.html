@@ -68,7 +68,7 @@
 
   /* ============ HEADER ============ */
   header.site {
-    background: var(--verd-clar);
+    background: var(--ink);
     border-bottom: 1px solid var(--line);
     position: sticky; top: 0; z-index: 50;
   }
@@ -84,16 +84,16 @@
     font-weight: 400; font-size: 19px; color: var(--ink);
     letter-spacing: -0.02em;
   }
-  .brand-name { font-weight: 400; font-size: 1.15rem; color: var(--ink); letter-spacing: -0.01em; }
+  .brand-name { font-weight: 400; font-size: 1.15rem; color: var(--verd-clar); letter-spacing: -0.01em; }
   .brand-name em { font-style: normal; color: var(--accent); }
   .nav-links { display: flex; gap: 30px; list-style: none; }
   .nav-links a {
-    color: var(--ink); text-decoration: none; font-size: 0.9rem; font-weight: 400;
+    color: var(--verd-clar); text-decoration: none; font-size: 0.9rem; font-weight: 400;
     padding: 6px 0; border-bottom: 2px solid transparent; transition: border-color .15s;
   }
   .nav-links a:hover { border-color: var(--highlight); }
   .nav-actions { display: flex; align-items: center; gap: 20px; }
-  .nav-actions .login { color: var(--ink); text-decoration: underline; font-size: 0.9rem; font-weight: 400; }
+  .nav-actions .login { color: var(--verd-clar); text-decoration: underline; font-size: 0.9rem; font-weight: 400; }
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     font-family: var(--font-display); font-weight: 400; font-size: 0.9rem;
@@ -101,7 +101,7 @@
     transition: transform .12s ease, opacity .15s;
   }
   .btn:hover { transform: translateY(-1px); opacity: .92; }
-  .btn-primary { background: transparent; color: var(--ink); padding: 0; border-radius: 0; text-decoration: underline; }
+  .btn-primary { background: transparent; color: var(--verd-clar); padding: 0; border-radius: 0; text-decoration: underline; }
   .btn-ghost { background: transparent; color: var(--ink); padding: 10px 4px; border-radius: 8px; }
   .btn-ghost .arrow { color: var(--accent); }
   .btn-bright { background: var(--highlight); color: var(--ink); padding: 15px 34px; border-radius: 9px; font-size: 0.95rem; }
@@ -140,11 +140,11 @@
   .hero .btn-light { background: var(--highlight); color: var(--ink); padding: 15px 34px; border-radius: 9px; font-size: 0.95rem; }
   .hero .btn-line { background: transparent; color: var(--highlight); padding: 14px 6px; border-bottom: none; border-radius: 0; font-weight: 400; }
   .banner {
-    margin-top: 40px; padding: 14px 26px;
-    background: var(--verd-clar);
-    border: none;
+    margin-top: 40px; padding: 8px 20px;
+    background: transparent;
+    border: 1px solid var(--verd-clar);
     border-radius: var(--radius);
-    font-size: 0.95rem; font-weight: 400; color: #FFFFFF;
+    font-size: 0.95rem; font-weight: 400; color: var(--verd-clar);
   }
 
   /* ============ SECCIONS GENERIQUES ============ */
@@ -168,10 +168,12 @@
 
   /* Títols de secció centrats amb franja groga només davant, al centre de les lletres */
   .manifest .eyebrow-dark,
-  .teses .eyebrow-dark,
-  .informe .eyebrow,
   .cta-final .eyebrow {
     justify-content: center;
+  }
+  .teses .eyebrow-dark,
+  .informe .eyebrow {
+    display: flex; justify-content: center;
   }
   .informe .eyebrow::after,
   .cta-final .eyebrow::after { display: none; }
@@ -269,6 +271,7 @@
   .bloc-fosc p strong { color: var(--bg); }
   .bloc-fosc .chip { background: transparent; border-color: rgba(242, 245, 241, 0.35); color: var(--bg); }
   .bloc-fosc .chip span { color: var(--bg); }
+  .bloc-pregunta h4 { color: var(--highlight); }
 
   .dades { display: flex; flex-direction: column; }
   .dada { display: grid; grid-template-columns: 26px 1fr; gap: 10px; padding: 8px 0; border-bottom: 1px dotted rgba(74, 95, 83, 0.35); align-items: baseline; }
@@ -308,7 +311,7 @@
     padding: 22px 30px;
   }
   .paper-foot p { font-size: 0.85rem; font-weight: 400; color: var(--ink); }
-  .paper-foot a { color: var(--ink); font-weight: 400; font-size: 0.88rem; text-decoration: underline; white-space: nowrap; }
+  .paper-foot a { color: var(--highlight); font-weight: 400; font-size: 0.88rem; text-decoration: none; white-space: nowrap; }
   .paper-foot a:hover { text-decoration: underline; }
 
   /* ============ CITA ============ */
@@ -495,7 +498,7 @@
             <p><strong>Reguladors:</strong> BCE, ESMA i EFRAG hauran d'emetre guies interpretatives per evitar divergències entre estats membres. Risc de fragmentació.</p>
             <p><strong>Ciutadans:</strong> Informes més curts i llegibles, però amb menys dada verificable. Perill de greenwashing augmentat per l'ambigüitat interpretativa.</p>
           </div>
-          <div class="bloc bloc-fosc">
+          <div class="bloc bloc-fosc bloc-pregunta">
             <div class="bloc-num">Bloc 5 · Més enllà del Checkbox</div>
             <h4>La pregunta que l'informe no respon</h4>
             <p>«La simplificació és un alleujament per al reporting, però què perd la societat quan desapareix la dada granular que permetia auditar promeses?»</p>
@@ -553,7 +556,7 @@
 <section class="cta-final">
   <div class="wrap">
     <span class="eyebrow">Si reconeixes aquesta situació</span>
-    <h2>T'<span class="hl">entenem</span>.<br>Et retornem temps per pensar.</h2>
+    <h2><span class="hl">T'entenem.</span><br>Et retornem temps per pensar.</h2>
     <a class="btn btn-bright" href="#">Accés obert fins al novembre</a>
     <p class="note">Sense targeta de crèdit. Sense paywall fins al novembre.</p>
   </div>

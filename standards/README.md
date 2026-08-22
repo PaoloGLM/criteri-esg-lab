@@ -4,15 +4,17 @@
 > Són el "model mental" d'un expert en cada estàndard: el coneixement rellevant
 > per fer cross-references al pipeline. NO contenen la normativa completa.
 
-## Estructura de cada fitxa (plantilla)
+## Estructura de cada fitxa (plantilla v2 — amb mapa temàtic i criteris d'intensitat)
 
 1. Què és + abast + a qui obliga
 2. Estructura (components clau)
+   - **2b. MAPA TEMÀTIC** — taula `tema de l'informe → pilars de l'estàndard + documents oficials` a `certifications/`. Serveix perquè el pipeline obri NOMÉS els documents del tema detectat (ex: informe de clima → només documents climàtics) i no tota la normativa. Si un document no està descarregat, marcar-ho i fer el crossRef amb la fitxa sola (criterion de baixa confiança, sense inventar).
 3. Interoperabilitat (amb què es relaciona)
-4. ⚠️ VIGILÀNCIA DE CANVIS — modificacions recents (data + enllaç oficial), en revisió ara, canvis anunciats
+4. ⚠️ VIGILÀNCIA DE CANVIS — modificacions recents (data + enllaç oficial), en revisió ara, canvis anunciats. **Es comprova a la revisió periòdica, NO a cada crossRef.**
 5. Punts d'impacte típics (on un informe institucional el toca)
 6. Accions tipus que se'n deriven
-7. Meta — última revisió, propera revisió, validada per Paolo
+7. **CRITERIS D'INTENSITAT** — taula Alt/Mitjà/Baix amb regles explícites i exemples reals; en cas de dubte, triar el més baix
+8. Meta — última revisió, propera revisió, **estat de validació de Paolo (⏳ pendent / ✅ validada)**
 
 ## Regles
 - **Paolo les valida TOTES** abans d'usar-les en producció

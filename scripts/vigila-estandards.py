@@ -82,6 +82,29 @@ def items_from_rss(xml_text: str) -> list[tuple[str, str]]:
     return out[:12]
 
 
+# Paraules d'enllaços de navegació (menús, cookies, login...) a excloure
+NAV_STOPWORDS = (
+    "skip to", "sign in", "register", "log in", "login", "privacy", "cookies",
+    "main content", "main-content", "contact", "about us", "about-us",
+    "governance", "media enquiries", "speaking requests", "calendar",
+    "how we set", "post-implementation", "advisory groups", "trustees",
+    "international accounting standards board", "our structure", "legal",
+    "ways of contributing", "friends of", "administrative board",
+    "secretariat", "elements of history", "working groups and advisory",
+    "financial reporting board", "technical expert group", "join the community",
+    "latest articles", "assess my", "sustainability intelligence platform",
+    "trusted sustainability ratings", "direct worker engagement",
+    "risk management overview", "download the standards", "standards development",
+    "global sustainability standards board", "gri sustainability taxonomy",
+    "how to use the gri standards", "get started with reporting", "resource center",
+    "questions and answers", "standards interpretations", "global alignment",
+    "register your report", "reporting support", "regulatory process",
+    "european system of", "free movement of", "overview of financial services",
+    "implementing and delegated acts", "enforcement of", "expert groups",
+    "savings &", "securities markets", "post-trade services", "investment funds",
+)
+
+
 def items_from_html(html: str, regex: str, base_url: str = "") -> list[tuple[str, str]]:
     """Extreu (títol, enllaç) d'una pàgina HTML amb regex; resol enllaços relatius."""
     from urllib.parse import urljoin
@@ -91,6 +114,9 @@ def items_from_html(html: str, regex: str, base_url: str = "") -> list[tuple[str
     for href, text in re.findall(regex, html, re.IGNORECASE)[:60]:
         text = re.sub(r"<[^>]+>", "", text).strip()
         if len(text) < 15:
+            continue
+        low = text.lower()
+        if any(w in low for w in NAV_STOPWORDS):
             continue
         if not href.startswith("http"):
             href = urljoin(base_url, href)
@@ -140,6 +166,7 @@ def main():
 
         # Identificador estable per element (títol + hash de l'enllaç)
         nous = []
+        es_font_nova = nom not in state  # primera vegada: inicialitzar sense alertar
         vistos = state.get(nom, set())
         for t, u in items:
             key = hashlib.sha1(f"{t}|{u}".encode()).hexdigest()[:12]
@@ -148,8 +175,9 @@ def main():
             vistos.add(key)
         state[nom] = vistos
 
-        for t, u in nous:
-            novetats.append(f"🔔 {nom}: \"{t[:120]}\" {u[:200]}")
+        if not es_font_nova:
+            for t, u in nous:
+                novetats.append(f"🔔 {nom}: \"{t[:120]}\" {u[:200]}")
 
     # Només alerta si hi ha novetats REALS (no a la primera execució)
     if STATE_FILE.exists():

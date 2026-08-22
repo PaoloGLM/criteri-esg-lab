@@ -25,9 +25,9 @@
 
 | # | Fitxa | Estat |
 |---|-------|-------|
-| 1 | `gri.md` | ✅ Plantilla feta (pendent validació Paolo) |
-| 2 | `csrd-esrs.md` | ⏳ Pendent |
-| 3 | `ecovadis.md` | ⏳ Pendent |
+| 1 | `gri.md` | ✅ Feta (plantilla v2, pendent validació Paolo) |
+| 2 | `ecovadis.md` | ✅ Feta (plantilla v2, pendent validació Paolo; document oficial corrupte a certifications/) |
+| 3 | `csrd-esrs.md` | ⏳ Pendent |
 | 4 | `b-corp.md` | ⏳ Pendent |
 | 5 | `msci-esg.md` | ⏳ Pendent |
 | 6 | `csddd.md` | ⏳ Pendent |

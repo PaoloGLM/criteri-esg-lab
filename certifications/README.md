@@ -9,7 +9,7 @@ oficials de cada certificació.
 
 | # | Estàndard | Fitxer | Mida | Estat |
 |---|-----------|--------|------|-------|
-| 1 | EcoVadis | ecovadis-methodology.pdf | 150 KB | ❌ **CORRUPTE** (és un HTML "Page not found" — re-descarregar) |
+| 1 | EcoVadis | ecovadis-methodology.pdf | 1,5 MB | ✅ (537 pàg., re-descarregat 20-08-2026) |
 | 2 | B Corp | b-impact-assessment.pdf | — | ❌ Pendent (web bloqueja descàrrega) |
 | 3 | MSCI ESG | msci-esg-methodology.pdf | 62 KB | ✓ |
 | 4 | GRI | gri-universal-standards-2021.pdf | 78 KB | ✓ |

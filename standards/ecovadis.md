@@ -5,8 +5,7 @@
 > Això és el model mental d'un expert — NO tota la metodologia oficial.
 > **⏳ PENDENT DE VALIDACIÓ DE PAOLO — NO usar en producció fins que estigui validada.**
 > Última revisió: 20-08-2026 · Propera revisió: 20-09-2026 (o quan es detecti un canvi a les fonts oficials).
-
-> ⚠️ **NOTA DE FONT**: el fitxer `certifications/ecovadis-methodology.pdf` és en realitat un HTML corrupte ("Page not found" — descàrrega fallida). Aquesta fitxa es basa en el **coneixement expert del model**; els criteris literals de la metodologia oficial s'han de verificar quan es re-descarregui el document. **Mentre no hi hagi document oficial: marcar els crossRefs EcoVadis com a "baixa confiança" i no inventar cites literals de criteris.**
+> ✅ **Document oficial verificat**: `certifications/ecovadis-methodology.pdf` ("EcoVadis Ratings Methodology Overview and Principles", V2.4, 2018/2020, 537 pàg.) — re-descarregat el 20-08-2026 (l'anterior era un HTML corrupte). Els criteris literals citats a la secció 2 provenen d'aquest document.
 
 ---
 
@@ -15,28 +14,65 @@ Plataforma comercial de **ratings de sostenibilitat de cadena de subministrament
 
 **Rellevància de mercat**: >130.000 empreses avaluades; usat per >1.000 multinacionals compradores. És la certificació ESG més estesa en B2B (per sobre de B Corp en volum).
 
-## 2. Estructura (4 temes, 21 criteris ponderats)
-Els **pesos dels 4 temes varien per indústria** (la indústria determina la materialitat):
+## 2. Estructura (4 temes, 21 criteris — segons document oficial V2.4)
+Els **pesos dels 4 temes varien per indústria** (la indústria determina la materialitat; la companyia es classifica per sector, mida i ubicació).
 
-- **Environment** (7 criteris): Energia i GHG, Aigua, Biodiversitat, Contaminació, Materials/Residus/Circularitat, ...
-- **Labor & Human Rights** (7 criteris): Salut i Seguretat, Condicions de treball, Relacions laborals, Drets humans, Treball infantil/forçós, ...
-- **Ethics** (4 criteris): Corrupció/suborn, Pràctiques anticompetitives, Seguretat de la informació, ...
-- **Sustainable Procurement** (3 criteris): Pràctiques ambientals dels proveïdors, Pràctiques socials dels proveïdors, ...
+### Els 21 criteris oficials (document V2.4)
 
-**Pesos indicatius per defecte**: Environment ~25-30%, Labor ~25-30%, Ethics ~20%, Procurement ~15-25% (segons sector). **Verificar amb el document oficial quan es descarregui.**
+**ENVIRONMENT** (7):
+1. Energy Consumption & GHGs
+2. Water
+3. Biodiversity
+4. Local & Accidental Pollution
+5. Materials, Chemicals & Waste
+6. Products (Product Use)
+7. Product End-of-Life + Customer Health & Safety + Environmental Services & Advocacy *(aquests tres darrers formen part del bloc de Productes)*
+
+**LABOR & HUMAN RIGHTS** (7):
+1. Employee Health & Safety
+2. Working Conditions
+3. Social Dialogue
+4. Career Management & Training
+5. Human Rights (Child Labor, Forced Labor & Human Trafficking)
+6. Diversity, Discrimination & Harassment
+7. External Stakeholder Human Rights
+
+**ETHICS** (4):
+1. Corruption
+2. Anticompetitive Practices
+3. Responsible Information Management
+4. (i compromisos basats en UN Global Compact, OIT, DUDH, Convenció Anti-corrupció)
+
+**SUSTAINABLE PROCUREMENT** (3):
+1. Supplier Environmental Practices
+2. Supplier Social Practices
+3. (sostenibilitat en la gestió de la cadena de subministrament en general)
+
+> **Nota**: la numeració exacta i els pesos per tema/indústria es detallen a les pàgines següents del document (V2.4); consultar el PDF per a la distribució precisa abans de citar un pes concret.
+
+### Com s'avalua (metodologia — clau per al crossRef)
+
+1. **Qüestionari sectorial** adaptat per indústria, mida i ubicació de la companyia
+2. **Evidències documentals**: l'empresa aporta documents (polítiques, certificacions, informes) que avalen les respostes
+3. **360° Watch**: monitoratge continu de fonts externes (mitjans, ONG, sancions, litigis) que pot afegir alertes positives o negatives al perfil
+4. **Puntuació per tema**: cada tema es puntua sobre la qualitat del sistema de gestió (polítiques → accions → resultats)
+5. **Score global 0–100** ponderat per indústria → **Medalles**: Bronze (45–54), Silver (55–64), Gold (65–74), Platinum (75+)
+6. **Reavaluació** anual o quan el comprador ho demana
+
+> **Ús al crossRef**: l'impacte d'un informe institucional sobre EcoVadis es concreta en (a) quins criteris toca, (b) com canvia el pes/rellevància del tema, (c) com afecta el 360° Watch (risc reputacional/sancions).
 
 ### 2b. MAPA TEMÀTIC (tema → criteris EcoVadis i documents oficials)
 > **Ús al pipeline**: quan el pas 2 detecti el tema d'un informe, obrir NOMÉS els documents marcats amb aquest tema per afinar el crossRef.
 
 | Tema de l'informe | Criteris EcoVadis afectats | Documents oficials a `certifications/` |
 |---|---|---|
-| **Canvi climàtic** | Energy & GHG, Contaminació, Materials/Circularitat | `ecovadis-methodology.pdf` — **⛔ CORRUPTE (re-descarregar)** |
-| **Natura / biodiversitat** | Biodiversitat, Aigua, Materials/Residus | `ecovadis-methodology.pdf` — **⛔ CORRUPTE** |
-| **Social / laboral** | Salut i Seguretat, Condicions de treball, Relacions laborals, Drets humans, Treball infantil/forçós | `ecovadis-methodology.pdf` — **⛔ CORRUPTE** |
-| **Ètica / anticorrupció** | Corrupció, Pràctiques anticompetitives, Seguretat de la informació | `ecovadis-methodology.pdf` — **⛔ CORRUPTE** |
-| **Cadena de subministrament / diligència** | Pràctiques ambientals i socials dels proveïdors (Sustainable Procurement) | `ecovadis-methodology.pdf` — **⛔ CORRUPTE** |
+| **Canvi climàtic** | Energy Consumption & GHGs, Local & Accidental Pollution, Materials/Chemicals/Waste | `ecovadis-methodology.pdf` ✅ (537 pàg.) |
+| **Natura / biodiversitat** | Biodiversity, Water, Materials/Chemicals/Waste | `ecovadis-methodology.pdf` ✅ |
+| **Social / laboral** | Employee Health & Safety, Working Conditions, Social Dialogue, Human Rights, Diversity | `ecovadis-methodology.pdf` ✅ |
+| **Ètica / anticorrupció** | Corruption, Anticompetitive Practices, Responsible Information Management | `ecovadis-methodology.pdf` ✅ |
+| **Cadena de subministrament / diligència** | Supplier Environmental Practices, Supplier Social Practices | `ecovadis-methodology.pdf` ✅ |
 
-> **Regla de documents**: mentre `ecovadis-methodology.pdf` sigui corrupte, cap crossRef EcoVadis pot citar criteris literals → **criterion genèric + nota de baixa confiança** (ex: "criteri d'energia i GHG (pendent de verificació del document oficial)").
+> **Regla de documents**: el document oficial ja està disponible; els criteris citats als crossRefs EcoVadis s'han de poder rastrejar al PDF (indicar secció/pàgina quan sigui possible).
 
 ## 3. Interoperabilitat (clau per al cross-ref)
 - **CSRD/ESRS**: EcoVadis ven un mòdul d'alineació amb ESRS/CSRD; els seus qüestionaris demanen dades que coincideixen amb els disclosures ESRS (doblement rellevant des de l'Omnibus I)

@@ -58,6 +58,13 @@ Torna un objecte JSON amb aquesta estructura exacta:
 
 Sigues critic i específic. No aportis genèriques. Minim 5 propostes i 3 observacions d'advocat del diable.
 
+VERIFICACIÓ ESPECÍFICA DELS CROSS-REFERENCES (bloc 7-crossRefs):
+- Comprova que cada 'criterion' sigui un requisit CONCRET de l'estàndard (ex. 'GRI 305-1'), no un tema genèric. Si és genèric, proposa el requisit concret.
+- Comprova que 'coverage' sigui coherent amb l'original: 'compleix' només si l'informe el tracta amb contingut real (dades o anàlisi); 'parcial' si només el menciona; 'no-cobert' si no apareix.
+- Comprova que 'evidence.page' sigui un número de pàgina REAL de l'original. Si no es pot verificar o és inventat, proposa eliminar-lo o corregir-lo (nul si no és localitzable).
+- Comprova que 'nature' distingeixi bé entre dada quantitativa (número/mètrica), qualitativa (narrativa/política) i compromís (objectiu declarat).
+- Si un requisit material de l'estàndard NO apareix a cap crossRef però l'informe el tracta, proposa afegir-lo.
+
 ENTORN TANCAT (regles de verificació):
 1. Totes les propostes i observacions han de fonamentar-se EXCLUSIVAMENT en el destil·lat i l'informe original que reps. MAI afegeixis coneixement extern ni dades que no apareguin a l'original.
 2. Cada proposta que es refereixi a una dada de l'original ha d'indicar-ne la font (p. N o secció) a 'justificacio' o 'evidencia_original'.

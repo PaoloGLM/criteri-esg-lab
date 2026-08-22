@@ -152,7 +152,9 @@ def process_one_pdf(pdf_path: Path) -> bool:
             '"mesEnllaCheckbox":{"criteri":"...","body":"..."},'
             '"connexions":[{"type":"Evolució|Complement|Contradicció","target":"...","desc":"..."}],'
             '"accions":[{"num":"01","title":"...","desc":"...","effort":"Baix|Mitjà|Alt","impact":"Baix|Mitjà|Alt"}],'
-            '"crossRefs":[{"framework":"...","criterion":"...","impact":"..."}]}\n\n'
+            '"crossRefs":[{"framework":"...","criterion":"...","coverage":"compleix|parcial|no-cobert",'
+            '"evidence":{"page":42,"section":"3.2","table":"T-3"},"nature":"quantitatiu|qualitatiu|compromis",'
+            '"impact":"alt|mitja|baixa","action":"..."}]}\n\n'
             "Criteris semàfor: verd=Quantificat, groc=Esmentat, vermell=Ignorat. "
             "grade: A=5v, B=4v+1g, C≤1r, D=2+r.\n"
             "Llargàries: resumExecutiu ~300p, implicacions ~150p cadascun, mesEnllaCheckbox ~150p, "
@@ -173,6 +175,15 @@ def process_one_pdf(pdf_path: Path) -> bool:
             "honest en lloc d'inventar-lo.\n\n"
             "CROSS-REFERENCES (Bloc crossRefs): tria NOMÉS d'aquest catàleg oficial, "
             "posant el nom exacte a 'framework'. No inventis frameworks fora d'aquesta llista.\n"
+            "Regles dels camps crossRefs:\n"
+            "- criterion: requisit CONCRET de l'estàndard (ex. 'GRI 305-1 Direct GHG emissions'), NO el tema genèric.\n"
+            "- coverage: fins a quin punt L'INFORME cobreix el requisit — 'compleix' (el tracta amb dades/contingut), "
+            "'parcial' (el menciona sense profunditat), 'no-cobert' (no el tracta).\n"
+            "- evidence: pàgina i secció de l'informe original on apareix. Si el requisit es tracta, page és OBLIGATÒRIA "
+            "i ha de ser real (número de pàgina del document); si no es pot localitzar, posa page null — MAI inventar.\n"
+            "- nature: 'quantitatiu' (dada numèrica), 'qualitatiu' (narrativa/política), 'compromis' (objectiu declarat).\n"
+            "- impact: rellevància per a la UI (alt|mitja|baixa); en cas de dubte, tria la més baixa.\n"
+            "- action: acció concreta per a l'empresa que llegeix (ex. 'Auditar les emissions directes abans del Q4').\n"
             f"{cataleg_as_prompt()}\n"
         )
         up = (

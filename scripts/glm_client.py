@@ -43,7 +43,9 @@ async function main() {
     '  "mesEnllaCheckbox": {"criteri": string, "body": string},',
     '  "connexions": [{"type": "Evolució"|"Complement"|"Contradicció", "target": string, "desc": string}],',
     '  "accions": [{"num": "01", "title": string, "desc": string, "effort": "Baix"|"Mitjà"|"Alt", "impact": "Baix"|"Mitjà"|"Alt"}],',
-    '  "crossRefs": [{"framework": string, "criterion": string, "impact": string}]',
+    '  "crossRefs": [{"framework": string, "criterion": string, "coverage": "compleix"|"parcial"|"no-cobert", '
+    '"evidence": {"page": int|null, "section": string, "table": string|null}, '
+    '"nature": "quantitatiu"|"qualitatiu"|"compromis", "impact": "alt"|"mitja"|"baixa", "action": string}]',
     "}",
     "",
     "Criteris del semàfor:",

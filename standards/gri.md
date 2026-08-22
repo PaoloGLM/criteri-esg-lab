@@ -21,20 +21,21 @@ Marc **voluntari** de reporting de sostenibilitat, el més usat del món. Emès 
 - **Sector Standards** (obligatoris per al sector corresponent): GRI 11 Oil&Gas, GRI 12 Coal, GRI 13 Agricultura/Aqüicultura/Pesca, **GRI 14 Mining (efectiu 01-01-2026)**...
 - **Topic Standards** (desenes, segons materialitat): GRI 201 Econòmic, GRI 205 Anti-corrupció, GRI 302 Energia, GRI 303 Aigua, GRI 305 Emissions, GRI 306 Residus, GRI 403 Salut i Seguretat, GRI 405 Diversitat, **GRI 101 Biodiversitat (2024, efectiu 01-01-2026)**, **GRI 102 Clima (2025, efectiu 01-01-2027)**, **GRI 103 Energia (2025, efectiu 01-01-2027)**...
 
-### 2b. MAPA TEMÀTIC (tema → pilars GRI i documents oficials)
-> **Ús al pipeline**: quan el pas 2 detecti el tema d'un informe, obrir NOMÉS els documents marcats amb aquest tema per afinar el crossRef. Els temes es poden solapar (un informe de clima pot tocar social si parla de transició justa).
+### 2b. MAPA TEMÀTIC (tema → requisits concrets GRI)
+> **Ús al pipeline**: quan el pas 2 detecti el tema d'un informe, obrir NOMÉS els documents marcats amb aquest tema per afinar el crossRef. Els temes es poden solapar.
+> ⚠️ **Estat documental (20-08-2026)**: `gri-universal-standards-2021.pdf` és un **HTML corrupte** (no és PDF) — PENDENT de re-descarregar. Fins aleshores, els requisits concrets següents són **de domini públic estable però NO verificats al document oficial** → marcar els crossRefs com a "criterion de baixa confiança" fins que es pugui contrastar.
 
-| Tema de l'informe | Pilars GRI afectats | Documents oficials a `certifications/` |
+| Tema de l'informe | Requisits GRI concrets (criterion) | Documents oficials a `certifications/` |
 |---|---|---|
-| **Canvi climàtic** | GRI 102 Climate (2027), GRI 305 Emissions, GRI 302 Energia, GRI 201 (rendiment econòmic), GRI 203 (impactes indirectes) | `gri-universal-standards-2021.pdf` (GRI 1/2/3). Topic 305/302: **pendents de descarregar** (gratuïts a globalreporting.org) |
-| **Natura / biodiversitat** | GRI 101 Biodiversitat (2026), GRI 304 Biodiversitat (antic), GRI 303 Aigua i efluents, GRI 306 Residus | `gri-universal-standards-2021.pdf`. Topic 101/303/304/306: **pendents de descarregar** |
-| **Energia / transició** | GRI 103 Energia (2027), GRI 302 Energia, GRI 201, GRI 305 | `gri-universal-standards-2021.pdf`. Topic 103/302: **pendents de descarregar** |
-| **Social / laboral** | GRI 401 Ocupació, GRI 403 Salut i Seguretat, GRI 404 Formació, GRI 405 Diversitat, GRI 406 No-discriminació, GRI 407-409 (associació, infantil, forçós) | `gri-universal-standards-2021.pdf`. Topics 400: **pendents de descarregar** |
-| **Drets humans / cadena de valor** | GRI 2 (due diligence), GRI 412 Avaluació DH, GRI 408/409 (infantil/forçós), GRI 414 (avaluació social de proveïdors), GRI 308 (avaluació ambiental de proveïdors) | `gri-universal-standards-2021.pdf` (cobreix GRI 2). Topics 412/414: **pendents de descarregar** |
-| **Governança / ètica** | GRI 205 Anti-corrupció, GRI 206 Competència, GRI 207 Impostos, GRI 415 Política pública, GRI 419 Compliment socioeconòmic | `gri-universal-standards-2021.pdf`. Topics 200: **pendents de descarregar** |
-| **Sectorial** (oil&gas, carbó, agricultura, mineria) | GRI 11, GRI 12, GRI 13, **GRI 14 Mining (2026)** | `gri-universal-standards-2021.pdf`. Sector Standards: **pendents de descarregar** |
+| **Canvi climàtic** | GRI 305-1 Direct GHG emissions · GRI 305-2 Energy indirect GHG · GRI 305-3 Other indirect GHG · GRI 302-1 Energy consumption · GRI 201-2 Climate implications | `gri-universal-standards-2021.pdf` ⛔ **corrupte — re-descarregar** |
+| **Natura / biodiversitat** | GRI 101-1/101-2/101-3 (Biodiversitat 2024) · GRI 303-3 Water withdrawal · GRI 306-3 Waste generated | `gri-universal-standards-2021.pdf` ⛔ **corrupte** |
+| **Energia / transició** | GRI 302-1/302-2/302-4 (Energia) · GRI 103-1/103-2 (Energia 2025) · GRI 305-1 | `gri-universal-standards-2021.pdf` ⛔ **corrupte** |
+| **Social / laboral** | GRI 401-1 New hires · GRI 403-9 Work-related injuries · GRI 404-1 Training hours · GRI 405-1 Diversity · GRI 406-1 Discrimination incidents | `gri-universal-standards-2021.pdf` ⛔ **corrupte** |
+| **Drets humans / cadena de valor** | GRI 2-23 Policy commitments (DH) · GRI 412-1/412-2 Human rights assessments · GRI 408-1 Child labor · GRI 409-1 Forced labor · GRI 414-1 Supplier social screening | `gri-universal-standards-2021.pdf` ⛔ **corrupte** |
+| **Governança / ètica** | GRI 205-1/205-2/205-3 Anti-corruption · GRI 206-1 Anticompetitive · GRI 207-1 Tax approach · GRI 2-9 Governance structure | `gri-universal-standards-2021.pdf` ⛔ **corrupte** |
+| **Sectorial** (oil&gas, carbó, agricultura, mineria) | GRI 11 / GRI 12 / GRI 13 / GRI 14 (Sector Standards) | Sector Standards: ⛔ **pendents de descarregar** |
 
-> **Regla de documents**: si un document etiquetat NO està descarregat, fer el crossRef amb la fitxa + el coneixement del model i **marcar-ho com a "criterion de baixa confiança"** (no inventar criteris literals de l'estàndard). Quan el document estigui disponible, afegir-lo al context per a la següent execució.
+> **Regla de documents**: mentre `gri-universal-standards-2021.pdf` sigui corrupte, cap crossRef GRI pot citar requisits amb seguretat documental → **criterion amb nota de baixa confiança** ("requisit de domini públic, pendent de verificació del document oficial") i mai inventar numeracions alternatives.
 
 ## 3. Interoperabilitat (clau per al cross-ref)
 - **CSRD/ESRS**: interoperabilitat alta però diferències: ESRS obligatori vs GRI voluntari; ESRS = doble materialitat + **assegurament extern independent**; GRI = materialitat d'impacte sense assegurament obligatori

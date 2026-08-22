@@ -4,11 +4,12 @@
 > Són el "model mental" d'un expert en cada estàndard: el coneixement rellevant
 > per fer cross-references al pipeline. NO contenen la normativa completa.
 
-## Estructura de cada fitxa (plantilla v2 — amb mapa temàtic i criteris d'intensitat)
+## Estructura de cada fitxa (plantilla v3 — requisits concrets + traçabilitat)
 
 1. Què és + abast + a qui obliga
 2. Estructura (components clau)
-   - **2b. MAPA TEMÀTIC** — taula `tema de l'informe → pilars de l'estàndard + documents oficials` a `certifications/`. Serveix perquè el pipeline obri NOMÉS els documents del tema detectat (ex: informe de clima → només documents climàtics) i no tota la normativa. Si un document no està descarregat, marcar-ho i fer el crossRef amb la fitxa sola (criterion de baixa confiança, sense inventar).
+   - **2b. MAPA TEMÀTIC** — taula `tema de l'informe → REQUISITS CONCRETS de l'estàndard (criterion exacte, ex. GRI 305-1) + documents oficials` a `certifications/`. Serveix perquè el pipeline obri NOMÉS els documents del tema detectat i citi requisits precisos, no temes genèrics. Si un document no està descarregat (o és corrupte), marcar-ho i fer el crossRef amb la fitxa sola (**criterion de baixa confiança**, sense inventar).
+   - **Com s'avalua** — com es puntua/avalua una empresa sota aquest estàndard (qüestionari, evidències, puntuació, medalles, reavaluació). Són els factors clau que poden modificar-se.
 3. Interoperabilitat (amb què es relaciona)
 4. ⚠️ VIGILÀNCIA DE CANVIS — modificacions recents (data + enllaç oficial), en revisió ara, canvis anunciats. **Es comprova a la revisió periòdica, NO a cada crossRef.**
 5. Punts d'impacte típics (on un informe institucional el toca)

@@ -64,15 +64,15 @@ Els **pesos dels 4 temes varien per indústria** (la indústria determina la mat
 ### 2b. MAPA TEMÀTIC (tema → criteris EcoVadis i documents oficials)
 > **Ús al pipeline**: quan el pas 2 detecti el tema d'un informe, obrir NOMÉS els documents marcats amb aquest tema per afinar el crossRef.
 
-| Tema de l'informe | Criteris EcoVadis afectats | Documents oficials a `certifications/` |
+| Tema de l'informe | Requisits EcoVadis concrets (criterion) | Documents oficials a `certifications/` |
 |---|---|---|
-| **Canvi climàtic** | Energy Consumption & GHGs, Local & Accidental Pollution, Materials/Chemicals/Waste | `ecovadis-methodology.pdf` ✅ (537 pàg.) |
-| **Natura / biodiversitat** | Biodiversity, Water, Materials/Chemicals/Waste | `ecovadis-methodology.pdf` ✅ |
-| **Social / laboral** | Employee Health & Safety, Working Conditions, Social Dialogue, Human Rights, Diversity | `ecovadis-methodology.pdf` ✅ |
-| **Ètica / anticorrupció** | Corruption, Anticompetitive Practices, Responsible Information Management | `ecovadis-methodology.pdf` ✅ |
-| **Cadena de subministrament / diligència** | Supplier Environmental Practices, Supplier Social Practices | `ecovadis-methodology.pdf` ✅ |
+| **Canvi climàtic** | ENV-1 Energy Consumption & GHGs · ENV-4 Local & Accidental Pollution · ENV-5 Materials, Chemicals & Waste | `ecovadis-methodology.pdf` ✅ (537 pàg.) |
+| **Natura / biodiversitat** | ENV-2 Water · ENV-3 Biodiversity · ENV-5 Materials, Chemicals & Waste | `ecovadis-methodology.pdf` ✅ |
+| **Social / laboral** | LAB-1 Employee Health & Safety · LAB-2 Working Conditions · LAB-3 Social Dialogue · LAB-4 Career Mgmt & Training · LAB-6 Diversity & Non-discrimination | `ecovadis-methodology.pdf` ✅ |
+| **Ètica / anticorrupció** | ETH-1 Corruption · ETH-2 Anticompetitive Practices · ETH-3 Responsible Information Management | `ecovadis-methodology.pdf` ✅ |
+| **Drets humans / cadena de subministrament** | LAB-5 Human Rights (child/forced labor) · LAB-7 External Stakeholder HR · PROC-1 Supplier Environmental Practices · PROC-2 Supplier Social Practices | `ecovadis-methodology.pdf` ✅ |
 
-> **Regla de documents**: el document oficial ja està disponible; els criteris citats als crossRefs EcoVadis s'han de poder rastrejar al PDF (indicar secció/pàgina quan sigui possible).
+> **Regla de documents**: el document oficial està disponible; els criteris citats als crossRefs EcoVadis s'han de poder rastrejar al PDF (indicar secció/pàgina quan sigui possible). Els codis ENV-/LAB-/ETH-/PROC- són la nomenclatura interna Criteri per als criteris del document V2.4.
 
 ## 3. Interoperabilitat (clau per al cross-ref)
 - **CSRD/ESRS**: EcoVadis ven un mòdul d'alineació amb ESRS/CSRD; els seus qüestionaris demanen dades que coincideixen amb els disclosures ESRS (doblement rellevant des de l'Omnibus I)

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informes — Criteri ESG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="oxalpha-brand.css">
+<style>
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:34px 0 8px}
+.fchip{
+  font-family:var(--font-mono);font-size:.7rem;font-weight:500;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-soft);border:1px solid rgba(38,49,43,.2);
+  background:var(--paper);padding:7px 14px;border-radius:99px;cursor:pointer;transition:all .12s;
+}
+.fchip:hover{border-color:var(--accent);color:var(--ink)}
+.fchip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.reportlist{margin-top:36px}
+.report{
+  display:grid;grid-template-columns:74px 1fr auto;gap:22px;align-items:center;
+  padding:24px 6px;border-top:1px solid rgba(38,49,43,.12);text-decoration:none;
+}
+.report:last-child{border-bottom:1px solid rgba(38,49,43,.12)}
+.report:hover{background:var(--bg)}
+.grade{
+  width:64px;height:64px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:500;font-size:2.1rem;
+}
+.g-b{background:rgba(92,138,92,.14);color:var(--sem-g)}
+.g-c{background:rgba(201,169,97,.16);color:#8A6D1F}
+.g-d{background:rgba(160,82,45,.12);color:var(--sem-r)}
+.report .who{font-family:var(--font-display);font-weight:600;font-size:1.22rem;color:var(--ink-deep);margin-bottom:4px}
+.report .what{font-size:.9rem;color:var(--ink-soft);margin-bottom:8px;line-height:1.45}
+.report .meta{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);display:flex;gap:14px;flex-wrap:wrap}
+.report .meta .lock{color:var(--sem-r)}
+.report .go{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+@media(max-width:700px){.report{grid-template-columns:56px 1fr}.report .go{display:none}}
+
+.paywall{
+  margin-top:56px;border-radius:12px;background:var(--ink);color:var(--bg);
+  padding:40px 36px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+}
+.paywall h3{font-family:var(--font-display);font-weight:500;font-size:1.5rem;color:var(--bg);margin-bottom:6px}
+.paywall p{color:rgba(242,245,241,.72);font-size:.95rem;max-width:52ch}
+</style>
+</head>
+<body data-reveal>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="mockup-homepage-oxalpha.html"><span class="brand-name">Criteri <em>ESG</em></span></a>
+    <nav class="mainnav">
+      <a class="active" href="mockup-informes.html">Informes</a>
+      <a href="mockup-que-fem.html">Què fem</a>
+      <a href="mockup-estandares.html">Estàndards</a>
+      <a href="mockup-qui-som.html">Qui som</a>
+      <a href="mockup-preus.html">Preus</a>
+      <a class="cta-mini" href="mockup-registro.html">Comença</a>
+    </nav>
+  </div>
+</header>
+
+<section class="pagehero">
+  <div class="wrap">
+    <p class="eyebrow">Biblioteca d'informes</p>
+    <h1>Cada informe, amb la seva <span class="hl">nota metodològica</span> a la vista.</h1>
+    <p class="lead">Abans de llegir, saps com s'ha construït. La nota A–D avalua la qualitat
+    metodològica de l'informe original: quantifica, cita fonts independents, concreta terminis?</p>
+
+    <div class="filters reveal" aria-label="Filtres">
+      <button class="fchip on">Tots</button>
+      <button class="fchip">Clima</button>
+      <button class="fchip">Regulació</button>
+      <button class="fchip">Bancs centrals</button>
+      <button class="fchip">Social</button>
+      <button class="fchip">Cadena de valor</button>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="reportlist reveal">
+
+      <a class="report" href="mockup-informe-bce.html">
+        <div class="grade g-b">B</div>
+        <div>
+          <div class="who">BCE · Risc climàtic al sistema financer euro</div>
+          <div class="what">El supervisor ja preu el risc de transició: 74 pb de CET1 en joc i una llacuna clara a Scope 3.</div>
+          <div class="meta"><span>Banc Central Europeu</span><span>Agost 2026</span><span>8 blocs · 1.042 paraules</span></div>
+        </div>
+        <span class="go">Llegeix →</span>
+      </a>
+
+      <a class="report" href="#">
+        <div class="grade g-c">C</div>
+        <div>
+          <div class="who">CNMV · Butlletí de juny</div>
+          <div class="what">474.000 M€ en fons d'inversió i una contradicció oberta amb el discurs de creixement sostenible.</div>
+          <div class="meta"><span>CNMV</span><span>Juny 2026</span><span>8 blocs · 968 paraules</span></div>
+        </div>
+        <span class="go">Llegeix →</span>
+      </a>
+
+      <a class="report" href="#">
+        <div class="grade g-c">C</div>
+        <div>
+          <div class="who">EIOPA · Finançament sostenible</div>
+          <div class="what">274.000 M€ en pèrdues per catàstrofes el 2024: l'assegurança entra en zona de reprice global.</div>
+          <div class="meta"><span>EIOPA</span><span>Juny 2026</span><span>8 blocs · 1.015 paraules</span></div>
+        </div>
+        <span class="go">Llegeix →</span>
+      </a>
+
+      <a class="report" href="#">
+        <div class="grade g-d">D</div>
+        <div>
+          <div class="who">WEF · Global Risks Report 2026</div>
+          <div class="what">Molt diagnòstic, gairebé cap mètrica verificable: el cas clar de per què el semàfor importa.</div>
+          <div class="meta"><span>World Economic Forum</span><span>Gener 2026</span><span>8 blocs · 1.088 paraules</span></div>
+        </div>
+        <span class="go">Llegeix →</span>
+      </a>
+
+      <a class="report" href="#">
+        <div class="grade g-b">B</div>
+        <div>
+          <div class="who">Forética · Tendències ESG 2026</div>
+          <div class="what">L'estat de l'Espanya empresarial: més reporting que resultats, amb bocs a la cadena de valor.</div>
+          <div class="meta"><span>Forética</span><span>Febrer 2026</span><span>8 blocs · 995 paraules</span><span class="lock">🔒 Premium</span></div>
+        </div>
+        <span class="go">Llegeix →</span>
+      </a>
+
+    </div>
+
+    <div class="paywall reveal">
+      <div>
+        <h3>Els informes recents són per a subscriptors.</h3>
+        <p>Els informes amb més de 6 mesos són lliures per sempre. Els recents, el cross-reference complet i les accions recomanades són de Premium.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-light" href="mockup-preus.html">Veure plans</a>
+        <a class="btn" style="background:transparent;border:1px solid rgba(170,201,182,.4);color:var(--verd-clar)" href="mockup-registro.html">Crear compte</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div><span class="brand-name">Criteri <em>ESG</em></span><p class="tag">Intel·ligència regulatòria ESG destil·lada amb criteri humà.</p></div>
+      <div><h4>Producte</h4><ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul></div>
+      <div><h4>Projecte</h4><ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul></div>
+    </div>
+    <div class="base"><span>© 2026 CRITERI ESG</span><span>RIGOR · FRESCOR · SOBRIETAT</span></div>
+  </div>
+</footer>
+
+<script>
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+} else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')); }
+</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagament — Criteri ESG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="oxalpha-brand.css">
+<style>
+.checkout{display:grid;grid-template-columns:1.15fr 0.85fr;gap:44px;align-items:start;padding:64px 0 96px}
+@media(max-width:880px){.checkout{grid-template-columns:1fr}}
+
+.panel{background:var(--paper);border:1px solid rgba(38,49,43,.14);border-radius:12px;padding:32px}
+.field{margin-bottom:18px}
+.field label{display:block;font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+.field input{
+  width:100%;border-radius:8px;border:1px solid rgba(38,49,43,.22);background:#fff;
+  padding:12px 14px;font-size:15px;color:var(--ink);outline:none;font-family:var(--font-body);
+  transition:border-color .15s, box-shadow .15s;
+}
+.field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(94,135,114,.18)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+.summary{background:var(--ink);border-radius:12px;padding:32px;color:var(--bg);position:sticky;top:84px}
+.summary .pname{font-family:var(--font-mono);font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--verd-clar)}
+.summary .price{font-family:var(--font-display);font-size:2.8rem;font-weight:500;margin:12px 0 2px}
+.summary .per{color:rgba(242,245,241,.6);font-size:.85rem;margin-bottom:24px}
+.summary ul{list-style:none;margin-bottom:24px}
+.summary li{padding:9px 0;border-top:1px solid rgba(242,245,241,.14);font-size:.88rem;color:rgba(242,245,241,.85);display:flex;gap:10px}
+.summary li::before{content:"✓";color:var(--verd-clar);font-family:var(--font-mono)}
+.guarantee{display:flex;gap:10px;align-items:flex-start;font-size:.78rem;color:rgba(242,245,241,.6);line-height:1.5;margin-top:18px}
+.guarantee .ic{color:var(--verd-clar);font-family:var(--font-mono)}
+</style>
+</head>
+<body data-reveal>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="mockup-homepage-oxalpha.html"><span class="brand-name">Criteri <em>ESG</em></span></a>
+    <nav class="mainnav">
+      <a href="mockup-informes.html">Informes</a>
+      <a href="mockup-que-fem.html">Què fem</a>
+      <a href="mockup-estandares.html">Estàndards</a>
+      <a href="mockup-qui-som.html">Qui som</a>
+      <a href="mockup-preus.html">Preus</a>
+      <a class="cta-mini" href="mockup-registro.html">Comença</a>
+    </nav>
+  </div>
+</header>
+
+<section class="pagehero" style="padding-bottom:0">
+  <div class="wrap">
+    <p class="eyebrow">Pagament</p>
+    <h1>Completa la teva <span class="hl">suscripció Premium</span>.</h1>
+  </div>
+</section>
+
+<div class="wrap checkout">
+  <!-- Formulari -->
+  <form class="panel reveal" onsubmit="event.preventDefault(); alert('DEMO: aquí aniria Stripe Checkout');">
+    <p class="eyebrow" style="margin-bottom:24px">Dades de pagament</p>
+
+    <div class="field">
+      <label for="card">Número de targeta</label>
+      <input id="card" inputmode="numeric" autocomplete="cc-number" placeholder="4242 4242 4242 4242">
+    </div>
+    <div class="row2">
+      <div class="field">
+        <label for="exp">Caducitat</label>
+        <input id="exp" inputmode="numeric" autocomplete="cc-exp" placeholder="MM / AA">
+      </div>
+      <div class="field">
+        <label for="cvc">CVC</label>
+        <input id="cvc" inputmode="numeric" autocomplete="cc-csc" placeholder="123">
+      </div>
+    </div>
+    <div class="field">
+      <label for="nom">Titular de la targeta</label>
+      <input id="nom" autocomplete="cc-name" placeholder="Com apareix a la targeta">
+    </div>
+
+    <div style="border-top:1px solid rgba(38,49,43,.12);margin:22px 0;padding-top:22px">
+      <div class="field" style="margin-bottom:0">
+        <label for="fact">Nom / raó social per a la factura <span style="text-transform:none;letter-spacing:0;font-weight:400">(opcional)</span></label>
+        <input id="fact" placeholder="Acme S.L.">
+      </div>
+    </div>
+
+    <button class="btn btn-solid" style="width:100%;justify-content:center" type="submit">
+      Confirmar subscripció · 39€/mes
+    </button>
+    <p style="margin-top:14px;font-size:.78rem;color:var(--ink-soft);text-align:center;line-height:1.5">
+      Pagament segur processat per Stripe. No emmagatzemem dades de targeta.<br>
+      Cancel·les quan vulguis des del teu compte.
+    </p>
+  </form>
+
+  <!-- Resum -->
+  <aside class="summary reveal" style="text-align:left">
+    <p class="pname">Premium · mensual</p>
+    <div class="price">39€<span style="font-size:1rem;color:rgba(242,245,241,.6)">/mes</span></div>
+    <p class="per">Facturació mensual · cancel·la quan vulguis</p>
+    <ul>
+      <li>Tots els informes, el dia de publicació</li>
+      <li>Cross-reference amb 16 estàndards</li>
+      <li>Accions recomanades per informe</li>
+      <li>Arxiu complet + cerca</li>
+      <li>La Quinzena completa</li>
+    </ul>
+    <div class="guarantee">
+      <span class="ic">↺</span>
+      <span><strong style="color:var(--bg)">Garantia 14 dies</strong>: si no et serveix, et tornem els diners. Sense preguntes.</span>
+    </div>
+    <div class="guarantee">
+      <span class="ic">◈</span>
+      <span>Early bird: 290€/any (2 mesos gratis + descompte fundador) — queden <strong style="color:var(--highlight)">23 places</strong>.</span>
+    </div>
+  </aside>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div><span class="brand-name">Criteri <em>ESG</em></span><p class="tag">Intel·ligència regulatòria ESG destil·lada amb criteri humà.</p></div>
+      <div><h4>Producte</h4><ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul></div>
+      <div><h4>Projecte</h4><ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul></div>
+    </div>
+    <div class="base"><span>© 2026 CRITERI ESG</span><span>RIGOR · FRESCOR · SOBRIETAT</span></div>
+  </div>
+</footer>
+
+<script>
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+} else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')); }
+</script>
+</body>
+</html>

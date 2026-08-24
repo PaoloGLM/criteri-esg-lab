@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qui som — Criteri ESG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="oxalpha-brand.css">
+<style>
+/* ── Específic qui-som ── */
+.teamgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.member{position:relative}
+.member .avatar{
+  height:64px;width:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;margin-bottom:18px;background:var(--ink);color:var(--verd-clar);
+  font-family:var(--font-display);
+}
+.member.ai .avatar{background:var(--accent);color:#fff}
+.member h3{font-family:var(--font-display);font-weight:600;font-size:1.25rem;color:var(--ink-deep)}
+.member .role{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:5px 0 12px}
+.member p{font-size:.92rem;color:var(--ink-soft);line-height:1.55}
+.member .tagchip{
+  display:inline-block;margin-top:14px;font-family:var(--font-mono);font-size:.64rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
+  border:1px solid rgba(38,49,43,.2);padding:4px 10px;border-radius:99px;
+}
+.member.ai .tagchip{border-color:var(--accent);color:var(--accent)}
+@media(max-width:900px){.teamgrid{grid-template-columns:1fr}}
+
+.convs{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:48px}
+.conv{border-top:2px solid var(--accent);padding-top:18px}
+.conv .n{font-family:var(--font-display);font-weight:500;font-size:1.8rem;color:var(--verd-clar)}
+.conv h3{font-family:var(--font-mono);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin:10px 0 8px;min-height:2.2em}
+.conv p{font-size:.82rem;color:var(--ink-soft);line-height:1.5}
+@media(max-width:1000px){.convs{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.convs{grid-template-columns:1fr}}
+
+.manifest{
+  border-left:3px solid var(--highlight);padding:8px 0 8px 34px;margin-top:44px;
+}
+.manifest p{
+  font-family:var(--font-display);font-style:italic;font-weight:400;
+  font-size:clamp(1.25rem,2.2vw,1.7rem);line-height:1.45;color:var(--ink);
+  max-width:30ch;text-wrap:pretty;
+}
+</style>
+</head>
+<body data-reveal>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="mockup-homepage-oxalpha.html">
+      <span class="brand-name">Criteri <em>ESG</em></span>
+    </a>
+    <nav class="mainnav">
+      <a href="mockup-informes.html">Informes</a>
+      <a href="mockup-que-fem.html">Què fem</a>
+      <a href="mockup-estandares.html">Estàndards</a>
+      <a class="active" href="mockup-qui-som.html">Qui som</a>
+      <a href="mockup-preus.html">Preus</a>
+      <a class="cta-mini" href="mockup-registro.html">Comença</a>
+    </nav>
+  </div>
+</header>
+
+<section class="pagehero">
+  <div class="wrap">
+    <p class="eyebrow">Qui som · 2026</p>
+    <h1>Gent que creu que la <span class="hl">transparència</span> no és un cost.</h1>
+    <p class="lead">Dos humans i un sistema d'IA amb criteri propi. Ens uneix una sospita:
+    la sostenibilitat no es demostra amb un segell, sinó amb <strong>com es prenen les decisions</strong>.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">L'equip</p>
+    <h2 class="sec-title">Poc equip. Molta cura.</h2>
+
+    <div class="teamgrid reveal">
+      <article class="member card">
+        <div class="avatar">P</div>
+        <h3>Paolo</h3>
+        <p class="role">CEO · Direcció editorial</p>
+        <p>Decideix què es publica i què no. La veu ètica del projecte: cada informe passa
+        pel seu filtre abans d'arribar-te.</p>
+        <span class="tagchip">Humà</span>
+      </article>
+      <article class="member card">
+        <div class="avatar">R</div>
+        <h3>Roser</h3>
+        <p class="role">Tech Lead · Disseny i enginyeria</p>
+        <p>Construeix la plataforma i el sistema visual. La persona que converteix el criteri
+        editorial en producte usable.</p>
+        <span class="tagchip">Humana</span>
+      </article>
+      <article class="member ai card">
+        <div class="avatar">◆</div>
+        <h3>Hermes</h3>
+        <p class="role">Agent d'anàlisi · Pipeline</p>
+        <p>Llegeix els informes sencers, els destil·la i els qüestiona. Treballa sota regles
+        estrictes d'entorn tancat: no inventa res.</p>
+        <span class="tagchip">IA amb criteri</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block tinted">
+  <div class="wrap">
+    <div class="manifest reveal">
+      <p>"No volem ser la veu que més parla de sostenibilitat. Volem ser la que millor
+      verifica què hi ha darrere de cada paraula."</p>
+    </div>
+  </div>
+</section>
+
+<section class="block dark">
+  <div class="wrap">
+    <p class="eyebrow">Cinc conviccions</p>
+    <h2 class="sec-title">El que no negociem.</h2>
+    <div class="convs reveal">
+      <div class="conv"><div class="n">01</div><h3>Dignitat</h3><p>Ningú no hauria de treballar ni viure en condicions que degradeïn la seva humanitat.</p></div>
+      <div class="conv"><div class="n">02</div><h3>Justícia distributiva</h3><p>Els costos i beneficis ambientals s'han de repartir amb equitat, no per poder adquisitiu.</p></div>
+      <div class="conv"><div class="n">03</div><h3>Sostenibilitat absoluta</h3><p>Els límits planetaris no són una opció de disseny: són el marc.</p></div>
+      <div class="conv"><div class="n">04</div><h3>Co-decisió</h3><p>Els afectats per les decisions han de poder influir-hi, no només ser informats.</p></div>
+      <div class="conv"><div class="n">05</div><h3>Arrelament</h3><p>L'economia real passa en llocs concrets, amb noms i cognoms.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <span class="brand-name">Criteri <em>ESG</em></span>
+        <p class="tag">Intel·ligència regulatòria ESG destil·lada amb criteri humà.</p>
+      </div>
+      <div><h4>Producte</h4><ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul></div>
+      <div><h4>Projecte</h4><ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul></div>
+    </div>
+    <div class="base"><span>© 2026 CRITERI ESG</span><span>RIGOR · FRESCOR · SOBRIETAT</span></div>
+  </div>
+</footer>
+
+<script>
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+} else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')); }
+</script>
+</body>
+</html>

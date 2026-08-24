@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Què fem — Criteri ESG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="oxalpha-brand.css">
+<style>
+/* ── Pipeline de processat ── */
+.pipeline{margin-top:52px;display:grid;grid-template-columns:repeat(7,1fr);gap:0;position:relative}
+.pas{position:relative;padding:0 10px}
+.pas::before{
+  content:"";position:absolute;top:22px;left:0;right:0;height:1px;background:rgba(38,49,43,.15);
+}
+.pas:first-child::before{left:50%}
+.pas:last-child::before{right:50%}
+.pas .dot{
+  position:relative;z-index:1;width:44px;height:44px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--accent);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
+  font-family:var(--font-mono);font-weight:600;font-size:.85rem;color:var(--accent);
+}
+.pas.human .dot{background:var(--ink);border-color:var(--ink);color:var(--verd-clar)}
+.pas h3{font-family:var(--font-mono);font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);text-align:center;margin-bottom:8px;min-height:2.4em}
+.pas p{font-size:.76rem;color:var(--ink-soft);text-align:center;line-height:1.45}
+@media(max-width:1000px){
+  .pipeline{grid-template-columns:repeat(2,1fr);gap:32px 20px}
+  .pas::before{display:none}
+}
+
+/* ── Regles d'entorn tancat ── */
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.rule{padding:26px 24px}
+.rule .k{font-family:var(--font-display);font-weight:500;font-size:2rem;color:var(--verd-clar);line-height:1}
+.rule h3{font-family:var(--font-display);font-weight:600;font-size:1.1rem;color:var(--ink-deep);margin:14px 0 8px}
+.rule p{font-size:.9rem;color:var(--ink-soft);line-height:1.55}
+@media(max-width:900px){.rules{grid-template-columns:1fr}}
+
+/* ── Comparativa abans/després ── */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:48px}
+.cmp{border-radius:10px;padding:30px 28px}
+.cmp.ells{background:var(--bg);border:1px solid rgba(38,49,43,.12)}
+.cmp.nos{background:var(--ink);color:var(--bg)}
+.cmp h3{font-family:var(--font-mono);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px}
+.cmp.ells h3{color:var(--ink-soft)}
+.cmp.nos h3{color:var(--verd-clar)}
+.cmp ul{list-style:none}
+.cmp li{padding:10px 0;border-top:1px solid rgba(128,128,128,.18);font-size:.92rem;display:flex;gap:10px}
+.cmp.ells li{color:var(--ink-soft)}
+.cmp li::before{content:"—";opacity:.5}
+@media(max-width:800px){.compare{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-reveal>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="mockup-homepage-oxalpha.html"><span class="brand-name">Criteri <em>ESG</em></span></a>
+    <nav class="mainnav">
+      <a href="mockup-informes.html">Informes</a>
+      <a class="active" href="mockup-que-fem.html">Què fem</a>
+      <a href="mockup-estandares.html">Estàndards</a>
+      <a href="mockup-qui-som.html">Qui som</a>
+      <a href="mockup-preus.html">Preus</a>
+      <a class="cta-mini" href="mockup-registro.html">Comença</a>
+    </nav>
+  </div>
+</header>
+
+<section class="pagehero">
+  <div class="wrap">
+    <p class="eyebrow">Què fem</p>
+    <h1>Com processem cada informe: <span class="hl">set passos, dos filtres</span>.</h1>
+    <p class="lead">Cap informe es publica sense passar pel mateix circuit. La IA destil·la,
+    una segona IA intenta desmuntar-la, i <strong>una persona decideix</strong>. Això és tot el secret.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">El circuit</p>
+    <h2 class="sec-title">De 200 pàgines a 5 minuts, sense perdre el rastre.</h2>
+
+    <div class="pipeline reveal">
+      <div class="pas"><div class="dot">01</div><h3>Detecció</h3><p>Vigilem les fonts oficials cada dia</p></div>
+      <div class="pas"><div class="dot">02</div><h3>Destil·lació</h3><p>La IA extreu els 8 blocs amb pàgina exacta</p></div>
+      <div class="pas"><div class="dot">03</div><h3>Revisió</h3><p>Una 2a IA fa d'advocat del diable</p></div>
+      <div class="pas"><div class="dot">04</div><h3>Redacció</h3><p>Màxim 1.100 paraules, to editorial</p></div>
+      <div class="pas"><div class="dot">05</div><h3>Ortografia</h3><p>Revisió lingüística final</p></div>
+      <div class="pas human"><div class="dot">06</div><h3>Validació</h3><p>Paolo valida: criteri humà, darrera barrera</p></div>
+      <div class="pas"><div class="dot">07</div><h3>Publicació</h3><p>Web + newsletter quinzenal</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block tinted">
+  <div class="wrap">
+    <p class="eyebrow">Entorn tancat</p>
+    <h2 class="sec-title">Les tres regles que fan que <span class="hl">no inventem res</span>.</h2>
+    <div class="rules reveal">
+      <div class="rule card">
+        <div class="k">1</div>
+        <h3>Només el document</h3>
+        <p>Tota afirmació prové exclusivament del text original. Si no hi és al document, no existeix per a nosaltres.</p>
+      </div>
+      <div class="rule card">
+        <div class="k">2</div>
+        <h3>Pàgina o no es publica</h3>
+        <p>Cada dada porta el número de pàgina o secció de l'original. Si no es pot localitzar, la dada no surt.</p>
+      </div>
+      <div class="rule card">
+        <div class="k">3</div>
+        <h3>Inferència marcada</h3>
+        <p>Quan connectem punts entre informes, ho etiquetem com a interpretació nostra. Fet i anàlisi mai es confonen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block dark">
+  <div class="wrap">
+    <p class="eyebrow">Per què som diferents</p>
+    <h2 class="sec-title">Un resum automàtic no et diu <em>què pesa</em>.</h2>
+    <div class="compare reveal">
+      <div class="cmp ells">
+        <h3>Un resum de IA genèric</h3>
+        <ul>
+          <li>Resumeix tot per igual: no sap distingir el material de l'anècdota</li>
+          <li>Sense fonts: no pots verificar res</li>
+          <li>Mixta fet i opinió en el mateix paràgraf</li>
+          <li>Silencia el que l'informe amaga</li>
+          <li>Idèntic per a tothom</li>
+        </ul>
+      </div>
+      <div class="cmp nos">
+        <h3>Criteri ESG</h3>
+        <ul>
+          <li>Semàfor metodològic: nota A-D abans de llegir</li>
+          <li>Cada dada amb pàgina exacta de l'original</li>
+          <li>Fets, inferències i ètica separats</li>
+          <li>"Més enllà del checkbox": el que no respon l'informe</li>
+          <li>Cross-reference amb 16 estàndards</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div><span class="brand-name">Criteri <em>ESG</em></span><p class="tag">Intel·ligència regulatòria ESG destil·lada amb criteri humà.</p></div>
+      <div><h4>Producte</h4><ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul></div>
+      <div><h4>Projecte</h4><ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul></div>
+    </div>
+    <div class="base"><span>© 2026 CRITERI ESG</span><span>RIGOR · FRESCOR · SOBRIETAT</span></div>
+  </div>
+</footer>
+
+<script>
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+} else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')); }
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+/* ═══════════════════════════════════════════════════════════════════
+   CRITERI ESG · Sistema de marca v7 — compartit pels mockups ox-alpha
+   Font de veritat: PALETA-COLORS.md + TIPOGRAFIES.md (repo)
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root{
+  --ink:#26312B;
+  --ink-deep:#141B18;
+  --ink-soft:#4A5F53;
+  --accent:#5E8772;
+  --verd-clar:#AAC9B6;
+  --bg:#F2F5F1;
+  --paper:#FFFFFF;
+  --highlight:#F5E381; /* Pantone 12-0640 TCX */
+  --sem-g:#5C8A5C;
+  --sem-y:#C9A961;
+  --sem-r:#A0522D;
+  --font-display:'Newsreader',Georgia,serif;
+  --font-body:'DM Sans','Segoe UI',sans-serif;
+  --font-mono:'JetBrains Mono',Consolas,monospace;
+  --maxw:1160px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  font-family:var(--font-body);
+  font-weight:300;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.55;
+  font-size:1.02rem;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--highlight);color:var(--ink)}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.mono{font-family:var(--font-mono)}
+a{color:inherit}
+
+/* ── Reveal subtil ── */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ── Header ── */
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:rgba(20,27,24,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(170,201,182,.14);
+}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{height:26px;display:block}
+.brand-name{
+  font-family:var(--font-display);font-weight:600;font-size:1.15rem;
+  color:var(--bg);letter-spacing:.01em;
+}
+.brand-name em{font-style:italic;font-weight:400;color:var(--verd-clar)}
+nav.mainnav{display:flex;gap:26px;align-items:center}
+nav.mainnav a{
+  font-family:var(--font-mono);font-size:.74rem;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--verd-clar);text-decoration:none;
+}
+nav.mainnav a:hover{color:var(--highlight)}
+nav.mainnav a.active{color:var(--highlight)}
+nav.mainnav a.cta-mini{
+  color:var(--ink-deep);background:var(--verd-clar);
+  padding:7px 14px;border-radius:5px;font-weight:600;
+}
+nav.mainnav a.cta-mini:hover{background:var(--highlight)}
+@media(max-width:900px){nav.mainnav a:not(.cta-mini){display:none}}
+
+/* ── Peus i elements comuns ── */
+footer.site{background:var(--ink);color:rgba(242,245,241,.75);padding:64px 0 34px}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:52px}
+footer .brand-name{color:var(--bg);font-size:1.25rem}
+footer .tag{font-size:.88rem;margin-top:12px;color:rgba(242,245,241,.6);max-width:30ch}
+footer h4{
+  font-family:var(--font-mono);font-size:.68rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--verd-clar);margin-bottom:16px;
+}
+footer ul{list-style:none}
+footer li{margin-bottom:9px}
+footer a{color:rgba(242,245,241,.75);text-decoration:none;font-size:.9rem}
+footer a:hover{color:var(--highlight)}
+footer .base{
+  border-top:1px solid rgba(242,245,241,.14);padding-top:24px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;color:rgba(242,245,241,.5);
+}
+@media(max-width:800px){footer .cols{grid-template-columns:1fr 1fr}}
+
+/* ── Hero de pàgina interior ── */
+.pagehero{background:var(--bg);padding:76px 0 64px;border-bottom:1px solid rgba(38,49,43,.09)}
+.eyebrow{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:22px;
+}
+.eyebrow::before{content:"";display:inline-block;width:34px;height:2px;background:var(--highlight);margin-right:12px;vertical-align:middle}
+.pagehero h1{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(2.3rem,4.2vw,3.5rem);
+  line-height:1.1;letter-spacing:-.012em;color:var(--ink-deep);
+  text-wrap:balance;margin-bottom:22px;
+}
+.pagehero h1 .hl{background:linear-gradient(transparent 58%, var(--highlight) 58%);font-style:italic;font-weight:500}
+.pagehero .lead{max-width:56ch;color:var(--ink-soft);font-size:1.06rem;line-height:1.6;text-wrap:pretty}
+.pagehero .lead strong{font-weight:500;color:var(--ink)}
+
+/* ── Seccions ── */
+section.block{padding:88px 0}
+section.block.tinted{background:var(--bg)}
+section.block.dark{background:var(--ink-deep);color:var(--bg)}
+section.block.dark .eyebrow{color:var(--verd-clar)}
+section.block.dark h2.sec-title{color:var(--bg)}
+section.block.dark .sec-body{color:rgba(242,245,241,.78)}
+h2.sec-title{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.14;
+  letter-spacing:-.01em;color:var(--ink-deep);text-wrap:balance;
+  margin-bottom:20px;
+}
+h2.sec-title .hl{background:linear-gradient(transparent 58%, var(--highlight) 58%)}
+.sec-body{color:var(--ink-soft);max-width:56ch;font-size:1.03rem;text-wrap:pretty}
+.sec-body strong{font-weight:500;color:var(--ink)}
+
+/* ── Botons ── */
+.btn{
+  display:inline-block;font-family:var(--font-mono);font-size:.78rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
+  padding:13px 24px;border-radius:6px;transition:transform .15s ease, box-shadow .15s ease;
+  border:none;cursor:pointer;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-solid{background:var(--accent);color:#fff}
+.btn-solid:hover{box-shadow:0 6px 18px rgba(94,135,114,.35)}
+.btn-ghost{color:var(--ink);border:1px solid rgba(38,49,43,.28);background:transparent}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-light{background:var(--verd-clar);color:var(--ink-deep)}
+.btn-light:hover{background:var(--highlight)}
+
+/* ── Targetes ── */
+.card{
+  background:var(--paper);border:1px solid rgba(38,49,43,.12);
+  border-radius:10px;padding:28px 26px;
+}
+.card.dark{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+
+/* ── Reveal script (comú) ── */
+/* S'activa amb <body data-reveal> */
+body[data-reveal] .reveal{opacity:0;transform:translateY(14px)}

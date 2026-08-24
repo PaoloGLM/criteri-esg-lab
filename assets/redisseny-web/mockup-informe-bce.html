@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BCE · Risc climàtic — Informe Criteri ESG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="oxalpha-brand.css">
+<style>
+/* ── Capçalera d'informe ── */
+.rep-head{padding:56px 0 40px;border-bottom:1px solid rgba(38,49,43,.1)}
+.paper-meta{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;color:var(--ink-soft);line-height:1.9;text-transform:uppercase}
+.paper-meta b{color:var(--ink);font-weight:600}
+.rep-title{font-family:var(--font-display);font-weight:500;font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.12;color:var(--ink-deep);margin:14px 0 10px;text-wrap:balance}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:48px;align-items:start;padding:44px 0 88px}
+@media(max-width:980px){.layout{grid-template-columns:1fr}}
+
+/* ── Semàfor lateral ── */
+.semafor{background:var(--ink);border-radius:12px;padding:28px;color:var(--bg);position:sticky;top:84px}
+.semafor .grade-row{display:flex;align-items:center;gap:20px;margin-bottom:20px}
+.semafor .grade{font-family:var(--font-display);font-weight:500;font-size:3.8rem;line-height:1;color:var(--sem-y)}
+.semafor .dots{display:flex;gap:8px;margin-bottom:8px}
+.dot{width:10px;height:10px;border-radius:50%;opacity:.18}
+.dot.on{opacity:1}
+.dot.g{background:var(--sem-g)}.dot.y{background:var(--sem-y)}.dot.r{background:var(--sem-r)}
+.semafor .gl{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,245,241,.7)}
+.ind{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid rgba(242,245,241,.12);font-family:var(--font-mono);font-size:.68rem}
+.ind .n{color:rgba(242,245,241,.85)}
+.ind .v.v{color:var(--sem-g)}.ind .v.a{color:var(--sem-y)}.ind .v.rv{color:var(--sem-r)}
+.semafor .note{margin-top:16px;font-size:.8rem;color:rgba(242,245,241,.62);line-height:1.5}
+
+/* ── Blocs ── */
+.bloc{margin-bottom:52px}
+.bloc .blabel{font-family:var(--font-mono);font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.bloc .blabel::after{content:"";height:1px;flex:1;background:rgba(38,49,43,.12)}
+.bloc h2{font-family:var(--font-display);font-weight:600;font-size:1.45rem;color:var(--ink-deep);margin-bottom:16px}
+.bloc p{font-size:.98rem;line-height:1.62;color:var(--ink);margin-bottom:14px;max-width:68ch;text-wrap:pretty}
+.bloc p.note-src{font-family:var(--font-mono);font-size:.68rem;color:var(--ink-soft);letter-spacing:.04em}
+
+/* dades clau */
+.dades{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.dada{background:var(--bg);border-radius:10px;padding:20px 18px}
+.dada .n{font-family:var(--font-display);font-weight:500;font-size:2rem;color:var(--accent);line-height:1}
+.dada .l{font-size:.82rem;color:var(--ink-soft);margin-top:10px;line-height:1.45}
+.dada .p{font-family:var(--font-mono);font-size:.62rem;color:var(--ink-soft);margin-top:8px;letter-spacing:.06em}
+@media(max-width:700px){.dades{grid-template-columns:1fr}}
+
+/* implicacions per actor */
+.actor{padding:16px 0;border-top:1px solid rgba(38,49,43,.1)}
+.actor h3{font-family:var(--font-mono);font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.actor p{font-size:.95rem;color:var(--ink);max-width:68ch}
+
+/* accions */
+.accio{display:grid;grid-template-columns:52px 1fr auto;gap:16px;align-items:center;padding:16px 0;border-top:1px solid rgba(38,49,43,.1)}
+.accio .cnum{width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--verd-clar);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.05rem}
+.accio h3{font-family:var(--font-body);font-weight:500;font-size:.98rem;color:var(--ink-deep)}
+.accio .eff{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+.accio .eff b{color:var(--accent)}
+
+/* checkbox fosc */
+.checkbox{background:var(--ink-deep);border-radius:12px;padding:32px;color:var(--bg);margin-bottom:52px}
+.checkbox .blabel{color:var(--highlight)}
+.checkbox .blabel::after{background:rgba(242,245,241,.15)}
+.checkbox h2{color:var(--bg)}
+.checkbox p{color:rgba(242,245,241,.82)}
+.criteris{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.criteris span{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(170,201,182,.35);color:var(--verd-clar);padding:5px 12px;border-radius:99px}
+
+/* crossref */
+.xrefrow{display:grid;grid-template-columns:170px 1fr auto;gap:16px;align-items:start;padding:16px 0;border-top:1px solid rgba(38,49,43,.1)}
+.xrefrow .fw{font-family:var(--font-mono);font-weight:600;font-size:.8rem;color:var(--ink-deep)}
+.xrefrow .crit{font-size:.9rem;color:var(--ink-soft);line-height:1.5}
+.xrefrow .crit b{color:var(--ink);font-weight:500}
+.impact{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:99px;white-space:nowrap}
+.i-alt{background:rgba(160,82,45,.12);color:var(--sem-r)}
+.i-mitja{background:rgba(201,169,97,.18);color:#8A6D1F}
+.i-baixa{background:rgba(92,138,92,.14);color:var(--sem-g)}
+@media(max-width:700px){.xrefrow{grid-template-columns:1fr}.impact{justify-self:start}}
+</style>
+</head>
+<body data-reveal>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="mockup-homepage-oxalpha.html"><span class="brand-name">Criteri <em>ESG</em></span></a>
+    <nav class="mainnav">
+      <a class="active" href="mockup-informes.html">Informes</a>
+      <a href="mockup-que-fem.html">Què fem</a>
+      <a href="mockup-estandares.html">Estàndards</a>
+      <a href="mockup-qui-som.html">Qui som</a>
+      <a href="mockup-preus.html">Preus</a>
+      <a class="cta-mini" href="mockup-registro.html">Comença</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Capçalera de l'informe -->
+<section class="rep-head">
+  <div class="wrap">
+    <p class="eyebrow">Informe · Agost 2026</p>
+    <h1 class="rep-title">BCE: el risc climàtic ja és qüestió de solvència, no de narrativa</h1>
+    <p class="paper-meta">
+      <b>Font:</b> European Central Bank · <b>Tipus:</b> informe institucional ·
+      <b>Original:</b> 84 pàg. · <b>Destil·lat:</b> 1.042 paraules · <b>Lectura:</b> 5 min
+    </p>
+  </div>
+</section>
+
+<div class="wrap layout">
+  <!-- ═══ Columna principal ═══ -->
+  <main>
+    <!-- 00 semàfor es mostra al lateral; aquí comencen els blocs -->
+
+    <!-- 02 dades clau -->
+    <section class="bloc">
+      <p class="blabel">02 · Les dades que importen</p>
+      <div class="dades">
+        <div class="dada"><div class="n">74 pb</div><div class="l">Impacte del risc de transició sobre el capital CET1</div><div class="p">§ 2.3</div></div>
+        <div class="dada"><div class="n">77 pb</div><div class="l">Addicional si el risc físic agut es materialitza</div><div class="p">Box 1</div></div>
+        <div class="dada"><div class="n">91 %</div><div class="l">Augment de probabilitat de mora en sectors intensius</div><div class="p">§ 2.3</div></div>
+      </div>
+      <p class="note-src">Cada dada amb la secció exacta de l'original. Verificable en 10 segons.</p>
+    </section>
+
+    <!-- 03 resum -->
+    <section class="bloc">
+      <p class="blabel">03 · Resum executiu</p>
+      <p>El Banc Central Europeu ha publicat la seva anàlisi de risc climàtic més quantitativa fins ara. La conclusió central: els escenaris de transició i risc físic ja tenen traducció directa en requeriments de capital — <strong>74 punts bàsics de CET1 en l'escenari de transició ordenada, 77 addicionals en el físic agut sense adaptació</strong>.</p>
+      <p>La segona troballa és creditícia: en sectors d'alta intensitat energètica, la probabilitat de mora mitjana augmenta un 91% en escenaris adversos. El BCE demana als bancs integrar aquests escenaris als seus models abans del proper stress test europeu (2027).</p>
+      <p>La llacuna: l'informe no desglossa les emissions finançades per Scope 3, precisament la mètrica que connectaria el risc de cartera amb els objectius net-zero del sector.</p>
+    </section>
+
+    <!-- 04 implicacions -->
+    <section class="bloc">
+      <p class="blabel">04 · Implicacions</p>
+      <div class="actor"><h3>Per a les empreses</h3><p>Si el teu banc finança activitats intensives en carboni, espera requisits de finançament més cars i condicionats. Les empreses amb plans de transició verificats tindran avantatge competitiu en accés a crèdit.</p></div>
+      <div class="actor"><h3>Per als reguladors</h3><p>El BCE deixa la porta oberta a requeriments de capital climàtics explícits. El proper stress test (2027) serà la prova de foc: qui no hagi integrat escenaris climàtics als models interns, el pagarà.</p></div>
+      <div class="actor"><h3>Per a la ciutadania</h3><p>El sistema financer ja preu el clima. Això significa que el cost de la inacció climàtica deixarà de ser abstracte: apareixerà a les hipoteques, als préstecs d'empresa i a la rendibilitat de les pensions.</p></div>
+    </section>
+
+    <!-- 4b checkbox -->
+    <section class="checkbox">
+      <p class="blabel">4b · Més enllà del checkbox</p>
+      <h2>El risc està mesurat. La responsabilitat, encara no.</h2>
+      <p>L'informe quantifica el risc climàtic amb una precisió tècnica notable — i en aquest sentit és exemplar. Però mesurar el risc no és assumir-lo: cap dels 74 punts bàsics no ve acompanyat d'un mecanisme que faci pagar a qui genera les emissions, només a qui les finança sense preu-les bé.</p>
+      <p>És la diferència entre mirar el termòmetre i baixar la febre.</p>
+      <div class="criteris">
+        <span>Sostenibilitat absoluta</span><span>Justícia distributiva</span>
+      </div>
+    </section>
+
+    <!-- 05 connexions -->
+    <section class="bloc">
+      <p class="blabel">05 · Connexions amb altres informes</p>
+      <div class="actor"><h3>Evolució → EIOPA Finançament sostenible (juny 2026)</h3><p>Les 274.000 M€ de pèrdues per catàstrofes que quantificava EIOPA són la cara asseguradora del mateix risc físic que el BCE preu ara com a creditici.</p></div>
+      <div class="actor"><h3>Complement → CNMV Butlletí juny</h3><p>Si el supervisor europeu endureix requisits, la CNMV haurà de traduir-ho a la supervisió nacional dels fons espanyols (474.000 M€).</p></div>
+    </section>
+
+    <!-- 06 accions -->
+    <section class="bloc">
+      <p class="blabel">06 · Accions recomanades</p>
+      <div class="accio"><div class="cnum">01</div><h3>Integrar els escenaris climàtics del BCE als models interns de risc abans del stress test 2027</h3><span class="eff">esforç <b>mitjà</b> · impacte <b>alt</b></span></div>
+      <div class="accio"><div class="cnum">02</div><h3>Publicar les emissions finançades per Scope 3, per abast, al proper informe de sostenibilitat</h3><span class="eff">esforç <b>baix</b> · impacte <b>alt</b></span></div>
+      <div class="accio"><div class="cnum">03</div><h3>Analitzar l'exposició creditícia pròpia als 2.786 municipis amb risc d'inundació identificats</h3><span class="eff">esforç <b>mitjà</b> · impacte <b>mitjà</b></span></div>
+    </section>
+
+    <!-- 07 crossref -->
+    <section class="bloc" style="margin-bottom:0">
+      <p class="blabel">07 · Cross-reference · 16 estàndards</p>
+      <div class="xrefrow">
+        <span class="fw">CSRD / ESRS</span>
+        <span class="crit"><b>ESRS E1 · Canvi climàtic.</b> L'informe ofereix mètriques quantitatives d'impacte creditici, però no connecta amb el desglossament Scope 1-2-3 que exigeix E1.</span>
+        <span class="impact i-alt">Impacte alt</span>
+      </div>
+      <div class="xrefrow">
+        <span class="fw">TCFD</span>
+        <span class="crit"><b>Gestió de riscos i mètriques.</b> Reforça la necessitat de quantificar risc de transició i físic; no es tradueix encara en divulgació TCFD per a bancs.</span>
+        <span class="impact i-mitja">Mitjà</span>
+      </div>
+      <div class="xrefrow">
+        <span class="fw">CSDDD</span>
+        <span class="crit"><b>Diligència deguda.</b> La granularitat local (2.786 municipis) connecta amb la diligència ambiental; falta la perspectiva social.</span>
+        <span class="impact i-baixa">Baix</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══ Semàfor lateral ═══ -->
+  <aside>
+    <div class="semafor" role="img" aria-label="Semàfor metodològic: nota B">
+      <div class="grade-row">
+        <div class="grade">B</div>
+        <div>
+          <div class="dots">
+            <span class="dot g on"></span><span class="dot g on"></span><span class="dot g on"></span>
+            <span class="dot y on"></span><span class="dot r"></span>
+          </div>
+          <div class="gl">Nota metodològica</div>
+        </div>
+      </div>
+      <div class="ind"><span class="n">Scope 3 finançat</span><span class="v a">Esmentat</span></div>
+      <div class="ind"><span class="n">Risc de transició</span><span class="v v">Quantificat</span></div>
+      <div class="ind"><span class="n">Risc físic agut</span><span class="v v">Quantificat</span></div>
+      <div class="ind"><span class="n">Fonts independents</span><span class="v v">Verificades</span></div>
+      <div class="ind"><span class="n">Horitzó temporal</span><span class="v v">Concret</span></div>
+      <p class="note">4 verds + 1 groc. Quantificació sòlida del risc climàtic, amb una llacuna: la petjada Scope 3 no es desglossa.</p>
+    </div>
+  </aside>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div><span class="brand-name">Criteri <em>ESG</em></span><p class="tag">Intel·ligència regulatòria ESG destil·lada amb criteri humà.</p></div>
+      <div><h4>Producte</h4><ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul></div>
+      <div><h4>Projecte</h4><ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul></div>
+    </div>
+    <div class="base"><span>© 2026 CRITERI ESG</span><span>RIGOR · FRESCOR · SOBRIETAT</span></div>
+  </div>
+</footer>
+
+<script>
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+} else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')); }
+</script>
+</body>
+</html>

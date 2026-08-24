@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preus — Criteri ESG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="oxalpha-brand.css">
+<style>
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px;align-items:stretch}
+.plan{display:flex;flex-direction:column;position:relative}
+.plan.premium{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.plan .pname{font-family:var(--font-mono);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.plan.premium .pname{color:var(--verd-clar)}
+.plan .price{font-family:var(--font-display);font-weight:500;font-size:3rem;line-height:1;margin:16px 0 4px;color:var(--ink-deep)}
+.plan.premium .price{color:var(--bg)}
+.plan .price small{font-size:.38em;font-weight:400;color:var(--ink-soft)}
+.plan.premium .price small{color:rgba(242,245,241,.6)}
+.plan .pdesc{font-size:.88rem;color:var(--ink-soft);margin-bottom:22px;min-height:3.2em}
+.plan.premium .pdesc{color:rgba(242,245,241,.7)}
+.plan ul{list-style:none;flex:1;margin-bottom:26px}
+.plan li{padding:9px 0;border-top:1px solid rgba(38,49,43,.1);font-size:.9rem;display:flex;gap:10px;align-items:baseline}
+.plan.premium li{border-top-color:rgba(242,245,241,.14)}
+.plan li .m{font-family:var(--font-mono);font-weight:600}
+.plan li .m.yes{color:var(--accent)} .plan.premium li .m.yes{color:var(--verd-clar)}
+.plan li .m.no{color:rgba(128,128,128,.5)}
+.plan li.off{color:rgba(128,128,128,.55)}
+.plan .btn{justify-content:center;text-align:center}
+.badge{
+  position:absolute;top:-13px;right:22px;background:var(--highlight);color:var(--ink-deep);
+  font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;padding:6px 12px;border-radius:99px;
+}
+.faq{margin-top:64px;max-width:720px}
+.faq details{border-bottom:1px solid rgba(38,49,43,.12);padding:18px 4px}
+.faq summary{
+  cursor:pointer;font-family:var(--font-display);font-weight:600;font-size:1.08rem;
+  color:var(--ink-deep);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--font-mono);color:var(--accent);font-size:1.3rem}
+.faq details[open] summary::after{content:"−"}
+.faq details p{margin-top:12px;font-size:.94rem;color:var(--ink-soft);line-height:1.6}
+@media(max-width:900px){.plans{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-reveal>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="mockup-homepage-oxalpha.html"><span class="brand-name">Criteri <em>ESG</em></span></a>
+    <nav class="mainnav">
+      <a href="mockup-informes.html">Informes</a>
+      <a href="mockup-que-fem.html">Què fem</a>
+      <a href="mockup-estandares.html">Estàndards</a>
+      <a href="mockup-qui-som.html">Qui som</a>
+      <a class="active" href="mockup-preus.html">Preus</a>
+      <a class="cta-mini" href="mockup-registro.html">Comença</a>
+    </nav>
+  </div>
+</header>
+
+<section class="pagehero">
+  <div class="wrap">
+    <p class="eyebrow">Preus</p>
+    <h1>Senzill: <span class="hl">gratis per començar</span>, premium quan el temps val diners.</h1>
+    <p class="lead">Sense sorpresa mensual, sense lletra petita. El pla Free és gratis per sempre;
+    Premium existeix per qui vol l'arxiu sencer i el cross-reference complet.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="plans reveal">
+      <!-- FREE -->
+      <article class="plan card">
+        <p class="pname">Free</p>
+        <div class="price">0€<small> / sempre</small></div>
+        <p class="pdesc">Per a qui comença a explorar l'ESG i vol entendre el paisatge sense compromís.</p>
+        <ul>
+          <li><span class="m yes">✓</span> Informes amb més de 6 mesos</li>
+          <li><span class="m yes">✓</span> Newsletter reduïda (bimensual)</li>
+          <li><span class="m yes">✓</span> Pàgines d'estàndards completes</li>
+          <li class="off"><span class="m no">—</span> Informes recents (últims 6 mesos)</li>
+          <li class="off"><span class="m no">—</span> Cross-reference complet</li>
+          <li class="off"><span class="m no">—</span> Accions recomanades</li>
+        </ul>
+        <a class="btn btn-ghost" href="mockup-registro.html">Comença gratis</a>
+      </article>
+
+      <!-- PREMIUM -->
+      <article class="plan premium card">
+        <span class="badge">Recomanat</span>
+        <p class="pname">Premium</p>
+        <div class="price">39€<small> / mes</small></div>
+        <p class="pdesc">Per a professionals que prenen decisions amb aquesta informació cada setmana.</p>
+        <ul>
+          <li><span class="m yes">✓</span> Tot el Free, i:</li>
+          <li><span class="m yes">✓</span> Tots els informes, el dia que es publiquen</li>
+          <li><span class="m yes">✓</span> Cross-reference amb 16 estàndards</li>
+          <li><span class="m yes">✓</span> Accions recomanades per informe</li>
+          <li><span class="m yes">✓</span> Arxiu complet + cerca</li>
+          <li><span class="m yes">✓</span> La Quinzena completa</li>
+        </ul>
+        <a class="btn btn-light" href="mockup-pagament.html">Comença Premium</a>
+      </article>
+
+      <!-- ULTRA -->
+      <article class="plan card">
+        <p class="pname">Ultra</p>
+        <div class="price">89€<small> / mes</small></div>
+        <p class="pdesc">Per a equip directius que volen el context ESG en tots els formats.</p>
+        <ul>
+          <li><span class="m yes">✓</span> Tot el Premium, i:</li>
+          <li><span class="m yes">✓</span> Podcast mensual de cada informe</li>
+          <li><span class="m yes">✓</span> Presentació editable (PPT)</li>
+          <li><span class="m yes">✓</span> Dossier mensual temàtic</li>
+          <li><span class="m yes">✓</span> FAQs per informe</li>
+          <li><span class="m yes">✓</span> 1 connexió personalitzada/mes</li>
+        </ul>
+        <a class="btn btn-ghost" href="mockup-pagament.html">Comença Ultra</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block tinted">
+  <div class="wrap">
+    <p class="eyebrow">Preguntes freqüents</p>
+    <h2 class="sec-title">El que tothom pregunta.</h2>
+    <div class="faq reveal">
+      <details>
+        <summary>De surt el contingut dels informes?</summary>
+        <p>Exclusivament de documents institucionals originals (bancs centrals, reguladors, organismes internacionals). Cada dada porta la pàgina exacta de l'original perquè ho puguis verificar. Cap contingut generat sense font.</p>
+      </details>
+      <details>
+        <summary>Puc cancel·lar quan vulgui?</summary>
+        <p>Sí, des del teu compte i en dos clics. Mantens l'accés Premium fins al final del període pagat. Sense permanència ni penalitzacions.</p>
+      </details>
+      <details>
+        <summary>La IA escriu les opinions editorials?</summary>
+        <p>No. La IA destil·la fets verificables amb traçabilitat. Les opinions —el bloc "Més enllà del checkbox"— són revisades i assumides per humans. La tecnologia destil·la; el criteri decideix.</p>
+      </details>
+      <details>
+        <summary>Hi ha descompte anual?</summary>
+        <p>Sí: el pagament anual de Premium inclou 2 mesos gratis (390€/any en comptes de 468€). Els primers 50 subscriptors tenen tarja early bird de 290€/any.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div><span class="brand-name">Criteri <em>ESG</em></span><p class="tag">Intel·ligència regulatòria ESG destil·lada amb criteri humà.</p></div>
+      <div><h4>Producte</h4><ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul></div>
+      <div><h4>Projecte</h4><ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul></div>
+    </div>
+    <div class="base"><span>© 2026 CRITERI ESG</span><span>RIGOR · FRESCOR · SOBRIETAT</span></div>
+  </div>
+</footer>
+
+<script>
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+} else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')); }
+</script>
+</body>
+</html>

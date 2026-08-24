@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criteri ESG — El context ESG, destil·lat en cinc minuts</title>
+<meta name="description" content="Intel·ligència regulatòria ESG: destil·lem els informes institucionals que t'importen en 8 blocs de 5 minuts, amb traçabilitat a pàgina i cross-reference entre 16 estàndards.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%235E8772'/%3E%3Ccircle cx='16' cy='10' r='3' fill='%23F5E381'/%3E%3Ccircle cx='11' cy='19' r='3' fill='%23F2F5F1'/%3E%3Ccircle cx='21' cy='19' r='3' fill='%23F2F5F1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════ TOKENS OFICIALS (PALETA-COLORS.md v7 + TIPOGRAFIES.md) ═══════════════ */
+:root{
+  --ink:#26312B;
+  --ink-deep:#141B18;
+  --ink-soft:#4A5F53;
+  --accent:#5E8772;
+  --verd-clar:#AAC9B6;
+  --bg:#F2F5F1;
+  --paper:#FFFFFF;
+  --highlight:#F5E381; /* Pantone 12-0640 TCX */
+  --sem-g:#5C8A5C;
+  --sem-y:#C9A961;
+  --sem-r:#A0522D;
+
+  --font-display:'Newsreader', Georgia, serif;
+  --font-body:'DM Sans', 'Segoe UI', sans-serif;
+  --font-mono:'JetBrains Mono', Consolas, monospace;
+
+  --maxw:1160px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  font-family:var(--font-body);
+  font-weight:300;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.55;
+  font-size:1.02rem;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--highlight);color:var(--ink)}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.mono{font-family:var(--font-mono)}
+
+/* ── Reveal subtil ── */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ═══════════════ HEADER ═══════════════ */
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:rgba(20,27,24,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(170,201,182,.14);
+}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{height:26px;display:block}
+.brand-name{
+  font-family:var(--font-display);font-weight:600;font-size:1.15rem;
+  color:var(--bg);letter-spacing:.01em;
+}
+.brand-name em{font-style:italic;font-weight:400;color:var(--verd-clar)}
+nav.mainnav{display:flex;gap:26px;align-items:center}
+nav.mainnav a{
+  font-family:var(--font-mono);font-size:.74rem;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--verd-clar);text-decoration:none;
+}
+nav.mainnav a:hover{color:var(--highlight)}
+nav.mainnav a.cta-mini{
+  color:var(--ink-deep);background:var(--verd-clar);
+  padding:7px 14px;border-radius:5px;font-weight:600;
+}
+nav.mainnav a.cta-mini:hover{background:var(--highlight)}
+@media(max-width:820px){nav.mainnav a:not(.cta-mini){display:none}}
+
+/* ═══════════════ HERO ═══════════════ */
+.hero{background:var(--bg);padding:88px 0 0;border-bottom:1px solid rgba(38,49,43,.09)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:end}
+.eyebrow{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:22px;
+}
+.eyebrow::before{content:"";display:inline-block;width:34px;height:2px;background:var(--highlight);margin-right:12px;vertical-align:middle}
+.hero h1{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(2.5rem,4.6vw,3.9rem);
+  line-height:1.08;letter-spacing:-.012em;color:var(--ink-deep);
+  text-wrap:balance;margin-bottom:26px;
+}
+.hero h1 .hl{background:linear-gradient(transparent 58%, var(--highlight) 58%);font-style:italic;font-weight:500}
+.hero .lead{
+  max-width:46ch;color:var(--ink-soft);font-size:1.06rem;line-height:1.6;
+  margin-bottom:36px;text-wrap:pretty;
+}
+.hero .lead strong{font-weight:500;color:var(--ink)}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:70px}
+.btn{
+  display:inline-block;font-family:var(--font-mono);font-size:.78rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
+  padding:13px 24px;border-radius:6px;transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-solid{background:var(--accent);color:#fff}
+.btn-solid:hover{box-shadow:0 6px 18px rgba(94,135,114,.35)}
+.btn-ghost{color:var(--ink);border:1px solid rgba(38,49,43,.28)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Gràfic hero */
+.herochart{position:relative;padding-bottom:8px}
+.herochart svg{width:100%;height:auto;display:block}
+.chart-cap{
+  font-family:var(--font-mono);font-size:.68rem;color:var(--ink-soft);
+  letter-spacing:.05em;margin-top:10px;line-height:1.5;
+}
+.chart-cap b{color:var(--ink);font-weight:600}
+
+/* Franja de dades */
+.statband{background:var(--ink);color:var(--bg)}
+.statband .wrap{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  padding-top:30px;padding-bottom:30px;
+}
+.stat{text-align:left;border-left:1px solid rgba(170,201,182,.25);padding-left:18px}
+.stat:first-child{border-left:none;padding-left:0}
+.stat .n{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1.9rem,2.6vw,2.6rem);line-height:1;color:var(--verd-clar);
+}
+.stat .n small{font-size:.55em;color:var(--bg)}
+.stat .t{
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(242,245,241,.75);margin-top:8px;
+}
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;align-items:start}
+  .statband .wrap{grid-template-columns:repeat(2,1fr);row-gap:26px}
+  .stat:nth-child(odd){border-left:none;padding-left:0}
+}
+
+/* ═══════════════ SECCIONS GENERIQUES ═══════════════ */
+section.block{padding:96px 0}
+section.block.tinted{background:var(--bg)}
+h2.sec-title{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1.85rem,3.2vw,2.7rem);line-height:1.14;
+  letter-spacing:-.01em;color:var(--ink-deep);text-wrap:balance;
+  margin-bottom:20px;
+}
+h2.sec-title .hl{background:linear-gradient(transparent 58%, var(--highlight) 58%)}
+.sec-body{color:var(--ink-soft);max-width:56ch;font-size:1.03rem;text-wrap:pretty}
+.sec-body strong{font-weight:500;color:var(--ink)}
+
+/* ── Problema ── */
+.prob .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:64px;align-items:start}
+.acronyms{
+  margin-top:30px;display:flex;flex-wrap:wrap;gap:9px;
+}
+.acronyms span{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:500;letter-spacing:.05em;
+  color:var(--ink-soft);border:1px solid rgba(74,95,83,.35);
+  padding:6px 12px;border-radius:99px;background:var(--paper);
+}
+.docfeed{border-left:2px solid var(--accent);padding-left:0}
+.docfeed-head{
+  font-family:var(--font-mono);font-size:.68rem;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);padding:0 0 14px 20px;
+}
+.docfeed ul{list-style:none}
+.docfeed li{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:13px 20px;border-top:1px solid rgba(38,49,43,.1);
+}
+.docfeed li:last-child{border-bottom:1px solid rgba(38,49,43,.1)}
+.docfeed .who{font-family:var(--font-display);font-weight:500;font-size:1.02rem;color:var(--ink)}
+.docfeed .what{font-size:.86rem;color:var(--ink-soft)}
+.docfeed .when{font-family:var(--font-mono);font-size:.68rem;color:var(--ink-soft);white-space:nowrap}
+.docfeed-cap{
+  font-family:var(--font-mono);font-size:.66rem;color:var(--ink-soft);
+  padding:12px 20px 0;letter-spacing:.04em;
+}
+@media(max-width:900px){.prob .wrap{grid-template-columns:1fr;gap:40px}}
+
+/* ── Mètode / semàfor ── */
+.metode{background:var(--ink-deep);color:var(--bg)}
+.metode .eyebrow{color:var(--verd-clar)}
+.metode .eyebrow::before{background:var(--highlight)}
+.metode h2.sec-title{color:var(--bg)}
+.metode .sec-body{color:rgba(242,245,241,.78)}
+.metode-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:60px;align-items:center;margin-top:52px}
+
+.semafor{
+  background:var(--ink);border-radius:10px;padding:34px 34px 30px;
+  border:1px solid rgba(170,201,182,.16);
+}
+.semafor .grade-row{display:flex;align-items:center;gap:26px;margin-bottom:26px}
+.semafor .grade{
+  font-family:var(--font-display);font-weight:500;font-size:4.6rem;line-height:1;
+  color:var(--sem-y);
+}
+.semafor .grade-meta{flex:1}
+.semafor .dots{display:flex;gap:9px;margin-bottom:9px}
+.dot{width:11px;height:11px;border-radius:50%;opacity:.18}
+.dot.on{opacity:1}
+.dot.g{background:var(--sem-g)} .dot.y{background:var(--sem-y)} .dot.r{background:var(--sem-r)}
+.semafor .grade-label{
+  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(242,245,241,.72);
+}
+.ind{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-top:1px solid rgba(242,245,241,.12)}
+.ind .name{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;color:rgba(242,245,241,.85)}
+.ind .val{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
+.val.v{color:var(--sem-g)} .val.a{color:var(--sem-y)} .val.rv{color:var(--sem-r)}
+.semafor-note{margin-top:22px;font-size:.84rem;color:rgba(242,245,241,.6)}
+.semafor-note em{color:var(--verd-clar);font-style:normal}
+
+.metode-points{list-style:none}
+.metode-points li{
+  padding:22px 0;border-top:1px solid rgba(242,245,241,.14);
+  display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start;
+}
+.metode-points li:first-child{border-top:none}
+.metode-points .k{
+  font-family:var(--font-display);font-weight:500;font-size:1.7rem;
+  color:var(--verd-clar);line-height:1.1;
+}
+.metode-points h3{
+  font-family:var(--font-display);font-weight:600;font-size:1.12rem;
+  color:var(--bg);margin-bottom:6px;letter-spacing:.005em;
+}
+.metode-points p{font-size:.94rem;color:rgba(242,245,241,.72);text-wrap:pretty}
+@media(max-width:900px){.metode-grid{grid-template-columns:1fr;gap:44px}}
+
+/* ── Blocs ── */
+.blocs-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:48px;flex-wrap:wrap}
+.wordcount{
+  font-family:var(--font-mono);font-size:.72rem;color:var(--ink-soft);
+  border:1px dashed rgba(74,95,83,.4);padding:10px 16px;border-radius:6px;white-space:nowrap;
+}
+.wordcount b{color:var(--ink);font-weight:600}
+.blocgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.bloc{
+  background:var(--paper);border:1px solid rgba(38,49,43,.12);border-radius:9px;
+  padding:24px 22px 26px;min-height:158px;display:flex;flex-direction:column;
+}
+.bloc .num{
+  font-family:var(--font-display);font-weight:500;font-size:1.9rem;line-height:1;
+  color:var(--verd-clar);margin-bottom:auto;
+}
+.bloc h3{
+  font-family:var(--font-mono);font-weight:600;font-size:.76rem;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--ink);margin-top:26px;
+}
+.bloc p{font-size:.82rem;color:var(--ink-soft);margin-top:7px;line-height:1.45}
+.bloc.dark{background:var(--ink);border-color:var(--ink)}
+.bloc.dark .num{color:var(--highlight)}
+.bloc.dark h3{color:var(--bg)}
+.bloc.dark p{color:rgba(242,245,241,.7)}
+@media(max-width:1000px){.blocgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.blocgrid{grid-template-columns:1fr}.bloc{min-height:0}}
+
+/* ── Cross-reference ── */
+.xref .wrap{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:60px;align-items:center}
+.xref svg{width:100%;height:auto;display:block}
+.xref-cap{
+  font-family:var(--font-mono);font-size:.67rem;color:var(--ink-soft);
+  margin-top:14px;letter-spacing:.04em;line-height:1.6;
+}
+.xref-cap b{color:var(--accent);font-weight:600}
+@media(max-width:900px){.xref .wrap{grid-template-columns:1fr;gap:40px}}
+
+/* ── Principi ── */
+.principle{background:var(--ink-deep);color:var(--bg);text-align:center;padding:110px 0}
+.principle blockquote{
+  font-family:var(--font-display);font-style:italic;font-weight:500;
+  font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.2;color:var(--verd-clar);
+  text-wrap:balance;
+}
+.principle .after{
+  margin-top:26px;font-size:1rem;color:rgba(242,245,241,.72);max-width:52ch;
+  margin-inline:auto;text-wrap:pretty;
+}
+.principle .after strong{color:var(--highlight);font-weight:500}
+
+/* ── CTA final ── */
+.finalcta{text-align:center;padding:120px 0}
+.finalcta h2{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(2.1rem,4vw,3.2rem);line-height:1.12;letter-spacing:-.01em;
+  color:var(--ink-deep);text-wrap:balance;
+}
+.finalcta h2 .hl{color:var(--accent)}
+.finalcta .sub{color:var(--ink-soft);margin:22px auto 40px;max-width:46ch}
+.finalcta .actions{justify-content:center;margin-bottom:0}
+.pilot-note{
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;
+  color:var(--ink-soft);margin-top:26px;
+}
+.pilot-note b{color:var(--accent);font-weight:600}
+
+/* ── Footer ── */
+footer.site{background:var(--ink);color:rgba(242,245,241,.75);padding:64px 0 34px}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:52px}
+footer .brand-name{color:var(--bg);font-size:1.25rem}
+footer .tag{font-size:.88rem;margin-top:12px;color:rgba(242,245,241,.6);max-width:30ch}
+footer h4{
+  font-family:var(--font-mono);font-size:.68rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--verd-clar);margin-bottom:16px;
+}
+footer ul{list-style:none}
+footer li{margin-bottom:9px}
+footer a{color:rgba(242,245,241,.75);text-decoration:none;font-size:.9rem}
+footer a:hover{color:var(--highlight)}
+footer .base{
+  border-top:1px solid rgba(242,245,241,.14);padding-top:24px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;color:rgba(242,245,241,.5);
+}
+@media(max-width:800px){footer .cols{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <img src="../logos/LOGO-CRITERIESG.svg" alt="" onerror="this.style.display='none'">
+      <span class="brand-name">Criteri <em>ESG</em></span>
+    </a>
+    <nav class="mainnav">
+      <a href="#problema">El problema</a>
+      <a href="#metode">El mètode</a>
+      <a href="#informe">L'informe</a>
+      <a href="#crossref">Cross-reference</a>
+      <a class="cta-mini" href="#acces">Accés</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Intel·ligència regulatòria ESG</p>
+      <h1>El context ESG sencer,<br>destil·lat en <span class="hl">cinc minuts</span>.</h1>
+      <p class="lead">
+        Cada mes, bancs centrals, reguladors i organismes internacionals publiquen
+        <strong>milers de pàgines</strong> que acabaran afectant la teva empresa. Nosaltres les
+        llegim totes, les contrastem i et fem arribar el que cal decidir-ne:
+        <strong>clar, breu i amb la pàgina exacta de la font</strong>.
+      </p>
+      <div class="actions">
+        <a class="btn btn-solid" href="#acces">Llegir l'últim informe</a>
+        <a class="btn btn-ghost" href="#metode">Com funciona el mètode</a>
+      </div>
+    </div>
+
+    <figure class="herochart reveal" aria-label="Gràfic: el volum de publicacions reguatòries creix mentre el temps disponible es manté igual">
+      <svg viewBox="0 0 520 340" role="img">
+        <!-- graella -->
+        <g stroke="#26312B" stroke-opacity=".07">
+          <line x1="46" y1="60" x2="500" y2="60"/><line x1="46" y1="120" x2="500" y2="120"/>
+          <line x1="46" y1="180" x2="500" y2="180"/><line x1="46" y1="240" x2="500" y2="240"/>
+        </g>
+        <!-- barres: pàgines publicades -->
+        <g fill="#5E8772">
+          <rect x="70"  y="212" width="52" height="68" rx="3"/>
+          <rect x="152" y="188" width="52" height="92" rx="3"/>
+          <rect x="234" y="150" width="52" height="130" rx="3"/>
+          <rect x="316" y="104" width="52" height="176" rx="3"/>
+          <rect x="398" y="52"  width="52" height="228" rx="3" fill="#26312B"/>
+        </g>
+        <!-- línia: temps disponible -->
+        <line x1="60" y1="196" x2="480" y2="196" stroke="#A0522D" stroke-width="2" stroke-dasharray="6 5"/>
+        <circle cx="480" cy="196" r="4" fill="#A0522D"/>
+        <!-- etiquetes eix -->
+        <g font-family="'JetBrains Mono',monospace" font-size="11" fill="#4A5F53">
+          <text x="96"  y="300" text-anchor="middle">2022</text>
+          <text x="178" y="300" text-anchor="middle">2023</text>
+          <text x="260" y="300" text-anchor="middle">2024</text>
+          <text x="342" y="300" text-anchor="middle">2025</text>
+          <text x="424" y="300" text-anchor="middle">2026</text>
+        </g>
+        <!-- anotacions -->
+        <g font-family="'JetBrains Mono',monospace" font-size="10.5">
+          <rect x="330" y="26" width="168" height="22" rx="4" fill="#F5E381"/>
+          <text x="338" y="41" fill="#26312B" font-weight="600">PÀGINES PUBLICADES ↑</text>
+          <text x="60" y="186" fill="#A0522D" font-weight="600">EL TEU TEMPS →</text>
+        </g>
+      </svg>
+      <figcaption class="chart-cap">
+        Il·lustratiu. El volum de publicació reguatòria i d'estàndards creix cada curs fiscal;
+        <b>les hores disponibles del teu equip, no.</b>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- franja de dades -->
+  <div class="statband">
+    <div class="wrap">
+      <div class="stat"><div class="n">16</div><div class="t">Estàndards en creuament</div></div>
+      <div class="stat"><div class="n">8</div><div class="t">Blocs per informe</div></div>
+      <div class="stat"><div class="n">5<small>&nbsp;min</small></div><div class="t">De lectura, com a màxim</div></div>
+      <div class="stat"><div class="n"><small>p.&nbsp;</small>N</div><div class="t">Pàgina exacta a cada dada</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ EL PROBLEMA ══════════ -->
+<section class="block prob" id="problema">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">El problema</p>
+      <h2 class="sec-title">La normativa corre.<br>Ningú no et tradueix <span class="hl">què significa</span>.</h2>
+      <p class="sec-body">
+        Les sigles canvien d'abast cada trimestre. Un informe del BCE sobre risc climàtic
+        pot redefinir el que t'exigirà el teu auditor; una revisió d'<strong>Omnibus</strong>,
+        decidir si el CSRD t'aplica o deixes d'aplicar-t'hi. Seguir-ho és una feina a jornada
+        completa <strong>que ningú t'ha assignat</strong> — i que cap resum automàtic fa bé,
+        perquè el problema no és llegir: és entendre què pesa.
+      </p>
+      <div class="acronyms" aria-hidden="true">
+        <span>CSRD</span><span>ESRS</span><span>Omnibus I</span><span>ISSB</span>
+        <span>TNFD</span><span>SFDR</span><span>CSDDD</span><span>GRI 101–103</span>
+      </div>
+    </div>
+
+    <div class="docfeed reveal">
+      <p class="docfeed-head">Publicat només aquest curs</p>
+      <ul>
+        <li><div><span class="who">BCE</span> <span class="what">· Risc climàtic al sistema financer</span></div><span class="when">2026</span></li>
+        <li><div><span class="who">EBA</span> <span class="what">· Avaluació de riscos, juny</span></div><span class="when">2026</span></li>
+        <li><div><span class="who">WEF</span> <span class="what">· Global Risks Report</span></div><span class="when">2026</span></li>
+        <li><div><span class="who">Forética</span> <span class="what">· Tendències ESG</span></div><span class="when">2026</span></li>
+        <li><div><span class="who">CNMV</span> <span class="what">· Pla d'activitats i butlletí</span></div><span class="when">2026</span></li>
+        <li><div><span class="who">ONU</span> <span class="what">· Finançament sostenible (FSDR)</span></div><span class="when">2026</span></li>
+      </ul>
+      <p class="docfeed-cap">Mostra real del corpus que monitoritzem. No és tot — ni de lluny.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ EL MÈTODE ══════════ -->
+<section class="block metode" id="metode">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">El mètode</p>
+      <h2 class="sec-title">Un semàfor, no una opinió.</h2>
+      <p class="sec-body">
+        Cada informe institucional passa pel mateix criteri de sempre: què <strong>quantifica</strong>,
+        què només <strong>esmenta</strong> i què <strong>ignora</strong>. Cinc indicadors, una nota A–D,
+        i cap caixa grisa. El resultat es pot discutir — però es pot reproduir.
+      </p>
+    </div>
+
+    <div class="metode-grid">
+      <div class="semafor reveal" role="img" aria-label="Exemple de semàfor: nota C amb tres indicadors verds, un groc i un vermell">
+        <div class="grade-row">
+          <div class="grade">C</div>
+          <div class="grade-meta">
+            <div class="dots">
+              <span class="dot g"></span><span class="dot g"></span><span class="dot g"></span>
+              <span class="dot y on"></span><span class="dot r on"></span>
+            </div>
+            <div class="grade-label">Nota de l'informe · exemple real</div>
+          </div>
+        </div>
+        <div class="ind"><span class="name">Cobertura Scope 3</span><span class="val a">Esmentat</span></div>
+        <div class="ind"><span class="name">Objectius quantificats</span><span class="val rv">Ignorat</span></div>
+        <div class="ind"><span class="name">Traçabilitat de fonts</span><span class="val v">Quantificat</span></div>
+        <div class="ind"><span class="name">Interoperabilitat estàndards</span><span class="val v">Quantificat</span></div>
+        <div class="ind"><span class="name">Horitzó temporal</span><span class="val v">Quantificat</span></div>
+        <p class="semafor-note">Regla pública: <em>A = 5 verds · B = 4 verds + 1 groc · C ≤ 1 vermell · D = 2+ vermells</em>. El mateix criteri per a tots els informes, publicat i auditable.</p>
+      </div>
+
+      <ul class="metode-points reveal">
+        <li>
+          <span class="k">1</span>
+          <div><h3>Doble filtre, dos models</h3><p>Un model destil·la; un segon model independent fa d'advocat del diable i intenta desmuntar-lo abans que ho facis tu.</p></div>
+        </li>
+        <li>
+          <span class="k">2</span>
+          <div><h3>Entorn tancat, zero invenció</h3><p>Cada afirmació prové exclusivament del document original. Si una dada no hi és, no surt. Si no té pàgina, no es publica.</p></div>
+        </li>
+        <li>
+          <span class="k">3</span>
+          <div><h3>Inferència marcada</h3><p>Quan connectem punts entre documents, l'etiquetem com a interpretació nostra. El fet i l'anàlisi mai no es confonen.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ L'INFORME: 8 BLOCS ══════════ -->
+<section class="block tinted" id="informe">
+  <div class="wrap">
+    <div class="blocs-head reveal">
+      <div>
+        <p class="eyebrow">L'informe</p>
+        <h2 class="sec-title" style="margin-bottom:12px">Vuit blocs. Cap farciment.</h2>
+        <p class="sec-body">Sempre els mateixos vuit, en el mateix ordre. Llegeixes un, ja saps llegir-los tots.</p>
+      </div>
+      <div class="wordcount">LÍMIT EDITORIAL · <b>MÀX. 1.100 PARAULES</b></div>
+    </div>
+
+    <div class="blocgrid reveal">
+      <article class="bloc"><div class="num">01</div><h3>Semàfor</h3><p>Nota A–D i els cinc indicadors que l'han feta.</p></article>
+      <article class="bloc"><div class="num">02</div><h3>Dades clau</h3><p>Els números que importen, cadascun amb la seva pàgina.</p></article>
+      <article class="bloc"><div class="num">03</div><h3>Resum executiu</h3><p>El que hauries de saber abans del cafè.</p></article>
+      <article class="bloc"><div class="num">04</div><h3>Implicacions</h3><p>Per a empreses, reguladors i ciutadania.</p></article>
+      <article class="bloc"><div class="num">05</div><h3>Més enllà del Checkbox</h3><p>El que l'informe no respon — dit sense eufemismes.</p></article>
+      <article class="bloc"><div class="num">06</div><h3>Connexions</h3><p>Evolucions, complements i contradiccions amb informes anteriors.</p></article>
+      <article class="bloc"><div class="num">07</div><h3>Accions</h3><p>Què fer-hi, ordenat per esforç i impacte.</p></article>
+      <article class="bloc dark"><div class="num">08</div><h3>Cross-reference</h3><p>L'efecte de la notícia sobre 16 estàndards. Ningú més ho fa.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CROSS-REFERENCE ══════════ -->
+<section class="block xref" id="crossref">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Cross-reference</p>
+      <h2 class="sec-title">Una dada nova,<br>llegida <span class="hl">setze</span> vegades.</h2>
+      <p class="sec-body">
+        Quan el BCE parla d'emissions, nosaltres ja sabem què li demanarà el <strong>GRI 305-1</strong>,
+        quina casella omple a <strong>EcoVadis</strong>, i on xoca amb la <strong>Taxonomia UE</strong>.
+        Els estàndards no viuen sols: <strong>el valor és veure on s'encreuen</strong>.
+      </p>
+      <p class="sec-body" style="margin-top:16px">
+        És l'única part de l'informe que no resumeix una publicació — <strong>la multiplica</strong>.
+      </p>
+    </div>
+
+    <div class="reveal">
+      <svg viewBox="0 0 560 380" role="img" aria-label="Diagrama: un informe central connectat amb sis estàndards mitjançant el cross-reference">
+        <defs>
+          <marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L8,4 L0,8 z" fill="#5E8772"/>
+          </marker>
+        </defs>
+        <!-- arestes -->
+        <g stroke="#5E8772" stroke-opacity=".45" stroke-width="1.4" fill="none" marker-end="url(#arr)">
+          <line x1="280" y1="190" x2="112" y2="62"/>
+          <line x1="280" y1="190" x2="448" y2="62"/>
+          <line x1="280" y1="190" x2="66"  y2="190"/>
+          <line x1="280" y1="190" x2="494" y2="190"/>
+          <line x1="280" y1="190" x2="112" y2="318"/>
+          <line x1="280" y1="190" x2="448" y2="318"/>
+        </g>
+        <!-- node central -->
+        <circle cx="280" cy="190" r="58" fill="#26312B"/>
+        <text x="280" y="184" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#AAC9B6" font-weight="600">INFORME</text>
+        <text x="280" y="200" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#AAC9B6" font-weight="600">BCE · CLIMA</text>
+        <!-- nodes perifèrics -->
+        <g font-family="JetBrains Mono,monospace" font-size="11" font-weight="600">
+          <g><circle cx="112" cy="62"  r="7" fill="#5C8A5C"/><text x="126" y="58"  fill="#26312B">GRI 305-1</text><text x="126" y="73" fill="#4A5F53" font-weight="400" font-size="9.5">Emissions directes</text></g>
+          <g><circle cx="448" cy="62"  r="7" fill="#5C8A5C"/><text x="434" y="58"  fill="#26312B">ESRS E1-6</text><text x="394" y="73" fill="#4A5F53" font-weight="400" font-size="9.5">Transició climàtica</text></g>
+          <g><circle cx="66"  cy="190" r="7" fill="#C9A961"/><text x="80"  y="186" fill="#26312B">TCFD</text><text x="80"  y="201" fill="#4A5F53" font-weight="400" font-size="9.5">Mètriques i objectius</text></g>
+          <g><circle cx="494" cy="190" r="7" fill="#C9A961"/><text x="446" y="186" fill="#26312B">Taxonomia UE</text><text x="446" y="201" fill="#4A5F53" font-weight="400" font-size="9.5">Activitat elegible</text></g>
+          <g><circle cx="112" cy="318" r="7" fill="#A0522D"/><text x="126" y="314" fill="#26312B">EcoVadis ENV-1</text><text x="126" y="329" fill="#4A5F53" font-weight="400" font-size="9.5">Energia i GEH</text></g>
+          <g><circle cx="448" cy="318" r="7" fill="#A0522D"/><text x="434" y="314" fill="#26312B">CDP</text><text x="434" y="329" fill="#4A5F53" font-weight="400" font-size="9.5">Qüestionari clima</text></g>
+        </g>
+      </svg>
+      <p class="xref-cap">Exemple real de creuament: <b>un informe sobre risc climàtic</b> projectat sobre sis dels 16 estàndards del catàleg. Colors = intensitat de l'impacte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PRINCIPIS ══════════ -->
+<section class="principle">
+  <div class="wrap reveal">
+    <blockquote>"Més enllà del checkbox."</blockquote>
+    <p class="after">
+      Cinc criteris ètics —dignitat, justícia distributiva, sostenibilitat absoluta,
+      co-decisió i arrelament— revisen cada informe abans de publicar-se.
+      <strong>La tecnologia destil·la. El criteri decideix.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ══════════ CTA FINAL ══════════ -->
+<section class="finalcta tinted" id="acces">
+  <div class="wrap reveal">
+    <h2>T'entenem.<br><span class="hl">Et retornem temps per pensar.</span></h2>
+    <p class="sub">Subscriu-te i rebràs cada informe nou quan es publiqui. Sense soroll, sense newsletters diàries: la quinzena, puntualment.</p>
+    <div class="actions">
+      <a class="btn btn-solid" href="#">Demana accés anticipat</a>
+      <a class="btn btn-ghost" href="#">Veure un informe d'exemple</a>
+    </div>
+    <p class="pilot-note"><b>PILOT OBERT</b> · GRATUÏT DURANT LA FASE DE PROVA · SENSE TARGETA</p>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <span class="brand-name">Criteri <em>ESG</em></span>
+        <p class="tag">Intel·ligència regulatòria ESG destil·lada amb criteri humà.</p>
+      </div>
+      <div>
+        <h4>Producte</h4>
+        <ul><li><a href="#informe">Els 8 blocs</a></li><li><a href="#metode">El semàfor</a></li><li><a href="#crossref">Cross-reference</a></li></ul>
+      </div>
+      <div>
+        <h4>Projecte</h4>
+        <ul><li><a href="#">Qui som</a></li><li><a href="#">Metodologia</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul>
+      </div>
+    </div>
+    <div class="base">
+      <span>© 2026 CRITERI ESG</span>
+      <span>RIGOR · FRESCOR · SOBRIETAT</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Revelat subtil en scroll — respecta prefers-reduced-motion
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

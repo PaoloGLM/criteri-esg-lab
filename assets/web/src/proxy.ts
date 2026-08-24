@@ -112,6 +112,9 @@ function unauthorizedResponse() {
 }
 
 export const config = {
-  // Aplicar a totes les rutes excepte arxius estàtics i mockups HTML
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|logo.svg|robots.txt|llms.txt|fiare-form-mockup.html|registro-mockup.html|upgrade-contextual-mockup.html|cuenta-mockup.html|cuenta-mockup-todas.html|privacidad.html).*)"],
+  // Aplicar a totes les rutes excepte arxius estàtics, mockups HTML i les
+  // rutes PÚBLIQUES per producte: el registre d'usuaris i el seu check de
+  // contrasenyes han de ser accessibles sense Basic Auth (si no, ningú no
+  // es pot registrar). /api/password-check té rate limit propi.
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|logo.svg|robots.txt|llms.txt|fiare-form-mockup.html|registro-mockup.html|upgrade-contextual-mockup.html|cuenta-mockup.html|cuenta-mockup-todas.html|privacidad.html|newsletter-mockup.html|registro|api/password-check).*)"],
 };

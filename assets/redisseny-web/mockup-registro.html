@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registre — Criteri ESG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="oxalpha-brand.css">
+<style>
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:52px 0 20px;align-items:start}
+.pas{position:relative}
+.pas .step{font-family:var(--font-mono);font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.pas .panel{background:var(--paper);border:1px solid rgba(38,49,43,.14);border-radius:12px;padding:26px 24px;min-height:340px}
+.pas .panel h2{font-family:var(--font-display);font-weight:500;font-size:1.35rem;color:var(--ink-deep);margin-bottom:16px}
+.f{margin-bottom:14px}
+.f label{display:block;font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:5px}
+.f .input{border:1px solid rgba(38,49,43,.22);border-radius:8px;padding:10px 12px;font-size:13.5px;color:var(--ink-soft);background:#fff}
+.f .input.filled{color:var(--ink)}
+.btn{display:block;text-align:center;background:var(--accent);color:#fff;border-radius:8px;padding:12px;font-family:var(--font-mono);font-size:.75rem;font-weight:600;letter-spacing:.05em}
+.meter{display:flex;gap:4px;margin-top:8px}
+.meter i{height:5px;flex:1;border-radius:99px;background:rgba(38,49,43,.12)}
+.meter i.on{background:var(--accent)}
+.hibp{font-size:.72rem;color:var(--accent);margin-top:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.chips span{border:1px solid rgba(38,49,43,.2);border-radius:99px;padding:5px 11px;font-size:11px;color:var(--ink-soft)}
+.chips span.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.gdpr{background:var(--bg);border-radius:8px;padding:12px;font-size:.78rem;color:var(--ink-soft);line-height:1.5}
+.gdpr b{color:var(--ink);font-weight:500}
+.note{max-width:760px;margin:26px auto 0;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.05em;color:var(--ink-soft);text-align:center;line-height:1.7}
+.note b{color:var(--accent)}
+@media(max-width:900px){.flow{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-reveal>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="mockup-homepage-oxalpha.html"><span class="brand-name">Criteri <em>ESG</em></span></a>
+    <nav class="mainnav">
+      <a href="mockup-informes.html">Informes</a>
+      <a href="mockup-que-fem.html">Què fem</a>
+      <a href="mockup-estandares.html">Estàndards</a>
+      <a href="mockup-qui-som.html">Qui som</a>
+      <a href="mockup-preus.html">Preus</a>
+      <a class="cta-mini" href="mockup-registro.html">Comença</a>
+    </nav>
+  </div>
+</header>
+
+<section class="pagehero">
+  <div class="wrap">
+    <p class="eyebrow">Registre</p>
+    <h1>Tres passos. <span class="hl">Zero fricción</span>, molta seguretat.</h1>
+    <p class="lead">Assistent progressiu amb validació en viu, comprovació de contrasenyes filtrades
+    i protecció anti-enumeració. <strong>Aquest flux ja està implementat i funcional a la web</strong> (Next.js) — aquest mockup en mostra els tres estats.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="flow reveal">
+      <!-- PAS 1 -->
+      <div class="pas">
+        <p class="step">Pas 1/3 · Identitat</p>
+        <div class="panel">
+          <h2>Comencem pel bàsic.</h2>
+          <div class="f"><label>Nom i cognoms</label><div class="input filled">Maria Puig</div></div>
+          <div class="f"><label>Correu professional</label><div class="input filled">maria@empresa.cat</div></div>
+          <p style="font-size:.72rem;color:var(--ink-soft);margin:0 0 16px">Hi enviarem un enllaç de confirmació. Mai spam.</p>
+          <span class="btn">Continuar →</span>
+        </div>
+      </div>
+      <!-- PAS 2 -->
+      <div class="pas">
+        <p class="step">Pas 2/3 · Contrasenya</p>
+        <div class="panel">
+          <h2>Tria una contrasenya llarga.</h2>
+          <div class="f"><label>Contrasenya</label><div class="input filled">cafè-salvia-tarda-42</div>
+            <div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+            <p class="hibp">✓ No consta a cap filtració pública coneguda</p>
+          </div>
+          <p style="font-size:.72rem;color:var(--ink-soft);margin:0 0 16px">NIST 800-63B: la longitud és el que dona seguretat. Mínim 12 caràcters.</p>
+          <span class="btn">Continuar →</span>
+        </div>
+      </div>
+      <!-- PAS 3 -->
+      <div class="pas">
+        <p class="step">Pas 3/3 · Preferències</p>
+        <div class="panel">
+          <h2>Personalitza el que rebràs.</h2>
+          <div class="f"><label>Empresa · opcional</label><div class="input" style="color:rgba(74,95,83,.5)">Acme S.L.</div></div>
+          <div class="f"><label>Interessos · opcional</label>
+            <div class="chips"><span class="on">✓ Clima i transició</span><span>Regulació</span><span>Cadena</span></div>
+          </div>
+          <div class="gdpr">
+            ☑ Rebre <b>La Quinzena</b>, cada 15 dies.<br>
+            ☑ Accepto la <b>política de privacitat</b> (RGPD). *
+          </div>
+          <span class="btn" style="margin-top:14px">Crear el meu compte</span>
+        </div>
+      </div>
+    </div>
+    <p class="note">SEGURETAT INCLÒS: VALIDACIÓ ZOD COMPARTIDA CLIENT/SERVIDOR · CONTRASENYA AMB BCRYPT (SUPABASE) ·
+    CHECK HIBP K-ANONYMITY VIA /api/password-check · CONSULTES PARAMETRITZADES (ZERO SQL INJECTABLE) ·
+    ANTI-ENUMERACIÓ AL FINAL DEL FLUX · <b>IMPLEMENTAT A PRODUCCIÓ: /registro</b></p>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div><span class="brand-name">Criteri <em>ESG</em></span><p class="tag">Intel·ligència regulatòria ESG destil·lada amb criteri humà.</p></div>
+      <div><h4>Producte</h4><ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul></div>
+      <div><h4>Projecte</h4><ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul></div>
+    </div>
+    <div class="base"><span>© 2026 CRITERI ESG</span><span>RIGOR · FRESCOR · SOBRIETAT</span></div>
+  </div>
+</footer>
+
+<script>
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+} else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')); }
+</script>
+</body>
+</html>

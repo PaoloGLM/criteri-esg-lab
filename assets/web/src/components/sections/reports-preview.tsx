@@ -96,18 +96,18 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
     <section
       className="px-6 py-24 sm:px-8 sm:py-28 lg:py-32"
       style={{
-        background: "#2C1810",
-        color: "#F5EFE6",
-        borderTop: "3px solid #B87333",
+        background: "#26312B",
+        color: "#F2F5F1",
+        borderTop: "3px solid #5E8772",
       }}
     >
       <div className="mx-auto max-w-6xl">
         {/* Eyebrow */}
         <div
           className="mb-4 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase"
-          style={{ color: "#D9A574", letterSpacing: "0.22em" }}
+          style={{ color: "#AAC9B6", letterSpacing: "0.22em" }}
         >
-          <span style={{ width: "24px", height: "2px", background: "#B87333" }} />
+          <span style={{ width: "24px", height: "2px", background: "#5E8772" }} />
           {t("v2.ultim.eyebrow")}
         </div>
 
@@ -115,7 +115,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
         <h2
           className="mb-8 font-serif font-medium"
           style={{
-            color: "#F5EFE6",
+            color: "#F2F5F1",
             letterSpacing: "-0.018em",
             fontSize: "clamp(2rem, 3.4vw, 2.75rem)",
             lineHeight: 1.1,
@@ -123,7 +123,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
           }}
         >
           {t("v2.ultim.title.pre")}
-          <em className="italic font-normal" style={{ color: "#D9A574" }}>
+          <em className="italic font-normal" style={{ color: "#AAC9B6" }}>
             {t("v2.ultim.title.em")}
           </em>
           {t("v2.ultim.title.post")}
@@ -133,15 +133,15 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
         <div
           className="mt-8 overflow-hidden"
           style={{
-            background: "#F5EFE6",
-            color: "#2C1810",
-            border: "1px solid #C9B89A",
+            background: "#F2F5F1",
+            color: "#26312B",
+            border: "1px solid #D8E2DA",
           }}
         >
           {/* --- Header (fitxa tècnica) --- */}
           <div
             className="grid items-end gap-6 px-6 py-6 sm:px-8"
-            style={{ borderBottom: "1px solid #2C1810", gridTemplateColumns: "1fr auto" }}
+            style={{ borderBottom: "1px solid #26312B", gridTemplateColumns: "1fr auto" }}
           >
             <div className="flex flex-col gap-2">
               <span
@@ -149,7 +149,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
                 style={{
                   fontSize: "10px",
                   letterSpacing: "0.18em",
-                  color: "#5C3A1E",
+                  color: "#141B18",
                   background: "rgba(184, 115, 51, 0.12)",
                   padding: "4px 10px",
                   alignSelf: "flex-start",
@@ -161,7 +161,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
                 className="font-serif font-medium"
                 style={{
                   fontSize: "clamp(1.5rem, 2.4vw, 2rem)",
-                  color: "#2C1810",
+                  color: "#26312B",
                   letterSpacing: "-0.015em",
                   lineHeight: 1.15,
                   maxWidth: "700px",
@@ -175,7 +175,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
               style={{
                 fontSize: "10px",
                 letterSpacing: "0.14em",
-                color: "#8B7355",
+                color: "#4A5F53",
                 textAlign: "right",
                 lineHeight: 1.7,
               }}
@@ -192,8 +192,8 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
           <div
             className="grid gap-8 px-6 py-6 sm:px-8"
             style={{
-              background: "#2C1810",
-              color: "#F5EFE6",
+              background: "#26312B",
+              color: "#F2F5F1",
               gridTemplateColumns: "1fr 1fr",
             }}
           >
@@ -203,7 +203,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
                 style={{
                   fontSize: "10px",
                   letterSpacing: "0.22em",
-                  color: "#D9A574",
+                  color: "#AAC9B6",
                 }}
               >
                 {t("v2.bloc0.label")}
@@ -212,7 +212,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
                 <span
                   className="font-serif font-medium"
                   style={{
-                    color: "#B87333",
+                    color: "#5E8772",
                     letterSpacing: "-0.04em",
                     fontSize: "clamp(4rem, 6vw, 5rem)",
                     lineHeight: 1,
@@ -222,7 +222,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
                 </span>
                 <span
                   className="font-serif italic font-normal"
-                  style={{ color: "#F5EFE6", fontSize: "1.375rem" }}
+                  style={{ color: "#F2F5F1", fontSize: "1.375rem" }}
                 >
                   {t("v2.bloc0.grade.label")}
                 </span>
@@ -239,7 +239,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
                   <span
                     className="font-serif font-medium"
                     style={{
-                      color: "#F5EFE6",
+                      color: "#F2F5F1",
                       fontSize: "0.8125rem",
                       letterSpacing: "-0.005em",
                     }}
@@ -281,7 +281,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
             {/* Columna esquerra */}
             <div
               className="flex flex-col"
-              style={{ borderRight: "1px solid #C9B89A" }}
+              style={{ borderRight: "1px solid #D8E2DA" }}
             >
               {/* Bloc 2: 5 dades clau */}
               <Bloc>
@@ -302,15 +302,15 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
                     >
                       <span
                         className="font-mono font-semibold"
-                        style={{ color: "#B87333", fontSize: "9px" }}
+                        style={{ color: "#5E8772", fontSize: "9px" }}
                       >
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span
                         className="font-sans"
-                        style={{ color: "#2C1810", fontSize: "0.72rem", lineHeight: 1.4 }}
+                        style={{ color: "#26312B", fontSize: "0.72rem", lineHeight: 1.4 }}
                       >
-                        <strong style={{ color: "#5C3A1E", fontWeight: 600 }}>
+                        <strong style={{ color: "#141B18", fontWeight: 600 }}>
                           {t(dada.strongKey)}
                         </strong>
                         {t(dada.textKey)}
@@ -327,7 +327,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
                 <div
                   className="font-sans"
                   style={{
-                    color: "#5C3A1E",
+                    color: "#141B18",
                     fontSize: "0.75rem",
                     lineHeight: 1.55,
                   }}
@@ -337,7 +337,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
                     {t("v2.bloc3.body2")}{" "}
                     <em
                       className="font-serif italic"
-                      style={{ color: "#5C3A1E" }}
+                      style={{ color: "#141B18" }}
                     >
                       {t("v2.bloc3.body3.em")}
                     </em>
@@ -355,25 +355,25 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
                 <div
                   className="font-sans"
                   style={{
-                    color: "#5C3A1E",
+                    color: "#141B18",
                     fontSize: "0.75rem",
                     lineHeight: 1.55,
                   }}
                 >
                   <p>
-                    <strong style={{ color: "#5C3A1E", fontWeight: 600 }}>
+                    <strong style={{ color: "#141B18", fontWeight: 600 }}>
                       {t("v2.bloc4.empresas.strong")}
                     </strong>
                     {t("v2.bloc4.empresas.text")}
                   </p>
                   <p className="mt-3">
-                    <strong style={{ color: "#5C3A1E", fontWeight: 600 }}>
+                    <strong style={{ color: "#141B18", fontWeight: 600 }}>
                       {t("v2.bloc4.reguladores.strong")}
                     </strong>
                     {t("v2.bloc4.reguladores.text")}
                   </p>
                   <p className="mt-3">
-                    <strong style={{ color: "#5C3A1E", fontWeight: 600 }}>
+                    <strong style={{ color: "#141B18", fontWeight: 600 }}>
                       {t("v2.bloc4.ciudadanos.strong")}
                     </strong>
                     {t("v2.bloc4.ciudadanos.text")}
@@ -384,9 +384,9 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
                 <div
                   className="mt-3 px-4 py-3"
                   style={{
-                    background: "#2C1810",
-                    color: "#F5EFE6",
-                    borderLeft: "3px solid #B87333",
+                    background: "#26312B",
+                    color: "#F2F5F1",
+                    borderLeft: "3px solid #5E8772",
                   }}
                 >
                   <div
@@ -394,7 +394,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
                     style={{
                       fontSize: "8.5px",
                       letterSpacing: "0.2em",
-                      color: "#D9A574",
+                      color: "#AAC9B6",
                     }}
                   >
                     {t("v2.bloc4.mes.label")}
@@ -419,13 +419,13 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
                 <div
                   className="font-sans"
                   style={{
-                    color: "#5C3A1E",
+                    color: "#141B18",
                     fontSize: "0.75rem",
                     lineHeight: 1.55,
                   }}
                 >
                   {t("v2.bloc5.body.pre")}
-                  <strong style={{ color: "#5C3A1E", fontWeight: 600 }}>
+                  <strong style={{ color: "#141B18", fontWeight: 600 }}>
                     {t("v2.bloc5.body.strong")}
                   </strong>
                   {t("v2.bloc5.body.post")}
@@ -436,7 +436,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
               <div
                 className="px-6 py-6 sm:px-8"
                 style={{
-                  borderBottom: "1px solid #C9B89A",
+                  borderBottom: "1px solid #D8E2DA",
                   background: "rgba(184, 115, 51, 0.06)",
                 }}
               >
@@ -452,7 +452,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
                       <span
                         className="flex items-center justify-center font-mono font-bold"
                         style={{
-                          background: "#B87333",
+                          background: "#5E8772",
                           color: "#FFFFFF",
                           width: "20px",
                           height: "20px",
@@ -465,7 +465,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
                       <span
                         className="font-sans font-medium"
                         style={{
-                          color: "#2C1810",
+                          color: "#26312B",
                           fontSize: "0.75rem",
                           lineHeight: 1.45,
                         }}
@@ -488,15 +488,15 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
                       className="font-mono font-semibold"
                       style={{
                         background: "#FFFFFF",
-                        border: "1px solid #B87333",
-                        color: "#5C3A1E",
+                        border: "1px solid #5E8772",
+                        color: "#141B18",
                         padding: "4px 10px",
                         fontSize: "10px",
                         letterSpacing: "0.05em",
                       }}
                     >
                       {chip.cert}{" "}
-                      <span style={{ color: "#B87333", fontWeight: 500, marginLeft: "6px" }}>
+                      <span style={{ color: "#5E8772", fontWeight: 500, marginLeft: "6px" }}>
                         · {impactKey(chip.impact)}
                       </span>
                     </span>
@@ -509,7 +509,7 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
           {/* --- Footer de l'informe amb CTA --- */}
           <div
             className="flex flex-col items-center justify-between gap-3 px-6 py-5 sm:flex-row sm:px-8"
-            style={{ background: "#2C1810", color: "#F5EFE6" }}
+            style={{ background: "#26312B", color: "#F2F5F1" }}
           >
             <p
               className="font-serif italic"
@@ -524,8 +524,8 @@ export function ReportsPreview({ onOpenReport }: ReportsPreviewProps) {
               onClick={() => onOpenReport("revisio-esrs-maig-2026")}
               className="font-sans font-medium transition-colors hover:opacity-80"
               style={{
-                color: "#D9A574",
-                borderBottom: "1px solid #B87333",
+                color: "#AAC9B6",
+                borderBottom: "1px solid #5E8772",
                 paddingBottom: "4px",
                 fontSize: "0.8125rem",
                 letterSpacing: "0.02em",
@@ -548,7 +548,7 @@ function Bloc({ children }: { children: React.ReactNode }) {
   return (
     <div
       className="px-6 py-6 sm:px-8"
-      style={{ borderBottom: "1px solid #C9B89A" }}
+      style={{ borderBottom: "1px solid #D8E2DA" }}
     >
       {children}
     </div>
@@ -561,7 +561,7 @@ function BlocNum({ label }: { label: string }) {
     <div
       className="mb-1 font-mono font-semibold uppercase"
       style={{
-        color: "#B87333",
+        color: "#5E8772",
         fontSize: "9px",
         letterSpacing: "0.22em",
       }}
@@ -571,13 +571,13 @@ function BlocNum({ label }: { label: string }) {
   );
 }
 
-/** Títol del bloc — Fraunces mitjà 17px color #2C1810 */
+/** Títol del bloc — Fraunces mitjà 17px color #26312B */
 function BlocTitle({ children }: { children: React.ReactNode }) {
   return (
     <h4
       className="mb-3 font-serif font-medium"
       style={{
-        color: "#2C1810",
+        color: "#26312B",
         letterSpacing: "-0.008em",
         fontSize: "1.0625rem",
       }}

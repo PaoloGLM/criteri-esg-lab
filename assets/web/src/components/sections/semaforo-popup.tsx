@@ -123,9 +123,9 @@ export function SemaforoPopup({ open, onClose }: SemaforoPopupProps) {
       <div
         className="relative max-h-[90vh] w-full max-w-[720px] overflow-y-auto"
         style={{
-          background: "#F5EFE6",
-          color: "#2C1810",
-          borderTop: "4px solid #B87333",
+          background: "#F2F5F1",
+          color: "#26312B",
+          borderTop: "4px solid #5E8772",
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -134,9 +134,9 @@ export function SemaforoPopup({ open, onClose }: SemaforoPopupProps) {
           onClick={onClose}
           aria-label="Close"
           className="absolute right-5 top-3 cursor-pointer border-0 bg-transparent text-[32px] leading-none transition-colors"
-          style={{ color: "#8B7355" }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#B87333")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#8B7355")}
+          style={{ color: "#4A5F53" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#5E8772")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#4A5F53")}
         >
           ×
         </button>
@@ -145,7 +145,7 @@ export function SemaforoPopup({ open, onClose }: SemaforoPopupProps) {
           {/* Eyebrow */}
           <div
             className="mb-3 font-mono text-[10px] font-semibold uppercase"
-            style={{ color: "#8A5526", letterSpacing: "0.22em" }}
+            style={{ color: "#3F6653", letterSpacing: "0.22em" }}
           >
             {t("v2.popup.eyebrow")}
           </div>
@@ -154,14 +154,14 @@ export function SemaforoPopup({ open, onClose }: SemaforoPopupProps) {
           <h2
             className="mb-4 font-serif font-medium"
             style={{
-              color: "#2C1810",
+              color: "#26312B",
               fontSize: "clamp(1.75rem, 3vw, 2rem)",
               letterSpacing: "-0.018em",
               lineHeight: 1.1,
             }}
           >
             {t("v2.popup.title.pre")}{" "}
-            <em className="italic font-normal" style={{ color: "#5C3A1E" }}>
+            <em className="italic font-normal" style={{ color: "#141B18" }}>
               {t("v2.popup.title.em")}
             </em>
           </h2>
@@ -170,10 +170,10 @@ export function SemaforoPopup({ open, onClose }: SemaforoPopupProps) {
           <p
             className="mb-7 border-b pb-6 font-serif italic"
             style={{
-              color: "#5C3A1E",
+              color: "#141B18",
               fontSize: "1rem",
               lineHeight: 1.55,
-              borderColor: "#C9B89A",
+              borderColor: "#D8E2DA",
             }}
           >
             {t("v2.popup.intro")}
@@ -193,7 +193,7 @@ export function SemaforoPopup({ open, onClose }: SemaforoPopupProps) {
                   <span
                     className="font-serif font-medium"
                     style={{
-                      color: "#2C1810",
+                      color: "#26312B",
                       fontSize: "1.125rem",
                       letterSpacing: "-0.01em",
                     }}
@@ -203,7 +203,7 @@ export function SemaforoPopup({ open, onClose }: SemaforoPopupProps) {
                   <span
                     className="text-right font-mono text-[10px] font-semibold uppercase"
                     style={{
-                      color: "#8A5526",
+                      color: "#3F6653",
                       letterSpacing: "0.14em",
                     }}
                   >
@@ -213,7 +213,7 @@ export function SemaforoPopup({ open, onClose }: SemaforoPopupProps) {
                 <p
                   className="font-sans"
                   style={{
-                    color: "#5C3A1E",
+                    color: "#141B18",
                     fontSize: "0.8125rem",
                     lineHeight: 1.5,
                   }}
@@ -227,7 +227,7 @@ export function SemaforoPopup({ open, onClose }: SemaforoPopupProps) {
           {/* 4 Grades (dark band) */}
           <div
             className="mb-6 grid grid-cols-4 gap-3 p-5"
-            style={{ background: "#2C1810", color: "#F5EFE6" }}
+            style={{ background: "#26312B", color: "#F2F5F1" }}
           >
             {grades.map((g) => (
               <div
@@ -248,7 +248,7 @@ export function SemaforoPopup({ open, onClose }: SemaforoPopupProps) {
                 <span
                   className="font-mono text-[9.5px] font-semibold uppercase"
                   style={{
-                    color: "#F5EFE6",
+                    color: "#F2F5F1",
                     letterSpacing: "0.16em",
                   }}
                 >
@@ -272,10 +272,10 @@ export function SemaforoPopup({ open, onClose }: SemaforoPopupProps) {
           <p
             className="border-t pt-5 font-serif italic"
             style={{
-              color: "#5C3A1E",
+              color: "#141B18",
               fontSize: "0.875rem",
               lineHeight: 1.55,
-              borderColor: "#C9B89A",
+              borderColor: "#D8E2DA",
               // Evita que una sola paraula quedi aïllada a la línia següent
               hyphens: "auto",
               textWrap: "pretty" as React.CSSProperties["textWrap"],
@@ -284,7 +284,7 @@ export function SemaforoPopup({ open, onClose }: SemaforoPopupProps) {
             <span style={{ marginRight: "0.25em" }}>{t("v2.popup.footer.pre").trim()}</span>
             <em
               className="not-italic font-medium"
-              style={{ color: "#B87333", whiteSpace: "nowrap" }}
+              style={{ color: "#5E8772", whiteSpace: "nowrap" }}
             >
               {t("v2.popup.footer.em")}.
             </em>

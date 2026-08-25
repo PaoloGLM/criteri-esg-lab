@@ -14,13 +14,13 @@ interface HeroProps {
  * HERO — Variant 2 (Manifest Editorial) · dark
  *
  * Disseny:
- * - Fons #2C1810 (dark primari), text #F5EFE6
- * - Eyebrow en JetBrains Mono uppercase 0.30em letter-spacing, color coure clar (#D9A574)
+ * - Fons #26312B (dark primari), text #F2F5F1
+ * - Eyebrow en JetBrains Mono uppercase 0.30em letter-spacing, color coure clar (#AAC9B6)
  *   dins d'un requadre amb border coure transparent
  * - Títol Fraunces gegant (124px desktop, responsive) amb "criterio" en cursiva + coure clar
  * - Subtítol Fraunces italic, color tènue
  * - 2 CTAs:
- *   * Primari: coure sòlid (#B87333) amb text blanc
+ *   * Primari: coure sòlid (#5E8772) amb text blanc
  *   * Secundari: text "Veure un informe real →" amb underline coure
  *
  * Els CTAs són auth-aware (com el hero anterior):
@@ -38,11 +38,11 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
   return (
     <section
       className="relative flex flex-col items-center px-6 py-24 text-center sm:px-8 sm:py-32 lg:py-40"
-      style={{ background: "#2C1810", color: "#F5EFE6" }}
+      style={{ background: "#26312B", color: "#F2F5F1" }}
     >
       <div
         className="absolute inset-x-0 bottom-0"
-        style={{ height: "1px", background: "#B87333" }}
+        style={{ height: "1px", background: "#5E8772" }}
         aria-hidden
       />
 
@@ -51,7 +51,7 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
         <span
           className="font-mono text-[11px] font-semibold uppercase"
           style={{
-            color: "#D9A574",
+            color: "#AAC9B6",
             letterSpacing: "0.3em",
             padding: "8px 16px",
             border: "1px solid rgba(217, 165, 116, 0.4)",
@@ -64,7 +64,7 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
         <h1
           className="font-serif font-normal leading-[0.98]"
           style={{
-            color: "#F5EFE6",
+            color: "#F2F5F1",
             letterSpacing: "-0.035em",
             fontSize: "clamp(3rem, 8.6vw, 7.75rem)",
             maxWidth: "1200px",
@@ -75,7 +75,7 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
             {t("v2.hero.title.line2").split(" ").slice(0, -1).join(" ")}{" "}
             <em
               className="italic font-medium"
-              style={{ color: "#D9A574" }}
+              style={{ color: "#AAC9B6" }}
             >
               {t("v2.hero.title.line2").split(" ").slice(-1)}
             </em>
@@ -105,16 +105,16 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
                 style={{
                   border: "1px solid rgba(217, 165, 116, 0.4)",
                   background: "rgba(217, 165, 116, 0.1)",
-                  color: "#D9A574",
+                  color: "#AAC9B6",
                 }}
               >
-                <Crown className="h-4 w-4" style={{ color: "#D9A574" }} />
+                <Crown className="h-4 w-4" style={{ color: "#AAC9B6" }} />
                 {t("cta.premium.badge")}
               </span>
               <button
                 onClick={onOpenReport}
                 className="inline-flex h-12 items-center justify-center gap-2 px-6 text-sm font-semibold transition-opacity hover:opacity-90"
-                style={{ background: "#B87333", color: "#FFFFFF" }}
+                style={{ background: "#5E8772", color: "#FFFFFF" }}
               >
                 {t("v2.hero.cta.secondary")}
                 <ArrowRight className="h-4 w-4" />
@@ -125,7 +125,7 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
               <button
                 onClick={onOpenPreus || onOpenRegister}
                 className="inline-flex h-12 items-center justify-center gap-2 px-7 text-sm font-semibold transition-opacity hover:opacity-90"
-                style={{ background: "#B87333", color: "#FFFFFF" }}
+                style={{ background: "#5E8772", color: "#FFFFFF" }}
               >
                 <Crown className="h-4 w-4" />
                 {t("cta.upgrade.button")}
@@ -135,8 +135,8 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
                 href="/cuenta"
                 className="inline-flex h-12 items-center justify-center gap-2 px-2 font-serif text-base italic font-medium transition-colors"
                 style={{
-                  color: "#F5EFE6",
-                  borderBottom: "1px solid #D9A574",
+                  color: "#F2F5F1",
+                  borderBottom: "1px solid #AAC9B6",
                 }}
               >
                 <Mail className="h-4 w-4" />
@@ -148,7 +148,7 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
               <button
                 onClick={onOpenRegister}
                 className="inline-flex h-12 items-center justify-center gap-2 px-9 text-sm font-semibold transition-opacity hover:opacity-90"
-                style={{ background: "#B87333", color: "#FFFFFF" }}
+                style={{ background: "#5E8772", color: "#FFFFFF" }}
               >
                 {t("v2.hero.cta.primary")}
               </button>
@@ -156,8 +156,8 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
                 onClick={onOpenReport}
                 className="inline-flex h-12 items-center justify-center gap-2 px-2 font-serif text-base italic font-medium transition-colors"
                 style={{
-                  color: "#F5EFE6",
-                  borderBottom: "1px solid #D9A574",
+                  color: "#F2F5F1",
+                  borderBottom: "1px solid #AAC9B6",
                 }}
               >
                 {t("v2.hero.cta.secondary")}
@@ -172,13 +172,13 @@ export function Hero({ onOpenReport, onOpenRegister, onOpenPreus }: HeroProps) {
         className="relative mx-auto mt-12 w-full max-w-3xl px-6 py-4 text-center"
         style={{
           background: "rgba(184,115,51,0.15)",
-          border: "1px solid #B87333",
+          border: "1px solid #5E8772",
           borderRadius: "2px",
         }}
       >
         <p
           className="font-serif text-base italic sm:text-lg"
-          style={{ color: "#F5EFE6" }}
+          style={{ color: "#F2F5F1" }}
         >
           {t("v2.hero.free_premium_banner")}
         </p>

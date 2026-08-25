@@ -3,82 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Estàndards ESG — Criteri ESG</title>
+<title>Estàndards — Criteri ESG</title>
+<meta name="description" content="Els 16 estàndards ESG que un director de sostenibilitat no hauria de confondre: regulacions, frameworks i certificacions, explicats amb criteri i creuats amb els nostres informes.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%235E8772'/%3E%3Ccircle cx='16' cy='10' r='3' fill='%23F5E381'/%3E%3Ccircle cx='11' cy='19' r='3' fill='%23F2F5F1'/%3E%3Ccircle cx='21' cy='19' r='3' fill='%23F2F5F1'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="oxalpha-brand.css">
+<link rel="stylesheet" href="v1-design.css">
 <style>
-/* ── Hero amb badges (com la web real) ── */
-.st-hero{background:var(--bg);border-bottom:1px solid rgba(38,49,43,.1);padding:56px 0 44px}
-.st-hero .grid{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end}
-@media(max-width:860px){.st-hero .grid{grid-template-columns:1fr}}
-.st-eyebrow{font-family:var(--font-mono);font-size:.66rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.st-eyebrow::before{content:"";display:inline-block;width:22px;height:2px;background:var(--accent)}
-.st-hero h1{font-family:var(--font-display);font-weight:500;font-size:clamp(2rem,3.6vw,3.1rem);line-height:1.1;color:var(--ink-deep);max-width:24ch;text-wrap:balance;margin-bottom:20px}
-.st-hero h1 em{font-style:italic;color:var(--accent)}
-.badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
-.badge{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:.95rem;padding:7px 16px;border-radius:99px}
-.badge-reg{background:var(--ink);color:var(--bg)}
-.badge-fw{background:var(--accent);color:var(--bg)}
-.badge-cert{background:var(--verd-clar);color:var(--ink-deep)}
-.st-hero .frase{font-family:var(--font-display);font-style:italic;font-size:1.05rem;color:var(--ink-soft);margin:0}
-.st-num{font-family:var(--font-display);font-weight:300;font-size:clamp(5rem,10vw,8.5rem);line-height:.85;color:var(--ink);letter-spacing:-.05em}
-.st-num sup{font-family:var(--font-mono);font-size:.7rem;font-weight:500;color:var(--accent);letter-spacing:.18em;text-transform:uppercase;vertical-align:top;margin-left:8px}
+/* ── Hero estàndards ── */
+.pagehero .herogrid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:48px;align-items:end}
+@media(max-width:900px){.pagehero .herogrid{grid-template-columns:1fr;gap:36px}}
+.pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}
+.pills span{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--font-mono);font-size:.72rem;font-weight:500;letter-spacing:.05em;
+  color:var(--ink-soft);border:1px solid rgba(74,95,83,.35);
+  padding:7px 13px;border-radius:99px;background:var(--paper);
+}
+.pills i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.pills i.reg{background:var(--ink)}
+.pills i.fw{background:var(--accent)}
+.pills i.cert{background:var(--verd-clar)}
+.bignum{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(9rem,19vw,16rem);line-height:.82;
+  letter-spacing:-.04em;color:var(--accent);text-align:right;user-select:none;
+}
+.bignum sup{
+  font-family:var(--font-mono);font-weight:600;font-size:.085em;
+  letter-spacing:.34em;color:var(--ink-soft);vertical-align:top;margin-left:.08em;
+}
+.bignum-cap{
+  font-family:var(--font-mono);font-size:.66rem;color:var(--ink-soft);
+  letter-spacing:.08em;text-align:right;margin-top:16px;line-height:1.6;
+}
+@media(max-width:900px){.bignum{text-align:left}.bignum-cap{text-align:left}}
 
-/* ── Filtres (com la web real: barra amb 3 toggles + cerca) ── */
-.st-filtres{background:var(--bg);border-bottom:1px solid rgba(38,49,43,.1);padding:14px 0}
-.st-filtres .barra{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
-.filtres-group{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.filtres-group .lbl{font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-right:4px}
-.filtre{display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;border:1px solid rgba(38,49,43,.25);border-radius:99px;cursor:pointer;transition:all .15s ease;user-select:none}
-.filtre .barra-color{width:16px;height:4px;border-radius:2px}
-.filtre.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.filtre.off{background:transparent;color:var(--ink-soft)}
-.filtre.off .barra-color{opacity:.35}
-.cerca{display:flex;align-items:center;gap:8px;border:1px solid rgba(38,49,43,.25);border-radius:99px;padding:8px 16px;background:var(--paper)}
-.cerca input{border:none;outline:none;background:transparent;font-family:var(--font-sans);font-size:.85rem;color:var(--ink);width:200px}
-.cerca input::placeholder{color:var(--ink-soft)}
-.cerca .ic{color:var(--ink-soft);font-size:.8rem}
+/* ── Barra de filtres ── */
+.filterbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:36px}
+.fbtn{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);
+  background:transparent;border:1px solid rgba(38,49,43,.28);border-radius:99px;
+  padding:9px 16px;cursor:pointer;transition:border-color .15s ease,color .15s ease,background .15s ease;
+}
+.fbtn:hover{border-color:var(--accent);color:var(--accent)}
+.fbtn.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fsearch{position:relative;margin-left:auto}
+.fsearch input{
+  font-family:var(--font-mono);font-size:.76rem;color:var(--ink);
+  background:var(--paper);border:1px solid rgba(38,49,43,.28);border-radius:99px;
+  padding:9px 16px 9px 36px;outline:none;width:min(250px,60vw);
+}
+.fsearch input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(94,135,114,.14)}
+.fsearch::before{
+  content:"⌕";position:absolute;left:14px;top:50%;transform:translateY(-54%);
+  color:var(--ink-soft);font-family:var(--font-mono);font-size:.9rem;pointer-events:none;
+}
+@media(max-width:700px){.fsearch{margin-left:0;width:100%}.fsearch input{width:100%}}
 
-/* ── Grid de targetes (com la web real: 4 cols, logo gran, banda tipus) ── */
-.st-grid-sec{padding:36px 0 72px;background:var(--bg)}
-.st-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-@media(max-width:1200px){.st-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:900px){.st-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.st-grid{grid-template-columns:1fr}}
-.st-card{display:flex;flex-direction:column;background:var(--paper);border:1px solid rgba(38,49,43,.12);border-radius:10px;overflow:hidden;cursor:pointer;text-decoration:none;transition:transform .15s ease, box-shadow .15s ease}
-.st-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(20,27,24,.1)}
-.st-card .banda{height:5px}
-.banda-reg{background:var(--ink)}
-.banda-fw{background:var(--accent)}
-.banda-cert{background:var(--verd-clar)}
-.st-logo{height:110px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid rgba(38,49,43,.08);background:var(--bg);padding:14px}
-.st-logo img{max-height:64px;max-width:80%;object-fit:contain}
-.st-cos{display:flex;flex-direction:column;flex:1;gap:10px;padding:18px}
-.st-cos .top{display:flex;align-items:center;justify-content:space-between}
-.st-cos .num{font-family:var(--font-mono);font-size:.62rem;font-weight:600;color:var(--ink-soft)}
-.st-cos .tipus{font-family:var(--font-mono);font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-.st-cos .acces{font-family:var(--font-mono);font-size:.56rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:99px}
-.acc-free{background:rgba(92,138,92,.14);color:#4A6B3A}
-.acc-premium{background:var(--ink);color:var(--bg)}
-.st-cos h3{font-family:var(--font-display);font-weight:500;font-size:1.5rem;color:var(--ink-deep);letter-spacing:-.01em;margin:0}
-.st-cos .emissor{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
-.st-cos .desc{font-size:.8rem;line-height:1.55;color:var(--ink);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;margin:0}
-.st-cos .footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(38,49,43,.1);padding-top:12px;margin-top:auto}
-.st-cos .count{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
-.st-cos .count b{color:var(--accent);font-weight:700;font-size:.85rem}
-.st-cos .ver{font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:2px}
+/* ── Graella de targetes ── */
+.sgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:900px){.sgrid{grid-template-columns:1fr}}
+.scard{
+  background:var(--paper);border:1px solid rgba(38,49,43,.12);border-radius:9px;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+.scard:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(38,49,43,.08)}
+.band{height:5px;flex-shrink:0}
+.band.reg{background:var(--ink)}
+.band.fw{background:var(--accent)}
+.band.cert{background:var(--verd-clar)}
+.sbody{padding:24px 26px 22px;display:flex;flex-direction:column;flex:1}
+.smeta{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.slogo{height:34px;width:auto;max-width:112px;object-fit:contain}
+.snum{margin-left:auto;font-family:var(--font-mono);font-size:.68rem;color:var(--ink-soft);letter-spacing:.14em}
+.stags{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.stype{font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+.stype.t-fw{color:var(--accent)}
+.stype.t-cert{color:var(--ink-soft)}
+.badge{font-family:var(--font-mono);font-size:.56rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border-radius:99px}
+.badge.free{background:rgba(170,201,182,.28);color:var(--ink)}
+.badge.premium{background:var(--ink);color:var(--verd-clar)}
+.scard h3{
+  font-family:var(--font-display);font-weight:500;font-size:1.72rem;line-height:1.1;
+  letter-spacing:-.01em;color:var(--ink-deep);margin-bottom:7px;
+}
+.issuer{
+  font-family:var(--font-mono);font-size:.63rem;font-weight:500;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:13px;
+}
+.desc{font-size:.88rem;color:var(--ink-soft);line-height:1.62;text-wrap:pretty;flex:1}
+.sfoot{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  border-top:1px solid rgba(38,49,43,.1);margin-top:18px;padding-top:14px;
+  font-family:var(--font-mono);font-size:.7rem;color:var(--ink-soft);
+  letter-spacing:.05em;text-decoration:none;
+}
+.sfoot b{color:var(--accent);font-weight:600;font-size:.98rem}
+.sfoot .ver{color:var(--ink);font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:color .15s ease}
+.scard:hover .ver{color:var(--accent)}
+.gridnote{font-family:var(--font-mono);font-size:.64rem;color:var(--ink-soft);letter-spacing:.05em;margin-top:30px}
 
-.st-buit{grid-column:1/-1;text-align:center;padding:60px 0;color:var(--ink-soft);font-style:italic;display:none}
-.st-buit.visible{display:block}
+/* ── Estat buit ── */
+.empty{
+  text-align:center;padding:72px 24px;background:var(--paper);
+  border:1px dashed rgba(74,95,83,.4);border-radius:10px;
+}
+.empty-t{font-family:var(--font-display);font-weight:500;font-style:italic;font-size:1.5rem;color:var(--ink-deep);margin-bottom:10px}
+.empty-b{color:var(--ink-soft);max-width:46ch;margin:0 auto 24px;font-size:.95rem}
 </style>
 </head>
-<body data-reveal>
+<body>
 
+<!-- ══════════ HEADER ══════════ -->
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="mockup-homepage-oxalpha.html"><span class="brand-name">Criteri <em>ESG</em></span></a>
+    <a class="brand" href="mockup-homepage-v1-original.html"><span class="brand-name">Criteri <em>ESG</em></span></a>
     <nav class="mainnav">
       <a href="mockup-informes.html">Informes</a>
       <a href="mockup-que-fem.html">Què fem</a>
@@ -90,244 +133,358 @@
   </div>
 </header>
 
-<!-- HERO amb badges (com la web real) -->
-<section class="st-hero">
-  <div class="wrap">
-    <div class="grid">
-      <div>
-        <p class="st-eyebrow">Estàndards ESG · 2026</p>
-        <h1>Els <em>16 estàndards</em> que un director de sostenibilitat no hauria de confondre.</h1>
-        <div class="badges">
-          <span class="badge badge-reg">Una regulació t'obliga</span>
-          <span class="badge badge-fw">Un framework t'orienta</span>
-          <span class="badge badge-cert">Una certificació t'avalua</span>
-        </div>
-        <p class="frase">Confondre-les té conseqüències operatives reals.</p>
+<!-- ══════════ HERO ══════════ -->
+<section class="pagehero">
+  <div class="wrap herogrid">
+    <div class="reveal">
+      <p class="eyebrow">Estàndards ESG · 2026</p>
+      <h1>Els <span class="hl">16 estàndards</span> que un director de sostenibilitat no hauria de confondre.</h1>
+      <p class="lead"><strong>Confondre-les té conseqüències operatives reals.</strong> Una regulació et pot multar, un framework et pot orientar i una certificació et pot obrir (o tancar) mercats. Saber què és cada cosa és el primer acte de criteri.</p>
+      <div class="pills" aria-hidden="true">
+        <span><i class="reg"></i>Una regulació t'obliga</span>
+        <span><i class="fw"></i>Un framework t'orienta</span>
+        <span><i class="cert"></i>Una certificació t'avalua</span>
       </div>
-      <div class="st-num">16<sup>est.</sup></div>
     </div>
+    <figure class="reveal" aria-hidden="true">
+      <div class="bignum">16<sup>EST</sup></div>
+      <figcaption class="bignum-cap">CATÀLEG COMPLET · 5 REGULACIONS + 5 FRAMEWORKS + 6 CERTIFICACIONS<br>CREUATS AMB CADA INFORME PUBLICAT</figcaption>
+    </figure>
   </div>
 </section>
 
-<!-- FILTRES (com la web real) -->
-<section class="st-filtres">
+<!-- ══════════ CATÀLEG FILTRABLE ══════════ -->
+<section class="block tinted" id="llista">
   <div class="wrap">
-    <div class="barra">
-      <div class="filtres-group">
-        <span class="lbl">Filtrar:</span>
-        <button class="filtre on" data-tipus="reg"><span class="barra-color" style="background:var(--ink)"></span>Regulacions <span class="n">(5)</span></button>
-        <button class="filtre on" data-tipus="fw"><span class="barra-color" style="background:var(--accent)"></span>Frameworks <span class="n">(5)</span></button>
-        <button class="filtre on" data-tipus="cert"><span class="barra-color" style="background:var(--verd-clar)"></span>Certificacions <span class="n">(6)</span></button>
-      </div>
-      <div class="cerca">
-        <span class="ic">🔍</span>
-        <input type="text" id="cerca" placeholder="Cercar estàndard...">
+    <div class="filterbar reveal" role="group" aria-label="Filtres del catàleg d'estàndards">
+      <button class="fbtn active" type="button" data-filter="all">Tots (16)</button>
+      <button class="fbtn" type="button" data-filter="reg">Regulacions (5)</button>
+      <button class="fbtn" type="button" data-filter="fw">Frameworks (5)</button>
+      <button class="fbtn" type="button" data-filter="cert">Certificacions (6)</button>
+      <div class="fsearch">
+        <label class="mono" for="q" style="position:absolute;left:-9999px">Cerca estàndards</label>
+        <input id="q" type="search" placeholder="Cerca: clima, salaris, due diligence…" autocomplete="off">
       </div>
     </div>
-  </div>
-</section>
 
-<!-- GRID de targetes (com la web real: logo gran, banda tipus, count) -->
-<section class="st-grid-sec">
-  <div class="wrap">
-    <div class="st-grid" id="grid">
-      <!-- 01 CSRD / ESRS -->
-      <a class="st-card" data-tipus="reg" href="mockup-estandares-csrd.html">
-        <div class="banda banda-reg"></div>
-        <div class="st-logo"><img src="../web/public/logos-estandards/csrd-esrs.png" alt="CSRD/ESRS"></div>
-        <div class="st-cos">
-          <div class="top"><span class="num">01</span><span class="tipus">Regulació</span><span class="acces acc-free">Gratis</span></div>
+    <div class="sgrid" id="grid">
+      <article class="scard" data-type="reg" data-search="csrd / esrs comissio europea · efrag regulacio gratis directiva (ue) 2022/2464 de reporting de sostenibilitat. substitueix el nfrd i obliga ~50.000 empreses europees (11.500 espanyoles) a publicar informacio verificable sobre impactes, riscos i oportunitats esg seguint els european sustainability reporting standards (esrs). doble materialitat, format digital (xhtml) i verificacio per tercers. aplicacio progressiva: grans cotitzades (fy2024), grans no cotitzades (fy2025), pimes cotitzades (fy2026) i pimes (fy2027). base de l'ecosistema regulador esg europeu.">
+        <div class="band reg"></div>
+        <div class="sbody">
+          <div class="smeta">
+            <img class="slogo" src="../web/public/logos-estandards/csrd-esrs.png" alt="Logotip CSRD / ESRS" loading="lazy" onerror="this.style.display='none'">
+            <span class="snum">01/16</span>
+          </div>
+          <div class="stags">
+            <span class="stype t-reg">Regulació</span>
+            <span class="badge free">Gratis</span>
+          </div>
           <h3>CSRD / ESRS</h3>
-          <p class="emissor">Comissió Europea · EFRAG</p>
-          <p class="desc">Directiva (UE) 2022/2464 de reporting de sostenibilitat. Substitueix el NFRD i obliga ~50.000 empreses europees (11.500 espanyoles) a publicar informació verificable sobre impactes, riscos i oportunitats ESG seguint els European Sustainability Reporting Standards (ESRS). Doble materialitat, format digital (XHTML) i verificació per tercers. Aplicació progressiva: grans cotitzades (FY2024), grans no cotitzades (FY2025), pimes cotitzades (FY2026) i pimes (FY2027).</p>
-          <div class="footer"><span class="count"><b>6</b> informes cross-ref</span><span class="ver">Ver →</span></div>
+          <p class="issuer">Comissió Europea · EFRAG</p>
+          <p class="desc">Directiva (UE) 2022/2464 de reporting de sostenibilitat. Substitueix el NFRD i obliga ~50.000 empreses europees (11.500 espanyoles) a publicar informació verificable sobre impactes, riscos i oportunitats ESG seguint els European Sustainability Reporting Standards (ESRS). Doble materialitat, format digital (XHTML) i verificació per tercers. Aplicació progressiva: grans cotitzades (FY2024), grans no cotitzades (FY2025), pimes cotitzades (FY2026) i pimes (FY2027). Base de l'ecosistema regulador ESG europeu.</p>
+          <a class="sfoot" href="#" aria-label="Veure CSRD / ESRS">
+            <span><b>6</b>&nbsp;informes cross-ref</span><span class="ver">Ver&nbsp;→</span>
+          </a>
         </div>
-      </a>
-      <!-- 02 GRI -->
-      <a class="st-card" data-tipus="fw" href="#">
-        <div class="banda banda-fw"></div>
-        <div class="st-logo"><img src="../web/public/logos-estandards/gri.png" alt="GRI"></div>
-        <div class="st-cos">
-          <div class="top"><span class="num">02</span><span class="tipus">Framework</span><span class="acces acc-free">Gratis</span></div>
+      </article>
+      <article class="scard" data-type="fw" data-search="gri global reporting initiative · amsterdam framework gratis global reporting initiative. estandard de reporting de sostenibilitat mes usat al mon: el 78% de les grans empreses europees i el 70%+ de l'ibex 35 hi reporten. estructura modular: universal standards (gri 1-3), topic standards (gri 200 economic, 300 ambiental, 400 social) i sector standards (cada vegada mes sectors: carbo, agricultura, bancari, oli i gas, mineria...). format de 'material topics' amb participacio de stakeholders. actualitzacio 2021 amb enfocament en impactes reals i drets humans. convergencia activa amb esrs via mapping efrag-gri.">
+        <div class="band fw"></div>
+        <div class="sbody">
+          <div class="smeta">
+            <img class="slogo" src="../web/public/logos-estandards/gri.png" alt="Logotip GRI" loading="lazy" onerror="this.style.display='none'">
+            <span class="snum">02/16</span>
+          </div>
+          <div class="stags">
+            <span class="stype t-fw">Framework</span>
+            <span class="badge free">Gratis</span>
+          </div>
           <h3>GRI</h3>
-          <p class="emissor">Global Reporting Initiative · Amsterdam</p>
-          <p class="desc">Estàndard de reporting de sostenibilitat més usat al món: el 78% de les grans empreses europees i el 70%+ de l'IBEX 35 hi reporten. Estructura modular: Universal Standards (GRI 1-3), Topic Standards (GRI 200 econòmic, 300 ambiental, 400 social) i Sector Standards. Format de material topics amb participació de stakeholders. Actualització 2021 amb enfocament en impactes reals i drets humans. Convergència activa amb ESRS via mapping EFRAG-GRI.</p>
-          <div class="footer"><span class="count"><b>5</b> informes cross-ref</span><span class="ver">Ver →</span></div>
+          <p class="issuer">Global Reporting Initiative · Amsterdam</p>
+          <p class="desc">Global Reporting Initiative. Estàndard de reporting de sostenibilitat més usat al món: el 78% de les grans empreses europees i el 70%+ de l'IBEX 35 hi reporten. Estructura modular: Universal Standards (GRI 1-3), Topic Standards (GRI 200 econòmic, 300 ambiental, 400 social) i Sector Standards (cada vegada més sectors: carbó, agricultura, bancari, oli i gas, mineria...). Format de 'material topics' amb participació de stakeholders. Actualització 2021 amb enfocament en impactes reals i drets humans. Convergència activa amb ESRS via mapping EFRAG-GRI.</p>
+          <a class="sfoot" href="#" aria-label="Veure GRI">
+            <span><b>5</b>&nbsp;informes cross-ref</span><span class="ver">Ver&nbsp;→</span>
+          </a>
         </div>
-      </a>
-      <!-- 03 EcoVadis -->
-      <a class="st-card" data-tipus="cert" href="#">
-        <div class="banda banda-cert"></div>
-        <div class="st-logo"><img src="../web/public/logos-estandards/ecovadis.jpg" alt="EcoVadis"></div>
-        <div class="st-cos">
-          <div class="top"><span class="num">03</span><span class="tipus">Certificació</span><span class="acces acc-premium">Premium</span></div>
+      </article>
+      <article class="scard" data-type="cert" data-search="ecovadis ecovadis · paris certificacio premium rating de sostenibilitat corporativa amb metodologia propia basada en 21 criteris agrupats en 4 arees: environment, labor &amp; human rights, ethics i sustainable procurement. escala de medalla (bronze, silver, gold, platinum) sobre puntuacio 0-100. el mes demandat per cadenes de subministrament: 130.000+ empreses avaluades en 220 sectors i 175 paisos. plataforma proprietaria amb acces a scorecards dels proveitors. validacio documental per analistes. actualitzacio anual. cost per empresa: 1.500-15.000€ segons mida.">
+        <div class="band cert"></div>
+        <div class="sbody">
+          <div class="smeta">
+            <img class="slogo" src="../web/public/logos-estandards/ecovadis.jpg" alt="Logotip EcoVadis" loading="lazy" onerror="this.style.display='none'">
+            <span class="snum">03/16</span>
+          </div>
+          <div class="stags">
+            <span class="stype t-cert">Certificació</span>
+            <span class="badge premium">Premium</span>
+          </div>
           <h3>EcoVadis</h3>
-          <p class="emissor">EcoVadis · París</p>
-          <p class="desc">Rating de sostenibilitat corporativa amb metodologia pròpia basada en 21 criteris agrupats en 4 àrees: Environment, Labor & Human Rights, Ethics i Sustainable Procurement. Puntuació 0-100 amb medalles (bronze, plata, or, platí). L'estàndard de facto per a proveïdors: més de 130.000 empreses avaluades, integrat als processos de compra de grans corporacions.</p>
-          <div class="footer"><span class="count"><b>5</b> informes cross-ref</span><span class="ver">Ver →</span></div>
+          <p class="issuer">EcoVadis · París</p>
+          <p class="desc">Rating de sostenibilitat corporativa amb metodologia pròpia basada en 21 criteris agrupats en 4 àrees: Environment, Labor &amp; Human Rights, Ethics i Sustainable Procurement. Escala de medalla (Bronze, Silver, Gold, Platinum) sobre puntuació 0-100. El més demandat per cadenes de subministrament: 130.000+ empreses avaluades en 220 sectors i 175 països. Plataforma proprietària amb accés a scorecards dels proveïtors. Validació documental per analistes. Actualització anual. Cost per empresa: 1.500-15.000€ segons mida.</p>
+          <a class="sfoot" href="#" aria-label="Veure EcoVadis">
+            <span><b>5</b>&nbsp;informes cross-ref</span><span class="ver">Ver&nbsp;→</span>
+          </a>
         </div>
-      </a>
-      <!-- 04 B Corp -->
-      <a class="st-card" data-tipus="cert" href="#">
-        <div class="banda banda-cert"></div>
-        <div class="st-logo"><img src="../web/public/logos-estandards/b-corp.svg" alt="B Corp"></div>
-        <div class="st-cos">
-          <div class="top"><span class="num">04</span><span class="tipus">Certificació</span><span class="acces acc-premium">Premium</span></div>
+      </article>
+      <article class="scard" data-type="cert" data-search="b corp b lab global · estats units certificacio premium certificacio d'empreses amb proposit de b lab. avalua l'impacte positiu d'una empresa en treballadors, comunitat, entorn i clients mitjancant el b impact assessment (bia): 250+ preguntes, score 0-200, minim 80 per certificarse. 5 arees: governance, workers, community, environment, customers. 9.500+ empreses certificades a 100 paisos (400+ a espanya, 5a comunitat mundial). requereix modificacion estatutaria (compromis amb proposit). recertificacio cada 3 anys. nous estandards b lab 2026 amb performance requirements obligatoris alineats amb csrd. cost: 500-50.000€/any segons facturacio.">
+        <div class="band cert"></div>
+        <div class="sbody">
+          <div class="smeta">
+            <img class="slogo" src="../web/public/logos-estandards/b-corp.svg" alt="Logotip B Corp" loading="lazy" onerror="this.style.display='none'">
+            <span class="snum">04/16</span>
+          </div>
+          <div class="stags">
+            <span class="stype t-cert">Certificació</span>
+            <span class="badge premium">Premium</span>
+          </div>
           <h3>B Corp</h3>
-          <p class="emissor">B Lab Global · Estats Units</p>
-          <p class="desc">Certificació d'empreses amb propòsit de B Lab. Avalua l'impacte positiu d'una empresa en treballadors, comunitat, entorn i clients mitjançant el B Impact Assessment (BIA): més de 200 preguntes, puntuació mínima de 80 sobre 250. Recertificació cada 3 anys amb requisits legals creixents d'estatut B Corp.</p>
-          <div class="footer"><span class="count"><b>5</b> informes cross-ref</span><span class="ver">Ver →</span></div>
+          <p class="issuer">B Lab Global · Estats Units</p>
+          <p class="desc">Certificació d'empreses amb propòsit de B Lab. Avalua l'impacte positiu d'una empresa en treballadors, comunitat, entorn i clients mitjançant el B Impact Assessment (BIA): 250+ preguntes, score 0-200, mínim 80 per certificarse. 5 àrees: Governance, Workers, Community, Environment, Customers. 9.500+ empreses certificades a 100 països (400+ a Espanya, 5a comunitat mundial). Requereix modificación estatutària (compromís amb propòsit). Recertificació cada 3 anys. Nous estàndards B Lab 2026 amb performance requirements obligatoris alineats amb CSRD. Cost: 500-50.000€/any segons facturació.</p>
+          <a class="sfoot" href="#" aria-label="Veure B Corp">
+            <span><b>5</b>&nbsp;informes cross-ref</span><span class="ver">Ver&nbsp;→</span>
+          </a>
         </div>
-      </a>
-      <!-- 05 MSCI ESG -->
-      <a class="st-card" data-tipus="cert" href="#">
-        <div class="banda banda-cert"></div>
-        <div class="st-logo"><img src="../web/public/logos-estandards/msci-esg.svg" alt="MSCI ESG"></div>
-        <div class="st-cos">
-          <div class="top"><span class="num">05</span><span class="tipus">Certificació</span><span class="acces acc-premium">Premium</span></div>
+      </article>
+      <article class="scard" data-type="cert" data-search="msci esg msci inc. · nova york certificacio premium rating esg per a inversors amb escala aaa-ccc (lider, mitja, retardatari). avalua exposicio a riscos esg (10 temes, 35 categories) i gestio d'aquests riscos. totes les cotitzades de l'ibex 35 el monitoritzen. impacte directe en cost de capital: un rating ccc pot augmentar el spread de deute 30-50 bp. metodologia proprietaria basada en dades publiques, disclosure de l'empresa i news screening. actualitzacio trimestral. msci tambe emet ratings de clima (tcfd-aligned), polemiques i targetes de carboni. competeix amb sustainalytics i s&amp;p global esg.">
+        <div class="band cert"></div>
+        <div class="sbody">
+          <div class="smeta">
+            <img class="slogo" src="../web/public/logos-estandards/msci-esg.svg" alt="Logotip MSCI ESG" loading="lazy" onerror="this.style.display='none'">
+            <span class="snum">05/16</span>
+          </div>
+          <div class="stags">
+            <span class="stype t-cert">Certificació</span>
+            <span class="badge premium">Premium</span>
+          </div>
           <h3>MSCI ESG</h3>
-          <p class="emissor">MSCI Inc. · Nova York</p>
-          <p class="desc">Rating ESG per a inversors amb escala AAA-CCC (líder, mitjà, retardatari). Avalua exposició a riscos ESG (10 temes, 35 categories) i la gestió d'aquests riscos en relació amb els competidors del sector. És el rating que miren els gestors d'actius i fons d'inversió a l'hora de construir carteres.</p>
-          <div class="footer"><span class="count"><b>5</b> informes cross-ref</span><span class="ver">Ver →</span></div>
+          <p class="issuer">MSCI Inc. · Nova York</p>
+          <p class="desc">Rating ESG per a inversors amb escala AAA-CCC (líder, mitjà, retardatari). Avalua exposició a riscos ESG (10 temes, 35 categories) i gestió d'aquests riscos. Totes les cotitzades de l'IBEX 35 el monitoritzen. Impacte directe en cost de capital: un rating CCC pot augmentar el spread de deute 30-50 bp. Metodologia proprietària basada en dades públiques, disclosure de l'empresa i news screening. Actualització trimestral. MSCI també emet ratings de clima (TCFD-aligned), polèmiques i targetes de carboni. Competeix amb Sustainalytics i S&amp;P Global ESG.</p>
+          <a class="sfoot" href="#" aria-label="Veure MSCI ESG">
+            <span><b>5</b>&nbsp;informes cross-ref</span><span class="ver">Ver&nbsp;→</span>
+          </a>
         </div>
-      </a>
-      <!-- 06 CSDDD -->
-      <a class="st-card" data-tipus="reg" href="#">
-        <div class="banda banda-reg"></div>
-        <div class="st-logo"><img src="../web/public/logos-estandards/csddd.png" alt="CSDDD"></div>
-        <div class="st-cos">
-          <div class="top"><span class="num">06</span><span class="tipus">Regulació</span><span class="acces acc-free">Gratis</span></div>
+      </article>
+      <article class="scard" data-type="reg" data-search="csddd comissio europea · dg justice regulacio gratis directiva (ue) 2024/1760 de due diligence en drets humans i sostenibilitat. obliga empreses a identificar, prevenir, mitigar i explicar impactes adversos en drets humans i medi ambient a la seva cadena de valor. ambit: empreses ue &gt;1.000 empleats i &gt;450m€ facturacio (despres de l'omnibus i, ~5.200 empreses vs 13.000 inicials). aplicacio escalonada 2027-2029 segons mida. inclou pla de transicio climatica alineat amb 1,5°c. sancions fins al 5% de facturacio neta mundial. transposicio als estats membres obligatoria abans juliol 2026.">
+        <div class="band reg"></div>
+        <div class="sbody">
+          <div class="smeta">
+            <img class="slogo" src="../web/public/logos-estandards/csddd.png" alt="Logotip CSDDD" loading="lazy" onerror="this.style.display='none'">
+            <span class="snum">06/16</span>
+          </div>
+          <div class="stags">
+            <span class="stype t-reg">Regulació</span>
+            <span class="badge free">Gratis</span>
+          </div>
           <h3>CSDDD</h3>
-          <p class="emissor">Comissió Europea · DG Justice</p>
-          <p class="desc">Directiva (UE) 2024/1760 de due diligence en drets humans i sostenibilitat. Obliga empreses a identificar, prevenir, mitigar i explicar els impactes adversos sobre drets humans i medi ambient a la seva cadena de valor. Aplicació progressiva des del 2027 per grans empreses, amb responsabilitat civil i supervisió administrativa.</p>
-          <div class="footer"><span class="count"><b>5</b> informes cross-ref</span><span class="ver">Ver →</span></div>
+          <p class="issuer">Comissió Europea · DG Justice</p>
+          <p class="desc">Directiva (UE) 2024/1760 de due diligence en drets humans i sostenibilitat. Obliga empreses a identificar, prevenir, mitigar i explicar impactes adversos en drets humans i medi ambient a la seva cadena de valor. Àmbit: empreses UE &gt;1.000 empleats i &gt;450M€ facturació (després de l'Omnibus I, ~5.200 empreses vs 13.000 inicials). Aplicació escalonada 2027-2029 segons mida. Inclou pla de transició climàtica alineat amb 1,5°C. Sancions fins al 5% de facturació neta mundial. Transposició als estats membres obligatòria abans juliol 2026.</p>
+          <a class="sfoot" href="#" aria-label="Veure CSDDD">
+            <span><b>5</b>&nbsp;informes cross-ref</span><span class="ver">Ver&nbsp;→</span>
+          </a>
         </div>
-      </a>
-      <!-- 07 SFDR -->
-      <a class="st-card" data-tipus="reg" href="#">
-        <div class="banda banda-reg"></div>
-        <div class="st-logo"><img src="../web/public/logos-estandards/sfdr.png" alt="SFDR"></div>
-        <div class="st-cos">
-          <div class="top"><span class="num">07</span><span class="tipus">Regulació</span><span class="acces acc-free">Gratis</span></div>
+      </article>
+      <article class="scard" data-type="reg" data-search="sfdr comissio europea · dg fisma regulacio gratis reglament (ue) 2019/2088 de divulgacio de finances sostenibles. classifica productes financers en 3 categories: article 6 (no sostenible), article 8 ('light green', promou esg) i article 9 ('dark green', objectiu sostenible explicit). obliga gestores, bancs i asseguradores a publicar pai (principal adverse impacts) i declaracions precontractuals. afecta ~12.000 fons europeus. en revisio: la esa proposa nova categoritzacio (sustainable, transition, esg collection) per evitar greenwashing. entrada en vigor complet 2023, pero rts i plantilles electroniques encara en evolucio.">
+        <div class="band reg"></div>
+        <div class="sbody">
+          <div class="smeta">
+            <img class="slogo" src="../web/public/logos-estandards/sfdr.png" alt="Logotip SFDR" loading="lazy" onerror="this.style.display='none'">
+            <span class="snum">07/16</span>
+          </div>
+          <div class="stags">
+            <span class="stype t-reg">Regulació</span>
+            <span class="badge free">Gratis</span>
+          </div>
           <h3>SFDR</h3>
-          <p class="emissor">Comissió Europea · DG FISMA</p>
-          <p class="desc">Reglament (UE) 2019/2088 de divulgació de finances sostenibles. Classifica productes financers en 3 categories: Article 6 (no sostenible), Article 8 (promou característiques ambientals/socials) i Article 9 (objectiu sostenible). Obliga a publicar indicadors PAI (Principal Adverse Impacts) i nivell d'alineació amb la Taxonomia.</p>
-          <div class="footer"><span class="count"><b>4</b> informes cross-ref</span><span class="ver">Ver →</span></div>
+          <p class="issuer">Comissió Europea · DG FISMA</p>
+          <p class="desc">Reglament (UE) 2019/2088 de divulgació de finances sostenibles. Classifica productes financers en 3 categories: Article 6 (no sostenible), Article 8 ('light green', promou ESG) i Article 9 ('dark green', objectiu sostenible explícit). Obliga gestores, bancs i asseguradores a publicar PAI (Principal Adverse Impacts) i declaracions precontractuals. Afecta ~12.000 fons europeus. En revisió: la ESA proposa nova categorització (sustainable, transition, ESG collection) per evitar greenwashing. Entrada en vigor complet 2023, però RTS i plantilles electròniques encara en evolució.</p>
+          <a class="sfoot" href="#" aria-label="Veure SFDR">
+            <span><b>4</b>&nbsp;informes cross-ref</span><span class="ver">Ver&nbsp;→</span>
+          </a>
         </div>
-      </a>
-      <!-- 08 Taxonomia UE -->
-      <a class="st-card" data-tipus="reg" href="#">
-        <div class="banda banda-reg"></div>
-        <div class="st-logo"><img src="../web/public/logos-estandards/taxonomia-ue.png" alt="Taxonomia UE"></div>
-        <div class="st-cos">
-          <div class="top"><span class="num">08</span><span class="tipus">Regulació</span><span class="acces acc-free">Gratis</span></div>
-          <h3>Taxonomia UE</h3>
-          <p class="emissor">Comissió Europea · DG FISMA</p>
-          <p class="desc">Reglament (UE) 2020/852 que classifica activitats econòmiques com a sostenibles. Defineix què és verd amb criteris tècnics de screening per a 6 objectius ambientals (mitigació, adaptació, aigua, economia circular, contaminació, biodiversitat). Obliga a reportar el % de facturació, CapEx i OpEx alineats.</p>
-          <div class="footer"><span class="count"><b>5</b> informes cross-ref</span><span class="ver">Ver →</span></div>
+      </article>
+      <article class="scard" data-type="reg" data-search="taxonomia ue comissio europea · dg fisma regulacio gratis reglament (ue) 2020/852 que classifica activitats economiques com a sostenibles. defineix que es 'verd' amb criteris tecnics de pantalla (technical screening criteria) per a 6 objectius ambientals: mitigacio climatica, adaptacio, aigua, economia circular, contaminacio, biodiversitat. una activitat es alineada si compleix 3 condicions: contribucio substancial, no fer mal significatiu (dnsh) i garanties minimes socials. actualment amb delegated acts per clima (2021), complementari (2022) i mediambiental (2023). pendents: criteris per a transicio (gas, nuclear en debat) i objectius socials.">
+        <div class="band reg"></div>
+        <div class="sbody">
+          <div class="smeta">
+            <img class="slogo" src="../web/public/logos-estandards/taxonomia-ue.png" alt="Logotip Taxonomía UE" loading="lazy" onerror="this.style.display='none'">
+            <span class="snum">08/16</span>
+          </div>
+          <div class="stags">
+            <span class="stype t-reg">Regulació</span>
+            <span class="badge free">Gratis</span>
+          </div>
+          <h3>Taxonomía UE</h3>
+          <p class="issuer">Comissió Europea · DG FISMA</p>
+          <p class="desc">Reglament (UE) 2020/852 que classifica activitats econòmiques com a sostenibles. Defineix què és 'verd' amb criteris tècnics de pantalla (Technical Screening Criteria) per a 6 objectius ambientals: mitigació climàtica, adaptació, aigua, economia circular, contaminació, biodiversitat. Una activitat és alineada si compleix 3 condicions: contribució substancial, no fer mal significatiu (DNSH) i garanties mínimes socials. Actualment amb Delegated Acts per clima (2021), complementari (2022) i mediambiental (2023). Pendents: criteris per a transició (gas, nuclear en debat) i objectius socials.</p>
+          <a class="sfoot" href="#" aria-label="Veure Taxonomía UE">
+            <span><b>5</b>&nbsp;informes cross-ref</span><span class="ver">Ver&nbsp;→</span>
+          </a>
         </div>
-      </a>
-      <!-- 09 CDP -->
-      <a class="st-card" data-tipus="cert" href="#">
-        <div class="banda banda-cert"></div>
-        <div class="st-logo"><img src="../web/public/logos-estandards/cdp.png" alt="CDP"></div>
-        <div class="st-cos">
-          <div class="top"><span class="num">09</span><span class="tipus">Certificació</span><span class="acces acc-premium">Premium</span></div>
+      </article>
+      <article class="scard" data-type="cert" data-search="cdp cdp · londres certificacio premium sistema global de disclosure ambiental per a clima, aigua i boscos. les empreses responen questionaris anuals estandarditzats (tcfd-aligned des de 2018) i reben puntuacio a- a d- basada en comprehensivitat i transparencia, no en performance. 24.000+ empreses responen (cobrint 66% de la capitalitzacio global). usat per 740+ inversors amb 136 trilions $ en actius i compradors corporatius. dades publiques a la plataforma cdp. gratuito per respondre, pero acces a scorecards de tercers es de pagament. integrat amb sbti i cdp-targets verify net-zero pathways.">
+        <div class="band cert"></div>
+        <div class="sbody">
+          <div class="smeta">
+            <img class="slogo" src="../web/public/logos-estandards/cdp.png" alt="Logotip CDP" loading="lazy" onerror="this.style.display='none'">
+            <span class="snum">09/16</span>
+          </div>
+          <div class="stags">
+            <span class="stype t-cert">Certificació</span>
+            <span class="badge premium">Premium</span>
+          </div>
           <h3>CDP</h3>
-          <p class="emissor">CDP · Londres</p>
-          <p class="desc">Sistema global de disclosure ambiental per a clima, aigua i boscos. Les empreses responen qüestionaris anuals estandarditzats (alineats amb TCFD) i reben una puntuació A-F. Més de 23.000 empreses hi participen, sovint per demanda de clients i inversors. Les puntuacions A són un senyal de lideratge climàtic.</p>
-          <div class="footer"><span class="count"><b>4</b> informes cross-ref</span><span class="ver">Ver →</span></div>
+          <p class="issuer">CDP · Londres</p>
+          <p class="desc">Sistema global de disclosure ambiental per a clima, aigua i boscos. Les empreses responen qüestionaris anuals estandarditzats (TCFD-aligned des de 2018) i reben puntuació A- a D- basada en comprehensivitat i transparència, no en performance. 24.000+ empreses responen (cobrint 66% de la capitalització global). Usat per 740+ inversors amb 136 trilions $ en actius i compradors corporatius. Dades públiques a la plataforma CDP. Gratuito per respondre, però accés a scorecards de tercers és de pagament. Integrat amb SBTi i CDP-targets verify net-zero pathways.</p>
+          <a class="sfoot" href="#" aria-label="Veure CDP">
+            <span><b>4</b>&nbsp;informes cross-ref</span><span class="ver">Ver&nbsp;→</span>
+          </a>
         </div>
-      </a>
-      <!-- 10 SGE 21 -->
-      <a class="st-card" data-tipus="cert" href="#">
-        <div class="banda banda-cert"></div>
-        <div class="st-logo"><img src="../web/public/logos-estandards/sge-21.svg" alt="SGE 21"></div>
-        <div class="st-cos">
-          <div class="top"><span class="num">10</span><span class="tipus">Certificació</span><span class="acces acc-premium">Premium</span></div>
+      </article>
+      <article class="scard" data-type="cert" data-search="sge 21 foretica · madrid certificacio premium sistema de gestio etica i socialment responsible, gestionat per foretica (2000). unic estandard esg desenvolupat a espanya i certificable per tercera part (auditoria externa anual). alineat amb iso 26000, iso 9001, une 165002, gri i sdgs. 4 arees: estrategia i govern, recursos humans, proveidors i aliances, i transparencia i rendicio de comptes. 350+ empreses certificades a espanya i llatinoamerica (ferrovial, repsol, bankinter, vodafone espana, mapfre). compatible amb doble materialitat csrd. renovacio anual amb auditoria de seguiment.">
+        <div class="band cert"></div>
+        <div class="sbody">
+          <div class="smeta">
+            <img class="slogo" src="../web/public/logos-estandards/sge-21.svg" alt="Logotip SGE 21" loading="lazy" onerror="this.style.display='none'">
+            <span class="snum">10/16</span>
+          </div>
+          <div class="stags">
+            <span class="stype t-cert">Certificació</span>
+            <span class="badge premium">Premium</span>
+          </div>
           <h3>SGE 21</h3>
-          <p class="emissor">Forética · Madrid</p>
-          <p class="desc">Sistema de Gestió Ètica i Socialment Responsible, gestionat per Forética (2000). Únic estàndard ESG desenvolupat a Espanya i certificable. Es basa en 9 àrees de gestió (governança, clients, proveïdors, persones, entorn social i ambiental...) amb criteris verificables i auditoria externa independent.</p>
-          <div class="footer"><span class="count"><b>4</b> informes cross-ref</span><span class="ver">Ver →</span></div>
+          <p class="issuer">Forética · Madrid</p>
+          <p class="desc">Sistema de Gestió Ètica i Socialment Responsible, gestionat per Forética (2000). Únic estàndard ESG desenvolupat a Espanya i certificable per tercera part (auditoria externa anual). Alineat amb ISO 26000, ISO 9001, UNE 165002, GRI i SDGs. 4 àrees: estratègia i govern, recursos humans, proveïdors i aliances, i transparència i rendició de comptes. 350+ empreses certificades a Espanya i Llatinoamèrica (Ferrovial, Repsol, Bankinter, Vodafone España, Mapfre). Compatible amb doble materialitat CSRD. Renovació anual amb auditoria de seguiment.</p>
+          <a class="sfoot" href="#" aria-label="Veure SGE 21">
+            <span><b>4</b>&nbsp;informes cross-ref</span><span class="ver">Ver&nbsp;→</span>
+          </a>
         </div>
-      </a>
-      <!-- 11 Sustainalytics -->
-      <a class="st-card" data-tipus="cert" href="#">
-        <div class="banda banda-cert"></div>
-        <div class="st-logo"><img src="../web/public/logos-estandards/sustainalytics.svg" alt="Sustainalytics"></div>
-        <div class="st-cos">
-          <div class="top"><span class="num">11</span><span class="tipus">Certificació</span><span class="acces acc-premium">Premium</span></div>
+      </article>
+      <article class="scard" data-type="cert" data-search="sustainalytics morningstar sustainalytics · amsterdam certificacio premium rating de risc esg per a inversors, ara propietat de morningstar. escala de 5 nivells: negligible, low, medium, high, severe (sobre puntuacio 0-100 invertida). diferent de msci: avalua risc financer no gestionat, no performance. cobertura: 13.000+ empreses globals. productes: esg risk ratings (core), country risk, controversies, carbon risk ratings, low carbon transition ratings. usat per identificar underpriced risk en renda variable i fixa. les dades alimenten indexs morningstar. plataforma moodys esg fusionada amb sustainalytics el 2022.">
+        <div class="band cert"></div>
+        <div class="sbody">
+          <div class="smeta">
+            <img class="slogo" src="../web/public/logos-estandards/sustainalytics.svg" alt="Logotip Sustainalytics" loading="lazy" onerror="this.style.display='none'">
+            <span class="snum">11/16</span>
+          </div>
+          <div class="stags">
+            <span class="stype t-cert">Certificació</span>
+            <span class="badge premium">Premium</span>
+          </div>
           <h3>Sustainalytics</h3>
-          <p class="emissor">Morningstar Sustainalytics · Amsterdam</p>
-          <p class="desc">Rating de risc ESG per a inversors, ara propietat de Morningstar. Escala de 5 nivells: Negligible, Low, Medium, High, Severe (sobre 40+). Mesura el risc ESG no gestionat: exposició a temes materials menys gestió d'aquests riscos. Complementari a MSCI, amb enfocament de risc en lloc de qualitat.</p>
-          <div class="footer"><span class="count"><b>4</b> informes cross-ref</span><span class="ver">Ver →</span></div>
+          <p class="issuer">Morningstar Sustainalytics · Amsterdam</p>
+          <p class="desc">Rating de risc ESG per a inversors, ara propietat de Morningstar. Escala de 5 nivells: Negligible, Low, Medium, High, Severe (sobre puntuació 0-100 invertida). Diferent de MSCI: avalua risc financer no gestionat, no performance. Cobertura: 13.000+ empreses globals. Productes: ESG Risk Ratings (core), Country Risk, Controversies, Carbon Risk Ratings, Low Carbon Transition Ratings. Usat per identificar underpriced risk en renda variable i fixa. Les dades alimenten índexs Morningstar. Plataforma Moodys ESG fusionada amb Sustainalytics el 2022.</p>
+          <a class="sfoot" href="#" aria-label="Veure Sustainalytics">
+            <span><b>4</b>&nbsp;informes cross-ref</span><span class="ver">Ver&nbsp;→</span>
+          </a>
         </div>
-      </a>
-      <!-- 12 SASB -->
-      <a class="st-card" data-tipus="fw" href="#">
-        <div class="banda banda-fw"></div>
-        <div class="st-logo"><img src="../web/public/logos-estandards/sasb.png" alt="SASB"></div>
-        <div class="st-cos">
-          <div class="top"><span class="num">12</span><span class="tipus">Framework</span><span class="acces acc-free">Gratis</span></div>
+      </article>
+      <article class="scard" data-type="fw" data-search="sasb ifrs foundation · issb framework gratis sustainability accounting standards board, ara integrat a l'issb (ifrs sustainability disclosure standards). estandards de reporting financer-sostenibilitat per sector: 77 industries amb ~13 temes materials cadascun. enfocament en 'financial materiality' (una sola materialitat, contraposat a la doble materialitat de csrd). dades quantitatives orientades a inversors. us en creixement: 1.300+ empreses globals reporten amb sasb. base de l's2 (climate disclosure) de l'issb. compatible amb tcfd i gri. materials gratuitament; certificacion obligatoria per a reports publics.">
+        <div class="band fw"></div>
+        <div class="sbody">
+          <div class="smeta">
+            <img class="slogo" src="../web/public/logos-estandards/sasb.png" alt="Logotip SASB" loading="lazy" onerror="this.style.display='none'">
+            <span class="snum">12/16</span>
+          </div>
+          <div class="stags">
+            <span class="stype t-fw">Framework</span>
+            <span class="badge free">Gratis</span>
+          </div>
           <h3>SASB</h3>
-          <p class="emissor">IFRS Foundation · ISSB</p>
-          <p class="desc">Sustainability Accounting Standards Board, ara integrat a l'ISSB (IFRS Sustainability Disclosure Standards). Estàndards de reporting sectorial (77 indústries) que identifiquen els temes financerament materials de cada sector amb mètriques quantitatives. Base de l'IFRS S1 i S2.</p>
-          <div class="footer"><span class="count"><b>4</b> informes cross-ref</span><span class="ver">Ver →</span></div>
+          <p class="issuer">IFRS Foundation · ISSB</p>
+          <p class="desc">Sustainability Accounting Standards Board, ara integrat a l'ISSB (IFRS Sustainability Disclosure Standards). Estàndards de reporting financer-sostenibilitat per sector: 77 indústries amb ~13 temes materials cadascun. Enfocament en 'financial materiality' (una sola materialitat, contraposat a la doble materialitat de CSRD). Dades quantitatives orientades a inversors. Ús en creixement: 1.300+ empreses globals reporten amb SASB. Base de l'S2 (climate disclosure) de l'ISSB. Compatible amb TCFD i GRI. Materials gratuitament; certificación obligatòria per a reports públics.</p>
+          <a class="sfoot" href="#" aria-label="Veure SASB">
+            <span><b>4</b>&nbsp;informes cross-ref</span><span class="ver">Ver&nbsp;→</span>
+          </a>
         </div>
-      </a>
-      <!-- 13 TNFD -->
-      <a class="st-card" data-tipus="fw" href="#">
-        <div class="banda banda-fw"></div>
-        <div class="st-logo"><img src="../web/public/logos-estandards/tnfd.png" alt="TNFD"></div>
-        <div class="st-cos">
-          <div class="top"><span class="num">13</span><span class="tipus">Framework</span><span class="acces acc-free">Gratis</span></div>
+      </article>
+      <article class="scard" data-type="fw" data-search="tnfd taskforce on nature-related financial disclosures framework gratis framework global per reportar dependencies, impactes, riscos i oportunitats relacionats amb la natura. llancat el setembre 2023 amb 14 recomanacions estructurals (4 pilars: governance, strategy, risk &amp; impact management, metrics &amp; targets). complementa tcfd enfocant-se en biodiversitat, ecosistemes i serveis ecosistemics. eines: leap approach (locate, evaluate, assess, prepare) per a autoavaluacio. 500+ early adopters globales. base probable per a futurs estandards esrs e4 (biodiversitat) i issb sobre natura. suport dels estats del gbf (kunming-montreal 2022).">
+        <div class="band fw"></div>
+        <div class="sbody">
+          <div class="smeta">
+            <img class="slogo" src="../web/public/logos-estandards/tnfd.png" alt="Logotip TNFD" loading="lazy" onerror="this.style.display='none'">
+            <span class="snum">13/16</span>
+          </div>
+          <div class="stags">
+            <span class="stype t-fw">Framework</span>
+            <span class="badge free">Gratis</span>
+          </div>
           <h3>TNFD</h3>
-          <p class="emissor">Taskforce on Nature-related Financial Disclosures</p>
-          <p class="desc">Framework global per reportar dependències, impactes, riscos i oportunitats relacionats amb la natura. Llançat el setembre 2023 amb 14 recomanacions de disclosure agrupades en 4 pilars (Governança, Estratègia, Gestió de riscos, Mètriques i objectius). El germà natural del TCFD per a la biodiversitat.</p>
-          <div class="footer"><span class="count"><b>4</b> informes cross-ref</span><span class="ver">Ver →</span></div>
+          <p class="issuer">Taskforce on Nature-related Financial Disclosures</p>
+          <p class="desc">Framework global per reportar dependències, impactes, riscos i oportunitats relacionats amb la natura. Llançat el setembre 2023 amb 14 recomanacions estructurals (4 pilars: governance, strategy, risk &amp; impact management, metrics &amp; targets). Complementa TCFD enfocant-se en biodiversitat, ecosistemes i serveis ecosistèmics. Eines: LEAP approach (Locate, Evaluate, Assess, Prepare) per a autoavaluació. 500+ early adopters globales. Base probable per a futurs estàndards ESRS E4 (biodiversitat) i ISSB sobre natura. Suport dels estats del GBF (Kunming-Montreal 2022).</p>
+          <a class="sfoot" href="#" aria-label="Veure TNFD">
+            <span><b>4</b>&nbsp;informes cross-ref</span><span class="ver">Ver&nbsp;→</span>
+          </a>
         </div>
-      </a>
-      <!-- 14 TCFD -->
-      <a class="st-card" data-tipus="fw" href="#">
-        <div class="banda banda-fw"></div>
-        <div class="st-logo"><img src="../web/public/logos-estandards/tcfd.png" alt="TCFD"></div>
-        <div class="st-cos">
-          <div class="top"><span class="num">14</span><span class="tipus">Framework</span><span class="acces acc-free">Gratis</span></div>
+      </article>
+      <article class="scard" data-type="fw" data-search="tcfd financial stability board (fsb) · 2017 framework gratis taskforce on climate-related financial disclosures. framework per reportar riscos i oportunitats financeres climatiques. 4 pilars: governance, strategy, risk management, metrics &amp; targets. classificacio de riscos: fisics (aguts i cronics) i de transicio (regulatoris, tecnologics, mercat, reputacio). 4.800+ organitzacions suporten tcfd (2024). base de l'esrs e1 (canvi climatic), issb s2, cdp i la majoria de regulacions climatiques nacionals (uk, japo, singapur, nova zelanda). dissolt el 2023 i integrat a l'issb, pero la metodologia segueix sent la referencia global.">
+        <div class="band fw"></div>
+        <div class="sbody">
+          <div class="smeta">
+            <img class="slogo" src="../web/public/logos-estandards/tcfd.png" alt="Logotip TCFD" loading="lazy" onerror="this.style.display='none'">
+            <span class="snum">14/16</span>
+          </div>
+          <div class="stags">
+            <span class="stype t-fw">Framework</span>
+            <span class="badge free">Gratis</span>
+          </div>
           <h3>TCFD</h3>
-          <p class="emissor">Financial Stability Board (FSB) · 2017</p>
-          <p class="desc">Taskforce on Climate-related Financial Disclosures. Framework per reportar riscos i oportunitats financeres climàtiques. 4 pilars: Governança, Estratègia, Gestió de riscos, Mètriques i objectius. Adoptat per més de 1.000 organitzacions; les seves recomanacions s'han integrat a ISSB (IFRS S2) i ara també a la taxonomia climàtica.</p>
-          <div class="footer"><span class="count"><b>4</b> informes cross-ref</span><span class="ver">Ver →</span></div>
+          <p class="issuer">Financial Stability Board (FSB) · 2017</p>
+          <p class="desc">Taskforce on Climate-related Financial Disclosures. Framework per reportar riscos i oportunitats financeres climàtiques. 4 pilars: Governance, Strategy, Risk Management, Metrics &amp; Targets. Classificació de riscos: físics (aguts i crònics) i de transició (regulatoris, tecnològics, mercat, reputació). 4.800+ organitzacions suporten TCFD (2024). Base de l'ESRS E1 (canvi climàtic), ISSB S2, CDP i la majoria de regulacions climàtiques nacionals (UK, Japó, Singapur, Nova Zelanda). Dissolt el 2023 i integrat a l'ISSB, però la metodologia segueix sent la referència global.</p>
+          <a class="sfoot" href="#" aria-label="Veure TCFD">
+            <span><b>4</b>&nbsp;informes cross-ref</span><span class="ver">Ver&nbsp;→</span>
+          </a>
         </div>
-      </a>
-      <!-- 15 EMAS -->
-      <a class="st-card" data-tipus="reg" href="#">
-        <div class="banda banda-reg"></div>
-        <div class="st-logo"><img src="../web/public/logos-estandards/emas.png" alt="EMAS"></div>
-        <div class="st-cos">
-          <div class="top"><span class="num">15</span><span class="tipus">Regulació</span><span class="acces acc-free">Gratis</span></div>
+      </article>
+      <article class="scard" data-type="reg" data-search="emas comissio europea · dg env regulacio gratis eco-management and audit scheme. sistema comunitari d'eco-gestio i auditoria regulat pel reglament (ue) 2017/1505. voluntari pero regulat (a diferencia d'iso 14001 que es estandard privat). mes exigent: inclou declaracio ambiental validada per verifier ambiental acreditat, compliment legal garantit, i millora continua demostrable. 4.000+ organitzacions i 14.000+ centres a la ue (principalment alemanya, italia, espanya). espanya: 1.000+ centres, lider en hostaleria i administracio local. integrable amb iso 14001 (basat en el mateix cicle pdca). renovacio cada 3 anys.">
+        <div class="band reg"></div>
+        <div class="sbody">
+          <div class="smeta">
+            <img class="slogo" src="../web/public/logos-estandards/emas.png" alt="Logotip EMAS" loading="lazy" onerror="this.style.display='none'">
+            <span class="snum">15/16</span>
+          </div>
+          <div class="stags">
+            <span class="stype t-reg">Regulació</span>
+            <span class="badge free">Gratis</span>
+          </div>
           <h3>EMAS</h3>
-          <p class="emissor">Comissió Europea · DG ENV</p>
-          <p class="desc">Eco-Management and Audit Scheme. Sistema comunitari d'eco-gestió i auditoria regulat pel Reglament (UE) 2017/1505. Voluntari però reconegut oficialment: declara impactes ambientals amb una verificació externa i publica una declaració ambiental validada. És el sistema de gestió ambiental més exigent de la UE.</p>
-          <div class="footer"><span class="count"><b>3</b> informes cross-ref</span><span class="ver">Ver →</span></div>
+          <p class="issuer">Comissió Europea · DG ENV</p>
+          <p class="desc">Eco-Management and Audit Scheme. Sistema comunitari d'eco-gestió i auditoria regulat pel Reglament (UE) 2017/1505. Voluntari però regulat (a diferència d'ISO 14001 que és estàndard privat). Més exigent: inclou declaració ambiental validada per verifier ambiental acreditat, compliment legal garantit, i millora contínua demostrable. 4.000+ organitzacions i 14.000+ centres a la UE (principalment Alemanya, Itàlia, Espanya). Espanya: 1.000+ centres, líder en hostaleria i administració local. Integrable amb ISO 14001 (basat en el mateix cicle PDCA). Renovació cada 3 anys.</p>
+          <a class="sfoot" href="#" aria-label="Veure EMAS">
+            <span><b>3</b>&nbsp;informes cross-ref</span><span class="ver">Ver&nbsp;→</span>
+          </a>
         </div>
-      </a>
-      <!-- 16 ISO 26000 -->
-      <a class="st-card" data-tipus="fw" href="#">
-        <div class="banda banda-fw"></div>
-        <div class="st-logo"><img src="../web/public/logos-estandards/iso-26000.svg" alt="ISO 26000"></div>
-        <div class="st-cos">
-          <div class="top"><span class="num">16</span><span class="tipus">Framework</span><span class="acces acc-free">Gratis</span></div>
+      </article>
+      <article class="scard" data-type="fw" data-search="iso 26000 iso · ginebra (2010) framework gratis guia internacional de responsabilitat social publicada per iso el 2010. no certificable (a diferencia de la majoria d'estandards iso). marc de referencia amb 7 arees nucli: governanca organitzativa, drets humans, practiques laborals, medi ambient, practiques justes d'operacio, assumptes de consumidors, participacio i desenvolupament de la comunitat. 36 esferes d'accio. adoptat per 80+ paisos com a estandard nacional. base d'estandards certificables posteriors: iso 26000-based sge 21, iso 20400 (sustainable procurement), iso 37101 (desenvolupament sostenible comunitari). revisio en cursor (2025-2026).">
+        <div class="band fw"></div>
+        <div class="sbody">
+          <div class="smeta">
+            <img class="slogo" src="../web/public/logos-estandards/iso-26000.svg" alt="Logotip ISO 26000" loading="lazy" onerror="this.style.display='none'">
+            <span class="snum">16/16</span>
+          </div>
+          <div class="stags">
+            <span class="stype t-fw">Framework</span>
+            <span class="badge free">Gratis</span>
+          </div>
           <h3>ISO 26000</h3>
-          <p class="emissor">ISO · Ginebra (2010)</p>
-          <p class="desc">Guia internacional de responsabilitat social publicada per ISO el 2010. NO certificable (a diferència de la majoria d'estàndards ISO): ofereix orientació sobre 7 matèries fonamentals (governança, drets humans, pràctiques laborals, medi ambient, pràctiques justes d'operació, consumidors, comunitat) per integrar la RS a l'estratègia.</p>
-          <div class="footer"><span class="count"><b>3</b> informes cross-ref</span><span class="ver">Ver →</span></div>
+          <p class="issuer">ISO · Ginebra (2010)</p>
+          <p class="desc">Guia internacional de responsabilitat social publicada per ISO el 2010. NO certificable (a diferència de la majoria d'estàndards ISO). Marc de referència amb 7 àrees nucli: governança organitzativa, drets humans, pràctiques laborals, medi ambient, pràctiques justes d'operació, assumptes de consumidors, participació i desenvolupament de la comunitat. 36 esferes d'acció. Adoptat per 80+ països com a estàndard nacional. Base d'estàndards certificables posteriors: ISO 26000-based SGE 21, ISO 20400 (sustainable procurement), ISO 37101 (desenvolupament sostenible comunitari). Revisió en cursor (2025-2026).</p>
+          <a class="sfoot" href="#" aria-label="Veure ISO 26000">
+            <span><b>3</b>&nbsp;informes cross-ref</span><span class="ver">Ver&nbsp;→</span>
+          </a>
         </div>
-      </a>
-      <p class="st-buit" id="buit">Cap estàndard no coincideix amb el filtre. Prova una altra combinació.</p>
+      </article>
     </div>
+
+    <div class="empty" id="empty" role="status" hidden>
+      <p class="empty-t">Cap estàndard coincideix amb la cerca.</p>
+      <p class="empty-b">Prova amb un altre terme —per exemple «clima», «taxonomia» o «due diligence»— o reinicia els filtres per tornar al catàleg complet.</p>
+      <button class="btn btn-ghost" type="button" id="resetBtn">Reinicia els filtres</button>
+    </div>
+
+    <p class="gridnote reveal">ELS COUNTS DE CROSS-REF DERIVEN DELS INFORMES JA PUBLICATS I S'ACTUALITZEN AMB CADA NOVA ENTREGA.</p>
   </div>
 </section>
 
+<!-- ══════════ FOOTER ══════════ -->
 <footer class="site">
   <div class="wrap">
     <div class="cols">
@@ -341,31 +498,40 @@
 </footer>
 
 <script>
-// FILTRES funcionals (com la web real)
-const botons = document.querySelectorAll('.filtre');
-const targetes = document.querySelectorAll('.st-card');
-const cerca = document.getElementById('cerca');
-const buit = document.getElementById('buit');
+// Revelat subtil en scroll — respecta prefers-reduced-motion
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+} else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')); }
 
-function aplicar() {
-  const actius = new Set([...botons].filter(b => b.classList.contains('on')).map(b => b.dataset.tipus));
-  const q = cerca.value.trim().toLowerCase();
-  let visibles = 0;
-  targetes.forEach(t => {
-    const okTipus = actius.has(t.dataset.tipus);
-    const okCerca = !q || t.textContent.toLowerCase().includes(q);
-    const visible = okTipus && okCerca;
-    t.style.display = visible ? '' : 'none';
-    if (visible) visibles++;
+// Filtres + cerca del catàleg
+(function(){
+  const cards=[...document.querySelectorAll('.scard')];
+  const qi=document.getElementById('q');
+  const empty=document.getElementById('empty');
+  let tipo='all';
+  const norm=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  function apply(){
+    const q=norm(qi.value.trim());
+    let vis=0;
+    cards.forEach(c=>{
+      const show=(tipo==='all'||c.dataset.type===tipo)&&(!q||c.dataset.search.indexOf(q)>-1);
+      c.style.display=show?'':'none';
+      if(show)vis++;
+    });
+    empty.hidden=vis>0;
+  }
+  document.querySelectorAll('.fbtn').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');tipo=b.dataset.filter;apply();
+  }));
+  qi.addEventListener('input',apply);
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    tipo='all';qi.value='';
+    document.querySelectorAll('.fbtn').forEach(x=>x.classList.toggle('active',x.dataset.filter==='all'));
+    apply();
   });
-  buit.classList.toggle('visible', visibles === 0);
-}
-botons.forEach(b => b.addEventListener('click', () => {
-  b.classList.toggle('on');
-  b.classList.toggle('off');
-  aplicar();
-}));
-cerca.addEventListener('input', aplicar);
+})();
 </script>
 </body>
 </html>

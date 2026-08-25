@@ -4,84 +4,190 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>El meu compte — Criteri ESG</title>
+<meta name="description" content="Les teves preferències i les teves certificacions en un sol lloc: perfil, newsletter, pla i estàndards ESG.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%235E8772'/%3E%3Ccircle cx='16' cy='10' r='3' fill='%23F5E381'/%3E%3Ccircle cx='11' cy='19' r='3' fill='%23F2F5F1'/%3E%3Ccircle cx='21' cy='19' r='3' fill='%23F2F5F1'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="oxalpha-brand.css">
+<link rel="stylesheet" href="v1-design.css">
 <style>
-.acc-hero{padding:44px 0 28px;border-bottom:1px solid rgba(38,49,43,.1)}
-.acc-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:36px;padding:36px 0 72px}
-@media(max-width:800px){.acc-layout{grid-template-columns:1fr}}
-.acc-nav{display:flex;flex-direction:column;gap:2px}
-.acc-nav a{font-size:.88rem;color:var(--ink-soft);text-decoration:none;padding:10px 14px;border-radius:8px;transition:all .12s}
-.acc-nav a.active{background:var(--bg);color:var(--ink-deep);font-weight:600}
-.acc-nav a:hover{color:var(--accent)}
-.acc-section{margin-bottom:36px}
-.acc-section h2{font-family:var(--font-display);font-weight:600;font-size:1.2rem;color:var(--ink-deep);margin-bottom:6px}
-.acc-section .sub{font-size:.85rem;color:var(--ink-soft);margin-bottom:18px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
-.camp label{display:block;font-family:var(--font-mono);font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
-.camp input,.camp select{width:100%;border:1px solid rgba(38,49,43,.2);border-radius:8px;padding:11px 14px;font-family:var(--font-sans);font-size:.9rem;color:var(--ink);background:var(--paper)}
-.pla-card{background:var(--bg);border-radius:10px;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.pla-card .pla-nom{font-family:var(--font-display);font-weight:500;font-size:1.25rem;color:var(--ink-deep)}
-.pla-card .pla-det{font-size:.82rem;color:var(--ink-soft);margin-top:4px}
-.pla-card a{font-family:var(--font-mono);font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:var(--accent);color:var(--bg);padding:11px 18px;border-radius:8px;text-decoration:none}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-family:var(--font-mono);font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border-radius:99px;border:1px solid rgba(38,49,43,.2);color:var(--ink);cursor:pointer}
-.chip.sel{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.chip.cert{border-color:var(--accent);color:var(--accent)}
-.chip.cert.sel{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+/* ══════════ EL MEU COMPTE · específic de pàgina ══════════ */
+.acct{padding:64px 0 96px}
+.acct-grid{display:grid;grid-template-columns:238px minmax(0,1fr);gap:56px;align-items:start}
+@media(max-width:900px){
+  .acct-grid{grid-template-columns:1fr;gap:36px}
+}
+
+/* ── Sidebar ── */
+.sidenav{position:sticky;top:92px;border-left:1px solid rgba(38,49,43,.12)}
+.sidenav a{
+  display:block;font-family:var(--font-mono);font-size:.72rem;font-weight:500;
+  letter-spacing:.09em;text-transform:uppercase;text-decoration:none;
+  color:var(--ink-soft);padding:11px 18px;border-left:2px solid transparent;margin-left:-1px;
+  transition:color .15s ease,border-color .15s ease;
+}
+.sidenav a:hover{color:var(--ink)}
+.sidenav a.active{color:var(--accent);border-left-color:var(--highlight);font-weight:600}
+.sidenav a.logout{
+  margin-top:14px;border-top:1px solid rgba(38,49,43,.12);padding-top:16px;
+  color:rgba(38,49,43,.55);
+}
+.sidenav a.logout:hover{color:var(--sem-r)}
+@media(max-width:900px){
+  .sidenav{position:sticky;top:64px;z-index:10;display:flex;overflow-x:auto;gap:4px;
+    background:var(--paper);border-left:none;border-bottom:1px solid rgba(38,49,43,.12);
+    padding:10px 0;margin:0 -28px;padding-inline:28px;}
+  .sidenav a{white-space:nowrap;border-left:none;border-bottom:2px solid transparent;padding:8px 12px;margin-left:0}
+  .sidenav a.active{border-bottom-color:var(--highlight)}
+  .sidenav a.logout{margin-top:0;border-top:none}
+}
+
+/* ── Seccions de contingut ── */
+.acct-sec{padding:34px 0;border-bottom:1px solid rgba(38,49,43,.1);scroll-margin-top:84px}
+.acct-sec:first-child{padding-top:6px}
+.acct-sec:last-child{border-bottom:none}
+.acct-sec h2{
+  font-family:var(--font-display);font-weight:500;font-size:1.55rem;
+  color:var(--ink-deep);margin-bottom:6px;
+}
+.acct-sec .sub{font-size:.93rem;color:var(--ink-soft);margin-bottom:24px;text-wrap:pretty}
+.formrow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.formrow .full{grid-column:1/-1}
+@media(max-width:640px){.formrow{grid-template-columns:1fr}}
+.saved-msg{
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;color:var(--accent);
+  margin-left:16px;display:none;vertical-align:middle;
+}
+.saved-msg.show{display:inline}
+
+/* ── Newsletter ── */
+.switchrow{display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:18px 22px;margin-bottom:22px;flex-wrap:wrap}
+.switch-label{font-size:.95rem;color:var(--ink)}
+.switch{position:relative;width:46px;height:26px;flex:none}
+.switch input{opacity:0;width:100%;height:100%;margin:0;cursor:pointer;position:absolute;z-index:2}
+.slider{
+  position:absolute;inset:0;background:rgba(38,49,43,.25);border-radius:99px;transition:background .15s ease;
+}
+.slider::before{
+  content:"";position:absolute;width:20px;height:20px;border-radius:50%;background:#fff;
+  top:3px;left:3px;transition:left .15s ease;
+}
+.switch input:checked + .slider{background:var(--accent)}
+.switch input:checked + .slider::before{left:23px}
+.langpills{display:flex;gap:10px}
+.pill{
+  font-family:var(--font-mono);font-size:.7rem;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;border:1px solid rgba(38,49,43,.25);border-radius:99px;
+  background:var(--paper);color:var(--ink-soft);padding:8px 18px;cursor:pointer;
+}
+.pill.on{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ── El meu pla ── */
+.placard{display:flex;align-items:center;gap:26px;padding:28px 30px;flex-wrap:wrap}
+.placard .plan-id{flex:1;min-width:220px}
+.plan-status{
+  font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;background:var(--bg);color:var(--ink-soft);
+  border-radius:99px;padding:5px 12px;
+}
+.placard h3{font-family:var(--font-display);font-weight:500;font-size:1.7rem;color:var(--ink-deep);margin-top:8px}
+.placard .plan-desc{font-size:.9rem;color:var(--ink-soft);margin-top:6px}
+.pla-note{
+  margin-top:18px;font-size:.86rem;color:var(--ink-soft);max-width:62ch;text-wrap:pretty;
+  border-left:3px solid var(--highlight);padding:4px 0 4px 16px;
+}
+
+/* ── Chips d'estàndards i interessos ── */
+.chipgroup{margin-bottom:26px}
+.chipgroup h3{
+  font-family:var(--font-mono);font-size:.66rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:13px;
+}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{
+  font-family:var(--font-mono);font-size:.74rem;font-weight:500;letter-spacing:.04em;
+  color:var(--ink);background:var(--paper);border:1px solid rgba(38,49,43,.25);
+  border-radius:99px;padding:8px 16px;cursor:pointer;transition:border-color .15s ease,background .15s ease,color .15s ease;
+}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.chip[aria-pressed="true"]::after{content:" ✓"}
+
+/* ── Facturació ── */
+.emptybox{border:1.5px dashed rgba(38,49,43,.25);border-radius:9px;padding:34px 28px;text-align:center}
+.emptybox p{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.05em;color:var(--ink-soft)}
 </style>
 </head>
-<body data-reveal>
+<body>
 
+<!-- ══════════ HEADER ══════════ -->
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="mockup-homepage-oxalpha.html"><span class="brand-name">Criteri <em>ESG</em></span></a>
+    <a class="brand" href="mockup-homepage-v1-original.html">
+      <img src="../logos/LOGO-CRITERIESG.svg" alt="" onerror="this.style.display='none'">
+      <span class="brand-name">Criteri <em>ESG</em></span>
+    </a>
     <nav class="mainnav">
       <a href="mockup-informes.html">Informes</a>
       <a href="mockup-que-fem.html">Què fem</a>
       <a href="mockup-estandares.html">Estàndards</a>
       <a href="mockup-qui-som.html">Qui som</a>
       <a href="mockup-preus.html">Preus</a>
-      <a class="cta-mini" href="mockup-registro.html">Comença</a>
+      <a class="cta-mini active" href="#">El meu compte</a>
     </nav>
   </div>
 </header>
 
-<section class="acc-hero">
+<!-- ══════════ PAGE HERO ══════════ -->
+<section class="pagehero">
   <div class="wrap">
-    <p class="eyebrow">El meu compte</p>
-    <h1>Les teves preferències i les teves certificacions en un sol lloc.</h1>
+    <p class="eyebrow">Compte · Maria Puig</p>
+    <h1>El meu compte</h1>
+    <p class="lead">Les teves preferències i les teves certificacions en un sol lloc.</p>
   </div>
 </section>
 
-<section class="acc-layout">
-  <div class="wrap" style="max-width:1320px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:36px">
-    <!-- Nav lateral -->
-    <nav class="acc-nav">
-      <a class="active" href="#">Perfil</a>
-      <a href="#">Newsletter</a>
-      <a href="#">El meu pla</a>
-      <a href="#">Els meus estàndards ESG</a>
-      <a href="#">Altres interessos</a>
-      <a href="#">Facturació</a>
-      <a href="#" style="color:#B3563B">Tanca la sessió</a>
+<!-- ══════════ CONTINGUT ══════════ -->
+<section class="acct tinted">
+  <div class="wrap acct-grid">
+
+    <!-- SIDEBAR -->
+    <nav class="sidenav" aria-label="Seccions del compte">
+      <a href="#perfil" class="active">Perfil</a>
+      <a href="#newsletter">Newsletter</a>
+      <a href="#pla">El meu pla</a>
+      <a href="#estandards">Els meus estàndards ESG</a>
+      <a href="#interessos">Altres interessos</a>
+      <a href="#facturacio">Facturació</a>
+      <a href="#" class="logout">Tanca la sessió</a>
     </nav>
 
+    <!-- CONTINGUT -->
     <div>
+
       <!-- PERFIL -->
-      <section class="acc-section">
+      <div class="acct-sec" id="perfil">
         <h2>Perfil</h2>
-        <p class="sub">Les teves dades bàsiques i el teu sector professional.</p>
-        <div class="form-grid">
-          <div class="camp"><label>Nom</label><input type="text" placeholder="Maria Puig" value="Maria Puig"></div>
-          <div class="camp"><label>Email</label><input type="email" value="maria@empresa.cat"></div>
-          <div class="camp"><label>Empresa</label><input type="text" placeholder="La teva organització" value="Cooperativa Terra"></div>
-          <div class="camp"><label>Sector professional</label>
-            <select>
-              <option>Consultoria ESG</option>
+        <p class="sub">Dades bàsiques del teu compte.</p>
+        <form class="formrow" onsubmit="return false;">
+          <div class="camp">
+            <label for="f-nom">Nom</label>
+            <input id="f-nom" type="text" value="Maria Puig">
+          </div>
+          <div class="camp">
+            <label for="f-email">Email</label>
+            <input id="f-email" type="email" value="maria@consultoria.cat">
+          </div>
+          <div class="camp full">
+            <label for="f-empresa">Empresa</label>
+            <input id="f-empresa" type="text" value="Consultoria Puig S.L.">
+          </div>
+          <div class="camp full">
+            <label for="f-sector">Sector professional</label>
+            <select id="f-sector">
+              <option value="">— Selecciona —</option>
+              <option selected>Consultoria ESG</option>
               <option>Director de sostenibilitat</option>
               <option>Compliance officer</option>
               <option>Investor relations</option>
@@ -90,74 +196,200 @@
               <option>Altres</option>
             </select>
           </div>
-        </div>
-      </section>
+          <div class="full">
+            <button class="btn btn-solid" type="submit" id="save-btn" style="cursor:pointer">Desa els canvis</button>
+            <span class="saved-msg" id="saved-msg">✓ Canvis desats</span>
+          </div>
+        </form>
+      </div>
 
       <!-- NEWSLETTER -->
-      <section class="acc-section">
+      <div class="acct-sec" id="newsletter">
         <h2>Newsletter</h2>
-        <p class="sub">Reps la newsletter bimensual. Tria l'idioma.</p>
-        <div class="form-grid">
-          <div class="camp"><label>Idioma de la newsletter</label>
-            <select><option>Català</option><option>Castellà</option></select>
-          </div>
+        <p class="sub">La bimensual, cada dues setmanes. Cancel·la quan vulguis.</p>
+
+        <div class="card switchrow">
+          <span class="switch-label">Reps la newsletter bimensual.</span>
+          <span class="switch">
+            <input type="checkbox" id="nl-switch" checked aria-label="Rebre la newsletter bimensual">
+            <span class="slider"></span>
+          </span>
         </div>
-      </section>
+
+        <p class="switch-label" style="margin-bottom:12px"><strong style="font-weight:500">Idioma de la newsletter</strong></p>
+        <div class="langpills" role="group" aria-label="Idioma de la newsletter">
+          <button type="button" class="pill on" aria-pressed="true">Català</button>
+          <button type="button" class="pill" aria-pressed="false">Castellà</button>
+        </div>
+      </div>
 
       <!-- EL MEU PLA -->
-      <section class="acc-section">
+      <div class="acct-sec" id="pla">
         <h2>El meu pla</h2>
         <p class="sub">Gestiona la teva subscripció.</p>
-        <div class="pla-card">
-          <div>
-            <div class="pla-nom">Pla Free</div>
-            <div class="pla-det">Newsletter + accés a informes &gt;6 mesos</div>
-          </div>
-          <a href="mockup-preus.html">Fes-te Premium →</a>
-        </div>
-      </section>
 
-      <!-- ELS MEUS ESTÀNDARDS -->
-      <section class="acc-section">
+        <article class="card placard">
+          <div class="plan-id">
+            <span class="plan-status">Pla actual</span>
+            <h3>Pla Free</h3>
+            <p class="plan-desc">Newsletter + accés a informes &gt;6 mesos</p>
+          </div>
+          <a class="btn btn-solid" href="mockup-preus.html">Fes-te Premium →</a>
+        </article>
+
+        <p class="pla-note">
+          Al novembre de 2026. Durant setembre i octubre, tot el contingut és gratuït.
+          A partir de novembre, els informes recents (últims 6 mesos) i les seccions premium
+          de la newsletter requeriran subscripció Premium.
+        </p>
+      </div>
+
+      <!-- ELS MEUS ESTÀNDARDS ESG -->
+      <div class="acct-sec" id="estandards">
         <h2>Els meus estàndards ESG</h2>
         <p class="sub">Selecciona els estàndards que ja té la teva empresa.</p>
-        <p style="font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px">Regulacions (5)</p>
-        <div class="chips" style="margin-bottom:16px">
-          <span class="chip sel">CSRD / ESRS</span><span class="chip">CSDDD</span><span class="chip">SFDR</span><span class="chip">Taxonomia UE</span><span class="chip">EMAS</span>
+
+        <div class="chipgroup">
+          <h3>Regulacions (5)</h3>
+          <div class="chips">
+            <button type="button" class="chip" aria-pressed="true">CSRD / ESRS</button>
+            <button type="button" class="chip" aria-pressed="false">CSDDD</button>
+            <button type="button" class="chip" aria-pressed="true">SFDR</button>
+            <button type="button" class="chip" aria-pressed="true">Taxonomia UE</button>
+            <button type="button" class="chip" aria-pressed="false">EMAS</button>
+          </div>
         </div>
-        <p style="font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px">Frameworks (5)</p>
-        <div class="chips" style="margin-bottom:16px">
-          <span class="chip">GRI</span><span class="chip">SASB</span><span class="chip">TCFD</span><span class="chip">TNFD</span><span class="chip">ISO 26000</span>
+
+        <div class="chipgroup">
+          <h3>Frameworks (5)</h3>
+          <div class="chips">
+            <button type="button" class="chip" aria-pressed="true">GRI</button>
+            <button type="button" class="chip" aria-pressed="false">SASB</button>
+            <button type="button" class="chip" aria-pressed="false">TCFD</button>
+            <button type="button" class="chip" aria-pressed="false">TNFD</button>
+            <button type="button" class="chip" aria-pressed="false">ISO 26000</button>
+          </div>
         </div>
-        <p style="font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px">Certificacions (6)</p>
-        <div class="chips">
-          <span class="chip cert sel">EcoVadis</span><span class="chip cert">B Corp</span><span class="chip cert">MSCI ESG</span><span class="chip cert">Sustainalytics</span><span class="chip cert">CDP</span><span class="chip cert">SGE 21</span>
+
+        <div class="chipgroup">
+          <h3>Certificacions (6)</h3>
+          <div class="chips">
+            <button type="button" class="chip" aria-pressed="true">EcoVadis</button>
+            <button type="button" class="chip" aria-pressed="true">B Corp</button>
+            <button type="button" class="chip" aria-pressed="false">MSCI ESG</button>
+            <button type="button" class="chip" aria-pressed="false">Sustainalytics</button>
+            <button type="button" class="chip" aria-pressed="false">CDP</button>
+            <button type="button" class="chip" aria-pressed="false">SGE 21</button>
+          </div>
         </div>
-      </section>
+      </div>
 
       <!-- ALTRES INTERESSOS -->
-      <section class="acc-section">
+      <div class="acct-sec" id="interessos">
         <h2>Altres interessos</h2>
         <p class="sub">Altres temes que t'interessen.</p>
         <div class="chips">
-          <span class="chip sel">Risc climàtic / TCFD</span><span class="chip">Drets humans / Due diligence</span><span class="chip">Economia circular</span>
+          <button type="button" class="chip" aria-pressed="true">Risc climàtic / TCFD</button>
+          <button type="button" class="chip" aria-pressed="true">Drets humans / Due diligence</button>
+          <button type="button" class="chip" aria-pressed="false">Scope 3</button>
+          <button type="button" class="chip" aria-pressed="false">Economia social i transformadora</button>
+          <button type="button" class="chip" aria-pressed="false">Arrelament territorial</button>
+          <button type="button" class="chip" aria-pressed="false">Més enllà del Checkbox</button>
         </div>
-      </section>
+      </div>
+
+      <!-- FACTURACIÓ -->
+      <div class="acct-sec" id="facturacio">
+        <h2>Facturació</h2>
+        <p class="sub">Rebuts i dades de pagament.</p>
+        <div class="emptybox">
+          <p>ENCARA NO HI HA REBUTS · QUAN ET FACIS PREMIUM, LES TEVES FACTURES APAREIXERAN AQUÍ</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ══════════ FOOTER ══════════ -->
 <footer class="site">
   <div class="wrap">
     <div class="cols">
-      <div><span class="brand-name">Criteri <em>ESG</em></span><p class="tag">Intel·ligència ESG per a decisions ètiques.</p></div>
-      <div><h4>Producte</h4><ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul></div>
-      <div><h4>Projecte</h4><ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul></div>
-      <div><h4>Legal</h4><ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul></div>
+      <div>
+        <span class="brand-name">Criteri <em>ESG</em></span>
+        <p class="tag">Intel·ligència ESG destil·lada amb criteri humà.</p>
+      </div>
+      <div>
+        <h4>Producte</h4>
+        <ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul>
+      </div>
+      <div>
+        <h4>Projecte</h4>
+        <ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul>
+      </div>
     </div>
-    <div class="base"><span>© 2026 Criteri ESG. Tots els drets reservats.</span><span>RIGOR · FRESCOR · SOBRIETAT</span></div>
+    <div class="base">
+      <span>© 2026 CRITERI ESG</span>
+      <span>RIGOR · FRESCOR · SOBRIETAT</span>
+    </div>
   </div>
 </footer>
 
+<script>
+// Revelat subtil en scroll — respecta prefers-reduced-motion
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+
+// Chips: commutar selecció
+document.querySelectorAll('.chip').forEach(ch=>{
+  ch.addEventListener('click', ()=>{
+    ch.setAttribute('aria-pressed', ch.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+  });
+});
+
+// Pills d'idioma (exclusius)
+(function(){
+  const pills = document.querySelectorAll('.langpills .pill');
+  pills.forEach(p=>p.addEventListener('click', ()=>{
+    pills.forEach(x=>{x.classList.remove('on'); x.setAttribute('aria-pressed','false');});
+    p.classList.add('on'); p.setAttribute('aria-pressed','true');
+  }));
+})();
+
+// Desar perfil (simulat)
+(function(){
+  const b = document.getElementById('save-btn'), m = document.getElementById('saved-msg');
+  b.addEventListener('click', ()=>{
+    m.classList.add('show');
+    setTimeout(()=>m.classList.remove('show'), 2200);
+  });
+})();
+
+// Scrollspy de la sidebar
+(function(){
+  const links = [...document.querySelectorAll('.sidenav a[href^="#"]')];
+  const secs = ['perfil','newsletter','pla','estandards','interessos','facturacio']
+    .map(id=>document.getElementById(id)).filter(Boolean);
+  const spy = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(l=>l.classList.toggle('active', l.getAttribute('href') === '#'+e.target.id));
+      }
+    });
+  },{rootMargin:'-35% 0px -55% 0px'});
+  secs.forEach(s=>spy.observe(s));
+})();
+</script>
 </body>
 </html>

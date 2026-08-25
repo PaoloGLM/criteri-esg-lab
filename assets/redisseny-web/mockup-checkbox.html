@@ -4,32 +4,88 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Més enllà del checkbox — Criteri ESG</title>
+<meta name="description" content="Cinc preguntes que no es responen amb un KPI. Reflexió ètica mensual per a directors de sostenibilitat que prefereixen pensar abans de complir.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%235E8772'/%3E%3Ccircle cx='16' cy='10' r='3' fill='%23F5E381'/%3E%3Ccircle cx='11' cy='19' r='3' fill='%23F2F5F1'/%3E%3Ccircle cx='21' cy='19' r='3' fill='%23F2F5F1'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="oxalpha-brand.css">
+<link rel="stylesheet" href="v1-design.css">
 <style>
-.chk-hero{background:var(--ink-deep);color:var(--bg);padding:64px 0 56px}
-.chk-hero .eyebrow{color:var(--highlight)}
-.chk-hero h1{color:var(--bg)}
-.chk-hero .lead{color:rgba(242,245,241,.8)}
-.pregunta{border-top:1px solid rgba(38,49,43,.12);padding:44px 0}
-.pregunta .q-num{font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-.pregunta h2{font-family:var(--font-display);font-weight:500;font-size:clamp(1.4rem,2.4vw,1.9rem);line-height:1.3;color:var(--ink-deep);max-width:26ch;margin-bottom:16px}
-.pregunta .reflexio{font-size:.95rem;line-height:1.7;color:var(--ink);max-width:68ch;margin-bottom:18px}
-.pregunta .cita{font-family:var(--font-display);font-style:italic;font-size:1.05rem;color:var(--accent);border-left:3px solid var(--highlight);padding-left:18px;margin:20px 0}
-.proposta{background:var(--bg);border-radius:10px;padding:20px 24px;display:flex;gap:16px;align-items:flex-start;margin-top:14px}
-.proposta .ic{font-size:1.2rem}
-.proposta .t{font-family:var(--font-mono);font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
-.proposta p{font-size:.88rem;color:var(--ink);margin:0;line-height:1.55}
-.badge-premium{display:inline-block;font-family:var(--font-mono);font-size:.56rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:var(--bg);padding:4px 12px;border-radius:99px;margin-left:10px;vertical-align:middle}
+/* ── Hero fosc ── */
+.ckhero{background:var(--ink-deep);color:var(--bg);padding:96px 0 84px;border-bottom:1px solid rgba(170,201,182,.14)}
+.ckhero .eyebrow{color:var(--highlight)}
+.ckhero .eyebrow::before{background:var(--highlight)}
+.ckhero h1{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(2.4rem,4.4vw,3.7rem);line-height:1.08;letter-spacing:-.012em;
+  color:var(--bg);max-width:22ch;margin-bottom:24px;text-wrap:balance;
+}
+.ckhero .sub{max-width:54ch;color:rgba(242,245,241,.78);font-size:1.08rem;line-height:1.6;text-wrap:pretty}
+.ckmeta{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
+.ckmeta span{
+  font-family:var(--font-mono);font-size:.64rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--verd-clar);
+  border:1px solid rgba(170,201,182,.3);border-radius:99px;padding:7px 13px;
+}
+
+/* ── Preguntes ── */
+.qblock{padding:88px 0;border-top:1px solid rgba(38,49,43,.1)}
+.qblock.tinted{background:var(--bg)}
+.qhead{display:grid;grid-template-columns:minmax(70px,110px) 1fr;gap:28px;align-items:start;margin-bottom:20px}
+@media(max-width:700px){.qhead{grid-template-columns:1fr;gap:12px}}
+.qhead .k{
+  font-family:var(--font-display);font-weight:500;line-height:.9;
+  font-size:clamp(2.6rem,5vw,4.2rem);color:var(--verd-clar);letter-spacing:-.02em;
+}
+.qhead h2.sec-title{margin-bottom:10px;font-style:italic}
+.qtype{
+  font-family:var(--font-mono);font-size:.64rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+}
+.reflexio{
+  max-width:62ch;color:var(--ink);
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.12rem,1.6vw,1.32rem);line-height:1.55;text-wrap:pretty;
+  margin:0 0 36px;
+}
+
+/* ── Resposta de Criteri ── */
+.resposta{background:var(--paper);max-width:780px;padding:34px 38px 36px;border-radius:9px}
+.rlabel{
+  font-family:var(--font-mono);font-size:.66rem;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px;
+}
+.badge-prem{
+  font-family:var(--font-mono);font-size:.56rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--verd-clar);
+  background:var(--ink);border-radius:99px;padding:4px 10px;
+}
+.rnote{font-family:var(--font-mono);font-size:.63rem;color:var(--ink-soft);letter-spacing:.04em;margin-bottom:22px}
+.resposta .body{font-size:.95rem;line-height:1.72;color:var(--ink);text-wrap:pretty}
+.resposta .body+.body{margin-top:15px}
+.resposta .body strong{font-weight:500;color:var(--ink-deep)}
+
+/* ── Proposta pràctica ── */
+.proposta{
+  background:var(--bg);border:1px dashed rgba(74,95,83,.4);border-radius:9px;
+  max-width:780px;padding:22px 26px;margin-top:16px;display:flex;gap:18px;align-items:flex-start;
+}
+.proposta .mark{font-family:var(--font-display);font-size:1.5rem;line-height:1;color:var(--accent)}
+.plabel{
+  font-family:var(--font-mono);font-size:.62rem;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;
+}
+.proposta p.txt{font-size:.88rem;color:var(--ink-soft);line-height:1.6;text-wrap:pretty}
 </style>
 </head>
-<body data-reveal>
+<body>
 
+<!-- ══════════ HEADER ══════════ -->
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="mockup-homepage-oxalpha.html"><span class="brand-name">Criteri <em>ESG</em></span></a>
+    <a class="brand" href="mockup-homepage-v1-original.html"><span class="brand-name">Criteri <em>ESG</em></span></a>
     <nav class="mainnav">
       <a href="mockup-informes.html">Informes</a>
       <a href="mockup-que-fem.html">Què fem</a>
@@ -41,107 +97,215 @@
   </div>
 </header>
 
-<section class="chk-hero">
-  <div class="wrap">
+<!-- ══════════ HERO FOSC ══════════ -->
+<section class="ckhero">
+  <div class="wrap reveal">
     <p class="eyebrow">Més enllà del checkbox</p>
     <h1>Preguntes que no es responen amb un KPI.</h1>
-    <p class="lead">Per a directors de sostenibilitat que prefereixen pensar abans de complir.</p>
+    <p class="sub">Per a directors de sostenibilitat que prefereixen pensar abans de complir. Cada mes, una nova pregunta editorial: sense resposta única, amb context ètic i una proposta per treballar-la amb el teu equip.</p>
+    <div class="ckmeta" aria-hidden="true">
+      <span>05 preguntes · edició 2026</span>
+      <span>Preguntes visibles per a tothom</span>
+      <span>Respostes + propostes · Premium</span>
+    </div>
   </div>
 </section>
 
-<section class="block" style="padding-top:0">
+<!-- ══════════ 01 ══════════ -->
+<section class="qblock" id="p1">
   <div class="wrap">
-
-    <!-- PREGUNTA 1 -->
-    <div class="pregunta reveal">
-      <p class="q-num">Pregunta 01</p>
-      <h2>Si la teva empresa desaparegués demà, qui ho notaria de veritat —i per què?</h2>
-      <p class="reflexio">La resposta et diu més sobre el teu valor real que cap mètrica ESG. Les empreses que només creen valor per a accionistes no deixen buit quan desapareixen: el seu lloc l'ocupa algú altre en un quart de trimestre. Les que sí que deixen buit són les que els clients, els proveïdors o el territori no poden substituir fàcilment.</p>
-      <p class="cita">La majoria de directors no sap respondre. Tenen 47 KPIs i cap que sintetitzi. Tenir massa mètriques sense un relat coherent és tan inútil com no tenir-ne cap.</p>
-      <div class="proposta">
-        <span class="ic">🧭</span>
-        <div>
-          <p class="t">Proposta per a l'equip · 30-90 min <span class="badge-premium">Premium</span></p>
-          <p>Generació d'idees: cada membre de l'equip escriu en silenci qui notaria la desaparició de l'empresa —i per què—, i es comparen les llistes. Les coincidències són el vostre valor real; les absències, el vostre risc estratègic.</p>
-        </div>
+    <div class="qhead reveal">
+      <span class="k" aria-hidden="true">01</span>
+      <div>
+        <h2 class="sec-title">Si la teva empresa desaparegués demà, qui ho notaria de veritat —i per què?</h2>
+        <p class="qtype">Oberta, sense resposta única, formulada per crear incomoditat productiva. Visible per a tothom.</p>
       </div>
     </div>
 
-    <!-- PREGUNTA 2 -->
-    <div class="pregunta reveal">
-      <p class="q-num">Pregunta 02</p>
-      <h2>Si demà et demanessin demostrar l'impacte positiu de la teva empresa amb un sol dato, quin triaries —i per què?</h2>
-      <p class="reflexio">La pregunta és deliberadament incòmoda. Gairebé tot director de sostenibilitat admet que hi ha pràctiques que prefereix no exhibir. No necessàriament perquè siguin il·legals: perquè són inconsistents amb la narrativa pública. El sol dato que triaries és la teva veritat operativa; els que amagaries, la teva contradicció.</p>
-      <div class="proposta">
-        <span class="ic">⚖️</span>
-        <div>
-          <p class="t">Proposta per a l'equip · 30-90 min <span class="badge-premium">Premium</span></p>
-          <p>Dos bàndols: un defensa el dato triat com a prova d'impacte real; l'altre l'ataca com a selecció interessada. El debat revela on és la vostra credibilitat real.</p>
-        </div>
+    <p class="reflexio reveal">La resposta et diu més sobre el teu valor real que cap mètrica ESG. Les empreses que només creen valor per a accionistes no deixen buit quan desapareixen...</p>
+
+    <div class="resposta card reveal">
+      <p class="rlabel">La resposta de Criteri <span class="badge-prem">Premium</span></p>
+      <p class="rnote">200-300 paraules des de la veu editorial de Criteri ESG. No és la resposta: és un marc per pensar.</p>
+      <p class="body">El test definitiu de rellevància no el dona cap rànquing: el dona <strong>el buit que deixaries</strong>. Fes l'exercici seriosament i fes-ho per llistes. Proveïdors que depenien dels teus pagaments puntuals? Treballadors amb un projecte professional arrelat aquí? Una comunitat que disposava d'un servei que ningú més oferiria al barri? Si la llista es redueix a fons d'inversió que reubiquen el capital en dues setmanes, la teva empresa és líquida: fàcil de substituir, difícil de plorar.</p>
+      <p class="body">Això no és pessimisme; és diagnòstic. La dignitat —la primera de les nostres conviccions— no es declara en un codi de conducta: es constata en les relacions que et necessiten per raons no transaccionals. Una empresa amb arrelament territorial real deixa veïns, proveïdors propers i coneixement acumulat que no es pot moure amb un clic. Una empresa que només optimitza marge deixa un logotip i un local per llogar.</p>
+      <p class="body">La conseqüència operativa per a tu és directa: si el pla de sostenibilitat no augmenta el nombre de persones que notarien l'absència —salaris millors, proveïdors locals consolidats, serveis essencials mantinguts— estàs informant sobre riscos, no construint rellevància. El KPI correcte no mesura el que declares; mesura <strong>el que faltaria</strong>.</p>
+    </div>
+
+    <div class="proposta reveal">
+      <span class="mark" aria-hidden="true">▸</span>
+      <div>
+        <p class="plabel">Proposta pràctica amb el teu equip <span class="badge-prem">Reservada a Premium</span></p>
+        <p class="txt">Proposta pràctica per fer amb el teu equip (30-90 min). Tres tipus: generació d'idees, dos bàndols, adopció de personatges. Reservada a Premium.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 02 ══════════ -->
+<section class="qblock tinted" id="p2">
+  <div class="wrap">
+    <div class="qhead reveal">
+      <span class="k" aria-hidden="true">02</span>
+      <div>
+        <h2 class="sec-title">Si demà et demanessin demostrar l'impacte positiu de la teva empresa amb un sol dato, quin triaries —i per què?</h2>
+        <p class="qtype">Oberta, sense resposta única, formulada per crear incomoditat productiva. Visible per a tothom.</p>
       </div>
     </div>
 
-    <!-- PREGUNTA 3 -->
-    <div class="pregunta reveal">
-      <p class="q-num">Pregunta 03</p>
-      <h2>Si haguessis de defensar davant un regulador que la teva empresa és "ètica", quines tres pràctiques defensaries i quines tres amagaries?</h2>
-      <p class="reflexio">La pregunta és kantiana en la seva forma i marxista en la seva sospita. És incòmoda per a gairebé tothom. Les tres decisions que afloren solen tenir un patró comú: són les que s'han pres per rendibilitat a curt termini, sota pressió comercial, o sense preguntar-se a qui afectaven. La distància entre les dues llistes és la vostra hipocresia operativa.</p>
-      <div class="proposta">
-        <span class="ic">🎭</span>
-        <div>
-          <p class="t">Proposta per a l'equip · 30-90 min <span class="badge-premium">Premium</span></p>
-          <p>Adopció de personatges: un membre fa de regulador dur, un altre de director acusat, un tercer de periodista. La improvisació destapa les inconsistències que cap auditoria no troba.</p>
-        </div>
+    <p class="reflexio reveal">La majoria de directors no sap respondre. Tenen 47 KPIs i cap que sintetitzi. Tenir massa mètriques sense un relat coherent és tan inútil com no tenir-ne cap...</p>
+
+    <div class="resposta card reveal">
+      <p class="rlabel">La resposta de Criteri <span class="badge-prem">Premium</span></p>
+      <p class="rnote">200-300 paraules des de la veu editorial de Criteri ESG. No és la resposta: és un marc per pensar.</p>
+      <p class="body">La mètrica mai és el problema; el problema és l'absència de criteri de selecció. Demanda't l'exercici invers: quin únic dato defendries davant del consell com el retrat fidel de l'impacte positiu de la teva empresa? El salari mínim comparat amb el sou mitjà del sector? Les emissions evitades verificades per un tercer? El percentatge de compra a proveïdors locals?</p>
+      <p class="body">Cada elecció traiciona una teoria del valor. Qui tria emissions pensa en límits planetaris; qui tria salaris, en dignitat; qui tria proveïdors locals, en arrelament. No hi ha resposta única —i aquesta és precisament la trampa dels quadres de comandament de 47 indicadors: la il·lusió que podem evitar triar. La jerarquia exigeix filosofia. Una empresa que no sap quin dels seus números explica la seva història no té estratègia de sostenibilitat: té un arxiu.</p>
+      <p class="body">El criteri que proposem és senzill: tria el dato que et faria més vergonya falsificar. Aquell que connecta amb una persona concreta, no amb un agregat. Després construeix el relat al revés —del fet fonamental cap als KPIs de suport, mai a la inversa. La transparència que no prioritza és decoració.</p>
+    </div>
+
+    <div class="proposta reveal">
+      <span class="mark" aria-hidden="true">▸</span>
+      <div>
+        <p class="plabel">Proposta pràctica amb el teu equip <span class="badge-prem">Reservada a Premium</span></p>
+        <p class="txt">Proposta pràctica per fer amb el teu equip (30-90 min). Tres tipus: generació d'idees, dos bàndols, adopció de personatges. Reservada a Premium.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 03 ══════════ -->
+<section class="qblock" id="p3">
+  <div class="wrap">
+    <div class="qhead reveal">
+      <span class="k" aria-hidden="true">03</span>
+      <div>
+        <h2 class="sec-title">Si haguessis de defensar davant un regulador que la teva empresa és "ètica", quines tres pràctiques defensaries i quines tres amagaries?</h2>
+        <p class="qtype">Oberta, sense resposta única, formulada per crear incomoditat productiva. Visible per a tothom.</p>
       </div>
     </div>
 
-    <!-- PREGUNTA 4 -->
-    <div class="pregunta reveal">
-      <p class="q-num">Pregunta 04</p>
-      <h2>Per a qui treballes realment quan ningú t'està mirant?</h2>
-      <p class="reflexio">Quan un director de sostenibilitat està sol al seu despatx, sense pressió d'inversors, sense auditoria, sense comitè — per a qui treballa realment? La resposta honesta sol ser incòmoda: per a la carrera, per a l'expedient, per a l'informe que es lliurarà a temps. El treball que es fa quan ningú mira és l'única definició fiable de cultura empresarial.</p>
-      <div class="proposta">
-        <span class="ic">🔍</span>
-        <div>
-          <p class="t">Proposta per a l'equip · 30-90 min <span class="badge-premium">Premium</span></p>
-          <p>Generació d'idees en silenci: què faria cadascú si sapigués que ningú ho mirarà? Després, es contrasta amb el que l'empresa diu que valora. La distància és el termòmetre real de la cultura.</p>
-        </div>
+    <p class="reflexio reveal">La pregunta és deliberadament incòmoda. Gairebé tot director de sostenibilitat admet que hi ha pràctiques que prefereix no exhibir. No necessàriament perquè siguin il·legals: perquè són inconsistents...</p>
+
+    <div class="resposta card reveal">
+      <p class="rlabel">La resposta de Criteri <span class="badge-prem">Premium</span></p>
+      <p class="rnote">200-300 paraules des de la veu editorial de Criteri ESG. No és la resposta: és un marc per pensar.</p>
+      <p class="body">L'exercici té dues columnes i cap truc. A la primera, les tres pràctiques que defensaries sense rubor: aquelles on la decisió costaria diners i la vau prendre igualment. A la segona, les tres que amagaries. Gairebé sempre comparteixen un tret: algú va detectar el problema, el va documentar internament, i l'organització va decidir gestionar la percepció en lloc del fet.</p>
+      <p class="body">Fixa't en què separa les columnes. No és la materialitat ni el marc normatiu: és la coherència entre els principis declarats i les decisions preses quan ningú mirava. Un codi de conducta que conviu amb tres pràctiques ocultes no és un document ètic; és una coartada. I la inconsistència —no la ilegalitat— és el terreny propi de l'ètica empresarial: allà on la llei encara no arriba però el compromís sí que hauria d'estar.</p>
+      <p class="body">La sortida no és exhibir-ho tot —la transparència absoluta també pot perjudicar tercers— sinó reduir el contingut de la segona columna any rere any i poder-ho demostrar amb dates i decisions. Si després de dos exercicis les tres pràctiques segueixen allà, el problema no és de comunicació. És de govern. I cap certificació no el taparà gaire temps.</p>
+    </div>
+
+    <div class="proposta reveal">
+      <span class="mark" aria-hidden="true">▸</span>
+      <div>
+        <p class="plabel">Proposta pràctica amb el teu equip <span class="badge-prem">Reservada a Premium</span></p>
+        <p class="txt">Proposta pràctica per fer amb el teu equip (30-90 min). Tres tipus: generació d'idees, dos bàndols, adopció de personatges. Reservada a Premium.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 04 ══════════ -->
+<section class="qblock tinted" id="p4">
+  <div class="wrap">
+    <div class="qhead reveal">
+      <span class="k" aria-hidden="true">04</span>
+      <div>
+        <h2 class="sec-title">Per a qui treballes realment quan ningú t'està mirant?</h2>
+        <p class="qtype">Oberta, sense resposta única, formulada per crear incomoditat productiva. Visible per a tothom.</p>
       </div>
     </div>
 
-    <!-- PREGUNTA 5 -->
-    <div class="pregunta reveal" style="border-bottom:1px solid rgba(38,49,43,.12)">
-      <p class="q-num">Pregunta 05</p>
-      <h2>Si l'objectiu de la teva empresa fos el bé comú i no la maximització de benefici, quines tres decisions dels últims dos anys no s'haurien pres?</h2>
-      <p class="reflexio">Oberta, sense resposta única, formulada per crear incomoditat productiva. Visible per a tothom. Les tres decisions que afloren delaten el vostre llindar: on la promesa ètica es va doblegar per la comptabilitat trimestral. No és una condemna: és el mapa per decidir on NO tornar a cedir.</p>
-      <div class="proposta">
-        <span class="ic">🏛️</span>
-        <div>
-          <p class="t">Proposta per a l'equip · 30-90 min <span class="badge-premium">Premium</span></p>
-          <p>Dos bàndols: un defensa que la decisió era inevitable, l'altre que hi havia alternatives ètiques. El resultat és una llista de decisions que la propera vegada es podrien prendre diferent.</p>
-        </div>
+    <p class="reflexio reveal">Quan un director de sostenibilitat està sol al seu despatx, sense pressió d'inversors, sense auditoria, sense comitè — per a qui treballa realment? La resposta honesta sol ser incòmoda...</p>
+
+    <div class="resposta card reveal">
+      <p class="rlabel">La resposta de Criteri <span class="badge-prem">Premium</span></p>
+      <p class="rnote">200-300 paraules des de la veu editorial de Criteri ESG. No és la resposta: és un marc per pensar.</p>
+      <p class="body">La majoria de nosaltres treballem per a qui ens avalua, no per a qui ens justifica. Fes la prova de les tres decisiones: repassa l'últim trimestre, apunta tres decisiones rellevants que vas prendre i, al costat de cadascuna, escriu a qui va beneficiar principalment —l'accionista, el treballador, el proveïdor, la comunitat, el medi ambient, o simplement el teu expedient professional. Quan el patró aparegui, no cal comentari.</p>
+      <p class="body">Això no converteix el director en còmplice: revela el disseny del sistema. Els incentius configuren la lleialtat real molt abans que els valors. Però nomenar el patró és el primer acte de llibertat professional. Qui no sap a qui serveix no pot corregir-ho; qui ja ho sap no pot alegar ingenuïtat. És incòmode per a gairebé tothom —i precisament per això és útil.</p>
+      <p class="body">El nostre criteri és senzill: <strong>la sostenibilitat existeix per a qui no té seient a la sala</strong>. Si totes les teves decisiones beneficien exclusivament qui et mira, no estàs fent sostenibilitat amb dificultats; estàs fent relacions públiques amb bona fe. La correcció no passa per un discurs nou, sinó per una sola decisión presa deliberadament a favor d'un absent — i després una altra.</p>
+    </div>
+
+    <div class="proposta reveal">
+      <span class="mark" aria-hidden="true">▸</span>
+      <div>
+        <p class="plabel">Proposta pràctica amb el teu equip <span class="badge-prem">Reservada a Premium</span></p>
+        <p class="txt">Proposta pràctica per fer amb el teu equip (30-90 min). Tres tipus: generació d'idees, dos bàndols, adopció de personatges. Reservada a Premium.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 05 ══════════ -->
+<section class="qblock" id="p5">
+  <div class="wrap">
+    <div class="qhead reveal">
+      <span class="k" aria-hidden="true">05</span>
+      <div>
+        <h2 class="sec-title">Si l'objectiu de la teva empresa fos el bé comú i no la maximització de benefici, quines tres decisiones dels últims dos anys no s'haurien pres?</h2>
+        <p class="qtype">Oberta, sense resposta única, formulada per crear incomoditat productiva. Visible per a tothom.</p>
       </div>
     </div>
 
-    <p class="note" style="margin:36px 0 0;font-family:var(--font-mono);font-size:.66rem;color:var(--ink-soft);letter-spacing:.05em">
-      200-300 paraules des de la veu editorial de Criteri ESG. No és la resposta: és un marc per pensar.
+    <p class="reflexio reveal">Amb aquesta pregunta, la sospita es fa constructora. No et demana què fas malament: et demana què deixaries de fer si el criteri fos un altre. És l'auditoria de legitimidad més barata que existeix — i la menys practicada...</p>
+
+    <div class="resposta card reveal">
+      <p class="rlabel">La resposta de Criteri <span class="badge-prem">Premium</span></p>
+      <p class="rnote">200-300 paraules des de la veu editorial de Criteri ESG. No és la resposta: és un marc per pensar.</p>
+      <p class="body">Aquesta pregunta no imagina una empresa diferent: revisa la teva, decisió per decisió, amb l'objectiu canviat. La llista que produeix no és una fantasia ètica — és el mapa de decisions que van passar el filtre del benefici però no el de la legitimidad.</p>
+      <p class="body">Els patrons es repeteixen entre empreses molt diferents: acomiadaments executats en trimestres de rècord; condicions imposades a proveïdors sabent que només sobreviuen empobrint-se; pressions discretes contra regulacions que l'empresa defensa públicament; productes dissenyats per durar poc que els informes de sostenibilitat ignoren. Cap d'aquestes decisiones era il·legal. Totes van passar per una reunió on algú va dir «això no ens queda bé» — i algú altre va respondre «el mercat és així».</p>
+      <p class="body">El bé comú, aplicat així, no és un lema: és <strong>un filtre previ amb rang de vet</strong>. Converteix «és rendible?» en «és rendible i no vulnera dignitat ni territori?». La diferència sembla subtil fins que apareixen les tres decisiones davant teu. Si la llista està buida, enhorabona — i verifica-ho amb algú que no signi la presentació. Si no ho està, tens el pla d'acció més concret del teu informe anual: no el redactis com a promesa futura. Tracta'l com a correcció immediata.</p>
+    </div>
+
+    <div class="proposta reveal">
+      <span class="mark" aria-hidden="true">▸</span>
+      <div>
+        <p class="plabel">Proposta pràctica amb el teu equip <span class="badge-prem">Reservada a Premium</span></p>
+        <p class="txt">Proposta pràctica per fer amb el teu equip (30-90 min). Tres tipus: generació d'idees, dos bàndols, adopció de personatges. Reservada a Premium.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PRINCIPI ══════════ -->
+<section class="principle">
+  <div class="wrap reveal">
+    <blockquote>"La pregunta és kantiana en la seva forma i marxista en la seva sospita."</blockquote>
+    <p class="after">
+      Cinc preguntes, una mateixa estructura: forma rigorosa, sospita sobre el poder.
+      Les respostes de Criteri i les propostes per treballar amb el teu equip converteixen
+      aquesta sospita en mètode. <strong>No publiquem respostes fàcils. Publiquem preguntes que obliguin a pensar.</strong>
     </p>
   </div>
 </section>
 
+<!-- ══════════ CTA FINAL ══════════ -->
+<section class="finalcta tinted">
+  <div class="wrap reveal">
+    <h2>Pensa abans<br><span class="hl">de complir.</span></h2>
+    <p class="sub">Les cinc preguntes són —i seran— obertes per a tothom. Les respostes de Criteri i les propostes per fer amb el teu equip queden reservades als subscriptors Premium.</p>
+    <div class="actions">
+      <a class="btn btn-solid" href="mockup-preus.html">Fes-te Premium</a>
+      <a class="btn btn-ghost" href="mockup-registro.html">Crea un compte gratuït</a>
+    </div>
+    <p class="pilot-note"><b>EARLY BIRD</b> · 290 €/ANY · ELS PRIMERS 50 SUBSCRIPTORS</p>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
 <footer class="site">
   <div class="wrap">
     <div class="cols">
-      <div><span class="brand-name">Criteri <em>ESG</em></span><p class="tag">Intel·ligència ESG per a decisions ètiques.</p></div>
+      <div><span class="brand-name">Criteri <em>ESG</em></span><p class="tag">Intel·ligència regulatòria ESG destil·lada amb criteri humà.</p></div>
       <div><h4>Producte</h4><ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul></div>
       <div><h4>Projecte</h4><ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul></div>
       <div><h4>Legal</h4><ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul></div>
     </div>
-    <div class="base"><span>© 2026 Criteri ESG. Tots els drets reservats.</span><span>RIGOR · FRESCOR · SOBRIETAT</span></div>
+    <div class="base"><span>© 2026 CRITERI ESG</span><span>RIGOR · FRESCOR · SOBRIETAT</span></div>
   </div>
 </footer>
 
 <script>
+// Revelat subtil en scroll — respecta prefers-reduced-motion
 if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
   const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));

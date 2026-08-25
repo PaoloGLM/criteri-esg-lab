@@ -7,107 +7,144 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="oxalpha-brand.css">
+<link rel="stylesheet" href="v1-design.css">
 <style>
-.reg-layout{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 120px)}
-@media(max-width:860px){.reg-layout{grid-template-columns:1fr}}
-.reg-esq{background:var(--ink-deep);color:var(--bg);padding:56px 48px;display:flex;flex-direction:column;justify-content:center}
-.reg-esq h1{color:var(--bg);margin-bottom:16px}
-.reg-esq .lead{color:rgba(242,245,241,.8)}
-.reg-esq .llista{margin-top:28px;display:flex;flex-direction:column;gap:14px}
-.reg-esq .llista div{display:flex;gap:12px;align-items:flex-start;font-size:.9rem;color:rgba(242,245,241,.85)}
-.reg-esq .llista .mk{color:var(--verd-clar);font-weight:700}
-.reg-dre{background:var(--bg);padding:56px 48px;display:flex;flex-direction:column;justify-content:center}
-.reg-dre .form{max-width:420px;width:100%;margin:0 auto}
-.btn-google{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid rgba(38,49,43,.22);border-radius:10px;padding:13px;background:var(--paper);font-family:var(--font-sans);font-size:.9rem;font-weight:500;color:var(--ink);cursor:pointer;text-decoration:none}
-.btn-google .g{font-family:var(--font-display);font-weight:600;font-size:1.05rem}
-.separador{display:flex;align-items:center;gap:14px;margin:22px 0;color:var(--ink-soft);font-family:var(--font-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase}
+/* ── Split layout registre (v1) ── */
+.reg{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);min-height:calc(100vh - 64px)}
+@media(max-width:900px){.reg{grid-template-columns:1fr}}
+
+.reg-esq{
+  background:var(--ink-deep);color:var(--bg);
+  padding:84px 64px;display:flex;flex-direction:column;justify-content:center;
+}
+.reg-esq .eyebrow{color:var(--verd-clar)}
+.reg-esq h1{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(2rem,3.4vw,2.9rem);line-height:1.12;color:var(--bg);
+  text-wrap:balance;margin-bottom:20px;
+}
+.reg-esq .lead{color:rgba(242,245,241,.78);max-width:44ch;font-size:1rem;line-height:1.62;margin-bottom:34px;text-wrap:pretty}
+.reg-points{list-style:none;display:flex;flex-direction:column;gap:18px}
+.reg-points li{display:grid;grid-template-columns:26px 1fr;gap:12px;align-items:start;font-size:.95rem;color:rgba(242,245,241,.85)}
+.reg-points .mk{color:var(--verd-clar);font-weight:700;line-height:1.4}
+.reg-points strong{color:var(--bg);font-weight:500}
+.reg-note{
+  margin-top:40px;padding-top:22px;border-top:1px solid rgba(170,201,182,.16);
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;color:rgba(242,245,241,.55);
+}
+.reg-note b{color:var(--highlight);font-weight:600}
+
+.reg-dre{background:var(--bg);padding:64px 56px;display:flex;align-items:center;justify-content:center}
+.form{width:100%;max-width:480px}
+
+.btn-google{
+  width:100%;display:flex;align-items:center;justify-content:center;gap:12px;
+  background:var(--paper);border:1px solid rgba(38,49,43,.25);border-radius:6px;
+  padding:13px;font-family:var(--font-body);font-size:.94rem;font-weight:400;
+  color:var(--ink);text-decoration:none;transition:border-color .15s ease;
+}
+.btn-google:hover{border-color:var(--accent)}
+.btn-google .g{font-family:var(--font-display);font-weight:600;font-size:1.15rem;color:var(--accent)}
+
+.separador{
+  display:flex;align-items:center;gap:16px;margin:26px 0;
+  font-family:var(--font-mono);font-size:.66rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-soft);
+}
 .separador::before,.separador::after{content:"";flex:1;height:1px;background:rgba(38,49,43,.14)}
+
+.fila2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.fila2{grid-template-columns:1fr}}
 .camp{margin-bottom:16px}
-.camp label{display:block;font-family:var(--font-mono);font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
-.camp input,.camp select{width:100%;border:1px solid rgba(38,49,43,.2);border-radius:9px;padding:12px 14px;font-family:var(--font-sans);font-size:.9rem;color:var(--ink);background:var(--paper)}
-.pla-opcions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.pla{display:block;border:1px solid rgba(38,49,43,.2);border-radius:9px;padding:13px 15px;cursor:pointer}
-.pla .nom{font-family:var(--font-display);font-weight:500;font-size:1.02rem;color:var(--ink-deep)}
-.pla .det{font-size:.74rem;color:var(--ink-soft);margin-top:3px}
-.pla.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
-.check{display:flex;gap:10px;align-items:flex-start;font-size:.8rem;color:var(--ink-soft);line-height:1.5;margin-bottom:18px}
-.check input{margin-top:3px;accent-color:var(--accent)}
-.btn-solid{display:block;width:100%;text-align:center;background:var(--accent);color:var(--bg);font-family:var(--font-mono);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:15px;border-radius:9px;text-decoration:none}
-.legal-note{font-size:.7rem;color:var(--ink-soft);text-align:center;margin-top:14px;line-height:1.5}
+
+.pla-opcions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.pla{
+  border:1px solid rgba(38,49,43,.22);border-radius:8px;padding:14px 16px;
+  cursor:pointer;background:var(--paper);transition:all .15s ease;
+}
+.pla:hover{border-color:var(--accent)}
+.pla.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent);background:#fff}
+.pla .nom{font-family:var(--font-display);font-weight:500;font-size:1.06rem;color:var(--ink-deep)}
+.pla .det{font-size:.74rem;color:var(--ink-soft);margin-top:4px;line-height:1.45}
+
+.check{
+  display:flex;gap:11px;align-items:flex-start;font-size:.82rem;
+  color:var(--ink-soft);line-height:1.5;margin-bottom:20px;cursor:pointer;
+}
+.check input{margin-top:3px;width:15px;height:15px;accent-color:var(--accent);flex-shrink:0}
+.check a{color:var(--accent)}
+
+.legal-note{
+  text-align:center;margin-top:16px;font-size:.76rem;color:var(--ink-soft);
+}
+.legal-note a{color:var(--accent);text-decoration:underline}
 </style>
 </head>
-<body data-reveal>
+<body>
 
+<!-- ══════════ HEADER ══════════ -->
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="mockup-homepage-oxalpha.html"><span class="brand-name">Criteri <em>ESG</em></span></a>
+    <a class="brand" href="mockup-homepage-v1-original.html">
+      <span class="brand-name">Criteri <em>ESG</em></span>
+    </a>
     <nav class="mainnav">
       <a href="mockup-informes.html">Informes</a>
       <a href="mockup-que-fem.html">Què fem</a>
       <a href="mockup-estandares.html">Estàndards</a>
       <a href="mockup-qui-som.html">Qui som</a>
       <a href="mockup-preus.html">Preus</a>
-      <a class="cta-mini" href="mockup-registro.html">Comença</a>
+      <a class="cta-mini active" href="mockup-registro.html">Comença</a>
     </nav>
   </div>
 </header>
 
-<div class="reg-layout">
-  <!-- Columna esquerra: proposta de valor -->
+<div class="reg">
+
+  <!-- ══════════ ESQUERRA: proposta de valor ══════════ -->
   <div class="reg-esq">
-    <p class="eyebrow" style="color:var(--verd-clar)">Registre gratuït</p>
+    <p class="eyebrow">Registre gratuït</p>
     <h1>Accedeix o crea el teu compte per començar a llegir informes ESG sintetitzats.</h1>
     <p class="lead">Sense cost, sense targeta. Accés als informes oberts (&gt;6 mesos) i a la newsletter bimensual.</p>
-    <div class="llista">
-      <div><span class="mk">✓</span><span><strong>5 minuts</strong> per estar al dia de cada informe de la UE</span></div>
-      <div><span class="mk">✓</span><span>Informes amb <strong>semàfor metodològic</strong> i 8 blocs accionables</span></div>
-      <div><span class="mk">✓</span><span><strong>Cross-reference</strong> amb EcoVadis, B Corp, MSCI, GRI</span></div>
-      <div><span class="mk">✓</span><span>Newsletter bimensual gratuïta, cancel·la quan vulguis</span></div>
-    </div>
+    <ul class="reg-points">
+      <li><span class="mk">✓</span><span><strong>5 minuts</strong> per estar al dia de cada informe institucional que t'afecta</span></li>
+      <li><span class="mk">✓</span><span>Semàfor metodològic: <strong>cinc indicadors, una nota A–D</strong>, cap caixa grisa</span></li>
+      <li><span class="mk">✓</span><span>Cada dada amb la <strong>pàgina exacta de la font</strong> — verificable en segons</span></li>
+      <li><span class="mk">✓</span><span>Cross-reference amb <strong>EcoVadis, B Corp, MSCI i GRI</strong>: què significa per a tu</span></li>
+      <li><span class="mk">✓</span><span>Newsletter bimensual. <strong>Cancel·la quan vulguis.</strong></span></li>
+    </ul>
+    <p class="reg-note"><b>⭐ COMENCEM AMB 2 MESOS GRATUÏTS</b> · SETEMBRE I OCTUBRE 2026 · A PARTIR DE NOVEMBRE, TRIES EL TEU PLA</p>
   </div>
 
-  <!-- Columna dreta: formulari -->
+  <!-- ══════════ DRETA: formulari ══════════ -->
   <div class="reg-dre">
-    <div class="form">
+    <div class="form reveal in">
       <a class="btn-google" href="#"><span class="g">G</span> Continuar amb Google</a>
 
       <div class="separador">o registra't amb correu</div>
 
-      <p style="font-family:var(--font-mono);font-size:.64rem;letter-spacing:.05em;color:var(--ink-soft);margin:0 0 14px;line-height:1.5">
-        ⭐ Comencem amb 2 mesos gratuïts per a tothom (setembre i octubre 2026). A partir de novembre, tries el teu pla.
-      </p>
-
       <div class="camp"><label>Nom i cognoms</label><input type="text" placeholder="Ex: Maria Puig"></div>
-      <div class="camp"><label>Correu electrònic</label><input type="email" placeholder="maria@empresa.cat"></div>
-      <div class="camp"><label>Contrasenya</label><input type="password" placeholder="Mínim 8 caràcters"></div>
-      <div class="camp"><label>Empresa o organització (opcional)</label><input type="text" placeholder="La teva organització"></div>
-      <div class="camp"><label>Sector professional</label>
-        <select>
-          <option>— Selecciona —</option>
-          <option>Consultoria ESG</option>
-          <option>Director de sostenibilitat</option>
-          <option>Compliance officer</option>
-          <option>Investor relations</option>
-          <option>ONG / Tercer sector</option>
-          <option>Sector públic</option>
-          <option>Altres</option>
-        </select>
+      <div class="fila2">
+        <div class="camp"><label>Correu electrònic</label><input type="email" placeholder="maria@empresa.cat"></div>
+        <div class="camp"><label>Contrasenya</label><input type="password" placeholder="Mínim 8 caràcters"></div>
       </div>
-      <div class="camp"><label>Interessos principals</label>
-        <select multiple style="min-height:90px">
-          <option>CSRD / ESRS</option>
-          <option>EcoVadis</option>
-          <option>B Corp</option>
-          <option>MSCI ESG</option>
-          <option>Taxonomia UE</option>
-          <option>CSDDD</option>
-          <option>Drets humans / Due diligence</option>
-          <option>Risc climàtic / TCFD</option>
-        </select>
+      <div class="fila2">
+        <div class="camp"><label>Empresa o organització (opcional)</label><input type="text" placeholder="La teva organització"></div>
+        <div class="camp"><label>Sector professional</label>
+          <select>
+            <option>— Selecciona —</option>
+            <option>Consultoria ESG</option>
+            <option>Director de sostenibilitat</option>
+            <option>Compliance officer</option>
+            <option>Investor relations</option>
+            <option>ONG / Tercer sector</option>
+            <option>Sector públic</option>
+            <option>Altres</option>
+          </select>
+        </div>
       </div>
 
-      <p style="font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin:4px 0 10px">Pla</p>
+      <p style="font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin:6px 0 10px">Pla</p>
       <div class="pla-opcions">
         <div class="pla sel">
           <div class="nom">Gratuït</div>
@@ -121,24 +158,58 @@
 
       <label class="check"><input type="checkbox" checked> He llegit i accepto la política de privacitat i el tractament de les meves dades segons el RGPD.</label>
 
-      <a class="btn-solid" href="#">Crear compte gratuït</a>
-      <p class="legal-note">Ja tens compte? <a href="#" style="color:var(--accent);text-decoration:underline">o inicia sessió amb correu</a><br>
-      En registrar-te acceptes els termes del servei. Mai compartirem les teves dades.</p>
+      <button class="btn btn-solid" style="width:100%;border:none;cursor:pointer">Crear compte gratuït</button>
+
+      <p class="legal-note">Ja tens compte? <a href="#">o inicia sessió amb correu</a></p>
+      <p class="legal-note">En registrar-te acceptes els termes del servei.<br>Mai compartirem les teves dades.</p>
     </div>
   </div>
 </div>
 
+<!-- ══════════ FOOTER ══════════ -->
 <footer class="site">
   <div class="wrap">
     <div class="cols">
-      <div><span class="brand-name">Criteri <em>ESG</em></span><p class="tag">Intel·ligència ESG per a decisions ètiques.</p></div>
-      <div><h4>Producte</h4><ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul></div>
-      <div><h4>Projecte</h4><ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul></div>
-      <div><h4>Legal</h4><ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul></div>
+      <div>
+        <span class="brand-name">Criteri <em>ESG</em></span>
+        <p class="tag">Intel·ligència regulatòria ESG destil·lada amb criteri humà.</p>
+      </div>
+      <div>
+        <h4>Producte</h4>
+        <ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul>
+      </div>
+      <div>
+        <h4>Projecte</h4>
+        <ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul>
+      </div>
     </div>
-    <div class="base"><span>© 2026 Criteri ESG. Tots els drets reservats.</span><span>RIGOR · FRESCOR · SOBRIETAT</span></div>
+    <div class="base">
+      <span>© 2026 CRITERI ESG</span>
+      <span>RIGOR · FRESCOR · SOBRIETAT</span>
+    </div>
   </div>
 </footer>
 
+<script>
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+// selecció de pla
+document.querySelectorAll('.pla').forEach(p=>p.addEventListener('click',()=>{
+  document.querySelectorAll('.pla').forEach(x=>x.classList.remove('sel'));
+  p.classList.add('sel');
+}));
+</script>
 </body>
 </html>

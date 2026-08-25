@@ -4,304 +4,407 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Preus — Criteri ESG</title>
+<meta name="description" content="Tria com vols avançar: pla Gratuït, Premium (early bird 290€/any per als primers 50) i Ultra el proper abril de 2027. Sense permanència.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%235E8772'/%3E%3Ccircle cx='16' cy='10' r='3' fill='%23F5E381'/%3E%3Ccircle cx='11' cy='19' r='3' fill='%23F2F5F1'/%3E%3Ccircle cx='21' cy='19' r='3' fill='%23F2F5F1'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="oxalpha-brand.css">
+<link rel="stylesheet" href="v1-design.css">
 <style>
-.toggle-wrap{display:flex;justify-content:center;margin:36px 0 6px}
-.toggle{
-  display:inline-flex;background:var(--bg);border:1px solid rgba(38,49,43,.15);
-  border-radius:99px;padding:4px;gap:2px;
-}
+/* ══════════ PREUS · específic de pàgina ══════════ */
+
+/* Toggle Anual / Mensual */
+.billing-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:34px}
+.toggle{display:inline-flex;border:1px solid rgba(38,49,43,.25);border-radius:8px;overflow:hidden;background:var(--paper)}
 .toggle button{
-  border:none;background:transparent;cursor:pointer;font-family:var(--font-mono);
-  font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-  padding:9px 20px;border-radius:99px;color:var(--ink-soft);
+  font-family:var(--font-mono);font-size:.74rem;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-soft);background:none;border:none;
+  padding:11px 22px;cursor:pointer;transition:background .15s ease,color .15s ease;
 }
-.toggle button.on{background:var(--ink);color:var(--bg)}
-.toggle-note{text-align:center;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.06em;color:var(--ink-soft);margin-top:10px}
-
-.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;align-items:stretch}
-.plan{display:flex;flex-direction:column;position:relative}
-.plan.premium{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.plan .pname{font-family:var(--font-mono);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-.plan.premium .pname{color:var(--verd-clar)}
-.plan .price{font-family:var(--font-display);font-weight:500;font-size:2.9rem;line-height:1;margin:16px 0 4px;color:var(--ink-deep)}
-.plan.premium .price{color:var(--bg)}
-.plan .price small{font-size:.36em;font-weight:400;color:var(--ink-soft)}
-.plan.premium .price small{color:rgba(242,245,241,.6)}
-.plan .subprice{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.04em;color:var(--ink-soft);margin-bottom:20px}
-.plan.premium .subprice{color:rgba(242,245,241,.6)}
-.plan .iva-note{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.03em;color:var(--ink-soft);margin:-14px 0 18px}
-.plan.premium .iva-note{color:rgba(242,245,241,.55)}
-.plan .pdesc{font-size:.88rem;color:var(--ink-soft);margin-bottom:20px;min-height:3.4em;line-height:1.5}
-.plan.premium .pdesc{color:rgba(242,245,241,.72)}
-.plan ul{list-style:none;flex:1;margin-bottom:24px}
-.plan li{padding:9px 0;border-top:1px solid rgba(38,49,43,.1);font-size:.88rem;display:flex;gap:10px;align-items:baseline;line-height:1.45}
-.plan.premium li{border-top-color:rgba(242,245,241,.14);color:rgba(242,245,241,.88)}
-.plan li .m{font-family:var(--font-mono);font-weight:600}
-.plan li .m.yes{color:var(--accent)}
-.plan.premium li .m.yes{color:var(--verd-clar)}
-.plan .btn{justify-content:center;text-align:center}
-.badge{
-  position:absolute;top:-13px;right:22px;background:var(--highlight);color:var(--ink-deep);
-  font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;
-  text-transform:uppercase;padding:6px 12px;border-radius:99px;
+.toggle button.on{background:var(--accent);color:#fff}
+.save-note{
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.04em;color:var(--ink);
+  background:linear-gradient(transparent 55%, var(--highlight) 55%);padding:2px 4px;
 }
-@media(max-width:900px){.plans{grid-template-columns:1fr}}
 
-.early{
-  margin-top:56px;border-radius:12px;border:1.5px dashed var(--accent);
-  background:rgba(94,135,114,.06);padding:36px;display:flex;gap:30px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+/* Graella de plans */
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:54px;align-items:stretch}
+.plan{position:relative;display:flex;flex-direction:column;padding:34px 30px 30px}
+.plan .tier{
+  font-family:var(--font-mono);font-size:.68rem;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px;
 }
-.early .eyebrow{margin-bottom:10px}
-.early h3{font-family:var(--font-display);font-weight:500;font-size:1.5rem;color:var(--ink-deep);margin-bottom:8px}
-.early p{font-size:.92rem;color:var(--ink-soft);max-width:58ch;line-height:1.6}
-.early .price{font-family:var(--font-display);font-weight:500;font-size:2.6rem;color:var(--accent);line-height:1}
-
-.metodes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
-.metode{padding:26px 24px}
-.metode h3{font-family:var(--font-display);font-weight:600;font-size:1.1rem;color:var(--ink-deep);margin-bottom:8px;display:flex;align-items:center;gap:10px}
-.metode p{font-size:.9rem;color:var(--ink-soft);line-height:1.55;margin-bottom:14px}
-.metode .story{font-size:.8rem;color:var(--ink-soft);font-style:italic;border-left:2px solid var(--highlight);padding-left:12px;line-height:1.55}
-.metode .btn{margin-top:4px}
-@media(max-width:800px){.metodes{grid-template-columns:1fr}}
-
-.note6{
-  margin-top:40px;padding:22px 26px;border-radius:10px;background:var(--bg);
-  display:flex;gap:14px;align-items:baseline;
+.plan .badge{
+  position:absolute;top:-12px;right:22px;background:var(--highlight);color:var(--ink-deep);
+  font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;padding:5px 12px;border-radius:4px;
 }
-.note6 .t{font-family:var(--font-mono);font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
-.note6 p{font-size:.9rem;color:var(--ink-soft);line-height:1.55}
+.plan h3{font-family:var(--font-display);font-weight:500;font-size:1.65rem;color:var(--ink-deep);margin-bottom:6px}
+.plan .who{font-size:.9rem;color:var(--ink-soft);min-height:44px;text-wrap:pretty}
+.price{display:flex;align-items:baseline;gap:8px;margin:20px 0 2px}
+.price .num{font-family:var(--font-display);font-weight:500;font-size:3.3rem;line-height:1;color:var(--ink-deep);letter-spacing:-.02em}
+.price .cur{font-family:var(--font-display);font-weight:500;font-size:1.5rem;color:var(--ink-soft)}
+.price .unit{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.equiv{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:20px}
+.feats{list-style:none;margin-bottom:26px;flex:1}
+.feats li{
+  display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start;
+  padding:8px 0;font-size:.9rem;line-height:1.45;color:var(--ink);
+  border-top:1px solid rgba(38,49,43,.08);
+}
+.feats li::before{content:"✓";color:var(--accent);font-weight:700;font-size:.85rem;line-height:1.6}
+.feats li.muted{color:var(--ink-soft)}
+.feats li.muted::before{content:"○";color:rgba(38,49,43,.35)}
+.plan .btn{width:100%;text-align:center}
+.plan.featured{
+  border:2px solid var(--accent);
+  box-shadow:0 18px 44px rgba(94,135,114,.18);
+  transform:translateY(-10px);
+}
+@media(max-width:1000px){
+  .plans-grid{grid-template-columns:1fr;max-width:520px;margin-inline:auto}
+  .plan.featured{transform:none;order:-1}
+}
 
-.faq{margin-top:64px;max-width:720px}
-.faq details{border-bottom:1px solid rgba(38,49,43,.12);padding:18px 4px}
-.faq summary{cursor:pointer;font-family:var(--font-display);font-weight:600;font-size:1.08rem;color:var(--ink-deep);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-family:var(--font-mono);color:var(--accent);font-size:1.3rem}
-.faq details[open] summary::after{content:"−"}
-.faq details p{margin-top:12px;font-size:.94rem;color:var(--ink-soft);line-height:1.6}
+/* Early bird — banda separada */
+.earlybird{
+  margin-top:56px;background:var(--paper);border:1.5px dashed var(--accent);border-radius:12px;
+  display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);gap:0;overflow:hidden;
+}
+.eb-price{
+  background:var(--ink);color:var(--bg);padding:44px 38px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.eb-tag{
+  align-self:flex-start;font-family:var(--font-mono);font-size:.62rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;background:var(--highlight);color:var(--ink-deep);
+  padding:5px 12px;border-radius:4px;margin-bottom:22px;
+}
+.eb-price .big{display:flex;align-items:baseline;gap:10px}
+.eb-price .big .n{font-family:var(--font-display);font-weight:500;font-size:4.4rem;line-height:1;color:var(--verd-clar)}
+.eb-price .big .u{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,245,241,.75)}
+.eb-price .equiv{color:rgba(242,245,241,.66);margin:14px 0 0}
+.eb-body{padding:44px 40px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.eb-body h3{font-family:var(--font-display);font-weight:500;font-size:1.55rem;color:var(--ink-deep);margin-bottom:14px;text-wrap:balance}
+.eb-body p{font-size:.95rem;color:var(--ink-soft);text-wrap:pretty;margin-bottom:24px}
+.eb-body p strong{font-weight:500;color:var(--ink)}
+.eb-body p em{font-style:normal;background:linear-gradient(transparent 58%, var(--highlight) 58%)}
+@media(max-width:900px){.earlybird{grid-template-columns:1fr}}
+
+/* Ultra — opacitat reduïda */
+.plan.soon{opacity:.55}
+.plan.soon .badge{background:var(--paper);border:1px solid rgba(38,49,43,.25);color:var(--ink-soft)}
+
+/* Secció fosca: regla dels 6 mesos */
+.rule6 .wrap{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:60px;align-items:center}
+.rule6 svg{width:100%;height:auto;display:block}
+.rule6-cap{font-family:var(--font-mono);font-size:.66rem;color:rgba(242,245,241,.55);letter-spacing:.05em;margin-top:16px;line-height:1.6}
+.rule6-cap b{color:var(--verd-clar);font-weight:600}
+@media(max-width:900px){.rule6 .wrap{grid-template-columns:1fr;gap:44px}}
+
+/* Mètodes de pagament */
+.paymethods{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px}
+.pm-card{padding:32px 30px;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.pm-card svg{width:44px;height:44px}
+.pm-card h3{font-family:var(--font-display);font-weight:500;font-size:1.35rem;color:var(--ink-deep)}
+.pm-card p{font-size:.92rem;color:var(--ink-soft);flex:1;text-wrap:pretty}
+.ethic-note{
+  margin-top:44px;padding:28px 32px;border-left:3px solid var(--highlight);
+  background:var(--bg);border-radius:0 9px 9px 0;
+  font-size:.97rem;color:var(--ink);max-width:76ch;text-wrap:pretty;
+}
+.ethic-note strong{font-weight:500}
+@media(max-width:800px){.paymethods{grid-template-columns:1fr}}
 </style>
 </head>
-<body data-reveal>
+<body>
 
+<!-- ══════════ HEADER ══════════ -->
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="mockup-homepage-oxalpha.html"><span class="brand-name">Criteri <em>ESG</em></span></a>
+    <a class="brand" href="mockup-homepage-v1-original.html">
+      <img src="../logos/LOGO-CRITERIESG.svg" alt="" onerror="this.style.display='none'">
+      <span class="brand-name">Criteri <em>ESG</em></span>
+    </a>
     <nav class="mainnav">
       <a href="mockup-informes.html">Informes</a>
       <a href="mockup-que-fem.html">Què fem</a>
       <a href="mockup-estandares.html">Estàndards</a>
       <a href="mockup-qui-som.html">Qui som</a>
-      <a class="active" href="mockup-preus.html">Preus</a>
+      <a href="mockup-preus.html" class="active">Preus</a>
       <a class="cta-mini" href="mockup-registro.html">Comença</a>
     </nav>
   </div>
 </header>
 
+<!-- ══════════ PAGE HERO ══════════ -->
 <section class="pagehero">
   <div class="wrap">
     <p class="eyebrow">Preus · Setembre 2026</p>
     <h1>Tria com vols <span class="hl">avançar</span>.</h1>
-    <p class="lead">Comencem amb 2 mesos gratuïts per a tothom (setembre i octubre 2026). A partir de
-    novembre, tries el teu pla. La subscripció Premium es paga anualment. Sense permanència, cancel·la
-    quan vulguis.</p>
-    <p class="lead" style="margin-top:14px;font-family:var(--font-mono);font-size:.76rem;letter-spacing:.04em">Accés gratuït a informes &gt;6 mesos. Sense targeta.</p>
-
-    <div class="toggle-wrap reveal">
+    <p class="lead">
+      Comencem amb <strong>2 mesos gratuïts per a tothom</strong> (setembre i octubre 2026).
+      A partir de novembre, tries el teu pla. La subscripció Premium es paga anualment.
+      <strong>Sense permanència, cancel·la quan vulguis.</strong>
+    </p>
+    <div class="billing-row reveal">
       <div class="toggle" role="group" aria-label="Període de facturació">
-        <button class="on">Anual</button>
-        <button>Mensual</button>
+        <button type="button" id="btn-anual" class="on" aria-pressed="true">Anual</button>
+        <button type="button" id="btn-mensual" aria-pressed="false">Mensual</button>
       </div>
+      <span class="save-note">Estalvia 28€/any pagant anualment</span>
     </div>
-    <p class="toggle-note">La subscripció Premium es paga anualment. Sense permanència, cancel·la quan vulguis. <strong>Estalvia 28€/any pagant anualment</strong>.</p>
   </div>
 </section>
 
-<section class="block" style="padding-top:56px">
+<!-- ══════════ PLANS ══════════ -->
+<section class="block">
   <div class="wrap">
-    <div class="plans reveal">
+    <div class="plans-grid reveal">
+
       <!-- GRATUÏT -->
-      <article class="plan card">
-        <p class="pname">Gratuït</p>
-        <div class="price">0€<small> / sempre</small></div>
-        <p class="subprice">Sense targeta</p>
-        <p class="pdesc">Per a qui comença a explorar l'ESG i vol entendre el paisatge sense compromís.</p>
-        <ul>
-          <li><span class="m yes">✓</span> Newsletter bimensual</li>
-          <li><span class="m yes">✓</span> Accés a informes &gt;6 mesos (arxiu)</li>
-          <li><span class="m yes">✓</span> Accés a la biblioteca pública</li>
+      <article class="card plan">
+        <p class="tier">01 · Per començar</p>
+        <h3>Gratuït</h3>
+        <p class="who">Per començar a entendre l&rsquo;ecosistema ESG europeu.</p>
+        <div class="price"><span class="num">0</span><span class="cur">€</span><span class="unit">sempre</span></div>
+        <p class="equiv">Sense targeta · per sempre</p>
+        <ul class="feats">
+          <li>Newsletter bimensual</li>
+          <li>Accés a informes &gt;6 mesos</li>
+          <li>Accés a la biblioteca pública</li>
+          <li class="muted">Informes recents (&lt; 6 mesos)</li>
+          <li class="muted">Cross-reference amb certificacions</li>
         </ul>
         <a class="btn btn-ghost" href="mockup-registro.html">Comença gratis</a>
       </article>
 
-      <!-- PREMIUM -->
-      <article class="plan premium card">
-        <span class="badge">Anual</span>
-        <p class="pname">Premium</p>
-        <div class="price" id="preu-premium">440€<small> / any</small></div>
-        <p class="subprice" id="subpreu-premium">Equival a 36,67€/mes · Impostos inclosos</p>
-        <p class="iva-note">Equival a 29 €/mes. IVA deduïble per a empreses.</p>
-        <p class="pdesc">Per al director de sostenibilitat que necessita criteri per decidir què fer cada setmana.</p>
-        <ul>
-          <li><span class="m yes">✓</span> Tot el que té el pla Gratuït</li>
-          <li><span class="m yes">✓</span> Arxiu complet i cerca avançada</li>
-          <li><span class="m yes">✓</span> Tots els informes recents (&lt; 6 mesos)</li>
-          <li><span class="m yes">✓</span> Cross-reference amb EcoVadis, B Corp, MSCI, GRI</li>
-          <li><span class="m yes">✓</span> Alertes personalitzades per temes</li>
-          <li><span class="m yes">✓</span> Preguntes per millorar (reflexió ètica mensual)</li>
+      <!-- PREMIUM (destacat) -->
+      <article class="card plan featured">
+        <span class="badge" id="premium-badge">Anual</span>
+        <p class="tier">02 · Recomanat</p>
+        <h3>Premium</h3>
+        <p class="who">Per al professional que ha de decidir cada setmana.</p>
+        <div class="price">
+          <span class="num" id="premium-num">440</span><span class="cur">€</span><span class="unit" id="premium-unit">any</span>
+        </div>
+        <p class="equiv" id="premium-equiv">Equival a 36,67€/mes · Impostos inclosos</p>
+        <ul class="feats">
+          <li>Tot el que té el pla Gratuït</li>
+          <li>Arxiu complet i cerca avançada</li>
+          <li>Tots els informes recents (&lt; 6 mesos)</li>
+          <li>Cross-reference amb EcoVadis, B Corp, MSCI, GRI</li>
+          <li>Alertes personalitzades per temes</li>
+          <li>Preguntes per millorar (reflexió ètica mensual)</li>
         </ul>
-        <a class="btn btn-light" id="btn-premium" href="mockup-pagament.html">Subscriure'm anualment</a>
+        <a class="btn btn-solid" id="premium-btn" href="mockup-pagament.html">Subscriure'm anualment</a>
       </article>
 
-      <!-- ULTRA -->
-      <article class="plan card" style="opacity:.8">
-        <p class="pname">Ultra</p>
-        <div class="price">—<small> / any</small></div>
-        <p class="subprice">Pròximament · abril 2027</p>
-        <p class="pdesc">Per a consultories i equips que necessiten anàlisi personalitzat i formats addicionals.</p>
-        <ul>
-          <li><span class="m yes">✓</span> Tot el que té Premium</li>
-          <li><span class="m yes">✓</span> Podcast d'àudio de cada informe (5 min)</li>
-          <li><span class="m yes">✓</span> Diapositives PowerPoint editables</li>
-          <li><span class="m yes">✓</span> Dossier mensual temàtic + 1 connexió personalitzada/mes</li>
+      <!-- ULTRA (pròximament) -->
+      <article class="card plan soon">
+        <span class="badge">Pròximament · abril 2027</span>
+        <p class="tier">03 · Per a equips</p>
+        <h3>Ultra</h3>
+        <p class="who">Per a l&rsquo;equip que necessita sintetitzar per a la junta.</p>
+        <div class="price"><span class="num">—</span></div>
+        <p class="equiv">Preu per confirmar al llançament</p>
+        <ul class="feats">
+          <li>Tot el que té Premium</li>
+          <li>Podcast d'àudio de cada informe (5 min)</li>
+          <li>Diapositives PowerPoint editables</li>
+          <li>Dossier mensual temàtic + 1 connexió personalitzada/mes</li>
         </ul>
-        <a class="btn btn-ghost" href="mockup-registro.html">Aviseu-me quan obri</a>
+        <a class="btn btn-ghost" href="mailto:info@criteriesg.com?subject=Llista d'espera Ultra">Aviseu-me quan obri</a>
       </article>
     </div>
 
-    <!-- EARLY BIRD -->
-    <div class="early reveal">
-      <div>
-        <p class="eyebrow">Oferta de llançament · 50 places limitades</p>
-        <h3>Early bird — 50 places amb pagament anual</h3>
-        <p>Els primers 50 subscriptors Premium paguen 290€/any (impostos inclosos) en lloc dels 440€
-        habituals — i ho mantenen de per vida. Equival a 24,17€/mes · Impostos inclosos · Estalvi de
-        150€ (un descompte del 34%). Llançament setembre 2026. Una vegada assignades les 50 places,
-        el preu torna a 440€/any.</p>
+    <!-- EARLY BIRD — bloc separat -->
+    <div class="earlybird reveal">
+      <div class="eb-price">
+        <span class="eb-tag">Oferta de llançament · 50 places limitades</span>
+        <div class="big"><span class="n">290&nbsp;€</span><span class="u">any</span></div>
+        <p class="equiv">Equival a 24,17€/mes · Impostos inclosos · Estalvi de 150€</p>
       </div>
-      <div style="text-align:right">
-        <div class="price">290 €<span style="font-size:1rem;color:var(--ink-soft)">/any</span></div>
-        <a class="btn btn-solid" href="mockup-pagament.html" style="margin-top:12px">Reservar plaça early bird</a>
+      <div class="eb-body">
+        <h3>Early bird — 50 places amb pagament anual</h3>
+        <p>
+          Els primers 50 subscriptors Premium paguen <strong>290€/any</strong> (impostos inclosos) en lloc
+          dels 440€ habituals. Equival a <em>24,17€/mes</em> — un descompte del 34%. Llançament setembre 2026.
+          Una vegada assignades les 50 places, el preu torna a 440€/any.
+        </p>
+        <a class="btn btn-solid" href="mockup-pagament.html">Reservar plaça early bird</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MÈTODES DE PAGAMENT -->
+<!-- ══════════ REGLA DELS 6 MESOS (dark) ══════════ -->
+<section class="block dark rule6">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Compromís d'accés</p>
+      <h2 class="sec-title">Regla dels 6 mesos:</h2>
+      <p class="sec-body">
+        Tots els informes amb més de 6 mesos d'antiguitat són <strong>gratuïts per sempre</strong>.
+        Només els informes recents requereixen Premium. Així garantim accés universal
+        al coneixement ESG acumulat.
+      </p>
+    </div>
+    <figure class="reveal">
+      <svg viewBox="0 0 560 250" role="img" aria-label="Línia de temps: un informe és Premium els primers 6 mesos i després passa a ser gratuït per sempre">
+        <!-- eix temporal -->
+        <line x1="30" y1="130" x2="530" y2="130" stroke="#AAC9B6" stroke-opacity=".4" stroke-width="1.5"/>
+        <!-- zona premium 0–6 mesos -->
+        <rect x="30" y="86" width="240" height="88" rx="8" fill="#26312B" stroke="#AAC9B6" stroke-opacity=".25"/>
+        <text x="52" y="118" font-family="'JetBrains Mono',monospace" font-size="11" fill="#AAC9B6" font-weight="600">MES 0 → MES 6</text>
+        <text x="52" y="140" font-family="'JetBrains Mono',monospace" font-size="10" fill="rgba(242,245,241,.65)">PREMIUM</text>
+        <!-- fletxa de pas -->
+        <path d="M278 122 l16 8 -16 8 z" fill="#F5E381"/>
+        <!-- zona gratuïta -->
+        <rect x="302" y="86" width="228" height="88" rx="8" fill="none" stroke="#5E8772" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <text x="324" y="118" font-family="'JetBrains Mono',monospace" font-size="11" fill="#F5E381" font-weight="600">DES DEL MES 6</text>
+        <text x="324" y="140" font-family="'JetBrains Mono',monospace" font-size="10" fill="#AAC9B6">GRATUÏT PER SEMPRE</text>
+        <!-- marcadors -->
+        <circle cx="30" cy="130" r="5" fill="#5E8772"/>
+        <circle cx="270" cy="130" r="5" fill="#F5E381"/>
+        <g font-family="'JetBrains Mono',monospace" font-size="9.5" fill="rgba(242,245,241,.6)">
+          <text x="30" y="205" text-anchor="middle">PUBLICACIÓ</text>
+          <text x="270" y="205" text-anchor="middle">6 MESOS</text>
+          <text x="530" y="205" text-anchor="end">∞</text>
+        </g>
+        <text x="280" y="46" text-anchor="middle" font-family="'Newsreader',Georgia,serif" font-style="italic" font-size="15" fill="#AAC9B6">El coneixement acumulat no es tanca darrere d'un paywall.</text>
+      </svg>
+      <figcaption class="rule6-cap">
+        Il·lustratiu. Cada informe envelleix <b>cap a la gratuïtat</b>: els recents sostenen el projecte,
+        l'arxiu queda obert per a tothom.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ══════════ MÈTODES DE PAGAMENT ══════════ -->
 <section class="block tinted">
   <div class="wrap">
-    <p class="eyebrow">Mètodes de pagament</p>
-    <h2 class="sec-title">Tria també com vols pagar.</h2>
-    <div class="metodes reveal">
-      <div class="metode card">
-        <h3>💳 Targeta (Stripe)</h3>
-        <p>Paga amb targeta de crèdit/dèbit. Accés Premium actiu immediatament. Mensual o anual.
-        Activació immediata. Mètode estàndard a internet.</p>
-        <p class="story">Si pagues amb targeta (Stripe), una corporació nord-americana es queda una
-        comissió del nostre treball i els diners circulen pel sistema financer especulatiu.</p>
-        <a class="btn btn-ghost" href="mockup-pagament.html">Pagar amb targeta</a>
-      </div>
-      <div class="metode card">
-        <h3>🌱 Transferència (Fiare Banca Ètica)</h3>
-        <p>Paga per transferència bancària a Fiare. Accés Premium activat en rebre el pagament. Només
-        anual. Transferència manual amb comprovant. Activació immediata.</p>
-        <p class="story">Per activar el teu accés Premium, realitza la TRANSFERÈNCIA IMMEDIATA amb les
-        següents dades i puja el justificant a continuació. L'accés s'activarà en uns segons.</p>
-        <p class="story">Si tries la transferència anual al nostre compte de Fiare Banca Ètica, el 100%
-        dels teus diners dona suport a l'economia social i transformadora.</p>
-        <a class="btn btn-solid" href="mockup-pagament.html">Pagar amb transferència</a>
-      </div>
+    <div class="reveal">
+      <p class="eyebrow">Mètodes de pagament</p>
+      <h2 class="sec-title">Tria també com vols pagar</h2>
     </div>
 
-    <!-- NOTA 6 MESOS -->
-    <div class="note6 reveal">
-      <span class="t">Regla dels 6 mesos:</span>
-      <p>Tots els informes amb més de 6 mesos d'antiguitat són gratuïts per sempre. Només els informes
-      recents requereixen Premium. Així garantim accés universal al coneixement ESG acumulat.</p>
+    <div class="paymethods reveal">
+      <article class="card pm-card">
+        <svg viewBox="0 0 44 44" role="img" aria-label="Icona de targeta bancària">
+          <rect x="4" y="10" width="36" height="24" rx="4" fill="none" stroke="#5E8772" stroke-width="2"/>
+          <line x1="4" y1="18" x2="40" y2="18" stroke="#5E8772" stroke-width="2"/>
+          <rect x="9" y="26" width="10" height="3" rx="1.5" fill="#F5E381"/>
+        </svg>
+        <h3>Targeta (Stripe)</h3>
+        <p>Mensual o anual. Activació immediata. Mètode estàndard a internet.</p>
+        <a class="btn btn-solid" href="mockup-pagament.html#targeta">Pagar amb targeta</a>
+      </article>
+
+      <article class="card pm-card">
+        <svg viewBox="0 0 44 44" role="img" aria-label="Icona de transferència bancària">
+          <circle cx="15" cy="15" r="8" fill="none" stroke="#5E8772" stroke-width="2"/>
+          <path d="M23 23 L37 37 M37 37 v-9 M37 37 h-9" stroke="#5E8772" stroke-width="2" fill="none"/>
+          <rect x="8" y="30" width="12" height="3" rx="1.5" fill="#F5E381"/>
+        </svg>
+        <h3>Transferència (Fiare Banca Ètica)</h3>
+        <p>Només anual. Transferència manual amb comprovant. Activació immediata.</p>
+        <a class="btn btn-ghost" href="mockup-pagament.html#transferencia">Pagar amb transferència</a>
+      </article>
     </div>
+
+    <p class="ethic-note reveal">
+      Si pagues amb targeta (Stripe), una corporació nord-americana es queda una comissió del nostre treball
+      i els diners circulen pel sistema financer especulatiu. Si tries la transferència anual al nostre compte de
+      Fiare Banca Ètica, <strong>el 100% dels teus diners dona suport a l'economia social i transformadora.</strong>
+    </p>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="block">
-  <div class="wrap">
-    <p class="eyebrow">Preguntes freqüents</p>
-    <h2 class="sec-title">Tot el que et pots preguntar.</h2>
-    <div class="faq reveal">
-      <details open>
-        <summary>És una eina de compliance o estratègica?</summary>
-        <p>Tots dos. Cobrim el que és obligatori (CSRD, CSDDD, SFDR) i el que és estratègic (EcoVadis,
-        B Corp, MSCI rating). L'usuari tria el seu enfocament: pot prioritzar compliment normatiu o
-        millorar reputació.</p>
-      </details>
-      <details>
-        <summary>Quins frameworks cobriu?</summary>
-        <p>Els 7 més usats: CSRD/ESRS, Taxonomia UE, SFDR, CSDDD, GRI, SASB, TCFD/TNFD. A més de les
-        certificacions EcoVadis, B Corp, MSCI ESG, Sustainalytics, ISS ESG i CDP.</p>
-      </details>
-      <details>
-        <summary>Com es comparen els informes entre ells?</summary>
-        <p>Cada informe té cross-reference amb altres informes i amb els 5 frameworks principals. Pots
-        veure evolucions, contradiccions i complementarietats.</p>
-      </details>
-      <details>
-        <summary>Quan entra en vigor la subscripció?</summary>
-        <p>La web obre al públic el setembre 2026. La newsletter bimensual ja està operativa. Els
-        primers 50 subscriptors Premium tenen preu promocional de 290€/any (vs 440€ normal) de per vida.</p>
-      </details>
-      <details>
-        <summary>Puc provar-ho abans de pagar?</summary>
-        <p>Sí. El registre és gratuït i et dóna accés a la newsletter bimensual i als informes amb més
-        de 6 mesos. Per accedir als informes recents, necessites Premium (290 €/any early bird per als
-        primers 50).</p>
-      </details>
-      <details>
-        <summary>Quan comença la subscripció de pagament?</summary>
-        <p>Al novembre de 2026. Durant setembre i octubre, tot el contingut és gratuït. A partir de
-        novembre, els informes recents (últims 6 mesos) i les seccions premium de la newsletter
-        requeriran subscripció Premium.</p>
-      </details>
-      <details>
-        <summary>Quan arriba Ultra?</summary>
-        <p>Abril de 2027, 6 mesos després del llançament. Ho retràstem a propòsit: necessitem afinar
-        els formats premium abans de vendre'ls.</p>
-      </details>
-      <details>
-        <summary>Necessito targeta per començar?</summary>
-        <p>Sense targeta de crèdit. Sense paywall fins al novembre.</p>
-      </details>
+<!-- ══════════ CTA FINAL ══════════ -->
+<section class="finalcta">
+  <div class="wrap reveal">
+    <h2>Comencem sent gratis.<br><span class="hl">Decideix després.</span></h2>
+    <p class="sub">Registra't ara i gaudeix de tot el contingut durant setembre i octubre. Sense targeta, sense compromís.</p>
+    <div class="actions">
+      <a class="btn btn-solid" href="mockup-registro.html">Crear compte gratuït</a>
+      <a class="btn btn-ghost" href="mockup-pagament.html">Reservar plaça early bird</a>
     </div>
+    <p class="pilot-note"><b>SETEMBRE I OCTUBRE 2026</b> · TOT GRATUÏT · SENSE TARGETA</p>
   </div>
 </section>
 
+<!-- ══════════ FOOTER ══════════ -->
 <footer class="site">
   <div class="wrap">
     <div class="cols">
-      <div><span class="brand-name">Criteri <em>ESG</em></span><p class="tag">Intel·ligència ESG per a decisions ètiques.</p></div>
-      <div><h4>Producte</h4><ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul></div>
-      <div><h4>Empresa</h4><ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul></div>
-      <div><h4>Legal</h4><ul><li><a href="#">Privadesa</a></li><li><a href="#">Termes</a></li><li><a href="#">Cookies</a></li></ul></div>
+      <div>
+        <span class="brand-name">Criteri <em>ESG</em></span>
+        <p class="tag">Intel·ligència ESG destil·lada amb criteri humà.</p>
+      </div>
+      <div>
+        <h4>Producte</h4>
+        <ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul>
+      </div>
+      <div>
+        <h4>Projecte</h4>
+        <ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul>
+      </div>
     </div>
-    <div class="base"><span>© 2026 CRITERI ESG</span><span>RIGOR · FRESCOR · SOBRIETAT</span></div>
+    <div class="base">
+      <span>© 2026 CRITERI ESG</span>
+      <span>RIGOR · FRESCOR · SOBRIETAT</span>
+    </div>
   </div>
 </footer>
 
 <script>
-// toggle anual/mensual (demo visual)
-document.querySelectorAll('.toggle button').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.toggle button').forEach(x=>x.classList.remove('on'));
-  b.classList.add('on');
-  const anual = b.textContent === 'Anual';
-  document.getElementById('preu-premium').innerHTML = anual ? '440€<small> / any</small>' : '36,67€<small> / mes</small>';
-  document.getElementById('subpreu-premium').textContent = anual ? 'Equival a 36,67€/mes · Impostos inclosos' : 'Equival a 440€/any · Impostos inclosos';
-  document.getElementById('btn-premium').textContent = anual ? "Subscriure'm anualment" : "Subscriure'm mensualment";
-}));
-if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
-  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+// Revelat subtil en scroll — respecta prefers-reduced-motion
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.14});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-} else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')); }
+})();
+
+// Toggle Anual / Mensual — canvia preu, unitat, equivalència i CTA del pla Premium
+(function(){
+  const anual = {
+    badge:'Anual', num:'440', unit:'any',
+    equiv:'Equival a 36,67€/mes · Impostos inclosos',
+    cta:"Subscriure'm anualment"
+  };
+  const mensual = {
+    badge:'Mensual', num:'39', unit:'mes',
+    equiv:'Sense descompte anual · Impostos inclosos',
+    cta:"Subscriure'm mensualment"
+  };
+  const bA = document.getElementById('btn-anual'),
+        bM = document.getElementById('btn-mensual'),
+        badge = document.getElementById('premium-badge'),
+        num = document.getElementById('premium-num'),
+        unit = document.getElementById('premium-unit'),
+        equiv = document.getElementById('premium-equiv'),
+        cta = document.getElementById('premium-btn');
+  function set(mode){
+    const d = mode === 'anual' ? anual : mensual;
+    bA.classList.toggle('on', mode==='anual'); bA.setAttribute('aria-pressed', mode==='anual');
+    bM.classList.toggle('on', mode==='mensual'); bM.setAttribute('aria-pressed', mode==='mensual');
+    badge.textContent = d.badge; num.textContent = d.num;
+    unit.textContent = d.unit; equiv.textContent = d.equiv; cta.textContent = d.cta;
+  }
+  bA.addEventListener('click', ()=>set('anual'));
+  bM.addEventListener('click', ()=>set('mensual'));
+})();
 </script>
 </body>
 </html>

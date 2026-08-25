@@ -4,30 +4,44 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BCE · Risc climàtic — Informe Criteri ESG</title>
+<meta name="description" content="Informe destil·lat: BCE, risc climàtic al sistema financer. Semàfor metodològic B, 5 dades clau amb secció exacta, implicacions i cross-reference.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%235E8772'/%3E%3Ccircle cx='16' cy='10' r='3' fill='%23F5E381'/%3E%3Ccircle cx='11' cy='19' r='3' fill='%23F2F5F1'/%3E%3Ccircle cx='21' cy='19' r='3' fill='%23F2F5F1'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="oxalpha-brand.css">
+<link rel="stylesheet" href="v1-design.css">
 <style>
 /* ═══════════════════════════════════════════════════════════════
+   Pàgina detall d'informe · vestiment v1 (v1-design.css)
    LAYOUT FIDEL A LA WEB ACTUAL:
    - Sidebar ESQUERRA sticky (280px) amb ÍNDEX dels blocs (00-07)
-     + mini-semàfor (com la web real: aside lg:grid-cols-[280px_1fr])
-   - Bloc 0 Semàfor: secció DARK FULL-WIDTH dins del main
+     + mini-semàfor (com la web real)
+   - Bloc 0 Semàfor: DARK full-width dins del main
    - Implicacions: 3 COLUMNES (empreses/reguladors/ciutadans)
-   - Accions: secció amb fons tintat full-width + 3 columnes
-   - Checkbox: dins del bloc 4, caixa fosca amb border-left
-   ═══════════════════════════════════════════════════════════════ */
+   - Accions: secció TINTED full-width + 3 columnes
+   - Checkbox: dins del bloc 4, caixa fosca border-left highlight
+   [id]{scroll-margin-top:76px}
 
-/* ── Capçalera d'informe (com la web: breadcrumb + títol) ── */
-.rep-head{padding:44px 0 36px;border-bottom:1px solid rgba(38,49,43,.1)}
-.crumb{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:16px}
+/* ── Capçalera-fitxa (com la web: breadcrumb + títol) ── */
+.rep-head{background:var(--bg);padding:52px 0 44px;border-bottom:1px solid rgba(38,49,43,.09)}
+.crumb{font-family:var(--font-mono);font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:22px}
 .crumb a{color:var(--accent);text-decoration:none}
+.crumb a:hover{color:var(--ink-deep)}
 .crumb b{color:var(--ink);font-weight:600}
-.rep-title{font-family:var(--font-display);font-weight:500;font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.12;color:var(--ink-deep);margin:12px 0 14px;max-width:22ch;text-wrap:balance}
+.rep-title{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(2rem,3.8vw,3.1rem);line-height:1.1;letter-spacing:-.012em;
+  color:var(--ink-deep);margin-bottom:24px;max-width:22ch;text-wrap:balance;
+}
+.fitxa-meta{
+  display:flex;gap:10px 26px;flex-wrap:wrap;
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.05em;color:var(--ink-soft);
+}
+.fitxa-meta span b{color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-right:7px;font-size:.6rem}
+.fitxa-meta a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(38,49,43,.25)}
 
 /* ── Layout amb sidebar ESQUERRA (com la web real) ── */
-.layout{display:grid;grid-template-columns:280px minmax(0,1fr);align-items:start}
+.layout{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:280px minmax(0,1fr);align-items:start}
 @media(max-width:1023px){.layout{grid-template-columns:1fr}}
 
 /* Sidebar (només ≥1024px, com la web) */
@@ -43,118 +57,132 @@
   padding:8px 0;border-bottom:1px solid rgba(38,49,43,.1);text-decoration:none;
 }
 .idx .n{font-family:var(--font-mono);font-size:.62rem;font-weight:500;color:var(--ink-soft)}
-.idx .t{font-family:var(--font-display);font-weight:500;font-size:.84rem;color:var(--ink)}
+.idx .t{font-family:var(--font-display);font-weight:500;font-size:.86rem;color:var(--ink)}
 .idx a:hover .t{color:var(--accent)}
-/* mini semàfor a la sidebar (com la web) */
+/* mini semàfor a la sidebar */
 .mini-sem{margin-top:30px;padding-top:24px;border-top:2px solid var(--accent)}
 .mini-sem .lbl{font-family:var(--font-mono);font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
 .mini-sem .row{display:flex;align-items:baseline;gap:10px}
-.mini-sem .g{font-family:var(--font-display);font-weight:500;font-size:2.4rem;color:var(--sem-y);line-height:1}
+.mini-sem .g{font-family:var(--font-display);font-weight:500;font-size:2.4rem;line-height:1;color:var(--sem-y)}
 .mini-sem .gl{font-family:var(--font-display);font-style:italic;font-size:.8rem;color:var(--ink-soft);line-height:1.35}
 
 /* Main */
-.main{padding:40px 44px 80px;min-width:0}
-@media(max-width:1023px){.main{padding:32px 22px 64px}}
+.main{padding:44px 48px 80px;min-width:0}
+@media(max-width:1023px){.main{padding:34px 24px 64px}}
 
-/* ── BLOC 0: Semàfor DARK full-width dins del main (com la web) ── */
+/* ── Etiqueta de bloc: eyebrow v1 amb ratlla groga ── */
+.blabel{
+  font-family:var(--font-mono);font-size:.66rem;font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:16px;
+  display:flex;align-items:center;gap:12px;
+}
+.blabel::before{content:"";width:26px;height:2px;background:var(--highlight);flex:none}
+.blabel.on-dark{color:var(--verd-clar)}
+
+/* ── BLOC 0: Semàfor DARK full-width dins del main ── */
 .bloc0{
   background:var(--ink-deep);color:var(--bg);border-radius:12px;
-  padding:40px 38px;margin:0 0 44px;
-  display:grid;grid-template-columns:1fr 1.4fr;gap:36px;align-items:center;
+  padding:42px 40px;margin:0 0 52px;
+  display:grid;grid-template-columns:1fr 1.4fr;gap:38px;align-items:center;
+  border:1px solid rgba(170,201,182,.16);
 }
 @media(max-width:860px){.bloc0{grid-template-columns:1fr;padding:30px 26px}}
-.bloc0 .blabel,.blabel{
-  font-family:var(--font-mono);font-size:.66rem;font-weight:600;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:12px;
-}
 .bloc0 .grade{font-family:var(--font-display);font-weight:500;font-size:6.4rem;line-height:.95;color:var(--sem-y);letter-spacing:-.02em}
-.bloc0 .gl{font-family:var(--font-display);font-style:italic;font-size:1.3rem;color:var(--bg);margin-top:6px}
-.bloc0 .explic{font-size:.92rem;line-height:1.6;color:rgba(242,245,241,.78);text-wrap:pretty}
+.bloc0 .gl{font-family:var(--font-display);font-style:italic;font-size:1.3rem;color:var(--bg);margin-top:8px;text-wrap:balance}
+.bloc0 .explic{font-size:.92rem;line-height:1.65;color:rgba(242,245,241,.78);text-wrap:pretty}
 .bloc0 .explic strong{color:var(--bg);font-weight:500}
-.bloc0 .dots{display:flex;gap:8px;margin:16px 0 4px}
+.dots{display:flex;gap:9px;margin:16px 0 4px}
 .dot{width:11px;height:11px;border-radius:50%;opacity:.18}
 .dot.on{opacity:1}
 .dot.g{background:var(--sem-g)}.dot.y{background:var(--sem-y)}.dot.r{background:var(--sem-r)}
-.bloc0 .ind{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid rgba(242,245,241,.14);font-family:var(--font-mono);font-size:.7rem}
-.bloc0 .ind .n{color:rgba(242,245,241,.85)}
-.bloc0 .ind .v.v{color:var(--sem-g)}.bloc0 .ind .v.a{color:var(--sem-y)}.bloc0 .ind .v.rv{color:var(--sem-r)}
-.bloc0 .regla{margin-top:16px;font-size:.78rem;color:rgba(242,245,241,.6);line-height:1.5}
-.bloc0 .regla em{color:var(--verd-clar);font-style:normal}
+.ind{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid rgba(242,245,241,.14);font-family:var(--font-mono);font-size:.7rem}
+.ind:first-of-type{border-top:none;padding-top:2px}
+.ind .n{color:rgba(242,245,241,.85)}
+.ind .v.v{color:var(--sem-g)}.ind .v.a{color:var(--sem-y)}.ind .v.rv{color:var(--sem-r)}
+.regla{margin-top:16px;font-size:.78rem;color:rgba(242,245,241,.6);line-height:1.55}
+.regla em{color:var(--verd-clar);font-style:normal}
 
 /* ── Blocs estàndard ── */
-.bloc{margin-bottom:46px}
-.bloc h2{font-family:var(--font-display);font-weight:600;font-size:1.4rem;color:var(--ink-deep);margin-bottom:16px}
+.bloc{margin-bottom:52px}
+.bloc h2{font-family:var(--font-display);font-weight:600;font-size:1.45rem;color:var(--ink-deep);margin-bottom:16px;letter-spacing:-.005em}
 .bloc p{font-size:.98rem;line-height:1.65;color:var(--ink);margin-bottom:14px;max-width:70ch;text-wrap:pretty}
-.note-src{font-family:var(--font-mono);font-size:.66rem;color:var(--ink-soft);letter-spacing:.04em}
+.note-src{font-family:var(--font-mono);font-size:.64rem;color:var(--ink-soft);letter-spacing:.04em;border:1px dashed rgba(74,95,83,.4);border-radius:6px;display:inline-block;padding:8px 14px;margin-top:6px}
 
-/* Fitxa tècnica: graella de camps (com la web: grid sm:2 lg:3) */
-.fitxa{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.fitxa .cell{background:var(--bg);border-radius:8px;padding:14px 16px}
-.fitxa .cell .k{font-family:var(--font-mono);font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:5px}
-.fitxa .cell .v{font-size:.9rem;font-weight:500;color:var(--ink);line-height:1.4}
-@media(max-width:700px){.fitxa{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.fitxa{grid-template-columns:1fr}}
-
-/* Dades clau */
+/* Fitxa tècnica no aplica aquí (la fitxa viu al rep-head), però les dades clau sí */
 .dades{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.dada{background:var(--bg);border-radius:10px;padding:20px 18px}
-.dada .n{font-family:var(--font-display);font-weight:500;font-size:2rem;color:var(--accent);line-height:1}
-.dada .l{font-size:.82rem;color:var(--ink-soft);margin-top:10px;line-height:1.45}
-.dada .p{font-family:var(--font-mono);font-size:.6rem;color:var(--ink-soft);margin-top:8px;letter-spacing:.06em}
+.dada{background:var(--bg);border-radius:10px;padding:22px 20px}
+.dada .n{font-family:var(--font-display);font-weight:500;font-size:2.2rem;color:var(--accent);line-height:1}
+.dada .l{font-size:.84rem;color:var(--ink-soft);margin-top:10px;line-height:1.45}
+.dada .p{font-family:var(--font-mono);font-size:.6rem;font-weight:600;color:var(--accent);margin-top:9px;letter-spacing:.08em;text-transform:uppercase}
 @media(max-width:700px){.dades{grid-template-columns:1fr}}
 
-/* Implicacions: 3 COLUMNES (com la web: grid sm:grid-cols-3 amb border-top) */
-.impl{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+/* Implicacions: 3 COLUMNES (com la web) */
+.impl{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:22px}
 .impl .actor{border-top:2px solid var(--accent);padding-top:14px}
 .impl .actor h3{font-family:var(--font-mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-.impl .actor p{font-size:.88rem;line-height:1.6;color:var(--ink)}
+.impl .actor p{font-size:.88rem;line-height:1.6;color:var(--ink);max-width:none;margin-bottom:0}
 @media(max-width:860px){.impl{grid-template-columns:1fr}}
 
-/* Checkbox: caixa fosca amb border-left (com la web, dins bloc 4) */
+/* Checkbox: caixa fosca border-left highlight (dins bloc 4) */
 .checkbox{
   background:var(--ink-deep);color:var(--bg);border-left:4px solid var(--highlight);
-  border-radius:0 10px 10px 0;padding:26px 28px;margin-top:26px;
+  border-radius:0 10px 10px 0;padding:28px 30px;margin-top:30px;
 }
 .checkbox .cl{font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--highlight);margin-bottom:12px}
-.checkbox .crit{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:1.15rem;color:var(--bg);line-height:1.4;margin-bottom:10px}
-.checkbox p{font-size:.9rem;color:rgba(242,245,241,.78);max-width:none}
+.checkbox .crit{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:1.25rem;color:var(--bg);line-height:1.35;margin-bottom:10px}
+.checkbox p{font-size:.9rem;color:rgba(242,245,241,.78);max-width:none;margin-bottom:0}
+.criteris{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.criteris span{
+  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid rgba(170,201,182,.35);color:var(--verd-clar);
+  padding:5px 12px;border-radius:99px;
+}
 
 /* Connexions */
-.conn{padding:14px 0;border-top:1px solid rgba(38,49,43,.1)}
-.conn h3{font-family:var(--font-mono);font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.conn{padding:15px 0;border-top:1px solid rgba(38,49,43,.1)}
+.conn h3{font-family:var(--font-mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
 .conn p{font-size:.92rem;margin:0;max-width:none}
 
-/* Accions: full-width tintat (com la web: background tintat + 3 col) */
-.accions-full{
-  background:var(--bg);border-top:1px solid rgba(38,49,43,.12);border-bottom:1px solid rgba(38,49,43,.12);
-  margin:0 -44px 46px;padding:40px 44px;
-}
-@media(max-width:1023px){.accions-full{margin:0 -22px 46px;padding:30px 22px}}
-.accions{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+/* Bloc 6 · Accions FULL-WIDTH tintat */
+.accions-wrap{padding:72px 0}
+.accions-title{font-family:var(--font-display);font-weight:600;font-size:1.55rem;color:var(--ink-deep);margin-bottom:30px;letter-spacing:-.005em}
+.accions{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 @media(max-width:860px){.accions{grid-template-columns:1fr}}
-.accio{display:flex;flex-direction:column;gap:12px}
-.accio .cnum{width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--verd-clar);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.1rem}
-.accio p{font-size:.9rem;font-weight:500;color:var(--ink-deep);line-height:1.55;margin:0}
+.accio{display:flex;flex-direction:column;gap:13px}
+.accio .cnum{
+  width:46px;height:46px;border-radius:50%;background:var(--ink);color:var(--verd-clar);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:500;font-size:1.15rem;
+}
+.accio p{font-size:.92rem;font-weight:500;color:var(--ink-deep);line-height:1.55;margin:0;max-width:none}
 .accio .eff{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
-.accio .eff b{color:var(--accent)}
+.accio .eff b{color:var(--accent);font-weight:600}
 
 /* Crossref */
-.xrefrow{display:grid;grid-template-columns:170px 1fr auto;gap:16px;align-items:start;padding:16px 0;border-top:1px solid rgba(38,49,43,.1)}
+.xrefrow{display:grid;grid-template-columns:170px 1fr auto;gap:16px;align-items:start;padding:17px 0;border-top:1px solid rgba(38,49,43,.1)}
+.xrefrow:last-child{border-bottom:1px solid rgba(38,49,43,.1)}
 .xrefrow .fw{font-family:var(--font-mono);font-weight:600;font-size:.8rem;color:var(--ink-deep)}
 .xrefrow .crit{font-size:.9rem;color:var(--ink-soft);line-height:1.5}
 .xrefrow .crit b{color:var(--ink);font-weight:500}
-.impact{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:99px;white-space:nowrap}
+.impact{font-family:var(--font-mono);font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:99px;white-space:nowrap}
 .i-alt{background:rgba(160,82,45,.12);color:var(--sem-r)}
-.i-mitja{background:rgba(201,169,97,.18);color:#8A6D1F}
+.i-mitja{background:rgba(201,169,97,.18);color:var(--sem-y)}
 .i-baixa{background:rgba(92,138,92,.14);color:var(--sem-g)}
 @media(max-width:700px){.xrefrow{grid-template-columns:1fr}.impact{justify-self:start}}
+
+/* Tornada a la biblioteca */
+.tornada{text-align:center;padding:56px 0 88px}
 </style>
 </head>
-<body data-reveal>
+<body>
 
+<!-- ══════════ HEADER ══════════ -->
 <header class="site">
-  <div class="wrap" style="max-width:1320px">
-    <a class="brand" href="mockup-homepage-oxalpha.html"><span class="brand-name">Criteri <em>ESG</em></span></a>
+  <div class="wrap">
+    <a class="brand" href="mockup-homepage-oxalpha.html">
+      <img src="../logos/LOGO-CRITERIESG.svg" alt="" onerror="this.style.display='none'">
+      <span class="brand-name">Criteri <em>ESG</em></span>
+    </a>
     <nav class="mainnav">
       <a class="active" href="mockup-informes.html">Informes</a>
       <a href="mockup-que-fem.html">Què fem</a>
@@ -168,14 +196,19 @@
 
 <!-- BLOC 1 · Capçalera-fitxa (com la web: el header porta id bloc-1) -->
 <section class="rep-head" id="bloc-1">
-  <div class="wrap" style="max-width:1320px">
-    <p class="crumb"><a href="mockup-informes.html">← Informes</a> &nbsp;/&nbsp; <b>BCE · Agost 2026</b> &nbsp;·&nbsp; 5 min · 8 blocs</p>
+  <div class="wrap">
+    <p class="crumb"><a href="mockup-informes.html">← Informes</a> &nbsp;/&nbsp; <b>BCE · Agost 2026</b></p>
+    <p class="eyebrow">Informe destil·lat · 8 blocs</p>
     <h1 class="rep-title">BCE: el risc climàtic ja és qüestió de solvència, no de narrativa</h1>
-    <p class="paper-meta" style="margin:0">
-      <b>Font:</b> European Central Bank · <b>Tipus:</b> informe institucional ·
-      <b>Original:</b> 84 pàg. · <b>Destil·lat:</b> 1.042 paraules · <b>Lectura:</b> 5 min ·
-      <b>URL:</b> ecb.europa.eu ↗ · <b>Context:</b> abans del stress test 2027
-    </p>
+    <div class="fitxa-meta">
+      <span><b>Font</b> European Central Bank</span>
+      <span><b>Tipus</b> informe institucional</span>
+      <span><b>Original</b> 84 pàg.</span>
+      <span><b>Destil·lat</b> 1.042 paraules</span>
+      <span><b>Lectura</b> 5 min</span>
+      <span><b>URL</b> <a href="https://www.ecb.europa.eu" target="_blank" rel="noopener">ecb.europa.eu&nbsp;↗</a></span>
+      <span><b>Context</b> abans del stress test 2027</span>
+    </div>
   </div>
 </section>
 
@@ -188,7 +221,7 @@
     <nav class="idx">
       <a href="#bloc-0"><span class="n">00</span><span class="t">Semàfor metodològic</span></a>
       <a href="#bloc-1"><span class="n">01</span><span class="t">Fitxa tècnica</span></a>
-      <a href="#bloc-2"><span class="n">02</span><span class="t">5 dades clau</span></a>
+      <a href="#bloc-2"><span class="n">02</span><span class="t">Dades clau</span></a>
       <a href="#bloc-3"><span class="n">03</span><span class="t">Resum executiu</span></a>
       <a href="#bloc-4"><span class="n">04</span><span class="t">Implicacions</span></a>
       <a href="#bloc-5"><span class="n">05</span><span class="t">Connexions</span></a>
@@ -207,15 +240,15 @@
   <!-- ═══ MAIN ═══ -->
   <main class="main">
 
-    <!-- BLOC 0 · Semàfor dark (com la web: full-width dins del main) -->
+    <!-- BLOC 0 · Semàfor dark (full-width dins del main) -->
     <section class="bloc0" id="bloc-0">
       <div>
-        <p class="blabel">Bloc 0 · Semàfor metodològic</p>
+        <p class="blabel on-dark">Bloc 0 · Semàfor metodològic</p>
         <div class="grade">B</div>
         <p class="gl">Quantificació sòlida del risc climàtic amb una llacuna en la petjada d'abast 3.</p>
         <div class="dots" aria-hidden="true">
           <span class="dot g on"></span><span class="dot g on"></span><span class="dot g on"></span>
-          <span class="dot y on"></span><span class="dot r"></span>
+          <span class="dot g on"></span><span class="dot y on"></span>
         </div>
       </div>
       <div>
@@ -224,6 +257,7 @@
           no si estem d'acord amb les seves conclusions. Cinc indicadors, cada un verd (quantificat),
           groc (esmentat) o vermell (ignorat).
         </p>
+        <div style="height:14px"></div>
         <div class="ind"><span class="n">Cobertura d'emissions finançades (Scope 3)</span><span class="v a">Esmentada indirectament</span></div>
         <div class="ind"><span class="n">Risc de transició</span><span class="v v">Quantificat</span></div>
         <div class="ind"><span class="n">Risc físic agut</span><span class="v v">Quantificat</span></div>
@@ -234,7 +268,7 @@
       </div>
     </section>
 
-    <!-- BLOC 2 · 5 dades clau -->
+    <!-- BLOC 2 · Dades clau -->
     <section class="bloc" id="bloc-2">
       <p class="blabel">Bloc 2 · Les 5 dades clau</p>
       <div class="dades">
@@ -242,7 +276,7 @@
         <div class="dada"><div class="n">77 pb</div><div class="l">Addicional si el risc físic agut es materialitza sense adaptació</div><div class="p">Box 1</div></div>
         <div class="dada"><div class="n">91 %</div><div class="l">Augment de probabilitat de mora en sectors intensius</div><div class="p">§ 2.3</div></div>
       </div>
-      <p class="note-src" style="margin-top:12px">Cada dada amb la secció exacta de l'original. Verificable en 10 segons.</p>
+      <p class="note-src" style="margin-top:14px">CADA DADA AMB LA SECCIÓ EXACTA DE L'ORIGINAL · VERIFICABLE EN 10 SEGONS</p>
     </section>
 
     <!-- BLOC 3 · Resum executiu -->
@@ -259,7 +293,7 @@
       que connectaria el risc de cartera amb els objectius net-zero del sector.</p>
     </section>
 
-    <!-- BLOC 4 · Implicacions 3 COLUMNES + checkbox dins (com la web) -->
+    <!-- BLOC 4 · Implicacions 3 COLUMNES + checkbox dins -->
     <section class="bloc" id="bloc-4" style="margin-bottom:0">
       <p class="blabel">Bloc 4 · Implicacions</p>
       <h2>Per a empreses, reguladors i ciutadans</h2>
@@ -275,7 +309,7 @@
         préstecs d'empresa i a la rendibilitat de les pensions.</p></div>
       </div>
 
-      <!-- Checkbox: dins del bloc 4, caixa fosca border-left (com la web) -->
+      <!-- Checkbox: dins del bloc 4, caixa fosca border-left highlight -->
       <div class="checkbox">
         <p class="cl">Més enllà del checkbox</p>
         <p class="crit">El risc està mesurat. La responsabilitat, encara no.</p>
@@ -283,15 +317,15 @@
         és exemplar. Però mesurar el risc no és assumir-lo: cap dels 74 punts bàsics no ve acompanyat
         d'un mecanisme que faci pagar a qui genera les emissions, només a qui les finança sense
         preu-les bé. És la diferència entre mirar el termòmetre i baixar la febre.</p>
-        <div class="criteris" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px">
-          <span style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(170,201,182,.35);color:var(--verd-clar);padding:5px 12px;border-radius:99px">Sostenibilitat absoluta</span>
-          <span style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(170,201,182,.35);color:var(--verd-clar);padding:5px 12px;border-radius:99px">Justícia distributiva</span>
+        <div class="criteris">
+          <span>Sostenibilitat absoluta</span>
+          <span>Justícia distributiva</span>
         </div>
       </div>
     </section>
 
     <!-- BLOC 5 · Connexions -->
-    <section class="bloc" id="bloc-5" style="margin-top:46px">
+    <section class="bloc" id="bloc-5" style="margin-top:52px;margin-bottom:0">
       <p class="blabel">Bloc 5 · Connexions</p>
       <div class="conn"><h3>Evolució → EIOPA Finançament sostenible (juny 2026)</h3>
       <p>Les 274.000 M€ de pèrdues per catàstrofes que quantificava EIOPA són la cara asseguradora del
@@ -303,11 +337,11 @@
   </main>
 </div>
 
-<!-- BLOC 6 · Accions: FULL-WIDTH tintat (com la web) -->
-<section id="bloc-6" style="background:var(--bg);border-top:1px solid rgba(38,49,43,.12);border-bottom:1px solid rgba(38,49,43,.12);padding:48px 0">
-  <div class="wrap" style="max-width:1320px">
+<!-- BLOC 6 · Accions: FULL-WIDTH tintat -->
+<section class="block tinted accions-wrap" id="bloc-6">
+  <div class="wrap">
     <p class="blabel">Bloc 6 · Accions recomanades ⭐</p>
-    <h2 style="font-family:var(--font-display);font-weight:600;font-size:1.4rem;color:var(--ink-deep);margin-bottom:26px">3 accions operatives per a aquesta setmana</h2>
+    <h2 class="accions-title">3 accions operatives per a aquesta setmana</h2>
     <div class="accions">
       <div class="accio"><div class="cnum">01</div><p>Integrar els escenaris climàtics del BCE als models interns de risc abans del stress test 2027</p><span class="eff">esforç <b>mitjà</b> · impacte <b>alt</b></span></div>
       <div class="accio"><div class="cnum">02</div><p>Publicar les emissions finançades per Scope 3, per abast, al proper informe de sostenibilitat</p><span class="eff">esforç <b>baix</b> · impacte <b>alt</b></span></div>
@@ -316,10 +350,10 @@
   </div>
 </section>
 
-<!-- BLOC 7 · Cross-reference (dins del layout, sota) -->
+<!-- BLOC 7 · Cross-reference (continua el layout amb la columna buida) -->
 <div class="layout">
-  <div></div>
-  <main class="main" style="padding-top:46px;padding-bottom:72px">
+  <div aria-hidden="true"></div>
+  <main class="main" style="padding-top:52px;padding-bottom:0">
     <section class="bloc" id="bloc-7" style="margin-bottom:0">
       <p class="blabel">Bloc 7 · Cross-reference ⭐ · 16 estàndards</p>
       <div class="xrefrow">
@@ -341,23 +375,51 @@
   </main>
 </div>
 
+<!-- Tornada -->
+<div class="tornada wrap">
+  <a class="btn btn-ghost" href="mockup-informes.html">← Torna a la biblioteca</a>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
 <footer class="site">
-  <div class="wrap" style="max-width:1320px">
+  <div class="wrap">
     <div class="cols">
-      <div><span class="brand-name">Criteri <em>ESG</em></span><p class="tag">Intel·ligència regulatòria ESG destil·lada amb criteri humà.</p></div>
-      <div><h4>Producte</h4><ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul></div>
-      <div><h4>Projecte</h4><ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul></div>
-      <div><h4>Legal</h4><ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul></div>
+      <div>
+        <span class="brand-name">Criteri <em>ESG</em></span>
+        <p class="tag">Intel·ligència regulatòria ESG destil·lada amb criteri humà.</p>
+      </div>
+      <div>
+        <h4>Producte</h4>
+        <ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul>
+      </div>
+      <div>
+        <h4>Projecte</h4>
+        <ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul>
+      </div>
     </div>
-    <div class="base"><span>© 2026 CRITERI ESG</span><span>RIGOR · FRESCOR · SOBRIETAT</span></div>
+    <div class="base">
+      <span>© 2026 CRITERI ESG</span>
+      <span>RIGOR · FRESCOR · SOBRIETAT</span>
+    </div>
   </div>
 </footer>
 
 <script>
-if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
-  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+// Revelat subtil en scroll — respecta prefers-reduced-motion
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.14});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-} else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')); }
+})();
 </script>
 </body>
 </html>

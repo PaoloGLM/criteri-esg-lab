@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Criteri ESG — El context ESG, destil·lat en cinc minuts</title>
-<meta name="description" content="Intel·ligència regulatòria ESG: destil·lem els informes institucionals que t'importen en 8 blocs de 5 minuts, amb traçabilitat a pàgina i cross-reference entre 16 estàndards.">
+<title>Criteri ESG — Informes ESG. Coneixement. En només 5 minuts.</title>
+<meta name="description" content="Intel·ligència ESG per a decisions ètiques. Informes institucionals sintetitzats en 8 blocs de 5 minuts, amb semàfor metodològic i cross-reference amb EcoVadis, B Corp, MSCI i GRI.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%235E8772'/%3E%3Ccircle cx='16' cy='10' r='3' fill='%23F5E381'/%3E%3Ccircle cx='11' cy='19' r='3' fill='%23F2F5F1'/%3E%3Ccircle cx='21' cy='19' r='3' fill='%23F2F5F1'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -326,6 +326,72 @@ footer .base{
   font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;color:rgba(242,245,241,.5);
 }
 @media(max-width:800px){footer .cols{grid-template-columns:1fr 1fr}}
+
+/* ═══════════════ COMPONENTS CONTINGUT REAL (paleta v7) ═══════════════ */
+.lead-list{list-style:none;margin-bottom:34px}
+.lead-list li{position:relative;padding-left:24px;color:var(--ink-soft);font-size:1.04rem;line-height:1.7}
+.lead-list li::before{content:"";position:absolute;left:0;top:.78em;width:14px;height:2px;background:var(--accent)}
+
+/* Targeta exclusiva del hero (cross-reference real) */
+.herocard{background:var(--paper);border:1px solid rgba(38,49,43,.12);border-radius:12px;padding:26px 26px 20px;box-shadow:0 18px 40px rgba(38,49,43,.08);margin-bottom:44px}
+.xbadge{display:inline-block;font-family:var(--font-mono);font-size:.6rem;font-weight:600;letter-spacing:.13em;color:var(--ink);background:var(--highlight);padding:6px 10px;border-radius:4px;margin-bottom:16px}
+.xcard-title{font-family:var(--font-display);font-weight:500;font-size:1.34rem;line-height:1.22;color:var(--ink-deep);margin-bottom:8px}
+.xcard-meta{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:16px}
+.xintensity{border-top:1px solid rgba(38,49,43,.1);padding:14px 0 6px;margin-bottom:10px}
+.irow{display:flex;align-items:center;justify-content:space-between;padding:4px 0}
+.ilabel{font-family:var(--font-mono);font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.ibars{display:flex;gap:5px}
+.ibars i{width:26px;height:6px;border-radius:3px;background:rgba(170,201,182,.45)}
+.ibars i.on{background:var(--accent)}
+.xminifeat{list-style:none;border-top:1px solid rgba(38,49,43,.1);margin-top:6px}
+.xminifeat li{padding:11px 0;border-top:1px solid rgba(38,49,43,.06);display:flex;flex-direction:column;gap:3px}
+.xminifeat li:first-child{border-top:none}
+.xminifeat b{font-family:var(--font-mono);font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.xminifeat span{font-size:.84rem;color:var(--ink-soft)}
+
+/* Mètriques de la biblioteca */
+.metricstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:44px 0 8px}
+.metric{background:var(--paper);border:1px solid rgba(38,49,43,.12);border-radius:9px;padding:22px 24px}
+.metric .n{font-family:var(--font-display);font-weight:500;font-size:2.3rem;line-height:1;color:var(--accent)}
+.metric .n small{font-size:.5em;color:var(--ink-soft)}
+.metric .t{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:10px}
+@media(max-width:800px){.metricstrip{grid-template-columns:1fr}}
+
+/* Botons ghost sobre secció fosca (últim informe) */
+.metode .btn-ghost{color:var(--verd-clar);border-color:rgba(170,201,182,.45)}
+.metode .btn-ghost:hover{border-color:var(--highlight);color:var(--highlight)}
+
+/* Estadístiques de l'últim informe */
+.latest-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.lstat{border-left:1px solid rgba(170,201,182,.25);padding-left:18px}
+.lstat .n{font-family:var(--font-display);font-weight:500;font-size:clamp(2rem,3vw,2.8rem);line-height:1;color:var(--verd-clar)}
+.lstat .t{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,245,241,.72);margin-top:8px}
+@media(max-width:900px){.latest-stats{grid-template-columns:1fr}}
+
+/* FAQ */
+.faqlist{max-width:800px;margin:46px auto 0}
+.faqlist details{background:var(--paper);border:1px solid rgba(38,49,43,.12);border-radius:9px;margin-bottom:12px;overflow:hidden}
+.faqlist summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:18px 22px;font-family:var(--font-display);font-weight:500;font-size:1.1rem;line-height:1.3;color:var(--ink-deep)}
+.faqlist summary::-webkit-details-marker{display:none}
+.faqlist summary::after{content:"+";font-family:var(--font-mono);font-size:1.05rem;color:var(--accent);flex-shrink:0;transition:transform .2s ease}
+.faqlist details[open] summary::after{content:"–"}
+.faqlist details[open] summary{border-bottom:1px solid rgba(38,49,43,.08)}
+.faq-a{padding:18px 22px 22px;color:var(--ink-soft);font-size:.95rem;line-height:1.65}
+
+/* CTA final en dues targetes */
+.ctacards{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:940px;margin:0 auto;text-align:left}
+.ctacard{background:var(--paper);border:1px solid rgba(38,49,43,.12);border-radius:12px;padding:34px 34px 30px;display:flex;flex-direction:column}
+.ctacard.dark{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.ctacard h3{font-family:var(--font-display);font-weight:500;font-size:1.55rem;color:var(--ink-deep);margin-bottom:6px}
+.ctacard.dark h3{color:var(--bg)}
+.ctacard .sub{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.04em;color:var(--accent);margin-bottom:14px}
+.ctacard.dark .sub{color:var(--highlight)}
+.ctacard p{font-size:.94rem;color:var(--ink-soft);margin-bottom:24px;text-wrap:pretty}
+.ctacard.dark p{color:rgba(242,245,241,.72)}
+.ctacard .btn{align-self:flex-start}
+.ctacard .mini-note{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.06em;color:var(--ink-soft);margin-top:16px}
+.ctacard.dark .mini-note{color:rgba(242,245,241,.55)}
+@media(max-width:800px){.ctacards{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -333,16 +399,17 @@ footer .base{
 <!-- ══════════ HEADER ══════════ -->
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="#">
+    <a class="brand" href="mockup-homepage-oxalpha.html">
       <img src="../logos/LOGO-CRITERIESG.svg" alt="" onerror="this.style.display='none'">
       <span class="brand-name">Criteri <em>ESG</em></span>
     </a>
     <nav class="mainnav">
-      <a href="#problema">El problema</a>
-      <a href="#metode">El mètode</a>
-      <a href="#informe">L'informe</a>
-      <a href="#crossref">Cross-reference</a>
-      <a class="cta-mini" href="#acces">Accés</a>
+      <a href="mockup-informes.html">Informes</a>
+      <a href="mockup-que-fem.html">Què fem</a>
+      <a href="mockup-estandares.html">Estàndards</a>
+      <a href="mockup-qui-som.html">Qui som</a>
+      <a href="mockup-preus.html">Preus</a>
+      <a class="cta-mini" href="mockup-registro.html">Comença</a>
     </nav>
   </div>
 </header>
@@ -351,254 +418,181 @@ footer .base{
 <section class="hero">
   <div class="wrap">
     <div>
-      <p class="eyebrow">Intel·ligència regulatòria ESG</p>
-      <h1>El context ESG sencer,<br>destil·lat en <span class="hl">cinc minuts</span>.</h1>
-      <p class="lead">
-        Cada mes, bancs centrals, reguladors i organismes internacionals publiquen
-        <strong>milers de pàgines</strong> que acabaran afectant la teva empresa. Nosaltres les
-        llegim totes, les contrastem i et fem arribar el que cal decidir-ne:
-        <strong>clar, breu i amb la pàgina exacta de la font</strong>.
-      </p>
+      <p class="eyebrow">Intel·ligència ESG · Des de 2026</p>
+      <h1>Informes ESG. Coneixement.<br>En només <span class="hl">5 minuts</span>.</h1>
+      <ul class="lead-list">
+        <li>Aplica les conclusions amb criteri</li>
+        <li>Diferencia't actuant èticament</li>
+        <li>IA agèntica al servei de l'empresa</li>
+      </ul>
       <div class="actions">
-        <a class="btn btn-solid" href="#acces">Llegir l'últim informe</a>
-        <a class="btn btn-ghost" href="#metode">Com funciona el mètode</a>
+        <a class="btn btn-solid" href="mockup-registro.html">Registra't gratis</a>
+        <a class="btn btn-ghost" href="mockup-registro.html">Rep la newsletter</a>
       </div>
+      <p class="pilot-note"><b>Accés gratuït a informes &gt;6 mesos. Sense targeta.</b></p>
     </div>
 
-    <figure class="herochart reveal" aria-label="Gràfic: el volum de publicacions reguatòries creix mentre el temps disponible es manté igual">
-      <svg viewBox="0 0 520 340" role="img">
-        <!-- graella -->
-        <g stroke="#26312B" stroke-opacity=".07">
-          <line x1="46" y1="60" x2="500" y2="60"/><line x1="46" y1="120" x2="500" y2="120"/>
-          <line x1="46" y1="180" x2="500" y2="180"/><line x1="46" y1="240" x2="500" y2="240"/>
-        </g>
-        <!-- barres: pàgines publicades -->
-        <g fill="#5E8772">
-          <rect x="70"  y="212" width="52" height="68" rx="3"/>
-          <rect x="152" y="188" width="52" height="92" rx="3"/>
-          <rect x="234" y="150" width="52" height="130" rx="3"/>
-          <rect x="316" y="104" width="52" height="176" rx="3"/>
-          <rect x="398" y="52"  width="52" height="228" rx="3" fill="#26312B"/>
-        </g>
-        <!-- línia: temps disponible -->
-        <line x1="60" y1="196" x2="480" y2="196" stroke="#A0522D" stroke-width="2" stroke-dasharray="6 5"/>
-        <circle cx="480" cy="196" r="4" fill="#A0522D"/>
-        <!-- etiquetes eix -->
-        <g font-family="'JetBrains Mono',monospace" font-size="11" fill="#4A5F53">
-          <text x="96"  y="300" text-anchor="middle">2022</text>
-          <text x="178" y="300" text-anchor="middle">2023</text>
-          <text x="260" y="300" text-anchor="middle">2024</text>
-          <text x="342" y="300" text-anchor="middle">2025</text>
-          <text x="424" y="300" text-anchor="middle">2026</text>
-        </g>
-        <!-- anotacions -->
-        <g font-family="'JetBrains Mono',monospace" font-size="10.5">
-          <rect x="330" y="26" width="168" height="22" rx="4" fill="#F5E381"/>
-          <text x="338" y="41" fill="#26312B" font-weight="600">PÀGINES PUBLICADES ↑</text>
-          <text x="60" y="186" fill="#A0522D" font-weight="600">EL TEU TEMPS →</text>
-        </g>
-      </svg>
-      <figcaption class="chart-cap">
-        Il·lustratiu. El volum de publicació reguatòria i d'estàndards creix cada curs fiscal;
-        <b>les hores disponibles del teu equip, no.</b>
-      </figcaption>
-    </figure>
+    <aside class="herocard reveal" aria-label="Exemple exclusiu de cross-reference de l'últim informe">
+      <p class="xbadge">⭐ EXCLUSIU · CAP COMPETIDOR HO FA</p>
+      <h3 class="xcard-title">Cross-reference: Revisió ESRS ↔ les teves certificacions</h3>
+      <p class="xcard-meta">Comissió Europea · DG FISMA · 6 de maig de 2026</p>
+      <div class="xintensity">
+        <div class="irow"><span class="ilabel">Alt</span><span class="ibars"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+        <div class="irow"><span class="ilabel">Mitjà</span><span class="ibars"><i class="on"></i><i class="on"></i></span></div>
+        <div class="irow"><span class="ilabel">Baix</span><span class="ibars"><i class="on"></i></span></div>
+      </div>
+      <ul class="xminifeat">
+        <li><b>Semàfor Metodològic</b><span>5 indicadors per avaluar la qualitat de l'informe</span></li>
+        <li><b>Accions recomanades</b><span>3-5 accions concretes. El cor operatiu.</span></li>
+        <li><b>Cross-reference</b><span>Mapatge amb EcoVadis, B Corp, MSCI, GRI.</span></li>
+      </ul>
+    </aside>
   </div>
 
   <!-- franja de dades -->
   <div class="statband">
     <div class="wrap">
-      <div class="stat"><div class="n">16</div><div class="t">Estàndards en creuament</div></div>
+      <div class="stat"><div class="n">5<small>&nbsp;min</small></div><div class="t">Per entendre un informe</div></div>
+      <div class="stat"><div class="n">180+</div><div class="t">Fonts monitoritzades</div></div>
       <div class="stat"><div class="n">8</div><div class="t">Blocs per informe</div></div>
-      <div class="stat"><div class="n">5<small>&nbsp;min</small></div><div class="t">De lectura, com a màxim</div></div>
-      <div class="stat"><div class="n"><small>p.&nbsp;</small>N</div><div class="t">Pàgina exacta a cada dada</div></div>
+      <div class="stat"><div class="n">A-D</div><div class="t">Nota metodològica per informe</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ EL PROBLEMA ══════════ -->
-<section class="block prob" id="problema">
+<!-- ══════════ QUÈ TROBARÀS / 8 PORTES ══════════ -->
+<section class="block" id="portes">
   <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow">El problema</p>
-      <h2 class="sec-title">La normativa corre.<br>Ningú no et tradueix <span class="hl">què significa</span>.</h2>
-      <p class="sec-body">
-        Les sigles canvien d'abast cada trimestre. Un informe del BCE sobre risc climàtic
-        pot redefinir el que t'exigirà el teu auditor; una revisió d'<strong>Omnibus</strong>,
-        decidir si el CSRD t'aplica o deixes d'aplicar-t'hi. Seguir-ho és una feina a jornada
-        completa <strong>que ningú t'ha assignat</strong> — i que cap resum automàtic fa bé,
-        perquè el problema no és llegir: és entendre què pesa.
-      </p>
-      <div class="acronyms" aria-hidden="true">
-        <span>CSRD</span><span>ESRS</span><span>Omnibus I</span><span>ISSB</span>
-        <span>TNFD</span><span>SFDR</span><span>CSDDD</span><span>GRI 101–103</span>
-      </div>
+    <div class="reveal" style="max-width:680px">
+      <p class="eyebrow">Què trobaràs a Criteri ESG</p>
+      <h2 class="sec-title">Sis portes per entrar al mateix objectiu: <span class="hl">decidir amb criteri</span>.</h2>
     </div>
 
-    <div class="docfeed reveal">
-      <p class="docfeed-head">Publicat només aquest curs</p>
-      <ul>
-        <li><div><span class="who">BCE</span> <span class="what">· Risc climàtic al sistema financer</span></div><span class="when">2026</span></li>
-        <li><div><span class="who">EBA</span> <span class="what">· Avaluació de riscos, juny</span></div><span class="when">2026</span></li>
-        <li><div><span class="who">WEF</span> <span class="what">· Global Risks Report</span></div><span class="when">2026</span></li>
-        <li><div><span class="who">Forética</span> <span class="what">· Tendències ESG</span></div><span class="when">2026</span></li>
-        <li><div><span class="who">CNMV</span> <span class="what">· Pla d'activitats i butlletí</span></div><span class="when">2026</span></li>
-        <li><div><span class="who">ONU</span> <span class="what">· Finançament sostenible (FSDR)</span></div><span class="when">2026</span></li>
-      </ul>
-      <p class="docfeed-cap">Mostra real del corpus que monitoritzem. No és tot — ni de lluny.</p>
+    <div class="blocgrid reveal" style="margin-top:48px">
+      <article class="bloc"><div class="num">01</div><h3>Biblioteca d'informes</h3><p>Cada informe rellevant de la UE, sintetitzat en 8 blocs accionables amb cross-reference a EcoVadis, B Corp i MSCI.</p></article>
+      <article class="bloc"><div class="num">02</div><h3>Guies de certificació</h3><p>Dossiers pas a pas per pujar EcoVadis, obtenir B Corp, passar CSRD o millorar MSCI rating.</p></article>
+      <article class="bloc"><div class="num">03</div><h3>Cross-reference amb frameworks</h3><p>Cada informe es mapeja amb EcoVadis, B Corp, MSCI i GRI perquè sàpigues com t'afecta segons la teva certificació.</p></article>
+      <article class="bloc"><div class="num">04</div><h3>Autodiagnòstic</h3><p>Posa't a prova: respon 15 preguntes i rep un informe amb punts forts, febles i projecció futura segons lleis en marxa.</p></article>
+      <article class="bloc"><div class="num">05</div><h3>Newsletter bimensual</h3><p>Informes recents, notícies i creuaments d'informació rellevants, cada dues setmanes. Gratuït, cancel·la quan vulguis.</p></article>
+      <article class="bloc dark"><div class="num">06</div><h3>Semàfor Metodològic</h3><p>Avalua la qualitat metodològica de cada informe en 10 segons. 5 indicadors + nota A-D. Cap competidor ho fa.</p></article>
+      <article class="bloc"><div class="num">07</div><h3>Més enllà del Checkbox</h3><p>Veu editorial crítica que qüestiona el marc ESG hegemònic: dignitat, justícia distributiva, arrelament territorial.</p></article>
+      <article class="bloc"><div class="num">08</div><h3>Carta del Director</h3><p>Cada mes, l'empremta ètica d'en Paolo. Mirada personal sobre els informes del període i el compromís de Criteri.</p></article>
     </div>
   </div>
 </section>
 
-<!-- ══════════ EL MÈTODE ══════════ -->
-<section class="block metode" id="metode">
+<!-- ══════════ BIBLIOTECA D'INFORMES ══════════ -->
+<section class="block tinted" id="biblioteca">
   <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow">El mètode</p>
-      <h2 class="sec-title">Un semàfor, no una opinió.</h2>
-      <p class="sec-body">
-        Cada informe institucional passa pel mateix criteri de sempre: què <strong>quantifica</strong>,
-        què només <strong>esmenta</strong> i què <strong>ignora</strong>. Cinc indicadors, una nota A–D,
-        i cap caixa grisa. El resultat es pot discutir — però es pot reproduir.
-      </p>
+    <div class="reveal" style="max-width:700px">
+      <p class="eyebrow">Biblioteca d'informes</p>
+      <h2 class="sec-title">Estalvia temps, <span class="hl">només 5 min.</span></h2>
+      <p class="sec-body">Un director de sostenibilitat dedica de mitjana el 60% del seu temps a recopilar informació. Criteri ESG centralitza tota aquesta informació i la sintetitza en 8 blocs, perquè el temps d'anàlisi es converteixi en temps de decisió.</p>
     </div>
 
-    <div class="metode-grid">
-      <div class="semafor reveal" role="img" aria-label="Exemple de semàfor: nota C amb tres indicadors verds, un groc i un vermell">
-        <div class="grade-row">
-          <div class="grade">C</div>
-          <div class="grade-meta">
-            <div class="dots">
-              <span class="dot g"></span><span class="dot g"></span><span class="dot g"></span>
-              <span class="dot y on"></span><span class="dot r on"></span>
-            </div>
-            <div class="grade-label">Nota de l'informe · exemple real</div>
-          </div>
-        </div>
-        <div class="ind"><span class="name">Cobertura Scope 3</span><span class="val a">Esmentat</span></div>
-        <div class="ind"><span class="name">Objectius quantificats</span><span class="val rv">Ignorat</span></div>
-        <div class="ind"><span class="name">Traçabilitat de fonts</span><span class="val v">Quantificat</span></div>
-        <div class="ind"><span class="name">Interoperabilitat estàndards</span><span class="val v">Quantificat</span></div>
-        <div class="ind"><span class="name">Horitzó temporal</span><span class="val v">Quantificat</span></div>
-        <p class="semafor-note">Regla pública: <em>A = 5 verds · B = 4 verds + 1 groc · C ≤ 1 vermell · D = 2+ vermells</em>. El mateix criteri per a tots els informes, publicat i auditable.</p>
-      </div>
-
-      <ul class="metode-points reveal">
-        <li>
-          <span class="k">1</span>
-          <div><h3>Doble filtre, dos models</h3><p>Un model destil·la; un segon model independent fa d'advocat del diable i intenta desmuntar-lo abans que ho facis tu.</p></div>
-        </li>
-        <li>
-          <span class="k">2</span>
-          <div><h3>Entorn tancat, zero invenció</h3><p>Cada afirmació prové exclusivament del document original. Si una dada no hi és, no surt. Si no té pàgina, no es publica.</p></div>
-        </li>
-        <li>
-          <span class="k">3</span>
-          <div><h3>Inferència marcada</h3><p>Quan connectem punts entre documents, l'etiquetem com a interpretació nostra. El fet i l'anàlisi mai no es confonen.</p></div>
-        </li>
-      </ul>
+    <div class="metricstrip reveal">
+      <div class="metric"><div class="n">5<small>&nbsp;min</small></div><div class="t">Per entendre un informe</div></div>
+      <div class="metric"><div class="n">180+</div><div class="t">Fonts monitoritzades</div></div>
+      <div class="metric"><div class="n">8</div><div class="t">Blocs per informe</div></div>
     </div>
-  </div>
-</section>
 
-<!-- ══════════ L'INFORME: 8 BLOCS ══════════ -->
-<section class="block tinted" id="informe">
-  <div class="wrap">
-    <div class="blocs-head reveal">
+    <div class="blocs-head reveal" style="margin-top:72px">
       <div>
-        <p class="eyebrow">L'informe</p>
-        <h2 class="sec-title" style="margin-bottom:12px">Vuit blocs. Cap farciment.</h2>
-        <p class="sec-body">Sempre els mateixos vuit, en el mateix ordre. Llegeixes un, ja saps llegir-los tots.</p>
+        <p class="eyebrow">COM REBRÀS LA INFORMACIÓ</p>
+        <h2 class="sec-title" style="margin-bottom:12px">Vuit blocs. Un mateix patró per a 1.000 informes.</h2>
+        <p class="sec-body">La consistència et permet saber què esperar. Cada informe segueix el mateix esquema perquè puguis comparar, prioritzar i decidir.</p>
       </div>
-      <div class="wordcount">LÍMIT EDITORIAL · <b>MÀX. 1.100 PARAULES</b></div>
     </div>
 
     <div class="blocgrid reveal">
-      <article class="bloc"><div class="num">01</div><h3>Semàfor</h3><p>Nota A–D i els cinc indicadors que l'han feta.</p></article>
-      <article class="bloc"><div class="num">02</div><h3>Dades clau</h3><p>Els números que importen, cadascun amb la seva pàgina.</p></article>
-      <article class="bloc"><div class="num">03</div><h3>Resum executiu</h3><p>El que hauries de saber abans del cafè.</p></article>
-      <article class="bloc"><div class="num">04</div><h3>Implicacions</h3><p>Per a empreses, reguladors i ciutadania.</p></article>
-      <article class="bloc"><div class="num">05</div><h3>Més enllà del Checkbox</h3><p>El que l'informe no respon — dit sense eufemismes.</p></article>
-      <article class="bloc"><div class="num">06</div><h3>Connexions</h3><p>Evolucions, complements i contradiccions amb informes anteriors.</p></article>
-      <article class="bloc"><div class="num">07</div><h3>Accions</h3><p>Què fer-hi, ordenat per esforç i impacte.</p></article>
-      <article class="bloc dark"><div class="num">08</div><h3>Cross-reference</h3><p>L'efecte de la notícia sobre 16 estàndards. Ningú més ho fa.</p></article>
+      <article class="bloc dark"><div class="num">0</div><h3>Semàfor Metodològic</h3><p>5 indicadors + nota A-D. Avalua la qualitat en 10 segons.</p></article>
+      <article class="bloc"><div class="num">1</div><h3>Fitxa tècnica</h3><p>Institució, data, tipus, pàgines, URL. 50 paraules.</p></article>
+      <article class="bloc"><div class="num">2</div><h3>5 dades clau</h3><p>Punts quantitatius amb valor, context i pàgina citada.</p></article>
+      <article class="bloc"><div class="num">3</div><h3>Resum executiu</h3><p>Què diu en llenguatge planer. 300 paraules.</p></article>
+      <article class="bloc"><div class="num">4</div><h3>Implicacions</h3><p>Empreses, reguladors, ciutadans. + Més enllà del Checkbox.</p></article>
+      <article class="bloc"><div class="num">5</div><h3>Connexions</h3><p>Relacions amb altres informes i actualitat.</p></article>
+      <article class="bloc"><div class="num">6</div><h3>Accions recomanades</h3><p>3-5 accions concretes. El cor operatiu.</p></article>
+      <article class="bloc"><div class="num">7</div><h3>Cross-reference</h3><p>Mapatge amb EcoVadis, B Corp, MSCI, GRI.</p></article>
     </div>
   </div>
 </section>
 
-<!-- ══════════ CROSS-REFERENCE ══════════ -->
-<section class="block xref" id="crossref">
+<!-- ══════════ ÚLTIM INFORME ══════════ -->
+<section class="block metode" id="informe">
   <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow">Cross-reference</p>
-      <h2 class="sec-title">Una dada nova,<br>llegida <span class="hl">setze</span> vegades.</h2>
-      <p class="sec-body">
-        Quan el BCE parla d'emissions, nosaltres ja sabem què li demanarà el <strong>GRI 305-1</strong>,
-        quina casella omple a <strong>EcoVadis</strong>, i on xoca amb la <strong>Taxonomia UE</strong>.
-        Els estàndards no viuen sols: <strong>el valor és veure on s'encreuen</strong>.
-      </p>
-      <p class="sec-body" style="margin-top:16px">
-        És l'única part de l'informe que no resumeix una publicació — <strong>la multiplica</strong>.
-      </p>
-    </div>
+    <div class="metode-grid">
+      <div class="reveal">
+        <p class="eyebrow">Últim informe publicat · 6 maig 2026</p>
+        <h2 class="sec-title">Comissió Europea publica la revisió dels ESRS</h2>
+        <p class="sec-body">
+          La Comissió Europea ha publicat l'esborrany revisat dels European Sustainability Reporting Standards que redueix un 61% els datapoints obligatoris del CSRD. Estalvi acumulat estimat de 3.700M€ en 5 anys. Aplicació prevista per a exercicis 2027.
+        </p>
+        <div class="actions" style="margin-bottom:0">
+          <a class="btn btn-solid" href="mockup-informes.html">Veure exemple complet</a>
+          <a class="btn btn-ghost" href="mockup-registro.html">Llegeix l'informe complet amb registre gratuït</a>
+        </div>
+      </div>
 
-    <div class="reveal">
-      <svg viewBox="0 0 560 380" role="img" aria-label="Diagrama: un informe central connectat amb sis estàndards mitjançant el cross-reference">
-        <defs>
-          <marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M0,0 L8,4 L0,8 z" fill="#5E8772"/>
-          </marker>
-        </defs>
-        <!-- arestes -->
-        <g stroke="#5E8772" stroke-opacity=".45" stroke-width="1.4" fill="none" marker-end="url(#arr)">
-          <line x1="280" y1="190" x2="112" y2="62"/>
-          <line x1="280" y1="190" x2="448" y2="62"/>
-          <line x1="280" y1="190" x2="66"  y2="190"/>
-          <line x1="280" y1="190" x2="494" y2="190"/>
-          <line x1="280" y1="190" x2="112" y2="318"/>
-          <line x1="280" y1="190" x2="448" y2="318"/>
-        </g>
-        <!-- node central -->
-        <circle cx="280" cy="190" r="58" fill="#26312B"/>
-        <text x="280" y="184" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#AAC9B6" font-weight="600">INFORME</text>
-        <text x="280" y="200" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#AAC9B6" font-weight="600">BCE · CLIMA</text>
-        <!-- nodes perifèrics -->
-        <g font-family="JetBrains Mono,monospace" font-size="11" font-weight="600">
-          <g><circle cx="112" cy="62"  r="7" fill="#5C8A5C"/><text x="126" y="58"  fill="#26312B">GRI 305-1</text><text x="126" y="73" fill="#4A5F53" font-weight="400" font-size="9.5">Emissions directes</text></g>
-          <g><circle cx="448" cy="62"  r="7" fill="#5C8A5C"/><text x="434" y="58"  fill="#26312B">ESRS E1-6</text><text x="394" y="73" fill="#4A5F53" font-weight="400" font-size="9.5">Transició climàtica</text></g>
-          <g><circle cx="66"  cy="190" r="7" fill="#C9A961"/><text x="80"  y="186" fill="#26312B">TCFD</text><text x="80"  y="201" fill="#4A5F53" font-weight="400" font-size="9.5">Mètriques i objectius</text></g>
-          <g><circle cx="494" cy="190" r="7" fill="#C9A961"/><text x="446" y="186" fill="#26312B">Taxonomia UE</text><text x="446" y="201" fill="#4A5F53" font-weight="400" font-size="9.5">Activitat elegible</text></g>
-          <g><circle cx="112" cy="318" r="7" fill="#A0522D"/><text x="126" y="314" fill="#26312B">EcoVadis ENV-1</text><text x="126" y="329" fill="#4A5F53" font-weight="400" font-size="9.5">Energia i GEH</text></g>
-          <g><circle cx="448" cy="318" r="7" fill="#A0522D"/><text x="434" y="314" fill="#26312B">CDP</text><text x="434" y="329" fill="#4A5F53" font-weight="400" font-size="9.5">Qüestionari clima</text></g>
-        </g>
-      </svg>
-      <p class="xref-cap">Exemple real de creuament: <b>un informe sobre risc climàtic</b> projectat sobre sis dels 16 estàndards del catàleg. Colors = intensitat de l'impacte.</p>
+      <div class="latest-stats reveal">
+        <div class="lstat"><div class="n">61%</div><div class="t">Reducció de datapoints obligatoris</div></div>
+        <div class="lstat"><div class="n">3.700M€</div><div class="t">Estalvi acumulat estimat en 5 anys</div></div>
+        <div class="lstat"><div class="n">2027</div><div class="t">Aplicació prevista (exercicis)</div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ PRINCIPIS ══════════ -->
-<section class="principle">
-  <div class="wrap reveal">
-    <blockquote>"Més enllà del checkbox."</blockquote>
-    <p class="after">
-      Cinc criteris ètics —dignitat, justícia distributiva, sostenibilitat absoluta,
-      co-decisió i arrelament— revisen cada informe abans de publicar-se.
-      <strong>La tecnologia destil·la. El criteri decideix.</strong>
-    </p>
+<!-- ══════════ FAQ ══════════ -->
+<section class="block" id="faq">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <p class="eyebrow" style="display:flex;justify-content:center">PREGUNTES FREQÜENTS</p>
+      <h2 class="sec-title">Tot el que et pots preguntar.</h2>
+    </div>
+
+    <div class="faqlist reveal">
+      <details open>
+        <summary>És una eina de compliance o estratègica?</summary>
+        <p class="faq-a">Tots dos. Cobrim el que és obligatori (CSRD, CSDDD, SFDR) i el que és estratègic (EcoVadis, B Corp, MSCI rating). L'usuari tria el seu enfocament: pot prioritzar compliment normatiu o millorar reputació.</p>
+      </details>
+      <details>
+        <summary>Quins frameworks cobriu?</summary>
+        <p class="faq-a">Els 7 més usats: CSRD/ESRS, Taxonomia UE, SFDR, CSDDD, GRI, SASB, TCFD/TNFD. A més de les certificacions EcoVadis, B Corp, MSCI ESG, Sustainalytics, ISS ESG i CDP.</p>
+      </details>
+      <details>
+        <summary>Com es comparen els informes entre ells?</summary>
+        <p class="faq-a">Cada informe té cross-reference amb altres informes i amb els 5 frameworks principals. Pots veure evolucions, contradiccions i complementarietats.</p>
+      </details>
+      <details>
+        <summary>Quan entra en vigor la subscripció?</summary>
+        <p class="faq-a">La web obre al públic el setembre 2026. La newsletter bimensual ja està operativa. Els primers 50 subscriptors Premium tenen preu promocional de 290€/any (vs 440€ normal) de per vida.</p>
+      </details>
+      <details>
+        <summary>Puc provar-ho abans de pagar?</summary>
+        <p class="faq-a">Sí. El registre és gratuït i et dóna accés a la newsletter bimensual i als informes amb més de 6 mesos. Per accedir als informes recents, necessites Premium (290 €/any early bird per als primers 50).</p>
+      </details>
+    </div>
   </div>
 </section>
 
 <!-- ══════════ CTA FINAL ══════════ -->
-<section class="finalcta tinted" id="acces">
+<section class="finalcta tinted" id="premium">
   <div class="wrap reveal">
-    <h2>T'entenem.<br><span class="hl">Et retornem temps per pensar.</span></h2>
-    <p class="sub">Subscriu-te i rebràs cada informe nou quan es publiqui. Sense soroll, sense newsletters diàries: la quinzena, puntualment.</p>
-    <div class="actions">
-      <a class="btn btn-solid" href="#">Demana accés anticipat</a>
-      <a class="btn btn-ghost" href="#">Veure un informe d'exemple</a>
+    <div class="ctacards">
+      <div class="ctacard">
+        <h3>La newsletter gratuïta</h3>
+        <p class="sub">Cada dues setmanes, informes que has de conèixer.</p>
+        <p>Resums executius de 300 paraules + una connexió entre ells. 5 minuts de lectura que et posen al dia. Cancel·la quan vulguis.</p>
+        <a class="btn btn-ghost" href="mockup-registro.html">Rep la newsletter</a>
+      </div>
+      <div class="ctacard dark">
+        <h3>Fes-te Premium</h3>
+        <p class="sub">Early bird: 290 €/any</p>
+        <p>Accés complet a la biblioteca, cerca semàntica, alertes personalitzades, cross-reference amb certificacions i dossiers temàtics. Per als primers 50 subscriptors.</p>
+        <a class="btn btn-solid" href="mockup-preus.html">Fes-te Premium</a>
+        <p class="mini-note">Accedeix a la biblioteca completa, cross-references i informes &gt;6 mesos.</p>
+      </div>
     </div>
-    <p class="pilot-note"><b>PILOT OBERT</b> · GRATUÏT DURANT LA FASE DE PROVA · SENSE TARGETA</p>
   </div>
 </section>
 
@@ -608,23 +602,23 @@ footer .base{
     <div class="cols">
       <div>
         <span class="brand-name">Criteri <em>ESG</em></span>
-        <p class="tag">Intel·ligència regulatòria ESG destil·lada amb criteri humà.</p>
+        <p class="tag">Intel·ligència ESG per a decisions ètiques.</p>
       </div>
       <div>
         <h4>Producte</h4>
-        <ul><li><a href="#informe">Els 8 blocs</a></li><li><a href="#metode">El semàfor</a></li><li><a href="#crossref">Cross-reference</a></li></ul>
+        <ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul>
       </div>
       <div>
-        <h4>Projecte</h4>
-        <ul><li><a href="#">Qui som</a></li><li><a href="#">Metodologia</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul>
+        <h4>Empresa</h4>
+        <ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul>
       </div>
       <div>
         <h4>Legal</h4>
-        <ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul>
+        <ul><li><a href="#">Privadesa</a></li><li><a href="#">Termes</a></li><li><a href="#">Cookies</a></li><li><a href="#faq">Preguntes freqüents</a></li></ul>
       </div>
     </div>
     <div class="base">
-      <span>© 2026 CRITERI ESG</span>
+      <span>© 2026 Criteri ESG. Tots els drets reservats.</span>
       <span>RIGOR · FRESCOR · SOBRIETAT</span>
     </div>
   </div>

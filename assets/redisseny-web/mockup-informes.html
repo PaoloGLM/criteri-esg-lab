@@ -18,33 +18,45 @@
 .fchip:hover{border-color:var(--accent);color:var(--ink)}
 .fchip.on{background:var(--accent);border-color:var(--accent);color:#fff}
 
-.reportlist{margin-top:36px}
-.report{
-  display:grid;grid-template-columns:74px 1fr auto;gap:22px;align-items:center;
-  padding:24px 6px;border-top:1px solid rgba(38,49,43,.12);text-decoration:none;
-}
-.report:last-child{border-bottom:1px solid rgba(38,49,43,.12)}
-.report:hover{background:var(--bg)}
+/* Graella de targetes d'informes */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px;margin-top:44px}
+.rcard{display:flex;flex-direction:column;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease;position:relative}
+.rcard:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(38,49,43,.12)}
+.rcard .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.chip{font-family:var(--font-mono);font-size:.56rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:99px}
+.chip.free{background:rgba(92,138,92,.12);color:var(--sem-g)}
+.chip.premium{background:rgba(160,82,45,.1);color:var(--sem-r)}
+.chip.hot{background:var(--highlight);color:var(--ink-deep)}
+.rcard .top{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px}
+.rcard .inst{font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.rcard .who{font-family:var(--font-display);font-weight:600;font-size:1.18rem;line-height:1.28;color:var(--ink-deep);margin-bottom:6px}
+.rcard .what{font-size:.9rem;color:var(--ink-soft);line-height:1.5;margin-bottom:16px;flex:1;text-wrap:pretty}
+.rcard .meta{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid rgba(38,49,43,.1);padding-top:12px}
+.rcard .cta{font-family:var(--font-mono);font-size:.68rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin-top:12px}
+.rcard:hover .cta{color:var(--ink-deep)}
 .grade{
-  width:64px;height:64px;border-radius:12px;display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-display);font-weight:500;font-size:2.1rem;
+  width:58px;height:58px;border-radius:12px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:500;font-size:1.9rem;
 }
+.g-a{background:rgba(92,138,92,.16);color:var(--sem-g)}
 .g-b{background:rgba(92,138,92,.14);color:var(--sem-g)}
 .g-c{background:rgba(201,169,97,.16);color:#8A6D1F}
 .g-d{background:rgba(160,82,45,.12);color:var(--sem-r)}
-.report .who{font-family:var(--font-display);font-weight:600;font-size:1.22rem;color:var(--ink-deep);margin-bottom:4px}
-.report .what{font-size:.9rem;color:var(--ink-soft);margin-bottom:8px;line-height:1.45}
-.report .meta{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);display:flex;gap:14px;flex-wrap:wrap}
-.report .meta .lock{color:var(--sem-r)}
-.report .go{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
-@media(max-width:700px){.report{grid-template-columns:56px 1fr}.report .go{display:none}}
+
+/* Stats (dossier ### mid) */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.stat{background:var(--bg);border-radius:10px;padding:26px 20px;text-align:center}
+.stat .n{font-family:var(--font-display);font-weight:500;font-size:2.6rem;color:var(--accent);line-height:1}
+.stat .l{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:10px}
+@media(max-width:700px){.stats{grid-template-columns:1fr}}
 
 .paywall{
   margin-top:56px;border-radius:12px;background:var(--ink);color:var(--bg);
   padding:40px 36px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap;
 }
 .paywall h3{font-family:var(--font-display);font-weight:500;font-size:1.5rem;color:var(--bg);margin-bottom:6px}
-.paywall p{color:rgba(242,245,241,.72);font-size:.95rem;max-width:52ch}
+.paywall p{color:rgba(242,245,241,.72);font-size:.95rem;max-width:56ch}
+.paywall .regla{font-size:.82rem;color:rgba(242,245,241,.55);margin-top:10px}
 </style>
 </head>
 <body data-reveal>
@@ -65,10 +77,13 @@
 
 <section class="pagehero">
   <div class="wrap">
-    <p class="eyebrow">Biblioteca d'informes</p>
-    <h1>Cada informe, amb la seva <span class="hl">nota metodològica</span> a la vista.</h1>
-    <p class="lead">Abans de llegir, saps com s'ha construït. La nota A–D avalua la qualitat
-    metodològica de l'informe original: quantifica, cita fonts independents, concreta terminis?</p>
+    <p class="eyebrow">Biblioteca · Informes processats</p>
+    <h1>Estalvia temps, només <span class="hl">5 min</span>.</h1>
+    <p class="lead">Un director de sostenibilitat dedica de mitjana el 60% del seu temps a recopilar
+    informació. Criteri ESG centralitza tota aquesta informació i la sintetitza en 8 blocs, perquè el
+    temps d'anàlisi es converteixi en temps de decisió.</p>
+    <p class="lead" style="margin-top:16px">Filtrats per certificació, ordenats per rellevància. Cada
+    informe amb semàfor metodològic, 8 blocs i cross-reference amb els teus estàndards.</p>
 
     <div class="filters reveal" aria-label="Filtres">
       <button class="fchip on">Tots</button>
@@ -81,66 +96,123 @@
   </div>
 </section>
 
-<section class="block">
+<section class="block" style="padding-top:56px">
   <div class="wrap">
-    <div class="reportlist reveal">
+    <div class="rgrid reveal">
 
-      <a class="report" href="mockup-informe-bce.html">
-        <div class="grade g-b">B</div>
-        <div>
-          <div class="who">BCE · Risc climàtic al sistema financer euro</div>
-          <div class="what">El supervisor ja preu el risc de transició: 74 pb de CET1 en joc i una llacuna clara a Scope 3.</div>
-          <div class="meta"><span>Banc Central Europeu</span><span>Agost 2026</span><span>8 blocs · 1.042 paraules</span></div>
+      <!-- REPORT DESTACAT REAL · ESRS -->
+      <a class="rcard card" href="#">
+        <div class="tags"><span class="chip hot">Últim informe · 6 maig 2026</span><span class="chip free">Gratis</span></div>
+        <div class="top">
+          <div class="grade g-a">A</div>
+          <div>
+            <div class="inst">Comissió Europea · DG FISMA</div>
+            <div class="who">Comissió Europea publica la revisió dels ESRS</div>
+          </div>
         </div>
-        <span class="go">Llegeix →</span>
+        <p class="what">La Comissió Europea ha publicat l'esborrany revisat dels European Sustainability
+        Reporting Standards que redueix un 61% els datapoints obligatoris del CSRD. Estalvi acumulat
+        estimat de 3.700M€ en 5 anys. Aplicació prevista per a exercicis 2027.</p>
+        <div class="meta"><span>6 maig 2026</span><span>Semàfor: Alt</span><span>8 blocs · 5 min</span></div>
+        <span class="cta">Llegeix l'informe complet amb registre gratuït →</span>
       </a>
 
-      <a class="report" href="#">
-        <div class="grade g-c">C</div>
-        <div>
-          <div class="who">CNMV · Butlletí de juny</div>
-          <div class="what">474.000 M€ en fons d'inversió i una contradicció oberta amb el discurs de creixement sostenible.</div>
-          <div class="meta"><span>CNMV</span><span>Juny 2026</span><span>8 blocs · 968 paraules</span></div>
+      <!-- BCE · informe real (mockup-informe-bce.html) -->
+      <a class="rcard card" href="mockup-informe-bce.html">
+        <div class="tags"><span class="chip premium">Premium</span></div>
+        <div class="top">
+          <div class="grade g-b">B</div>
+          <div>
+            <div class="inst">European Central Bank</div>
+            <div class="who">BCE: el risc climàtic ja és qüestió de solvència, no de narrativa</div>
+          </div>
         </div>
-        <span class="go">Llegeix →</span>
+        <p class="what">El supervisor ja preu el risc de transició: 74 pb de CET1 en joc i una llacuna
+        clara a les emissions finançades (Scope 3).</p>
+        <div class="meta"><span>Agost 2026</span><span>84 pàg.</span><span>Semàfor: Mitjà</span><span>5 min</span></div>
+        <span class="cta">Llegeix →</span>
       </a>
 
-      <a class="report" href="#">
-        <div class="grade g-c">C</div>
-        <div>
-          <div class="who">EIOPA · Finançament sostenible</div>
-          <div class="what">274.000 M€ en pèrdues per catàstrofes el 2024: l'assegurança entra en zona de reprice global.</div>
-          <div class="meta"><span>EIOPA</span><span>Juny 2026</span><span>8 blocs · 1.015 paraules</span></div>
+      <!-- EIOPA (cross-ref real de l'informe BCE) -->
+      <a class="rcard card" href="#">
+        <div class="tags"><span class="chip premium">Premium</span></div>
+        <div class="top">
+          <div class="grade g-c">C</div>
+          <div>
+            <div class="inst">EIOPA</div>
+            <div class="who">Finançament sostenible</div>
+          </div>
         </div>
-        <span class="go">Llegeix →</span>
+        <p class="what">274.000 M€ en pèrdues per catàstrofes el 2024: l'assegurança entra en zona de
+        reprice global.</p>
+        <div class="meta"><span>Juny 2026</span><span>Semàfor: Mitjà</span><span>8 blocs · 5 min</span></div>
+        <span class="cta">Llegeix →</span>
       </a>
 
-      <a class="report" href="#">
-        <div class="grade g-d">D</div>
-        <div>
-          <div class="who">WEF · Global Risks Report 2026</div>
-          <div class="what">Molt diagnòstic, gairebé cap mètrica verificable: el cas clar de per què el semàfor importa.</div>
-          <div class="meta"><span>World Economic Forum</span><span>Gener 2026</span><span>8 blocs · 1.088 paraules</span></div>
+      <!-- CNMV (cross-ref real de l'informe BCE) -->
+      <a class="rcard card" href="#">
+        <div class="tags"><span class="chip premium">Premium</span></div>
+        <div class="top">
+          <div class="grade g-c">C</div>
+          <div>
+            <div class="inst">CNMV</div>
+            <div class="who">Butlletí de juny</div>
+          </div>
         </div>
-        <span class="go">Llegeix →</span>
+        <p class="what">474.000 M€ en fons d'inversió i una contradicció oberta amb el discurs de
+        creixement sostenible.</p>
+        <div class="meta"><span>Juny 2026</span><span>Semàfor: Mitjà</span><span>8 blocs · 5 min</span></div>
+        <span class="cta">Llegeix →</span>
       </a>
 
-      <a class="report" href="#">
-        <div class="grade g-b">B</div>
-        <div>
-          <div class="who">Forética · Tendències ESG 2026</div>
-          <div class="what">L'estat de l'Espanya empresarial: més reporting que resultats, amb bocs a la cadena de valor.</div>
-          <div class="meta"><span>Forética</span><span>Febrer 2026</span><span>8 blocs · 995 paraules</span><span class="lock">🔒 Premium</span></div>
+      <!-- WEF -->
+      <a class="rcard card" href="#">
+        <div class="tags"><span class="chip free">Gratis</span></div>
+        <div class="top">
+          <div class="grade g-d">D</div>
+          <div>
+            <div class="inst">World Economic Forum</div>
+            <div class="who">Global Risks Report 2026</div>
+          </div>
         </div>
-        <span class="go">Llegeix →</span>
+        <p class="what">Molt diagnòstic, gairebé cap mètrica verificable: el cas clar de per què el
+        semàfor importa.</p>
+        <div class="meta"><span>Gener 2026</span><span>Semàfor: Baix</span><span>8 blocs · 5 min</span></div>
+        <span class="cta">Llegeix l'informe complet amb registre gratuït →</span>
+      </a>
+
+      <!-- Forética -->
+      <a class="rcard card" href="#">
+        <div class="tags"><span class="chip free">Gratis</span></div>
+        <div class="top">
+          <div class="grade g-b">B</div>
+          <div>
+            <div class="inst">Forética</div>
+            <div class="who">Tendències ESG 2026</div>
+          </div>
+        </div>
+        <p class="what">L'estat de l'Espanya empresarial: més reporting que resultats, amb bocs a la
+        cadena de valor.</p>
+        <div class="meta"><span>Febrer 2026</span><span>Semàfor: Mitjà</span><span>8 blocs · 5 min</span></div>
+        <span class="cta">Llegeix l'informe complet amb registre gratuït →</span>
       </a>
 
     </div>
 
+    <!-- Stats reals (dossier ### mid) -->
+    <div class="stats reveal">
+      <div class="stat"><div class="n">5 min</div><div class="l">per entendre un informe</div></div>
+      <div class="stat"><div class="n">180+</div><div class="l">fonts monitoritzades</div></div>
+      <div class="stat"><div class="n">8</div><div class="l">blocs per informe</div></div>
+    </div>
+
     <div class="paywall reveal">
       <div>
-        <h3>Els informes recents són per a subscriptors.</h3>
-        <p>Els informes amb més de 6 mesos són lliures per sempre. Els recents, el cross-reference complet i les accions recomanades són de Premium.</p>
+        <h3>Fes-te Premium</h3>
+        <p>Accedeix a la biblioteca completa, cross-references i informes &gt;6 mesos.</p>
+        <p class="regla">Regla dels 6 mesos: tots els informes amb més de 6 mesos d'antiguitat són
+        gratuïts per sempre. Només els informes recents requereixen Premium. Així garantim accés
+        universal al coneixement ESG acumulat.</p>
       </div>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
         <a class="btn btn-light" href="mockup-preus.html">Veure plans</a>
@@ -153,10 +225,10 @@
 <footer class="site">
   <div class="wrap">
     <div class="cols">
-      <div><span class="brand-name">Criteri <em>ESG</em></span><p class="tag">Intel·ligència regulatòria ESG destil·lada amb criteri humà.</p></div>
+      <div><span class="brand-name">Criteri <em>ESG</em></span><p class="tag">Intel·ligència ESG per a decisions ètiques.</p></div>
       <div><h4>Producte</h4><ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul></div>
-      <div><h4>Projecte</h4><ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul></div>
-      <div><h4>Legal</h4><ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul></div>
+      <div><h4>Empresa</h4><ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="#">Privadesa</a></li><li><a href="#">Termes</a></li><li><a href="#">Cookies</a></li></ul></div>
     </div>
     <div class="base"><span>© 2026 CRITERI ESG</span><span>RIGOR · FRESCOR · SOBRIETAT</span></div>
   </div>

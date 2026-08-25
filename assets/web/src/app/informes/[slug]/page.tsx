@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useParams } from "next/navigation";
-import { Header } from "@/components/site-header";
-import { Footer } from "@/components/site-footer";
+import { Header } from "@/components/site-header-v1";
+import { FooterV1 } from "@/components/site-footer-v1";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { SemaforoPopup } from "@/components/sections/semaforo-popup";
@@ -103,7 +103,7 @@ export default function InformeSlugPage() {
             </Button>
           </div>
         </main>
-        <Footer />
+        <FooterV1 />
         {dialogs}
       </div>
     );
@@ -180,25 +180,25 @@ export default function InformeSlugPage() {
       />
       <main className="flex-1">
         {/* Breadcrumb */}
-        <div className="border-b border-rule px-6 py-4 lg:px-8" style={{ background: "#F5EFE6" }}>
+        <div className="border-b border-rule px-6 py-4 lg:px-8" style={{ background: "#F2F5F1" }}>
           <div className="mx-auto max-w-7xl flex justify-between items-baseline">
-            <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "#8B7355" }}>
-              <a href="/informes" style={{ color: "#8A5526" }}>Biblioteca</a>
-              <span style={{ color: "#C9B89A", margin: "0 12px" }}>/</span>
-              <a href="/informes" style={{ color: "#8A5526" }}>Informes</a>
-              <span style={{ color: "#C9B89A", margin: "0 12px" }}>/</span>
-              <span style={{ color: "#2C1810" }}>{report.title}</span>
+            <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "#4A5F53" }}>
+              <a href="/informes" style={{ color: "#3F6653" }}>Biblioteca</a>
+              <span style={{ color: "#D8E2DA", margin: "0 12px" }}>/</span>
+              <a href="/informes" style={{ color: "#3F6653" }}>Informes</a>
+              <span style={{ color: "#D8E2DA", margin: "0 12px" }}>/</span>
+              <span style={{ color: "#26312B" }}>{report.title}</span>
             </p>
-            <span className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#8A5526" }}>5 min · 8 bloques</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#3F6653" }}>5 min · 8 bloques</span>
           </div>
         </div>
 
         {/* Layout: sidebar + main */}
         <div className="grid lg:grid-cols-[280px_1fr]">
           {/* SIDEBAR */}
-          <aside className="sticky top-[70px] hidden h-[calc(100vh-70px)] flex-col gap-8 overflow-y-auto p-10 lg:flex" style={{ background: "#F5EFE6", borderRight: "1px solid #C9B89A" }}>
+          <aside className="sticky top-[70px] hidden h-[calc(100vh-70px)] flex-col gap-8 overflow-y-auto p-10 lg:flex" style={{ background: "#F2F5F1", borderRight: "1px solid #D8E2DA" }}>
             <div className="flex flex-col gap-2.5">
-              <p className="font-mono text-[9px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#8A5526" }}>{lang === "ca" ? "Índex de l'informe" : "Índice del informe"}</p>
+              <p className="font-mono text-[9px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#3F6653" }}>{lang === "ca" ? "Índex de l'informe" : "Índice del informe"}</p>
               <nav className="flex flex-col">
                 {[
                   { num: "00", name: lang === "ca" ? "Semàfor metodològic" : "Semáforo metodológico" },
@@ -211,7 +211,7 @@ export default function InformeSlugPage() {
                   { num: "07", name: "Cross-reference" },
                 ].map((item) => (
                   <a key={item.num} href={`#bloc-${item.num}`} className="grid grid-cols-[24px_1fr] gap-2.5 items-baseline py-2 border-b" style={{ borderBottomColor: "rgba(201,184,154,0.5)", textDecoration: "none" }}>
-                    <span className="font-mono text-[10px] font-medium" style={{ color: "#8B7355" }}>{item.num}</span>
+                    <span className="font-mono text-[10px] font-medium" style={{ color: "#4A5F53" }}>{item.num}</span>
                     <span className="font-serif text-[13px] font-medium text-primary">{item.name}</span>
                   </a>
                 ))}
@@ -220,38 +220,38 @@ export default function InformeSlugPage() {
 
             {/* Mini semàfor */}
             {content?.semafor && (
-              <div className="p-4 flex flex-col gap-2" style={{ background: "#2C1810", color: "#F5EFE6" }}>
-                <p className="font-mono text-[8.5px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#D9A574" }}>{lang === "ca" ? "Semàfor" : "Semáforo"}</p>
+              <div className="p-4 flex flex-col gap-2" style={{ background: "#26312B", color: "#F2F5F1" }}>
+                <p className="font-mono text-[8.5px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#AAC9B6" }}>{lang === "ca" ? "Semàfor" : "Semáforo"}</p>
                 <div className="flex items-baseline gap-2.5">
                   <span className="font-serif text-4xl font-normal" style={{ color: getGradeColor(content.semafor.grade), letterSpacing: "-0.04em" }}>{content.semafor.grade}</span>
-                  <span className="font-serif text-sm italic" style={{ color: "#F5EFE6" }}>{content.semafor.gradeLabel}</span>
+                  <span className="font-serif text-sm italic" style={{ color: "#F2F5F1" }}>{content.semafor.gradeLabel}</span>
                 </div>
               </div>
             )}
 
             {/* Progress */}
             <div className="flex flex-col gap-1">
-              <p className="font-mono text-[8.5px] uppercase tracking-[0.16em] font-medium" style={{ color: "#8B7355" }}>{lang === "ca" ? "Lectura · 5 min" : "Lectura · 5 min"}</p>
+              <p className="font-mono text-[8.5px] uppercase tracking-[0.16em] font-medium" style={{ color: "#4A5F53" }}>{lang === "ca" ? "Lectura · 5 min" : "Lectura · 5 min"}</p>
               <div className="h-1 overflow-hidden" style={{ background: "rgba(201,184,154,0.3)" }}>
-                <div className="h-full" style={{ background: "#B87333", width: "40%" }} />
+                <div className="h-full" style={{ background: "#5E8772", width: "40%" }} />
               </div>
             </div>
           </aside>
 
           {/* MAIN CONTENT */}
-          <div className="p-8 lg:p-12" style={{ background: "#F5EFE6" }}>
+          <div className="p-8 lg:p-12" style={{ background: "#F2F5F1" }}>
             {/* Header de l'informe (fitxa tècnica) */}
             <header className="border-b border-primary pb-6 mb-10" id="bloc-1">
               <div className="flex flex-wrap gap-2 mb-4">
-                <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "rgba(92,58,30,0.12)", color: "#5C3A1E" }}>{getTypeLabel(report.type)}</span>
+                <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "rgba(92,58,30,0.12)", color: "#141B18" }}>{getTypeLabel(report.type)}</span>
                 {showFreeBadge ? (
                   <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "rgba(92,138,92,0.12)", color: "#4A6B3A" }}>{lang === "ca" ? "Gratis" : "Gratis"}</span>
                 ) : (
-                  <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "#B87333", color: "white" }}>Premium</span>
+                  <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "#5E8772", color: "white" }}>Premium</span>
                 )}
               </div>
               <h1 className="mb-4 font-serif text-4xl font-medium leading-tight text-primary" style={{ letterSpacing: "-0.022em" }}>{report.title}</h1>
-              <div className="flex flex-wrap gap-8 font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "#8B7355" }}>
+              <div className="flex flex-wrap gap-8 font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "#4A5F53" }}>
                 <span><strong className="text-primary">{report.institution}</strong></span>
                 <span>{formatDate(report.date, lang)}</span>
                 <span>{report.pages} {lang === "ca" ? "pàg" : "pág"}</span>
@@ -291,15 +291,15 @@ export default function InformeSlugPage() {
         ) : (
           <div className="space-y-0">
             {/* Bloc 0 — Semáforo (dark, full-width) amb explicacions + link popup */}
-            <section id="bloc-0" className="scroll-mt-20" style={{ background: "#2C1810", color: "#F5EFE6", margin: "0 -32px", padding: "48px 32px" }}>
+            <section id="bloc-0" className="scroll-mt-20" style={{ background: "#26312B", color: "#F2F5F1", margin: "0 -32px", padding: "48px 32px" }}>
               <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:items-center">
                 <div className="flex flex-col gap-4">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#D9A574" }}>{lang === "ca" ? "Bloc 0 · Semàfor metodològic" : "Bloque 0 · Semáforo metodológico"}</p>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>{lang === "ca" ? "Bloc 0 · Semàfor metodològic" : "Bloque 0 · Semáforo metodológico"}</p>
                   <div className="flex items-baseline gap-4">
                     <span className="font-serif text-[100px] font-normal leading-none" style={{ color: getGradeColor(content.semafor.grade), letterSpacing: "-0.04em" }}>{content.semafor.grade}</span>
-                    <span className="font-serif text-2xl italic" style={{ color: "#F5EFE6" }}>{content.semafor.gradeLabel}</span>
+                    <span className="font-serif text-2xl italic" style={{ color: "#F2F5F1" }}>{content.semafor.gradeLabel}</span>
                   </div>
-                  <button onClick={() => setPopupOpen(true)} className="self-start font-mono text-[10px] uppercase tracking-[0.14em] font-semibold mt-2" style={{ color: "#D9A574", borderBottom: "1px solid #B87333", paddingBottom: "3px" }}>
+                  <button onClick={() => setPopupOpen(true)} className="self-start font-mono text-[10px] uppercase tracking-[0.14em] font-semibold mt-2" style={{ color: "#AAC9B6", borderBottom: "1px solid #5E8772", paddingBottom: "3px" }}>
                     {lang === "ca" ? "Com es valora el semàfor? →" : "¿Cómo se valora el semáforo? →"}
                   </button>
                 </div>
@@ -307,7 +307,7 @@ export default function InformeSlugPage() {
                   {content.semafor.indicators.map((ind) => (
                     <div key={ind.name} className="flex flex-col gap-1 py-3 border-b" style={{ borderBottomColor: "rgba(217,165,116,0.2)" }}>
                       <div className="grid grid-cols-[1fr_auto] items-center gap-3">
-                        <span className="font-serif text-base font-medium" style={{ color: "#F5EFE6" }}>{ind.name}</span>
+                        <span className="font-serif text-base font-medium" style={{ color: "#F2F5F1" }}>{ind.name}</span>
                         <div className="flex items-center gap-2">
                           <div className="flex gap-1.5">
                             <span className="w-3 h-3 rounded-full" style={{ background: "#5C8A5C", opacity: ind.status === "verd" ? 1 : 0.3 }} />
@@ -325,76 +325,76 @@ export default function InformeSlugPage() {
             </section>
 
             {/* Bloc 2 — 5 dades clau */}
-            <section id="bloc-2" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#C9B89A" }}>
-              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#B87333" }}>{lang === "ca" ? "Bloc 02 · 5 dades clau" : "Bloque 02 · 5 datos clave"}</p>
+            <section id="bloc-2" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#D8E2DA" }}>
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Bloc 02 · 5 dades clau" : "Bloque 02 · 5 datos clave"}</p>
               <h2 className="mb-6 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "El que diu l'informe, en xifres" : "Lo que dice el informe, en cifras"}</h2>
               <div className="grid gap-4 sm:grid-cols-2">
                 {content.dadesClau.map((d, i) => (
                   <div key={i} className="grid grid-cols-[24px_1fr] gap-3 items-baseline py-3 border-b" style={{ borderBottomColor: "rgba(201,184,154,0.5)" }}>
-                    <span className="font-mono text-[11px] font-semibold" style={{ color: "#B87333" }}>{String(i + 1).padStart(2, "0")}</span>
-                    <p className="text-sm text-primary"><strong className="font-serif text-lg font-semibold" style={{ color: "#5C3A1E" }}>{d.value}</strong> {d.label}</p>
+                    <span className="font-mono text-[11px] font-semibold" style={{ color: "#5E8772" }}>{String(i + 1).padStart(2, "0")}</span>
+                    <p className="text-sm text-primary"><strong className="font-serif text-lg font-semibold" style={{ color: "#141B18" }}>{d.value}</strong> {d.label}</p>
                   </div>
                 ))}
               </div>
             </section>
 
             {/* Bloc 3 — Resum executiu */}
-            <section id="bloc-3" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#C9B89A" }}>
-              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#B87333" }}>{lang === "ca" ? "Bloc 03 · Resum executiu" : "Bloque 03 · Resumen ejecutivo"}</p>
+            <section id="bloc-3" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#D8E2DA" }}>
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Bloc 03 · Resum executiu" : "Bloque 03 · Resumen ejecutivo"}</p>
               <h2 className="mb-4 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Qu\u00e8 diu en llenguatge clar" : "Qu\u00e9 dice en lenguaje claro"}</h2>
               <p className="font-serif text-base leading-relaxed text-primary">{content.resumExecutiu}</p>
             </section>
 
             {/* Bloc 4 — Implicacions + M\u00e9s enll\u00e0 */}
-            <section id="bloc-4" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#C9B89A" }}>
-              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#B87333" }}>{lang === "ca" ? "Bloc 04 · Implicacions" : "Bloque 04 · Implicaciones"}</p>
+            <section id="bloc-4" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#D8E2DA" }}>
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Bloc 04 · Implicacions" : "Bloque 04 · Implicaciones"}</p>
               <h2 className="mb-6 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Per a empreses, reguladors, ciutadans" : "Para empresas, reguladores, ciudadanos"}</h2>
               <div className="grid gap-6 sm:grid-cols-3">
-                <div className="flex flex-col gap-2 pt-4 border-t-2" style={{ borderTopColor: "#5C3A1E" }}>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#5C3A1E" }}>{lang === "ca" ? "Empreses" : "Empresas"}</span>
+                <div className="flex flex-col gap-2 pt-4 border-t-2" style={{ borderTopColor: "#141B18" }}>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#141B18" }}>{lang === "ca" ? "Empreses" : "Empresas"}</span>
                   <p className="text-[13px] leading-relaxed text-primary">{content.implicacions.empreses}</p>
                 </div>
-                <div className="flex flex-col gap-2 pt-4 border-t-2" style={{ borderTopColor: "#B87333" }}>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#B87333" }}>{lang === "ca" ? "Reguladors" : "Reguladores"}</span>
+                <div className="flex flex-col gap-2 pt-4 border-t-2" style={{ borderTopColor: "#5E8772" }}>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Reguladors" : "Reguladores"}</span>
                   <p className="text-[13px] leading-relaxed text-primary">{content.implicacions.reguladors}</p>
                 </div>
-                <div className="flex flex-col gap-2 pt-4 border-t-2" style={{ borderTopColor: "#E8C99A" }}>
+                <div className="flex flex-col gap-2 pt-4 border-t-2" style={{ borderTopColor: "#AAC9B6" }}>
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#8A6D2B" }}>{lang === "ca" ? "Ciutadans" : "Ciudadanos"}</span>
                   <p className="text-[13px] leading-relaxed text-primary">{content.implicacions.ciutadans}</p>
                 </div>
               </div>
-              <div className="mt-6 p-6" style={{ background: "#2C1810", color: "#F5EFE6", borderLeft: "4px solid #B87333" }}>
-                <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#D9A574" }}>{lang === "ca" ? "Més enllà del Checkbox" : "Más allá del Checkbox"}</p>
-                <p className="font-serif text-lg italic" style={{ color: "#F5EFE6" }}>{content.mesEnllaCheckbox.criteri}</p>
+              <div className="mt-6 p-6" style={{ background: "#26312B", color: "#F2F5F1", borderLeft: "4px solid #5E8772" }}>
+                <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>{lang === "ca" ? "Més enllà del Checkbox" : "Más allá del Checkbox"}</p>
+                <p className="font-serif text-lg italic" style={{ color: "#F2F5F1" }}>{content.mesEnllaCheckbox.criteri}</p>
                 <p className="mt-3 text-sm leading-relaxed" style={{ color: "rgba(245,239,230,0.75)" }}>{content.mesEnllaCheckbox.body}</p>
               </div>
             </section>
 
             {/* Bloc 5 — Connexions */}
-            <section id="bloc-5" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#C9B89A" }}>
-              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#B87333" }}>{lang === "ca" ? "Bloc 05 · Connexions" : "Bloque 05 · Conexiones"}</p>
+            <section id="bloc-5" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#D8E2DA" }}>
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Bloc 05 · Connexions" : "Bloque 05 · Conexiones"}</p>
               <h2 className="mb-4 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Relacions amb altres informes" : "Relaciones con otros informes"}</h2>
               <div className="space-y-3">
                 {content.connexions.map((c, i) => (
-                  <div key={i} className="border p-4" style={{ borderColor: "#C9B89A", background: "white" }}>
+                  <div key={i} className="border p-4" style={{ borderColor: "#D8E2DA", background: "white" }}>
                     <div className="mb-2 flex flex-wrap items-center gap-2">
-                      <span className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-2 py-0.5" style={{ background: c.type.includes("Contrad") ? "rgba(160,82,45,0.15)" : c.type.includes("Complement") ? "rgba(92,138,92,0.15)" : "rgba(184,115,51,0.12)", color: c.type.includes("Contrad") ? "#A0522D" : c.type.includes("Complement") ? "#4A6B3A" : "#8A5526" }}>{c.type}</span>
+                      <span className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-2 py-0.5" style={{ background: c.type.includes("Contrad") ? "rgba(160,82,45,0.15)" : c.type.includes("Complement") ? "rgba(92,138,92,0.15)" : "rgba(184,115,51,0.12)", color: c.type.includes("Contrad") ? "#A0522D" : c.type.includes("Complement") ? "#4A6B3A" : "#3F6653" }}>{c.type}</span>
                       <span className="font-serif text-sm font-semibold text-primary">{c.target}</span>
                     </div>
-                    <p className="text-sm leading-relaxed" style={{ color: "#5C3A1E" }}>{c.desc}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: "#141B18" }}>{c.desc}</p>
                   </div>
                 ))}
               </div>
             </section>
 
             {/* Bloc 6 — Accions recomanades (destacat) */}
-            <section id="bloc-6" className="scroll-mt-20" style={{ background: "rgba(184,115,51,0.06)", margin: "0 -32px", padding: "48px 32px", borderTop: "1px solid #B87333", borderBottom: "1px solid #B87333" }}>
-              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#B87333" }}>{lang === "ca" ? "Bloc 06 · Accions recomanades ⭐" : "Bloque 06 · Acciones recomendadas ⭐"}</p>
+            <section id="bloc-6" className="scroll-mt-20" style={{ background: "rgba(184,115,51,0.06)", margin: "0 -32px", padding: "48px 32px", borderTop: "1px solid #5E8772", borderBottom: "1px solid #5E8772" }}>
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Bloc 06 · Accions recomanades ⭐" : "Bloque 06 · Acciones recomendadas ⭐"}</p>
               <h2 className="mb-6 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "3 accions operatives per aquesta setmana" : "3 acciones operativas para esta semana"}</h2>
               <div className="grid gap-8 sm:grid-cols-3">
                 {content.accions.map((a) => (
                   <div key={a.num} className="flex flex-col gap-4">
-                    <div className="w-11 h-11 rounded-full flex items-center justify-center font-serif text-xl font-semibold text-white" style={{ background: "#B87333" }}>{a.num}</div>
+                    <div className="w-11 h-11 rounded-full flex items-center justify-center font-serif text-xl font-semibold text-white" style={{ background: "#5E8772" }}>{a.num}</div>
                     <p className="text-sm font-medium leading-relaxed text-primary">{a.desc || a.title}</p>
                   </div>
                 ))}
@@ -403,22 +403,22 @@ export default function InformeSlugPage() {
 
             {/* Bloc 7 — Cross-reference */}
             <section id="bloc-7" className="scroll-mt-20 py-8">
-              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#B87333" }}>{lang === "ca" ? "Bloc 07 · Cross-reference ⭐" : "Bloque 07 · Cross-reference ⭐"}</p>
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Bloc 07 · Cross-reference ⭐" : "Bloque 07 · Cross-reference ⭐"}</p>
               <h2 className="mb-4 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Com t'afecta segons les teves certificacions" : "C\u00f3mo te afecta seg\u00fan tus certificaciones"}</h2>
               <table className="w-full border-collapse">
                 <thead>
                   <tr>
-                    <th className="text-left font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3" style={{ background: "#5C3A1E", color: "#F5EFE6" }}>{lang === "ca" ? "Certificació" : "Certificación"}</th>
-                    <th className="text-left font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3" style={{ background: "#5C3A1E", color: "#F5EFE6" }}>{lang === "ca" ? "Com t'afecta" : "C\u00f3mo te afecta"}</th>
-                    <th className="text-left font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3" style={{ background: "#5C3A1E", color: "#F5EFE6" }}>{lang === "ca" ? "Impacte" : "Impacto"}</th>
+                    <th className="text-left font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3" style={{ background: "#141B18", color: "#F2F5F1" }}>{lang === "ca" ? "Certificació" : "Certificación"}</th>
+                    <th className="text-left font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3" style={{ background: "#141B18", color: "#F2F5F1" }}>{lang === "ca" ? "Com t'afecta" : "C\u00f3mo te afecta"}</th>
+                    <th className="text-left font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3" style={{ background: "#141B18", color: "#F2F5F1" }}>{lang === "ca" ? "Impacte" : "Impacto"}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {content.crossRefs.map((cr, i) => (
-                    <tr key={i} className="border-b" style={{ borderBottomColor: "#C9B89A" }}>
+                    <tr key={i} className="border-b" style={{ borderBottomColor: "#D8E2DA" }}>
                       <td className="p-3.5"><span className="font-serif text-[15px] font-semibold text-primary">{cr.framework}</span></td>
-                      <td className="p-3.5 text-[13px] leading-relaxed" style={{ color: "#2C1810" }}>{cr.criterion}</td>
-                      <td className="p-3.5"><span className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-2.5 py-1" style={{ background: cr.impact === "Alto" || cr.impact === "Alt" ? "rgba(160,82,45,0.15)" : cr.impact === "Medio" || cr.impact === "Mitj\u00e0" ? "rgba(201,169,97,0.18)" : "rgba(139,115,85,0.1)", color: cr.impact === "Alto" || cr.impact === "Alt" ? "#A0522D" : cr.impact === "Medio" || cr.impact === "Mitj\u00e0" ? "#8A6D2B" : "#8B7355" }}>{cr.impact}</span></td>
+                      <td className="p-3.5 text-[13px] leading-relaxed" style={{ color: "#26312B" }}>{cr.criterion}</td>
+                      <td className="p-3.5"><span className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-2.5 py-1" style={{ background: cr.impact === "Alto" || cr.impact === "Alt" ? "rgba(160,82,45,0.15)" : cr.impact === "Medio" || cr.impact === "Mitj\u00e0" ? "rgba(201,169,97,0.18)" : "rgba(139,115,85,0.1)", color: cr.impact === "Alto" || cr.impact === "Alt" ? "#A0522D" : cr.impact === "Medio" || cr.impact === "Mitj\u00e0" ? "#8A6D2B" : "#4A5F53" }}>{cr.impact}</span></td>
                     </tr>
                   ))}
                 </tbody>
@@ -426,9 +426,9 @@ export default function InformeSlugPage() {
             </section>
 
             {/* Footer */}
-            <div className="mt-8 pt-6 border-t flex justify-between items-baseline" style={{ borderTopColor: "#2C1810" }}>
-              <p className="font-serif text-sm italic" style={{ color: "#5C3A1E" }}>5 minutos de lectura. 8 bloques que cambian tu criterio sobre un informe de {report.pages} p\u00e1ginas.</p>
-              <button onClick={() => window.open(report.url, "_blank")} className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold" style={{ color: "#8A5526", borderBottom: "1px solid #B87333", paddingBottom: "4px" }}>{lang === "ca" ? "Veure font original \u2192" : "Ver fuente original \u2192"}</button>
+            <div className="mt-8 pt-6 border-t flex justify-between items-baseline" style={{ borderTopColor: "#26312B" }}>
+              <p className="font-serif text-sm italic" style={{ color: "#141B18" }}>5 minutos de lectura. 8 bloques que cambian tu criterio sobre un informe de {report.pages} p\u00e1ginas.</p>
+              <button onClick={() => window.open(report.url, "_blank")} className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold" style={{ color: "#3F6653", borderBottom: "1px solid #5E8772", paddingBottom: "4px" }}>{lang === "ca" ? "Veure font original \u2192" : "Ver fuente original \u2192"}</button>
             </div>
           </div>
         )}
@@ -442,7 +442,7 @@ export default function InformeSlugPage() {
           </p>
         </div>
       </main>
-      <Footer />
+      <FooterV1 />
       {dialogs}
       <SemaforoPopup open={popupOpen} onClose={() => setPopupOpen(false)} />
     </div>

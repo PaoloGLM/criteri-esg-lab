@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { Header } from "@/components/site-header";
-import { Footer } from "@/components/site-footer";
+import { Header } from "@/components/site-header-v1";
+import { FooterV1 } from "@/components/site-footer-v1";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
@@ -93,11 +93,11 @@ export default function PreguntaDetallPage() {
         <main className="flex flex-1 items-center justify-center">
           <div className="text-center">
             <h1 className="mb-4 font-serif text-3xl text-primary">404</h1>
-            <p className="mb-6" style={{ color: "#5C3A1E" }}>{tr("Aquesta pregunta no existeix.", "Esta pregunta no existe.")}</p>
-            <button onClick={() => router.push("/mas-alla-del-checkbox")} className="px-6 py-3 text-sm font-semibold text-white" style={{ background: "#B87333" }}>{tr("← Tornar", "← Volver")}</button>
+            <p className="mb-6" style={{ color: "#141B18" }}>{tr("Aquesta pregunta no existeix.", "Esta pregunta no existe.")}</p>
+            <button onClick={() => router.push("/mas-alla-del-checkbox")} className="px-6 py-3 text-sm font-semibold text-white" style={{ background: "#5E8772" }}>{tr("← Tornar", "← Volver")}</button>
           </div>
         </main>
-        <Footer />
+        <FooterV1 />
         <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
         <PreusDialog open={preusOpen} onOpenChange={setPreusOpen} onOpenRegister={() => openAuth("register")} />
       </div>
@@ -112,23 +112,23 @@ export default function PreguntaDetallPage() {
       <Header onOpenPreus={() => setPreusOpen(true)} onOpenAuth={(tab) => openAuth(tab || "register")} />
       <main className="flex-1">
         {/* BREADCRUMB */}
-        <div className="border-b px-6 py-4 lg:px-8" style={{ background: "#F5EFE6", borderColor: "#C9B89A" }}>
+        <div className="border-b px-6 py-4 lg:px-8" style={{ background: "#F2F5F1", borderColor: "#D8E2DA" }}>
           <div className="mx-auto max-w-4xl">
-            <button onClick={() => router.push("/mas-alla-del-checkbox")} className="font-mono text-[10px] uppercase tracking-[0.16px]" style={{ color: "#8A5526" }}>
-              {tr("Més enllà del Checkbox", "Más allá del Checkbox")} <span style={{ color: "#C9B89A" }}>/</span> <span style={{ color: "#2C1810" }}>{tr("Pregunta #" + num, "Pregunta #" + num)}</span>
+            <button onClick={() => router.push("/mas-alla-del-checkbox")} className="font-mono text-[10px] uppercase tracking-[0.16px]" style={{ color: "#3F6653" }}>
+              {tr("Més enllà del Checkbox", "Más allá del Checkbox")} <span style={{ color: "#D8E2DA" }}>/</span> <span style={{ color: "#26312B" }}>{tr("Pregunta #" + num, "Pregunta #" + num)}</span>
             </button>
           </div>
         </div>
 
         {/* HEADER PREGUNTA */}
-        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+        <section className="border-b border-rule" style={{ background: "#F2F5F1" }}>
           <div className="mx-auto max-w-4xl px-6 py-12 lg:px-8">
             <div className="mb-6 flex gap-4 items-start">
-              <span className="font-serif text-5xl font-light" style={{ color: "#B87333", letterSpacing: "-0.03em" }}>{String(parseInt(num)).padStart(2, "0")}</span>
+              <span className="font-serif text-5xl font-light" style={{ color: "#5E8772", letterSpacing: "-0.03em" }}>{String(parseInt(num)).padStart(2, "0")}</span>
               <div className="flex flex-col gap-1">
-                <span className="font-mono text-[10px] uppercase tracking-[0.2px] font-semibold" style={{ color: "#8A5526" }}>{tr("Pregunta de la quinzena", "Pregunta de la quincena")}</span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.14px]" style={{ color: "#8B7355" }}>{data.date} · #{num}</span>
-                <span className="inline-block self-start px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14px] font-semibold mt-1" style={{ background: "rgba(184,115,51,0.1)", color: "#8A5526" }}>{data.type} · {data.duration}</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.2px] font-semibold" style={{ color: "#3F6653" }}>{tr("Pregunta de la quinzena", "Pregunta de la quincena")}</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.14px]" style={{ color: "#4A5F53" }}>{data.date} · #{num}</span>
+                <span className="inline-block self-start px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14px] font-semibold mt-1" style={{ background: "rgba(184,115,51,0.1)", color: "#3F6653" }}>{data.type} · {data.duration}</span>
               </div>
             </div>
             <h1 className="font-serif text-4xl font-medium leading-tight text-primary" style={{ letterSpacing: "-0.018px" }}>
@@ -138,9 +138,9 @@ export default function PreguntaDetallPage() {
         </section>
 
         {/* REFLEXIÓ */}
-        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+        <section className="border-b border-rule" style={{ background: "#F2F5F1" }}>
           <div className="mx-auto max-w-4xl px-6 py-12 lg:px-8">
-            <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22px] font-semibold" style={{ color: "#8A5526" }}>{tr("La nostra reflexió", "Nuestra reflexión")}</p>
+            <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22px] font-semibold" style={{ color: "#3F6653" }}>{tr("La nostra reflexió", "Nuestra reflexión")}</p>
             <h2 className="mb-6 font-serif text-2xl font-medium text-primary">{tr(data.titleCa, data.titleEs)}</h2>
             <div className="font-serif text-lg leading-relaxed text-primary">
               <p className="mb-4">{tr(data.reflexioFreeCa, data.reflexioFreeEs)}</p>
@@ -154,13 +154,13 @@ export default function PreguntaDetallPage() {
                 ))}
 
                 {/* DINÀMICA */}
-                <div className="mt-12 pt-8 border-t" style={{ borderColor: "#C9B89A" }}>
-                  <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22px] font-semibold" style={{ color: "#8A5526" }}>{tr("Dinàmica de grup · " + data.type, "Dinámica de grupo · " + data.type)}</p>
+                <div className="mt-12 pt-8 border-t" style={{ borderColor: "#D8E2DA" }}>
+                  <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22px] font-semibold" style={{ color: "#3F6653" }}>{tr("Dinàmica de grup · " + data.type, "Dinámica de grupo · " + data.type)}</p>
                   <h2 className="mb-6 font-serif text-2xl font-medium text-primary">{dinamica.header}</h2>
-                  <div className="p-7" style={{ background: "rgba(184,115,51,0.06)", borderLeft: "3px solid #B87333" }}>
-                    <p className="mb-4 text-sm leading-relaxed" style={{ color: "#5C3A1E" }}><strong className="text-primary">{tr("Preparació prèvia:", "Preparación previa:")}</strong> {dinamica.prep}</p>
+                  <div className="p-7" style={{ background: "rgba(184,115,51,0.06)", borderLeft: "3px solid #5E8772" }}>
+                    <p className="mb-4 text-sm leading-relaxed" style={{ color: "#141B18" }}><strong className="text-primary">{tr("Preparació prèvia:", "Preparación previa:")}</strong> {dinamica.prep}</p>
                     <p className="mb-3 text-sm font-semibold text-primary">{tr("Desenvolupament:", "Desarrollo:")}</p>
-                    <ol className="mb-4 pl-5 text-sm leading-relaxed" style={{ color: "#5C3A1E" }}>
+                    <ol className="mb-4 pl-5 text-sm leading-relaxed" style={{ color: "#141B18" }}>
                       {dinamica.steps.map((step, i) => (
                         <li key={i} className="mb-2"><strong className="text-primary">{step.time}</strong> — {step.desc}</li>
                       ))}
@@ -175,13 +175,13 @@ export default function PreguntaDetallPage() {
             ) : (
               /* PAYWALL */
               <div className="mt-8">
-                <div className="h-16" style={{ background: "linear-gradient(to bottom, transparent, #F5EFE6)", marginTop: "-40px", position: "relative", zIndex: 1 }} />
-                <div className="p-8 text-center" style={{ background: "#2C1810", color: "#F5EFE6" }}>
+                <div className="h-16" style={{ background: "linear-gradient(to bottom, transparent, #F2F5F1)", marginTop: "-40px", position: "relative", zIndex: 1 }} />
+                <div className="p-8 text-center" style={{ background: "#26312B", color: "#F2F5F1" }}>
                   <p className="mb-5 font-serif text-lg italic" style={{ color: "rgba(245,239,230,0.85)" }}>
                     {tr("La reflexió completa i la dinàmica de grup per treballar aquesta pregunta amb el teu equip estan ", "La reflexión completa y la dinámica de grupo para trabajar esta pregunta con tu equipo están ")}
-                    <em style={{ color: "#D9A574", fontWeight: 500, fontStyle: "normal" }}>{tr("reservades a subscriptors Premium", "reservadas a suscriptores Premium")}</em>.
+                    <em style={{ color: "#AAC9B6", fontWeight: 500, fontStyle: "normal" }}>{tr("reservades a subscriptors Premium", "reservadas a suscriptores Premium")}</em>.
                   </p>
-                  <button onClick={() => setPreusOpen(true)} className="px-8 py-3.5 text-sm font-semibold text-white" style={{ background: "#B87333" }}>{tr("Fes-te Premium · 29€/mes", "Hazte Premium · 29€/mes")}</button>
+                  <button onClick={() => setPreusOpen(true)} className="px-8 py-3.5 text-sm font-semibold text-white" style={{ background: "#5E8772" }}>{tr("Fes-te Premium · 29€/mes", "Hazte Premium · 29€/mes")}</button>
                   <p className="mt-3 font-serif text-sm italic" style={{ color: "rgba(245,239,230,0.5)" }}>{tr("Durant els dos primers mesos de Criteri ESG gaudiràs de les avantatges Premium sense cost.", "Durante los dos primeros meses de Criteri ESG disfrutarás de las ventajas Premium sin coste.")}</p>
                 </div>
               </div>
@@ -189,7 +189,7 @@ export default function PreguntaDetallPage() {
           </div>
         </section>
       </main>
-      <Footer />
+      <FooterV1 />
       <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
       <PreusDialog open={preusOpen} onOpenChange={setPreusOpen} onOpenRegister={() => openAuth("register")} />
     </div>

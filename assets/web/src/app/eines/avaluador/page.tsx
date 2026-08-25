@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Header } from "@/components/site-header";
-import { Footer } from "@/components/site-footer";
+import { Header } from "@/components/site-header-v1";
+import { FooterV1 } from "@/components/site-footer-v1";
 import { AuthDialog } from "@/components/auth-dialog";
 import { useLanguage } from "@/components/language-provider";
 import { useAuth } from "@/lib/auth-context";
@@ -120,21 +120,21 @@ export default function AvaluadorPage() {
       <div className="flex min-h-screen flex-col bg-background">
         <Header onOpenAuth={(tab) => openAuth(tab || "login")} />
         <main className="flex-1">
-          <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+          <section className="border-b border-rule" style={{ background: "#F2F5F1" }}>
             <div className="mx-auto max-w-2xl px-6 py-20 text-center lg:px-8">
-              <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold mb-4" style={{ color: "#8A5526" }}>
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold mb-4" style={{ color: "#3F6653" }}>
                 {t("avaluador.eyebrow")}
               </p>
-              <h1 className="font-serif text-3xl sm:text-4xl font-medium mb-5" style={{ color: "#2C1810" }}>
+              <h1 className="font-serif text-3xl sm:text-4xl font-medium mb-5" style={{ color: "#26312B" }}>
                 {t("avaluador.premium.required.title")}
               </h1>
-              <p className="text-base leading-relaxed mb-8 max-w-md mx-auto" style={{ color: "#5C3A1E" }}>
+              <p className="text-base leading-relaxed mb-8 max-w-md mx-auto" style={{ color: "#141B18" }}>
                 {t("avaluador.premium.required.body")}
               </p>
               <Button
                 size="lg"
                 onClick={() => isLoggedOut ? openAuth("login") : router.push("/preus")}
-                style={{ background: "#B87333", color: "#FFFFFF" }}
+                style={{ background: "#5E8772", color: "#FFFFFF" }}
               >
                 {t("avaluador.premium.required.cta")}
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -142,7 +142,7 @@ export default function AvaluadorPage() {
             </div>
           </section>
         </main>
-        <Footer />
+        <FooterV1 />
         <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
       </div>
     );
@@ -150,15 +150,15 @@ export default function AvaluadorPage() {
 
   // === Layout comú ===
   const heroBlock = (
-    <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+    <section className="border-b border-rule" style={{ background: "#F2F5F1" }}>
       <div className="mx-auto max-w-5xl px-6 py-12 lg:px-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold mb-3" style={{ color: "#8A5526" }}>
+        <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold mb-3" style={{ color: "#3F6653" }}>
           {t("avaluador.eyebrow")}
         </p>
-        <h1 className="font-serif text-3xl sm:text-4xl font-medium mb-3 max-w-3xl" style={{ color: "#2C1810" }}>
+        <h1 className="font-serif text-3xl sm:text-4xl font-medium mb-3 max-w-3xl" style={{ color: "#26312B" }}>
           {t("avaluador.title")}
         </h1>
-        <p className="font-serif italic text-lg max-w-2xl" style={{ color: "#5C3A1E" }}>
+        <p className="font-serif italic text-lg max-w-2xl" style={{ color: "#141B18" }}>
           {t("avaluador.subtitle")}
         </p>
       </div>
@@ -175,12 +175,12 @@ export default function AvaluadorPage() {
           {heroBlock}
           <section className="bg-background">
             <div className="mx-auto max-w-3xl px-6 py-12 lg:px-8">
-              <h2 className="font-serif text-2xl font-medium mb-6" style={{ color: "#2C1810" }}>
+              <h2 className="font-serif text-2xl font-medium mb-6" style={{ color: "#26312B" }}>
                 {t("avaluador.form.title")}
               </h2>
               <div className="space-y-5">
                 <div>
-                  <label className="block font-mono text-[10px] uppercase tracking-[0.18em] font-semibold mb-1.5" style={{ color: "#8A5526" }}>
+                  <label className="block font-mono text-[10px] uppercase tracking-[0.18em] font-semibold mb-1.5" style={{ color: "#3F6653" }}>
                     {t("avaluador.form.title.label")}
                   </label>
                   <Input
@@ -191,7 +191,7 @@ export default function AvaluadorPage() {
                   />
                 </div>
                 <div>
-                  <label className="block font-mono text-[10px] uppercase tracking-[0.18em] font-semibold mb-1.5" style={{ color: "#8A5526" }}>
+                  <label className="block font-mono text-[10px] uppercase tracking-[0.18em] font-semibold mb-1.5" style={{ color: "#3F6653" }}>
                     {t("avaluador.form.institution.label")}
                   </label>
                   <Input
@@ -202,7 +202,7 @@ export default function AvaluadorPage() {
                   />
                 </div>
                 <div>
-                  <label className="block font-mono text-[10px] uppercase tracking-[0.18em] font-semibold mb-1.5" style={{ color: "#8A5526" }}>
+                  <label className="block font-mono text-[10px] uppercase tracking-[0.18em] font-semibold mb-1.5" style={{ color: "#3F6653" }}>
                     {t("avaluador.form.source.label")}
                   </label>
                   <Textarea
@@ -212,14 +212,14 @@ export default function AvaluadorPage() {
                     className="w-full min-h-[300px] font-mono text-sm"
                   />
                   <div className="mt-1 flex items-center justify-between text-xs">
-                    <p style={{ color: "#8B7355" }}>{t("avaluador.form.source.help")}</p>
+                    <p style={{ color: "#4A5F53" }}>{t("avaluador.form.source.help")}</p>
                     <p style={{ color: source.length < 100 ? "#A0522D" : "#5C8A5C" }}>
                       {source.length} caràcters
                     </p>
                   </div>
                 </div>
                 <div>
-                  <label className="block font-mono text-[10px] uppercase tracking-[0.18em] font-semibold mb-1.5" style={{ color: "#8A5526" }}>
+                  <label className="block font-mono text-[10px] uppercase tracking-[0.18em] font-semibold mb-1.5" style={{ color: "#3F6653" }}>
                     {t("avaluador.form.lang.label")}
                   </label>
                   <div className="flex items-center rounded-md border border-rule p-0.5 w-fit">
@@ -248,7 +248,7 @@ export default function AvaluadorPage() {
                   disabled={!canSubmit}
                   size="lg"
                   className="w-full"
-                  style={{ background: "#B87333", color: "#FFFFFF" }}
+                  style={{ background: "#5E8772", color: "#FFFFFF" }}
                 >
                   {t("avaluador.form.submit")}
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -257,7 +257,7 @@ export default function AvaluadorPage() {
             </div>
           </section>
         </main>
-        <Footer />
+        <FooterV1 />
         <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
       </div>
     );
@@ -272,14 +272,14 @@ export default function AvaluadorPage() {
           {heroBlock}
           <section className="bg-background">
             <div className="mx-auto max-w-2xl px-6 py-20 text-center lg:px-8">
-              <div className="mx-auto mb-6 h-12 w-12 animate-spin rounded-full border-4 border-rule border-t-accent" style={{ borderTopColor: "#B87333" }} />
-              <p className="font-serif text-xl" style={{ color: "#2C1810" }}>
+              <div className="mx-auto mb-6 h-12 w-12 animate-spin rounded-full border-4 border-rule border-t-accent" style={{ borderTopColor: "#5E8772" }} />
+              <p className="font-serif text-xl" style={{ color: "#26312B" }}>
                 {t("avaluador.form.processing")}
               </p>
             </div>
           </section>
         </main>
-        <Footer />
+        <FooterV1 />
       </div>
     );
   }
@@ -296,11 +296,11 @@ export default function AvaluadorPage() {
               <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full" style={{ background: "rgba(160,82,45,0.15)" }}>
                 <AlertTriangle className="h-7 w-7" style={{ color: "#A0522D" }} />
               </div>
-              <h2 className="font-serif text-2xl font-medium mb-3" style={{ color: "#2C1810" }}>
+              <h2 className="font-serif text-2xl font-medium mb-3" style={{ color: "#26312B" }}>
                 {t("avaluador.form.error")}
               </h2>
               {errorMsg && (
-                <p className="text-sm mb-6 font-mono" style={{ color: "#8B7355" }}>
+                <p className="text-sm mb-6 font-mono" style={{ color: "#4A5F53" }}>
                   {errorMsg}
                 </p>
               )}
@@ -311,7 +311,7 @@ export default function AvaluadorPage() {
             </div>
           </section>
         </main>
-        <Footer />
+        <FooterV1 />
       </div>
     );
   }
@@ -326,10 +326,10 @@ export default function AvaluadorPage() {
           <div className="mx-auto max-w-4xl px-6 py-12 lg:px-8">
             <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
               <div>
-                <h2 className="font-serif text-2xl font-medium" style={{ color: "#2C1810" }}>
+                <h2 className="font-serif text-2xl font-medium" style={{ color: "#26312B" }}>
                   {t("avaluador.result.title")}
                 </h2>
-                <p className="font-serif italic text-sm mt-1" style={{ color: "#5C3A1E" }}>
+                <p className="font-serif italic text-sm mt-1" style={{ color: "#141B18" }}>
                   {t("avaluador.result.subtitle")}
                 </p>
               </div>
@@ -348,14 +348,14 @@ export default function AvaluadorPage() {
             {generated && <GeneratedReportView report={generated} lang={outputLang} />}
 
             <div className="mt-8 rounded-md p-4" style={{ background: "rgba(160,82,45,0.08)", borderLeft: "3px solid #A0522D" }}>
-              <p className="text-xs italic leading-relaxed" style={{ color: "#5C3A1E" }}>
+              <p className="text-xs italic leading-relaxed" style={{ color: "#141B18" }}>
                 {t("avaluador.result.disclaimer")}
               </p>
             </div>
           </div>
         </section>
       </main>
-      <Footer />
+      <FooterV1 />
       <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
     </div>
   );

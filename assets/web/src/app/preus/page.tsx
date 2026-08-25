@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Header } from "@/components/site-header";
-import { Footer } from "@/components/site-footer";
+import { Header } from "@/components/site-header-v1";
+import { FooterV1 } from "@/components/site-footer-v1";
 import { AuthDialog } from "@/components/auth-dialog";
 import { useLanguage } from "@/components/language-provider";
 
@@ -93,34 +93,34 @@ export default function PreusPage() {
       <Header onOpenAuth={(tab) => openAuth(tab || "register")} />
       <main className="flex-1">
         {/* HERO */}
-        <section className="border-b border-rule text-center" style={{ background: "#F5EFE6" }}>
+        <section className="border-b border-rule text-center" style={{ background: "#F2F5F1" }}>
           <div className="mx-auto max-w-3xl px-6 py-20">
-            <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#8A5526" }}>{tr("Plans · Criteri ESG", "Planes · Criteri ESG")}</p>
-            <h1 className="mb-4 font-serif text-5xl font-medium leading-tight text-primary">{tr("Tres plans. ", "Tres planes. ")}<em className="italic" style={{ color: "#5C3A1E" }}>{tr("Una convicció.", "Una convicción.")}</em></h1>
-            <p className="font-serif text-lg italic" style={{ color: "#5C3A1E" }}>{tr("Accés lliure al setembre i octubre. A partir de novembre, tria el pla que millor encaixi amb el teu equip. Sense permanència. Sense lletra petita.", "Acceso libre en septiembre y octubre. A partir de noviembre, elige el plan que mejor encaje con tu equipo. Sin permanencia. Sin letra pequeña.")}</p>
+            <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#3F6653" }}>{tr("Plans · Criteri ESG", "Planes · Criteri ESG")}</p>
+            <h1 className="mb-4 font-serif text-5xl font-medium leading-tight text-primary">{tr("Tres plans. ", "Tres planes. ")}<em className="italic" style={{ color: "#141B18" }}>{tr("Una convicció.", "Una convicción.")}</em></h1>
+            <p className="font-serif text-lg italic" style={{ color: "#141B18" }}>{tr("Accés lliure al setembre i octubre. A partir de novembre, tria el pla que millor encaixi amb el teu equip. Sense permanència. Sense lletra petita.", "Acceso libre en septiembre y octubre. A partir de noviembre, elige el plan que mejor encaje con tu equipo. Sin permanencia. Sin letra pequeña.")}</p>
           </div>
         </section>
 
         {/* PLANS */}
-        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+        <section className="border-b border-rule" style={{ background: "#F2F5F1" }}>
           <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
             <div className="grid gap-7 md:grid-cols-3">
               {plans.map((plan) => (
-                <div key={plan.name} className="relative flex flex-col gap-5 border p-8" style={{ borderColor: plan.featured ? "#B87333" : "#C9B89A", background: plan.featured ? "#2C1810" : "white", color: plan.featured ? "#F5EFE6" : "#2C1810", transform: plan.featured ? "scale(1.03)" : "none" }}>
-                  {plan.earlyBird && <span className="absolute -top-3 right-6 font-mono text-[9px] uppercase tracking-[0.14em] font-semibold px-3 py-1" style={{ background: "#B87333", color: "white" }}>{plan.earlyBird}</span>}
-                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] font-semibold" style={{ color: plan.featured ? "#D9A574" : plan.name === "Free" ? "#4A6B3A" : "#8B7355" }}>{plan.tag}</p>
+                <div key={plan.name} className="relative flex flex-col gap-5 border p-8" style={{ borderColor: plan.featured ? "#5E8772" : "#D8E2DA", background: plan.featured ? "#26312B" : "white", color: plan.featured ? "#F2F5F1" : "#26312B", transform: plan.featured ? "scale(1.03)" : "none" }}>
+                  {plan.earlyBird && <span className="absolute -top-3 right-6 font-mono text-[9px] uppercase tracking-[0.14em] font-semibold px-3 py-1" style={{ background: "#5E8772", color: "white" }}>{plan.earlyBird}</span>}
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] font-semibold" style={{ color: plan.featured ? "#AAC9B6" : plan.name === "Free" ? "#4A6B3A" : "#4A5F53" }}>{plan.tag}</p>
                   <h2 className="font-serif text-3xl font-medium" style={{ letterSpacing: "-0.015em" }}>{plan.name}</h2>
                   <div className="flex items-baseline gap-2">
-                    <span className="font-serif text-5xl font-normal" style={{ color: "#B87333", letterSpacing: "-0.03em" }}>{plan.price}</span>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.16em]" style={{ color: plan.featured ? "rgba(245,239,230,0.6)" : "#8B7355" }}>{plan.unit}</span>
+                    <span className="font-serif text-5xl font-normal" style={{ color: "#5E8772", letterSpacing: "-0.03em" }}>{plan.price}</span>
+                    <span className="font-mono text-[11px] uppercase tracking-[0.16em]" style={{ color: plan.featured ? "rgba(245,239,230,0.6)" : "#4A5F53" }}>{plan.unit}</span>
                   </div>
-                  {plan.originalPrice && <p className="font-mono text-[11px]" style={{ color: plan.featured ? "rgba(245,239,230,0.4)" : "#8B7355", textDecoration: "line-through" }}>{plan.originalPrice}</p>}
-                  {plan.earlyBirdPrice && <p className="font-mono text-[11px]" style={{ color: plan.featured ? "rgba(245,239,230,0.7)" : "#8A5526" }}>{plan.earlyBirdPrice}</p>}
-                  <p className="font-serif text-sm italic leading-relaxed border-y py-4" style={{ color: plan.featured ? "rgba(245,239,230,0.75)" : "#5C3A1E", borderColor: plan.featured ? "rgba(217,165,116,0.25)" : "#C9B89A" }}>{plan.desc}</p>
+                  {plan.originalPrice && <p className="font-mono text-[11px]" style={{ color: plan.featured ? "rgba(245,239,230,0.4)" : "#4A5F53", textDecoration: "line-through" }}>{plan.originalPrice}</p>}
+                  {plan.earlyBirdPrice && <p className="font-mono text-[11px]" style={{ color: plan.featured ? "rgba(245,239,230,0.7)" : "#3F6653" }}>{plan.earlyBirdPrice}</p>}
+                  <p className="font-serif text-sm italic leading-relaxed border-y py-4" style={{ color: plan.featured ? "rgba(245,239,230,0.75)" : "#141B18", borderColor: plan.featured ? "rgba(217,165,116,0.25)" : "#D8E2DA" }}>{plan.desc}</p>
                   <div className="flex flex-col gap-2.5">
                     {plan.features.map((f) => (
-                      <div key={f.text} className="flex items-baseline gap-2.5 text-[13px]" style={{ color: f.ok ? (plan.featured ? "#F5EFE6" : "#2C1810") : (plan.featured ? "rgba(245,239,230,0.4)" : "#8B7355") }}>
-                        <span style={{ color: f.ok ? "#B87333" : (plan.featured ? "rgba(245,239,230,0.3)" : "#C9B89A") }}>{f.ok ? "✓" : "—"}</span>
+                      <div key={f.text} className="flex items-baseline gap-2.5 text-[13px]" style={{ color: f.ok ? (plan.featured ? "#F2F5F1" : "#26312B") : (plan.featured ? "rgba(245,239,230,0.4)" : "#4A5F53") }}>
+                        <span style={{ color: f.ok ? "#5E8772" : (plan.featured ? "rgba(245,239,230,0.3)" : "#D8E2DA") }}>{f.ok ? "✓" : "—"}</span>
                         <span>{f.text}</span>
                       </div>
                     ))}
@@ -128,7 +128,7 @@ export default function PreusPage() {
                   <button
                     onClick={() => plan.disabled ? null : plan.featured ? window.location.href = "/pagament?plan=premium&period=annual" : openAuth("register")}
                     className="mt-auto py-3.5 text-sm font-semibold"
-                    style={{ background: plan.featured ? "#B87333" : "transparent", color: plan.featured ? "white" : "#2C1810", border: plan.featured ? "none" : "1px solid #2C1810", opacity: plan.disabled ? 0.5 : 1, cursor: plan.disabled ? "not-allowed" : "pointer" }}
+                    style={{ background: plan.featured ? "#5E8772" : "transparent", color: plan.featured ? "white" : "#26312B", border: plan.featured ? "none" : "1px solid #26312B", opacity: plan.disabled ? 0.5 : 1, cursor: plan.disabled ? "not-allowed" : "pointer" }}
                   >{plan.cta}</button>
                 </div>
               ))}
@@ -137,25 +137,25 @@ export default function PreusPage() {
         </section>
 
         {/* COMPARATIVA */}
-        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+        <section className="border-b border-rule" style={{ background: "#F2F5F1" }}>
           <div className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
             <h2 className="mb-8 text-center font-serif text-3xl font-medium text-primary">{tr("Comparativa detallada", "Comparativa detallada")}</h2>
             <table className="w-full border-collapse">
               <thead>
                 <tr>
-                  <th className="text-left font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3.5" style={{ background: "#5C3A1E", color: "#F5EFE6" }}>{tr("Característica", "Característica")}</th>
-                  <th className="text-center font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3.5" style={{ background: "#5C3A1E", color: "#F5EFE6" }}>Free</th>
-                  <th className="text-center font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3.5" style={{ background: "#5C3A1E", color: "#F5EFE6" }}>Premium</th>
-                  <th className="text-center font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3.5" style={{ background: "#5C3A1E", color: "#F5EFE6" }}>Ultra</th>
+                  <th className="text-left font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3.5" style={{ background: "#141B18", color: "#F2F5F1" }}>{tr("Característica", "Característica")}</th>
+                  <th className="text-center font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3.5" style={{ background: "#141B18", color: "#F2F5F1" }}>Free</th>
+                  <th className="text-center font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3.5" style={{ background: "#141B18", color: "#F2F5F1" }}>Premium</th>
+                  <th className="text-center font-mono text-[9.5px] uppercase tracking-[0.18em] font-semibold p-3.5" style={{ background: "#141B18", color: "#F2F5F1" }}>Ultra</th>
                 </tr>
               </thead>
               <tbody>
                 {compareRows.map((row) => (
-                  <tr key={row.label} className="border-b" style={{ borderColor: "#C9B89A" }}>
+                  <tr key={row.label} className="border-b" style={{ borderColor: "#D8E2DA" }}>
                     <td className="p-3.5 text-[13px] text-primary">{row.label}</td>
-                    <td className="p-3.5 text-center" style={{ color: row.free ? "#5C8A5C" : "#8B7355", opacity: row.free ? 1 : 0.5 }}>{row.free ? "✓" : "—"}</td>
-                    <td className="p-3.5 text-center" style={{ color: row.premium ? "#5C8A5C" : "#8B7355", opacity: row.premium ? 1 : 0.5 }}>{row.premium ? "✓" : "—"}</td>
-                    <td className="p-3.5 text-center" style={{ color: row.ultra ? "#5C8A5C" : "#8B7355", opacity: row.ultra ? 1 : 0.5 }}>{row.ultra ? "✓" : "—"}</td>
+                    <td className="p-3.5 text-center" style={{ color: row.free ? "#5C8A5C" : "#4A5F53", opacity: row.free ? 1 : 0.5 }}>{row.free ? "✓" : "—"}</td>
+                    <td className="p-3.5 text-center" style={{ color: row.premium ? "#5C8A5C" : "#4A5F53", opacity: row.premium ? 1 : 0.5 }}>{row.premium ? "✓" : "—"}</td>
+                    <td className="p-3.5 text-center" style={{ color: row.ultra ? "#5C8A5C" : "#4A5F53", opacity: row.ultra ? 1 : 0.5 }}>{row.ultra ? "✓" : "—"}</td>
                   </tr>
                 ))}
               </tbody>
@@ -164,14 +164,14 @@ export default function PreusPage() {
         </section>
 
         {/* FAQ */}
-        <section className="border-b border-rule" style={{ background: "#F5EFE6" }}>
+        <section className="border-b border-rule" style={{ background: "#F2F5F1" }}>
           <div className="mx-auto max-w-3xl px-6 py-16">
             <h2 className="mb-8 text-center font-serif text-3xl font-medium text-primary">{tr("Preguntes freqüents", "Preguntas frecuentes")}</h2>
             <div className="flex flex-col">
               {faqs.map((faq) => (
-                <div key={faq.q} className="border-b py-5" style={{ borderColor: "#C9B89A" }}>
+                <div key={faq.q} className="border-b py-5" style={{ borderColor: "#D8E2DA" }}>
                   <h3 className="mb-2 font-serif text-lg font-medium text-primary">{faq.q}</h3>
-                  <p className="text-[14px] leading-relaxed" style={{ color: "#5C3A1E" }}>{faq.a}</p>
+                  <p className="text-[14px] leading-relaxed" style={{ color: "#141B18" }}>{faq.a}</p>
                 </div>
               ))}
             </div>
@@ -179,17 +179,17 @@ export default function PreusPage() {
         </section>
 
         {/* CTA FINAL */}
-        <section style={{ background: "#2C1810", color: "#F5EFE6" }}>
+        <section style={{ background: "#26312B", color: "#F2F5F1" }}>
           <div className="mx-auto max-w-4xl px-6 py-24 text-center">
-            <h2 className="mb-6 font-serif text-4xl leading-snug" style={{ color: "#F5EFE6", letterSpacing: "-0.018em" }}>
-              {tr("Si treballes en sostenibilitat, ", "Si trabajas en sostenibilidad, ")}<em className="italic font-medium" style={{ color: "#D9A574" }}>{tr("t'entenem", "te entendemos")}</em>.<br />{tr("Estem per retornar-te temps per pensar.", "Estamos para devolverte tiempo para pensar.")}
+            <h2 className="mb-6 font-serif text-4xl leading-snug" style={{ color: "#F2F5F1", letterSpacing: "-0.018em" }}>
+              {tr("Si treballes en sostenibilitat, ", "Si trabajas en sostenibilidad, ")}<em className="italic font-medium" style={{ color: "#AAC9B6" }}>{tr("t'entenem", "te entendemos")}</em>.<br />{tr("Estem per retornar-te temps per pensar.", "Estamos para devolverte tiempo para pensar.")}
             </h2>
-            <button onClick={() => openAuth("register")} className="mt-4 px-10 py-4 text-sm font-semibold text-white" style={{ background: "#B87333" }}>{tr("Accés obert al setembre", "Acceso abierto en septiembre")}</button>
+            <button onClick={() => openAuth("register")} className="mt-4 px-10 py-4 text-sm font-semibold text-white" style={{ background: "#5E8772" }}>{tr("Accés obert al setembre", "Acceso abierto en septiembre")}</button>
             <p className="mt-3 font-serif text-sm italic" style={{ color: "rgba(245,239,230,0.5)" }}>{tr("Sense targeta de crèdit. Sense paywall fins al novembre.", "Sin tarjeta de crédito. Sin paywall hasta noviembre.")}</p>
           </div>
         </section>
       </main>
-      <Footer />
+      <FooterV1 />
       <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
     </div>
   );

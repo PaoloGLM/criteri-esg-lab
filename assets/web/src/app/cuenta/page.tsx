@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Header } from "@/components/site-header";
-import { Footer } from "@/components/site-footer";
+import { Header } from "@/components/site-header-v1";
+import { FooterV1 } from "@/components/site-footer-v1";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
@@ -41,7 +41,7 @@ const INTERESSOS = [
   { id: "climate", key: "form.interest.climate" as const },
 ];
 
-const CAT_COLOR: Record<StandarType, string> = { reg: "#5C3A1E", fw: "#B87333", cert: "#E8C99A" };
+const CAT_COLOR: Record<StandarType, string> = { reg: "#141B18", fw: "#5E8772", cert: "#AAC9B6" };
 
 export default function CuentaPage() {
   const { t } = useLanguage();
@@ -66,11 +66,11 @@ export default function CuentaPage() {
         <main className="flex flex-1 items-center justify-center px-6">
           <div className="text-center">
             <h1 className="mb-4 font-serif text-3xl font-medium text-primary">{t("cuenta.v2.login_required.title")}</h1>
-            <p className="mb-8 font-serif text-lg italic" style={{ color: "#5C3A1E" }}>{t("cuenta.v2.login_required.body")}</p>
-            <button onClick={() => openAuth("login")} className="px-8 py-3 text-sm font-semibold text-white" style={{ background: "#B87333" }}>{t("cuenta.v2.login_required.cta")}</button>
+            <p className="mb-8 font-serif text-lg italic" style={{ color: "#141B18" }}>{t("cuenta.v2.login_required.body")}</p>
+            <button onClick={() => openAuth("login")} className="px-8 py-3 text-sm font-semibold text-white" style={{ background: "#5E8772" }}>{t("cuenta.v2.login_required.cta")}</button>
           </div>
         </main>
-        <Footer />
+        <FooterV1 />
         <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
         <PreusDialog open={preusOpen} onOpenChange={setPreusOpen} onOpenRegister={() => openAuth("register")} />
       </div>
@@ -94,23 +94,23 @@ export default function CuentaPage() {
       <main className="flex-1">
         <div className="grid lg:grid-cols-[320px_1fr]">
           {/* SIDEBAR */}
-          <aside className="sticky top-[70px] hidden h-[calc(100vh-70px)] flex-col p-12 lg:flex" style={{ background: "#2C1810", color: "#F5EFE6" }}>
+          <aside className="sticky top-[70px] hidden h-[calc(100vh-70px)] flex-col p-12 lg:flex" style={{ background: "#26312B", color: "#F2F5F1" }}>
             <div className="mb-8 pb-6 border-b" style={{ borderColor: "rgba(217,165,116,0.25)" }}>
-              <div className="font-serif text-xl font-semibold" style={{ color: "#F5EFE6" }}>Criteri<span style={{ color: "#D9A574" }}>.</span> ESG</div>
+              <div className="font-serif text-xl font-semibold" style={{ color: "#F2F5F1" }}>Criteri<span style={{ color: "#AAC9B6" }}>.</span> ESG</div>
             </div>
             <div className="mb-8 flex items-center gap-4">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full font-serif text-2xl font-medium" style={{ background: "#B87333", color: "#FFFFFF" }}>{userInitial}</div>
+              <div className="flex h-14 w-14 items-center justify-center rounded-full font-serif text-2xl font-medium" style={{ background: "#5E8772", color: "#FFFFFF" }}>{userInitial}</div>
               <div className="flex flex-col gap-1">
-                <div className="font-serif text-lg font-medium" style={{ color: "#F5EFE6" }}>{user.email?.split("@")[0] || "Usuario"}</div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#D9A574" }}>{isPremium ? t("cuenta.v2.plan.premium") : t("cuenta.v2.plan.free")}</div>
+                <div className="font-serif text-lg font-medium" style={{ color: "#F2F5F1" }}>{user.email?.split("@")[0] || "Usuario"}</div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#AAC9B6" }}>{isPremium ? t("cuenta.v2.plan.premium") : t("cuenta.v2.plan.free")}</div>
               </div>
             </div>
             <nav className="flex flex-col gap-0.5">
               {navItems.map((item) => (
                 <button key={item.id} onClick={() => { setActiveNav(item.id); document.getElementById(`card-${item.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
                   className="grid grid-cols-[24px_1fr] items-baseline gap-3 border-l-2 px-4 py-3 text-left text-sm font-medium transition-colors"
-                  style={{ color: activeNav === item.id ? "#F5EFE6" : "rgba(245,239,230,0.7)", background: activeNav === item.id ? "rgba(217,165,116,0.12)" : "transparent", borderLeftColor: activeNav === item.id ? "#B87333" : "transparent" }}>
-                  <span className="font-mono text-[10px] font-semibold" style={{ color: activeNav === item.id ? "#D9A574" : "rgba(217,165,116,0.5)" }}>{item.num}</span>
+                  style={{ color: activeNav === item.id ? "#F2F5F1" : "rgba(245,239,230,0.7)", background: activeNav === item.id ? "rgba(217,165,116,0.12)" : "transparent", borderLeftColor: activeNav === item.id ? "#5E8772" : "transparent" }}>
+                  <span className="font-mono text-[10px] font-semibold" style={{ color: activeNav === item.id ? "#AAC9B6" : "rgba(217,165,116,0.5)" }}>{item.num}</span>
                   <span>{item.label}</span>
                 </button>
               ))}
@@ -119,103 +119,103 @@ export default function CuentaPage() {
           </aside>
 
           {/* MAIN */}
-          <div className="flex flex-col gap-8 p-12" style={{ background: "#F5EFE6" }}>
+          <div className="flex flex-col gap-8 p-12" style={{ background: "#F2F5F1" }}>
             <div>
               <h1 className="mb-2 font-serif text-4xl font-medium text-primary" style={{ letterSpacing: "-0.018em" }}>{t("cuenta.v2.page.title")}</h1>
-              <p className="font-serif text-base italic" style={{ color: "#5C3A1E" }}>{t("cuenta.v2.page.subtitle")}</p>
+              <p className="font-serif text-base italic" style={{ color: "#141B18" }}>{t("cuenta.v2.page.subtitle")}</p>
             </div>
 
             {/* 01 PERFIL */}
-            <div id="card-perfil" className="border p-8" style={{ borderColor: "#C9B89A", background: "white" }}>
-              <div className="mb-5 flex justify-between border-b pb-4" style={{ borderColor: "#C9B89A" }}>
+            <div id="card-perfil" className="border p-8" style={{ borderColor: "#D8E2DA", background: "white" }}>
+              <div className="mb-5 flex justify-between border-b pb-4" style={{ borderColor: "#D8E2DA" }}>
                 <h2 className="font-serif text-xl font-medium text-primary">{t("cuenta.v2.perfil.title")}</h2>
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#B87333" }}>01</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#5E8772" }}>01</span>
               </div>
               <div className="grid gap-6 sm:grid-cols-2">
-                <div className="flex flex-col gap-1.5"><label className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#8A5526" }}>{t("cuenta.v2.perfil.nombre")}</label><input className="border p-3 text-sm font-medium text-primary" style={{ background: "#F5EFE6", borderColor: "#C9B89A" }} defaultValue={user.email?.split("@")[0] || ""} /></div>
-                <div className="flex flex-col gap-1.5"><label className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#8A5526" }}>{t("cuenta.v2.perfil.email")}</label><input className="border p-3 text-sm font-medium text-primary" style={{ background: "#F5EFE6", borderColor: "#C9B89A" }} defaultValue={user.email || ""} disabled /></div>
-                <div className="flex flex-col gap-1.5"><label className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#8A5526" }}>{t("cuenta.v2.perfil.empresa")}</label><input className="border p-3 text-sm font-medium text-primary" style={{ background: "#F5EFE6", borderColor: "#C9B89A" }} placeholder={t("cuenta.v2.perfil.empresa_placeholder")} /></div>
-                <div className="flex flex-col gap-1.5"><label className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#8A5526" }}>{t("cuenta.v2.perfil.sector")}</label><input className="border p-3 text-sm font-medium text-primary" style={{ background: "#F5EFE6", borderColor: "#C9B89A" }} placeholder={t("cuenta.v2.perfil.sector_placeholder")} /></div>
+                <div className="flex flex-col gap-1.5"><label className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#3F6653" }}>{t("cuenta.v2.perfil.nombre")}</label><input className="border p-3 text-sm font-medium text-primary" style={{ background: "#F2F5F1", borderColor: "#D8E2DA" }} defaultValue={user.email?.split("@")[0] || ""} /></div>
+                <div className="flex flex-col gap-1.5"><label className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#3F6653" }}>{t("cuenta.v2.perfil.email")}</label><input className="border p-3 text-sm font-medium text-primary" style={{ background: "#F2F5F1", borderColor: "#D8E2DA" }} defaultValue={user.email || ""} disabled /></div>
+                <div className="flex flex-col gap-1.5"><label className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#3F6653" }}>{t("cuenta.v2.perfil.empresa")}</label><input className="border p-3 text-sm font-medium text-primary" style={{ background: "#F2F5F1", borderColor: "#D8E2DA" }} placeholder={t("cuenta.v2.perfil.empresa_placeholder")} /></div>
+                <div className="flex flex-col gap-1.5"><label className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#3F6653" }}>{t("cuenta.v2.perfil.sector")}</label><input className="border p-3 text-sm font-medium text-primary" style={{ background: "#F2F5F1", borderColor: "#D8E2DA" }} placeholder={t("cuenta.v2.perfil.sector_placeholder")} /></div>
               </div>
             </div>
 
             {/* 02 NEWSLETTER */}
-            <div id="card-newsletter" className="border p-8" style={{ borderColor: "#C9B89A", background: "white" }}>
-              <div className="mb-5 flex justify-between border-b pb-4" style={{ borderColor: "#C9B89A" }}>
+            <div id="card-newsletter" className="border p-8" style={{ borderColor: "#D8E2DA", background: "white" }}>
+              <div className="mb-5 flex justify-between border-b pb-4" style={{ borderColor: "#D8E2DA" }}>
                 <h2 className="font-serif text-xl font-medium text-primary">{t("cuenta.v2.newsletter.title")}</h2>
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#B87333" }}>02</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#5E8772" }}>02</span>
               </div>
-              <div className="flex flex-col gap-1.5"><label className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#8A5526" }}>{t("cuenta.v2.newsletter.idioma")}</label>
-                <div className="inline-flex border" style={{ borderColor: "#C9B89A" }}>
+              <div className="flex flex-col gap-1.5"><label className="font-mono text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#3F6653" }}>{t("cuenta.v2.newsletter.idioma")}</label>
+                <div className="inline-flex border" style={{ borderColor: "#D8E2DA" }}>
                   {(["ca", "es"] as const).map((lang) => (
-                    <button key={lang} onClick={() => setNewsletterLang(lang)} className="px-6 py-3 font-mono text-[11px] uppercase tracking-[0.18em] font-semibold" style={{ background: newsletterLang === lang ? "#B87333" : "#F5EFE6", color: newsletterLang === lang ? "#FFFFFF" : "#5C3A1E" }}>{lang.toUpperCase()}</button>
+                    <button key={lang} onClick={() => setNewsletterLang(lang)} className="px-6 py-3 font-mono text-[11px] uppercase tracking-[0.18em] font-semibold" style={{ background: newsletterLang === lang ? "#5E8772" : "#F2F5F1", color: newsletterLang === lang ? "#FFFFFF" : "#141B18" }}>{lang.toUpperCase()}</button>
                   ))}
                 </div>
               </div>
-              <p className="mt-4 font-serif text-sm italic leading-relaxed" style={{ color: "#5C3A1E" }}>{t("cuenta.v2.newsletter.desc")}</p>
+              <p className="mt-4 font-serif text-sm italic leading-relaxed" style={{ color: "#141B18" }}>{t("cuenta.v2.newsletter.desc")}</p>
             </div>
 
             {/* 03 PLAN */}
-            <div id="card-plan" className="border p-8" style={{ borderColor: "#C9B89A", background: "white" }}>
-              <div className="mb-5 flex justify-between border-b pb-4" style={{ borderColor: "#C9B89A" }}>
+            <div id="card-plan" className="border p-8" style={{ borderColor: "#D8E2DA", background: "white" }}>
+              <div className="mb-5 flex justify-between border-b pb-4" style={{ borderColor: "#D8E2DA" }}>
                 <h2 className="font-serif text-xl font-medium text-primary">{t("cuenta.v2.plan.title")}</h2>
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#B87333" }}>03</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#5E8772" }}>03</span>
               </div>
-              <div className="flex items-center justify-between gap-6 p-6" style={{ background: "#2C1810", color: "#F5EFE6" }}>
+              <div className="flex items-center justify-between gap-6 p-6" style={{ background: "#26312B", color: "#F2F5F1" }}>
                 <div className="flex flex-col gap-1">
-                  <div className="font-serif text-2xl font-medium" style={{ color: "#F5EFE6" }}>{isPremium ? t("cuenta.v2.plan.premium") : t("cuenta.v2.plan.free")}</div>
-                  <div className="font-mono text-[11px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#D9A574" }}>{isPremium ? t("cuenta.v2.plan.premium_desc") : t("cuenta.v2.plan.free_desc")}</div>
+                  <div className="font-serif text-2xl font-medium" style={{ color: "#F2F5F1" }}>{isPremium ? t("cuenta.v2.plan.premium") : t("cuenta.v2.plan.free")}</div>
+                  <div className="font-mono text-[11px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#AAC9B6" }}>{isPremium ? t("cuenta.v2.plan.premium_desc") : t("cuenta.v2.plan.free_desc")}</div>
                 </div>
-                {!isPremium && <button onClick={() => setPreusOpen(true)} className="px-6 py-3 text-[13px] font-semibold text-white" style={{ background: "#B87333" }}>{t("cuenta.v2.plan.upgrade")}</button>}
+                {!isPremium && <button onClick={() => setPreusOpen(true)} className="px-6 py-3 text-[13px] font-semibold text-white" style={{ background: "#5E8772" }}>{t("cuenta.v2.plan.upgrade")}</button>}
               </div>
-              <p className="mt-4 text-[13px] leading-relaxed" style={{ color: "#5C3A1E" }}>{t("cuenta.v2.plan.premium_info")}</p>
+              <p className="mt-4 text-[13px] leading-relaxed" style={{ color: "#141B18" }}>{t("cuenta.v2.plan.premium_info")}</p>
               {isPremium && (
-                <a href="/eines/avaluador" className="mt-4 inline-block font-serif text-sm italic hover:underline" style={{ color: "#B87333" }}>
+                <a href="/eines/avaluador" className="mt-4 inline-block font-serif text-sm italic hover:underline" style={{ color: "#5E8772" }}>
                   {t("avaluador.cta.from_cuenta")}
                 </a>
               )}
             </div>
 
             {/* 04 ESTÁNDARES */}
-            <div id="card-estandares" className="border p-8" style={{ borderColor: "#C9B89A", background: "white" }}>
-              <div className="mb-5 flex justify-between border-b pb-4" style={{ borderColor: "#C9B89A" }}>
+            <div id="card-estandares" className="border p-8" style={{ borderColor: "#D8E2DA", background: "white" }}>
+              <div className="mb-5 flex justify-between border-b pb-4" style={{ borderColor: "#D8E2DA" }}>
                 <h2 className="font-serif text-xl font-medium text-primary">{t("cuenta.v2.estandares.title")}</h2>
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#B87333" }}>04</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#5E8772" }}>04</span>
               </div>
-              <p className="mb-4 font-serif text-sm italic leading-relaxed" style={{ color: "#5C3A1E" }}>{t("cuenta.v2.estandares.desc")}</p>
+              <p className="mb-4 font-serif text-sm italic leading-relaxed" style={{ color: "#141B18" }}>{t("cuenta.v2.estandares.desc")}</p>
               <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
                 {ESTANDARES.map((est) => {
                   const selected = selectedEstandards.includes(est.slug);
                   return (
                     <button key={est.slug} onClick={() => toggleEstandar(est.slug)} className="flex items-center gap-2.5 p-3 text-left text-[13px] font-medium"
-                      style={{ background: selected ? "#2C1810" : "#F5EFE6", color: selected ? "#F5EFE6" : "#2C1810", border: selected ? "1px solid #B87333" : "1px solid #C9B89A", borderLeftWidth: "4px", borderLeftColor: CAT_COLOR[est.type] }}>
-                      <span className="flex h-4 w-4 items-center justify-center text-[11px]" style={{ background: selected ? "#B87333" : "transparent", border: selected ? "1px solid #B87333" : "1.5px solid #C9B89A", color: "white" }}>{selected ? "✓" : ""}</span>
+                      style={{ background: selected ? "#26312B" : "#F2F5F1", color: selected ? "#F2F5F1" : "#26312B", border: selected ? "1px solid #5E8772" : "1px solid #D8E2DA", borderLeftWidth: "4px", borderLeftColor: CAT_COLOR[est.type] }}>
+                      <span className="flex h-4 w-4 items-center justify-center text-[11px]" style={{ background: selected ? "#5E8772" : "transparent", border: selected ? "1px solid #5E8772" : "1.5px solid #D8E2DA", color: "white" }}>{selected ? "✓" : ""}</span>
                       {est.name}
                     </button>
                   );
                 })}
               </div>
-              <div className="mt-4 flex gap-6 font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#5C3A1E" }}>
-                <div className="flex items-center gap-2"><span className="inline-block w-[18px] h-1" style={{ background: "#5C3A1E" }} /><span>{t("cuenta.v2.estandares.legend.reg")}</span></div>
-                <div className="flex items-center gap-2"><span className="inline-block w-[18px] h-1" style={{ background: "#B87333" }} /><span>{t("cuenta.v2.estandares.legend.fw")}</span></div>
-                <div className="flex items-center gap-2"><span className="inline-block w-[18px] h-1" style={{ background: "#E8C99A" }} /><span>{t("cuenta.v2.estandares.legend.cert")}</span></div>
+              <div className="mt-4 flex gap-6 font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#141B18" }}>
+                <div className="flex items-center gap-2"><span className="inline-block w-[18px] h-1" style={{ background: "#141B18" }} /><span>{t("cuenta.v2.estandares.legend.reg")}</span></div>
+                <div className="flex items-center gap-2"><span className="inline-block w-[18px] h-1" style={{ background: "#5E8772" }} /><span>{t("cuenta.v2.estandares.legend.fw")}</span></div>
+                <div className="flex items-center gap-2"><span className="inline-block w-[18px] h-1" style={{ background: "#AAC9B6" }} /><span>{t("cuenta.v2.estandares.legend.cert")}</span></div>
               </div>
             </div>
 
             {/* 05 INTERESES */}
-            <div id="card-intereses" className="border p-8" style={{ borderColor: "#C9B89A", background: "white" }}>
-              <div className="mb-5 flex justify-between border-b pb-4" style={{ borderColor: "#C9B89A" }}>
+            <div id="card-intereses" className="border p-8" style={{ borderColor: "#D8E2DA", background: "white" }}>
+              <div className="mb-5 flex justify-between border-b pb-4" style={{ borderColor: "#D8E2DA" }}>
                 <h2 className="font-serif text-xl font-medium text-primary">{t("cuenta.v2.intereses.title")}</h2>
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#B87333" }}>05</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#5E8772" }}>05</span>
               </div>
-              <p className="mb-4 font-serif text-sm italic leading-relaxed" style={{ color: "#5C3A1E" }}>{t("cuenta.v2.intereses.desc")}</p>
+              <p className="mb-4 font-serif text-sm italic leading-relaxed" style={{ color: "#141B18" }}>{t("cuenta.v2.intereses.desc")}</p>
               <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
                 {INTERESSOS.map((interes) => {
                   const selected = selectedInteressos.includes(interes.id);
                   return (
                     <button key={interes.id} onClick={() => toggleInteres(interes.id)} className="flex items-center gap-2.5 p-3 text-left text-[13px] font-medium"
-                      style={{ background: selected ? "rgba(184,115,51,0.12)" : "#F5EFE6", border: selected ? "1px solid #B87333" : "1px solid #C9B89A", color: selected ? "#5C3A1E" : "#2C1810" }}>
-                      <span className="flex h-4 w-4 items-center justify-center text-[11px]" style={{ background: selected ? "#B87333" : "transparent", border: selected ? "1px solid #B87333" : "1.5px solid #C9B89A", color: "white" }}>{selected ? "✓" : ""}</span>
+                      style={{ background: selected ? "rgba(184,115,51,0.12)" : "#F2F5F1", border: selected ? "1px solid #5E8772" : "1px solid #D8E2DA", color: selected ? "#141B18" : "#26312B" }}>
+                      <span className="flex h-4 w-4 items-center justify-center text-[11px]" style={{ background: selected ? "#5E8772" : "transparent", border: selected ? "1px solid #5E8772" : "1.5px solid #D8E2DA", color: "white" }}>{selected ? "✓" : ""}</span>
                       {t(interes.key)}
                     </button>
                   );
@@ -225,7 +225,7 @@ export default function CuentaPage() {
           </div>
         </div>
       </main>
-      <Footer />
+      <FooterV1 />
       <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />
       <PreusDialog open={preusOpen} onOpenChange={setPreusOpen} onOpenRegister={() => openAuth("register")} />
     </div>

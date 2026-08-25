@@ -111,9 +111,9 @@ export default function RegistroPage() {
     setSsoLoading(provider);
     setErrors({});
     try {
-      if (isSupabaseConfigured) {
+      if (isSupabaseConfigured()) {
         const { error } = await supabase.auth.signInWithOAuth({
-          provider,
+          provider: provider === "Google" ? "google" : "linkedin_oidc",
           options: {
             redirectTo:
               typeof window !== "undefined"

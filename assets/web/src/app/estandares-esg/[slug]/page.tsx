@@ -3,8 +3,8 @@
 import { useState, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
-import { Header } from "@/components/site-header";
-import { Footer } from "@/components/site-footer";
+import { Header } from "@/components/site-header-v1";
+import { FooterV1 } from "@/components/site-footer-v1";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
@@ -107,7 +107,7 @@ export default function EstandarDetailPage() {
             </Button>
           </div>
         </main>
-        <Footer />
+        <FooterV1 />
       </div>
     );
   }
@@ -190,9 +190,9 @@ export default function EstandarDetailPage() {
                   onClick={() => setPillarFilter("all")}
                   className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 border"
                   style={{
-                    background: pillarFilter === "all" ? "#2C1810" : "white",
-                    color: pillarFilter === "all" ? "#F5EFE6" : "#5C3A1E",
-                    borderColor: pillarFilter === "all" ? "#2C1810" : "#C9B89A",
+                    background: pillarFilter === "all" ? "#26312B" : "white",
+                    color: pillarFilter === "all" ? "#F2F5F1" : "#141B18",
+                    borderColor: pillarFilter === "all" ? "#26312B" : "#D8E2DA",
                   }}
                 >
                   {tr("Tots els pilars", "Todos los pilares")} ({effectiveDetail.xrefRows.length})
@@ -204,9 +204,9 @@ export default function EstandarDetailPage() {
                   onClick={() => setPillarFilter(p)}
                   className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 border"
                   style={{
-                    background: pillarFilter === p ? "#2C1810" : "white",
-                    color: pillarFilter === p ? "#F5EFE6" : "#5C3A1E",
-                    borderColor: pillarFilter === p ? "#2C1810" : "#C9B89A",
+                    background: pillarFilter === p ? "#26312B" : "white",
+                    color: pillarFilter === p ? "#F2F5F1" : "#141B18",
+                    borderColor: pillarFilter === p ? "#26312B" : "#D8E2DA",
                   }}
                 >
                   {p} ({pillarCounts[p] || 0})
@@ -282,7 +282,7 @@ export default function EstandarDetailPage() {
                             <td className="px-3 py-3.5 align-top">
                               {row.pillar && (
                                 <div>
-                                  <span className="inline-block rounded px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider bg-[#5C3A1E]/10 text-[#5C3A1E]">
+                                  <span className="inline-block rounded px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider bg-[#141B18]/10 text-[#141B18]">
                                     {row.pillar}
                                   </span>
                                   {row.subArea && (
@@ -298,7 +298,7 @@ export default function EstandarDetailPage() {
                             {/* Acció */}
                             <td className="px-3 py-3.5 align-top">
                               {(row.actionCa || row.actionEs) && (
-                                <div className="rounded-md bg-[#B87333]/8 border-l-2 border-[#B87333] pl-3 pr-2 py-2">
+                                <div className="rounded-md bg-[#5E8772]/8 border-l-2 border-[#5E8772] pl-3 pr-2 py-2">
                                   <p className="text-xs leading-relaxed text-foreground">{tr(row.actionCa || "", row.actionEs || "")}</p>
                                 </div>
                               )}
@@ -420,7 +420,7 @@ export default function EstandarDetailPage() {
             El nou model integra l'acció concreta dins de cada cross-reference.
             Veure TASQUES.md — 'Accions recomanades' com a futura eina autònoma. */}
       </main>
-      <Footer />
+      <FooterV1 />
 
       <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab="register" />
       <PreusDialog

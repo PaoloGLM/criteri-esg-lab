@@ -9,28 +9,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="oxalpha-brand.css">
 <style>
-.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:52px 0 20px;align-items:start}
-.pas{position:relative}
-.pas .step{font-family:var(--font-mono);font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-.pas .panel{background:var(--paper);border:1px solid rgba(38,49,43,.14);border-radius:12px;padding:26px 24px;min-height:340px}
-.pas .panel h2{font-family:var(--font-display);font-weight:500;font-size:1.35rem;color:var(--ink-deep);margin-bottom:16px}
-.f{margin-bottom:14px}
-.f label{display:block;font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:5px}
-.f .input{border:1px solid rgba(38,49,43,.22);border-radius:8px;padding:10px 12px;font-size:13.5px;color:var(--ink-soft);background:#fff}
-.f .input.filled{color:var(--ink)}
-.btn{display:block;text-align:center;background:var(--accent);color:#fff;border-radius:8px;padding:12px;font-family:var(--font-mono);font-size:.75rem;font-weight:600;letter-spacing:.05em}
-.meter{display:flex;gap:4px;margin-top:8px}
-.meter i{height:5px;flex:1;border-radius:99px;background:rgba(38,49,43,.12)}
-.meter i.on{background:var(--accent)}
-.hibp{font-size:.72rem;color:var(--accent);margin-top:8px}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.chips span{border:1px solid rgba(38,49,43,.2);border-radius:99px;padding:5px 11px;font-size:11px;color:var(--ink-soft)}
-.chips span.on{background:var(--accent);border-color:var(--accent);color:#fff}
-.gdpr{background:var(--bg);border-radius:8px;padding:12px;font-size:.78rem;color:var(--ink-soft);line-height:1.5}
-.gdpr b{color:var(--ink);font-weight:500}
-.note{max-width:760px;margin:26px auto 0;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.05em;color:var(--ink-soft);text-align:center;line-height:1.7}
-.note b{color:var(--accent)}
-@media(max-width:900px){.flow{grid-template-columns:1fr}}
+.reg-layout{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 120px)}
+@media(max-width:860px){.reg-layout{grid-template-columns:1fr}}
+.reg-esq{background:var(--ink-deep);color:var(--bg);padding:56px 48px;display:flex;flex-direction:column;justify-content:center}
+.reg-esq h1{color:var(--bg);margin-bottom:16px}
+.reg-esq .lead{color:rgba(242,245,241,.8)}
+.reg-esq .llista{margin-top:28px;display:flex;flex-direction:column;gap:14px}
+.reg-esq .llista div{display:flex;gap:12px;align-items:flex-start;font-size:.9rem;color:rgba(242,245,241,.85)}
+.reg-esq .llista .mk{color:var(--verd-clar);font-weight:700}
+.reg-dre{background:var(--bg);padding:56px 48px;display:flex;flex-direction:column;justify-content:center}
+.reg-dre .form{max-width:420px;width:100%;margin:0 auto}
+.btn-google{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid rgba(38,49,43,.22);border-radius:10px;padding:13px;background:var(--paper);font-family:var(--font-sans);font-size:.9rem;font-weight:500;color:var(--ink);cursor:pointer;text-decoration:none}
+.btn-google .g{font-family:var(--font-display);font-weight:600;font-size:1.05rem}
+.separador{display:flex;align-items:center;gap:14px;margin:22px 0;color:var(--ink-soft);font-family:var(--font-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase}
+.separador::before,.separador::after{content:"";flex:1;height:1px;background:rgba(38,49,43,.14)}
+.camp{margin-bottom:16px}
+.camp label{display:block;font-family:var(--font-mono);font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+.camp input,.camp select{width:100%;border:1px solid rgba(38,49,43,.2);border-radius:9px;padding:12px 14px;font-family:var(--font-sans);font-size:.9rem;color:var(--ink);background:var(--paper)}
+.pla-opcions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.pla{display:block;border:1px solid rgba(38,49,43,.2);border-radius:9px;padding:13px 15px;cursor:pointer}
+.pla .nom{font-family:var(--font-display);font-weight:500;font-size:1.02rem;color:var(--ink-deep)}
+.pla .det{font-size:.74rem;color:var(--ink-soft);margin-top:3px}
+.pla.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:.8rem;color:var(--ink-soft);line-height:1.5;margin-bottom:18px}
+.check input{margin-top:3px;accent-color:var(--accent)}
+.btn-solid{display:block;width:100%;text-align:center;background:var(--accent);color:var(--bg);font-family:var(--font-mono);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:15px;border-radius:9px;text-decoration:none}
+.legal-note{font-size:.7rem;color:var(--ink-soft);text-align:center;margin-top:14px;line-height:1.5}
 </style>
 </head>
 <body data-reveal>
@@ -49,82 +53,92 @@
   </div>
 </header>
 
-<section class="pagehero">
-  <div class="wrap">
-    <p class="eyebrow">Registre</p>
-    <h1>Tres passos. <span class="hl">Zero fricción</span>, molta seguretat.</h1>
-    <p class="lead">Assistent progressiu amb validació en viu, comprovació de contrasenyes filtrades
-    i protecció anti-enumeració. <strong>Aquest flux ja està implementat i funcional a la web</strong> (Next.js) — aquest mockup en mostra els tres estats.</p>
-  </div>
-</section>
-
-<section class="block">
-  <div class="wrap">
-    <div class="flow reveal">
-      <!-- PAS 1 -->
-      <div class="pas">
-        <p class="step">Pas 1/3 · Identitat</p>
-        <div class="panel">
-          <h2>Comencem pel bàsic.</h2>
-          <div class="f"><label>Nom i cognoms</label><div class="input filled">Maria Puig</div></div>
-          <div class="f"><label>Correu professional</label><div class="input filled">maria@empresa.cat</div></div>
-          <p style="font-size:.72rem;color:var(--ink-soft);margin:0 0 16px">Hi enviarem un enllaç de confirmació. Mai spam.</p>
-          <span class="btn">Continuar →</span>
-        </div>
-      </div>
-      <!-- PAS 2 -->
-      <div class="pas">
-        <p class="step">Pas 2/3 · Contrasenya</p>
-        <div class="panel">
-          <h2>Tria una contrasenya llarga.</h2>
-          <div class="f"><label>Contrasenya</label><div class="input filled">cafè-salvia-tarda-42</div>
-            <div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
-            <p class="hibp">✓ No consta a cap filtració pública coneguda</p>
-          </div>
-          <p style="font-size:.72rem;color:var(--ink-soft);margin:0 0 16px">NIST 800-63B: la longitud és el que dona seguretat. Mínim 12 caràcters.</p>
-          <span class="btn">Continuar →</span>
-        </div>
-      </div>
-      <!-- PAS 3 -->
-      <div class="pas">
-        <p class="step">Pas 3/3 · Preferències</p>
-        <div class="panel">
-          <h2>Personalitza el que rebràs.</h2>
-          <div class="f"><label>Empresa · opcional</label><div class="input" style="color:rgba(74,95,83,.5)">Acme S.L.</div></div>
-          <div class="f"><label>Interessos · opcional</label>
-            <div class="chips"><span class="on">✓ Clima i transició</span><span>Regulació</span><span>Cadena</span></div>
-          </div>
-          <div class="gdpr">
-            ☑ Rebre <b>La Quinzena</b>, cada 15 dies.<br>
-            ☑ Accepto la <b>política de privacitat</b> (RGPD). *
-          </div>
-          <span class="btn" style="margin-top:14px">Crear el meu compte</span>
-        </div>
-      </div>
+<div class="reg-layout">
+  <!-- Columna esquerra: proposta de valor -->
+  <div class="reg-esq">
+    <p class="eyebrow" style="color:var(--verd-clar)">Registre gratuït</p>
+    <h1>Accedeix o crea el teu compte per començar a llegir informes ESG sintetitzats.</h1>
+    <p class="lead">Sense cost, sense targeta. Accés als informes oberts (&gt;6 mesos) i a la newsletter bimensual.</p>
+    <div class="llista">
+      <div><span class="mk">✓</span><span><strong>5 minuts</strong> per estar al dia de cada informe de la UE</span></div>
+      <div><span class="mk">✓</span><span>Informes amb <strong>semàfor metodològic</strong> i 8 blocs accionables</span></div>
+      <div><span class="mk">✓</span><span><strong>Cross-reference</strong> amb EcoVadis, B Corp, MSCI, GRI</span></div>
+      <div><span class="mk">✓</span><span>Newsletter bimensual gratuïta, cancel·la quan vulguis</span></div>
     </div>
-    <p class="note">SEGURETAT INCLÒS: VALIDACIÓ ZOD COMPARTIDA CLIENT/SERVIDOR · CONTRASENYA AMB BCRYPT (SUPABASE) ·
-    CHECK HIBP K-ANONYMITY VIA /api/password-check · CONSULTES PARAMETRITZADES (ZERO SQL INJECTABLE) ·
-    ANTI-ENUMERACIÓ AL FINAL DEL FLUX · <b>IMPLEMENTAT A PRODUCCIÓ: /registro</b></p>
   </div>
-</section>
+
+  <!-- Columna dreta: formulari -->
+  <div class="reg-dre">
+    <div class="form">
+      <a class="btn-google" href="#"><span class="g">G</span> Continuar amb Google</a>
+
+      <div class="separador">o registra't amb correu</div>
+
+      <p style="font-family:var(--font-mono);font-size:.64rem;letter-spacing:.05em;color:var(--ink-soft);margin:0 0 14px;line-height:1.5">
+        ⭐ Comencem amb 2 mesos gratuïts per a tothom (setembre i octubre 2026). A partir de novembre, tries el teu pla.
+      </p>
+
+      <div class="camp"><label>Nom i cognoms</label><input type="text" placeholder="Ex: Maria Puig"></div>
+      <div class="camp"><label>Correu electrònic</label><input type="email" placeholder="maria@empresa.cat"></div>
+      <div class="camp"><label>Contrasenya</label><input type="password" placeholder="Mínim 8 caràcters"></div>
+      <div class="camp"><label>Empresa o organització (opcional)</label><input type="text" placeholder="La teva organització"></div>
+      <div class="camp"><label>Sector professional</label>
+        <select>
+          <option>— Selecciona —</option>
+          <option>Consultoria ESG</option>
+          <option>Director de sostenibilitat</option>
+          <option>Compliance officer</option>
+          <option>Investor relations</option>
+          <option>ONG / Tercer sector</option>
+          <option>Sector públic</option>
+          <option>Altres</option>
+        </select>
+      </div>
+      <div class="camp"><label>Interessos principals</label>
+        <select multiple style="min-height:90px">
+          <option>CSRD / ESRS</option>
+          <option>EcoVadis</option>
+          <option>B Corp</option>
+          <option>MSCI ESG</option>
+          <option>Taxonomia UE</option>
+          <option>CSDDD</option>
+          <option>Drets humans / Due diligence</option>
+          <option>Risc climàtic / TCFD</option>
+        </select>
+      </div>
+
+      <p style="font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin:4px 0 10px">Pla</p>
+      <div class="pla-opcions">
+        <div class="pla sel">
+          <div class="nom">Gratuït</div>
+          <div class="det">Newsletter + accés a informes &gt;6 mesos</div>
+        </div>
+        <div class="pla">
+          <div class="nom">Premium</div>
+          <div class="det">290 €/any · accés total + cross-reference</div>
+        </div>
+      </div>
+
+      <label class="check"><input type="checkbox" checked> He llegit i accepto la política de privacitat i el tractament de les meves dades segons el RGPD.</label>
+
+      <a class="btn-solid" href="#">Crear compte gratuït</a>
+      <p class="legal-note">Ja tens compte? <a href="#" style="color:var(--accent);text-decoration:underline">o inicia sessió amb correu</a><br>
+      En registrar-te acceptes els termes del servei. Mai compartirem les teves dades.</p>
+    </div>
+  </div>
+</div>
 
 <footer class="site">
   <div class="wrap">
     <div class="cols">
-      <div><span class="brand-name">Criteri <em>ESG</em></span><p class="tag">Intel·ligència regulatòria ESG destil·lada amb criteri humà.</p></div>
+      <div><span class="brand-name">Criteri <em>ESG</em></span><p class="tag">Intel·ligència ESG per a decisions ètiques.</p></div>
       <div><h4>Producte</h4><ul><li><a href="mockup-informes.html">Informes</a></li><li><a href="mockup-estandares.html">Estàndards</a></li><li><a href="mockup-preus.html">Preus</a></li></ul></div>
       <div><h4>Projecte</h4><ul><li><a href="mockup-qui-som.html">Qui som</a></li><li><a href="mockup-que-fem.html">Què fem</a></li><li><a href="mailto:info@criteriesg.com">info@criteriesg.com</a></li></ul></div>
       <div><h4>Legal</h4><ul><li><a href="#">Privacitat</a></li><li><a href="#">Avís legal</a></li><li><a href="#">Cookies</a></li></ul></div>
     </div>
-    <div class="base"><span>© 2026 CRITERI ESG</span><span>RIGOR · FRESCOR · SOBRIETAT</span></div>
+    <div class="base"><span>© 2026 Criteri ESG. Tots els drets reservats.</span><span>RIGOR · FRESCOR · SOBRIETAT</span></div>
   </div>
 </footer>
 
-<script>
-if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
-  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-} else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')); }
-</script>
 </body>
 </html>

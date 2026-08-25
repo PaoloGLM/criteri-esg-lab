@@ -66,6 +66,12 @@ function safeCompare(a: string, b: string): boolean {
 }
 
 export function proxy(request: NextRequest) {
+  // En desenvolupament local (next dev), la web és oberta: és el entorn de
+  // treball de Paolo/Roser. La protecció Basic Auth només aplica a producció.
+  if (!IS_PROD) {
+    return NextResponse.next();
+  }
+
   const creds = getEffectiveCredentials();
 
   // En producció sense credencials configurades, error 500.

@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import { Newsreader, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import "./v1.css";
 import { Toaster } from "@/components/ui/toaster";
 import { LanguageProvider } from "@/components/language-provider";
 import { AuthProvider } from "@/lib/auth-context";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "700"],
 });
 
 const jetbrains = JetBrains_Mono({
@@ -146,7 +147,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${fraunces.variable} ${inter.variable} ${jetbrains.variable} antialiased bg-background text-foreground`}
+        className={`${newsreader.variable} ${dmSans.variable} ${jetbrains.variable} antialiased bg-background text-foreground`}
       >
         <AuthProvider>
           <LanguageProvider>{children}</LanguageProvider>

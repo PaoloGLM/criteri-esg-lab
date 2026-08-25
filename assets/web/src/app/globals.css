@@ -6,8 +6,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-fraunces);
+  --font-sans: var(--font-dm-sans);
+  --font-serif: var(--font-newsreader);
   --font-mono: var(--font-jetbrains);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -45,43 +45,51 @@
 }
 
 :root {
-  /* Palette — Terra + coure (Criteri ESG brand) */
+  /* Palette v7 — salvia/ink (PALETA-COLORS.md) */
   --radius: 0.375rem;
-  --background: #F5EFE6;
-  --foreground: #2C1810;
+  --background: #F2F5F1;
+  --foreground: #26312B;
   --card: #FFFFFF;
-  --card-foreground: #2C1810;
+  --card-foreground: #26312B;
   --popover: #FFFFFF;
-  --popover-foreground: #2C1810;
-  --primary: #2C1810;
-  --primary-foreground: #F5EFE6;
-  --secondary: #EFE7DA;
-  --secondary-foreground: #2C1810;
-  --muted: #EFE7DA;
-  --muted-foreground: #8B7355;
-  --accent: #B87333;
+  --popover-foreground: #26312B;
+  --primary: #26312B;
+  --primary-foreground: #F2F5F1;
+  --secondary: #E4ECE6;
+  --secondary-foreground: #26312B;
+  --muted: #E4ECE6;
+  --muted-foreground: #4A5F53;
+  --accent: #5E8772;
   --accent-foreground: #FFFFFF;
-  --accent-soft: #D9A574;
-  --accent-deep: #8A5526;
-  --bg-deep: #E8DDC9;
-  --rule: #C9B89A;
+  --accent-soft: #AAC9B6;
+  --accent-deep: #3F6653;
+  --bg-deep: #141B18;
+  --highlight: #F5E381;
+  --verd-clar: #AAC9B6;
+  --ink: #26312B;
+  --ink-deep: #141B18;
+  --ink-soft: #4A5F53;
+  --sem-g: #5C8A5C;
+  --sem-y: #C9A961;
+  --sem-r: #A0522D;
+  --rule: #D8E2DA;
   --destructive: #B91C1C;
-  --border: #C9B89A;
-  --input: #C9B89A;
-  --ring: #B87333;
-  --chart-1: #B87333;
-  --chart-2: #8A5526;
-  --chart-3: #5C3A24;
-  --chart-4: #D9A574;
-  --chart-5: #2C1810;
-  --sidebar: #EFE7DA;
-  --sidebar-foreground: #2C1810;
-  --sidebar-primary: #B87333;
+  --border: #D8E2DA;
+  --input: #D8E2DA;
+  --ring: #5E8772;
+  --chart-1: #5E8772;
+  --chart-2: #26312B;
+  --chart-3: #C9A961;
+  --chart-4: #AAC9B6;
+  --chart-5: #A0522D;
+  --sidebar: #E4ECE6;
+  --sidebar-foreground: #26312B;
+  --sidebar-primary: #5E8772;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #E8DDC9;
-  --sidebar-accent-foreground: #2C1810;
-  --sidebar-border: #C9B89A;
-  --sidebar-ring: #B87333;
+  --sidebar-accent: #E4ECE6;
+  --sidebar-accent-foreground: #26312B;
+  --sidebar-border: #D8E2DA;
+  --sidebar-ring: #5E8772;
 }
 
 .dark {

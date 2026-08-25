@@ -1,0 +1,103 @@
+/* ═══════════════════════════════════════════════════════════════
+ CRITERI ESG · Sistema de disseny v1 (ox-alpha) — Tailwind v4 layer
+ Complementa globals.css: tokens v7 ja definits com a vars CSS.
+ ═══════════════════════════════════════════════════════════════ */
+
+/* ── Eyebrow amb ratlla groga ── */
+.eyebrow{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:22px;display:flex;align-items:center;gap:12px;
+}
+.eyebrow::before{content:"";display:inline-block;width:34px;height:2px;background:var(--highlight);flex-shrink:0}
+
+/* ── Highlight marcador groc ── */
+.hl{background:linear-gradient(transparent 58%, var(--highlight) 58%);font-style:italic;font-weight:500}
+
+/* ── Seccions ── */
+.sec-title{
+  font-family:var(--font-serif);font-weight:500;
+  font-size:clamp(1.85rem,3.2vw,2.7rem);line-height:1.14;
+  letter-spacing:-.01em;color:var(--ink-deep);text-wrap:balance;
+  margin-bottom:20px;
+}
+.sec-body{color:var(--ink-soft);max-width:56ch;font-size:1.03rem;text-wrap:pretty}
+.sec-body strong{font-weight:500;color:var(--ink)}
+
+/* ── Botons v1 ── */
+.btn-v1{
+  display:inline-block;font-family:var(--font-mono);font-size:.78rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
+  padding:13px 24px;border-radius:6px;transition:transform .15s ease, box-shadow .15s ease;cursor:pointer;
+}
+.btn-v1:hover{transform:translateY(-1px)}
+.btn-v1-solid{background:var(--accent);color:#fff}
+.btn-v1-solid:hover{box-shadow:0 6px 18px rgba(94,135,114,.35)}
+.btn-v1-ghost{color:var(--ink);border:1px solid rgba(38,49,43,.28);background:transparent}
+.btn-v1-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ── Targetes ── */
+.card-v1{background:#fff;border:1px solid rgba(38,49,43,.12);border-radius:9px}
+
+/* ── Semàfor ── */
+.semafor{background:var(--ink);border-radius:10px;padding:34px 34px 30px;border:1px solid rgba(170,201,182,.16)}
+.semafor .grade-row{display:flex;align-items:center;gap:26px;margin-bottom:26px}
+.semafor .grade{font-family:var(--font-serif);font-weight:500;font-size:4.6rem;line-height:1;color:var(--sem-y)}
+.semafor .grade-meta{flex:1}
+.semafor .dots{display:flex;gap:9px;margin-bottom:9px}
+.dot{width:11px;height:11px;border-radius:50%;opacity:.18}
+.dot.on{opacity:1}
+.dot.g{background:var(--sem-g)}.dot.y{background:var(--sem-y)}.dot.r{background:var(--sem-r)}
+.semafor .grade-label{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,245,241,.72)}
+.ind{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-top:1px solid rgba(242,245,241,.12)}
+.ind .name{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;color:rgba(242,245,241,.85)}
+.ind .val{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
+.val-v{color:var(--sem-g)}.val-a{color:var(--sem-y)}.val-rv{color:var(--sem-r)}
+.semafor-note{margin-top:22px;font-size:.84rem;color:rgba(242,245,241,.6)}
+.semafor-note em{color:var(--verd-clar);font-style:normal}
+
+/* ── Grid de 8 blocs ── */
+.blocgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:1000px){.blocgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.blocgrid{grid-template-columns:1fr}}
+.bloc{
+  background:#fff;border:1px solid rgba(38,49,43,.12);border-radius:9px;
+  padding:24px 22px 26px;min-height:158px;display:flex;flex-direction:column;
+}
+.bloc .num{font-family:var(--font-serif);font-weight:500;font-size:1.9rem;line-height:1;color:var(--verd-clar);margin-bottom:auto}
+.bloc h3{font-family:var(--font-mono);font-weight:600;font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink);margin-top:26px}
+.bloc p{font-size:.82rem;color:var(--ink-soft);margin-top:7px;line-height:1.45}
+.bloc.dark{background:var(--ink);border-color:var(--ink)}
+.bloc.dark .num{color:var(--highlight)}
+.bloc.dark h3{color:var(--bg)}
+.bloc.dark p{color:rgba(242,245,241,.7)}
+
+/* ── Statband ── */
+.statband{background:var(--ink);color:var(--bg)}
+.statband-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:30px 0}
+.stat{text-align:left;border-left:1px solid rgba(170,201,182,.25);padding-left:18px}
+.stat:first-child{border-left:none;padding-left:0}
+.stat .n{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.9rem,2.6vw,2.6rem);line-height:1;color:var(--verd-clar)}
+.stat .n small{font-size:.55em;color:var(--bg)}
+.stat .t{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,245,241,.75);margin-top:8px}
+@media(max-width:900px){
+  .statband-inner{grid-template-columns:repeat(2,1fr);row-gap:26px}
+  .stat:nth-child(odd){border-left:none;padding-left:0}
+}
+
+/* ── Reveal subtil ── */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ── Principi / blockquote ── */
+.principle{background:var(--ink-deep);color:var(--bg);text-align:center;padding:110px 0}
+.principle blockquote{
+  font-family:var(--font-serif);font-style:italic;font-weight:500;
+  font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.2;color:var(--verd-clar);text-wrap:balance;
+}
+.principle .after{
+  margin-top:26px;font-size:1rem;color:rgba(242,245,241,.72);max-width:52ch;
+  margin-inline:auto;text-wrap:pretty;
+}
+.principle .after strong{color:var(--highlight);font-weight:500}

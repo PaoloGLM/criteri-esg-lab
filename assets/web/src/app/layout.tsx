@@ -127,6 +127,54 @@ const websiteJsonLd = {
   },
 };
 
+/* AEO: FAQPage global — respostes directes citables pels motors d'IA */
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Què és Criteri ESG?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Criteri ESG és un servei que converteix informes institucionals ESG de 80+ pàgines en resums accionables de 5 minuts, amb verificació a pàgina exacta i creuament amb 16 estàndards de sostenibilitat (CSRD/ESRS, GRI, EcoVadis, B Corp, MSCI, CSDDD, SFDR, Taxonomia UE, TCFD, TNFD i més).",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Quant costa Criteri ESG?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Gratuït per a l'arxiu (informes de més de 6 mesos) i la newsletter bimensual. Premium 440€/any (36,67€/mes, impostos inclosos), amb early bird de 290€/any de per vida per als primers 50 subscriptors (24,17€/mes).",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Quina metodologia fa servir Criteri ESG?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Doble filtre amb dos models d'IA (un destil·la, un fa d'advocat del diable), entorn tancat sense invenció, cada afirmació amb la pàgina exacta citada, inferència marcada com a tal, i validació humana obligatòria abans de publicar. Màxim 1.100 paraules per informe.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Què és el semàfor metodològic de Criteri ESG?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Una nota A-D que avalua la qualitat metodològica de cada informe original en 10 segons, amb 5 indicadors públics. Regla: A = 5 verds, B = 4 verds + 1 groc, C ≤ 1 vermell, D = 2+ vermells. El mateix criteri per a tots els informes, auditable.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Per a qui és Criteri ESG?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Per a directors de sostenibilitat, consultors ESG, compliance officers i equips que necessiten decidir cada setmana amb el context regulatori actualitzat. També per a ONG i sector públic.",
+      },
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -143,6 +191,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(websiteJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqJsonLd),
           }}
         />
       </head>

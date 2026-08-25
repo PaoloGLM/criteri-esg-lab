@@ -405,11 +405,11 @@ function AuthDialogInner({
               className="px-4 py-3 text-center"
               style={{
                 background: "rgba(184,115,51,0.1)",
-                border: "1px solid #B87333",
+                border: "1px solid #5E8772",
                 borderRadius: "4px",
               }}
             >
-              <p className="font-serif text-sm italic" style={{ color: "#5C3A1E" }}>
+              <p className="font-serif text-sm italic" style={{ color: "#141B18" }}>
                 {t("auth.register.free_premium_banner")}
               </p>
             </div>

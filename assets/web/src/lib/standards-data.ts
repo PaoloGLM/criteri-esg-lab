@@ -11,9 +11,9 @@ export const TYPE_CONFIG: Record<StandarType, {
   labelCa: string;
   labelEs: string;
 }> = {
-  reg: { borderColor: "#5C3A1E", badgeBg: "rgba(92,58,30,0.15)", badgeColor: "#5C3A1E", labelCa: "Regulació", labelEs: "Regulación" },
-  fw: { borderColor: "#B87333", badgeBg: "rgba(184,115,51,0.12)", badgeColor: "#B87333", labelCa: "Framework", labelEs: "Framework" },
-  cert: { borderColor: "#E8C99A", badgeBg: "rgba(232,201,154,0.25)", badgeColor: "#8A6D2B", labelCa: "Certificació", labelEs: "Certificación" },
+  reg: { borderColor: "#141B18", badgeBg: "rgba(92,58,30,0.15)", badgeColor: "#141B18", labelCa: "Regulació", labelEs: "Regulación" },
+  fw: { borderColor: "#5E8772", badgeBg: "rgba(184,115,51,0.12)", badgeColor: "#5E8772", labelCa: "Framework", labelEs: "Framework" },
+  cert: { borderColor: "#AAC9B6", badgeBg: "rgba(232,201,154,0.25)", badgeColor: "#8A6D2B", labelCa: "Certificació", labelEs: "Certificación" },
 };
 
 export interface Standar {

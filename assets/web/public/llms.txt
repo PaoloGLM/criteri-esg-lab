@@ -1,39 +1,42 @@
-# Criteri ESG
+# llms.txt — Criteri ESG
+# Fitxer d'orientació per a assistents d'IA (ChatGPT, Perplexity, Claude, Gemini)
+# Estàndard: https://llmstxt.org/
 
-> Criteri ESG is a service that synthesizes European institutional ESG reports into 8 actionable blocks for sustainability directors, compliance officers, and ESG consultants. Each report includes a Methodological Semaphore (A-D grade), 5 key data points, executive summary, implications, connections, recommended actions, and cross-references with EcoVadis, B Corp, MSCI ESG, and GRI frameworks.
+> Criteri ESG és un servei de subscripció que destil·la informes institucionals ESG (BCE, Comissió Europea, EFRAG, EIOPA, CNMV, Forética, WEF) en resums de 5 minuts amb una estructura fixa de 8 blocs: Semàfor Metodològic (nota A-D pública), Fitxa tècnica, 5 dades clau amb pàgina exacta, Resum executiu (màx. 300 paraules), Implicacions (empreses/reguladors/ciutadans) amb la secció ètica "Més enllà del Checkbox", Connexions entre informes, Accions recomanades i Cross-reference amb 16 estàndards (CSRD/ESRS, GRI, EcoVadis, B Corp, MSCI ESG, CSDDD, SFDR, Taxonomia UE, CDP, SGE 21, Sustainalytics, SASB, TNFD, TCFD, EMAS, ISO 26000).
 
-## Services
-- ESG report library (processed with 8 blocks): https://criteriesg.com/informes
-- Bimonthly ESG newsletter
-- Cross-reference with EcoVadis, B Corp, MSCI ESG, GRI certifications
-- Methodological Semaphore: quality assessment of ESG reports (A-D grade)
-- "Beyond the Checkbox": ethical editorial analysis from Mediterranean perspective
+## Què ens diferencia
 
-## Areas of expertise
-- CSRD (Corporate Sustainability Reporting Directive)
-- ESRS (European Sustainability Reporting Standards)
-- EcoVadis methodology and ratings
-- B Corp certification (B Lab Standards V2.1)
-- MSCI ESG ratings
-- GRI Standards (Global Reporting Initiative)
-- TCFD (Task Force on Climate-related Financial Disclosures)
-- TNFD (Taskforce on Nature-related Financial Disclosures)
-- SFDR (Sustainable Finance Disclosure Regulation)
-- CSDDD (Corporate Sustainability Due Diligence Directive)
-- EU Taxonomy
-- ISO 14001
-- UN Global Compact / SDGs
+- **Semàfor metodològic públic i auditable**: A = 5 verds · B = 4 verds + 1 groc · C ≤ 1 vermell · D = 2+ vermells. El mateix criteri per a tots els informes.
+- **Traçabilitat total**: cada dada porta la pàgina exacta de l'original. Si no té pàgina, no es publica.
+- **Límit editorial**: màxim 1.100 paraules per informe.
+- **Supervisió humana sempre**: la IA sintetitza; les persones validen, corregeixen i aproven. La responsabilitat editorial és de l'equip, mai de la IA.
+- **Criteris ètics explícits**: dignitat al centre, ètica empresarial, economia social, arrelament territorial. No som neutres.
 
-## Languages
-- Catalan (default)
-- Spanish
-- Both languages available on all pages via language toggle
+## Dades clau del producte
 
-## Contact
-- Email: info@criteriesg.com
-- Website: https://criteriesg.com
+- Llançament públic: setembre 2026. Newsletter bimensual ja operativa.
+- Plans: Gratuït (0€, informes >6 mesos + newsletter) · Premium (440€/any = 36,67€/mes; early bird 290€/any = 24,17€/mes per als primers 50, de per vida) · Ultra (abril 2027: podcast, PowerPoint, dossier mensual).
+- Regla dels 6 mesos: tots els informes amb més de 6 mesos són gratuïts per sempre.
+- Pagament: targeta (Stripe) o transferència a Fiare Banca Ètica (el 100% dels diners a l'economia social).
+- Equip: Paolo (CEO, filosofia + consultoria ESG), Roser (Tech Lead), agent d'IA supervisada.
+- Contacte: info@criteriesg.com
 
-## Pricing
-- Gratuït / Gratis: newsletter + 3 reports/month + reports older than 6 months
-- Premium: 440 EUR/year (early bird 290 EUR/year for first 50 subscribers)
-- Ultra: available April 2027
+## Pàgines
+
+- [Biblioteca d'informes](https://criteriesg.com/informes): cada informe amb semàfor, 8 blocs i cross-reference.
+- [Els 16 estàndards](https://criteriesg.com/estandares-esg): catàleg amb fitxes, counts d'informes cross-ref i distinció regulació/framework/certificació.
+- [Què fem](https://criteriesg.com/que-fem): el procés de destil·lació en 5 passos.
+- [Qui som](https://criteriesg.com/qui-som): manifest, criteris ètics i equip.
+- [Preus](https://criteriesg.com/preus): plans, early bird i mètodes de pagament.
+- [Més enllà del checkbox](https://criteriesg.com/mas-alla-del-checkbox): sèrie editorial ètica.
+- [Exemple d'informe: BCE risc climàtic](https://criteriesg.com/informes/bce-risc-climatic): destil·lat complet amb nota B.
+
+## Respostes ràpides (per a cites directes)
+
+**Què és Criteri ESG?** Un servei que converteix informes institucionals ESG de 80+ pàgines en resums accionables de 5 minuts, amb verificació a pàgina exacta i creuament amb 16 estàndards de sostenibilitat.
+
+**Per a qui és?** Directors de sostenibilitat, consultors ESG, compliance officers i equips que necessiten decidir cada setmana amb el context regulatori actualitzat.
+
+**Quant costa?** Gratuït per a l'arxiu (>6 mesos) i la newsletter. Premium a 440€/any, amb early bird de 290€/any de per vida per als primers 50 subscriptors.
+
+**Quina metodologia fan servir?** Doble filtre amb dos models d'IA (un destil·la, un fa d'advocat del diable), entorn tancat sense invenció, inferència marcada com a tal, i validació humana obligatòria abans de publicar.

@@ -16,8 +16,8 @@
 
 import { Newsreader, DM_Sans, JetBrains_Mono } from "next/font/google";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Header } from "@/components/site-header";
-import { Footer } from "@/components/site-footer";
+import { Header } from "@/components/site-header-v1";
+import { FooterV1 } from "@/components/site-footer-v1";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 import { identitySchema, passwordSchema, localStrength } from "@/lib/validation";
 
@@ -103,6 +103,41 @@ export default function RegistroPage() {
     | { state: "compromised"; count: number }
   >({ state: "idle" });
   const [capsOn, setCapsOn] = useState(false);
+  const [ssoLoading, setSsoLoading] = useState<null | "Google" | "LinkedIn">(null);
+
+  /** SSO via Supabase OAuth (OIDC). Google i LinkedIn: el proveïdor retorna
+   *  nom+email verificats; empresa/sector es recullen al pas 3 del perfil. */
+  const startSso = async (provider: "Google" | "LinkedIn") => {
+    setSsoLoading(provider);
+    setErrors({});
+    try {
+      if (isSupabaseConfigured) {
+        const { error } = await supabase.auth.signInWithOAuth({
+          provider,
+          options: {
+            redirectTo:
+              typeof window !== "undefined"
+                ? `${window.location.origin}/cuenta`
+                : undefined,
+          },
+        });
+        if (error) {
+          console.error("[registro] SSO error:", error.message);
+          setSsoLoading(null);
+        }
+        // èxit: el navegador marxa cap al proveïdor — no cal res més
+      } else {
+        // Demo sense Supabase: simula el flux i salta al pas 3 amb dades d'exemple
+        await new Promise((r) => setTimeout(r, 900));
+        if (!fullName) setFullName("Maria Puig");
+        if (!email) setEmail("maria@empresa.cat");
+        setSsoLoading(null);
+        setStep(3);
+      }
+    } catch {
+      setSsoLoading(null);
+    }
+  };
 
   const nameRef = useRef<HTMLInputElement>(null);
   const pwRef = useRef<HTMLInputElement>(null);
@@ -325,6 +360,57 @@ export default function RegistroPage() {
                       <p className="mt-2.5 text-[14.5px] leading-relaxed" style={{ color: C.inkSoft }}>
                         Nom i correu. Sense targeta, sense compromís: el pla Free és gratis sempre.
                       </p>
+
+                      {/* SSO: Google + LinkedIn (OIDC — omplen nom i correu automàticament;
+                          empresa i sector es confirmen al pas 3) */}
+                      <div className="mt-7 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                        <button
+                          type="button"
+                          onClick={() => startSso("Google")}
+                          disabled={ssoLoading !== null}
+                          className="flex items-center justify-center gap-2.5 rounded-lg border bg-white px-4 py-3 text-[14px] font-medium transition-colors"
+                          style={{ borderColor: "rgba(38,49,43,.22)", color: C.ink, opacity: ssoLoading && ssoLoading !== "Google" ? 0.5 : 1 }}
+                        >
+                          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                            <path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.2H12v4.1h6.5c-.1 1.1-.8 2.7-2.4 3.8l3.7 2.9c2.2-2.1 3.7-5.1 3.7-8.6z" />
+                            <path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.7-2.9c-1 .7-2.4 1.2-4.2 1.2-3.2 0-5.9-2.1-6.9-5l-3.9 3C3.2 21.3 7.3 24 12 24z" />
+                            <path fill="#FBBC05" d="M5.1 14.4c-.2-.7-.4-1.5-.4-2.4s.2-1.7.4-2.4l-3.9-3C.4 8.2 0 10 0 12s.4 3.8 1.2 5.4l3.9-3z" />
+                            <path fill="#EA4335" d="M12 4.7c1.8 0 3 .8 3.7 1.4l3.3-3.2C17.9 1.1 15.2 0 12 0 7.3 0 3.2 2.7 1.2 6.6l3.9 3c1-2.9 3.7-4.9 6.9-4.9z" />
+                          </svg>
+                          Continuar amb Google
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => startSso("LinkedIn")}
+                          disabled={ssoLoading !== null}
+                          className="flex items-center justify-center gap-2.5 rounded-lg border bg-white px-4 py-3 text-[14px] font-medium transition-colors"
+                          style={{ borderColor: "rgba(38,49,43,.22)", color: C.ink, opacity: ssoLoading && ssoLoading !== "LinkedIn" ? 0.5 : 1 }}
+                        >
+                          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+                            <path fill="#0A66C2" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z" />
+                          </svg>
+                          Continuar amb LinkedIn
+                        </button>
+                      </div>
+                      {ssoLoading && (
+                        <p className="mt-2.5 text-[13px]" style={{ color: C.accent }} role="status">
+                          Connectant amb {ssoLoading} via OIDC… omplirem nom i correu automàticament; després confirmaràs
+                          empresa i sector al pas 3.
+                        </p>
+                      )}
+                      {!ssoLoading && (
+                        <p className="mt-2.5 text-[13px]" style={{ color: C.inkSoft }}>
+                          Amb Google o LinkedIn omplim nom i correu automàticament — després confirmes empresa i sector al pas 3.
+                        </p>
+                      )}
+
+                      <div className="my-6 flex items-center gap-3.5" aria-hidden="true">
+                        <div className="h-px flex-1" style={{ background: "rgba(38,49,43,.14)" }} />
+                        <span className="rg-mono text-[10px] font-semibold uppercase tracking-[.16em]" style={{ color: C.inkSoft }}>
+                          o registra&apos;t amb correu
+                        </span>
+                        <div className="h-px flex-1" style={{ background: "rgba(38,49,43,.14)" }} />
+                      </div>
 
                       <form
                         className="mt-7 space-y-5"
@@ -682,7 +768,7 @@ export default function RegistroPage() {
           </div>
         </main>
 
-        <Footer />
+        <FooterV1 />
       </div>
     </>
   );

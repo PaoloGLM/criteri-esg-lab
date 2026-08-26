@@ -10,12 +10,10 @@ import { SemaforoPopup } from "@/components/sections/semaforo-popup";
 import { useLanguage } from "@/components/language-provider";
 import {
   reports,
-  getScopeLabel,
   getTypeLabel,
   formatDate,
   isFreeAccess,
   getGradeColor,
-  type Report,
 } from "@/lib/reports";
 import { getReportContent } from "@/lib/reports-content";
 
@@ -71,9 +69,9 @@ export default function InformesPage() {
     <div className="flex min-h-screen flex-col bg-background">
       <Header onOpenPreus={() => setPreusOpen(true)} onOpenAuth={(tab) => openAuth(tab || "register")} />
       <main className="flex-1">
-        {/* PAGE HEADER */}
+        {/* ═══ PAGE HERO (mantingut) + HEROFOOT amb filtres pills ═══ */}
         <section className="border-b border-rule" style={{ background: "#F2F5F1" }}>
-          <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-7xl px-6 pb-12 pt-16 lg:px-8 lg:pb-14 lg:pt-20">
             <div className="mb-4 flex items-center gap-3">
               <span className="inline-block h-0.5 w-6" style={{ background: "#5E8772" }} />
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#3F6653" }}>
@@ -89,84 +87,103 @@ export default function InformesPage() {
                 ? <>Un director de sostenibilitat dedica de mitjana el <strong className="font-medium" style={{ color: "var(--ink)" }}>60% del seu temps</strong> a recopilar informació. Criteri ESG centralitza tota aquesta informació i la sintetitza en 8 blocs, perquè el temps d&apos;anàlisi es converteixi en temps de decisió.</>
                 : <>Un director de sostenibilidad dedica de media el <strong className="font-medium" style={{ color: "var(--ink)" }}>60% de su tiempo</strong> a recopilar información. Criteri ESG centraliza toda esa información y la sintetiza en 8 bloques, para que el tiempo de análisis se convierta en tiempo de decisión.</>}
             </p>
-            <p className="max-w-2xl font-serif text-lg italic" style={{ color: "#141B18" }}>
-              {lang === "ca"
-                ? "Filtrats per certificació, ordenats per rellevància. Cada informe amb semàfor metodològic, 8 blocs i cross-reference amb els teus estàndards."
-                : "Filtrados por certificación, ordenados por relevancia. Cada informe con semáforo metodológico, 8 bloques y cross-reference con tus estándards."}
-            </p>
-          </div>
-        </section>
 
-        {/* CONTROLS */}
-        <section className="border-b border-rule" style={{ background: "#F2F5F1" }}>
-          <div className="mx-auto max-w-7xl px-6 py-4 lg:px-8">
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="font-mono text-[10px] uppercase tracking-[0.18em] font-semibold" style={{ color: "#4A5F53" }}>
-                {lang === "ca" ? "Filtrar per certificació:" : "Filtrar por certificación:"}
-              </span>
-              {certFilters.map((cert) => (
-                <button
-                  key={cert}
-                  onClick={() => { setCertFilter(cert); setVisibleCount(7); }}
-                  className="font-mono text-[10px] uppercase tracking-[0.14em] font-medium px-3 py-1.5 border"
-                  style={{
-                    background: certFilter === cert ? "#26312B" : "white",
-                    color: certFilter === cert ? "#F2F5F1" : "#141B18",
-                    borderColor: certFilter === cert ? "#26312B" : "#D8E2DA",
-                  }}
-                >
-                  {cert === "all" ? (lang === "ca" ? "Tots" : "Todos") : cert}
-                </button>
-              ))}
+            {/* HEROFOOT: filtres pills mono + wordcount dashed */}
+            <div className="mt-9 flex flex-wrap items-end justify-between gap-6">
+              <div className="flex flex-wrap gap-2.5" role="group" aria-label={lang === "ca" ? "Filtres per certificació" : "Filtros por certificación"}>
+                {certFilters.map((cert) => {
+                  const active = certFilter === cert;
+                  return (
+                    <button
+                      key={cert}
+                      onClick={() => { setCertFilter(cert); setVisibleCount(7); }}
+                      className={`rounded-full border px-3.5 py-[7px] font-mono text-[11px] font-medium uppercase tracking-[0.06em] transition-colors duration-150 ${
+                        active
+                          ? "border-accent bg-accent text-white"
+                          : "border-black/20 bg-white text-[#4A5F53] hover:border-accent hover:text-primary"
+                      }`}
+                    >
+                      {cert === "all" ? (lang === "ca" ? "Tots" : "Todos") : cert}
+                    </button>
+                  );
+                })}
+              </div>
+              <div
+                className="hidden whitespace-nowrap rounded-md border border-dashed px-4 py-2.5 font-mono text-[11px] tracking-[0.05em] md:block"
+                style={{ borderColor: "rgba(74,95,83,0.4)", color: "#4A5F53" }}
+              >
+                {lang === "ca"
+                  ? <>FORMAT ÚNIC · <b style={{ color: "#26312B", fontWeight: 600 }}>8 BLOCS · MÀX. 1.100 PARAULES</b></>
+                  : <>FORMATO ÚNICO · <b style={{ color: "#26312B", fontWeight: 600 }}>8 BLOQUES · MÁX. 1.100 PALABRAS</b></>}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* GRID */}
-        <section className="py-10" style={{ background: "#F2F5F1" }}>
+        {/* ═══ GRAELLA D'INFORMES ═══ */}
+        <section className="border-b border-rule py-10" style={{ background: "#F2F5F1" }}>
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             {/* CARD DESTACADA */}
             {featuredReport && (
               <article
-                className="mb-6 grid cursor-pointer grid-cols-1 border lg:grid-cols-[1.4fr_1fr]"
-                style={{ borderColor: "#D8E2DA", background: "white" }}
+                className="mb-6 grid cursor-pointer grid-cols-1 border transition-all duration-150 hover:shadow-[0_12px_30px_rgba(38,49,43,0.1)] lg:grid-cols-[1.4fr_1fr]"
+                style={{ borderColor: "rgba(38,49,43,0.12)", background: "white" }}
                 onClick={() => handleOpenReport(featuredReport.slug)}
               >
+                {/* Banda semàfor a dalt */}
+                <div className="col-span-full h-1 w-full" style={{ background: getGradeColor(getSemaforo(featuredReport.slug)?.grade) }} />
                 <div className="flex flex-col gap-4 p-8">
-                  <div className="flex flex-wrap gap-2">
-                    <span className="font-mono text-[9px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "rgba(184,115,51,0.1)", color: "#5E8772", border: "1px solid #5E8772" }}>
-                      {lang === "ca" ? "Últim publicat" : "Último publicado"}
-                    </span>
-                    <span className="font-mono text-[9px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: typeColors[featuredReport.type]?.bg, color: typeColors[featuredReport.type]?.text }}>
-                      {getTypeLabel(featuredReport.type)}
-                    </span>
-                    <span className="font-mono text-[9px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "rgba(92,138,92,0.12)", color: "#4A6B3A" }}>
-                      {lang === "ca" ? "Gratis" : "Gratis"}
-                    </span>
-                  </div>
+                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em]" style={{ color: "#5E8772" }}>
+                    {featuredReport.institution}
+                  </p>
                   <h2 className="font-serif text-3xl font-medium leading-tight text-primary" style={{ letterSpacing: "-0.018em" }}>
                     {featuredReport.title}
                   </h2>
                   <p className="font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "#4A5F53" }}>
-                    <strong className="text-primary">{featuredReport.institution}</strong> · {formatDate(featuredReport.date, lang)} · {featuredReport.pages} {lang === "ca" ? "pàg" : "pág"}
+                    {formatDate(featuredReport.date, lang)} · {featuredReport.pages} {lang === "ca" ? "pàg" : "pág"} · 5 min
                   </p>
                   <p className="text-sm leading-relaxed" style={{ color: "#141B18" }}>{featuredReport.summary}</p>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: typeColors[featuredReport.type]?.bg, color: typeColors[featuredReport.type]?.text }}>
+                      {getTypeLabel(featuredReport.type)}
+                    </span>
+                    <span
+                      className={`font-mono text-[9px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1 rounded-full ${
+                        isFreeAccess(featuredReport.date)
+                          ? ""
+                          : "border"
+                      }`}
+                      style={
+                        isFreeAccess(featuredReport.date)
+                          ? { background: "rgba(92,138,92,0.12)", color: "#4A6B3A" }
+                          : { borderColor: "rgba(38,49,43,0.28)", color: "#26312B" }
+                      }
+                    >
+                      {isFreeAccess(featuredReport.date) ? (lang === "ca" ? "Gratis" : "Gratis") : "Premium"}
+                    </span>
+                    <span className="font-mono text-[9px] uppercase tracking-[0.16em] font-semibold rounded-full px-2.5 py-1" style={{ background: "rgba(245,227,129,0.35)", color: "#141B18" }}>
+                      {lang === "ca" ? "Últim publicat" : "Último publicado"}
+                    </span>
+                  </div>
                   <div className="flex flex-wrap gap-1.5">
                     {featuredReport.certifications.map((cert) => (
-                      <span key={cert} className="font-mono text-[9px] uppercase tracking-[0.12em] font-semibold px-2 py-1 border" style={{ borderColor: "#5E8772", color: "#141B18", background: "white" }}>{cert}</span>
+                      <span key={cert} className="rounded-full font-mono text-[9px] uppercase tracking-[0.12em] font-semibold px-2 py-1 border" style={{ borderColor: "rgba(94,135,114,0.45)", color: "#141B18", background: "white" }}>{cert}</span>
                     ))}
                   </div>
-                  <button className="self-start font-sans text-[13px] font-semibold" style={{ color: "#5E8772", borderBottom: "1px solid #5E8772", paddingBottom: "4px" }}>
-                    {lang === "ca" ? "Llegir informe complet →" : "Leer informe completo →"}
+                  <button className="self-start font-mono text-[11px] font-semibold uppercase tracking-[0.1em] transition-colors hover:text-primary" style={{ color: "#5E8772" }}>
+                    {lang === "ca" ? "Llegir informe →" : "Leer informe →"}
                   </button>
                 </div>
                 {/* Mini semàfor */}
                 <div
-                  className="flex flex-col justify-center gap-3 p-6"
-                  style={{ background: "#26312B", color: "#F2F5F1" }}
+                  className="semafor m-6 flex flex-col justify-center gap-3 lg:ml-0"
+                  style={{ cursor: "pointer" }}
                   onClick={(e) => { e.stopPropagation(); setPopupOpen(true); }}
                 >
-                  <p className="font-mono text-[9.5px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>{lang === "ca" ? "Semàfor" : "Semáforo"}</p>
+                  <p className="font-mono text-[9.5px] uppercase tracking-[0.22em] font-semibold flex items-center justify-between" style={{ color: "#AAC9B6" }}>
+                    <span>{lang === "ca" ? "Semàfor metodològic" : "Semáforo metodológico"}</span>
+                    <span aria-hidden="true">⌕</span>
+                  </p>
                   <div className="flex items-baseline gap-3">
                     <span className="font-serif text-5xl font-normal" style={{ color: getGradeColor(getSemaforo(featuredReport.slug)?.grade), letterSpacing: "-0.04em" }}>
                       {getSemaforo(featuredReport.slug)?.grade || "B"}
@@ -177,12 +194,12 @@ export default function InformesPage() {
                   </div>
                   <div className="flex flex-col gap-1">
                     {(getSemaforo(featuredReport.slug)?.indicators || []).slice(0, 5).map((ind, i) => (
-                      <div key={i} className="grid grid-cols-[80px_1fr] items-center gap-2 py-1" style={{ borderBottom: "1px solid rgba(217,165,116,0.15)" }}>
-                        <span className="font-mono text-[9px] uppercase tracking-[0.16em]" style={{ color: "rgba(245,239,230,0.6)" }}>{ind.name}</span>
-                        <div className="flex gap-1">
-                          <span className="inline-block w-2 h-2 rounded-full" style={{ background: dotColors.verd, opacity: ind.status === "verd" ? 1 : 0.3 }} />
-                          <span className="inline-block w-2 h-2 rounded-full" style={{ background: dotColors.groc, opacity: ind.status === "groc" ? 1 : 0.3 }} />
-                          <span className="inline-block w-2 h-2 rounded-full" style={{ background: dotColors.vermell, opacity: ind.status === "vermell" ? 1 : 0.3 }} />
+                      <div key={i} className="grid grid-cols-[110px_1fr] items-center gap-2 py-1.5" style={{ borderTop: "1px solid rgba(242,245,241,0.12)" }}>
+                        <span className="font-mono text-[9px] uppercase tracking-[0.16em]" style={{ color: "rgba(242,245,241,0.7)" }}>{ind.name}</span>
+                        <div className="flex gap-1.5">
+                          <span className="inline-block w-2 h-2 rounded-full" style={{ background: dotColors.verd, opacity: ind.status === "verd" ? 1 : 0.25 }} />
+                          <span className="inline-block w-2 h-2 rounded-full" style={{ background: dotColors.groc, opacity: ind.status === "groc" ? 1 : 0.25 }} />
+                          <span className="inline-block w-2 h-2 rounded-full" style={{ background: dotColors.vermell, opacity: ind.status === "vermell" ? 1 : 0.25 }} />
                         </div>
                       </div>
                     ))}
@@ -191,45 +208,80 @@ export default function InformesPage() {
               </article>
             )}
 
-            {/* NORMAL CARDS */}
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {/* TARGETES ESTÀNDARD (estil rcard del mockup) */}
+            <div className="grid grid-cols-1 gap-[18px] md:grid-cols-2 xl:grid-cols-3">
               {visibleReports.slice(1).map((report) => {
                 const semafor = getSemaforo(report.slug);
-                const tc = typeColors[report.type] || typeColors.regulatory;
+                const grade = semafor?.grade || "B";
+                const free = isFreeAccess(report.date);
                 return (
                   <article
                     key={report.slug}
-                    className="flex cursor-pointer flex-col gap-3 border p-6"
-                    style={{ borderColor: "#D8E2DA", background: "white" }}
+                    className="group flex cursor-pointer flex-col overflow-hidden border bg-white transition-all duration-150 hover:-translate-y-[3px] hover:shadow-[0_12px_30px_rgba(38,49,43,0.12)]"
+                    style={{ borderColor: "rgba(38,49,43,0.12)" }}
                     onClick={() => handleOpenReport(report.slug)}
                   >
-                    <div className="flex justify-between">
-                      <div className="flex flex-wrap gap-1.5">
-                        <span className="font-mono text-[9px] uppercase tracking-[0.16em] font-semibold px-2 py-0.5" style={{ background: tc.bg, color: tc.text }}>{getTypeLabel(report.type)}</span>
-                        <span className="font-mono text-[9px] uppercase tracking-[0.16em] font-semibold px-2 py-0.5" style={{ background: "rgba(92,138,92,0.12)", color: "#4A6B3A" }}>Gratis</span>
-                      </div>
-                      <span className="font-mono text-[9px]" style={{ color: "#4A5F53" }}>{formatDate(report.date, lang)}</span>
-                    </div>
-                    <h3 className="font-serif text-lg font-medium leading-tight text-primary" style={{ letterSpacing: "-0.008em" }}>{report.title}</h3>
-                    <p className="font-mono text-[9.5px] uppercase tracking-[0.14em]" style={{ color: "#4A5F53" }}>
-                      <strong className="text-primary">{report.institution}</strong> · {report.pages} {lang === "ca" ? "pàg" : "pág"}
-                    </p>
-                    {/* Mini semàfor inline */}
-                    <div className="flex items-center gap-2.5 border-y py-2" style={{ borderColor: "#D8E2DA" }}>
-                      <span className="font-mono text-[8.5px] uppercase tracking-[0.16em] font-semibold" style={{ color: "#3F6653" }}>{lang === "ca" ? "Sem." : "Sem."}</span>
-                      <span className="font-serif text-lg font-bold" style={{ color: getGradeColor(semafor?.grade) }}>{semafor?.grade || "B"}</span>
-                      <span className="font-serif text-xs italic" style={{ color: "#141B18" }}>{semafor?.gradeLabel || (lang === "ca" ? "Robust" : "Robusto")}</span>
-                      <div className="ml-auto flex gap-1">
-                        {(semafor?.indicators || []).slice(0, 5).map((ind, i) => (
-                          <span key={i} className="inline-block w-2 h-2 rounded-full" style={{ background: dotColors[ind.status] || dotColors.groc, opacity: 0.8 }} />
+                    {/* Banda semàfor segons nota */}
+                    <div className="h-1 w-full flex-none" style={{ background: getGradeColor(grade) }} />
+
+                    <div className="flex flex-1 flex-col p-6">
+                      {/* Institució */}
+                      <p className="mb-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em]" style={{ color: "#5E8772" }}>
+                        {report.institution}
+                      </p>
+                      {/* Títol */}
+                      <h3 className="mb-2.5 font-serif text-xl font-medium leading-snug text-primary" style={{ letterSpacing: "-0.01em" }}>
+                        {report.title}
+                      </h3>
+                      {/* Resum */}
+                      <p className="mb-4 flex-1 text-[13px] leading-relaxed" style={{ color: "#4A5F53" }}>
+                        {report.summary}
+                      </p>
+                      {/* Certificacions afectades */}
+                      <div className="mb-3.5 flex flex-wrap gap-1.5">
+                        {report.certifications.slice(0, 4).map((cert) => (
+                          <span key={cert} className="rounded-full px-2 py-0.5 font-mono text-[8px] font-semibold uppercase tracking-[0.1em]" style={{ background: "rgba(94,135,114,0.09)", color: "#141B18" }}>
+                            {cert}
+                          </span>
                         ))}
                       </div>
-                    </div>
-                    <p className="text-xs leading-relaxed" style={{ color: "#141B18" }}>{report.summary}</p>
-                    <div className="mt-auto flex flex-wrap gap-1">
-                      {report.certifications.slice(0, 4).map((cert) => (
-                        <span key={cert} className="font-mono text-[8px] uppercase tracking-[0.1em] font-semibold px-1.5 py-0.5" style={{ background: "rgba(184,115,51,0.08)", color: "#141B18" }}>{cert}</span>
-                      ))}
+                      {/* Meta */}
+                      <div className="flex flex-wrap gap-x-3 gap-y-1 border-t pt-3 font-mono text-[9.5px] uppercase tracking-[0.07em]" style={{ borderColor: "rgba(38,49,43,0.1)", color: "#4A5F53" }}>
+                        <span>{formatDate(report.date, lang)}</span>
+                        <span>{report.pages} {lang === "ca" ? "pàg" : "pág"}</span>
+                        <span>5 min</span>
+                        <span className="ml-auto">{getTypeLabel(report.type)}</span>
+                      </div>
+                      {/* Peu: semàfor mini + accés */}
+                      <div className="mt-3.5 flex items-center justify-between gap-3">
+                        <button
+                          onClick={(e) => { e.stopPropagation(); setPopupOpen(true); }}
+                          className="flex items-center gap-2.5 transition-opacity hover:opacity-80"
+                          aria-label={lang === "ca" ? "Com funciona el semàfor metodològic" : "Cómo funciona el semáforo metodológico"}
+                        >
+                          <span className="font-serif text-[1.1rem] font-medium leading-none" style={{ color: getGradeColor(grade) }}>
+                            {grade}
+                          </span>
+                          <span className="flex gap-[5px]">
+                            {(semafor?.indicators || []).slice(0, 5).map((ind, i) => (
+                              <span key={i} className="inline-block h-2 w-2 rounded-full" style={{ background: dotColors[ind.status] || dotColors.groc }} />
+                            ))}
+                          </span>
+                        </button>
+                        {free ? (
+                          <span className="rounded-full px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.1em]" style={{ background: "rgba(92,138,92,0.12)", color: "#4A6B3A" }}>
+                            {lang === "ca" ? "Gratis" : "Gratis"}
+                          </span>
+                        ) : (
+                          <span className="rounded-full border px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.1em]" style={{ borderColor: "rgba(38,49,43,0.28)", color: "#26312B" }}>
+                            Premium
+                          </span>
+                        )}
+                      </div>
+                      {/* CTA */}
+                      <span className="mt-4 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] transition-colors group-hover:text-primary" style={{ color: "#5E8772" }}>
+                        {lang === "ca" ? "Llegir informe →" : "Leer informe →"}
+                      </span>
                     </div>
                   </article>
                 );
@@ -238,11 +290,10 @@ export default function InformesPage() {
 
             {/* LOAD MORE */}
             {visibleCount < filteredReports.length && (
-              <div className="mt-8 flex flex-col items-center gap-3 border-t pt-8" style={{ borderColor: "#D8E2DA" }}>
+              <div className="mt-8 flex flex-col items-center gap-3 border-t pt-8" style={{ borderColor: "rgba(38,49,43,0.12)" }}>
                 <button
                   onClick={() => setVisibleCount((c) => c + 6)}
-                  className="px-9 py-3.5 text-sm font-semibold border"
-                  style={{ background: "transparent", color: "#26312B", borderColor: "#26312B" }}
+                  className="btn-v1 btn-v1-ghost"
                 >
                   {lang === "ca" ? "Carregar més informes" : "Cargar más informes"}
                 </button>
@@ -253,6 +304,30 @@ export default function InformesPage() {
             )}
           </div>
         </section>
+
+        {/* ═══ STATS BAND (v1.css) ═══ */}
+        <div className="statband">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="statband-inner">
+              <div className="stat">
+                <div className="n">180<small>+</small></div>
+                <div className="t">{lang === "ca" ? "Fonts monitoritzades" : "Fuentes monitorizadas"}</div>
+              </div>
+              <div className="stat">
+                <div className="n">16</div>
+                <div className="t">{lang === "ca" ? "Estàndards en creuament" : "Estándares en cruce"}</div>
+              </div>
+              <div className="stat">
+                <div className="n">8</div>
+                <div className="t">{lang === "ca" ? "Blocs per informe" : "Bloques por informe"}</div>
+              </div>
+              <div className="stat">
+                <div className="n">5<small>&nbsp;min</small></div>
+                <div className="t">{lang === "ca" ? "De lectura, com a màxim" : "De lectura, como máximo"}</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
       <FooterV1 />
       <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />

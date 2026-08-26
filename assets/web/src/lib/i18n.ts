@@ -352,6 +352,14 @@ export const translations = {
     ca: "Continuar amb Google",
     es: "Continuar con Google",
   },
+  "auth.linkedin": {
+    ca: "Continuar amb LinkedIn",
+    es: "Continuar con LinkedIn",
+  },
+  "auth.noaccount": {
+    ca: "Ja tens un compte?",
+    es: "¿Ya tienes una cuenta?",
+  },
   "auth.divider.register": {
     ca: "o registra't amb correu",
     es: "o regístrate con correo",
@@ -740,6 +748,7 @@ export const translations = {
     ca: "Com treballem",
     es: "Cómo trabajamos",
   },
+  "quisom.ai.h2": { ca: "Supervisió humana sempre.", es: "Supervisión humana siempre." },
   "quisom.ai.body": {
     ca: "Criteri ESG compta amb un sistema integrat alimentat per un agent d'IA preconfigurat com a expert en recerca i generació d'informes ESG. L'agent monitoritza fonts institucionals (UE, WEF, OECD, IPCC, Banc d'Espanya, Forética…), detecta nous informes, en sintetitza el contingut seguint els 8 blocs del nostre format —Semàfor Metodològic + 7 blocs narratius— i passa un corrector ortogràfic automàtic abans de qualsevol publicació.",
     es: "Criteri ESG cuenta con un sistema integrado alimentado por un agente de IA preconfigurado como experto en investigación y generación de informes ESG. El agente monitoriza fuentes institucionales (UE, WEF, OECD, IPCC, Banco de España, Forética…), detecta nuevos informes, sintetiza su contenido siguiendo los 8 bloques de nuestro formato —Semáforo Metodológico + 7 bloques narrativos— y pasa un corrector ortográfico automático antes de cualquier publicación.",
@@ -763,6 +772,7 @@ export const translations = {
     ca: "Els nostres criteris i valors",
     es: "Nuestros criterios y valores",
   },
+  "quisom.valors.head": { ca: "No som neutres.", es: "No somos neutrales." },
   "quisom.valors.intro": {
     ca: "No som neutres. Ens movem per uns criteris ètics concrets que apliquem a cada informe que processem. La nostra mirada be de la tradició de l'ètica empresarial i dels principis de l'economia social, que ens conviden a pensar l'empresa no només com a unitat productiva, sinó com a comunitat humana que genera valor per a tots els seus stakeholders.",
     es: "No somos neutrales. Nos movemos por unos criterios éticos concretos que aplicamos a cada informe que procesamos. Nuestra mirada viene de la tradición de la ética empresarial y de los principios de la economía social, que nos invitan a pensar la empresa no solo como unidad productiva, sino como comunidad humana que genera valor para todos sus stakeholders.",
@@ -805,6 +815,8 @@ export const translations = {
     ca: "Preguntes per millorar (Premium)",
     es: "Preguntas para mejorar (Premium)",
   },
+  "quisom.preguntes.label": { ca: "Preguntes per millorar", es: "Preguntas para mejorar" },
+  "quisom.preguntes.h2": { ca: "Espai de reflexió ètica per a professionals.", es: "Espacio de reflexión ética para profesionales." },
   "quisom.preguntes.eyebrow": {
     ca: "Espai de reflexió ètica per a professionals",
     es: "Espacio de reflexión ética para profesionales",
@@ -905,6 +917,7 @@ export const translations = {
     ca: "La consistència et permet saber què esperar. Cada informe segueix el mateix esquema perquè puguis comparar, prioritzar i decidir.",
     es: "La consistencia te permite saber qué esperar. Cada informe sigue el mismo esquema para que puedas comparar, priorizar y decidir.",
   },
+  "quefem.format.limit": { ca: "Límit editorial · Màx. 1.100 paraules", es: "Límite editorial · Máx. 1.100 palabras" },
 
   "quefem.valors.eyebrow": {
     ca: "CRITERIS I VALORS",
@@ -961,6 +974,21 @@ export const translations = {
   "quisom.manifest.page.body": {
     ca: "La sensibilitat i la preocupació pel món que ens envolta és el motor que ens fa moure. Volem ajudar i facilitar que les empreses, com a agents ciutadans que construeixen societat, siguin les més eficients, exemplars i transformadores possibles.",
     es: "La sensibilidad y la preocupación por el mundo que nos rodea es el motor que nos hace mover. Queremos ayudar y facilitar que las empresas, como agentes ciudadanos que construyen sociedad, sean las más eficientes, ejemplares y transformadoras posibles.",
+  },
+  "quisom.manifest.valor.01.name": { ca: "Sensibilitat", es: "Sensibilidad" },
+  "quisom.manifest.valor.01.desc": {
+    ca: "Ens mou la preocupació real pel món, no l'oportunitat de mercat. L'ESG no és un negoci; és una responsabilitat.",
+    es: "Nos mueve la preocupación real por el mundo, no la oportunidad de mercado. El ESG no es un negocio; es una responsabilidad.",
+  },
+  "quisom.manifest.valor.02.name": { ca: "Tecnologia", es: "Tecnología" },
+  "quisom.manifest.valor.02.desc": {
+    ca: "Aprofitem les eines disponibles —IA, automatització, bases de dades— per optimitzar el temps i destinar-lo al que importa.",
+    es: "Aprovechamos las herramientas disponibles —IA, automatización, bases de datos— para optimizar el tiempo y destinarlo a lo que importa.",
+  },
+  "quisom.manifest.valor.03.name": { ca: "Criteri", es: "Criterio" },
+  "quisom.manifest.valor.03.desc": {
+    ca: "La tecnologia mai substitueix el judici humà. La IA proposa; les persones revisen, decideixen i assumeixen responsabilitat.",
+    es: "La tecnología nunca sustituye el juicio humano. La IA propone; las personas revisan, deciden y asumen responsabilidad.",
   },
   "quisom.team.eyebrow": {
     ca: "L'EQUIP",
@@ -1412,10 +1440,13 @@ export const translations = {
 
   // ===== /qui-som (Fase 2D) =====
   "quisom.v2.hero.eyebrow": { ca: "Qui som · 2026", es: "Quiénes somos · 2026" },
-  "quisom.v2.hero.title.pre": { ca: "Ajudem les organitzacions a ser ", es: "Ayudamos a las organizaciones a ser " },
-  "quisom.v2.hero.title.em": { ca: "més ètiques, sostenibles i transformadores", es: "más éticas, sostenibles y transformadoras" },
+  "quisom.v2.hero.title.pre": { ca: "Tecnologia al servei del ", es: "Tecnología al servicio del " },
+  "quisom.v2.hero.title.em": { ca: "criteri humà", es: "criterio humano" },
   "quisom.v2.hero.title.post": { ca: ".", es: "." },
-  "quisom.v2.hero.subtitle": { ca: "Aquesta és la gent que hi ha al darrere.", es: "Esta es la gente que hay detrás." },
+  "quisom.v2.hero.subtitle": {
+    ca: "Una empresa petita amb una missió clara: ajudar les organitzacions a ser més ètiques, sostenibles i transformadores. Aquesta és la gent que hi ha al darrere.",
+    es: "Una empresa pequeña con una misión clara: ayudar a las organizaciones a ser más éticas, sostenibles y transformadoras. Esta es la gente que hay detrás.",
+  },
   "quisom.v2.manifest.eyebrow": { ca: "Manifest", es: "Manifest" },
   "quisom.v2.team.eyebrow": { ca: "L'equip", es: "El equipo" },
   "quisom.v2.team.title.pre": { ca: "Combinem el millor de la IA amb la ", es: "Combinamos lo mejor de la IA con la " },
@@ -1499,10 +1530,14 @@ export const translations = {
 
   // ===== /que-fem claus completes =====
   "quefem.hero.eyebrow": { ca: "Què fem · Criteri ESG", es: "Qué hacemos · Criteri ESG" },
-  "quefem.hero.title.pre": { ca: "Un ", es: "Un " },
-  "quefem.hero.title.em": { ca: "filtre amb criteri", es: "filtro con criterio" },
-  "quefem.hero.title.post": { ca: " per a decisions ètiques.", es: " para decisiones éticas." },
-  "quefem.hero.subtitle": { ca: "Sintetitzem, creuem i recomanem. Res més.", es: "Sintetizamos, cruzamos y recomendamos. Nada más." },
+  "quefem.hero.title.pre": { ca: "De la font al criteri, en ", es: "De la fuente al criterio, en " },
+  "quefem.hero.title.em": { ca: "5 minuts", es: "5 minutos" },
+  "quefem.hero.title.post": { ca: ".", es: "." },
+  "quefem.hero.subtitle": {
+    ca: "Cada informe que llegeixes a Criteri ESG passa per un procés rigorós de curació, síntesi i validació. Així és com ho fem.",
+    es: "Cada informe que lees en Criteri ESG pasa por un proceso riguroso de curación, síntesis y validación. Así es como lo hacemos.",
+  },
+  "quefem.hero.meta.blocs": { ca: "blocs, sempre iguals", es: "bloques, siempre iguales" },
   "quefem.hero.meta.fuentes": { ca: "fonts monitoritzades", es: "fuentes monitorizadas" },
   "quefem.hero.meta.estandares": { ca: "estàndards creuats", es: "estándares cruzados" },
   "quefem.hero.meta.minutos": { ca: "minuts de lectura per informe", es: "minutos de lectura por informe" },
@@ -1534,11 +1569,23 @@ export const translations = {
   "quefem.semaforo.title.pre": { ca: "El semàfor ", es: "El semáforo " },
   "quefem.semaforo.title.em": { ca: "metodològic", es: "metodológico" },
   "quefem.semaforo.title.post": { ca: ".", es: "." },
-  "quefem.semaforo.desc": { ca: "Avaluem si és útil per decisions operatives.", es: "Evaluamos si es útil para decisiones operativas." },
+  "quefem.semaforo.desc": {
+    ca: "Avaluem si és útil per decisions operatives. Què quantifica, què només esmenta, què ignora. Cinc indicadors, una nota A–D, cap caixa grisa. El resultat es pot discutir — però es pot reproduir.",
+    es: "Evaluamos si es útil para decisiones operativas. Qué cuantifica, qué solo menciona, qué ignora. Cinco indicadores, una nota A–D, sin cajas grises. El resultado se puede discutir — pero se puede reproducir.",
+  },
+  "quefem.proc5.note": { ca: "Agents d'IA: GLM 5.2 · Gemini 2.5 Flash", es: "Agentes de IA: GLM 5.2 · Gemini 2.5 Flash" },
+  "quefem.semaforo.grade.label": { ca: "Nota de l'informe · exemple real", es: "Nota del informe · ejemplo real" },
+  "quefem.semaforo.val.quantificat": { ca: "Quantificat", es: "Cuantificado" },
+  "quefem.semaforo.val.indirecte": { ca: "Esmentada indirectament", es: "Mencionada indirectamente" },
+  "quefem.semaforo.regla.pre": { ca: "Regla pública: ", es: "Regla pública: " },
+  "quefem.semaforo.regla.em": { ca: "A = 5 verds · B = 4 verds + 1 groc · C ≤ 1 vermell · D = 2+ vermells", es: "A = 5 verdes · B = 4 verdes + 1 amarillo · C ≤ 1 rojo · D = 2+ rojos" },
   "quefem.estructura.eyebrow": { ca: "Estructura de l'informe", es: "Estructura del informe" },
   "quefem.estructura.title.pre": { ca: "Set blocs més. ", es: "Siete bloques más. " },
   "quefem.estructura.title.em": { ca: "Vuit en total.", es: "Ocho en total." },
   "quefem.estructura.title.post": { ca: "", es: "" },
+  "quefem.bloc.00.name": { ca: "Semàfor Metodològic", es: "Semáforo Metodológico" },
+  "quefem.bloc.00.desc": { ca: "Nota A–D en 10 segons. Cap competidor ho fa.", es: "Nota A–D en 10 segundos. Ningún competidor lo hace." },
+  "quefem.bloc.00.meta": { ca: "Bloc diferenciador", es: "Bloque diferenciador" },
   "quefem.bloc.01.name": { ca: "Fitxa tècnica", es: "Ficha técnica" },
   "quefem.bloc.01.desc": { ca: "Institució, data, tipus, pàgines, URL.", es: "Institución, fecha, tipo, páginas, URL." },
   "quefem.bloc.01.meta": { ca: "50 paraules", es: "50 palabras" },
@@ -1561,6 +1608,12 @@ export const translations = {
   "quefem.bloc.07.desc": { ca: "Mapatge amb certificacions.", es: "Mapa con certificaciones." },
   "quefem.bloc.07.meta": { ca: "Bloc diferenciador", es: "Bloque diferenciador" },
   "quefem.criteris.eyebrow": { ca: "Criteris i valors", es: "Criterios y valores" },
+  "quefem.criteris.head": { ca: "No som neutres.", es: "No somos neutrales." },
+  "quefem.criteris.body": {
+    ca: "Ens movem per uns criteris ètics concrets que apliquem a cada informe que processem. La nostra mirada ve de la tradició de l'ètica empresarial i dels principis de l'economia social.",
+    es: "Nos mueven unos criterios éticos concretos que aplicamos a cada informe que procesamos. Nuestra mirada viene de la tradición de la ética empresarial y de los principios de la economía social.",
+  },
+  "quefem.criteris.link": { ca: "Principis al complet, a Qui som →", es: "Principios al completo, en Quiénes somos →" },
   "quefem.criteris.title.pre": { ca: "El que guia ", es: "Lo que guía " },
   "quefem.criteris.title.em": { ca: "cada decisió", es: "cada decisión" },
   "quefem.criteris.title.post": { ca: ".", es: "." },

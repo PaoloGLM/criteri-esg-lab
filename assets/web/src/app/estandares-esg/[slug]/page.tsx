@@ -97,9 +97,9 @@ export default function EstandarDetailPage() {
       <div className="flex min-h-screen flex-col bg-background">
         <Header onOpenPreus={() => setPreusOpen(true)} onOpenAuth={() => setAuthOpen(true)} />
         <main className="flex-1">
-          <div className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 lg:px-8">
-            <p className="eyebrow mb-3">404 — ESTÀNDARD NO TROBAT</p>
-            <h1 className="mb-4 font-serif text-3xl font-semibold text-primary">
+          <div className="mx-auto max-w-4xl px-6 py-24 text-center sm:px-6 lg:px-8">
+            <p className="eyebrow justify-center">404 · {tr("Estàndard no trobat", "Estándar no encontrado")}</p>
+            <h1 className="mb-6 font-serif text-4xl font-medium text-primary">
               {tr("Aquest estàndard no existeix.", "Este estándar no existe.")}
             </h1>
             <Button asChild>
@@ -115,121 +115,142 @@ export default function EstandarDetailPage() {
   const cfg = TYPE_CONFIG[effectiveDetail.type];
   const showLocked = isPremiumContent && !isPremium;
 
+  const filterChipClass = (active: boolean) =>
+    `rounded-full border px-4 py-2 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] transition-colors duration-150 ${
+      active
+        ? "border-primary bg-primary text-background"
+        : "border-black/25 bg-transparent text-[#4A5F53] hover:border-accent hover:text-accent"
+    }`;
+
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <Header onOpenPreus={() => setPreusOpen(true)} onOpenAuth={() => setAuthOpen(true)} />
       <main className="flex-1">
-        {/* Hero */}
-        <section className="border-b border-rule bg-secondary/30 py-12">
-          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8">
-            <p className="mb-4 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-              <a href="/estandares-esg" className="text-accent-deep hover:underline">{tr("Estàndards ESG", "Estándares ESG")}</a> &gt; {effectiveDetail.name}
+        {/* ══════════ HERO ══════════ */}
+        <section className="border-b" style={{ background: "#F2F5F1", borderColor: "#D8E2DA" }}>
+          <div className="mx-auto max-w-7xl px-6 pb-12 pt-10 lg:px-8 lg:pt-14">
+            {/* Breadcrumb mono */}
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em]" style={{ color: "#4A5F53" }}>
+              <a href="/estandares-esg" className="transition-colors hover:text-accent" style={{ color: "#3F6653" }}>
+                ← {tr("Estàndards ESG", "Estándares ESG")}
+              </a>
+              <span className="mx-2.5 opacity-50">/</span>
+              <span style={{ color: "#141B18" }}>{effectiveDetail.name}</span>
             </p>
-            <div className="flex items-start gap-8">
-              {/* Logo GRAN */}
-              <div
-                className="flex h-32 w-64 flex-shrink-0 items-center justify-center rounded-xl bg-white p-4 shadow-sm"
-                style={{ border: `1px solid ${cfg.borderColor}` }}
-              >
-                <Image
-                  src={effectiveDetail.logo}
-                  alt={`Logo ${effectiveDetail.name}`}
-                  width={240}
-                  height={110}
-                  className="max-h-24 w-auto object-contain"
-                  unoptimized
-                />
-              </div>
-              <div className="flex-1">
-                <h1 className="font-serif text-4xl font-semibold leading-tight text-primary sm:text-5xl">
+
+            <div className="mt-9 grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,1fr)_auto]">
+              <div>
+                {/* Eyebrow tipus */}
+                <p className="eyebrow">{tr(cfg.labelCa, cfg.labelEs)}</p>
+
+                {/* Nom gran serif */}
+                <h1 className="font-serif text-[clamp(2.4rem,4vw,3.4rem)] font-medium leading-[1.06] tracking-[-0.012em] text-primary">
                   {effectiveDetail.name}
                 </h1>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  <span className="inline-block rounded-full px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider" style={{ background: cfg.badgeBg, color: cfg.badgeColor }}>
-                    {tr(cfg.labelCa, cfg.labelEs)}
-                  </span>
-                  {"  "}{tr(effectiveDetail.issuerCa, effectiveDetail.issuerEs)}
-                </p>
-                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-foreground/75">
+
+                {/* Emissor mono + badge accés */}
+                <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <p className="font-mono text-[11px] font-medium uppercase tracking-[0.14em]" style={{ color: "#4A5F53" }}>
+                    {tr(effectiveDetail.issuerCa, effectiveDetail.issuerEs)}
+                  </p>
+                  {effectiveDetail.access === "free" ? (
+                    <span className="rounded-full px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.12em]" style={{ background: "rgba(170,201,182,0.28)", color: "#26312B" }}>
+                      {tr("Gratis", "Gratis")}
+                    </span>
+                  ) : (
+                    <span className="rounded-full px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.12em]" style={{ background: "#26312B", color: "#AAC9B6" }}>
+                      Premium
+                    </span>
+                  )}
+                </div>
+
+                {/* Descripció completa */}
+                <p className="mt-6 max-w-[68ch] leading-relaxed" style={{ color: "#4A5F53", fontSize: "1.02rem", textWrap: "pretty" }}>
                   {tr(effectiveDetail.descCa, effectiveDetail.descEs)}
                 </p>
+
+                {/* Mini meta */}
+                <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.08em]" style={{ color: "#4A5F53" }}>
+                  <b style={{ color: "#5E8772", fontWeight: 600 }}>{effectiveDetail.count}</b>{" "}
+                  {tr("informes creuats amb aquest estàndard", "informes cruzados con este estándar")}
+                </p>
               </div>
+
+              {/* Logo */}
+              <figure className="overflow-hidden rounded-lg border bg-white shadow-sm" style={{ borderColor: "rgba(38,49,43,0.12)" }} aria-hidden="true">
+                <div className="h-[5px] w-full" style={{ background: cfg.borderColor }} />
+                <div className="flex h-[130px] w-full min-w-[240px] items-center justify-center px-8">
+                  <Image
+                    src={effectiveDetail.logo}
+                    alt={`Logo ${effectiveDetail.name}`}
+                    width={220}
+                    height={100}
+                    className="max-h-24 w-auto object-contain"
+                    unoptimized
+                  />
+                </div>
+              </figure>
             </div>
           </div>
         </section>
 
-        {/* Cross-reference — versió enriquida (B Corp pilot) */}
-        <section className="py-12">
-          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8">
+        {/* ══════════ CROSS-REFERENCE ══════════ */}
+        <section className="pb-20 pt-14">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
             {/* Capçalera de la secció */}
-            <div className="mb-6">
-              <h2 className="font-serif text-2xl font-semibold text-primary mb-1">
+            <p className="eyebrow">Cross-reference</p>
+            <div className="mb-2 flex flex-wrap items-end justify-between gap-4">
+              <h2 className="sec-title" style={{ marginBottom: 0 }}>
                 {tr("Informes amb cross-reference", "Informes con cross-reference")}
               </h2>
-              <p className="text-sm text-muted-foreground">
-                {hasEnrichedRows
-                  ? tr(
-                      `Cada informe està analitzat pel seu impacte en ${effectiveDetail.name}. Clica sobre el títol per llegir l'informe complet.`,
-                      `Cada informe está analizado por su impacto en ${effectiveDetail.name}. Haz clic sobre el título para leer el informe completo.`
-                    )
-                  : tr(
-                      `Informes recents que afecten ${effectiveDetail.name}. Clica sobre el títol per llegir l'informe complet.`,
-                      `Informes recientes que afectan a ${effectiveDetail.name}. Haz clic sobre el título para leer el informe completo.`
-                    )}
+              <p className="font-mono text-[11px] uppercase tracking-[0.08em]" style={{ color: "#4A5F53" }}>
+                <b className="font-serif text-xl font-medium normal-case" style={{ color: "#5E8772" }}>{sortedRows.length}</b>
+                {" "}{tr("de", "de")} {effectiveDetail.xrefRows.length} {tr("informes", "informes")}
               </p>
             </div>
+            <p className="sec-body mb-8">
+              {hasEnrichedRows
+                ? tr(
+                    `Cada informe està analitzat pel seu impacte en ${effectiveDetail.name}. Clica sobre el títol per llegir l'informe complet.`,
+                    `Cada informe está analizado por su impacto en ${effectiveDetail.name}. Haz clic sobre el título para leer el informe completo.`
+                  )
+                : tr(
+                    `Informes recents que afecten ${effectiveDetail.name}. Clica sobre el títol per llegir l'informe complet.`,
+                    `Informes recientes que afectan a ${effectiveDetail.name}. Haz clic sobre el título para leer el informe completo.`
+                  )}
+            </p>
 
             {/* Filtres */}
-            <div className="mb-6 flex flex-wrap items-center gap-3">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-accent-deep font-semibold">
-                {tr("Filtrar:", "Filtrar:")}
-              </span>
+            <div className="mb-7 flex flex-wrap items-center gap-2.5">
               {/* Filtre per pilar (només si n'hi ha) */}
               {hasEnrichedRows && pillars.length > 0 && (
-                <button
-                  onClick={() => setPillarFilter("all")}
-                  className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 border"
-                  style={{
-                    background: pillarFilter === "all" ? "#26312B" : "white",
-                    color: pillarFilter === "all" ? "#F2F5F1" : "#141B18",
-                    borderColor: pillarFilter === "all" ? "#26312B" : "#D8E2DA",
-                  }}
-                >
-                  {tr("Tots els pilars", "Todos los pilares")} ({effectiveDetail.xrefRows.length})
-                </button>
+                <>
+                  <button onClick={() => setPillarFilter("all")} className={filterChipClass(pillarFilter === "all")}>
+                    {tr("Tots els pilars", "Todos los pilares")} ({effectiveDetail.xrefRows.length})
+                  </button>
+                  {pillars.map(p => (
+                    <button key={p} onClick={() => setPillarFilter(p)} className={filterChipClass(pillarFilter === p)}>
+                      {p} ({pillarCounts[p] || 0})
+                    </button>
+                  ))}
+                </>
               )}
-              {hasEnrichedRows && pillars.map(p => (
-                <button
-                  key={p}
-                  onClick={() => setPillarFilter(p)}
-                  className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 border"
-                  style={{
-                    background: pillarFilter === p ? "#26312B" : "white",
-                    color: pillarFilter === p ? "#F2F5F1" : "#141B18",
-                    borderColor: pillarFilter === p ? "#26312B" : "#D8E2DA",
-                  }}
-                >
-                  {p} ({pillarCounts[p] || 0})
-                </button>
-              ))}
               {/* Filtre per impacte */}
               <select
                 value={impactFilter}
                 onChange={(e) => setImpactFilter(e.target.value)}
-                className="rounded-md border border-rule bg-card px-3.5 py-2 text-sm text-foreground cursor-pointer"
+                className={`cursor-pointer appearance-none rounded-full bg-white px-4 py-2 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] outline-none transition-shadow focus:border-accent focus:shadow-[0_0_0_3px_rgba(94,135,114,0.14)] ${pillars.length > 0 ? "" : "ml-auto"}`}
+                style={{ borderColor: "rgba(38,49,43,0.28)", borderWidth: "1px", borderStyle: "solid", color: "#26312B" }}
               >
-                <option value="all">{tr("Tots els impactes", "Todos los impactes")}</option>
+                <option value="all">{tr("Tots els impactes", "Todos los impactos")}</option>
                 <option value="high">{tr("Alt", "Alto")}</option>
                 <option value="med">{tr("Mitjà", "Medio")}</option>
               </select>
-              <span className="ml-auto font-mono text-[11px] text-muted-foreground">
-                {sortedRows.length} {tr("de", "de")} {effectiveDetail.xrefRows.length} {tr("informes", "informes")}
-              </span>
             </div>
 
             {/* Taula enriquida (amb pilar/acció/termini) — només B Corp pilot */}
             {hasEnrichedRows ? (
-              <div className="overflow-hidden rounded-lg border border-rule bg-card shadow-sm">
+              <div className="overflow-hidden rounded-lg border bg-white shadow-sm" style={{ borderColor: "rgba(38,49,43,0.12)" }}>
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse">
                     <thead>
@@ -245,8 +266,8 @@ export default function EstandarDetailPage() {
                           <th
                             key={col.key}
                             onClick={() => col.key !== "action" && handleSort(col.key)}
-                            className={`border-b border-rule bg-secondary/30 px-3 py-3 text-left font-mono text-[9px] uppercase tracking-widest text-accent-deep ${col.key !== "action" ? "cursor-pointer select-none hover:bg-secondary/50" : ""}`}
-                            style={{ width: col.width, position: "relative", paddingRight: "20px" }}
+                            className={`border-b px-3 py-3.5 text-left font-mono text-[9px] font-semibold uppercase tracking-[0.16em] ${col.key !== "action" ? "cursor-pointer select-none transition-colors hover:text-accent" : ""}`}
+                            style={{ width: col.width, position: "relative", paddingRight: "20px", borderBottomColor: "rgba(38,49,43,0.18)", color: "#3F6653" }}
                           >
                             {col.label}
                             {col.key !== "action" && (
@@ -262,60 +283,66 @@ export default function EstandarDetailPage() {
                       {sortedRows.map((row, i) => {
                         const isLocked = showLocked && i >= 3;
                         return (
-                          <tr key={i} className={`border-b border-rule/40 transition-colors hover:bg-secondary/20 ${isLocked ? "opacity-50" : ""}`}>
+                          <tr key={i} className={`transition-colors hover:bg-secondary/30 ${isLocked ? "opacity-50" : ""}`} style={{ borderBottom: i < sortedRows.length - 1 ? "1px solid rgba(38,49,43,0.07)" : "none" }}>
                             {/* Informe (link si hi ha reportSlug) */}
                             <td className="px-3 py-3.5 align-top">
                               {row.reportSlug ? (
                                 <button
                                   onClick={(e) => { e.stopPropagation(); router.push(`/informes/${row.reportSlug}`); }}
-                                  className="font-serif text-sm font-semibold text-primary hover:text-accent-deep transition-colors text-left flex items-start gap-1 group"
+                                  className="group flex items-start gap-1 text-left font-serif text-sm font-semibold text-primary transition-colors hover:text-[#3F6653]"
+                                  style={{ color: "#26312B" }}
                                 >
                                   <span>{row.reportTitle}</span>
-                                  <ExternalLink className="h-3 w-3 mt-1 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                  <ExternalLink className="mt-1 h-3 w-3 flex-shrink-0 opacity-0 transition-opacity group-hover:opacity-100" />
                                 </button>
                               ) : (
-                                <span className="font-serif text-sm font-semibold text-primary">{row.reportTitle}</span>
+                                <span className="font-serif text-sm font-semibold" style={{ color: "#26312B" }}>{row.reportTitle}</span>
                               )}
-                              <div className="mt-1 font-mono text-[10px] text-muted-foreground whitespace-nowrap">{row.date}</div>
+                              <div className="mt-1 whitespace-nowrap font-mono text-[10px]" style={{ color: "#4A5F53" }}>{row.date}</div>
                             </td>
                             {/* Pilar */}
                             <td className="px-3 py-3.5 align-top">
                               {row.pillar && (
                                 <div>
-                                  <span className="inline-block rounded px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider bg-[#141B18]/10 text-[#141B18]">
+                                  <span className="inline-block rounded px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-[0.12em]" style={{ background: "rgba(20,27,24,0.08)", color: "#141B18" }}>
                                     {row.pillar}
                                   </span>
                                   {row.subArea && (
-                                    <div className="mt-1 font-mono text-[9px] text-muted-foreground">{row.subArea}</div>
+                                    <div className="mt-1 font-mono text-[9px]" style={{ color: "#4A5F53" }}>{row.subArea}</div>
                                   )}
                                 </div>
                               )}
                             </td>
                             {/* Criteri */}
-                            <td className="px-3 py-3.5 align-top text-xs leading-relaxed text-foreground/80">
+                            <td className="px-3 py-3.5 align-top text-xs leading-relaxed" style={{ color: "rgba(38,49,43,0.82)" }}>
                               {tr(row.criterionCa, row.criterionEs)}
                             </td>
                             {/* Acció */}
                             <td className="px-3 py-3.5 align-top">
                               {(row.actionCa || row.actionEs) && (
-                                <div className="rounded-md bg-[#5E8772]/8 border-l-2 border-[#5E8772] pl-3 pr-2 py-2">
-                                  <p className="text-xs leading-relaxed text-foreground">{tr(row.actionCa || "", row.actionEs || "")}</p>
+                                <div className="border-l-2 pl-3 pr-2 py-2" style={{ borderColor: "#5E8772", background: "rgba(94,135,114,0.06)" }}>
+                                  <p className="text-xs leading-relaxed" style={{ color: "#26312B" }}>{tr(row.actionCa || "", row.actionEs || "")}</p>
                                 </div>
                               )}
                             </td>
                             {/* Termini */}
                             <td className="px-3 py-3.5 align-top">
                               {row.deadline && (
-                                <span className="font-mono text-[10px] text-accent-deep font-semibold whitespace-nowrap">
+                                <span className="whitespace-nowrap font-mono text-[10px] font-semibold" style={{ color: "#3F6653" }}>
                                   {row.deadline}
                                 </span>
                               )}
                             </td>
                             {/* Impacte */}
                             <td className="px-3 py-3.5 align-top">
-                              <span className={`inline-block rounded px-2 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider ${
-                                row.impact === "high" ? "bg-[#A0522D]/12 text-[#A0522D]" : "bg-[#C9A961]/15 text-[#8A6D2B]"
-                              }`}>
+                              <span
+                                className="inline-block rounded px-2 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.1em]"
+                                style={
+                                  row.impact === "high"
+                                    ? { background: "rgba(160,82,45,0.12)", color: "#A0522D" }
+                                    : { background: "rgba(201,169,97,0.15)", color: "#8A6D2B" }
+                                }
+                              >
                                 {row.impact === "high" ? tr("Alt", "Alto") : tr("Mitjà", "Medio")}
                               </span>
                             </td>
@@ -328,7 +355,7 @@ export default function EstandarDetailPage() {
               </div>
             ) : (
               /* Taula simple (altres 15 estàndards — sense camps enriquits) */
-              <div className="overflow-hidden rounded-lg border border-rule bg-card shadow-sm">
+              <div className="overflow-hidden rounded-lg border bg-white shadow-sm" style={{ borderColor: "rgba(38,49,43,0.12)" }}>
                 <table className="w-full border-collapse">
                   <thead>
                     <tr>
@@ -341,8 +368,8 @@ export default function EstandarDetailPage() {
                         <th
                           key={col.key}
                           onClick={() => handleSort(col.key)}
-                          className="cursor-pointer select-none border-b border-rule bg-secondary/30 px-4 py-3.5 text-left font-mono text-[9px] uppercase tracking-widest text-accent-deep transition-colors hover:bg-secondary/50"
-                          style={{ width: col.width, position: "relative", paddingRight: "28px" }}
+                          className="cursor-pointer select-none border-b px-4 py-3.5 text-left font-mono text-[9px] font-semibold uppercase tracking-[0.16em] transition-colors hover:text-accent"
+                          style={{ width: col.width, position: "relative", paddingRight: "28px", borderBottomColor: "rgba(38,49,43,0.18)", color: "#3F6653" }}
                         >
                           {col.label}
                           <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs opacity-40">
@@ -356,30 +383,36 @@ export default function EstandarDetailPage() {
                     {sortedRows.map((row, i) => {
                       const isLocked = showLocked && i >= 3;
                       return (
-                        <tr key={i} className={`border-b border-rule/40 transition-colors hover:bg-secondary/20 ${isLocked ? "opacity-50" : ""}`}>
+                        <tr key={i} className={`transition-colors hover:bg-secondary/30 ${isLocked ? "opacity-50" : ""}`} style={{ borderBottom: i < sortedRows.length - 1 ? "1px solid rgba(38,49,43,0.07)" : "none" }}>
                           <td className="px-4 py-3.5 align-top">
                             {row.reportSlug ? (
                               <button
                                 onClick={(e) => { e.stopPropagation(); router.push(`/informes/${row.reportSlug}`); }}
-                                className="font-serif text-sm font-semibold text-primary hover:text-accent-deep transition-colors text-left flex items-start gap-1 group"
+                                className="group flex items-start gap-1 text-left font-serif text-sm font-semibold transition-colors hover:text-[#3F6653]"
+                                style={{ color: "#26312B" }}
                               >
                                 <span>{row.reportTitle}</span>
-                                <ExternalLink className="h-3 w-3 mt-1 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <ExternalLink className="mt-1 h-3 w-3 flex-shrink-0 opacity-0 transition-opacity group-hover:opacity-100" />
                               </button>
                             ) : (
-                              <span className="font-serif text-sm font-semibold text-primary">{row.reportTitle}</span>
+                              <span className="font-serif text-sm font-semibold" style={{ color: "#26312B" }}>{row.reportTitle}</span>
                             )}
                           </td>
                           <td className="px-4 py-3.5 align-top">
-                            <span className="font-mono text-[11px] text-muted-foreground whitespace-nowrap">{row.date}</span>
+                            <span className="whitespace-nowrap font-mono text-[11px]" style={{ color: "#4A5F53" }}>{row.date}</span>
                           </td>
-                          <td className="px-4 py-3.5 align-top text-xs leading-relaxed text-foreground/80">
+                          <td className="px-4 py-3.5 align-top text-xs leading-relaxed" style={{ color: "rgba(38,49,43,0.82)" }}>
                             {tr(row.criterionCa, row.criterionEs)}
                           </td>
                           <td className="px-4 py-3.5 align-top">
-                            <span className={`inline-block rounded px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider ${
-                              row.impact === "high" ? "bg-[#A0522D]/12 text-[#A0522D]" : "bg-[#C9A961]/15 text-[#8A6D2B]"
-                            }`}>
+                            <span
+                              className="inline-block rounded px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.1em]"
+                              style={
+                                row.impact === "high"
+                                  ? { background: "rgba(160,82,45,0.12)", color: "#A0522D" }
+                                  : { background: "rgba(201,169,97,0.15)", color: "#8A6D2B" }
+                              }
+                            >
                               {row.impact === "high" ? tr("Alt", "Alto") : tr("Mitjà", "Medio")}
                             </span>
                           </td>
@@ -393,12 +426,12 @@ export default function EstandarDetailPage() {
 
             {/* Lock overlay per no-Premium */}
             {showLocked && (
-              <div className="mt-6 rounded-lg border border-accent bg-accent-soft/15 p-6 text-center">
-                <Lock className="mx-auto mb-3 h-6 w-6 text-accent" />
-                <p className="mb-2 font-serif text-lg font-semibold text-primary">
+              <div className="mt-6 rounded-lg border border-dashed bg-white p-8 text-center" style={{ borderColor: "rgba(74,95,83,0.4)" }}>
+                <Lock className="mx-auto mb-3 h-6 w-6" style={{ color: "#5E8772" }} />
+                <p className="mb-2 font-serif text-xl font-medium text-primary">
                   {tr("Contingut Premium", "Contenido Premium")}
                 </p>
-                <p className="mb-4 text-sm text-muted-foreground">
+                <p className="mx-auto mb-5 max-w-[52ch] text-sm" style={{ color: "#4A5F53" }}>
                   {tr(
                     `Estàs veient les 3 primeres files. Fes-te Premium per veure tots els ${effectiveDetail.xrefRows.length} informes amb cross-reference a ${effectiveDetail.name}.`,
                     `Estás viendo las 3 primeras filas. Hazte Premium para ver todos los ${effectiveDetail.xrefRows.length} informes con cross-reference a ${effectiveDetail.name}.`

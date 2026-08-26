@@ -149,6 +149,41 @@ function AuthDialogInner({
     }
   };
 
+  /** SSO LinkedIn (OIDC) — mateix flux que Google. */
+  const handleLinkedIn = async () => {
+    if (!supabaseConfigured) {
+      toast({
+        title: t("auth.supabase.notconfigured"),
+        variant: "destructive",
+      });
+      return;
+    }
+    setRegLoading(true);
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "linkedin_oidc",
+      options: {
+        redirectTo:
+          typeof window !== "undefined" ? window.location.origin : undefined,
+      },
+    });
+    setRegLoading(false);
+    if (error) {
+      toast({
+        title: t("auth.toast.error.login"),
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
+
+  function LinkedInIcon({ className }: { className?: string }) {
+    return (
+      <svg className={className} viewBox="0 0 24 24" width="16" height="16">
+        <path fill="#0A66C2" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z" />
+      </svg>
+    );
+  }
+
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -400,30 +435,42 @@ function AuthDialogInner({
           </div>
         ) : (
           <form onSubmit={handleRegister} className="space-y-4">
-            {/* Banner Premium gratis 2 mesos */}
+            {/* Banner Premium gratis 2 mesos (v7) */}
             <div
               className="px-4 py-3 text-center"
               style={{
-                background: "rgba(184,115,51,0.1)",
-                border: "1px solid #5E8772",
-                borderRadius: "4px",
+                background: "rgba(94,135,114,.1)",
+                border: "1px solid var(--accent, #5E8772)",
+                borderRadius: "6px",
               }}
             >
-              <p className="font-serif text-sm italic" style={{ color: "#141B18" }}>
+              <p className="font-serif text-sm italic" style={{ color: "var(--ink-deep, #141B18)" }}>
                 {t("auth.register.free_premium_banner")}
               </p>
             </div>
-            {/* Google */}
-            <Button
-              type="button"
-              variant="outline"
-              className="w-full"
-              onClick={handleGoogle}
-              disabled={regLoading}
-            >
-              <GoogleIcon className="h-4 w-4" />
-              {t("auth.google")}
-            </Button>
+            {/* SSO: Google + LinkedIn (grid 2 cols, sense solapaments) */}
+            <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full"
+                onClick={handleGoogle}
+                disabled={regLoading}
+              >
+                <GoogleIcon className="h-4 w-4" />
+                {t("auth.google")}
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full"
+                onClick={handleLinkedIn}
+                disabled={regLoading}
+              >
+                <LinkedInIcon className="h-4 w-4" />
+                {t("auth.linkedin")}
+              </Button>
+            </div>
 
             {/* Divider */}
             <div className="relative py-1">
@@ -680,16 +727,27 @@ function AuthDialogInner({
 
       {/* ====================== PESTANYA LOGIN ====================== */}
       <TabsContent value="login" className="mt-4 space-y-4">
-        {/* Google */}
-        <Button
-          type="button"
-          variant="outline"
-          className="w-full"
-          onClick={handleGoogle}
-        >
-          <GoogleIcon className="h-4 w-4" />
-          {t("auth.google")}
-        </Button>
+              {/* SSO: Google + LinkedIn */}
+              <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full"
+                  onClick={handleGoogle}
+                >
+                  <GoogleIcon className="h-4 w-4" />
+                  {t("auth.google")}
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full"
+                  onClick={handleLinkedIn}
+                >
+                  <LinkedInIcon className="h-4 w-4" />
+                  {t("auth.linkedin")}
+                </Button>
+              </div>
 
         {/* Divider + Magic link */}
         <div className="relative py-1">
@@ -814,6 +872,18 @@ function AuthDialogInner({
             )}
           </Button>
         </form>
+
+        {/* Enllaç creuat: cap camí sense sortida */}
+        <p className="text-center text-sm text-muted-foreground">
+          {t("auth.noaccount")}{" "}
+          <button
+            type="button"
+            onClick={() => setTab("register")}
+            className="font-medium text-accent underline-offset-2 hover:underline"
+          >
+            {t("auth.tab.register")}
+          </button>
+        </p>
       </TabsContent>
     </Tabs>
   );

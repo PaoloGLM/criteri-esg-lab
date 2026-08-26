@@ -25,13 +25,13 @@ export function Statement() {
           <>
             No és la informació.
             <br />
-            <span style={{ color: "var(--bg)" }}>És el criteri.</span>
+            <span style={{ color: "var(--highlight)" }}>És el criteri.</span>
           </>
         ) : (
           <>
             No es la información.
             <br />
-            <span style={{ color: "var(--bg)" }}>Es el criterio.</span>
+            <span style={{ color: "var(--highlight)" }}>Es el criterio.</span>
           </>
         )}
       </p>
@@ -46,7 +46,8 @@ export function Statement() {
       <a
         href="#hero"
         aria-label={ca ? "Baixa al contingut" : "Baja al contenido"}
-        className="absolute bottom-12 flex flex-col items-center gap-3 font-mono text-[.66rem] uppercase tracking-[.24em] text-[rgba(170,201,182,.55)] transition-colors hover:text-[var(--highlight)]"
+        className="absolute bottom-12 flex flex-col items-center gap-3 font-mono text-[.66rem] uppercase tracking-[.24em] transition-colors hover:opacity-80"
+        style={{ color: "var(--highlight)" }}
       >
         {ca ? "Continua" : "Continúa"}
         <svg width="18" height="30" viewBox="0 0 18 30" fill="none" aria-hidden="true" className="animate-bounce">

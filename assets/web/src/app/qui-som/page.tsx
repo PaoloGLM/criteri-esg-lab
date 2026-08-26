@@ -138,7 +138,9 @@ export default function QuiSomPage() {
             <div className="mt-24">
               <p className="eyebrow" style={{ color: "var(--verd-clar)" }}>{t("quisom.valors.title")}</p>
               <h2 className="sec-title" style={{ color: "var(--bg)" }}>{t("quisom.valors.head")}</h2>
-              <p className="sec-body max-w-[70ch]" style={{ color: "rgba(242,245,241,.78)" }}>{t("quisom.valors.intro")}</p>
+              <p className="sec-body max-w-[70ch]" style={{ color: "rgba(242,245,241,.78)" }}>
+                {t("quisom.valors.intro").replace(/^(No som neutres\.|No somos neutrales\.)\s*/i, "")}
+              </p>
 
               <ol className="mt-14 flex flex-col">
                 {criteris.map((c, i) => (

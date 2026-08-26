@@ -14,7 +14,7 @@ export function Statement() {
 
   return (
     <section
-      className="relative flex min-h-[92vh] flex-col items-center justify-center px-7 text-center"
+      className="relative flex min-h-[92vh] flex-col items-center justify-center px-7 pb-28 text-center"
       style={{ background: "var(--ink-deep)", color: "var(--bg)" }}
     >
       <p
@@ -36,10 +36,13 @@ export function Statement() {
         )}
       </p>
 
-      <p className="mx-auto mt-10 max-w-[52ch] text-[1.05rem] leading-[1.9] text-[rgba(242,245,241,.65)] [text-wrap:balance]">
+      <p
+        className="mx-auto mt-10 text-center text-[1.05rem] leading-[2] text-[rgba(242,245,241,.65)]"
+        style={{ maxWidth: "58ch" }}
+      >
         {ca
-          ? "Cada mes, bancs centrals i reguladors publiquen milers de pàgines que afectaran la teva empresa. Nosaltres les llegim, les contrastem i et retornem el que cal decidir-ne en cinc minuts."
-          : "Cada mes, bancos centrales y reguladores publican miles de páginas que afectarán a tu empresa. Nosotros las leemos, las contrastamos y te devolvemos lo que hay que decidir en cinco minutos."}
+          ? "Cada mes, bancs centrals i reguladors publiquen milers de pàgines que afectaran la teva empresa. Les llegim, les contrastem i et retornem el que cal decidir-ne en 5 minuts."
+          : "Cada mes, bancos centrales y reguladores publican miles de páginas que afectan a tu empresa. Las leemos, las contrastamos y te devolvemos lo que hay que decidir en 5 minutos."}
       </p>
 
       {/* indicador de scroll */}

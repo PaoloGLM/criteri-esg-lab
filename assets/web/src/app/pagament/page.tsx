@@ -9,6 +9,8 @@ import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
 import { useAuth } from "@/lib/auth-context";
 
+
+
 export default function PagamentPage() {
   const router = useRouter();
   const { lang } = useLanguage();

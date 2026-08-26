@@ -21,6 +21,8 @@ import { FooterV1 } from "@/components/site-footer-v1";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 import { identitySchema, passwordSchema, localStrength } from "@/lib/validation";
 
+
+
 /* Tipografies oficials (TIPOGRAFIES.md) — autoallotjades per next/font
    (la CSP de producció bloqueja fonts.googleapis.com; next/font serveix
    els fitxers des del mateix domini, sense CSP ni FOUT). */

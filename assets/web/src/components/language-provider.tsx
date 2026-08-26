@@ -55,6 +55,11 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  // A6: mantenir <html lang> sincronitzat amb l'idioma triat (a11y + SEO).
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   const handleSetLang = useCallback((newLang: Language) => {
     setLang(newLang);
     if (typeof window !== "undefined") {

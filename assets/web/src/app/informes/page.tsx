@@ -17,6 +17,8 @@ import {
 } from "@/lib/reports";
 import { getReportContent } from "@/lib/reports-content";
 
+
+
 export default function InformesPage() {
   const router = useRouter();
   const { lang } = useLanguage();

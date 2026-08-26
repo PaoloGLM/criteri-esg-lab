@@ -4,6 +4,8 @@ import { Header } from "@/components/site-header-v1";
 import { FooterV1 } from "@/components/site-footer-v1";
 import { useLanguage } from "@/components/language-provider";
 
+
+
 /**
  * /faq — Preguntes freqüents (AEO).
  * Cada resposta és autònoma i citable pels motors de resposta.

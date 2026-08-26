@@ -67,12 +67,18 @@ export const metadata: Metadata = {
     locale: "ca_ES",
     alternateLocale: ["es_ES"],
     type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Criteri ESG — No és la informació. És el criteri." }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Criteri ESG · Informes ESG sintetitzats per a professionals",
     description:
       "Cada informe institucional ESG, sintetitzat en 5 minuts. Semàfor Metodològic, accions i cross-reference amb certificacions.",
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/apple-touch-icon.png" }],
   },
   robots: {
     index: true,

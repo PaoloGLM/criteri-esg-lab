@@ -6,6 +6,8 @@ import { FooterV1 } from "@/components/site-footer-v1";
 import { AuthDialog } from "@/components/auth-dialog";
 import { useLanguage } from "@/components/language-provider";
 
+
+
 function FeatLi({ ok, children }: { ok: boolean; children: React.ReactNode }) {
   return (
     <li

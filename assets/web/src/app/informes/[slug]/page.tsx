@@ -164,6 +164,21 @@ export default function InformeSlugPage() {
           name: "Criteri ESG",
           url: "https://criteriesg.com",
         },
+        mainEntityOfPage: `https://criteriesg.com/informes/${report.slug}`,
+        image: "https://criteriesg.com/og-image.png",
+      }
+    : null;
+
+  // A4: BreadcrumbList (Inici → Informes → títol de l'informe)
+  const breadcrumbJsonLd = report
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Inici", item: "https://criteriesg.com" },
+          { "@type": "ListItem", position: 2, name: lang === "ca" ? "Informes" : "Informes", item: "https://criteriesg.com/informes" },
+          { "@type": "ListItem", position: 3, name: report.title },
+        ],
       }
     : null;
 
@@ -173,6 +188,12 @@ export default function InformeSlugPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        />
+      )}
+      {breadcrumbJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
       )}
       <Header

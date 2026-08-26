@@ -8,6 +8,8 @@ import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
 
+
+
 const preguntas = [
   { num: "001", date: "26 ago 2026", type: "Adopción de personajes", previewEs: "La respuesta te dice más sobre tu valor real que cualquier métrica ESG. Las empresas que solo crean valor para accionistas no dejan vacío cuando desaparecen...", previewCa: "La resposta et diu més sobre el teu valor real que cap mètrica ESG. Les empreses que només creen valor per a accionistes no deixen buit quan desapareixen...", textEs: "Si tu empresa desapareciera mañana, ¿quién lo notaría de verdad —y por qué?", textCa: "Si la teva empresa desaparegués demà, qui ho notaria de veritat —i per què?" },
   { num: "002", date: "9 sept 2026", type: "Dos bandos", previewEs: "La mayoría de directores no sabe responder. Tienen 47 KPIs y ninguno que sintetice. Tener demasiadas métricas sin un relato coherente es tan inútil como no tener ninguna...", previewCa: "La majoria de directors no sap respondre. Tenen 47 KPIs i cap que sintetitzi. Tenir massa mètriques sense un relat coherent és tan inútil com no tenir-ne cap...", textEs: "Si mañana te pidieran demostrar el impacto positivo de tu empresa con un solo dato, ¿cuál elegirías —y por qué?", textCa: "Si demà et demanessin demostrar l'impacte positiu de la teva empresa amb un sol dato, quin triaries —i per què?" },

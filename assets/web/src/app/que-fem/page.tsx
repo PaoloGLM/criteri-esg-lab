@@ -213,7 +213,23 @@ export default function QueFemPage() {
           </div>
         </section>
 
-        {/* ══════════ 6. COMPROMÍS ══════════ */}
+        {/* ══════════ 6. PREGUNTES PER MILLORAR (Premium — referència curta; la versió completa viu a /qui-som) ══════════ */}
+        <section className="border-b border-rule px-6 py-20 lg:px-8 lg:py-24">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-10">
+            <div className="max-w-2xl">
+              <p className="eyebrow">{t("quefem.preguntes.eyebrow")}</p>
+              <h2 className="sec-title">{t("quefem.preguntes.title")}</h2>
+              <p className="sec-body">{t("quefem.preguntes.intro")}</p>
+            </div>
+            <div className="shrink-0 pb-1">
+              <button onClick={() => setPreusOpen(true)} className="btn-v1 btn-v1-solid">
+                {t("quefem.preguntes.cta")}
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════ 7. COMPROMÍS ══════════ */}
         <section className="principle">
           <div className="mx-auto max-w-4xl px-6">
             <p className="eyebrow justify-center" style={{ color: "var(--verd-clar)" }}>{t("quefem.manifest.eyebrow")}</p>

@@ -944,6 +944,10 @@ export const translations = {
     ca: "Un espai de reflexió ètica per a professionals. No és una autoavaluació amb puntuació: és un espai per pensar en veu alta, amb preguntes ben fetes i context ètic, per ser millors professionals i millors organitzacions.",
     es: "Un espacio de reflexión ética para profesionales. No es una autoevaluación con puntuación: es un espacio para pensar en voz alta, con preguntas bien hechas y contexto ético, para ser mejores profesionales y mejores organizaciones.",
   },
+  "quefem.preguntes.cta": {
+    ca: "Descobreix Premium",
+    es: "Descubre Premium",
+  },
 
   "quefem.closing.eyebrow": {
     ca: "EL COMPROMÍS",

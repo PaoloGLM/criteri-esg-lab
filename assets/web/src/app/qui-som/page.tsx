@@ -163,8 +163,8 @@ export default function QuiSomPage() {
           </div>
         </section>
 
-        {/* ══════════ 4. L'EQUIP ══════════ */}
-        <section className="border-b border-rule px-6 py-20 lg:px-8 lg:py-24" style={{ background: "#FFFFFF" }}>
+        {/* ══════════ 4. L'EQUIP (tinted, com el mockup v1) ══════════ */}
+        <section className="border-b border-rule px-6 py-20 lg:px-8 lg:py-24" style={{ background: "var(--bg)" }}>
           <div className="mx-auto max-w-7xl">
             <p className="eyebrow">{t("quisom.v2.team.eyebrow")}</p>
             <h2 className="sec-title">

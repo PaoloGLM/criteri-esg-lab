@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Header } from "@/components/site-header-v1";
 import { FooterV1 } from "@/components/site-footer-v1";
+import { Statement } from "@/components/sections/statement";
 import { HeroV1 } from "@/components/sections/hero-v1";
 import HomePageV1Sections from "@/components/sections/home-v1-sections";
 import { AuthDialog } from "@/components/auth-dialog";
@@ -22,6 +23,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col" style={{ background: "var(--paper)" }}>
       <Header onOpenAuth={(tab) => openAuth(tab || "register")} />
       <main className="flex-1">
+        <Statement />
         <HeroV1 />
         <HomePageV1Sections />
       </main>

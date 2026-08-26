@@ -128,52 +128,109 @@ const websiteJsonLd = {
 };
 
 /* AEO: FAQPage global — respostes directes citables pels motors d'IA */
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Què és Criteri ESG?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Criteri ESG és un servei que converteix informes institucionals ESG de 80+ pàgines en resums accionables de 5 minuts, amb verificació a pàgina exacta i creuament amb 16 estàndards de sostenibilitat (CSRD/ESRS, GRI, EcoVadis, B Corp, MSCI, CSDDD, SFDR, Taxonomia UE, TCFD, TNFD i més).",
-      },
+/* AEO: FAQPage global — BILINGÜE. Schema.org permet múltiples blocs FAQPage;
+   n'emitem dos (ca + es) amb inLanguage perquè els motors de resposta citin
+   la pregunta en l'idioma que toqui. */
+const faqItemsCa = [
+  {
+    "@type": "Question",
+    name: "Què és Criteri ESG?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "Criteri ESG és un servei que converteix informes institucionals ESG de 80+ pàgines en resums accionables de 5 minuts, amb verificació a pàgina exacta i creuament amb 16 estàndards de sostenibilitat (CSRD/ESRS, GRI, EcoVadis, B Corp, MSCI, CSDDD, SFDR, Taxonomia UE, TCFD, TNFD i més).",
     },
-    {
-      "@type": "Question",
-      name: "Quant costa Criteri ESG?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Gratuït per a l'arxiu (informes de més de 6 mesos) i la newsletter bimensual. Premium 440€/any (36,67€/mes, impostos inclosos), amb early bird de 290€/any de per vida per als primers 50 subscriptors (24,17€/mes).",
-      },
+  },
+  {
+    "@type": "Question",
+    name: "Quant costa Criteri ESG?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "Gratuït per a l'arxiu (informes de més de 6 mesos) i la newsletter bimensual. Premium 440€/any (36,67€/mes, impostos inclosos), amb early bird de 290€/any de per vida per als primers 50 subscriptors (24,17€/mes).",
     },
-    {
-      "@type": "Question",
-      name: "Quina metodologia fa servir Criteri ESG?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Doble filtre amb dos models d'IA (un destil·la, un fa d'advocat del diable), entorn tancat sense invenció, cada afirmació amb la pàgina exacta citada, inferència marcada com a tal, i validació humana obligatòria abans de publicar. Màxim 1.100 paraules per informe.",
-      },
+  },
+  {
+    "@type": "Question",
+    name: "Quina metodologia fa servir Criteri ESG?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "Doble filtre amb dos models d'IA (un destil·la, un fa d'advocat del diable), entorn tancat sense invenció, cada afirmació amb la pàgina exacta citada, inferència marcada com a tal, i validació humana obligatòria abans de publicar. Màxim 1.100 paraules per informe.",
     },
-    {
-      "@type": "Question",
-      name: "Què és el semàfor metodològic de Criteri ESG?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Una nota A-D que avalua la qualitat metodològica de cada informe original en 10 segons, amb 5 indicadors públics. Regla: A = 5 verds, B = 4 verds + 1 groc, C ≤ 1 vermell, D = 2+ vermells. El mateix criteri per a tots els informes, auditable.",
-      },
+  },
+  {
+    "@type": "Question",
+    name: "Què és el semàfor metodològic de Criteri ESG?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "Una nota A-D que avalua la qualitat metodològica de cada informe original en 10 segons, amb 5 indicadors públics. Regla: A = 5 verds, B = 4 verds + 1 groc, C ≤ 1 vermell, D = 2+ vermells. El mateix criteri per a tots els informes, auditable.",
     },
-    {
-      "@type": "Question",
-      name: "Per a qui és Criteri ESG?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Per a directors de sostenibilitat, consultors ESG, compliance officers i equips que necessiten decidir cada setmana amb el context regulatori actualitzat. També per a ONG i sector públic.",
-      },
+  },
+  {
+    "@type": "Question",
+    name: "Per a qui és Criteri ESG?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "Per a directors de sostenibilitat, consultors ESG, compliance officers i equips que necessiten decidir cada setmana amb el context regulatori actualitzat. També per a ONG i sector públic.",
     },
-  ],
-};
+  },
+];
+
+const faqItemsEs = [
+  {
+    "@type": "Question",
+    name: "¿Qué es Criteri ESG?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "Criteri ESG es un servicio que convierte informes institucionales ESG de 80+ páginas en resúmenes accionables de 5 minutos, con verificación a página exacta y cruce con 16 estándares de sostenibilidad (CSRD/ESRS, GRI, EcoVadis, B Corp, MSCI, CSDDD, SFDR, Taxonomía UE, TCFD, TNFD y más).",
+    },
+  },
+  {
+    "@type": "Question",
+    name: "¿Cuánto cuesta Criteri ESG?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "Gratis para el archivo (informes de más de 6 meses) y la newsletter quincenal. Premium 440€/año (36,67€/mes, impuestos incluidos), con early bird de 290€/año de por vida para los primeros 50 suscriptores (24,17€/mes).",
+    },
+  },
+  {
+    "@type": "Question",
+    name: "¿Qué metodología utiliza Criteri ESG?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "Doble filtro con dos modelos de IA (uno destila, otro hace de abogado del diablo), entorno cerrado sin invención, cada afirmación con la página exacta citada, inferencia marcada como tal, y validación humana obligatoria antes de publicar. Máximo 1.100 palabras por informe.",
+    },
+  },
+  {
+    "@type": "Question",
+    name: "¿Qué es el semáforo metodológico de Criteri ESG?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "Una nota A-D que evalúa la calidad metodológica de cada informe original en 10 segundos, con 5 indicadores públicos. Regla: A = 5 verdes, B = 4 verdes + 1 amarillo, C ≤ 1 rojo, D = 2+ rojos. El mismo criterio para todos los informes, auditable.",
+    },
+  },
+  {
+    "@type": "Question",
+    name: "¿Para quién es Criteri ESG?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "Para directores de sostenibilidad, consultores ESG, compliance officers y equipos que necesitan decidir cada semana con el contexto regulatorio actualizado. También para ONG y sector público.",
+    },
+  },
+];
+
+const faqJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    inLanguage: "ca",
+    mainEntity: faqItemsCa,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    inLanguage: "es",
+    mainEntity: faqItemsEs,
+  },
+];
 
 export default function RootLayout({
   children,
@@ -193,12 +250,15 @@ export default function RootLayout({
             __html: JSON.stringify(websiteJsonLd),
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(faqJsonLd),
-          }}
-        />
+        {faqJsonLd.map((ld, idx) => (
+          <script
+            key={`faq-${idx}`}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(ld),
+            }}
+          />
+        ))}
       </head>
       <body
         className={`${newsreader.variable} ${dmSans.variable} ${jetbrains.variable} antialiased bg-background text-foreground`}

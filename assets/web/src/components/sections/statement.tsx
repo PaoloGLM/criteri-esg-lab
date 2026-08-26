@@ -18,7 +18,7 @@ export function Statement() {
       style={{ background: "var(--ink-deep)", color: "var(--bg)" }}
     >
       <p
-        className="font-serif font-medium italic leading-[1.18] text-[clamp(3rem,8vw,7rem)] tracking-[-.015em] [text-wrap:balance]"
+        className="mt-16 font-serif font-medium italic leading-[1.18] text-[clamp(3rem,8vw,7rem)] tracking-[-.015em] [text-wrap:balance]"
         style={{ color: "var(--verd-clar)" }}
       >
         {ca ? (
@@ -37,7 +37,7 @@ export function Statement() {
       </p>
 
       <p
-        className="mx-auto mt-10 text-center text-[1.05rem] leading-[2] text-[rgba(242,245,241,.65)]"
+        className="mx-auto mt-8 text-center text-[1.05rem] leading-[1.75] text-[rgba(242,245,241,.65)]"
         style={{ maxWidth: "58ch" }}
       >
         {ca

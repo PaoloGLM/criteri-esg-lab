@@ -98,6 +98,45 @@ export default function QueFemPage() {
           </div>
         </section>
 
+        {/* 2b. PROCÉS DETALLAT EN 5 PASSOS (mockup v1) */}
+        <section className="border-b border-rule px-6 py-20 lg:px-8 lg:py-24">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="inline-block h-0.5 w-6" style={{ background: "var(--accent)" }} />
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "var(--accent)" }}>
+                {t("quefem.proc5.eyebrow")}
+              </p>
+            </div>
+            <h2 className="mb-4 max-w-3xl font-serif text-4xl font-medium leading-tight tracking-tight text-primary sm:text-5xl">
+              {t("quefem.proc5.title")}
+            </h2>
+            <p className="mb-14 max-w-2xl text-lg leading-relaxed" style={{ color: "var(--ink-soft)" }}>
+              {t("quefem.proc5.sub")}
+            </p>
+            <ol className="border-l-2" style={{ borderColor: "var(--accent)" }}>
+              {([
+                { n: "01", t: t("quefem.proc5.01.t"), d: t("quefem.proc5.01.d") },
+                { n: "02", t: t("quefem.proc5.02.t"), d: t("quefem.proc5.02.d") },
+                { n: "03", t: t("quefem.proc5.03.t"), d: t("quefem.proc5.03.d") },
+                { n: "04", t: t("quefem.proc5.04.t"), d: t("quefem.proc5.04.d") },
+                { n: "05", t: t("quefem.proc5.05.t"), d: t("quefem.proc5.05.d") },
+              ]).map((p) => (
+                <li key={p.n} className="grid grid-cols-[70px_minmax(0,.42fr)_minmax(0,1fr)] items-start gap-6 py-[26px] pl-6 max-md:grid-cols-[56px_1fr]">
+                  <span className="font-serif text-[2.4rem] font-medium leading-[.9]" style={{ color: "var(--verd-clar)" }}>
+                    {p.n}
+                  </span>
+                  <h3 className="font-serif text-[1.25rem] font-semibold text-primary">
+                    {p.t}
+                  </h3>
+                  <p className="text-[.93rem] leading-[1.62]" style={{ color: "var(--ink-soft)" }}>
+                    {p.d}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
         {/* 3. SEMÀFOR HERO (dark) */}
         <section style={{ background: "#26312B", color: "#F2F5F1" }}>
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">

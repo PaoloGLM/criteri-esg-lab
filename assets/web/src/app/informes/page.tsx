@@ -81,12 +81,18 @@ export default function InformesPage() {
               </p>
             </div>
             <h1 className="mb-4 font-serif text-5xl font-medium leading-tight tracking-tight text-primary">
-              {lang === "ca" ? "Tots els " : "Todos los "}<em className="italic" style={{ color: "#141B18" }}>{lang === "ca" ? "informes Criteri" : "informes Criteri"}</em>.
+              {lang === "ca" ? "Estalvia temps, només " : "Ahorra tiempo, solo "}
+              <em className="hl not-italic" style={{ fontStyle: "italic" }}>{lang === "ca" ? "5 min" : "5 min"}</em>.
             </h1>
+            <p className="mb-4 max-w-2xl font-sans text-lg leading-relaxed" style={{ color: "var(--ink-soft)" }}>
+              {lang === "ca"
+                ? <>Un director de sostenibilitat dedica de mitjana el <strong className="font-medium" style={{ color: "var(--ink)" }}>60% del seu temps</strong> a recopilar informació. Criteri ESG centralitza tota aquesta informació i la sintetitza en 8 blocs, perquè el temps d&apos;anàlisi es converteixi en temps de decisió.</>
+                : <>Un director de sostenibilidad dedica de media el <strong className="font-medium" style={{ color: "var(--ink)" }}>60% de su tiempo</strong> a recopilar información. Criteri ESG centraliza toda esa información y la sintetiza en 8 bloques, para que el tiempo de análisis se convierta en tiempo de decisión.</>}
+            </p>
             <p className="max-w-2xl font-serif text-lg italic" style={{ color: "#141B18" }}>
               {lang === "ca"
                 ? "Filtrats per certificació, ordenats per rellevància. Cada informe amb semàfor metodològic, 8 blocs i cross-reference amb els teus estàndards."
-                : "Filtrados por certificación, ordenados por relevancia. Cada informe con semáforo metodológico, 8 bloques y cross-reference con tus estándares."}
+                : "Filtrados por certificación, ordenados por relevancia. Cada informe con semáforo metodológico, 8 bloques y cross-reference con tus estándards."}
             </p>
           </div>
         </section>

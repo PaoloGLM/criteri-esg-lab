@@ -32,14 +32,14 @@ export function XrefDiagram() {
       <text x="280" y="200" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="11" fill="#AAC9B6" fontWeight="600">
         BCE · CLIMA
       </text>
-      {/* nodes perifèrics + etiquetes EXTERIORS */}
+      {/* nodes perifèrics + etiquetes EXTERIORS — ink-deep per contrast màxim */}
       {nodes.map((n) => (
         <g key={n.nom} fontFamily="var(--font-mono)" fontSize="11" fontWeight="600">
           <circle cx={n.x} cy={n.y} r="7" fill={n.c} />
-          <text x={n.x + n.dx} y={n.y + n.dy} fill="#26312B" textAnchor={n.anchor}>
+          <text x={n.x + n.dx} y={n.y + n.dy} fill="#141B18" textAnchor={n.anchor}>
             {n.nom}
           </text>
-          <text x={n.x + n.dx} y={n.y + n.dy + 15} fill="#4A5F53" fontWeight={400} fontSize="9.5" textAnchor={n.anchor}>
+          <text x={n.x + n.dx} y={n.y + n.dy + 15} fill="#3D5147" fontWeight={400} fontSize="9.5" textAnchor={n.anchor}>
             {n.sub}
           </text>
         </g>

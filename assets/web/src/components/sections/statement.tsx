@@ -18,25 +18,25 @@ export function Statement() {
       style={{ background: "var(--ink-deep)", color: "var(--bg)" }}
     >
       <p
-        className="font-serif font-medium italic leading-[1.15] text-[clamp(2.6rem,6.5vw,5.8rem)] tracking-[-.015em] [text-wrap:balance]"
+        className="font-serif font-medium italic leading-[1.18] text-[clamp(3rem,8vw,7rem)] tracking-[-.015em] [text-wrap:balance]"
         style={{ color: "var(--verd-clar)" }}
       >
         {ca ? (
           <>
             No és la informació.
             <br />
-            <span style={{ color: "var(--highlight)" }}>És el criteri.</span>
+            És el <span style={{ color: "var(--highlight)" }}>criteri.</span>
           </>
         ) : (
           <>
             No es la información.
             <br />
-            <span style={{ color: "var(--highlight)" }}>Es el criterio.</span>
+            Es el <span style={{ color: "var(--highlight)" }}>criterio.</span>
           </>
         )}
       </p>
 
-      <p className="mt-10 max-w-[52ch] text-[1.05rem] leading-[1.7] text-[rgba(242,245,241,.65)] [text-wrap:pretty]">
+      <p className="mx-auto mt-10 max-w-[52ch] text-[1.05rem] leading-[1.9] text-[rgba(242,245,241,.65)] [text-wrap:balance]">
         {ca
           ? "Cada mes, bancs centrals i reguladors publiquen milers de pàgines que afectaran la teva empresa. Nosaltres les llegim, les contrastem i et retornem el que cal decidir-ne en cinc minuts."
           : "Cada mes, bancos centrales y reguladores publican miles de páginas que afectarán a tu empresa. Nosotros las leemos, las contrastamos y te devolvemos lo que hay que decidir en cinco minutos."}
@@ -46,7 +46,7 @@ export function Statement() {
       <a
         href="#hero"
         aria-label={ca ? "Baixa al contingut" : "Baja al contenido"}
-        className="absolute bottom-12 flex flex-col items-center gap-3 font-mono text-[.66rem] uppercase tracking-[.24em] transition-colors hover:opacity-80"
+        className="absolute bottom-10 flex flex-col items-center gap-3 font-mono text-[.66rem] uppercase tracking-[.24em] transition-colors hover:opacity-80"
         style={{ color: "var(--highlight)" }}
       >
         {ca ? "Continua" : "Continúa"}

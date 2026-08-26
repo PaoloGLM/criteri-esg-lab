@@ -180,10 +180,7 @@ export default function InformesPage() {
                   style={{ cursor: "pointer" }}
                   onClick={(e) => { e.stopPropagation(); setPopupOpen(true); }}
                 >
-                  <p className="font-mono text-[9.5px] uppercase tracking-[0.22em] font-semibold flex items-center justify-between" style={{ color: "#AAC9B6" }}>
-                    <span>{lang === "ca" ? "Semàfor metodològic" : "Semáforo metodológico"}</span>
-                    <span aria-hidden="true">⌕</span>
-                  </p>
+                  <p className="font-mono text-[9.5px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>{lang === "ca" ? "Semàfor metodològic" : "Semáforo metodológico"}</p>
                   <div className="flex items-baseline gap-3">
                     <span className="font-serif text-5xl font-normal" style={{ color: getGradeColor(getSemaforo(featuredReport.slug)?.grade), letterSpacing: "-0.04em" }}>
                       {getSemaforo(featuredReport.slug)?.grade || "B"}

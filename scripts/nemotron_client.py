@@ -18,7 +18,7 @@ def get_openrouter_nemotron_client():
     client = get_openrouter_client()
     return client
 
-def call_nemotron(system_prompt: str, user_prompt: str, temperature: float = 0.3, max_tokens: int = 8000) -> str:
+def call_nemotron(system_prompt: str, user_prompt: str, temperature: float = 0.3, max_tokens: int = 4096) -> str:
     import openai
     client = get_openrouter_client()
     
@@ -34,7 +34,7 @@ def call_nemotron(system_prompt: str, user_prompt: str, temperature: float = 0.3
     return response.choices[0].message.content
 
 
-def call_nemotron_json(system_prompt: str, user_prompt: str, temperature: float = 0.3, max_tokens: int = 8000) -> dict:
+def call_nemotron_json(system_prompt: str, user_prompt: str, temperature: float = 0.3, max_tokens: int = 4096) -> dict:
     text = call_nemotron(system_prompt, user_prompt, temperature, max_tokens)
     
     # Intent 1: parsejar directament

@@ -34,7 +34,7 @@ DEEPSEEK_BASE_URL = "https://api.deepseek.com"
 # === OpenRouter (Nemotron 3 Ultra) ===
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
-OPENROUTER_MODEL = "nvidia/nemotron-3-ultra:free"
+OPENROUTER_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
 
 def get_openrouter_client():
     """Retorna client OpenAI/OpenRouter configurat."""

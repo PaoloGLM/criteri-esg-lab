@@ -12,7 +12,7 @@ from pathlib import Path
 sys.path.insert(0, "./scripts")
 from config import get_openrouter_client
 
-NEMOTRON_MODEL = "nvidia/nemotron-3-ultra:free"
+NEMOTRON_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
 
 def get_openrouter_nemotron_client():
     client = get_openrouter_client()

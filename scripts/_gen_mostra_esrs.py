@@ -83,16 +83,11 @@ report = {
 }
 
 html = generate_html(report)
+Path('_debug_mostra.html').write_text(html, encoding='utf-8')
 Path('_tmp_mostra.html').write_text(html, encoding='utf-8')
 
-browser = r'C:\Program Files\Google\Chrome\Application\chrome.exe'
-if not Path(browser).exists():
-    browser = r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'
-pdf = 'mostra-plantilla-v7-esrs.pdf'
-subprocess.run([browser, '--headless', '--disable-gpu', '--no-pdf-header-footer',
-                f'--user-data-dir={tempfile.mkdtemp(prefix="pdfprof-")}',
-                f'--print-to-pdf={Path(pdf).resolve()}', Path('_tmp_mostra.html').resolve().as_uri()],
-               capture_output=True, text=True, timeout=120)
-ok = Path(pdf).exists()
-print("PDF:", pdf, f"{Path(pdf).stat().st_size//1024} KB" if ok else "FALLA")
+pdf = Path('mostra-plantilla-v8-esrs.pdf')
+pdf.unlink(missing_ok=True)  # esborrar per detectar fallos de Chrome
+_mod.html_to_pdf(html, pdf)
+print("PDF:", pdf, f"{pdf.stat().st_size//1024} KB")
 Path('_tmp_mostra.html').unlink(missing_ok=True)

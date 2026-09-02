@@ -27,32 +27,35 @@ CSS = """
   --bg: #F2F5F1; --bg-deep: #141B18; --card: #FFFFFF;
   --ink: #26312B; --ink-deep: #141B18; --ink-soft: #4A5F53;
   --accent: #5E8772; --accent-deep: #3F6653; --accent-soft: #AAC9B6;
-  --muted: #E4ECE6; --rule: #D8E2DA; --crema: #F2F5F1;
+  --muted: #E4ECE6; --rule: #D8E2DA; --highlight: #F5E381;
   --sem-g: #5C8A5C; --sem-y: #C9A961; --sem-r: #A0522D;
 }
 
-@page { size: A4; margin: 0 0 12mm 0; }
+@page { size: A4; margin: 0; }
 
 body {
   background: var(--bg); font-family: 'DM Sans', system-ui, sans-serif;
-  color: var(--ink); line-height: 1.6; font-size: 14px;
+  color: var(--ink); line-height: 1.6; font-size: 13px;
 }
-.page { width: 210mm; min-height: 100vh; }
+.page { width: 210mm; }
+/* Contenidor de blocs: font-size 0 elimina espais entre inline-blocks.
+   TRUC CLAU: cada bloc es display:inline-block + width:100% -> Chromium print
+   MAI no el divideix entre pagines (el mou sencer a la seguent). */
+.sections { font-size: 0; }
 
 /* ---------- Breadcrumb ---------- */
 .breadcrumb {
   background: var(--bg); border-bottom: 1px solid var(--rule);
-  padding: 16px 56px; display: flex; justify-content: space-between; align-items: baseline;
+  padding: 14px 48px; display: flex; justify-content: space-between; align-items: baseline;
 }
 .breadcrumb .crumb { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .16em; color: #4A5F53; }
-.breadcrumb .crumb a { color: #3F6653; text-decoration: none; }
 .breadcrumb .crumb .sep { color: #D8E2DA; margin: 0 12px; }
 .breadcrumb .crumb .here { color: #26312B; }
 .breadcrumb .right { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .16em; font-weight: 600; color: #3F6653; }
 
 /* ---------- Header fitxa tecnica ---------- */
-.fitxa-header { padding: 40px 56px 24px 56px; border-bottom: 1px solid #141B18; page-break-after: avoid; }
-.badges { margin-bottom: 16px; }
+.fitxa-header { padding: 36px 48px 26px 48px; border-bottom: 3px solid var(--accent); page-break-after: avoid; break-after: avoid; }
+.badges { margin-bottom: 14px; }
 .badge {
   display: inline-block; font-family: 'JetBrains Mono', 'Courier New', monospace;
   font-size: 9.5px; text-transform: uppercase; letter-spacing: .16em; font-weight: 600;
@@ -61,91 +64,117 @@ body {
 .badge-type { background: rgba(92,58,30,0.12); color: #141B18; }
 .badge-free { background: rgba(92,138,92,0.12); color: #4A6B3A; }
 .fitxa-header h1 {
-  font-family: 'Newsreader', Georgia, serif; font-size: 36px; font-weight: 500;
-  line-height: 1.15; letter-spacing: -0.022em; color: #141B18; margin-bottom: 16px;
+  font-family: 'Newsreader', Georgia, serif; font-size: 31px; font-weight: 500;
+  line-height: 1.18; letter-spacing: -0.022em; color: #141B18; margin-bottom: 14px;
 }
 .meta-row { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .14em; color: #4A5F53; }
 .meta-row strong { color: #26312B; }
 .meta-row .msep { margin: 0 14px; color: #D8E2DA; }
 
-/* ---------- Bloc 01 Semafor (fosc full-width) ---------- */
-.semafor { background: #26312B; color: #F2F5F1; padding: 44px 56px; break-inside: avoid; page-break-inside: avoid; }
-.semafor-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; align-items: center; }
-.kicker-dark { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .22em; font-weight: 600; color: #AAC9B6; margin-bottom: 16px; }
-.grade-row { display: flex; align-items: baseline; gap: 16px; }
-.grade-letter { font-family: 'Newsreader', Georgia, serif; font-size: 96px; font-weight: 400; line-height: 1; letter-spacing: -0.04em; }
-.grade-label { font-family: 'Newsreader', Georgia, serif; font-size: 22px; font-style: italic; color: #F2F5F1; }
-.ind-row { padding: 12px 0; border-bottom: 1px solid rgba(217,165,116,0.2); break-inside: avoid; page-break-inside: avoid; }
-.ind-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-.ind-name { font-family: 'Newsreader', Georgia, serif; font-size: 16px; font-weight: 500; color: #F2F5F1; }
-.dots { display: flex; gap: 6px; }
-.dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
-.ind-label { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; font-weight: 600; margin-left: 8px; }
-.ind-note { font-size: 12px; line-height: 1.55; margin-top: 6px; color: rgba(245,239,230,0.55); }
-
-/* ---------- Sections de contingut ---------- */
-.seccio { padding: 32px 56px; border-bottom: 1px solid #D8E2DA; }
-.kicker { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .22em; font-weight: 600; color: #5E8772; margin-bottom: 6px; break-after: avoid; page-break-after: avoid; }
-.seccio h2 {
-  font-family: 'Newsreader', Georgia, serif; font-size: 24px; font-weight: 500;
-  color: #141B18; margin-bottom: 24px; break-after: avoid; page-break-after: avoid;
+/* ---------- Bloc 01 Semafor (banda fosca full-width, columna esquerra compacta) ---------- */
+.semafor {
+  background: var(--ink); color: #F2F5F1; padding: 38px 48px;
+  margin: 0; break-inside: avoid; page-break-inside: avoid;
+  display: inline-block; width: 100%; font-size: 13px; box-sizing: border-box; vertical-align: top;
 }
-.body-serif { font-family: 'Newsreader', Georgia, serif; font-size: 16px; line-height: 1.75; color: #26312B; }
-.body-serif p { margin-bottom: 10px; }
+.semafor-grid { display: grid; grid-template-columns: 0.72fr 1.78fr; gap: 34px; align-items: center; }
+.kicker-dark { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: .22em; font-weight: 600; color: var(--accent-soft); margin-bottom: 14px; }
+.grade-row { display: flex; align-items: baseline; gap: 14px; }
+.grade-letter { font-family: 'Newsreader', Georgia, serif; font-size: 66px; font-weight: 400; line-height: 1; letter-spacing: -0.04em; }
+.grade-label { font-family: 'Newsreader', Georgia, serif; font-size: 17px; font-style: italic; color: #F2F5F1; }
+.ind-row { padding: 10px 0; border-bottom: 1px solid rgba(217,165,116,0.2); break-inside: avoid; page-break-inside: avoid; }
+.ind-row:last-child { border-bottom: none; }
+.ind-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.ind-name { font-family: 'Newsreader', Georgia, serif; font-size: 15px; font-weight: 500; color: #F2F5F1; }
+.dots { display: flex; gap: 6px; }
+.dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.ind-label { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; font-weight: 600; margin-left: 8px; }
+.ind-note { font-size: 12px; line-height: 1.55; margin-top: 4px; color: rgba(245,239,230,0.55); }
 
-/* Dades clau (files numerades, com la web) */
-.dades-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
-.dades-row { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid rgba(201,184,154,0.5); break-inside: avoid; page-break-inside: avoid; }
-.dades-num { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 11px; font-weight: 600; color: #5E8772; }
-.dades-val { font-family: 'Newsreader', Georgia, serif; font-size: 18px; font-weight: 600; color: #141B18; }
-.dades-label { font-size: 14px; color: #26312B; }
+/* ---------- Targetes de contingut (mai partidos) ---------- */
+.card {
+  background: var(--card); border: 1px solid var(--rule);
+  margin: 16px 48px; padding: 26px 34px;
+  break-inside: avoid; page-break-inside: avoid;
+  display: inline-block; width: calc(100% - 96px); font-size: 13px;
+  box-sizing: border-box; vertical-align: top;
+}
+.card-dark { background: var(--ink); color: #F2F5F1; border: none; border-left: 5px solid var(--accent); }
+.band {
+  background: var(--muted); border-top: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+  margin: 16px 0; padding: 34px 48px;
+  break-inside: avoid; page-break-inside: avoid;
+  display: inline-block; width: 100%; font-size: 13px; box-sizing: border-box; vertical-align: top;
+}
+
+.kicker { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: .22em; font-weight: 600; color: var(--accent-deep); margin-bottom: 6px; }
+.card-dark .kicker { color: var(--accent-soft); }
+.seccio h2, .card h2, .band h2 {
+  font-family: 'Newsreader', Georgia, serif; font-size: 20px; font-weight: 500;
+  color: var(--ink-deep); margin-bottom: 18px;
+  display: flex; align-items: baseline; gap: 10px;
+  break-after: avoid; page-break-after: avoid;
+}
+.card-dark h2 { color: #F2F5F1; }
+/* tick groc: detall curios de la paleta */
+h2 .tick { display: inline-block; width: 24px; height: 8px; background: var(--highlight); flex: none; }
+
+/* Contingut: mida uniforme 13px (bloc implicacions) */
+.body-txt { font-size: 13px; line-height: 1.7; color: var(--ink); }
+.body-serif { font-family: 'Newsreader', Georgia, serif; font-size: 13px; line-height: 1.75; color: var(--ink); }
+.body-serif p, .body-txt p { margin-bottom: 8px; }
+
+/* Dades clau: mateixa mida, xifra serif discreta */
+.dades-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px; }
+.dades-row { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: baseline; padding: 9px 0; border-bottom: 1px solid rgba(201,184,154,0.5); break-inside: avoid; page-break-inside: avoid; }
+.dades-num { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 10.5px; font-weight: 600; color: var(--accent-deep); }
+.dades-val { font-family: 'Newsreader', Georgia, serif; font-size: 14px; font-weight: 600; color: var(--ink-deep); }
+.dades-label { font-size: 13px; color: var(--ink); }
 .dades-page { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 9px; color: #9C8B7A; text-transform: uppercase; letter-spacing: .1em; }
 
-/* Implicacions 3 columnes amb top border de color */
-.impl-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; margin-bottom: 28px; }
-.impl-col { border-top: 2px solid #141B18; padding-top: 16px; break-inside: avoid; page-break-inside: avoid; }
-.impl-col.reg { border-top-color: #5E8772; }
-.impl-col.ciut { border-top-color: #AAC9B6; }
-.impl-actor { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .2em; font-weight: 600; color: #141B18; margin-bottom: 10px; }
-.impl-col.reg .impl-actor { color: #5E8772; }
+/* Implicacions 3 columnes */
+.impl-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+.impl-col { border-top: 2px solid var(--ink-deep); padding-top: 12px; break-inside: avoid; page-break-inside: avoid; }
+.impl-col.reg { border-top-color: var(--accent); }
+.impl-col.ciut { border-top-color: var(--accent-soft); }
+.impl-actor { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .2em; font-weight: 600; color: var(--ink-deep); margin-bottom: 8px; }
+.impl-col.reg .impl-actor { color: var(--accent-deep); }
 .impl-col.ciut .impl-actor { color: #8A6D2B; }
-.impl-body { font-size: 13px; line-height: 1.65; color: #26312B; }
-.impl-body p { margin-bottom: 8px; }
+.impl-body { font-size: 13px; line-height: 1.65; color: var(--ink); }
+.impl-body p { margin-bottom: 7px; }
 
-/* Mes enlla del Checkbox (fosc) */
-.mes-enlla { background: #26312B; color: #F2F5F1; border-left: 4px solid #5E8772; padding: 24px 28px; break-inside: avoid; page-break-inside: avoid; }
-.mes-enlla .kicker-dark { margin-bottom: 12px; }
-.mes-enlla .criteri { font-family: 'Newsreader', Georgia, serif; font-size: 18px; font-style: italic; color: #F2F5F1; }
-.mes-enlla .body { font-size: 13px; line-height: 1.7; margin-top: 12px; color: rgba(245,239,230,0.75); }
-.mes-enlla .body p { margin-bottom: 8px; }
+/* Mes enlla del Checkbox (targeta fosca numerada) */
+.mes-enlla .criteri { font-family: 'Newsreader', Georgia, serif; font-size: 16px; font-style: italic; color: #F2F5F1; margin-bottom: 10px; }
+.mes-enlla .body { font-size: 13px; line-height: 1.7; color: rgba(245,239,230,0.78); }
+.mes-enlla .body p { margin-bottom: 7px; }
 
 /* Connexions */
-.conn-box { border: 1px solid #D8E2DA; background: #FFFFFF; padding: 16px 18px; margin-bottom: 12px; break-inside: avoid; page-break-inside: avoid; }
-.conn-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
-.conn-type { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .14em; font-weight: 600; padding: 3px 9px; }
-.conn-target { font-family: 'Newsreader', Georgia, serif; font-size: 15px; font-weight: 600; color: #26312B; }
-.conn-desc { font-size: 13px; line-height: 1.6; color: #141B18; }
+.conn-box { border: 1px solid var(--rule); background: #FFFFFF; padding: 13px 16px; margin-bottom: 10px; break-inside: avoid; page-break-inside: avoid; }
+.conn-box:last-child { margin-bottom: 0; }
+.conn-head { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; flex-wrap: wrap; }
+.conn-type { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 9.5px; text-transform: uppercase; letter-spacing: .14em; font-weight: 600; padding: 3px 9px; }
+.conn-target { font-family: 'Newsreader', Georgia, serif; font-size: 14px; font-weight: 600; color: var(--ink); }
+.conn-desc { font-size: 13px; line-height: 1.6; color: var(--ink); }
 
-/* Accions recomanades (banda destacada com la web) */
-.band-accions { background: rgba(184,115,51,0.06); border-top: 1px solid #5E8772; border-bottom: 1px solid #5E8772; padding: 44px 56px; break-inside: avoid; page-break-inside: avoid; }
-.accions-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
-.accio-item { display: flex; flex-direction: column; gap: 14px; break-inside: avoid; page-break-inside: avoid; }
-.accio-circle { width: 44px; height: 44px; border-radius: 50%; background: #5E8772; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Newsreader', Georgia, serif; font-size: 19px; font-weight: 600; }
-.accio-desc { font-size: 13.5px; font-weight: 500; line-height: 1.6; color: #26312B; }
+/* Accions */
+.accions-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+.accio-item { display: flex; flex-direction: column; gap: 12px; break-inside: avoid; page-break-inside: avoid; }
+.accio-circle { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Newsreader', Georgia, serif; font-size: 17px; font-weight: 600; }
+.accio-desc { font-size: 13px; font-weight: 500; line-height: 1.6; color: var(--ink); }
 
-/* Cross-reference (taula amb capcalera fosca com la web) */
+/* Cross-reference */
 table.xref-table { width: 100%; border-collapse: collapse; }
-.xref-table th { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 9.5px; text-transform: uppercase; letter-spacing: .18em; font-weight: 600; background: #141B18; color: #F2F5F1; text-align: left; padding: 12px 14px; }
-.xref-table td { padding: 14px; border-bottom: 1px solid #D8E2DA; vertical-align: top; break-inside: avoid; page-break-inside: avoid; }
-.xref-fw { font-family: 'Newsreader', Georgia, serif; font-size: 15px; font-weight: 600; color: #26312B; }
-.xref-cr { font-size: 13px; line-height: 1.55; color: #26312B; }
-.xref-imp { display: inline-block; font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .14em; font-weight: 600; padding: 4px 10px; }
+.xref-table th { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 9.5px; text-transform: uppercase; letter-spacing: .18em; font-weight: 600; background: var(--bg-deep); color: #F2F5F1; text-align: left; padding: 11px 14px; }
+.xref-table td { padding: 12px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; break-inside: avoid; page-break-inside: avoid; }
+.xref-fw { font-family: 'Newsreader', Georgia, serif; font-size: 14px; font-weight: 600; color: var(--ink); }
+.xref-cr { font-size: 13px; line-height: 1.55; color: var(--ink); }
+.xref-imp { display: inline-block; font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 9.5px; text-transform: uppercase; letter-spacing: .14em; font-weight: 600; padding: 4px 10px; }
 
 /* Footer + disclaimer */
-.footer-line { margin: 32px 56px 0 56px; padding-top: 20px; border-top: 1px solid #26312B; display: flex; justify-content: space-between; align-items: baseline; }
-.footer-line .frase { font-family: 'Newsreader', Georgia, serif; font-size: 14px; font-style: italic; color: #141B18; }
-.footer-line .font-link { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .14em; font-weight: 600; color: #3F6653; }
-.disclaimer { padding: 24px 56px 40px 56px; text-align: center; font-family: 'Newsreader', Georgia, serif; font-size: 12px; font-style: italic; line-height: 1.6; color: rgba(38,49,43,0.6); }
+.footer-line { margin: 26px 48px 0 48px; padding-top: 18px; border-top: 1px solid var(--ink); display: flex; justify-content: space-between; align-items: baseline; break-inside: avoid; page-break-inside: avoid; }
+.footer-line .frase { font-family: 'Newsreader', Georgia, serif; font-size: 13px; font-style: italic; color: var(--ink-deep); }
+.footer-line .font-link { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .14em; font-weight: 600; color: var(--accent-deep); }
+.disclaimer { padding: 20px 48px 36px 48px; text-align: center; font-family: 'Newsreader', Georgia, serif; font-size: 12px; font-style: italic; line-height: 1.6; color: rgba(38,49,43,0.6); }
 """
 
 # Colors segons status (v7 — harmonitzats amb la paleta salvia)
@@ -528,7 +557,9 @@ def parse_md_to_reportblock(md_text: str, lang: str = "ca") -> dict:
 
 
 def generate_html(report: dict) -> str:
-    """Genera HTML replica de la pagina d'informe de la web v7 (salvia/ink)."""
+    """Genera HTML replica de la web v7. Numeracio dinamica: cada bloc present
+    rep numero sequencial (01, 02, ...); Mes enlla del Checkbox te numero propi.
+    Cada bloc es una unitat indecomposable (page-break-inside: avoid)."""
     lang = report.get("lang", "ca")
     is_ca = lang == "ca"
 
@@ -536,35 +567,35 @@ def generate_html(report: dict) -> str:
     SC = {"verd": "#5C8A5C", "groc": "#C9A961", "vermell": "#A0522D"}
     TYPE_LABEL = {"regulatory": "Regulador", "framework": "Framework", "rating": "Rating",
                   "industry": "Sectorial", "official": "Oficial"}
-    SCOPE_LABEL = {"CAT": "Catalunya", "ES": "Espanya", "EU": "UE", "GLOBAL": "Global"}
 
-    t = {
-        "minuts": "5 min · 8 blocs" if is_ca else "5 min · 8 bloques",
-        "gratis": "Gratis",
-        "semafor_kicker": "Bloc 01 · Semàfor metodològic" if is_ca else "Bloque 01 · Semáforo metodológico",
-        "fitxa_kicker": "Bloc 02 · Fitxa tècnica" if is_ca else "Bloque 02 · Ficha técnica",
-        "dades_kicker": "Bloc 03 · 5 dades clau" if is_ca else "Bloque 03 · 5 datos clave",
+    L = {
+        "semafor": "Semàfor metodològic" if is_ca else "Semáforo metodológico",
+        "fitxa": "Fitxa tècnica" if is_ca else "Ficha técnica",
+        "dades": "5 dades clau" if is_ca else "5 datos clave",
         "dades_h2": "El que diu l'informe, en xifres" if is_ca else "Lo que dice el informe, en cifras",
-        "resum_kicker": "Bloc 04 · Resum executiu" if is_ca else "Bloque 04 · Resumen ejecutivo",
+        "resum": "Resum executiu" if is_ca else "Resumen ejecutivo",
         "resum_h2": "Què diu en llenguatge clar" if is_ca else "Qué dice en lenguaje claro",
-        "impl_kicker": "Bloc 05 · Implicacions" if is_ca else "Bloque 05 · Implicaciones",
+        "impl": "Implicacions" if is_ca else "Implicaciones",
         "impl_h2": "Per a empreses, reguladors, ciutadans" if is_ca else "Para empresas, reguladores, ciudadanos",
         "empreses": "Empreses" if is_ca else "Empresas",
         "reguladors": "Reguladors" if is_ca else "Reguladores",
         "ciutadans": "Ciutadans" if is_ca else "Ciudadanos",
         "mes_enlla": "Més enllà del Checkbox" if is_ca else "Más allá del Checkbox",
-        "conn_kicker": "Bloc 06 · Connexions" if is_ca else "Bloque 06 · Conexiones",
+        "conn": "Connexions" if is_ca else "Conexiones",
         "conn_h2": "Relacions amb altres informes" if is_ca else "Relaciones con otros informes",
-        "acc_kicker": "Bloc 07 · Accions recomanades ⭐" if is_ca else "Bloque 07 · Acciones recomendadas ⭐",
+        "acc": "Accions recomanades ⭐" if is_ca else "Acciones recomendadas ⭐",
         "acc_h2": "3 accions operatives per aquesta setmana" if is_ca else "3 acciones operativas para esta semana",
-        "xref_kicker": "Bloc 08 · Cross-reference ⭐" if is_ca else "Bloque 08 · Cross-reference ⭐",
+        "xref": "Cross-reference ⭐" if is_ca else "Cross-reference ⭐",
         "xref_h2": "Com t'afecta segons les teves certificacions" if is_ca else "Cómo te afecta según tus certificaciones",
         "xref_th1": "Certificació" if is_ca else "Certificación",
         "xref_th2": "Com t'afecta" if is_ca else "Cómo te afecta",
         "xref_th3": "Impacte" if is_ca else "Impacto",
-        "frase": "5 minuts de lectura. 8 blocs que canvien el teu criteri sobre un informe de {n} pàgines." if is_ca else "5 minutos de lectura. 8 bloques que cambian tu criterio sobre un informe de {n} páginas.",
+        "frase": "{n} blocs que canvien el teu criteri sobre un informe de {p} pàgines. 5 minuts de lectura." if is_ca else "{n} bloques que cambian tu criterio sobre un informe de {p} páginas. 5 minutos de lectura.",
         "font_orig": "Veure font original →" if is_ca else "Ver fuente original →",
         "disclaimer": "Criteri ESG aplica un flux de doble revisió per a cada informe: GLM redacta, Gemini fa d'advocat del diable, i l'equip humà valida sempre cada bloc abans de publicar." if is_ca else "Criteri ESG aplica un flujo de doble revisión para cada informe: GLM redacta, Gemini hace de abogado del diablo, y el equipo humano valida siempre cada bloque antes de publicar.",
+        "minuts": "5 min de lectura" if is_ca else "5 min de lectura",
+        "gratis": "Gratis",
+        "pag": "pàg" if is_ca else "pág",
     }
 
     sem = report.get("semafor", {})
@@ -572,7 +603,7 @@ def generate_html(report: dict) -> str:
     grade_label = sem.get("gradeLabel", "")
     grade_color = GC.get(grade, "#A0522D")
 
-    # Indicadors del semafor (estil web: 3 dots + label + nota)
+    # ---- indicadors del semafor ----
     indicators_html = ""
     for ind in sem.get("indicators", []):
         st = ind.get("status", "groc")
@@ -594,20 +625,20 @@ def generate_html(report: dict) -> str:
           <p class="ind-note">{esc(ind.get('note', ''))}</p>
         </div>"""
 
-    # Dades clau (files numerades com la web)
+    # ---- dades clau ----
     dades_html = ""
     for i, d in enumerate(report.get("dadesClau", [])):
-        page_html = f'<span class="dades-page"> · {esc(d.get("page", ""))}</span>' if d.get("page") else ""
+        page_html = f' <span class="dades-page">· {esc(d.get("page", ""))}</span>' if d.get("page") else ""
         dades_html += f"""
         <div class="dades-row">
           <span class="dades-num">{str(i + 1).zfill(2)}</span>
           <div><span class="dades-val">{esc(d.get('value', ''))}</span> <span class="dades-label">{esc(d.get('label', ''))}</span>{page_html}</div>
         </div>"""
 
-    # Implicacions
+    # ---- implicacions ----
     impl = report.get("implicacions", {})
     impl_html = ""
-    for key, cls, label in [("empreses", "", t["empreses"]), ("reguladors", "reg", t["reguladors"]), ("ciutadans", "ciut", t["ciutadans"])]:
+    for key, cls, label in [("empreses", "", L["empreses"]), ("reguladors", "reg", L["reguladors"]), ("ciutadans", "ciut", L["ciutadans"])]:
         body = impl.get(key, "")
         if body:
             impl_html += f"""
@@ -616,19 +647,7 @@ def generate_html(report: dict) -> str:
           <div class="impl-body">{md_to_html(body)}</div>
         </div>"""
 
-    # Mes enlla
-    me = report.get("mesEnllaCheckbox", {})
-    mes_enlla_html = ""
-    if me.get("body") or me.get("criteri"):
-        crit = f'<p class="criteri">{esc(me.get("criteri", ""))}</p>' if me.get("criteri") else ""
-        mes_enlla_html = f"""
-        <div class="mes-enlla">
-          <div class="kicker-dark">{t['mes_enlla']}</div>
-          {crit}
-          <div class="body">{md_to_html(me.get('body', ''))}</div>
-        </div>"""
-
-    # Connexions
+    # ---- connexions ----
     conn_html = ""
     for c in report.get("connexions", []):
         ct = c.get("type", "")
@@ -647,7 +666,7 @@ def generate_html(report: dict) -> str:
           <p class="conn-desc">{esc(c.get('desc', ''))}</p>
         </div>"""
 
-    # Accions (nomes desc com la web)
+    # ---- accions ----
     accions_html = ""
     for a in report.get("accions", []):
         txt = a.get("desc") or a.get("title", "")
@@ -657,7 +676,7 @@ def generate_html(report: dict) -> str:
           <p class="accio-desc">{esc(txt)}</p>
         </div>"""
 
-    # Cross-references (taula)
+    # ---- cross-refs ----
     xref_rows = ""
     for x in report.get("crossRefs", []):
         imp = x.get("impact", "")
@@ -674,35 +693,109 @@ def generate_html(report: dict) -> str:
           <td><span class="xref-imp" style="background:{ib}; color:{ic};">{esc(imp)}</span></td>
         </tr>"""
 
-    # Badges + meta (fitxa tecnica)
+    # ---- badges + meta ----
     rtype = report.get("type", "") or ""
     badge_type = TYPE_LABEL.get(rtype, rtype)
-    badges = ""
-    if badge_type:
-        badges += f'<span class="badge badge-type">{esc(badge_type)}</span>'
-    badges += f'<span class="badge badge-free">{t["gratis"]}</span>'
+    badges = f'<span class="badge badge-type">{esc(badge_type)}</span>' if badge_type else ""
+    badges += f'<span class="badge badge-free">{L["gratis"]}</span>'
 
     meta_parts = [f"<strong>{esc(report.get('institution', ''))}</strong>"]
     if report.get("date"):
         meta_parts.append(esc(report.get("date")))
     if report.get("pages"):
-        pg = str(report.get("pages"))
-        meta_parts.append(f"{esc(pg)} {'pàg' if is_ca else 'pág'}")
+        meta_parts.append(f"{esc(str(report.get('pages')))} {L['pag']}")
     meta_html = '<span class="msep">·</span>'.join(meta_parts)
 
-    fitxa = report.get("fitxa", "")
-    fitxa_section = ""
-    if fitxa:
-        fitxa_section = f"""
-    <section class="seccio">
-      <div class="kicker">{t['fitxa_kicker']}</div>
-      <div class="body-serif">{md_to_html(fitxa)}</div>
-    </section>"""
+    NUM = "{NUM}"
 
-    n_pages = report.get("pages", "")
-    frase = t["frase"].replace("{n}", str(n_pages) if n_pages else "—")
+    sections = []
+
+    # Bloc 1 (sempre): semafor
+    sections.append(f"""<section class="semafor">
+    <div class="semafor-grid">
+      <div>
+        <div class="kicker-dark">Bloc {NUM} · {L['semafor']}</div>
+        <div class="grade-row">
+          <span class="grade-letter" style="color:{grade_color};">{esc(grade)}</span>
+          <span class="grade-label">{esc(grade_label)}</span>
+        </div>
+      </div>
+      <div>{indicators_html}</div>
+    </div>
+  </section>""")
+
+    fitxa = report.get("fitxa", "")
+    if fitxa:
+        sections.append(f"""<section class="card">
+    <div class="kicker">Bloc {NUM} · {L['fitxa']}</div>
+    <div class="body-txt">{md_to_html(fitxa)}</div>
+  </section>""")
+
+    if dades_html:
+        sections.append(f"""<section class="card">
+    <div class="kicker">Bloc {NUM} · {L['dades']}</div>
+    <h2><span class="tick"></span>{L['dades_h2']}</h2>
+    <div class="dades-grid">{dades_html}</div>
+  </section>""")
+
+    if report.get("resumExecutiu", ""):
+        sections.append(f"""<section class="card">
+    <div class="kicker">Bloc {NUM} · {L['resum']}</div>
+    <h2><span class="tick"></span>{L['resum_h2']}</h2>
+    <p class="body-serif">{esc(report.get('resumExecutiu', ''))}</p>
+  </section>""")
+
+    if impl_html:
+        sections.append(f"""<section class="card">
+    <div class="kicker">Bloc {NUM} · {L['impl']}</div>
+    <h2><span class="tick"></span>{L['impl_h2']}</h2>
+    <div class="impl-grid">{impl_html}</div>
+  </section>""")
+
+    me = report.get("mesEnllaCheckbox", {})
+    if me.get("body") or me.get("criteri"):
+        crit = f'<p class="criteri">{esc(me.get("criteri", ""))}</p>' if me.get("criteri") else ""
+        sections.append(f"""<section class="card card-dark mes-enlla">
+    <div class="kicker">Bloc {NUM} · {L['mes_enlla']}</div>
+    {crit}
+    <div class="body">{md_to_html(me.get('body', ''))}</div>
+  </section>""")
+
+    if conn_html:
+        sections.append(f"""<section class="card">
+    <div class="kicker">Bloc {NUM} · {L['conn']}</div>
+    <h2><span class="tick"></span>{L['conn_h2']}</h2>
+    {conn_html}
+  </section>""")
+
+    if accions_html:
+        sections.append(f"""<section class="band">
+    <div class="kicker">Bloc {NUM} · {L['acc']}</div>
+    <h2><span class="tick"></span>{L['acc_h2']}</h2>
+    <div class="accions-grid">{accions_html}</div>
+  </section>""")
+
+    if xref_rows:
+        sections.append(f"""<section class="card">
+    <div class="kicker">Bloc {NUM} · {L['xref']}</div>
+    <h2><span class="tick"></span>{L['xref_h2']}</h2>
+    <table class="xref-table">
+      <thead>
+        <tr><th>{L['xref_th1']}</th><th>{L['xref_th2']}</th><th>{L['xref_th3']}</th></tr>
+      </thead>
+      <tbody>{xref_rows}</tbody>
+    </table>
+  </section>""")
+
+    # Numeracio sequencial dels blocs presents
+    n_blocs = len(sections)
+    sections_html = ""
+    for i, s in enumerate(sections, 1):
+        sections_html += s.replace("{NUM}", f"{i:02d}") + "\n"
+
+    frase = L["frase"].replace("{n}", str(n_blocs)).replace("{p}", str(report.get("pages") or "—"))
     url = report.get("url", "")
-    font_link = f'<span class="font-link">{t["font_orig"]}</span>' if url else ""
+    font_link = f'<span class="font-link">{L["font_orig"]}</span>' if url else ""
 
     html = f"""<!DOCTYPE html>
 <html lang="{lang}">
@@ -715,8 +808,8 @@ def generate_html(report: dict) -> str:
 <div class="page">
 
   <div class="breadcrumb">
-    <p class="crumb"><a>Biblioteca</a><span class="sep">/</span><a>Informes</a><span class="sep">/</span><span class="here">{esc(report.get('title', ''))}</span></p>
-    <span class="right">{t['minuts']}</span>
+    <p class="crumb">Biblioteca<span class="sep">/</span>Informes<span class="sep">/</span><span class="here">{esc(report.get('title', ''))}</span></p>
+    <span class="right">{L['minuts']}</span>
   </div>
 
   <header class="fitxa-header">
@@ -725,69 +818,16 @@ def generate_html(report: dict) -> str:
     <div class="meta-row">{meta_html}</div>
   </header>
 
-  <section class="semafor">
-    <div class="semafor-grid">
-      <div>
-        <div class="kicker-dark">{t['semafor_kicker']}</div>
-        <div class="grade-row">
-          <span class="grade-letter" style="color:{grade_color};">{esc(grade)}</span>
-          <span class="grade-label">{esc(grade_label)}</span>
-        </div>
-      </div>
-      <div>{indicators_html}</div>
-    </div>
-  </section>
-
-  {fitxa_section}
-
-  <section class="seccio">
-    <div class="kicker">{t['dades_kicker']}</div>
-    <h2>{t['dades_h2']}</h2>
-    <div class="dades-grid">{dades_html}</div>
-  </section>
-
-  <section class="seccio">
-    <div class="kicker">{t['resum_kicker']}</div>
-    <h2>{t['resum_h2']}</h2>
-    <p class="body-serif">{esc(report.get('resumExecutiu', ''))}</p>
-  </section>
-
-  <section class="seccio">
-    <div class="kicker">{t['impl_kicker']}</div>
-    <h2>{t['impl_h2']}</h2>
-    <div class="impl-grid">{impl_html}</div>
-    {mes_enlla_html}
-  </section>
-
-  <section class="seccio">
-    <div class="kicker">{t['conn_kicker']}</div>
-    <h2>{t['conn_h2']}</h2>
-    {conn_html}
-  </section>
-
-  <section class="band-accions">
-    <div class="kicker">{t['acc_kicker']}</div>
-    <h2>{t['acc_h2']}</h2>
-    <div class="accions-grid">{accions_html}</div>
-  </section>
-
-  <section class="seccio">
-    <div class="kicker">{t['xref_kicker']}</div>
-    <h2>{t['xref_h2']}</h2>
-    <table class="xref-table">
-      <thead>
-        <tr><th>{t['xref_th1']}</th><th>{t['xref_th2']}</th><th>{t['xref_th3']}</th></tr>
-      </thead>
-      <tbody>{xref_rows}</tbody>
-    </table>
-  </section>
+  <div class="sections">
+  {sections_html}
+  </div>
 
   <div class="footer-line">
     <span class="frase">{frase}</span>
     {font_link}
   </div>
 
-  <div class="disclaimer">{t['disclaimer']}</div>
+  <div class="disclaimer">{L['disclaimer']}</div>
 
 </div>
 </body>

@@ -66,6 +66,25 @@ def get_originals_folder_id() -> str:
     return _ensure_folder(service, ORIGINALS_SUBFOLDER, root)
 
 
+def upload_to_pendents(pdf_path: Path, title: str = "") -> dict:
+    """Puja un PDF dubtós a pendents-revisio (cua de revisió humana)."""
+    from googleapiclient.http import MediaFileUpload
+
+    service = _get_drive_service()
+    root = _ensure_folder(service, DRIVE_FOLDER_NAME)
+    folder_id = _ensure_folder(service, "pendents-revisio", root)
+
+    safe_title = "".join(c if c.isalnum() or c in "-_ " else "" for c in title).strip()[:60]
+    filename = pdf_path.name
+    if safe_title and safe_title not in filename:
+        filename = f"{safe_title}.pdf"
+
+    meta = {"name": filename, "parents": [folder_id]}
+    media = MediaFileUpload(str(pdf_path), mimetype="application/pdf", resumable=True)
+    result = service.files().create(body=meta, media_body=media, fields="id, name, webViewLink").execute()
+    return result
+
+
 def upload_to_originals(pdf_path: Path, title: str = "") -> dict:
     """Puja un PDF a 0-originals. Retorna metadata."""
     from googleapiclient.http import MediaFileUpload

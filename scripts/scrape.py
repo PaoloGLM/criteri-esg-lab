@@ -207,7 +207,7 @@ def download_pdf(url: str, dest_dir: Path) -> Path | None:
 
 
 def process_source(source: dict, manifest: dict, dest_dir: Path, dry_run: bool = False) -> dict:
-    stats = {"found": 0, "new": 0, "downloaded": 0, "errors": 0}
+    stats = {"found": 0, "new": 0, "downloaded": 0, "aprovats": 0, "dubtes": 0, "rebutjats": 0, "errors": 0}
     name = source["name"]
     url = source["url"]
     stype = source.get("type", "static")
@@ -237,17 +237,47 @@ def process_source(source: dict, manifest: dict, dest_dir: Path, dry_run: bool =
         if link["direct"]:
             pdf_path = download_pdf(link["url"], dest_dir)
             if pdf_path:
+                # CAPA 2: classificació (mín. 8 pàgines + Nemotron)
+                from classify import classify_pdf
+                cls = classify_pdf(pdf_path, url=link["url"], source_name=name)
+                log(f"    [cls] {cls['veredicte']} ({cls['pages']}p, tipus={cls.get('llm', {}).get('tipus', '?') if cls.get('llm') else 'filtre-pagines'}) {cls.get('rao', '')[:60]}")
+
+                if cls["veredicte"] == "REBUTJAT":
+                    stats["rebutjats"] += 1
+                    mark_known(link["url"], manifest)
+                    pdf_path.unlink()  # esborra el PDF rebutjat
+                    continue
+
                 sha = sha256_file(pdf_path)
                 mark_known(link["url"], manifest, sha)
                 stats["downloaded"] += 1
-                log(f"    ✓ Descarregat: {pdf_path.name}")
-                # Puja a Drive
-                try:
-                    from drive_helper import upload_to_originals
-                    upload_to_originals(pdf_path, link["title"])
-                    pdf_path.unlink()
-                except Exception as e:
-                    log(f"    [drive] ERROR pujant: {e}")
+
+                # Metadades per al manifest
+                entry = manifest[link["url"]]
+                entry["titol"] = cls.get("titol", "")
+                entry["autors"] = cls.get("autors", [])
+                entry["data_publicacio"] = cls.get("data_publicacio", "")
+                entry["pages"] = cls.get("pages", 0)
+                entry["veredicte"] = cls["veredicte"]
+
+                if cls["veredicte"] == "DUBTE":
+                    stats["dubtes"] += 1
+                    # Cua de revisió humana: no pujar a 0-originals, guardar a pendents-revisio
+                    try:
+                        from drive_helper import upload_to_pendents
+                        upload_to_pendents(pdf_path, cls.get("titol") or link["title"])
+                        log(f"    ⏳ A pendents-revisio (dubte)")
+                    except Exception as e:
+                        log(f"    [drive] pendents ERROR: {e}")
+                else:
+                    stats["aprovats"] += 1
+                    # Puja a Drive 0-originals
+                    try:
+                        from drive_helper import upload_to_originals
+                        upload_to_originals(pdf_path, cls.get("titol") or link["title"])
+                        pdf_path.unlink()
+                    except Exception as e:
+                        log(f"    [drive] ERROR pujant: {e}")
             else:
                 stats["errors"] += 1
                 mark_known(link["url"], manifest)  # Marcar com a vist per no repetir
@@ -283,7 +313,7 @@ def main():
     dest_dir = Path("./data/informes/0-originals")
     dest_dir.mkdir(parents=True, exist_ok=True)
 
-    total = {"found": 0, "new": 0, "downloaded": 0, "errors": 0}
+    total = {"found": 0, "new": 0, "downloaded": 0, "aprovats": 0, "dubtes": 0, "rebutjats": 0, "errors": 0}
     results = []
 
     for i, source in enumerate(sources, 1):
@@ -307,7 +337,10 @@ def main():
     log(f"Fonts processades: {len(sources)}")
     log(f"Enllaços trobats: {total['found']}")
     log(f"Nous detectats: {total['new']}")
-    log(f"Descarregats i pujats: {total['downloaded']}")
+    log(f"Descarregats: {total['downloaded']}")
+    log(f"  ✅ Aprovats (informes reals): {total['aprovats']}")
+    log(f"  ⏳ Dubtes (pendents revisió): {total['dubtes']}")
+    log(f"  ❌ Rebutjats (no són informes): {total['rebutjats']}")
     log(f"Errors: {total['errors']}")
 
     # Guardar resum per notificació

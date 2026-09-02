@@ -1,0 +1,293 @@
+# sources.yaml — Fonts clau per a la recerca automàtica d'informes ESG
+# MVP: 60 fonts prioritàries (de 192 de 16-BASE-DADES-FONTS.md)
+# Format: slug | nom | url | type (static|dynamic) | pub_page (pàgina de publicacions, si diferent d'url)
+
+# === REGULADORS EUROPEUS (12) ===
+- slug: ecb
+  name: BCE (European Central Bank)
+  url: https://www.ecb.europa.eu/press/pr/html/index.en.html
+  type: static
+- slug: eba
+  name: EBA (European Banking Authority)
+  url: https://www.eba.europa.eu/publications-and-media/press-releases
+  type: static
+- slug: eiopa
+  name: EIOPA
+  url: https://www.eiopa.europa.eu/publications_en
+  type: static
+- slug: esma
+  name: ESMA
+  url: https://www.esma.europa.eu/publications
+  type: static
+- slug: efrag
+  name: EFRAG
+  url: https://www.efrag.org/news
+  type: dynamic
+- slug: efrag-qa
+  name: EFRAG ESRS Q&A Platform
+  url: https://www.efrag.org/sustainability-reporting/esrs-q-a-platform
+  type: dynamic
+- slug: efrag-hub
+  name: EFRAG ESRS Knowledge Hub
+  url: https://www.efrag.org/sustainability-reporting/esrs-knowledge-hub
+  type: dynamic
+- slug: ec-fisma
+  name: Comissió Europea DG FISMA
+  url: https://finance.ec.europa.eu/news_en
+  type: static
+- slug: ec-clima
+  name: Comissió Europea DG CLIMA
+  url: https://climate.ec.europa.eu/news-your-agenda/news_en
+  type: static
+- slug: ec-env
+  name: Comissió Europea DG ENV
+  url: https://environment.ec.europa.eu/news_en
+  type: static
+- slug: eea
+  name: European Environment Agency
+  url: https://www.eea.europa.eu/en/newsroom
+  type: static
+- slug: eca
+  name: European Court of Auditors
+  url: https://www.eca.europa.eu/en/publications
+  type: static
+
+# === FRAMEWORKS I ESTÀNDARDS (8) ===
+- slug: issb
+  name: ISSB / IFRS Foundation
+  url: https://www.ifrs.org/news-and-events/updates/ifrs/
+  type: static
+- slug: gri
+  name: GRI (Global Reporting Initiative)
+  url: https://www.globalreporting.org/news/news-center/
+  type: static
+- slug: tnfd
+  name: TNFD
+  url: https://tnfd.global/news-and-insights/
+  type: dynamic
+- slug: ghg-protocol
+  name: GHG Protocol
+  url: https://ghgprotocol.org/about-us/news-and-events
+  type: static
+- slug: iso
+  name: ISO (International Organization for Standardization)
+  url: https://www.iso.org/news
+  type: static
+- slug: sasb
+  name: SASB (dins ISSB)
+  url: https://sasb.org/newsroom/
+  type: static
+- slug: tcfd
+  name: TCFD
+  url: https://www.fsb.org/work-of-the-fsb/financial-innovation-and-structural-change/climate-related-financial-disclosures/
+  type: static
+- slug: eur-lex
+  name: EUR-Lex (documentació legal UE)
+  url: https://eur-lex.europa.eu/
+  type: static
+
+# === RATINGS I CERTIFICACIONS (10) ===
+- slug: cdp
+  name: CDP
+  url: https://www.cdp.net/en/articles
+  type: static
+- slug: sbti
+  name: SBTi (Science Based Targets initiative)
+  url: https://sciencebasedtargets.org/news
+  type: static
+- slug: ecovadis
+  name: EcoVadis
+  url: https://ecovadis.com/press-releases/
+  type: static
+- slug: sustainalytics
+  name: Sustainalytics (Morningstar)
+  url: https://www.sustainalytics.com/esg-research
+  type: static
+- slug: msci
+  name: MSCI ESG Ratings
+  url: https://www.msci.com/our-solutions/esg-investing
+  type: dynamic
+- slug: b-lab
+  name: B Lab / B Corp
+  url: https://www.bcorporation.net/en-US/movement/press-room/
+  type: static
+- slug: climate-100
+  name: Climate Action 100+
+  url: https://www.climateaction100.org/news/
+  type: static
+- slug: iss-esg
+  name: ISS ESG
+  url: https://www.issgovernance.com/esg/
+  type: static
+- slug: ftse4good
+  name: FTSE4Good
+  url: https://www.ftserussell.com/products/indices/ftse4good
+  type: static
+- slug: morningstar
+  name: Morningstar Sustainability
+  url: https://www.morningstar.com/sustainability
+  type: dynamic
+
+# === FONTS GLOBALS (10) ===
+- slug: wef
+  name: World Economic Forum
+  url: https://www.weforum.org/press/
+  type: static
+- slug: unepfi
+  name: UNEP FI
+  url: https://www.unepfi.org/wordpress/news/
+  type: static
+- slug: unep
+  name: UNEP
+  url: https://www.unep.org/news-and-stories
+  type: static
+- slug: oecd
+  name: OCDE
+  url: https://www.oecd.org/newsroom/
+  type: static
+- slug: worldbank
+  name: World Bank
+  url: https://www.worldbank.org/en/news
+  type: static
+- slug: imf
+  name: IMF — Climate Change
+  url: https://www.imf.org/en/Topics/climate-change
+  type: static
+- slug: ieа
+  name: IEA (International Energy Agency)
+  url: https://www.iea.org/news
+  type: static
+- slug: irena
+  name: IRENA
+  url: https://www.irena.org/News
+  type: static
+- slug: bis
+  name: BIS (Bank for International Settlements)
+  url: https://www.bis.org/list/index.htm
+  type: static
+- slug: unctad
+  name: UNCTAD
+  url: https://unctad.org/news
+  type: static
+
+# === THINK TANKS I ONGS (8) ===
+- slug: carbon-tracker
+  name: Carbon Tracker Initiative
+  url: https://carbontracker.org/news/
+  type: static
+- slug: influencemap
+  name: InfluenceMap
+  url: https://influencemap.org/news
+  type: static
+- slug: oxfam
+  name: Oxfam International
+  url: https://www.oxfam.org/en/press-releases
+  type: static
+- slug: newclimate
+  name: NewClimate Institute
+  url: https://newclimate.org/resources/
+  type: static
+- slug: wwf
+  name: WWF
+  url: https://www.worldwildlife.org/press
+  type: static
+- slug: bruegel
+  name: Bruegel
+  url: https://www.bruegel.org/analysis
+  type: static
+- slug: transport-env
+  name: Transport & Environment
+  url: https://www.transportenvironment.org/articles
+  type: static
+- slug: agora
+  name: Agora Energiewende
+  url: https://www.agora-energiewende.de/en/publications/
+  type: static
+
+# === FONTS ESPANYOLES (8) ===
+- slug: cnmv
+  name: CNMV
+  url: https://www.cnmv.es/ES/Prensa
+  type: static
+- slug: miteco
+  name: MITECO
+  url: https://www.miteco.gob.es/es/prensa/
+  type: static
+- slug: bde
+  name: Banco de España
+  url: https://www.bde.es/wbe/es/publicaciones/
+  type: static
+- slug: foretica
+  name: Forética
+  url: https://foretica.org/noticias/
+  type: static
+- slug: ceoe
+  name: CEOE
+  url: https://www.ceoe.es/es/sala-de-prensa
+  type: static
+- slug: ces
+  name: CES (Consejo Económico y Social)
+  url: https://www.ces.es/web/guest/noticias
+  type: static
+- slug: pimec
+  name: Pimec
+  url: https://www.pimec.org/es/actualidad
+  type: static
+- slug: pacto-mundial
+  name: Pacto Mundial ONU España
+  url: https://www.pactomundial.org/noticias/
+  type: static
+
+# === FONTS CATALANES (6) ===
+- slug: gencat-accio-climatica
+  name: Departament d'Acció Climàtica (Generalitat)
+  url: https://mediambient.gencat.cat/ca/06_ambits_dactuacio/educacio_i_sostenibilitat/sala_de_premsa/
+  type: static
+- slug: cads
+  name: CADS (Consell Assessor Desenvolupament Sostenible)
+  url: https://cads.gencat.cat/ca/inici/
+  type: static
+- slug: occc
+  name: Oficina Catalana del Canvi Climàtic
+  url: https://canviclimatic.gencat.cat/ca/inici/
+  type: static
+- slug: idescat
+  name: Idescat
+  url: https://www.idescat.cat/serveis/noticies/
+  type: static
+- slug: accio
+  name: ACCIÓ
+  url: https://accio.gencat.cat/ca/actualitat/
+  type: static
+- slug: cambra-bcn
+  name: Cambra de Comerç de Barcelona
+  url: https://www.cambrabcn.org/ca/noticies
+  type: static
+
+# === CONSULTORIES (4) ===
+- slug: deloitte-csrd
+  name: Deloitte — CSRD insights
+  url: https://dart.deloitte.com/USDW/home/news
+  type: static
+- slug: kpmg
+  name: KPMG — Sustainability Reporting
+  url: https://kpmg.com/xx/en/what-we-do/industries/financial-services/sustainability-reporting.html
+  type: static
+- slug: ey
+  name: EY — Climate Action
+  url: https://www.ey.com/en_gl/newsroom
+  type: static
+- slug: pwc
+  name: PwC — Sustainability
+  url: https://www.pwc.com/gx/en/news-room.html
+  type: static
+
+# === INICIATIVES (2) ===
+- slug: net-zero-tracker
+  name: Net Zero Tracker
+  url: https://zerotracker.net/
+  type: dynamic
+- slug: wbcsd
+  name: WBCSD
+  url: https://www.wbcsd.org/news/
+  type: static

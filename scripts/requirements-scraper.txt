@@ -1,0 +1,12 @@
+# requirements.txt — MVP scraper informes ESG
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+PyYAML>=6.0
+# Playwright per webs JS dinàmiques (opcional per MVP)
+playwright>=1.40.0
+# Google Drive
+google-api-python-client>=2.100.0
+google-auth>=2.23.0
+google-auth-oauthlib>=1.0.0
+# PDF processing (validació bàsica)
+pdfplumber>=0.10.0

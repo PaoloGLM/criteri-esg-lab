@@ -16,3 +16,4 @@ __pycache__/
 paquet-*.zip
 informe-unepfi-*.html
 data/newsletter-*.pdf
+.gcp-service-account.json

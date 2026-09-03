@@ -1,0 +1,10 @@
+# CODEOWNERS - Protecció de codi crítica
+# Requereix aprová de l'owner per canvis a fitxers crítics
+
+* @PaoloGLM
+/assets/web/** @roserpasc
+/scripts/*.py @PaoloGLM
+/scripts/genera-pdf-informe.py @PaoloGLM
+/.github/workflows/** @PaoloGLM
+/.env* @PaoloGLM
+/.gitignore @PaoloGLM

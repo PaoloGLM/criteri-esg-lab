@@ -92,7 +92,7 @@ bash scripts/setup.sh
 | Google Cloud (Service Account) | `/home/z/my-project/.gcp-service-account.json` | Ja al workspace |
 | Google Cloud (OAuth usuari) | `/home/z/my-project/.gcp-oauth-tokens.json` | **CADUCAT** — cal reautenticar |
 | Google Cloud (OAuth client) | `/home/z/my-project/.gcp-oauth-client.json` | Ja al workspace |
-| Brevo | `BREVO_API_KEY` al `.env.local` | `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` |
+| Brevo | `BREVO_API_KEY` al `.env.local` | `«REDACTED:BREVO_API_KEY»` |
 | Supabase | `NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Al Vercel dashboard |
 | Supabase (service role) | `SUPABASE_SERVICE_ROLE_KEY` | Al Vercel dashboard |
 | GitHub (workflow) | Token `github_pat_11CGZPKUQ00YwXoRgEAKqD_...` | Al repo com a secret |
@@ -102,11 +102,11 @@ bash scripts/setup.sh
 
 | Secret | Valor |
 |--------|-------|
-| `GEMINI_API_KEY` | `AQ.Ab8RN6LqweS2U-2sD_1_TMkoNtq1fU2GtyzgCNUs09W6yLAMIg` |
+| `GEMINI_API_KEY` | `«REDACTED:GEMINI_API_KEY_OLD»` |
 | `GCP_SERVICE_ACCOUNT` | Contingut JSON del service account (base64 o directe) |
 | `GCP_OAUTH_TOKENS` | Contingut JSON dels OAuth tokens (base64) |
 | `GCP_OAUTH_CLIENT` | Contingut JSON del OAuth client (base64) |
-| `BREVO_API_KEY` | `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` |
+| `BREVO_API_KEY` | `«REDACTED:BREVO_API_KEY»` |
 | `NEXT_PUBLIC_SUPABASE_URL` | `https://zecoacfysdwtjiszruir.supabase.co` |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | (Al dashboard de Supabase → Settings → API) |
 

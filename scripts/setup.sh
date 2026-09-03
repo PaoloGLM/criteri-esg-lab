@@ -29,9 +29,9 @@ echo ""
 echo "=== 3. Recrear .env.local ==="
 # Les claus reals estan a Vercel. Aquestes són per a desenvolupament local.
 cat > assets/web/.env.local << 'ENV'
-GEMINI_API_KEY=AQ.Ab8RN6LqweS2U-2sD_1_TMkoNtq1fU2GtyzgCNUs09W6yLAMIg
+GEMINI_API_KEY=«REDACTED:GEMINI_API_KEY_OLD»
 GCP_SERVICE_ACCOUNT_PATH=/home/z/my-project/.gcp-service-account.json
-BREVO_API_KEY=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
+BREVO_API_KEY=«REDACTED:BREVO_API_KEY»
 BREVO_SENDER_EMAIL=info@criteriesg.com
 BREVO_SENDER_NAME=Criteri ESG
 ENV

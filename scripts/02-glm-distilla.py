@@ -1,10 +1,10 @@
 """
-Pas 2 del flux: DeepSeek v4 Pro destil·la.
+Pas 2 del flux: GLM 5.3 Flash destil·la.
 
 Per cada PDF a /data/informes/0-originals/:
 1. Llegeix el PDF localment
 2. Extreu el text amb pdfplumber
-3. Crida DeepSeek v4 Pro
+3. Crida GLM 5.3 Flash Free (OpenRouter)
 4. Guarda el ReportBlock JSON a /data/informes/1-distilats/
 
 Ús:
@@ -19,7 +19,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, "./scripts")
-from deepseek_client import call_deepseek
+from nemotron_client import call_nemotron
 import pdfplumber
 
 DATA_DIR = Path("./data/informes")
@@ -47,7 +47,7 @@ def extract_text_from_pdf(pdf_path: Path) -> str:
     """Extreu TOT el text d'un PDF amb pdfplumber (sense truncar).
 
     Abans limitava a 30.000 caràcters (límit històric dels models de context
-    curt). Els models actuals (DeepSeek v4 Pro, Gemini 3.6 Flash) tenen 1M de
+    curt). Els models actuals (GLM 5.3 Flash, Nemotron) tenen 1M de
     tokens de context, així que un PDF de 100 pàgines hi cap sencer.
     """
     text = ""
@@ -138,29 +138,33 @@ def process_one_pdf(pdf_path: Path) -> bool:
         return False
     print(f"  ✓ Text extret ({len(text)} chars)")
 
-    # 2. Cridar DeepSeek v4 Pro (català i castellà)
-
-    def _distill(lang):
-        lang_instr = "Escriu tot el contingut en català." if lang == "ca" else "Escribe todo el contenido en castellano."
-        sp = (
+    # 2. Cridar GLM 5.3 Flash (català i castellà)
+    print(f"  → Generant versió catalana amb GLM 5.3 Flash...")
+    report_ca = call_glm_flash_json(
+        system_prompt=(
             "Ets un analista ESG expert de Criteri ESG. Sintetitza informes institucionals ESG en 8 blocs accionables.\n\n"
             "Genera EXCLUSIVAMENT un objecte JSON vàlid amb aquesta estructura (sense markdown, sense text fora del JSON):\n"
-            '{"semafor":{"grade":"A"|"B"|"C"|"D","gradeLabel":"...","indicators":['
-            '{"name":"Cobertura Scope 3","status":"verd"|"groc"|"vermell","label":"...","note":"..."},...]},'
+            '{"semafor":{"grade":"A"|"B"|"C"|"D","gradeLabel":"...","indicators":[{"name":"Cobertura Scope 3","status":"verd"|"groc"|"vermell","label":"...","note":"..."},...]},'
             '"dadesClau":[{"value":"...","label":"...","page":"..."}],'
             '"resumExecutiu":"...","implicacions":{"empreses":"...","reguladors":"...","ciutadans":"..."},'
             '"mesEnllaCheckbox":{"criteri":"...","body":"..."},'
-            '"connexions":[{"type":"Evolució|Complement|Contradicció","target":"...","desc":"..."}],'
-            '"accions":[{"num":"01","title":"...","desc":"...","effort":"Baix|Mitjà|Alt","impact":"Baix|Mitjà|Alt"}],'
-            '"crossRefs":[{"framework":"...","criterion":"...","coverage":"compleix|parcial|no-cobert",'
-            '"evidence":{"page":42,"section":"3.2","table":"T-3"},"nature":"quantitatiu|qualitatiu|compromis",'
-            '"impact":"alt|mitja|baixa","action":"..."}]}\n\n'
-            "Criteris semàfor: verd=Quantificat, groc=Esmentat, vermell=Ignorat. "
+            '"connexions":[{"type":"Evolució"|"Complement"|"Contradicció","target":"...","desc":"..."}],'
+            '"accions":[{"num":"01","title":"...","desc":"...","effort":"Baix"|"Mitjà"|"Alt","impact":"Baix"|"Mitjà"|"Alt"}],'
+            '"crossRefs":[{"framework":"...","criterion":"...","coverage":"compleix"|"parcial"|"no-cobert",'
+            '"evidence":{"page":42,"section":"3.2","table":"T-3"},"nature":"quantitatiu"|"qualitatiu"|"compromis",'
+            '"impact":"alt"|"mitja"|"baixa","action":"..."}]}'
+            "\n\nCriteris semàfor: verd=Quantificat, groc=Esmentat, vermell=Ignorat. "
             "grade: A=5v, B=4v+1g, C≤1r, D=2+r.\n"
             "Llargàries: resumExecutiu ~300p, implicacions ~150p cadascun, mesEnllaCheckbox ~150p, "
             "dadesClau 5, accions 4-5, connexions 2-3, crossRefs 2-3.\n"
-            'Veu editorial mediterrània. "Més enllà del Checkbox" usa 1-2 criteris ètics '
-            '(dignitat, justícia, sostenibilitat, co-decisió, arrelament). '
+            'Veu editorial mediterrània. "Més enllà del Checkbox": actua com a analista d\'ètica. Analitza l\'informe seguint aquestes passes:\n\n'
+            "1. FETS: resumeix les decisions, accions i dades principals (sense valorar).\n"
+            "2. PARTS INTERESSADES: qui actua, qui és afectat, qui té responsabilitat.\n"
+            "3. ANÀLISI KANTIANA: per cada acció clau, la màxima és universalitzable? Es tracten les persones com a fi i no només com a mitjà? Hi ha conflicte entre deure i interès?\n"
+            "4. ANÀLISI DEL BÉ COMÚ: avalua segons dignitat, solidaritat, sostenibilitat, justícia social, democràcia i transparència.\n"
+            "5. IMPACTES MAJORITARIS: quins efectes distributius, ecològics i institucionals dominen? Qui guanya i qui perd?\n"
+            "6. TENSIONS: mesura els impactes de l\'informe amb d\'altres citats en el text o d\'altres dels últims 3 mesos publicats a Criteri ESG\n\n"
+            "Amb tot això, elabora una conclusió ètica que tingui en compte un o dos punts de l\'economia del bé comú de màxim 120 caràcters. "
             "MAI esmentar Economia del Bé Comú ni Economia Ciutadana públicament.\n\n"
             "ENTORN TANCAT (regles de verificació de fonts):\n"
             "1. Totes les dades, xifres i afirmacions han de provenir EXCLUSIVAMENT del text "
@@ -184,40 +188,63 @@ def process_one_pdf(pdf_path: Path) -> bool:
             "- nature: 'quantitatiu' (dada numèrica), 'qualitatiu' (narrativa/política), 'compromis' (objectiu declarat).\n"
             "- impact: rellevància per a la UI (alt|mitja|baixa); en cas de dubte, tria la més baixa.\n"
             "- action: acció concreta per a l'empresa que llegeix (ex. 'Auditar les emissions directes abans del Q4').\n"
-            f"{cataleg_as_prompt()}\n"
-        )
-        up = (
-            f"Analitza el següent informe i genera el ReportBlock JSON.\n\n"
-            f"TÍTOL: {meta['title']}\nINSTITUCIÓ: {meta['institution']}\n{lang_instr}\n\n"
-            f"=== TEXT ===\n{text}\n=== FI ===\n\nGenera el JSON ara."
-        )
-        raw = call_deepseek(sp, up, temperature=0.2, max_tokens=16000)
-        import re
-        m = re.search(r'```(?:json)?\s*([\s\S]*?)```', raw)
-        if m: raw = m.group(1).strip()
-        # Extreure el primer objecte JSON vàlid (tolerant a text abans/després)
-        def _first_json(text: str) -> dict:
-            decoder = json.JSONDecoder()
-            for m in re.finditer(r'\{', text):
-                try:
-                    obj, _ = decoder.raw_decode(text[m.start():])
-                    return obj
-                except json.JSONDecodeError:
-                    continue
-            raise json.JSONDecodeError("Cap objecte JSON trobat", text, 0)
-        try:
-            return _first_json(raw)
-        except json.JSONDecodeError:
-            # Reparació: comes finals abans de } o ]
-            fixed = re.sub(r",\s*([}\]])", r"\1", raw)
-            return _first_json(fixed)
+            f"{cataleg_as_prompt()}\n"),
+        user_prompt=f"Analitza el següent informe i genera el ReportBlock JSON.\n\n"
+            f"TÍTOL: {meta['title']}\nINSTITUCIÓ: {meta['institution']}\nEscriu tot el contingut en català.\n\n"
+            f"=== TEXT ===\n{text}\n=== FI ===\n\nGenera el JSON ara.",
+        temperature=0.2, max_tokens=16000
+    )
 
-    print(f"  → Generant versió catalana...")
-    report_ca = _distill("ca")
-    time.sleep(1)
-
-    print(f"  → Generant versió castellana...")
-    report_es = _distill("es")
+    # Castellà
+    print(f"  → Generant versió castellana amb GLM 5.3 Flash...")
+    report_es = call_glm_flash_json(
+        system_prompt=(
+            "Ets un analista ESG expert de Criteri ESG. Sintetitza informes institucionals ESG en 8 blocs accionables.\n\n"
+            "Genera EXCLUSIVAMENT un objecte JSON vàlid amb aquesta estructura (sense markdown, sense text fora del JSON):\n"
+            '{"semafor":{"grade":"A"|"B"|"C"|"D","gradeLabel":"...","indicators":[{"name":"Cobertura Scope 3","status":"verd"|"groc"|"rojo","label":"...","note":"..."},...]},'
+            '"dadesClau":[{"value":"...","label":"...","page":"..."}],'
+            '"resumExecutiu":"...","implicaciones":{"empresas":"...","reguladores":"...","ciudadanos":"..."},'
+            '"masAllaCheckbox":{"criterio":"...","body":"..."},'
+            '"conexiones":[{"type":"Evolución"|"Complemento"|"Contradicción","target":"...","desc":"..."}],'
+            '"acciones":[{"num":"01","title":"...","desc":"...","esfuerzo":"Bajo"|"Medio"|"Alto","impacto":"Bajo"|"Medio"|"Alto"}],'
+            '"crossRefs":[{"framework":"...","criterio":"...","coverage":"cumple"|"parcial"|"no-cubierto",'
+            '"evidence":{"page":42,"section":"3.2","table":"T-3"},"nature":"cuantitativo"|"cualitativo"|"compromiso",'
+            '"impact":"alto"|"medio"|"bajo","action":"..."}]}'
+            "\n\nCriterios semáforo: verde=Cuantificado, amarillo=Mencionado, rojo=Ignorado. "
+            "grade: A=5v, B=4v+1a, C≤1r, D=2+r.\n"
+            "Extensiones: resumenEjecutivo ~300p, implicaciones ~150p cada, masAllaCheckbox ~150p, "
+            "datosClave 5, acciones 4-5, conexiones 2-3, crossRefs 2-3.\n"
+            'Voz editorial mediterránea. "Más allá del Checkbox" usa 1-2 criterios éticos '
+            '(dignidad, justicia, sostenibilidad, co-decisión, arraigo). '
+            "NUNCA mencionar Economía del Bien Común ni Economía Ciudadana públicamente.\n\n"
+            "ENTORNO CERRADO (reglas de verificación de fuentes):\n"
+            "1. Todos los datos, cifras y afirmaciones deben provenir EXCLUSIVAMENTE del texto "
+            "entre === TEXT === y === FIN ===.\n"
+            "2. Cada dato del bloque datosClave debe incluir el campo 'page' con el número de página "
+            "donde aparece en el documento original (o 'p. X' si no hay paginación clara).\n"
+            "3. NUNCA uses conocimiento externo para rellenar huecos. NUNCA especules ni deduzcas "
+            "datos que no aparezcan en el texto.\n"
+            "4. Si un dato del documento es ambiguo, refléjalo como tal; no lo resuelvas "
+            "con suposiciones.\n"
+            "5. Si el documento NO contiene información para un bloque, déjalo con contenido mínimo "
+            "honesto en lugar de inventarlo.\n\n"
+            "CROSS-REFERENCES (Bloque crossRefs): elige SOLO de este catálogo oficial, "
+            "poniendo el nombre exacto en 'framework'. No inventes frameworks fuera de esta lista.\n"
+            "Reglas de los campos crossRefs:\n"
+            "- criterio: requisito CONCRETO del estándar (ej. 'GRI 305-1 Direct GHG emissions'), NO el tema genérico.\n"
+            "- coverage: hasta qué punto EL INFORME cubre el requisito — 'cumple' (lo trata con datos/contenido), "
+            "'parcial' (lo menciona sin profundidad), 'no-cubierto' (no lo trata).\n"
+            "- evidence: página y sección del informe original donde aparece. Si el requisito se trata, page es OBLIGATORIA "
+            "y debe ser real (número de página del documento); si no se puede localizar, pon page null — NUNCA inventes.\n"
+            "- nature: 'cuantitativo' (dato numérico), 'cualitativo' (narrativa/política), 'compromiso' (objetivo declarado).\n"
+            "- impact: relevancia para la UI (alto|medio|bajo); en caso de duda, elige la más baja.\n"
+            "- action: acción concreta para la empresa que lee (ej. 'Auditar las emisiones directas antes del Q4').\n"
+            f"{cataleg_as_prompt()}\n"),
+        user_prompt=f"Analiza el siguiente informe y genera el ReportBlock JSON.\n\n"
+            f"TÍTULO: {meta['title']}\nINSTITUCIÓN: {meta['institution']}\nEscribe todo el contenido en castellano.\n\n"
+            f"=== TEXT ===\n{text}\n=== FIN ===\n\nGenera el JSON ahora.",
+        temperature=0.2, max_tokens=16000
+    )
 
     # 3. Guardar JSON combinat
     output = {
@@ -237,7 +264,7 @@ def process_one_pdf(pdf_path: Path) -> bool:
 def main():
     target = sys.argv[1] if len(sys.argv) > 1 else None
 
-    print("=== Pas 2: DeepSeek v4 Pro destil·la (LOCAL) ===\n")
+    print("=== Pas 2: GLM 5.3 Flash destil·la (LOCAL) ===\n")
     print(f"PDFs originals: {ORIGINALS_DIR}")
     print(f"Destinació: {DISTILATS_DIR}\n")
 

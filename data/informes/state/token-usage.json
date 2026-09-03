@@ -1,0 +1,282 @@
+[
+  {
+    "ts": "2026-08-13T21:56:02",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 1557,
+    "completion_tokens": 7321
+  },
+  {
+    "ts": "2026-08-13T21:57:48",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 1556,
+    "completion_tokens": 8001
+  },
+  {
+    "ts": "2026-08-13T21:59:46",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 1557,
+    "completion_tokens": 6622
+  },
+  {
+    "ts": "2026-08-13T22:01:21",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 1556,
+    "completion_tokens": 7889
+  },
+  {
+    "ts": "2026-08-13T22:02:21",
+    "model": "gemini-3.6-flash",
+    "provider": "gemini-paid",
+    "prompt_tokens": 4049,
+    "completion_tokens": 1511
+  },
+  {
+    "ts": "2026-08-13T22:04:22",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 4436,
+    "completion_tokens": 8000
+  },
+  {
+    "ts": "2026-08-13T22:45:27",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 4436,
+    "completion_tokens": 8000
+  },
+  {
+    "ts": "2026-08-13T22:46:51",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 4435,
+    "completion_tokens": 7419
+  },
+  {
+    "ts": "2026-08-13T22:49:04",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 4436,
+    "completion_tokens": 8000
+  },
+  {
+    "ts": "2026-08-13T22:50:31",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 4435,
+    "completion_tokens": 6242
+  },
+  {
+    "ts": "2026-08-13T22:53:36",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 4436,
+    "completion_tokens": 10460
+  },
+  {
+    "ts": "2026-08-13T22:55:18",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 4435,
+    "completion_tokens": 8849
+  },
+  {
+    "ts": "2026-08-13T23:32:02",
+    "model": "gemini-3.6-flash",
+    "provider": "gemini-paid",
+    "prompt_tokens": 2960,
+    "completion_tokens": 2675
+  },
+  {
+    "ts": "2026-08-13T23:32:32",
+    "model": "gemini-3.6-flash",
+    "provider": "gemini-paid",
+    "prompt_tokens": 3061,
+    "completion_tokens": 2357
+  },
+  {
+    "ts": "2026-08-14T18:01:56",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 9170,
+    "completion_tokens": 11076
+  },
+  {
+    "ts": "2026-08-14T18:03:30",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 9169,
+    "completion_tokens": 9874
+  },
+  {
+    "ts": "2026-08-14T18:13:14",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 1903,
+    "completion_tokens": 1842
+  },
+  {
+    "ts": "2026-08-15T09:50:31",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 4250,
+    "completion_tokens": 239
+  },
+  {
+    "ts": "2026-08-15T09:50:35",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 4241,
+    "completion_tokens": 51
+  },
+  {
+    "ts": "2026-08-15T09:50:37",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 4255,
+    "completion_tokens": 60
+  },
+  {
+    "ts": "2026-08-15T09:51:08",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 8646,
+    "completion_tokens": 500
+  },
+  {
+    "ts": "2026-08-15T09:51:10",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 8637,
+    "completion_tokens": 68
+  },
+  {
+    "ts": "2026-08-15T09:51:13",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 8651,
+    "completion_tokens": 93
+  },
+  {
+    "ts": "2026-08-15T09:51:41",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 8646,
+    "completion_tokens": 143
+  },
+  {
+    "ts": "2026-08-15T09:52:05",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 8627,
+    "completion_tokens": 304
+  },
+  {
+    "ts": "2026-08-15T09:53:00",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 8623,
+    "completion_tokens": 3140
+  },
+  {
+    "ts": "2026-08-15T09:53:40",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 8631,
+    "completion_tokens": 2449
+  },
+  {
+    "ts": "2026-08-15T16:59:59",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 1942,
+    "completion_tokens": 8332
+  },
+  {
+    "ts": "2026-08-15T17:01:34",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 1941,
+    "completion_tokens": 7027
+  },
+  {
+    "ts": "2026-08-15T17:03:44",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 1942,
+    "completion_tokens": 7541
+  },
+  {
+    "ts": "2026-08-15T17:05:43",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 1942,
+    "completion_tokens": 6595
+  },
+  {
+    "ts": "2026-08-15T17:07:34",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 1941,
+    "completion_tokens": 9177
+  },
+  {
+    "ts": "2026-08-15T17:11:00",
+    "model": "gemini-3.6-flash",
+    "provider": "gemini-paid",
+    "prompt_tokens": 4267,
+    "completion_tokens": 1666
+  },
+  {
+    "ts": "2026-08-15T17:11:31",
+    "model": "gemini-3.6-flash",
+    "provider": "gemini-paid",
+    "prompt_tokens": 4267,
+    "completion_tokens": 1589
+  },
+  {
+    "ts": "2026-08-15T17:11:59",
+    "model": "gemini-3.6-flash",
+    "provider": "gemini-paid",
+    "prompt_tokens": 4267,
+    "completion_tokens": 1450
+  },
+  {
+    "ts": "2026-08-15T17:14:27",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 7448,
+    "completion_tokens": 10168
+  },
+  {
+    "ts": "2026-08-15T17:17:20",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 7447,
+    "completion_tokens": 7818
+  },
+  {
+    "ts": "2026-08-15T17:17:54",
+    "model": "gemini-3.6-flash",
+    "provider": "gemini-paid",
+    "prompt_tokens": 2886,
+    "completion_tokens": 2615
+  },
+  {
+    "ts": "2026-08-15T17:18:18",
+    "model": "gemini-3.6-flash",
+    "provider": "gemini-paid",
+    "prompt_tokens": 3186,
+    "completion_tokens": 2442
+  },
+  {
+    "ts": "2026-08-31T08:47:33",
+    "model": "deepseek-v4-pro",
+    "provider": "deepseek",
+    "prompt_tokens": 666,
+    "completion_tokens": 14502
+  }
+]

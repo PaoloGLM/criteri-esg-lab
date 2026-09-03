@@ -98,6 +98,12 @@ _(cap)_
 - ✅ Pàgina /mas-alla-del-checkbox (preguntes ètiques)
 - ✅ Supabase configurat (auth + BD)
 - ✅ Deploy a Vercel via git push
+- ✅ **Backup mensual a disc extern E: operatiu (primer execució 2026-09-03)** — credencials, Hermes profile, dades locals, docs projecte, plantilla PDF v8
+- ✅ **Decisió estratègica**: Informes només web de moment; PDF download gatejat per subscripció Ultra (futur) per reduir pressió i feina
+- ✅ **Seguretat**: Service Account GCP mogut fora del repo (`~/.gcp/sa.json` + symlink), `.gitignore` actualitzat
+- ✅ **CODEOWNERS** creat i pujat (requereix aprová Paolo per fitxers crítics, Roser per `/assets/web/**`)
+- ✅ **Repo PÚBLIC** + **Branch protection ACTIVA**: CI obligatori, 1 revisió + dismiss stale, enforce admins
+- ✅ **Capital intelectual protegit**: `standards/`, `sources.yaml` fora repo → `~/criteri-secrets/` + Drive privat
 
 ## PENDENTS (14-08-2026)
 

@@ -36,6 +36,12 @@ OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 OPENROUTER_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
 
+# === OpenRouter (GLM 5.2 Free) ===
+GLM_FREE_MODEL = "z-ai/glm-5.2:free"
+
+# === OpenRouter (Nemotron 3 Ultra Free) ===
+NEMOTRON_3_ULTRA_FREE = "nvidia/nemotron-3-ultra-550b-a55b:free"
+
 def get_openrouter_client():
     """Retorna client OpenAI/OpenRouter configurat."""
     if not OPENROUTER_API_KEY:

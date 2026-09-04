@@ -31,11 +31,55 @@ def call_nemotron(system_prompt: str, user_prompt: str, temperature: float = 0.3
         temperature=temperature,
         max_tokens=max_tokens,
     )
-    return response.choices[0].message.content
+    # Handle case where content is None (e.g., reasoning model with no final output)
+    content = response.choices[0].message.content
+    if content is None:
+        # Check if there's reasoning content
+        reasoning = getattr(response.choices[0].message, 'reasoning_content', None)
+        if reasoning:
+            return reasoning
+        return ""
+    return content
 
 
 def call_nemotron_json(system_prompt: str, user_prompt: str, temperature: float = 0.3, max_tokens: int = 4096) -> dict:
     text = call_nemotron(system_prompt, user_prompt, temperature, max_tokens)
+    
+    # Handle markdown with YAML frontmatter or JSON code blocks
+    text = text.strip()
+    
+    # If it starts with markdown code block
+    if text.startswith("```"):
+        import re
+        m = re.search(r"```(?:json|yaml|yml)?\s*([\s\S]*?)\s*```", text)
+        if m:
+            text = m.group(1).strip()
+    
+    # If it starts with YAML frontmatter (---)
+    if text.startswith("---"):
+        import re
+        # Extract content after frontmatter
+        m = re.search(r"^---\s*\n[\s\S]*?\n---\s*\n(.*)$", text, re.MULTILINE)
+        if m:
+            text = m.group(1).strip()
+        else:
+            # Try to find JSON object after frontmatter
+            first_brace = text.find('{')
+            if first_brace != -1:
+                text = text[first_brace:]
+    
+    # If still wrapped in markdown code block without language spec
+    if text.strip().startswith("```"):
+        import re
+        m = re.search(r"```\s*([\s\S]*?)\s*```", text)
+        if m:
+            text = m.group(1).strip()
+    
+    # Try to find JSON object
+    first_brace = text.find('{')
+    last_brace = text.rfind('}')
+    if first_brace != -1 and last_brace != -1 and last_brace > first_brace:
+        text = text[first_brace:last_brace+1]
     
     # Intent 1: parsejar directament
     try:

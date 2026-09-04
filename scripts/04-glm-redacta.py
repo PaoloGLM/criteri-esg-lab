@@ -1,10 +1,10 @@
 """
-Pas 4 del flux: DeepSeek v4 Pro redacta.
+Pas 4 del flux: GLM 5.3 Flash redacta.
 
 Per cada informe:
 1. Llegeix el destil·lat (pas 2)
 2. Llegeix les aportacions de Gemini (pas 3)
-3. Crida DeepSeek v4 Pro amb rol de redactor
+3. Crida GLM 5.3 Flash Free amb rol de redactor
 4. Genera l'informe final en Markdown (CA + ES)
 5. Guarda a /data/informes/3-fets/<slug>.md
 
@@ -18,7 +18,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, "./scripts")
-from deepseek_client import call_deepseek
+from glm_flash_client import call_glm_flash
 
 DATA_DIR = Path("./data/informes")
 DISTILATS_DIR = DATA_DIR / "1-distilats"
@@ -26,8 +26,9 @@ APORTACIONS_DIR = DATA_DIR / "2-aportacions-gemini"
 FETS_DIR = DATA_DIR / "3-fets"
 FETS_DIR.mkdir(parents=True, exist_ok=True)
 
-def call_deepseek_redactor(title: str, institution: str, destilat: str, aportacions: str, lang: str = "ca") -> str:
-    """Crida DeepSeek v4 Pro per redactar l'informe final. Retorna Markdown."""
+
+def call_glm_flash_redactor(title: str, institution: str, destilat: str, aportacions: str, lang: str = "ca") -> str:
+    """Crida GLM 5.3 Flash per redactar l'informe final. Retorna Markdown."""
     lang_instr = "Escriu l'informe en català." if lang == "ca" else "Escribe el informe en castellano."
     system_prompt = (
         "Ets el redactor principal de Criteri ESG. La teva feina és redactar l'informe final.\n"
@@ -61,7 +62,25 @@ def call_deepseek_redactor(title: str, institution: str, destilat: str, aportaci
         f"=== APORTACIONS DE GEMINI ===\n{aportacions}\n=== FI ===\n\n"
         f"Redacta el Markdown ara (amb el front-matter YAML al principi)."
     )
-    return call_deepseek(system_prompt, user_prompt, temperature=0.4, max_tokens=16000)
+
+    from config import get_openrouter_client, GLM_53_FLASH_MODEL
+    from openai import OpenAI
+    
+    client = OpenAI(
+        base_url="https://openrouter.ai/api/v1",
+        api_key=os.getenv("OPENROUTER_API_KEY", "")
+    )
+
+    response = client.chat.completions.create(
+        model="z-ai/glm-5.3-flash:free",
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt}
+        ],
+        temperature=0.4,
+        max_tokens=16000,
+    )
+    return response.choices[0].message.content
 
 
 def process_one(slug: str) -> bool:
@@ -98,7 +117,7 @@ def process_one(slug: str) -> bool:
 
     # Redactar CA
     print(f"  → Redactant versió catalana...")
-    md_ca = call_deepseek_redactor(
+    md_ca = call_glm_flash_redactor(
         distilat_data["title"],
         distilat_data["institution"],
         destilat_str,
@@ -112,7 +131,7 @@ def process_one(slug: str) -> bool:
 
     # Redactar ES
     print(f"  → Redactant versió castellana...")
-    md_es = call_deepseek_redactor(
+    md_es = call_glm_flash_redactor(
         distilat_data["title"],
         distilat_data["institution"],
         destilat_str,
@@ -128,7 +147,7 @@ def process_one(slug: str) -> bool:
 def main():
     target = sys.argv[1] if len(sys.argv) > 1 else None
 
-    print("=== Pas 4: DeepSeek v4 Pro redacta (integra aportacions de Gemini) ===\n")
+    print("=== Pas 4: GLM 5.3 Flash redacta (integra aportacions de Gemini) ===\n")
     print(f"Destil·lats: {DISTILATS_DIR}")
     print(f"Aportacions: {APORTACIONS_DIR}")
     print(f"Destinació: {FETS_DIR}\n")

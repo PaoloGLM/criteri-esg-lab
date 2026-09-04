@@ -1,4 +1,42 @@
 ---
+Task ID: security-2026-09-03
+Agent: hermes
+Task: Endureixement seguretat - repo públic, branch protection, capital intelectual protegit
+
+Work Log:
+- gh CLI autenticat com a PaoloGLM
+- Repo fet PÚBLIC (gh repo edit --visibility public)
+- Branch protection ACTIVADA a main: required_status_checks (ci, strict), enforce_admins=true, required_pull_request_reviews (1 approving, dismiss_stale_reviews)
+- CODEOWNERS ja existia (Paolo per *, Roser per /assets/web/**)
+- Capital intelectual mogut fora repo: standards/ (13 fitxes), sources.yaml (52 fonts) → ~/criteri-secrets/ + Drive privat
+- .gitignore actualitzat amb patterns: standards/, sources.yaml, scripts/*prompt*, scripts/*secret*
+- Commit + push: 33cd9dc
+
+Stage Summary:
+- Repo públic amb protecció completa (zero cost, GitHub Free)
+- Secrets i capital intelectual fora repo (Drive privat)
+- Roser pot fer PR a /assets/web/** (CODEOWNERS), tu approves
+- CI context "ci" requerit — cal crear workflow .github/workflows/ci.yml
+
+---
+
+Task ID: backup-2026-09-03
+Agent: hermes
+Task: Primer backup mensual a disc extern E: - credencials, Hermes profile, dades locals, docs projecte, plantilla PDF v8
+
+Work Log:
+- Creat script /c/Users/dvd_f/scripts/backup-criteri.sh
+- Executat primer backup a /mnt/e/backup-criteri-esg/2026-09-03/
+- Verificat contingut: credentials (sa.json), hermes-profile, local-data (0-originals, certifications, scraper_urls), project-docs (AGENTS.md, CONTEXT.md, TASQUES.md, worklog.md, FLUX-INFORMES.md), pdf-template (genera-pdf-informe.py, mostra-plantilla-v8-esrs.pdf)
+- Symlink LATEST creat
+
+Stage Summary:
+- Backup mensual operatiu. Ritual: connectar disc, executar script, verificar, desconnectar.
+- Test de recuperació trimestral pendent.
+- **Nota estratègica**: Informes només a la web de moment. PDF download gatejat per subscripció Ultra (futur) per reduir pressió i feina.
+
+---
+
 Task ID: ppt-repair-1
 Agent: ppt-expert
 Task: Render slides 0-4 of Repair deck (Cura business plan)

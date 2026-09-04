@@ -187,16 +187,24 @@ export default function AdminPage() {
     }
   };
 
+  /** Login admin: OAuth Google (mateix flux que la resta de la web).
+   * Els comptes registrats amb Google no tenen contrasenya local, així que
+   * signInWithPassword mai funcionaria per a ells. */
   const login = async () => {
-    const email = prompt("Email del compte admin:");
-    if (!email) return;
-    const password = prompt("Contrasenya:");
-    if (!password) return;
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: typeof window !== "undefined" ? `${window.location.origin}/admin` : undefined,
+      },
+    });
     if (error) {
-      setBanner({ type: "error", msg: "Credencials incorrectes: " + error.message, errorId: "LOGIN-FAIL" });
+      setBanner({
+        type: "error",
+        msg: "No s'ha pogut iniciar el login amb Google: " + error.message,
+        errorId: "LOGIN-FAIL",
+      });
     }
-    // El useEffect d'adalt repetirà la verificació quan canviï user
+    // El useEffect d'adalt repetirà la verificació quan l'OAuth torni i canviï user
   };
 
   // ── Estats d'espera ────────────────────────────────────────────────
@@ -209,7 +217,7 @@ export default function AdminPage() {
       <Shell>
         <h1 style={{ ...h1 }}>Administració</h1>
         <p style={{ color: COLORS.muted }}>Cal iniciar sessió amb un compte d'administrador.</p>
-        <button onClick={login} style={btnPrimary}>Inicia sessió</button>
+        <button onClick={login} style={btnPrimary}>Entra amb Google</button>
       </Shell>
     );
   }

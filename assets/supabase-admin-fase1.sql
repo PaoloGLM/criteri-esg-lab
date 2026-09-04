@@ -1,7 +1,7 @@
 -- ============================================================
--- CRITERI ESG — Fase 1: Panell d'administració
--- Executar a: Supabase Dashboard → SQL Editor → New Query → Run
--- Execució segura: tots els passos són idempotents (IF NOT EXISTS)
+-- CRITERI ESG — Fase 1: Panell d'administració (v2 — idempotent de veritat)
+-- Es pot executar tantes vegades com calgui sense errors.
+-- (CREATE POLICY no admet IF NOT EXISTS a Postgres → drop + create)
 -- ============================================================
 
 -- 1. Columna is_admin a profiles
@@ -17,8 +17,10 @@ create table if not exists public.error_log (
   created_at timestamptz default now()
 );
 
--- 3. Policy: només admins veuen els errors
 alter table public.error_log enable row level security;
+
+-- 3. Policy: només admins veuen els errors
+drop policy if exists "Admins can view error_log" on public.error_log;
 create policy "Admins can view error_log" on public.error_log
   for select using (
     exists (select 1 from public.profiles where id = auth.uid() and is_admin = true)
@@ -45,12 +47,11 @@ create policy "Admins full access informes" on public.informes
   for all using (public.is_admin() = true) with check (public.is_admin() = true);
 
 -- 6. Policies d'administració sobre profiles i subscriptions
--- (un admin veu tots els perfils per gestionar usuaris)
 drop policy if exists "Admins view all profiles" on public.profiles;
 create policy "Admins view all profiles" on public.profiles
   for select using (public.is_admin() = true);
 
-drop policy if exists "Admins update plans" on public.subscriptions;
+drop policy if exists "Admins update subscriptions" on public.subscriptions;
 create policy "Admins update subscriptions" on public.subscriptions
   for update using (public.is_admin() = true) with check (public.is_admin() = true);
 
@@ -58,13 +59,11 @@ drop policy if exists "Admins view all subscriptions" on public.subscriptions;
 create policy "Admins view all subscriptions" on public.subscriptions
   for select using (public.is_admin() = true);
 
--- 7/8. (Vistes eliminades: Supabase executa les vistes amb permisos del
--- propietari i bypassejarien RLS → qualsevol autenticat podria llegir
--- tots els usuaris. El panell consulta profiles/subscriptions directament
--- amb les policies d'admin del pas 6, que SÍ apliquen RLS correctament.)
+-- (Les vistes admin_users_view / admin_errors_view s'han eliminat:
+--  Supabase executa les vistes amb permisos del propietari i bypassejarien
+--  RLS. El panell consulta les taules directes amb aquestes policies.)
 
 -- ============================================================
--- 9. TEU ADMIN: troba el teu user_id i marca'l com a admin.
--- Canvia l'email si cal i executa:
+-- 9. TEU ADMIN: treu els dos guionets de la línia següent i executa-ho tot:
 -- ============================================================
 -- update public.profiles set is_admin = true where email = 'davidbm.eno@gmail.com';

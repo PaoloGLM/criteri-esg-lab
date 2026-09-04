@@ -58,31 +58,10 @@ drop policy if exists "Admins view all subscriptions" on public.subscriptions;
 create policy "Admins view all subscriptions" on public.subscriptions
   for select using (public.is_admin() = true);
 
--- 7. Vista d'usuaris per al panell (perfil + pla actual)
-create or replace view public.admin_users_view as
-select
-  p.id,
-  p.email,
-  p.full_name,
-  p.company,
-  p.created_at,
-  s.plan,
-  s.status,
-  s.updated_at as plan_updated_at
-from public.profiles p
-left join public.subscriptions s on s.user_id = p.id
-where p.deleted_at is null;
-
-grant select on public.admin_users_view to authenticated;
-
--- 8. Vista d'errors no resolts per al panell
-create or replace view public.admin_errors_view as
-select id, error_id, severity, context, resolved, created_at
-from public.error_log
-where resolved = false
-order by created_at desc;
-
-grant select on public.admin_errors_view to authenticated;
+-- 7/8. (Vistes eliminades: Supabase executa les vistes amb permisos del
+-- propietari i bypassejarien RLS → qualsevol autenticat podria llegir
+-- tots els usuaris. El panell consulta profiles/subscriptions directament
+-- amb les policies d'admin del pas 6, que SÍ apliquen RLS correctament.)
 
 -- ============================================================
 -- 9. TEU ADMIN: troba el teu user_id i marca'l com a admin.

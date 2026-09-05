@@ -67,8 +67,7 @@ export default function AdminPage() {
   useEffect(() => {
     if (loading) return;
     if (!user) {
-      setAllowed(false);
-      setIsAdmin(false);
+      // Derivat en render (sense setState síncron a l'efecte)
       return;
     }
     // Prova d'accés real contra l'API (el servidor valida el rol)
@@ -88,6 +87,14 @@ export default function AdminPage() {
   }, [user, loading]);
 
   // ── Càrrega de dades ───────────────────────────────────────────────
+  // showErr definit abans dels loaders (eslint no-use-before-define)
+  const showErr = (e: unknown) => {
+    const err = e as AdminError;
+    setBanner({ type: "error", msg: err.error, errorId: err.errorId });
+  };
+
+  const ok = (msg: string) => setBanner({ type: "ok", msg });
+
   const loadAll = async () => {
     setBusy(true);
     try {
@@ -129,18 +136,11 @@ export default function AdminPage() {
 
   useEffect(() => {
     if (!allowed) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- loader intencionat: busy=true síncron
     loadAll();
     if (tab === "informes" && reports === null) loadReports();
     if (tab === "usuaris" && users === null) loadUsers();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allowed, tab]);
-
-  const showErr = (e: unknown) => {
-    const err = e as AdminError;
-    setBanner({ type: "error", msg: err.error, errorId: err.errorId });
-  };
-
-  const ok = (msg: string) => setBanner({ type: "ok", msg });
 
   // ── Accions ────────────────────────────────────────────────────────
   const changeStatus = async (slug: string, status: AdminInforme["status"]) => {

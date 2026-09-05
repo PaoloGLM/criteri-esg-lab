@@ -189,8 +189,21 @@ export default function AdminPage() {
 
   /** Login admin: OAuth Google (mateix flux que la resta de la web).
    * Els comptes registrats amb Google no tenen contrasenya local, així que
-   * signInWithPassword mai funcionaria per a ells. */
+   * signInWithPassword mai funcionaria per a ells.
+   *
+   * Si el Site URL / Redirect URLs de Supabase no inclou /admin, Supabase
+   * ignora el redirectTo i envia l'usuari al Site URL (home). Per no dependre
+   * de la config del dashboard, guardem la intenció a sessionStorage i
+   * l'AuthProvider hi farà un router.push("/admin") quan detecti la sessió. */
   const login = async () => {
+    // Recorda la intenció d'entrar al backoffice (el flux OAuth surt del domini
+    // i en tornar Supabase podria portar-nos a la home si /admin no és a les
+    // Redirect URLs permeses del dashboard).
+    try {
+      sessionStorage.setItem("criteri-admin-login", "1");
+    } catch {
+      /* sessionStorage pot fallar en mode privat — no és crític */
+    }
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {

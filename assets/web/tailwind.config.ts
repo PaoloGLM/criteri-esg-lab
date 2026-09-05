@@ -9,8 +9,13 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-  	extend: {
-  		colors: {
+    extend: {
+      fontFamily: {
+        serif: ["var(--font-serif)"],
+        mono: ["var(--font-mono)"],
+        sans: ["var(--font-sans)"],
+      },
+      colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

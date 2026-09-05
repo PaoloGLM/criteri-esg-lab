@@ -1,0 +1,79 @@
+"""
+Client DeepSeek V4 Pro via OpenRouter (using existing DeepSeek config).
+"""
+import sys
+import json
+import re
+import os
+from pathlib import Path
+
+sys.path.insert(0, "./scripts")
+from config import get_deepseek_client, DEEPSEEK_MODEL, DEEPSEEK_BASE_URL
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
+
+
+def call_deepseek_or(system_prompt: str, user_prompt: str, temperature: float = 0.3, max_tokens: int = 16000) -> str:
+    """Crida DeepSeek V4 Pro via OpenRouter."""
+    from openai import OpenAI
+    client = OpenAI(base_url=DEEPSEEK_BASE_URL, api_key=DEEPSEEK_API_KEY)
+
+    response = client.chat.completions.create(
+        model=DEEPSEEK_MODEL,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt}
+        ],
+        temperature=temperature,
+        max_tokens=max_tokens,
+    )
+    return response.choices[0].message.content
+
+
+def call_deepseek_or_json(system_prompt: str, user_prompt: str, temperature: float = 0.3, max_tokens: int = 16000) -> dict:
+    """Crida DeepSeek via OpenRouter i parseja JSON."""
+    import os
+    DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
+    
+    from openai import OpenAI
+    client = OpenAI(base_url=DEEPSEEK_BASE_URL, api_key=DEEPSEEK_API_KEY)
+
+    response = client.chat.completions.create(
+        model=DEEPSEEK_MODEL,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt}
+        ],
+        temperature=temperature,
+        max_tokens=max_tokens,
+    )
+    text = response.choices[0].message.content
+
+    # Intent 1: parsejar directament
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+
+    # Intent 2: extreure el primer {...} de la resposta
+    m = re.search(r"\{[\s\S]*\}", text)
+    if m:
+        try:
+            return json.loads(m.group(0))
+        except json.JSONDecodeError:
+            pass
+
+    # Intent 3: reparar problemes comuns
+    try:
+        fixed = re.sub(r",\s*([}\]])", r"\1", text)
+        return json.loads(fixed)
+    except json.JSONDecodeError as e:
+        raise Exception(f"JSON parse failed: {e}. Resposta (300 chars): {text[:300]}")
+
+
+if __name__ == "__main__":
+    print("=== Test DeepSeek via OpenRouter ===")
+    result = call_deepseek_or_json(
+        "Ets un assistent. Torna un JSON.",
+        'Digues Hola en catala. Torna {"ok": true, "missatge": "la teva resposta"}',
+    )
+    print(json.dumps(result, ensure_ascii=False, indent=2))

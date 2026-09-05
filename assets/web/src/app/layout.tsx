@@ -5,6 +5,7 @@ import "./v1.css";
 import { Toaster } from "@/components/ui/toaster";
 import { LanguageProvider } from "@/components/language-provider";
 import { AuthProvider } from "@/lib/auth-context";
+import { readTheme, themeToCss } from "@/lib/theme-server";
 
 const newsreader = Newsreader({
   variable: "--font-newsreader",
@@ -92,6 +93,10 @@ export const metadata: Metadata = {
     },
   },
 };
+
+// El tema es pot canviar des de /admin: refresc del layout cada 60s (ISR)
+export const revalidate = 60;
+
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -238,12 +243,21 @@ const faqJsonLd = [
   },
 ];
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  // Tema editable des de /admin → Disseny: s'injecta com a CSS variables
+  // al <head> (revalidate 60s). Fallback segur als valors aprovats.
+  let themeCss = "";
+  try {
+    themeCss = themeToCss(await readTheme());
+  } catch {
+    /* sense tema: globals.css ja té els valors per defecte */
+  }
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
+        {themeCss ? <style dangerouslySetInnerHTML={{ __html: themeCss }} /> : null}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

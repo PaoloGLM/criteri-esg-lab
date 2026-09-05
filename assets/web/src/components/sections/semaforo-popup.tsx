@@ -226,7 +226,7 @@ export function SemaforoPopup({ open, onClose }: SemaforoPopupProps) {
 
           {/* 4 Grades (dark band) */}
           <div
-            className="mb-6 grid grid-cols-4 gap-3 p-5"
+            className="mb-6 grid grid-cols-2 gap-3 p-5 sm:grid-cols-4"
             style={{ background: "#26312B", color: "#F2F5F1" }}
           >
             {grades.map((g) => (

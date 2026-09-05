@@ -426,6 +426,7 @@ export default function InformeSlugPage() {
             <section id="bloc-7" className="scroll-mt-20 py-8">
               <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Bloc 07 · Cross-reference ⭐" : "Bloque 07 · Cross-reference ⭐"}</p>
               <h2 className="mb-4 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Com t'afecta segons les teves certificacions" : "C\u00f3mo te afecta seg\u00fan tus certificaciones"}</h2>
+              <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
               <table className="w-full border-collapse">
                 <thead>
                   <tr>
@@ -444,6 +445,7 @@ export default function InformeSlugPage() {
                   ))}
                 </tbody>
               </table>
+              </div>
             </section>
 
             {/* Footer */}

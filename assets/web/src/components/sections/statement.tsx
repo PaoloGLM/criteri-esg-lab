@@ -14,7 +14,7 @@ export function Statement() {
 
   return (
     <section
-      className="relative flex min-h-[92vh] flex-col items-center justify-center px-7 pb-28 text-center"
+      className="relative flex min-h-[100svh] flex-col items-center justify-center px-5 pb-24 text-center sm:px-7 sm:pb-28"
       style={{ background: "var(--ink-deep)", color: "var(--bg)" }}
     >
       <p

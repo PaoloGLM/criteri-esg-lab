@@ -356,6 +356,7 @@ export default function EstandarDetailPage() {
             ) : (
               /* Taula simple (altres 15 estàndards — sense camps enriquits) */
               <div className="overflow-hidden rounded-lg border bg-white shadow-sm" style={{ borderColor: "rgba(38,49,43,0.12)" }}>
+                <div className="overflow-x-auto">
                 <table className="w-full border-collapse">
                   <thead>
                     <tr>
@@ -421,6 +422,7 @@ export default function EstandarDetailPage() {
                     })}
                   </tbody>
                 </table>
+                </div>
               </div>
             )}
 

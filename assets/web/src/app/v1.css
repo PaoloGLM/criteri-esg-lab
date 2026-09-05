@@ -91,7 +91,7 @@
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
 /* ── Principi / blockquote ── */
-.principle{background:var(--ink-deep);color:var(--bg);text-align:center;padding:110px 0}
+.principle{background:var(--ink-deep);color:var(--bg);text-align:center;padding:clamp(64px,9vw,110px) 0}
 .principle blockquote{
   font-family:var(--font-newsreader), 'Newsreader', Georgia, serif;font-style:italic;font-weight:500;
   font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.2;color:var(--verd-clar);text-wrap:balance;

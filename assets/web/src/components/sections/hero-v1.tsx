@@ -56,7 +56,7 @@ export function HeroV1() {
       <div className="mx-auto grid max-w-[1160px] items-end gap-14 px-7 lg:grid-cols-[1.05fr_.95fr]">
         <div>
           <p className="eyebrow">{ca ? "Intel·ligència regulatòria ESG" : "Inteligencia regulatoria ESG"}</p>
-          <h1 className="mb-[26px] font-serif font-medium leading-[1.08] tracking-[-.012em] text-[var(--ink-deep)] text-[clamp(2.5rem,4.6vw,3.9rem)] [text-wrap:balance]">
+          <h1 className="mb-[26px] font-serif font-medium leading-[1.08] tracking-[-.012em] text-[var(--ink-deep)] text-[clamp(2.75rem,5vw,4.2rem)] [text-wrap:balance]">
             {ca ? (
               <>El context ESG sencer,
               <br />

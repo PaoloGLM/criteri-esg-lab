@@ -26,7 +26,7 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 import { useAuth } from "@/lib/auth-context";
 import { useLanguage } from "@/components/language-provider";
-import { Loader2, Mail, Lock, ArrowRight, CheckCircle2, AlertCircle } from "lucide-react";
+import { Loader2, Mail, ArrowRight, CheckCircle2, AlertCircle } from "lucide-react";
 
 interface AuthDialogProps {
   open: boolean;
@@ -110,12 +110,6 @@ function AuthDialogInner({
   const [magicEmail, setMagicEmail] = useState("");
   const [magicLoading, setMagicLoading] = useState(false);
   const [magicSent, setMagicSent] = useState(false);
-
-  // --- Estat login (contrasenya) ---
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-  const [loginLoading, setLoginLoading] = useState(false);
-  const [resetLoading, setResetLoading] = useState(false);
 
   const supabaseConfigured = isSupabaseConfigured();
 
@@ -299,81 +293,6 @@ function AuthDialogInner({
     toast({
       title: t("auth.toast.magic.sent"),
       description: t("auth.toast.magic.sent.body"),
-    });
-  };
-
-  const handlePasswordLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!loginEmail.trim() || !loginPassword) return;
-
-    if (!supabaseConfigured) {
-      toast({
-        title: t("auth.supabase.notconfigured"),
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setLoginLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({
-      email: loginEmail.trim(),
-      password: loginPassword,
-    });
-    setLoginLoading(false);
-
-    if (error) {
-      toast({
-        title: t("auth.toast.error.login"),
-        description: error.message,
-        variant: "destructive",
-      });
-      return;
-    }
-
-    toast({
-      title: t("auth.toast.session"),
-      description: t("auth.toast.session.body"),
-    });
-    onOpenChange(false);
-  };
-
-  const handleResetPassword = async () => {
-    const email = loginEmail.trim() || magicEmail.trim();
-    if (!email) {
-      toast({
-        title: t("auth.email"),
-        description: t("auth.forgot"),
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (!supabaseConfigured) {
-      toast({ title: t("auth.reset.sent") });
-      return;
-    }
-
-    setResetLoading(true);
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo:
-        typeof window !== "undefined"
-          ? `${window.location.origin}/cuenta`
-          : undefined,
-    });
-    setResetLoading(false);
-
-    if (error) {
-      toast({
-        title: t("auth.toast.error.magic"),
-        description: error.message,
-        variant: "destructive",
-      });
-      return;
-    }
-
-    toast({
-      title: t("auth.toast.reset.sent"),
-      description: t("auth.toast.reset.sent.body"),
     });
   };
 
@@ -734,6 +653,7 @@ function AuthDialogInner({
                   variant="outline"
                   className="w-full"
                   onClick={handleGoogle}
+                  disabled={magicLoading}
                 >
                   <GoogleIcon className="h-4 w-4" />
                   {t("auth.google")}
@@ -743,6 +663,7 @@ function AuthDialogInner({
                   variant="outline"
                   className="w-full"
                   onClick={handleLinkedIn}
+                  disabled={magicLoading}
                 >
                   <LinkedInIcon className="h-4 w-4" />
                   {t("auth.linkedin")}
@@ -804,74 +725,6 @@ function AuthDialogInner({
             </Button>
           </form>
         )}
-
-        {/* Divider + Contrasenya */}
-        <div className="relative py-1">
-          <Separator />
-          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-background px-2 text-xs text-muted-foreground">
-            {t("auth.divider.password")}
-          </span>
-        </div>
-
-        <form onSubmit={handlePasswordLogin} className="space-y-3">
-          <div className="space-y-1.5">
-            <Label htmlFor="login-email">{t("auth.email")}</Label>
-            <div className="relative">
-              <Mail className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                id="login-email"
-                type="email"
-                required
-                value={loginEmail}
-                onChange={(e) => setLoginEmail(e.target.value)}
-                placeholder="nom@empresa.com"
-                className="bg-background pl-8"
-              />
-            </div>
-          </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="login-password">{t("auth.password")}</Label>
-            <div className="relative">
-              <Lock className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                id="login-password"
-                type="password"
-                required
-                value={loginPassword}
-                onChange={(e) => setLoginPassword(e.target.value)}
-                placeholder="••••••••"
-                className="bg-background pl-8"
-              />
-            </div>
-          </div>
-
-          <div className="flex justify-end">
-            <button
-              type="button"
-              onClick={handleResetPassword}
-              disabled={resetLoading}
-              className="text-xs text-accent underline-offset-2 hover:underline disabled:opacity-50"
-            >
-              {resetLoading ? t("auth.loading.magic") : t("auth.forgot")}
-            </button>
-          </div>
-
-          <Button
-            type="submit"
-            size="lg"
-            className="w-full"
-            disabled={loginLoading || !loginEmail.trim() || !loginPassword}
-          >
-            {loginLoading ? (
-              <>
-                <Loader2 className="h-4 w-4 animate-spin" />
-                {t("auth.loading.login")}
-              </>
-            ) : (
-              t("auth.submit.login")
-            )}
-          </Button>
-        </form>
 
         {/* Enllaç creuat: cap camí sense sortida */}
         <p className="text-center text-sm text-muted-foreground">

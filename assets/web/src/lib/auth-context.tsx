@@ -92,6 +92,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } = supabase.auth.onAuthStateChange((_event, newSession) => {
       setSession(newSession);
       setLoading(false);
+
+      // Retorn a /admin després d'un OAuth iniciat al backoffice.
+      // Supabase només honra redirectTo si l'URL és a les "Redirect URLs"
+      // permeses del dashboard; si no, envia l'usuari al Site URL (home).
+      // Això no depèn de la config del dashboard: l'intenció es va guardar
+      // a sessionStorage abans de sortir cap a Google (vegeu admin/page.tsx).
+      if (newSession && typeof window !== "undefined") {
+        try {
+          if (window.sessionStorage.getItem("criteri-admin-login") === "1") {
+            window.sessionStorage.removeItem("criteri-admin-login");
+            // Deixa que React acabi el render abans de navegar
+            setTimeout(() => {
+              if (!window.location.pathname.startsWith("/admin")) {
+                window.location.replace("/admin");
+              }
+            }, 0);
+          }
+        } catch {
+          /* sessionStorage no disponible — ignora */
+        }
+      }
     });
 
     return () => {

@@ -171,4 +171,13 @@ export const adminApi = {
         body: JSON.stringify(body),
       }),
   },
+
+  theme: {
+    get: () => authedFetch<{ colors: Record<string, string>; fonts: Record<string, string> }>("/api/admin/theme"),
+    put: (body: { colors: Record<string, string>; fonts: Record<string, string> }) =>
+      authedFetch<{ colors: Record<string, string>; fonts: Record<string, string> }>("/api/admin/theme", {
+        method: "PUT",
+        body: JSON.stringify(body),
+      }),
+  },
 };

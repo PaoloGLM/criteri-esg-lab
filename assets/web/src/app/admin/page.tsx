@@ -6,6 +6,8 @@ import { useAuth } from "@/lib/auth-context";
 import { adminApi, AdminInforme, AdminUser, AdminAlarm, AdminError } from "@/lib/admin-api";
 import { supabase } from "@/lib/supabase";
 import { InformeEditor } from "@/components/admin/informe-editor";
+import { TemaPanel } from "@/components/admin/tema-panel";
+import { useLanguage } from "@/components/language-provider";
 
 /**
  * Panell d'administració de Criteri ESG.
@@ -19,7 +21,7 @@ import { InformeEditor } from "@/components/admin/informe-editor";
  *  - Usuaris: llista amb pla, canviar pla manualment
  */
 
-type Tab = "estat" | "informes" | "usuaris";
+type Tab = "estat" | "informes" | "usuaris" | "disseny";
 
 const COLORS = {
   bg: "#f4f3ef", // fons salvia clar
@@ -43,6 +45,7 @@ const SEVERITY_STYLE: Record<string, { color: string; label: string }> = {
 
 export default function AdminPage() {
   const { user, loading, session } = useAuth();
+  const { lang } = useLanguage();
   const router = useRouter();
 
   const [tab, setTab] = useState<Tab>("estat");
@@ -288,7 +291,7 @@ export default function AdminPage() {
 
       {/* Pestanyes */}
       <div style={tabs}>
-        {(["estat", "informes", "usuaris"] as Tab[]).map((t) => (
+        {(["estat", "informes", "usuaris", "disseny"] as Tab[]).map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
@@ -475,6 +478,8 @@ export default function AdminPage() {
           )}
         </section>
       )}
+      {/* ── Pestanya DISSENY ── */}
+      {tab === "disseny" && <TemaPanel lang={lang} />}
       {/* ── Editor d'informes (diàleg modal) ── */}
       {(editing !== null || creating) && (
         <InformeEditor

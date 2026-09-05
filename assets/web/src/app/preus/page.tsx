@@ -5,6 +5,7 @@ import { Header } from "@/components/site-header-v1";
 import { FooterV1 } from "@/components/site-footer-v1";
 import { AuthDialog } from "@/components/auth-dialog";
 import { useLanguage } from "@/components/language-provider";
+import { useAuth } from "@/lib/auth-context";
 
 
 
@@ -24,12 +25,20 @@ function FeatLi({ ok, children }: { ok: boolean; children: React.ReactNode }) {
 
 export default function PreusPage() {
   const { lang } = useLanguage();
+  const { user, plan } = useAuth();
   const [authOpen, setAuthOpen] = useState(false);
   const [authTab, setAuthTab] = useState<"register" | "login">("register");
   const [billing, setBilling] = useState<"anual" | "mensual">("anual");
 
   const openAuth = (tab: "register" | "login" = "register") => { setAuthTab(tab); setAuthOpen(true); };
   const tr = (ca: string, es: string) => (lang === "ca" ? ca : es);
+
+  /** CTA Premium amb comprovació de pla: premium → res; anònim → registre; free → pagament. */
+  const goToPremium = () => {
+    if (plan === "premium") return;
+    if (!user) { openAuth("register"); return; }
+    window.location.href = "/pagament?plan=premium&period=annual";
+  };
 
   const anual = billing === "anual";
   const premium = anual
@@ -170,10 +179,10 @@ export default function PreusPage() {
                   <FeatLi ok={true}>{tr("Preguntes per millorar (reflexió ètica mensual)", "Preguntas para mejorar (reflexión ética mensual)")}</FeatLi>
                 </ul>
                 <button
-                  onClick={() => { window.location.href = "/pagament?plan=premium&period=annual"; }}
+                  onClick={goToPremium}
                   className="btn-v1 btn-v1-solid w-full text-center"
                 >
-                  {premium.cta}
+                  {plan === "premium" ? tr("Ja ets Premium ✓", "Ya eres Premium ✓") : premium.cta}
                 </button>
               </article>
 

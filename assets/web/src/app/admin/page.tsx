@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { adminApi, AdminInforme, AdminUser, AdminAlarm, AdminError } from "@/lib/admin-api";
 import { supabase } from "@/lib/supabase";
+import { InformeEditor } from "@/components/admin/informe-editor";
 
 /**
  * Panell d'administració de Criteri ESG.
@@ -57,6 +58,10 @@ export default function AdminPage() {
 
   const [banner, setBanner] = useState<{ type: "ok" | "error"; msg: string; errorId?: string } | null>(null);
   const [busy, setBusy] = useState(false);
+
+  // ── Editor d'informes (fase 2) ──
+  const [editing, setEditing] = useState<AdminInforme | null>(null);
+  const [creating, setCreating] = useState(false);
 
   // ── Verificació d'accés ────────────────────────────────────────────
   useEffect(() => {
@@ -367,14 +372,23 @@ export default function AdminPage() {
         <section>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <h2 style={h2}>Informes ({reports?.length ?? "…"})</h2>
-            <button onClick={loadReports} style={btnGhostSmall} disabled={busy}>↻ Recarrega</button>
+            <div style={{ display: "flex", gap: 8 }}>
+              <button
+                onClick={() => { setEditing(null); setCreating(true); }}
+                style={btnPrimarySmall}
+                disabled={busy}
+              >
+                + Crea informe
+              </button>
+              <button onClick={loadReports} style={btnGhostSmall} disabled={busy}>↻ Recarrega</button>
+            </div>
           </div>
           {reports === null ? (
             <p style={{ color: COLORS.muted }}>Carregant…</p>
           ) : reports.length === 0 ? (
             <div style={note}>
-              La base de dades encara no té informes. Els 11 informes actuals venen del
-              codi (fallback). El seed es farà al pas següent.
+              Els informes d&apos;aquí són la font real de la web pública (llegida
+              directament de la base de dades). Publica'ls perquè apareguin a la biblioteca.
             </div>
           ) : (
             <div style={cardList}>
@@ -393,6 +407,13 @@ export default function AdminPage() {
                       </div>
                     </div>
                     <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
+                      <button
+                        onClick={() => { setEditing(r); setCreating(false); }}
+                        style={btnGhostSmall}
+                        disabled={busy}
+                      >
+                        Edita
+                      </button>
                       {r.status !== "published" && (
                         <button onClick={() => changeStatus(r.slug, "published")} style={btnPrimarySmall} disabled={busy}>
                           Publica
@@ -453,6 +474,22 @@ export default function AdminPage() {
             </div>
           )}
         </section>
+      )}
+      {/* ── Editor d'informes (diàleg modal) ── */}
+      {(editing !== null || creating) && (
+        <InformeEditor
+          informe={editing}
+          creating={creating}
+          busy={busy}
+          onClose={(saved) => {
+            setEditing(null);
+            setCreating(false);
+            if (saved) {
+              ok("Informe desat a la base de dades");
+              loadReports();
+            }
+          }}
+        />
       )}
     </Shell>
   );

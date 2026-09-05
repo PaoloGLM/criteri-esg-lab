@@ -10,7 +10,6 @@ import { SemaforoPopup } from "@/components/sections/semaforo-popup";
 import { useLanguage } from "@/components/language-provider";
 import { useAuth } from "@/lib/auth-context";
 import {
-  reports,
   isFreeAccess,
   formatDate,
   getTypeLabel,
@@ -20,7 +19,7 @@ import {
   type Report,
   type ReportBlock,
 } from "@/lib/reports";
-import { getReportContent } from "@/lib/reports-content";
+import { useReports, useReportContent } from "@/lib/reports-source";
 import {
   FileText,
   TrendingUp,
@@ -64,6 +63,9 @@ export default function InformeSlugPage() {
   const [preusOpen, setPreusOpen] = useState(false);
   const [popupOpen, setPopupOpen] = useState(false);
 
+  // ── Font de dades (BD amb fallback estàtic) ──
+  const { reports } = useReports();
+  const content = useReportContent(slug, lang);
   const report = reports.find((r) => r.slug === slug);
 
   // Els diàlegs sempre es renderitzen (estables entre renders)
@@ -109,7 +111,6 @@ export default function InformeSlugPage() {
     );
   }
 
-  const content = getReportContent(slug, lang);
   const isProbeReport = slug === "revisio-esrs-maig-2026";
   const isFree = isFreeAccess(report.date);
   const showFreeBadge = isProbeReport || isFree;

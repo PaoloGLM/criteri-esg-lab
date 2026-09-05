@@ -9,19 +9,20 @@ import { PreusDialog } from "@/components/preus-dialog";
 import { SemaforoPopup } from "@/components/sections/semaforo-popup";
 import { useLanguage } from "@/components/language-provider";
 import {
-  reports,
   getTypeLabel,
   formatDate,
   isFreeAccess,
   getGradeColor,
 } from "@/lib/reports";
-import { getReportContent } from "@/lib/reports-content";
+import { useReports, useSemaforMap } from "@/lib/reports-source";
 
 
 
 export default function InformesPage() {
   const router = useRouter();
   const { lang } = useLanguage();
+  const { reports } = useReports();
+  const semaforMap = useSemaforMap(lang);
   const [authOpen, setAuthOpen] = useState(false);
   const [authTab, setAuthTab] = useState<"register" | "login">("register");
   const [preusOpen, setPreusOpen] = useState(false);
@@ -43,15 +44,13 @@ export default function InformesPage() {
   const filteredReports = useMemo(() => {
     if (certFilter === "all") return reports;
     return reports.filter((r) => r.certifications.some((c) => c.includes(certFilter)));
-  }, [certFilter]);
+  }, [certFilter, reports]);
 
   const visibleReports = filteredReports.slice(0, visibleCount);
   const featuredReport = filteredReports[0];
 
-  const getSemaforo = (slug: string) => {
-    const content = getReportContent(slug, lang);
-    return content?.semafor;
-  };
+  // Semàfors: mapa slug → semàfor (estàtic instantani → BD quan arriba)
+  const getSemaforo = (slug: string) => semaforMap[slug];
 
   const typeColors: Record<string, { bg: string; text: string }> = {
     regulatory: { bg: "rgba(92,58,30,0.12)", text: "#141B18" },

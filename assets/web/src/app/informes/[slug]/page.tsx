@@ -115,9 +115,8 @@ export default function InformeSlugPage() {
   const upgradeVariant: "A" | "C" = isLoggedUser ? "C" : "A";
 
   const handleRegister = () => {
-    // Simulació: en clicar per registrar-se, ja es considera registrat
-    setIsRegistered(true);
-    openAuth("register");
+    // Flux nou: la pàgina /registro (assistent 3 passos) amb retorn a l'informe
+    window.location.href = `/registro?next=${encodeURIComponent(window.location.pathname)}`;
   };
 
   const articleJsonLd = report
@@ -205,14 +204,14 @@ export default function InformeSlugPage() {
               <p className="font-mono text-[9px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#3F6653" }}>{lang === "ca" ? "Índex de l'informe" : "Índice del informe"}</p>
               <nav className="flex flex-col">
                 {[
-                  { num: "00", name: lang === "ca" ? "Semàfor metodològic" : "Semáforo metodológico" },
-                  { num: "01", name: lang === "ca" ? "Fitxa tècnica" : "Ficha técnica" },
+                  { num: "01", name: lang === "ca" ? "Semàfor metodològic" : "Semáforo metodológico" },
                   { num: "02", name: lang === "ca" ? "5 dades clau" : "5 datos clave" },
                   { num: "03", name: lang === "ca" ? "Resum executiu" : "Resumen ejecutivo" },
                   { num: "04", name: lang === "ca" ? "Implicacions" : "Implicaciones" },
-                  { num: "05", name: lang === "ca" ? "Connexions" : "Conexiones" },
-                  { num: "06", name: lang === "ca" ? "Accions recomanades" : "Acciones recomendadas" },
-                  { num: "07", name: "Cross-reference" },
+                  { num: "05", name: lang === "ca" ? "Més enllà del Checkbox" : "Más allá del Checkbox" },
+                  { num: "06", name: lang === "ca" ? "Connexions" : "Conexiones" },
+                  { num: "07", name: lang === "ca" ? "Accions recomanades" : "Acciones recomendadas" },
+                  { num: "08", name: "Cross-reference" },
                 ].map((item) => (
                   <a key={item.num} href={`#bloc-${item.num}`} className="grid grid-cols-[24px_1fr] gap-2.5 items-baseline py-2 border-b" style={{ borderBottomColor: "rgba(201,184,154,0.5)", textDecoration: "none" }}>
                     <span className="font-mono text-[10px] font-medium" style={{ color: "#4A5F53" }}>{item.num}</span>
@@ -245,7 +244,7 @@ export default function InformeSlugPage() {
           {/* MAIN CONTENT */}
           <div className="p-8 lg:p-12" style={{ background: "#F2F5F1" }}>
             {/* Header de l'informe (fitxa tècnica) */}
-            <header className="border-b border-primary pb-6 mb-10" id="bloc-1">
+            <header className="border-b border-primary pb-6 mb-10" id="fitxa">
               <div className="flex flex-wrap gap-2 mb-4">
                 <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "rgba(92,58,30,0.12)", color: "#141B18" }}>{getTypeLabel(report.type)}</span>
                 {showFreeBadge ? (
@@ -294,11 +293,11 @@ export default function InformeSlugPage() {
           </div>
         ) : (
           <div className="space-y-0">
-            {/* Bloc 0 — Semáforo (dark, full-width) amb explicacions + link popup */}
-            <section id="bloc-0" className="scroll-mt-20" style={{ background: "#26312B", color: "#F2F5F1", margin: "0 -32px", padding: "48px 32px" }}>
+            {/* Semàfor — Bloc 1 (dark, full-width) amb explicacions + link popup */}
+            <section id="bloc-1" className="scroll-mt-20" style={{ background: "#26312B", color: "#F2F5F1", margin: "0 -32px", padding: "48px 32px" }}>
               <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:items-center">
                 <div className="flex flex-col gap-4">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>{lang === "ca" ? "Bloc 0 · Semàfor metodològic" : "Bloque 0 · Semáforo metodológico"}</p>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>{lang === "ca" ? "Bloc 1 · Semàfor metodològic" : "Bloque 1 · Semáforo metodológico"}</p>
                   <div className="flex items-baseline gap-4">
                     <span className="font-serif text-[100px] font-normal leading-none" style={{ color: getGradeColor(content.semafor.grade), letterSpacing: "-0.04em" }}>{content.semafor.grade}</span>
                     <span className="font-serif text-2xl italic" style={{ color: "#F2F5F1" }}>{content.semafor.gradeLabel}</span>
@@ -367,16 +366,18 @@ export default function InformeSlugPage() {
                   <p className="text-[13px] leading-relaxed text-primary">{content.implicacions.ciutadans}</p>
                 </div>
               </div>
-              <div className="mt-6 p-6" style={{ background: "#26312B", color: "#F2F5F1", borderLeft: "4px solid #5E8772" }}>
-                <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>{lang === "ca" ? "Més enllà del Checkbox" : "Más allá del Checkbox"}</p>
-                <p className="font-serif text-lg italic" style={{ color: "#F2F5F1" }}>{content.mesEnllaCheckbox.criteri}</p>
-                <p className="mt-3 text-sm leading-relaxed" style={{ color: "rgba(245,239,230,0.75)" }}>{content.mesEnllaCheckbox.body}</p>
-              </div>
             </section>
 
-            {/* Bloc 5 — Connexions */}
-            <section id="bloc-5" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#D8E2DA" }}>
-              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Bloc 05 · Connexions" : "Bloque 05 · Conexiones"}</p>
+            {/* Bloc 5 — Més enllà del Checkbox (dark, secció pròpia) */}
+            <section id="bloc-5" className="scroll-mt-20" style={{ background: "#26312B", color: "#F2F5F1", margin: "0 -32px", padding: "48px 32px", borderTop: "1px solid #5E8772" }}>
+              <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>{lang === "ca" ? "Bloc 05 · Més enllà del Checkbox" : "Bloque 05 · Más allá del Checkbox"}</p>
+              <p className="font-serif text-xl italic leading-relaxed" style={{ color: "#F2F5F1" }}>{content.mesEnllaCheckbox.criteri}</p>
+              <p className="mt-3 text-[15px] leading-relaxed" style={{ color: "rgba(245,239,230,0.75)" }}>{content.mesEnllaCheckbox.body}</p>
+            </section>
+
+            {/* Bloc 6 — Connexions */}
+            <section id="bloc-6" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#D8E2DA" }}>
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Bloc 06 · Connexions" : "Bloque 06 · Conexiones"}</p>
               <h2 className="mb-4 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Relacions amb altres informes" : "Relaciones con otros informes"}</h2>
               <div className="space-y-3">
                 {content.connexions.map((c, i) => (
@@ -391,9 +392,9 @@ export default function InformeSlugPage() {
               </div>
             </section>
 
-            {/* Bloc 6 — Accions recomanades (destacat) */}
-            <section id="bloc-6" className="scroll-mt-20" style={{ background: "rgba(184,115,51,0.06)", margin: "0 -32px", padding: "48px 32px", borderTop: "1px solid #5E8772", borderBottom: "1px solid #5E8772" }}>
-              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Bloc 06 · Accions recomanades ⭐" : "Bloque 06 · Acciones recomendadas ⭐"}</p>
+            {/* Bloc 7 — Accions recomanades (destacat) */}
+            <section id="bloc-7" className="scroll-mt-20" style={{ background: "rgba(184,115,51,0.06)", margin: "0 -32px", padding: "48px 32px", borderTop: "1px solid #5E8772", borderBottom: "1px solid #5E8772" }}>
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Bloc 07 · Accions recomanades ⭐" : "Bloque 07 · Acciones recomendadas ⭐"}</p>
               <h2 className="mb-6 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "3 accions operatives per aquesta setmana" : "3 acciones operativas para esta semana"}</h2>
               <div className="grid gap-8 sm:grid-cols-3">
                 {content.accions.map((a) => (
@@ -405,9 +406,9 @@ export default function InformeSlugPage() {
               </div>
             </section>
 
-            {/* Bloc 7 — Cross-reference */}
-            <section id="bloc-7" className="scroll-mt-20 py-8">
-              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Bloc 07 · Cross-reference ⭐" : "Bloque 07 · Cross-reference ⭐"}</p>
+            {/* Bloc 8 — Cross-reference */}
+            <section id="bloc-8" className="scroll-mt-20 py-8">
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Bloc 08 · Cross-reference ⭐" : "Bloque 08 · Cross-reference ⭐"}</p>
               <h2 className="mb-4 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Com t'afecta segons les teves certificacions" : "C\u00f3mo te afecta seg\u00fan tus certificaciones"}</h2>
               <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
               <table className="w-full border-collapse">
@@ -433,7 +434,11 @@ export default function InformeSlugPage() {
 
             {/* Footer */}
             <div className="mt-8 pt-6 border-t flex justify-between items-baseline" style={{ borderTopColor: "#26312B" }}>
-              <p className="font-serif text-sm italic" style={{ color: "#141B18" }}>5 minutos de lectura. 8 bloques que cambian tu criterio sobre un informe de {report.pages} p\u00e1ginas.</p>
+              <p className="font-serif text-sm italic" style={{ color: "#141B18" }}>
+                {lang === "ca"
+                  ? `5 minuts de lectura. 8 blocs que canvien el teu criteri sobre un informe de ${report.pages} pàgines.`
+                  : `5 minutos de lectura. 8 bloques que cambian tu criterio sobre un informe de ${report.pages} páginas.`}
+              </p>
               <button onClick={() => window.open(report.url, "_blank")} className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold" style={{ color: "#3F6653", borderBottom: "1px solid #5E8772", paddingBottom: "4px" }}>{lang === "ca" ? "Veure font original \u2192" : "Ver fuente original \u2192"}</button>
             </div>
           </div>
@@ -567,10 +572,10 @@ function UpgradePreview({
   return (
     <>
       {/* Bloc 0 — Semàfor metodològic (dark, disseny aprovat, visible complet) */}
-      <section id="bloc-0" className="scroll-mt-20" style={{ background: "#26312B", color: "#F2F5F1", margin: "0 -32px", padding: "48px 32px" }}>
+      <section id="bloc-1" className="scroll-mt-20" style={{ background: "#26312B", color: "#F2F5F1", margin: "0 -32px", padding: "48px 32px" }}>
         <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:items-center">
           <div className="flex flex-col gap-4">
-            <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>{lang === "ca" ? "Bloc 0 · Semàfor metodològic" : "Bloque 0 · Semáforo metodológico"}</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>{lang === "ca" ? "Bloc 1 · Semàfor metodològic" : "Bloque 1 · Semáforo metodológico"}</p>
             <div className="flex items-baseline gap-4">
               <span className="font-serif text-[100px] font-normal leading-none" style={{ color: getGradeColor(content.semafor.grade), letterSpacing: "-0.04em" }}>{content.semafor.grade}</span>
               <span className="font-serif text-2xl italic" style={{ color: "#F2F5F1" }}>{content.semafor.gradeLabel}</span>
@@ -597,10 +602,10 @@ function UpgradePreview({
         </div>
       </section>
 
-      {/* Bloc 1 — Fitxa tècnica (línia aprovada: etiquetes mono, sense targeta) */}
-      <section id="bloc-1" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#D8E2DA" }}>
-        <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Bloc 01 · Fitxa tècnica" : "Bloque 01 · Ficha técnica"}</p>
-        <div className="flex flex-wrap gap-8 font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "#4A5F53" }}>
+      {/* Fitxa tècnica (sense número, línia aprovada) */}
+      <section id="fitxa" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#D8E2DA" }}>
+        <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Fitxa tècnica" : "Ficha técnica"}</p>
+        <div className="flex flex-wrap gap-8 font-mono text-[12px] uppercase tracking-[0.14em]" style={{ color: "#4A5F53" }}>
           <span><strong className="text-primary">{report.institution}</strong></span>
           <span>{formatDate(report.date, lang)}</span>
           <span>{report.pages} {lang === "ca" ? "pàg" : "pág"}</span>

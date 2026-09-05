@@ -736,7 +736,7 @@ export default function RegistroPage() {
                     <li>· L'enllaç caduca en 24 hores; en pots demanar un de nou des de l'accés.</li>
                     {demo && <li className="rg-mono text-xs">MODE DEMO: Supabase no està configurat en aquest entorn.</li>}
                   </ul>
-                  <a href="/" className="rg-btn mt-6 inline-flex">Tornar a l'inici</a>
+                  <a href={new URLSearchParams(window.location.search).get("next") || "/"} className="rg-btn mt-6 inline-flex">Continuar</a>
                 </section>
               )}
             </div>

@@ -297,7 +297,7 @@ export default function InformeSlugPage() {
             <section id="bloc-1" className="scroll-mt-20" style={{ background: "#26312B", color: "#F2F5F1", margin: "0 -32px", padding: "48px 32px" }}>
               <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:items-center">
                 <div className="flex flex-col gap-4">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>{lang === "ca" ? "Bloc 1 · Semàfor metodològic" : "Bloque 1 · Semáforo metodológico"}</p>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>{lang === "ca" ? "Bloc 01 · Semàfor metodològic" : "Bloque 01 · Semáforo metodológico"}</p>
                   <div className="flex items-baseline gap-4">
                     <span className="font-serif text-[100px] font-normal leading-none" style={{ color: getGradeColor(content.semafor.grade), letterSpacing: "-0.04em" }}>{content.semafor.grade}</span>
                     <span className="font-serif text-2xl italic" style={{ color: "#F2F5F1" }}>{content.semafor.gradeLabel}</span>
@@ -320,7 +320,7 @@ export default function InformeSlugPage() {
                           <span className="font-mono text-[9px] uppercase tracking-[0.14em] font-semibold" style={{ color: ind.status === "verd" ? "#5C8A5C" : ind.status === "groc" ? "#C9A961" : "#A0522D" }}>{ind.label}</span>
                         </div>
                       </div>
-                      <p className="text-[12px] leading-relaxed mt-1" style={{ color: "rgba(245,239,230,0.55)" }}>{ind.note}</p>
+                      <p className="text-sm leading-relaxed mt-1" style={{ color: "rgba(245,239,230,0.65)" }}>{ind.note}</p>
                     </div>
                   ))}
                 </div>
@@ -355,15 +355,15 @@ export default function InformeSlugPage() {
               <div className="grid gap-6 sm:grid-cols-3">
                 <div className="flex flex-col gap-2 pt-4 border-t-2" style={{ borderTopColor: "#141B18" }}>
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#141B18" }}>{lang === "ca" ? "Empreses" : "Empresas"}</span>
-                  <p className="text-[13px] leading-relaxed text-primary">{content.implicacions.empreses}</p>
+                  <p className="text-sm leading-relaxed text-primary">{content.implicacions.empreses}</p>
                 </div>
                 <div className="flex flex-col gap-2 pt-4 border-t-2" style={{ borderTopColor: "#5E8772" }}>
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Reguladors" : "Reguladores"}</span>
-                  <p className="text-[13px] leading-relaxed text-primary">{content.implicacions.reguladors}</p>
+                  <p className="text-sm leading-relaxed text-primary">{content.implicacions.reguladors}</p>
                 </div>
                 <div className="flex flex-col gap-2 pt-4 border-t-2" style={{ borderTopColor: "#AAC9B6" }}>
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#8A6D2B" }}>{lang === "ca" ? "Ciutadans" : "Ciudadanos"}</span>
-                  <p className="text-[13px] leading-relaxed text-primary">{content.implicacions.ciutadans}</p>
+                  <p className="text-sm leading-relaxed text-primary">{content.implicacions.ciutadans}</p>
                 </div>
               </div>
             </section>
@@ -423,7 +423,7 @@ export default function InformeSlugPage() {
                   {content.crossRefs.map((cr, i) => (
                     <tr key={i} className="border-b" style={{ borderBottomColor: "#D8E2DA" }}>
                       <td className="p-3.5"><span className="font-serif text-[15px] font-semibold text-primary">{cr.framework}</span></td>
-                      <td className="p-3.5 text-[13px] leading-relaxed" style={{ color: "#26312B" }}>{cr.criterion}</td>
+                      <td className="p-3.5 text-sm leading-relaxed" style={{ color: "#26312B" }}>{cr.criterion}</td>
                       <td className="p-3.5"><span className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-2.5 py-1" style={{ background: cr.impact === "Alto" || cr.impact === "Alt" ? "rgba(160,82,45,0.15)" : cr.impact === "Medio" || cr.impact === "Mitj\u00e0" ? "rgba(201,169,97,0.18)" : "rgba(139,115,85,0.1)", color: cr.impact === "Alto" || cr.impact === "Alt" ? "#A0522D" : cr.impact === "Medio" || cr.impact === "Mitj\u00e0" ? "#8A6D2B" : "#4A5F53" }}>{cr.impact}</span></td>
                     </tr>
                   ))}
@@ -488,7 +488,7 @@ function LockScreen({
                 ? "Aquest informe requereix Premium"
                 : "Este informe requiere Premium"}
             </h2>
-            <p className="mb-8 text-[13px] leading-relaxed" style={{ color: "rgba(245,239,230,0.7)" }}>
+            <p className="mb-8 text-sm leading-relaxed" style={{ color: "rgba(245,239,230,0.7)" }}>
               {lang === "ca"
                 ? "Els informes publicats fa menys de 6 mesos són exclusius per a subscriptors Premium. Crea el teu compte per accedir a tota la biblioteca, cross-references i accions recomanades."
                 : "Los informes publicados hace menos de 6 meses son exclusivos para suscriptores Premium. Crea tu cuenta para acceder a toda la biblioteca, cross-references y acciones recomendadas."}
@@ -506,7 +506,7 @@ function LockScreen({
                 ? "Cal registrar-se per veure aquest informe"
                 : "Es necesario registrarse para ver este informe"}
             </h2>
-            <p className="mb-8 text-[13px] leading-relaxed" style={{ color: "rgba(245,239,230,0.7)" }}>
+            <p className="mb-8 text-sm leading-relaxed" style={{ color: "rgba(245,239,230,0.7)" }}>
               {lang === "ca"
                 ? "Aquest informe és d'accés obert per a usuaris registrats. Crea un compte gratuït per accedir als 8 blocs: semàfor, fitxa tècnica, dades clau, resum executiu i accions recomanades."
                 : "Este informe es de acceso abierto para usuarios registrados. Crea una cuenta gratis para acceder a los 8 bloques: semáforo, ficha técnica, datos clave, resumen ejecutivo y acciones recomendadas."}
@@ -575,7 +575,7 @@ function UpgradePreview({
       <section id="bloc-1" className="scroll-mt-20" style={{ background: "#26312B", color: "#F2F5F1", margin: "0 -32px", padding: "48px 32px" }}>
         <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:items-center">
           <div className="flex flex-col gap-4">
-            <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>{lang === "ca" ? "Bloc 1 · Semàfor metodològic" : "Bloque 1 · Semáforo metodológico"}</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>{lang === "ca" ? "Bloc 01 · Semàfor metodològic" : "Bloque 01 · Semáforo metodológico"}</p>
             <div className="flex items-baseline gap-4">
               <span className="font-serif text-[100px] font-normal leading-none" style={{ color: getGradeColor(content.semafor.grade), letterSpacing: "-0.04em" }}>{content.semafor.grade}</span>
               <span className="font-serif text-2xl italic" style={{ color: "#F2F5F1" }}>{content.semafor.gradeLabel}</span>
@@ -595,7 +595,7 @@ function UpgradePreview({
                     <span className="font-mono text-[9px] uppercase tracking-[0.14em] font-semibold" style={{ color: ind.status === "verd" ? "#5C8A5C" : ind.status === "groc" ? "#C9A961" : "#A0522D" }}>{ind.label}</span>
                   </div>
                 </div>
-                <p className="text-[12px] leading-relaxed mt-1" style={{ color: "rgba(245,239,230,0.55)" }}>{ind.note}</p>
+                <p className="text-sm leading-relaxed mt-1" style={{ color: "rgba(245,239,230,0.65)" }}>{ind.note}</p>
               </div>
             ))}
           </div>

@@ -19,6 +19,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Header } from "@/components/site-header-v1";
 import { FooterV1 } from "@/components/site-footer-v1";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase";
+import { AuthDialog } from "@/components/auth-dialog";
 import { identitySchema, passwordSchema, localStrength } from "@/lib/validation";
 
 
@@ -106,6 +107,7 @@ export default function RegistroPage() {
   >({ state: "idle" });
   const [capsOn, setCapsOn] = useState(false);
   const [ssoLoading, setSsoLoading] = useState<null | "Google" | "LinkedIn">(null);
+  const [loginOpen, setLoginOpen] = useState(false);
 
   /** SSO via Supabase OAuth (OIDC). Google i LinkedIn: el proveïdor retorna
    *  nom+email verificats; empresa/sector es recullen al pas 3 del perfil. */
@@ -466,6 +468,20 @@ export default function RegistroPage() {
 
                         <button type="submit" className="rg-btn w-full">Continuar →</button>
                       </form>
+
+                      {/* Accés per a qui ja té compte: obre el mateix diàleg unificat
+                          (SSO-first: Google, LinkedIn i magic link). */}
+                      <p className="mt-5 text-center text-[13.5px]" style={{ color: C.inkSoft }}>
+                        Ja tens compte?{" "}
+                        <button
+                          type="button"
+                          onClick={() => setLoginOpen(true)}
+                          className="font-semibold underline underline-offset-4 transition-opacity hover:opacity-75"
+                          style={{ color: C.ink }}
+                        >
+                          Inicia la sessió
+                        </button>
+                      </p>
                     </section>
                   )}
 
@@ -771,6 +787,7 @@ export default function RegistroPage() {
         </main>
 
         <FooterV1 />
+        <AuthDialog open={loginOpen} onOpenChange={setLoginOpen} defaultTab="login" />
       </div>
     </>
   );

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useLanguage } from "@/components/language-provider";
+import { useAuth } from "@/lib/auth-context";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Check, Sparkles, Crown, CreditCard, Landmark } from "lucide-react";
@@ -18,13 +19,26 @@ export function PreusDialog({ open, onOpenChange, onOpenRegister }: PreusDialogP
   const { t } = useLanguage();
   const [period, setPeriod] = useState<BillingPeriod>("annual");
 
+  const { plan, user } = useAuth();
+
   const handleCta = () => {
     onOpenChange(false);
+    if (plan === "premium") return; // ja és premium: no cobrem de nou
+    if (!user) {
+      // Anònim: primer registre (flux nou), després retorna a l'informe
+      window.location.href = `/registro?next=${encodeURIComponent(window.location.pathname)}`;
+      return;
+    }
     window.location.href = "/pagament";
   };
 
   const handleFiareForm = () => {
     onOpenChange(false);
+    if (plan === "premium") return;
+    if (!user) {
+      window.location.href = `/registro?next=${encodeURIComponent(window.location.pathname)}`;
+      return;
+    }
     window.location.href = "/pagament";
   };
 

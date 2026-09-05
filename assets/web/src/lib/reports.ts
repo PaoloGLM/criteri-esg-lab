@@ -75,7 +75,7 @@ export const reports: Report[] = [
     certifications: ["EcoVadis", "B Corp", "MSCI ESG", "GRI"],
     summary:
       "La Comissió Europea redueix un 61% els datapoints obligatoris del reporting de sostenibilitat. Estalvi estimat de 3.700M€ en 5 anys.",
-    url: "https://finance.ec.europa.eu/news/commission-seeks-feedback-revised-sustainability-reporting-2026-05-06_en",
+    url: "https://finance.ec.europa.eu/news/commission-seeks-feedback-revised-sustainability-reporting-standards-2026-05-06_en",
   },
   {
     slug: "ecb-climate-risk-2026",
@@ -131,7 +131,7 @@ export const reports: Report[] = [
     certifications: ["TNFD", "GRI", "ISSB"],
     summary:
       "Global stocktake del progrés del mercat en avaluació i reporting de riscos relacionats amb natura. Es detecta adopció creixent però desigual entre sectors.",
-    url: "https://tnfd.global",
+    url: "https://tnfd.global/tnfd-2026-status-report/",
   },
   {
     slug: "bcorp-new-standards-2026",

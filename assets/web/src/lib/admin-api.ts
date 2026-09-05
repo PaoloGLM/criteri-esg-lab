@@ -90,6 +90,18 @@ export interface AdminAlarm {
   created_at: string;
 }
 
+export interface AdminPage {
+  slug: string;
+  status: string | null;
+  content_ca: { sections?: Record<string, string> } | null;
+  content_es: { sections?: Record<string, string> } | null;
+  updated_at: string | null;
+}
+
+export interface PagesResponse {
+  page: AdminPage;
+}
+
 // ── Endpoints ────────────────────────────────────────────────────────
 
 export const adminApi = {
@@ -142,4 +154,21 @@ export const adminApi = {
       checked_at: string;
       checks: Record<string, { ok: boolean; detail?: string }>;
     }>("/api/admin/health"),
+
+  pages: {
+    get: (slug: string) =>
+      authedFetch<PagesResponse>(`/api/admin/pages/${slug}`),
+    put: (
+      slug: string,
+      body: {
+        content_ca?: { sections: Record<string, string> };
+        content_es?: { sections: Record<string, string> };
+        status?: "draft" | "published" | "archived";
+      }
+    ) =>
+      authedFetch<{ ok: boolean }>(`/api/admin/pages/${slug}`, {
+        method: "PUT",
+        body: JSON.stringify(body),
+      }),
+  },
 };

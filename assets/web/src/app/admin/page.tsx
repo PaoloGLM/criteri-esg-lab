@@ -330,7 +330,7 @@ export default function AdminPage() {
                       <div>
                         <strong style={{ color: sev.color }}>{sev.label}</strong>{" "}
                         <code>{a.error_id}</code>
-                        <div style={{ color: COLORS.muted, fontSize: 13 }}>
+                        <div style={{ color: COLORS.muted, fontSize: 14 }}>
                           {new Date(a.created_at).toLocaleString("ca-ES")}
                         </div>
                       </div>
@@ -370,7 +370,7 @@ export default function AdminPage() {
                   <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
                     <div>
                       <strong>{r.title}</strong>{" "}
-                      <span style={{ color: COLORS.muted, fontSize: 13 }}>
+                      <span style={{ color: COLORS.muted, fontSize: 14 }}>
                         · {r.institution} · {r.date}
                       </span>
                       <div style={{ marginTop: 6 }}>
@@ -423,7 +423,7 @@ export default function AdminPage() {
                       {u.is_admin && (
                         <span style={{ ...pill, background: COLORS.salvia, color: "#fff" }}>admin</span>
                       )}
-                      <div style={{ color: COLORS.muted, fontSize: 13 }}>
+                      <div style={{ color: COLORS.muted, fontSize: 14 }}>
                         {u.email} · {u.company || "—"} · alta {new Date(u.created_at).toLocaleDateString("ca-ES")}
                       </div>
                     </div>
@@ -483,63 +483,63 @@ function PlanSelect({
 
 function Shell({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ minHeight: "80vh", background: COLORS.bg, padding: "32px 16px" }}>
-      <div style={{ maxWidth: 960, margin: "0 auto" }}>{children}</div>
+    <div style={{ minHeight: "80vh", background: COLORS.bg, padding: "40px 24px", fontSize: 16 }}>
+      <div style={{ maxWidth: 1160, margin: "0 auto" }}>{children}</div>
     </div>
   );
 }
 
 // ── Estils (objectes inline, paleta v7) ─────────────────────────────
-const h1: React.CSSProperties = { fontSize: 24, color: COLORS.ink, margin: 0 };
-const h2: React.CSSProperties = { fontSize: 17, color: COLORS.ink, margin: "24px 0 12px" };
-const tabs: React.CSSProperties = { display: "flex", gap: 8, margin: "20px 0" };
+const h1: React.CSSProperties = { fontSize: 32, color: COLORS.ink, margin: 0 };
+const h2: React.CSSProperties = { fontSize: 22, color: COLORS.ink, margin: "28px 0 14px" };
+const tabs: React.CSSProperties = { display: "flex", gap: 10, margin: "24px 0" };
 const tabBtn: React.CSSProperties = {
-  padding: "8px 18px",
+  padding: "12px 26px",
   borderRadius: 8,
   border: `1px solid ${COLORS.border}`,
   background: COLORS.card,
   cursor: "pointer",
-  fontSize: 14,
+  fontSize: 16,
   color: COLORS.ink,
 };
-const cardList: React.CSSProperties = { display: "grid", gap: 10 };
+const cardList: React.CSSProperties = { display: "grid", gap: 12 };
 const card: React.CSSProperties = {
   background: COLORS.card,
   border: `1px solid ${COLORS.border}`,
   borderRadius: 10,
-  padding: "12px 16px",
-  fontSize: 14,
+  padding: "18px 22px",
+  fontSize: 15,
 };
 const note: React.CSSProperties = {
   border: `1px solid ${COLORS.border}`,
   borderLeft: `4px solid ${COLORS.salvia}`,
   background: COLORS.card,
   borderRadius: 8,
-  padding: "10px 14px",
-  fontSize: 14,
-  margin: "12px 0",
+  padding: "14px 18px",
+  fontSize: 15,
+  margin: "14px 0",
 };
 const alarmBar: React.CSSProperties = {
   border: `1px solid ${COLORS.danger}`,
   borderRadius: 8,
-  padding: "10px 14px",
-  fontSize: 14,
-  margin: "12px 0",
+  padding: "14px 18px",
+  fontSize: 15,
+  margin: "14px 0",
 };
-const list: React.CSSProperties = { listStyle: "none", padding: 0, fontSize: 14 };
-const listItem: React.CSSProperties = { padding: "6px 0", borderBottom: `1px solid ${COLORS.border}` };
+const list: React.CSSProperties = { listStyle: "none", padding: 0, fontSize: 15 };
+const listItem: React.CSSProperties = { padding: "8px 0", borderBottom: `1px solid ${COLORS.border}` };
 const pre: React.CSSProperties = {
   background: "#f8f7f4",
-  fontSize: 12,
-  padding: 8,
+  fontSize: 13,
+  padding: 10,
   borderRadius: 6,
   overflow: "auto",
   marginTop: 8,
   maxHeight: 140,
 };
 const pill: React.CSSProperties = {
-  fontSize: 11,
-  padding: "2px 8px",
+  fontSize: 12,
+  padding: "3px 10px",
   borderRadius: 999,
   marginLeft: 8,
   fontWeight: 600,
@@ -548,37 +548,37 @@ const badge: React.CSSProperties = {
   background: COLORS.danger,
   color: "#fff",
   borderRadius: 999,
-  fontSize: 11,
-  padding: "1px 7px",
+  fontSize: 12,
+  padding: "2px 8px",
   marginLeft: 6,
 };
 const select: React.CSSProperties = {
-  padding: "6px 10px",
+  padding: "8px 12px",
   borderRadius: 6,
   border: `1px solid ${COLORS.border}`,
-  fontSize: 14,
+  fontSize: 15,
   background: COLORS.card,
 };
 const btnPrimary: React.CSSProperties = {
   background: COLORS.salvia,
   color: "#fff",
   border: "none",
-  padding: "10px 20px",
+  padding: "13px 26px",
   borderRadius: 8,
-  fontSize: 14,
+  fontSize: 16,
   cursor: "pointer",
 };
-const btnPrimarySmall: React.CSSProperties = { ...btnPrimary, padding: "6px 12px", fontSize: 13 };
+const btnPrimarySmall: React.CSSProperties = { ...btnPrimary, padding: "8px 16px", fontSize: 14 };
 const btnGhost: React.CSSProperties = {
   background: "transparent",
   border: `1px solid ${COLORS.border}`,
-  padding: "8px 14px",
+  padding: "10px 18px",
   borderRadius: 8,
-  fontSize: 13,
+  fontSize: 14,
   cursor: "pointer",
   color: COLORS.ink,
 };
-const btnGhostSmall: React.CSSProperties = { ...btnGhost, padding: "6px 12px", fontSize: 13 };
+const btnGhostSmall: React.CSSProperties = { ...btnGhost, padding: "8px 14px", fontSize: 14 };
 const btnDangerSmall: React.CSSProperties = {
   ...btnGhostSmall,
   color: COLORS.danger,

@@ -49,7 +49,7 @@ export function Statement() {
       <a
         href="#hero"
         aria-label={ca ? "Baixa al contingut" : "Baja al contenido"}
-        className="absolute bottom-10 flex flex-col items-center gap-3 font-mono text-[.66rem] uppercase tracking-[.24em] transition-colors hover:opacity-80"
+        className="absolute bottom-20 flex flex-col items-center gap-3 font-mono text-[.66rem] uppercase tracking-[.24em] transition-colors hover:opacity-80"
         style={{ color: "var(--highlight)" }}
       >
         {ca ? "Continua" : "Continúa"}

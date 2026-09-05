@@ -2,12 +2,14 @@
 
 import { useLanguage } from "@/components/language-provider";
 import { useAuth } from "@/lib/auth-context";
-import { Menu, X, LogIn, User, LogOut } from "lucide-react";
+import { Menu, X, User, LogOut } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 interface HeaderProps {
   onOpenPreus?: () => void;
+  /** Obsolet: el login ara viu a /registro (botó Comença). Es manté a la
+   * interfície per compatibilitat amb les pàgines que encara el passen. */
   onOpenAuth?: (tab?: "register" | "login") => void;
 }
 
@@ -15,12 +17,11 @@ const LINKS = [
   { href: "/informes", ca: "Informes", es: "Informes" },
   { href: "/que-fem", ca: "Què fem", es: "Qué hacemos" },
   { href: "/estandares-esg", ca: "Estàndards", es: "Estándares" },
-  { href: "/qui-som", ca: "Qui som", es: "Quiénes somos" },
   { href: "/preus", ca: "Preus", es: "Precios" },
   { href: "/mas-alla-del-checkbox", ca: "Més enllà", es: "Más allá" },
 ];
 
-export function Header({ onOpenPreus, onOpenAuth }: HeaderProps = {}) {
+export function Header({ onOpenPreus }: HeaderProps = {}) {
   const { lang, setLang, t } = useLanguage();
   const { user, signOut } = useAuth();
   const router = useRouter();
@@ -70,8 +71,8 @@ export function Header({ onOpenPreus, onOpenAuth }: HeaderProps = {}) {
           >
             {lang === "ca" ? "ES" : "CAT"}
           </button>
-          {/* Usuari */}
-          {user ? (
+          {/* Usuari (només loguejat: el login viu a /registro, des del botó Comença) */}
+          {user && (
             <div className="relative">
               <button
                 onClick={() => setUserMenuOpen(!userMenuOpen)}
@@ -95,14 +96,6 @@ export function Header({ onOpenPreus, onOpenAuth }: HeaderProps = {}) {
                 </div>
               )}
             </div>
-          ) : (
-            <button
-              onClick={() => onOpenAuth?.("login")}
-              className="flex items-center gap-1.5 font-mono text-[.7rem] uppercase tracking-[.08em] text-[#AAC9B6] transition-colors hover:text-[#F5E381]"
-            >
-              <LogIn className="h-4 w-4" />
-              {lang === "ca" ? "Inicia sessió" : "Inicia sesión"}
-            </button>
           )}
         </nav>
 
@@ -137,15 +130,6 @@ export function Header({ onOpenPreus, onOpenAuth }: HeaderProps = {}) {
             >
               {user ? (lang === "ca" ? "El meu compte" : "Mi cuenta") : lang === "ca" ? "Comença" : "Empieza"}
             </a>
-            {!user && (
-              <button
-                onClick={() => { setMobileOpen(false); onOpenAuth?.("login"); }}
-                className="flex items-center gap-1.5 font-mono text-[.78rem] uppercase tracking-[.08em] text-[#AAC9B6]"
-              >
-                <LogIn className="h-4 w-4" />
-                {lang === "ca" ? "Inicia sessió" : "Inicia sesión"}
-              </button>
-            )}
             <button
               onClick={() => setLang(lang === "ca" ? "es" : "ca")}
               className="text-left font-mono text-[.78rem] font-semibold uppercase tracking-[.1em] text-[#AAC9B6]"

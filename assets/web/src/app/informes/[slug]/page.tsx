@@ -15,29 +15,11 @@ import {
   getTypeLabel,
   getScopeLabel,
   getGradeColor,
-  type SemaforStatus,
   type Report,
   type ReportBlock,
 } from "@/lib/reports";
 import { useReports, useReportContent } from "@/lib/reports-source";
-import {
-  FileText,
-  TrendingUp,
-  Layers,
-  Target,
-  Network,
-  ClipboardCheck,
-  Gauge,
-  Compass,
-  ExternalLink,
-  Lock,
-  BookOpen,
-  ArrowRight,
-  Check,
-  Crown,
-  Globe,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function InformeSlugPage() {
@@ -477,93 +459,6 @@ export default function InformeSlugPage() {
 // Helper components
 // ---------------------------------------------------------------------------
 
-function Bloc({
-  num,
-  icon,
-  title,
-  children,
-  highlighted,
-}: {
-  num: string;
-  icon: React.ReactNode;
-  title: string;
-  children: React.ReactNode;
-  highlighted?: boolean;
-}) {
-  return (
-    <section
-      className={`rounded-md border p-5 ${
-        highlighted ? "border-accent bg-accent-soft/10" : "border-rule bg-card"
-      }`}
-    >
-      <div className="mb-4 flex items-center gap-3">
-        <span className="font-mono text-xs text-accent-deep">{num}</span>
-        <span className="text-accent-deep">{icon}</span>
-        <h2 className="font-serif text-lg font-semibold text-primary">{title}</h2>
-      </div>
-      {children}
-    </section>
-  );
-}
-
-function Datum({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-        {label}
-      </p>
-      <p className="text-sm font-medium text-primary">{value}</p>
-    </div>
-  );
-}
-
-function ImplicationBlock({ label, body }: { label: string; body: string }) {
-  return (
-    <div className="rounded-md border border-rule bg-background p-4">
-      <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-accent-deep">
-        {label}
-      </p>
-      <p className="text-xs leading-relaxed text-foreground/80">{body}</p>
-    </div>
-  );
-}
-
-function SemaforRow({
-  name,
-  status,
-  label,
-  note,
-}: {
-  name: string;
-  status: SemaforStatus;
-  label: string;
-  note: string;
-}) {
-  const color =
-    status === "verd"
-      ? "bg-[#5C8A5C]"
-      : status === "groc"
-        ? "bg-[#C9A961]"
-        : "bg-[#A0522D]";
-  return (
-    <div className="flex items-start gap-3 rounded-sm border border-rule bg-background px-3 py-2">
-      <span
-        className={`mt-0.5 inline-block h-3 w-3 flex-shrink-0 rounded-full ${color}`}
-        aria-hidden
-      />
-      <div className="min-w-0 flex-1">
-        <div className="flex flex-wrap items-baseline gap-x-2">
-          <span className="text-sm font-medium text-primary">{name}</span>
-          <span className="font-mono text-[10px] uppercase tracking-widest text-accent-deep">
-            {label}
-          </span>
-        </div>
-        <p className="mt-0.5 text-xs leading-relaxed text-foreground/70">{note}</p>
-      </div>
-    </div>
-  );
-}
-
 function LockScreen({
   isPremium,
   lang,
@@ -576,48 +471,44 @@ function LockScreen({
   onPreus: () => void;
 }) {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-2xl rounded-md border border-accent bg-accent-soft/10 p-8 text-center">
-        <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-accent">
-          <Lock className="h-5 w-5" />
-        </div>
+    <div className="py-12" style={{ background: "#F2F5F1" }}>
+      <div className="mx-auto max-w-xl" style={{ background: "#26312B", color: "#F2F5F1", padding: "56px 48px" }}>
+        <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>
+          {isPremium ? "BLOC ⭐ · CONTINGUT EXCLUSIU" : "BLOC ⭐ · REGISTRE GRATUÏT"}
+        </p>
         {isPremium ? (
           <>
-            <p className="eyebrow mb-3">PREMIUM</p>
-            <h2 className="mb-3 font-serif text-2xl font-semibold text-primary">
+            <h2 className="mb-4 font-serif text-2xl font-medium" style={{ color: "#F2F5F1" }}>
               {lang === "ca"
                 ? "Aquest informe requereix Premium"
                 : "Este informe requiere Premium"}
             </h2>
-            <p className="mx-auto mb-6 max-w-md text-sm leading-relaxed text-foreground/75">
+            <p className="mb-8 text-[13px] leading-relaxed" style={{ color: "rgba(245,239,230,0.7)" }}>
               {lang === "ca"
                 ? "Els informes publicats fa menys de 6 mesos són exclusius per a subscriptors Premium. Crea el teu compte per accedir a tota la biblioteca, cross-references i accions recomanades."
                 : "Los informes publicados hace menos de 6 meses son exclusivos para suscriptores Premium. Crea tu cuenta para acceder a toda la biblioteca, cross-references y acciones recomendadas."}
             </p>
-            <Button onClick={onPreus} size="lg">
-              {lang === "ca" ? "Veure preus" : "Ver precios"}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <div className="flex flex-wrap items-center gap-3">
+              <button onClick={onPreus} className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-4 py-2.5" style={{ background: "#5E8772", color: "white" }}>
+                {lang === "ca" ? "Veure preus →" : "Ver precios →"}
+              </button>
+            </div>
           </>
         ) : (
           <>
-            <p className="eyebrow mb-3">
-              {lang === "ca" ? "REGISTRE GRATUÏT" : "REGISTRO GRATUITO"}
-            </p>
-            <h2 className="mb-3 font-serif text-2xl font-semibold text-primary">
+            <h2 className="mb-4 font-serif text-2xl font-medium" style={{ color: "#F2F5F1" }}>
               {lang === "ca"
                 ? "Cal registrar-se per veure aquest informe"
                 : "Es necesario registrarse para ver este informe"}
             </h2>
-            <p className="mx-auto mb-6 max-w-md text-sm leading-relaxed text-foreground/75">
+            <p className="mb-8 text-[13px] leading-relaxed" style={{ color: "rgba(245,239,230,0.7)" }}>
               {lang === "ca"
                 ? "Aquest informe és d'accés obert per a usuaris registrats. Crea un compte gratuït per accedir als 8 blocs: semàfor, fitxa tècnica, dades clau, resum executiu i accions recomanades."
                 : "Este informe es de acceso abierto para usuarios registrados. Crea una cuenta gratis para acceder a los 8 bloques: semáforo, ficha técnica, datos clave, resumen ejecutivo y acciones recomendadas."}
             </p>
-            <Button onClick={onRegister} size="lg">
-              {lang === "ca" ? "Registra't gratis" : "Regístrate gratis"}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <button onClick={onRegister} className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-4 py-2.5" style={{ background: "#5E8772", color: "white" }}>
+              {lang === "ca" ? "Registra't gratis →" : "Regístrate gratis →"}
+            </button>
           </>
         )}
       </div>
@@ -674,101 +565,63 @@ function UpgradePreview({
   );
 
   return (
-    <div className="mx-auto max-w-4xl space-y-8 px-4 py-12 sm:px-6 lg:px-8">
-      {/* Bloc 0 — Semàfor Metodològic (destacat, visible complet) */}
-      <Bloc
-        num="0"
-        icon={<Gauge className="h-4 w-4" />}
-        title={lang === "ca" ? "Semàfor Metodològic" : "Semáforo Metodológico"}
-        highlighted
-      >
-        <div className="rounded-md border border-accent/30 bg-accent-soft/10 p-4">
-          <div className="mb-4 flex items-baseline justify-between gap-3">
-            <p className="font-mono text-[10px] uppercase tracking-widest text-accent-deep">
-              {lang === "ca" ? "Nota global" : "Nota global"}
-            </p>
-            <span className="rounded-md bg-accent px-3 py-1 text-right font-serif text-base font-bold text-accent-foreground">
-              {content.semafor.grade} · {content.semafor.gradeLabel}
-            </span>
+    <>
+      {/* Bloc 0 — Semàfor metodològic (dark, disseny aprovat, visible complet) */}
+      <section id="bloc-0" className="scroll-mt-20" style={{ background: "#26312B", color: "#F2F5F1", margin: "0 -32px", padding: "48px 32px" }}>
+        <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:items-center">
+          <div className="flex flex-col gap-4">
+            <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>{lang === "ca" ? "Bloc 0 · Semàfor metodològic" : "Bloque 0 · Semáforo metodológico"}</p>
+            <div className="flex items-baseline gap-4">
+              <span className="font-serif text-[100px] font-normal leading-none" style={{ color: getGradeColor(content.semafor.grade), letterSpacing: "-0.04em" }}>{content.semafor.grade}</span>
+              <span className="font-serif text-2xl italic" style={{ color: "#F2F5F1" }}>{content.semafor.gradeLabel}</span>
+            </div>
           </div>
-          <div className="space-y-2">
+          <div className="flex flex-col gap-0">
             {content.semafor.indicators.map((ind) => (
-              <SemaforRow
-                key={ind.name}
-                name={ind.name}
-                status={ind.status}
-                label={ind.label}
-                note={ind.note}
-              />
+              <div key={ind.name} className="flex flex-col gap-1 py-3 border-b" style={{ borderBottomColor: "rgba(217,165,116,0.2)" }}>
+                <div className="grid grid-cols-[1fr_auto] items-center gap-3">
+                  <span className="font-serif text-base font-medium" style={{ color: "#F2F5F1" }}>{ind.name}</span>
+                  <div className="flex items-center gap-2">
+                    <div className="flex gap-1.5">
+                      <span className="w-3 h-3 rounded-full" style={{ background: "#5C8A5C", opacity: ind.status === "verd" ? 1 : 0.3 }} />
+                      <span className="w-3 h-3 rounded-full" style={{ background: "#C9A961", opacity: ind.status === "groc" ? 1 : 0.3 }} />
+                      <span className="w-3 h-3 rounded-full" style={{ background: "#A0522D", opacity: ind.status === "vermell" ? 1 : 0.3 }} />
+                    </div>
+                    <span className="font-mono text-[9px] uppercase tracking-[0.14em] font-semibold" style={{ color: ind.status === "verd" ? "#5C8A5C" : ind.status === "groc" ? "#C9A961" : "#A0522D" }}>{ind.label}</span>
+                  </div>
+                </div>
+                <p className="text-[12px] leading-relaxed mt-1" style={{ color: "rgba(245,239,230,0.55)" }}>{ind.note}</p>
+              </div>
             ))}
           </div>
         </div>
-      </Bloc>
+      </section>
 
-      {/* Bloc 1 — Fitxa tècnica (visible complet) */}
-      <Bloc
-        num="1"
-        icon={<FileText className="h-4 w-4" />}
-        title={lang === "ca" ? "Fitxa tècnica" : "Ficha técnica"}
-      >
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <Datum
-            label={lang === "ca" ? "Institució" : "Institución"}
-            value={report.institution}
-          />
-          <Datum
-            label={lang === "ca" ? "Data" : "Fecha"}
-            value={formatDate(report.date, lang)}
-          />
-          <Datum
-            label={lang === "ca" ? "Tipus" : "Tipo"}
-            value={getTypeLabel(report.type)}
-          />
-          <Datum
-            label={lang === "ca" ? "Pàgines" : "Páginas"}
-            value={String(report.pages)}
-          />
-          <Datum
-            label={lang === "ca" ? "Àmbit" : "Ámbito"}
-            value={getScopeLabel(report.scope)}
-          />
-          <div>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-              URL
-            </p>
-            <a
-              href={report.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-medium text-accent-deep hover:underline"
-            >
-              <span className="font-mono">
-                {report.url.replace(/^https?:\/\//, "").slice(0, 28)}…
-              </span>
-              <ExternalLink className="h-3 w-3 flex-shrink-0" />
-            </a>
-          </div>
+      {/* Bloc 1 — Fitxa tècnica (línia aprovada: etiquetes mono, sense targeta) */}
+      <section id="bloc-1" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#D8E2DA" }}>
+        <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Bloc 01 · Fitxa tècnica" : "Bloque 01 · Ficha técnica"}</p>
+        <div className="flex flex-wrap gap-8 font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "#4A5F53" }}>
+          <span><strong className="text-primary">{report.institution}</strong></span>
+          <span>{formatDate(report.date, lang)}</span>
+          <span>{report.pages} {lang === "ca" ? "pàg" : "pág"}</span>
+          <span>{getScopeLabel(report.scope)}</span>
+          <span>{getTypeLabel(report.type)}</span>
         </div>
-      </Bloc>
+      </section>
 
-      {/* Bloc 3 — Resum executiu (tallat com a preview) */}
-      <Bloc
-        num="3"
-        icon={<Layers className="h-4 w-4" />}
-        title={lang === "ca" ? "Resum executiu" : "Resumen ejecutivo"}
-      >
-        <p className="text-sm leading-relaxed text-foreground/80">
+      {/* Bloc 3 — Resum executiu (tallat com a preview, línia aprovada) */}
+      <section id="bloc-3" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "#D8E2DA" }}>
+        <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#5E8772" }}>{lang === "ca" ? "Bloc 03 · Resum executiu" : "Bloque 03 · Resumen ejecutivo"}</p>
+        <h2 className="mb-4 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Què diu en llenguatge clar" : "Qué dice en lenguaje claro"}</h2>
+        <p className="font-serif text-base leading-relaxed text-primary">
           {resumCurt}{" "}
-          <span className="italic text-muted-foreground">
-            {lang === "ca" ? "[continua]" : "[continúa]"}
+          <span className="italic" style={{ color: "#8A6D2B" }}>
+            {lang === "ca" ? "[continua…]" : "[continúa…]"}
           </span>
         </p>
-      </Bloc>
+      </section>
 
-      {/* === UPGRADE BLOC CONTEXTUAL ===
-          Bloc destacat més (mateix patró que Bloc highlighted),
-          no pas un component alien. L'única diferenciació és una icona
-          de cadenat dins un cercle accent/15 a la capçalera. */}
+      {/* === UPGRADE BLOC CONTEXTUAL (disseny aprovat: dark + salvia) === */}
       <UpgradeBloc
         lang={lang}
         variant={variant}
@@ -778,23 +631,23 @@ function UpgradePreview({
       />
 
       {/* Peu de l'informe (igual que l'aprovat, sense CTA a Preus) */}
-      <div className="flex flex-col gap-3 rounded-md border border-rule bg-card p-5 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs leading-relaxed text-muted-foreground">
+      <div className="flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between">
+        <p className="font-mono text-[9px] uppercase tracking-[0.16em]" style={{ color: "#4A5F53" }}>
           {lang === "ca"
-            ? "Criteri ESG no és font oficial. Consulta sempre el document original per a decisions compliance."
-            : "Criteri ESG no es fuente oficial. Consulta siempre el documento original para decisiones compliance."}
+            ? "Criteri ESG no és font oficial · consulta sempre el document original"
+            : "Criteri ESG no es fuente oficial · consulta siempre el documento original"}
         </p>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => window.open(report.url, "_blank")}
-          className="flex-shrink-0"
+        <a
+          href={report.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold flex-shrink-0"
+          style={{ color: "#3F6653", borderBottom: "1px solid #5E8772", paddingBottom: "3px" }}
         >
-          <ExternalLink className="mr-2 h-3.5 w-3.5" />
-          {lang === "ca" ? "Veure font original" : "Ver fuente original"}
-        </Button>
+          {lang === "ca" ? "Veure font original →" : "Ver fuente original →"}
+        </a>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -875,54 +728,43 @@ function UpgradeBloc({
   ];
 
   return (
-    <section className="rounded-md border border-accent bg-accent-soft/10 p-5 shadow-sm">
-      {/* Capçalera del bloc — mateix patró que Bloc però amb icona Lock */}
-      <div className="mb-4 flex items-center gap-3 border-b border-accent/30 pb-4">
-        <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent">
-          <Lock className="h-4 w-4" />
-        </span>
-        <h2 className="flex-1 font-serif text-lg font-semibold text-primary">
-          {lang === "ca"
-            ? "Et queden 5 blocs per llegir en aquest informe"
-            : "Te quedan 5 bloques por leer en este informe"}
-        </h2>
-        <span className="inline-block rounded-full bg-accent px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-widest text-accent-foreground">
-          PREMIUM
-        </span>
+    <section id="bloc-upgrade" className="scroll-mt-20" style={{ background: "#26312B", color: "#F2F5F1", margin: "0 -32px", padding: "48px 32px", borderTop: "1px solid #5E8772" }}>
+      {/* Capçalera */}
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+        <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#AAC9B6" }}>
+          {lang === "ca" ? "Bloc ⭐ · Contingut exclusiu" : "Bloque ⭐ · Contenido exclusivo"}
+        </p>
+        <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "#5E8772", color: "white" }}>PREMIUM</span>
       </div>
-
-      {/* Subtítol mono com el dels altres blocs */}
-      <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-accent-deep">
+      <h2 className="mb-6 font-serif text-2xl font-medium" style={{ color: "#F2F5F1" }}>
         {lang === "ca"
-          ? "QUÈ ET PERDS EN AQUEST INFORME"
-          : "QUÉ TE PIERDES EN ESTE INFORME"}
-      </p>
+          ? "Et queden 5 blocs per llegir en aquest informe"
+          : "Te quedan 5 bloques por leer en este informe"}
+      </h2>
 
       {/* Llista del que es perd */}
       <ul className="space-y-0">
         {missItems.map((item, i) => (
           <li
             key={i}
-            className="flex gap-3 border-b border-dashed border-rule py-3 last:border-b-0"
+            className="flex gap-4 py-3 border-b"
+            style={{ borderBottomColor: "rgba(217,165,116,0.2)" }}
           >
             <span
-              className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full font-mono text-xs font-semibold ${
-                item.star
-                  ? "bg-accent text-accent-foreground"
-                  : "bg-accent/10 text-accent-deep"
-              }`}
+              className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full font-mono text-xs font-semibold"
+              style={{ background: item.star ? "#5E8772" : "rgba(170,201,182,0.15)", color: item.star ? "#fff" : "#AAC9B6" }}
             >
               {item.num}
             </span>
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-semibold text-primary">
+              <p className="font-serif text-base font-medium" style={{ color: "#F2F5F1" }}>
                 {item.title[lang]}
               </p>
-              <p className="mt-0.5 text-xs leading-relaxed text-foreground/70">
+              <p className="mt-0.5 text-[12px] leading-relaxed" style={{ color: "rgba(245,239,230,0.6)" }}>
                 {item.detail[lang]}
               </p>
               {item.exclusive && (
-                <span className="mt-1 inline-block rounded bg-accent/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-accent-deep">
+                <span className="mt-1 inline-block font-mono text-[9px] uppercase tracking-[0.14em] font-semibold" style={{ color: "#C9A961" }}>
                   {lang === "ca"
                     ? "Exclusiu Premium — cap competidor ho fa"
                     : "Exclusivo Premium — ningún competidor lo hace"}
@@ -933,52 +775,50 @@ function UpgradeBloc({
         ))}
       </ul>
 
-      {/* Peu: preu (patró Preus, 36px + period) + CTA segons variant */}
-      <div className="mt-5 flex flex-wrap items-center justify-between gap-4 border-t border-accent/30 pt-5">
+      {/* Peu: preu (patró aprovat: nota 100px → aquí 36px serif) + CTA */}
+      <div className="mt-8 flex flex-wrap items-center justify-between gap-6">
         <div className="flex flex-col">
-          <div className="flex items-baseline gap-1.5">
-            <span className="font-serif text-4xl font-semibold text-accent">
+          <div className="flex items-baseline gap-2">
+            <span className="font-serif text-4xl font-normal" style={{ color: "#C9A961", letterSpacing: "-0.04em" }}>
               290 €
             </span>
-            <span className="text-xs text-muted-foreground">
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "rgba(245,239,230,0.6)" }}>
               {lang === "ca" ? "/ any" : "/ año"}
             </span>
           </div>
-          <span className="mt-1 font-mono text-[10px] uppercase tracking-widest text-accent-deep">
+          <span className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#AAC9B6" }}>
             {lang === "ca" ? "EARLY BIRD · 50 PLACES" : "EARLY BIRD · 50 PLAZAS"}
           </span>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           {variant === "A" && (
-            <Button variant="outline" onClick={onRegister} size="sm">
+            <button onClick={onRegister} className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-4 py-2.5" style={{ background: "transparent", color: "#F2F5F1", border: "1px solid rgba(170,201,182,0.5)" }}>
               {lang === "ca" ? "Crea compte gratuït" : "Crear cuenta gratis"}
-            </Button>
+            </button>
           )}
-          <Button onClick={onPreus} size="sm">
-            <Crown className="mr-1.5 h-3.5 w-3.5" />
-            {lang === "ca" ? "Fes-te Premium" : "Hazte Premium"}
-            <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
-          </Button>
+          <button onClick={onPreus} className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold px-4 py-2.5" style={{ background: "#5E8772", color: "white" }}>
+            {lang === "ca" ? "Fes-te Premium →" : "Hazte Premium →"}
+          </button>
         </div>
       </div>
 
       {/* Nota inferior: data d'alliberament */}
-      <div className="mt-4 border-l-2 border-accent bg-accent-soft/5 px-3 py-2 text-xs leading-relaxed text-foreground/70">
+      <p className="mt-6 text-[12px] leading-relaxed" style={{ color: "rgba(245,239,230,0.55)", borderLeft: "2px solid #5E8772", paddingLeft: 12 }}>
         {lang === "ca" ? (
           <>
             Aquest informe serà d&apos;accés gratuït a partir del{" "}
-            <strong className="text-primary">{freeDateStr}</strong> (fa més de 6
+            <strong style={{ color: "#F2F5F1" }}>{freeDateStr}</strong> (fa més de 6
             mesos). Fins llavors, és exclusiu per a subscriptors Premium.
           </>
         ) : (
           <>
             Este informe será de acceso gratis a partir del{" "}
-            <strong className="text-primary">{freeDateStr}</strong> (hace más de
+            <strong style={{ color: "#F2F5F1" }}>{freeDateStr}</strong> (hace más de
             6 meses). Hasta entonces, es exclusivo para suscriptores Premium.
           </>
         )}
-      </div>
+      </p>
     </section>
   );
 }

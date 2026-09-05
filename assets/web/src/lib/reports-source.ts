@@ -125,14 +125,13 @@ export function useReportContent(
   slug: string,
   lang: "ca" | "es"
 ): ReportBlock | undefined {
-  const [content, setContent] = useState<ReportBlock | undefined>(() =>
-    getReportContent(slug, lang)
-  );
+  // L'estàtic es deriva en render (sense setState síncron a l'efecte)
+  const staticBlock = getReportContent(slug, lang);
+  const [dbBlock, setDbBlock] = useState<ReportBlock | undefined>(undefined);
+  const [loadedSlug, setLoadedSlug] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
-    // Ressincronitza l'estàtic quan canvien slug o idioma
-    setContent(getReportContent(slug, lang));
     (async () => {
       try {
         const { data, error } = await supabase
@@ -141,10 +140,11 @@ export function useReportContent(
           .eq("slug", slug)
           .eq("status", "published")
           .maybeSingle();
-        if (cancelled || error || !data) return;
-        const block = lang === "ca" ? data.content_ca : data.content_es;
+        if (cancelled || error) return;
+        const block = lang === "ca" ? data?.content_ca : data?.content_es;
         if (block && typeof block === "object") {
-          setContent(block as ReportBlock);
+          setDbBlock(block as ReportBlock);
+          setLoadedSlug(slug);
         }
       } catch {
         /* silenciós: ja tenim l'estàtic */
@@ -155,7 +155,8 @@ export function useReportContent(
     };
   }, [slug, lang]);
 
-  return content;
+  // Si la BD té contingut per aquest slug, guanya; si no, l'estàtic
+  return loadedSlug === slug && dbBlock ? dbBlock : staticBlock;
 }
 
 /**

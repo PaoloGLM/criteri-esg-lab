@@ -229,7 +229,11 @@ export default function AdminPage() {
   };
 
   // ── Estats d'espera ────────────────────────────────────────────────
-  if (loading || isAdmin === null) {
+  // El gate és NOMÉS `loading`: si la sessió ja s'ha resolt sense usuari,
+  // cal mostrar el login (no quedar penjat a "Carregant…" per sempre).
+  // isAdmin només es comprova quan hi ha user (el useEffect d'adalt ho fa
+  // quan user canvia; sense user no hi ha res a verificar).
+  if (loading) {
     return <Shell><p style={{ color: COLORS.muted }}>Carregant…</p></Shell>;
   }
 
@@ -241,6 +245,10 @@ export default function AdminPage() {
         <button onClick={login} style={btnPrimary}>Entra amb Google</button>
       </Shell>
     );
+  }
+
+  if (isAdmin === null) {
+    return <Shell><p style={{ color: COLORS.muted }}>Verificant accés…</p></Shell>;
   }
 
   if (!allowed) {

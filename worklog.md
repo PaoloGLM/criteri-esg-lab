@@ -927,3 +927,10 @@ Stage Summary:
 - VERSIO DEFINITIVA de la landing: assets/redisseny-web/mockup-homepage-paleta-salvia.html (v14)
 - PENDENT: validacio d'en Paolo (CEO) i pujada a la web
 - Repo sincronitzat amb origin/main
+
+## 2026-09-05 — Tema admin (PR #32) + fix Storage
+
+- feat/tema-admin → PR #32 fusionat (CI verda): pestanya Disseny a /admin (7 colors + 3 tipografies), theme.json a Storage media/, layout injecta CSS vars html:root amb revalidate 60s, informes usen var(--c-*), CTA /preus comprova pla.
+- FIX: bucket media només admetia imatges → updateBucket amb application/json + text/plain; theme.json sembrat amb la paleta aprovada.
+- VERIFICAT E2E: upload/download OK, html:root{ present a criteriesg.com, salvia #5E8772 servida, cap rastre del color de prova (restaurat).
+- Quirk: scripts .env parse — CRLF trencava claus (stripar \r). PATCH /bucket/<id> no existeix → usar supabase-js updateBucket.

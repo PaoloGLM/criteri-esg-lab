@@ -52,21 +52,21 @@ export function Header({ onOpenPreus }: HeaderProps = {}) {
             <a
               key={l.href}
               href={l.href}
-              className="font-mono text-[.74rem] font-medium uppercase tracking-[.08em] text-[#AAC9B6] transition-colors hover:text-[#F5E381]"
+              className="font-mono text-[.74rem] font-medium uppercase tracking-[.08em] text-[var(--c-salvia-light)] transition-colors hover:text-[#F5E381]"
             >
               {lang === "ca" ? l.ca : l.es}
             </a>
           ))}
           <a
             href={user ? "/cuenta" : "/registro"}
-            className="rounded-[5px] bg-[#AAC9B6] px-[14px] py-[7px] font-mono text-[.74rem] font-semibold uppercase tracking-[.08em] text-[#141B18] transition-colors hover:bg-[#F5E381]"
+            className="rounded-[5px] bg-[var(--c-salvia-light)] px-[14px] py-[7px] font-mono text-[.74rem] font-semibold uppercase tracking-[.08em] text-[var(--c-tinta)] transition-colors hover:bg-[#F5E381]"
           >
             {user ? (lang === "ca" ? "El meu compte" : "Mi cuenta") : lang === "ca" ? "Comença" : "Empieza"}
           </a>
           {/* Idioma */}
           <button
             onClick={() => setLang(lang === "ca" ? "es" : "ca")}
-            className="font-mono text-[.68rem] font-semibold uppercase tracking-[.1em] text-[#AAC9B6] transition-colors hover:text-[#F5E381]"
+            className="font-mono text-[.68rem] font-semibold uppercase tracking-[.1em] text-[var(--c-salvia-light)] transition-colors hover:text-[#F5E381]"
             aria-label="Canviar idioma"
           >
             {lang === "ca" ? "ES" : "CAT"}
@@ -76,19 +76,19 @@ export function Header({ onOpenPreus }: HeaderProps = {}) {
             <div className="relative">
               <button
                 onClick={() => setUserMenuOpen(!userMenuOpen)}
-                className="flex items-center gap-2 font-mono text-[.7rem] uppercase tracking-[.08em] text-[#AAC9B6] hover:text-[#F5E381]"
+                className="flex items-center gap-2 font-mono text-[.7rem] uppercase tracking-[.08em] text-[var(--c-salvia-light)] hover:text-[#F5E381]"
               >
                 <User className="h-4 w-4" />
                 {user.email?.split("@")[0]}
               </button>
               {userMenuOpen && (
-                <div className="absolute right-0 mt-2 w-48 rounded-md border border-[#D8E2DA] bg-white py-1 shadow-lg">
-                  <a href="/cuenta" className="block px-4 py-2 text-sm text-[#26312B] hover:bg-[#F2F5F1]">
+                <div className="absolute right-0 mt-2 w-48 rounded-md border border-[var(--c-separador)] bg-white py-1 shadow-lg">
+                  <a href="/cuenta" className="block px-4 py-2 text-sm text-[var(--c-fosc)] hover:bg-[var(--c-clar)]">
                     {lang === "ca" ? "El meu compte" : "Mi cuenta"}
                   </a>
                   <button
                     onClick={handleSignOut}
-                    className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm text-[#26312B] hover:bg-[#F2F5F1]"
+                    className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm text-[var(--c-fosc)] hover:bg-[var(--c-clar)]"
                   >
                     <LogOut className="h-4 w-4" />
                     {lang === "ca" ? "Tanca la sessió" : "Cerrar sesión"}
@@ -101,7 +101,7 @@ export function Header({ onOpenPreus }: HeaderProps = {}) {
 
         {/* Mobile toggle */}
         <button
-          className="text-[#AAC9B6] md:hidden"
+          className="text-[var(--c-salvia-light)] md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Menú"
         >
@@ -111,14 +111,14 @@ export function Header({ onOpenPreus }: HeaderProps = {}) {
 
       {/* Nav mobile */}
       {mobileOpen && (
-        <nav className="border-t border-[rgba(170,201,182,.14)] px-6 py-4 md:hidden" style={{ background: "#141B18" }}>
+        <nav className="border-t border-[rgba(170,201,182,.14)] px-6 py-4 md:hidden" style={{ background: "var(--c-tinta)" }}>
           <div className="flex flex-col gap-4">
             {LINKS.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setMobileOpen(false)}
-                className="font-mono text-[.78rem] font-medium uppercase tracking-[.08em] text-[#AAC9B6]"
+                className="font-mono text-[.78rem] font-medium uppercase tracking-[.08em] text-[var(--c-salvia-light)]"
               >
                 {lang === "ca" ? l.ca : l.es}
               </a>
@@ -126,13 +126,13 @@ export function Header({ onOpenPreus }: HeaderProps = {}) {
             <a
               href={user ? "/cuenta" : "/registro"}
               onClick={() => setMobileOpen(false)}
-              className="rounded-[5px] bg-[#AAC9B6] px-[14px] py-[8px] text-center font-mono text-[.78rem] font-semibold uppercase tracking-[.08em] text-[#141B18]"
+              className="rounded-[5px] bg-[var(--c-salvia-light)] px-[14px] py-[8px] text-center font-mono text-[.78rem] font-semibold uppercase tracking-[.08em] text-[var(--c-tinta)]"
             >
               {user ? (lang === "ca" ? "El meu compte" : "Mi cuenta") : lang === "ca" ? "Comença" : "Empieza"}
             </a>
             <button
               onClick={() => setLang(lang === "ca" ? "es" : "ca")}
-              className="text-left font-mono text-[.78rem] font-semibold uppercase tracking-[.1em] text-[#AAC9B6]"
+              className="text-left font-mono text-[.78rem] font-semibold uppercase tracking-[.1em] text-[var(--c-salvia-light)]"
             >
               {lang === "ca" ? "ES" : "CAT"}
             </button>

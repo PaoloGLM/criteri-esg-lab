@@ -36,9 +36,9 @@ export function FinalCta({ onOpenRegister, onOpenPreus }: FinalCtaProps) {
       <section
         className="flex flex-col items-center gap-8 px-6 py-28 text-center sm:px-8 sm:py-32 lg:py-36"
         style={{
-          background: "#F2F5F1",
-          color: "#26312B",
-          borderTop: "3px solid #26312B",
+          background: "var(--c-clar)",
+          color: "var(--c-fosc)",
+          borderTop: "3px solid var(--c-fosc)",
         }}
       >
         {/* Eyebrow amb barres a banda i banda */}
@@ -46,16 +46,16 @@ export function FinalCta({ onOpenRegister, onOpenPreus }: FinalCtaProps) {
           className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase"
           style={{ color: "#3F6653", letterSpacing: "0.22em" }}
         >
-          <span style={{ width: "24px", height: "2px", background: "#5E8772" }} />
+          <span style={{ width: "24px", height: "2px", background: "var(--c-salvia)" }} />
           {t("v2.cita.eyebrow")}
-          <span style={{ width: "24px", height: "2px", background: "#5E8772" }} />
+          <span style={{ width: "24px", height: "2px", background: "var(--c-salvia)" }} />
         </div>
 
         {/* Cita gran amb èmfasi en cursiva */}
         <p
           className="font-serif font-normal"
           style={{
-            color: "#26312B",
+            color: "var(--c-fosc)",
             letterSpacing: "-0.018em",
             fontSize: "clamp(2rem, 3.6vw, 3rem)",
             lineHeight: 1.2,
@@ -63,7 +63,7 @@ export function FinalCta({ onOpenRegister, onOpenPreus }: FinalCtaProps) {
           }}
         >
           {t("v2.cita.text.pre")}
-          <em className="italic font-medium" style={{ color: "#141B18" }}>
+          <em className="italic font-medium" style={{ color: "var(--c-tinta)" }}>
             {t("v2.cita.text.em")}
           </em>
           {t("v2.cita.text.post")}
@@ -85,12 +85,12 @@ export function FinalCta({ onOpenRegister, onOpenPreus }: FinalCtaProps) {
       {/* ===== CTA FINAL (dark) ===== */}
       <section
         className="flex flex-col items-center gap-8 px-6 py-28 text-center sm:px-8 sm:py-32 lg:py-36"
-        style={{ background: "#26312B", color: "#F2F5F1" }}
+        style={{ background: "var(--c-fosc)", color: "var(--c-clar)" }}
       >
         {/* Eyebrow */}
         <div
           className="font-mono text-[11px] font-semibold uppercase"
-          style={{ color: "#AAC9B6", letterSpacing: "0.3em" }}
+          style={{ color: "var(--c-salvia-light)", letterSpacing: "0.3em" }}
         >
           {t("v2.ctafinal.eyebrow")}
         </div>
@@ -99,7 +99,7 @@ export function FinalCta({ onOpenRegister, onOpenPreus }: FinalCtaProps) {
         <h2
           className="font-serif font-normal"
           style={{
-            color: "#F2F5F1",
+            color: "var(--c-clar)",
             letterSpacing: "-0.025em",
             fontSize: "clamp(2.25rem, 4.6vw, 4rem)",
             lineHeight: 1.1,
@@ -107,7 +107,7 @@ export function FinalCta({ onOpenRegister, onOpenPreus }: FinalCtaProps) {
           }}
         >
           {t("v2.ctafinal.title.pre")}
-          <em className="italic font-medium" style={{ color: "#AAC9B6" }}>
+          <em className="italic font-medium" style={{ color: "var(--c-salvia-light)" }}>
             {t("v2.ctafinal.title.em")}
           </em>
           {t("v2.ctafinal.title.post")}
@@ -118,7 +118,7 @@ export function FinalCta({ onOpenRegister, onOpenPreus }: FinalCtaProps) {
           onClick={handleClick}
           className="mt-4 inline-flex items-center justify-center px-11 py-5 font-sans font-semibold transition-opacity hover:opacity-90"
           style={{
-            background: "#5E8772",
+            background: "var(--c-salvia)",
             color: "#FFFFFF",
             fontSize: "0.9375rem",
             letterSpacing: "0.02em",

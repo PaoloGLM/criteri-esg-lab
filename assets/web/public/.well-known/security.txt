@@ -1,0 +1,4 @@
+Contact: mailto:info@criteriesg.com
+Expires: 2027-09-06T00:00:00.000Z
+Preferred-Languages: ca, es, en
+Canonical: https://criteriesg.com/.well-known/security.txt

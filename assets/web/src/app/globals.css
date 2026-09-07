@@ -60,50 +60,53 @@
   --font-serif: Georgia, "Times New Roman", serif;
   --font-mono: "SF Mono", SFMono-Regular, ui-monospace, monospace;
   --font-sans: system-ui, -apple-system, sans-serif;
-  --background: #F2F5F1;
-  --foreground: #26312B;
+  /* — Vars shadcn/Tailwind: referencien les del tema perquè el panell
+     Disseny controli TOTA la web (correspondències exactes amb la paleta
+     aprovada; els neutrals no temàtics queden fixos) — */
+  --background: var(--c-clar);
+  --foreground: var(--c-fosc);
   --card: #FFFFFF;
-  --card-foreground: #26312B;
+  --card-foreground: var(--c-fosc);
   --popover: #FFFFFF;
-  --popover-foreground: #26312B;
-  --primary: #26312B;
-  --primary-foreground: #F2F5F1;
-  --secondary: #E4ECE6;
-  --secondary-foreground: #26312B;
-  --muted: #E4ECE6;
-  --muted-foreground: #4A5F53;
-  --accent: #5E8772;
+  --popover-foreground: var(--c-fosc);
+  --primary: var(--c-fosc);
+  --primary-foreground: var(--c-clar);
+  --secondary: color-mix(in srgb, var(--c-salvia) 16%, white);
+  --secondary-foreground: var(--c-fosc);
+  --muted: color-mix(in srgb, var(--c-salvia) 16%, white);
+  --muted-foreground: color-mix(in srgb, var(--c-salvia) 55%, var(--c-tinta));
+  --accent: var(--c-salvia);
   --accent-foreground: #FFFFFF;
-  --accent-soft: #AAC9B6;
-  --accent-deep: #3F6653;
-  --bg: #F2F5F1;
-  --bg-deep: #141B18;
+  --accent-soft: var(--c-salvia-light);
+  --accent-deep: color-mix(in srgb, var(--c-salvia) 70%, var(--c-tinta));
+  --bg: var(--c-clar);
+  --bg-deep: var(--c-tinta);
   --highlight: #F5E381;
-  --verd-clar: #AAC9B6;
-  --ink: #26312B;
-  --ink-deep: #141B18;
-  --ink-soft: #4A5F53;
+  --verd-clar: var(--c-salvia-light);
+  --ink: var(--c-fosc);
+  --ink-deep: var(--c-tinta);
+  --ink-soft: color-mix(in srgb, var(--c-salvia) 55%, var(--c-tinta));
   --sem-g: #5C8A5C;
-  --sem-y: #C9A961;
+  --sem-y: var(--c-daurat);
   --sem-r: #A0522D;
-  --rule: #D8E2DA;
+  --rule: var(--c-separador);
   --destructive: #B91C1C;
-  --border: #D8E2DA;
-  --input: #D8E2DA;
-  --ring: #5E8772;
-  --chart-1: #5E8772;
-  --chart-2: #26312B;
-  --chart-3: #C9A961;
-  --chart-4: #AAC9B6;
+  --border: var(--c-separador);
+  --input: var(--c-separador);
+  --ring: var(--c-salvia);
+  --chart-1: var(--c-salvia);
+  --chart-2: var(--c-fosc);
+  --chart-3: var(--c-daurat);
+  --chart-4: var(--c-salvia-light);
   --chart-5: #A0522D;
-  --sidebar: #E4ECE6;
-  --sidebar-foreground: #26312B;
-  --sidebar-primary: #5E8772;
+  --sidebar: color-mix(in srgb, var(--c-salvia) 16%, white);
+  --sidebar-foreground: var(--c-fosc);
+  --sidebar-primary: var(--c-salvia);
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #E4ECE6;
-  --sidebar-accent-foreground: #26312B;
-  --sidebar-border: #D8E2DA;
-  --sidebar-ring: #5E8772;
+  --sidebar-accent: color-mix(in srgb, var(--c-salvia) 16%, white);
+  --sidebar-accent-foreground: var(--c-fosc);
+  --sidebar-border: var(--c-separador);
+  --sidebar-ring: var(--c-salvia);
 }
 
 .dark {
@@ -141,19 +144,19 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-sans, var(--font-dm-sans)), system-ui, sans-serif;
   }
   h1, h2, h3, h4, h5, h6, .font-serif {
-    font-family: var(--font-fraunces), Georgia, serif;
+    font-family: var(--font-serif, var(--font-newsreader)), Georgia, serif;
   }
   .font-mono {
-    font-family: var(--font-jetbrains), 'Courier New', monospace;
+    font-family: var(--font-mono, var(--font-jetbrains)), 'Courier New', monospace;
   }
 }
 
 /* Brand utilities */
 .eyebrow {
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-sans, var(--font-dm-sans)), sans-serif;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.18em;

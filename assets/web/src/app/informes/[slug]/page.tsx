@@ -127,10 +127,14 @@ export default function InformeSlugPage() {
         author: {
           "@type": "Organization",
           name: "Criteri ESG",
+          url: "https://criteriesg.com",
+          email: "info@criteriesg.com",
         },
         publisher: {
           "@type": "Organization",
           name: "Criteri ESG",
+          url: "https://criteriesg.com",
+          email: "info@criteriesg.com",
           logo: {
             "@type": "ImageObject",
             url: "https://criteriesg.com/logo.svg",

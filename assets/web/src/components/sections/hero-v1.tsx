@@ -3,13 +3,22 @@ import { useLanguage } from "@/components/language-provider";
 import { Reveal } from "./reveal";
 
 function HeroChart() {
+  const { lang } = useLanguage();
+  const ca = lang === "ca";
   const t = {
     cap1: ["PÀGINES PUBLICADES ↑", "PÁGINAS PUBLICADAS ↑"],
     cap2: ["EL TEU TEMPS →", "TU TIEMPO →"],
     anys: ["2022", "2023", "2024", "2025", "2026"],
+    fites: [
+      ["CSRD aprovada", "Ley CSRD"],
+      ["ESRS Set 1", "ESRS Set 1"],
+      ["1a onada", "1.ª ola"],
+      ["Omnibus", "Omnibus"],
+      ["ESRS revisats −61%", "ESRS revisados −61%"],
+    ],
     fig: [
-      "Il·lustratiu. El volum de publicació regulatòria creix cada curs fiscal; les hores disponibles del teu equip, no.",
-      "Ilustrativo. El volumen de publicación regulatoria crece cada curso fiscal; las horas disponibles de tu equipo, no.",
+      "Il·lustratiu: les fites són reals i datades; les alçades mostren la tendència del volum regulatòri, no una sèrie estadística.",
+      "Ilustrativo: los hitos son reales y fechados; las alturas muestran la tendencia del volumen regulatorio, no una serie estadística.",
     ],
   };
   return (
@@ -35,13 +44,27 @@ function HeroChart() {
         </g>
         <g fontFamily="var(--font-mono)" fontSize="10.5">
           <rect x="330" y="26" width="168" height="22" rx="4" fill="#F5E381" />
-          <text x="338" y="41" fill="#26312B" fontWeight="600">{t.cap1[0]}</text>
-          <text x="60" y="186" fill="#A0522D" fontWeight="600">{t.cap2[0]}</text>
+          <text x="338" y="41" fill="#26312B" fontWeight="600">{t.cap1[ca ? 0 : 1]}</text>
+          <text x="60" y="186" fill="#A0522D" fontWeight="600">{t.cap2[ca ? 0 : 1]}</text>
+        </g>
+        <g fontFamily="var(--font-mono)" fontSize="8.5" fill="#7A8B7F" textAnchor="middle">
+          {t.fites.map((f, i) => {
+            const label = f[ca ? 0 : 1];
+            const cut = label.length > 15 ? label.indexOf(" ", 8) : -1;
+            const lines = cut > 0 ? [label.slice(0, cut), label.slice(cut + 1)] : [label];
+            return (
+              <text key={label} x={96 + i * 82} y="316">
+                {lines.map((ln, j) => (
+                  <tspan key={ln} x={96 + i * 82} dy={j === 0 ? 0 : 10}>{ln}</tspan>
+                ))}
+              </text>
+            );
+          })}
         </g>
       </svg>
       <figcaption className="mt-2.5 font-mono text-[.68rem] leading-relaxed tracking-[.05em] text-[var(--ink-soft)]">
-        {t.fig[0].split(";")[0]};
-        <b className="font-semibold text-[var(--ink)]">{t.fig[0].split(";")[1]}</b>
+        <b className="font-semibold text-[var(--ink)]">{t.fig[ca ? 0 : 1].split(":")[0]}:</b>
+        {t.fig[ca ? 0 : 1].slice(t.fig[ca ? 0 : 1].indexOf(":") + 1)}
       </figcaption>
     </figure>
   );
@@ -53,7 +76,7 @@ export function HeroV1() {
 
   return (
     <section id="hero" style={{ background: "var(--bg)" }} className="border-b border-[rgba(38,49,43,.09)] pt-[88px]">
-      <div className="mx-auto grid max-w-[1160px] items-end gap-14 px-7 lg:grid-cols-[1.05fr_.95fr]">
+      <div className="mx-auto grid max-w-[1160px] items-center gap-14 px-7 lg:grid-cols-[.95fr_1.05fr]">
         <div>
           <p className="eyebrow">{ca ? "Intel·ligència regulatòria ESG" : "Inteligencia regulatoria ESG"}</p>
           <h1 className="mb-[26px] font-serif font-medium leading-[1.08] tracking-[-.012em] text-[var(--ink-deep)] text-[clamp(2.75rem,5vw,4.2rem)] [text-wrap:balance]">

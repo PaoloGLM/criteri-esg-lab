@@ -76,8 +76,9 @@ export function TemaPanel({ lang }: { lang: "ca" | "es" }) {
     setSaving(true);
     setMsg(null);
     try {
-      // PUT amb els valors per defecte = tornar al disseny aprovat
-      const r = await fetch("/api/admin/theme");
+      // ?defaults=1 → el GET retorna THEME_DEFAULTS (sense ell tornaria el
+      // tema actual de Storage i restaurar seria un no-op)
+      const r = await fetch("/api/admin/theme?defaults=1");
       const defaults = await r.json();
       const saved = await adminApi.theme.put({ colors: defaults.colors, fonts: defaults.fonts });
       setTheme({ colors: { ...saved.colors }, fonts: { ...saved.fonts } });

@@ -13,7 +13,13 @@ export const dynamic = "force-dynamic";
 
 const THEME_PATH = "theme.json";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  // ?defaults=1 → ignora Storage i retorna els valors d'origen. El botó
+  // "Restaurar" del panell el fa servir: GET sense paràmetre retorna el tema
+  // actual, i restaurar amb ell seria un no-op.
+  if (req.nextUrl.searchParams.get("defaults") === "1") {
+    return NextResponse.json(THEME_DEFAULTS);
+  }
   return NextResponse.json(await readTheme());
 }
 

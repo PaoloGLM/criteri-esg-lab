@@ -74,7 +74,7 @@
 
 /* ── Statband ── */
 .statband{background:var(--ink);color:var(--bg)}
-.statband-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:30px 0}
+.statband-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:30px 28px}
 .stat{text-align:left;border-left:1px solid rgba(170,201,182,.25);padding-left:18px}
 .stat:first-child{border-left:none;padding-left:0}
 .stat .n{font-family:var(--font-newsreader), 'Newsreader', Georgia, serif;font-weight:500;font-size:clamp(1.9rem,2.6vw,2.6rem);line-height:1;color:var(--verd-clar)}

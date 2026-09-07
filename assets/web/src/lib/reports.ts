@@ -103,7 +103,7 @@ export const reports: Report[] = [
     certifications: ["GRI", "CSRD"],
     summary:
       "L'EFRAG defineix les seves prioritats estratègiques per al 2026: sectorial standards, simplificació, interoperabilitat amb GRI i ISSB.",
-    url: "https://www.efrag.org/en/news-and-calendar/news/efrag-submits-its-sustainability-reporting-work-programme-2026-to-the-european-commission",
+    url: "https://www.efrag.org/sites/default/files/media/document/2026-04/EFRAG%20Daft%20Work%20Programme%202026%20.pdf",
   },
   {
     slug: "ecovadis-methodology-q1-2026",
@@ -173,7 +173,7 @@ export const reports: Report[] = [
     certifications: ["CDP", "TCFD"],
     summary:
       "Estimacions de demanda energètica global per regió i font. La demanda elèctrica creix un 4% liderada per renovables i Xina.",
-    url: "https://www.iea.org/reports/global-energy-review-2026",
+    url: "https://iea.blob.core.windows.net/assets/df903e1c-49c6-4757-8cbf-6fbcfe7611a0/GlobalEnergyReview2026.pdf",
   },
   {
     slug: "eu-taxonomy-delegated-act-2026",
@@ -187,7 +187,7 @@ export const reports: Report[] = [
     certifications: ["SFDR", "CSRD"],
     summary:
       "El Delegated Act entra en vigor el 28 gener 2026 amb aplicació retrospectiva des de 1 gener 2026. Simplifica el reporting de Taxonomia.",
-    url: "https://sustainablefutures.linklaters.com/post/102m1i3/eu-delegated-act-on-simplifying-taxonomy-reporting-published-in-the-official-jou",
+    url: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202600073",
   },
   {
     slug: "europe-sustainable-development-2026",
@@ -201,7 +201,7 @@ export const reports: Report[] = [
     certifications: ["UN Global Compact", "SDG Compass"],
     summary:
       "7a edició de l'informe. Avalua el progrés de 41 països europeus en els ODS. Identifica estancament en ODS 13 (clima) i 12 (consum responsable).",
-    url: "https://sdgtransformationcenter.org/reports/europe-sustainable-development-report-2026",
+    url: "https://s3.amazonaws.com/sustainabledevelopment.report/2026/europe-sustainable-development-report-2026.pdf",
   },
 ];
 

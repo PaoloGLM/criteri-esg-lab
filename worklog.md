@@ -934,3 +934,12 @@ Stage Summary:
 - FIX: bucket media només admetia imatges → updateBucket amb application/json + text/plain; theme.json sembrat amb la paleta aprovada.
 - VERIFICAT E2E: upload/download OK, html:root{ present a criteriesg.com, salvia #5E8772 servida, cap rastre del color de prova (restaurat).
 - Quirk: scripts .env parse — CRLF trencava claus (stripar \r). PATCH /bucket/<id> no existeix → usar supabase-js updateBucket.
+
+## 2026-09-07 — Segon lot web (PR #33): Basic Auth + fix admin + tema global + AEO
+- proxy.ts restaurat (d'edb8ea9^) amb exclusions /admin*, /api/admin*, api/llms, robots, sitemap, llms.txt, .well-known; callback OAuth torna a l'origin protegit (navegador cacheja per host+realm, funciona).
+- FIX arrel /admin "Carregant...": gate era loading||isAdmin===null; si !user l'effect feia return i isAdmin restava null per sempre. Ara: loading->Carregant, !user->botó login, després Verificant accés...
+- Tema global: vars shadcn/Tailwind -> var(--c-*), 62 hex convertits (hero, mid-sections, final-cta, header-v1), fonts encadenades tema->next->sistema (--font-sans/serif/mono amb fallback --font-dm-sans/newsreader/jetbrains), .eyebrow arreglat.
+- AEO: sitemap duplicat fora; security.txt public/.well-known/; npm audit 9->0 (sharp 0.35.4, react-syntax-highlighter fora [orphan], js-yaml override 4.3.1); schema author/publisher amb url+email; endpoint /api/llms/[slug] + rewrite /informes/[slug].md (públic, matcher exclòs del Basic Auth).
+- INCIDENT: npm audit fix va pujar next 16.2.12->16.3.4 (bug file-tracing a Vercel: ENOENT nft.json a onBuildComplete; build local verd, deploy ERROR). Fix: pin next@16.2.12 (42a92fd).
+- FIX arrel pushes: remote origin tenia *** literal a la URL -> git remote set-url + helper de gh.
+- VERIFICAT E2E PROD: home 401+popup, /admin 200 login sense popup, /informes/[slug].md 200 markdown, security.txt 200. CI GitHub+Vercel verda, merge --admin.

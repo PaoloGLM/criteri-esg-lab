@@ -69,6 +69,9 @@ export default function VisualEditorPage() {
         latest.current = next;
         setBlocksByLang(next);
         setStatus((page.status as Status) ?? "draft");
+        // Si l'iframe ja havia enviat "ready" (carrera: ready abans que acabés
+        // la càrrega), rebia blocs buits — reenviem ara el contingut desat.
+        post({ action: "set-blocks", blocks: next[lang], lang });
       })
       .catch((e) => alive && setBanner({ type: "error", msg: (e as { error?: string }).error || "Error carregant la pàgina" }))
       .finally(() => alive && setLoading(false));

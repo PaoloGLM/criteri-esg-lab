@@ -80,6 +80,17 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // L'editor visual (/admin/visual) carrega la pàgina real en un iframe amb
+  // ?edit=1. L'iframe no té les credencials Basic de la navegació (el navegador
+  // no les demana per a subrecursos), i el mode edició no exposa cap contingut
+  // no publicat: els blocs arriben per postMessage des del panell, que valida
+  // JWT d'admin via /api/admin/* (fora del Basic Auth per disseny). Limitat
+  // a les 3 pàgines CMS — la resta de rutes mantenen el Basic Auth íntegre.
+  const cmsPath = ["/", "/qui-som", "/que-fem"].includes(request.nextUrl.pathname);
+  if (cmsPath && request.nextUrl.searchParams.get("edit") === "1") {
+    return NextResponse.next();
+  }
+
   const creds = getEffectiveCredentials();
 
   // En producció sense credencials configurades, error 500.

@@ -440,10 +440,14 @@ export default function InformeSlugPage() {
             <div className="mt-8 pt-6 border-t flex justify-between items-baseline" style={{ borderTopColor: "var(--c-fosc)" }}>
               <p className="font-serif text-sm italic" style={{ color: "var(--c-tinta)" }}>
                 {lang === "ca"
-                  ? `5 minuts de lectura. 8 blocs que canvien el teu criteri sobre un informe de ${report.pages} pàgines.`
-                  : `5 minutos de lectura. 8 bloques que cambian tu criterio sobre un informe de ${report.pages} páginas.`}
+                  ? report.pages > 0
+                    ? `5 minuts de lectura. 8 blocs que canvien el teu criteri sobre un informe de ${report.pages} pàgines.`
+                    : "5 minuts de lectura. 8 blocs que canvien el teu criteri sobre la font original."
+                  : report.pages > 0
+                    ? `5 minutos de lectura. 8 bloques que cambian tu criterio sobre un informe de ${report.pages} páginas.`
+                    : "5 minutos de lectura. 8 bloques que cambian tu criterio sobre la fuente original."}
               </p>
-              <button onClick={() => window.open(report.url, "_blank")} className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold" style={{ color: "#3F6653", borderBottom: "1px solid var(--c-salvia)", paddingBottom: "4px" }}>{lang === "ca" ? "Veure font original \u2192" : "Ver fuente original \u2192"}</button>
+              <button onClick={() => window.open(report.url, "_blank")} className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold" style={{ color: "#3F6653", borderBottom: "1px solid var(--c-salvia)", paddingBottom: "4px" }}>{lang === "ca" ? "Accés a la font original \u2192" : "Acceso a la fuente original \u2192"}</button>
             </div>
           </div>
         )}
@@ -653,7 +657,7 @@ function UpgradePreview({
           className="font-mono text-[10px] uppercase tracking-[0.14em] font-semibold flex-shrink-0"
           style={{ color: "#3F6653", borderBottom: "1px solid var(--c-salvia)", paddingBottom: "3px" }}
         >
-          {lang === "ca" ? "Veure font original →" : "Ver fuente original →"}
+          {lang === "ca" ? "Accés a la font original →" : "Acceso a la fuente original →"}
         </a>
       </div>
     </>

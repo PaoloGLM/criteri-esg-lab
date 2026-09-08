@@ -67,8 +67,11 @@ export function validateBlocks(json: unknown): { ok: boolean; error?: string; bl
         return { ok: false, error: `${where} (imatge): cal 'url' http(s)` };
       if (d.url.length > 2000) return { ok: false, error: `${where} (imatge): url massa llarga` };
       if (d.alt !== undefined && !isStr(d.alt)) return { ok: false, error: `${where} (imatge): 'alt' ha de ser text` };
-      if (d.widthPct !== undefined && ![25, 50, 75, 100].includes(d.widthPct as number))
-        return { ok: false, error: `${where} (imatge): widthPct ha de ser 25/50/75/100` };
+      // Amplada LLUIRE (editor visual): qualsevol enter 10-100 (sense presets)
+      if (d.widthPct !== undefined && (typeof d.widthPct !== "number" || d.widthPct < 10 || d.widthPct > 100))
+        return { ok: false, error: `${where} (imatge): widthPct ha de ser un número 10-100` };
+      if (d.align !== undefined && !["left", "center", "right"].includes(d.align as string))
+        return { ok: false, error: `${where} (imatge): align ha de ser left|center|right` };
       const fx = d.focalX, fy = d.focalY;
       if (fx !== undefined && (typeof fx !== "number" || fx < 0 || fx > 100))
         return { ok: false, error: `${where} (imatge): focalX 0-100` };

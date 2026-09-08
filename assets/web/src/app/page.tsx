@@ -8,6 +8,7 @@ import { HeroV1 } from "@/components/sections/hero-v1";
 import HomePageV1Sections from "@/components/sections/home-v1-sections";
 import { AuthDialog } from "@/components/auth-dialog";
 import { useAuth } from "@/lib/auth-context";
+import { FreeBlocks } from "@/components/cms/blocks-view";
 
 export default function Home() {
   const { user } = useAuth();
@@ -26,6 +27,9 @@ export default function Home() {
         <Statement />
         <HeroV1 />
         <HomePageV1Sections />
+
+        {/* CMS: blocs editables visualment des de /admin/visual */}
+        <FreeBlocks slug="home" />
       </main>
       <FooterV1 />
       {!user && <AuthDialog open={authOpen} onOpenChange={setAuthOpen} defaultTab={authTab} />}

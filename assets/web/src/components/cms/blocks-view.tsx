@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Block, IMAGE_WIDTHS, sanitizeHtml } from "@/lib/blocks";
 import { usePageBlocks } from "@/lib/pages-source";
 import { useLanguage } from "@/components/language-provider";
+import { VisualBlocksRuntime } from "@/components/cms/visual-runtime";
 
 /**
  * blocks-view.tsx — Renderitzador de blocs CMS (fase 3).
@@ -13,7 +14,7 @@ import { useLanguage } from "@/components/language-provider";
  * "block types" de Gutenberg, però amb dades estructurades.
  */
 
-function TextBlock({ data }: { data: Record<string, unknown> }) {
+export function TextBlock({ data }: { data: Record<string, unknown> }) {
   const html = sanitizeHtml(typeof data.html === "string" ? data.html : "");
   const align = data.align === "center" ? "center" : "left";
   return (
@@ -25,16 +26,18 @@ function TextBlock({ data }: { data: Record<string, unknown> }) {
   );
 }
 
-function ImageBlock({ data }: { data: Record<string, unknown> }) {
+export function ImageBlock({ data }: { data: Record<string, unknown> }) {
   const url = typeof data.url === "string" ? data.url : "";
   const alt = typeof data.alt === "string" ? data.alt : "";
   const caption = typeof data.caption === "string" ? data.caption : "";
-  const widthPct = typeof data.widthPct === "number" && IMAGE_WIDTHS.includes(data.widthPct as never) ? data.widthPct : 100;
+  const widthPct = typeof data.widthPct === "number" && data.widthPct >= 10 && data.widthPct <= 100 ? data.widthPct : 100;
+  const align = data.align === "left" || data.align === "right" ? data.align : "center";
   const focalX = typeof data.focalX === "number" ? data.focalX : 50;
   const focalY = typeof data.focalY === "number" ? data.focalY : 50;
   if (!url) return null;
+  const margin = align === "left" ? { marginRight: "auto" } : align === "right" ? { marginLeft: "auto" } : { marginLeft: "auto", marginRight: "auto" };
   return (
-    <figure className="cms-image" style={{ maxWidth: `${widthPct}%`, marginLeft: widthPct < 100 ? "auto" : undefined, marginRight: widthPct < 100 ? "auto" : undefined }}>
+    <figure className="cms-image" style={{ maxWidth: `${widthPct}%`, ...margin }}>
       {/* eslint-disable-next-line @next/next/no-img-element -- imatges del CMS (URL arbitrària, no optimitzables per next/image sense domini) */}
       <img
         src={url}
@@ -49,7 +52,7 @@ function ImageBlock({ data }: { data: Record<string, unknown> }) {
   );
 }
 
-function CtaBlock({ data, onOpenPreus }: { data: Record<string, unknown>; onOpenPreus?: () => void }) {
+export function CtaBlock({ data, onOpenPreus }: { data: Record<string, unknown>; onOpenPreus?: () => void }) {
   const label = typeof data.label === "string" ? data.label : "";
   const href = typeof data.href === "string" ? data.href : "#";
   const style = data.style === "outline" ? "outline" : "solid";
@@ -99,6 +102,17 @@ export function BlocksView({ blocks }: { blocks: Block[] }) {
 export function FreeBlocks({ slug }: { slug: string }) {
   const { lang } = useLanguage();
   const { ca, es, loading } = usePageBlocks(slug);
+  // Mode editor: /admin/visual carrega aquesta pàgina en un iframe amb ?edit=1
+  const [editMode] = useState(
+    () => typeof window !== "undefined" && window.location.search.includes("edit=1")
+  );
+  if (editMode) {
+    return (
+      <section className="px-2 py-20" style={{ background: "var(--bg)" }}>
+        <VisualBlocksRuntime />
+      </section>
+    );
+  }
   if (loading) return null;
   const list = (lang === "es" ? es : ca) ?? ca ?? [];
   if (!list.length) return null;

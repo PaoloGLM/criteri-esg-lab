@@ -15,7 +15,7 @@ import { validateContent } from "@/lib/blocks";
 
 export const dynamic = "force-dynamic";
 
-const VALID_SLUGS = ["qui-som", "que-fem"];
+const VALID_SLUGS = ["home", "qui-som", "que-fem"];
 
 export async function GET(
   req: NextRequest,

@@ -1,30 +1,21 @@
 import { NextRequest } from "next/server";
 import { requireAdmin, errorJson, logError, ERR } from "@/lib/admin-auth";
+import { validateContent } from "@/lib/blocks";
 
 /**
  * GET  /api/admin/pages/[slug] → contingut actual de la pàgina (tots els estats)
  * PUT  /api/admin/pages/[slug] → guarda content_ca / content_es
  *
- * Body PUT: { content_ca?: { sections: {...} }, content_es?: { sections: {...} } }
+ * Body PUT: { content_ca?: { blocks: [...] } | { sections: {...} },
+ *             content_es?: idem, status? }
+ * Validació compartida amb l'editor: lib/blocks.validateContent
+ * (bloc text/image/cta amb data estructurada — NO HTML lliure tipus WP).
  * Seguretat: requireAdmin valida JWT + rol admin server-side.
  */
 
 export const dynamic = "force-dynamic";
 
 const VALID_SLUGS = ["qui-som", "que-fem"];
-
-function validateSections(json: unknown): string | null {
-  if (json === null || json === undefined) return null; // camp opcional
-  if (typeof json !== "object" || Array.isArray(json)) return "sections ha de ser un objecte";
-  const sections = (json as { sections?: unknown }).sections;
-  if (!sections || typeof sections !== "object" || Array.isArray(sections))
-    return "Cal { sections: { [id]: html } }";
-  for (const [k, v] of Object.entries(sections as Record<string, unknown>)) {
-    if (typeof v !== "string") return `La secció '${k}' ha de contenir HTML (string)`;
-    if (v.length > 200_000) return `La secció '${k}' és massa gran (màx 200KB)`;
-  }
-  return null;
-}
 
 export async function GET(
   req: NextRequest,
@@ -105,9 +96,9 @@ export async function PUT(
       status?: unknown;
     };
 
-    const errCa = validateSections(body.content_ca);
+    const errCa = validateContent(body.content_ca);
     if (errCa) return errorJson(ERR.VALIDATION, `content_ca: ${errCa}`, 400);
-    const errEs = validateSections(body.content_es);
+    const errEs = validateContent(body.content_es);
     if (errEs) return errorJson(ERR.VALIDATION, `content_es: ${errEs}`, 400);
 
     const patch: Record<string, unknown> = { updated_at: new Date().toISOString() };

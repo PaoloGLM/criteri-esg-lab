@@ -6,6 +6,7 @@ import { FooterV1 } from "@/components/site-footer-v1";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
+import { FreeBlocks } from "@/components/cms/blocks-view";
 
 
 
@@ -268,6 +269,9 @@ export default function QuiSomPage() {
             </div>
           </div>
         </section>
+
+        {/* CMS fase 3: blocs lliures editables des de /admin */}
+        <FreeBlocks slug="qui-som" />
 
       </main>
       <FooterV1 />

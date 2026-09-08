@@ -93,8 +93,9 @@ export interface AdminAlarm {
 export interface AdminPage {
   slug: string;
   status: string | null;
-  content_ca: { sections?: Record<string, string> } | null;
-  content_es: { sections?: Record<string, string> } | null;
+  // Format nou { blocks: [...] } o legacy { sections: { id: html } } — validat a lib/blocks
+  content_ca: Record<string, unknown> | null;
+  content_es: Record<string, unknown> | null;
   updated_at: string | null;
 }
 
@@ -161,8 +162,8 @@ export const adminApi = {
     put: (
       slug: string,
       body: {
-        content_ca?: { sections: Record<string, string> };
-        content_es?: { sections: Record<string, string> };
+        content_ca?: Record<string, unknown>;
+        content_es?: Record<string, unknown>;
         status?: "draft" | "published" | "archived";
       }
     ) =>

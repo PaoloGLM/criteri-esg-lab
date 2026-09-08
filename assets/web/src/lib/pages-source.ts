@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
+import type { Block } from "@/lib/blocks";
 
 /**
  * Font de dades de les pàgines estàtiques (Fase 3 CMS).
@@ -94,4 +95,58 @@ export function sectionOverride(
   sectionId: string
 ): string | undefined {
   return overrides[lang]?.[sectionId];
+}
+
+/** Blocs CMS (format nou { blocks: [...] }) per idioma. null = res publicat. */
+export function usePageBlocks(slug: string): {
+  ca: Block[] | null;
+  es: Block[] | null;
+  loading: boolean;
+} {
+  const [res, setRes] = useState<{ ca: Block[] | null; es: Block[] | null }>({
+    ca: null,
+    es: null,
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      try {
+        const { data, error } = await supabase
+          .from("pages")
+          .select("content_ca, content_es, status")
+          .eq("slug", slug)
+          .eq("status", "published")
+          .maybeSingle();
+        if (!alive) return;
+        if (error || !data) {
+          setRes({ ca: null, es: null });
+        } else {
+          const pick = (json: unknown): Block[] | null => {
+            if (!json || typeof json !== "object") return null;
+            const blocks = (json as { blocks?: unknown }).blocks;
+            if (!Array.isArray(blocks)) return null;
+            return blocks.filter(
+              (b): b is Block =>
+                !!b &&
+                typeof b === "object" &&
+                typeof (b as Block).id === "string" &&
+                ["text", "image", "cta"].includes((b as Block).type)
+            );
+          };
+          setRes({ ca: pick(data.content_ca), es: pick(data.content_es) });
+        }
+      } catch {
+        if (alive) setRes({ ca: null, es: null });
+      } finally {
+        if (alive) setLoading(false);
+      }
+    })();
+    return () => {
+      alive = false;
+    };
+  }, [slug]);
+
+  return { ca: res.ca, es: res.es, loading };
 }

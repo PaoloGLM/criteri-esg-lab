@@ -5,7 +5,10 @@ import type { NextConfig } from "next";
  *
  * - HSTS: força HTTPS (Vercel ja ho fa, però així ho garantim)
  * - X-Content-Type-Options: prevé MIME sniffing
- * - X-Frame-Options: prevé clickjacking (DENY = la web no es pot embevir en iframe)
+ * - X-Frame-Options: SAMEORIGIN (mai embeddable des de tercers). 'self' és
+ *   necessari per a l'editor visual /admin/visual, que carrega la pàgina real
+ *   en un iframe same-origin (simulador tipus WP). Contra clickjacking de
+ *   tercers protegeix igual que DENY.
  * - Referrer-Policy: només envia l'origen a altres sites
  * - Permissions-Policy: desactiva API del navegador que no usem
  * - Content-Security-Policy: prevé XSS i injecció de scripts externs
@@ -16,12 +19,13 @@ import type { NextConfig } from "next";
  *   - connect-src permet https://*.supabase.co per quan Supabase es configuri.
  *   - img-src permet 'self' data: https: perquè alguns informes tenen imatges
  *     externes (URLs de fonts institucionals).
- *   - frame-ancestors 'none' és equivalent a X-Frame-Options: DENY però més modern.
+ *   - frame-ancestors 'self': embeddable només same-origin (editor visual
+ *     /admin/visual). Contra clickjacking de tercers protegeix igual que 'none'.
  */
 const securityHeaders = [
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
   { key: "X-Content-Type-Options", value: "nosniff" },
-  { key: "X-Frame-Options", value: "DENY" },
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
   {
@@ -33,7 +37,7 @@ const securityHeaders = [
       "font-src 'self'",
       "img-src 'self' data: https:",
       "connect-src 'self' https://*.supabase.co wss://*.supabase.co",
-      "frame-ancestors 'none'",
+      "frame-ancestors 'self'",
       "base-uri 'self'",
       "form-action 'self'",
     ].join("; "),

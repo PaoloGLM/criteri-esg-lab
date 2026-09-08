@@ -102,10 +102,13 @@ export function BlocksView({ blocks }: { blocks: Block[] }) {
 export function FreeBlocks({ slug }: { slug: string }) {
   const { lang } = useLanguage();
   const { ca, es, loading } = usePageBlocks(slug);
-  // Mode editor: /admin/visual carrega aquesta pàgina en un iframe amb ?edit=1
-  const [editMode] = useState(
-    () => typeof window !== "undefined" && window.location.search.includes("edit=1")
-  );
+  // Mode editor: /admin/visual carrega aquesta pàgina en un iframe amb ?edit=1.
+  // Es detecta en un efecte (mai durant el render) per evitar hydration mismatch
+  // amb el HTML prerenderitzat del servidor (React 19 rebentaria tota la pàgina).
+  const [editMode, setEditMode] = useState(false);
+  useEffect(() => {
+    if (window.location.search.includes("edit=1")) setEditMode(true);
+  }, []);
   if (editMode) {
     return (
       <section className="px-2 py-20" style={{ background: "var(--bg)" }}>

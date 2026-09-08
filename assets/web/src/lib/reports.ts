@@ -107,16 +107,16 @@ export const reports: Report[] = [
   },
   {
     slug: "ecovadis-methodology-q1-2026",
-    title: "EcoVadis Methodology Updates Q1 2026",
+    title: "EcoVadis Methodology Updates Q1 2026 (nota del Help Center)",
     institution: "EcoVadis",
     date: "2026-04-15",
-    pages: 28,
+    pages: 0, // 0 = sense document paginat (article web); la UI amaga "X pàgines"
     type: "rating",
     scope: "GLOBAL",
     tags: ["EcoVadis", "Methodology", "Supplier CSR"],
     certifications: ["EcoVadis"],
     summary:
-      "9 canvis metodològics entre abril i maig 2026. Es refuerça el reconeixement a empreses que reporten amb GRI Universal Standards.",
+      "10 canvis metodològics del Q1 2026. EcoVadis versiona la seva metodologia per alinear-la amb el Reglament europeu de valoracions ESG (ESGR); nou reconeixement per reportar amb GRI Universal Standards; Scope 2 market vs location-based.",
     url: "https://support.ecovadis.com/hc/en-us/articles/34621845310994-Methodology-Updates-Q1-2026",
   },
   {

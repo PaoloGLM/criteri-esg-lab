@@ -163,8 +163,9 @@ export default function HomePageV1Sections() {
               ? [["01", "Semàfor", "Nota A–D i els cinc indicadors que l'han feta."], ["02", "Dades clau", "Els números que importen, cadascun amb la seva pàgina."], ["03", "Resum executiu", "El que hauries de saber abans del cafè."], ["04", "Implicacions", "Per a empreses, reguladors i ciutadania."], ["05", "Més enllà del Checkbox", "El que l'informe no respon — dit sense eufemismes."], ["06", "Connexions", "Evolucions, complements i contradiccions amb informes anteriors."], ["07", "Accions", "Què fer-hi, ordenat per esforç i impacte."], ["08", "Cross-reference", "L'efecte de la notícia sobre 16 estàndards. Ningú més ho fa."]]
               : [["01", "Semáforo", "Nota A–D y los cinco indicadores que la han hecho."], ["02", "Datos clave", "Los números que importan, cada uno con su página."], ["03", "Resumen ejecutivo", "Lo que deberías saber antes del café."], ["04", "Implicaciones", "Para empresas, reguladores y ciudadanía."], ["05", "Más allá del Checkbox", "Lo que el informe no responde — dicho sin eufemismos."], ["06", "Conexiones", "Evoluciones, complementos y contradicciones con informes anteriores."], ["07", "Acciones", "Qué hacer con ello, ordenado por esfuerzo e impacto."], ["08", "Cross-reference", "El efecto de la noticia sobre 16 estándares. Nadie más lo hace."]]
             ).map(([num, titol, desc, dark]) => {
-              // #6: 01, 05 i 08 destacats en verd fosc
+              // #6: 01, 05 i 08 destacats en verd fosc; 02/03/04/06/07 requadre salvia (prova disseny 2026-09)
               const star = num === "01" || num === "05" || num === "08";
+              const salvia = num === "02" || num === "03" || num === "04" || num === "06" || num === "07";
               return (
                 <article
                   key={num as string}
@@ -172,12 +173,14 @@ export default function HomePageV1Sections() {
                   style={
                     star && !dark
                       ? { background: "var(--ink)", borderColor: "var(--ink)" }
-                      : undefined
+                      : salvia
+                        ? { background: "#AAC9B6", borderColor: "#26312B" }
+                        : undefined
                   }
                 >
-                  <div className="num" style={star && !dark ? { color: "var(--highlight)" } : undefined}>{num}</div>
-                  <h3 style={star && !dark ? { color: "var(--bg)" } : undefined}>{titol as string}</h3>
-                  <p style={star && !dark ? { color: "rgba(242,245,241,.75)" } : undefined}>{desc as string}</p>
+                  <div className="num" style={star && !dark ? { color: "var(--highlight)" } : salvia ? { color: "#26312B" } : undefined}>{num}</div>
+                  <h3 style={star && !dark ? { color: "var(--bg)" } : salvia ? { color: "#26312B" } : undefined}>{titol as string}</h3>
+                  <p style={star && !dark ? { color: "rgba(242,245,241,.75)" } : salvia ? { color: "rgba(38,49,43,.82)" } : undefined}>{desc as string}</p>
                 </article>
               );
             })}

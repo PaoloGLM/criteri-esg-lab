@@ -346,8 +346,8 @@ export default function InformeSlugPage() {
             </section>
 
             {/* Bloc 3 — Resum executiu */}
-            <section id="bloc-3" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "var(--c-separador)" }}>
-              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "var(--c-salvia)" }}>{lang === "ca" ? "Bloc 03 · Resum executiu" : "Bloque 03 · Resumen ejecutivo"}</p>
+            <section id="bloc-3" className="scroll-mt-20" style={{ background: "#AAC9B6", margin: "0 -32px", padding: "40px 32px", borderTop: "1px solid #26312B", borderBottom: "1px solid #26312B" }}>
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#26312B" }}>{lang === "ca" ? "Bloc 03 · Resum executiu" : "Bloque 03 · Resumen ejecutivo"}</p>
               <h2 className="mb-4 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Qu\u00e8 diu en llenguatge clar" : "Qu\u00e9 dice en lenguaje claro"}</h2>
               <p className="font-serif text-base leading-relaxed text-primary">{content.resumExecutiu}</p>
             </section>
@@ -623,8 +623,8 @@ function UpgradePreview({
       </section>
 
       {/* Bloc 3 — Resum executiu (tallat com a preview, línia aprovada) */}
-      <section id="bloc-3" className="scroll-mt-20 py-8 border-b" style={{ borderColor: "var(--c-separador)" }}>
-        <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "var(--c-salvia)" }}>{lang === "ca" ? "Bloc 03 · Resum executiu" : "Bloque 03 · Resumen ejecutivo"}</p>
+      <section id="bloc-3" className="scroll-mt-20" style={{ background: "#AAC9B6", margin: "0 -32px", padding: "40px 32px", borderTop: "1px solid #26312B", borderBottom: "1px solid #26312B" }}>
+        <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#26312B" }}>{lang === "ca" ? "Bloc 03 · Resum executiu" : "Bloque 03 · Resumen ejecutivo"}</p>
         <h2 className="mb-4 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Què diu en llenguatge clar" : "Qué dice en lenguaje claro"}</h2>
         <p className="font-serif text-base leading-relaxed text-primary">
           {resumCurt}{" "}

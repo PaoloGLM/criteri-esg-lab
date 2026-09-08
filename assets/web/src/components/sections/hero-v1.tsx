@@ -107,12 +107,12 @@ export function HeroV1() {
               </>
             )}
           </p>
-          <div className="mb-[70px] flex flex-wrap gap-3.5">
+          <div className="mb-[26px] flex flex-wrap gap-3.5">
             <a href="/registro" className="btn-v1 btn-v1-solid">{ca ? "Registra't gratis" : "Regístrate gratis"}</a>
             <a href="/que-fem" className="btn-v1 btn-v1-ghost">{ca ? "Com funciona el mètode" : "Cómo funciona el método"}</a>
           </div>
         </div>
-        <Reveal>
+        <Reveal className="mb-12">
           <HeroChart />
         </Reveal>
       </div>

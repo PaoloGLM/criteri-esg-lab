@@ -943,3 +943,7 @@ Stage Summary:
 - INCIDENT: npm audit fix va pujar next 16.2.12->16.3.4 (bug file-tracing a Vercel: ENOENT nft.json a onBuildComplete; build local verd, deploy ERROR). Fix: pin next@16.2.12 (42a92fd).
 - FIX arrel pushes: remote origin tenia *** literal a la URL -> git remote set-url + helper de gh.
 - VERIFICAT E2E PROD: home 401+popup, /admin 200 login sense popup, /informes/[slug].md 200 markdown, security.txt 200. CI GitHub+Vercel verda, merge --admin.
+
+## 2026-09-08 — Fix editor visual /admin/visual (PR #40)
+- Causa de «error en visualitzar»: X-Frame-Options DENY bloquejava l'iframe + Basic Auth 401 al ?edit=1 + hydration mismatch a FreeBlocks + carrera ready/set-blocks. Tot arreglat, CI verda, mergejat i verificat a prod (SAMEORIGIN, ?edit=1 -> 200).
+- NOTA: les notificacions ADM-DB-001 «Could not find the table public.pages» = el SQL de fase 3 (assets/supabase-pages-fase3.sql) mai s'ha executat. PENDENT: Paolo executa el SQL al Supabase Dashboard -> SQL Editor (DDL no va per REST).

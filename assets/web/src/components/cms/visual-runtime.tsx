@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Block, BlockType, newBlockId, sanitizeHtml } from "@/lib/blocks";
 import { TextBlock, ImageBlock, CtaBlock } from "@/components/cms/blocks-view";
 
@@ -13,7 +13,10 @@ import { TextBlock, ImageBlock, CtaBlock } from "@/components/cms/blocks-view";
  *  · Vèrtex inferior → arrossegar per canviar l'amplada de la imatge (lliure, no presets)
  *  · Nanses ← → sota la imatge seleccionada → alineació esquerra/centra/dreta
  *  · Text editable directament sobre la pàgina (contentEditable, es desa en sortit)
- *  · Arrossegar per la nansa superior per reordenar blocs
+ *  · Arrossegar la nansa ⠿ per reordenar blocs, amb LÍNIA D'INSERCIÓ visual
+ *  · Imatge seleccionada: arrossega-la horitzontalment per situar-la —
+ *    guies d'alineació (marge esquerre, centre, marge dret) amb snap
+ *    tipus PowerPoint; en deixar anar s'alinea amb la zona més propera
  *  · Cada canvi s'envia al pare (postMessage) per als botons Desa/Publica
  *
  * Protocol (missatges { source: "criteri-cms", action, ... }):
@@ -23,6 +26,7 @@ import { TextBlock, ImageBlock, CtaBlock } from "@/components/cms/blocks-view";
  */
 
 type Lang = "ca" | "es";
+type Align = "left" | "center" | "right";
 
 const CMS_MSG = "criteri-cms";
 
@@ -34,12 +38,22 @@ export function sendToParent(action: string, payload?: Record<string, unknown>) 
   }
 }
 
+type DragState = {
+  id: string;
+  kind: "block" | "image";
+  dx: number;
+  guides: string[];
+  cw: number;
+};
+
 export function VisualBlocksRuntime() {
   const [blocksByLang, setBlocksByLang] = useState<Record<Lang, Block[]>>({ ca: [], es: [] });
   const [lang, setLang] = useState<Lang>("ca");
   const [selected, setSelected] = useState<string | null>(null);
-  const [dragOver, setDragOver] = useState<number | null>(null);
-  const dragFrom = useRef<number | null>(null);
+  const [drag, setDrag] = useState<DragState | null>(null);
+  const [insertAt, setInsertAt] = useState<number | null>(null);
+  const insertAtRef = useRef<number | null>(null);
+  const dragInfo = useRef<{ id: string; kind: "block" | "image"; startX: number; startY: number; moved: boolean } | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const blocks = blocksByLang[lang];
@@ -163,24 +177,96 @@ export function VisualBlocksRuntime() {
     window.addEventListener("pointerup", onUp);
   };
 
-  // ── Drag per reordenar ─────────────────────────────────────────────
-  const dragStart = (i: number) => {
-    dragFrom.current = i;
+  // ── Drag de blocs (reordenar amb línia d'inserció) ─────────────────
+  const startBlockDrag = (e: React.PointerEvent, index: number, id: string) => {
+    if (e.button !== 0) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const startY = e.clientY;
+    dragInfo.current = { id, kind: "block", startX: e.clientX, startY, moved: false };
+    const onMove = (ev: PointerEvent) => {
+      const info = dragInfo.current;
+      if (!info) return;
+      if (!info.moved && Math.abs(ev.clientY - startY) < 5) return;
+      info.moved = true;
+      const cont = containerRef.current;
+      if (!cont) return;
+      // Posició d'inserció = punt mitjà dels blocs restants
+      const els = Array.from(cont.querySelectorAll<HTMLElement>("[data-cms-id]"));
+      const rest = els.filter((el) => el.dataset.cmsId !== id);
+      let ins = rest.length;
+      for (let i = 0; i < rest.length; i++) {
+        const r = rest[i].getBoundingClientRect();
+        if (ev.clientY < r.top + r.height / 2) {
+          ins = i;
+          break;
+        }
+      }
+      insertAtRef.current = ins;
+      setInsertAt(ins);
+      setDrag({ id, kind: "block", dx: 0, guides: [], cw: cont.clientWidth });
+    };
+    const onUp = () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      const info = dragInfo.current;
+      const ins = insertAtRef.current;
+      dragInfo.current = null;
+      insertAtRef.current = null;
+      setDrag(null);
+      setInsertAt(null);
+      if (info?.moved && ins !== null) {
+        setBlocksByLang((s) => {
+          const bs = [...s[lang]];
+          const from = bs.findIndex((b) => b.id === info.id);
+          if (from < 0) return s;
+          const [moved] = bs.splice(from, 1);
+          bs.splice(Math.min(ins, bs.length), 0, moved);
+          sendToParent("change", { blocks: bs, lang });
+          return { ...s, [lang]: bs };
+        });
+      }
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
   };
-  const dragEnter = (i: number) => setDragOver(i);
-  const drop = () => {
-    const from = dragFrom.current;
-    const to = dragOver;
-    dragFrom.current = null;
-    setDragOver(null);
-    if (from === null || to === null || from === to) return;
-    setBlocksByLang((s) => {
-      const bs = [...s[lang]];
-      const [moved] = bs.splice(from, 1);
-      bs.splice(to, 0, moved);
-      sendToParent("change", { blocks: bs, lang });
-      return { ...s, [lang]: bs };
-    });
+
+  // ── Drag horitzontal d'imatge amb guies i snap (tipus PowerPoint) ──
+  const startImageDrag = (e: React.PointerEvent, id: string) => {
+    if (selected !== id || e.button !== 0) return; // primer clic selecciona; el drag només amb el bloc seleccionat
+    e.preventDefault();
+    const cont = containerRef.current;
+    if (!cont) return;
+    const startX = e.clientX;
+    const cw = cont.clientWidth;
+    dragInfo.current = { id, kind: "image", startX, startY: e.clientY, moved: false };
+    let lastZone: Align | null = null;
+    const onMove = (ev: PointerEvent) => {
+      const info = dragInfo.current;
+      if (!info) return;
+      const dx = ev.clientX - startX;
+      if (!info.moved && Math.abs(dx) < 5) return;
+      info.moved = true;
+      const frac = 0.5 + dx / cw; // posició del centre de la imatge (0..1)
+      const zone: Align = frac < 0.36 ? "left" : frac < 0.64 ? "center" : "right";
+      lastZone = zone;
+      // Guia activa quan el centre és a prop de l'àncora de la zona
+      const anchor = zone === "left" ? 0.06 : zone === "center" ? 0.5 : 0.94;
+      const guides = Math.abs(frac - anchor) < 0.06 ? [zone] : [];
+      setDrag({ id, kind: "image", dx, guides, cw });
+    };
+    const onUp = () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      const info = dragInfo.current;
+      dragInfo.current = null;
+      setDrag(null);
+      if (info?.moved && lastZone) {
+        setBlocks((bs) => bs.map((x) => (x.id === info.id ? { ...x, data: { ...x.data, align: lastZone as Align } } : x)));
+      }
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
   };
 
   const textBlur = (blockId: string, html: string) =>
@@ -188,91 +274,151 @@ export function VisualBlocksRuntime() {
 
   const btn = "absolute flex items-center justify-center w-6 h-6 rounded-md text-white text-xs shadow-lg cursor-pointer select-none";
 
+  // Guies verticals d'alineació (durant el drag d'imatge)
+  const guidesOverlay =
+    drag?.kind === "image" ? (
+      <div className="pointer-events-none absolute inset-0" style={{ zIndex: 30 }}>
+        {([["left", 24], ["center", drag.cw / 2], ["right", drag.cw - 24]] as const).map(([k, x]) => (
+          <div
+            key={k}
+            style={{
+              position: "absolute",
+              top: -8,
+              bottom: -8,
+              left: x,
+              borderLeft: drag.guides.includes(k)
+                ? "2px dashed var(--salvia, #7a9471)"
+                : "1px dashed rgba(122,148,113,.22)",
+            }}
+          />
+        ))}
+      </div>
+    ) : null;
+
+  // Línia d'inserció (durant el drag de reordenació)
+  const insertLine = (
+    <div style={{ height: 3, background: "var(--salvia, #7a9471)", borderRadius: 999, opacity: 0.9 }} />
+  );
+
+  const from = drag ? blocks.findIndex((b) => b.id === drag.id) : -1;
+
   return (
-    <div ref={containerRef} className="mx-auto max-w-3xl space-y-10 px-6" onClick={() => { setSelected(null); sendToParent("select", { id: null }); }}>
+    <div
+      ref={containerRef}
+      className="relative mx-auto max-w-3xl space-y-10 px-6"
+      onClick={() => {
+        setSelected(null);
+        sendToParent("select", { id: null });
+      }}
+    >
+      {guidesOverlay}
       {blocks.map((b, i) => {
         const sel = selected === b.id;
+        const dragging = drag?.id === b.id;
+        const restIdx = i < from ? i : i - 1;
         return (
-          <div
-            key={b.id}
-            data-cms-id={b.id}
-            draggable={sel}
-            onDragStart={(e) => { e.dataTransfer.effectAllowed = "move"; dragStart(i); }}
-            onDragEnter={() => dragEnter(i)}
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={drop}
-            onDragEnd={() => { dragFrom.current = null; setDragOver(null); }}
-            onClick={(e) => { e.stopPropagation(); setSelected(b.id); sendToParent("select", { id: b.id }); }}
-            className="relative"
-            style={{
-              outline: sel ? "2px solid var(--salvia, #7a9471)" : dragOver === i ? "2px dashed var(--salvia, #7a9471)" : "2px solid transparent",
-              outlineOffset: 6,
-              borderRadius: 8,
-              cursor: "grab",
-            }}
-          >
-            {/* Nansa per arrossegar (reordenar) */}
+          <Fragment key={b.id}>
+            {drag && insertAt !== null && i !== from && insertAt === restIdx && insertLine}
             <div
-              title="Arrossega per moure el bloc"
-              className={btn}
-              style={{ top: -14, left: -14, background: "var(--salvia, #7a9471)", display: sel ? "flex" : "none" }}
-              onMouseDown={() => { dragFrom.current = i; }}
+              data-cms-id={b.id}
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelected(b.id);
+                sendToParent("select", { id: b.id });
+              }}
+              className="relative"
+              style={{
+                outline: sel ? "2px solid var(--salvia, #7a9471)" : "2px solid transparent",
+                outlineOffset: 6,
+                borderRadius: 8,
+                opacity: dragging ? 0.45 : 1,
+              }}
             >
-              ⠿
-            </div>
-
-            {b.type === "text" ? (
+              {/* Nansa per arrossegar (reordenar amb línia d'inserció) */}
               <div
-                contentEditable
-                suppressContentEditableWarning
-                onBlur={(e) => textBlur(b.id, e.currentTarget.innerHTML)}
-                className="sec-body cms-rich"
-                style={{ color: "var(--ink)", outline: "none" }}
-                dangerouslySetInnerHTML={{ __html: sanitizeHtml(String(b.data.html || "")) }}
-              />
-            ) : b.type === "image" ? (
-              <div className="relative">
-                <EditableImage data={b.data} />
-                {/* Vèrtex d'estirament */}
-                <div
-                  title="Arrossega per canviar la mida"
-                  className="absolute"
-                  style={{
-                    right: -9, bottom: -9, width: 20, height: 20,
-                    display: sel ? "block" : "none",
-                    cursor: "nwse-resize",
-                  }}
-                  onPointerDown={(e) => startResize(e, b.id)}
-                >
-                  <div style={{ width: 14, height: 14, margin: 3, background: "var(--salvia, #7a9471)", borderRadius: 3, border: "2px solid #fff", boxShadow: "0 1px 4px rgba(0,0,0,.35)" }} />
-                </div>
+                title="Arrossega per moure el bloc"
+                className={btn}
+                style={{
+                  top: -14,
+                  left: -14,
+                  background: "var(--salvia, #7a9471)",
+                  display: sel ? "flex" : "none",
+                  cursor: "grab",
+                }}
+                onPointerDown={(e) => startBlockDrag(e, i, b.id)}
+              >
+                ⠿
               </div>
-            ) : (
-              <div className="pointer-events-none"><CtaBlock data={b.data} /></div>
-            )}
 
-            {/* Alineació d'imatge */}
-            {b.type === "image" && sel && (
-              <div className="mt-2 flex justify-center gap-2">
-                {(["left", "center", "right"] as const).map((a) => (
-                  <button
-                    key={a}
-                    onClick={(e) => { e.stopPropagation(); setBlocks((bs) => bs.map((x) => (x.id === b.id ? { ...x, data: { ...x.data, align: a } } : x))); }}
-                    className="rounded-md border px-3 py-1 text-xs"
+              {b.type === "text" ? (
+                <div
+                  contentEditable
+                  suppressContentEditableWarning
+                  onBlur={(e) => textBlur(b.id, e.currentTarget.innerHTML)}
+                  className="sec-body cms-rich"
+                  style={{ color: "var(--ink)", outline: "none" }}
+                  dangerouslySetInnerHTML={{ __html: sanitizeHtml(String(b.data.html || "")) }}
+                />
+              ) : b.type === "image" ? (
+                <div
+                  className="relative"
+                  style={{
+                    cursor: sel ? "grab" : undefined,
+                    transform: dragging && drag.kind === "image" ? `translateX(${drag.dx}px)` : undefined,
+                  }}
+                  onPointerDown={(e) => startImageDrag(e, b.id)}
+                  onDragStart={(e) => e.preventDefault()}
+                >
+                  <EditableImage data={b.data} />
+                  {/* Vèrtex d'estirament */}
+                  <div
+                    title="Arrossega per canviar la mida"
+                    className="absolute"
                     style={{
-                      background: b.data.align === a ? "var(--salvia, #7a9471)" : "#fff",
-                      color: b.data.align === a ? "#fff" : "var(--ink)",
-                      borderColor: "var(--salvia, #7a9471)",
+                      right: -9,
+                      bottom: -9,
+                      width: 20,
+                      height: 20,
+                      display: sel ? "block" : "none",
+                      cursor: "nwse-resize",
                     }}
+                    onPointerDown={(e) => startResize(e, b.id)}
                   >
-                    {a === "left" ? "⇤ Esquerra" : a === "center" ? "↔ Centre" : "Dreta ⇥"}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+                    <div style={{ width: 14, height: 14, margin: 3, background: "var(--salvia, #7a9471)", borderRadius: 3, border: "2px solid #fff", boxShadow: "0 1px 4px rgba(0,0,0,.35)" }} />
+                  </div>
+                </div>
+              ) : (
+                <div className="pointer-events-none"><CtaBlock data={b.data} /></div>
+              )}
+
+              {/* Alineació d'imatge (botons equivalents al drag) */}
+              {b.type === "image" && sel && (
+                <div className="mt-2 flex justify-center gap-2">
+                  {(["left", "center", "right"] as const).map((a) => (
+                    <button
+                      key={a}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setBlocks((bs) => bs.map((x) => (x.id === b.id ? { ...x, data: { ...x.data, align: a } } : x)));
+                      }}
+                      className="rounded-md border px-3 py-1 text-xs"
+                      style={{
+                        background: b.data.align === a ? "var(--salvia, #7a9471)" : "#fff",
+                        color: b.data.align === a ? "#fff" : "var(--ink)",
+                        borderColor: "var(--salvia, #7a9471)",
+                      }}
+                    >
+                      {a === "left" ? "⇤ Esquerra" : a === "center" ? "↔ Centre" : "Dreta ⇥"}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </Fragment>
         );
       })}
+
+      {drag && insertAt === blocks.length - 1 && insertLine}
 
       {blocks.length === 0 && (
         <div className="rounded-lg border border-dashed p-10 text-center text-sm" style={{ color: "var(--ink-muted, #6b7280)", borderColor: "var(--rule, #e5e3dd)" }}>

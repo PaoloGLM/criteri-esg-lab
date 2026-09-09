@@ -14,9 +14,11 @@ import { Block, BlockType, validateBlocks } from "@/lib/blocks";
  * per a camps que no caben in-place (URL imatge, alt, peu, CTA href...).
  *
  * Protocol postMessage { source: "criteri-cms" }:
- *  iframe → pare:  ready | change { blocks, lang } | select { id }
+ *  iframe → pare:  ready | change { blocks, lang } | select { id } |
+ *                  texts-ready { lang } | texts-change { id, lang, html }
  *  pare → iframe:  set-blocks { blocks, lang } | set-lang { lang } |
- *                  add-block { type } | move { dir } | remove {} | deselect {}
+ *                  texts-set { texts: {ca,es} } | add-block { type } |
+ *                  move { dir } | remove {} | deselect {}
  */
 
 type Lang = "ca" | "es";
@@ -35,6 +37,7 @@ export default function VisualEditorPage() {
   const [lang, setLang] = useState<Lang>("ca");
   const [status, setStatus] = useState<Status | null>(null);
   const [blocksByLang, setBlocksByLang] = useState<Record<Lang, Block[]>>({ ca: [], es: [] });
+  const [textsByLang, setTextsByLang] = useState<Record<Lang, Record<string, string>>>({ ca: {}, es: {} });
   const [selected, setSelected] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -42,6 +45,7 @@ export default function VisualEditorPage() {
   const [banner, setBanner] = useState<{ type: "ok" | "error"; msg: string } | null>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const latest = useRef<Record<Lang, Block[]>>({ ca: [], es: [] });
+  const latestTexts = useRef<Record<Lang, Record<string, string>>>({ ca: {}, es: {} });
 
   const blocks = blocksByLang[lang];
   const selBlock = blocks.find((b) => b.id === selected) ?? null;
@@ -68,10 +72,28 @@ export default function VisualEditorPage() {
         const next = { ca: load(page.content_ca), es: load(page.content_es) };
         latest.current = next;
         setBlocksByLang(next);
+        // Texts estàtics desats (content_*.texts) per a l'edició in-place
+        const loadTexts = (content: unknown): Record<string, string> => {
+          if (!content || typeof content !== "object") return {};
+          const t = (content as { texts?: unknown }).texts;
+          if (!t || typeof t !== "object") return {};
+          const out: Record<string, string> = {};
+          for (const [k, v] of Object.entries(t as Record<string, unknown>)) {
+            if (typeof v === "string" && v.trim()) out[k] = v;
+          }
+          return out;
+        };
+        const nextTexts = { ca: loadTexts(page.content_ca), es: loadTexts(page.content_es) };
+        latestTexts.current = nextTexts;
+        setTextsByLang(nextTexts);
         setStatus((page.status as Status) ?? "draft");
         // Si l'iframe ja havia enviat "ready" (carrera: ready abans que acabés
         // la càrrega), rebia blocs buits — reenviem ara el contingut desat.
         post({ action: "set-blocks", blocks: next[lang], lang });
+        // Reenvia l'idioma ara que la pàgina realment ha carregat: si l'usuari
+        // va canviar de llengua abans de la càrrega, l'iframe podia haver quedat
+        // desincronitzat (panell CA + pàgina ES).
+        post({ action: "set-lang", lang });
       })
       .catch((e) => alive && setBanner({ type: "error", msg: (e as { error?: string }).error || "Error carregant la pàgina" }))
       .finally(() => alive && setLoading(false));
@@ -93,11 +115,26 @@ export default function VisualEditorPage() {
   useEffect(() => {
     const onMsg = (e: MessageEvent) => {
       if (e.origin !== window.location.origin) return;
-      const m = e.data as { source?: string; action?: string; blocks?: unknown; lang?: Lang; id?: string | null };
+      const m = e.data as { source?: string; action?: string; blocks?: unknown; lang?: Lang; id?: string | null; html?: unknown; texts?: unknown };
       if (m?.source !== CMS_MSG || !m.action) return;
       switch (m.action) {
         case "ready":
           post({ action: "set-blocks", blocks: latest.current[lang], lang });
+          break;
+        case "texts-ready":
+          // El runtime de texts ha muntat dins l'iframe: envia els overrides
+          // desats (ambdós idiomes) + re-sincronitza l'idioma del panell.
+          post({ action: "texts-set", texts: latestTexts.current, lang });
+          post({ action: "set-lang", lang });
+          break;
+        case "texts-change":
+          if ((m.lang === "ca" || m.lang === "es") && typeof m.id === "string" && typeof m.html === "string") {
+            const l = m.lang;
+            const next = { ...latestTexts.current[l], [m.id]: m.html };
+            latestTexts.current = { ...latestTexts.current, [l]: next };
+            setTextsByLang((s) => ({ ...s, [l]: next }));
+            setDirty((d) => ({ ...d, [l]: true }));
+          }
           break;
         case "change":
           if (Array.isArray(m.blocks) && (m.lang === "ca" || m.lang === "es")) {
@@ -145,7 +182,11 @@ export default function VisualEditorPage() {
     setSaving(true);
     try {
       const body: Record<string, unknown> = {};
-      body[`content_${lang}`] = { blocks };
+      // Save combinat: blocs + texts in-place a la mateixa fila `pages`.
+      body[`content_${lang}`] = {
+        blocks,
+        texts: latestTexts.current[lang] ?? {},
+      };
       body.status = newStatus ?? status ?? "draft";
       await adminApi.pages.put(slug, body);
       setDirty((d) => ({ ...d, [lang]: false }));

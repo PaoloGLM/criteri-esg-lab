@@ -80,7 +80,7 @@ export async function PATCH(req: NextRequest) {
 
     const { error } = await auth.client!
       .from("error_log")
-      .update({ resolved: true })
+      .delete()
       .eq("id", body.id);
 
     if (error) {
@@ -89,7 +89,7 @@ export async function PATCH(req: NextRequest) {
         op: "PATCH",
         detail: error.message,
       });
-      return errorJson(ERR.DB_ERROR, "Error marcant l'alarma", 500);
+      return errorJson(ERR.DB_ERROR, "Error eliminant l'alarma", 500);
     }
 
     return Response.json({ ok: true });

@@ -9,6 +9,7 @@ import HomePageV1Sections from "@/components/sections/home-v1-sections";
 import { AuthDialog } from "@/components/auth-dialog";
 import { useAuth } from "@/lib/auth-context";
 import { FreeBlocks } from "@/components/cms/blocks-view";
+import { CmsTexts } from "@/components/cms/editable-texts";
 
 export default function Home() {
   const { user } = useAuth();
@@ -24,9 +25,11 @@ export default function Home() {
     <div className="flex min-h-screen flex-col" style={{ background: "var(--paper)" }}>
       <Header onOpenAuth={(tab) => openAuth(tab || "register")} />
       <main className="flex-1">
-        <Statement />
-        <HeroV1 />
-        <HomePageV1Sections />
+        <CmsTexts page="home">
+          <Statement />
+          <HeroV1 />
+          <HomePageV1Sections />
+        </CmsTexts>
 
         {/* CMS: blocs editables visualment des de /admin/visual */}
         <FreeBlocks slug="home" />

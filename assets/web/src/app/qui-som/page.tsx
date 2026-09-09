@@ -7,6 +7,7 @@ import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
 import { FreeBlocks } from "@/components/cms/blocks-view";
+import { CmsTexts, EditableText } from "@/components/cms/editable-texts";
 
 
 
@@ -75,17 +76,18 @@ export default function QuiSomPage() {
     <div className="flex min-h-screen flex-col bg-background">
       <Header onOpenPreus={() => setPreusOpen(true)} onOpenAuth={(tab) => openAuth(tab || "register")} />
       <main className="flex-1">
+        <CmsTexts page="qui-som">
 
         {/* ══════════ 1. HERO ══════════ */}
         <section className="border-b border-rule" style={{ background: "var(--bg)" }}>
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
-            <p className="eyebrow">{t("quisom.v2.hero.eyebrow")}</p>
+            <EditableText id="hero.eyebrow" as="p" className="eyebrow">{t("quisom.v2.hero.eyebrow")}</EditableText>
             <h1 className="max-w-5xl font-serif text-5xl font-medium leading-[1.05] tracking-tight text-primary sm:text-6xl lg:text-7xl">
               {t("quisom.v2.hero.title.pre")}
               <em className="hl">{t("quisom.v2.hero.title.em")}</em>
               {t("quisom.v2.hero.title.post")}
             </h1>
-            <p className="sec-body mt-6 max-w-3xl !text-lg">{t("quisom.v2.hero.subtitle")}</p>
+            <EditableText id="hero.subtitle" as="p" className="sec-body mt-6 max-w-3xl !text-lg">{t("quisom.v2.hero.subtitle")}</EditableText>
           </div>
         </section>
 
@@ -93,14 +95,14 @@ export default function QuiSomPage() {
         <section className="border-b border-rule px-6 py-20 lg:px-8 lg:py-24">
           <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:items-start max-lg:gap-12">
             <div>
-              <p className="eyebrow">{t("quisom.manifest.page.eyebrow")}</p>
+              <EditableText id="manifest.eyebrow" as="p" className="eyebrow">{t("quisom.manifest.page.eyebrow")}</EditableText>
               <div>
                 {manifestParagrafs.map((p, i) => (
-                  <p key={i}
+                  <EditableText key={i} id={`manifest.p${i + 1}`} as="p"
                     className="mb-[26px] font-serif !text-[clamp(1.15rem,1.7vw,1.4rem)] leading-[1.55]"
                     style={{ color: i === 0 ? "var(--ink-deep)" : "var(--ink)" }}>
                     {p}
-                  </p>
+                  </EditableText>
                 ))}
               </div>
             </div>
@@ -128,22 +130,22 @@ export default function QuiSomPage() {
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
 
             {/* Com treballem */}
-            <p className="eyebrow" style={{ color: "var(--verd-clar)" }}>{t("quisom.ai.title")}</p>
-            <h2 className="sec-title" style={{ color: "var(--bg)" }}>{t("quisom.ai.h2")}</h2>
-            <p className="sec-body max-w-[70ch] leading-[1.7]" style={{ color: "rgba(242,245,241,.78)" }}>
+            <EditableText id="ai.eyebrow" as="p" className="eyebrow" style={{ color: "var(--verd-clar)" }}>{t("quisom.ai.title")}</EditableText>
+            <EditableText id="ai.title" as="h2" className="sec-title" style={{ color: "var(--bg)" }}>{t("quisom.ai.h2")}</EditableText>
+            <EditableText id="ai.body" as="p" className="sec-body max-w-[70ch] leading-[1.7]" style={{ color: "rgba(242,245,241,.78)" }}>
               {t("quisom.ai.body")}{" "}
               <strong className="font-medium" style={{ color: "var(--bg)" }}>
                 {t("quisom.ai.supervision.body")}
               </strong>
-            </p>
+            </EditableText>
 
             {/* No som neutres — criteris ètics detallats */}
             <div className="mt-24">
-              <p className="eyebrow" style={{ color: "var(--verd-clar)" }}>{t("quisom.valors.title")}</p>
-              <h2 className="sec-title" style={{ color: "var(--bg)" }}>{t("quisom.valors.head")}</h2>
-              <p className="sec-body max-w-[70ch]" style={{ color: "rgba(242,245,241,.78)" }}>
+              <EditableText id="valors.eyebrow" as="p" className="eyebrow" style={{ color: "var(--verd-clar)" }}>{t("quisom.valors.title")}</EditableText>
+              <EditableText id="valors.head" as="h2" className="sec-title" style={{ color: "var(--bg)" }}>{t("quisom.valors.head")}</EditableText>
+              <EditableText id="valors.intro" as="p" className="sec-body max-w-[70ch]" style={{ color: "rgba(242,245,241,.78)" }}>
                 {t("quisom.valors.intro").replace(/^(No som neutres\.|No somos neutrales\.)\s*/i, "")}
-              </p>
+              </EditableText>
 
               <ol className="mt-14 flex flex-col">
                 {criteris.map((c, i) => (
@@ -169,13 +171,13 @@ export default function QuiSomPage() {
         {/* ══════════ 4. L'EQUIP (tinted, com el mockup v1) ══════════ */}
         <section className="border-b border-rule px-6 py-20 lg:px-8 lg:py-24" style={{ background: "var(--bg)" }}>
           <div className="mx-auto max-w-7xl">
-            <p className="eyebrow">{t("quisom.v2.team.eyebrow")}</p>
-            <h2 className="sec-title">
+            <EditableText id="team.eyebrow" as="p" className="eyebrow">{t("quisom.v2.team.eyebrow")}</EditableText>
+            <EditableText id="team.title" as="h2" className="sec-title">
               {t("quisom.v2.team.title.pre")}
               <em className="italic" style={{ color: "var(--accent)" }}>{t("quisom.v2.team.title.em")}</em>
               {t("quisom.v2.team.title.post")}
-            </h2>
-            <p className="sec-body">{t("quisom.v2.team.intro")}</p>
+            </EditableText>
+            <EditableText id="team.intro" as="p" className="sec-body">{t("quisom.v2.team.intro")}</EditableText>
 
             <div className="mt-14 grid gap-[18px] lg:grid-cols-3">
               {teamMembers.map((m) => (
@@ -206,15 +208,15 @@ export default function QuiSomPage() {
         <section className="border-b border-rule px-6 py-20 lg:px-8 lg:py-24">
           <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-2 lg:items-start">
             <div>
-              <p className="eyebrow">
+              <EditableText id="preguntes.eyebrow" as="p" className="eyebrow">
                 {t("quisom.preguntes.label")}
                 <span className="ml-2 rounded-full px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.14em]"
                   style={{ background: "var(--ink)", color: "var(--bg)" }}>
                   Premium
                 </span>
-              </p>
-              <h2 className="sec-title">{t("quisom.preguntes.h2")}</h2>
-              <p className="sec-body">{t("quisom.preguntes.body")}</p>
+              </EditableText>
+              <EditableText id="preguntes.title" as="h2" className="sec-title">{t("quisom.preguntes.h2")}</EditableText>
+              <EditableText id="preguntes.body" as="p" className="sec-body">{t("quisom.preguntes.body")}</EditableText>
             </div>
             <div className="card-v1 p-9" style={{ borderLeft: "4px solid var(--highlight)" }}>
               <p className="mb-3.5 font-mono text-[10px] uppercase tracking-[0.18em]" style={{ color: "var(--ink-soft)" }}>
@@ -244,7 +246,7 @@ export default function QuiSomPage() {
         {/* ══════════ 7. VOLS FORMAR-NE PART? ══════════ */}
         <section className="border-t border-rule px-6 py-20 lg:px-8 lg:py-24" style={{ background: "var(--bg)" }}>
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="sec-title !mb-5">
+            <EditableText id="join.title" as="h2" className="sec-title !mb-5">
               {(() => {
                 const title = t("quisom.team.join.title");
                 const hl = lang === "ca" ? "part?" : "parte?";
@@ -257,8 +259,8 @@ export default function QuiSomPage() {
                   title
                 );
               })()}
-            </h2>
-            <p className="sec-body mx-auto !max-w-[48ch]">{t("quisom.team.join.body")}</p>
+            </EditableText>
+            <EditableText id="join.body" as="p" className="sec-body mx-auto !max-w-[48ch]">{t("quisom.team.join.body")}</EditableText>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
               <a href="mailto:info@criteriesg.com" className="btn-v1 btn-v1-solid">
                 info@criteriesg.com
@@ -271,6 +273,7 @@ export default function QuiSomPage() {
         </section>
 
         {/* CMS fase 3: blocs lliures editables des de /admin */}
+        </CmsTexts>
         <FreeBlocks slug="qui-som" />
 
       </main>

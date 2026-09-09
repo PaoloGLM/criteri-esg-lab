@@ -26,7 +26,7 @@ type Lang = "ca" | "es";
 
 const CMS_MSG = "criteri-cms";
 
-function sendToParent(action: string, payload?: Record<string, unknown>) {
+export function sendToParent(action: string, payload?: Record<string, unknown>) {
   try {
     window.parent?.postMessage({ source: CMS_MSG, action, ...payload }, window.location.origin);
   } catch {

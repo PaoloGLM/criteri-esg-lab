@@ -1,6 +1,7 @@
 "use client";
 import { useLanguage } from "@/components/language-provider";
 import { Reveal } from "./reveal";
+import { EditableText } from "@/components/cms/editable-texts";
 
 function HeroChart() {
   const { lang } = useLanguage();
@@ -78,8 +79,12 @@ export function HeroV1() {
     <section id="hero" style={{ background: "var(--bg)" }} className="border-b border-[rgba(38,49,43,.09)] pt-[88px]">
       <div className="mx-auto grid max-w-[1160px] items-center gap-14 px-7 lg:grid-cols-[.95fr_1.05fr]">
         <div>
-          <p className="eyebrow">{ca ? "Intel·ligència regulatòria ESG" : "Inteligencia regulatoria ESG"}</p>
-          <h1 className="mb-[26px] font-serif font-medium leading-[1.08] tracking-[-.012em] text-[var(--ink-deep)] text-[clamp(2.75rem,5vw,4.2rem)] [text-wrap:balance]">
+          <EditableText id="hero.eyebrow" as="p" className="eyebrow">{ca ? "Intel·ligència regulatòria ESG" : "Inteligencia regulatoria ESG"}</EditableText>
+          <EditableText
+            id="hero.title"
+            as="h1"
+            className="mb-[26px] font-serif font-medium leading-[1.08] tracking-[-.012em] text-[var(--ink-deep)] text-[clamp(2.75rem,5vw,4.2rem)] [text-wrap:balance]"
+          >
             {ca ? (
               <>El context ESG sencer,
               <br />
@@ -89,8 +94,12 @@ export function HeroV1() {
               <br />
               destilado en <span className="hl">cinco minutos</span>.</>
             )}
-          </h1>
-          <p className="mb-9 max-w-[46ch] text-[1.06rem] leading-[1.6] text-[var(--ink-soft)] [text-wrap:pretty]">
+          </EditableText>
+          <EditableText
+            id="hero.body"
+            as="p"
+            className="mb-9 max-w-[46ch] text-[1.06rem] leading-[1.6] text-[var(--ink-soft)] [text-wrap:pretty]"
+          >
             {ca ? (
               <>
                 Cada mes, bancs centrals, reguladors i organismes internacionals publiquen
@@ -106,7 +115,7 @@ export function HeroV1() {
                 <strong className="font-medium text-[var(--ink)]"> claro, breve y con la página exacta de la fuente</strong>.
               </>
             )}
-          </p>
+          </EditableText>
           <div className="mb-[26px] flex flex-wrap gap-3.5">
             <a href="/registro" className="btn-v1 btn-v1-solid">{ca ? "Registra't gratis" : "Regístrate gratis"}</a>
             <a href="/que-fem" className="btn-v1 btn-v1-ghost">{ca ? "Com funciona el mètode" : "Cómo funciona el método"}</a>

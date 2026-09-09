@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/components/language-provider";
 import { Reveal } from "./reveal";
+import { EditableText } from "@/components/cms/editable-texts";
 
 /**
  * Statement inicial fullscreen — com la web original:
@@ -17,7 +18,9 @@ export function Statement() {
       className="relative flex min-h-[100svh] flex-col items-center justify-center px-5 pb-24 text-center sm:px-7 sm:pb-28"
       style={{ background: "var(--ink-deep)", color: "var(--bg)" }}
     >
-      <p
+      <EditableText
+        id="statement.title"
+        as="p"
         className="mt-16 font-serif font-medium italic leading-[1.18] text-[clamp(3rem,8vw,7rem)] tracking-[-.015em] [text-wrap:balance]"
         style={{ color: "var(--verd-clar)" }}
       >
@@ -34,16 +37,18 @@ export function Statement() {
             Es el <span style={{ color: "var(--highlight)" }}>criterio.</span>
           </>
         )}
-      </p>
+      </EditableText>
 
-      <p
+      <EditableText
+        id="statement.subtitle"
+        as="p"
         className="mx-auto mt-8 text-center text-[1.05rem] leading-[1.75] text-[rgba(242,245,241,.65)]"
         style={{ maxWidth: "58ch" }}
       >
         {ca
           ? "Cada mes, bancs centrals i reguladors publiquen milers de pàgines que afectaran la teva empresa. Les llegim, les contrastem i et retornem el que cal decidir-ne en 5 minuts."
           : "Cada mes, bancos centrales y reguladores publican miles de páginas que afectan a tu empresa. Las leemos, las contrastamos y te devolvemos lo que hay que decidir en 5 minutos."}
-      </p>
+      </EditableText>
 
       {/* indicador de scroll */}
       <a

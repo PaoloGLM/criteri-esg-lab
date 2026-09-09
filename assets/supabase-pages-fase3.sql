@@ -1,8 +1,12 @@
 -- ============================================
 -- CRITERI ESG — Fase 3 CMS: taula pages
 -- Executar a Supabase Dashboard → SQL Editor → New Query → Run
+-- Projecte: zecoacfysdwtjiszruir (el de NEXT_PUBLIC_SUPABASE_URL de la web)
 -- Mateix patró de seguretat que public.informes:
 --   lectura pública de files published, escriptura només service role
+-- Idempotent: es pot re-executar sense mal (create if not exists,
+--   on conflict do nothing). L'última línia força PostgREST a recarregar
+--   el schema cache (fix del PGRST205 "schema cache").
 -- ============================================
 
 create table if not exists public.pages (
@@ -38,3 +42,7 @@ values
    jsonb_build_object('sections', jsonb_build_array()),
    jsonb_build_object('sections', jsonb_build_array()))
 on conflict (slug) do nothing;
+
+-- Força la recàrrega del schema cache de PostgREST (les taules creades via
+-- Dashboard solen aparèixer al cap d'uns segons; això ho fa immediat).
+notify pgrst, 'reload schema';

@@ -44,7 +44,24 @@ export async function logError(
 ): Promise<void> {
   try {
     if (!process.env.SUPABASE_SERVICE_ROLE_KEY) return;
-    await serviceClient()
+    const client = serviceClient();
+    // Anti-acumulació: si ja hi ha una alarma NO resolta amb el mateix
+    // error_id, actualitza-la (nou context + timestamp) en lloc d'inserir-ne
+    // una altra. Quan es marca resolta, el següent error torna a crear fila.
+    const { data: existing } = await client
+      .from("error_log")
+      .select("id")
+      .eq("error_id", errorId)
+      .eq("resolved", false)
+      .limit(1);
+    if (existing && existing.length > 0) {
+      await client
+        .from("error_log")
+        .update({ context, created_at: new Date().toISOString() })
+        .eq("id", existing[0].id);
+      return;
+    }
+    await client
       .from("error_log")
       .insert({ error_id: errorId, severity, context });
   } catch {

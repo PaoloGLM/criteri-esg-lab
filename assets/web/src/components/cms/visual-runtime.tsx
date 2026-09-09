@@ -20,7 +20,8 @@ import { TextBlock, ImageBlock, CtaBlock } from "@/components/cms/blocks-view";
  *  · Cada canvi s'envia al pare (postMessage) per als botons Desa/Publica
  *
  * Protocol (missatges { source: "criteri-cms", action, ... }):
- *  iframe → pare:  ready | change { blocks, lang } | select { id }
+ *  iframe → pare:  ready | change { blocks, lang } | select { id } |
+ *                  hotkey { key, shift }  (Ctrl+Z/Y → l'undo viu al pare)
  *  pare → iframe:  set-blocks { blocks, lang } | add-block { type } |
  *                  move { dir } | remove {} | deselect {}
  */
@@ -147,6 +148,30 @@ export function VisualBlocksRuntime() {
     };
     document.addEventListener("click", onClick, true);
     return () => document.removeEventListener("click", onClick, true);
+  }, []);
+
+  // Ctrl+Z / Ctrl+Y (o Ctrl+Shift+Z): l'historial d'undo viu al PARE
+  // (concentra blocs, texts, estils, ordre, amagats i imatges en una sola
+  // línia de temps). Si el focus és dins un camp de text (contentEditable o
+  // input) deleguem al undo natiu del navegador d'aquell camp.
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      const key = e.key.toLowerCase();
+      if ((e.ctrlKey || e.metaKey) && (key === "z" || key === "y")) {
+        const t = e.target as HTMLElement | null;
+        const inText =
+          !!t &&
+          (t.isContentEditable ||
+            t.tagName === "INPUT" ||
+            t.tagName === "TEXTAREA" ||
+            t.tagName === "SELECT");
+        if (inText) return; // undo natiu del camp
+        e.preventDefault();
+        sendToParent("hotkey", { key, shift: e.shiftKey });
+      }
+    };
+    window.addEventListener("keydown", onKeyDown, true);
+    return () => window.removeEventListener("keydown", onKeyDown, true);
   }, []);
 
   // ── Resize per vèrtex (amplada lliure) ─────────────────────────────

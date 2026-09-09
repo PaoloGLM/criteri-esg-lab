@@ -73,6 +73,126 @@ export default function VisualEditorPage() {
   const [imgSel, setImgSel] = useState<string | null>(null);
   const [textSel, setTextSel] = useState<{ id: string; styleEl: StyleEl | null } | null>(null);
 
+  const post = useCallback((msg: Record<string, unknown>) => {
+    iframeRef.current?.contentWindow?.postMessage({ source: CMS_MSG, ...msg }, window.location.origin);
+  }, []);
+
+  // ── Undo (Ctrl+Z) / Redo (Ctrl+Y) ────────────────────────────────────
+  // Historial ÚNIC al panell: cada mutació (vindri de l'iframe o de
+  // l'inspector) desa un snapshot ABANS d'aplicar-se. Un snapshot és la
+  // còpia completa de totes les fonts de contingut — una sola línia de
+  // temps per a blocs, texts, estils, ordre, amagats i imatges.
+  type Snap = {
+    blocks: Record<Lang, Block[]>;
+    texts: Record<Lang, Record<string, string>>;
+    styles: TextStylesMap;
+    orders: Record<string, string[]>;
+    hidden: Record<string, true>;
+    images: ImagesMap;
+  };
+  const undoStack = useRef<Snap[]>([]);
+  const redoStack = useRef<Snap[]>([]);
+
+  // Cridar SEMPRE com a primera sentència d'una mutació (captura el
+  // pre-estat). Els canvis fets dins l'iframe arriben aquí via echo
+  // ("change"/"texts-change"/...), així que els botons del panell que
+  // només manen ordres a l'iframe no cal que hi passin.
+  const pushUndo = useCallback(() => {
+    undoStack.current.push({
+      blocks: latest.current,
+      texts: latestTexts.current,
+      styles: latestStyles.current,
+      orders: latestOrders.current,
+      hidden: latestHidden.current,
+      images: latestImages.current,
+    });
+    if (undoStack.current.length > 50) undoStack.current.shift();
+    redoStack.current = [];
+  }, []);
+
+  const applySnap = useCallback(
+    (s: Snap) => {
+      latest.current = s.blocks;
+      latestTexts.current = s.texts;
+      latestStyles.current = s.styles;
+      latestOrders.current = s.orders;
+      latestHidden.current = s.hidden;
+      latestImages.current = s.images;
+      setBlocksByLang(s.blocks);
+      setTextsByLang(s.texts);
+      setStyles(s.styles);
+      setImages(s.images);
+      setHiddenList(Object.keys(s.hidden));
+      setImgSel(null);
+      setTextSel(null);
+      setSelected(null);
+      post({ action: "deselect" });
+      // Els set-* dins l'iframe són silenciosos (no fan eco): restaurar
+      // no genera nous passos d'historial.
+      post({ action: "set-blocks", blocks: s.blocks[lang], lang });
+      post({ action: "texts-set", texts: s.texts, lang });
+      post({ action: "styles-set", styles: s.styles });
+      post({ action: "orders-set", orders: s.orders });
+      post({ action: "hidden-set", hidden: s.hidden });
+      post({ action: "images-set", images: s.images, hidden: s.hidden });
+      setDirty({ ca: true, es: true });
+      setStyleDirty(true);
+    },
+    [lang, post]
+  );
+
+  const undo = useCallback(() => {
+    const prev = undoStack.current.pop();
+    if (!prev) return;
+    redoStack.current.push({
+      blocks: latest.current,
+      texts: latestTexts.current,
+      styles: latestStyles.current,
+      orders: latestOrders.current,
+      hidden: latestHidden.current,
+      images: latestImages.current,
+    });
+    applySnap(prev);
+  }, [applySnap]);
+
+  const redo = useCallback(() => {
+    const next = redoStack.current.pop();
+    if (!next) return;
+    undoStack.current.push({
+      blocks: latest.current,
+      texts: latestTexts.current,
+      styles: latestStyles.current,
+      orders: latestOrders.current,
+      hidden: latestHidden.current,
+      images: latestImages.current,
+    });
+    applySnap(next);
+  }, [applySnap]);
+
+  // Ctrl+Z / Ctrl+Y quan el focus és al PANELL (si és dins l'iframe, el
+  // runtime ens ho reenvia via "hotkey"). Dins camps de text (inputs,
+  // contentEditable) no interferim: actua el undo natiu del navegador.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const key = e.key.toLowerCase();
+      if ((e.ctrlKey || e.metaKey) && (key === "z" || key === "y")) {
+        const t = e.target as HTMLElement | null;
+        const inText =
+          !!t &&
+          (t.isContentEditable ||
+            t.tagName === "INPUT" ||
+            t.tagName === "TEXTAREA" ||
+            t.tagName === "SELECT");
+        if (inText) return;
+        e.preventDefault();
+        if (key === "z" && !e.shiftKey) undo();
+        else redo();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [undo, redo]);
+
   const blocks = blocksByLang[lang];
   const selBlock = blocks.find((b) => b.id === selected) ?? null;
   const iframeSrc = `/${slug === "home" ? "" : slug}?edit=1`;
@@ -149,10 +269,6 @@ export default function VisualEditorPage() {
     post({ action: "set-lang", lang });
   }, [lang]);
 
-  const post = useCallback((msg: Record<string, unknown>) => {
-    iframeRef.current?.contentWindow?.postMessage({ source: CMS_MSG, ...msg }, window.location.origin);
-  }, []);
-
   // ── Missatges de l'iframe ──────────────────────────────────────────
   useEffect(() => {
     const onMsg = (e: MessageEvent) => {
@@ -184,6 +300,7 @@ export default function VisualEditorPage() {
         case "hidden-patch":
           // L'iframe ha amagat/restaurat un element (✕ o fantasma).
           if (typeof m.id === "string" && m.id) {
+            pushUndo();
             const next = { ...latestHidden.current };
             if (m.hidden === false) delete next[m.id];
             else next[m.id] = true;
@@ -196,6 +313,7 @@ export default function VisualEditorPage() {
         case "images-patch":
           // Nansa de mida sobre una imatge de secció dissenyada.
           if (typeof m.id === "string" && m.id && m.image && typeof m.image === "object") {
+            pushUndo();
             latestImages.current = { ...latestImages.current, [m.id]: m.image as PageImage };
             setImages(latestImages.current);
             setStyleDirty(true);
@@ -205,6 +323,7 @@ export default function VisualEditorPage() {
         case "images-hidden":
           // L'iframe ja ha canviat el seu estat local: el reflectim al panell.
           if (typeof m.id === "string" && m.id) {
+            pushUndo();
             const next = { ...latestHidden.current };
             if (m.hidden === true) next[m.id] = true;
             else delete next[m.id];
@@ -226,6 +345,7 @@ export default function VisualEditorPage() {
         case "order-patch":
           // L'iframe ha reordenat un grup d'una secció dissenyada.
           if (typeof m.group === "string" && Array.isArray(m.list)) {
+            pushUndo();
             latestOrders.current = {
               ...latestOrders.current,
               [m.group]: m.list.filter((x): x is string => typeof x === "string"),
@@ -236,6 +356,7 @@ export default function VisualEditorPage() {
           break;
         case "texts-change":
           if ((m.lang === "ca" || m.lang === "es") && typeof m.id === "string" && typeof m.html === "string") {
+            pushUndo();
             const l = m.lang;
             const next = { ...latestTexts.current[l], [m.id]: m.html };
             latestTexts.current = { ...latestTexts.current, [l]: next };
@@ -245,6 +366,7 @@ export default function VisualEditorPage() {
           break;
         case "change":
           if (Array.isArray(m.blocks) && (m.lang === "ca" || m.lang === "es")) {
+            pushUndo();
             const l = m.lang;
             latest.current = { ...latest.current, [l]: m.blocks as Block[] };
             setBlocksByLang((s) => ({ ...s, [l]: m.blocks as Block[] }));
@@ -255,11 +377,20 @@ export default function VisualEditorPage() {
           setSelected(typeof m.id === "string" ? m.id : null);
           if (typeof m.id === "string") setTextSel(null);
           break;
+        case "hotkey": {
+          // Ctrl+Z / Ctrl+Y premuts DINS l'iframe (el runtime ens ho reenvia
+          // amb { key: "z"|"y", shift }; ja ha filtrat inputs/contentEditable
+          // — allà actua el undo natiu del navegador).
+          const hk = m as { key?: unknown; shift?: unknown };
+          if (hk.key === "z" && hk.shift !== true) undo();
+          else if (hk.key === "z" || hk.key === "y") redo();
+          break;
+        }
       }
     };
     window.addEventListener("message", onMsg);
     return () => window.removeEventListener("message", onMsg);
-  }, [lang, post]);
+  }, [lang, post, undo, redo]);
 
   // ── Accions cap a l'iframe ─────────────────────────────────────────
   const addBlock = (type: BlockType) => post({ action: "add-block", type });
@@ -273,6 +404,7 @@ export default function VisualEditorPage() {
 
   // Restaura un element amagat des del panell (llista "Elements amagats").
   const restoreHidden = (id: string) => {
+    pushUndo();
     const next = { ...latestHidden.current };
     delete next[id];
     latestHidden.current = next;
@@ -286,6 +418,7 @@ export default function VisualEditorPage() {
   // Inspector d'imatge de secció dissenyada: URL, alt i amplada.
   const patchImage = (p: Partial<PageImage>) => {
     if (!imgSel) return;
+    pushUndo();
     const cur = latestImages.current[imgSel] ?? { url: "", alt: "", widthPct: 100 };
     const next = { ...cur, ...p };
     latestImages.current = { ...latestImages.current, [imgSel]: next };
@@ -298,6 +431,7 @@ export default function VisualEditorPage() {
   // Inspector: actualitzar camps del bloc seleccionat
   const patchSelected = (patch: Record<string, unknown>) => {
     if (!selected) return;
+    pushUndo();
     const bs = blocks.map((b) => (b.id === selected ? { ...b, data: { ...b.data, ...patch } } : b));
     latest.current = { ...latest.current, [lang]: bs };
     setBlocksByLang((s) => ({ ...s, [lang]: bs }));
@@ -309,6 +443,7 @@ export default function VisualEditorPage() {
   // Els estils són compartits CA/ES i es guarden a content_ca.styles.
   const patchTextStyle = (partial: TextStyle | null) => {
     if (!textSel) return;
+    pushUndo();
     const id = textSel.id;
     const merged: TextStyle =
       partial === null ? {} : { ...(latestStyles.current[id] ?? {}), ...partial };
@@ -593,6 +728,8 @@ export default function VisualEditorPage() {
           {!selected && (
             <p className="text-xs" style={lblStyle}>
               Clica qualsevol bloc de la pàgina per editar-lo. Arrossega la nansa ⠿ per moure&apos;l.
+              <br />
+              <strong>Ctrl+Z</strong> desfés l&apos;últim canvi · <strong>Ctrl+Y</strong> el torna a fer.
             </p>
           )}
 

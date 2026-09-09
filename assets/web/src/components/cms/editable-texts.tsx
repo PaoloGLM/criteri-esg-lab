@@ -122,14 +122,32 @@ export function EditableText({ id, as = "span", children, ...rest }: EditableTex
     () => false
   );
 
+  // Contingut congelat durant l'edició: en entrar en mode edició capturem
+  // l'element React tal com estava i el tornem a renderitzar AMB LA MATEIXA
+  // referència mentre duri l'edició. React no detecta cap canvi de props i
+  // no toca el DOM del node contentEditable (abans renderitzàvem null i
+  // React esborrava els fills: el text desapareixia en clicar).
+  const frozen = useRef<React.ReactNode>(null);
+  const wasEditing = useRef(false);
+  if (editing && !wasEditing.current) {
+    frozen.current =
+      override !== null ? (
+        <span dangerouslySetInnerHTML={{ __html: sanitizeHtml(override) }} />
+      ) : (
+        children
+      );
+  }
+  wasEditing.current = editing;
+
   const Tag = as as React.ElementType;
 
   if (edit) {
     // En edició, el contingut el gestiona el runtime (contentEditable):
-    // mentre el node s'edita, React NO hi toca (ni fills ni innerHTML).
+    // React renderitza l'element congelat (sense mutar el DOM) i el runtime
+    // llegeix/escriu el contingut directament.
     return (
       <Tag data-ctext={id} {...rest}>
-        {editing ? null : override !== null ? (
+        {editing ? frozen.current : override !== null ? (
           <span dangerouslySetInnerHTML={{ __html: sanitizeHtml(override) }} />
         ) : (
           children
@@ -275,8 +293,21 @@ export function TextsRuntime() {
 
     const onClick = (e: MouseEvent) => {
       const t = (e.target as HTMLElement | null)?.closest?.("[data-ctext]") as HTMLElement | null;
-      if (t && !t.isContentEditable) startEdit(t);
-      else if (!t) stopEdit();
+      if (t && !t.isContentEditable) {
+        startEdit(t);
+        // Col·loca el cursor al punt exacte del clic (després del re-render,
+        // perquè el commit de React no el perdi). Chrome/Edge/Safari.
+        requestAnimationFrame(() => {
+          const doc = document as Document & {
+            caretRangeFromPoint?: (x: number, y: number) => Range | null;
+          };
+          const range = doc.caretRangeFromPoint?.(e.clientX, e.clientY);
+          if (!range || !t.contains(range.startContainer)) return;
+          const sel = window.getSelection();
+          sel?.removeAllRanges();
+          sel?.addRange(range);
+        });
+      } else if (!t) stopEdit();
     };
     // focusout (no blur delegat): capta el cas "clic fora / tab"
     const onFocusOut = (e: FocusEvent) => {

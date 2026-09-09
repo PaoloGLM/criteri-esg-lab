@@ -955,3 +955,8 @@ Stage Summary:
 - SQL fase 3: +notify pgrst 'reload schema' + nota del projecte.
 - INCIDENT menor: protecció de main estava relaxada (enforce_admins:false, reviews:0) — RESTAURADA i verificada (enforce_admins:true, reviews:1, strict, context ci). 422 del PUT: l'API vol booleans plans (enforce_admins:true), no objectes {enabled} (forma de la resposta GET).
 - PENDENT: Paolo testa l'edició in-place a /admin/visual (clic a un text, escriu, Guardar).
+
+## 2026-09-09 (tard) — Fix text que desapareixia + drag amb guies (PR #43)
+- BUG: en clicar un text editable, desapareixia — EditableText renderitzava null durant l'edició i React esborrava els fills. Fix: contingut congelat (mateixa referència React) mentre s'edita + cursor al punt exacte del clic (caretRangeFromPoint).
+- MODEL D'EDICIÓ aprovat per Paolo (híbrid tipus Elementor, NO PowerPoint lliure): (1) reordenar blocs amb nansa + línia d'inserció salvia; (2) imatges arrossegables horitzontalment amb guies d'alineació (marges/centre) i snap esquerra/centre/dreta; (3) la prosa de seccions de disseny (Roser) es pot editar però NO moure — protegeix el disseny i el mòbil.
+- CI verda, mergejat (#43), deploy prod Ready. Paolo valida en viu.

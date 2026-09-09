@@ -101,7 +101,7 @@ export function validateContent(json: unknown): string | null {
   if (typeof json !== "object" || Array.isArray(json)) return "El contingut ha de ser un objecte";
   if (JSON.stringify(json).length > MAX_JSON) return "El contingut és massa gran (màx 400KB)";
 
-  const obj = json as { sections?: unknown; blocks?: unknown; texts?: unknown; styles?: unknown; order?: unknown; hidden?: unknown; images?: unknown };
+  const obj = json as { sections?: unknown; blocks?: unknown; texts?: unknown; styles?: unknown; order?: unknown; hidden?: unknown; images?: unknown; figures?: unknown };
   const hasSections = obj.sections !== undefined;
   const hasBlocks = obj.blocks !== undefined;
   const hasTexts = obj.texts !== undefined;
@@ -109,7 +109,8 @@ export function validateContent(json: unknown): string | null {
   const hasOrder = obj.order !== undefined;
   const hasHidden = obj.hidden !== undefined;
   const hasImages = obj.images !== undefined;
-  if (!hasSections && !hasBlocks && !hasTexts && !hasStyles && !hasOrder && !hasHidden && !hasImages)
+  const hasFigures = obj.figures !== undefined;
+  if (!hasSections && !hasBlocks && !hasTexts && !hasStyles && !hasOrder && !hasHidden && !hasImages && !hasFigures)
     return "Cal 'blocks' (blocs), 'sections' (HTML per seccions) o 'texts' (HTML per texts)";
 
   if (hasSections) {
@@ -186,6 +187,19 @@ export function validateContent(json: unknown): string | null {
       if (g.alt !== undefined && typeof g.alt !== "string") return `La imatge '${k}' té un alt no textual`;
       if (g.widthPct !== undefined && (typeof g.widthPct !== "number" || g.widthPct < 20 || g.widthPct > 100))
         return `La imatge '${k}' té una amplada fora de rang (20-100%)`;
+    }
+  }
+  if (hasFigures) {
+    // Figures SVG de seccions dissenyades: mapa id → { widthPct?, mt? }.
+    const fg = obj.figures;
+    if (!fg || typeof fg !== "object" || Array.isArray(fg)) return "figures ha de ser un objecte";
+    for (const [k, v] of Object.entries(fg as Record<string, unknown>)) {
+      if (!v || typeof v !== "object" || Array.isArray(v)) return `La figura '${k}' ha de ser un objecte`;
+      const g = v as Record<string, unknown>;
+      if (g.widthPct !== undefined && (typeof g.widthPct !== "number" || g.widthPct < 40 || g.widthPct > 160))
+        return `La figura '${k}' té una amplada fora de rang (40-160%)`;
+      if (g.mt !== undefined && (typeof g.mt !== "number" || g.mt < 0 || g.mt > 200))
+        return `La figura '${k}' té un espai fora de rang (0-200px)`;
     }
   }
   return null;

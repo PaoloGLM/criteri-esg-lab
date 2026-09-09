@@ -2,6 +2,7 @@
 import { useLanguage } from "@/components/language-provider";
 import { Reveal } from "./reveal";
 import { EditableText } from "@/components/cms/editable-texts";
+import { EditableFigure } from "@/components/cms/figure-styles";
 
 function HeroChart() {
   const { lang } = useLanguage();
@@ -24,7 +25,8 @@ function HeroChart() {
   };
   return (
     <figure className="herochart" aria-label="Gràfic: el volum de publicacions regulatòries creix mentre el temps disponible es manté igual">
-      <svg viewBox="0 0 520 340" role="img" className="w-full">
+      <EditableFigure id="hero.chart">
+        <svg viewBox="0 0 520 340" role="img" className="w-full">
         <g stroke="#26312B" strokeOpacity=".07">
           <line x1="46" y1="60" x2="500" y2="60" /><line x1="46" y1="120" x2="500" y2="120" />
           <line x1="46" y1="180" x2="500" y2="180" /><line x1="46" y1="240" x2="500" y2="240" />
@@ -38,17 +40,17 @@ function HeroChart() {
         </g>
         <line x1="60" y1="196" x2="480" y2="196" stroke="#A0522D" strokeWidth="2" strokeDasharray="6 5" />
         <circle cx="480" cy="196" r="4" fill="#A0522D" />
-        <g fontFamily="var(--font-mono)" fontSize="11" fill="#4A5F53">
+        <g fontFamily="var(--font-mono)" fontSize="13" fill="#4A5F53">
           {t.anys.map((a, i) => (
             <text key={a} x={96 + i * 82} y="300" textAnchor="middle">{a}</text>
           ))}
         </g>
-        <g fontFamily="var(--font-mono)" fontSize="10.5">
+        <g fontFamily="var(--font-mono)" fontSize="12">
           <rect x="330" y="26" width="168" height="22" rx="4" fill="#F5E381" />
           <text x="338" y="41" fill="#26312B" fontWeight="600">{t.cap1[ca ? 0 : 1]}</text>
           <text x="60" y="186" fill="#A0522D" fontWeight="600">{t.cap2[ca ? 0 : 1]}</text>
         </g>
-        <g fontFamily="var(--font-mono)" fontSize="8.5" fill="#7A8B7F" textAnchor="middle">
+        <g fontFamily="var(--font-mono)" fontSize="10" fill="#7A8B7F" textAnchor="middle">
           {t.fites.map((f, i) => {
             const label = f[ca ? 0 : 1];
             const cut = label.length > 15 ? label.indexOf(" ", 8) : -1;
@@ -56,13 +58,14 @@ function HeroChart() {
             return (
               <text key={label} x={96 + i * 82} y="316">
                 {lines.map((ln, j) => (
-                  <tspan key={ln} x={96 + i * 82} dy={j === 0 ? 0 : 10}>{ln}</tspan>
+                  <tspan key={ln} x={96 + i * 82} dy={j === 0 ? 0 : 12}>{ln}</tspan>
                 ))}
               </text>
             );
           })}
         </g>
-      </svg>
+        </svg>
+      </EditableFigure>
       <EditableText id="hero.fig" as="figcaption" styleEl="eyebrow" className="mt-2.5 font-mono text-[.68rem] leading-relaxed tracking-[.05em] text-[var(--ink-soft)]">
         <b className="font-semibold text-[var(--ink)]">{t.fig[ca ? 0 : 1].split(":")[0]}:</b>
         {t.fig[ca ? 0 : 1].slice(t.fig[ca ? 0 : 1].indexOf(":") + 1)}

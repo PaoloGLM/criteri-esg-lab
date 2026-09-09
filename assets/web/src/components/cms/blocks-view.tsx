@@ -7,6 +7,7 @@ import { useLanguage } from "@/components/language-provider";
 import { VisualBlocksRuntime } from "@/components/cms/visual-runtime";
 import { TextsRuntime } from "@/components/cms/editable-texts";
 import { EditableImagesRuntime } from "@/components/cms/editable-images";
+import { FiguresRuntime } from "@/components/cms/figure-styles";
 
 /**
  * blocks-view.tsx — Renderitzador de blocs CMS (fase 3).
@@ -119,6 +120,8 @@ export function FreeBlocks({ slug }: { slug: string }) {
         <TextsRuntime />
         {/* Imatges editables de seccions dissenyades (manifest.hero, ...) */}
         <EditableImagesRuntime />
+        {/* Figures SVG editables (herochart, xref...) */}
+        <FiguresRuntime />
       </section>
     );
   }

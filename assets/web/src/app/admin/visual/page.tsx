@@ -6,6 +6,7 @@ import { Block, BlockType, validateBlocks } from "@/lib/blocks";
 import { pickStyles, pickHidden } from "@/components/cms/editable-texts";
 import { pickOrders } from "@/components/cms/text-order";
 import { ImagesMap, PageImage, pickImages } from "@/components/cms/editable-images";
+import { FigureStyle, FiguresMap, pickFigures } from "@/components/cms/figure-styles";
 import {
   StyleEl,
   TextStyle,
@@ -69,8 +70,11 @@ export default function VisualEditorPage() {
   const latestHidden = useRef<Record<string, true>>({});
   const latestImages = useRef<ImagesMap>({});
   const [images, setImages] = useState<ImagesMap>({});
+  const latestFigures = useRef<FiguresMap>({});
+  const [figures, setFigures] = useState<FiguresMap>({});
   const [hiddenList, setHiddenList] = useState<string[]>([]);
   const [imgSel, setImgSel] = useState<string | null>(null);
+  const [figSel, setFigSel] = useState<string | null>(null);
   const [textSel, setTextSel] = useState<{ id: string; styleEl: StyleEl | null } | null>(null);
 
   const post = useCallback((msg: Record<string, unknown>) => {
@@ -89,6 +93,7 @@ export default function VisualEditorPage() {
     orders: Record<string, string[]>;
     hidden: Record<string, true>;
     images: ImagesMap;
+    figures: FiguresMap;
   };
   const undoStack = useRef<Snap[]>([]);
   const redoStack = useRef<Snap[]>([]);
@@ -105,6 +110,7 @@ export default function VisualEditorPage() {
       orders: latestOrders.current,
       hidden: latestHidden.current,
       images: latestImages.current,
+      figures: latestFigures.current,
     });
     if (undoStack.current.length > 50) undoStack.current.shift();
     redoStack.current = [];
@@ -118,12 +124,15 @@ export default function VisualEditorPage() {
       latestOrders.current = s.orders;
       latestHidden.current = s.hidden;
       latestImages.current = s.images;
+      latestFigures.current = s.figures;
       setBlocksByLang(s.blocks);
       setTextsByLang(s.texts);
       setStyles(s.styles);
       setImages(s.images);
+      setFigures(s.figures);
       setHiddenList(Object.keys(s.hidden));
       setImgSel(null);
+      setFigSel(null);
       setTextSel(null);
       setSelected(null);
       post({ action: "deselect" });
@@ -135,6 +144,7 @@ export default function VisualEditorPage() {
       post({ action: "orders-set", orders: s.orders });
       post({ action: "hidden-set", hidden: s.hidden });
       post({ action: "images-set", images: s.images, hidden: s.hidden });
+      post({ action: "figures-set", figures: s.figures });
       setDirty({ ca: true, es: true });
       setStyleDirty(true);
     },
@@ -151,6 +161,7 @@ export default function VisualEditorPage() {
       orders: latestOrders.current,
       hidden: latestHidden.current,
       images: latestImages.current,
+      figures: latestFigures.current,
     });
     applySnap(prev);
   }, [applySnap]);
@@ -165,6 +176,7 @@ export default function VisualEditorPage() {
       orders: latestOrders.current,
       hidden: latestHidden.current,
       images: latestImages.current,
+      figures: latestFigures.current,
     });
     applySnap(next);
   }, [applySnap]);
@@ -245,6 +257,9 @@ export default function VisualEditorPage() {
         const pickedImages = pickImages(page.content_ca);
         latestImages.current = pickedImages.images;
         setImages(pickedImages.images);
+        const nextFigures = pickFigures(page.content_ca);
+        latestFigures.current = nextFigures;
+        setFigures(nextFigures);
         setImgSel(null);
         setStyleDirty(false);
         setTextSel(null);
@@ -273,7 +288,7 @@ export default function VisualEditorPage() {
   useEffect(() => {
     const onMsg = (e: MessageEvent) => {
       if (e.origin !== window.location.origin) return;
-      const m = e.data as { source?: string; action?: string; blocks?: unknown; lang?: Lang; id?: string | null; html?: unknown; texts?: unknown; styles?: unknown; styleEl?: string | null; orders?: unknown; group?: unknown; list?: unknown; hidden?: unknown; image?: unknown };
+      const m = e.data as { source?: string; action?: string; blocks?: unknown; lang?: Lang; id?: string | null; html?: unknown; texts?: unknown; styles?: unknown; styleEl?: string | null; orders?: unknown; group?: unknown; list?: unknown; hidden?: unknown; image?: unknown; figures?: unknown; style?: unknown };
       if (m?.source !== CMS_MSG || !m.action) return;
       switch (m.action) {
         case "ready":
@@ -287,7 +302,27 @@ export default function VisualEditorPage() {
           post({ action: "orders-set", orders: latestOrders.current });
           post({ action: "hidden-set", hidden: latestHidden.current });
           post({ action: "images-set", images: latestImages.current, hidden: latestHidden.current });
+          post({ action: "figures-set", figures: latestFigures.current });
           post({ action: "set-lang", lang });
+          break;
+        case "figures-ready":
+          // El runtime de figures ha muntat: envia l'estat desat (com texts-ready).
+          post({ action: "figures-set", figures: latestFigures.current });
+          break;
+        case "figure-select":
+          setFigSel(typeof m.id === "string" && m.id ? m.id : null);
+          setImgSel(null);
+          setTextSel(null);
+          break;
+        case "figure-patch":
+          // Nansa d'amplada sobre una figura de secció dissenyada.
+          if (typeof m.id === "string" && m.id && m.style && typeof m.style === "object") {
+            pushUndo();
+            latestFigures.current = { ...latestFigures.current, [m.id]: m.style as FigureStyle };
+            setFigures(latestFigures.current);
+            setStyleDirty(true);
+            setDirty((d) => ({ ...d, [lang]: true }));
+          }
           break;
         case "image-select":
           setImgSel(typeof m.id === "string" && m.id ? m.id : null);
@@ -428,6 +463,28 @@ export default function VisualEditorPage() {
     post({ action: "images-patch", id: imgSel, image: next });
   };
 
+  // Inspector de figura (gràfic SVG de secció dissenyada): amplada i espai.
+  const patchFigure = (p: Partial<FigureStyle> | null) => {
+    if (!figSel) return;
+    pushUndo();
+    const next: FigureStyle = p === null ? {} : { ...(latestFigures.current[figSel] ?? {}), ...p };
+    if (typeof next.widthPct !== "number" || !Number.isFinite(next.widthPct)) delete next.widthPct;
+    if (typeof next.mt !== "number" || !Number.isFinite(next.mt) || next.mt < 0) delete next.mt;
+    if (Object.keys(next).length === 0) {
+      const nf = { ...latestFigures.current };
+      delete nf[figSel];
+      latestFigures.current = nf;
+      setFigures(nf);
+      post({ action: "figure-patch", id: figSel, style: null });
+    } else {
+      latestFigures.current = { ...latestFigures.current, [figSel]: next };
+      setFigures(latestFigures.current);
+      post({ action: "figure-patch", id: figSel, style: next });
+    }
+    setStyleDirty(true);
+    setDirty((d) => ({ ...d, [lang]: true }));
+  };
+
   // Inspector: actualitzar camps del bloc seleccionat
   const patchSelected = (patch: Record<string, unknown>) => {
     if (!selected) return;
@@ -475,7 +532,7 @@ export default function VisualEditorPage() {
         blocks,
         texts: latestTexts.current[lang] ?? {},
         ...(lang === "ca"
-          ? { styles: latestStyles.current, order: latestOrders.current, hidden: latestHidden.current, images: latestImages.current }
+          ? { styles: latestStyles.current, order: latestOrders.current, hidden: latestHidden.current, images: latestImages.current, figures: latestFigures.current }
           : {}),
       };
       // Els estils viuen sempre a content_ca: si es desa en castellà amb
@@ -488,6 +545,7 @@ export default function VisualEditorPage() {
           order: latestOrders.current,
           hidden: latestHidden.current,
           images: latestImages.current,
+          figures: latestFigures.current,
         };
       }
       body.status = newStatus ?? status ?? "draft";
@@ -593,6 +651,35 @@ export default function VisualEditorPage() {
                   onChange={(e) => patchImage({ widthPct: Number(e.target.value) })} className="w-full" />
               </div>
               <p className="text-xs" style={lblStyle}>També pots arrossegar la nansa ⇔ sota la imatge, o clicar ✕ per amagar-la.</p>
+            </div>
+          )}
+
+          {figSel && (
+            <div className="space-y-3 rounded-lg border p-3" style={{ borderColor: "var(--salvia, #7a9471)" }}>
+              <p className="text-sm font-semibold" style={{ color: "var(--ink, #1f2937)" }}>Figura de la secció</p>
+              <div>
+                <label className={lbl} style={lblStyle}>
+                  Amplada{figures[figSel]?.widthPct !== undefined ? ` · ${Math.round(figures[figSel].widthPct as number)}%` : " · per defecte"}
+                </label>
+                <input type="range" min={40} max={160} step={5} value={figures[figSel]?.widthPct ?? 100}
+                  onChange={(e) => patchFigure({ widthPct: Number(e.target.value) })} className="w-full" />
+              </div>
+              <div>
+                <div className="flex items-center justify-between">
+                  <label className={lbl} style={lblStyle}>
+                    Espai abans{figures[figSel]?.mt !== undefined ? ` · ${Math.round(figures[figSel].mt as number)}px` : " · per defecte"}
+                  </label>
+                  {figures[figSel]?.mt !== undefined && (
+                    <button onClick={() => patchFigure({ mt: undefined })} className="text-xs" style={{ color: "var(--ink-muted, #6b7280)" }} title="Torna a l'espai del disseny original">↺</button>
+                  )}
+                </div>
+                <input type="range" min={0} max={200} step={5} value={figures[figSel]?.mt ?? 0}
+                  onChange={(e) => patchFigure({ mt: Number(e.target.value) })} className="w-full" />
+              </div>
+              <button onClick={() => patchFigure(null)} className={btnGhost} style={{ borderColor: "var(--rule, #e5e3dd)" }}>
+                ↺ Restaura la mida original
+              </button>
+              <p className="text-xs" style={lblStyle}>També pots arrossegar la nansa ⇔ sota la figura, o clicar ✕ per amagar-la.</p>
             </div>
           )}
 

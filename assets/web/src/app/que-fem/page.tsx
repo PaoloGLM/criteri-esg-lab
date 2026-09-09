@@ -7,7 +7,7 @@ import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
 import { FreeBlocks } from "@/components/cms/blocks-view";
-import { CmsTexts, EditableText } from "@/components/cms/editable-texts";
+import { CmsTexts, EditableItem, EditableText } from "@/components/cms/editable-texts";
 import { useGroupOrder, sortItems } from "@/components/cms/text-order";
 
 
@@ -190,14 +190,14 @@ export default function QueFemPage() {
 
             <div className="blocgrid" data-corder="quefem.blocs">
               {sortItems(blocs, ordreBlocs, (b) => b.num).map((bloc) => (
-                <article key={bloc.num} data-citem={bloc.num} className={`bloc${bloc.dark ? " dark" : ""}`}>
+                <EditableItem key={bloc.num} as="article" id={`quefem.blocs.${bloc.num}`} dataCitem={bloc.num} className={`bloc${bloc.dark ? " dark" : ""}`}>
                   <EditableText id={`bloc.${bloc.num}.num`} as="div" className="num">{bloc.num}</EditableText>
                   <EditableText id={`bloc.${bloc.num}.name`} as="h3" styleEl="h2">{bloc.name}</EditableText>
                   <EditableText id={`bloc.${bloc.num}.desc`} as="p" styleEl="body">{bloc.desc}</EditableText>
                   <EditableText id={`bloc.${bloc.num}.meta`} as="p" className="!mt-3 font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: bloc.dark ? "rgba(242,245,241,.55)" : "var(--ink-soft)" }}>
                     {bloc.meta}
                   </EditableText>
-                </article>
+                </EditableItem>
               ))}
             </div>
           </div>
@@ -212,7 +212,7 @@ export default function QueFemPage() {
 
             <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-5" data-corder="quefem.criteris">
               {sortItems(criteris, ordreCriteris, (c) => c.rom).map((c) => (
-                <article key={c.rom} data-citem={c.rom}
+                <EditableItem key={c.rom} as="article" id={`quefem.criteris.${c.rom}`} dataCitem={c.rom}
                   className="flex flex-col rounded-[9px] border p-7 transition-colors duration-200 hover:border-[rgba(170,201,182,.45)]"
                   style={{ borderColor: "rgba(170,201,182,.18)", background: "rgba(38,49,43,.38)" }}>
                   <EditableText id={`criteris.card.${c.rom}.rom`} as="span" styleEl="h2" className="font-serif text-[2.6rem] font-medium leading-none" style={{ color: "var(--verd-clar)" }}>
@@ -224,7 +224,7 @@ export default function QueFemPage() {
                   <EditableText id={`criteris.card.${c.rom}.text`} as="p" styleEl="body" className="mt-3 text-[.88rem] leading-[1.6]" style={{ color: "rgba(242,245,241,.74)" }}>
                     {c.text}
                   </EditableText>
-                </article>
+                </EditableItem>
               ))}
             </div>
 

@@ -101,10 +101,12 @@ export function validateContent(json: unknown): string | null {
   if (typeof json !== "object" || Array.isArray(json)) return "El contingut ha de ser un objecte";
   if (JSON.stringify(json).length > MAX_JSON) return "El contingut és massa gran (màx 400KB)";
 
-  const obj = json as { sections?: unknown; blocks?: unknown };
+  const obj = json as { sections?: unknown; blocks?: unknown; texts?: unknown };
   const hasSections = obj.sections !== undefined;
   const hasBlocks = obj.blocks !== undefined;
-  if (!hasSections && !hasBlocks) return "Cal 'blocks' (blocs) o 'sections' (HTML per seccions)";
+  const hasTexts = obj.texts !== undefined;
+  if (!hasSections && !hasBlocks && !hasTexts)
+    return "Cal 'blocks' (blocs), 'sections' (HTML per seccions) o 'texts' (HTML per texts)";
 
   if (hasSections) {
     const sections = obj.sections;
@@ -118,6 +120,15 @@ export function validateContent(json: unknown): string | null {
   if (hasBlocks) {
     const r = validateBlocks(obj.blocks);
     if (!r.ok) return r.error ?? "Error de validació dels blocs";
+  }
+  if (hasTexts) {
+    const texts = obj.texts;
+    if (!texts || typeof texts !== "object" || Array.isArray(texts))
+      return "texts ha de ser un objecte";
+    for (const [k, v] of Object.entries(texts as Record<string, unknown>)) {
+      if (typeof v !== "string") return `El text '${k}' ha de contenir HTML (string)`;
+      if (v.length > 200_000) return `El text '${k}' és massa gran (màx 200KB)`;
+    }
   }
   return null;
 }

@@ -3,6 +3,7 @@
 import { useLanguage } from "@/components/language-provider";
 import { Reveal } from "./reveal";
 import { XrefDiagram } from "./xref-diagram";
+import { EditableText } from "@/components/cms/editable-texts";
 
 const BLOCS = [
   { num: "01", star: true },
@@ -22,12 +23,12 @@ export default function HomePageV1Sections() {
       <section id="problema" className="px-7 py-24">
         <div className="mx-auto grid max-w-[1160px] items-start gap-16 lg:grid-cols-[1fr_.92fr]">
           <Reveal>
-            <p className="eyebrow">{ca ? "El problema" : "El problema"}</p>
-            <h2 className="sec-title">
+            <EditableText id="problema.eyebrow" as="p" className="eyebrow">{ca ? "El problema" : "El problema"}</EditableText>
+            <EditableText id="problema.title" as="h2" className="sec-title">
               {ca ? <>La normativa corre.<br />Ningú no et tradueix <span className="hl">què significa</span>.</>
                   : <>La normativa corre.<br />Nadie te traduce <span className="hl">qué significa</span>.</>}
-            </h2>
-            <p className="sec-body">
+            </EditableText>
+            <EditableText id="problema.body" as="p" className="sec-body">
               {ca ? (
                 <>Les sigles canvien d&apos;abast cada trimestre. Un informe del BCE sobre risc climàtic pot redefinir
                 el que t&apos;exigirà el teu auditor; una revisió d&apos;<strong>Omnibus</strong>, decidir si el CSRD
@@ -40,7 +41,7 @@ export default function HomePageV1Sections() {
                 de aplicársete. Seguirlo es un trabajo a jornada completa <strong>que nadie te ha asignado</strong> — y que ningún
                 resumen automático hace bien, porque el problema no es leer: es entender qué pesa.</>
               )}
-            </p>
+            </EditableText>
             <div className="mt-[30px] flex flex-wrap gap-[9px]" aria-hidden="true">
               {["CSRD", "ESRS", "Omnibus I", "ISSB", "TNFD", "SFDR", "CSDDD", "GRI 101–103"].map((a) => (
                 <span key={a} className="rounded-full border border-[rgba(74,95,83,.35)] bg-white px-3 py-1.5 font-mono text-[.72rem] font-medium tracking-[.05em] text-[var(--ink-soft)]">
@@ -50,9 +51,9 @@ export default function HomePageV1Sections() {
             </div>
           </Reveal>
           <Reveal className="border-l-2 border-[var(--accent)]">
-            <p className="pb-3.5 pl-5 font-mono text-[.68rem] font-semibold uppercase tracking-[.16em] text-[var(--accent)]">
+            <EditableText id="problema.pub-title" as="p" className="pb-3.5 pl-5 font-mono text-[.68rem] font-semibold uppercase tracking-[.16em] text-[var(--accent)]">
               {ca ? "Publicat només aquest curs" : "Publicado solo este curso"}
-            </p>
+            </EditableText>
             <ul className="list-none">
               {(ca
                 ? [["BCE", "· Risc climàtic al sistema financer"], ["EBA", "· Avaluació de riscos, juny"], ["WEF", "· Global Risks Report"], ["Forética", "· Tendències ESG"], ["CNMV", "· Pla d'activitats i butlletí"], ["ONU", "· Finançament sostenible (FSDR)"]]
@@ -78,12 +79,12 @@ export default function HomePageV1Sections() {
       <section id="metode" style={{ background: "var(--ink-deep)", color: "var(--bg)" }} className="px-7 py-24">
         <div className="mx-auto max-w-[1160px]">
           <Reveal>
-            <p className="eyebrow" style={{ color: "var(--verd-clar)" }}>{ca ? "El mètode" : "El método"}</p>
+            <EditableText id="metode.eyebrow" as="p" className="eyebrow" style={{ color: "var(--verd-clar)" }}>{ca ? "El mètode" : "El método"}</EditableText>
             {/* Verd més claret per llegibilitat sobre fosc (#5) */}
-            <h2 className="sec-title" style={{ color: "#AAC9B6" }}>
+            <EditableText id="metode.title" as="h2" className="sec-title" style={{ color: "#AAC9B6" }}>
               {ca ? "Un semàfor, no una opinió." : "Un semáforo, no una opinión."}
-            </h2>
-            <p className="sec-body" style={{ color: "rgba(242,245,241,.78)" }}>
+            </EditableText>
+            <EditableText id="metode.body" as="p" className="sec-body" style={{ color: "rgba(242,245,241,.78)" }}>
               {ca ? (
                 <>Cada informe institucional passa pel mateix criteri de sempre: què <strong style={{ color: "var(--bg)" }}>quantifica</strong>,
                 què només <strong style={{ color: "var(--bg)" }}>esmenta</strong> i què <strong style={{ color: "var(--bg)" }}>ignora</strong>.
@@ -93,7 +94,7 @@ export default function HomePageV1Sections() {
                 qué solo <strong style={{ color: "var(--bg)" }}>menciona</strong> y qué <strong style={{ color: "var(--bg)" }}>ignora</strong>.
                 Cinco indicadores, una nota A–D, y ninguna caja gris. El resultado se puede discutir — pero se puede reproducir.</>
               )}
-            </p>
+            </EditableText>
           </Reveal>
           <div className="mt-[52px] grid items-center gap-[60px] lg:grid-cols-[.9fr_1.1fr]">
             <Reveal>
@@ -150,9 +151,9 @@ export default function HomePageV1Sections() {
         <div className="mx-auto max-w-[1160px]">
           <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-[30px]">
             <div>
-              <p className="eyebrow">{ca ? "L'informe" : "El informe"}</p>
-              <h2 className="sec-title mb-3">{ca ? "Vuit blocs. Cap farciment." : "Ocho bloques. Sin relleno."}</h2>
-              <p className="sec-body">{ca ? "Sempre els mateixos vuit, en el mateix ordre. Llegeixes un, ja saps llegir-los tots." : "Siempre los mismos ocho, en el mismo orden. Lees uno, ya sabes leerlos todos."}</p>
+              <EditableText id="informe.eyebrow" as="p" className="eyebrow">{ca ? "L'informe" : "El informe"}</EditableText>
+              <EditableText id="informe.title" as="h2" className="sec-title mb-3">{ca ? "Vuit blocs. Cap farciment." : "Ocho bloques. Sin relleno."}</EditableText>
+              <EditableText id="informe.body" as="p" className="sec-body">{ca ? "Sempre els mateixos vuit, en el mateix ordre. Llegeixes un, ja saps llegir-los tots." : "Siempre los mismos ocho, en el mismo orden. Lees uno, ya sabes leerlos todos."}</EditableText>
             </div>
             <div className="whitespace-nowrap rounded-md border border-dashed border-[rgba(74,95,83,.4)] px-4 py-2.5 font-mono text-[.72rem] text-[var(--ink-soft)]">
               {ca ? <>LÍMIT EDITORIAL · <b className="font-semibold text-[var(--ink)]">MÀX. 1.100 PARAULES</b></> : <>LÍMITE EDITORIAL · <b className="font-semibold text-[var(--ink)]">MÁX. 1.100 PALABRAS</b></>}
@@ -192,12 +193,12 @@ export default function HomePageV1Sections() {
       <section id="crossref" className="px-7 py-24">
         <div className="mx-auto grid max-w-[1160px] items-center gap-[60px] lg:grid-cols-[.95fr_1.05fr]">
           <Reveal>
-            <p className="eyebrow">Cross-reference</p>
-            <h2 className="sec-title">
+            <EditableText id="crossref.eyebrow" as="p" className="eyebrow">Cross-reference</EditableText>
+            <EditableText id="crossref.title" as="h2" className="sec-title">
               {ca ? <>Una dada nova,<br />llegida <span className="hl">setze</span> vegades.</>
                   : <>Un dato nuevo,<br />leído <span className="hl">dieciséis</span> veces.</>}
-            </h2>
-            <p className="sec-body">
+            </EditableText>
+            <EditableText id="crossref.body" as="p" className="sec-body">
               {ca ? (
                 <>Quan el BCE parla d&apos;emissions, nosaltres ja sabem què li demanarà el <strong>GRI 305-1</strong>,
                 quina casella omple a <strong>EcoVadis</strong>, i on xoca amb la <strong>Taxonomia UE</strong>.
@@ -207,11 +208,11 @@ export default function HomePageV1Sections() {
                 qué casilla rellena en <strong>EcoVadis</strong>, y dónde choca con la <strong>Taxonomía UE</strong>.
                 Los estándares no viven solos: <strong>el valor es ver dónde se cruzan</strong>.</>
               )}
-            </p>
-            <p className="sec-body mt-4">
+            </EditableText>
+            <EditableText id="crossref.body2" as="p" className="sec-body mt-4">
               {ca ? <>És l&apos;única part de l&apos;informe que no resumeix una publicació — <strong>la multiplica</strong>.</>
                   : <>Es la única parte del informe que no resumeve una publicación — <strong>la multiplica</strong>.</>}
-            </p>
+            </EditableText>
           </Reveal>
           <Reveal>
             <XrefDiagram />
@@ -227,8 +228,8 @@ export default function HomePageV1Sections() {
       <section className="principle">
         <div className="mx-auto max-w-[1160px] px-7">
           <Reveal>
-            <blockquote>&quot;{ca ? "Més enllà del checkbox." : "Más allá del checkbox."}&quot;</blockquote>
-            <p className="after">
+            <EditableText id="principi.quote" as="blockquote">&quot;{ca ? "Més enllà del checkbox." : "Más allá del checkbox."}&quot;</EditableText>
+            <EditableText id="principi.body" as="p" className="after">
               {ca ? (
                 <>Cinc criteris ètics —dignitat, justícia distributiva, sostenibilitat absoluta, co-decisió i arrelament—
                 revisen cada informe abans de publicar-se.
@@ -238,7 +239,7 @@ export default function HomePageV1Sections() {
                 revisan cada informe antes de publicarse.
                 <strong> La tecnología destila. El criterio decide.</strong></>
               )}
-            </p>
+            </EditableText>
           </Reveal>
         </div>
       </section>
@@ -247,16 +248,20 @@ export default function HomePageV1Sections() {
       <section id="acces" className="px-7 py-[120px] text-center" style={{ background: "var(--bg)" }}>
         <div className="mx-auto max-w-[1160px]">
           <Reveal>
-            <h2 className="font-serif font-medium leading-[1.12] tracking-[-.01em] text-[var(--ink-deep)] text-[clamp(2.1rem,4vw,3.2rem)] [text-wrap:balance]">
+            <EditableText
+              id="acces.title"
+              as="h2"
+              className="font-serif font-medium leading-[1.12] tracking-[-.01em] text-[var(--ink-deep)] text-[clamp(2.1rem,4vw,3.2rem)] [text-wrap:balance]"
+            >
               {/* #7: 'T'entenem.' en verd clar, sense subratllat la segona línia */}
               <span style={{ color: "var(--accent)" }}>{ca ? "T'entenem." : "Te entendemos."}</span>
               <br />
               {ca ? "Et retornem temps per pensar." : "Te devolvemos tiempo para pensar."}
-            </h2>
-            <p className="mx-auto mb-10 mt-[22px] max-w-[46ch] text-[var(--ink-soft)]">
+            </EditableText>
+            <EditableText id="acces.body" as="p" className="mx-auto mb-10 mt-[22px] max-w-[46ch] text-[var(--ink-soft)]">
               {ca ? "Subscriu-te i rebràs cada informe nou quan es publiqui. Sense soroll, sense newsletters diàries: la quinzena, puntualment."
                   : "Suscríbete y recibirás cada informe nuevo cuando se publique. Sin ruido, sin newsletters diarias: la quincena, puntualmente."}
-            </p>
+            </EditableText>
             <div className="flex flex-wrap justify-center gap-3.5">
               <a href="/registro" className="btn-v1 btn-v1-solid">{ca ? "Demana accés anticipat" : "Solicita acceso anticipado"}</a>
               <a href="/informes" className="btn-v1 btn-v1-ghost">{ca ? "Veure un informe d'exemple" : "Ver un informe de ejemplo"}</a>

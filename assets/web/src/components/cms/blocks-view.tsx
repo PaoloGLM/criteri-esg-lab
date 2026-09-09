@@ -5,6 +5,7 @@ import { Block, IMAGE_WIDTHS, sanitizeHtml } from "@/lib/blocks";
 import { usePageBlocks } from "@/lib/pages-source";
 import { useLanguage } from "@/components/language-provider";
 import { VisualBlocksRuntime } from "@/components/cms/visual-runtime";
+import { TextsRuntime } from "@/components/cms/editable-texts";
 
 /**
  * blocks-view.tsx — Renderitzador de blocs CMS (fase 3).
@@ -113,6 +114,8 @@ export function FreeBlocks({ slug }: { slug: string }) {
     return (
       <section className="px-2 py-20" style={{ background: "var(--bg)" }}>
         <VisualBlocksRuntime />
+        {/* Edició in-place dels texts estàtics de la pàgina (Statement/Hero/seccions) */}
+        <TextsRuntime />
       </section>
     );
   }

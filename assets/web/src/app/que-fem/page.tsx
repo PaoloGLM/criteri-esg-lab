@@ -7,6 +7,7 @@ import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
 import { FreeBlocks } from "@/components/cms/blocks-view";
+import { CmsTexts, EditableText } from "@/components/cms/editable-texts";
 
 
 
@@ -55,17 +56,18 @@ export default function QueFemPage() {
     <div className="flex min-h-screen flex-col bg-background">
       <Header onOpenPreus={() => setPreusOpen(true)} onOpenAuth={(tab) => openAuth(tab || "register")} />
       <main className="flex-1">
+        <CmsTexts page="que-fem">
 
         {/* ══════════ 1. HERO ══════════ */}
         <section className="border-b border-rule" style={{ background: "var(--bg)" }}>
           <div className="mx-auto max-w-7xl px-6 pb-16 pt-20 lg:px-8 lg:pb-20 lg:pt-28">
-            <p className="eyebrow">{t("quefem.hero.eyebrow")}</p>
+            <EditableText id="hero.eyebrow" as="p" className="eyebrow">{t("quefem.hero.eyebrow")}</EditableText>
             <h1 className="max-w-4xl font-serif text-5xl font-medium leading-[1.05] tracking-tight text-primary sm:text-6xl lg:text-7xl">
               {t("quefem.hero.title.pre")}
               <em className="hl">{t("quefem.hero.title.em")}</em>
               {t("quefem.hero.title.post")}
             </h1>
-            <p className="sec-body mt-6 max-w-2xl !text-lg">{t("quefem.hero.subtitle")}</p>
+            <EditableText id="hero.subtitle" as="p" className="sec-body mt-6 max-w-2xl !text-lg">{t("quefem.hero.subtitle")}</EditableText>
           </div>
 
           {/* Franja de dades */}
@@ -84,9 +86,9 @@ export default function QueFemPage() {
         {/* ══════════ 2. EL PROCÉS: 5 PASSOS ══════════ */}
         <section className="border-b border-rule px-6 py-20 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-7xl">
-            <p className="eyebrow">{t("quefem.proc5.eyebrow")}</p>
-            <h2 className="sec-title max-w-3xl">{t("quefem.proc5.title")}</h2>
-            <p className="sec-body max-w-2xl">{t("quefem.proc5.sub")}</p>
+            <EditableText id="proc5.eyebrow" as="p" className="eyebrow">{t("quefem.proc5.eyebrow")}</EditableText>
+            <EditableText id="proc5.title" as="h2" className="sec-title max-w-3xl">{t("quefem.proc5.title")}</EditableText>
+            <EditableText id="proc5.sub" as="p" className="sec-body max-w-2xl">{t("quefem.proc5.sub")}</EditableText>
             <ol className="mt-12 border-l-2" style={{ borderColor: "var(--accent)" }}>
               {([
                 { n: "01", t: t("quefem.proc5.01.t"), d: t("quefem.proc5.01.d") },
@@ -119,13 +121,13 @@ export default function QueFemPage() {
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
             <div className="grid gap-14 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:items-center">
               <div>
-                <p className="eyebrow" style={{ color: "var(--verd-clar)" }}>{t("quefem.semaforo.eyebrow")}</p>
-                <h2 className="sec-title" style={{ color: "var(--bg)" }}>
+                <EditableText id="semafor.eyebrow" as="p" className="eyebrow" style={{ color: "var(--verd-clar)" }}>{t("quefem.semaforo.eyebrow")}</EditableText>
+                <EditableText id="semafor.title" as="h2" className="sec-title" style={{ color: "var(--bg)" }}>
                   {t("quefem.semaforo.title.pre")}
                   <em className="italic" style={{ color: "var(--verd-clar)" }}>{t("quefem.semaforo.title.em")}</em>
                   {t("quefem.semaforo.title.post")}
-                </h2>
-                <p className="sec-body" style={{ color: "rgba(242,245,241,.78)" }}>{t("quefem.semaforo.desc")}</p>
+                </EditableText>
+                <EditableText id="semafor.desc" as="p" className="sec-body" style={{ color: "rgba(242,245,241,.78)" }}>{t("quefem.semaforo.desc")}</EditableText>
                 <p className="semafor-note">
                   {t("quefem.semaforo.regla.pre")}<em>{t("quefem.semaforo.regla.em")}</em>
                 </p>
@@ -157,11 +159,11 @@ export default function QueFemPage() {
           <div className="mx-auto max-w-7xl">
             <div className="mb-12 flex flex-wrap items-end justify-between gap-8">
               <div>
-                <p className="eyebrow">{t("quefem.estructura.eyebrow")}</p>
-                <h2 className="sec-title">
+                <EditableText id="format.eyebrow" as="p" className="eyebrow">{t("quefem.estructura.eyebrow")}</EditableText>
+                <EditableText id="format.title" as="h2" className="sec-title">
                   {t("quefem.format.title")}
-                </h2>
-                <p className="sec-body">{t("quefem.format.body")}</p>
+                </EditableText>
+                <EditableText id="format.body" as="p" className="sec-body">{t("quefem.format.body")}</EditableText>
               </div>
               <div className="whitespace-nowrap rounded-md border border-dashed px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.14em]"
                 style={{ borderColor: "rgba(94,135,114,.45)", color: "var(--ink-soft)" }}>
@@ -187,9 +189,9 @@ export default function QueFemPage() {
         {/* ══════════ 5. CRITERIS I VALORS (dark, referència curta) ══════════ */}
         <section style={{ background: "var(--ink)", color: "var(--bg)" }}>
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
-            <p className="eyebrow" style={{ color: "var(--verd-clar)" }}>{t("quefem.criteris.eyebrow")}</p>
-            <h2 className="sec-title" style={{ color: "var(--bg)" }}>{t("quefem.criteris.head")}</h2>
-            <p className="sec-body max-w-[64ch]" style={{ color: "rgba(242,245,241,.78)" }}>{t("quefem.criteris.body")}</p>
+            <EditableText id="criteris.eyebrow" as="p" className="eyebrow" style={{ color: "var(--verd-clar)" }}>{t("quefem.criteris.eyebrow")}</EditableText>
+            <EditableText id="criteris.head" as="h2" className="sec-title" style={{ color: "var(--bg)" }}>{t("quefem.criteris.head")}</EditableText>
+            <EditableText id="criteris.body" as="p" className="sec-body max-w-[64ch]" style={{ color: "rgba(242,245,241,.78)" }}>{t("quefem.criteris.body")}</EditableText>
 
             <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
               {criteris.map((c) => (
@@ -220,9 +222,9 @@ export default function QueFemPage() {
         <section className="border-b border-rule px-6 py-20 lg:px-8 lg:py-24">
           <div className="mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-10">
             <div className="max-w-2xl">
-              <p className="eyebrow">{t("quefem.preguntes.eyebrow")}</p>
-              <h2 className="sec-title">{t("quefem.preguntes.title")}</h2>
-              <p className="sec-body">{t("quefem.preguntes.intro")}</p>
+              <EditableText id="preguntes.eyebrow" as="p" className="eyebrow">{t("quefem.preguntes.eyebrow")}</EditableText>
+              <EditableText id="preguntes.title" as="h2" className="sec-title">{t("quefem.preguntes.title")}</EditableText>
+              <EditableText id="preguntes.intro" as="p" className="sec-body">{t("quefem.preguntes.intro")}</EditableText>
             </div>
             <div className="shrink-0 pb-1">
               <button onClick={() => setPreusOpen(true)} className="btn-v1 btn-v1-solid">
@@ -235,17 +237,18 @@ export default function QueFemPage() {
         {/* ══════════ 7. COMPROMÍS ══════════ */}
         <section className="principle">
           <div className="mx-auto max-w-4xl px-6">
-            <p className="eyebrow justify-center" style={{ color: "var(--verd-clar)" }}>{t("quefem.manifest.eyebrow")}</p>
-            <blockquote>
+            <EditableText id="manifest.eyebrow" as="p" className="eyebrow justify-center" style={{ color: "var(--verd-clar)" }}>{t("quefem.manifest.eyebrow")}</EditableText>
+            <EditableText id="manifest.quote" as="blockquote">
               {t("quefem.manifest.text.pre")}
               <em className="italic font-medium" style={{ color: "var(--highlight)" }}>{t("quefem.manifest.text.em")}</em>
               {t("quefem.manifest.text.post")}
-            </blockquote>
-            <p className="after">— {t("quefem.manifest.attribution")}</p>
+            </EditableText>
+            <EditableText id="manifest.attribution" as="p" className="after">— {t("quefem.manifest.attribution")}</EditableText>
           </div>
         </section>
 
         {/* CMS fase 3: blocs lliures editables des de /admin */}
+        </CmsTexts>
         <FreeBlocks slug="que-fem" />
 
       </main>

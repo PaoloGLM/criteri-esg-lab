@@ -62,11 +62,11 @@ export default function QueFemPage() {
         <section className="border-b border-rule" style={{ background: "var(--bg)" }}>
           <div className="mx-auto max-w-7xl px-6 pb-16 pt-20 lg:px-8 lg:pb-20 lg:pt-28">
             <EditableText id="hero.eyebrow" as="p" className="eyebrow">{t("quefem.hero.eyebrow")}</EditableText>
-            <h1 className="max-w-4xl font-serif text-5xl font-medium leading-[1.05] tracking-tight text-primary sm:text-6xl lg:text-7xl">
+            <EditableText id="hero.title" as="h1" styleEl="h1" className="max-w-4xl font-serif text-5xl font-medium leading-[1.05] tracking-tight text-primary sm:text-6xl lg:text-7xl">
               {t("quefem.hero.title.pre")}
               <em className="hl">{t("quefem.hero.title.em")}</em>
               {t("quefem.hero.title.post")}
-            </h1>
+            </EditableText>
             <EditableText id="hero.subtitle" as="p" className="sec-body mt-6 max-w-2xl !text-lg">{t("quefem.hero.subtitle")}</EditableText>
           </div>
 
@@ -74,10 +74,22 @@ export default function QueFemPage() {
           <div className="statband">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
               <div className="statband-inner">
-                <div className="stat"><div className="n">180<small>+</small></div><div className="t">{t("quefem.hero.meta.fuentes")}</div></div>
-                <div className="stat"><div className="n">16</div><div className="t">{t("quefem.hero.meta.estandares")}</div></div>
-                <div className="stat"><div className="n">5<small>&nbsp;min</small></div><div className="t">{t("quefem.hero.meta.minutos")}</div></div>
-                <div className="stat"><div className="n">8</div><div className="t">{t("quefem.hero.meta.blocs")}</div></div>
+                <div className="stat">
+                  <EditableText id="stats.1.n" as="div" styleEl="h2" className="n">180<small>+</small></EditableText>
+                  <EditableText id="stats.1.t" as="div" styleEl="eyebrow" className="t">{t("quefem.hero.meta.fuentes")}</EditableText>
+                </div>
+                <div className="stat">
+                  <EditableText id="stats.2.n" as="div" styleEl="h2" className="n">16</EditableText>
+                  <EditableText id="stats.2.t" as="div" styleEl="eyebrow" className="t">{t("quefem.hero.meta.estandares")}</EditableText>
+                </div>
+                <div className="stat">
+                  <EditableText id="stats.3.n" as="div" styleEl="h2" className="n">5<small>&nbsp;min</small></EditableText>
+                  <EditableText id="stats.3.t" as="div" styleEl="eyebrow" className="t">{t("quefem.hero.meta.minutos")}</EditableText>
+                </div>
+                <div className="stat">
+                  <EditableText id="stats.4.n" as="div" styleEl="h2" className="n">8</EditableText>
+                  <EditableText id="stats.4.t" as="div" styleEl="eyebrow" className="t">{t("quefem.hero.meta.blocs")}</EditableText>
+                </div>
               </div>
             </div>
           </div>
@@ -96,23 +108,23 @@ export default function QueFemPage() {
                 { n: "03", t: t("quefem.proc5.03.t"), d: t("quefem.proc5.03.d") },
                 { n: "04", t: t("quefem.proc5.04.t"), d: t("quefem.proc5.04.d") },
                 { n: "05", t: t("quefem.proc5.05.t"), d: t("quefem.proc5.05.d") },
-              ]).map((p) => (
+              ]).map((p, pi) => (
                 <li key={p.n} className="grid grid-cols-[70px_minmax(0,.42fr)_minmax(0,1fr)] items-start gap-6 py-[26px] pl-6 max-md:grid-cols-[56px_1fr]">
-                  <span className="font-serif text-[2.4rem] font-medium leading-[.9]" style={{ color: "var(--verd-clar)" }}>
+                  <EditableText id={`proc5.${pi + 1}.n`} as="span" styleEl="h2" className="font-serif text-[2.4rem] font-medium leading-[.9]" style={{ color: "var(--verd-clar)" }}>
                     {p.n}
-                  </span>
-                  <h3 className="font-serif text-[1.25rem] font-semibold text-primary">
+                  </EditableText>
+                  <EditableText id={`proc5.${pi + 1}.t`} as="h3" styleEl="h2" className="font-serif text-[1.25rem] font-semibold text-primary">
                     {p.t}
-                  </h3>
-                  <p className="text-[.93rem] leading-[1.62]" style={{ color: "var(--ink-soft)" }}>
+                  </EditableText>
+                  <EditableText id={`proc5.${pi + 1}.d`} as="p" styleEl="body" className="text-[.93rem] leading-[1.62]" style={{ color: "var(--ink-soft)" }}>
                     {p.d}
-                  </p>
+                  </EditableText>
                 </li>
               ))}
             </ol>
-            <p className="mt-8 pl-6 font-mono text-[11px] uppercase tracking-[0.18em] font-semibold" style={{ color: "var(--ink-soft)" }}>
+            <EditableText id="proc5.note" as="p" className="mt-8 pl-6 font-mono text-[11px] uppercase tracking-[0.18em] font-semibold" style={{ color: "var(--ink-soft)" }}>
               {t("quefem.proc5.note")}
-            </p>
+            </EditableText>
           </div>
         </section>
 
@@ -134,19 +146,19 @@ export default function QueFemPage() {
               </div>
               <div className="semafor" role="img" aria-label={`Exemple de semàfor: nota B · ${t("quefem.semaforo.grade.label")}`}>
                 <div className="grade-row">
-                  <div className="grade">B</div>
+                  <EditableText id="semafor.grade" as="div" styleEl="h1" className="grade">B</EditableText>
                   <div className="grade-meta">
                     <div className="dots">
                       <span className="dot g on" /><span className="dot g on" /><span className="dot g on" />
                       <span className="dot g on" /><span className="dot y on" />
                     </div>
-                    <div className="grade-label">{t("quefem.semaforo.grade.label")}</div>
+                    <EditableText id="semafor.grade.label" as="div" styleEl="eyebrow" className="grade-label">{t("quefem.semaforo.grade.label")}</EditableText>
                   </div>
                 </div>
-                {semaforoDims.map((dim) => (
+                {semaforoDims.map((dim, di) => (
                   <div key={dim.name} className="ind">
-                    <span className="name">{dim.name}</span>
-                    <span className={`val ${dim.cls}`}>{dim.val}</span>
+                    <EditableText id={`semafor.dim.${di + 1}.name`} as="span" className="name">{dim.name}</EditableText>
+                    <EditableText id={`semafor.dim.${di + 1}.val`} as="span" className={`val ${dim.cls}`}>{dim.val}</EditableText>
                   </div>
                 ))}
               </div>
@@ -167,19 +179,19 @@ export default function QueFemPage() {
               </div>
               <div className="whitespace-nowrap rounded-md border border-dashed px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.14em]"
                 style={{ borderColor: "rgba(94,135,114,.45)", color: "var(--ink-soft)" }}>
-                <b className="font-semibold" style={{ color: "var(--ink)" }}>{t("quefem.format.limit")}</b>
+                <EditableText id="format.limit" as="b" className="font-semibold" style={{ color: "var(--ink)" }}>{t("quefem.format.limit")}</EditableText>
               </div>
             </div>
 
             <div className="blocgrid">
               {blocs.map((bloc) => (
                 <article key={bloc.num} className={`bloc${bloc.dark ? " dark" : ""}`}>
-                  <div className="num">{bloc.num}</div>
-                  <h3>{bloc.name}</h3>
-                  <p>{bloc.desc}</p>
-                  <p className="!mt-3 font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: bloc.dark ? "rgba(242,245,241,.55)" : "var(--ink-soft)" }}>
+                  <EditableText id={`bloc.${bloc.num}.num`} as="div" className="num">{bloc.num}</EditableText>
+                  <EditableText id={`bloc.${bloc.num}.name`} as="h3" styleEl="h2">{bloc.name}</EditableText>
+                  <EditableText id={`bloc.${bloc.num}.desc`} as="p" styleEl="body">{bloc.desc}</EditableText>
+                  <EditableText id={`bloc.${bloc.num}.meta`} as="p" className="!mt-3 font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: bloc.dark ? "rgba(242,245,241,.55)" : "var(--ink-soft)" }}>
                     {bloc.meta}
-                  </p>
+                  </EditableText>
                 </article>
               ))}
             </div>
@@ -198,23 +210,23 @@ export default function QueFemPage() {
                 <article key={c.rom}
                   className="flex flex-col rounded-[9px] border p-7 transition-colors duration-200 hover:border-[rgba(170,201,182,.45)]"
                   style={{ borderColor: "rgba(170,201,182,.18)", background: "rgba(38,49,43,.38)" }}>
-                  <span className="font-serif text-[2.6rem] font-medium leading-none" style={{ color: "var(--verd-clar)" }}>
+                  <EditableText id={`criteris.card.${c.rom}.rom`} as="span" styleEl="h2" className="font-serif text-[2.6rem] font-medium leading-none" style={{ color: "var(--verd-clar)" }}>
                     {c.rom}
-                  </span>
-                  <h3 className="mt-5 font-serif text-xl font-semibold" style={{ color: "var(--bg)" }}>
+                  </EditableText>
+                  <EditableText id={`criteris.card.${c.rom}.name`} as="h3" styleEl="h2" className="mt-5 font-serif text-xl font-semibold" style={{ color: "var(--bg)" }}>
                     {c.name}
-                  </h3>
-                  <p className="mt-3 text-[.88rem] leading-[1.6]" style={{ color: "rgba(242,245,241,.74)" }}>
+                  </EditableText>
+                  <EditableText id={`criteris.card.${c.rom}.text`} as="p" styleEl="body" className="mt-3 text-[.88rem] leading-[1.6]" style={{ color: "rgba(242,245,241,.74)" }}>
                     {c.text}
-                  </p>
+                  </EditableText>
                 </article>
               ))}
             </div>
 
-            <a href="/qui-som" className="mt-10 inline-block font-mono text-[12px] font-semibold uppercase tracking-[0.16em] transition-colors hover:opacity-80"
+            <EditableText id="criteris.link" as="a" href="/qui-som" styleEl="button" className="mt-10 inline-block font-mono text-[12px] font-semibold uppercase tracking-[0.16em] transition-colors hover:opacity-80"
               style={{ color: "var(--verd-clar)" }}>
               {t("quefem.criteris.link")}
-            </a>
+            </EditableText>
           </div>
         </section>
 
@@ -227,9 +239,9 @@ export default function QueFemPage() {
               <EditableText id="preguntes.intro" as="p" className="sec-body">{t("quefem.preguntes.intro")}</EditableText>
             </div>
             <div className="shrink-0 pb-1">
-              <button onClick={() => setPreusOpen(true)} className="btn-v1 btn-v1-solid">
+              <EditableText id="preguntes.cta" as="button" onClick={() => setPreusOpen(true)} styleEl="button" className="btn-v1 btn-v1-solid">
                 {t("quefem.preguntes.cta")}
-              </button>
+              </EditableText>
             </div>
           </div>
         </section>

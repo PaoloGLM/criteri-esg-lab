@@ -58,19 +58,19 @@ export default function HomePageV1Sections() {
               {(ca
                 ? [["BCE", "· Risc climàtic al sistema financer"], ["EBA", "· Avaluació de riscos, juny"], ["WEF", "· Global Risks Report"], ["Forética", "· Tendències ESG"], ["CNMV", "· Pla d'activitats i butlletí"], ["ONU", "· Finançament sostenible (FSDR)"]]
                 : [["BCE", "· Riesgo climático en el sistema financiero"], ["EBA", "· Evaluación de riesgos, junio"], ["WEF", "· Global Risks Report"], ["Forética", "· Tendencias ESG"], ["CNMV", "· Plan de actividades y boletín"], ["ONU", "· Financiamiento sostenible (FSDR)"]]
-              ).map(([who, what]) => (
+              ).map(([who, what], i) => (
                 <li key={who} className="flex items-baseline justify-between gap-4 border-t border-[rgba(38,49,43,.1)] px-5 py-3">
                   <div>
-                    <span className="font-serif text-[1.02rem] font-medium text-[var(--ink)]">{who}</span>{" "}
-                    <span className="text-[.86rem] text-[var(--ink-soft)]">{what}</span>
+                    <EditableText id={`problema.pub.${i + 1}.who`} as="span" className="font-serif text-[1.02rem] font-medium text-[var(--ink)]">{who}</EditableText>{" "}
+                    <EditableText id={`problema.pub.${i + 1}.what`} as="span" className="text-[.86rem] text-[var(--ink-soft)]">{what}</EditableText>
                   </div>
                   <span className="whitespace-nowrap font-mono text-[.68rem] text-[var(--ink-soft)]">2026</span>
                 </li>
               ))}
             </ul>
-            <p className="pl-5 pt-3 font-mono text-[.66rem] tracking-[.04em] text-[var(--ink-soft)]">
+            <EditableText id="problema.pub.note" as="p" className="pl-5 pt-3 font-mono text-[.66rem] tracking-[.04em] text-[var(--ink-soft)]">
               {ca ? "Mostra real del corpus que monitoritzem. No és tot — ni de lluny." : "Muestra real del corpus que monitorizamos. No es todo — ni de lejos."}
-            </p>
+            </EditableText>
           </Reveal>
         </div>
       </section>
@@ -100,25 +100,28 @@ export default function HomePageV1Sections() {
             <Reveal>
               <div className="semafor" role="img" aria-label={ca ? "Exemple de semàfor: nota C" : "Ejemplo de semáforo: nota C"}>
                 <div className="grade-row">
-                  <div className="grade">C</div>
+                  <EditableText id="metode.semafor.grade" as="div" styleEl="h1" className="grade">C</EditableText>
                   <div className="grade-meta">
                     <div className="dots">
                       <span className="dot g" /><span className="dot g" /><span className="dot g" />
                       <span className="dot y on" /><span className="dot r on" />
                     </div>
-                    <div className="grade-label">{ca ? "Nota de l'informe · exemple real" : "Nota del informe · ejemplo real"}</div>
+                    <EditableText id="metode.semafor.grade.label" as="div" styleEl="eyebrow" className="grade-label">{ca ? "Nota de l'informe · exemple real" : "Nota del informe · ejemplo real"}</EditableText>
                   </div>
                 </div>
                 {(ca
                   ? [["Cobertura Scope 3", "Esmentat", "a"], ["Objectius quantificats", "Ignorat", "rv"], ["Traçabilitat de fonts", "Quantificat", "v"], ["Interoperabilitat estàndards", "Quantificat", "v"], ["Horitzó temporal", "Quantificat", "v"]]
                   : [["Cobertura Scope 3", "Mencionado", "a"], ["Objetivos cuantificados", "Ignorado", "rv"], ["Trazabilidad de fuentes", "Cuantificado", "v"], ["Interoperabilidad estándares", "Cuantificado", "v"], ["Horizonte temporal", "Cuantificado", "v"]]
-                ).map(([name, val, cls]) => (
-                  <div key={name} className="ind"><span className="name">{name}</span><span className={`val val-${cls}`}>{val}</span></div>
+                ).map(([name, val, cls], i) => (
+                  <div key={name} className="ind">
+                    <EditableText id={`metode.semafor.dim.${i + 1}.name`} as="span" className="name">{name}</EditableText>
+                    <EditableText id={`metode.semafor.dim.${i + 1}.val`} as="span" className={`val val-${cls}`}>{val}</EditableText>
+                  </div>
                 ))}
-                <p className="semafor-note">
+                <EditableText id="metode.semafor.note" as="p" className="semafor-note">
                   {ca ? <>Regla pública: <em>A = 5 verds · B = 4 verds + 1 groc · C ≤ 1 vermell · D = 2+ vermells</em>. El mateix criteri per a tots els informes, publicat i auditable.</>
                       : <>Regla pública: <em>A = 5 verdes · B = 4 verdes + 1 amarillo · C ≤ 1 rojo · D = 2+ rojos</em>. El mismo criterio para todos los informes, publicado y auditable.</>}
-                </p>
+                </EditableText>
               </div>
             </Reveal>
             <Reveal>
@@ -132,11 +135,11 @@ export default function HomePageV1Sections() {
                      ["Inferencia marcada", "Cuando conectamos puntos entre documentos, la etiquetamos como interpretación nuestra. El hecho y el análisis nunca se confunden."]]
                 ).map(([t, d], i) => (
                   <li key={t} className="grid grid-cols-[44px_1fr] items-start gap-4 border-t border-[rgba(242,245,241,.14)] py-[22px] first:border-t-0">
-                    <span className="font-serif text-[1.7rem] font-medium leading-[1.1] text-[var(--verd-clar)]">{i + 1}</span>
+                    <EditableText id={`metode.item.${i + 1}.n`} as="span" styleEl="h2" className="font-serif text-[1.7rem] font-medium leading-[1.1] text-[var(--verd-clar)]">{i + 1}</EditableText>
                     {/* Verd més claret (#5) */}
                     <div>
-                      <h3 className="mb-1.5 font-serif text-[1.12rem] font-semibold tracking-[.005em]" style={{ color: "#AAC9B6" }}>{t}</h3>
-                      <p className="text-[.94rem] text-[rgba(242,245,241,.72)] [text-wrap:pretty]">{d}</p>
+                      <EditableText id={`metode.item.${i + 1}.t`} as="h3" styleEl="h2" className="mb-1.5 font-serif text-[1.12rem] font-semibold tracking-[.005em]" style={{ color: "#AAC9B6" }}>{t}</EditableText>
+                      <EditableText id={`metode.item.${i + 1}.d`} as="p" styleEl="body" className="text-[.94rem] text-[rgba(242,245,241,.72)] [text-wrap:pretty]">{d}</EditableText>
                     </div>
                   </li>
                 ))}
@@ -155,9 +158,9 @@ export default function HomePageV1Sections() {
               <EditableText id="informe.title" as="h2" className="sec-title mb-3">{ca ? "Vuit blocs. Cap farciment." : "Ocho bloques. Sin relleno."}</EditableText>
               <EditableText id="informe.body" as="p" className="sec-body">{ca ? "Sempre els mateixos vuit, en el mateix ordre. Llegeixes un, ja saps llegir-los tots." : "Siempre los mismos ocho, en el mismo orden. Lees uno, ya sabes leerlos todos."}</EditableText>
             </div>
-            <div className="whitespace-nowrap rounded-md border border-dashed border-[rgba(74,95,83,.4)] px-4 py-2.5 font-mono text-[.72rem] text-[var(--ink-soft)]">
+            <EditableText id="informe.limit" as="div" styleEl="eyebrow" className="whitespace-nowrap rounded-md border border-dashed border-[rgba(74,95,83,.4)] px-4 py-2.5 font-mono text-[.72rem] text-[var(--ink-soft)]">
               {ca ? <>LÍMIT EDITORIAL · <b className="font-semibold text-[var(--ink)]">MÀX. 1.100 PARAULES</b></> : <>LÍMITE EDITORIAL · <b className="font-semibold text-[var(--ink)]">MÁX. 1.100 PALABRAS</b></>}
-            </div>
+            </EditableText>
           </Reveal>
           <Reveal className="blocgrid">
             {(ca
@@ -179,9 +182,9 @@ export default function HomePageV1Sections() {
                         : undefined
                   }
                 >
-                  <div className="num" style={star && !dark ? { color: "var(--highlight)" } : salvia ? { color: "#26312B" } : undefined}>{num}</div>
-                  <h3 style={star && !dark ? { color: "var(--bg)" } : salvia ? { color: "#26312B" } : undefined}>{titol as string}</h3>
-                  <p style={star && !dark ? { color: "rgba(242,245,241,.75)" } : salvia ? { color: "rgba(38,49,43,.82)" } : undefined}>{desc as string}</p>
+                  <EditableText id={`informe.bloc.${num}.num`} as="div" className="num" style={star && !dark ? { color: "var(--highlight)" } : salvia ? { color: "#26312B" } : undefined}>{num}</EditableText>
+                  <EditableText id={`informe.bloc.${num}.name`} as="h3" styleEl="h2" style={star && !dark ? { color: "var(--bg)" } : salvia ? { color: "#26312B" } : undefined}>{titol as string}</EditableText>
+                  <EditableText id={`informe.bloc.${num}.desc`} as="p" styleEl="body" style={star && !dark ? { color: "rgba(242,245,241,.75)" } : salvia ? { color: "rgba(38,49,43,.82)" } : undefined}>{desc as string}</EditableText>
                 </article>
               );
             })}
@@ -216,10 +219,10 @@ export default function HomePageV1Sections() {
           </Reveal>
           <Reveal>
             <XrefDiagram />
-            <p className="mt-3.5 font-mono text-[.67rem] leading-[1.6] tracking-[.04em] text-[var(--ink-soft)]">
+            <EditableText id="crossref.note" as="p" styleEl="eyebrow" className="mt-3.5 font-mono text-[.67rem] leading-[1.6] tracking-[.04em] text-[var(--ink-soft)]">
               {ca ? <>Exemple real de creuament: <b className="font-semibold text-[var(--accent)]">un informe sobre risc climàtic</b> projectat sobre sis dels 16 estàndards del catàleg. Colors = intensitat de l&apos;impacte.</>
                   : <>Ejemplo real de cruce: <b className="font-semibold text-[var(--accent)]">un informe sobre riesgo climático</b> proyectado sobre seis de los 16 estándares del catálogo. Colores = intensidad del impacto.</>}
-            </p>
+            </EditableText>
           </Reveal>
         </div>
       </section>
@@ -263,13 +266,13 @@ export default function HomePageV1Sections() {
                   : "Suscríbete y recibirás cada informe nuevo cuando se publique. Sin ruido, sin newsletters diarias: la quincena, puntualmente."}
             </EditableText>
             <div className="flex flex-wrap justify-center gap-3.5">
-              <a href="/registro" className="btn-v1 btn-v1-solid">{ca ? "Demana accés anticipat" : "Solicita acceso anticipado"}</a>
-              <a href="/informes" className="btn-v1 btn-v1-ghost">{ca ? "Veure un informe d'exemple" : "Ver un informe de ejemplo"}</a>
+              <EditableText id="acces.cta.registro" as="a" href="/registro" styleEl="button" className="btn-v1 btn-v1-solid">{ca ? "Demana accés anticipat" : "Solicita acceso anticipado"}</EditableText>
+              <EditableText id="acces.cta.informes" as="a" href="/informes" styleEl="button" className="btn-v1 btn-v1-ghost">{ca ? "Veure un informe d'exemple" : "Ver un informe de ejemplo"}</EditableText>
             </div>
-            <p className="mt-[26px] font-mono text-[.68rem] tracking-[.08em] text-[var(--ink-soft)]">
+            <EditableText id="acces.note" as="p" styleEl="eyebrow" className="mt-[26px] font-mono text-[.68rem] tracking-[.08em] text-[var(--ink-soft)]">
               <b className="font-semibold text-[var(--accent)]">{ca ? "PILOT OBERT" : "PILOTO ABIERTO"}</b> ·{" "}
               {ca ? "GRATUÏT DURANT LA FASE DE PROVA · SENSE TARGETA" : "GRATUITO DURANTE LA FASE DE PRUEBA · SIN TARJETA"}
-            </p>
+            </EditableText>
           </Reveal>
         </div>
       </section>

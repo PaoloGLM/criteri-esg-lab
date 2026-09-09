@@ -5,6 +5,13 @@ import { useLanguage } from "@/components/language-provider";
 import { sanitizeHtml } from "@/lib/blocks";
 import { supabase } from "@/lib/supabase";
 import { sendToParent } from "./visual-runtime";
+import {
+  StyleEl,
+  TextStyle,
+  TextStylesMap,
+  isValidTextColor,
+  styleToCss,
+} from "./text-styles";
 
 /**
  * editable-texts.tsx — Capa d'edició in-place per als texts de les pàgines
@@ -26,11 +33,13 @@ import { sendToParent } from "./visual-runtime";
  * Model de dades (taula public.pages, mateixa fila que els blocs):
  *   content_ca → { blocks?: [...], texts?: { [textId]: html } }
  *   content_es → ídem
+ *   content    → { styles?: { [textId]: { font?, sizePct?, color? } } } (compartit CA/ES)
  *
  * Protocol postMessage { source: "criteri-cms" } (accions texts-*):
- *  iframe → pare:  texts-ready { lang } | texts-change { id, lang, html }
- *  pare → iframe:  texts-set { texts: { ca?, es? } } | set-lang { lang } |
- *                  texts-reset { lang }
+ *  iframe → pare:  texts-ready { lang } | texts-change { id, lang, html } |
+ *                  text-select { id, styleEl }
+ *  pare → iframe:  texts-set { texts: { ca?, es? } } | styles-set { styles } |
+ *                  style-patch { id, style } | set-lang { lang } | texts-reset { lang }
  */
 
 type Lang = "ca" | "es";
@@ -39,6 +48,7 @@ type Overrides = { ca: TextsMap | null; es: TextsMap | null };
 
 // ── Store singleton (client only; el servidor mai no el llegeix) ───────
 let overrides: Overrides = { ca: null, es: null };
+let styles: TextStylesMap = {};
 let editingId: string | null = null;
 const subs = new Set<() => void>();
 
@@ -50,6 +60,9 @@ export const textsStore = {
   getOverride(lang: Lang, id: string): string | null {
     return overrides[lang]?.[id] ?? null;
   },
+  getStyle(id: string): TextStyle | null {
+    return styles[id] ?? null;
+  },
   isEditing(id: string): boolean {
     return editingId === id;
   },
@@ -60,6 +73,22 @@ export const textsStore = {
   /** Reemplaça tots els overrides (el panell mana via texts-set). */
   setAll(next: { ca?: TextsMap | null; es?: TextsMap | null }) {
     overrides = { ca: next.ca ?? null, es: next.es ?? null };
+    emit();
+  },
+  /** Reemplaça el mapa d'estils compartit (panell via styles-set). */
+  setStyles(next: TextStylesMap | null) {
+    styles = next && typeof next === "object" ? next : {};
+    emit();
+  },
+  /** Un estil concret canviat des de l'inspector del panell. */
+  setOneStyle(id: string, style: TextStyle | null) {
+    const next = { ...styles };
+    if (style && (style.font || typeof style.sizePct === "number" || style.color)) {
+      next[id] = style;
+    } else {
+      delete next[id];
+    }
+    styles = next;
     emit();
   },
   /** Un text concret canviat en edició (no re-renderitza el que s'edita). */
@@ -99,6 +128,10 @@ interface EditableTextProps extends React.HTMLAttributes<HTMLElement> {
   id: string;
   /** Element HTML a renderitzar (per defecte span, no altera el layout). */
   as?: keyof React.JSX.IntrinsicElements;
+  /** Rol tipogràfic: si és present, el text admet canvi de MIDA des de l'editor. */
+  styleEl?: StyleEl;
+  /** Per quan `as="a"` (no és a HTMLAttributes). */
+  href?: string;
   children?: React.ReactNode;
 }
 
@@ -107,8 +140,10 @@ interface EditableTextProps extends React.HTMLAttributes<HTMLElement> {
  * sense canviar el disseny: mateix element, mateixa classe, mateix estil.
  * Els fills JSX són el contingut per defecte; l'override de la BD (HTML
  * desat a l'editor) el substitueix quan existeix.
+ * Amb `styleEl`, l'estil desat (mida/tipografia/color token) s'aplica per
+ * sobre de l'estil del codi (inline guanya sobre la classe, mai no al revés).
  */
-export function EditableText({ id, as = "span", children, ...rest }: EditableTextProps) {
+export function EditableText({ id, as = "span", styleEl, children, ...rest }: EditableTextProps) {
   const { lang } = useLanguage();
   const edit = useEditMode();
   const override = useSyncExternalStore(
@@ -121,6 +156,22 @@ export function EditableText({ id, as = "span", children, ...rest }: EditableTex
     () => textsStore.isEditing(id),
     () => false
   );
+  const styleOverride = useSyncExternalStore(
+    textsStore.subscribe,
+    () => textsStore.getStyle(id),
+    () => null
+  );
+
+  // Estil desat de l'editor: CSS inline fusionat amb l'estil del codi.
+  // React gestiona aquestes claus (fontFamily/fontSize/color): en canviar
+  // des de l'inspector mentre s'edita, la re-renderització actualitza només
+  // l'estil — el DOM del text (congelat) no es toca.
+  // Nota: sense styleEl el text admet igualment font i color; la mida
+  // (sizePct) només s'aplica quan el text té un rol tipogràfic declarat.
+  const styleCss = styleOverride ? styleToCss(styleOverride, styleEl) : null;
+  const mergedStyle = styleCss
+    ? { ...(rest.style ?? {}), ...styleCss }
+    : rest.style;
 
   // Contingut congelat durant l'edició: en entrar en mode edició capturem
   // l'element React tal com estava i el tornem a renderitzar AMB LA MATEIXA
@@ -146,7 +197,7 @@ export function EditableText({ id, as = "span", children, ...rest }: EditableTex
     // React renderitza l'element congelat (sense mutar el DOM) i el runtime
     // llegeix/escriu el contingut directament.
     return (
-      <Tag data-ctext={id} {...rest}>
+      <Tag data-ctext={id} data-cstyle={styleEl ?? ""} {...rest} style={mergedStyle}>
         {editing ? frozen.current : override !== null ? (
           <span dangerouslySetInnerHTML={{ __html: sanitizeHtml(override) }} />
         ) : (
@@ -156,9 +207,9 @@ export function EditableText({ id, as = "span", children, ...rest }: EditableTex
     );
   }
   if (override !== null) {
-    return <Tag {...rest} dangerouslySetInnerHTML={{ __html: sanitizeHtml(override) }} />;
+    return <Tag {...rest} style={mergedStyle} dangerouslySetInnerHTML={{ __html: sanitizeHtml(override) }} />;
   }
-  return <Tag {...rest}>{children}</Tag>;
+  return <Tag {...rest} style={mergedStyle}>{children}</Tag>;
 }
 
 // ── CmsTexts: provider per pàgina (carrega overrides publicats) ────────
@@ -171,6 +222,24 @@ function pickTexts(json: unknown): TextsMap | null {
     if (typeof v === "string" && v.trim()) out[k] = v;
   }
   return Object.keys(out).length ? out : null;
+}
+
+/** Estils per text (content_*.styles), validant cada camp contra els tokens. */
+export function pickStyles(json: unknown): TextStylesMap {
+  const out: TextStylesMap = {};
+  if (!json || typeof json !== "object") return out;
+  const st = (json as { styles?: unknown }).styles;
+  if (!st || typeof st !== "object") return out;
+  for (const [k, v] of Object.entries(st as Record<string, unknown>)) {
+    if (!v || typeof v !== "object" || Array.isArray(v)) continue;
+    const s = v as Record<string, unknown>;
+    const entry: TextStyle = {};
+    if (s.font === "serif" || s.font === "sans" || s.font === "mono") entry.font = s.font;
+    if (typeof s.sizePct === "number" && Number.isFinite(s.sizePct)) entry.sizePct = s.sizePct;
+    if (isValidTextColor(s.color)) entry.color = s.color;
+    if (entry.font || typeof entry.sizePct === "number" || entry.color) out[k] = entry;
+  }
+  return Object.keys(out).length ? out : {};
 }
 
 /**
@@ -195,6 +264,8 @@ export function CmsTexts({ page, children }: { page: string; children: React.Rea
         const ca = pickTexts(data.content_ca);
         const es = pickTexts(data.content_es);
         if (ca || es) textsStore.setAll({ ca, es });
+        // Estils compartits CA/ES (viuen a content_ca.styles)
+        textsStore.setStyles(pickStyles(data.content_ca));
       } catch {
         /* BD absent o falla → la pàgina es queda amb el contingut del codi */
       }
@@ -228,11 +299,22 @@ export function TextsRuntime() {
         source?: string;
         action?: string;
         texts?: { ca?: TextsMap; es?: TextsMap };
+        styles?: TextStylesMap;
         lang?: Lang;
+        id?: string;
+        style?: unknown;
       };
       if (m?.source !== "criteri-cms" || !m.action) return;
       if (m.action === "texts-set" && m.texts && typeof m.texts === "object") {
         textsStore.setAll({ ca: m.texts.ca ?? null, es: m.texts.es ?? null });
+      } else if (m.action === "styles-set" && m.styles && typeof m.styles === "object") {
+        textsStore.setStyles(m.styles);
+      } else if (
+        m.action === "style-patch" &&
+        typeof m.id === "string" &&
+        (m.style === null || (m.style && typeof m.style === "object" && !Array.isArray(m.style)))
+      ) {
+        textsStore.setOneStyle(m.id, (m.style as TextStyle | null) ?? null);
       } else if (m.action === "set-lang" && (m.lang === "ca" || m.lang === "es")) {
         // Sincronitza el LanguageProvider real de la pàgina: tota la prosa
         // (Statement, Hero, seccions) canvia d'idioma amb el panell.
@@ -245,7 +327,7 @@ export function TextsRuntime() {
     return () => window.removeEventListener("message", onMsg);
   }, [setLang]);
 
-  // Avisa el panell (ell respondrà amb texts-set + set-lang)
+  // Avisa el pare (ell respondrà amb texts-set + styles-set + set-lang)
   useEffect(() => {
     sendToParent("texts-ready", { lang: langRef.current });
   }, []);
@@ -295,6 +377,12 @@ export function TextsRuntime() {
       const t = (e.target as HTMLElement | null)?.closest?.("[data-ctext]") as HTMLElement | null;
       if (t && !t.isContentEditable) {
         startEdit(t);
+        // En mode edició, el clic només edita: atura handlers React del node
+        // (p.ex. botons CTA que obririen diàlegs) i navegació.
+        e.preventDefault();
+        e.stopPropagation();
+        // Avisa el panell: mostra l'inspector d'estil per a aquest text.
+        sendToParent("text-select", { id: t.dataset.ctext ?? null, styleEl: t.dataset.cstyle || null });
         // Col·loca el cursor al punt exacte del clic (després del re-render,
         // perquè el commit de React no el perdi). Chrome/Edge/Safari.
         requestAnimationFrame(() => {
@@ -307,7 +395,10 @@ export function TextsRuntime() {
           sel?.removeAllRanges();
           sel?.addRange(range);
         });
-      } else if (!t) stopEdit();
+      } else if (!t) {
+        stopEdit();
+        sendToParent("text-select", { id: null });
+      }
     };
     // focusout (no blur delegat): capta el cas "clic fora / tab"
     const onFocusOut = (e: FocusEvent) => {

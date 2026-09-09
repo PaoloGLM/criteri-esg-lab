@@ -101,13 +101,15 @@ export function validateContent(json: unknown): string | null {
   if (typeof json !== "object" || Array.isArray(json)) return "El contingut ha de ser un objecte";
   if (JSON.stringify(json).length > MAX_JSON) return "El contingut és massa gran (màx 400KB)";
 
-  const obj = json as { sections?: unknown; blocks?: unknown; texts?: unknown; styles?: unknown; order?: unknown };
+  const obj = json as { sections?: unknown; blocks?: unknown; texts?: unknown; styles?: unknown; order?: unknown; hidden?: unknown; images?: unknown };
   const hasSections = obj.sections !== undefined;
   const hasBlocks = obj.blocks !== undefined;
   const hasTexts = obj.texts !== undefined;
   const hasStyles = obj.styles !== undefined;
   const hasOrder = obj.order !== undefined;
-  if (!hasSections && !hasBlocks && !hasTexts && !hasStyles && !hasOrder)
+  const hasHidden = obj.hidden !== undefined;
+  const hasImages = obj.images !== undefined;
+  if (!hasSections && !hasBlocks && !hasTexts && !hasStyles && !hasOrder && !hasHidden && !hasImages)
     return "Cal 'blocks' (blocs), 'sections' (HTML per seccions) o 'texts' (HTML per texts)";
 
   if (hasSections) {
@@ -160,6 +162,30 @@ export function validateContent(json: unknown): string | null {
     for (const [k, v] of Object.entries(o as Record<string, unknown>)) {
       if (!Array.isArray(v)) return `L'ordre '${k}' ha de ser una llista`;
       if (v.some((x) => typeof x !== "string")) return `L'ordre '${k}' només pot contenir text`;
+    }
+  }
+  if (hasHidden) {
+    // Elements amagats des de l'editor: mapa id → true.
+    const h = obj.hidden;
+    if (!h || typeof h !== "object" || Array.isArray(h)) return "hidden ha de ser un objecte";
+    for (const [k, v] of Object.entries(h as Record<string, unknown>)) {
+      if (v !== true) return `L'element ocult '${k}' només pot valer true`;
+      if (k.length > 120) return `La clau oculta '${k}' és massa llarga`;
+    }
+  }
+  if (hasImages) {
+    // Imatges de seccions dissenyades: mapa id → { url, alt?, widthPct? }.
+    const im = obj.images;
+    if (!im || typeof im !== "object" || Array.isArray(im)) return "images ha de ser un objecte";
+    for (const [k, v] of Object.entries(im as Record<string, unknown>)) {
+      if (!v || typeof v !== "object" || Array.isArray(v)) return `La imatge '${k}' ha de ser un objecte`;
+      const g = v as Record<string, unknown>;
+      if (typeof g.url !== "string" || !g.url) return `La imatge '${k}' cal 'url'`;
+      if (g.url.length > 500) return `La URL de '${k}' és massa llarga`;
+      if (/[<>"'`]/.test(g.url)) return `La URL de '${k}' té caràcters no permesos`;
+      if (g.alt !== undefined && typeof g.alt !== "string") return `La imatge '${k}' té un alt no textual`;
+      if (g.widthPct !== undefined && (typeof g.widthPct !== "number" || g.widthPct < 20 || g.widthPct > 100))
+        return `La imatge '${k}' té una amplada fora de rang (20-100%)`;
     }
   }
   return null;

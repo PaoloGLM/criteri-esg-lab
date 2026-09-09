@@ -3,7 +3,7 @@
 import { useLanguage } from "@/components/language-provider";
 import { Reveal } from "./reveal";
 import { XrefDiagram } from "./xref-diagram";
-import { EditableText } from "@/components/cms/editable-texts";
+import { EditableItem, EditableText } from "@/components/cms/editable-texts";
 import { useGroupOrder, sortItems } from "@/components/cms/text-order";
 
 const BLOCS = [
@@ -174,8 +174,11 @@ export default function HomePageV1Sections() {
               const star = num === "01" || num === "05" || num === "08";
               const salvia = num === "02" || num === "03" || num === "04" || num === "06" || num === "07";
               return (
-                <article
+                <EditableItem
                   key={num as string}
+                  as="article"
+                  id={`home.informe.blocs.${num}`}
+                  dataCitem={num as string}
                   className="bloc"
                   style={
                     star && !dark
@@ -188,7 +191,7 @@ export default function HomePageV1Sections() {
                   <EditableText id={`informe.bloc.${num}.num`} as="div" className="num" style={star && !dark ? { color: "var(--highlight)" } : salvia ? { color: "#26312B" } : undefined}>{num}</EditableText>
                   <EditableText id={`informe.bloc.${num}.name`} as="h3" styleEl="h2" style={star && !dark ? { color: "var(--bg)" } : salvia ? { color: "#26312B" } : undefined}>{titol as string}</EditableText>
                   <EditableText id={`informe.bloc.${num}.desc`} as="p" styleEl="body" style={star && !dark ? { color: "rgba(242,245,241,.75)" } : salvia ? { color: "rgba(38,49,43,.82)" } : undefined}>{desc as string}</EditableText>
-                </article>
+                </EditableItem>
               );
             })}
             </div>

@@ -7,7 +7,8 @@ import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
 import { FreeBlocks } from "@/components/cms/blocks-view";
-import { CmsTexts, EditableText } from "@/components/cms/editable-texts";
+import { CmsTexts, EditableItem, EditableText } from "@/components/cms/editable-texts";
+import { EditableImage } from "@/components/cms/editable-images";
 import { useGroupOrder, sortItems } from "@/components/cms/text-order";
 
 
@@ -33,6 +34,7 @@ export default function QuiSomPage() {
   /* ── Ordres editables (reordre amb drag des de /admin/visual) ── */
   const ordreValors = useGroupOrder("quisom.valors");
   const ordreCriteris = useGroupOrder("quisom.criteris");
+  const ordreManifest = useGroupOrder("quisom.manifest");
 
   /* ── Tres valors del manifest ── */
   const valors = [
@@ -101,9 +103,9 @@ export default function QuiSomPage() {
           <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:items-start max-lg:gap-12">
             <div>
               <EditableText id="manifest.eyebrow" as="p" className="eyebrow">{t("quisom.manifest.page.eyebrow")}</EditableText>
-              <div>
-                {manifestParagrafs.map((p, i) => (
-                  <EditableText key={i} id={`manifest.p${i + 1}`} as="p"
+              <div data-corder="quisom.manifest">
+                {sortItems(manifestParagrafs.map((p, i) => ({ p, key: `p${i + 1}` })), ordreManifest, (x) => x.key).map(({ p, key }, i) => (
+                  <EditableText key={key} id={`manifest.${key}`} as="p" dataCitem={key}
                     className="mb-[26px] font-serif !text-[clamp(1.15rem,1.7vw,1.4rem)] leading-[1.55]"
                     style={{ color: i === 0 ? "var(--ink-deep)" : "var(--ink)" }}>
                     {p}
@@ -114,7 +116,7 @@ export default function QuiSomPage() {
 
             <ul className="grid gap-10 sm:grid-cols-3 lg:mt-[72px] max-sm:gap-8" data-corder="quisom.valors">
               {sortItems(valors, ordreValors, (v) => v.num).map((v) => (
-                <li key={v.num} data-citem={v.num} className="border-t-2 pt-5" style={{ borderColor: "var(--accent)" }}>
+                <EditableItem key={v.num} as="li" id={`quisom.valors.${v.num}`} dataCitem={v.num} className="border-t-2 pt-5" style={{ borderColor: "var(--accent)" }}>
                   <EditableText id={`valor.${v.num}.num`} as="span" className="mb-2.5 block font-mono text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: "var(--accent)" }}>
                     {v.num}
                   </EditableText>
@@ -124,7 +126,7 @@ export default function QuiSomPage() {
                   <EditableText id={`valor.${v.num}.desc`} as="p" styleEl="body" className="text-[.94rem] leading-[1.6]" style={{ color: "var(--ink-soft)" }}>
                     {v.desc}
                   </EditableText>
-                </li>
+                </EditableItem>
               ))}
             </ul>
           </div>
@@ -146,9 +148,8 @@ export default function QuiSomPage() {
                   </strong>
                 </EditableText>
               </div>
-              <div>
-                <img src="/illustrations/com-treballem-1-bruixola.svg" alt="Brúixola: el criteri com a nord que orienta la tecnologia" className="h-auto w-full" />
-              </div>
+              <EditableImage id="quisom.ai.illustracio" fallbackSrc="/illustrations/com-treballem-1-bruixola.svg"
+                fallbackAlt="Brúixola: el criteri com a nord que orienta la tecnologia" imgClassName="h-auto w-full" />
             </div>
 
             {/* No som neutres — criteris ètics detallats */}
@@ -161,7 +162,7 @@ export default function QuiSomPage() {
 
               <ol className="mt-14 flex flex-col" data-corder="quisom.criteris">
                 {sortItems(criteris, ordreCriteris, (c) => c.rom).map((c, i) => (
-                  <li key={c.rom} data-citem={c.rom}
+                  <EditableItem key={c.rom} as="li" id={`quisom.criteris.${c.rom}`} dataCitem={c.rom}
                     className="grid grid-cols-[52px_minmax(0,.55fr)_minmax(0,1fr)] items-start gap-5 py-6"
                     style={{ borderTop: i === 0 ? "none" : "1px solid rgba(242,245,241,.14)" }}>
                     <EditableText id={`criteri.${c.rom}.rom`} as="span" className="font-serif text-[1.7rem] font-medium leading-[1.2]" style={{ color: "var(--verd-clar)" }}>
@@ -173,7 +174,7 @@ export default function QuiSomPage() {
                     <EditableText id={`criteri.${c.rom}.text`} as="p" styleEl="body" className="text-[.92rem] leading-[1.62]" style={{ color: "rgba(242,245,241,.72)" }}>
                       {c.text}
                     </EditableText>
-                  </li>
+                  </EditableItem>
                 ))}
               </ol>
             </div>

@@ -3,8 +3,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { adminApi } from "@/lib/admin-api";
 import { Block, BlockType, validateBlocks } from "@/lib/blocks";
-import { pickStyles } from "@/components/cms/editable-texts";
+import { pickStyles, pickHidden } from "@/components/cms/editable-texts";
 import { pickOrders } from "@/components/cms/text-order";
+import { ImagesMap, PageImage, pickImages } from "@/components/cms/editable-images";
 import {
   StyleEl,
   TextStyle,
@@ -25,11 +26,15 @@ import {
  * Protocol postMessage { source: "criteri-cms" }:
  *  iframe → pare:  ready | change { blocks, lang } | select { id } |
  *                  texts-ready { lang } | texts-change { id, lang, html } |
- *                  text-select { id, styleEl }
+ *                  text-select { id, styleEl } | order-patch { group, list } |
+ *                  hidden-patch { id, hidden } | image-select { id } |
+ *                  images-patch { id, image } | images-hidden { id, hidden }
  *  pare → iframe:  set-blocks { blocks, lang } | set-lang { lang } |
  *                  texts-set { texts: {ca,es} } | add-block { type } |
  *                  styles-set { styles } | style-patch { id, style } |
- *                  move { dir } | remove {} | deselect {}
+ *                  move { dir } | remove {} | deselect {} |
+ *                  hidden-set { hidden } | images-set { images, hidden } |
+ *                  images-patch { id, image }
  */
 
 type Lang = "ca" | "es";
@@ -61,6 +66,11 @@ export default function VisualEditorPage() {
   const latestStyles = useRef<TextStylesMap>({});
   const [styleDirty, setStyleDirty] = useState(false);
   const latestOrders = useRef<Record<string, string[]>>({});
+  const latestHidden = useRef<Record<string, true>>({});
+  const latestImages = useRef<ImagesMap>({});
+  const [images, setImages] = useState<ImagesMap>({});
+  const [hiddenList, setHiddenList] = useState<string[]>([]);
+  const [imgSel, setImgSel] = useState<string | null>(null);
   const [textSel, setTextSel] = useState<{ id: string; styleEl: StyleEl | null } | null>(null);
 
   const blocks = blocksByLang[lang];
@@ -108,6 +118,14 @@ export default function VisualEditorPage() {
         setStyles(nextStyles);
         const nextOrders = pickOrders(page.content_ca);
         latestOrders.current = nextOrders;
+        // Elements amagats + imatges editables (compartits CA/ES; a content_ca)
+        const nextHidden = pickHidden(page.content_ca);
+        latestHidden.current = nextHidden;
+        setHiddenList(Object.keys(nextHidden));
+        const pickedImages = pickImages(page.content_ca);
+        latestImages.current = pickedImages.images;
+        setImages(pickedImages.images);
+        setImgSel(null);
         setStyleDirty(false);
         setTextSel(null);
         setStatus((page.status as Status) ?? "draft");
@@ -139,7 +157,7 @@ export default function VisualEditorPage() {
   useEffect(() => {
     const onMsg = (e: MessageEvent) => {
       if (e.origin !== window.location.origin) return;
-      const m = e.data as { source?: string; action?: string; blocks?: unknown; lang?: Lang; id?: string | null; html?: unknown; texts?: unknown; styles?: unknown; styleEl?: string | null; orders?: unknown; group?: unknown; list?: unknown };
+      const m = e.data as { source?: string; action?: string; blocks?: unknown; lang?: Lang; id?: string | null; html?: unknown; texts?: unknown; styles?: unknown; styleEl?: string | null; orders?: unknown; group?: unknown; list?: unknown; hidden?: unknown; image?: unknown };
       if (m?.source !== CMS_MSG || !m.action) return;
       switch (m.action) {
         case "ready":
@@ -151,10 +169,54 @@ export default function VisualEditorPage() {
           post({ action: "texts-set", texts: latestTexts.current, lang });
           post({ action: "styles-set", styles: latestStyles.current });
           post({ action: "orders-set", orders: latestOrders.current });
+          post({ action: "hidden-set", hidden: latestHidden.current });
+          post({ action: "images-set", images: latestImages.current, hidden: latestHidden.current });
           post({ action: "set-lang", lang });
+          break;
+        case "image-select":
+          setImgSel(typeof m.id === "string" && m.id ? m.id : null);
+          setTextSel(null);
+          break;
+        case "images-ready":
+          // El runtime d'imatges ha muntat: envia l'estat desat (com texts-ready).
+          post({ action: "images-set", images: latestImages.current, hidden: latestHidden.current });
+          break;
+        case "hidden-patch":
+          // L'iframe ha amagat/restaurat un element (✕ o fantasma).
+          if (typeof m.id === "string" && m.id) {
+            const next = { ...latestHidden.current };
+            if (m.hidden === false) delete next[m.id];
+            else next[m.id] = true;
+            latestHidden.current = next;
+            setHiddenList(Object.keys(next));
+            setStyleDirty(true);
+            setDirty((d) => ({ ...d, [lang]: true }));
+          }
+          break;
+        case "images-patch":
+          // Nansa de mida sobre una imatge de secció dissenyada.
+          if (typeof m.id === "string" && m.id && m.image && typeof m.image === "object") {
+            latestImages.current = { ...latestImages.current, [m.id]: m.image as PageImage };
+            setImages(latestImages.current);
+            setStyleDirty(true);
+            setDirty((d) => ({ ...d, [lang]: true }));
+          }
+          break;
+        case "images-hidden":
+          // L'iframe ja ha canviat el seu estat local: el reflectim al panell.
+          if (typeof m.id === "string" && m.id) {
+            const next = { ...latestHidden.current };
+            if (m.hidden === true) next[m.id] = true;
+            else delete next[m.id];
+            latestHidden.current = next;
+            setHiddenList(Object.keys(next));
+            setStyleDirty(true);
+            setDirty((d) => ({ ...d, [lang]: true }));
+          }
           break;
         case "text-select":
           // Clic sobre un text de la pàgina → inspector d'estil al panell.
+          setImgSel(null);
           setTextSel(
             typeof m.id === "string" && m.id
               ? { id: m.id, styleEl: (m.styleEl as StyleEl) || null }
@@ -209,6 +271,30 @@ export default function VisualEditorPage() {
     }
   };
 
+  // Restaura un element amagat des del panell (llista "Elements amagats").
+  const restoreHidden = (id: string) => {
+    const next = { ...latestHidden.current };
+    delete next[id];
+    latestHidden.current = next;
+    setHiddenList(Object.keys(next));
+    setStyleDirty(true);
+    setDirty((d) => ({ ...d, [lang]: true }));
+    post({ action: "hidden-set", hidden: next });
+    post({ action: "images-set", images: latestImages.current, hidden: next });
+  };
+
+  // Inspector d'imatge de secció dissenyada: URL, alt i amplada.
+  const patchImage = (p: Partial<PageImage>) => {
+    if (!imgSel) return;
+    const cur = latestImages.current[imgSel] ?? { url: "", alt: "", widthPct: 100 };
+    const next = { ...cur, ...p };
+    latestImages.current = { ...latestImages.current, [imgSel]: next };
+    setImages(latestImages.current);
+    setStyleDirty(true);
+    setDirty((d) => ({ ...d, [lang]: true }));
+    post({ action: "images-patch", id: imgSel, image: next });
+  };
+
   // Inspector: actualitzar camps del bloc seleccionat
   const patchSelected = (patch: Record<string, unknown>) => {
     if (!selected) return;
@@ -229,6 +315,7 @@ export default function VisualEditorPage() {
     if (!merged.font) delete merged.font;
     if (typeof merged.sizePct !== "number" || !Number.isFinite(merged.sizePct)) delete merged.sizePct;
     if (!merged.color) delete merged.color;
+    if (typeof merged.mt !== "number" || !Number.isFinite(merged.mt) || merged.mt < 0) delete merged.mt;
     const next = { ...latestStyles.current };
     if (Object.keys(merged).length === 0) delete next[id];
     else next[id] = merged;
@@ -252,7 +339,9 @@ export default function VisualEditorPage() {
       body[`content_${lang}`] = {
         blocks,
         texts: latestTexts.current[lang] ?? {},
-        ...(lang === "ca" ? { styles: latestStyles.current, order: latestOrders.current } : {}),
+        ...(lang === "ca"
+          ? { styles: latestStyles.current, order: latestOrders.current, hidden: latestHidden.current, images: latestImages.current }
+          : {}),
       };
       // Els estils viuen sempre a content_ca: si es desa en castellà amb
       // canvis d'estil pendents, s'inclou també la columna CA reconstruïda.
@@ -262,6 +351,8 @@ export default function VisualEditorPage() {
           texts: latestTexts.current.ca ?? {},
           styles: latestStyles.current,
           order: latestOrders.current,
+          hidden: latestHidden.current,
+          images: latestImages.current,
         };
       }
       body.status = newStatus ?? status ?? "draft";
@@ -348,6 +439,28 @@ export default function VisualEditorPage() {
             </div>
           </div>
 
+          {imgSel && (
+            <div className="space-y-3 rounded-lg border p-3" style={{ borderColor: "var(--salvia, #7a9471)" }}>
+              <p className="text-sm font-semibold" style={{ color: "var(--ink, #1f2937)" }}>Imatge de la secció</p>
+              <div>
+                <label className={lbl} style={lblStyle}>URL de la imatge</label>
+                <input className={inp} style={inpStyle} value={images[imgSel]?.url ?? ""}
+                  onChange={(e) => patchImage({ url: e.target.value })} placeholder="https://… o /illustrations/…" />
+              </div>
+              <div>
+                <label className={lbl} style={lblStyle}>Text alternatiu</label>
+                <input className={inp} style={inpStyle} value={images[imgSel]?.alt ?? ""}
+                  onChange={(e) => patchImage({ alt: e.target.value })} placeholder="Descripció breu" />
+              </div>
+              <div>
+                <label className={lbl} style={lblStyle}>Amplada · {Math.round(images[imgSel]?.widthPct ?? 100)}%</label>
+                <input type="range" min={20} max={100} step={5} value={images[imgSel]?.widthPct ?? 100}
+                  onChange={(e) => patchImage({ widthPct: Number(e.target.value) })} className="w-full" />
+              </div>
+              <p className="text-xs" style={lblStyle}>També pots arrossegar la nansa ⇔ sota la imatge, o clicar ✕ per amagar-la.</p>
+            </div>
+          )}
+
           {selText && (
             <div className="space-y-3 rounded-lg border p-3" style={{ borderColor: "var(--salvia, #7a9471)" }}>
               <p className="text-sm font-semibold" style={{ color: "var(--ink, #1f2937)" }}>Estil del text</p>
@@ -379,6 +492,21 @@ export default function VisualEditorPage() {
               ) : (
                 <p className="text-xs" style={lblStyle}>Aquest text no admet canvi de mida (només tipografia i color).</p>
               )}
+              <div>
+                <div className="flex items-center justify-between">
+                  <label className={lbl} style={lblStyle}>
+                    Espai abans{selTextStyle?.mt !== undefined ? ` · ${Math.round(selTextStyle.mt)}px` : " · per defecte"}
+                  </label>
+                  {selTextStyle?.mt !== undefined && (
+                    <button onClick={() => patchTextStyle({ mt: undefined })} className="text-xs" style={{ color: "var(--ink-muted, #6b7280)" }} title="Torna a l'espai del disseny original">↺</button>
+                  )}
+                </div>
+                <input type="range" min={0} max={200} step={5}
+                  value={selTextStyle?.mt ?? 0}
+                  onChange={(e) => patchTextStyle({ mt: Number(e.target.value) })}
+                  className="w-full" />
+                <p className="text-xs" style={lblStyle}>0 = enganxat amb l&apos;element anterior · 200 = molt separa&shy;t.</p>
+              </div>
               <div>
                 <label className={lbl} style={lblStyle}>Color (paleta Criteri)</label>
                 <div className="flex flex-wrap gap-1.5">
@@ -466,6 +594,19 @@ export default function VisualEditorPage() {
             <p className="text-xs" style={lblStyle}>
               Clica qualsevol bloc de la pàgina per editar-lo. Arrossega la nansa ⠿ per moure&apos;l.
             </p>
+          )}
+
+          {hiddenList.length > 0 && (
+            <div className="space-y-2 rounded-lg border p-3" style={{ borderColor: "var(--rule, #e5e3dd)" }}>
+              <p className="text-sm font-semibold" style={{ color: "var(--ink, #1f2937)" }}>Elements amagats</p>
+              {hiddenList.map((id) => (
+                <div key={id} className="flex items-center justify-between gap-2 text-xs" style={{ color: "var(--ink-muted, #6b7280)" }}>
+                  <span className="truncate" title={id}>{id}</span>
+                  <button onClick={() => restoreHidden(id)} className={btnGhost} style={{ borderColor: "var(--rule, #e5e3dd)" }}>Mostra</button>
+                </div>
+              ))}
+              <p className="text-xs" style={lblStyle}>També els pots restaurar clicant el fantasma 👻 a la pàgina.</p>
+            </div>
           )}
         </div>
       </div>

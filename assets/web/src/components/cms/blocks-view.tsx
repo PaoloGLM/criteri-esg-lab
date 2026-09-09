@@ -6,6 +6,7 @@ import { usePageBlocks } from "@/lib/pages-source";
 import { useLanguage } from "@/components/language-provider";
 import { VisualBlocksRuntime } from "@/components/cms/visual-runtime";
 import { TextsRuntime } from "@/components/cms/editable-texts";
+import { EditableImagesRuntime } from "@/components/cms/editable-images";
 
 /**
  * blocks-view.tsx — Renderitzador de blocs CMS (fase 3).
@@ -116,6 +117,8 @@ export function FreeBlocks({ slug }: { slug: string }) {
         <VisualBlocksRuntime />
         {/* Edició in-place dels texts estàtics de la pàgina (Statement/Hero/seccions) */}
         <TextsRuntime />
+        {/* Imatges editables de seccions dissenyades (manifest.hero, ...) */}
+        <EditableImagesRuntime />
       </section>
     );
   }

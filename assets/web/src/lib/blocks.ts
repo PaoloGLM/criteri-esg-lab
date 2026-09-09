@@ -101,11 +101,12 @@ export function validateContent(json: unknown): string | null {
   if (typeof json !== "object" || Array.isArray(json)) return "El contingut ha de ser un objecte";
   if (JSON.stringify(json).length > MAX_JSON) return "El contingut és massa gran (màx 400KB)";
 
-  const obj = json as { sections?: unknown; blocks?: unknown; texts?: unknown };
+  const obj = json as { sections?: unknown; blocks?: unknown; texts?: unknown; styles?: unknown };
   const hasSections = obj.sections !== undefined;
   const hasBlocks = obj.blocks !== undefined;
   const hasTexts = obj.texts !== undefined;
-  if (!hasSections && !hasBlocks && !hasTexts)
+  const hasStyles = obj.styles !== undefined;
+  if (!hasSections && !hasBlocks && !hasTexts && !hasStyles)
     return "Cal 'blocks' (blocs), 'sections' (HTML per seccions) o 'texts' (HTML per texts)";
 
   if (hasSections) {
@@ -128,6 +129,28 @@ export function validateContent(json: unknown): string | null {
     for (const [k, v] of Object.entries(texts as Record<string, unknown>)) {
       if (typeof v !== "string") return `El text '${k}' ha de contenir HTML (string)`;
       if (v.length > 200_000) return `El text '${k}' és massa gran (màx 200KB)`;
+    }
+  }
+  if (hasStyles) {
+    const st = obj.styles;
+    if (!st || typeof st !== "object" || Array.isArray(st))
+      return "styles ha de ser un objecte";
+    for (const [k, v] of Object.entries(st as Record<string, unknown>)) {
+      if (!v || typeof v !== "object" || Array.isArray(v))
+        return `L'estil '${k}' ha de ser un objecte`;
+      const s = v as Record<string, unknown>;
+      if (s.font !== undefined && !["serif", "sans", "mono"].includes(s.font as string))
+        return `L'estil '${k}' té una tipografia invàlida (serif|sans|mono)`;
+      if (
+        s.sizePct !== undefined &&
+        (typeof s.sizePct !== "number" || s.sizePct < 50 || s.sizePct > 200)
+      )
+        return `L'estil '${k}' té una mida fora de rang (50-200%)`;
+      if (
+        s.color !== undefined &&
+        (typeof s.color !== "string" || s.color.length > 60 || /[;{}<>]/.test(s.color))
+      )
+        return `L'estil '${k}' té un color invàlid`;
     }
   }
   return null;

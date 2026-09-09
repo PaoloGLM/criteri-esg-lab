@@ -63,10 +63,10 @@ function HeroChart() {
           })}
         </g>
       </svg>
-      <figcaption className="mt-2.5 font-mono text-[.68rem] leading-relaxed tracking-[.05em] text-[var(--ink-soft)]">
+      <EditableText id="hero.fig" as="figcaption" styleEl="eyebrow" className="mt-2.5 font-mono text-[.68rem] leading-relaxed tracking-[.05em] text-[var(--ink-soft)]">
         <b className="font-semibold text-[var(--ink)]">{t.fig[ca ? 0 : 1].split(":")[0]}:</b>
         {t.fig[ca ? 0 : 1].slice(t.fig[ca ? 0 : 1].indexOf(":") + 1)}
-      </figcaption>
+      </EditableText>
     </figure>
   );
 }
@@ -117,8 +117,8 @@ export function HeroV1() {
             )}
           </EditableText>
           <div className="mb-[26px] flex flex-wrap gap-3.5">
-            <a href="/registro" className="btn-v1 btn-v1-solid">{ca ? "Registra't gratis" : "Regístrate gratis"}</a>
-            <a href="/que-fem" className="btn-v1 btn-v1-ghost">{ca ? "Com funciona el mètode" : "Cómo funciona el método"}</a>
+            <EditableText id="hero.cta.registro" as="a" href="/registro" styleEl="button" className="btn-v1 btn-v1-solid">{ca ? "Registra't gratis" : "Regístrate gratis"}</EditableText>
+            <EditableText id="hero.cta.metode" as="a" href="/que-fem" styleEl="button" className="btn-v1 btn-v1-ghost">{ca ? "Com funciona el mètode" : "Cómo funciona el método"}</EditableText>
           </div>
         </div>
         <Reveal className="mb-12">
@@ -129,10 +129,22 @@ export function HeroV1() {
       {/* Franja de dades */}
       <div className="statband">
         <div className="statband-inner mx-auto max-w-[1160px] px-7">
-          <div className="stat"><div className="n">16</div><div className="t">{ca ? "Estàndards en creuament" : "Estándares en cruce"}</div></div>
-          <div className="stat"><div className="n">8</div><div className="t">{ca ? "Blocs per informe" : "Bloques por informe"}</div></div>
-          <div className="stat"><div className="n">5<small>&nbsp;min</small></div><div className="t">{ca ? "De lectura, com a màxim" : "De lectura, como máximo"}</div></div>
-          <div className="stat"><div className="n"><small>p.&nbsp;</small>N</div><div className="t">{ca ? "Pàgina exacta a cada dada" : "Página exacta en cada dato"}</div></div>
+          <div className="stat">
+            <EditableText id="hero.stat.1.n" as="div" styleEl="h2" className="n">16</EditableText>
+            <EditableText id="hero.stat.1.t" as="div" styleEl="eyebrow" className="t">{ca ? "Estàndards en creuament" : "Estándares en cruce"}</EditableText>
+          </div>
+          <div className="stat">
+            <EditableText id="hero.stat.2.n" as="div" styleEl="h2" className="n">8</EditableText>
+            <EditableText id="hero.stat.2.t" as="div" styleEl="eyebrow" className="t">{ca ? "Blocs per informe" : "Bloques por informe"}</EditableText>
+          </div>
+          <div className="stat">
+            <EditableText id="hero.stat.3.n" as="div" styleEl="h2" className="n">5<small>&nbsp;min</small></EditableText>
+            <EditableText id="hero.stat.3.t" as="div" styleEl="eyebrow" className="t">{ca ? "De lectura, com a màxim" : "De lectura, como máximo"}</EditableText>
+          </div>
+          <div className="stat">
+            <EditableText id="hero.stat.4.n" as="div" styleEl="h2" className="n"><small>p.&nbsp;</small>N</EditableText>
+            <EditableText id="hero.stat.4.t" as="div" styleEl="eyebrow" className="t">{ca ? "Pàgina exacta a cada dada" : "Página exacta en cada dato"}</EditableText>
+          </div>
         </div>
       </div>
     </section>

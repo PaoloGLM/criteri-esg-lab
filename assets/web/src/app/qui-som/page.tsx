@@ -82,11 +82,11 @@ export default function QuiSomPage() {
         <section className="border-b border-rule" style={{ background: "var(--bg)" }}>
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
             <EditableText id="hero.eyebrow" as="p" className="eyebrow">{t("quisom.v2.hero.eyebrow")}</EditableText>
-            <h1 className="max-w-5xl font-serif text-5xl font-medium leading-[1.05] tracking-tight text-primary sm:text-6xl lg:text-7xl">
+            <EditableText id="hero.title" as="h1" styleEl="h1" className="max-w-5xl font-serif text-5xl font-medium leading-[1.05] tracking-tight text-primary sm:text-6xl lg:text-7xl">
               {t("quisom.v2.hero.title.pre")}
               <em className="hl">{t("quisom.v2.hero.title.em")}</em>
               {t("quisom.v2.hero.title.post")}
-            </h1>
+            </EditableText>
             <EditableText id="hero.subtitle" as="p" className="sec-body mt-6 max-w-3xl !text-lg">{t("quisom.v2.hero.subtitle")}</EditableText>
           </div>
         </section>
@@ -110,15 +110,15 @@ export default function QuiSomPage() {
             <ul className="grid gap-10 sm:grid-cols-3 lg:mt-[72px] max-sm:gap-8">
               {valors.map((v) => (
                 <li key={v.num} className="border-t-2 pt-5" style={{ borderColor: "var(--accent)" }}>
-                  <span className="mb-2.5 block font-mono text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: "var(--accent)" }}>
+                  <EditableText id={`valor.${v.num}.num`} as="span" className="mb-2.5 block font-mono text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: "var(--accent)" }}>
                     {v.num}
-                  </span>
-                  <h3 className="mb-2.5 font-serif text-[1.25rem] font-semibold" style={{ color: "var(--ink-deep)" }}>
+                  </EditableText>
+                  <EditableText id={`valor.${v.num}.name`} as="h3" styleEl="h2" className="mb-2.5 font-serif text-[1.25rem] font-semibold" style={{ color: "var(--ink-deep)" }}>
                     {v.name}
-                  </h3>
-                  <p className="text-[.94rem] leading-[1.6]" style={{ color: "var(--ink-soft)" }}>
+                  </EditableText>
+                  <EditableText id={`valor.${v.num}.desc`} as="p" styleEl="body" className="text-[.94rem] leading-[1.6]" style={{ color: "var(--ink-soft)" }}>
                     {v.desc}
-                  </p>
+                  </EditableText>
                 </li>
               ))}
             </ul>
@@ -152,15 +152,15 @@ export default function QuiSomPage() {
                   <li key={c.rom}
                     className="grid grid-cols-[52px_minmax(0,.55fr)_minmax(0,1fr)] items-start gap-5 py-6"
                     style={{ borderTop: i === 0 ? "none" : "1px solid rgba(242,245,241,.14)" }}>
-                    <span className="font-serif text-[1.7rem] font-medium leading-[1.2]" style={{ color: "var(--verd-clar)" }}>
+                    <EditableText id={`criteri.${c.rom}.rom`} as="span" className="font-serif text-[1.7rem] font-medium leading-[1.2]" style={{ color: "var(--verd-clar)" }}>
                       {c.rom}
-                    </span>
-                    <h3 className="font-serif text-[1.12rem] font-semibold" style={{ color: "var(--bg)" }}>
+                    </EditableText>
+                    <EditableText id={`criteri.${c.rom}.name`} as="h3" styleEl="h2" className="font-serif text-[1.12rem] font-semibold" style={{ color: "var(--bg)" }}>
                       {c.name}
-                    </h3>
-                    <p className="text-[.92rem] leading-[1.62]" style={{ color: "rgba(242,245,241,.72)" }}>
+                    </EditableText>
+                    <EditableText id={`criteri.${c.rom}.text`} as="p" styleEl="body" className="text-[.92rem] leading-[1.62]" style={{ color: "rgba(242,245,241,.72)" }}>
                       {c.text}
-                    </p>
+                    </EditableText>
                   </li>
                 ))}
               </ol>
@@ -180,24 +180,24 @@ export default function QuiSomPage() {
             <EditableText id="team.intro" as="p" className="sec-body">{t("quisom.v2.team.intro")}</EditableText>
 
             <div className="mt-14 grid gap-[18px] lg:grid-cols-3">
-              {teamMembers.map((m) => (
+              {teamMembers.map((m, i) => (
                 <article key={m.name} className="card-v1 flex flex-col p-[30px]">
-                  <p className="mb-4 font-mono text-[11px] font-semibold uppercase tracking-[0.16em]" style={{ color: "var(--accent)" }}>
+                  <EditableText id={`team.${i + 1}.role`} as="p" styleEl="eyebrow" className="mb-4 font-mono text-[11px] font-semibold uppercase tracking-[0.16em]" style={{ color: "var(--accent)" }}>
                     {m.role}
-                  </p>
+                  </EditableText>
                   <div className="mb-[18px] flex h-16 w-16 items-center justify-center rounded-full font-serif text-[1.5rem]"
                     style={m.isAI ? { background: "var(--accent)", color: "#fff" } : { background: "var(--ink)", color: "var(--verd-clar)" }}>
                     {m.initial}
                   </div>
-                  <h3 className="mb-1 font-serif text-[1.35rem] font-semibold" style={{ color: "var(--ink-deep)" }}>
+                  <EditableText id={`team.${i + 1}.name`} as="h3" styleEl="h2" className="mb-1 font-serif text-[1.35rem] font-semibold" style={{ color: "var(--ink-deep)" }}>
                     {m.name}
-                  </h3>
-                  <p className="mb-4 font-mono text-[11px] tracking-[0.04em]" style={{ color: "var(--ink-soft)" }}>
+                  </EditableText>
+                  <EditableText id={`team.${i + 1}.tag`} as="p" className="mb-4 font-mono text-[11px] tracking-[0.04em]" style={{ color: "var(--ink-soft)" }}>
                     {m.tag}
-                  </p>
-                  <p className="text-[.9rem] leading-[1.65]" style={{ color: "var(--ink-soft)" }}>
+                  </EditableText>
+                  <EditableText id={`team.${i + 1}.bio`} as="p" styleEl="body" className="text-[.9rem] leading-[1.65]" style={{ color: "var(--ink-soft)" }}>
                     {m.bio}
-                  </p>
+                  </EditableText>
                 </article>
               ))}
             </div>
@@ -219,15 +219,15 @@ export default function QuiSomPage() {
               <EditableText id="preguntes.body" as="p" className="sec-body">{t("quisom.preguntes.body")}</EditableText>
             </div>
             <div className="card-v1 p-9" style={{ borderLeft: "4px solid var(--highlight)" }}>
-              <p className="mb-3.5 font-mono text-[10px] uppercase tracking-[0.18em]" style={{ color: "var(--ink-soft)" }}>
+              <EditableText id="preguntes.example.title" as="p" styleEl="eyebrow" className="mb-3.5 font-mono text-[10px] uppercase tracking-[0.18em]" style={{ color: "var(--ink-soft)" }}>
                 {t("quisom.preguntes.example.title")}
-              </p>
-              <p className="font-serif !text-[1.3rem] italic leading-[1.45]" style={{ color: "var(--ink-deep)" }}>
+              </EditableText>
+              <EditableText id="preguntes.example.body" as="p" styleEl="quote" className="font-serif !text-[1.3rem] italic leading-[1.45]" style={{ color: "var(--ink-deep)" }}>
                 {t("quisom.preguntes.example.body")}
-              </p>
-              <p className="mt-[18px] font-mono text-[10px] uppercase tracking-[0.18em]" style={{ color: "var(--ink-soft)" }}>
+              </EditableText>
+              <EditableText id="preguntes.example.cta" as="p" className="mt-[18px] font-mono text-[10px] uppercase tracking-[0.18em]" style={{ color: "var(--ink-soft)" }}>
                 {t("quisom.preguntes.cta")}
-              </p>
+              </EditableText>
             </div>
           </div>
         </section>
@@ -235,11 +235,11 @@ export default function QuiSomPage() {
         {/* ══════════ 6. COMPROMÍS ══════════ */}
         <section className="principle">
           <div className="mx-auto max-w-4xl px-6">
-            <blockquote>
+            <EditableText id="closing.quote" as="blockquote" styleEl="quote">
               {t("quisom.v2.closing.text.pre")}
               <em className="italic font-medium" style={{ color: "var(--highlight)" }}>{t("quisom.v2.closing.text.em")}</em>
               {t("quisom.v2.closing.text.post")}
-            </blockquote>
+            </EditableText>
           </div>
         </section>
 
@@ -262,12 +262,12 @@ export default function QuiSomPage() {
             </EditableText>
             <EditableText id="join.body" as="p" className="sec-body mx-auto !max-w-[48ch]">{t("quisom.team.join.body")}</EditableText>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-              <a href="mailto:info@criteriesg.com" className="btn-v1 btn-v1-solid">
+              <EditableText id="join.cta.mail" as="a" href="mailto:info@criteriesg.com" className="btn-v1 btn-v1-solid" styleEl="button">
                 info@criteriesg.com
-              </a>
-              <button onClick={() => openAuth("register")} className="btn-v1 btn-v1-ghost">
+              </EditableText>
+              <EditableText id="join.cta.register" as="button" onClick={() => openAuth("register")} className="btn-v1 btn-v1-ghost" styleEl="button">
                 {t("quisom.v2.closing.cta")}
-              </button>
+              </EditableText>
             </div>
           </div>
         </section>

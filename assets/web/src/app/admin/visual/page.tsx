@@ -3,6 +3,14 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { adminApi } from "@/lib/admin-api";
 import { Block, BlockType, validateBlocks } from "@/lib/blocks";
+import { pickStyles } from "@/components/cms/editable-texts";
+import {
+  StyleEl,
+  TextStyle,
+  TextStylesMap,
+  SCALE_RANGE,
+  TEXT_COLORS,
+} from "@/components/cms/text-styles";
 
 /**
  * /admin/visual — Editor visual ("simulador") tipus WordPress/Elementor.
@@ -15,9 +23,11 @@ import { Block, BlockType, validateBlocks } from "@/lib/blocks";
  *
  * Protocol postMessage { source: "criteri-cms" }:
  *  iframe → pare:  ready | change { blocks, lang } | select { id } |
- *                  texts-ready { lang } | texts-change { id, lang, html }
+ *                  texts-ready { lang } | texts-change { id, lang, html } |
+ *                  text-select { id, styleEl }
  *  pare → iframe:  set-blocks { blocks, lang } | set-lang { lang } |
  *                  texts-set { texts: {ca,es} } | add-block { type } |
+ *                  styles-set { styles } | style-patch { id, style } |
  *                  move { dir } | remove {} | deselect {}
  */
 
@@ -46,6 +56,10 @@ export default function VisualEditorPage() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const latest = useRef<Record<Lang, Block[]>>({ ca: [], es: [] });
   const latestTexts = useRef<Record<Lang, Record<string, string>>>({ ca: {}, es: {} });
+  const [styles, setStyles] = useState<TextStylesMap>({});
+  const latestStyles = useRef<TextStylesMap>({});
+  const [styleDirty, setStyleDirty] = useState(false);
+  const [textSel, setTextSel] = useState<{ id: string; styleEl: StyleEl | null } | null>(null);
 
   const blocks = blocksByLang[lang];
   const selBlock = blocks.find((b) => b.id === selected) ?? null;
@@ -86,6 +100,12 @@ export default function VisualEditorPage() {
         const nextTexts = { ca: loadTexts(page.content_ca), es: loadTexts(page.content_es) };
         latestTexts.current = nextTexts;
         setTextsByLang(nextTexts);
+        // Estils de text (compartits CA/ES; viuen a content_ca.styles)
+        const nextStyles = pickStyles(page.content_ca);
+        latestStyles.current = nextStyles;
+        setStyles(nextStyles);
+        setStyleDirty(false);
+        setTextSel(null);
         setStatus((page.status as Status) ?? "draft");
         // Si l'iframe ja havia enviat "ready" (carrera: ready abans que acabés
         // la càrrega), rebia blocs buits — reenviem ara el contingut desat.
@@ -115,7 +135,7 @@ export default function VisualEditorPage() {
   useEffect(() => {
     const onMsg = (e: MessageEvent) => {
       if (e.origin !== window.location.origin) return;
-      const m = e.data as { source?: string; action?: string; blocks?: unknown; lang?: Lang; id?: string | null; html?: unknown; texts?: unknown };
+      const m = e.data as { source?: string; action?: string; blocks?: unknown; lang?: Lang; id?: string | null; html?: unknown; texts?: unknown; styles?: unknown; styleEl?: string | null };
       if (m?.source !== CMS_MSG || !m.action) return;
       switch (m.action) {
         case "ready":
@@ -125,7 +145,16 @@ export default function VisualEditorPage() {
           // El runtime de texts ha muntat dins l'iframe: envia els overrides
           // desats (ambdós idiomes) + re-sincronitza l'idioma del panell.
           post({ action: "texts-set", texts: latestTexts.current, lang });
+          post({ action: "styles-set", styles: latestStyles.current });
           post({ action: "set-lang", lang });
+          break;
+        case "text-select":
+          // Clic sobre un text de la pàgina → inspector d'estil al panell.
+          setTextSel(
+            typeof m.id === "string" && m.id
+              ? { id: m.id, styleEl: (m.styleEl as StyleEl) || null }
+              : null
+          );
           break;
         case "texts-change":
           if ((m.lang === "ca" || m.lang === "es") && typeof m.id === "string" && typeof m.html === "string") {
@@ -146,6 +175,7 @@ export default function VisualEditorPage() {
           break;
         case "select":
           setSelected(typeof m.id === "string" ? m.id : null);
+          if (typeof m.id === "string") setTextSel(null);
           break;
       }
     };
@@ -173,6 +203,26 @@ export default function VisualEditorPage() {
     post({ action: "set-blocks", blocks: bs, lang });
   };
 
+  // Inspector de text: afegeix/treu tokens d'estil al text seleccionat.
+  // Els estils són compartits CA/ES i es guarden a content_ca.styles.
+  const patchTextStyle = (partial: TextStyle | null) => {
+    if (!textSel) return;
+    const id = textSel.id;
+    const merged: TextStyle =
+      partial === null ? {} : { ...(latestStyles.current[id] ?? {}), ...partial };
+    if (!merged.font) delete merged.font;
+    if (typeof merged.sizePct !== "number" || !Number.isFinite(merged.sizePct)) delete merged.sizePct;
+    if (!merged.color) delete merged.color;
+    const next = { ...latestStyles.current };
+    if (Object.keys(merged).length === 0) delete next[id];
+    else next[id] = merged;
+    latestStyles.current = next;
+    setStyles(next);
+    setStyleDirty(true);
+    setDirty((d) => ({ ...d, [lang]: true }));
+    post({ action: "style-patch", id, style: next[id] ?? null });
+  };
+
   const save = async (newStatus?: Status) => {
     const v = validateBlocks(blocks);
     if (!v.ok) {
@@ -186,7 +236,17 @@ export default function VisualEditorPage() {
       body[`content_${lang}`] = {
         blocks,
         texts: latestTexts.current[lang] ?? {},
+        ...(lang === "ca" ? { styles: latestStyles.current } : {}),
       };
+      // Els estils viuen sempre a content_ca: si es desa en castellà amb
+      // canvis d'estil pendents, s'inclou també la columna CA reconstruïda.
+      if (lang !== "ca" && styleDirty) {
+        body.content_ca = {
+          blocks: latest.current.ca,
+          texts: latestTexts.current.ca ?? {},
+          styles: latestStyles.current,
+        };
+      }
       body.status = newStatus ?? status ?? "draft";
       await adminApi.pages.put(slug, body);
       setDirty((d) => ({ ...d, [lang]: false }));
@@ -207,6 +267,11 @@ export default function VisualEditorPage() {
   const lbl = "mb-1 block text-xs font-medium";
   const lblStyle = { color: "var(--ink-muted, #6b7280)" };
   const btnGhost = "rounded-lg border px-3 py-1.5 text-sm";
+
+  // Text seleccionat dins la pàgina (per a l'inspector d'estil)
+  const selText = textSel;
+  const selTextStyle: TextStyle | null = selText ? (styles[selText.id] ?? null) : null;
+  const selStyleEl: StyleEl | null = selText?.styleEl ?? null;
 
   return (
     <div className="flex min-h-screen flex-col" style={{ background: "var(--bg, #f4f3ef)" }}>
@@ -265,6 +330,60 @@ export default function VisualEditorPage() {
               <button onClick={() => addBlock("cta")} className={btnGhost} style={{ borderColor: "var(--rule, #e5e3dd)" }}>→ CTA</button>
             </div>
           </div>
+
+          {selText && (
+            <div className="space-y-3 rounded-lg border p-3" style={{ borderColor: "var(--salvia, #7a9471)" }}>
+              <p className="text-sm font-semibold" style={{ color: "var(--ink, #1f2937)" }}>Estil del text</p>
+              <div>
+                <label className={lbl} style={lblStyle}>Tipografia</label>
+                <div className="flex flex-wrap gap-1.5">
+                  {([null, "serif", "sans", "mono"] as const).map((f) => {
+                    const active = (selTextStyle?.font ?? null) === f;
+                    return (
+                      <button key={f ?? "def"} onClick={() => patchTextStyle(f ? { font: f } : { font: undefined })}
+                        className="rounded-md border px-2 py-1 text-xs"
+                        style={active ? { background: "var(--salvia, #7a9471)", color: "#fff", borderColor: "var(--salvia, #7a9471)" } : { borderColor: "var(--rule, #e5e3dd)" }}>
+                        {f === null ? "Per defecte" : f === "serif" ? "Serif" : f === "sans" ? "Sans" : "Mono"}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+              {selStyleEl ? (
+                <div>
+                  <label className={lbl} style={lblStyle}>
+                    Mida{selTextStyle?.sizePct !== undefined ? ` · ${Math.round(selTextStyle.sizePct)}%` : " · per defecte"}
+                  </label>
+                  <input type="range" min={SCALE_RANGE[selStyleEl][0]} max={SCALE_RANGE[selStyleEl][1]} step={5}
+                    value={selTextStyle?.sizePct ?? 100}
+                    onChange={(e) => patchTextStyle({ sizePct: Number(e.target.value) })}
+                    className="w-full" />
+                </div>
+              ) : (
+                <p className="text-xs" style={lblStyle}>Aquest text no admet canvi de mida (només tipografia i color).</p>
+              )}
+              <div>
+                <label className={lbl} style={lblStyle}>Color (paleta Criteri)</label>
+                <div className="flex flex-wrap gap-1.5">
+                  {TEXT_COLORS.map((c) => {
+                    const active = selTextStyle?.color === c.value;
+                    return (
+                      <button key={c.value} title={c.label} onClick={() => patchTextStyle({ color: c.value })}
+                        className="h-6 w-6 rounded-full border"
+                        style={{
+                          background: c.swatch,
+                          borderColor: active ? "var(--salvia, #7a9471)" : "var(--rule, #e5e3dd)",
+                          boxShadow: active ? "0 0 0 2px var(--salvia, #7a9471)" : "none",
+                        }} />
+                    );
+                  })}
+                </div>
+              </div>
+              <button onClick={() => patchTextStyle(null)} className={btnGhost} style={{ borderColor: "var(--rule, #e5e3dd)" }}>
+                ↺ Restaura l&apos;estil per defecte
+              </button>
+            </div>
+          )}
 
           {selected && selBlock && (
             <div className="space-y-3 rounded-lg border p-3" style={{ borderColor: "var(--rule, #e5e3dd)" }}>

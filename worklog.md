@@ -960,3 +960,10 @@ Stage Summary:
 - BUG: en clicar un text editable, desapareixia — EditableText renderitzava null durant l'edició i React esborrava els fills. Fix: contingut congelat (mateixa referència React) mentre s'edita + cursor al punt exacte del clic (caretRangeFromPoint).
 - MODEL D'EDICIÓ aprovat per Paolo (híbrid tipus Elementor, NO PowerPoint lliure): (1) reordenar blocs amb nansa + línia d'inserció salvia; (2) imatges arrossegables horitzontalment amb guies d'alineació (marges/centre) i snap esquerra/centre/dreta; (3) la prosa de seccions de disseny (Roser) es pot editar però NO moure — protegeix el disseny i el mòbil.
 - CI verda, mergejat (#43), deploy prod Ready. Paolo valida en viu.
+
+## 2026-09-09 (nit) — Estil per text (PR #45) + drag seccions (PR #46) + il·lustració Manifest (variant C)
+
+- PR #45 (feat/cms-text-styles): inspector d'estil per text a /admin/visual — 3 tipografies (Newsreader/DM Sans/JetBrains Mono), 8 colors paleta v7, mida −15%…+15% sobre rol (100% = identitat, zero CSS); ~90 textos nous editables (que-fem ~85, hero figcaption, landing sections). Estils compartits CA/ES a content_ca.styles; validateContent + PUT /api/admin/pages accepten styles i order; stopPropagation en mode edició (el clic només edita, mai navega). Mergejat CI verda, prod Ready.
+- PR #46 (feat/cms-drag-sections): reordre amb drag dins seccions dissenyades — contenidors data-corder, nansa ⠿, línia d'inserció; ordre compartit CA/ES a content_ca.order (nou text-order.tsx: store client-only + pickOrders/sortItems). Mergejat, prod Ready.
+- Il·lustració editorial del Manifest (qui-som): 3 variants SVG generades (A destil·lació descartada per Paolo, B semàfor alternativa no triada — només local, no versionada, C terrasses TRIADA). C inserida a la columna dreta de la secció Manifest (sota els 3 valors, max-w 440px, border rule): paleta corregida a la v7 salvia/ink oficial (fons #F2F5F1, estrats #AAC9B6/#5E8772, terra #26312B, sol #F5E381). Font = SVG a /illustrations (PNG només per revisió visual).
+- Lliçó: generar il·lustracions NOMÉS amb la paleta vigent del skill (una primera versió va sortir amb colors terra obsolets).

@@ -112,35 +112,21 @@ export default function QuiSomPage() {
               </div>
             </div>
 
-            <div className="lg:mt-[72px]">
-              <ul className="grid gap-10 sm:grid-cols-3 max-sm:gap-8" data-corder="quisom.valors">
-                {sortItems(valors, ordreValors, (v) => v.num).map((v) => (
-                  <li key={v.num} data-citem={v.num} className="border-t-2 pt-5" style={{ borderColor: "var(--accent)" }}>
-                    <EditableText id={`valor.${v.num}.num`} as="span" className="mb-2.5 block font-mono text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: "var(--accent)" }}>
-                      {v.num}
-                    </EditableText>
-                    <EditableText id={`valor.${v.num}.name`} as="h3" styleEl="h2" className="mb-2.5 font-serif text-[1.25rem] font-semibold" style={{ color: "var(--ink-deep)" }}>
-                      {v.name}
-                    </EditableText>
-                    <EditableText id={`valor.${v.num}.desc`} as="p" styleEl="body" className="text-[.94rem] leading-[1.6]" style={{ color: "var(--ink-soft)" }}>
-                      {v.desc}
-                    </EditableText>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Il·lustració editorial del Manifest — variant C (terrasses) */}
-              <figure className="mt-12">
-                <img
-                  src="/illustrations/manifest-c-terrasses.svg"
-                  alt="Il·lustració editorial: terrasses que s'escalen cap al sol amb una llavor plantada — el criteri es construeix per estrats, amb el bé comú com a referent"
-                  width={900}
-                  height={675}
-                  loading="lazy"
-                  className="w-full max-w-[440px] border border-rule"
-                />
-              </figure>
-            </div>
+            <ul className="grid gap-10 sm:grid-cols-3 lg:mt-[72px] max-sm:gap-8" data-corder="quisom.valors">
+              {sortItems(valors, ordreValors, (v) => v.num).map((v) => (
+                <li key={v.num} data-citem={v.num} className="border-t-2 pt-5" style={{ borderColor: "var(--accent)" }}>
+                  <EditableText id={`valor.${v.num}.num`} as="span" className="mb-2.5 block font-mono text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: "var(--accent)" }}>
+                    {v.num}
+                  </EditableText>
+                  <EditableText id={`valor.${v.num}.name`} as="h3" styleEl="h2" className="mb-2.5 font-serif text-[1.25rem] font-semibold" style={{ color: "var(--ink-deep)" }}>
+                    {v.name}
+                  </EditableText>
+                  <EditableText id={`valor.${v.num}.desc`} as="p" styleEl="body" className="text-[.94rem] leading-[1.6]" style={{ color: "var(--ink-soft)" }}>
+                    {v.desc}
+                  </EditableText>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

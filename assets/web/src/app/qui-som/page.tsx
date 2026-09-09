@@ -146,8 +146,8 @@ export default function QuiSomPage() {
                   </strong>
                 </EditableText>
               </div>
-              <div className="lg:justify-self-end">
-                <img src="/illustrations/com-treballem-1-bruixola.svg" alt="Brúixola: el criteri com a nord que orienta la tecnologia" className="w-full max-w-[460px]" />
+              <div>
+                <img src="/illustrations/com-treballem-1-bruixola.svg" alt="Brúixola: el criteri com a nord que orienta la tecnologia" className="h-auto w-full" />
               </div>
             </div>
 

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-label="Brúixola: el criteri com a nord que orienta la tecnologia">
+  <rect width="900" height="675" fill="#26312B"/>
+  <g fill="none" stroke-linecap="round">
+    <circle cx="450" cy="337" r="250" stroke="#AAC9B6" stroke-width="3"/>
+    <circle cx="450" cy="337" r="205" stroke="#F2F5F1" stroke-width="1.5" opacity=".35"/>
+    <g stroke="#F2F5F1" stroke-width="3" opacity=".85">
+      <line x1="450" y1="87" x2="450" y2="119"/>
+      <line x1="450" y1="555" x2="450" y2="587"/>
+      <line x1="200" y1="337" x2="232" y2="337"/>
+      <line x1="668" y1="337" x2="700" y2="337"/>
+    </g>
+    <g stroke="#AAC9B6" stroke-width="2" opacity=".55">
+      <line x1="286" y1="173" x2="268" y2="155"/>
+      <line x1="614" y1="173" x2="632" y2="155"/>
+      <line x1="286" y1="501" x2="268" y2="519"/>
+      <line x1="614" y1="501" x2="632" y2="519"/>
+    </g>
+  </g>
+  <g transform="rotate(38 450 337)">
+    <path d="M450 137 L476 337 L424 337 Z" fill="#F5E381"/>
+    <path d="M450 537 L476 337 L424 337 Z" fill="none" stroke="#AAC9B6" stroke-width="2.5" stroke-linejoin="round"/>
+  </g>
+  <circle cx="450" cy="337" r="15" fill="#F2F5F1"/>
+  <circle cx="450" cy="337" r="6" fill="#26312B"/>
+</svg>

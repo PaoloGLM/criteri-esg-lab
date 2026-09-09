@@ -135,14 +135,21 @@ export default function QuiSomPage() {
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
 
             {/* Com treballem */}
-            <EditableText id="ai.eyebrow" as="p" className="eyebrow" style={{ color: "var(--verd-clar)" }}>{t("quisom.ai.title")}</EditableText>
-            <EditableText id="ai.title" as="h2" className="sec-title" style={{ color: "var(--bg)" }}>{t("quisom.ai.h2")}</EditableText>
-            <EditableText id="ai.body" as="p" className="sec-body max-w-[70ch] leading-[1.7]" style={{ color: "rgba(242,245,241,.78)" }}>
-              {t("quisom.ai.body")}{" "}
-              <strong className="font-medium" style={{ color: "var(--bg)" }}>
-                {t("quisom.ai.supervision.body")}
-              </strong>
-            </EditableText>
+            <div className="grid gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)] lg:items-center max-lg:gap-10">
+              <div>
+                <EditableText id="ai.eyebrow" as="p" className="eyebrow" style={{ color: "var(--verd-clar)" }}>{t("quisom.ai.title")}</EditableText>
+                <EditableText id="ai.title" as="h2" className="sec-title" style={{ color: "var(--bg)" }}>{t("quisom.ai.h2")}</EditableText>
+                <EditableText id="ai.body" as="p" className="sec-body max-w-[70ch] leading-[1.7]" style={{ color: "rgba(242,245,241,.78)" }}>
+                  {t("quisom.ai.body")}{" "}
+                  <strong className="font-medium" style={{ color: "var(--bg)" }}>
+                    {t("quisom.ai.supervision.body")}
+                  </strong>
+                </EditableText>
+              </div>
+              <div>
+                <img src="/illustrations/com-treballem-1-bruixola.svg" alt="Brúixola: el criteri com a nord que orienta la tecnologia" className="h-auto w-full" />
+              </div>
+            </div>
 
             {/* No som neutres — criteris ètics detallats */}
             <div className="mt-24">

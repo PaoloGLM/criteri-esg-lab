@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { adminApi } from "@/lib/admin-api";
 import { Block, BlockType, validateBlocks } from "@/lib/blocks";
 import { pickStyles } from "@/components/cms/editable-texts";
+import { pickOrders } from "@/components/cms/text-order";
 import {
   StyleEl,
   TextStyle,
@@ -59,6 +60,7 @@ export default function VisualEditorPage() {
   const [styles, setStyles] = useState<TextStylesMap>({});
   const latestStyles = useRef<TextStylesMap>({});
   const [styleDirty, setStyleDirty] = useState(false);
+  const latestOrders = useRef<Record<string, string[]>>({});
   const [textSel, setTextSel] = useState<{ id: string; styleEl: StyleEl | null } | null>(null);
 
   const blocks = blocksByLang[lang];
@@ -104,6 +106,8 @@ export default function VisualEditorPage() {
         const nextStyles = pickStyles(page.content_ca);
         latestStyles.current = nextStyles;
         setStyles(nextStyles);
+        const nextOrders = pickOrders(page.content_ca);
+        latestOrders.current = nextOrders;
         setStyleDirty(false);
         setTextSel(null);
         setStatus((page.status as Status) ?? "draft");
@@ -135,7 +139,7 @@ export default function VisualEditorPage() {
   useEffect(() => {
     const onMsg = (e: MessageEvent) => {
       if (e.origin !== window.location.origin) return;
-      const m = e.data as { source?: string; action?: string; blocks?: unknown; lang?: Lang; id?: string | null; html?: unknown; texts?: unknown; styles?: unknown; styleEl?: string | null };
+      const m = e.data as { source?: string; action?: string; blocks?: unknown; lang?: Lang; id?: string | null; html?: unknown; texts?: unknown; styles?: unknown; styleEl?: string | null; orders?: unknown; group?: unknown; list?: unknown };
       if (m?.source !== CMS_MSG || !m.action) return;
       switch (m.action) {
         case "ready":
@@ -146,6 +150,7 @@ export default function VisualEditorPage() {
           // desats (ambdós idiomes) + re-sincronitza l'idioma del panell.
           post({ action: "texts-set", texts: latestTexts.current, lang });
           post({ action: "styles-set", styles: latestStyles.current });
+          post({ action: "orders-set", orders: latestOrders.current });
           post({ action: "set-lang", lang });
           break;
         case "text-select":
@@ -155,6 +160,17 @@ export default function VisualEditorPage() {
               ? { id: m.id, styleEl: (m.styleEl as StyleEl) || null }
               : null
           );
+          break;
+        case "order-patch":
+          // L'iframe ha reordenat un grup d'una secció dissenyada.
+          if (typeof m.group === "string" && Array.isArray(m.list)) {
+            latestOrders.current = {
+              ...latestOrders.current,
+              [m.group]: m.list.filter((x): x is string => typeof x === "string"),
+            };
+            setStyleDirty(true);
+            setDirty((d) => ({ ...d, [lang]: true }));
+          }
           break;
         case "texts-change":
           if ((m.lang === "ca" || m.lang === "es") && typeof m.id === "string" && typeof m.html === "string") {
@@ -236,7 +252,7 @@ export default function VisualEditorPage() {
       body[`content_${lang}`] = {
         blocks,
         texts: latestTexts.current[lang] ?? {},
-        ...(lang === "ca" ? { styles: latestStyles.current } : {}),
+        ...(lang === "ca" ? { styles: latestStyles.current, order: latestOrders.current } : {}),
       };
       // Els estils viuen sempre a content_ca: si es desa en castellà amb
       // canvis d'estil pendents, s'inclou també la columna CA reconstruïda.
@@ -245,6 +261,7 @@ export default function VisualEditorPage() {
           blocks: latest.current.ca,
           texts: latestTexts.current.ca ?? {},
           styles: latestStyles.current,
+          order: latestOrders.current,
         };
       }
       body.status = newStatus ?? status ?? "draft";

@@ -101,12 +101,13 @@ export function validateContent(json: unknown): string | null {
   if (typeof json !== "object" || Array.isArray(json)) return "El contingut ha de ser un objecte";
   if (JSON.stringify(json).length > MAX_JSON) return "El contingut és massa gran (màx 400KB)";
 
-  const obj = json as { sections?: unknown; blocks?: unknown; texts?: unknown; styles?: unknown };
+  const obj = json as { sections?: unknown; blocks?: unknown; texts?: unknown; styles?: unknown; order?: unknown };
   const hasSections = obj.sections !== undefined;
   const hasBlocks = obj.blocks !== undefined;
   const hasTexts = obj.texts !== undefined;
   const hasStyles = obj.styles !== undefined;
-  if (!hasSections && !hasBlocks && !hasTexts && !hasStyles)
+  const hasOrder = obj.order !== undefined;
+  if (!hasSections && !hasBlocks && !hasTexts && !hasStyles && !hasOrder)
     return "Cal 'blocks' (blocs), 'sections' (HTML per seccions) o 'texts' (HTML per texts)";
 
   if (hasSections) {
@@ -151,6 +152,14 @@ export function validateContent(json: unknown): string | null {
         (typeof s.color !== "string" || s.color.length > 60 || /[;{}<>]/.test(s.color))
       )
         return `L'estil '${k}' té un color invàlid`;
+    }
+  }
+  if (hasOrder) {
+    const o = obj.order;
+    if (!o || typeof o !== "object" || Array.isArray(o)) return "order ha de ser un objecte";
+    for (const [k, v] of Object.entries(o as Record<string, unknown>)) {
+      if (!Array.isArray(v)) return `L'ordre '${k}' ha de ser una llista`;
+      if (v.some((x) => typeof x !== "string")) return `L'ordre '${k}' només pot contenir text`;
     }
   }
   return null;

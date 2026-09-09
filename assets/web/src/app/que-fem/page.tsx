@@ -8,6 +8,7 @@ import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
 import { FreeBlocks } from "@/components/cms/blocks-view";
 import { CmsTexts, EditableText } from "@/components/cms/editable-texts";
+import { useGroupOrder, sortItems } from "@/components/cms/text-order";
 
 
 
@@ -51,6 +52,10 @@ export default function QueFemPage() {
     { rom: "IV", name: t("quisom.v2.conviccio.04.name"), text: t("quisom.v2.conviccio.04.text") },
     { rom: "V", name: t("quisom.v2.conviccio.05.name"), text: t("quisom.v2.conviccio.05.text") },
   ];
+
+  /* ── Ordres editables (reordre amb drag des de /admin/visual) ── */
+  const ordreBlocs = useGroupOrder("quefem.blocs");
+  const ordreCriteris = useGroupOrder("quefem.criteris");
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -183,9 +188,9 @@ export default function QueFemPage() {
               </div>
             </div>
 
-            <div className="blocgrid">
-              {blocs.map((bloc) => (
-                <article key={bloc.num} className={`bloc${bloc.dark ? " dark" : ""}`}>
+            <div className="blocgrid" data-corder="quefem.blocs">
+              {sortItems(blocs, ordreBlocs, (b) => b.num).map((bloc) => (
+                <article key={bloc.num} data-citem={bloc.num} className={`bloc${bloc.dark ? " dark" : ""}`}>
                   <EditableText id={`bloc.${bloc.num}.num`} as="div" className="num">{bloc.num}</EditableText>
                   <EditableText id={`bloc.${bloc.num}.name`} as="h3" styleEl="h2">{bloc.name}</EditableText>
                   <EditableText id={`bloc.${bloc.num}.desc`} as="p" styleEl="body">{bloc.desc}</EditableText>
@@ -205,9 +210,9 @@ export default function QueFemPage() {
             <EditableText id="criteris.head" as="h2" className="sec-title" style={{ color: "var(--bg)" }}>{t("quefem.criteris.head")}</EditableText>
             <EditableText id="criteris.body" as="p" className="sec-body max-w-[64ch]" style={{ color: "rgba(242,245,241,.78)" }}>{t("quefem.criteris.body")}</EditableText>
 
-            <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {criteris.map((c) => (
-                <article key={c.rom}
+            <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-5" data-corder="quefem.criteris">
+              {sortItems(criteris, ordreCriteris, (c) => c.rom).map((c) => (
+                <article key={c.rom} data-citem={c.rom}
                   className="flex flex-col rounded-[9px] border p-7 transition-colors duration-200 hover:border-[rgba(170,201,182,.45)]"
                   style={{ borderColor: "rgba(170,201,182,.18)", background: "rgba(38,49,43,.38)" }}>
                   <EditableText id={`criteris.card.${c.rom}.rom`} as="span" styleEl="h2" className="font-serif text-[2.6rem] font-medium leading-none" style={{ color: "var(--verd-clar)" }}>

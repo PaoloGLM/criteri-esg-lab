@@ -8,6 +8,7 @@ import { PreusDialog } from "@/components/preus-dialog";
 import { useLanguage } from "@/components/language-provider";
 import { FreeBlocks } from "@/components/cms/blocks-view";
 import { CmsTexts, EditableText } from "@/components/cms/editable-texts";
+import { useGroupOrder, sortItems } from "@/components/cms/text-order";
 
 
 
@@ -28,6 +29,10 @@ export default function QuiSomPage() {
     t("quisom.paragraph1"),
     t("quisom.paragraph2"),
   ];
+
+  /* ── Ordres editables (reordre amb drag des de /admin/visual) ── */
+  const ordreValors = useGroupOrder("quisom.valors");
+  const ordreCriteris = useGroupOrder("quisom.criteris");
 
   /* ── Tres valors del manifest ── */
   const valors = [
@@ -107,9 +112,9 @@ export default function QuiSomPage() {
               </div>
             </div>
 
-            <ul className="grid gap-10 sm:grid-cols-3 lg:mt-[72px] max-sm:gap-8">
-              {valors.map((v) => (
-                <li key={v.num} className="border-t-2 pt-5" style={{ borderColor: "var(--accent)" }}>
+            <ul className="grid gap-10 sm:grid-cols-3 lg:mt-[72px] max-sm:gap-8" data-corder="quisom.valors">
+              {sortItems(valors, ordreValors, (v) => v.num).map((v) => (
+                <li key={v.num} data-citem={v.num} className="border-t-2 pt-5" style={{ borderColor: "var(--accent)" }}>
                   <EditableText id={`valor.${v.num}.num`} as="span" className="mb-2.5 block font-mono text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: "var(--accent)" }}>
                     {v.num}
                   </EditableText>
@@ -147,9 +152,9 @@ export default function QuiSomPage() {
                 {t("quisom.valors.intro").replace(/^(No som neutres\.|No somos neutrales\.)\s*/i, "")}
               </EditableText>
 
-              <ol className="mt-14 flex flex-col">
-                {criteris.map((c, i) => (
-                  <li key={c.rom}
+              <ol className="mt-14 flex flex-col" data-corder="quisom.criteris">
+                {sortItems(criteris, ordreCriteris, (c) => c.rom).map((c, i) => (
+                  <li key={c.rom} data-citem={c.rom}
                     className="grid grid-cols-[52px_minmax(0,.55fr)_minmax(0,1fr)] items-start gap-5 py-6"
                     style={{ borderTop: i === 0 ? "none" : "1px solid rgba(242,245,241,.14)" }}>
                     <EditableText id={`criteri.${c.rom}.rom`} as="span" className="font-serif text-[1.7rem] font-medium leading-[1.2]" style={{ color: "var(--verd-clar)" }}>

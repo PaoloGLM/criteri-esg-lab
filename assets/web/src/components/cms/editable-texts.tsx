@@ -5,6 +5,7 @@ import { useLanguage } from "@/components/language-provider";
 import { sanitizeHtml } from "@/lib/blocks";
 import { supabase } from "@/lib/supabase";
 import { sendToParent } from "./visual-runtime";
+import { orderStore, pickOrders } from "./text-order";
 import {
   StyleEl,
   TextStyle,
@@ -266,6 +267,8 @@ export function CmsTexts({ page, children }: { page: string; children: React.Rea
         if (ca || es) textsStore.setAll({ ca, es });
         // Estils compartits CA/ES (viuen a content_ca.styles)
         textsStore.setStyles(pickStyles(data.content_ca));
+        // Ordre dels grups de seccions dissenyades (compartit CA/ES; a content_ca)
+        orderStore.setAll(pickOrders(data.content_ca));
       } catch {
         /* BD absent o falla → la pàgina es queda amb el contingut del codi */
       }
@@ -303,6 +306,9 @@ export function TextsRuntime() {
         lang?: Lang;
         id?: string;
         style?: unknown;
+        orders?: unknown;
+        group?: unknown;
+        list?: unknown;
       };
       if (m?.source !== "criteri-cms" || !m.action) return;
       if (m.action === "texts-set" && m.texts && typeof m.texts === "object") {
@@ -321,6 +327,14 @@ export function TextsRuntime() {
         setLang(m.lang);
       } else if (m.action === "texts-reset" && (m.lang === "ca" || m.lang === "es")) {
         textsStore.clear(m.lang);
+      } else if (m.action === "orders-set" && m.orders && typeof m.orders === "object") {
+        orderStore.setAll(m.orders as Record<string, string[]>);
+      } else if (
+        m.action === "order-patch" &&
+        typeof m.group === "string" &&
+        Array.isArray(m.list)
+      ) {
+        orderStore.setOne(m.group, m.list.filter((x): x is string => typeof x === "string"));
       }
     };
     window.addEventListener("message", onMsg);
@@ -339,6 +353,16 @@ export function TextsRuntime() {
       [data-ctext] { outline: 2px dashed transparent; outline-offset: 3px; transition: outline-color .12s; cursor: default; }
       [data-ctext]:hover { outline-color: rgba(122,148,113,.55); cursor: text; }
       .${EDIT_CLASS} { outline: 2px solid var(--salvia, #7a9471) !important; border-radius: 2px; }
+
+      /* Reordre dins seccions dissenyades: nansa al cantell sup-esquerre */
+      [data-citem] { position: relative; }
+      [data-citem]:hover::before {
+        content: "⠿";
+        position: absolute; top: 4px; left: 4px; z-index: 40;
+        width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;
+        background: var(--salvia, #7a9471); color: #fff; border-radius: 6px;
+        font-size: 12px; cursor: grab; box-shadow: 0 1px 4px rgba(0,0,0,.35);
+      }
     `;
     document.head.appendChild(style);
 
@@ -373,7 +397,105 @@ export function TextsRuntime() {
       node.focus();
     };
 
+    // ── Reordre dins seccions dissenyades (grups [data-corder]) ─────────
+    // La nansa ⠿ (cantell sup-esquerre de l'item) inicia el drag; en deixar
+    // anar, s'envia order-patch { group, list } al panell per desar-lo.
+    let suppressClick = false;
+    const groupDrag = { item: null as HTMLElement | null, group: "", startY: 0, started: false };
+    let groupTarget: HTMLElement | null = null;
+    let groupLine: HTMLDivElement | null = null;
+
+    const removeGroupLine = () => {
+      groupLine?.remove();
+      groupLine = null;
+    };
+
+    const onGroupMove = (ev: PointerEvent) => {
+      const item = groupDrag.item;
+      if (!item) return;
+      if (!groupDrag.started) {
+        if (Math.abs(ev.clientY - groupDrag.startY) < 6) return;
+        groupDrag.started = true;
+        suppressClick = true;
+        item.style.opacity = "0.45";
+        document.body.style.cursor = "grabbing";
+      }
+      const cont = item.closest("[data-corder]") as HTMLElement | null;
+      if (!cont) return;
+      const siblings = Array.from(cont.querySelectorAll<HTMLElement>("[data-citem]")).filter((el) => el !== item);
+      let target: HTMLElement | null = null;
+      for (const el of siblings) {
+        const r = el.getBoundingClientRect();
+        if (ev.clientY >= r.top && ev.clientY <= r.bottom) {
+          target = ev.clientY < r.top + r.height / 2 ? el : (el.nextElementSibling as HTMLElement | null);
+          break;
+        }
+      }
+      if (target === item) target = null;
+      if (target !== groupTarget) {
+        removeGroupLine();
+        groupTarget = target;
+        if (target) {
+          groupLine = document.createElement("div");
+          groupLine.style.height = "3px";
+          groupLine.style.background = "var(--salvia, #7a9471)";
+          groupLine.style.borderRadius = "999px";
+          target.parentElement?.insertBefore(groupLine, target);
+        }
+      }
+    };
+
+    const onGroupUp = () => {
+      window.removeEventListener("pointermove", onGroupMove);
+      const item = groupDrag.item;
+      const started = groupDrag.started;
+      document.body.style.cursor = "";
+      if (item) item.style.opacity = "";
+      groupDrag.item = null;
+      groupDrag.started = false;
+      removeGroupLine();
+      const target = groupTarget;
+      groupTarget = null;
+      if (!item || !started || !target) return;
+      const group = groupDrag.group;
+      const cont = item.closest("[data-corder]") as HTMLElement | null;
+      const itemKey = item.dataset.citem ?? "";
+      const targetKey = target.dataset.citem ?? "";
+      if (!cont || !itemKey || !targetKey) return;
+      // Ordre nou: l'item surt de la llista actual (DOM) i entra abans del destí
+      const list = Array.from(cont.querySelectorAll<HTMLElement>("[data-citem]"))
+        .map((el) => el.dataset.citem ?? "")
+        .filter((k) => k && k !== itemKey);
+      const at = list.indexOf(targetKey);
+      if (at < 0) return;
+      list.splice(at, 0, itemKey);
+      orderStore.setOne(group, list);
+      sendToParent("order-patch", { group, list });
+    };
+
+    const onPointerDown = (e: PointerEvent) => {
+      if (e.button !== 0) return;
+      const t = (e.target as HTMLElement | null)?.closest?.("[data-citem]") as HTMLElement | null;
+      if (!t || t.isContentEditable) return;
+      // Només la zona de la nansa (cantell sup-esquerre) inicia el drag
+      const r = t.getBoundingClientRect();
+      if (e.clientX - r.left > 34 || e.clientY - r.top > 34) return;
+      const cont = t.closest("[data-corder]") as HTMLElement | null;
+      if (!cont?.dataset.corder) return;
+      e.preventDefault();
+      groupDrag.item = t;
+      groupDrag.group = cont.dataset.corder;
+      groupDrag.startY = e.clientY;
+      window.addEventListener("pointermove", onGroupMove);
+      window.addEventListener("pointerup", onGroupUp, { once: true });
+    };
+    document.addEventListener("pointerdown", onPointerDown, true);
+
     const onClick = (e: MouseEvent) => {
+      if (suppressClick) {
+        suppressClick = false;
+        return;
+      }
       const t = (e.target as HTMLElement | null)?.closest?.("[data-ctext]") as HTMLElement | null;
       if (t && !t.isContentEditable) {
         startEdit(t);
@@ -417,6 +539,10 @@ export function TextsRuntime() {
       document.removeEventListener("click", onClick, true);
       document.removeEventListener("focusout", onFocusOut, true);
       document.removeEventListener("input", onInput, true);
+      document.removeEventListener("pointerdown", onPointerDown, true);
+      window.removeEventListener("pointermove", onGroupMove);
+      window.removeEventListener("pointerup", onGroupUp);
+      removeGroupLine();
       style.remove();
     };
   }, []);

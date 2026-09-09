@@ -947,3 +947,11 @@ Stage Summary:
 ## 2026-09-08 — Fix editor visual /admin/visual (PR #40)
 - Causa de «error en visualitzar»: X-Frame-Options DENY bloquejava l'iframe + Basic Auth 401 al ?edit=1 + hydration mismatch a FreeBlocks + carrera ready/set-blocks. Tot arreglat, CI verda, mergejat i verificat a prod (SAMEORIGIN, ?edit=1 -> 200).
 - NOTA: les notificacions ADM-DB-001 «Could not find the table public.pages» = el SQL de fase 3 (assets/supabase-pages-fase3.sql) mai s'ha executat. PENDENT: Paolo executa el SQL al Supabase Dashboard -> SQL Editor (DDL no va per REST).
+
+## 2026-09-09 — Texts editables in-place (PR #41) + BD desbloquejada
+- Paolo va executar supabase-pages-fase3.sql al dashboard (projecte zecoacfysdwtjiszruir): taula pages operativa, /admin/visual carrega les 3 pàgines sense error.
+- PR #41 mergejat (CI verda, prod Ready): EditableText/CmsTexts/TextsRuntime (editable-texts.tsx) — ~40 texts in-place a landing, qui-som, que-fem; save combinat {blocks,texts} a pages; validateContent valida texts (200KB/text).
+- Anti-acumulació d'errors admin (petició de Paolo): logError amb dedup per error_id (actualitza, no insereix) i «Marca resolta» = DELETE de la fila.
+- SQL fase 3: +notify pgrst 'reload schema' + nota del projecte.
+- INCIDENT menor: protecció de main estava relaxada (enforce_admins:false, reviews:0) — RESTAURADA i verificada (enforce_admins:true, reviews:1, strict, context ci). 422 del PUT: l'API vol booleans plans (enforce_admins:true), no objectes {enabled} (forma de la resposta GET).
+- PENDENT: Paolo testa l'edició in-place a /admin/visual (clic a un text, escriu, Guardar).

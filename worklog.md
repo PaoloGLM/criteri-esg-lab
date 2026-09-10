@@ -986,6 +986,12 @@ Stage Summary:
 - Il·lustració editorial del Manifest (qui-som): 3 variants SVG generades (A destil·lació descartada per Paolo, B semàfor alternativa no triada — només local, no versionada, C terrasses TRIADA, després REBUJADA per Paolo i retirada — vegeu entrada següent). C es va pujar a prod (PR #47) a la columna dreta de la secció Manifest; paleta corregida a la v7 salvia/ink oficial. Font = SVG a /illustrations (PNG només per revisió visual).
 - Lliçó: generar il·lustracions NOMÉS amb la paleta vigent del skill (una primera versió va sortir amb colors terra obsolets).
 
+## 2026-09-10 (2a) — criteris resumits + argument IA (18fa4d9, directe a main, Vercel success)
+
+- /que-fem: criteris tornen a resum d'una frase (claus quefem.criteris.sum.*) + link a Qui som, que queda intacte.
+- Landing «El problema»: paràgraf nou amb l'argument IA (id problema.ai, CA/ES, editable via CMS).
+- Perplexity: preus oficials extrets de la font única de docs (Search API $5/1k cerques; Sonar en descomissió 27-set-2026 → Agent API, web_search $0.0025/crida). Avaluació lliurada a Paolo, sense implementar.
+
 ## 2026-09-10 — PR #53: mb texts, parts de figura, fixs /que-fem, CTA preus
 
 - CMS: figures-store.ts nou (sense React); mb a TextStyle (styleToCss/pickStyles/validació/slider panell); inspector de parts (data-pkey, sliders Amunt/Avall −100..200, Esc+deselect, neteges creuades); fix 36 (CmsTexts carrega figures); useFigurePartsStyles; hero-v1 10 parts + xref 7 parts estilades; XrefDiagram dins EditableFigure (fix 33).

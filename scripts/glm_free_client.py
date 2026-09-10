@@ -8,23 +8,15 @@ import re
 from pathlib import Path
 
 sys.path.insert(0, "./scripts")
-from config import get_openrouter_client, GLM_FREE_MODEL
+from config import call_openrouter_auto
 
 
 def call_glm_free(system_prompt: str, user_prompt: str, temperature: float = 0.3, max_tokens: int = 4096) -> str:
-    """Crida GLM 5.2 Free via OpenRouter."""
-    client = get_openrouter_client()
+    """Crida OpenRouter amb el model més barat disponible del pool de l'usuari.
 
-    response = client.chat.completions.create(
-        model=GLM_FREE_MODEL,
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt}
-        ],
-        temperature=temperature,
-        max_tokens=max_tokens,
-    )
-    return response.choices[0].message.content
+    (Antigament fixat a GLM 5.2 Free; ara el tria config.call_openrouter_auto.)
+    """
+    return call_openrouter_auto(system_prompt, user_prompt, temperature, max_tokens)
 
 
 def call_glm_free_json(system_prompt: str, user_prompt: str, temperature: float = 0.3, max_tokens: int = 4096) -> dict:

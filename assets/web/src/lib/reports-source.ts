@@ -195,7 +195,9 @@ export function useSemaforMap(
             | undefined;
           if (s && typeof s === "object" && "grade" in s) next[row.slug] = s;
         }
-        if (Object.keys(next).length > 0) setMap(next);
+        // Merge (no replace): els informes sense semàfor vàlid a la BD
+        // conserven el valor estàtic; la BD guanya només on té semàfor.
+        if (Object.keys(next).length > 0) setMap((prev) => ({ ...prev, ...next }));
       } catch {
         /* silenciós: ja tenim l'estàtic */
       }

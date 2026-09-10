@@ -63,24 +63,9 @@ def call_glm_flash_redactor(title: str, institution: str, destilat: str, aportac
         f"Redacta el Markdown ara (amb el front-matter YAML al principi)."
     )
 
-    from config import get_openrouter_client, GLM_53_FLASH_MODEL
-    from openai import OpenAI
-    
-    client = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key=os.getenv("OPENROUTER_API_KEY", "")
-    )
+    from config import call_openrouter_auto
 
-    response = client.chat.completions.create(
-        model="z-ai/glm-5.3-flash:free",
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt}
-        ],
-        temperature=0.4,
-        max_tokens=16000,
-    )
-    return response.choices[0].message.content
+    return call_openrouter_auto(system_prompt, user_prompt, temperature=0.4, max_tokens=16000)
 
 
 def process_one(slug: str) -> bool:

@@ -88,7 +88,15 @@ export function proxy(request: NextRequest) {
   // a les 3 pàgines CMS — la resta de rutes mantenen el Basic Auth íntegre.
   const cmsPath = ["/", "/qui-som", "/que-fem"].includes(request.nextUrl.pathname);
   if (cmsPath && request.nextUrl.searchParams.get("edit") === "1") {
-    return NextResponse.next();
+    // Mitigació bypass (auditoria 2026-09-10): ?edit=1 només es serveix si la
+    // petició ve del mateix origen (el panell /admin/visual carrega l'iframe).
+    // El header Sec-Fetch-Site el posa el navegador i no és falsificable des
+    // d'un altre lloc ni en navegació directa — un atacant extern que descobreixi
+    // el truc obté 401 com a tothom. Els blocs en edició arriben per postMessage
+    // validat amb JWT d'admin; aquí només protegem la càrrega del document.
+    const site = request.headers.get("sec-fetch-site");
+    if (site === "same-origin") return NextResponse.next();
+    // Si no, cau al Basic Auth normal (401).
   }
 
   const creds = getEffectiveCredentials();

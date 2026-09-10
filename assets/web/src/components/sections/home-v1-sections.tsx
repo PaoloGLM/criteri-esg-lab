@@ -45,6 +45,16 @@ export default function HomePageV1Sections() {
                 resumen automático hace bien, porque el problema no es leer: es entender qué pesa.</>
               )}
             </EditableText>
+            {/* L'argument IA: la IA infla el problema que resolem (editable des del CMS) */}
+            <EditableText id="problema.ai" as="p" className="mt-8 max-w-[56ch] border-l-2 border-[var(--accent)] pl-5 font-serif text-[1.16rem] leading-[1.5] text-[var(--ink)]">
+              {ca ? (
+                <>La IA facilita crear documents — però genera <span className="hl">més feina per a qui els ha de llegir</span>.
+                {" "}A Criteri ESG aquesta feina la fem per tu: no perdràs informació i n&apos;obtindràs <span className="hl">criteri</span>.</>
+              ) : (
+                <>La IA facilita crear documentos — pero genera <span className="hl">más trabajo para quien tiene que leerlos</span>.
+                {" "}En Criteri ESG ese trabajo lo hacemos por ti: no perderás información y obtendrás <span className="hl">criterio</span>.</>
+              )}
+            </EditableText>
             <div className="mt-[30px] flex flex-wrap gap-[9px]" aria-hidden="true">
               {["CSRD", "ESRS", "Omnibus I", "ISSB", "TNFD", "SFDR", "CSDDD", "GRI 101–103"].map((a) => (
                 <span key={a} className="rounded-full border border-[rgba(74,95,83,.35)] bg-white px-3 py-1.5 font-mono text-[.72rem] font-medium tracking-[.05em] text-[var(--ink-soft)]">

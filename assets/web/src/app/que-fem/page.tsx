@@ -44,12 +44,12 @@ export default function QueFemPage() {
     { num: "07", name: t("quefem.bloc.07.name"), desc: t("quefem.bloc.07.desc"), meta: t("quefem.bloc.07.meta") },
   ];
 
-  /* ── Referència curta de criteris i valors — MATEIXOS contingut i ordre que /qui-som ── */
+  /* ── Referència curta de criteris i valors — resum d'una frase; el desplegable viu a /qui-som ── */
   const criteris = [
-    { rom: "I", name: t("quisom.valors.dignitat.title"), text: t("quisom.valors.dignitat.body") },
-    { rom: "II", name: t("quisom.valors.etica.title"), text: t("quisom.valors.etica.body") },
-    { rom: "III", name: t("quisom.valors.economia.title"), text: t("quisom.valors.economia.body") },
-    { rom: "IV", name: t("quisom.valors.territori.title"), text: t("quisom.valors.territori.body") },
+    { rom: "I", name: t("quisom.valors.dignitat.title"), text: t("quefem.criteris.sum.dignitat") },
+    { rom: "II", name: t("quisom.valors.etica.title"), text: t("quefem.criteris.sum.etica") },
+    { rom: "III", name: t("quisom.valors.economia.title"), text: t("quefem.criteris.sum.economia") },
+    { rom: "IV", name: t("quisom.valors.territori.title"), text: t("quefem.criteris.sum.territori") },
   ];
 
   /* ── Ordres editables (reordre amb drag des de /admin/visual) ── */

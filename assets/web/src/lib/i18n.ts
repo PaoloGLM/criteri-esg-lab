@@ -1622,6 +1622,22 @@ export const translations = {
     es: "Nos mueven unos criterios éticos concretos que aplicamos a cada informe que procesamos. Nuestra mirada viene de la tradición de la ética empresarial y de los principios de la economía social.",
   },
   "quefem.criteris.link": { ca: "Principis al complet, a Qui som →", es: "Principios al completo, en Quiénes somos →" },
+  "quefem.criteris.sum.dignitat": {
+    ca: "La persona no és un recurs: mirem salari just, salut mental i participació real.",
+    es: "La persona no es un recurso: miramos salario justo, salud mental y participación real.",
+  },
+  "quefem.criteris.sum.etica": {
+    ca: "Avaluem si allò que l'empresa diu correspon amb allò que fa.",
+    es: "Evaluamos si lo que la empresa dice corresponde con lo que hace.",
+  },
+  "quefem.criteris.sum.economia": {
+    ca: "Persones i territori per sobre del capital: cooperatives, inserció, fundacions.",
+    es: "Personas y territorio por encima del capital: cooperativas, inserción, fundaciones.",
+  },
+  "quefem.criteris.sum.territori": {
+    ca: "Valorem l'impacte al territori per sobre de les xifres globals agregades.",
+    es: "Valoramos el impacto en el territorio por encima de las cifras globales agregadas.",
+  },
   "quefem.criteris.title.pre": { ca: "El que guia ", es: "Lo que guía " },
   "quefem.criteris.title.em": { ca: "cada decisió", es: "cada decisión" },
   "quefem.criteris.title.post": { ca: ".", es: "." },

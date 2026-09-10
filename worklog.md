@@ -1,4 +1,22 @@
 ---
+Task ID: cms-figures-2026-09-09
+Agent: hermes
+Task: PR #52 — figures SVG de la landing editables des de /admin/visual + lletres més grans a HeroChart/XrefDiagram
+
+Work Log:
+- EditableFigure + figuresStore (figure-styles.tsx, patró editable-images): amplada 40-160% (nansa ⇔ o slider), espai abans 0-200px, ✕ amaga amb hiddenStore compartit (clau hidden.figure...), fantasma restaura
+- FiguresRuntime muntat a blocks-view; protocol figures-ready/figure-patch/figure-select/figures-set; undo/redo inclou figures (snapshot complet)
+- HeroChart embolcallat amb id hero.chart; XrefDiagram amb id xref.chart
+- Lletres més grans: HeroChart anys 11→13, capçaleres 10.5→12, fites 8.5→10 (multilínia cap avall, dy 10→12); XrefDiagram noms 11→12.5 (dx 16), sub 9.5→10.5 (+17), centre 11→13.5 — sense solapar
+- content_ca.figures validat a blocks.ts (40-160% / 0-200px)
+- tsc net + build OK + CI verda; merged b0b7d03; deploy production READY (criteri-esg-7whuetasc)
+
+Stage Summary:
+- /admin/visual: clic a figura → slider amplada/espai al panell; nansa ⇔; ✕/fantasma; Ctrl+Z funciona amb figures
+- Les dues figures tenen lletres més llegibles; disseny/no-solapament verificat al codi
+
+---
+
 Task ID: security-2026-09-03
 Agent: hermes
 Task: Endureixement seguretat - repo públic, branch protection, capital intelectual protegit
@@ -967,6 +985,15 @@ Stage Summary:
 - PR #46 (feat/cms-drag-sections): reordre amb drag dins seccions dissenyades — contenidors data-corder, nansa ⠿, línia d'inserció; ordre compartit CA/ES a content_ca.order (nou text-order.tsx: store client-only + pickOrders/sortItems). Mergejat, prod Ready.
 - Il·lustració editorial del Manifest (qui-som): 3 variants SVG generades (A destil·lació descartada per Paolo, B semàfor alternativa no triada — només local, no versionada, C terrasses TRIADA, després REBUJADA per Paolo i retirada — vegeu entrada següent). C es va pujar a prod (PR #47) a la columna dreta de la secció Manifest; paleta corregida a la v7 salvia/ink oficial. Font = SVG a /illustrations (PNG només per revisió visual).
 - Lliçó: generar il·lustracions NOMÉS amb la paleta vigent del skill (una primera versió va sortir amb colors terra obsolets).
+
+## 2026-09-10 — PR #53: mb texts, parts de figura, fixs /que-fem, CTA preus
+
+- CMS: figures-store.ts nou (sense React); mb a TextStyle (styleToCss/pickStyles/validació/slider panell); inspector de parts (data-pkey, sliders Amunt/Avall −100..200, Esc+deselect, neteges creuades); fix 36 (CmsTexts carrega figures); useFigurePartsStyles; hero-v1 10 parts + xref 7 parts estilades; XrefDiagram dins EditableFigure (fix 33).
+- /que-fem: fix mòbil (descripció 5 passos fora de col 56px; placa sense nowrap) — mesurat 0px overflow 390/360; blocs 00/06/07 en ink, resta salvia (disseny landing); criteris I–IV = quisom.valors.* idèntics qui-som (fora conviccio).
+- /qui-som: botó «Veure els preus» a secció Premium (obre PreusDialog) + clau i18n.
+- Verificat: tsc net, build OK, CI verda, merge admin #53 (25ebe1e), Vercel success al commit. eslint: 8 errors, tots preexistents.
+- Nota 429: sessió llarga + context gegant → límits del proveïdor; xat nou redueix tokens per petició.
+- Perplexity verificat al codi Hermes: és proveïdor de MODELS (models_dev/redact/billing), no eina de cerca; models sonar donen web+cites. Gemini exagerava la «integració nativa».
 
 ## 2026-09-09 (tarda) — C retirada + 3 variants per a «Com treballem»
 

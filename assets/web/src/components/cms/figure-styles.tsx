@@ -3,93 +3,34 @@
 import { useEffect, useState, useSyncExternalStore, type CSSProperties, type ReactNode } from "react";
 import { sendToParent } from "./visual-runtime";
 import { hiddenStore } from "./editable-texts";
+import { figuresStore, pickFigures, type FigureStyle } from "./figures-store";
 
 /**
  * figure-styles.tsx — Ajustos de les FIGURES SVG de les seccions dissenyades
  * (HeroChart, XrefDiagram...), editables des de /admin/visual com els texts
- * (estils) i les imatges. Compartit CA/ES; viu a content_ca.figures:
- *
- *   { [figureId]: { widthPct?: number, mt?: number } }
+ * (estils) i les imatges. Compartit CA/ES; viu a content_ca.figures (vegeu
+ * figures-store.ts per al model de dades i el store compartit):
  *
  *  · widthPct: amplada del contenidor de la figura (40–160%).
  *    100 = mida del codi (identitat, no genera CSS).
- *  · mt: espai abans en px (0–200), mateix token que els texts.
+ *  · mt/mb: espai abans/després del contenidor en px (0–200), mateix token
+ *    que els texts.
+ *  · parts: ajustos per ELEMENT del gràfic (mt/mb verticals, -100..200px).
+ *    Els elements seleccionables porten data-pkey="clau" dins l'SVG.
  *  · Amagar/restaurar fa servir el hiddenStore compartit (content_ca.hidden,
  *    mateixa llista «Elements amagats» del panell, mateix protocol hidden-patch).
  *
  * Absència d'estil = la figura es mostra exactament igual que el codi.
  *
  * Protocol postMessage { source: "criteri-cms" }:
- *  iframe → pare:  figures-ready | figure-patch { id, style } | figure-select { id }
- *  pare → iframe:  figures-set { figures } | figure-patch { id, style }
+ *  iframe → pare:  figures-ready | figure-patch { id, style } |
+ *                  figure-select { id, part? }
+ *  pare → iframe:  figures-set { figures } | figure-patch { id, style } |
+ *                  deselect {}
  */
 
-export interface FigureStyle {
-  widthPct?: number;
-  mt?: number;
-}
-
-export type FiguresMap = Record<string, FigureStyle>;
-
-let figures: FiguresMap = {};
-const subs = new Set<() => void>();
-
-function emit() {
-  subs.forEach((f) => f());
-}
-
-export const figuresStore = {
-  get(id: string): FigureStyle | null {
-    return figures[id] ?? null;
-  },
-  /** Reemplaça tot el mapa (el panell mana via figures-set). */
-  setAll(next: FiguresMap | null) {
-    figures = next && typeof next === "object" ? next : {};
-    emit();
-  },
-  /** Una figura ajustada (null = torna a la mida del codi). */
-  setOne(id: string, style: FigureStyle | null) {
-    const next = { ...figures };
-    if (
-      style &&
-      (typeof style.widthPct === "number" || typeof style.mt === "number")
-    ) {
-      next[id] = style;
-    } else {
-      delete next[id];
-    }
-    figures = next;
-    emit();
-  },
-  snapshot(): FiguresMap {
-    return figures;
-  },
-  subscribe(f: () => void) {
-    subs.add(f);
-    return () => {
-      subs.delete(f);
-    };
-  },
-};
-
-/** Extreu i valida content_ca.figures vingut de la BD. */
-export function pickFigures(json: unknown): FiguresMap {
-  const out: FiguresMap = {};
-  if (!json || typeof json !== "object") return out;
-  const fg = (json as { figures?: unknown }).figures;
-  if (!fg || typeof fg !== "object" || Array.isArray(fg)) return out;
-  for (const [k, v] of Object.entries(fg as Record<string, unknown>)) {
-    if (!v || typeof v !== "object" || Array.isArray(v)) continue;
-    const s = v as Record<string, unknown>;
-    const entry: FigureStyle = {};
-    if (typeof s.widthPct === "number" && Number.isFinite(s.widthPct))
-      entry.widthPct = Math.max(40, Math.min(160, s.widthPct));
-    if (typeof s.mt === "number" && Number.isFinite(s.mt) && s.mt >= 0)
-      entry.mt = Math.min(200, s.mt);
-    if (typeof entry.widthPct === "number" || typeof entry.mt === "number") out[k] = entry;
-  }
-  return out;
-}
+export type { FigureStyle, FiguresMap } from "./figures-store";
+export { figuresStore, pickFigures };
 
 // ── Mode editor (detectat post-mount, hydration safe) ───────────────────
 function useEditMode(): boolean {
@@ -100,7 +41,7 @@ function useEditMode(): boolean {
   return edit;
 }
 
-/** CSS públic dels ajustos; absència d'estil = res (identitat del codi). */
+/** CSS públic dels ajustos del CONTENIDOR; absència d'estil = res (identitat del codi). */
 function styleFor(s: FigureStyle | null): CSSProperties | undefined {
   if (!s) return undefined;
   const css: CSSProperties = {};
@@ -110,12 +51,24 @@ function styleFor(s: FigureStyle | null): CSSProperties | undefined {
     css.marginRight = "auto";
   }
   if (typeof s.mt === "number" && s.mt > 0) css.marginTop = `${s.mt}px`;
+  if (typeof s.mb === "number" && s.mb > 0) css.marginBottom = `${s.mb}px`;
   return Object.keys(css).length ? css : undefined;
+}
+
+/** Transformació vertical d'un ELEMENT (data-pkey) segons els seus mt/mb. */
+function partTransform(parts: Record<string, { mt?: number; mb?: number }> | undefined, key: string): CSSProperties | undefined {
+  const p = parts?.[key];
+  if (!p) return undefined;
+  const mt = typeof p.mt === "number" ? p.mt : 0;
+  const mb = typeof p.mb === "number" ? p.mb : 0;
+  const dy = mt - mb;
+  if (dy === 0) return undefined;
+  return { transform: `translateY(${dy}px)` };
 }
 
 /**
  * Figura editable dins una secció dissenyada (gràfic SVG del codi).
- * Públic: aplica widthPct/mt desats o res (com era). Editor: nansa ⇔
+ * Públic: aplica widthPct/mt/mb desats o res (com era). Editor: nansa ⇔
  * d'amplada sota la figura, ✕ per amagar-la i fantasma per restaurar-la.
  */
 export function EditableFigure({ id, className, children }: { id: string; className?: string; children: ReactNode }) {
@@ -189,7 +142,7 @@ export function FiguresRuntime() {
       const m = e.data as { source?: string; action?: string; figures?: unknown; id?: unknown; style?: unknown };
       if (m?.source !== "criteri-cms" || !m.action) return;
       if (m.action === "figures-set" && m.figures && typeof m.figures === "object") {
-        figuresStore.setAll(m.figures as FiguresMap);
+        figuresStore.setAll(m.figures as Record<string, FigureStyle>);
       } else if (m.action === "figure-patch" && typeof m.id === "string") {
         figuresStore.setOne(m.id, (m.style as FigureStyle | null) ?? null);
       } else if (m.action === "deselect") {
@@ -211,6 +164,9 @@ export function FiguresRuntime() {
     style.textContent = `
       .cfig-wrap { position: relative; margin-inline: auto; }
       .cfig-sel { outline: 2px dashed var(--salvia, #7a9471); outline-offset: 4px; border-radius: 4px; }
+      .cfig-part-sel { outline: 2px dashed var(--highlight, #F5E381); outline-offset: 3px; }
+      .cfig-part { cursor: pointer; }
+      .cfig-part:hover { opacity: .85; }
       .cfig-tools { position: absolute; top: 6px; right: 6px; z-index: 45; display: flex; gap: 6px; }
       .cfig-tools button {
         pointer-events: auto; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center;
@@ -278,26 +234,100 @@ export function FiguresRuntime() {
       window.addEventListener("pointerup", onUp, { once: true });
     };
 
+    // Selecciona/des-selecciona figura o element (data-pkey) amb clic.
     const onDocClick = (e: MouseEvent) => {
       // Els texts dins la figura (figcaption...) són del TextsRuntime: no seleccionar figura.
       if ((e.target as HTMLElement | null)?.closest?.("[data-ctext]")) return;
       if ((e.target as HTMLElement | null)?.closest?.(".cfig-tools")) return;
-      const t = (e.target as HTMLElement | null)?.closest?.("[data-cfig]") as HTMLElement | null;
-      if (!t || t.classList.contains("cfig-ph")) return;
+      const t = (e.target as Element | null)?.closest?.("[data-cfig]") as HTMLElement | null;
+
+      // Clic FORA de qualsevol figura → des-selecciona (figura i element).
+      if (!t || t.classList.contains("cfig-ph")) {
+        const had = document.querySelector(".cfig-sel, .cfig-part-sel");
+        if (had) {
+          document.querySelectorAll(".cfig-sel, .cfig-part-sel").forEach((el) => el.classList.remove("cfig-sel", "cfig-part-sel"));
+          sendToParent("figure-select", { id: null, part: null });
+        }
+        return;
+      }
+
+      const id = t.dataset.cfig ?? "";
+      // Element intern (data-pkey): selecciona'l a ell, no la figura.
+      const partEl = (e.target as Element | null)?.closest?.("[data-pkey]") as SVGElement | HTMLElement | null;
+      if (partEl && t.contains(partEl)) {
+        const key = partEl.getAttribute("data-pkey") ?? "";
+        document.querySelectorAll(".cfig-part-sel").forEach((el) => el.classList.remove("cfig-part-sel"));
+        document.querySelectorAll(".cfig-sel").forEach((el) => el.classList.remove("cfig-sel"));
+        partEl.classList.add("cfig-part-sel");
+        t.classList.add("cfig-sel");
+        sendToParent("figure-select", { id, part: key });
+        return;
+      }
+
+      // Clic sobre la figura fora d'un element: selecciona només la figura.
+      const partSel = t.querySelector(".cfig-part-sel");
+      if (partSel) partSel.classList.remove("cfig-part-sel");
       document.querySelectorAll(".cfig-sel").forEach((el) => el.classList.remove("cfig-sel"));
       t.classList.add("cfig-sel");
-      sendToParent("figure-select", { id: t.dataset.cfig ?? null });
+      sendToParent("figure-select", { id, part: null });
+    };
+
+    // Esc també des-selecciona (dins l'iframe)
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      const t = e.target as HTMLElement | null;
+      if (t?.isContentEditable || t?.tagName === "INPUT" || t?.tagName === "TEXTAREA") return;
+      const had = document.querySelector(".cfig-sel, .cfig-part-sel");
+      if (had) {
+        document.querySelectorAll(".cfig-sel, .cfig-part-sel").forEach((el) => el.classList.remove("cfig-sel", "cfig-part-sel"));
+        sendToParent("figure-select", { id: null, part: null });
+      }
     };
 
     document.addEventListener("pointerdown", onPointerDown, true);
     document.addEventListener("click", onDocClick, true);
+    document.addEventListener("keydown", onKey, true);
     return () => {
       document.removeEventListener("pointerdown", onPointerDown, true);
       document.removeEventListener("click", onDocClick, true);
+      document.removeEventListener("keydown", onKey, true);
       window.removeEventListener("pointermove", onMove);
       style.remove();
     };
   }, []);
 
   return null;
+}
+
+/**
+ * Aplica els estils desats a un ELEMENT d'una figura (transform vertical).
+ * Helper per als components de secció: rep el id de figura + clau de part.
+ */
+export function useFigurePartStyle(figId: string, partKey: string) {
+  const style = useSyncExternalStore(
+    figuresStore.subscribe,
+    () => figuresStore.get(figId),
+    () => null
+  );
+  if (!style) return undefined;
+  return partTransform(style.parts, partKey);
+}
+
+/**
+ * Mapa sencer de transforms per part d'una figura ({ [partKey]: CSSProperties }).
+ * Per a components que renderitzen elements en un .map (un sol hook, mai un per node).
+ */
+export function useFigurePartsStyles(figId: string): Record<string, CSSProperties> {
+  const style = useSyncExternalStore(
+    figuresStore.subscribe,
+    () => figuresStore.get(figId),
+    () => null
+  );
+  const parts = style?.parts ?? {};
+  const out: Record<string, CSSProperties> = {};
+  for (const key of Object.keys(parts)) {
+    const css = partTransform(parts, key);
+    if (css) out[key] = css;
+  }
+  return out;
 }

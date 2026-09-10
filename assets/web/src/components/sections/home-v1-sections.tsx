@@ -4,6 +4,7 @@ import { useLanguage } from "@/components/language-provider";
 import { Reveal } from "./reveal";
 import { XrefDiagram } from "./xref-diagram";
 import { EditableItem, EditableText } from "@/components/cms/editable-texts";
+import { EditableFigure } from "@/components/cms/figure-styles";
 import { useGroupOrder, sortItems } from "@/components/cms/text-order";
 
 const BLOCS = [
@@ -225,7 +226,9 @@ export default function HomePageV1Sections() {
             </EditableText>
           </Reveal>
           <Reveal>
-            <XrefDiagram />
+            <EditableFigure id="xref.chart">
+              <XrefDiagram />
+            </EditableFigure>
             <EditableText id="crossref.note" as="p" styleEl="eyebrow" className="mt-3.5 font-mono text-[.67rem] leading-[1.6] tracking-[.04em] text-[var(--ink-soft)]">
               {ca ? <>Exemple real de creuament: <b className="font-semibold text-[var(--accent)]">un informe sobre risc climàtic</b> projectat sobre sis dels 16 estàndards del catàleg. Colors = intensitat de l&apos;impacte.</>
                   : <>Ejemplo real de cruce: <b className="font-semibold text-[var(--accent)]">un informe sobre riesgo climático</b> proyectado sobre seis de los 16 estándares del catálogo. Colores = intensidad del impacto.</>}

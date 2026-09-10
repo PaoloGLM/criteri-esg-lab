@@ -23,8 +23,10 @@ export interface TextStyle {
   font?: StyleFont;
   sizePct?: number;
   color?: string;
-  /** Marge superior en px (0–200): "juntar" o "separar" l'element dels veïns. */
+  /** Marge superior en px (0–200): "juntar" o "separar" l'element del de dalt. */
   mt?: number;
+  /** Marge inferior en px (0–200): "juntar" o "separar" l'element del de sota. */
+  mb?: number;
 }
 
 export type TextStylesMap = Record<string, TextStyle>;
@@ -81,6 +83,9 @@ export function styleToCss(style: TextStyle, el?: StyleEl): React.CSSProperties 
   if (style.color) css.color = style.color;
   if (typeof style.mt === "number" && Number.isFinite(style.mt) && style.mt >= 0) {
     css.marginTop = `${Math.min(200, Math.round(style.mt))}px`;
+  }
+  if (typeof style.mb === "number" && Number.isFinite(style.mb) && style.mb >= 0) {
+    css.marginBottom = `${Math.min(200, Math.round(style.mb))}px`;
   }
   if (
     typeof style.sizePct === "number" &&

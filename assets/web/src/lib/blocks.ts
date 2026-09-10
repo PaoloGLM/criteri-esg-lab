@@ -200,6 +200,22 @@ export function validateContent(json: unknown): string | null {
         return `La figura '${k}' té una amplada fora de rang (40-160%)`;
       if (g.mt !== undefined && (typeof g.mt !== "number" || g.mt < 0 || g.mt > 200))
         return `La figura '${k}' té un espai fora de rang (0-200px)`;
+      if (g.mb !== undefined && (typeof g.mb !== "number" || g.mb < 0 || g.mb > 200))
+        return `La figura '${k}' té un espai avall fora de rang (0-200px)`;
+      if (g.parts !== undefined) {
+        // Ajustos per element del gràfic: mapa partKey → { mt?, mb? } (-100..200).
+        if (!g.parts || typeof g.parts !== "object" || Array.isArray(g.parts))
+          return `Les parts de '${k}' han de ser un objecte`;
+        for (const [pk, pv] of Object.entries(g.parts as Record<string, unknown>)) {
+          if (!pv || typeof pv !== "object" || Array.isArray(pv))
+            return `La part '${pk}' de '${k}' ha de ser un objecte`;
+          const p = pv as Record<string, unknown>;
+          if (p.mt !== undefined && (typeof p.mt !== "number" || p.mt < -100 || p.mt > 200))
+            return `La part '${pk}' de '${k}' té un espai amunt fora de rang (-100-200px)`;
+          if (p.mb !== undefined && (typeof p.mb !== "number" || p.mb < -100 || p.mb > 200))
+            return `La part '${pk}' de '${k}' té un espai avall fora de rang (-100-200px)`;
+        }
+      }
     }
   }
   return null;

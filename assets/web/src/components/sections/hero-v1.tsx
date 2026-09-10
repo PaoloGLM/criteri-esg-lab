@@ -2,11 +2,23 @@
 import { useLanguage } from "@/components/language-provider";
 import { Reveal } from "./reveal";
 import { EditableText } from "@/components/cms/editable-texts";
-import { EditableFigure } from "@/components/cms/figure-styles";
+import { EditableFigure, useFigurePartStyle } from "@/components/cms/figure-styles";
 
 function HeroChart() {
   const { lang } = useLanguage();
   const ca = lang === "ca";
+  // Ajust vertical per element (mt − mb) desat a content_ca.figures.
+  // Públic sense estil → undefined = transform nadiu del codi (idèntic).
+  const sAnys = useFigurePartStyle("hero.chart", "anys");
+  const sFites = useFigurePartStyle("hero.chart", "fites");
+  const sCap1 = useFigurePartStyle("hero.chart", "cap1");
+  const sCap2 = useFigurePartStyle("hero.chart", "cap2");
+  const sBar1 = useFigurePartStyle("hero.chart", "bar1");
+  const sBar2 = useFigurePartStyle("hero.chart", "bar2");
+  const sBar3 = useFigurePartStyle("hero.chart", "bar3");
+  const sBar4 = useFigurePartStyle("hero.chart", "bar4");
+  const sBar5 = useFigurePartStyle("hero.chart", "bar5");
+  const sTrend = useFigurePartStyle("hero.chart", "trend");
   const t = {
     cap1: ["PÀGINES PUBLICADES ↑", "PÁGINAS PUBLICADAS ↑"],
     cap2: ["EL TEU TEMPS →", "TU TIEMPO →"],
@@ -32,25 +44,29 @@ function HeroChart() {
           <line x1="46" y1="180" x2="500" y2="180" /><line x1="46" y1="240" x2="500" y2="240" />
         </g>
         <g fill="#5E8772">
-          <rect x="70" y="212" width="52" height="68" rx="3" />
-          <rect x="152" y="188" width="52" height="92" rx="3" />
-          <rect x="234" y="150" width="52" height="130" rx="3" />
-          <rect x="316" y="104" width="52" height="176" rx="3" />
-          <rect x="398" y="52" width="52" height="228" rx="3" fill="#26312B" />
+          <rect data-pkey="bar1" style={sBar1} x="70" y="212" width="52" height="68" rx="3" />
+          <rect data-pkey="bar2" style={sBar2} x="152" y="188" width="52" height="92" rx="3" />
+          <rect data-pkey="bar3" style={sBar3} x="234" y="150" width="52" height="130" rx="3" />
+          <rect data-pkey="bar4" style={sBar4} x="316" y="104" width="52" height="176" rx="3" />
+          <rect data-pkey="bar5" style={sBar5} x="398" y="52" width="52" height="228" rx="3" fill="#26312B" />
         </g>
-        <line x1="60" y1="196" x2="480" y2="196" stroke="#A0522D" strokeWidth="2" strokeDasharray="6 5" />
-        <circle cx="480" cy="196" r="4" fill="#A0522D" />
-        <g fontFamily="var(--font-mono)" fontSize="13" fill="#4A5F53">
+        <g data-pkey="trend" style={sTrend}>
+          <line x1="60" y1="196" x2="480" y2="196" stroke="#A0522D" strokeWidth="2" strokeDasharray="6 5" />
+          <circle cx="480" cy="196" r="4" fill="#A0522D" />
+        </g>
+        <g data-pkey="anys" style={sAnys} fontFamily="var(--font-mono)" fontSize="13" fill="#4A5F53">
           {t.anys.map((a, i) => (
             <text key={a} x={96 + i * 82} y="300" textAnchor="middle">{a}</text>
           ))}
         </g>
-        <g fontFamily="var(--font-mono)" fontSize="12">
+        <g data-pkey="cap1" style={sCap1} fontFamily="var(--font-mono)" fontSize="12">
           <rect x="330" y="26" width="168" height="22" rx="4" fill="#F5E381" />
           <text x="338" y="41" fill="#26312B" fontWeight="600">{t.cap1[ca ? 0 : 1]}</text>
-          <text x="60" y="186" fill="#A0522D" fontWeight="600">{t.cap2[ca ? 0 : 1]}</text>
         </g>
-        <g fontFamily="var(--font-mono)" fontSize="10" fill="#7A8B7F" textAnchor="middle">
+        <g data-pkey="cap2" style={sCap2}>
+          <text x="60" y="186" fontFamily="var(--font-mono)" fontSize="12" fill="#A0522D" fontWeight="600">{t.cap2[ca ? 0 : 1]}</text>
+        </g>
+        <g data-pkey="fites" style={sFites} fontFamily="var(--font-mono)" fontSize="10" fill="#7A8B7F" textAnchor="middle">
           {t.fites.map((f, i) => {
             const label = f[ca ? 0 : 1];
             const cut = label.length > 15 ? label.indexOf(" ", 8) : -1;

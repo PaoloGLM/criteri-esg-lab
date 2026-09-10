@@ -837,6 +837,10 @@ export const translations = {
     ca: "Disponible per a subscriptors Premium",
     es: "Disponible para suscriptores Premium",
   },
+  "quisom.preguntes.preus": {
+    ca: "Veure els preus",
+    es: "Ver los precios",
+  },
 
   // ============ Pàgina /que-fem (Producte — com elaborem els informes) ============
   "quefem.eyebrow": {

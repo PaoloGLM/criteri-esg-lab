@@ -230,6 +230,10 @@ export default function QuiSomPage() {
               </EditableText>
               <EditableText id="preguntes.title" as="h2" className="sec-title">{t("quisom.preguntes.h2")}</EditableText>
               <EditableText id="preguntes.body" as="p" className="sec-body">{t("quisom.preguntes.body")}</EditableText>
+              {/* CTA real cap als preus (abans l'única via era el menú) */}
+              <button onClick={() => setPreusOpen(true)} className="btn-v1 btn-v1-solid mt-7">
+                {t("quisom.preguntes.preus")}
+              </button>
             </div>
             <div className="card-v1 p-9" style={{ borderLeft: "4px solid var(--highlight)" }}>
               <EditableText id="preguntes.example.title" as="p" styleEl="eyebrow" className="mb-3.5 font-mono text-[10px] uppercase tracking-[0.18em]" style={{ color: "var(--ink-soft)" }}>

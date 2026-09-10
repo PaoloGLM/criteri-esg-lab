@@ -7,6 +7,7 @@ import { supabase } from "@/lib/supabase";
 import { sendToParent } from "./visual-runtime";
 import { orderStore, pickOrders } from "./text-order";
 import { imagesStore, pickImages } from "./editable-images";
+import { figuresStore, pickFigures } from "./figures-store";
 import {
   StyleEl,
   TextStyle,
@@ -353,7 +354,15 @@ export function pickStyles(json: unknown): TextStylesMap {
     if (typeof s.sizePct === "number" && Number.isFinite(s.sizePct)) entry.sizePct = s.sizePct;
     if (isValidTextColor(s.color)) entry.color = s.color;
     if (typeof s.mt === "number" && Number.isFinite(s.mt) && s.mt >= 0) entry.mt = s.mt;
-    if (entry.font || typeof entry.sizePct === "number" || entry.color || typeof entry.mt === "number") out[k] = entry;
+    if (typeof s.mb === "number" && Number.isFinite(s.mb) && s.mb >= 0) entry.mb = s.mb;
+    if (
+      entry.font ||
+      typeof entry.sizePct === "number" ||
+      entry.color ||
+      typeof entry.mt === "number" ||
+      typeof entry.mb === "number"
+    )
+      out[k] = entry;
   }
   return Object.keys(out).length ? out : {};
 }
@@ -387,6 +396,8 @@ export function CmsTexts({ page, children }: { page: string; children: React.Rea
         // Imatges editables + elements amagats (compartits CA/ES; a content_ca)
         imagesStore.setAll(pickImages(data.content_ca));
         hiddenStore.setAll(pickHidden(data.content_ca));
+        // Ajustos de figures SVG (HeroChart, XrefDiagram; compartits CA/ES)
+        figuresStore.setAll(pickFigures(data.content_ca));
       } catch {
         /* BD absent o falla → la pàgina es queda amb el contingut del codi */
       }

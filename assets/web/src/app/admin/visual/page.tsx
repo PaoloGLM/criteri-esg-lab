@@ -29,13 +29,16 @@ import {
  *                  texts-ready { lang } | texts-change { id, lang, html } |
  *                  text-select { id, styleEl } | order-patch { group, list } |
  *                  hidden-patch { id, hidden } | image-select { id } |
- *                  images-patch { id, image } | images-hidden { id, hidden }
+ *                  images-patch { id, image } | images-hidden { id, hidden } |
+ *                  figures-ready {} | figure-select { id, part } |
+ *                  figure-patch { id, style }
  *  pare → iframe:  set-blocks { blocks, lang } | set-lang { lang } |
  *                  texts-set { texts: {ca,es} } | add-block { type } |
  *                  styles-set { styles } | style-patch { id, style } |
  *                  move { dir } | remove {} | deselect {} |
  *                  hidden-set { hidden } | images-set { images, hidden } |
- *                  images-patch { id, image }
+ *                  images-patch { id, image } | figures-set { figures } |
+ *                  figure-patch { id, style }
  */
 
 type Lang = "ca" | "es";
@@ -75,6 +78,7 @@ export default function VisualEditorPage() {
   const [hiddenList, setHiddenList] = useState<string[]>([]);
   const [imgSel, setImgSel] = useState<string | null>(null);
   const [figSel, setFigSel] = useState<string | null>(null);
+  const [partSel, setPartSel] = useState<string | null>(null);
   const [textSel, setTextSel] = useState<{ id: string; styleEl: StyleEl | null } | null>(null);
 
   const post = useCallback((msg: Record<string, unknown>) => {
@@ -288,7 +292,7 @@ export default function VisualEditorPage() {
   useEffect(() => {
     const onMsg = (e: MessageEvent) => {
       if (e.origin !== window.location.origin) return;
-      const m = e.data as { source?: string; action?: string; blocks?: unknown; lang?: Lang; id?: string | null; html?: unknown; texts?: unknown; styles?: unknown; styleEl?: string | null; orders?: unknown; group?: unknown; list?: unknown; hidden?: unknown; image?: unknown; figures?: unknown; style?: unknown };
+      const m = e.data as { source?: string; action?: string; blocks?: unknown; lang?: Lang; id?: string | null; part?: unknown; html?: unknown; texts?: unknown; styles?: unknown; styleEl?: string | null; orders?: unknown; group?: unknown; list?: unknown; hidden?: unknown; image?: unknown; figures?: unknown; style?: unknown };
       if (m?.source !== CMS_MSG || !m.action) return;
       switch (m.action) {
         case "ready":
@@ -311,6 +315,7 @@ export default function VisualEditorPage() {
           break;
         case "figure-select":
           setFigSel(typeof m.id === "string" && m.id ? m.id : null);
+          setPartSel(typeof m.part === "string" && m.part ? m.part : null);
           setImgSel(null);
           setTextSel(null);
           break;
@@ -326,6 +331,8 @@ export default function VisualEditorPage() {
           break;
         case "image-select":
           setImgSel(typeof m.id === "string" && m.id ? m.id : null);
+          setFigSel(null);
+          setPartSel(null);
           setTextSel(null);
           break;
         case "images-ready":
@@ -371,6 +378,8 @@ export default function VisualEditorPage() {
         case "text-select":
           // Clic sobre un text de la pàgina → inspector d'estil al panell.
           setImgSel(null);
+          setFigSel(null);
+          setPartSel(null);
           setTextSel(
             typeof m.id === "string" && m.id
               ? { id: m.id, styleEl: (m.styleEl as StyleEl) || null }
@@ -481,6 +490,26 @@ export default function VisualEditorPage() {
       setFigures(latestFigures.current);
       post({ action: "figure-patch", id: figSel, style: next });
     }
+    setStyleDirty(true);
+    setDirty((d) => ({ ...d, [lang]: true }));
+  };
+
+  // Ajust vertical d'un ELEMENT de la figura (data-pkey): amunt (mt) i avall (mb).
+  const patchPart = (p: { mt?: number; mb?: number }, part: string) => {
+    if (!figSel) return;
+    pushUndo();
+    const cur = latestFigures.current[figSel] ?? {};
+    const parts = { ...(cur.parts ?? {}) };
+    const entry = { ...(parts[part] ?? {}), ...p };
+    if (typeof entry.mt !== "number" || !Number.isFinite(entry.mt)) delete entry.mt;
+    if (typeof entry.mb !== "number" || !Number.isFinite(entry.mb)) delete entry.mb;
+    if (Object.keys(entry).length === 0) delete parts[part];
+    else parts[part] = entry;
+    const next: FigureStyle = { ...cur, parts };
+    if (Object.keys(parts).length === 0) delete next.parts;
+    latestFigures.current = { ...latestFigures.current, [figSel]: next };
+    setFigures(latestFigures.current);
+    post({ action: "figure-patch", id: figSel, style: next });
     setStyleDirty(true);
     setDirty((d) => ({ ...d, [lang]: true }));
   };
@@ -676,10 +705,56 @@ export default function VisualEditorPage() {
                 <input type="range" min={0} max={200} step={5} value={figures[figSel]?.mt ?? 0}
                   onChange={(e) => patchFigure({ mt: Number(e.target.value) })} className="w-full" />
               </div>
+              <div>
+                <div className="flex items-center justify-between">
+                  <label className={lbl} style={lblStyle}>
+                    Espai després{figures[figSel]?.mb !== undefined ? ` · ${Math.round(figures[figSel].mb as number)}px` : " · per defecte"}
+                  </label>
+                  {figures[figSel]?.mb !== undefined && (
+                    <button onClick={() => patchFigure({ mb: undefined })} className="text-xs" style={{ color: "var(--ink-muted, #6b7280)" }} title="Torna a l'espai del disseny original">↺</button>
+                  )}
+                </div>
+                <input type="range" min={0} max={200} step={5} value={figures[figSel]?.mb ?? 0}
+                  onChange={(e) => patchFigure({ mb: Number(e.target.value) })} className="w-full" />
+              </div>
               <button onClick={() => patchFigure(null)} className={btnGhost} style={{ borderColor: "var(--rule, #e5e3dd)" }}>
                 ↺ Restaura la mida original
               </button>
               <p className="text-xs" style={lblStyle}>També pots arrossegar la nansa ⇔ sota la figura, o clicar ✕ per amagar-la.</p>
+            </div>
+          )}
+
+          {figSel && partSel && (
+            <div className="space-y-3 rounded-lg border p-3" style={{ borderColor: "var(--highlight, #C9A961)" }}>
+              <p className="text-sm font-semibold" style={{ color: "var(--ink, #1f2937)" }}>
+                Element del gràfic <span className="font-mono text-xs" style={{ color: "var(--ink-muted, #6b7280)" }}>({partSel})</span>
+              </p>
+              <div>
+                <div className="flex items-center justify-between">
+                  <label className={lbl} style={lblStyle}>
+                    Amunt{figures[figSel]?.parts?.[partSel]?.mt !== undefined ? ` · ${Math.round(figures[figSel].parts?.[partSel]?.mt as number)}px` : " · per defecte"}
+                  </label>
+                  {figures[figSel]?.parts?.[partSel]?.mt !== undefined && (
+                    <button onClick={() => patchPart({ mt: undefined }, partSel)} className="text-xs" style={{ color: "var(--ink-muted, #6b7280)" }} title="Torna a la posició original">↺</button>
+                  )}
+                </div>
+                <input type="range" min={-100} max={200} step={5} value={figures[figSel]?.parts?.[partSel]?.mt ?? 0}
+                  onChange={(e) => patchPart({ mt: Number(e.target.value) }, partSel)} className="w-full" />
+                <p className="text-xs" style={lblStyle}>+ baixa l&apos;element · − el puja cap a l&apos;element anterior.</p>
+              </div>
+              <div>
+                <div className="flex items-center justify-between">
+                  <label className={lbl} style={lblStyle}>
+                    Avall{figures[figSel]?.parts?.[partSel]?.mb !== undefined ? ` · ${Math.round(figures[figSel].parts?.[partSel]?.mb as number)}px` : " · per defecte"}
+                  </label>
+                  {figures[figSel]?.parts?.[partSel]?.mb !== undefined && (
+                    <button onClick={() => patchPart({ mb: undefined }, partSel)} className="text-xs" style={{ color: "var(--ink-muted, #6b7280)" }} title="Torna a la posició original">↺</button>
+                  )}
+                </div>
+                <input type="range" min={-100} max={200} step={5} value={figures[figSel]?.parts?.[partSel]?.mb ?? 0}
+                  onChange={(e) => patchPart({ mb: Number(e.target.value) }, partSel)} className="w-full" />
+                <p className="text-xs" style={lblStyle}>+ separa&apos;l de l&apos;element següent · − l&apos;apropa.</p>
+              </div>
             </div>
           )}
 
@@ -728,6 +803,21 @@ export default function VisualEditorPage() {
                   onChange={(e) => patchTextStyle({ mt: Number(e.target.value) })}
                   className="w-full" />
                 <p className="text-xs" style={lblStyle}>0 = enganxat amb l&apos;element anterior · 200 = molt separa&shy;t.</p>
+              </div>
+              <div>
+                <div className="flex items-center justify-between">
+                  <label className={lbl} style={lblStyle}>
+                    Espai després{selTextStyle?.mb !== undefined ? ` · ${Math.round(selTextStyle.mb)}px` : " · per defecte"}
+                  </label>
+                  {selTextStyle?.mb !== undefined && (
+                    <button onClick={() => patchTextStyle({ mb: undefined })} className="text-xs" style={{ color: "var(--ink-muted, #6b7280)" }} title="Torna a l'espai del disseny original">↺</button>
+                  )}
+                </div>
+                <input type="range" min={0} max={200} step={5}
+                  value={selTextStyle?.mb ?? 0}
+                  onChange={(e) => patchTextStyle({ mb: Number(e.target.value) })}
+                  className="w-full" />
+                <p className="text-xs" style={lblStyle}>0 = enganxat amb l&apos;element següent · 200 = molt separa&shy;t.</p>
               </div>
               <div>
                 <label className={lbl} style={lblStyle}>Color (paleta Criteri)</label>

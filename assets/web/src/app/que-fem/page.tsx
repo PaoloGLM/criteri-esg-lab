@@ -32,25 +32,24 @@ export default function QueFemPage() {
     { name: t("quefem.semaforo.verificacion"), val: t("quefem.semaforo.val.quantificat"), cls: "val-v" },
   ];
 
-  /* ── Format: 8 blocs, sempre iguals ── */
+  /* ── Format: 8 blocs, sempre iguals (disseny unificat amb la landing) ── */
   const blocs = [
-    { num: "00", name: t("quefem.bloc.00.name"), desc: t("quefem.bloc.00.desc"), meta: t("quefem.bloc.00.meta"), dark: false },
-    { num: "01", name: t("quefem.bloc.01.name"), desc: t("quefem.bloc.01.desc"), meta: t("quefem.bloc.01.meta"), dark: false },
-    { num: "02", name: t("quefem.bloc.02.name"), desc: t("quefem.bloc.02.desc"), meta: t("quefem.bloc.02.meta"), dark: false },
-    { num: "03", name: t("quefem.bloc.03.name"), desc: t("quefem.bloc.03.desc"), meta: t("quefem.bloc.03.meta"), dark: false },
-    { num: "04", name: t("quefem.bloc.04.name"), desc: t("quefem.bloc.04.desc"), meta: t("quefem.bloc.04.meta"), dark: false },
-    { num: "05", name: t("quefem.bloc.05.name"), desc: t("quefem.bloc.05.desc"), meta: t("quefem.bloc.05.meta"), dark: false },
-    { num: "06", name: t("quefem.bloc.06.name"), desc: t("quefem.bloc.06.desc"), meta: t("quefem.bloc.06.meta"), dark: false },
-    { num: "07", name: t("quefem.bloc.07.name"), desc: t("quefem.bloc.07.desc"), meta: t("quefem.bloc.07.meta"), dark: true },
+    { num: "00", name: t("quefem.bloc.00.name"), desc: t("quefem.bloc.00.desc"), meta: t("quefem.bloc.00.meta") },
+    { num: "01", name: t("quefem.bloc.01.name"), desc: t("quefem.bloc.01.desc"), meta: t("quefem.bloc.01.meta") },
+    { num: "02", name: t("quefem.bloc.02.name"), desc: t("quefem.bloc.02.desc"), meta: t("quefem.bloc.02.meta") },
+    { num: "03", name: t("quefem.bloc.03.name"), desc: t("quefem.bloc.03.desc"), meta: t("quefem.bloc.03.meta") },
+    { num: "04", name: t("quefem.bloc.04.name"), desc: t("quefem.bloc.04.desc"), meta: t("quefem.bloc.04.meta") },
+    { num: "05", name: t("quefem.bloc.05.name"), desc: t("quefem.bloc.05.desc"), meta: t("quefem.bloc.05.meta") },
+    { num: "06", name: t("quefem.bloc.06.name"), desc: t("quefem.bloc.06.desc"), meta: t("quefem.bloc.06.meta") },
+    { num: "07", name: t("quefem.bloc.07.name"), desc: t("quefem.bloc.07.desc"), meta: t("quefem.bloc.07.meta") },
   ];
 
-  /* ── Referència curta de criteris i valors (els detallats viuen a /qui-som) ── */
+  /* ── Referència curta de criteris i valors — MATEIXOS contingut i ordre que /qui-som ── */
   const criteris = [
-    { rom: "I", name: t("quisom.v2.conviccio.01.name"), text: t("quisom.v2.conviccio.01.text") },
-    { rom: "II", name: t("quisom.v2.conviccio.02.name"), text: t("quisom.v2.conviccio.02.text") },
-    { rom: "III", name: t("quisom.v2.conviccio.03.name"), text: t("quisom.v2.conviccio.03.text") },
-    { rom: "IV", name: t("quisom.v2.conviccio.04.name"), text: t("quisom.v2.conviccio.04.text") },
-    { rom: "V", name: t("quisom.v2.conviccio.05.name"), text: t("quisom.v2.conviccio.05.text") },
+    { rom: "I", name: t("quisom.valors.dignitat.title"), text: t("quisom.valors.dignitat.body") },
+    { rom: "II", name: t("quisom.valors.etica.title"), text: t("quisom.valors.etica.body") },
+    { rom: "III", name: t("quisom.valors.economia.title"), text: t("quisom.valors.economia.body") },
+    { rom: "IV", name: t("quisom.valors.territori.title"), text: t("quisom.valors.territori.body") },
   ];
 
   /* ── Ordres editables (reordre amb drag des de /admin/visual) ── */
@@ -121,7 +120,8 @@ export default function QueFemPage() {
                   <EditableText id={`proc5.${pi + 1}.t`} as="h3" styleEl="h2" className="font-serif text-[1.25rem] font-semibold text-primary">
                     {p.t}
                   </EditableText>
-                  <EditableText id={`proc5.${pi + 1}.d`} as="p" styleEl="body" className="text-[.93rem] leading-[1.62]" style={{ color: "var(--ink-soft)" }}>
+                  {/* Mòbil: el grid només té 2 columnes — la descripció baixa a fila pròpia ocupant tota l'amplada (fix paràgrafs a 56px). */}
+                  <EditableText id={`proc5.${pi + 1}.d`} as="p" styleEl="body" className="text-[.93rem] leading-[1.62] max-md:col-start-1 max-md:col-span-2" style={{ color: "var(--ink-soft)" }}>
                     {p.d}
                   </EditableText>
                 </li>
@@ -182,23 +182,33 @@ export default function QueFemPage() {
                 </EditableText>
                 <EditableText id="format.body" as="p" className="sec-body">{t("quefem.format.body")}</EditableText>
               </div>
-              <div className="whitespace-nowrap rounded-md border border-dashed px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.14em]"
+              <div className="max-md:whitespace-normal max-md:px-3 max-md:text-center whitespace-nowrap rounded-md border border-dashed px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.14em]"
                 style={{ borderColor: "rgba(94,135,114,.45)", color: "var(--ink-soft)" }}>
                 <EditableText id="format.limit" as="b" className="font-semibold" style={{ color: "var(--ink)" }}>{t("quefem.format.limit")}</EditableText>
               </div>
             </div>
 
             <div className="blocgrid" data-corder="quefem.blocs">
-              {sortItems(blocs, ordreBlocs, (b) => b.num).map((bloc) => (
-                <EditableItem key={bloc.num} as="article" id={`quefem.blocs.${bloc.num}`} dataCitem={bloc.num} className={`bloc${bloc.dark ? " dark" : ""}`}>
-                  <EditableText id={`bloc.${bloc.num}.num`} as="div" className="num">{bloc.num}</EditableText>
-                  <EditableText id={`bloc.${bloc.num}.name`} as="h3" styleEl="h2">{bloc.name}</EditableText>
-                  <EditableText id={`bloc.${bloc.num}.desc`} as="p" styleEl="body">{bloc.desc}</EditableText>
-                  <EditableText id={`bloc.${bloc.num}.meta`} as="p" className="!mt-3 font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: bloc.dark ? "rgba(242,245,241,.55)" : "var(--ink-soft)" }}>
+              {sortItems(blocs, ordreBlocs, (b) => b.num).map((bloc) => {
+                // #6 (disseny unificat amb la landing): blocs diferenciadors (00, 06, 07) en verd fosc; resta requadre salvia.
+                const star = bloc.num === "00" || bloc.num === "06" || bloc.num === "07";
+                const salvia = !star;
+                return (
+                <EditableItem key={bloc.num} as="article" id={`quefem.blocs.${bloc.num}`} dataCitem={bloc.num} className="bloc"
+                  style={star
+                    ? { background: "var(--ink)", borderColor: "var(--ink)" }
+                    : salvia
+                      ? { background: "#AAC9B6", borderColor: "#26312B" }
+                      : undefined}>
+                  <EditableText id={`bloc.${bloc.num}.num`} as="div" className="num" style={star ? { color: "var(--highlight)" } : { color: "#26312B" }}>{bloc.num}</EditableText>
+                  <EditableText id={`bloc.${bloc.num}.name`} as="h3" styleEl="h2" style={star ? { color: "var(--bg)" } : { color: "#26312B" }}>{bloc.name}</EditableText>
+                  <EditableText id={`bloc.${bloc.num}.desc`} as="p" styleEl="body" style={star ? { color: "rgba(242,245,241,.75)" } : { color: "rgba(38,49,43,.82)" }}>{bloc.desc}</EditableText>
+                  <EditableText id={`bloc.${bloc.num}.meta`} as="p" className="!mt-3 font-mono text-[10px] uppercase tracking-[0.14em]" style={star ? { color: "rgba(242,245,241,.55)" } : { color: "rgba(38,49,43,.6)" }}>
                     {bloc.meta}
                   </EditableText>
                 </EditableItem>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
@@ -210,23 +220,24 @@ export default function QueFemPage() {
             <EditableText id="criteris.head" as="h2" className="sec-title" style={{ color: "var(--bg)" }}>{t("quefem.criteris.head")}</EditableText>
             <EditableText id="criteris.body" as="p" className="sec-body max-w-[64ch]" style={{ color: "rgba(242,245,241,.78)" }}>{t("quefem.criteris.body")}</EditableText>
 
-            <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-5" data-corder="quefem.criteris">
-              {sortItems(criteris, ordreCriteris, (c) => c.rom).map((c) => (
-                <EditableItem key={c.rom} as="article" id={`quefem.criteris.${c.rom}`} dataCitem={c.rom}
-                  className="flex flex-col rounded-[9px] border p-7 transition-colors duration-200 hover:border-[rgba(170,201,182,.45)]"
-                  style={{ borderColor: "rgba(170,201,182,.18)", background: "rgba(38,49,43,.38)" }}>
-                  <EditableText id={`criteris.card.${c.rom}.rom`} as="span" styleEl="h2" className="font-serif text-[2.6rem] font-medium leading-none" style={{ color: "var(--verd-clar)" }}>
-                    {c.rom}
-                  </EditableText>
-                  <EditableText id={`criteris.card.${c.rom}.name`} as="h3" styleEl="h2" className="mt-5 font-serif text-xl font-semibold" style={{ color: "var(--bg)" }}>
-                    {c.name}
-                  </EditableText>
-                  <EditableText id={`criteris.card.${c.rom}.text`} as="p" styleEl="body" className="mt-3 text-[.88rem] leading-[1.6]" style={{ color: "rgba(242,245,241,.74)" }}>
-                    {c.text}
-                  </EditableText>
-                </EditableItem>
-              ))}
-            </div>
+              {/* Criteris i valors — mateixa llista (grid de 4 cards) i mateix contingut que /qui-som */}
+              <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-corder="quefem.criteris">
+                {sortItems(criteris, ordreCriteris, (c) => c.rom).map((c) => (
+                  <EditableItem key={c.rom} as="article" id={`quefem.criteris.${c.rom}`} dataCitem={c.rom}
+                    className="grid grid-cols-[52px_minmax(0,.55fr)_minmax(0,1fr)] items-start gap-5 py-6 lg:grid-cols-none lg:block"
+                    style={{ borderTop: "1px solid rgba(242,245,241,.14)" }}>
+                    <EditableText id={`criteris.card.${c.rom}.rom`} as="span" className="font-serif text-[1.7rem] font-medium leading-[1.2]" style={{ color: "var(--verd-clar)" }}>
+                      {c.rom}
+                    </EditableText>
+                    <EditableText id={`criteris.card.${c.rom}.name`} as="h3" styleEl="h2" className="font-serif text-[1.12rem] font-semibold" style={{ color: "var(--bg)" }}>
+                      {c.name}
+                    </EditableText>
+                    <EditableText id={`criteris.card.${c.rom}.text`} as="p" styleEl="body" className="text-[.92rem] leading-[1.62]" style={{ color: "rgba(242,245,241,.72)" }}>
+                      {c.text}
+                    </EditableText>
+                  </EditableItem>
+                ))}
+              </div>
 
             <EditableText id="criteris.link" as="a" href="/qui-som" styleEl="button" className="mt-10 inline-block font-mono text-[12px] font-semibold uppercase tracking-[0.16em] transition-colors hover:opacity-80"
               style={{ color: "var(--verd-clar)" }}>

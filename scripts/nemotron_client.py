@@ -10,7 +10,7 @@ import re
 from pathlib import Path
 
 sys.path.insert(0, "./scripts")
-from config import get_openrouter_client
+from config import call_openrouter_auto, get_openrouter_client
 
 NEMOTRON_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
 
@@ -19,27 +19,13 @@ def get_openrouter_nemotron_client():
     return client
 
 def call_nemotron(system_prompt: str, user_prompt: str, temperature: float = 0.3, max_tokens: int = 4096) -> str:
-    import openai
-    client = get_openrouter_client()
-    
-    response = client.chat.completions.create(
-        model=NEMOTRON_MODEL,
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt}
-        ],
-        temperature=temperature,
-        max_tokens=max_tokens,
-    )
-    # Handle case where content is None (e.g., reasoning model with no final output)
-    content = response.choices[0].message.content
-    if content is None:
-        # Check if there's reasoning content
-        reasoning = getattr(response.choices[0].message, 'reasoning_content', None)
-        if reasoning:
-            return reasoning
-        return ""
-    return content
+    """Crida OpenRouter amb el model més barat disponible del pool de l'usuari.
+
+    (Antigament fixat a Nemotron 3 Ultra Free; ara el tria
+    config.call_openrouter_auto. Conserva el comportament de fallback a
+    reasoning_content quan content és None — call_openrouter_auto ja ho fa.)
+    """
+    return call_openrouter_auto(system_prompt, user_prompt, temperature, max_tokens)
 
 
 def call_nemotron_json(system_prompt: str, user_prompt: str, temperature: float = 0.3, max_tokens: int = 4096) -> dict:

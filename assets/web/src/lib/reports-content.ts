@@ -2325,6 +2325,873 @@ const europeSDR_es: ReportBlock = {
 };
 
 // -----------------------------------------------------------------------------
+// cnmv-boletin-junio-2026 — Boletí de juny 2026 - CNMV
+// -----------------------------------------------------------------------------
+
+const cnmvBoletin_ca: ReportBlock = {
+  "semafor": {
+    "grade": "C",
+    "gradeLabel": "Informació limitada sobre ASG",
+    "indicators": [
+      {
+        "name": "Cobertura Scope 3",
+        "status": "vermell",
+        "label": "No cobert",
+        "note": "L'informe no menciona emissions de l'Scope 3 ni la seva importància en l'anàlisi ASG."
+      },
+      {
+        "name": "Termes temporals",
+        "status": "groc",
+        "label": "Esmentat",
+        "note": "S'esmenten objectius temporals de sostenibilitat però sense especificació clara dels horitzons."
+      },
+      {
+        "name": "Fonts independents",
+        "status": "groc",
+        "label": "Parcial",
+        "note": "L'informe es basa en dades pròpies de la CNMV i algunes fonts externes, però no verifica amb auditors independents."
+      },
+      {
+        "name": "Granularitat",
+        "status": "groc",
+        "label": "Limitada",
+        "note": "L'informe ofereix dades agregades sobre ASG però sense desglossament detallat per empresa o sector."
+      },
+      {
+        "name": "Verificació externa",
+        "status": "vermell",
+        "label": "No present",
+        "note": "No hi ha cap menció a verificació externa de les dades ASG presentades."
+      }
+    ]
+  },
+  "dadesClau": [
+    {
+      "value": "474.000 milions d'euros",
+      "label": "Patrimoni dels fons d'inversió",
+      "page": "17"
+    },
+    {
+      "value": "3,3%",
+      "label": "Creuació del patrimoni dels fons",
+      "page": "17"
+    },
+    {
+      "value": "40%",
+      "label": "Representació de les IIC comercialitzades a Espanya",
+      "page": "17"
+    },
+    {
+      "value": "87,8%",
+      "label": "Participació de les entitats de crèdit en les comissions",
+      "page": "18"
+    },
+    {
+      "value": "22,8%",
+      "label": "Creixement del patrimoni assessorat per EAF",
+      "page": "18"
+    }
+  ],
+  "resumExecutiu": "El Boletí de la CNMV de juny 2026 analitza l'evolució dels mercats financers en un context de gran incertesa, amb l'inici de la guerra a l'Iran com a punt d'inflexió. Els mercats borsaris van experimentar caigudes acusades al març, però es van recuperar de forma desigual, amb millors resultats als EUA i Japó. Els mercats de renda fixa van veure un repunt dels tipus d'interès, amb primes de risc moderades. A Espanya, l'Ibex 35 va mostrar una resistència relativa, amb un guany del 5,1% en l'any. Els fons d'inversió van continuar creixent, amb un patrimón de 474.000 milions d'euros. El sector de serveis d'inversió es manté estable, amb les entitats de crèdit dominant les comissions. La regulació europea de criptoactives (MiCA) comença a tenir impacte en el sector.",
+  "implicacions": {
+    "empreses": "Les empreses han d'adaptar les seves estratègies a un entorn de major volatilitat i incertesa geopolítica. Els sectors energètics i financers han resistit millor, mentre que els industrials i tecnològics han patit més. L'aplicació de noves regulacions com la MiCA exigirà ajustos en els models de negoci.",
+    "reguladors": "Els reguladors han de vigilar la creixent correlació entre actius i la volatilitat dels mercats, especialment en derivats i mercats de divises. La implementació de la MiCA requereix un seguiment proper per assegurar la conformitat i la protecció dels inversors.",
+    "ciutadans": "Els ciutadans inversors han de ser conscients de la major volatilitat dels mercats i l'impacte dels factors geopolítics en les seves inversions. La diversificació i el consell professional són més importants mai en aquest context d'incertesa."
+  },
+  "mesEnllaCheckbox": {
+    "criteri": "Justícia distributiva",
+    "body": "L'informe revela una distribució desigual dels beneficis en els mercats financers, amb sectors tecnològics i financers acumulant guanys mentre altres patixen. Aquesta asimetria reflecteix una justícia distributiva qüestionable, on els beneficis no es reparteixen equitativament entre els diferents sectors de l'economia i els inversors."
+  },
+  "connexions": [
+    {
+      "type": "Contradicció",
+      "target": "Creixement sostenible",
+      "desc": "L'informe destaca el creixement dels fons d'inversió però no analitza com aquestes inversions contribueixen a objectius de sostenibilitat real, centrant-se només en aspectes financers."
+    },
+    {
+      "type": "Evolució",
+      "target": "Regulació de criptoactius",
+      "desc": "L'informe mostra l'evolució cap a una major regulació dels criptoactius amb l'aplicació de MiCA, que està canviant el panorama del sector financer."
+    }
+  ],
+  "accions": [
+    {
+      "num": "01",
+      "title": "Millorar la transparència ASG",
+      "desc": "Desenvolupar un marc més detallat per a la comunicació de dades ASG, incloent-hi cobertura de l'Scope 3 i verificació externa.",
+      "effort": "Mitjà",
+      "impact": "Alt"
+    },
+    {
+      "num": "02",
+      "title": "Diversificar les inversions",
+      "desc": "Promoure la diversificació de les inversions per reduir la dependència de sectors específics i mitigar riscos geopolítics.",
+      "effort": "Baix",
+      "impact": "Mitjà"
+    },
+    {
+      "num": "03",
+      "title": "Monitoritzar la volatilitat",
+      "desc": "Establir un sistema de monitorització més estricte de la volatilitat en mercats derivats i de divises.",
+      "effort": "Mitjà",
+      "impact": "Alt"
+    },
+    {
+      "num": "04",
+      "title": "Formació en ASG",
+      "desc": "Implementar programes de formació específics per a professionals financers en anàlisi i gestió de factors ASG.",
+      "effort": "Mitjà",
+      "impact": "Mitjà"
+    },
+    {
+      "num": "05",
+      "title": "Anàlisi sectorial",
+      "desc": "Desenvolupar anàlisis més detallades de l'impacte ASG per sector per identificar oportunitats i riscos específics.",
+      "effort": "Alt",
+      "impact": "Alt"
+    }
+  ],
+  "crossRefs": [
+    {
+      "framework": "CSRD",
+      "criterion": "Informació no financiera",
+      "impact": "L'informe no compleix plenament amb els requisits de detall de la CSRD sobre informació ASG."
+    },
+    {
+      "framework": "MiCA",
+      "criterion": "Regulació de criptoactius",
+      "impact": "L'informe reflecteix l'impacte inicial de la regulació MiCA en el mercat espanyol."
+    },
+    {
+      "framework": "SFDR",
+      "criterion": "Classificació de productes financers",
+      "impact": "L'informe no analitza adequadament com els productes financers es classifiquen sota el SFDR."
+    }
+  ]
+};
+
+const cnmvBoletin_es: ReportBlock = {
+  "semafor": {
+    "grade": "C",
+    "gradeLabel": "Rendiment ESG limitat",
+    "indicators": [
+      {
+        "name": "Cobertura Scope 3",
+        "status": "vermell",
+        "label": "No tractada",
+        "note": "L'informe no aborda les emissions de scope 3 ni els impactes externs de les inversions."
+      },
+      {
+        "name": "Termes temporals",
+        "status": "groc",
+        "label": "Esmentada però no detallada",
+        "note": "S'esmenten objectius de sostenibilitat però sense horitzons temporals específics."
+      },
+      {
+        "name": "Fonts independents",
+        "status": "groc",
+        "label": "Parcial",
+        "note": "Algunes dades són de fonts pròpies de la CNMV, sense verificació externa."
+      },
+      {
+        "name": "Granularitat",
+        "status": "groc",
+        "label": "General",
+        "note": "L'informe ofereix una visió general dels mercats sense desglossar dades ESG detallades."
+      },
+      {
+        "name": "Verificació externa",
+        "status": "vermell",
+        "label": "Absent",
+        "note": "No hi ha cap menció a verificacions externes de les dades ESG presentades."
+      }
+    ]
+  },
+  "dadesClau": [
+    {
+      "value": "474.000 milions d'euros",
+      "label": "Patrimó dels fons d'inversió",
+      "page": "17"
+    },
+    {
+      "value": "3,3%",
+      "label": "Creixement del patrimó dels fons",
+      "page": "17"
+    },
+    {
+      "value": "40%",
+      "label": "Participació de les IIC estrangeres",
+      "page": "17"
+    },
+    {
+      "value": "22,8%",
+      "label": "Increment del patrimoni assessorat per EAF",
+      "page": "18"
+    },
+    {
+      "value": "0,25",
+      "label": "Indicador d'estrès dels mercats financers",
+      "page": "19"
+    }
+  ],
+  "resumExecutiu": "El Boletí de la CNMV de juny 2026 analitza l'evolució dels mercats financers durant el primer trimestre de 2026, marcada per l'inici del conflicte a l'Iran com a punt d'inflexió. Els mercats borsàters van experimentar caídes acusades i un repunt de la volatilitat, però es van recuperar progressivament de forma desigual, amb millors resultats als EUA i Japó. Els mercats de renda fixa van veure un increment generalitzat dels tipus d'interès, amb primes de risc moderades. A Espanya, l'impacte ha estat més limitat gràcies a la composició de l'Ibex 35, amb un major pes de companyies energètiques i financeres. Els fons d'inversió han continuat creixent, amb un patrimó de 474.000 milions d'euros. La regulació europea sobre criptoactives (MiCA) comença a tenir implicacions en l'estratègia de les entitats financeres.",
+  "implicacions": {
+    "empreses": "Les empreses han de gestionar l'augment de la volatilitat i la incertesa geopolítica, especialment les exposades a sectors energètics i industrials. La composició sectorial esdevé un factor clau per a la resiliència financera.",
+    "reguladors": "Els reguladors han de monitoritzar l'estrès sistèmic i la correlació entre actius, garantint el funcionament ordenat de les infraestructures financeres davant de xocs geopolítics.",
+    "ciutadans": "Els inversors individuals han de ser conscients de la major volatilitat i la necessitat de diversificar les inversions, considerant l'impacte diferencial dels sectors davant de conflictes globals."
+  },
+  "mesEnllaCheckbox": {
+    "criteri": "Justícia distributiva",
+    "body": "L'informe revela com els beneficis de la recuperació borsària s'han concentrat en sectors específics (tecnologia, energia, defensa) i regions (EUA, Japó), mentre que altres sectors i mercats més dependents de l'energia han patit més. Aquesta distribució desigual dels beneficis planteja qüestions sobre la justícia en l'accés als rendiments financers i l'equitat en l'impacte econòmic dels conflictes globals."
+  },
+  "connexions": [
+    {
+      "type": "Evolució",
+      "target": "Regulació de criptoactius",
+      "desc": "L'informe esmenta l'aplicació de MiCA com a nou marc regulador, indicant una evolució cap a una major supervisió dels actius digitals."
+    },
+    {
+      "type": "Contradicció",
+      "target": "Sostenibilitat del creixement financer",
+      "desc": "L'augment del patrimó dels fons d'inversió contrasta amb la falta d'anàlisi sobre l'impacte ESG real d'aquestes inversions, especialment en sectors com l'energia."
+    }
+  ],
+  "accions": [
+    {
+      "num": "01",
+      "title": "Desenvolupar informes ESG integrats",
+      "desc": "Incloure anàlisis detallades de l'impacte ESG en les inversions i els riscos associats als canvis climàtics i geopolítics.",
+      "effort": "Mitjà",
+      "impact": "Alt"
+    },
+    {
+      "num": "02",
+      "title": "Millorar la transparència en la gestió de riscos",
+      "desc": "Publicar indicadors més granulars sobre la gestió de riscos ESG i els mecanismes de mitigació implementats.",
+      "effort": "Baix",
+      "impact": "Mitjà"
+    },
+    {
+      "num": "03",
+      "title": "Establir objectius de sostenibilitat amb horitzons temporals",
+      "desc": "Definir objectius concrets i plazos per a la reducció de carboni i altres impactes ESG en les invicions.",
+      "effort": "Alt",
+      "impact": "Alt"
+    },
+    {
+      "num": "04",
+      "title": "Implementar verificacions externes",
+      "desc": "Sol·licitar verificacions independents de les dades ESG per garantir la seva fiabilitat i evitar el greenwashing.",
+      "effort": "Mitjà",
+      "impact": "Alt"
+    }
+  ],
+  "crossRefs": [
+    {
+      "framework": "CSRD",
+      "criterion": "Informació sobre sostenibilitat",
+      "impact": "L'informe no compleix amb els requisits de detall i verificació de la CSRD sobre informació de sostenibilitat."
+    },
+    {
+      "framework": "SFDR",
+      "criterion": "Classificació de productes financers",
+      "impact": "L'informe no ofereix una classificació adequada dels productes segons el seu impacte ambiental."
+    }
+  ]
+};
+
+// -----------------------------------------------------------------------------
+// cnmv-plan-actividades-2026 — Plan de Actividades 2026 - CNMV
+// -----------------------------------------------------------------------------
+
+const cnmvPlan_ca: ReportBlock = {
+  "semafor": {
+    "grade": "C",
+    "gradeLabel": "Millorable",
+    "indicators": [
+      {
+        "name": "Cobertura Scope 3",
+        "status": "vermell",
+        "label": "No tractat",
+        "note": "L'informe no menciona emissions de Scope 3 ni estratègies per a la seva reducció."
+      },
+      {
+        "name": "Termes temporals",
+        "status": "groc",
+        "label": "Esmentat",
+        "note": "S'esmenten objectius a llarg termini (2030) però sense compromisos específics i amb horitzons poc clars."
+      },
+      {
+        "name": "Fonts independents",
+        "status": "groc",
+        "label": "Parcial",
+        "note": "Algunes iniciatives inclouen col·laboracions però no hi ha un marc robust de verificació externa."
+      },
+      {
+        "name": "Granularitat",
+        "status": "verd",
+        "label": "Quantificat",
+        "note": "S'ofereixen dades específiques sobre mercats, inversions i iniciatives."
+      },
+      {
+        "name": "Verificació externa",
+        "status": "vermell",
+        "label": "No tractat",
+        "note": "No es descriuen mecanismes de verificació externa dels informes ESG."
+      }
+    ]
+  },
+  "dadesClau": [
+    {
+      "value": "60 iniciatives",
+      "label": "Nombre total d'iniciatives planificades per 2026",
+      "page": "15"
+    },
+    {
+      "value": "476.000 milions d'euros",
+      "label": "Patrimoni gestionat per IICs (màxim històric)",
+      "page": "6"
+    },
+    {
+      "value": "49%",
+      "label": "Revalorització de l'Ibex 35 (més alta entre grans índexs)",
+      "page": "6"
+    },
+    {
+      "value": "31%",
+      "label": "Increment en emissions de renta fixa",
+      "page": "6"
+    },
+    {
+      "value": "9",
+      "label": "Prioritats estratègiques definides a CNMV 2030",
+      "page": "14"
+    }
+  ],
+  "resumExecutiu": "El Plan de actividades 2026 de la CNMV presenta un marc estratègic centrat en tres àrees principals: protecció del inversor, impuls dels mercats de capitals i millora institucional. L'informe destaca un context de mercats financers amb rècords històrics, però també identifica riscos significatius com la volatilitat dels criptoactius, els desafiaments tecnològics i el greenwashing. Malgrat la menció de la sostenibilitat com a part de l'agenda normativa europea, l'informe mostra una aproximació superficial als criteris ESG, amb escassa referència a la materialitat dels factors ambientals i socials. Les iniciatives proposades se centren principalment en la supervisió tradicional i l'adaptació a noves tecnologies, però manquen d'una estratègia ESG integral i amb objectius ambiciosos de reducció d'emissions o impacte positiu en la societat.",
+  "implicacions": {
+    "empreses": "Les empreses cotitzades i entitats financeres hauran d'adaptar-se a noves normatives sobre sostenibilitat i transparencia, especialment en relació amb el greenwashing i la gestió de riscos tecnològics. La CNMV reforçarà la supervisió sobre l'ús d'intel·ligència artificial i la gestió de conflictes d'interessos en la distribució de productes.",
+    "reguladors": "Els reguladors hauran de coordinar-se per abordar els nous riscos dels mercats financers, especialment en l'àmbit dels criptoactius i la intel·ligència artificial. La participació en iniciatives europees com el Market Integration Package serà clau per garantir la coherència normativa.",
+    "ciutadans": "Els ciutadans es beneficiaran de noves mesures de protecció contra el frau financer i l'educació financèria, especialment en relació amb noves tecnologies i criptoactius. No obstant, l'informe no aborda de manera adequada la necessitat d'augmentar l'accés dels inversors minoristes als mercats de capitals amb productes sostenibles."
+  },
+  "mesEnllaCheckbox": {
+    "criteri": "Sostenibilitat absoluta",
+    "body": "L'informe es limita a esmentar la sostenibilitat com a part de l'agenda normativa europea, però no estableix objectius concrets per a la reducció d'emissions ni per a la promoció d'inversions verdes. L'aproximació és superficial i no reflecteix un compromís real amb la transició ecològica, centrant-se més en la regulació que en l'impacte positiu."
+  },
+  "connexions": [
+    {
+      "type": "Evolució",
+      "target": "CNMV 2030",
+      "desc": "Aquest plan d'activitats és la concretització de l'estratègia a llarg termini presentada el 2025, amb iniciatives específiques per a cada una de les 9 prioritats estratègiques."
+    },
+    {
+      "type": "Contradicció",
+      "target": "Protecció del inversor",
+      "desc": "Mentre l'informe destaca iniciatives per protegir els inversors contra el frau i el greenwashing, no estableix mesures específiques per garantir la qualitat de les recomanacions d'inversió basades en IA, que podrien augmentar els riscos per als inversors minoristes."
+    }
+  ],
+  "accions": [
+    {
+      "num": "01",
+      "title": "Desenvolupar guies específiques contra el frau en línia i criptofrau",
+      "desc": "Crear materials educatius per ajudar els ciutadans a identificar i protegir-se de noves formes de frau financer.",
+      "effort": "Mitjà",
+      "impact": "Alt"
+    },
+    {
+      "num": "02",
+      "title": "Implementar eines d'IA per supervisar activitats de finfluencers",
+      "desc": "Utilitzar intel·ligència artificial per detectar recomanacions d'inversió enganyoses a xarxes socials.",
+      "effort": "Alt",
+      "impact": "Alt"
+    },
+    {
+      "num": "03",
+      "title": "Revisar el Codi de govern de les societats cotitzades",
+      "desc": "Actualitzar el marc de governança per adaptar-lo a noves realitats i millorar la protecció dels inversors.",
+      "effort": "Mitjà",
+      "impact": "Mitjà"
+    },
+    {
+      "num": "04",
+      "title": "Crear un punt d'accés únic contra el frau financer",
+      "desc": "Desenvolupar una plataforma centralitzada d'informació i denúncies per a víctimes de frau financer.",
+      "effort": "Baix",
+      "impact": "Alt"
+    },
+    {
+      "num": "05",
+      "title": "Estudiar models d'IA per a l'assessorament d'inversions",
+      "desc": "Analitzar l'eficàcia de diferents eines d'intel·ligència artificial en la prestació de serveis d'assessorament financer.",
+      "effort": "Alt",
+      "impact": "Mitjà"
+    }
+  ],
+  "crossRefs": [
+    {
+      "framework": "CSRD",
+      "criterion": "Transparència en informació de sostenibilitat",
+      "impact": "L'informe no reflecteix adequadament els requisits de la CSRD sobre divulgació d'informació ESG."
+    },
+    {
+      "framework": "MiCA",
+      "criterion": "Regulació de criptoactius",
+      "impact": "La CNMV es prepara per supervisar l'aplicació de la regulació europea de criptoactius, però sense detallar les seves estratègies específiques."
+    },
+    {
+      "framework": "Directiva SFDR",
+      "criterion": "Classificació de productes financers sostenibles",
+      "impact": "L'informe esmenta la revisió del SFDR però no estableix com s'implementaran els canvis a la supervisió espanyola."
+    }
+  ]
+};
+
+const cnmvPlan_es: ReportBlock = {
+  "semafor": {
+    "grade": "C",
+    "gradeLabel": "Rendiment acceptable amb àrees de millora",
+    "indicators": [
+      {
+        "name": "Cobertura Scope 3",
+        "status": "vermell",
+        "label": "No abordat",
+        "note": "L'informe no menciona emissions de Scope 3 ni factors de carboni relacionats amb les inversions."
+      },
+      {
+        "name": "Termes temporals",
+        "status": "groc",
+        "label": "Esmentat però no detallat",
+        "note": "S'esmenten objectius a 2030 però no s'estableixen terminis específics per a les accions climàtiques."
+      },
+      {
+        "name": "Fonts independents",
+        "status": "groc",
+        "label": "Algunes fonts",
+        "note": "Es fan referències a estudis i dades externes però no a verificació independent de dades ESG."
+      },
+      {
+        "name": "Granularitat",
+        "status": "groc",
+        "label": "General",
+        "note": "L'informe aborda conceptes ESG de manera general sense desglossar dades específiques."
+      },
+      {
+        "name": "Verificació externa",
+        "status": "vermell",
+        "label": "No present",
+        "note": "No hi ha cap menció a verificació externa de les dades o informes ESG."
+      }
+    ]
+  },
+  "dadesClau": [
+    {
+      "value": "60 iniciatives",
+      "label": "Total d'iniciatives planificades per 2026",
+      "page": "15"
+    },
+    {
+      "value": "9 prioritats estratègiques",
+      "label": "Pilars de l'estratègia CNMV 2030",
+      "page": "14"
+    },
+    {
+      "value": "+49%",
+      "label": "Revalorització de l'Ibex 35 el 2025",
+      "page": "6"
+    },
+    {
+      "value": "476.000M€",
+      "label": "Patrimoni gestionat per IICs a finals de 2025",
+      "page": "6"
+    },
+    {
+      "value": "4 billons$",
+      "label": "Capitalització màxima del mercat de criptoactius",
+      "page": "6"
+    }
+  ],
+  "resumExecutiu": "El Plan de actividades 2026 de la CNMV presenta una estratègia centrada en tres àrees principals: protecció de l'inversor, impuls dels mercats de capitals i millora institucional. L'informe destaca un context de mercats financers resilients amb rècords en l'Ibex 35 (+49%) i en els actius en gestió de les IICs (476.000M€). La CNMV es compromet a combatre el frau financer, especialment en línia i mitjançant xarxes socials, i a impulsar l'accés de les pimes als mercats de capitals. S'incorpora l'ús de la intel·ligència artificial per a la supervisió i es reforça la ciberseguridad. Tot i això, l'informe mostra limitacions significatives en l'abordatge de factors ESG, amb una cobertura insuficient de qüestions mediambientals i socials, reflectint una aproximació que prioritza l'estabilitat financiera sobre la sostenibilitat integral.",
+  "implicacions": {
+    "empreses": "Les empreses cotitzades hauran d'adaptar-se a noves normatives sobre transparència i governança, especialment en l'àmbit digital. La CNMV impulsarà la revisió del Codi de governança i exigirà major transparència en la comunicació de productes sostenibles, amb especial atenció al greenwashing. Les pimes trobaran suport per accedir a finançació de mercats, però també hauran de complir amb noves exigències de divulgació.",
+    "reguladors": "Els reguladors hauran de coordinar-se per abordar nous reptes com els criptoactives i l'ús de la intel·ligència financera. La CNMV participarà en iniciatives europees com l'acció supervisora comuna d'ESMA i implementarà noves tecnologies per a la detecció de frau. La regulació haurà d'evolucionar per protegir els inversors davant noves formes de comercialització digital.",
+    "ciutadans": "Els ciutadans es beneficiaran de majors mesures de protecció contra el frau financer, especialment en línia i relacionat amb criptoactius. S'implementarà un punt d'accés únic per a informació sobre frau i s'augmentarà l'educació financiera, especialment per als joves. Tanmateix, els ciutadans hauran de ser més crítics amb les inversions presentsades com sostenibles, ja que l'informe no aborda adequadament el greenwashing."
+  },
+  "mesEnllaCheckbox": {
+    "criteri": "Justícia distributiva",
+    "body": "L'informe revela una preocupació per la protecció de l'inversor minorista davant noves formes de frau, però no aborda com les desigualtats econòmiques poden afectar l'accés a la informació financiera. La CNMV centra els seus esforços en la protecció individual sense considerar com les estructures del mercat poden perpetuar desavantatges per als sectors més vulnerables. L'educació financiera es presenta com una solució individualitzada sense qüestionar les causes estructurals de la vulnerabilitat financera."
+  },
+  "connexions": [
+    {
+      "type": "Contradicció",
+      "target": "Creixement del mercat de criptoactius",
+      "desc": "L'informe destaca el creixement del mercat de criptoactius fins a 4 billons de dòlars, mentre que alhora anuncia mesures per combatre el criptofrau, mostrant una tensió entre l'acceptació d'aquests actius i els riscos associats."
+    },
+    {
+      "type": "Evolució",
+      "target": "Ús de la intel·ligència artificial",
+      "desc": "La CNMV evoluciona cap a l'adopció de la intel·ligència artificial tant per a la supervisió de finfluencers com per a l'automatització de controls, reflectint una adaptació als nous tecnologies per millorar la supervisió financiera."
+    },
+    {
+      "type": "Complement",
+      "target": "Protecció del inversor",
+      "desc": "Les iniciatives de protecció del inversor complementen l'objectiu d'impulsar els mercats de capitals, ja que una major protecció pot fomentar la confiança i la participació d'inversors minoristes."
+    }
+  ],
+  "accions": [
+    {
+      "num": "01",
+      "title": "Guia sobre frau on line i criptofrau",
+      "desc": "Desenvolupar guies específiques per ajudar el públic a identificar comportaments sospitosos i protegir-se de estafes relacionades amb criptoactius i intel·ligència artificial.",
+      "effort": "Mitjà",
+      "impact": "Alt"
+    },
+    {
+      "num": "02",
+      "title": "Punt d'accés únic contra el frau",
+      "desc": "Crear una web de referència amb informació i orientació per a ciutadans sobre com identificar i denunciar estafes financeres.",
+      "effort": "Baix",
+      "impact": "Alt"
+    },
+    {
+      "num": "03",
+      "title": "Anàlisi de models d'IA per a assessorament",
+      "desc": "Realitzar un estudi empíric per avaluar el potencial de models d'IA en la prestació d'assessorament d'inversions.",
+      "effort": "Alt",
+      "impact": "Mitjà"
+    },
+    {
+      "num": "04",
+      "title": "Reforç de supervisió d'entitats de capital risc",
+      "desc": "Implementar nous controls automàtics per millorar la supervisió de les entitats de capital risc, especialment en la detecció de conflictes d'interessos.",
+      "effort": "Mitjà",
+      "impact": "Mitjà"
+    },
+    {
+      "num": "05",
+      "title": "Document de bones pràctiques sobre IA",
+      "desc": "Elaborar un document de bones pràctiques per a entitats supervisades sobre l'ús adequat de la intel·ligència artificial.",
+      "effort": "Baix",
+      "impact": "Mitjà"
+    }
+  ],
+  "crossRefs": [
+    {
+      "framework": "CSRD",
+      "criterion": "Transparència en informació de sostenibilitat",
+      "impact": "L'informe no aborda adequadament els requisits de la CSRD, centrant-se en aspectes financers sense detallar les obligacions de divulgació ESG."
+    },
+    {
+      "framework": "MiCA",
+      "criterion": "Regulació de criptoactius",
+      "impact": "La CNMV menciona la regulació MiCA com un context important però no detalla com implementarà les seves provisions en la supervisió espanyola."
+    },
+    {
+      "framework": "Retail Investment Strategy",
+      "criterion": "Protecció de l'inversor minorista",
+      "impact": "Les iniciatives de protecció de l'inversor alineades parcialment amb els objectius de la RIS, especialment en l'educació financiera i la simplificació de l'experiència d'inversió."
+    }
+  ]
+};
+
+// -----------------------------------------------------------------------------
+// eiopa-sustainable-finance-2026 — Sustainable finance 2026: la resiliència que no arriba
+// -----------------------------------------------------------------------------
+
+const eiopa_ca: ReportBlock = {
+  "semafor": {
+    "grade": "C",
+    "gradeLabel": "Atenció: bretxa rellevant encara oberta",
+    "indicators": [
+      {
+        "name": "Pèrdues per catàstrofes naturals",
+        "status": "verd",
+        "label": "Quantificat",
+        "note": "EIOPA cita €274 mil milions en pèrdues globals i €124 mil milions assegurades el 2024."
+      },
+      {
+        "name": "Inversions alineades amb la Taxonomia",
+        "status": "verd",
+        "label": "Quantificat",
+        "note": "4,5% de bons corporatius i renda variable directes; 10,7% en exposicions no financeres, des de 5,7% el 2022."
+      },
+      {
+        "name": "Bretxa de protecció d'assegurances",
+        "status": "groc",
+        "label": "Esmentat",
+        "note": "Es descriu com a persistent i creixent, però sense xifra específica al text."
+      },
+      {
+        "name": "Dades i models de risc",
+        "status": "groc",
+        "label": "Esmentat",
+        "note": "S'admeten limitacions de dades i modelització, sense mètriques quantitatives."
+      },
+      {
+        "name": "Cobertura Scope 3",
+        "status": "vermell",
+        "label": "Ignorat",
+        "note": "El text no esmenta emissions de cadena de valor ni abast 3."
+      }
+    ]
+  },
+  "dadesClau": [
+    {
+      "value": "€274 mil milions",
+      "label": "Pèrdues econòmiques globals per catàstrofes naturals el 2024",
+      "page": "p. 1"
+    },
+    {
+      "value": "€124 mil milions",
+      "label": "Part assegurada de les pèrdues per catàstrofes naturals el 2024",
+      "page": "p. 1"
+    },
+    {
+      "value": "4,5%",
+      "label": "Inversions directes en bons corporatius i renda variable d'asseguradores de l'EEE alineades amb la Taxonomia",
+      "page": "p. 1"
+    },
+    {
+      "value": "10,7%",
+      "label": "Inversions no financeres alineades amb la Taxonomia, pujant des de 5,7% el 2022",
+      "page": "p. 1"
+    },
+    {
+      "value": "20,5%",
+      "label": "Inversions directes elegibles per a la Taxonomia; 48,6% en exposicions no financeres",
+      "page": "p. 1"
+    }
+  ],
+  "resumExecutiu": "EIOPA situa les finances sostenibles com a prioritat de supervisió passada, present i futura. L’article de la revista Eurofi de març de 2026 adverteix que les pèrdues econòmiques globals per catàstrofes naturals augmenten ràpidament: 274 mil milions d’euros el 2024, amb 124 mil milions assegurades. Europa s’escalfa més de pressa i pateix una bretxa de protecció d’assegurances persistent i creixent, que erosiona la resiliència econòmica i l’estabilitat financera. Les asseguradores i fons de pensions tenen un paper clau com a inversors institucionals de llarg termini: canalitzen capital cap a projectes sostenibles i poden exercir una administració responsable. Les dades recollides per EIOPA mostren una millora modesta de la inversió verda: el 4,5% de les inversions directes en bons corporatius i renda variable de les asseguradores de l’EEE estaven alineades amb la Taxonomia; en exposicions no financeres, la quota puja al 10,7%, des del 5,7% el 2022. Un 20,5% addicional era elegible. EIOPA dóna suport a la simplificació i reducció de càrregues del marc de divulgació, però no a costa de perdre informació clau de sostenibilitat per a la valoració de riscos. Cal que els requisits ESRS siguin proporcionals, coherents amb Solvència II i interoperables amb estàndards internacionals. Les llacunes de dades i models limiten la supervisió; millorar l’accessibilitat, la consistència i la qualitat de la informació és un primer pas crucial.",
+  "implicacions": {
+    "empreses": "Les asseguradores i fons de pensions han d’integrar els riscos de sostenibilitat en models de negoci i solvència. La pressió reguladora i la bretxa de protecció fan que la millora de la qualitat de dades sobre catàstrofes naturals i inversions alineades amb la Taxonomia esdevingui condició per a una supervisió eficaç i per canalitzar capital a llarg termini sense perdre resiliència.",
+    "reguladors": "Els supervisors europeus han de garantir que la simplificació del marc de divulgació no buidi la informació clau. Cal assegurar proporcionalitat i coherència entre ESRS, Solvència II i estàndards internacionals, i impulsar la interoperabilitat. També cal tancar les llacunes de dades i models per fer una avaluació prospectiva dels riscos, més enllà de la dependència de dades històriques.",
+    "ciutadans": "Una protecció insuficient contra catàstrofes naturals afecta la continuïtat de negocis, les cadenes de subministrament i l’estabilitat financera. Millorar la resiliència climàtica i reduir la bretxa d’assegurança protegeix consumidors i economies locals davant xocs creixents, i assegura que la transició sostenible es tradueixi en menys disrupcions i més continuïtat."
+  },
+  "mesEnllaCheckbox": {
+    "criteri": "Sostenibilitat i justícia",
+    "body": "Més enllà de la mera divulgació, la resiliència davant catàstrofes naturals planteja un criteri de justícia: qui queda desprotegit quan la bretxa d’assegurança creix? La simplificació normativa és legítima, però no pot externalitzar els riscos sobre consumidors i cadenes de subministrament. La sostenibilitat exigeix dades fiables, models prospectius i una distribució equitativa de la protecció, no només quotes d’inversió verda."
+  },
+  "connexions": [
+    {
+      "type": "Evolució",
+      "target": "Taxonomia UE",
+      "desc": "La quota d’inversions no financeres alineades amb la Taxonomia passa del 5,7% el 2022 al 10,7% el 2024, mostrant una adopció gradual."
+    },
+    {
+      "type": "Complement",
+      "target": "Solvència II",
+      "desc": "EIOPA defensa que els requisits ESRS siguin coherents amb Solvència II, ja que la informació de sostenibilitat alimenta la valoració prudencial de riscos."
+    },
+    {
+      "type": "Contradicció",
+      "target": "Simplificació del marc de divulgació",
+      "desc": "Es reconeix la necessitat de reduir càrregues, però s’adverteix que la simplificació no ha de reduir la informació clau de sostenibilitat."
+    }
+  ],
+  "accions": [
+    {
+      "num": "01",
+      "title": "Millorar la qualitat de les dades",
+      "desc": "Reforçar l’accessibilitat, consistència i qualitat de la informació sobre catàstrofes naturals i riscos climàtics per fonamentar la supervisió.",
+      "effort": "Alt",
+      "impact": "Alt"
+    },
+    {
+      "num": "02",
+      "title": "Desenvolupar models prospectius",
+      "desc": "Superar la dependència de dades històriques amb models que millorin la precisió de les avaluacions de risc futures.",
+      "effort": "Alt",
+      "impact": "Alt"
+    },
+    {
+      "num": "03",
+      "title": "Reforçar el paper inversor sostenible",
+      "desc": "Aprofitar la posició d’asseguradores i fons de pensions com a inversors institucionals de llarg termini per canalitzar capital cap a projectes sostenibles.",
+      "effort": "Mitjà",
+      "impact": "Mitjà"
+    },
+    {
+      "num": "04",
+      "title": "Garantir coherència normativa",
+      "desc": "Assegurar que els requisits ESRS siguin proporcionals, coherents amb Solvència II i interoperables amb estàndards internacionals.",
+      "effort": "Baix",
+      "impact": "Alt"
+    },
+    {
+      "num": "05",
+      "title": "Tancar la bretxa de protecció",
+      "desc": "Reduir la bretxa d’assegurança contra catàstrofes naturals per reforçar la resiliència econòmica i l’estabilitat financera.",
+      "effort": "Alt",
+      "impact": "Alt"
+    }
+  ],
+  "crossRefs": [
+    {
+      "framework": "csrd-esrs",
+      "criterion": "Requisits ESRS proporcionals i coherents amb Solvència II; interoperabilitat amb estàndards internacionals.",
+      "impact": "Assegura informació clau per a la valoració prudencial de riscos sense càrregues desproporcionades."
+    },
+    {
+      "framework": "taxonomia-ue",
+      "criterion": "Inversions alineades i elegibles amb la Taxonomia en carteres d’asseguradores.",
+      "impact": "Permet mesurar la canalització de capital sostenible i monitorar la transició."
+    },
+    {
+      "framework": "sfdr",
+      "criterion": "Reforma del marc de divulgació de finances sostenibles.",
+      "impact": "La simplificació no ha de buidar la informació de sostenibilitat per a inversors i supervisors."
+    }
+  ]
+};
+
+const eiopa_es: ReportBlock = {
+  "semafor": {
+    "grade": "B",
+    "gradeLabel": "Cobertura cuantitativa mayoritaria con un aspecto mencionado",
+    "indicators": [
+      {
+        "name": "Pérdidas globales por catástrofes naturales",
+        "status": "verd",
+        "label": "Cuantificado",
+        "note": "El texto cifra 274 000 M€ en pérdidas globales en 2024."
+      },
+      {
+        "name": "Pérdidas aseguradas por catástrofes naturales",
+        "status": "verd",
+        "label": "Cuantificado",
+        "note": "El texto cifra 124 000 M€ asegurados en 2024."
+      },
+      {
+        "name": "Inversiones directas alineadas con la Taxonomía",
+        "status": "verd",
+        "label": "Cuantificado",
+        "note": "El 4,5 % de las inversiones directas en bonos y acciones corporativas estaba alineado con la Taxonomía."
+      },
+      {
+        "name": "Exposiciones no financieras alineadas con la Taxonomía",
+        "status": "verd",
+        "label": "Cuantificado",
+        "note": "El 10,7 % de las exposiciones no financieras estaba alineado, frente al 5,7 % en 2022."
+      },
+      {
+        "name": "Brecha de protección aseguradora",
+        "status": "groc",
+        "label": "Mencionado",
+        "note": "Se describe como persistente y creciente, sin cuantificación en el texto."
+      }
+    ]
+  },
+  "dadesClau": [
+    {
+      "value": "€274 mil millones",
+      "label": "Pérdidas económicas globales por catástrofes naturales en 2024",
+      "page": "p. 1"
+    },
+    {
+      "value": "€124 mil millones",
+      "label": "Pérdidas aseguradas por catástrofes naturales en 2024",
+      "page": "p. 1"
+    },
+    {
+      "value": "4,5 %",
+      "label": "Inversiones directas en bonos y acciones corporativas alineadas con la Taxonomía",
+      "page": "p. 1"
+    },
+    {
+      "value": "10,7 %",
+      "label": "Exposiciones no financieras alineadas con la Taxonomía, frente al 5,7 % en 2022",
+      "page": "p. 1"
+    },
+    {
+      "value": "20,5 % y 48,6 %",
+      "label": "Inversiones directas elegibles y exposiciones no financieras elegibles para la Taxonomía",
+      "page": "p. 1"
+    }
+  ],
+  "resumExecutiu": "EIOPA aborda las finanzas sostenibles como prioridad supervisora presente y futura. El artículo señala que las pérdidas económicas globales por catástrofes naturales crecen rápidamente: en 2024 alcanzaron 274 000 millones de euros, de los cuales 124 000 millones estaban asegurados. Europa sufre un calentamiento acelerado y una brecha de protección aseguradora persistente y cada vez mayor, lo que debilita la resiliencia económica y la estabilidad financiera. Los modelos de negocio y la solvencia de (re)aseguradoras y fondos de pensiones afrontan amenazas crecientes. A la vez, el sector puede apoyar la transición mediante inversión institucional a largo plazo y el ejercicio de su papel como administrador. Con datos recogidos en el EEE, EIOPA muestra que en 2024 la proporción de inversiones verdes en carteras aseguradoras mejoró ligeramente: el 4,5 % de las inversiones directas en bonos y acciones corporativas estaba alineado con la Taxonomía, mientras que en exposiciones no financieras la alineación fue del 10,7 % frente al 5,7 % en 2022, y la elegibilidad directa del 20,5 % y del 48,6 % en no financieras. Sobre la reforma del marco de divulgación, EIOPA apoya la simplificación y reducción de cargas, pero advierte que no debe sacrificarse información clave de sostenibilidad. Pide que los requisitos de reporte ESRS sean proporcionados al tamaño y naturaleza de las empresas y coherentes con Solvencia II y con estándares internacionales. Concluye que la resiliencia ante catástrofes naturales es fuente de fortaleza económica y competitividad, y que la UE está insuficientemente protegida. Quedan limitaciones de datos y modelos; por ello, EIOPA continuará integrando los riesgos de sostenibilidad en su labor supervisora, regulatoria y de seguimiento de riesgos.",
+  "implicacions": {
+    "empreses": "Para (re)aseguradoras y fondos de pensiones, el texto implica integrar los riesgos climáticos y de catástrofes naturales en modelos de negocio y solvencia. Deben aprovechar su posición como inversores institucionales de largo plazo para canalizar capital hacia proyectos sostenibles y ejercer influencia mediante su papel de administración. También necesitan información de sostenibilidad fiable y proporcionada para evaluar correctamente los riesgos y evitar cargas desproporcionadas. La mejora de la alineación con la Taxonomía en carteras, del 5,7 % al 10,7 % en exposiciones no financieras, sugiere un avance, pero persiste la brecha de protección aseguradora, por lo que las entidades deben reforzar la continuidad de negocio y la resiliencia de las cadenas de suministro.",
+    "reguladors": "EIOPA defiende una regulación más simple y rápida, pero sin perder datos esenciales de sostenibilidad. Los supervisores deben garantizar que los requisitos ESRS sean proporcionados al tamaño y naturaleza de las empresas, y coherentes con Solvencia II y con estándares internacionales. Han de mejorar la accesibilidad, consistencia y calidad de la información sobre riesgos de catástrofes naturales, y fomentar modelos prospectivos que superen la dependencia de datos históricos. La prioridad supervisora debe integrarse en los mandatos prudencial, de protección del consumidor y de estabilidad financiera. También deben abordar la brecha de protección aseguradora como elemento que mina la resiliencia y la competitividad europea.",
+    "ciutadans": "El artículo subraya que la insuficiente protección frente a catástrofes naturales amenaza la economía y el modo de vida. Para la ciudadanía, la persistente y creciente brecha de protección aseguradora implica mayor exposición financiera ante fenómenos climáticos, con riesgos para la continuidad de empresas y cadenas de suministro. Una supervisión centrada en la sostenibilidad y en la protección del consumidor puede traducirse en productos más resilientes y en mejor gestión de riesgos. El impulso a inversiones sostenibles y a la divulgación proporcionada debería permitir decisiones más informadas. En última instancia, una transición ordenada y una mayor resiliencia ante catástrofes protegen la estabilidad financiera y el bienestar cotidiano."
+  },
+  "mesEnllaCheckbox": {
+    "criteri": "sostenibilidad y justicia intergeneracional",
+    "body": "El artículo invita a superar un enfoque de cumplimiento formal: no basta con etiquetar inversiones como verdes o simplificar reportes si se pierde la capacidad de evaluar riesgos. El criterio ético de sostenibilidad exige datos accesibles, coherentes y prospectivos para proteger la economía real y a las generaciones futuras. La justicia intergeneracional refuerza la necesidad de cerrar la brecha de protección aseguradora: las pérdidas no aseguradas recaen sobre hogares, empresas y administraciones, ampliando desigualdades ante eventos climáticos. El papel de administración de aseguradoras y fondos de pensiones permite influir para que las empresas actúen responsablemente y apoyen la creación de valor sostenible. La simplificación regulatoria no debería debilitar la transparencia; debe combinar proporcionalidad con información clave, de modo que el deber fiduciario y la rendición de cuentas no dependan de marcar casillas, sino de integrar la sostenibilidad en la gestión real del riesgo."
+  },
+  "connexions": [
+    {
+      "type": "Complement",
+      "target": "Declaración pública de EIOPA de abril de 2025 'Bolder, Simpler, Faster'",
+      "desc": "El artículo reafirma el apoyo a la simplificación y reducción de cargas regulatorias, complementando la visión de EIOPA para una mejor regulación y supervisión."
+    },
+    {
+      "type": "Evolució",
+      "target": "Alineación con la Taxonomía en exposiciones no financieras 2022-2024",
+      "desc": "La proporción alineada en exposiciones no financieras sube del 5,7 % en 2022 al 10,7 % en 2024, reflejando una evolución positiva aunque moderada."
+    },
+    {
+      "type": "Contradicció",
+      "target": "Brecha de protección aseguradora frente a pérdidas crecientes",
+      "desc": "Mientras las pérdidas globales y aseguradas por catástrofes aumentan, la brecha de protección se mantiene y se amplía, evidenciando una contradicción entre exposición y cobertura."
+    }
+  ],
+  "accions": [
+    {
+      "num": "01",
+      "title": "Mejorar calidad y accesibilidad de datos sobre riesgos de catástrofes naturales",
+      "desc": "Poner en marcha iniciativas supervisoras para aumentar la accesibilidad, consistencia y calidad de la información sobre exposiciones y pérdidas.",
+      "effort": "Alt",
+      "impact": "Alt"
+    },
+    {
+      "num": "02",
+      "title": "Desarrollar modelos prospectivos de evaluación de riesgos",
+      "desc": "Impulsar modelos forward-looking que reduzcan la dependencia de datos históricos y mejoren la precisión de las evaluaciones.",
+      "effort": "Alt",
+      "impact": "Alt"
+    },
+    {
+      "num": "03",
+      "title": "Asegurar proporcionalidad en los requisitos ESRS",
+      "desc": "Aplicar requisitos de reporte proporcionados al tamaño y naturaleza de las empresas, coherentes con Solvencia II y con estándares internacionales.",
+      "effort": "Mitjà",
+      "impact": "Mitjà"
+    },
+    {
+      "num": "04",
+      "title": "Fomentar la alineación de carteras con la Taxonomía",
+      "desc": "Continuar supervisando y divulgando la cuota de inversiones alineadas y elegibles para orientar capital hacia actividades sostenibles.",
+      "effort": "Mitjà",
+      "impact": "Mitjà"
+    },
+    {
+      "num": "05",
+      "title": "Abordar la brecha de protección aseguradora",
+      "desc": "Integrar la reducción de la brecha de protección contra catástrofes naturales en la actividad supervisora y regulatoria para reforzar la resiliencia.",
+      "effort": "Alt",
+      "impact": "Alt"
+    }
+  ],
+  "crossRefs": [
+    {
+      "framework": "csrd-esrs",
+      "criterion": "Proporcionalidad y coherencia de los requisitos de reporte de sostenibilidad con el tamaño y naturaleza de las empresas, y con Solvencia II y estándares internacionales.",
+      "impact": "Condiciona la disponibilidad de información clave para que aseguradoras y fondos de pensiones evalúen los riesgos de sostenibilidad sin cargas desproporcionadas."
+    },
+    {
+      "framework": "taxonomia-ue",
+      "criterion": "Medición de inversiones alineadas y elegibles en carteras de aseguradoras del EEE.",
+      "impact": "Permite cuantificar la orientación de capital sostenible: 4,5 % directo alineado, 10,7 % no financiero alineado, 20,5 % directo elegible y 48,6 % no financiero elegible."
+    },
+    {
+      "framework": "sfdr",
+      "criterion": "Simplificación del marco de divulgación de finanzas sostenibles sin sacrificar información clave.",
+      "impact": "Afecta la transparencia, la reducción de cargas y la capacidad de supervisión y evaluación de riesgos de sostenibilidad."
+    }
+  ]
+};
+
+// -----------------------------------------------------------------------------
 // Mapa central de continguts per slug i idioma
 // -----------------------------------------------------------------------------
 
@@ -2338,7 +3205,9 @@ const contentMap: Record<string, { ca: ReportBlock; es: ReportBlock }> = {
   "csddd-omnibus-març-2026": { ca: csddd_ca, es: csddd_es },
   "iea-global-energy-review-2026": { ca: iea_ca, es: iea_es },
   "eu-taxonomy-delegated-act-2026": { ca: euTaxonomy_ca, es: euTaxonomy_es },
-  "europe-sustainable-development-2026": { ca: europeSDR_ca, es: europeSDR_es },
+  "cnmv-boletin-junio-2026": { ca: cnmvBoletin_ca, es: cnmvBoletin_es },
+  "cnmv-plan-actividades-2026": { ca: cnmvPlan_ca, es: cnmvPlan_es },
+  "eiopa-sustainable-finance-2026": { ca: eiopa_ca, es: eiopa_es },
 };
 
 // -----------------------------------------------------------------------------

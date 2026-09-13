@@ -108,6 +108,8 @@ export interface PagesResponse {
 export const adminApi = {
   reports: {
     list: () => authedFetch<{ reports: AdminInforme[] }>("/api/admin/reports"),
+    get: (slug: string) =>
+      authedFetch<{ report: AdminInforme }>(`/api/admin/reports/${slug}`),
     create: (report: Partial<AdminInforme>) =>
       authedFetch<{ report: AdminInforme }>("/api/admin/reports", {
         method: "POST",

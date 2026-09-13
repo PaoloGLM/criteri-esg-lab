@@ -1,0 +1,353 @@
+{
+  "slug": "eea-clean-energy-jobs-2026",
+  "title": "Clean energy jobs 2026",
+  "institution": "European Environment Agency",
+  "filename_original": "2026-09-09_eea-clean-energy-jobs-2026.pdf",
+  "generated_at": "2026-09-11T20:07:20",
+  "content_ca": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Cobertura sòlida amb dades quantificades però amb llacunes en impactes comunitaris i migratoris",
+      "indicators": [
+        {
+          "name": "Ocupació sectorial neta",
+          "status": "verd",
+          "label": "951.000 llocs directes en 2023",
+          "note": "Dades desagregades per tecnologia, segment de cadena de valor i estat membre amb sèries 2010-2023"
+        },
+        {
+          "name": "Bretxa de gènere",
+          "status": "verd",
+          "label": "14-26% presència femenina",
+          "note": "Quantificat per tecnologia i segment; només 3% de dones supervisores en construcció"
+        },
+        {
+          "name": "Manca de competències tècniques",
+          "status": "verd",
+          "label": "21 EE. MM. reporten dèficit d'electricistes",
+          "note": "Dades EURES 2024 per a 15 ocupacions clau; manca d'intensitat del dèficit"
+        },
+        {
+          "name": "Qualitat laboral i salaris",
+          "status": "verd",
+          "label": "EUR 27.100-44.600 segons tecnologia",
+          "note": "Salaris per segment; tipus de contracte; exposició a riscos físics via EWCS 2024"
+        },
+        {
+          "name": "Impacte comunitari en salut",
+          "status": "groc",
+          "label": "Riscos químics en bateries esmentats",
+          "note": "Casos Hongria i Suècia documentats però sense dades sistemàtiques; llacuna reguladora en liti"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "951.000",
+        "label": "Llocs de treball directes en clean-tech UE (2023)",
+        "page": "53"
+      },
+      {
+        "value": "138.000 milions €",
+        "label": "Valor afegit brut del sector clean-tech (2023)",
+        "page": "42"
+      },
+      {
+        "value": "14%",
+        "label": "Presència femenina en bombes de calor, la més baixa",
+        "page": "68"
+      },
+      {
+        "value": "87.500 milions €",
+        "label": "Inversió necessària per a objectius NZIA 2023-2030",
+        "page": "44"
+      },
+      {
+        "value": "22%",
+        "label": "Treballadors autònoms en construcció clean-tech",
+        "page": "98"
+      }
+    ],
+    "resumExecutiu": "L'EEA analitza l'ocupació, les competències i la qualitat laboral en quatre tecnologies netes (eòlica, solar FV, bombes de calor, bateries) que ocupen 951.000 persones directament i generen 138.000 milions d'euros de VAB. L'eòlica lidera amb 273.500 llocs; les bateries creixen un 35% anual. Es projecten més de 500.000 llocs per eòlica i solar el 2030, però les mancances d'electricistes i instal·ladors (21 estats reporten dèficits) amenacen el desplegament. Les dones representen només el 14-26% de la força laboral; els joves el 6-7%. La qualitat laboral varia: la construcció té els salaris més baixos (24.300 €), major autònomia (22%) i major exposició a riscos físics. La fabricació de bateries presenta riscos químics documentats a Hongria i Suècia. El marc polític (NZIA, CID, AccelerateEU) reconeix la dimensió social però els sindicats i la societat civil consideren que manca de concreció i vinculació.",
+    "implicacions": {
+      "empreses": "Les empreses clean-tech han d'invertir en formació contínua (només el 44% dels treballadors de construcció en rep), millorar salaris i condicions contractuales en segments precaris, i integrar plans de gènere. Les pimes (95% del sector) estan en segments de baix valor afegit i necessiten suport per escalar. La competència global (Xina en FV i bateries) exigeix diferenciació via qualitat laboral.",
+      "reguladors": "Els reguladors han de vincular finançament públic a condicionalitats socials vinculants (no voluntàries), establir límits d'exposició ocupacional per a liti i NMP, enfortir el diàleg social, i garantir que les valls d'acceleració no profunditzin desigualtats territorials. La Quality Jobs Act (2026) ha de ser realment coercitiva.",
+      "ciutadans": "Els ciutadans es beneficien de l'energia neta però les comunitats properes a fàbriques de bateries assumeixen riscos ambientals i sanitaris. Les treballadores i treballadors joves i migrants queden exclosos. La participació en la transició requereix accés a formació reconeguda i mobilitat laboral, però les barreres sistemàtiques persisteixen."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Condicionalitat social vinculada a finançament públic",
+      "body": "El CID reconeix la importància de les condicionalitats socials en fons públics, però els sindicats denuncien l'absència de propostes concretes. L'IAA exigeix un 50% d'ocupació europea en IED, però no fixa estàndards salarials, de diàleg social ni de salut ocupacional. El cas de BYD a Szeged —amb violacions de dret laboral UE— demostra que la competitivitat industrial es prioritza sobre la dignitat laboral. La màxima kantiana no universalitza: si tots els estats subvencionessin indústries verdes amb condicions precàries, la transició reproduiria l'explotació que pretén superar."
+    },
+    "connexions": [
+      {
+        "type": "Contradicció",
+        "target": "Draghi Report (2024)",
+        "desc": "El Draghi Report prioritza competitivitat i productivitat; aquest informe mostra que la qualitat laboral deficient i les mancances de competències són el coll d'ampolla real, no els costos laborals per se"
+      },
+      {
+        "type": "Evolució",
+        "target": "REPowerEU (2022)",
+        "desc": "REPowerEU va impulsar bombes de calor; les vendes van caure un 22% el 2024, demostrant la dependència de preus fossils i subsidis. AccelerateEU (2026) reactiva la demanda però sense abordar la qualitat laboral dels instal·ladors"
+      },
+      {
+        "type": "Complement",
+        "target": "Eurofound EWCS 2024",
+        "desc": "L'informe utilitza dades primàries de l'EWCS 2024 per quantificar exposició a riscos, formació i IA generativa per segment de cadena de valor, omplint un buit crític en mètriques de qualitat laboral"
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Auditar condicions laborals en cadena de valor de bateries",
+        "desc": "Realitzar una auditoria independent de salut ocupacional i drets laborals en instal·lacions de fabricació de bateries, especialment amb IED asiàtic, abans del Q4 2026. Incloure monitoratge de NMP, níquel i cobalt.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Implementar formació creuada entre tecnologies",
+        "desc": "Desenvolupar mòduls de competències transferibles (electricitat, refrigeració, muntatge) que permetin mobilitat entre eòlica, solar FV i bombes de calor, reduint el coll d'ampolla d'instal·ladors. Seguir el model ReSkill4NetZero.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Fixar condicionalitats socials vinculants en contractació pública",
+        "desc": "Incloure requisits de salari digne, contracte permanent preferent, diàleg social i pla de gènere en tots els ajuts públics i contractació vinculada a NZIA i CID. No acceptar autònoms falsos en construcció.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "04",
+        "title": "Programa d'integració de dones en rols tècnics",
+        "desc": "Crear un programa estructurat amb metes quantitatives (40% dones el 2050) amb mentoratge, formació VET inclusiva i reconeixement de competències prèvies. Prioritzar segments de construcció i fabricació amb major bretxa.",
+        "effort": "Alt",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "05",
+        "title": "Monitorar impactes comunitaris ambientals",
+        "desc": "Establir un sistema de monitoratge ambiental i sanitaris obligatori en un radi de 5 km de fàbriques clean-tech, amb participació ciutadana i transparència de dades d'emissions químiques.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "csrd-esrs",
+        "criterion": "ESRS S1 Treballadors propis - condicions laborals i salaris",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 96,
+          "section": "5.4.1",
+          "table": "Taula 5.2"
+        },
+        "nature": "quantitatiu",
+        "impact": "alt",
+        "action": "Reportar salaris per segment de cadena de valor i bretxa de gènere segons ESRS S1"
+      },
+      {
+        "framework": "gri",
+        "criterion": "GRI 403-1 Salut i seguretat ocupacional",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 99,
+          "section": "5.4.3",
+          "table": "Figura 5.15"
+        },
+        "nature": "quantitatiu",
+        "impact": "alt",
+        "action": "Documentar exposició a agents químics i físics per segment i establir objectius de reducció"
+      },
+      {
+        "framework": "csddd",
+        "criterion": "Diligència deguda en cadena de valor - drets laborals",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 102,
+          "section": "Box 5.3",
+          "table": null
+        },
+        "nature": "qualitatiu",
+        "impact": "alt",
+        "action": "Auditar cadena de valor de bateries per identificar violacions de drets laborals en subcontractistes i IED"
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "A",
+      "gradeLabel": "Excelente cobertura cuantitativa con datos robustos sobre empleo, género, salarios, escasez de habilidades y proyecciones",
+      "indicators": [
+        {
+          "name": "Empleo directo en clean-tech",
+          "status": "verd",
+          "label": "951.000 empleos directos cuantificados en 2023",
+          "note": "Datos desglosados por tecnología (eólica 273.500, solar FV 227.300, bombas de calor 80.100, baterías 32.600) y por segmento de cadena de valor"
+        },
+        {
+          "name": "Brecha de género",
+          "status": "verd",
+          "label": "Participación femenina cuantificada: 14%-26% según tecnología",
+          "note": "Datos desglosados por tecnología, segmento de cadena de valor y posición de liderazgo (EWCS 2024)"
+        },
+        {
+          "name": "Calidad del empleo y salarios",
+          "status": "verd",
+          "label": "Salarios promedio anuales cuantificados por segmento y tecnología",
+          "note": "Rango desde 24.300€ en construcción hasta 44.300€ en operaciones; datos de contratos, autoempleo y formación también cuantificados"
+        },
+        {
+          "name": "Escasez de habilidades",
+          "status": "verd",
+          "label": "Escasez ocupacional mapeada por país y ocupación",
+          "note": "21 Estados miembros reportan escasez de electricistas; datos EURES 2024 con 440 ocupaciones clasificadas"
+        },
+        {
+          "name": "Proyecciones de empleo 2030",
+          "status": "verd",
+          "label": "Proyecciones cuantificadas con escenarios múltiples",
+          "note": "Hasta 500.000 empleos en eólica y solar FV cada una; rangos para bombas de calor (150.000-250.000) y baterías (200.000-400.000)"
+        },
+        {
+          "name": "Salud y seguridad ocupacional",
+          "status": "verd",
+          "label": "Riesgos físicos y ausencias por enfermedad cuantificados",
+          "note": "EWCS 2024: 13 días de ausencia media en manufactura vs 6 en I+D; exposición a químicos, ruido y temperaturas extremas por segmento"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "951.000",
+        "label": "Empleos directos en el sector clean-tech de la UE en 2023",
+        "page": "p. 53"
+      },
+      {
+        "value": "138.000 M€",
+        "label": "Valor añadido bruto (GVA) del sector clean-tech en 2023",
+        "page": "p. 42"
+      },
+      {
+        "value": "14%-26%",
+        "label": "Rango de participación femenina según tecnología (bombas de calor vs eólica/baterías)",
+        "page": "p. 68"
+      },
+      {
+        "value": "87.500 M€",
+        "label": "Inversión necesaria 2023-2030 para objetivos NZIA en las 4 tecnologías",
+        "page": "p. 44"
+      },
+      {
+        "value": "1,7-4,100 M€",
+        "label": "Inversión requerida en recapacitación de trabajadores hasta 2030",
+        "page": "p. 44"
+      }
+    ],
+    "resumExecutiu": "El sector clean-tech de la UE se ha consolidado como un motor económico y laboral de primer orden, con cerca de un millón de empleos directos y un GVA de 138.000 millones de euros en 2023. La eólica lidera con 273.500 empleos, seguida de la solar FV (227.300), bombas de calor (80.100) y baterías (32.600), estas últimas con el crecimiento más dinámico (35% anual). El informe revela que la transición no está siendo inclusiva: las mujeres representan solo entre el 14% y el 26% de la fuerza laboral, y los jóvenes (15-24 años) apenas el 6-7%. La escasez de habilidades técnicas —especialmente electricistas, fontaneros e ingenieros— constituye un cuello de botella estructural que amenaza el despliegue. La calidad del empleo varía drásticamente: los salarios en construcción son un 45% inferiores a los de operaciones, con mayor exposición a riesgos físicos, menor estabilidad contractual y menos acceso a formación. Las proyecciones apuntan a que cada tecnología podría emplear cientos de miles de trabajadores de aquí a 2030, pero sin acción coordinada en formación, inclusión y calidad laboral, el potencial se verá comprometido.",
+    "implicaciones": {
+      "empresas": "Las empresas clean-tech deben priorizar la retención de talento mediante mejora de salarios en segmentos de construcción, contratos estables y programas de formación continua. La competencia por perfiles técnicos compartidos entre tecnologías exige estrategias de recapacitación cruzada. La exposición a riesgos químicos en baterías y físicos en construcción requiere protocolos de seguridad más robustos. La incorporación de mujeres y jóvenes no es solo responsabilidad social, sino necesidad operativa ante la escasez estructural.",
+      "reguladores": "Los reguladores deben vincular condicionalidades sociales a la financiación pública y las ayudas estatales, exigiendo salarios dignos, contratos estables y diálogo social. La Quality Jobs Act prevista para 2026 debe establecer estándares vinculantes en salud ocupacional, especialmente para baterías donde no existen límites de exposición para litio. Las academias industriales NZIA necesitan escalado urgente: la Solar Academy pretende formar 100.000 trabajadores para 2027, pero la demanda proyectada supera ampliamente esta cifra. La portabilidad de cualificaciones entre Estados miembros es prioritaria.",
+      "ciudadanos": "La transición clean-tech ofrece oportunidades laborales significativas pero desiguales. Los trabajadores de sectores fósiles en declive pueden transitar a empleos renovables con formación específica, como muestra la Wind Academy polaca reconvirtiendo mineros. Sin embargo, las comunidades locales no siempre se benefician: evidencia de parques eólicos en Inglaterra muestra exclusión de jóvenes locales. Los ciudadanos deben exigir que los proyectos industriales incluyan consultationes significativas y mecanismos de rendición de cuentas sobre impactos en salud pública, como demuestra el caso de la fábrica BYD en Szeged."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Justicia distributiva y dignidad en el trabajo",
+      "body": "El informe revela una tensión ética fundamental: la transición climática se está construyendo sobre desigualdades estructurales. Los trabajadores de construcción —mayoritariamente en solar FV y bombas de calor— soportan los salarios más bajos (24.300€), la mayor precariedad contractual (22% autoempleo), la mayor exposición a riesgos físicos y el menor acceso a formación (44%). Mientras tanto, los segmentos de operaciones, dominantes en eólica, disfrutan de salarios de 44.300€ y contratos estables. Esta segmentación refleja un patrón de injusticia: quienes asumen los riesgos físicos del despliegue reciben menos beneficios. El caso de las fábricas de baterías en Hungría —con exposición a níquel, disolventes fetotóxicos y accidentes mortales— evidencia cómo la competitividad industrial se prioriza sobre la dignidad laboral. Una transición justa requiere que la calidad del empleo no sea una externalidad, sino una condición previa vinculante en toda financiación pública."
+    },
+    "conexiones": [
+      {
+        "type": "Evolución",
+        "target": "Crecimiento GVA y empleo clean-tech 2010-2023",
+        "desc": "El GVA del sector creció 8,3% anual desde 2010 hasta 138.000 M€ en 2023, mientras el empleo se duplicó. Las baterías pasaron de GVA casi nulo en 2018 a 2.200 M€ en 2023, con crecimiento laboral del 35% anual, confirmando la emergencia de un sector estratégico."
+      },
+      {
+        "type": "Contradicción",
+        "target": "Expansión del empleo vs inclusión demográfica",
+        "desc": "Pese a duplicar el empleo desde 2010, la participación femenina (14-26%) y juvenil (6-7%) permanece estancada. La transición reproduce desigualdades del sector energético tradicional: las mujeres solo alcanzan 47% en I+D científico, un segmento que representa menos del 6% del empleo total."
+      },
+      {
+        "type": "Complemento",
+        "target": "Escasez de habilidades y calidad del empleo",
+        "desc": "La escasez de electricistas (21 países) y fontaneros (20 países) está directamente vinculada a la baja calidad del empleo en construcción: salarios por debajo de la media, 22% de autoempleo, alta exposición a riesgos y solo 44% de acceso a formación. Mejorar calidad es condición para resolver la escasez."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Auditar y cerrar brechas salariales por segmento de cadena de valor",
+        "desc": "Realizar una auditoría interna de salarios, estabilidad contractual y acceso a formación desglosada por segmento (I+D, manufactura, construcción, operaciones). Establecer un plan para alinear los salarios del segmento de construcción con la media del sector, garantizando contratos permanentes y acceso a formación equivalente al de operaciones (72%).",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "02",
+        "title": "Diseñar programas de recapacitación cruzada entre tecnologías",
+        "desc": "Desarrollar módulos formativos que permitan a trabajadores cualificados transitar entre tecnologías (ej. instaladores solares que adquieran competencias en bombas de calor). Aprovechar sinergias en habilidades compartidas —electricidad, mecánica, gestión de proyectos— para multiplicar el pool de talento disponible sin depender de nueva contratación.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "03",
+        "title": "Implementar protocolos de salud y seguridad específicos para baterías",
+        "desc": "Ante la ausencia de límites vinculantes de exposición ocupacional al litio en la UE, establecer protocolos voluntarios más estrictos que incluyan monitorización de níquel, cobalto y NMP, participación de trabajadores en evaluaciones de riesgo, y comités de salud y seguridad obligatorios en todas las instalaciones de fabricación y reciclaje.",
+        "esfuerzo": "Alto",
+        "impacto": "Alto"
+      },
+      {
+        "num": "04",
+        "title": "Crear pipeline de talento femenino y juvenil con metas cuantificadas",
+        "desc": "Establecer objetivos concretos de incorporación de mujeres (mínimo 30% en 3 años) y jóvenes (15-24) mediante alianzas con centros de FP, mentorías con mujeres en posiciones técnicas, y revisión de criterios de reclutamiento que perpetúan sesgos. Vincular bonificaciones directivas al cumplimiento de metas de diversidad.",
+        "esfuerzo": "Medio",
+        "impacto": "Medio"
+      },
+      {
+        "num": "05",
+        "title": "Mapear y mitigar riesgos para comunidades locales en polos industriales",
+        "desc": "Antes de establecer o expandir instalaciones industriales clean-tech (especialmente gigafactorías de baterías), realizar evaluaciones de impacto comunitario con participación significativa de residentes, transparencia sobre emisiones químicas, y mecanismos de reclamación accesibles. Aprender de los casos de Hungría y Suecia donde la licencia acelerada omitió consultationes locales.",
+        "esfuerzo": "Alto",
+        "impacto": "Medio"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "csrd-esrs",
+        "criterio": "ESRS S1 Own workforce - empleo, condiciones de trabajo y salud ocupacional",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 96,
+          "section": "5.4 Job quality",
+          "table": "Tabla 5.2"
+        },
+        "nature": "cuantitativo",
+        "impact": "alto",
+        "action": "Reportar salarios, tipos de contrato y días de baja por enfermedad desglosados por segmento de cadena de valor en la declaración de sostenibilidad CSRD"
+      },
+      {
+        "framework": "gri",
+        "criterio": "GRI 401-1 Empleo - nuevo personal contratado y rotación por género y grupo de edad",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 68,
+          "section": "4.5 Women in the clean-tech industry",
+          "table": "Figura 4.7"
+        },
+        "nature": "cuantitativo",
+        "impact": "alto",
+        "action": "Recopilar y publicar datos de contratación y retención desglosados por género y edad para identificar brechas de inclusión en la fuerza laboral clean-tech"
+      },
+      {
+        "framework": "iso-26000",
+        "criterio": "ISO 26000 6.4.4 Condiciones de trabajo y protección social",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 98,
+          "section": "5.4.2 Employment status and contractual stability",
+          "table": "Figura 5.14"
+        },
+        "nature": "cualitativo",
+        "impact": "medio",
+        "action": "Revisar prácticas de subcontratación en construcción para eliminar autoempleo falso y garantizar condiciones laborales dignas en toda la cadena de suministro"
+      }
+    ]
+  }
+}

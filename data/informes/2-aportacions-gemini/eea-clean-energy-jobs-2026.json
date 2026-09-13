@@ -1,0 +1,60 @@
+{
+  "slug": "eea-clean-energy-jobs-2026",
+  "title": "Clean energy technologies in the EU - implications for quality jobs, skills and just transition",
+  "institution": "EEA",
+  "generated_at": "2026-09-11T00:00:00Z",
+  "model": "gemini-3.6-flash (API gratuita)",
+  "usage": {
+    "prompt_tokens": 84752,
+    "output_tokens": 1265,
+    "thinking_tokens": 1423,
+    "cost_usd": 0.0,
+    "nota": "Free tier; tokens reals de la crida verificada"
+  },
+  "aportacions": {
+    "propostes": [
+      {
+        "bloc": "general",
+        "tipus": "completar",
+        "proposta": "Completar: La numeració de pàgines en les dades clau del destil·lat presenta petits desplaçaments de 1 a 2 pàgines respecte a l'índex final de l'informe (ex. Taula 3.2 a la pàg. 45 vs pàg. 44 al destil·lat), tot i que la dada numèrica és exacta.",
+        "justificacio": "Lacuna detectada per Gemini en l'analisi de cobertura tematica."
+      },
+      {
+        "bloc": "general",
+        "tipus": "completar",
+        "proposta": "Completar: L'impacte comunitari en salut rep una nota 'groc' en el semàfor del destil·lat, la qual cosa reflecteix adequadament la manca de dades sistemàtiques a nivell comunitari recollides a l'informe.",
+        "justificacio": "Lacuna detectada per Gemini en l'analisi de cobertura tematica."
+      },
+      {
+        "bloc": "semafor",
+        "tipus": "validar",
+        "proposta": "Ben fonamentat i rigorós; la qualificació global 'B' assignada al destil·lat està justificada per les llacunes dades comunitaris/migratoris que l'informe original reconeix explícitament.",
+        "justificacio": "Avaluacio de Gemini sobre aquest bloc del destil-lat."
+      },
+      {
+        "bloc": "implicacions",
+        "tipus": "validar",
+        "proposta": "Les implicacions per a empreses, reguladors i ciutadans sintetitzen adequadament les conclusions del Capítol 6 i els reptes de transició justa.",
+        "justificacio": "Avaluacio de Gemini sobre aquest bloc del destil-lat."
+      },
+      {
+        "bloc": "accions_i_crossrefs",
+        "tipus": "validar",
+        "proposta": "Les accions proposades (01 a 05) i el mapeig CSRD/GRI/CSDDD són operatius, coherentment derivats dels troballes del Capítol 5 i orientats a les polítiques de treball digne de la UE.",
+        "justificacio": "Avaluacio de Gemini sobre aquest bloc del destil-lat."
+      }
+    ],
+    "advocat_diable": [
+      {
+        "tipus": "verificacio_dades",
+        "bloc_afectat": "dadesClau",
+        "observacio": "Dada '87.500 milions € d'inversió necessària per a objectius NZIA (2023-2030)' - estat: Correcte (Aproximat). A la Taula 3.2 (pàg. 45) es detallen 87,4 milions de miliards (87.400 M€); l'arrodoniment a 87.500 M€ és acceptable."
+      },
+      {
+        "tipus": "avaluacio_global",
+        "bloc_afectat": "tots",
+        "observacio": "Nota A - Fidelitat molt alta. El destil·lat sintetitza de manera precisa i rigorosa les dades quantitatives i els marcs d'anàlisi de l'informe de l'EEA (2026). Integra correctament les xifres d'ocupació directa, valor afegit brut (VAB), bretxes de gènere i edat, dèficits de competències per estat membre, salaris per sector i condicions de salut ocupacional. Les referències creuades normatives (CSRD, GRI, CSDDD) i les connexions estratègiques (Informe Draghi, REPowerEU, EWCS) estan plenament alineades amb el text original."
+      }
+    ]
+  }
+}

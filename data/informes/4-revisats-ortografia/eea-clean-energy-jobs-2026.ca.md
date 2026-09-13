@@ -42,17 +42,17 @@ lang: ca
 
 ## Bloc 3 — Resum executiu
 
-El sector de les tecnologies netes de la UE s'ha consolidat com a motor econòmic: 951.000 llocs directes i 138.000 M€ de VAB el 2023. L'eòlica lidera amb 273.500 ocupacions; les bateries creixen un 35% anual. Es projecten més de 500.000 llocs per a l'eòlica i la solar el 2030.
+El sector de les tecnologies netes de la UE s'ha consolidat com a motor econòmic: 951.000 llocs directes (p. 53) i 138.000 M€ de VAB el 2023 (p. 42). L'eòlica lidera amb 273.500 ocupacions (p. 53); les bateries creixen un 35% anual (p. 49). Es projecten més de 500.000 llocs per a l'eòlica i la solar el 2030 (p. 57).
 
-Però la transició no està sent inclusiva. Les dones representen només el 14-26% de la força laboral; els joves, el 6-7%. La manca d'electricistes i instal·ladors (21 estats reporten dèficits) amenaça el desplegament. I la qualitat laboral varia dràsticament: la construcció té els salaris més baixos (24.300 €, un 45% per sota d'operacions), major autonomia (22%) i major exposició a riscos físics. Només el 44% dels treballadors de construcció accedeixen a formació contínua, en comparació amb el 72% en operacions.
+Però la transició no està sent inclusiva. Les dones representen només el 14-26% de la força laboral (p. 69); els joves, el 6-7% (p. 72). La manca d'electricistes i instal·ladors (21 estats reporten dèficits) (p. 83) amenaça el desplegament. I la qualitat laboral varia dràsticament: la construcció té els salaris més baixos (24.300 €, un 45% per sota d'operacions) (p. 70), major autonomia (22%) (p. 98) i major exposició a riscos físics. Només el 44% dels treballadors de construcció accedeixen a formació contínua, en comparació amb el 72% en operacions (p. 90).
 
-La fabricació de bateries presenta riscos químics documentats a Hongria i Suècia —exposició a níquel, dissolvents fetotòxics i NMP— sense límits vinculants per al liti a la UE. El cas de BYD a Szeged, amb violacions del dret laboral, demostra que la competitivitat industrial es prioritza sobre la dignitat.
+La fabricació de bateries presenta riscos químics documentats a Hongria i Suècia —exposició a níquel, dissolvents fetotòxics i NMP (p. 102)— sense límits vinculants per al liti a la UE. El cas de BYD a Szeged, amb violacions del dret laboral (p. 102), demostra que la competitivitat industrial es prioritza sobre la dignitat.
 
-El marc polític (NZIA, CID, AccelerateEU) reconeix la dimensió social, però els sindicats denuncien manca de concreció. La Quality Jobs Act (2026) ha de ser realment coercitiva: condicionalitats socials vinculants, no voluntàries.
+El marc polític (NZIA, CID, AccelerateEU) reconeix la dimensió social, però els sindicats denuncien manca de concreció (p. 34). La Quality Jobs Act (2026) (p. 34) ha de ser realment coercitiva: condicionalitats socials vinculants, no voluntàries.
 
 ## Bloc 4 — Implicacions
 
-**Empreses:** Han d'invertir en formació contínua, millorar salaris en segments precaris i integrar plans de gènere amb metes quantificades. Les pimes (95% del sector) necessiten suport per escalar. La competència global (la Xina en FV i bateries) exigeix diferenciació via qualitat laboral, no via precarietat.
+**Empreses:** Han d'invertir en formació contínua, millorar salaris en segments precaris i integrar plans de gènere amb metes quantificades. Les pimes (95% del sector) (p. 43) necessiten suport per escalar. La competència global (la Xina en FV i bateries) exigeix diferenciació via qualitat laboral, no via precarietat.
 
 **Reguladors:** Vincular el finançament públic a condicionalitats socials vinculants; establir límits d'exposició ocupacional per al liti i l'NMP; enfortir el diàleg social; garantir que les valls d'acceleració no aprofundeixin les desigualtats territorials. La portabilitat de qualificacions entre estats membres és urgent.
 

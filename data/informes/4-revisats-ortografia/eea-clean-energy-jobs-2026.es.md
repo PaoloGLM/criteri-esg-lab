@@ -41,17 +41,17 @@ lang: es
 
 ## Bloque 3 — Resumen ejecutivo
 
-El sector de las tecnologías limpias de la UE se ha consolidado como motor económico: 951.000 puestos directos y 138.000 M€ de VAB en 2023. La eólica lidera con 273.500 ocupaciones; las baterías crecen un 35 % anual. Se proyectan más de 500.000 puestos para la eólica y la solar en 2030.
+El sector de las tecnologías limpias de la UE se ha consolidado como motor económico: 951.000 puestos directos (p. 53) y 138.000 M€ de VAB en 2023 (p. 42). La eólica lidera con 273.500 ocupaciones (p. 53); las baterías crecen un 35 % anual (p. 49). Se proyectan más de 500.000 puestos para la eólica y la solar en 2030 (p. 57).
 
-Pero la transición no está siendo inclusiva. Las mujeres representan solo el 14-26 % de la fuerza laboral; los jóvenes, el 6-7 %. La falta de electricistas e instaladores (21 Estados informan de déficits) amenaza el despliegue. Y la calidad laboral varía drásticamente: la construcción tiene los salarios más bajos (24.300 €, un 45 % por debajo de operaciones), mayor autonomía (22 %) y mayor exposición a riesgos físicos. Solo el 44 % de los trabajadores de la construcción acceden a formación continua, frente al 72 % en operaciones.
+Pero la transición no está siendo inclusiva. Las mujeres representan solo el 14-26 % de la fuerza laboral (p. 69); los jóvenes, el 6-7 % (p. 72). La falta de electricistas e instaladores (21 Estados informan de déficits) (p. 83) amenaza el despliegue. Y la calidad laboral varía drásticamente: la construcción tiene los salarios más bajos (24.300 €, un 45 % por debajo de operaciones) (p. 70), mayor autonomía (22 %) (p. 98) y mayor exposición a riesgos físicos. Solo el 44 % de los trabajadores de la construcción acceden a formación continua, frente al 72 % en operaciones (p. 90).
 
-La fabricación de baterías presenta riesgos químicos documentados en Hungría y Suecia —exposición a níquel, disolventes fetotóxicos y NMP— sin límites vinculantes para el litio en la UE. El caso de BYD en Szeged, con violaciones del derecho laboral, demuestra que la competitividad industrial se prioriza sobre la dignidad.
+La fabricación de baterías presenta riesgos químicos documentados en Hungría y Suecia —exposición a níquel, disolventes fetotóxicos y NMP (p. 102)— sin límites vinculantes para el litio en la UE. El caso de BYD en Szeged, con violaciones del derecho laboral (p. 102), demuestra que la competitividad industrial se prioriza sobre la dignidad.
 
-El marco político (NZIA, CID, AccelerateEU) reconoce la dimensión social, pero los sindicatos denuncian falta de concreción. La Quality Jobs Act (2026) debe ser realmente coercitiva: condicionalidades sociales vinculantes, no voluntarias.
+El marco político (NZIA, CID, AccelerateEU) reconoce la dimensión social, pero los sindicatos denuncian falta de concreción (p. 34). La Quality Jobs Act (2026) (p. 34) debe ser realmente coercitiva: condicionalidades sociales vinculantes, no voluntarias.
 
 ## Bloque 4 — Implicaciones
 
-**Empresas:** Deben invertir en formación continua, mejorar salarios en segmentos precarios e integrar planes de género con metas cuantificadas. Las pymes (95 % del sector) necesitan apoyo para escalar. La competencia global (China en fotovoltaica y baterías) exige diferenciación vía calidad laboral, no vía precariedad.
+**Empresas:** Deben invertir en formación continua, mejorar salarios en segmentos precarios e integrar planes de género con metas cuantificadas. Las pymes (95 % del sector) (p. 43) necesitan apoyo para escalar. La competencia global (China en fotovoltaica y baterías) exige diferenciación vía calidad laboral, no vía precariedad.
 
 **Reguladores:** Vincular la financiación pública a condicionalidades sociales vinculantes; establecer límites de exposición ocupacional para el litio y el NMP; fortalecer el diálogo social; garantizar que los valles de aceleración no ahonden las desigualdades territoriales. La portabilidad de cualificaciones entre Estados miembros es urgente.
 

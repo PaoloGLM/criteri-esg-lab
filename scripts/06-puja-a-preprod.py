@@ -79,6 +79,16 @@ def strip_fmt(s: str) -> str:
     s = re.sub(r"\*(.+?)\*", r"\1", s)
     return s.strip()
 
+
+def strip_cites(s: str) -> str:
+    """Elimina cites de font al final del paràgraf (estil antic del pas 4):
+    «— *p. 53, 42*» o «Fonts: EEA p. 78, 98.» — ara es citen inline (p. X)
+    i el front les renderitza com a tooltip. Les (p. X) inline es CONSERVEN."""
+    s = s.strip()
+    s = re.sub(r"\s*[—-]\s*\*?\s*[Pp]àg?\.?\s*[\d][\d,\s\-–\.]*\*?\s*$", "", s)
+    s = re.sub(r"\s*(?:Fonts?|Fuentes?):\s*[^.\n]*\.?\s*$", "", s)
+    return s.strip()
+
 # ── normalització de valors ─────────────────────────────────────────
 
 def norm_status(cell: str) -> str:
@@ -151,9 +161,10 @@ def parse_md(md: str, lang: str) -> dict:
         dades.append({"value": m.group(1).strip(), "label": rest, "page": page})
     out["dadesClau"] = dades
 
-    # Bloc 3 — resum executiu (paràgrafs)
+    # Bloc 3 — resum executiu (paràgrafs; cites inline (p. X) conservades,
+    # cites al final d'estil antic eliminades)
     out["resumExecutiu"] = "\n\n".join(
-        strip_fmt(p) for p in block_section(md, 3).split("\n\n")
+        strip_cites(strip_fmt(p)) for p in block_section(md, 3).split("\n\n")
         if p.strip() and not p.strip().startswith(("##", ">"))
     )
 
@@ -162,12 +173,12 @@ def parse_md(md: str, lang: str) -> dict:
     impl = {}
     for key, pat in (
         ("empreses", r"\*\*Empres[ae]s:\*\*\s*(.+)"),
-        ("reguladors", r"\*\*Regulador[ae]s:\*\*\s*(.+)"),
+        ("reguladors", r"\*\*Regulador(?:s|es):\*\*\s*(.+)"),
         ("ciutadans", r"\*\*Ciutadans:\*\*\s*(.+)|\*\*Ciudadanos:\*\*\s*(.+)"),
     ):
         m = re.search(pat, sec4)
         if m:
-            impl[key] = strip_fmt(m.group(1) or m.group(2) or "")
+            impl[key] = strip_cites(strip_fmt(m.group(1) or m.group(2) or ""))
     out["implicacions"] = impl
     # "Més enllà del compliment formal — TITOL:" / "Más allá del trámite formal — TITOL:"
     m = re.search(r"\*\*M[éeá]s[^\n*]{2,40}?formal\s*[—-]\s*(.+?):\*\*\s*(.+)", sec4)

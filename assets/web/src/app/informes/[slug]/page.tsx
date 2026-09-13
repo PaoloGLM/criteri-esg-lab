@@ -7,6 +7,7 @@ import { FooterV1 } from "@/components/site-footer-v1";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { SemaforoPopup } from "@/components/sections/semaforo-popup";
+import { Cite, renderWithCites } from "@/components/informe/cite";
 import { useLanguage } from "@/components/language-provider";
 import { useAuth } from "@/lib/auth-context";
 import {
@@ -339,7 +340,7 @@ export default function InformeSlugPage() {
                 {content.dadesClau.map((d, i) => (
                   <div key={i} className="grid grid-cols-[24px_1fr] gap-3 items-baseline py-3 border-b" style={{ borderBottomColor: "rgba(201,184,154,0.5)" }}>
                     <span className="font-mono text-[11px] font-semibold" style={{ color: "var(--c-salvia)" }}>{String(i + 1).padStart(2, "0")}</span>
-                    <p className="text-sm text-primary"><strong className="font-serif text-lg font-semibold" style={{ color: "var(--c-tinta)" }}>{d.value}</strong> {d.label}</p>
+                    <p className="text-sm text-primary"><strong className="font-serif text-lg font-semibold" style={{ color: "var(--c-tinta)" }}>{d.value}</strong> {d.label}{d.page ? <Cite page={d.page} title={report.title} /> : null}</p>
                   </div>
                 ))}
               </div>
@@ -348,8 +349,12 @@ export default function InformeSlugPage() {
             {/* Bloc 3 — Resum executiu */}
             <section id="bloc-3" className="scroll-mt-20" style={{ background: "#AAC9B6", margin: "0 -32px", padding: "40px 32px", borderTop: "1px solid #26312B", borderBottom: "1px solid #26312B" }}>
               <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "#26312B" }}>{lang === "ca" ? "Bloc 03 · Resum executiu" : "Bloque 03 · Resumen ejecutivo"}</p>
-              <h2 className="mb-4 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Qu\u00e8 diu en llenguatge clar" : "Qu\u00e9 dice en lenguaje claro"}</h2>
-              <p className="font-serif text-base leading-relaxed text-primary">{content.resumExecutiu}</p>
+              <h2 className="mb-4 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Què diu en llenguatge clar" : "Qué dice en lenguaje claro"}</h2>
+              <div className="font-serif text-base leading-relaxed text-primary space-y-4">
+                {content.resumExecutiu.split(/\n\n+/).map((p, i) => (
+                  <p key={i}>{renderWithCites(p, report.title)}</p>
+                ))}
+              </div>
             </section>
 
             {/* Bloc 4 — Implicacions + M\u00e9s enll\u00e0 */}
@@ -359,15 +364,15 @@ export default function InformeSlugPage() {
               <div className="grid gap-6 sm:grid-cols-3">
                 <div className="flex flex-col gap-2 pt-4 border-t-2" style={{ borderTopColor: "var(--c-tinta)" }}>
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: "var(--c-tinta)" }}>{lang === "ca" ? "Empreses" : "Empresas"}</span>
-                  <p className="text-sm leading-relaxed text-primary">{content.implicacions.empreses}</p>
+                  <p className="text-sm leading-relaxed text-primary">{renderWithCites(content.implicacions.empreses, report.title)}</p>
                 </div>
                 <div className="flex flex-col gap-2 pt-4 border-t-2" style={{ borderTopColor: "var(--c-salvia)" }}>
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: "var(--c-salvia)" }}>{lang === "ca" ? "Reguladors" : "Reguladores"}</span>
-                  <p className="text-sm leading-relaxed text-primary">{content.implicacions.reguladors}</p>
+                  <p className="text-sm leading-relaxed text-primary">{renderWithCites(content.implicacions.reguladors, report.title)}</p>
                 </div>
                 <div className="flex flex-col gap-2 pt-4 border-t-2" style={{ borderTopColor: "var(--c-salvia-light)" }}>
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: "#8A6D2B" }}>{lang === "ca" ? "Ciutadans" : "Ciudadanos"}</span>
-                  <p className="text-sm leading-relaxed text-primary">{content.implicacions.ciutadans}</p>
+                  <p className="text-sm leading-relaxed text-primary">{renderWithCites(content.implicacions.ciutadans, report.title)}</p>
                 </div>
               </div>
             </section>
@@ -399,7 +404,7 @@ export default function InformeSlugPage() {
             {/* Bloc 7 — Accions recomanades (destacat) */}
             <section id="bloc-7" className="scroll-mt-20" style={{ background: "rgba(184,115,51,0.06)", margin: "0 -32px", padding: "48px 32px", borderTop: "1px solid var(--c-salvia)", borderBottom: "1px solid var(--c-salvia)" }}>
               <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] font-semibold" style={{ color: "var(--c-salvia)" }}>{lang === "ca" ? "Bloc 07 · Accions recomanades ⭐" : "Bloque 07 · Acciones recomendadas ⭐"}</p>
-              <h2 className="mb-6 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "3 accions operatives per aquesta setmana" : "3 acciones operativas para esta semana"}</h2>
+              <h2 className="mb-6 font-serif text-2xl font-medium text-primary">{lang === "ca" ? "Algunes accions operatives" : "Algunas acciones operativas"}</h2>
               <div className="grid gap-8 sm:grid-cols-3">
                 {content.accions.map((a) => (
                   <div key={a.num} className="flex flex-col gap-4">

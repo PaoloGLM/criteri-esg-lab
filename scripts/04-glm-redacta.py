@@ -53,6 +53,12 @@ def call_glm_flash_redactor(title: str, institution: str, destilat: str, aportac
         "## Bloc 5 — Connexions\n"
         "## Bloc 6 — Accions recomanades\n"
         "## Bloc 7 — Cross-reference\n\n"
+        "CITACIONS DE PÀGINA (obligatori, plantilla actual):\n"
+        "- Bloc 2: cada dada acaba amb «— *p. X*» (una sola pàgina, mai inventada).\n"
+        "- Bloc 3 i Bloc 4: després de CADA afirmació xifrada, afegeix la cita inline «(p. 53)»\n"
+        "  amb el número de pàgina real del document original. No posis la font al final del\n"
+        "  paràgraf ni repetis el nom de l'informe — la web ho renderitza com a tooltip.\n"
+        "- MAI inventar un número de pàgina: si no el saps, omet la cita en aquesta frase.\n\n"
         "Inclou front-matter YAML al principi (slug, title, institution, date, lang)."
     )
     user_prompt = (

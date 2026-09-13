@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-label="Semàfor editorial: cinc indicadors que resumim en una nota">
+  <rect width="900" height="675" fill="#26312B"/>
+  <!-- Marc de fitxa editorial -->
+  <rect x="70" y="70" width="760" height="535" fill="none" stroke="#AAC9B6" stroke-opacity=".3" stroke-width="1.5"/>
+  <!-- Nota gran -->
+  <g>
+    <rect x="150" y="200" width="150" height="150" rx="14" fill="none" stroke="#AAC9B6" stroke-width="2.5"/>
+    <path d="M188 305 L 216 245 L 244 305" fill="none" stroke="#F2F5F1" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="256" cy="250" r="3.5" fill="#F5E381"/>
+  </g>
+  <!-- Cinc indicadors: 4 verds + 1 groc -->
+  <g>
+    <circle cx="390" cy="230" r="22" fill="#7A9471"/>
+    <circle cx="450" cy="230" r="22" fill="#7A9471"/>
+    <circle cx="510" cy="230" r="22" fill="#7A9471"/>
+    <circle cx="570" cy="230" r="22" fill="#7A9471"/>
+    <circle cx="630" cy="230" r="22" fill="#F5E381"/>
+  </g>
+  <!-- Barres de pes: quantifica / esmenta / ignora -->
+  <g stroke-linecap="round">
+    <line x1="390" y1="330" x2="710" y2="330" stroke="#AAC9B6" stroke-width="10"/>
+    <line x1="390" y1="372" x2="600" y2="372" stroke="#7A9471" stroke-width="10"/>
+    <line x1="390" y1="414" x2="460" y2="414" stroke="#A0522D" stroke-width="10"/>
+  </g>
+  <!-- Regla pública: a peu de fitxa -->
+  <line x1="150" y1="500" x2="750" y2="500" stroke="#AAC9B6" stroke-opacity=".35" stroke-width="1.5"/>
+  <line x1="150" y1="535" x2="330" y2="535" stroke="#F5E381" stroke-width="4" stroke-linecap="round"/>
+</svg>

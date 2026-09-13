@@ -7,7 +7,6 @@ import { adminApi, AdminInforme, AdminUser, AdminAlarm, AdminError } from "@/lib
 import { supabase } from "@/lib/supabase";
 import { InformeEditor } from "@/components/admin/informe-editor";
 import { TemaPanel } from "@/components/admin/tema-panel";
-import { PageEditor } from "@/components/admin/page-editor";
 import { useLanguage } from "@/components/language-provider";
 
 /**
@@ -22,7 +21,7 @@ import { useLanguage } from "@/components/language-provider";
  *  - Usuaris: llista amb pla, canviar pla manualment
  */
 
-type Tab = "estat" | "informes" | "pagines" | "usuaris" | "disseny";
+type Tab = "estat" | "informes" | "usuaris" | "disseny";
 
 const COLORS = {
   bg: "#f4f3ef", // fons salvia clar
@@ -300,7 +299,7 @@ export default function AdminPage() {
 
       {/* Pestanyes */}
       <div style={tabs}>
-        {(["estat", "informes", "pagines", "usuaris", "disseny"] as Tab[]).map((t) => (
+        {(["estat", "informes", "usuaris", "disseny"] as Tab[]).map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
@@ -309,12 +308,15 @@ export default function AdminPage() {
               ...(tab === t ? { background: COLORS.salvia, color: "#fff" } : {}),
             }}
           >
-            {t === "pagines" ? "Pàgines" : t.charAt(0).toUpperCase() + t.slice(1)}
+            {t.charAt(0).toUpperCase() + t.slice(1)}
             {t === "estat" && alarms.length > 0 && (
               <span style={badge}>{alarms.length}</span>
             )}
           </button>
         ))}
+        <a href="/admin/visual" style={{ ...tabBtn, textDecoration: "none", display: "inline-flex", alignItems: "center" }}>
+          Visual (web)
+        </a>
       </div>
 
       {/* ── Pestanya ESTAT ── */}
@@ -493,8 +495,6 @@ export default function AdminPage() {
           )}
         </section>
       )}
-      {/* ── Pestanya PÀGINES (CMS tipus WP) ── */}
-      {tab === "pagines" && <PageEditor />}
       {/* ── Pestanya DISSENY ── */}
       {tab === "disseny" && <TemaPanel lang={lang} />}
       {/* ── Editor d'informes (diàleg modal) ── */}

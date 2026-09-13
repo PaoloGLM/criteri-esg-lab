@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-label="Destil·lació: moltes línies denses convergeixen en poques línies clares">
+  <rect width="900" height="675" fill="#F2F5F1"/>
+  <!-- Eixos de graella subtils -->
+  <g stroke="#26312B" stroke-opacity=".05">
+    <line x1="60" y1="120" x2="840" y2="120"/><line x1="60" y1="240" x2="840" y2="240"/>
+    <line x1="60" y1="360" x2="840" y2="360"/><line x1="60" y1="480" x2="840" y2="480"/>
+  </g>
+  <!-- Moltes pàgines: línies denses a l'esquerra -->
+  <g stroke="#7A8B7F" stroke-width="2" stroke-linecap="round" opacity=".85">
+    <path d="M70 160 C 220 160, 300 168, 430 210"/>
+    <path d="M70 190 C 220 190, 300 194, 430 222"/>
+    <path d="M70 220 C 220 220, 300 220, 430 234"/>
+    <path d="M70 250 C 220 250, 300 246, 430 246"/>
+    <path d="M70 280 C 220 280, 300 272, 430 258"/>
+    <path d="M70 310 C 220 310, 300 298, 430 270"/>
+    <path d="M70 340 C 220 340, 300 324, 430 282"/>
+    <path d="M70 370 C 220 370, 300 350, 430 294"/>
+    <path d="M70 400 C 220 400, 300 376, 430 306"/>
+    <path d="M70 430 C 220 430, 300 402, 430 318"/>
+    <path d="M70 460 C 220 460, 300 428, 430 330"/>
+    <path d="M70 490 C 220 490, 300 454, 430 342"/>
+  </g>
+  <!-- Embut de destil·lació -->
+  <path d="M420 190 L 500 190 L 620 300 L 620 380 L 500 490 L 420 490 Z"
+        fill="none" stroke="#26312B" stroke-width="2.5" stroke-opacity=".35"/>
+  <!-- Poques conclusions: línies fortes a la dreta -->
+  <g stroke-linecap="round">
+    <path d="M620 300 L 800 268" stroke="#26312B" stroke-width="6"/>
+    <path d="M620 340 L 800 336" stroke="#7A9471" stroke-width="6"/>
+    <path d="M620 380 L 800 404" stroke="#A0522D" stroke-width="6"/>
+  </g>
+  <!-- Punt daurat: la dada que cal decidir -->
+  <circle cx="812" cy="336" r="13" fill="#F5E381"/>
+  <circle cx="812" cy="336" r="13" fill="none" stroke="#26312B" stroke-width="2"/>
+  <!-- Marca de pàgina: referència a la font -->
+  <g stroke="#26312B" stroke-opacity=".45" stroke-width="2" fill="none">
+    <rect x="70" y="560" width="34" height="44" rx="3"/>
+    <line x1="78" y1="574" x2="96" y2="574"/><line x1="78" y1="584" x2="96" y2="584"/><line x1="78" y1="594" x2="90" y2="594"/>
+  </g>
+  <path d="M118 582 L 180 582" stroke="#26312B" stroke-opacity=".3" stroke-width="2" stroke-dasharray="4 6"/>
+</svg>

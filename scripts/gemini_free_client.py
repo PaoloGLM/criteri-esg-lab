@@ -47,8 +47,18 @@ def _record_usage(model: str, provider: str, prompt_tokens: int, completion_toke
     USAGE_FILE.write_text(_json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def call_gemini_free(system_prompt: str, user_prompt: str, temperature: float = 0.2, max_tokens: int = 16000, timeout: int = 180) -> str:
-    """Crida Gemini free tier via REST. Amb retry 429 i 503 (espera 60s)."""
+def call_gemini_free(system_prompt: str, user_prompt: str, temperature: float = 0.2, max_tokens: int = 16000, timeout: int = 180, max_truncation_retries: int = 3) -> str:
+    """Crida Gemini free tier via REST. Amb retry 429 i 503 (espera 60s).
+
+    thinkingLevel=low: gemini-3-flash-preview es un model de raonament i sense
+    aquest límit es cremava 9.000-15.000 tokens de "pensament" per corregir
+    ortografia — pics per sobre del pressupost de maxOutputTokens tallaven el
+    document a mitja (finishReason=LENGTH) i el script ho guardava com si fos
+    vàlid. Per a tasques mecàniques (detectar idioma + corregir), low basta.
+
+    Si la sortida ve truncada (finishReason=LENGTH), reintenta fins a
+    max_truncation_retries i llavors llença error explícit (mai silenciar).
+    """
     if not GEMINI_FREE_API_KEY:
         raise ValueError(
             "GEMINI_FREE_API_KEY no configurada. Posa la clau free tier (AIza...) "
@@ -62,9 +72,11 @@ def call_gemini_free(system_prompt: str, user_prompt: str, temperature: float = 
         "generationConfig": {
             "temperature": temperature,
             "maxOutputTokens": max_tokens,
+            "thinkingConfig": {"thinkingLevel": "low"},
         },
     }
 
+    truncation_attempts = 0
     while True:
         r = requests.post(url, json=payload, timeout=timeout)
         if r.status_code == 200:
@@ -72,7 +84,22 @@ def call_gemini_free(system_prompt: str, user_prompt: str, temperature: float = 
             candidates = data.get("candidates", [])
             if not candidates:
                 raise Exception(f"Gemini sense candidates: {json.dumps(data)[:300]}")
+            finish = candidates[0].get("finishReason", "STOP")
             parts = candidates[0].get("content", {}).get("parts", [])
+            text = "".join(p.get("text", "") for p in parts)
+            if finish == "LENGTH":
+                truncation_attempts += 1
+                if truncation_attempts > max_truncation_retries:
+                    raise Exception(
+                        f"Gemini ha truncat la sortida {truncation_attempts} cops "
+                        f"(finishReason=LENGTH, {len(text)} chars). No es guarda incomplet."
+                    )
+                print(f"[!] Sortida truncada (finishReason=LENGTH, {len(text)} chars). "
+                      f"Reintent {truncation_attempts}/{max_truncation_retries}...")
+                time.sleep(5)
+                continue
+            if not text.strip():
+                raise Exception(f"Gemini ha respost buit (finishReason={finish})")
             try:
                 um = data.get("usageMetadata", {})
                 _record_usage(
@@ -82,7 +109,7 @@ def call_gemini_free(system_prompt: str, user_prompt: str, temperature: float = 
                 )
             except Exception:
                 pass
-            return "".join(p.get("text", "") for p in parts)
+            return text
         if r.status_code == 429:
             print(f"[!] Error 429: Quota saturada. Esperant 60 segons abans de reintentar...")
             time.sleep(60)

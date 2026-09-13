@@ -15,6 +15,7 @@ Si el model no existeix, prova amb el següent de la llista.
 import sys
 import time
 import os
+import re
 from pathlib import Path
 
 sys.path.insert(0, "./scripts")
@@ -72,31 +73,53 @@ def call_gemini_with_fallback(system_prompt: str, user_prompt: str, temperature:
 
 
 def correct_one(md_path: Path) -> bool:
-    """Corregeix un fitxer Markdown."""
-    slug_with_lang = md_path.stem  # ex: eu-taxonomy-delegated-act.ca
+    """Corregeix un fitxer Markdown amb detecció d'idioma i validació d'integritat."""
     output_path = REVISATS_DIR / md_path.name
-
-    if output_path.exists():
-        # Refem sempre (idempotent per al test, pero no es salta)
-        pass
 
     print(f"  -> Corregint {md_path.name}...")
     content = md_path.read_text(encoding="utf-8")
 
-    # Determinar idioma pel sufix o pel front-matter
-    lang = "es" if ".es." in md_path.name else "ca"
+    # Detecció d'idioma REAL sobre el contingut (mai pel nom de fitxer:
+    # el 13-set-2026 un .es.md mig en català va passar com a ES).
+    # El detector de Gemini respon "CA" o "ES"; si no coincideix amb el
+    # fitxer, avortem abans de corregir (cal regenerar, no corregir).
+    detected = call_gemini_with_fallback(
+        "Ets un detector d'idiomes. Respon NOMES amb dues lletres: CA si el text "
+        "majoritari és català, ES si és castellà. Cap altra paraula.",
+        content[:3000],
+        temperature=0.0, max_tokens=2048,
+    ).strip().upper()
+    if detected not in ("CA", "ES"):
+        m = re.search(r"\b(CA|ES)\b", detected)
+        detected = m.group(1) if m else "?"
+    expected = "es" if ".es." in md_path.name else "ca"
+    if detected != expected.upper():
+        print(f"  ✗ DETECTAT CANVI D'IDIOMA: el fitxer diu ser .{expected}.md però "
+              f"conté text {detected}. NO es corregeix — cal regenerar-lo amb 04-glm-redacta.")
+        return False
 
-    user_prompt = f"""Corregeix aquest informe en {"castella" if lang == "es" else "catala"}.
+    lang = expected  # CA o ES confirmats sobre el contingut real
+
+    user_prompt = f"""Corregeix aquest informe en {"castellà" if lang == "es" else "català"}.
 
 === INFORME ===
 {content}
 === FI ===
 
-Torna el Markdown corregit (començant per ---)."""
+Retorna el Markdown SENCER corregit, amb tots els blocs i taules (començant per ---). No resumisquis ni eliminis cap secció."""
 
     corrected = call_gemini_with_fallback(
         SYSTEM_PROMPT, user_prompt, temperature=0.2, max_tokens=16000
     )
+
+    # Validació d'integritat: la sortida ha de tenir tots els blocs de l'entrada
+    # i una mida coherent (>=85%). Si falla, NO sobrescrivim el que hi hagi.
+    n_in = len(re.findall(r"^##\s+\w+\s+\d", content, re.MULTILINE))
+    n_out = len(re.findall(r"^##\s+\w+\s+\d", corrected, re.MULTILINE))
+    if n_out < n_in or len(corrected) < 0.85 * len(content):
+        print(f"  ✗ SORTIDA INCOMPLETA: {n_out} blocs / {len(corrected)} chars "
+              f"(esperat >= {n_in} blocs / >= {int(0.85*len(content))} chars). No es guarda.")
+        return False
 
     # Netejar: si Gemini ha afegit text abans del ---
     if "---" in corrected:

@@ -278,5 +278,124 @@
     "provider": "deepseek",
     "prompt_tokens": 666,
     "completion_tokens": 14502
+  },
+  {
+    "ts": "2026-09-11T21:28:15",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 2647,
+    "completion_tokens": 2354
+  },
+  {
+    "ts": "2026-09-11T21:29:13",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 2679,
+    "completion_tokens": 637
+  },
+  {
+    "ts": "2026-09-13T13:07:10",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 2647,
+    "completion_tokens": 638
+  },
+  {
+    "ts": "2026-09-13T13:08:02",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 2400,
+    "completion_tokens": 639
+  },
+  {
+    "ts": "2026-09-13T13:08:54",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 2541,
+    "completion_tokens": 636
+  },
+  {
+    "ts": "2026-09-13T13:09:47",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 2453,
+    "completion_tokens": 637
+  },
+  {
+    "ts": "2026-09-13T13:10:35",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 2444,
+    "completion_tokens": 636
+  },
+  {
+    "ts": "2026-09-13T13:12:54",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 2647,
+    "completion_tokens": 636
+  },
+  {
+    "ts": "2026-09-13T13:13:43",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 2400,
+    "completion_tokens": 640
+  },
+  {
+    "ts": "2026-09-13T13:14:48",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 2647,
+    "completion_tokens": 636
+  },
+  {
+    "ts": "2026-09-13T13:15:39",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 2400,
+    "completion_tokens": 638
+  },
+  {
+    "ts": "2026-09-13T13:19:00",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 1368,
+    "completion_tokens": 316
+  },
+  {
+    "ts": "2026-09-13T13:19:30",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 1170,
+    "completion_tokens": 316
+  },
+  {
+    "ts": "2026-09-13T13:44:49",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 1143,
+    "completion_tokens": 1
+  },
+  {
+    "ts": "2026-09-13T13:44:57",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 2669,
+    "completion_tokens": 2334
+  },
+  {
+    "ts": "2026-09-13T13:45:00",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 993,
+    "completion_tokens": 1
+  },
+  {
+    "ts": "2026-09-13T13:45:08",
+    "model": "gemini-3-flash-preview",
+    "provider": "gemini-free",
+    "prompt_tokens": 2422,
+    "completion_tokens": 2037
   }
 ]

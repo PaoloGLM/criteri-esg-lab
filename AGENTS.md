@@ -76,6 +76,7 @@ Com a nova iniciativa d'integració d'Hermes en el projecte, s'activen les segü
 3.  **Gemini 3.6 Flash Revisa** (API de pagament): JSON a `/2-aportacions-gemini/` (Revisió crítica i advocat del diable)
 4.  **DeepSeek v4 Pro Redacta**: Markdown a `/3-fets/` (Màxim 1.100 paraules)
 5.  **Gemini free Ortografia**: Markdown corregit i PDF a `/4-revisats-ortografia/`
+5b. **GATE d'idiomes (obligatori)**: `python scripts/check-idiomes.py .../<slug>.es.md` — bloqueja si l'ES conté català barrejat (falha detectada 13-set-2026: l'ortografia de Gemini NO detecta idioma equivocat). Si falla, regenerar l'ES des del CA validat amb GLM.
 6.  **Paolo Valida**: Mou manualment a `/5-validats-paolo/`
 7.  **DeepSeek v4 Pro Puja a la web**: Publica a la base de dades i mou a `/6-publicats/`
 

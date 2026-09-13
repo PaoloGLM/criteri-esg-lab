@@ -20,6 +20,7 @@ from pathlib import Path
 
 sys.path.insert(0, "./scripts")
 from nemotron_client import call_nemotron
+from glm_flash_client import call_glm_flash_json
 import pdfplumber
 
 DATA_DIR = Path("./data/informes")

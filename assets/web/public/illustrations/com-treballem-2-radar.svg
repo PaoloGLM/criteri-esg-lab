@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-label="Radar: supervisió contínua — la IA vigilada amb criteri humà">
+  <rect width="900" height="675" fill="#26312B"/>
+  <g fill="none">
+    <circle cx="450" cy="337" r="250" stroke="#F2F5F1" stroke-width="1.5" opacity=".22"/>
+    <circle cx="450" cy="337" r="185" stroke="#F2F5F1" stroke-width="1.5" opacity=".22"/>
+    <circle cx="450" cy="337" r="120" stroke="#AAC9B6" stroke-width="2" opacity=".65"/>
+    <circle cx="450" cy="337" r="55" stroke="#F2F5F1" stroke-width="1.5" opacity=".35"/>
+    <line x1="200" y1="337" x2="700" y2="337" stroke="#F2F5F1" stroke-width="1" opacity=".15"/>
+    <line x1="450" y1="87" x2="450" y2="587" stroke="#F2F5F1" stroke-width="1" opacity=".15"/>
+    <path d="M450 337 L450 87 A250 250 0 0 1 666.5 212 Z" fill="#F5E381" opacity=".1"/>
+    <line x1="450" y1="337" x2="641" y2="176" stroke="#F5E381" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <circle cx="585" cy="420" r="7" fill="#F2F5F1"/>
+  <circle cx="330" cy="215" r="7" fill="#F5E381"/>
+  <circle cx="330" cy="215" r="15" fill="none" stroke="#F5E381" stroke-width="1.5" opacity=".7"/>
+  <circle cx="368" cy="470" r="5" fill="#AAC9B6"/>
+  <circle cx="450" cy="337" r="9" fill="#F2F5F1"/>
+</svg>

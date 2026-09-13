@@ -75,6 +75,7 @@ Resum de formats acceptats per bloc:
 | `03-gemini-revisa.py` | 3 | Crida Gemini 3.6 Flash (crític + advocat del diable, API de pagament), guarda JSON d'aportacions |
 | `04-glm-redacta.py` | 4 | Crida DeepSeek v4 Pro per redactar Markdown integrant aportacions de Gemini |
 | `05-gemini-ortografia.py` | 5 | Crida Gemini free per corregir ortografia (text lliure, NO JSON) |
+| `check-idiomes.py` | 5b (GATE) | Bloqueig: detecta text CA barrejat en fitxers `.es.md` (i viceversa). Sortida codi 1 si contaminació. Cal passar-ho ABANS de publicar |
 | `genera-pdf-informe.py` | 5b | Converteix Markdown a PDF amb plantilla oficial |
 | `puja-a-drive.py` | 5c | Puja PDFs i MDs a Drive /4-revisats-ortografia/ |
 
@@ -87,6 +88,11 @@ Resum de formats acceptats per bloc:
 - **Gemini 3.6 Flash (pagament)**: `gemini-3.6-flash` amb clau `GEMINI_API_KEY` (compte PRO de Google AI Studio). Ús restringit al pas 3 per contenir costos.
 - **Drive**: OAuth d'usuari amb refresh token.
 - **PDF**: pandoc NO (genera HTML directament amb Python) → weasyprint per HTML→PDF.
+
+> **GATE d'idiomes (13-set-2026)**: després del pas 5 i ABANS de publicar, executar
+> `python scripts/check-idiomes.py data/informes/4-revisats-ortografia/<slug>.es.md`.
+> Si dóna codi 1 (CA barrejat a l'ES), regenerar l'ES des del CA validat.
+> L'ortografia de Gemini NO detecta canvi d'idioma equivocat: només el gate ho fa.
 
 ## IMPORTANT
 

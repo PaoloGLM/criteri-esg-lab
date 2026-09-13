@@ -31,30 +31,20 @@ DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 DEEPSEEK_MODEL = "deepseek-v4-pro"
 DEEPSEEK_BASE_URL = "https://api.deepseek.com"
 
-# === OpenRouter (selecció de models de l'usuari) ===
-# Paolo tria el pool a .env.local (OPENROUTER_MODEL_POOL); el selector sempre
-# usa el MÉS BARAT DISPONIBLE del pool en el moment de cada crida.
+# === OpenRouter (model seleccionat per l'usuari) ===
+# Paolo tria el MODEL BASE a .env.local (OPENROUTER_MODEL, ex: z-ai/glm-5.2).
+# El selector sempre usa la VARIANT MÉS BARATA d'aquest model que existeixi
+# al catàleg real (base, :free, :nitro...). Si descarta una variant més barata
+# (:batch, sufixos desconeguts...) ho ARGUMENTA al log — mai en silenci.
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
-OPENROUTER_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
+OPENROUTER_DEFAULT_MODEL = "z-ai/glm-5.2"
 
-# Pool per defecte (si .env.local no defineix OPENROUTER_MODEL_POOL).
-# Comma-separated; IDs d'OpenRouter. ":free" = $0.
-_OPENROUTER_DEFAULT_POOL = [
-    "z-ai/glm-5.3-flash:free",
-    "z-ai/glm-4.7-flash",
-    "z-ai/glm-5.2",
-]
-
-def get_openrouter_pool() -> list:
-    """Retorna la selecció de models de l'usuari (de .env.local)."""
-    raw = os.getenv("OPENROUTER_MODEL_POOL", "")
-    if not raw.strip():
-        return list(_OPENROUTER_DEFAULT_POOL)
-    pool = [m.strip() for m in raw.split(",") if m.strip()]
-    if not pool:
-        return list(_OPENROUTER_DEFAULT_POOL)
-    return pool
+def get_openrouter_base_model() -> str:
+    """Model base triat per Paolo (sense sufix de variant)."""
+    raw = os.getenv("OPENROUTER_MODEL", "").strip()
+    base = raw.split(":")[0].strip() if raw else ""
+    return base or OPENROUTER_DEFAULT_MODEL
 
 def get_openrouter_client():
     """Retorna client OpenAI/OpenRouter configurat."""
@@ -66,135 +56,152 @@ def get_openrouter_client():
     from openai import OpenAI
     return OpenAI(base_url=OPENROUTER_BASE_URL, api_key=OPENROUTER_API_KEY)
 
-# --- Selector "més barat disponible" ---
+# --- Selector "proveïdor més barat disponible" (variants reals per proveïdor) ---
 
-# Cache de preus (TTL 6h): evita cridar /models a cada crida del flux.
-_or_price_cache = {"ts": 0.0, "prices": {}}
-_OR_PRICE_TTL = 6 * 3600
+# Cache d'endpoints (TTL 6h): evita cridar /models/{id}/endpoints a cada crida.
+_or_ep_cache = {"ts": 0.0, "data": {}}
+_OR_EP_TTL = 6 * 3600
 
-def fetch_openrouter_prices() -> dict:
-    """Consulta preus reals de l'API pública d'OpenRouter (/api/v1/models).
+# Variants que OpenRouter ofereix com a endpoints especials: més barates però
+# amb condicions que NO acceptem per defecte (assíncrones / lentes).
+_VARIANT_REJECT_REASON = {
+    "batch": "mode batch (llançament asíncron; resposta pot trigar fins a 24h)",
+    "flex": "mode flex (finestra de processament llarga, latència no garantida)",
+}
 
-    Retorna {model_id: prompt_price_per_token}. Amb cache 6h.
+def fetch_openrouter_endpoints(model_id: str) -> list:
+    """Consulta els endpoints reals (proveïdors) d'un model a OpenRouter.
+
+    GET /api/v1/models/{id}/endpoints → data.endpoints, cada endpoint amb
+    provider_name, pricing.prompt, pricing.completion, context_length.
+    Cache 6h per no repetir la crida dins d'un mateix informe.
     """
     import time
     now = time.time()
-    if _or_price_cache["prices"] and now - _or_price_cache["ts"] < _OR_PRICE_TTL:
-        return _or_price_cache["prices"]
+    cached = _or_ep_cache["data"].get(model_id)
+    if cached and now - _or_ep_cache["ts"] < _OR_EP_TTL:
+        return cached
     import json
     import urllib.request
     req = urllib.request.Request(
-        f"{OPENROUTER_BASE_URL}/models",
+        f"{OPENROUTER_BASE_URL}/models/{model_id}/endpoints",
         headers={"User-Agent": "criteri-esg-flux/1.0"},
     )
     with urllib.request.urlopen(req, timeout=20) as r:
-        data = json.load(r)["data"]
-    prices = {}
-    for m in data:
-        p = m.get("pricing", {}) or {}
-        try:
-            prices[m["id"]] = float(p.get("prompt") or 0)
-        except (TypeError, ValueError):
-            prices[m["id"]] = 0.0
-    _or_price_cache["ts"] = now
-    _or_price_cache["prices"] = prices
-    return prices
+        data = json.load(r)["data"].get("endpoints", [])
+    _or_ep_cache["ts"] = now
+    _or_ep_cache["data"][model_id] = data
+    return data
 
-def pick_cheapest_available(pool: list = None) -> str:
-    """Del pool seleccionat per l'usuari, tria el model MÉS BARAT que existeix
-    i està actiu al catàleg d'OpenRouter ara mateix.
+def pick_cheapest_provider(model_id: str = None) -> tuple:
+    """D'un model, tria el PROVEÏDOR MÉS BARAT disponible ara mateix.
 
-    Els models morts (retirats del catàleg, com passa amb els :free quan
-    l'editor els tanca) queden exclosos automàticament.
-    Si cap del pool és trobat al catàleg, retorna el primer del pool
-    (l'error real de la crida ho destaparà).
+    Si descarta alguna opció més barata, imprimeix l'argument exacte (mai
+    silenciosí): p. ex. «:batch és més barat però és asíncron».
+
+    Retorna (openrouter_model_string, provider_name). La string retornada
+    usa el sufix de variant si cal (ex: model:batch → mai, donat el rebuig).
     """
-    pool = pool or get_openrouter_pool()
+    model_id = model_id or get_openrouter_base_model()
     try:
-        prices = fetch_openrouter_prices()
+        eps = fetch_openrouter_endpoints(model_id)
     except Exception as e:
-        print(f"[openrouter] AVÍS: no puc consultar preus ({e}); uso l'ordre del pool.")
-        return pool[0]
-    live = [m for m in pool if m in prices]
+        print(f"[openrouter] AVÍS: no puc consultar endpoints de {model_id} ({e}); "
+              f"usem el model tal qual (encaminament per defecte d'OpenRouter).")
+        return (model_id, "openrouter-default")
+
+    live = []
+    for e in eps:
+        p = e.get("pricing", {}) or {}
+        try:
+            p_in = float(p.get("prompt") or 0)
+            p_out = float(p.get("completion") or 0)
+        except (TypeError, ValueError):
+            continue
+        name = e.get("provider_name") or e.get("name") or "?"
+        live.append({"name": name, "p_in": p_in, "p_out": p_out})
+
     if not live:
-        print(f"[openrouter] AVÍS: cap model del pool és actiu a OpenRouter ({pool}).")
-        return pool[0]
-    cheapest = min(live, key=lambda m: (prices[m], live.index(m)))
-    return cheapest
+        print(f"[openrouter] AVÍS: cap endpoint viu per a {model_id}.")
+        return (model_id, "openrouter-default")
+
+    live.sort(key=lambda x: (x["p_in"] + x["p_out"]))
+    chosen, rejected = None, []
+    for ep in live:
+        reason = _VARIANT_REJECT_REASON.get(ep["name"].strip().lower())
+        if reason:
+            rejected.append((ep, reason))
+            continue
+        chosen = ep
+        break
+    if chosen is None:
+        chosen = live[0]
+    for ep, reason in rejected:
+        cost = ep["p_in"] + ep["p_out"]
+        print(f"[openrouter] DESCARTAT {ep['name']} (cost ${cost:.6f}/tok): {reason}.")
+
+    cost = chosen["p_in"] + chosen["p_out"]
+    print(f"[openrouter] Tria: {model_id} via {chosen['name']} "
+          f"(in ${chosen['p_in']:.6f} / out ${chosen['p_out']:.6f} per token) — el més barat viu.")
+    return (model_id, chosen["name"])
 
 # TTL de la tria: dins d'un mateix procés (un informe) no reconsultem
 # entre crides per estabilitat (un informe = un model).
-_or_pick_cache = {"model": None}
+_or_pick_cache = {"model": None, "provider": None}
 
 def call_openrouter_auto(system_prompt: str, user_prompt: str,
                          temperature: float = 0.3, max_tokens: int = 4096) -> str:
-    """Crida OpenRouter amb el model més barat disponible del pool de l'usuari.
+    """Crida OpenRouter amb el PROVEÏDOR MÉS BARAT disponible del model
+    base triat per l'usuari (OPENROUTER_MODEL, per defecte z-ai/glm-5.2).
 
-    Si la crida falla (429, model mort, timeout), reintenta amb el següent
-    del pool ordenat per preu.
+    Les variants més barates però assíncrones (:batch, :flex) es descarten
+    amb argument explícit al log (mai en silenci).
+    Si la crida falla (429, timeout), reintenta sense fixar proveïdor
+    (encaminament per defecte d'OpenRouter).
     """
-    from openai import OpenAI, APIError
+    from openai import APIError
 
     client = get_openrouter_client()
-    pool = get_openrouter_pool()
 
-    # Ordre de prova: per preu ascendent (més barat primer)
+    # Dins del mateix procés (un informe), mantén el proveïdor triat.
+    if _or_pick_cache["model"] is None:
+        model, provider = pick_cheapest_provider()
+        _or_pick_cache["model"] = model
+        _or_pick_cache["provider"] = provider
+    else:
+        model, provider = _or_pick_cache["model"], _or_pick_cache["provider"]
+
+    kwargs = dict(
+        model=model,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ],
+        temperature=temperature,
+        max_tokens=max_tokens,
+    )
+    if provider and provider != "openrouter-default":
+        kwargs["extra_body"] = {"provider": {"order": [provider], "allow_fallbacks": False}}
+
     try:
-        prices = fetch_openrouter_prices()
-        candidates = sorted(
-            [m for m in pool if m in prices],
-            key=lambda m: (prices[m], pool.index(m)),
-        ) + [m for m in pool if m not in prices]
-    except Exception:
-        candidates = list(pool)
+        response = client.chat.completions.create(**kwargs)
+    except (APIError, Exception) as e:
+        print(f"[openrouter] {provider} ha fallat ({type(e).__name__}): {str(e)[:160]}; "
+              f"reintento amb encaminament per defecte...")
+        kwargs.pop("extra_body", None)
+        response = client.chat.completions.create(**kwargs)
 
-    # Dins del mateix procés, mantén el model triat (un informe = un model)
-    if _or_pick_cache["model"] in candidates:
-        candidates = (
-            [_or_pick_cache["model"]]
-            + [m for m in candidates if m != _or_pick_cache["model"]]
-        )
-
-    last_err = None
-    for model in candidates:
-        try:
-            response = client.chat.completions.create(
-                model=model,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt},
-                ],
-                temperature=temperature,
-                max_tokens=max_tokens,
-            )
-            content = response.choices[0].message.content
-            if content is None:
-                reasoning = getattr(response.choices[0].message, "reasoning_content", None)
-                content = reasoning or ""
-            if _or_pick_cache["model"] is None:
-                _or_pick_cache["model"] = model
-            return content
-        except (APIError, Exception) as e:
-            last_err = e
-            print(f"[openrouter] Model {model} ha fallat ({type(e).__name__}): "
-                  f"{str(e)[:160]}; probant el següent del pool...")
-    raise RuntimeError(f"Cap model del pool ha funcionat. Últim error: {last_err}")
+    content = response.choices[0].message.content
+    if content is None:
+        reasoning = getattr(response.choices[0].message, "reasoning_content", None)
+        content = reasoning or ""
+    return content
 
 # === OpenRouter (GLM 5.2 Free) ===
 GLM_FREE_MODEL = "z-ai/glm-5.2:free"
 
 # === OpenRouter (Nemotron 3 Ultra Free) ===
 NEMOTRON_3_ULTRA_FREE = "nvidia/nemotron-3-ultra-550b-a55b:free"
-
-def get_openrouter_client():
-    """Retorna client OpenAI/OpenRouter configurat."""
-    if not OPENROUTER_API_KEY:
-        raise ValueError(
-            "OPENROUTER_API_KEY no configurada. Crea-la a https://openrouter.ai/keys "
-            "i posa-la a assets/web/.env.local"
-        )
-    from openai import OpenAI
-    return OpenAI(base_url=OPENROUTER_BASE_URL, api_key=OPENROUTER_API_KEY)
 
 # === Google Drive ===
 GCP_SERVICE_ACCOUNT_PATH = os.getenv(

@@ -1,0 +1,51 @@
+{
+  "avaluacio_general": {
+    "nota": "A",
+    "fidelitat_global": "Fidelitat molt alta",
+    "resum_avaluacio": "El destil·lat sintetitza de manera precisa i rigorosa les dades quantitatives i els marcs d'anàlisi de l'informe de l'EEA (2026). Integra correctament les xifres d'ocupació directa, valor afegit brut (VAB), bretxes de gènere i edat, dèficits de competències per estat membre, salaris per sector i condicions de salut ocupacional. Les referències creuades normatives (CSRD, GRI, CSDDD) i les connexions estratègiques (Informe Draghi, REPowerEU, EWCS) estan plenament alineades amb el text original."
+  },
+  "verificacio_dades_clau": [
+    {
+      "dada": "951.000 llocs de treball directes en clean-tech UE (2023)",
+      "estat": "Correcte",
+      "verificacio": "Coincideix exactament amb l'Executive Summary (pàg. 8) i el Capítol 4.1 (pàg. 53)."
+    },
+    {
+      "dada": "138.000 milions € de Valor Afegit Brut (2023)",
+      "estat": "Correcte",
+      "verificacio": "Coincideix exactament amb la xifra reportada a la pàg. 8 i al Capítol 3.2.1 (pàg. 42-43)."
+    },
+    {
+      "dada": "14% presència femenina en bombes de calor",
+      "estat": "Correcte",
+      "verificacio": "Alineat amb els Key Messages (pàg. 6) i la Figura 4.7 (pàg. 69)."
+    },
+    {
+      "dada": "87.500 milions € d'inversió necessària per a objectius NZIA (2023-2030)",
+      "estat": "Correcte (Aproximat)",
+      "verificacio": "A la Taula 3.2 (pàg. 45) es detallen 87,4 milions de miliards (87.400 M€); l'arrodoniment a 87.500 M€ és acceptable."
+    },
+    {
+      "dada": "22% treballadors autònoms en construcció clean-tech",
+      "estat": "Correcte",
+      "verificacio": "Coincideix amb el contingut de la secció 5.4.2 (pàg. 98) i la Figura 5.14 (pàg. 99)."
+    }
+  ],
+  "analisi_coberta_tematica": {
+    "punts_forts": [
+      "Captura excel·lent de la desagregació sectorial (eòlica, solar FV, bombes de calor i bateries) i la seva distribució per la cadena de valor (R+D, fabricació, construcció, operació).",
+      "Reflecteix amb claredat el dèficit estructural de perfils tècnics (electricistes en 21 estats membres, lampistes en 20).",
+      "Documentació precisa dels riscos d'exposició química i laboral en la fabricació de bateries (casos d'Hongria i Suècia a la Box 5.3).",
+      "Contextualització política actualitzada amb iniciatives com el Net-Zero Industry Act (NZIA), Clean Industrial Deal (CID), Industrial Accelerator Act i AccelerateEU."
+    ],
+    "llacunes_o_desviacions": [
+      "La numeració de pàgines en les dades clau del destil·lat presenta petits desplaçaments de 1 a 2 pàgines respecte a l'índex final de l'informe (ex. Taula 3.2 a la pàg. 45 vs pàg. 44 al destil·lat), tot i que la dada numèrica és exacta.",
+      "L'impacte comunitari en salut rep una nota 'groc' en el semàfor del destil·lat, la qual cosa reflecteix adequadament la manca de dades sistemàtiques a nivell comunitari recollides a l'informe."
+    ]
+  },
+  "avaluacio_qualitat_analitica": {
+    "semafor": "Ben fonamentat i rigorós; la qualificació global 'B' assignada al destil·lat està justificada per les llacunes dades comunitaris/migratoris que l'informe original reconeix explícitament.",
+    "implicacions": "Les implicacions per a empreses, reguladors i ciutadans sintetitzen adequadament les conclusions del Capítol 6 i els reptes de transició justa.",
+    "accions_i_crossrefs": "Les accions proposades (01 a 05) i el mapeig CSRD/GRI/CSDDD són operatius, coherentment derivats dels troballes del Capítol 5 i orientats a les polítiques de treball digne de la UE."
+  }
+}

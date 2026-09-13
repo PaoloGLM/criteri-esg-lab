@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { requireAdmin, errorJson, logError, ERR } from "@/lib/admin-auth";
 
 /**
+ * GET    /api/admin/reports/[slug]  → un informe (inclosos drafts)
  * PATCH  /api/admin/reports/[slug]  → edita un informe (parcial)
  * DELETE /api/admin/reports/[slug]  → esborra un informe
  *
@@ -16,6 +17,43 @@ export const dynamic = "force-dynamic";
 const VALID_TYPES = ["regulatory", "framework", "rating", "industry", "official"];
 const VALID_SCOPES = ["CAT", "ES", "EU", "GLOBAL"];
 const VALID_STATUS = ["draft", "validated", "published", "archived"];
+
+export async function GET(
+  req: NextRequest,
+  { params }: { params: Promise<{ slug: string }> }
+) {
+  const auth = await requireAdmin(req);
+  if (!auth.ok) return errorJson(auth.errorId!, "Accés denegat", auth.status!);
+
+  try {
+    const { slug } = await params;
+    const { data, error } = await auth
+      .client!.from("informes")
+      .select("*")
+      .eq("slug", slug)
+      .maybeSingle();
+
+    if (error) {
+      await logError(ERR.DB_ERROR, "error", {
+        route: "/api/admin/reports/[slug]",
+        op: "GET",
+        slug,
+        detail: error.message,
+      });
+      return errorJson(ERR.DB_ERROR, "Error llegint l'informe", 500);
+    }
+    if (!data) return errorJson(ERR.VALIDATION, `No existeix l'informe "${slug}"`, 404);
+
+    return Response.json({ report: data });
+  } catch (e) {
+    await logError(ERR.DB_ERROR, "critical", {
+      route: "/api/admin/reports/[slug]",
+      op: "GET",
+      detail: String(e),
+    });
+    return errorJson(ERR.DB_ERROR, "Error intern", 500);
+  }
+}
 
 export async function PATCH(
   req: NextRequest,

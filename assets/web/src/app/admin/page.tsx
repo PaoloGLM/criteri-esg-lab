@@ -419,6 +419,12 @@ export default function AdminPage() {
                       </div>
                     </div>
                     <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
+                      <a
+                        href={`/admin/informes/${r.slug}`}
+                        style={{ ...btnGhostSmall, textDecoration: "none", display: "inline-flex", alignItems: "center" }}
+                      >
+                        Previsualitza
+                      </a>
                       <button
                         onClick={() => { setEditing(r); setCreating(false); }}
                         style={btnGhostSmall}

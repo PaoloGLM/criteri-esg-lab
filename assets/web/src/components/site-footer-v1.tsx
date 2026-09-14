@@ -23,9 +23,9 @@ const COLS = [
   {
     titol: { ca: "Legal", es: "Legal" },
     links: [
-      { href: "/legal/privacitat", ca: "Privacitat", es: "Privacidad" },
-      { href: "/legal/avis-legal", ca: "Avís legal", es: "Aviso legal" },
-      { href: "/legal/cookies", ca: "Cookies", es: "Cookies" },
+      { href: "/privacidad.html", ca: "Privacitat", es: "Privacidad" },
+      { href: "/privacidad.html", ca: "Avís legal", es: "Aviso legal" },
+      { href: "/privacidad.html", ca: "Cookies", es: "Cookies" },
     ],
   },
 ];

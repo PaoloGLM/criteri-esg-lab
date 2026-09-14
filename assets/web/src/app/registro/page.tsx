@@ -690,7 +690,7 @@ export default function RegistroPage() {
                             />
                             <span>
                               He llegit i accepto la{" "}
-                              <a href="/privacidad" target="_blank" style={{ color: C.accent, textDecoration: "underline", textUnderlineOffset: 2 }}>
+                              <a href="/privacidad.html" target="_blank" style={{ color: C.accent, textDecoration: "underline", textUnderlineOffset: 2 }}>
                                 política de privacitat
                               </a>{" "}
                               i el tractament de les meves dades segons el RGPD. *

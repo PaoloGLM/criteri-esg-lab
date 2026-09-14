@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import ZAI from "z-ai-web-dev-sdk";
+import { isRateLimited } from "@/lib/rate-limit";
 
 /**
  * POST /api/generate-report
@@ -26,6 +27,13 @@ interface GenerateRequest {
 const MAX_INPUT_CHARS = 30000; // límit per l'LLM
 
 export async function POST(req: NextRequest) {
+  // Auditoria 14-set: crida LLM de pagament → límit estrict (10/min/IP).
+  if (isRateLimited(req, "generate-report", { max: 10, windowMs: 60_000 })) {
+    return NextResponse.json(
+      { error: "too_many_requests" },
+      { status: 429 }
+    );
+  }
   try {
     const body = (await req.json()) as GenerateRequest;
     const { source, title, institution, lang } = body;

@@ -1,5 +1,6 @@
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import type { NextRequest } from "next/server";
+import { isRateLimited } from "./rate-limit";
 
 /**
  * Mòdul d'autenticació i autorització del panell /admin.
@@ -87,6 +88,17 @@ export interface AdminCheckResult {
 export async function requireAdmin(
   req: NextRequest
 ): Promise<AdminCheckResult> {
+  // 0. Rate limit (auditoria 14-set): sense ell, un JWT robat o una sessió
+  // segrestada podria bombardejar els endpoints admin sense cap fricció.
+  // 60 peticions/min per IP sobren per a l'ús humil del panell.
+  if (isRateLimited(req, "admin", { max: 60, windowMs: 60_000 })) {
+    await logError(ERR.RATE_LIMIT, "warning", {
+      route: req.nextUrl?.pathname,
+      detail: "Rate limit admin superat",
+    });
+    return { ok: false, client: null, errorId: ERR.RATE_LIMIT, status: 429 };
+  }
+
   // 1. Configuració present?
   if (
     !process.env.NEXT_PUBLIC_SUPABASE_URL ||

@@ -162,5 +162,6 @@ export const config = {
   // interferia amb l'OAuth (commit edb8ea9). /.well-known ha de ser públic.
   // api/llms és el markdown per IA — públic per disseny.
   // Els fitxers *-mockup.html de public/ queden darrere del Basic Auth.
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|logo.svg|logo-clar.svg|logo-fosc.svg|robots.txt|llms.txt|og-image.png|sitemap.xml|.well-known|registro|admin|api/password-check|api/admin|api/llms).*)"],
+  // privacidad.html és un document legal RGPD — ha de ser públic per llei.
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|logo.svg|logo-clar.svg|logo-fosc.svg|robots.txt|llms.txt|og-image.png|sitemap.xml|.well-known|registro|admin|api/password-check|api/admin|api/llms|privacidad.html).*)"],
 };

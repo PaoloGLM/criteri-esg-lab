@@ -18,10 +18,11 @@ scripts/.venv/
 __pycache__/
 *.pyc
 
-# Artefactes generats (ja són al Drive)
+# Artefactes generats (no van al repo)
 paquet-*.zip
 informe-unepfi-*.html
 data/newsletter-*.pdf
+data/informes/pendents-revisio/
 .gcp-service-account.json
 
 .vercel

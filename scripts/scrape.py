@@ -2,15 +2,20 @@
 scrape.py — Orquestrador principal de la recerca automàtica d'informes ESG.
 
 Flux:
-1. Carrega manifest.json des de Drive (dedup)
+1. Carrega manifest.json LOCAL (dedup) — scripts/state/manifest.json
 2. Per cada font de sources.yaml:
    a. Descarrega HTML (requests si static, Playwright si dynamic)
    b. Extreu enllaços a PDFs (BS4)
    c. Filtra: nous (no al manifest) + publicats últims 4 dies
-   d. Descarrega PDF
-   e. Puja a Drive 0-originals/
-3. Actualitza manifest a Drive
-4. Envia notificació (opcional)
+   d. Descarrega PDF i classifica'l (Nemotron, 2 capes)
+   e. PRESELECCIONATS i DUBTES → cua local data/informes/pendents-revisio/
+      (GATE PAOLO: l'usuari mou a 0-originals/ el que validi abans del flux)
+   f. REBUTJATS → esborrats
+3. Actualitza manifest LOCAL
+4. Resum a state/last_run_summary.json (el cron no_agent l'envia només si hi ha cua)
+
+Mode local des de 14-set-2026: no es puja res a Drive (SA sense quota → 403).
+L'alternativa Drive queda codificada i s'activa amb USE_DRIVE=True.
 
 Ús:
     python scrape.py [--dry-run] [--limit N] [--source slug]
@@ -19,10 +24,12 @@ import sys
 import os
 import json
 import time
+import shutil
 import hashlib
 import random
 import argparse
 import re
+import unicodedata
 from pathlib import Path
 from datetime import datetime, timedelta
 
@@ -35,6 +42,10 @@ SOURCES_FILE = Path(__file__).parent / "sources.yaml"
 STATE_DIR = Path(__file__).parent / "state"
 STATE_DIR.mkdir(exist_ok=True)
 MANIFEST_LOCAL = STATE_DIR / "manifest.json"
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+# Cua local de revisió humana (mode local 14-set-2026: sense Drive)
+CUA_REVISIO_DIR = REPO_ROOT / "data" / "informes" / "pendents-revisio"
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
 HEADERS = {
@@ -50,6 +61,10 @@ HEADERS = {
 DIAS_RECIENTES = 4
 MAX_PDF_SIZE = 60 * 1024 * 1024  # 60 MB
 TIMEOUT_HTTP = 30
+# Mode local (decisió Paolo 14-set-2026): el Drive del SA dona 403 (sense quota) i el
+# flux ja llegeix local + backup mensual a disc E:. Si algun dia hi ha shared drive,
+# tornar a posar-ho a True.
+USE_DRIVE = False
 
 
 def log(msg: str):
@@ -62,28 +77,29 @@ def load_sources() -> list:
 
 
 def load_manifest() -> dict:
-    """Carrega manifest local (sync amb Drive)."""
+    """Carrega manifest local (única font de veritat en mode local)."""
     if MANIFEST_LOCAL.exists():
         return json.loads(MANIFEST_LOCAL.read_text(encoding="utf-8"))
-    # Intentar baixar de Drive
-    try:
-        from drive_helper import download_manifest
-        data = download_manifest()
-        if data:
-            MANIFEST_LOCAL.write_text(json.dumps(data, indent=2), encoding="utf-8")
-            return data
-    except Exception as e:
-        log(f"  [manifest] No s'ha pogut baixar de Drive: {e}")
+    if USE_DRIVE:
+        try:
+            from drive_helper import download_manifest
+            data = download_manifest()
+            if data:
+                MANIFEST_LOCAL.write_text(json.dumps(data, indent=2), encoding="utf-8")
+                return data
+        except Exception as e:
+            log(f"  [manifest] No s'ha pogut baixar de Drive: {e}")
     return {}
 
 
 def save_manifest(manifest: dict):
     MANIFEST_LOCAL.write_text(json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8")
-    try:
-        from drive_helper import upload_manifest
-        upload_manifest(MANIFEST_LOCAL)
-    except Exception as e:
-        log(f"  [manifest] No s'ha pogut pujar a Drive: {e}")
+    if USE_DRIVE:
+        try:
+            from drive_helper import upload_manifest
+            upload_manifest(MANIFEST_LOCAL)
+        except Exception as e:
+            log(f"  [manifest] No s'ha pogut pujar a Drive: {e}")
 
 
 def sha256_file(path: Path) -> str:
@@ -92,6 +108,29 @@ def sha256_file(path: Path) -> str:
         for chunk in iter(lambda: f.read(65536), b""):
             h.update(chunk)
     return h.hexdigest()
+
+
+def slugify(titulo: str, max_len: int = 70) -> str:
+    """'ESMA TRV Risk Monitor No. 2, 2026' -> 'esma-trv-risk-monitor-no-2-2026'."""
+    s = unicodedata.normalize("NFKD", titulo or "").encode("ascii", "ignore").decode()
+    s = re.sub(r"[^-\s\w]", "", s).strip().lower()
+    s = re.sub(r"[\s_]+", "-", s)
+    s = re.sub(r"-{2,}", "-", s)
+    return s[:max_len].strip("-") or "sense-titol"
+
+
+def arxivar_a_cua(pdf_path: Path, cua_dir: Path, titol: str, data_pub: str) -> Path:
+    """Mou el PDF tmp a la cua local de revisió amb nom net ANNA-data-slug.pdf.
+    Mode local (decisió Paolo 14-set-2026): no es puja res a Drive — el SA no té
+    quota i el flux ja llegeix local. Backup mensual a disc E: cobreix la pèrdua."""
+    prefix = (data_pub or datetime.now().strftime("%Y-%m-%d"))[:10]
+    dest = cua_dir / f"{prefix}_{slugify(titol)}.pdf"
+    n = 2
+    while dest.exists():
+        dest = cua_dir / f"{prefix}_{slugify(titol)}-{n}.pdf"
+        n += 1
+    shutil.move(str(pdf_path), str(dest))
+    return dest
 
 
 def fetch_html(url: str, source_type: str = "static") -> str | None:
@@ -207,7 +246,7 @@ def download_pdf(url: str, dest_dir: Path) -> Path | None:
 
 
 def process_source(source: dict, manifest: dict, dest_dir: Path, dry_run: bool = False) -> dict:
-    stats = {"found": 0, "new": 0, "downloaded": 0, "aprovats": 0, "dubtes": 0, "rebutjats": 0, "errors": 0}
+    stats = {"found": 0, "new": 0, "downloaded": 0, "preseleccionats": 0, "dubtes": 0, "rebutjats": 0, "errors": 0}
     name = source["name"]
     url = source["url"]
     stype = source.get("type", "static")
@@ -260,24 +299,24 @@ def process_source(source: dict, manifest: dict, dest_dir: Path, dry_run: bool =
                 entry["pages"] = cls.get("pages", 0)
                 entry["veredicte"] = cls["veredicte"]
 
+                # GATE PAOLO (regla permanent des de 14-set-2026): cap document entra al
+                # flux de destil·lat/redactat sense revisió humana prèvia. El veredicte del
+                # classificador només és una PRESELECCIÓ. Tot (aprovat i dubte) va a la cua
+                # local pendents-revisio/ amb nom net; Paolo mou manualment a 0-originals/
+                # el que validi (igual que fa al pas 6 amb els informes redactats).
                 if cls["veredicte"] == "DUBTE":
                     stats["dubtes"] += 1
-                    # Cua de revisió humana: no pujar a 0-originals, guardar a pendents-revisio
-                    try:
-                        from drive_helper import upload_to_pendents
-                        upload_to_pendents(pdf_path, cls.get("titol") or link["title"])
-                        log(f"    ⏳ A pendents-revisio (dubte)")
-                    except Exception as e:
-                        log(f"    [drive] pendents ERROR: {e}")
                 else:
-                    stats["aprovats"] += 1
-                    # Puja a Drive 0-originals
-                    try:
-                        from drive_helper import upload_to_originals
-                        upload_to_originals(pdf_path, cls.get("titol") or link["title"])
-                        pdf_path.unlink()
-                    except Exception as e:
-                        log(f"    [drive] ERROR pujant: {e}")
+                    stats["preseleccionats"] += 1
+                try:
+                    dest = arxivar_a_cua(pdf_path, CUA_REVISIO_DIR,
+                                         cls.get("titol") or link["title"],
+                                         cls.get("data_publicacio", ""))
+                    entry["cua_local"] = str(dest.relative_to(REPO_ROOT).as_posix())
+                    entry["revisat_per_paolo"] = False
+                    log(f"    ⏳ A cua de revisió local: {dest.name}")
+                except Exception as e:
+                    log(f"    [cua] ERROR arxivant: {e}")
             else:
                 stats["errors"] += 1
                 mark_known(link["url"], manifest)  # Marcar com a vist per no repetir
@@ -310,10 +349,11 @@ def main():
     manifest = load_manifest()
     log(f"Manifest: {len(manifest)} entrades conegudes\n")
 
-    dest_dir = Path("./data/informes/0-originals")
+    CUA_REVISIO_DIR.mkdir(parents=True, exist_ok=True)
+    dest_dir = CUA_REVISIO_DIR / ".tmp"  # només fitxers temporals; la cua definitiva és un nivell amunt
     dest_dir.mkdir(parents=True, exist_ok=True)
 
-    total = {"found": 0, "new": 0, "downloaded": 0, "aprovats": 0, "dubtes": 0, "rebutjats": 0, "errors": 0}
+    total = {"found": 0, "new": 0, "downloaded": 0, "preseleccionats": 0, "dubtes": 0, "rebutjats": 0, "errors": 0}
     results = []
 
     for i, source in enumerate(sources, 1):
@@ -330,6 +370,10 @@ def main():
     if not args.dry_run:
         save_manifest(manifest)
 
+    # Netegar fitxers temporals sobrants (els rebutjats ja s'esborren; tmp_* vius = avorts)
+    for sobrant in dest_dir.glob("tmp_*.pdf"):
+        sobrant.unlink(missing_ok=True)
+
     # Resum final
     log(f"\n{'='*50}")
     log(f"RESUM FINAL")
@@ -338,10 +382,13 @@ def main():
     log(f"Enllaços trobats: {total['found']}")
     log(f"Nous detectats: {total['new']}")
     log(f"Descarregats: {total['downloaded']}")
-    log(f"  ✅ Aprovats (informes reals): {total['aprovats']}")
-    log(f"  ⏳ Dubtes (pendents revisió): {total['dubtes']}")
-    log(f"  ❌ Rebutjats (no són informes): {total['rebutjats']}")
+    log(f"  ✅ Preseleccionats (INFORME, esperen la teva revisió): {total['preseleccionats']}")
+    log(f"  ⏳ Dubtes (cal revisió teva): {total['dubtes']}")
+    log(f"  ❌ Rebutjats (no són informes o fora de tema): {total['rebutjats']}")
     log(f"Errors: {total['errors']}")
+    if total["preseleccionats"] or total["dubtes"]:
+        log(f"\n📁 Cua de revisió: {CUA_REVISIO_DIR}")
+        log(f"   Mou a 0-originals/ només el que validis (gate Paolo).")
 
     # Guardar resum per notificació
     summary_path = STATE_DIR / "last_run_summary.json"

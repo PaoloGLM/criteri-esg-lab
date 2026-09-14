@@ -88,6 +88,21 @@ CRITERIS PER SER "INFORME":
 - Autoria identificable (persones O institució)
 - No és material comercial promocional
 
+GATE DE RELLEVÀNCIA TEMÀTICA (decisió Paolo 14-set-2026 — prioritat sobre tot):
+- El document HA de tractar ESG: medi ambient/clima, transició energètica, dimensió social,
+  governança corporativa, finances sostenibles (CSRD/ESRS/taxonomia/SFDR/bonets verds, etc.).
+- IMPORTANT: tenir "metodologia i dades" NO n'hi ha prou. Un document pot ser un informe
+  rigorós i ser fora de tema. Si el tema NO és ESG → veredicte REBUTJAT amb "fora de tema",
+  encara que tipus=INFORME i confiança alta.
+- Exemples de fora de tema: operació de mercats elèctrics (redespachament, capacity
+  calculation, settlement), supervisió financera sense angle de sostenibilitat, enquestes
+  de mercats monetaris, comptes/auditories de la institució, metodologies tarifàries.
+
+EXCLUSIONS EXPLÍCITES (veredicte REBUTJAT, no DUBTE) — decisió Paolo 14-set-2026:
+- Decisions/annexos formals d'agències reguladores amb caràcter tècnic-i-específic
+  (p. ex. decisions de l'ACER sobre capacity calculation, cost sharing, esmenes de metodologies regionals, annexos normatius).
+  Són documents normatius d'abast estret, NO informes amb anàlisi per a audiència ESG.
+
 TIPUS POSSIBLES:
 - INFORME: estudi complet amb metodologia i dades
 - NOTICIA: comunicat de premsa, notícia breu
@@ -111,6 +126,7 @@ Respon EXACTAMENT aquest JSON (sense markdown, sense explicacions):
   "data_publicacio": "AAAA-MM-DD o cadena buida si no es troba",
   "metodologia_propia": true/false,
   "dades_originals": true/false,
+  "rellevant_esg": true/false,
   "rao": "explicació breu de la decisió (1 frase)"
 }}"""
     raw = _call_nemotron(system, user)
@@ -143,8 +159,12 @@ Respon EXACTAMENT aquest JSON (sense markdown, sense explicacions):
 
     tipus = str(data.get("tipus", "ALTRES")).upper().strip()
     conf = float(data.get("confianca", 0.5))
-
-    if tipus == "INFORME" and conf >= 0.7:
+    # Gate dur de rellevància temàtica (decisió Paolo 14-set-2026):
+    # si el LLM diu que NO és rellevant per a ESG, res no l'aprova.
+    rellevant = data.get("rellevant_esg")
+    if rellevant is False:
+        veredicte = "REBUTJAT"
+    elif tipus == "INFORME" and conf >= 0.7:
         veredicte = "APROVAT"
     elif tipus in ("NOTICIA", "RESUM_EVENT", "LLISTAT", "CANVI_NORMATIU_BREU"):
         veredicte = "REBUTJAT"
@@ -160,6 +180,7 @@ Respon EXACTAMENT aquest JSON (sense markdown, sense explicacions):
         "data_publicacio": str(data.get("data_publicacio", "")).strip(),
         "metodologia_propia": bool(data.get("metodologia_propia", False)),
         "dades_originals": bool(data.get("dades_originals", False)),
+        "rellevant_esg": (None if rellevant is None else bool(rellevant)),
         "rao": str(data.get("rao", "")).strip(),
     }
 

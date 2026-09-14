@@ -1,12 +1,17 @@
 # Flux de creació d'informes Criteri ESG
 
-> **Flux oficial** — 13 agost 2026 (v2). Substitueix versions anteriors.
+> **Flux oficial** — 13 agost 2026 (v2), actualitzat 14 set 2026 (pas 0/0.5 + mode local).
 > LLEGEIX AQUEST FITXER ABANS DE COMENÇAR QUALSEVOL TASCA D'INFORMES.
 
-## El flux (7 passos)
+## El flux (7 passos + porta d'entrada)
 
 ```
-1. Gemini free detecta      →  PDFs originals a Drive /0-originals/
+0. scrape.py detecta         →  preseleccions a data/informes/pendents-revisio/ (LOCAL, no Drive)
+                                (fonts de sources.yaml + classificador classify.py amb
+                                 GATE temàtic ESG — rellevant_esg=false → REBUTJAT)
+0.5. GATE Paolo (permanent)  →  Paolo revisa la cua i mou manualment a 0-originals/
+                                només el que validi. Res entra al flux sense això.
+1. Gemini free detecta       →  PDFs originals a 0-originals/ (local)
 2. DeepSeek v4 Pro destil·la →  JSON destil·lats a Drive /1-distilats/
 3. Gemini 3.6 Flash revisa   →  JSON d'aportacions a Drive /2-aportacions-gemini/
                                 (API de pagament)
@@ -70,6 +75,7 @@ Resum de formats acceptats per bloc:
 
 | Script | Pas | Què fa |
 |--------|-----|--------|
+| `scrape.py` (+`classify.py`) | 0 | Scraper determinista (cron dl/dj, wrapper `scraper-criteri.sh` no_agent): recorre `sources.yaml`, classifica PDFs en 2 capes (≥8 pàg. + LLM amb gate `rellevant_esg`), arxiva preseleccions i dubtes a `pendents-revisio/` amb nom net. Mode LOCAL des de 14-set-2026 (`USE_DRIVE=False`: el SA no té quota → 403). Manifest local a `scripts/state/manifest.json`. |
 | `01-nemotron-detecta.py` | 1 | Gemini free cerca informes nous a les fonts institucionals (FONT_URLS) i descarrega PDFs a 0-originals/ |
 | `02-glm-distilla.py` | 2 | Llegeix PDFs, crida DeepSeek v4 Pro, guarda JSON destil·lat |
 | `03-gemini-revisa.py` | 3 | Crida Gemini 3.6 Flash (crític + advocat del diable, API de pagament), guarda JSON d'aportacions |
@@ -97,6 +103,8 @@ Resum de formats acceptats per bloc:
 ## IMPORTANT
 
 - Cap informe publicat sense validació de Paolo (pas 6).
+- **GATE Paolo al pas 0.5 (permanent, 14-set-2026)**: res del que detecta el scraper entra al flux sense revisió humana. El veredicte del classificador és només PRESELECCIÓ. Document tècnic-but-fora-de-tema (decisions d'agències, marge/derivats, enquestes monetàries) → rebutjar: "metodologia i dades" no el fan rellevant.
+- Pas 0 en MODE LOCAL (14-set-2026): sense sincronia Drive (SA sense quota → 403); backup mensual a disc E: cobreix `data/informes/`.
 - Tots els passos intermedis queden a Drive per auditabilitat.
 - Gemini té dos rols: **crític** (pas 3, retorna JSON estructurat, model de pagament) i **corrector** (pas 5, retorna Markdown corregit, model free).
 - Els passos 1 i 5 són gratuïts per disseny (Gemini free tier); el pas 3 és l'únic que consumeix API de pagament.

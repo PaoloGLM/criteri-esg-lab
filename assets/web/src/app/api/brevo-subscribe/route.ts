@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { isRateLimited } from "@/lib/rate-limit";
 
 /**
  * POST /api/brevo-subscribe
@@ -19,6 +20,12 @@ const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
 const BREVO_LIST_NAME = "Criteri ESG Newsletter";
 
 export async function POST(req: NextRequest) {
+  // Auditoria 14-set: sense límit, qualsevol podria inundar Brevo o fer
+  // servir la nostra clau per spam. 15 intents/min/IP (registre legítim en
+  // pot fer 2-3).
+  if (isRateLimited(req, "brevo-subscribe", { max: 15, windowMs: 60_000 })) {
+    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+  }
   try {
     const { email, name, lang } = await req.json();
 

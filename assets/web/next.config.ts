@@ -32,7 +32,11 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      // 'unsafe-eval' eliminat 14-set: no cal en producció (Només ho cal en
+      // mode dev de Next i el nostre codi no usa eval/new Function).
+      // 'unsafe-inline' a scripts: pendent migrar a nonces (requereix generar
+      // nonce al middleware i passar-lo a tots els <script> inline).
+      "script-src 'self' 'unsafe-inline'",
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self'",
       "img-src 'self' data: https:",

@@ -5,8 +5,9 @@ Flux:
 1. Carrega manifest.json LOCAL (dedup) — scripts/state/manifest.json
 2. Per cada font de sources.yaml:
    a. Descarrega HTML (requests si static, Playwright si dynamic)
-   b. Extreu enllaços a PDFs (BS4)
-   c. Filtra: nous (no al manifest) + publicats últims 4 dies
+   b. Extreu PDFs directes + enllaços candidats a pàgines intermèdies (BS4)
+   b2. Follow-through BFS: llistat -> notícia -> pàgina publicació -> PDF (prof. 2, pressupost 10)
+   c. Filtra: nous (no al manifest) + títols de 2025 endavant (i reintent pendent a 5 dies)
    d. Descarrega PDF i classifica'l (Nemotron, 2 capes)
    e. PRESELECCIONATS i DUBTES → cua local data/informes/pendents-revisio/
       (GATE PAOLO: l'usuari mou a 0-originals/ el que validi abans del flux)
@@ -61,6 +62,13 @@ HEADERS = {
 DIAS_RECIENTES = 4
 MAX_PDF_SIZE = 60 * 1024 * 1024  # 60 MB
 TIMEOUT_HTTP = 30
+# Follow-through de llistats de notícies (15-set-2026): llistat -> notícia -> pàg. publicació -> PDF
+MAX_FOLLOW_DEPTH = 2          # màxim de salts des del llistat
+MAX_FOLLOWS_PER_SOURCE = 10   # pressupost de pàgines seguides per font i execució
+MAX_INDIRECT_PER_PAGE = 8     # màx. enllaços candidats seguidos per pàgina (ordre DOM = recents primer)
+MAX_PDFS_PER_PAGE = 5         # màx. PDFs processats per pàgina
+MAX_GLOBAL_FOLLOWS = 150        # màx. pàgines seguides en TOTA l'execució
+RETRY_PAGE_DAYS = 5           # peça anunciada encara sense PDF -> reconfirmar d'aquí a 5 dies
 # Mode local (decisió Paolo 14-set-2026): el Drive del SA dona 403 (sense quota) i el
 # flux ja llegeix local + backup mensual a disc E:. Si algun dia hi ha shared drive,
 # tornar a posar-ho a True.
@@ -151,41 +159,111 @@ def fetch_html(url: str, source_type: str = "static") -> str | None:
     return None
 
 
-def extract_pdf_links(html: str, base_url: str) -> list[dict]:
-    """Extreu enllaços a PDFs del HTML (amb text de l'enllaç com a títol)."""
+def _url_key(url: str) -> str:
+    """Clau normalitzada per al manifest: sense paràmetres de tracking ni / final."""
+    from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode
+    parts = urlsplit(url)
+    keep = [(k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True)
+            if not k.lower().startswith("utm_")
+            and k.lower() not in ("gclid", "fbclid", "mc_cid", "mc_eid")]
+    path = parts.path.rstrip("/") or "/"
+    return urlunsplit((parts.scheme.lower(), parts.netloc.lower(), path,
+                       urlencode(keep, safe="/:,"), ""))
+
+
+PUB_KEYWORDS = [
+    "report", "informe", "publication", "study", "review", "survey", "outlook",
+    "guide", "opinion", "standard", "monitor", "agenda", "roadmap", "briefing",
+    "white paper", "position paper", "key issue", "perspective", "working paper",
+    "policy paper", "insight",
+]
+PAGE_INDEX_NOISE = [
+    "all publications", "all reports", "view all", "see all", "all news",
+    "todas las publicaciones", "totes les publicacions", "veure tot", "ver todo",
+    "read more", "legeix més", "més notícies", "more news", "press releases",
+    "notes de premsa", "events",
+]
+
+
+def extract_candidates(html: str, base_url: str):
+    """D'una pàgina HTML en surten (pdfs_directes, pages_candidates).
+
+    pdfs: <a href> .pdf / /pdf/ / format=pdf / /download.
+    pages: àncores descriptives (>15 chars) amb paraula clau de publicació,
+           mateix domini que la base, sense soroll d'índex. Es conserva el text
+           sencer (fins a 300) perquè és on van les dates.
+    """
     from bs4 import BeautifulSoup
-    from urllib.parse import urljoin
+    from urllib.parse import urljoin, urlsplit
 
     soup = BeautifulSoup(html, "html.parser")
-    links = []
-    seen = set()
+    base_domain = _site_domain(urlsplit(_url_key(base_url)).netloc)
+    pdfs, pages = [], []
+    seen_pdf, seen_page = set(), set()
+
+    def add_pdf(url, title):
+        full = _url_key(url)
+        if full not in seen_pdf:
+            seen_pdf.add(full)
+            pdfs.append({"url": full, "title": (title or "")[:120], "direct": True})
+
+    # Meta estàndard citation_pdf_url (present en molts catàlegs publicadors, DSpace...)
+    meta = soup.find("meta", attrs={"name": re.compile("^citation_pdf_url$", re.I)})
+    if meta and meta.get("content"):
+        add_pdf(meta["content"], "")
 
     for a in soup.find_all("a", href=True):
-        href = a["href"]
-        text = a.get_text(strip=True)[:120] or ""
-        full = urljoin(base_url, href)
+        href = a["href"] or ""
+        # els enllaços SPA (DSpace/Angular) sovint no tenen text: mirem aria-label/title
+        text = (a.get_text(" ", strip=True) or a.get("aria-label", "")
+                or a.get("title", "") or "")[:300]
+        low = href.lower()
+        full = _url_key(urljoin(base_url, href))
 
-        # Cas 1: enllaç directe .pdf
-        is_pdf = href.lower().endswith(".pdf") or "format=pdf" in href.lower() or "/pdf/" in href.lower()
-        # Cas 2: pàgina de publicació que probablement enllaça un PDF (heurística)
-        looks_like_pub = any(k in text.lower() for k in ["report", "informe", "publication", "study", "review", "survey", "guide", "opinion", "standard"])
+        if low.endswith(".pdf") or "format=pdf" in low or "/pdf/" in low or low.endswith("/download") \
+                or "/bitstream" in low:
+            add_pdf(full, text)
+            continue
 
-        if is_pdf:
-            key = full
-            if key not in seen:
-                seen.add(key)
-                links.append({"url": full, "title": text, "direct": True})
-        elif looks_like_pub and ("2026" in text or "2025" in text or "2024" in text):
-            # Enllaç a pàgina de publicació — el guardem per scraping secundari si cal
-            if full not in seen:
-                seen.add(full)
-                links.append({"url": full, "title": text, "direct": False})
-    return links
+        tl = text.lower()
+        if len(tl) < 4:
+            continue
+        wants = any(k in tl for k in PUB_KEYWORDS) or "full " in tl or "descarrega" in tl or "download" in tl
+        # rutes típiques de catàleg de publicacions (DSpace/handle, repositoris...)
+        href_ok = any(h in low for h in ("/handle/", "/publicacion", "/publication/", "/documents/"))
+        if not (wants or href_ok):
+            continue
+        # amb href_ok el text pot ser curt ("Full report"): exigeix mínim 4 chars només si no
+        if href_ok and len(tl) < 4:
+            continue
+        if not href_ok and len(tl) < 15:
+            continue
+        if any(n in tl for n in PAGE_INDEX_NOISE):
+            continue
+        # mateix lloc web: acceptem subdominis (www.unep.org i wedocs.unep.org = unep.org)
+        if _site_domain(urlsplit(full).netloc) != base_domain:
+            continue
+        if full in seen_page:
+            continue
+        seen_page.add(full)
+        pages.append({"url": full, "title": text})
+    return pdfs, pages
+
+
+def _site_domain(netloc: str) -> str:
+    """Ultims 2 nivells del domini (aproximació eTLD+1, sense llista pública)."""
+    host = (netloc or "").split(":")[0].lower().strip(".")
+    parts = [p for p in host.split(".") if p]
+    if len(parts) >= 3 and parts[-2] in ("co", "com", "gov", "org", "edu") and len(parts[-1]) == 2:
+        return ".".join(parts[-3:])  # ex. agency.gov.gr
+    return ".".join(parts[-2:]) if len(parts) >= 2 else host
 
 
 def is_recent(title: str) -> bool:
     """Heurística: el títol conté l'any en curs o mesos recents."""
     now = datetime.now()
+    if re.search(r"\b(?:202[5-9]|20[3-9][0-9])\b", title):
+        return True  # Paolo 15-set-2026: tot el que sigui de 2025 endavant compta
     year = str(now.year)
     if year in title:
         return True
@@ -205,17 +283,34 @@ def is_recent(title: str) -> bool:
 
 
 def already_known(url: str, manifest: dict) -> bool:
-    return url in manifest or hashlib.sha256(url.encode()).hexdigest()[:16] in manifest
+    """True si ja el coneixem. Excepció: si l'entrada té 'reintent_despres' vencent,
+    el tractem com a NO conegut per tornar-lo a visitar (peces anunciades sense PDF)."""
+    entry = manifest.get(url)
+    if entry is None:
+        entry = manifest.get(hashlib.sha256(url.encode()).hexdigest()[:16])
+    if not entry:
+        return False
+    due = entry.get("reintent_despres")
+    if due:
+        try:
+            if datetime.fromisoformat(due) <= datetime.now():
+                return False
+        except (ValueError, TypeError):
+            pass
+    return True
 
 
-def mark_known(url: str, manifest: dict, sha: str | None = None):
+def mark_known(url: str, manifest: dict, sha: str | None = None, extra: dict | None = None):
     key = url
-    manifest[key] = {
+    entry = {
         "sha256": sha or "",
         "first_seen": datetime.now().isoformat(),
     }
+    if extra:
+        entry.update(extra)
+    manifest[key] = entry
     # També index per hash curt de URL
-    manifest[hashlib.sha256(url.encode()).hexdigest()[:16]] = manifest[key]
+    manifest[hashlib.sha256(url.encode()).hexdigest()[:16]] = entry
 
 
 def download_pdf(url: str, dest_dir: Path) -> Path | None:
@@ -245,8 +340,102 @@ def download_pdf(url: str, dest_dir: Path) -> Path | None:
         return None
 
 
-def process_source(source: dict, manifest: dict, dest_dir: Path, dry_run: bool = False) -> dict:
-    stats = {"found": 0, "new": 0, "downloaded": 0, "preseleccionats": 0, "dubtes": 0, "rebutjats": 0, "errors": 0}
+def _marca_pagina(url: str, manifest: dict, titol: str, pendent: bool):
+    """Marca una pàgina intermèdia com a visitada. Si no hi havia cap PDF (pendent),
+    hi deixa una data de reintent (peces anunciades que publiquen el PDF dies després)."""
+    prev = manifest.get(url) or {}
+    reintents = int(prev.get("reintents_pendent", 0))
+    entry = {
+        "sha256": "",
+        "first_seen": prev.get("first_seen", datetime.now().isoformat()),
+        "pagines": True,
+        "titol": titol[:120],
+    }
+    if pendent and reintents < 4:
+        entry["reintents_pendent"] = reintents + 1
+        entry["reintent_despres"] = (datetime.now() + timedelta(days=RETRY_PAGE_DAYS)).isoformat()
+    manifest[url] = entry
+    manifest[hashlib.sha256(url.encode()).hexdigest()[:16]] = entry
+
+
+def process_pdf_link(link: dict, manifest: dict, dest_dir: Path, source_name: str,
+                     stats: dict, dry_run: bool = False) -> bool:
+    """Descarrega/classifica/arxiva UN PDF directe. Retorna True si n'hem parlat.
+    El títol de la pàgina d'origen (link['via_titol']) fa de context quan l'àncora
+    és genèrica ('Download full report')."""
+    if already_known(link["url"], manifest):
+        return False
+    title_for_ctx = link["title"] or link.get("via_titol", "")[:120]
+    stats["new"] += 1
+    log(f"    NEW: {title_for_ctx[:80]}")
+    if dry_run:
+        return True
+
+    pdf_path = download_pdf(link["url"], dest_dir)
+    if not pdf_path:
+        stats["errors"] += 1
+        mark_known(link["url"], manifest)
+        return True
+
+    # Duplicat de contingut (mateix sha per una URL distinta) -> esborra i prou
+    sha = sha256_file(pdf_path)
+    if any(v.get("sha256") == sha for v in manifest.values() if isinstance(v, dict)):
+        log("    [dup] contingut ja conegut per una altra URL, descartant")
+        stats["rebutjats"] += 1
+        pdf_path.unlink(missing_ok=True)
+        mark_known(link["url"], manifest, sha)
+        return True
+
+    from classify import classify_pdf
+    cls = classify_pdf(pdf_path, url=link["url"], source_name=source_name)
+    log(f"    [cls] {cls['veredicte']} ({cls['pages']}p, tipus={cls.get('llm', {}).get('tipus', '?') if cls.get('llm') else 'filtre-pagines'}) {cls.get('rao', '')[:60]}")
+
+    if cls["veredicte"] == "REBUTJAT":
+        stats["rebutjats"] += 1
+        mark_known(link["url"], manifest, extra={"via": link.get("via", "")})
+        pdf_path.unlink()
+        return True
+
+    mark_known(link["url"], manifest, sha, extra={"via": link.get("via", "")})
+    stats["downloaded"] += 1
+
+    entry = manifest[link["url"]]
+    entry["titol"] = cls.get("titol", "") or title_for_ctx
+    entry["autors"] = cls.get("autors", [])
+    entry["data_publicacio"] = cls.get("data_publicacio", "")
+    entry["pages"] = cls.get("pages", 0)
+    entry["veredicte"] = cls["veredicte"]
+
+    # GATE PAOLO (regla permanent des de 14-set-2026): cap document entra al
+    # flux de destil·lat/redactat sense revisió humana prèvia. El veredicte del
+    # classificador només és una PRESELECCIÓ. Tot (aprovat i dubte) va a la cua
+    # local pendents-revisio/ amb nom net; Paolo mou manualment a 0-originals/
+    # el que validi (igual que fa al pas 6 amb els informes redactats).
+    if cls["veredicte"] == "DUBTE":
+        stats["dubtes"] += 1
+    else:
+        stats["preseleccionats"] += 1
+    try:
+        dest = arxivar_a_cua(pdf_path, CUA_REVISIO_DIR,
+                             cls.get("titol") or title_for_ctx,
+                             cls.get("data_publicacio", ""))
+        entry["cua_local"] = str(dest.relative_to(REPO_ROOT).as_posix())
+        entry["revisat_per_paolo"] = False
+        log(f"    ⏳ A cua de revisió local: {dest.name}")
+    except Exception as e:
+        log(f"    [cua] ERROR arxivant: {e}")
+    return True
+
+
+def process_source(source: dict, manifest: dict, dest_dir: Path, dry_run: bool = False,
+                   global_budget: int | None = None) -> tuple[dict, int]:
+    """Fonts amb follow-through: si un enllaç del llistat no és un PDF sinó una
+    pàgina (notícia/peça), HI ENTRA i cerca el PDF real a dins, amb un segon
+    salt si cal (llistat -> notícia -> pàgina publicació -> PDF). Pressupost per
+    font i global per execució per no desbordar el cron.
+    Retorna (stats, pàgines seguides)."""
+    stats = {"found": 0, "new": 0, "downloaded": 0, "preseleccionats": 0,
+             "dubtes": 0, "rebutjats": 0, "errors": 0, "pages_followed": 0}
     name = source["name"]
     url = source["url"]
     stype = source.get("type", "static")
@@ -255,78 +444,71 @@ def process_source(source: dict, manifest: dict, dest_dir: Path, dry_run: bool =
     html = fetch_html(url, stype)
     if not html:
         stats["errors"] += 1
-        return stats
+        return stats, 0
 
-    links = extract_pdf_links(html, url)
-    stats["found"] = len(links)
-    log(f"    {len(links)} enllaços candidats")
+    pdfs, pages = extract_candidates(html, url)
+    stats["found"] = len(pdfs) + len(pages)
+    log(f"    {len(pdfs)} PDFs directes, {len(pages)} pàgines candidats")
 
-    for link in links:
-        if already_known(link["url"], manifest):
+    # 1) PDFs directes al llistat (com abans: cal títol recent)
+    for link in pdfs:
+        if not is_recent(link["title"] or link["url"]):
             continue
-        if not is_recent(link["title"]):
+        try:
+            process_pdf_link(link, manifest, dest_dir, name, stats, dry_run)
+        except Exception as e:
+            log(f"    [pdf] ERROR processant: {e}")
+            stats["errors"] += 1
+        time.sleep(random.uniform(1, 3))
+
+    # 2) Follow-through BFS: pàgines intermèdies (màx. MAX_INDIRECT_PER_PAGE per nivell)
+    follows = 0
+    frontier = [dict(p, depth=1) for p in pages[:MAX_INDIRECT_PER_PAGE]
+                if is_recent(p["title"]) and not already_known(p["url"], manifest)]
+    while frontier:
+        if follows >= MAX_FOLLOWS_PER_SOURCE:
+            log(f"    [follow] pressupost per font ({MAX_FOLLOWS_PER_SOURCE}) exhaurit")
+            break
+        if global_budget is not None and global_budget <= 0:
+            log("    [follow] pressupost global exhaurit")
+            break
+        node = frontier.pop(0)
+        follows += 1
+        if global_budget is not None:
+            global_budget -= 1
+        log(f"    [follow d{node['depth']}] {node['title'][:70]}")
+        sub_html = fetch_html(node["url"], stype)
+        if not sub_html:
+            _marca_pagina(node["url"], manifest, node["title"], pendent=True)
             continue
-
-        stats["new"] += 1
-        log(f"    NEW: {link['title'][:80]}")
-
-        if dry_run:
-            continue
-
-        if link["direct"]:
-            pdf_path = download_pdf(link["url"], dest_dir)
-            if pdf_path:
-                # CAPA 2: classificació (mín. 8 pàgines + Nemotron)
-                from classify import classify_pdf
-                cls = classify_pdf(pdf_path, url=link["url"], source_name=name)
-                log(f"    [cls] {cls['veredicte']} ({cls['pages']}p, tipus={cls.get('llm', {}).get('tipus', '?') if cls.get('llm') else 'filtre-pagines'}) {cls.get('rao', '')[:60]}")
-
-                if cls["veredicte"] == "REBUTJAT":
-                    stats["rebutjats"] += 1
-                    mark_known(link["url"], manifest)
-                    pdf_path.unlink()  # esborra el PDF rebutjat
-                    continue
-
-                sha = sha256_file(pdf_path)
-                mark_known(link["url"], manifest, sha)
-                stats["downloaded"] += 1
-
-                # Metadades per al manifest
-                entry = manifest[link["url"]]
-                entry["titol"] = cls.get("titol", "")
-                entry["autors"] = cls.get("autors", [])
-                entry["data_publicacio"] = cls.get("data_publicacio", "")
-                entry["pages"] = cls.get("pages", 0)
-                entry["veredicte"] = cls["veredicte"]
-
-                # GATE PAOLO (regla permanent des de 14-set-2026): cap document entra al
-                # flux de destil·lat/redactat sense revisió humana prèvia. El veredicte del
-                # classificador només és una PRESELECCIÓ. Tot (aprovat i dubte) va a la cua
-                # local pendents-revisio/ amb nom net; Paolo mou manualment a 0-originals/
-                # el que validi (igual que fa al pas 6 amb els informes redactats).
-                if cls["veredicte"] == "DUBTE":
-                    stats["dubtes"] += 1
-                else:
-                    stats["preseleccionats"] += 1
-                try:
-                    dest = arxivar_a_cua(pdf_path, CUA_REVISIO_DIR,
-                                         cls.get("titol") or link["title"],
-                                         cls.get("data_publicacio", ""))
-                    entry["cua_local"] = str(dest.relative_to(REPO_ROOT).as_posix())
-                    entry["revisat_per_paolo"] = False
-                    log(f"    ⏳ A cua de revisió local: {dest.name}")
-                except Exception as e:
-                    log(f"    [cua] ERROR arxivant: {e}")
-            else:
+        sub_pdfs, sub_pages = extract_candidates(sub_html, node["url"])
+        # PDFs dins la pàgina (notícia/peça): el PDF real, amb context del títol
+        pdfs_here = 0
+        for d in sub_pdfs[:MAX_PDFS_PER_PAGE]:
+            d["via"] = node["url"]
+            d["via_titol"] = node["title"]
+            if not d["title"]:
+                d["title"] = node["title"][:120]
+            try:
+                if process_pdf_link(d, manifest, dest_dir, name, stats, dry_run):
+                    pdfs_here += 1
+            except Exception as e:
+                log(f"      [pdf] ERROR: {e}")
                 stats["errors"] += 1
-                mark_known(link["url"], manifest)  # Marcar com a vist per no repetir
-        else:
-            # Enllaç indirecte: marcar com a vist (MVP no fa scraping secundari)
-            mark_known(link["url"], manifest)
+            time.sleep(random.uniform(1, 3))
+        # Segon salt només si la pàgina no tenia cap PDF però sí candidats (cas OECC:
+        # notícia -> "Read the report" -> landing -> PDF) i ens queda profunditat
+        if pdfs_here == 0 and node["depth"] < MAX_FOLLOW_DEPTH and not dry_run:
+            for sp in sub_pages[:3]:
+                if already_known(sp["url"], manifest):
+                    continue
+                sp["depth"] = node["depth"] + 1
+                frontier.append(sp)
+        _marca_pagina(node["url"], manifest, node["title"], pendent=(pdfs_here == 0))
+        time.sleep(random.uniform(1, 3))
 
-        time.sleep(random.uniform(1, 3))  # rate limit
-
-    return stats
+    stats["pages_followed"] = follows
+    return stats, follows
 
 
 def main():
@@ -353,12 +535,16 @@ def main():
     dest_dir = CUA_REVISIO_DIR / ".tmp"  # només fitxers temporals; la cua definitiva és un nivell amunt
     dest_dir.mkdir(parents=True, exist_ok=True)
 
-    total = {"found": 0, "new": 0, "downloaded": 0, "preseleccionats": 0, "dubtes": 0, "rebutjats": 0, "errors": 0}
+    total = {"found": 0, "new": 0, "downloaded": 0, "preseleccionats": 0, "dubtes": 0,
+             "rebutjats": 0, "errors": 0, "pages_followed": 0}
     results = []
+    global_budget = MAX_GLOBAL_FOLLOWS
 
     for i, source in enumerate(sources, 1):
         try:
-            stats = process_source(source, manifest, dest_dir, args.dry_run)
+            stats, followed = process_source(source, manifest, dest_dir, args.dry_run,
+                                             global_budget=global_budget)
+            global_budget -= followed
             for k in total:
                 total[k] += stats[k]
             results.append({"slug": source["slug"], "name": source["name"], **stats})
@@ -381,6 +567,7 @@ def main():
     log(f"Fonts processades: {len(sources)}")
     log(f"Enllaços trobats: {total['found']}")
     log(f"Nous detectats: {total['new']}")
+    log(f"Pàgines intermèdies seguides (follow-through): {total['pages_followed']}")
     log(f"Descarregats: {total['downloaded']}")
     log(f"  ✅ Preseleccionats (INFORME, esperen la teva revisió): {total['preseleccionats']}")
     log(f"  ⏳ Dubtes (cal revisió teva): {total['dubtes']}")

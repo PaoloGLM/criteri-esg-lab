@@ -7,7 +7,7 @@ Flux:
    a. Descarrega HTML (requests si static, Playwright si dynamic)
    b. Extreu PDFs directes + enllaços candidats a pàgines intermèdies (BS4)
    b2. Follow-through BFS: llistat -> notícia -> pàgina publicació -> PDF (prof. 2, pressupost 10)
-   c. Filtra: nous (no al manifest) + títols de 2025 endavant (i reintent pendent a 5 dies)
+   c. Filtra: nous (no al manifest) + títols de 2026 (reintent pendent a 5 dies)
    d. Descarrega PDF i classifica'l (Nemotron, 2 capes)
    e. PRESELECCIONATS i DUBTES → cua local data/informes/pendents-revisio/
       (GATE PAOLO: l'usuari mou a 0-originals/ el que validi abans del flux)
@@ -260,26 +260,11 @@ def _site_domain(netloc: str) -> str:
 
 
 def is_recent(title: str) -> bool:
-    """Heurística: el títol conté l'any en curs o mesos recents."""
-    now = datetime.now()
-    if re.search(r"\b(?:202[5-9]|20[3-9][0-9])\b", title):
-        return True  # Paolo 15-set-2026: tot el que sigui de 2025 endavant compta
-    year = str(now.year)
-    if year in title:
-        return True
-    # Check for recent month names
-    months = {
-        "en": ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"],
-        "es": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
-        "ca": ["gener", "febrer", "març", "abril", "maig", "juny", "juliol", "agost", "setembre", "octubre", "novembre", "desembre"],
-    }
-    title_lower = title.lower()
-    # Check current and previous month
-    cur_month = now.month
-    for lang in months.values():
-        if lang[cur_month - 1] in title_lower or lang[(cur_month - 2) % 12] in title_lower:
-            return True
-    return False
+    """Heurística estricta: NOMÉS 2026 (decisió Paolo 15-set-2026: 'no volem res
+    anterior a 2026'). El títol/URL ha de contenir l'any en curs explícit.
+    Mesos sense any NO compten (un 'June' genèric pot ser de qualsevol any)."""
+    year = str(datetime.now().year)  # 2026
+    return bool(re.search(rf"\b{year}\b", title))
 
 
 def already_known(url: str, manifest: dict) -> bool:
@@ -333,6 +318,7 @@ def download_pdf(url: str, dest_dir: Path) -> Path | None:
             log(f"    [pdf] No és un PDF vàlid")
             return None
         tmp = dest_dir / f"tmp_{int(time.time())}.pdf"
+        dest_dir.mkdir(parents=True, exist_ok=True)  # auto-reparació: el raspat intermedi pot haver estat esborrat
         tmp.write_bytes(content)
         return tmp
     except Exception as e:
@@ -389,6 +375,19 @@ def process_pdf_link(link: dict, manifest: dict, dest_dir: Path, source_name: st
     from classify import classify_pdf
     cls = classify_pdf(pdf_path, url=link["url"], source_name=source_name)
     log(f"    [cls] {cls['veredicte']} ({cls['pages']}p, tipus={cls.get('llm', {}).get('tipus', '?') if cls.get('llm') else 'filtre-pagines'}) {cls.get('rao', '')[:60]}")
+
+    # GATE 2026 ESTRICTE (Paolo 15-set-2026: "no volem res anterior a 2026").
+    # Si el classificador extreu data de publicacio i NO es de 2026 -> rebutjat,
+    # encara que el titol inclogui "2026" (cas ECB climate-risk: titol 2026 pero
+    # editat el 2025 -> descartat per en Paolo).
+    data_pub = str(cls.get("data_publicacio", ""))
+    m_year = re.search(r"\b(20\d{2})\b", data_pub)
+    if m_year and m_year.group(1) != str(datetime.now().year):
+        log(f"    [2026-gate] rebutjat per data {m_year.group(1)}: {title_for_ctx[:60]}")
+        stats["rebutjats"] += 1
+        mark_known(link["url"], manifest, extra={"via": link.get("via", ""), "data": data_pub, "motiu": "no-2026"})
+        pdf_path.unlink()
+        return True
 
     if cls["veredicte"] == "REBUTJAT":
         stats["rebutjats"] += 1

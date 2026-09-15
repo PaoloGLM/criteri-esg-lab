@@ -94,6 +94,11 @@ GATE DE RELLEVÀNCIA TEMÀTICA (decisió Paolo 14-set-2026 — prioritat sobre t
 - IMPORTANT: tenir "metodologia i dades" NO n'hi ha prou. Un document pot ser un informe
   rigorós i ser fora de tema. Si el tema NO és ESG → veredicte REBUTJAT amb "fora de tema",
   encara que tipus=INFORME i confiança alta.
+- EXCEPCIÓ — INFORMES TRANSVERSALS (decisió Paolo 14-set-2026): un document no explícitament
+  ESG que contingui apartats/capítols de sostenibilitat sobre temes transversals (p. ex.
+  riscos climàtics en fons d'inversió, governança) ÉS RELEVANT (rellevant_esg=true).
+  Al flux ja es filtrarà: només es treballen els apartats que impacten, la resta es deixa
+  de banda. NO rebutjar-los per ser "només" un apartat dins d'un document més ampli.
 - Exemples de fora de tema: operació de mercats elèctrics (redespachament, capacity
   calculation, settlement), supervisió financera sense angle de sostenibilitat, enquestes
   de mercats monetaris, comptes/auditories de la institució, metodologies tarifàries.

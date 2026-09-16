@@ -81,6 +81,13 @@ def find_original_pdf(slug: str, distilat_data: dict) -> Path | None:
     for pdf in ORIGINALS_DIR.glob("*.pdf"):
         if slug in pdf.stem:
             return pdf
+    # Els originals processats es mouen a 0-originals/processats/
+    for sub in ("processats", "per-processar"):
+        d = ORIGINALS_DIR / sub
+        if d.is_dir():
+            for pdf in d.glob("*.pdf"):
+                if slug in pdf.stem:
+                    return pdf
     return None
 
 

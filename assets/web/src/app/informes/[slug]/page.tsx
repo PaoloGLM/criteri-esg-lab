@@ -250,10 +250,10 @@ export default function InformeSlugPage() {
 
           {/* MAIN CONTENT */}
           <div className="p-8 lg:p-12" style={{ background: "var(--c-clar)" }}>
-            {/* Header de l'informe (pastilla: portada | fitxa | semàfor a la meitat) */}
+            {/* Header de l'informe (pastilla: portada | fitxa + semàfor compacte) */}
             <header className="mb-10" id="fitxa">
               <div className="grid grid-cols-1 border" style={{ borderColor: "rgba(38,49,43,0.12)", background: "white" }}>
-                <div className="p-5 lg:grid lg:grid-cols-[160px_1fr_1fr]">
+                <div className="p-5 lg:grid lg:grid-cols-[160px_1fr]">
                   <div className="flex items-center">
                     <CoverImage slug={report.slug} title={report.title} />
                   </div>
@@ -273,28 +273,18 @@ export default function InformeSlugPage() {
                       <span>{report.pages} {lang === "ca" ? "pàg" : "pág"}</span>
                       <span>{getScopeLabel(report.scope)}</span>
                     </div>
+                    {/* Semàfor compacte: nota + un puntet per indicador (evita redundància amb el Bloc 01) */}
+                    {content?.semafor && (
+                      <div className="flex items-center gap-5 mt-1 pt-3" style={{ borderTop: "1px solid rgba(201,184,154,0.5)" }}>
+                        <span className="font-serif text-4xl font-normal leading-none" style={{ color: getGradeColor(content.semafor.grade), letterSpacing: "-0.04em" }}>{content.semafor.grade}</span>
+                        <div className="flex items-center gap-2.5">
+                          {content.semafor.indicators.slice(0, 5).map((ind, i) => (
+                            <span key={i} className="inline-block h-2.5 w-2.5 rounded-full" style={{ background: dotColors[ind.status] }} />
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  {content?.semafor && (
-                    <div className="flex flex-col justify-center gap-2 p-6" style={{ background: "var(--c-fosc)", color: "var(--c-clar)" }}>
-                      <p className="font-mono text-[9px] uppercase tracking-[0.2em] font-semibold" style={{ color: "var(--c-salvia-light)" }}>{lang === "ca" ? "Semàfor metodològic" : "Semáforo metodológico"}</p>
-                      <div className="flex items-baseline gap-3">
-                        <span className="font-serif text-5xl font-normal" style={{ color: getGradeColor(content.semafor.grade), letterSpacing: "-0.04em" }}>{content.semafor.grade}</span>
-                        <span className="font-serif text-lg italic" style={{ color: "var(--c-clar)" }}>{content.semafor.gradeLabel}</span>
-                      </div>
-                      <div className="mt-1">
-                        {content.semafor.indicators.slice(0, 5).map((ind, i) => (
-                          <div key={i} className="grid grid-cols-[110px_1fr] items-center gap-2 py-1.5" style={{ borderTop: "1px solid rgba(242,245,241,0.12)" }}>
-                            <span className="font-mono text-[8.5px] uppercase tracking-[0.14em]" style={{ color: "rgba(242,245,241,0.75)" }}>{ind.name}</span>
-                            <div className="flex gap-1.5">
-                              <span className="inline-block h-2 w-2 rounded-full" style={{ background: dotColors.verd, opacity: ind.status === "verd" ? 1 : 0.25 }} />
-                              <span className="inline-block h-2 w-2 rounded-full" style={{ background: dotColors.groc, opacity: ind.status === "groc" ? 1 : 0.25 }} />
-                              <span className="inline-block h-2 w-2 rounded-full" style={{ background: dotColors.vermell, opacity: ind.status === "vermell" ? 1 : 0.25 }} />
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
             </header>

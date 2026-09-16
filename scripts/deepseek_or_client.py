@@ -48,6 +48,10 @@ def call_deepseek_or_json(system_prompt: str, user_prompt: str, temperature: flo
     )
     text = response.choices[0].message.content
 
+    # Intent 0: treure tanques markdown ```json ... ``` (GLM de vegades les afegeix)
+    text = re.sub(r"^\s*```[a-zA-Z]*\s*", "", text)
+    text = re.sub(r"\s*```\s*$", "", text)
+
     # Intent 1: parsejar directament
     try:
         return json.loads(text)

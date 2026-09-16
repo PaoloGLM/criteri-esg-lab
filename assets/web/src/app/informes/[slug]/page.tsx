@@ -7,6 +7,7 @@ import { FooterV1 } from "@/components/site-footer-v1";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { SemaforoPopup } from "@/components/sections/semaforo-popup";
+import { CoverImage } from "@/components/informe/cover-image";
 import { Cite, renderWithCites } from "@/components/informe/cite";
 import { useLanguage } from "@/components/language-provider";
 import { useAuth } from "@/lib/auth-context";
@@ -95,6 +96,7 @@ export default function InformeSlugPage() {
   }
 
   const isProbeReport = slug === "revisio-esrs-maig-2026";
+  const dotColors = { verd: "#79A98F", groc: "#D9A441", vermell: "#A0522D" };
   const isFree = isFreeAccess(report.date);
   const showFreeBadge = isProbeReport || isFree;
 
@@ -248,22 +250,52 @@ export default function InformeSlugPage() {
 
           {/* MAIN CONTENT */}
           <div className="p-8 lg:p-12" style={{ background: "var(--c-clar)" }}>
-            {/* Header de l'informe (fitxa tècnica) */}
-            <header className="border-b border-primary pb-6 mb-10" id="fitxa">
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "rgba(92,58,30,0.12)", color: "var(--c-tinta)" }}>{getTypeLabel(report.type)}</span>
-                {showFreeBadge ? (
-                  <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "rgba(92,138,92,0.12)", color: "#4A6B3A" }}>{lang === "ca" ? "Gratis" : "Gratis"}</span>
-                ) : (
-                  <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "var(--c-salvia)", color: "white" }}>Premium</span>
-                )}
-              </div>
-              <h1 className="mb-4 font-serif text-4xl font-medium leading-tight text-primary" style={{ letterSpacing: "-0.022em" }}>{report.title}</h1>
-              <div className="flex flex-wrap gap-8 font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "#4A5F53" }}>
-                <span><strong className="text-primary">{report.institution}</strong></span>
-                <span>{formatDate(report.date, lang)}</span>
-                <span>{report.pages} {lang === "ca" ? "pàg" : "pág"}</span>
-                <span>{getScopeLabel(report.scope)}</span>
+            {/* Header de l'informe (pastilla: portada | fitxa | semàfor a la meitat) */}
+            <header className="mb-10" id="fitxa">
+              <div className="grid grid-cols-1 border" style={{ borderColor: "rgba(38,49,43,0.12)", background: "white" }}>
+                <div className="p-5 lg:grid lg:grid-cols-[160px_1fr_1fr]">
+                  <div className="flex items-center">
+                    <CoverImage slug={report.slug} title={report.title} />
+                  </div>
+                  <div className="flex flex-col gap-3 p-6 lg:pl-7">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "rgba(92,58,30,0.12)", color: "var(--c-tinta)" }}>{getTypeLabel(report.type)}</span>
+                      {showFreeBadge ? (
+                        <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "rgba(92,138,92,0.12)", color: "#4A6B3A" }}>{lang === "ca" ? "Gratis" : "Gratis"}</span>
+                      ) : (
+                        <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] font-semibold px-2.5 py-1" style={{ background: "var(--c-salvia)", color: "white" }}>Premium</span>
+                      )}
+                    </div>
+                    <h1 className="font-serif text-3xl font-medium leading-tight text-primary" style={{ letterSpacing: "-0.022em" }}>{report.title}</h1>
+                    <div className="flex flex-wrap gap-6 font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "#4A5F53" }}>
+                      <span><strong className="text-primary">{report.institution}</strong></span>
+                      <span>{formatDate(report.date, lang)}</span>
+                      <span>{report.pages} {lang === "ca" ? "pàg" : "pág"}</span>
+                      <span>{getScopeLabel(report.scope)}</span>
+                    </div>
+                  </div>
+                  {content?.semafor && (
+                    <div className="flex flex-col justify-center gap-2 p-6" style={{ background: "var(--c-fosc)", color: "var(--c-clar)" }}>
+                      <p className="font-mono text-[9px] uppercase tracking-[0.2em] font-semibold" style={{ color: "var(--c-salvia-light)" }}>{lang === "ca" ? "Semàfor metodològic" : "Semáforo metodológico"}</p>
+                      <div className="flex items-baseline gap-3">
+                        <span className="font-serif text-5xl font-normal" style={{ color: getGradeColor(content.semafor.grade), letterSpacing: "-0.04em" }}>{content.semafor.grade}</span>
+                        <span className="font-serif text-lg italic" style={{ color: "var(--c-clar)" }}>{content.semafor.gradeLabel}</span>
+                      </div>
+                      <div className="mt-1">
+                        {content.semafor.indicators.slice(0, 5).map((ind, i) => (
+                          <div key={i} className="grid grid-cols-[110px_1fr] items-center gap-2 py-1.5" style={{ borderTop: "1px solid rgba(242,245,241,0.12)" }}>
+                            <span className="font-mono text-[8.5px] uppercase tracking-[0.14em]" style={{ color: "rgba(242,245,241,0.75)" }}>{ind.name}</span>
+                            <div className="flex gap-1.5">
+                              <span className="inline-block h-2 w-2 rounded-full" style={{ background: dotColors.verd, opacity: ind.status === "verd" ? 1 : 0.25 }} />
+                              <span className="inline-block h-2 w-2 rounded-full" style={{ background: dotColors.groc, opacity: ind.status === "groc" ? 1 : 0.25 }} />
+                              <span className="inline-block h-2 w-2 rounded-full" style={{ background: dotColors.vermell, opacity: ind.status === "vermell" ? 1 : 0.25 }} />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </header>
 

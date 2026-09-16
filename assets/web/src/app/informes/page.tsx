@@ -7,6 +7,7 @@ import { FooterV1 } from "@/components/site-footer-v1";
 import { AuthDialog } from "@/components/auth-dialog";
 import { PreusDialog } from "@/components/preus-dialog";
 import { SemaforoPopup } from "@/components/sections/semaforo-popup";
+import { CoverImage } from "@/components/informe/cover-image";
 import { useLanguage } from "@/components/language-provider";
 import {
   getTypeLabel,
@@ -127,12 +128,15 @@ export default function InformesPage() {
             {/* CARD DESTACADA */}
             {featuredReport && (
               <article
-                className="mb-6 grid cursor-pointer grid-cols-1 border transition-all duration-150 hover:shadow-[0_12px_30px_rgba(38,49,43,0.1)] lg:grid-cols-[1.4fr_1fr]"
+                className="mb-6 grid cursor-pointer grid-cols-1 border transition-all duration-150 hover:shadow-[0_12px_30px_rgba(38,49,43,0.1)] lg:grid-cols-[160px_1fr_1fr]"
                 style={{ borderColor: "rgba(38,49,43,0.12)", background: "white" }}
                 onClick={() => handleOpenReport(featuredReport.slug)}
               >
                 {/* Banda semàfor a dalt */}
                 <div className="col-span-full h-1 w-full" style={{ background: getGradeColor(getSemaforo(featuredReport.slug)?.grade) }} />
+                <div className="flex items-center p-5">
+                  <CoverImage slug={featuredReport.slug} title={featuredReport.title} />
+                </div>
                 <div className="flex flex-col gap-4 p-8">
                   <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em]" style={{ color: "#5E8772" }}>
                     {featuredReport.institution}
@@ -222,7 +226,9 @@ export default function InformesPage() {
                     {/* Banda semàfor segons nota */}
                     <div className="h-1 w-full flex-none" style={{ background: getGradeColor(grade) }} />
 
-                    <div className="flex flex-1 flex-col p-6">
+                    <div className="grid flex-1 grid-cols-[110px_1fr] gap-4 p-6">
+                      <CoverImage slug={report.slug} title={report.title} />
+                      <div className="flex flex-col">
                       {/* Institució */}
                       <p className="mb-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em]" style={{ color: "#5E8772" }}>
                         {report.institution}
@@ -280,6 +286,7 @@ export default function InformesPage() {
                       <span className="mt-4 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] transition-colors group-hover:text-primary" style={{ color: "#5E8772" }}>
                         {lang === "ca" ? "Llegir informe →" : "Leer informe →"}
                       </span>
+                      </div>
                     </div>
                   </article>
                 );

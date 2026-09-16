@@ -1,0 +1,323 @@
+{
+  "slug": "ecovadis-methodology-q1-2026",
+  "title": "Methodology q1 2026",
+  "institution": "EcoVadis",
+  "filename_original": "ecovadis-methodology-q1-2026.pdf",
+  "generated_at": "2026-09-16T11:43:02",
+  "content_ca": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "4 indicadors verds i 1 groc. Alta quantificació operativa amb una àrea esmentada sense dades exactes.",
+      "indicators": [
+        {
+          "name": "Transparencia metodològica (ESGR)",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Consultes públiques de 30 dies i llindar del 10% per a canvis materials."
+        },
+        {
+          "name": "Cobertura evidència llocs",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Cobertura del 80% o 95% basada en empleats o llocs."
+        },
+        {
+          "name": "Puntuació GRI 'With Reference'",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Puntuació de 75 si es compleixen els criteris de qualitat."
+        },
+        {
+          "name": "Informe Scope 2",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Separació en mètriques location-based i market-based."
+        },
+        {
+          "name": "Alineació CSDDD Annex II",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "S'esmenta l'alineació amb l'Annex II però sense mètriques detallades al text."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "75",
+        "label": "Puntuació per compliment GRI 'with reference'",
+        "page": "32.5"
+      },
+      {
+        "value": "80% o 95%",
+        "label": "Cobertura d'evidència a nivell de lloc basada en empleats/llocs",
+        "page": "32.2"
+      },
+      {
+        "value": "30 dies",
+        "label": "Període de consulta pública obligatòria per a canvis materials",
+        "page": "32.1"
+      },
+      {
+        "value": "2 dies",
+        "label": "Període de revisió de la targeta de puntuació abans de la publicació",
+        "page": "32.10"
+      },
+      {
+        "value": "10%",
+        "label": "Llindar de l'univers avaluat per considerar un canvi com a material",
+        "page": "32.1"
+      }
+    ],
+    "resumExecutiu": "EcoVadis actualitza la seva metodologia al primer trimestre de 2026 per alinear-se amb el Reglament UE d'ESG Ratings. Destaquem la publicació de documents de divulgació, un sistema de versions unificat i consultes públiques de 30 dies per a canvis materials. S'elimina la facturació per calcular la cobertura d'evidències (ara per empleats/llocs), s'amplien els documents vàlids per a certificacions i s'actualitza la puntuació GRI 'with reference' a 75. S'introdueixen mètriques Scope 2 basades en mercat i ubicació, i un període de revisió de 2 dies abans de publicar.",
+    "implicacions": {
+      "empreses": "Les empreses avaluades han d'adaptar-se a evidències més estrictes (sense 'in-progress') però flexibles. Hauran de separar Scope 2 en location i market-based, i aprofitar 2 dies per esmenar errors factuais abans de la publicació.",
+      "reguladors": "L'alineament amb el Reglament UE d'ESG Ratings i la CSDDD Annex II mostra una resposta proactiva. Els reguladors veuran com la metodologia adopta consultes públiques de 30 dies i versions unificades, fomentant la transparència i coherència del mercat de ratings.",
+      "ciutadans": "La major granularitat en àrees de millora i l'alineament amb el GHG Protocol incrementen la transparència. Els ciutadans es beneficien d'avaluacions més fiables sobre l'impacte ambiental real, especialment en emissions Scope 2 i riscos climàtics de la cadena de subministrament."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Anàlisi ètica de l'actualització metodològica d'EcoVadis",
+      "body": "EcoVadis actualitza la metodologia amb 10 canvis. La màxima d'atorgar 2 dies per esmenar errors és universalitzable i tracta les empreses com a fi, no com a mitjà. L'alineació amb la CSDDD i el GHG Protocol fomenta la sostenibilitat i la justícia. La transparència i la participació de les parts interessades reforen la dignitat corporativa i la solidaritat ecològica."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "Scope 2 Reporting",
+        "desc": "Transició d'una mètrica única a doble informació (location-based i market-based) per alinear-se amb el GHG Protocol."
+      },
+      {
+        "type": "Complement",
+        "target": "CSDDD Annex II",
+        "desc": "L'actualització dels criteris de biodiversitat i residus complementa l'alineació amb la directiva de deguda diligència."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Separar informes Scope 2",
+        "desc": "Adaptar els sistemes de recollida de dades per informar separadament emissions location-based i market-based.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Revisar evidències de certificació",
+        "desc": "Actualitzar els processos interns per assegurar que les certificacions 'in-progress' no s'utilitzen i recopilar captures de bases de dades públiques.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "03",
+        "title": "Preparar revisió de targeta",
+        "desc": "Establir un protocol intern de 2 dies per revisar la targeta de puntuació abans de la publicació automàtica a la xarxa.",
+        "effort": "Baix",
+        "impact": "Alt"
+      },
+      {
+        "num": "04",
+        "title": "Avaluar riscos ambientals",
+        "desc": "Implementar accions per avaluar efectes financers de riscos ambientals externs i documentar-los per al nou qüestionari.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "gri",
+        "criterion": "GRI 'With Reference' Universal disclosures",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 32.5,
+          "section": "32.5",
+          "table": "N/A"
+        },
+        "nature": "quantitatiu",
+        "impact": "mitja",
+        "action": "Verificar que els informes GRI 'with reference' compleixen els criteris per obtenir la puntuació de 75."
+      },
+      {
+        "framework": "csddd",
+        "criterion": "CSDDD Annex II adverse environmental impacts",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 32.7,
+          "section": "32.7",
+          "table": "N/A"
+        },
+        "nature": "qualitatiu",
+        "impact": "alt",
+        "action": "Revisar les opcions de biodiversitat i residus per assegurar alineació amb l'Annex II."
+      },
+      {
+        "framework": "tcfd",
+        "criterion": "Climate Physical Risk assessment",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 32.8,
+          "section": "32.8",
+          "table": "N/A"
+        },
+        "nature": "qualitatiu",
+        "impact": "mitja",
+        "action": "Documentar avaluacions de risc físic climàtic per al nou qüestionari de preparació."
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Metodología robusta y alineada con regulaciones, con áreas de mejora en la cuantificación de emisiones.",
+      "indicators": [
+        {
+          "name": "Transparencia metodológica",
+          "status": "verd",
+          "label": "Divulgación y versionado",
+          "note": "Publicación de documentos detallados y sistema de versionado Major.Minor cuantificado."
+        },
+        {
+          "name": "Alineación regulatoria",
+          "status": "verd",
+          "label": "CSDDD y ESGR",
+          "note": "Alineación explícita con el Anexo II de la CSDDD y la regulación ESGR de la UE."
+        },
+        {
+          "name": "Cobertura de evidencias",
+          "status": "verd",
+          "label": "Umbrales de cobertura",
+          "note": "Cálculo basado en empleados/operaciones con umbrales del 80% y 95% claramente definidos."
+        },
+        {
+          "name": "Granularidad de feedback",
+          "status": "verd",
+          "label": "Puntuación GRI",
+          "note": "Reconocimiento cuantificado con puntuación de 75 para cumplimiento GRI 'With Reference'."
+        },
+        {
+          "name": "Cobertura Scope 2",
+          "status": "groc",
+          "label": "Reporte de emisiones",
+          "note": "Mencionada la división en market-based y location-based, pero sin cuantificar emisiones reales en el texto."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "1 de abril de 2026",
+        "label": "Publicación de documentos de divulgación metodológica",
+        "page": "32.1"
+      },
+      {
+        "value": "80% o 95%",
+        "label": "Cobertura de evidencias a nivel de sitio basada en empleados/operaciones",
+        "page": "32.2"
+      },
+      {
+        "value": "75",
+        "label": "Puntuación para cumplimiento GRI 'With Reference'",
+        "page": "32.5"
+      },
+      {
+        "value": "Location-based y Market-based",
+        "label": "Nuevas opciones de reporte de Scope 2",
+        "page": "32.9"
+      },
+      {
+        "value": "2 días hábiles",
+        "label": "Periodo de revisión previa a la publicación de la tarjeta de puntuación",
+        "page": "32.10"
+      }
+    ],
+    "resumExecutiu": "EcoVadis actualiza su metodología para el Q1 2026 alineándose con regulaciones europeas como la ESGR y la CSDDD. Se introducen mejoras en la transparencia metodológica, granularidad de la puntuación y reporte de emisiones Scope 2. Se ajustan los criterios de evidencia, eliminando la facturación y aceptando auditorías externas, y se lanza un periodo de revisión previa a la publicación de resultados para garantizar la equidad.",
+    "implicaciones": {
+      "empresas": "Deberán adaptar la recopilación de datos de emisiones Scope 2 y prepararse para una revisión previa a la publicación. La actualización exige mayor rigor en la evidencia de certificaciones y políticas.",
+      "reguladores": "Verán una mayor alineación de las evaluaciones privadas con estándares como GHG Protocol, CSDDD y la futura regulación ESGR, fomentando la transparencia y comparabilidad en el ecosistema ESG.",
+      "ciudadanos": "Beneficiados por una mayor transparencia y fiabilidad en las evaluaciones de sostenibilidad corporativa, asegurando que las puntuaciones reflejen prácticas reales y no solo compromisos superficiales."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Justicia y co-decisión",
+      "body": "La introducción de consultas públicas para cambios materiales y un periodo de revisión previa a la publicación restaura una forma de co-decisión. Garantiza la justicia procesal, permitiendo a las empresas corregir errores fácticos y dar voz en la configuración de las evaluaciones, humanizando un proceso a menudo opaco."
+    },
+    "conexiones": [
+      {
+        "type": "Evolución",
+        "target": "Reporte de Scope 2",
+        "desc": "Transición de una métrica única a un reporte dual (market-based y location-based) alineado con el GHG Protocol."
+      },
+      {
+        "type": "Complemento",
+        "target": "Alineación regulatoria",
+        "desc": "La actualización de los criterios ambientales complementa los requisitos del Anexo II de la CSDDD sobre impactos adversos."
+      }
+    ],
+    "acciones": [
+      {
+        "num": "01",
+        "title": "Actualizar reportes de Scope 2",
+        "desc": "Separar las emisiones de Scope 2 en métricas basadas en mercado y basadas en ubicación para el próximo ciclo.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "02",
+        "title": "Revisar evidencias de certificación",
+        "desc": "Asegurar que las certificaciones en curso cuenten con auditorías finales o capturas de bases de datos públicas válidas.",
+        "esfuerzo": "Bajo",
+        "impacto": "Medio"
+      },
+      {
+        "num": "03",
+        "title": "Preparar revisión de tarjeta de puntuación",
+        "desc": "Designar a un responsable para revisar la puntuación durante los 2 días hábiles previos a la publicación.",
+        "esfuerzo": "Bajo",
+        "impacto": "Medio"
+      },
+      {
+        "num": "04",
+        "title": "Alinear reportes con GRI 'With Reference'",
+        "desc": "Asegurar que las divulgaciones cumplan con los criterios para obtener la puntuación de 75 en GRI 'With Reference'.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "gri",
+        "criterio": "GRI 101: Foundation (With Reference)",
+        "coverage": "cumple",
+        "evidence": {
+          "page": "32.5",
+          "section": "32.5",
+          "table": null
+        },
+        "nature": "cuantitativo",
+        "impact": "medio",
+        "action": "Verificar que los reportes de sostenibilidad cumplan con el nivel 'With Reference' para asegurar la puntuación de 75."
+      },
+      {
+        "framework": "csddd",
+        "criterio": "CSDDD Annex II - Adverse environmental impacts",
+        "coverage": "cumple",
+        "evidence": {
+          "page": "32.7",
+          "section": "32.7",
+          "table": null
+        },
+        "nature": "cualitativo",
+        "impact": "alto",
+        "action": "Revisar las opciones de biodiversidad y contaminación del aire para asegurar alineación con el Anexo II de la CSDDD."
+      },
+      {
+        "framework": "tcfd",
+        "criterio": "Metrics and Targets - GHG emissions",
+        "coverage": "parcial",
+        "evidence": {
+          "page": "32.9",
+          "section": "32.9",
+          "table": null
+        },
+        "nature": "cualitativo",
+        "impact": "medio",
+        "action": "Implementar el reporte dual de Scope 2 para mejorar la granularidad de las métricas de emisiones."
+      }
+    ]
+  }
+}

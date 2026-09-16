@@ -1,0 +1,438 @@
+Sustainability
+in Action 2026
+The new rules of business resilience
+SWEEP x Capgemini
+
+Contents
+Foreword 3
+Research Methodology 5
+Executive Summary 6
+I. Sustainability investment is delivering measurable value 11
+II. AI is accelerating sustainability decision-making 15
+III. Data trust and availability is the main constraint 21
+Conclusion 28
+Sustainability in Action 2026: The new rules of business resilience
+2
+
+Foreword
+1/2
+
+Sustainability is being reframed under the pressure of tougher economic, geopolitical, climate and regulatory conditions. Companies are not, as is often what the headlines report, retreating from their climate commitments, but it is a function under genuine strain that needs a reset.
+
+The past few years have thrust organisations into one of the most turbulent global markets faced in decades, with ongoing supply chain disruption, geopolitical shocks and an ambiguous and changing regulatory landscape. The EU’s omnibus package and policy reversals in the US have delayed or derailed several regulations, even as requirements from the UK Sustainability Reporting Standards (UK SRS), the EU’s Corporate Sustainability Reporting Directive (CSRD), the ISSB standards and California’s SB 253 continue to take shape.
+
+Sustainability hasn’t been pushed down the agenda, but the standard business approach to it has shifted worldwide, with greater focus on cost control, revenue protection, resilience planning and enterprise value. All of this requires access to live datasets from across the organisation, but too few companies currently have the infrastructure in place to bring that data together at scale.
+
+The data infrastructure gap carries a direct commercial cost: nearly a third of organisations surveyed have absorbed climate-related losses above $1 million in the past 24 months.
+
+Together, Sweep and Capgemini set out to uncover what this reframing looks like in practice, drawing direct insights from 1,000 senior leaders, Sustainability Managers, CSOs, CEOs, CFOs, CTOs, Chief Data Officers, Chief AI Officers and Chief Procurement Officers, across energy, life sciences, manufacturing, retail and transportation.
+
+This is the second edition of the research, following the first study in 2024, and where questions were asked in both waves, the findings track how leaders’ views have shifted over the two years.
+
+This report examines where value is already being created, where AI is changing the speed and scope of sustainability decision-making, why data trust remains the binding constraint on everything else, and why ownership of ESG strategy is still too fragmented to capture the value organisations know is there.
+
+There is a clear business case for sustainability, but the benefits will only come to fruition when the infrastructure, data, AI governance and cross-functional ownership match pace to convert an undeniable conviction into defensible, financial-grade performance.
+
+SWEEP x Capgemini
+
+Sustainability in Action 2026: The new rules of business resilience
+3
+
+Foreword
+2/2
+SWEEP
+Capgemini
+“Sustainability didn't get pushed down the boardroom agenda, it got pushed onto the balance sheet, as shown by the 94% of business leaders who have already absorbed financial losses resulting from climate-related supply chain shocks.
+The argument today is whether the data behind critical decisions can survive contact with a regulator, an auditor or a board asking hard questions. Companies stopped asking if climate risk was real two years ago.
+This year's data shows most of them still can't prove their numbers would hold up to an auditor. That gap is now the single biggest risk on the table.”
+Rachel Delacour
+CEO & cofounder, Sweep
+“Sustainability is being reframed and the conversation has shifted from reporting to resilience.
+As supply chains face growing pressure from climate, geopolitical, and economic disruption, organizations need visibility, trust, and speed in their decision-making.
+AI can deliver that advantage, but only when it is built on a foundation of connected and reliable data across the value chain.”
+Cyril Garcia
+Global Head of Sustainability Services,
+Corporate Responsibility and Group Accelerators
+Capgemini
+Sustainability in Action 2026: The new rules of business resilience
+4
+
+Research Methodology
+
+Respondents span five sectors: energy, life sciences, manufacturing, retail and transportation, across five markets: DACH (Austria, Germany, Switzerland), the Nordics (Denmark, Finland, Iceland, Norway, Sweden), the UK, the US and France. Fieldwork was conducted between 22 May 2026 and 1 June 2026.
+
+This research was conducted by Censuswide among a sample of 1,000 senior leaders: Sustainability Managers, Chief Sustainability Officers, Chief Executive Officers, Chief Financial Officers, Chief Technology Officers, Chief Data Officers, Chief AI Officers and Chief Procurement Officers. Findings throughout this report are presented at respondent level; where the text refers to organisations, figures reflect the share of the 1,000 senior leaders surveyed.
+
+Censuswide is a member of the Market Research Society (MRS) and the British Polling Council (BPC), and a signatory of the Global Data Quality Pledge. Censuswide adheres to the MRS Code of Conduct and ESOMAR principles.
+
+1,000
+Senior leaders
+
+REGIONAL SAMPLE
+
+US
+300
+
+UK
+200
+
+France
+200
+
+DACH
+200
+Austria, Germany, Switzerland
+
+Nordics
+100
+Denmark, Finland, Iceland, Norway, Sweden
+
+Sustainability in Action 2026: The new rules of business resilience
+5
+
+Executive Summary
+1/5
+Sustainability has become a durable value driver, and the cost of ignoring it now shows on the P&L.
+Disruption is being driven by both physical and transition risks, which are accelerating simultaneously. Organisations therefore face greater exposure today.
+94%
+have experienced financial loss from climate-related supply chain disruption in the past 24 months
+30%
+have absorbed losses above $1 million as a direct result
+Sustainability remains a critical business priority, proving its resilience despite political shifts and economic volatility.
+85%
+of organisations agree they must transform for the low-carbon economy
+86%
+see transformation as a growth opportunity rather than an expense
+Sustainability in Action 2026: The new rules of business resilience
+Base: 1,000 senior leaders. Fieldwork 22 May to 1 June 2026.
+6
+
+Executive Summary
+2/5
+Data trust is now the binding constraint on everything else.
+79% say their sustainability data is insufficient to inform strategy today
++26% vs 2024
+The gap is structural
+Sustainability data is still not consistently audit-ready or fully traceable.
+36% strongly agree their sustainability data is insufficient, up from 17% in 2024
+16% have more than three-quarters of their data audit-ready
+47% have their sustainability data fully traceable across all processes
+96% claim some level of sustainability data traceability
+51% average audit-readiness across organisations
+Sustainability in Action 2026: The new rules of business resilience
+Base: 1,000 senior leaders. Fieldwork 22 May to 1 June 2026.
+7
+
+Executive Summary
+3/5
+AI has moved from aspiration to adoption, compressing the time between signal and decision, but governance is trailing behind.
+AI adoption is accelerating
+79% say AI adoption has increased their sustainability investment
+AI is now used for
+Data collection
+44%
+Data calculation and analysis
+45%
+Decision making and strategy
+44%
+Governance is still catching up
+40% have a formal corporate AI governance framework
+39% have clear policies on AI use and accountability
+Sustainability in Action 2026: The new rules of business resilience
+Base: 1,000 senior leaders. Fieldwork 22 May to 1 June 2026.
+8
+
+Executive Summary
+4/5
+In most businesses, sustainability is a shared function, meaning there is no clear ownership.
+45% still have ESG data accountability siloed in a single sustainability team
+46% report accountability as cross-functional
+Cross-functional governance does not necessarily mean clear accountability.
+53% Sustainability Managers report the most cross-functional governance
+36% Sustainability Managers have the least confidence that ownership roles are clearly defined
+Chief Data Officers are the most confident that ESG data ownership is clearly defined (50%)
+Sustainability in Action 2026: The new rules of business resilience
+Base: 1,000 senior leaders. Fieldwork 22 May to 1 June 2026.
+9
+
+Executive Summary
+5/5
+A leading third of companies have turned systems integration into an advantage, the new blueprint for business resilience.
+
+34%
+have fully integrated sustainability data across ERP, finance and procurement
+
+Integration alone does not create actionable insight
+27% struggle to turn data into actionable insight
+27% suffer from poor data quality
+
+The three biggest infrastructure barriers
+34% name limited system integration
+34% name scaling across geographies
+31% name incomplete Scope 3 or supplier data
+
+Manual data collection is declining
+18% still manage sustainability data collection entirely manually
+-60% since 2024
+
+Sustainability in Action 2026: The new rules of business resilience
+Base: 1,000 senior leaders. Fieldwork 22 May to 1 June 2026.
+10
+
+1
+Sustainability investment is delivering measurable value
+Sustainability in Action 2026: The new rules of business resilience
+11
+
+CHAPTER 1
+Risk is dispersed across the global market
+
+Sustainability remains a critical business priority despite political cycles and economic volatility.
+
+More than eight in 10 organisations (85%) believe they must transform for the low-carbon economy, and 86% see this as a growth opportunity rather than a cost. Investment is now driven primarily by climate risk, cost optimisation and revenue growth, rather than regulatory compliance.
+
+Organisations face growing exposure to both physical risks, such as extreme weather, flooding and drought, and transition risks, including energy price volatility and supplier ESG non-compliance. These risks are accelerating simultaneously: 94% of organisations surveyed experienced financial losses from climate-related supply chain disruption in the past 24 months, and 30% incurred losses above $1 million. Only a fifth of senior decision makers reported losses below $100K reinforcing the business case for proactive climate resilience investment.
+
+Exposure to climate-related disruption is not distributed evenly across sectors, markets or roles.
+
+IMPACTS ABOVE $1M, BY SECTOR
+Global average
+30%
+Manufacturing sector
+39%
+
+France has the widest moderate-impact cohort
+only 21%
+of French businesses report $1M+ impacts, comfortably below the global average
+48%
+of businesses are either measuring cost savings or working towards them
+
+IMPACTS ABOVE $1M, BY EXECUTIVE ROLE
+39%
+Chief Sustainability Officers
+38%
+Chief Financial Officers
+17%
+Chief Executive Officers
+
+Sustainability in Action 2026: The new rules of business resilience
+Base: 1,000 senior leaders. Fieldwork 22 May to 1 June 2026.
+12
+
+COMPANY
+One of the UK’s largest home improvement retailers
+SIZE
+8000 employees
+INDUSTRY
+Retail
+HEADQUARTERS
+London, UK
+“We recognise the substantial risk that climate change poses to humanity and the environment and we are committed to playing our part to achieve the UK’s 2050 net zero target. Given that 95% of our carbon footprint originates from the products we offer, strategic collaboration with our supplier partners is essential for us to make meaningful progress towards decarbonising our business.
+Achieving this requires robust product data and the ability to clearly identify key emission hotspots.”
+Chief Commercial Officer, large home improvement retailer
+Sustainability in Action 2026: The new rules of business resilience
+13
+
+CHAPTER 1
+
+The uneven landscape of ROI visibility
+
+Sustainability investment is already creating measurable value across several different areas of business, including cost optimisation, revenue growth and enterprise valuation. It’s promising that very few organisations report a lack of ROI across the board.
+
+There is variation in how ROI is being measured across the different areas of business. Currently, more organisations (43%) report being able to measure the ROI of greater procurement and supply chain efficiency. On the other end, ROI across reduced operational costs is the least measurable outcome (38%), with close to half (47%) of businesses not being able to accurately assess the ROI at this point in time.
+
+Value is being created fairly evenly across the business, but there is clear variation in how far each function's measurement infrastructure has caught up with what it is already delivering. While procurement sits further ahead, other areas like operational costs and enterprise valuation trail a little further behind.
+
+47%
+of businesses not being able to accurately assess the ROI at this point in time.
+
+Areas of business
+
+Increased revenue
+41% 45% 14%
+
+Regulatory / compliance costs
+42% 44% 13%
+
+Improved risk management
+41% 45% 12%
+
+Reduced operational costs
+38% 47% 14%
+
+Enhanced enterprise valuation or investor confidence
+39% 47% 13%
+
+Better procurement / supply chain efficiency
+43% 41% 14%
+
+Measurable now
+Not yet measurable
+Not yet achieved
+
+Sustainability in Action 2026: The new rules of business resilience
+Base: 1,000 senior leaders. Fieldwork 22 May to 1 June 2026.
+14
+
+2
+AI is accelerating sustainability decision-making
+Sustainability in Action 2026: The new rules of business resilience
+15
+
+CHAPTER 2
+Compressing the time between signal & strategy
+AI has very quickly moved from aspiration to adoption across the sustainability function, accelerating sustainable transformation and unlocking measurable value at every stage. Some of the most common use cases lie in data collection (44%) and data calculation and analysis (45%), but this is commonplace for AI applications today. The more notable shift taking place is AI establishing its role as an accelerator of business decisions, increasingly acting as a business value driver.
+At the heart of AI deployment lies the wealth of data to fuel it. Sustainability data is already informing strategic decisions across different functions on a regular basis.
+Regulatory compliance remains the most established application of sustainability data, even as climate risk, cost and revenue now lead investment decisions, and the fact that risk management, strategy and investor expectations all sit within a few points of it shows how far the data’s role has broadened. These are also the most common areas where AI is being put to work, assuming the underlying data is accurate and reliable. It is not designed to replace the decision, but to compress the time between a signal appearing in the data and a decision being made on it.
+DECISIONS INFORMED BY SUSTAINABILITY DATA
+Regulatory compliance 71%
+Risk management and resilience 69%
+Corporate strategy and transformation 68%
+Investor and stakeholder expectations 67%
+MOST COMMON USE CASES
+Data collection 44%
+Data calculation and analysis 45%
+Sustainability in Action 2026: The new rules of business resilience
+Base: 1,000 senior leaders. Fieldwork 22 May to 1 June 2026.
+16
+
+CHAPTER 2
+
+Example from the news
+
+Take an example from the past year. When the disruption through the Strait of Hormuz moved oil prices and freight costs within days, the organisations who fared better were those whose data and risk tooling let them turn raw figures into time-critical decisions before the shock fully landed on the P&L. The clearest evidence is in capital allocation.
+
+Carriers that had read their exposure early and hedged fuel ahead of the spike absorbed it. For example, easyJet went in with the highest coverage of any European low-cost carrier at 84% for the first half of 2026, and Qantas had hedged 81% of its fuel for the half-year to June 2026.
+
+This is key for business resilience; being able to adapt operational capability in response to economic and market shifts. AI is now the irreplaceable layer that makes the translation from signal to action fast enough to matter. It is becoming the mechanism by which the business acts on operational optimisation, supply chain flexibility, energy procurement and capital planning in close to real-time. It is that action, not disclosure, that achieves sustainable performance, rather than simply disclosing it after the fact.
+
+Strait of Hormuz
+
+POWER
+
+Sustainability in Action 2026: The new rules of business resilience
+Base: 1,000 senior leaders. Fieldwork 22 May to 1 June 2026.
+17
+
+CHAPTER 2
+Governance trails behind adoption
+AI adoption continues to accelerate each year, but the same can’t be said for the governance over its use. At the moment, only 40% of businesses have a formal corporate AI governance framework in place.
+Organisations scaling AI without integrating the necessary governance risk greater levels of fragmentation, where faster decisions will be made, but on data that is still not fully reliable.
+There are also widely varying perceptions within the executive teams themselves about who holds the most responsibility when it comes to driving the adoption of AI. Sustainability Managers are leading on piloting new solutions (57%) ahead of CSOs (52%) and CDOs (50%). CFOs are the slowest function to pilot AI (42%), but among the highest users of AI specifically for data collection (49%). CDOs, meanwhile, show the highest measurable risk management ROI of any function (55%) against a 41% global average, an early sign of where integrated data and AI capability is already translating into measurable value, and a glimpse of where the rest of the organisation is heading.
+01
+Piloting AI
+Leading pilots:
+Sustainability Managers 57%
+Chief Sustainability Officers 52%
+Chief Data Officers 50%
+Chief Financial Officers 42%
+02
+Using AI in data work
+49%
+of Chief Financial Officers use AI for data collection, despite being the slowest to pilot new solutions.
+03
+Measurable value
+Risk Management ROI:
+Chief Data Officers 55%
+Global average 41%
+Sustainability in Action 2026: The new rules of business resilience
+Base: 1,000 senior leaders. Fieldwork 22 May to 1 June 2026.
+18
+
+CHAPTER 2
+
+2024 vs 2026: from AI aspiration to AI adoption
+
+The pattern holds across the market as AI deployment outpaces the governance built to support it. Four in 10 organisations using AI within their sustainability programme have a formal corporate AI governance framework (40%) or clear policies on AI use and accountability (39%). Businesses that pair deployment with organisation-wide oversight from the outset, rather than treating governance as something to formalise later, will benefit in the long-run.
+
+AI IN SUSTAINABILITY
+
+2024
+85% agreed AI is helpful for the sustainability function
+
+2026
+79% say AI adoption increased their investment
+
+From broad confidence in AI’s usefulness to reported investment driven by AI adoption.
+
+COMMITMENT TO DIGITALISATION
+
+2024
+91% believe digitalisation is important
+
+2026
+48% are already piloting AI tools
+
+From belief in digitalisation to active piloting of AI tools.
+
+Sustainability in Action 2026: The new rules of business resilience
+Base: 1,000 senior leaders. Fieldwork 22 May to 1 June 2026.
+19
+
+Expert perspectives
+
+"Mandatory sustainability disclosures coming into force in the UK, Europe and other parts of the world are going to raise the bar for data quality and decision usefulness significantly - and quickly. It’s disappointing, although not surprising, that sustainability data is insufficient to inform strategy - and that it’s getting worse.
+
+The good news is that means more people are paying attention to it, and they are using better processes and systems to do so. It also means sustainability data is set to inform and drive action, the results of which will now be disclosed in a standardised and robust way.”
+
+Hilary Eastman, member of UK Sustainability Disclosure Technical Advisory Committee (TAC), responsible for UK SRS
+
+“This report shows what successful U.S. businesses already know - strong sustainability practices drive efficiency and innovation. Moving beyond compliance creates opportunities for building resilience, managing risk, and adapting quickly to a changing business environment.
+
+Using actionable data to identify those opportunities ensures that businesses focus on the sustainability practices that are most effective and lead to real results.”
+
+Liane Randolph, Former Chair of California Air Resources Board (CARB) responsible for implementation of SB 253
+
+“No public policy and no business strategy can be successful without reliable information. Sustainability reporting can and must become the second pillar of standardised corporate reporting, on an equal footing and interconnected with financial reporting. It should provide relevant, faithful and comparable information on impacts, risks and opportunities, and support the strategies and transition plans developed by businesses.
+
+The findings of this study illustrate why this is important. Companies increasingly recognise that sustainability is linked to growth, risk management and resilience, but the quality and availability of the underlying data remain a constraint. Europe must therefore simplify where necessary without impairing the core information needed by investors, stakeholders, governance and management. Properly implemented, sustainability reporting can support better decisions and create competitive advantage for European businesses.”
+
+Patrick de Cambourg, former Chair of the EFRAG Sustainability Reporting Board
+
+Sustainability in Action 2026: The new rules of business resilience
+20
+
+3
+Data trust and availability is the main constraint
+Sustainability in Action 2026: The new rules of business resilience
+21
+
+CHAPTER 3
+Why trusted data is the new bottom line
+
+AI adoption is accelerating, and businesses face market environments that demand fast, informed decisions to remain as responsive as possible. But the biggest hindrance to optimising business resilience today is the data that's intended to derive the intelligence needed. Here, an important distinction needs to be drawn. Data destined for external disclosure, to regulators or investors, must be traceable, auditable and defensible in the same way financial data is.
+
+Operational data, used day to day for dashboards, energy management and steering in-year performance, does not need a full audit trail; applying disclosure-grade requirements to every operational dataset would be neither feasible nor economically viable. What operational data does need is sound management: a known golden source, end-to-end quality control, and reconciliation across systems, so the business can trust it. The concern this research surfaces is that many organisations currently fall short on both counts, with disclosure data they cannot yet fully audit or trace, and operational data without the management discipline needed to rely on it.
+
+2026 vs 2024
+79%
+Respondents admit their sustainability data is insufficient to inform strategy today, whether because it's incomplete, hard to trace, or simply not trusted - a significant increase from 53% recorded in 2024.
+
+DISCLOSURE DATA AUDIT-READINESS
+Average share of disclosure data that is audit-ready
+51%
+Have more than 75% of disclosure data audit-ready
+16%
+That's a distinct issue from audit-readiness, which matters specifically for the data destined for regulators and investors.
+
+Sustainability in Action 2026: The new rules of business resilience
+Base: 1,000 senior leaders. Fieldwork 22 May to 1 June 2026.
+22
+
+[ERROR OCR p.23]
+
+[ERROR OCR p.24]
+
+[ERROR OCR p.25]
+
+[ERROR OCR p.26]
+
+[ERROR OCR p.27]
+
+[ERROR OCR p.28]
+
+[ERROR OCR p.29]
+
+[ERROR OCR p.30]
+
+[ERROR OCR p.31]

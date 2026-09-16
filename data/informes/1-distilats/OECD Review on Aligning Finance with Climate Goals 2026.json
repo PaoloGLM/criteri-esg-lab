@@ -1,0 +1,383 @@
+{
+  "slug": "OECD Review on Aligning Finance with Climate Goals 2026",
+  "title": "Oecd review on aligning finance with climate goals 2026",
+  "institution": "OECD REVIEW ON ALIGNING FINANCE WITH CLIMATE GOALS 2026",
+  "filename_original": "OECD Review on Aligning Finance with Climate Goals 2026.pdf",
+  "generated_at": "2026-09-16T12:00:58",
+  "content_ca": {
+    "semafor": {
+      "grade": "A",
+      "gradeLabel": "Informació quantitativa sòlida en la majoria d'indicadors clau, amb llacunes en mercats privats i adaptació",
+      "indicators": [
+        {
+          "name": "Polítiques financeres climàtiques",
+          "status": "verd",
+          "label": "860+ polítiques en 111 països (2000-2025)",
+          "note": "Quantificat per àrea, actor i geografia; 78% transparència, 20% prudencial, 2% monetària"
+        },
+        {
+          "name": "Inversió baixa en carboni",
+          "status": "verd",
+          "label": "7% de la FBCF el 2024, USD 2.1 bilions el 2025",
+          "note": "Quantificat globalment i per regió, superant combustibles fòssils per primer cop"
+        },
+        {
+          "name": "Finançament fòssils vs. baix carboni",
+          "status": "verd",
+          "label": "Els fòssils superen encara el baix carboni en la majoria de classes d'actius",
+          "note": "Quantificat per bons corporatius (5% vs 4%), préstecs sindicats (6% vs 5%) i bancs"
+        },
+        {
+          "name": "Suport fiscal a combustibles fòssils",
+          "status": "verd",
+          "label": "USD 0.9 bilions el 2024 (descens del pic de 2022)",
+          "note": "Quantificat per 82 països; segueix creant incentius invertits"
+        },
+        {
+          "name": "Estres tests climàtics",
+          "status": "verd",
+          "label": "37 països + 27 UE; només 14 EMDE",
+          "note": "Quantificat però cobertura limitada a asseguradores (8 països) i riscos físics"
+        },
+        {
+          "name": "Cobertura Scope 3",
+          "status": "groc",
+          "label": "19% d'institucions financeres; 30%+ d'empreses cotitzades",
+          "note": "Esmentat i parcialment quantificat; grans llacunes en dades d'emissió de la cadena de valor"
+        },
+        {
+          "name": "Mètriques d'adaptació",
+          "status": "groc",
+          "label": "Marc NGFS de maduresa proposat; sense estandardització",
+          "note": "Esmentat amb model de maduresa; només 30% de països defineixen terminis per a objectius"
+        },
+        {
+          "name": "Transparència mercats privats",
+          "status": "vermell",
+          "label": "Llacunes de dades impedeixen avaluacions",
+          "note": "Dades privades extremadament escasses; préstecs bilaterals són punt cec a nivell internacional"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "860+",
+        "label": "Polítiques financeres climàtiques adoptades entre 2000 i 2025 en 111 països",
+        "page": "12"
+      },
+      {
+        "value": "7%",
+        "label": "Inversió en energia baixa en carboni com a % de la FBCF global el 2024 (vs. 4% fòssils)",
+        "page": "15"
+      },
+      {
+        "value": "USD 0.9 bilions",
+        "label": "Cost global de mesures de suport a combustibles fòssils el 2024",
+        "page": "59"
+      },
+      {
+        "value": "5%",
+        "label": "Bons corporatius verds com a % del total d'emissió de bons corporatius el 2025",
+        "page": "84"
+      },
+      {
+        "value": "14",
+        "label": "Accions específiques identificades per a responsables polítics per alinear finançament amb clima",
+        "page": "11"
+      }
+    ],
+    "resumExecutiu": "La segona edició de l'OECD Review on Aligning Finance with Climate Goals evidencia un creixement del 25% en polítiques financeres climàtiques entre 2023 i 2025, amb 860+ mesures en 111 països. Tot i això, el finançament fòssil continua superant el de baix carboni en la majoria de classes d'actius financers, en contrast amb les inversions de l'economia real on l'energia neta ja supera els fòssils. Les polítiques de transparència dominen (78%), mentre que les prudencials (20%) i monetàries (2%) són emergents. L'informe identifica 14 accions per a governs, bancs centrals i supervisors, agrupades en ampliar el mix de polítiques, desenvolupar marcs de dades coordinats i enfortir l'avaluació d'efectes. Les llacunes de dades en mercats privats, deute sobirà no etiquetat i mètriques d'adaptació limiten les avaluacions. Els EMDE queden enrere tant en estres tests com en inversió neta, suggerint oportunitats d'inversió sense explotar.",
+    "implicacions": {
+      "empreses": "Les empreses financeres han de superar la fase de compliment formal i integrar mètriques de transició quantitatives. Amb el 85% de les inversions de l'economia real sense seguiment climàtic, les corporacions no financeres han d'ampliar la divulgació de despesa verda i plans de transició amb objectius intermedis. El risc de greenwashing creix si les etiquetes verdes no demostren addicionalitat. Les empreses en sectors intensius en gasos d'efecte hivernacle necessiten capital per transitar, i l'exclusió prematura podria bloquejar la transició.",
+      "reguladors": "Els reguladors han d'ampliar el mix de polítiques més enllà de la transparència cap a mesures prudencials vinculants. Amb només 14 EMDE amb estres tests, cal cobrir asseguradores i fons d'inversió. L'eliminació de subsidis fòssils (USD 0.9 bilions) és prioritària. La coordinació entre autoritats és essencial per evitar fragmentació i garantir interoperabilitat de taxonomies. L'avaluació empírica dels efectes de les polítiques existents ha d'informar les actualitzacions.",
+      "ciutadans": "Els ciutadans resten exposats als riscos climàtics mentre el sistema financer segueix canalitzant més capital cap a combustibles fòssils que cap a energia neta. La manca de transparència en mercats privats i deute sobirà impedeix la rendició de comptes. Les regions EMDE queden enrere amb oportunitats d'inversió sense explotar, especialment a Àfrica i Euràsia. La democratització de les dades climàtiques i la participació ciutadana en el seguiment de l'alineació financera són necessàries per garantir justícia social."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Coherència entre compromisos declarats i accions reals",
+      "body": "L'informe revela una tensió ètica fonamental: més del 80% de les institucions financeres tenen objectius climàtiques, però algunes investigacions mostren que no presten més verd que les que no en tenen. Les polítiques de transparència, dominant el 78% del mix, corre el risc de convertir-se en un exercici de compliment formal si no van acompanyades d'avaluacions empíriques dels seus efectes. Laaddicionalitat dels bons verds és qüestionada quan finançen deute existent en lloc de noves activitats. Tractar les institucions i els ciutadans afectats com a fins i no com a mitjans requereix mètriques que capturin canvis reals en l'economia, no només en els portfolios financers."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "OECD Review 2024 (primera edició)",
+        "desc": "Les polítiques financeres climàtiques van créixer més del 25% entre 2023 i 2025, ampliant el mix més enllà de la transparència cap a mesures prudencials. Les taxonomies verdes es van duplicar. L'edició 2026 introdueix anàlisis temporals i desglossament regional."
+      },
+      {
+        "type": "Contradicció",
+        "target": "Inversions economia real vs. fluxos financers",
+        "desc": "Les inversions reals en energia neta superen les fòssils (7% vs 4% FBCF), però el finançament financer continua favorint els fòssils en bons, préstecs i bancs. Aquesta divergència suggereix que els fluxos financers no estan alineats amb les tendències de l'economia real."
+      },
+      {
+        "type": "Complement",
+        "target": "Taxonomies verdes i marcs de bons verds",
+        "desc": "La duplicació de taxonomies (50 països) complementa el creixement de marcs de bons verds (70+ en 50+ països). Ambdós van ser impulsats principalment per EMDE, però la sevaaddicionalitat roman difícil de demostrar sense eines de seguiment que distingeixin noves inversions de reetiquetatge."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Ampliar el mix de polítiques financeres climàtiques",
+        "desc": "Basar-se en l'aprenentatge entre jurisdiccions per identificar mesures addicionals de transparència, prudencials i monetàries que s'adaptin al context nacional, considerant mandats i objectius específics.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Desenvolupar marcs coordinats de dades climàtiques",
+        "desc": "Definir indicadors comuns i acords de col·laboració de dades entre autoritats nacionals per ampliar la cobertura i qualitat del seguiment de l'alineació climàtica de fluxos i estocs financers, incloent estimacions per a classes d'actius opaques.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Avaluar els efectes de les polítiques d'economia real",
+        "desc": "Assessar si les polítiques d'economia real creen canalitzacions d'inversió credibles i identificar polítiques que desincentiven la inversió en transició i innovació climàtica. Eliminar incentius fiscals i financers per a combustibles fòssils.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "04",
+        "title": "Ampliar la cobertura d'estres tests climàtics",
+        "desc": "Conduir estres tests tant top-down com bottom-up per a riscos de transició i físics, cobrint bancs, asseguradores, fons de pensions i fons d'inversió. Compartir resultats per informar polítiques més àmplies protegint confidencialitat.",
+        "effort": "Alt",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "05",
+        "title": "Emetre deute sobirà verd i de transició",
+        "desc": "Ancorar l'emissió en marcs robustos i liderar amb l'exemple mitjançant informes anuals d'assignació i impacte. Vincular etiquetes verdes i de transició als plans climàtics nacionals i rutes de descarbonització sectorial.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "taxonomia-ue",
+        "criterion": "Classificació d'activitats econòmiques alineades amb criteris científics de mitigació i adaptació",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 39,
+          "section": "2.1.1 Climate-related taxonomies",
+          "table": "Figure 2.12"
+        },
+        "nature": "qualitatiu",
+        "impact": "alt",
+        "action": "Auditar la cobertura de classificacions taxonòmiques en carteres corporatives abans del Q4, identificant llacunes en sectors de transició"
+      },
+      {
+        "framework": "tcfd",
+        "criterion": "Marc de quatre pilars: governança, estratègia, gestió de riscos i mètriques/objectius",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 35,
+          "section": "2.1.1 Climate-related disclosure policies",
+          "table": null
+        },
+        "nature": "qualitatiu",
+        "impact": "alt",
+        "action": "Verificar la coherència dels informes TCFD amb els plans de transició corporatius i assegurar mètriques quantitatives d'emissió"
+      },
+      {
+        "framework": "sfdr",
+        "criterion": "Requisits de divulgació de sostenibilitat per a participants de mercat financer (Articles 6, 8, 9)",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 38,
+          "section": "2.1.1 Climate-related disclosure policies",
+          "table": null
+        },
+        "nature": "compromis",
+        "impact": "mitja",
+        "action": "Avaluar si la SFDR aporta informació intuïtiva més enllà dels noms de fons i millorar la usabilitat per a inversors"
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "A",
+      "gradeLabel": "Cinco indicadores cuantificados con datos robustos; brechas restantes identificadas con transparencia",
+      "indicators": [
+        {
+          "name": "Mix de políticas financieras climáticas",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "Más de 860 políticas en 111 países (2000-2025), desglose por tipo (78% transparencia, 20% prudencial, 2% monetaria), actor y región"
+        },
+        {
+          "name": "Inversiones economía real (bajas emisiones vs fósiles)",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "Inversiones en energía baja en carbono: 7% FBKF 2024 vs 4% fósiles. Crecimiento de 1,3 a 2,1 billones USD (2020-2025)"
+        },
+        {
+          "name": "Alineación climática de deuda corporativa",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "Bonos verdes: 4% del stock vs 5% fósiles. Préstamos sindicados verdes: 5% vs 6% fósiles. Tendencias divergentes por instrumento y región"
+        },
+        {
+          "name": "Alineación de renta variable cotizada",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "Renta variable baja en carbono: 5% del total, un tercio del valor de sectores intensivos en GEI. Desglose regional disponible (Norteamérica y Asia Oriental ~6%)"
+        },
+        {
+          "name": "Financiación bancaria (bajo carbono vs fósiles)",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "1.400 grandes bancos: 1,1 billones USD a fósiles vs 1 billón USD a bajo carbono (2024). Brecha decreciente desde 2021"
+        },
+        {
+          "name": "Cobertura Scope 3 y métricas de adaptación",
+          "status": "groc",
+          "label": "Mencionado",
+          "note": "Solo 19% de instituciones financieras divulgan emisiones Scope 3. Métricas de adaptación emergentes pero inmaduras; 30% de países fijan plazos a objetivos de adaptación"
+        },
+        {
+          "name": "Mercados privados y bonos soberanos",
+          "status": "groc",
+          "label": "Mencionado parcialmente",
+          "note": "Datos fragmentados en private equity. Bonos verdes soberanos <1% del total emitido. Sin metodología común para bonos soberanos no etiquetados"
+        },
+        {
+          "name": "Eficacia empírica de políticas prudenciales y monetarias climáticas",
+          "status": "groc",
+          "label": "Mencionado",
+          "note": "Evidencia mixta y mayormente teórica. Comercios entre estabilidad financiera y objetivos climáticos. Políticas monetarias climáticas: solo ~10 jurisdicciones, escasa evidencia"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "860+",
+        "label": "Políticas financieras climáticas adoptadas globalmente (2000-2025) en 111 países e instituciones de la UE",
+        "page": "p. 12"
+      },
+      {
+        "value": "7% vs 4%",
+        "label": "Inversiones en energía baja en carbono (7% FBKF) frente a fósiles (4% FBKF) en 2024; récord en 2025",
+        "page": "p. 15"
+      },
+      {
+        "value": "5%",
+        "label": "Proporción de renta variable global cotizada en sectores bajos en carbono sobre el total (2025), frente a >15% en sectores intensivos en GEI",
+        "page": "p. 81"
+      },
+      {
+        "value": "<1%",
+        "label": "Bonos verdes soberanos como proporción del total de bonos del sector oficial en circulación (2025)",
+        "page": "p. 89"
+      },
+      {
+        "value": "14",
+        "label": "Acciones identificadas para responsables políticos para impulsar la alineación climática de las finanzas",
+        "page": "p. 11"
+      }
+    ],
+    "resumExecutiu": "La segunda edición del OECD Review on Aligning Finance with Climate Goals constata que, pese al crecimiento sostenido de las políticas financieras climáticas (860+ en 111 países), la alineación de los flujos financieros con los objetivos climáticos sigue siendo limitada. Las inversiones reales en energía baja en carbono superan a las fósiles (7% vs 4% del FBKF en 2024), impulsadas por Asia-Pacífico, Europa y Norteamérica, pero la financiación a combustibles fósiles sigue superando a la de bajo carbono en la mayoría de las clases de activos financieros. Los bonos corporativos verdes representan solo el 4% del stock frente al 5% fósil; los préstamos sindicados verdes crecen pero no alcanzan a los fósiles (5% vs 6%). Los bonos soberanos verdes estancados en <1% de la emisión total. Persisten grandes brechas de datos en mercados privados, bonos soberanos no etiquetados e instituciones financieras no bancarias. Las métricas de adaptación emergen con lentitud. El informe identifica 14 acciones para gobiernos, supervisores y bancos centrales, agrupadas en ampliar mix de políticas, desarrollar marcos de datos coordinados y fortalecer la evaluación de efectos. Las políticas de economía real (fiscales, regulatorias) siguen siendo palancas fundamentales que las políticas financieras no pueden sustituir sino amplificar.",
+    "implicacions": {
+      "empreses": "Las empresas enfrentan una creciente exigencia de transparencia climática cuantitativa más allá de las emisiones: métricas de composición de actividades, capex verde e inversión en transición. Las empresas de sectores intensivos en GEI tienen oportunidades no aprovechadas de financiar su transición mediante instrumentos etiquetados (bonos y préstamos de transición), hoy marginales (0,1% del total). La divergencia regional implica estrategias adaptadas: Europa lidera en bonos verdes, Asia Oriental en préstamos sindicados verdes. La presión por interoperabilidad de marcos revela que el cumplimiento fragmentado aumenta costes y puede derivar en ejercicios de casilla sin impacto real.",
+      "reguladores": "Los reguladores deben ampliar el mix de políticas basándose en aprendizaje entre jurisdicciones, priorizando coherencia entre requisitos de divulgación para entidades financieras y no financieras. La evidencia empírica sobre eficacia de políticas prudenciales y monetarias climáticas es escasa y mixta: urge análisis ex post y pruebas de consecuencias no intencionadas. La cobertura de pruebas de estrés climáticas debe ampliarse a seguros, fondos de pensiones y mercados emergentes. Las políticas de transparencia por sí solas no reducen emisiones: necesitan emparejarse con herramientas de seguimiento que distingan inversión adicional de simple reetiquetado. Los reguladores deben publicar estadísticas nacionales de finanzas sostenibles.",
+      "ciudadanos": "La persistente financiación a combustibles fósiles por encima de las energías bajas en carbono en el sistema financiero contrasta con el progreso en la economía real, evidenciando una desconexión que afecta la resiliencia económica y la seguridad energética ciudadana. Los subsidios a fósiles (0,9 billones USD en 2024) siguen distorsionando incentivos. Los ciudadanos, como ahorradores y contribuyentes, están expuestos a riesgos de transición no gestionados en sus pensiones e hipotecas. La opacidad de los mercados privados y la falta de métricas de adaptación impiden una respuesta informada a los riesgos físicos crecientes. La democratización de datos climáticos públicos es esencial."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Sostenibilidad y justicia intergeneracional",
+      "body": "El informe revela una tensión ética fundamental: mientras las inversiones reales en energías limpias crecen, el sistema financiero sigue canalizando más capital hacia combustibles fósiles que hacia soluciones climáticas. Esta desconexión externaliza costes ambientales a generaciones futuras. La ausencia de métricas de adaptación y la falta de cobertura en mercados emergentes reflejan una injusticia climática: los países más vulnerables, con menor acceso a financiación para transición, son los que más sufren riesgos físicos. El criterio de sostenibilidad exige que la alineación financiera no se reduzca a etiquetas o divulgación, sino que genere inversión adicional real en transición. El criterio de justicia exige cerrar las brechas de datos en África, Eurasia y América Latina, donde las oportunidades de inversión en transición permanecen desaprovechadas, y asegurar que las políticas no impongan costes de cumplimiento desproporcionados a las pymes."
+    },
+    "conexions": [
+      {
+        "type": "Complemento",
+        "target": "Capítulo 4 (Métricas) y Capítulo 3 (Seguimiento)",
+        "desc": "Las métricas de composición de cartera e inversión en transición (Cap. 4) complementan el seguimiento de flujos financieros por etiquetas y sectores (Cap. 3), permitiendo identificar oportunidades no aprovechadas más allá de la dicotomía verde/fósil"
+      },
+      {
+        "type": "Contradicción",
+        "target": "Tendencias economía real vs sistema financiero",
+        "desc": "Mientras las inversiones reales en energía baja en carbono superan a las fósiles desde 2020, la financiación bancaria y de deuda corporativa a fósiles sigue superando a la de bajo carbono, señalando una divergencia entre economía real y sistema financiero"
+      },
+      {
+        "type": "Evolución",
+        "target": "Primera edición (2024) a segunda edición (2026)",
+        "desc": "Esta edición actualiza tendencias, introduce análisis temporal 2022-2025, desglosa segmentos antes 'no clasificados', añade granularidad regional y cubre políticas monetarias por primera vez, profundizando la base de evidencia"
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Ampliar el mix de políticas con aprendizaje entre jurisdicciones",
+        "desc": "Identificar medidas adicionales de transparencia, prudenciales y monetarias usadas en otras jurisdicciones que puedan adaptarse al contexto nacional, considerando objetivos y mandatos de las autoridades competentes",
+        "esforc": "Medio",
+        "impacte": "Alto"
+      },
+      {
+        "num": "02",
+        "title": "Adoptar marcos de datos climáticos coordinados entre autoridades",
+        "desc": "Definir indicadores comunes y acuerdos de colaboración de datos entre ministerios, bancos centrales y supervisores para seguir consistentemente la alineación climática de flujos y existencias financieras, incluyendo clases de activos opacos",
+        "esforc": "Alto",
+        "impacte": "Alto"
+      },
+      {
+        "num": "03",
+        "title": "Evaluar empíricamente los efectos de las políticas de transparencia",
+        "desc": "Realizar evaluaciones basadas en datos a intervalos regulares para determinar si las políticas de transparencia reducen asimetrías de información, mejoran decisiones de inversión y aumentan inversiones en soluciones climáticas, actualizando alcances y métricas",
+        "esforc": "Medio",
+        "impacte": "Medio"
+      },
+      {
+        "num": "04",
+        "title": "Ampliar pruebas de estrés climáticas a todo el sistema financiero",
+        "desc": "Conductuar pruebas top-down y bottom-up para riesgos de transición y físicos, cubriendo bancos, aseguradoras, fondos de pensiones y de inversión. Compartir resultados con gobiernos preservando confidencialidad supervisora",
+        "esforc": "Alto",
+        "impacte": "Alto"
+      },
+      {
+        "num": "05",
+        "title": "Enviar señales de mercado mediante emisión de deuda soberana verde y de transición",
+        "desc": "Anclar la emisión en marcos robustos, reportar anualmente asignación e impacto y vincular etiquetas verdes y de transición a planes climáticos nacionales y rutas de descarbonización sectoriales",
+        "esforc": "Bajo",
+        "impacte": "Medio"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "tcfd",
+        "criterio": "TCFD: Gobernanza, Estrategia, Gestión de Riesgos y Métricas y Objetivos (cuatro pilares)",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 36,
+          "section": "2.1.1. Climate-related disclosure policies",
+          "table": null
+        },
+        "nature": "cualitativo",
+        "impact": "alto",
+        "action": "Evaluar si la divulgación actual sigue el marco de cuatro pilares del TCFD y preparar la transición al ISSB (IFRS S2) antes del próximo ciclo de reporte"
+      },
+      {
+        "framework": "sfdr",
+        "criterio": "SFDR: Requisitos de divulgación de sostenibilidad para participantes del mercado financiero (Art. 8 y 9)",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 38,
+          "section": "2.1.1. Climate-related disclosure policies",
+          "table": null
+        },
+        "nature": "cualitativo",
+        "impact": "medio",
+        "action": "Revisar la efectividad de la clasificación Art. 8/9 de SFDR en la asignación de capital y simplificar la información para que sea más intuitiva y decision-útil"
+      },
+      {
+        "framework": "taxonomia-ue",
+        "criterio": "Taxonomía UE: Clasificación de actividades económicas ambientalmente sostenibles para mitigación y adaptación",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 38,
+          "section": "Climate-related taxonomies",
+          "table": null
+        },
+        "nature": "compromiso",
+        "impact": "alto",
+        "action": "Auditar el alineamiento de capex y opex con la Taxonomía UE y preparar métricas de ingresos verdes alineadas antes del Q4 para identificar oportunidades de transición sectorial"
+      }
+    ]
+  }
+}

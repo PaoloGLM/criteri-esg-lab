@@ -1,0 +1,365 @@
+{
+  "slug": "eba-risk-assessment-jun2026",
+  "title": "Risk assessment jun2026",
+  "institution": "European Banking Authority",
+  "filename_original": "eba-risk-assessment-jun2026.pdf",
+  "generated_at": "2026-09-16T11:41:53",
+  "content_ca": {
+    "semafor": {
+      "grade": "A",
+      "gradeLabel": "Risc climàtic i operacional ben quantificats; àrees emergents (IA, crèdit privat) monitorades amb dades parcials",
+      "indicators": [
+        {
+          "name": "Cobertura Scope 3",
+          "status": "groc",
+          "label": "Emissions finançades esmentades",
+          "note": "Es menciona la reducció d'emissions scope 1, 2 i 3 com a objectiu, però no es quantifica la cobertura actual de Scope 3 per banc"
+        },
+        {
+          "name": "Objectius climàtics quantificats",
+          "status": "verd",
+          "label": "La meitat dels bancs tenen objectius a llarg i curt termini",
+          "note": "Al voltant del 50% dels bancs UE/EEE estableixen objectius de mitigació a llarg i curt termini, vs. 37% a l'Àsia Oriental i 9% a Amèrica del Nord"
+        },
+        {
+          "name": "Política de sortida de combustibles fòssils",
+          "status": "verd",
+          "label": "Prop de la meitat dels bancs tenen política d'exclusió de petroli i gas",
+          "note": "Gairebé la meitat dels bancs UE/EEE tenen una política de sortida o exclusió de petroli i gas, vs. 14-35% en altres regions"
+        },
+        {
+          "name": "Riscos cibernètics i IA",
+          "status": "verd",
+          "label": "56% dels bancs no han patit ciberatacs significatius",
+          "note": "El 56% dels bancs no han estat víctimes de ciberatacs amb impacte major, vs. 42% fa un any; però els models d'IA frontera augmenten el risc"
+        },
+        {
+          "name": "Exposició a crèdit privat",
+          "status": "verd",
+          "label": "EUR 150 bn, 0.6% dels actius totals",
+          "note": "Exposició total a fons de crèdit privat i gestors relacionats: EUR 150 bn, concentrada en 79 bancs de 13 Estats membres"
+        },
+        {
+          "name": "Rati NPL",
+          "status": "verd",
+          "label": "1.82% del total de préstecs",
+          "note": "Volum NPL establejat en EUR 370 bn al desembre 2025, amb millora gradual projectada fins 1.56% el 2028"
+        },
+        {
+          "name": "Ratis de capital",
+          "status": "verd",
+          "label": "CET1 al 16.3%, marge de 4.8% sobre requisits",
+          "note": "Rati CET1 en 16.3% al Q4 2025, amb marge sobre OCR+P2G de 4.8%, pròxim a màxims històrics"
+        },
+        {
+          "name": "Governança climàtica integrada",
+          "status": "verd",
+          "label": "Proporció de bancs avançats multiplicada per deu",
+          "note": "La proporció de bancs classificats com a progressant o avançats en governança climàtica va augmentar deu vegades entre 2019 i 2024"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "2.7%",
+        "label": "Creixement de crèdit a llars i FNCF el 2025",
+        "page": "Sec. Executive summary"
+      },
+      {
+        "value": "EUR 4.0 tn",
+        "label": "Exposició a sectors intensius en energia (68% del crèdit FNCF)",
+        "page": "Sec. 2.1, Box 2"
+      },
+      {
+        "value": "EUR 150 bn",
+        "label": "Exposició total a crèdit privat i gestors relacionats",
+        "page": "Sec. 2.2, Box 3"
+      },
+      {
+        "value": "EUR 106 bn",
+        "label": "Desemborsaments (dividends + recompra d'accions) el 2025",
+        "page": "Sec. 6"
+      },
+      {
+        "value": "13.4%",
+        "label": "Requisits de capital per risc operacional (% del total)",
+        "page": "Sec. 4"
+      }
+    ],
+    "resumExecutiu": "L'informe de l'EBA de juny 2026 constata que els bancs UE/EEE mantenen la resiliència malgrat un entorn més volàtil i fràgil. El crèdit a llars i empreses no financeres va créixer un 2.7% el 2025, mentre que les exposicions a institucions financeres no bancàries (NBFIs) van augmentar significativament, arribant al 10% dels actius totals. La qualitat dels actius es manté estable amb un rati NPL del 1.82%, però les vulnerabilitats es concentren en pimes, crèdit al consum i immobiliària comercial. El conflicte de l'Orient Mitjà genera pressions sobre sectors intensius en energia, amb exposicions bancàries de EUR 4.0 tn. El risc climàtic avança: la majoria d'institucions han establert objectius quantitatius i enfortit la governança, però la maduresa varia. Els models d'IA frontera eleven el risc cibernètic a nivells sense precedents. La rendibilitat (RoE >10%) i el capital (CET1 16.3%) es mantenen sòlids, però els plans de desemborsament creixents (EUR 117 bn el 2026) podrien comprometre la flexibilitat si els riscos es materialitzen més ràpid del previst.",
+    "implicacions": {
+      "empreses": "Els bancs han d'enfortir la gestió de risc climàtic amb objectius quantitatius coherents, integrar l'IA en marcs DORA, monitorar exposicions a crèdit privat i NBFIs amb granularitat, i mantenir plans de finançament creïbles sota estrès. La reducció de costos administratius projectada (50bps fins 2028) sembla optimista donades les necessitats creixents d'inversió TIC. Calen anàlisis sectorials granulars per a sectors intensius en energia.",
+      "reguladors": "L'EBA i autoritats competents han d'accelerar la supervisió del risc d'IA i cibernètic, especialment per a bancs petits i mitjans més vulnerables. Cal major transparència en exposicions a crèdit privat i interconnexions banc-NBFI. Els requisits de planificació de transició prudencial han de sostenir el momentum climàtic. La coordinació internacional és essencial davant l'evolució ràpida dels models d'IA frontera.",
+      "ciutadans": "Les llars i pimes són els segments més vulnerables a la deterioració de qualitat d'actius. Els consumidors s'enfronten a riscos de frau creixents (52% d'acord en el RAQ). La inflació energètica comprimeix la renda disponible. Els dipòsits continuen sent la principal font de finançament, però la competència per finançament estable podria afectar les condicions ofertes. La transparència en exposicions a crèdit privat és limitada, afectant la confiança en l'estabilitat del sistema."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Ètica dels desemborsaments en entorn de risc creixent",
+      "body": "Els bancs UE/EEE planegen augmentar els desemborsaments a EUR 117 bn el 2026 (57% de rati) mentre el risc geopolític, cibernètic i de crèdit privat s'intensifica. Des d'una perspectiva ètica, la màxima d'augmentar els pagaments als accionistes és universalitzable? Si tots els bancs ho fessin simultàniament en un entorn volàtil, el capital disponible per absorbir pèrdues es reduiria sistemàmicament, posant en risc la funció d'intermediació financera que beneficia la societat. Tractar els accionistes com a fi és els dipositants com a mitjà per mantenir rendibilitats artificialment altes genera una tensió moral. La solidaritat i la sostenibilitat exigeixen que els bancs preservin la flexibilitat de capital abans de comprometre desemborsaments que podrien ser insostenibles."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "EBA Risk Assessment Report - Autumn 2025",
+        "desc": "El risc operacional continua augmentant: els requisits de capital per risc operacional van passar del 10.6% al 13.4% del total, i les pèrdues per esdeveniments TIC nous van augmentar a EUR 0.73 bn. L'edició anterior ja alertava sobre aquesta tendència."
+      },
+      {
+        "type": "Complement",
+        "target": "FSB Report on Vulnerabilities in Private Credit - May 2026",
+        "desc": "L'informe de l'EBA confirma les advertències del FSB sobre manca de transparència i buits de dades en el crèdit privat, amb exposicions bancàries de EUR 150 bn i el país de domicili no identificat per al 49.6% de les exposicions."
+      },
+      {
+        "type": "Contradicció",
+        "target": "EBA Guidelines on ESG risk management",
+        "desc": "Tot i que els bancs UE/EEE avancen en objectius climàtics, l'informe revela que continuen finançant sectors intensius en energia amb EUR 4.0 tn (68% del crèdit FNCF), creant una tensió entre els compromisos de transició i l'exposició real al risc de transició."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Auditar exposicions a sectors intensius en energia amb anàlisi d'escenari granular",
+        "desc": "Realitzar tests d'estrès sectorials per a manufactura, utilities i transport, identificant concentracions vulnerables a xocs energètics. Aplicar indicadors d'alerta primerenca i reestructuracions proactives en pimes i immobiliària comercial.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Integrar models d'IA en el marc de compliment DORA amb tests de penetració regulars",
+        "desc": "Establir governança d'IA millorada, enfortir seguretat de dades i cibernètica, i realitzar tests de penetració per a sistemes d'IA. Accelerar la identificació i pedaçatge de vulnerabilitats amb actualitzacions més freqüents.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Quantificar i reportar emissions Scope 3 finançades amb línia base verificable",
+        "desc": "Establir una línia base d'emissions finançades Scope 3 auditada externament, amb objectius interim de reducció alineats amb la Taxonomia UE. Cobrir almenys el 80% de la cartera de crèdit.",
+        "effort": "Alt",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "04",
+        "title": "Revisar ambició dels plans de desemborsament davant riscos geopolítics creixents",
+        "desc": "Avaluar la sostenibilitat del rati de desemborsament del 57% sota escenaris adversos. Preservar flexibilitat per reduir pagaments ràpidament si el capital es deteriora. Mantenir un marge mínim de 400bps sobre OCR+P2G.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "05",
+        "title": "Mapar i limitar interconnexions amb crèdit privat i NBFIs",
+        "desc": "Agregir exposicions a crèdit privat across línies de negoci, identificar prestatuaris compartits, i simular escenaris de contagi. Exigir major transparència en valoracions i pràctiques de subscripció dels fons de crèdit privat.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "tcfd",
+        "criterion": "Escenaris climàtics per informar estratègia",
+        "coverage": "compleix",
+        "evidence": {
+          "page": null,
+          "section": "Box 1",
+          "table": "Figura 8"
+        },
+        "nature": "quantitatiu",
+        "impact": "alt",
+        "action": "Ampliar l'ús d'escenaris climàtics al 100% de la cartera estratègica i integrar-los en tests d'estrès prudencials"
+      },
+      {
+        "framework": "csrd-esrs",
+        "criterion": "ESRS E1 - Transició cap a una economia sostenible",
+        "coverage": "parcial",
+        "evidence": {
+          "page": null,
+          "section": "Box 1",
+          "table": "Figura 7"
+        },
+        "nature": "compromis",
+        "impact": "alt",
+        "action": "Desenvolupar plans de transició robusts amb objectius sectorials de descarbonització verificables i traçables"
+      },
+      {
+        "framework": "taxonomia-ue",
+        "criterion": "Alienació d'actius amb la Taxonomia UE",
+        "coverage": "parcial",
+        "evidence": {
+          "page": null,
+          "section": "Box 1",
+          "table": "Figura 8"
+        },
+        "nature": "compromis",
+        "impact": "mitja",
+        "action": "Quantificar la share d'actius alineats amb la Taxonomia UE i establir objectius de creixement anual"
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Buen progreso en gestión de riesgos climáticos con áreas de mejora pendientes",
+      "indicators": [
+        {
+          "name": "Adopción de objetivos cuantitativos climáticos",
+          "status": "verd",
+          "label": "Objetivos climáticos cuantificados",
+          "note": "La mayoría de bancos UE/EEE han adoptado objetivos de mitigación, inversión climática y exclusión de combustibles fósiles. Cerca de la mitad tiene políticas de exclusión de petróleo y gas, frente al 14% en EAPAC y 30% en Norteamérica."
+        },
+        {
+          "name": "Integración en gobernanza y gestión de riesgos",
+          "status": "verd",
+          "label": "Gobernanza climática integrada",
+          "note": "La proporción de bancos clasificados como 'progresando' o 'avanzado' en gobernanza climática aumentó diez veces entre 2019 y 2024. El 69% usa escenarios climáticos para informar su estrategia."
+        },
+        {
+          "name": "Emisiones Scope 3 financiadas",
+          "status": "groc",
+          "label": "Scope 3 mencionado sin cuantificación",
+          "note": "El informe menciona la reducción de emisiones financiadas (Scope 1, 2 y 3) como objetivo, pero no proporciona datos cuantitativos agregados sobre la cobertura o magnitud de las emisiones Scope 3 del sector bancario UE/EEE."
+        },
+        {
+          "name": "Políticas de exclusión de combustibles fósiles",
+          "status": "verd",
+          "label": "Fase-out de combustibles fósiles cuantificado",
+          "note": "Cerca de la mitad de los bancos UE/EEE tienen una política de exclusión o fase-out de petróleo y gas. 29 de 84 instituciones han aumentado o planean aumentar sus objetivos de finanzas verdes."
+        },
+        {
+          "name": "Bonos verdes como instrumento de financiación",
+          "status": "verd",
+          "label": "Bonos verdes cuantificados",
+          "note": "La cuota de bonos verdes emitidos aumentó para todos los tipos de instrumentos en 2025 frente al año anterior, y continuó incrementándose hasta mayo 2026, consolidándose como instrumento mainstream."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "1,82%",
+        "label": "Ratio de NPL sobre total de préstamos (diciembre 2025)",
+        "page": "Sección 2.2"
+      },
+      {
+        "value": "16,3%",
+        "label": "Ratio CET1 del sector bancario UE/EEE (Q4 2025)",
+        "page": "Sección 6"
+      },
+      {
+        "value": "EUR 4,18 tn",
+        "label": "Exposiciones soberanas totales (fin de 2025, +14,6% YoY)",
+        "page": "Sección 2.1"
+      },
+      {
+        "value": "9,9%",
+        "label": "RoE medio ponderado del sector bancario UE/EEE (2025)",
+        "page": "Sección 5"
+      },
+      {
+        "value": "EUR 150 bn",
+        "label": "Exposición total de bancos UE/EEE a fondos de crédito privado (junio 2025)",
+        "page": "Sección 2.2, Box 3"
+      }
+    ],
+    "resumExecutiu": "El informe de evaluación de riesgos de la EBA de junio de 2026 revela un sector bancario UE/EEE resiliente pero enfrentando un entorno de riesgos cada vez más volátil y fragmentado. Los bancos continúan expandiendo sus balances: los préstamos a hogares y empresas no financieras crecieron un 2,7% en 2025, mientras que las exposiciones a instituciones financieras no bancarias (NBFIs) aumentaron significativamente, alcanzando alrededor del 10% del total de activos. La calidad de los activos se mantiene estable con ratios de NPL en 1,82%, aunque persisten vulnerabilidades concentradas en pymes, crédito al consumo e inmobiliaria comercial. El conflicto en Oriente Medio ha generado choques energéticos que afectan desproporcionadamente a sectores intensivos en energía, con exposiciones bancarias de EUR 4,0 tn (68% del total de exposiciones a FNCS). La rentabilidad se mantiene sólida (RoE del 9,9%) apoyada en el ingreso neto por intereses, aunque las proyecciones de reducción de costes parecen optimistas, especialmente en gastos TIC. El riesgo operacional sigue aumentando, impulsado por ciberriesgos y el desarrollo de modelos de IA de frontera con capacidades enhanced para explotar vulnerabilidades software. La gestión de riesgos climáticos progresa, con los bancos UE/EEE liderando globalmente en adopción de objetivos cuantitativos y gobernanza, aunque la madurez varía entre entidades. Los planes de financiación son ambiciosos, con crecimiento previsto de depósitos del 4% anual que podría resultar optimista. El colchón de capital sobre requisitos se mantiene en 4,8%, pero la dispersión entre países es amplia.",
+    "implicaciones": {
+      "empresas": "Las empresas, especialmente las de sectores intensivos en energía, deben prepararse para presiones de costes persistentes y un posible endurecimiento de condiciones de crédito. Los bancos planean expandir préstamos a FNCS por encima del 5% en 2026, pero el crecimiento se concentrará en sectores específicos como energía, defensa y tecnología. Las pymes, ya identificadas como segmento vulnerable, deben fortalecer su capacidad de servicio de deuda. La transición energética ofrece oportunidades de financiación, pero las empresas deben demostrar trayectorias de descarbonización creíbles para acceder a financiación verde creciente.",
+      "reguladores": "Los supervisores deben intensificar la monitorización de interconexiones entre bancos y mercados de crédito privado, donde la opacidad y las prácticas de valoración pueden enmascarar deterioro crediticio. La implementación de DORA requiere supervisión consistente y continua inversión. Los reguladores deben abordar la creciente dependencia de proveedores TIC extracomunitarios y el riesgo sistémico que plantean los modelos de IA de frontera. La planificación de transición climática necesita marcos más robustos. La dispersión en ratios de capital entre países exige vigilancia prudencial diferenciada.",
+      "ciudadanos": "Los ciudadanos enfrentan presiones sobre su poder adquisitivo por el aumento de precios energéticos e inflación (3,0% esperada en 2026 en la zona euro). El crédito al consumo mantiene ratios de NPL elevados (5,4%), señalando vulnerabilidades financieras en los hogares. Los depósitos bancarios siguen siendo seguros como principal fuente de financiación, pero los ciudadanos deben ser conscientes del aumento del fraude digital y ciberestafas. La estabilidad del sector bancario protege los ahorros, pero los pagos de dividendos récord (EUR 106 bn) plantean preguntas sobre el equilibrio entre remuneración a inversores y reinversión en resiliencia."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Sostenibilidad y justicia intergeneracional",
+      "body": "El informe revela una tensión ética fundamental: mientras los bancos UE/EEE lideran globalmente en adopción de objetivos climáticos cuantitativos, sus exposiciones a sectores intensivos en energía siguen representando el 68% del total de exposiciones a empresas no financieras (EUR 4,0 tn). La pregunta ética no es si se han fijado objetivos, sino si la velocidad de la transición es coherente con la urgencia climática y si los costes de la transición se distribuyen con justicia. La brecha entre bancos grandes y pequeños en capacidad de gestión de riesgos climáticos y ciberresiliencia plantea un problema de justicia estructural: las entidades más pequeñas, que a menudo sirven a comunidades locales y pymes, pueden quedar en desventaja para proteger a sus clientes. La sostenibilidad requiere no solo objetivos en papel, sino que la transición no deje atrás a los más vulnerables."
+    },
+    "conexions": [
+      {
+        "type": "Contradicció",
+        "target": "Planes de expansión de balance vs. incertidumbre geopolítica",
+        "desc": "Los bancos proyectan un crecimiento de préstamos a FNCS superior al 5% en 2026 y un aumento de depósitos del 4% anual, pero estas proyecciones se basan en un escenario macrofinanciero benigno que no refleja plenamente los riesgos a la baja del conflicto en Oriente Medio, la volatilidad de precios energéticos y las tensiones en mercados de financiación."
+      },
+      {
+        "type": "Complement",
+        "target": "Inversiones en transición energética y objetivos climáticos",
+        "desc": "El aumento de exposiciones a energía y utilities (cerca de EUR 30 bn YoY) puede reflejar inversiones alineadas con la transición energética UE, complementando los objetivos de inversión verde que 29 de 84 bancos han aumentado. Esta sinergia entre financiación y objetivos climáticos refuerza la trayectoria de descarbonización, aunque persiste la dependencia de activos fósiles."
+      },
+      {
+        "type": "Evolució",
+        "target": "Riesgo operacional e IA de frontera",
+        "desc": "El riesgo operacional ha pasado de ser una preocupación secundaria a convertirse en sistémico, representando ya el 13,4% de los requisitos totales de capital. La evolución desde riesgos TIC convencionales hacia amenazas de IA de frontera que pueden explotar vulnerabilidades a velocidad sin precedentes marca un punto de inflexión que amplifica la brecha entre bancos grandes y pequeños en capacidad de respuesta."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Auditar exposiciones a sectores intensivos en energía",
+        "desc": "Realizar un análisis granular por subsector (química, metales básicos, vehículos, utilities) de las exposiciones crediticias, evaluando la capacidad de transmisión de costes y la resiliencia ante choques energéticos persistentes. Priorizar sectores con mayor vulnerabilidad (NACE C20, C24, D35.1) y establecer planes de mitigación específicos.",
+        "esforc": "Mitjà",
+        "impacte": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Reforzar la ciberresiliencia ante IA de frontera",
+        "desc": "Acelerar la identificación y parcheo de vulnerabilidades software, aumentar la frecuencia de pruebas de penetración, y actualizar las políticas de continuidad de negocio para adaptarse a velocidades de descubrimiento de vulnerabilidades sin precedentes. Integrar el uso de IA en el framework de cumplimiento DORA y evaluar implicaciones del AI Act.",
+        "esforc": "Alt",
+        "impacte": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Mapear y monitorear interconexiones con crédito privado",
+        "desc": "Agregar exposiciones a fondos de crédito privado y gestores de activos relacionados a través de líneas de negocio, identificando apalancamiento multicapa y correlaciones de riesgo. Implementar simulaciones basadas en escenarios sobre exposiciones compartidas y evaluar la calidad crediticia subyacente de contrapartes correlacionadas.",
+        "esforc": "Mitjà",
+        "impacte": "Alt"
+      },
+      {
+        "num": "04",
+        "title": "Desarrollar planes de transición climática robustos",
+        "desc": "Avanzar desde objetivos cuantitativos hacia planes de transición operativos que integren escenarios climáticos en la estrategia de negocio, la gestión de riesgos y las decisiones de asignación de capital. Incluir análisis de escenarios sectoriales, trayectorias de descarbonización de contrapartes y métricas de progreso verificables.",
+        "esforc": "Mitjà",
+        "impacte": "Mitjà"
+      },
+      {
+        "num": "05",
+        "title": "Stress-test planes de financiación ante escenarios adversos",
+        "desc": "Evaluar la viabilidad de los planes de crecimiento de depósitos (4% anual) y emisión de deuda senior preferente (+50% en 2026) bajo escenarios de volatilidad de mercados, ensanchamiento de spreads y competición por financiación estable. Preparar planes de contingencia incluyendo uso de activos líquidos y reducción de crecimiento de balance.",
+        "esforc": "Baix",
+        "impacte": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "csrd-esrs",
+        "criterio": "ESRS E1-1 Transición planificada y ESRS E1-3 Acciones de mitigación",
+        "coverage": "parcial",
+        "evidence": {
+          "page": null,
+          "section": "Box 1: EU/EEA banks' progress in developing approaches to address climate-related risks",
+          "table": "Figura 8"
+        },
+        "nature": "cualitativo",
+        "impact": "alto",
+        "action": "Desarrollar un plan de transición climático alineado con los requisitos ESRS E1, incluyendo trayectorias cuantitativas de reducción de emisiones financiadas y métricas de progreso verificables por sector."
+      },
+      {
+        "framework": "tcfd",
+        "criterio": "TCFD Strategy a) y b) - Escenarios climáticos y resiliencia de la estrategia",
+        "coverage": "cumple",
+        "evidence": {
+          "page": null,
+          "section": "Box 1: Integration into governance, risk management and operational processes",
+          "table": "Figura 9"
+        },
+        "nature": "cuantitativo",
+        "impact": "medio",
+        "action": "Ampliar el uso de escenarios climáticos (actualmente 69% de bancos) al 100% de la cartera, incluyendo escenarios desordenados y de transición tardía conforme a las recomendaciones TCFD."
+      },
+      {
+        "framework": "taxonomia-ue",
+        "criterio": "Taxonomía UE - Divulgación de proporción de activos alineados",
+        "coverage": "parcial",
+        "evidence": {
+          "page": null,
+          "section": "Box 1: Expectation on climate-related sustainability targets",
+          "table": "Figura 8"
+        },
+        "nature": "compromiso",
+        "impact": "medio",
+        "action": "Cuantificar y divulgar la proporción de activos alineados con la Taxonomía UE, estableciendo una línea base y trayectoria de crecimiento verificable en los próximos reportes ESG."
+      }
+    ]
+  }
+}

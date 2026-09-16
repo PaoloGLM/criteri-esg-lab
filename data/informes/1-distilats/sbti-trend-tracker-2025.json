@@ -1,0 +1,328 @@
+{
+  "slug": "sbti-trend-tracker-2025",
+  "title": "Trend tracker 2025",
+  "institution": "Science Based Targets initiative (SBTi)",
+  "filename_original": "sbti-trend-tracker-2025.pdf",
+  "generated_at": "2026-09-16T12:08:10",
+  "content_ca": {
+    "semafor": {
+      "grade": "A",
+      "gradeLabel": "Excel·lent - Dades quantificades i transparents",
+      "indicators": [
+        {
+          "name": "Creixement global d'objectius",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "+40% en objectius a curt termini, +61% en net-zero"
+        },
+        {
+          "name": "Penetració geogràfica",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Àsia lidera amb +53%, creixement sòlid a mercats emergents"
+        },
+        {
+          "name": "Diversificació sectorial",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Health Care (+76%), IT (+48%) i Materials (+43%) lideren"
+        },
+        {
+          "name": "Penetració en índexs borsaris",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "CAC 40 (70%), DAX 40 (68%) i FTSE 100 (53%)"
+        },
+        {
+          "name": "Trajectòria cap a net-zero",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "2.325 empreses amb objectius net-zero validats"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "9.764",
+        "label": "Empreses amb objectius basats en la ciència validats",
+        "page": "2"
+      },
+      {
+        "value": "+61%",
+        "label": "Creixement d'empreses amb objectius net-zero",
+        "page": "2"
+      },
+      {
+        "value": "+53%",
+        "label": "Creixement d'empreses amb objectius a Àsia",
+        "page": "4"
+      },
+      {
+        "value": "2.960",
+        "label": "Empreses del sector Industrial amb objectius",
+        "page": "6"
+      },
+      {
+        "value": "70%",
+        "label": "Penetració SBTi a l'índex CAC 40",
+        "page": "6"
+      }
+    ],
+    "resumExecutiu": "L'informe SBTi Trend Tracker 2025 evidencia una consolidació massiva dels objectius climàtics basats en la ciència, superant les 9.700 empreses validades. El creixement és transversal: els objectius a curt termini pugen un 40% i els de net-zero un 61%. Àsia emergeix com el gran motor geogràfic (+53%), mentre que sectors com Health Care i IT lideren l'avanç sectorial. La penetració en índexs borsaris clau (CAC 40, DAX 40) demostra la integració de la sostenibilitat en l'estratègia corporativa global.",
+    "implicacions": {
+      "empreses": "L'adopció d'objectius SBTi ja no és opcional per mantenir competitivitat i resiliència. Les empreses han d'accelerar la transició cap a net-zero, especialment a Àsia i mercats emergents, per no quedar enrere en l'atracció d'inversors.",
+      "reguladors": "Cal harmonitzar les exigències de reportabilitat amb estàndards com els SBTi per evitar la fragmentació. El creixement a Àsia i LATAM requereix suport institucional per consolidar la trajectòria cap a net-zero i garantir la verificació de dades.",
+      "ciutadans": "La massificació d'objectius climàtics corporatius ofereix una major transparència sobre l'impacte ambiental. Tanmateix, la societat ha de vetllar perquè aquests compromisos es tradueixin en reduccions reals d'emissions i no en simple rentat d'imatza."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Anàlisi ètica de l'adopció d'objectius SBTi",
+      "body": "FETS: Creixement massiu d'objectius SBTi, liderat per Àsia i sectors diversos. PARTS INTERESSADES: Empreses, inversors, reguladors i ciutadans afectats pel canvi climàtic. KANTIANA: La màxima d'adoptar objectius científics és universalitzable; tracta les generacions futures com a fi, no com a mitjà per al lucre a curt termini. BÉ COMÚ: Fomenta la sostenibilitat i la solidaritat global, tot i que la justícia distributiva exigeix atendre els mercats emergents. La dignitat humana i la sostenibilitat exigeixen que l'èxit es mesuri pel seu impacte ecològic real, no pel creixement financer."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "Trend Tracker 2024",
+        "desc": "Consolidació de la tendència ascendent, passant de 6.954 a 9.764 empreses validades a nivell global."
+      },
+      {
+        "type": "Complement",
+        "target": "Informes de divulgació financera TCFD",
+        "desc": "Els objectius SBTi complementen les mètriques i objectius requerits pel marc TCFD per a la gestió de riscos climàtics."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Validar objectius a curt termini",
+        "desc": "Les empreses sense objectius validats han d'iniciar el procés SBTi per mantenir competitivitat i accés a capital.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Establir objectius net-zero",
+        "desc": "Les corporacions amb objectius a curt termini han de formalitzar i validar els seus compromisos net-zero per tancar el cicle.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Aprofitar el creixement asiàtic",
+        "desc": "Les empreses a Àsia i mercats emergents han d'adoptar SBTi per liderar la transició regional i evitar desavantatges competitius.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "04",
+        "title": "Auditar penetració sectorial",
+        "desc": "Els sectors amb creixement lent com Energy & Utilities (+26%) han d'accelerar l'adopció d'objectius per reduir el seu impacte.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "gri",
+        "criterion": "GRI 305-1 Direct GHG emissions",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 2,
+          "section": "Key Insights",
+          "table": null
+        },
+        "nature": "qualitatiu",
+        "impact": "mitja",
+        "action": "Quantificar i reportar emissions directes per alinear-les amb els objectius SBTi validats."
+      },
+      {
+        "framework": "tcfd",
+        "criterion": "Metrics and Targets",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 6,
+          "section": "Market Penetration",
+          "table": null
+        },
+        "nature": "quantitatiu",
+        "impact": "alt",
+        "action": "Integrar els objectius SBTi en els informes financers seguint el marc TCFD per als inversors."
+      },
+      {
+        "framework": "csrd-esrs",
+        "criterion": "ESRS E1 Climate change mitigation",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 2,
+          "section": "Key Insights",
+          "table": null
+        },
+        "nature": "compromis",
+        "impact": "alt",
+        "action": "Alinear la transició climàtica corporativa amb els requisits de la directiva CSRD per garantir el compliment."
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "A",
+      "gradeLabel": "Excelente - Datos cuantificados en todos los indicadores clave",
+      "indicators": [
+        {
+          "name": "Cobertura de objetivos a corto plazo",
+          "status": "verd",
+          "label": "Near-term targets",
+          "note": "Crecimiento del 40% interanual, alcanzando 9.764 empresas validadas."
+        },
+        {
+          "name": "Objetivos de emisiones netas cero",
+          "status": "verd",
+          "label": "Net-zero targets",
+          "note": "Incremento del 61%, pasando de 1.441 a 2.325 empresas con objetivos net-zero."
+        },
+        {
+          "name": "Crecimiento regional",
+          "status": "verd",
+          "label": "Asia as a major driver",
+          "note": "Asia lidera con un crecimiento proporcional del 53% (de 2.297 a 3.513 empresas)."
+        },
+        {
+          "name": "Crecimiento sectorial",
+          "status": "verd",
+          "label": "Fast growth in key sectors",
+          "note": "Health Care (+76%), Information Technology (+48%) y Materials (+43%) lideran el crecimiento."
+        },
+        {
+          "name": "Penetración en índices bursátiles",
+          "status": "verd",
+          "label": "Market Penetration",
+          "note": "Penetración cuantificada en índices clave: CAC 40 (70%), DAX 40 (68%), FTSE 100 (53%)."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "9.764",
+        "label": "Empresas con objetivos científicos validados a finales de 2025",
+        "page": "2"
+      },
+      {
+        "value": "+61%",
+        "label": "Crecimiento de empresas con objetivos net-zero (1.441 a 2.325)",
+        "page": "2"
+      },
+      {
+        "value": "+53%",
+        "label": "Crecimiento de empresas con objetivos en Asia (2.297 a 3.513)",
+        "page": "4"
+      },
+      {
+        "value": "+76%",
+        "label": "Crecimiento del sector Health Care (262 a 460)",
+        "page": "6"
+      },
+      {
+        "value": "70%",
+        "label": "Penetración de SBTi en el índice CAC 40 de Francia",
+        "page": "6"
+      }
+    ],
+    "resumExecutiu": "El informe SBTi Trend Tracker 2025 evidencia un momentum sin precedentes en la adopción de objetivos científicos de reducción de emisiones. Con 9.764 empresas validadas a finales de 2025, el crecimiento interanual del 40% en objetivos a corto plazo y del 61% en objetivos net-zero subraya la centralidad del clima en la estrategia corporativa. Asia emerge como el motor geográfico principal (+53%), liderando China, Taiwán, Japón e India. Sectorialmente, Salud, Tecnología de la Información y Materiales lideran el crecimiento proporcional. La penetración en índices bursátiles clave como el CAC 40 (70%) demuestra la consolidación institucional de la ambición climática, trascendiendo el mero cumplimiento regulatorio hacia una ventaja competitiva a largo plazo.",
+    "implicaciones": {
+      "empresas": "La presión competitiva por adoptar objetivos validados científicamente se intensifica. Las empresas rezagadas enfrentarán riesgos reputacionales y de acceso a capital. La transición hacia net-zero deja de ser opcional, exigiendo integración en la cadena de valor y resiliencia operativa frente a eventos climáticos extremos.",
+      "reguladores": "El crecimiento orgánico en mercados emergentes asiáticos sugiere que la regulación coercitiva puede complementarse con el estímulo de marcos voluntarios estandarizados. Los reguladores europeos deben observar la convergencia de los mercados financieros hacia la descarbonización como señal de madurez para endurecer políticas.",
+      "ciudadanos": "La creciente adopción corporativa de objetivos climáticos ofrece a los ciudadanos una mayor transparencia para exigir rendición de cuentas. Sin embargo, la brecha entre el compromiso y la implementación real requiere vigilancia ciudadana activa para evitar el lavado de imagen y asegurar una transición justa."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Justicia climática y co-decisión",
+      "body": "Más allá del cumplimiento métrico, la adopción masiva de objetivos SBTi plantea una cuestión de justicia climática: ¿se traducen estos compromisos en una reducción tangible de impactos para las comunidades vulnerables? La sostenibilidad exige que la ambición corporativa no externalice costes sociales, garantizando la co-decisión de los actores afectados en la transición."
+    },
+    "conexiones": [
+      {
+        "type": "Evolución",
+        "target": "Crecimiento de objetivos net-zero",
+        "desc": "La transición de objetivos a corto plazo hacia compromisos net-zero refleja una madurez en la ambición corporativa, pasando del 14% en 2015 al 19% en 2025."
+      },
+      {
+        "type": "Complemento",
+        "target": "Crecimiento regional asiático vs. europeo",
+        "desc": "Mientras Europa lidera en volumen absoluto (4.769), Asia impulsa el crecimiento proporcional (+53%), complementando el estancamiento relativo de mercados maduros."
+      },
+      {
+        "type": "Contradicción",
+        "target": "Penetración en índices vs. territorios emergentes",
+        "desc": "La alta penetración en índices europeos (CAC 40 70%) contrasta con la baja adopción en índices asiáticos como el CSI 300 (4%), reflejando asimetrías en la gobernanza climática corporativa."
+      }
+    ],
+    "acciones": [
+      {
+        "num": "01",
+        "title": "Auditar la cadena de valor Scope 3",
+        "desc": "Identificar y cuantificar las emisiones de Scope 3 en la cadena de suministro asiática para alinearlas con objetivos net-zero validados.",
+        "esfuerzo": "Alto",
+        "impacto": "Alto"
+      },
+      {
+        "num": "02",
+        "title": "Adoptar objetivos a corto plazo",
+        "desc": "Establecer y validar objetivos near-term si la empresa solo tiene compromisos, para evitar el rezago competitivo evidenciado por el 40% de crecimiento global.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "03",
+        "title": "Integrar criterios SBTi en inversiones",
+        "desc": "Los gestores de activos deben priorizar empresas con objetivos validados, aprovechando la alta penetración en índices como el DAX 40 (68%).",
+        "esfuerzo": "Bajo",
+        "impacto": "Medio"
+      },
+      {
+        "num": "04",
+        "title": "Monitorizar sectores de rápido crecimiento",
+        "desc": "Analizar las dinámicas de los sectores Health Care e IT para replicar estrategias de descarbonización exitosas en industrias similares.",
+        "esfuerzo": "Bajo",
+        "impacto": "Medio"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "tcfd",
+        "criterio": "Métricas y objetivos (Disclosures a)",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 2,
+          "section": "KEY INSIGHTS",
+          "table": "N/A"
+        },
+        "nature": "cuantitativo",
+        "impact": "alto",
+        "action": "Reportar el progreso de reducción de emisiones contra los objetivos SBTi en el informe TCFD."
+      },
+      {
+        "framework": "gri",
+        "criterio": "GRI 305-1 Emisiones directas (Scope 1)",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 3,
+          "section": "DATA AND TRENDS",
+          "table": "N/A"
+        },
+        "nature": "cualitativo",
+        "impact": "medio",
+        "action": "Vincular los objetivos SBTi near-term con la cuantificación de emisiones directas en el reporte GRI."
+      },
+      {
+        "framework": "csrd-esrs",
+        "criterio": "ESRS E1 Transición climática",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 2,
+          "section": "KEY INSIGHTS",
+          "table": "N/A"
+        },
+        "nature": "compromiso",
+        "impact": "alto",
+        "action": "Asegurar que los objetivos net-zero validados estén integrados en el plan de transición exigido por la CSRD."
+      }
+    ]
+  }
+}

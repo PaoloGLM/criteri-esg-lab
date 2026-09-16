@@ -1,0 +1,340 @@
+{
+  "slug": "World_Inequality_Report_2026",
+  "title": "World_inequality_report_2026",
+  "institution": "WORLD_INEQUALITY_REPORT_2026",
+  "filename_original": "World_Inequality_Report_2026.pdf",
+  "generated_at": "2026-09-16T12:17:13",
+  "content_ca": {
+    "semafor": {
+      "grade": "A",
+      "gradeLabel": "Cobertura quantificada exhaustiva en totes les dimensions clau de desigualtat",
+      "indicators": [
+        {
+          "name": "Concentració de riquesa global",
+          "status": "verd",
+          "label": "Top 10% posseeix 75% de la riquesa mundial; top 0,001% (56.000 persones) té 3 vegades més que la meitat pobra",
+          "note": "Dades quantificades amb sèries 1995-2025, creixement anual del 8% per a bilionaris"
+        },
+        {
+          "name": "Emissions climàtiques per propietat de capital",
+          "status": "verd",
+          "label": "Top 10% genera 77% d'emissions de capital privat; top 1% el 41%",
+          "note": "Enfocament basat en propietat, no consum; 60% d'emissions atribuïdes a capital privat"
+        },
+        {
+          "name": "Desigualtat de gènere",
+          "status": "verd",
+          "label": "Dones capturen 28% d'ingressos laborals; treballen 53h/setmana vs 43h homes incloent treball domèstic",
+          "note": "Bretxa salarial real del 68% incloent treball no remunerat; dades per 35 països"
+        },
+        {
+          "name": "Regressivitat fiscal a la cúspide",
+          "status": "verd",
+          "label": "Tipus impositius efectius cauen per a bilionaris a França, Països Baixos, EUA, Espanya, Brasil",
+          "note": "Simulació d'imposta mínima del 2% neutralitza regressivitat; recaptació potencial $500B anuals"
+        },
+        {
+          "name": "Privilegi financer estructural",
+          "status": "verd",
+          "label": "Països rics extreuen ~1% PIB mundial anual dels països pobres via rendiments excés",
+          "note": "Japó 5,9% PIB; EUA 2,2%; BRICS -2,1%; dades 1970-2025"
+        },
+        {
+          "name": "Desigualtat regional i oportunitats",
+          "status": "verd",
+          "label": "Bretxa educativa 1:40 entre Àfrica Subsahariana (220€) i Amèrica del Nord (9.025€) per infant",
+          "note": "Ingressos mensuals: Amèrica del Nord 3.800€ vs Àfrica Subsahariana 300€"
+        },
+        {
+          "name": "Representació política de la classe treballadora",
+          "status": "verd",
+          "label": "Participació de diputats obrers en declivi a França, Regne Unit, EUA; divisions territorials creixents",
+          "note": "Sistema multi-elit: educats voten esquerra, rics voten dreta; geografia com a eix nou"
+        },
+        {
+          "name": "Redistribució i transferències",
+          "status": "verd",
+          "label": "Transferències representen >90% de la reducció de desigualtat; impostos sols <10%",
+          "note": "Europa redueix bretxa T10/B50 de 19:1 a 10:1; Amèrica Llatina de 72:1 a 50:1"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "75%",
+        "label": "Quota de riquesa global del top 10% el 2025",
+        "page": "12"
+      },
+      {
+        "value": "77%",
+        "label": "Emissions de capital privat atribuïdes al top 10%",
+        "page": "12"
+      },
+      {
+        "value": "28,2%",
+        "label": "Quota d'ingressos laborals femenins el 2025 (pràcticament sense canvi des de 27,8% el 1990)",
+        "page": "13"
+      },
+      {
+        "value": "~1% PIB mundial",
+        "label": "Transferència anual neta de països pobres a rics via sistema financer (3 vegades l'ajuda al desenvolupament)",
+        "page": "16"
+      },
+      {
+        "value": "$500 mil milions",
+        "label": "Recaptació potencial anual d'una imposta mínima del 2% sobre centimilionaris (0,45% PIB mundial)",
+        "page": "19"
+      }
+    ],
+    "resumExecutiu": "El World Inequality Report 2026, tercer d'una sèrie iniciada el 2018, documenta amb dades de més de 200 investigadors que la desigualtat global ha arribat a nivells extrems i persistents. El 10% més ric acumula el 53% dels ingressos i el 75% de la riquesa, mentre que la meitat pobra només capta el 8% i el 2% respectivament. Menys de 60.000 ultra-ricos posseeixen tres vegades més que 2.800 milions de persones. L'informe revela que el 10% més ric genera el 77% de les emissions associades al capital privat, que les dones treballen més hores però guanyen només el 32% del que guanyen els homes per hora, i que el sistema financer internacional transfereix anualment l'1% del PIB mundial dels països pobres als rics. La progressivitat fiscal col·lapsa a la cúspide: els bilionaris pagen proporcionalment menys que la majoria. Les divisions polítiques entre metròpolis i pobles petits han arribat a nivells no vistos en un segle, erosionant les coalicions necessàries per a la redistribució. L'informe conclou que la desigualtat no és inevitable sinó una elecció política, i proposa impostos progressius, inversió en capital humà, justícia fiscal global i reforma del sistema financer internacional.",
+    "implicacions": {
+      "empreses": "Les empreses han d'auditar la petjada de carboni associada a la propietat de capital, no només al consum. L'informe demostra que el 10% més ric genera el 77% de les emissions de capital privat, i que inversions en combustibles fòssils continuen rebent 1,1 bilions de dòlars anuals. Les empreses amb actius carbonintensius s'enfronten a riscos d'actius encallats de 7-12 bilions de dòlars en el sector petrolier. La responsabilitat s'estén més enllà de les emissions operacionals: cal transparència sobre la composició carbonintensiva de les carteres d'inversió i l'alineació amb trajectories net-zero.",
+      "reguladors": "Els reguladors han de restaurar la progressivitat fiscal a la cúspide mitjançant impostos mínims sobre el patrimoni (2% sobre centimilionaris) i coordinació internacional per reduir l'evasió fiscal. L'informe mostra que el 27% de la riquesa offshore roman sense tributar i que els tipus impositius efectius cauen per als bilionaris. Cal reformar el sistema financer internacional que permet als països rics actuar com a rentistes globals, extraient l'1% del PIB mundial anual dels països pobres. La regulació climàtica ha d'incorporar la propietat de capital, no només el consum, com a vector de responsabilitat d'emissions.",
+      "ciutadans": "Els ciutadans estan afectats per la desigualtat en múltiples dimensions: la meitat pobra pot suportar fins al 75% de les pèrdues climàtiques relatives al 2050; les dones treballen més hores però guanyen menys; la representació política de la classe treballadora està en declivi. L'informe demostra que la desigualtat és una elecció política, no una inevitabilitat. La transparència de dades és fonamental: molts països no publiquen informació fiable sobre ingressos i riquesa, limitant el debat democràtic. Els ciutadans han de exigir dades obertes, impostos progressius i inversions en educació i salut com a eines redistributives."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Anàlisi ètica de la desigualtat com a construcció institucional",
+      "body": "Des d'una perspectiva kantiana, l'informe revela que el sistema financer internacional tracta les persones del Global Sud com a mitjans, no com a fins: els països rics extreuen recursos dels pobres via rendiments excés, una forma moderna d'intercanvi desigual que no és universalitzable. La regressivitat fiscal a la cúspide viola el principi de contribució segons capacitat, erosionant la legitimitat del pacte fiscal. El bé comú exigeix solidaritat (redistribució), dignitat (treball de cura reconegut), sostenibilitat (responsabilitat climàtica lligada a propietat) i democràcia (representació de la classe treballadora). La concentració extrema de riquesa i poder polític amenaça tots aquests principis. Conclusió ètica: la desigualtat és una elecció política; la dignitat humana i la solidaritat exigeixen redistribuir la riquesa i democratitzar el poder econòmic."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "World Inequality Report 2022",
+        "desc": "El WIR 2026 actualitza les sèries del 2022, ampliant l'abast temporal i temàtic amb noves dimensions: clima i capital, gènere amb treball no remunerat, sistema financer internacional, i divisions polítiques territorials."
+      },
+      {
+        "type": "Complement",
+        "target": "Climate Inequality Report 2025 (Chancel & Mohren)",
+        "desc": "El WIR 2026 integra i amplia l'enfocament basat en propietat d'emissions del Climate Inequality Report 2025, vinculant explícitament la concentració de riquesa amb la responsabilitat climàtica mitjançant l'atribució d'emissions a propietaris de capital."
+      },
+      {
+        "type": "Complement",
+        "target": "G20 Extraordinary Committee Report on Global Inequality (Stiglitz et al.)",
+        "desc": "El WIR 2026 recolza la proposta del G20 de crear un International Panel on Inequality (IPI), aportant la base empírica i metodològica que aquest organisme necessitaria per al seguiment sistemàtic de la desigualtat global."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Auditar emissions basades en propietat de capital",
+        "desc": "Identificar i quantificar les emissions Scope 1 associades a actius empresarials propietat de l'organització, no només les operacionals. Establir una línia base de petjada de carboni vinculada a la composició de la cartera d'inversions i prioritzar la desinvertició en actius carbonintensius.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Implementar transparencia fiscal i auditoria de progressivitat",
+        "desc": "Realitzar una auditoria interna de la càrrega fiscal efectiva de l'organització i els seus accionistes majoritaris, garantint que la contribució sigui proporcional i no regressiva. Publicar informes de compliment fiscal per país i combatre estructures d'evasió via holding companies.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "03",
+        "title": "Reconèixer i redistribuir el treball de cura no remunerat",
+        "desc": "Incorporar policies de permís parental compartit, serveis d'atenció a la infantesa assequibles, crèdits per a cuidadors en pensions i auditoria de bretxa salarial incloent hores de treball domèstic. Mesurar i reportar la càrrega total de treball per gènere.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "04",
+        "title": "Avaluar exposició al risc d'actius encallats en sectors fòssils",
+        "desc": "Quantificar l'exposició financera a actius fòssils susceptibles d'encallament sada scenarios 1,5°C-2°C. El sector petrolier upstream pot perdre 7-12 bilions de dòlars. Divulgar el percentatge de patrimoni net exposat i establir un pla de desinvertició amb fites temporals.",
+        "effort": "Baix",
+        "impact": "Alt"
+      },
+      {
+        "num": "05",
+        "title": "Dissenyar inversions climàtiques amb criteris d'equitat distributiva",
+        "desc": "Assegurar que la transició net-zero no concentri la propietat dels actius verds en el 1% més ric (que podria augmentar la seva quota de riquesa del 38% al 46%). Prioritzar finançament públic i models de propietat col·lectiva per a infraestructures climàtiques, amb mecanismes de redistribució de rendiments.",
+        "effort": "Alt",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "csrd-esrs",
+        "criterion": "ESRS E1 Climate change mitigation - transició planificada i implicacions financeres",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 117,
+          "section": "Chapter 6 - The carbon footprint of capital",
+          "table": "Figure 6.2"
+        },
+        "nature": "quantitatiu",
+        "impact": "alt",
+        "action": "Quantificar emissions basades en propietat de capital i integrar-les en l'informe CSRD, establint línies base i fites de reducció vinculades a la composició de cartera"
+      },
+      {
+        "framework": "gri",
+        "criterion": "GRI 201-1 Valor econòmic generat i distribuit",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 15,
+          "section": "Redistribution, taxation, and evasion",
+          "table": "Figure 12"
+        },
+        "nature": "quantitatiu",
+        "impact": "mitja",
+        "action": "Reportar la distribució del valor econòmic generat entre grups d'ingressos, incloent tipus impositius efectius per grup i mesures redistributives implementades"
+      },
+      {
+        "framework": "tcfd",
+        "criterion": "TCFD Mètriques i objectius - emissions i riscos financers relacionats amb el clima",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 120,
+          "section": "Climate policy and the future distribution of wealth",
+          "table": "Figure 6.7"
+        },
+        "nature": "quantitatiu",
+        "impact": "alt",
+        "action": "Incorporar scenarios d'encallament d'actius (7-12 bilions USD en sector petrolier upstream) i simulacions distributives de propietat d'inversions climàtiques als informes TCFD"
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "A",
+      "gradeLabel": "Cobertura cuantitativa exhaustiva de los indicadores principales",
+      "indicators": [
+        {
+          "name": "Desigualdad de la riqueza global",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "El 10% más rico posee el 75% de la riqueza global, mientras el 50% más pobre posee solo el 2% (p. 12)."
+        },
+        {
+          "name": "Desigualdad de ingresos global",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "El 10% superior capta el 53% de los ingresos y la mitad inferior solo el 8% (p. 12)."
+        },
+        {
+          "name": "Huella de carbono del capital",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "El 10% más rico genera el 77% de las emisiones asociadas a la propiedad privada del capital (p. 12)."
+        },
+        {
+          "name": "Brecha salarial de género real",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "Incluyendo trabajo no remunerado, las mujeres ganan el 32% del ingreso por hora de los hombres (p. 13)."
+        },
+        {
+          "name": "Recesividad fiscal en la cúspide",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "Las tasas impositivas efectivas caen para multimillonarios frente a clases medias (p. 15)."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "53% vs 8%",
+        "label": "Reparto del ingreso global (Top 10% vs Bottom 50%)",
+        "page": "12"
+      },
+      {
+        "value": "75% vs 2%",
+        "label": "Reparto de la riqueza global (Top 10% vs Bottom 50%)",
+        "page": "12"
+      },
+      {
+        "value": "77%",
+        "label": "Emisiones por propiedad de capital generadas por el 10% más rico",
+        "page": "12"
+      },
+      {
+        "value": "32%",
+        "label": "Ingreso por hora de las mujeres respecto al de los hombres (incluyendo trabajo no remunerado)",
+        "page": "13"
+      },
+      {
+        "value": "~1% PIB mundial",
+        "label": "Transferencia anual neta de ingresos de países pobres a ricos por asimetrías financieras",
+        "page": "16"
+      }
+    ],
+    "resumExecutiu": "El World Inequality Report 2026 revela que la desigualdad global ha alcanzado niveles extremos y persistentes. El 10% más rico acapara el 53% de los ingresos y el 75% de la riqueza, mientras la mitad más pobre apenas retiene el 8% y el 2%, respectivamente. La crisis climática, las disparidades de género y los sesgos del sistema financiero internacional refuerzan estas brechas, demandando urgentes reformas fiscales progresivas y cooperación global.",
+    "implicacions": {
+      "empresas": "Las empresas deben auditar su huella de carbono vinculada a la propiedad del capital y alinear sus inversiones. La presión por transparencia fiscal y tributación mínima global obliga a revisar estructuras para evitar evasión y restaurar la legitimidad del sistema.",
+      "reguladores": "Es imperativo coordinar una tributación mínima global sobre la riqueza y reformar el sistema financiero asimétrico. Deben implementarse políticas redistributivas efectivas, invirtiendo en capital humano y transición climática justa para revertir la desigualdad.",
+      "ciudadanos": "La desigualdad erosiona la democracia y fragmenta las coaliciones políticas. Los ciudadanos deben exigir transparencia y equidad fiscal, participando activamente para reconstruir la cohesión social y presionar por reformas que garanticen justicia social y climática."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Justicia climática y co-decisión",
+      "body": "El informe demuestra que el 10% más rico emite el 77% de los gases de efecto invernadero por posesión de capital, mientras los más pobres sufren el 75% de las pérdidas climáticas. Sin mecanismos de co-decisión que permitan a las comunidades vulnerables influir en las políticas climáticas y de inversión, la transición perpetuará la injusticia estructural y la concentración de riqueza."
+    },
+    "conexiones": [
+      {
+        "type": "Evolución",
+        "target": "Desigualdad de la riqueza",
+        "desc": "La riqueza del 0.001% más rico ha crecido a un ritmo del 8% anual desde los 90s, duplicando la tasa de la mitad más pobre y triplicando su participación en el ingreso global."
+      },
+      {
+        "type": "Complemento",
+        "target": "Brecha de género y trabajo no remunerado",
+        "desc": "Al incluir el trabajo doméstico no remunerado, la brecha salarial real de género se duplica respecto a las métricas convencionales, demostrando que la invisibilización del cuidado profundiza la desigualdad estructural."
+      }
+    ],
+    "acciones": [
+      {
+        "num": "01",
+        "title": "Implementar tributación mínima global del 2% a multimillonarios",
+        "desc": "Restaurar la progresividad fiscal y movilizar cientos de miles de millones para financiar educación, salud y adaptación climática.",
+        "esfuerzo": "Alto",
+        "impacto": "Alto"
+      },
+      {
+        "num": "02",
+        "title": "Auditar emisiones Scope 3 de capital",
+        "desc": "Medir la huella de carbono asociada a la propiedad de activos financieros para responsabilizar a los inversores y aplicar impuestos al carbono basados en la propiedad.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "03",
+        "title": "Reconocer y redistribuir el trabajo de cuidados",
+        "desc": "Diseñar políticas que incluyan licencias parentales compartidas, pensiones para cuidadores y servicios de cuidado infantil asequibles para cerrar la brecha de género.",
+        "esfuerzo": "Medio",
+        "impacto": "Medio"
+      },
+      {
+        "num": "04",
+        "title": "Reformar la asimetría del sistema financiero global",
+        "desc": "Promover el uso de derechos especiales de giro y monedas globales para detener la transferencia neta de recursos del Sur global hacia las economías avanzadas.",
+        "esfuerzo": "Alto",
+        "impacto": "Alto"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "gri",
+        "criterio": "GRI 405-1 Diversidad de los órganos de gobierno y empleados",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 17,
+          "section": "8 Political Cleavages",
+          "table": "Figure 8.1"
+        },
+        "nature": "cualitativo",
+        "impact": "medio",
+        "action": "Mejorar la representación de la clase trabajadora en los consejos y gobiernos para fortalecer la legitimidad y las políticas redistributivas."
+      },
+      {
+        "framework": "csrd-esrs",
+        "criterio": "ESRS E1 Cambio climático (Emisiones Scope 3)",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 12,
+          "section": "Inequality and climate change",
+          "table": "Figure 4"
+        },
+        "nature": "cuantitativo",
+        "impact": "alto",
+        "action": "Reportar emisiones basadas en la propiedad de capital (ownership-based) para reflejar la huella de carbono real de las inversiones financieras."
+      }
+    ]
+  }
+}

@@ -1,0 +1,308 @@
+{
+  "slug": "efrag-work-programme-2026",
+  "title": "Work programme 2026",
+  "institution": "EFRAG",
+  "filename_original": "efrag-work-programme-2026.pdf",
+  "generated_at": "2026-09-16T11:47:18",
+  "content_ca": {
+    "semafor": {
+      "grade": "C",
+      "gradeLabel": "C: Majoritàriament esmentat, 1 element ignorat",
+      "indicators": [
+        {
+          "name": "Desenvolupament N-ESRS",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "Esmenta el desenvolupament d'estàndards per a grups no UE amb dates."
+        },
+        {
+          "name": "Interoperabilitat",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "Esmenta la interoperabilitat amb ISSB, GRI i GHG Protocol."
+        },
+        {
+          "name": "Digitalització XBRL",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "Esmenta l'actualització de taxonomies i el ESRS Knowledge Hub."
+        },
+        {
+          "name": "Suport Pimes",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "Esmenta el suport per al reportatge voluntari de pimes."
+        },
+        {
+          "name": "Reducció de càrrega",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "Esmenta la usabilitat i la simplificació sense dades."
+        },
+        {
+          "name": "Cobertura de dades ambientals",
+          "status": "vermell",
+          "label": "Ignorat",
+          "note": "No es quantifiquen emissions ni impactes ambientals concrets."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "2026",
+        "label": "Any de presentació del Work Programme",
+        "page": "p. 1"
+      },
+      {
+        "value": "100 dies",
+        "label": "Durada de la consulta pública de l'Exposure Draft",
+        "page": "p. 1"
+      },
+      {
+        "value": "Juliol 2026",
+        "label": "Inici previst de la consulta de l'Exposure Draft N-ESRS",
+        "page": "p. 1"
+      },
+      {
+        "value": "Principis de 2027",
+        "label": "Data límit per al consell tècnic de N-ESRS",
+        "page": "p. 1"
+      },
+      {
+        "value": "ISSB, GRI, GHG Protocol",
+        "label": "Estàndards per a la interoperabilitat",
+        "page": "p. 1"
+      }
+    ],
+    "resumExecutiu": "L'EFRAG ha presentat el seu Programa de Treball d'Informes de Sostenibilitat 2026 a la Comissió Europea. El document, aprovat per la SRB, estableix prioritats com el desenvolupament d'estàndards per a grups no UE (N-ESRS), amb un esborrany el juliol de 2026 per a consulta de 100 dies i assessorament per al 2027. També prioritza el suport a les pimes, la millora de la interoperabilitat amb estàndards internacionals (ISSB, GRI, GHG Protocol) i la digitalització via XBRL. L'enfocament busca l'equilibri entre usabilitat, simplificació i la robustesa de les dades.",
+    "implicacions": {
+      "empreses": "Les empreses, especialment les no pertanyents a la UE, hauran de preparar-se per als nous estàndards N-ESRS. La simplificació buscada reduirà la càrrega, però requerirà adaptació tecnològica com l'ús de taxonomies XBRL.",
+      "reguladors": "La Comissió Europea i els estats membres han de garantir que la simplificació i la reducció de càrrega no comprometin la comparabilitat i la robustesa exigides pel CSRD.",
+      "ciutadans": "La transparencia i accessibilitat de les dades milloren amb la digitalització, permetent major traçabilitat de l'impacte corporatiu, sempre que la reducció de càrrega no elimini detall."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Anàlisi ètica del Programa de Treball 2026",
+      "body": "FETS: EFRAG prioritza usabilitat i desenvolupament de N-ESRS. PARTS: EFRAG, Comissió Europea, Parlament, Pimes. KANTIANA: La màxima de simplificar és universalizable si no usa la reducció de càrrega com a excusa per opacitat. BÉ COMÚ: Fomenta la transparència institucional. IMPACTES: Risc de tensió entre simplificació i robustesa. Conclusió: La simplificació és vàlida si manté la integritat de les dades i la dignitat dels afectats, evitant l'opacitat."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "Implementació inicial ESRS",
+        "desc": "El programa es basa en l'experiència prèvia per ajustar i millorar la càrrega reguladora."
+      },
+      {
+        "type": "Complement",
+        "target": "Marc CSRD",
+        "desc": "El Work Programme és una eina per fer operatius els requisits de la CSRD en l'ecosistema."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Preparar-se pels N-ESRS",
+        "desc": "Analitzar l'Exposure Draft de juliol de 2026 per a grups no UE.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Adoptar XBRL",
+        "desc": "Integrar taxonomies digitals per als futurs reportatges de sostenibilitat.",
+        "effort": "Alt",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "03",
+        "title": "Revisar interoperabilitat",
+        "desc": "Creuar dades actuals amb ISSB i GRI per anticipar l'alineament.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "04",
+        "title": "Capacitació Pimes",
+        "desc": "Aprofitar el suport voluntari de l'EFRAG per iniciar el reportatge de sostenibilitat.",
+        "effort": "Baix",
+        "impact": "Baix"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "csrd-esrs",
+        "criterion": "Assessorament tècnic per a estàndards no UE (N-ESRS)",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 1,
+          "section": "Key priorities",
+          "table": null
+        },
+        "nature": "compromis",
+        "impact": "alt",
+        "action": "Monitorar el draft de N-ESRS de juliol 2026 per grups no UE."
+      },
+      {
+        "framework": "gri",
+        "criterion": "Interoperabilitat amb estàndards internacionals",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 1,
+          "section": "Key priorities",
+          "table": null
+        },
+        "nature": "qualitatiu",
+        "impact": "mitja",
+        "action": "Alinear els reportatges actuals amb els principis GRI per reduir fragmentació."
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "C",
+      "gradeLabel": "Menciones generales con escasa cuantificación y 1 indicador ignorado",
+      "indicators": [
+        {
+          "name": "Calendario N-ESRS",
+          "status": "verd",
+          "label": "Fechas definidas",
+          "note": "Exposure Draft en julio 2026, 100 días de consulta, asesoramiento técnico para principios de 2027."
+        },
+        {
+          "name": "Ecosistema PYME",
+          "status": "groc",
+          "label": "Mencionado",
+          "note": "Se cita el soporte para reporte voluntario y construcción de capacidades, sin métricas."
+        },
+        {
+          "name": "Interoperabilidad",
+          "status": "groc",
+          "label": "Mencionado",
+          "note": "Se nombra a ISSB, GRI y GHG Protocol para reducir fragmentación, sin profundizar técnica."
+        },
+        {
+          "name": "Digitalización (XBRL)",
+          "status": "groc",
+          "label": "Mencionado",
+          "note": "Prioridad de actualización de taxonomía y Knowledge Hub, sin detalles cuantitativos."
+        },
+        {
+          "name": "Reducción de cargas cuantificada",
+          "status": "rojo",
+          "label": "Ignorado",
+          "note": "Se enfatiza la reducción de cargas pero no se establecen objetivos medibles."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "24.04.2026",
+        "label": "Fecha de presentación del Work Programme 2026",
+        "page": "p. 1"
+      },
+      {
+        "value": "Julio 2026",
+        "label": "Publicación del Exposure Draft para N-ESRS",
+        "page": "p. 1"
+      },
+      {
+        "value": "100 días",
+        "label": "Duración de la consulta pública del borrador N-ESRS",
+        "page": "p. 1"
+      },
+      {
+        "value": "ISSB, GRI, GHG Protocol",
+        "label": "Estándares internacionales para interoperabilidad",
+        "page": "p. 1"
+      },
+      {
+        "value": "Principios de 2027",
+        "label": "Fecha límite para el asesoramiento técnico de N-ESRS",
+        "page": "p. 1"
+      }
+    ],
+    "resumExecutiu": "El Work Programme 2026 de EFRAG marca un paso decisivo hacia la consolidación y proporcionalidad del reporting de sostenibilidad en el marco europeo. Presentado a la Comisión Europea el 24.04.2026 y aprobado por el SRB, el programa enfatiza la usabilidad, la simplificación y la reducción de cargas, respondiendo a las primeras experiencias de implementación de los ESRS. Cinco prioridades estratégicas estructuran esta hoja de ruta. Primero, el desarrollo de los N-ESRS para grupos no UE, con un Exposure Draft previsto para julio de 2026 y una consulta pública de 100 días, aspirando a un asesoramiento técnico a principios de 2027. Segundo, la continuidad del ecosistema para pymes, fomentando el reporte voluntario y la construcción de capacidades. Tercero, el apoyo a la implementación orientado a las necesidades de las partes interesadas mediante una próxima consulta. Cuarto, el avance en la interoperabilidad con estándares internacionales de referencia como ISSB, GRI y GHG Protocol para disminuir la fragmentación global. Quinto, la aceleración de la digitalización a través de actualizaciones de la taxonomía XBRL y el ESRS Knowledge Hub. Este enfoque busca equilibrar la robustez técnica con las realidades prácticas de las entidades que reportan, asegurando que la comparabilidad no asfixie la usabilidad. La transparencia del proceso, bajo el mandato de la CSRD, obliga a la CE a consultar a los Estados Miembros y al Parlamento Europeo. EFRAG apunta a crear un ecosistema cohesivo y flexible, impulsando el reporte legible por máquina y salvaguardando la robustez de las divulgaciones para facilitar el viaje regulatorio de las empresas.",
+    "implicaciones": {
+      "empresas": "Las compañías europeas y, crucialmente, los grupos no UE con operaciones en Europa deben prepararse para la llegada de los N-ESRS. El calendario marca un borrador para julio de 2026, ofreciendo una ventana para adaptar sistemas. Asimismo, las pymes deben explorar el ecosistema de reporte voluntario y las herramientas de digitalización como el Knowledge Hub para aliviar cargas operativas.",
+      "reguladores": "La Comisión Europea está obligada por la CSRD a consultar a los Estados Miembros y al Parlamento Europeo. Los reguladores deben facilitar un marco que soporte la interoperabilidad con estándares globales (ISSB, GRI) y promover la simplificación técnica sin perder el rigor comparativo que exige la transición ecológica y social.",
+      "ciudadanos": "La aceleración de la digitalización mediante la taxonomía XBRL permitirá un acceso más transparente y legible por máquinas a los datos de sostenibilidad. La reducción de cargas para las pymes fomenta un tejido productivo más saludable, mientras que la consulta pública de 100 días sobre los N-ESRS abre una vía genuina para la co-decisión de stakeholders."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Justicia y co-decisión",
+      "body": "El Work Programme 2026 trasciende el mero cumplimiento técnico al integrar un enfoque de proporcionalidad y justicia hacia el ecosistema de las pymes, evitando que la carga regulatoria asfixie al tejido productivo. Al abrir un período de consulta pública de 100 días para el borrador de los N-ESRS, EFRAG institucionaliza la co-decisión, permitiendo que múltiples voces conformen los estándares que regularán a los grupos no UE. La búsqueda de interoperabilidad no es solo eficiencia, sino un acto de arraigo a la realidad global. Simplificar el reporte salvaguardando su robustez es equilibrar la exigencia de transparencia con la dignidad operativa de las empresas, asegurando que la herramienta no canibalice el propósito."
+    },
+    "conexiones": [
+      {
+        "type": "Complemento",
+        "target": "ESRS y N-ESRS",
+        "desc": "El desarrollo de los N-ESRS para grupos no UE complementa el marco de los ESRS, cerrando el círculo de la jurisdicción europea en el reporting de sostenibilidad."
+      },
+      {
+        "type": "Evolución",
+        "target": "Digitalización y XBRL",
+        "desc": "La transición desde la simple implementación normativa hacia la digitalización efectiva mediante XBRL y el Knowledge Hub representa una evolución hacia datos accionables."
+      },
+      {
+        "type": "Complemento",
+        "target": "ISSB y GRI",
+        "desc": "La búsqueda de interoperabilidad con ISSB y GRI complementa los esfuerzos europeos, reduciendo la fragmentación global sin renunciar al acervo comunitario."
+      }
+    ],
+    "acciones": [
+      {
+        "num": "01",
+        "title": "Preparar participación en consulta N-ESRS",
+        "desc": "Designar equipos para revisar el Exposure Draft de julio de 2026 y participar en los 100 días de consulta pública.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "02",
+        "title": "Auditar preparación XBRL",
+        "desc": "Evaluar los sistemas internos de reporte para asegurar compatibilidad con las próximas actualizaciones de la taxonomía XBRL.",
+        "esfuerzo": "Alto",
+        "impacto": "Medio"
+      },
+      {
+        "num": "03",
+        "title": "Explorar ecosistema voluntario PYME",
+        "desc": "Para pymes del grupo, mapear las herramientas de reporte voluntario y capacidad disponible en el ESRS Knowledge Hub.",
+        "esfuerzo": "Bajo",
+        "impacto": "Medio"
+      },
+      {
+        "num": "04",
+        "title": "Mapear interoperabilidad global",
+        "desc": "Comparar los actuales reportes bajo ISSB y GRI con los desarrollos ESRS para anticipar áreas de fricción y convergencia.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "csrd-esrs",
+        "criterio": "Estándares de reporting para grupos terceros (N-ESRS)",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 1,
+          "section": "Key priorities",
+          "table": "N/A"
+        },
+        "nature": "compromiso",
+        "impact": "alto",
+        "action": "Monitorear la publicación del Exposure Draft en julio 2026 y preparar comentarios."
+      },
+      {
+        "framework": "gri",
+        "criterio": "Interoperabilidad y reducción de fragmentación",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 1,
+          "section": "Key priorities",
+          "table": "N/A"
+        },
+        "nature": "cualitativo",
+        "impact": "medio",
+        "action": "Alinear las métricas de materialidad actuales con los nuevos desarrollos de EFRAG."
+      }
+    ]
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "slug": "oxfam-rule-rich-2026",
+  "title": "Rule rich 2026",
+  "institution": "Oxfam",
+  "filename_original": "oxfam-rule-rich-2026.pdf",
+  "generated_at": "2026-09-16T12:06:35",
+  "content_ca": {
+    "semafor": {
+      "grade": "A",
+      "gradeLabel": "Excel·lent — Dades quantificades en tots els àmbits centrals de l'informe",
+      "indicators": [
+        {
+          "name": "Concentració de riquesa billonària",
+          "status": "verd",
+          "label": "Riquesa billonària: 18,3 bilions USD; +3.000 billonaris per primer cop",
+          "note": "Dades quantificades amb fonts Forbes, creixement del 16,2% interanual (3x la mitjana dels 5 anys anteriors), sèrie històrica des de 1987 ajustada per inflació"
+        },
+        {
+          "name": "Inseguretat alimentària i pobresa global",
+          "status": "verd",
+          "label": "1 de cada 4 persones amb inseguretat alimentària; 3,83 mil milions en pobresa",
+          "note": "Dades FAO i Banc Mundial amb tendències 2015–2025, increment del 42,6% en inseguretat alimentària, projeccions a 2050"
+        },
+        {
+          "name": "Erosió democràtica i desigualtat política",
+          "status": "verd",
+          "label": "Països desiguals fins a 7x més propensos a erosió democràtica",
+          "note": "Estudi de 23 episodis en 22 països, dades de 136 països, correlació Gini–erosió democràtica amb probabilitats per país"
+        },
+        {
+          "name": "Concentració mediàtica i control digital",
+          "status": "verd",
+          "label": "7 de 10 majors companyies mediàtiques amb propietat billonària",
+          "note": "Dades sobre propietat mediàtica, 9 de 10 principals xarxes socials controlades per 6 billonaris, 8 de 10 empreses d'IA billonàries"
+        },
+        {
+          "name": "Repressió de protestes i drets civils",
+          "status": "verd",
+          "label": "142 protestes antigovernamentals significatives en 12 mesos; 19è any de declivi global",
+          "note": "Casos documentats (Kenya, Argentina, Colòmbia, Pakistan), dades Freedom House 2024, ITUC Global Rights Index 2025 amb ferits i detinguts quantificats"
+        },
+        {
+          "name": "Desigualtat de gènere i interseccionalitat",
+          "status": "groc",
+          "label": "Dones: 29% de la renda laboral global; 12.500 mil milions d'hores de cura no remunerada/dia",
+          "note": "Esmentat amb dades however no com a bloc d'anàlisi independent; integrat transversalment sense profunditat específica central"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "18,3 bilions USD",
+        "label": "Riquesa total dels billonaris a novembre 2025 (rècord històric)",
+        "page": "18"
+      },
+      {
+        "value": "+3.000",
+        "label": "Nombre de billonaris al món per primera vegada a la història",
+        "page": "9"
+      },
+      {
+        "value": "3,83 mil milions",
+        "label": "Persones vivint en pobresa el 2022 (48% de la població mundial)",
+        "page": "22"
+      },
+      {
+        "value": "4.000x",
+        "label": "Probabilitat d'un billonari d'ostentar càrrec polític vs. persona corrent",
+        "page": "33"
+      },
+      {
+        "value": "2,6 mil milions USD",
+        "label": "Donats per 100 famílies billonàries a eleccions federals EUA 2024 (1 de cada 6 dòlars)",
+        "page": "30"
+      }
+    ],
+    "resumExecutiu": "L'informe d'Oxfam documenta com la riquesa dels billonaris ha arribat a 18,3 bilions USD, creixent tres vegades més ràpid des de l'elecció de Trump el novembre 2024. Per primera vegada hi ha més de 3.000 billonaris, mentre 3,83 mil milions de persones viuen en pobresa i 1 de cada 4 enfronta inseguretat alimentària. L'informe evidencia un cicle viciós: la desigualtat econòmica extrema alimenta la captura política per l'elit —billonaris són 4.000 vegades més propensos a ocupar càrrecs polítics— i aquesta captura reforça les polítiques que concentren riquesa. Set de les deu majors companyies mediàtiques tenen propietaris billonaris, i nou de deu xarxes socials són controlades per només sis billonaris. Simultàniament, 2024 va ser el dinovè any consecutiu de declivi global de llibertats, amb governs escollint repressió sobre redistribució. L'informe proposa tres línies d'acció: reduir radicalment la desigualtat amb plans nacionals, limitar el poder polític dels super-rics mitjançant tributació i regulació del lobbying, i construir el poder polític de la majoria protegint l'espai cívic. Recomanació destacada: crear un International Panel on Inequality, anàleg a l'IPCC, liderat des del G20 sota presidència sud-africana.",
+    "implicacions": {
+      "empreses": "Les empreses són agents i vehicles de la captura: els seus propietaris billonaris utilitzen els beneficis corporatius per influir en política, medis i institucions. Les empreses associades als 10 homes més rics van gastar 88M USD en lobbying el 2024 EUA —més que tots els sindicats junts. La responsabilitat corporativa s'estén més enllà de l'operacional: cal transparència en finançament polític, auditoria de pràctiques de lobbying, i diligència deguda sobre impactes en drets humans i democràcia. L'informe mostra que 95% dels beneficis de grans corporacions sanitàries EUA es transfereixen a accionistes, no es reinverteixen.",
+      "reguladors": "Els governs han de prioritzar Plans Nacionals de Reducció de la Desigualtat amb objectius de Gini <0,3 o Palma ≤1. Cal implementar tallafocs entre riquesa i política: tributació efectiva dels super-rics, regulació del lobbying i portes giratòries, prohibició del finançament de campanyes per rics, garantia d'independència mediàtica i regulació algorítmica. Cancel·lar deute insostenible del Global Sud i revertir l'austeritat imposada pel FMI. Donar suport a la creació de l'International Panel on Inequality proposta pel Comitè Stiglitz del G20.",
+      "ciutadans": "La majoria econòmicament empobrida esdevé políticament empobrida: barreres d'identificació, temps i recursos limiten la participació. Les protestes juvenils (Gen Z) de 2024–2025 mostren mobilització global però també repressió violenta. Els ciutadans i organitzacions socials (sindicats, OSC, moviments de base) són contrapesos essencials. L'informe evidencia que sindicalització redueix desigualtat salarial de gènere i ètnia. La solidaritat transnacional i la participació electoral massiva són eines per revertir la captura oligàrquica i exigir redistribució."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Ètica de la desigualtat extrema i captura democràtica",
+      "body": "1. FETS: Els billonaris acumulen 18,3 bilions USD mentre 3,83 mil milions viuen en pobresa. 100 famílies billonàries van financiar 1 de cada 6 dòlars en eleccions EUA 2024. 2. PARTS INTERESSADES: Billonaris i super-rics actuen com a agents captors; governs com a facilitadors; pobres, dones, minories racials i LGBTQI+ com a afectades; sindicats i OSC com a resistència. 3. KANTIANA: La màxima 'la riquesa compra poder polític' no és universalizable —si tothom la seguís, la democràcia col·lapsaria en oligarquia. El sistema tracta els ciutadans com a mitjans (vots comprables) no com a fins. Conflicte entre deure (protegir igualtat democràtica) i interès (acumular riquesa/power). 4. BÉ COMÚ: La dignitat es viola quan 12 billonaris posseeixen més que 4.000 milions de persones. La solidaritat s'erodeix amb l'estratègia de cap als immigrants. La transparència es compromet amb la concentració mediàtica. 5. IMPACTES: Distributius (riquesa flueix cap amunt), ecològics (captura de política climàtica), institucionals (erosió democràtica). 6. TENSIONS: Malgrat creixement del PIB, la reducció de pobresa s'ha aturat, contradint narratives de degoteig. Conclusió: La dignitat humana i la codeterminació democràtica exigeixen límits a l'acumulació extrema de riquesa."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "Riquesa billonària vs. reducció de pobresa",
+        "desc": "L'informe evidencia una divergència: la riquesa billonària creix 16,2% interanual mentre la reducció de pobresa s'ha aturat. El Banc Mundial projecta 2,9 mil milions en pobresa el 2050 sense redistribució. Una reducció del 2% en desigualtat + 2% creixement escurçaria 144 anys l'erradicació de la pobresa vs. només creixement."
+      },
+      {
+        "type": "Complement",
+        "target": "Informe del Comitè Stiglitz del G20 sobre desigualtat global",
+        "desc": "L'informe d'Oxfam recolza i amplifica la recomanació del Comitè Extraordinari del G20 (liderat per Stiglitz) de crear un International Panel on Inequality (IPI) anàleg a l'IPCC. El G20 troba que 41 cèntims de cada dòlar de nova riquesa van a l'1% més ric, només 1 cèntim al 50% inferior."
+      },
+      {
+        "type": "Contradicció",
+        "target": "Austeritat imposada vs. creixement billonari",
+        "desc": "Els governs imposen austeritat (FMI) per pagar deutes a creditors privats —43% de la riquesa financera privada pertany a l'1%— mentre retallen serveis essencials. 3,4 mil milions viuen en països que gasten més en interessos que en educació o salut. Simultàniament, els billonaris guanyen prou en un any per donar 250 USD a cada persona del món i quedar 500B USD més rics."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Dissenyar i implementar Plans Nacionals de Reducció de la Desigualtat (NIRPs)",
+        "desc": "Establir plans amb límits temporals i monitoratge anual cap a un coeficient de Gini <0,3 o ratio Palma ≤1. Incloure tributació progressiva de la riquesa, augment salarial, defensa de drets laborals i serveis públics gratuïts de qualitat.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Establir tallafocs entre riquesa i política",
+        "desc": "Regular lobbying amb registres públics obligatoris, prohibir finançament de campanyes per rics, tancar portes giratòries amb períodes de refredament, i limitar concentració de propietat mediàtica amb lleis antimonopoli.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Auditar i revertir la captura corporativa de polítiques fiscals",
+        "desc": "Revisar exempcions fiscals i privilegis atorgats a corporacions i elits, com les rebudes per Mercado Libre (247M USD en 3 anys) o Dangote Cement (taxa efectiva del 2%). Implementar tributació efectiva sobre la riquesa extrema amb tipus suficients per reduir desigualtat.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "04",
+        "title": "Protegir i expandir l'espai cívic i els drets de protesta",
+        "desc": "Garantir llibertat d'expressió, reunió i associació incloent l'espai digital. Protegir defensores de drets humans, periodistes i sindicalistes contra atacs. Revertir lleis restrictives i marcs antiterroristes utilitzats contra activistes pacífics.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "05",
+        "title": "Donar suport a la creació de l'International Panel on Inequality (IPI)",
+        "desc": "Donar suport actiu a la recomanació del Comitè Stiglitz del G20 per establir un òrgan internacional sobre desigualtat anàleg a l'IPCC, que proporcioni informació oportuna i precisa sobre escala, causes, impactes i solucions a l'emergència de desigualtat.",
+        "effort": "Baix",
+        "impact": "Alt"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "gri",
+        "criterion": "GRI 207-1: Approach to tax",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 30,
+          "section": "2.1 Buying into politics",
+          "table": null
+        },
+        "nature": "qualitatiu",
+        "impact": "alt",
+        "action": "Auditar les pràctiques de lobbying i influència fiscal de l'empresa en processos legislatius, amb registres públics de totes les reunions amb funcionaris"
+      },
+      {
+        "framework": "iso-26000",
+        "criterion": "ISO 26000: Participació comunitària i desenvolupament",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 47,
+          "section": "3. Build the political power of the many",
+          "table": null
+        },
+        "nature": "qualitatiu",
+        "impact": "mitja",
+        "action": "Garantir que l'empresa no interfereix en processos democràtics ni finança actors que limiten l'espai cívic i els drets de participació"
+      },
+      {
+        "framework": "csddd",
+        "criterion": "CSDDD: Diligència deguda en drets humans i defensors",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 41,
+          "section": "3.3 Targeting of environmental and human rights defenders",
+          "table": null
+        },
+        "nature": "qualitatiu",
+        "impact": "alt",
+        "action": "Implementar protocols de protecció de defensors de drets humans afectats per operacions corporatives i garantir reparació efectiva"
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Cobertura sólida con énfasis cuantitativo y cualitativo, con un área mencionada sin profundidad normativa",
+      "indicators": [
+        {
+          "name": "Concentración de riqueza extrema",
+          "status": "verd",
+          "label": "Cuantificado exhaustivamente",
+          "note": "Datos precisos sobre riqueza de multimillonarios (18.3 billones USD), crecimiento y número de individuos."
+        },
+        {
+          "name": "Erosión democrática y poder político",
+          "status": "verd",
+          "label": "Cuantificado y correlacionado",
+          "note": "Probabilidad de erosión democrática (7x) y probabilidad de multimillonarios en el poder (4.000x)."
+        },
+        {
+          "name": "Pobreza y desigualdad económica",
+          "status": "verd",
+          "label": "Cuantificado a nivel global",
+          "note": "Cifras detalladas de inseguridad alimentaria y pobreza (3.83 billones de personas)."
+        },
+        {
+          "name": "Represión y derechos humanos",
+          "status": "verd",
+          "label": "Cuantificado mediante casos",
+          "note": "Registro de protestas reprimidas, muertes y heridos en países como Kenia y Argentina."
+        },
+        {
+          "name": "Soluciones y marcos regulatorios",
+          "status": "groc",
+          "label": "Mencionado cualitativamente",
+          "note": "Propuestas como los NIRPs y el Panel Internacional sobre Desigualdad se mencionan, pero sin métricas de éxito o progreso."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "18.3 billones USD",
+        "label": "Riqueza total de los multimillonarios a noviembre de 2025",
+        "page": "p. 18"
+      },
+      {
+        "value": "4.000 veces",
+        "label": "Mayor probabilidad de multimillonarios de ocupar cargos políticos frente a ciudadanos comunes",
+        "page": "p. 9"
+      },
+      {
+        "value": "3.830 millones",
+        "label": "Personas que vivían en pobreza en 2022",
+        "page": "p. 11"
+      },
+      {
+        "value": "1 de cada 4",
+        "label": "Personas en el mundo que enfrentan inseguridad alimentaria moderada o severa",
+        "page": "p. 11"
+      },
+      {
+        "value": "142",
+        "label": "Protestas significativas contra gobiernos registradas a nivel mundial en el último año",
+        "page": "p. 37"
+      }
+    ],
+    "resumExecutiu": "El informe 'Resisting the Rule of the Rich' de Oxfam expone cómo la concentración extrema de riqueza está erosionando la democracia y alimentando la represión a nivel global. En 2025, la riqueza de los multimillonarios creció tres veces más rápido que el promedio anual de los cinco años previos, superando los 18.3 billones de dólares, mientras 3.830 millones de personas vivían en pobreza. El documento evidencia un círculo vicioso: la élite super-rica utiliza su poder económico para capturar la política, los medios de comunicación y las instituciones, inclinando las reglas a su favor. Esta captura se traduce en políticas de austeridad y represión contra las mayorías que protestan. El informe señala que los países más desiguales tienen hasta siete veces más probabilidad de sufrir erosión democrática. Los gobiernos optan por reprimir las protestas ciudadanas frente a la redistribución, criminalizando la disidencia y limitando espacios cívicos. Para revertir esta tendencia hacia la oligarquía, Oxfam propone reducir radicalmente la desigualdad, frenar el poder político de los super-ricos mediante impuestos y regulaciones, y empoderar políticamente a las mayorías a través de la protección de los espacios cívicos y el fortalecimiento de los sindicatos y movimientos ciudadanos.",
+    "implicaciones": {
+      "empresas": "Deben evitar financiar políticas que favorezcan la captura regulatoria y revisar su influencia en el lobby. Las empresas de medios e IA deben garantizar la transparencia algorítmica y la independencia editorial, evitando la concentración monopólica que socava el debate público y perpetúa la desinformación.",
+      "reguladores": "Necesitan establecer barreras estrictas entre la riqueza y la política, implementando impuestos efectivos a los super-ricos, regulando el lobby y financiando públicamente las campañas electorales. Es urgente crear un Panel Internacional sobre Desigualdad y monitorear anualmente los coeficientes de Gini.",
+      "ciudadanos": "Deben organizarse y movilizarse para reclamar la reducción de la desigualdad y proteger el espacio cívico. Las protestas masivas y el respaldo a sindicatos son esenciales para frenar el autoritarismo y obligar a los gobiernos a elegir la redistribución frente a la represión."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Justicia",
+      "body": "El informe trasciende el cumplimiento normativo al reclamar justicia redistributiva y política. No basta con políticas asistencialistas; se exige una reestructuración radical del poder económico para evitar que la oligarquía anule la voluntad popular. La justicia requiere desmantelar las estructuras que permiten a la élite eludir impuestos y manipular leyes. Limitar la riqueza extrema (limitarismo) no es solo una cuestión económica, sino un imperativo ético para preservar la equidad política y la dignidad de las mayorías, impidiendo que el sistema siga engineered la pobreza."
+    },
+    "conexiones": [
+      {
+        "type": "Evolución",
+        "target": "Concentración de medios y polarización",
+        "desc": "La adquisición de redes sociales y medios por parte de multimillonarios ha generado un aumento directo en el discurso de odio y la manipulación política algorítmica."
+      },
+      {
+        "type": "Complemento",
+        "target": "Austeridad y represión en el Sur Global",
+        "desc": "La crisis de deuda impuesta a los países del Sur Global obliga a la austeridad, lo que deriva en protestas ciudadanas que son sistemáticamente reprimidas por los gobiernos."
+      },
+      {
+        "type": "Contradicción",
+        "target": "Discurso de seguridad y erosión de derechos",
+        "desc": "Los gobiernos justifican la restricción de libertades civiles y la represión de protestas en nombre de la seguridad y el orden, socavando los derechos humanos fundamentales."
+      }
+    ],
+    "acciones": [
+      {
+        "num": "01",
+        "title": "Implementar Planes de Reducción de Inequality (NIRPs)",
+        "desc": "Establecer planes nacionales con un coeficiente de Gini objetivo inferior a 0.3, con monitoreo anual y políticas de redistribución de la riqueza extrema.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "02",
+        "title": "Regular la financiación política y el lobby",
+        "desc": "Prohibir las donaciones de los super-ricos en campañas electorales, regular las puertas giratorias y exigir registros públicos de lobbies.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "03",
+        "title": "Garantizar la independencia mediática y algorítmica",
+        "desc": "Regular la concentración de la propiedad de los medios y exigir transparencia algorítmica para evitar la proliferación de contenido incendiario y discurso de odio.",
+        "esfuerzo": "Alto",
+        "impacto": "Medio"
+      },
+      {
+        "num": "04",
+        "title": "Proteger y empoderar el espacio cívico",
+        "desc": "Garantizar la libertad de expresión y asociación, apoyar a los sindicatos y crear mecanismos institucionales de participación ciudadana en la toma de decisiones.",
+        "esfuerzo": "Bajo",
+        "impacto": "Alto"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "iso-26000",
+        "criterio": "Influencia política y riqueza extrema",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 30,
+          "section": "2.1 buying into politics",
+          "table": "N/A"
+        },
+        "nature": "cuantitativo",
+        "impact": "alto",
+        "action": "Auditar el gasto en lobbying de la organización y revisar su alineación con la ética organizacional y la transparencia."
+      },
+      {
+        "framework": "csrd-esrs",
+        "criterio": "S1 Derechos humanos de trabajadores y comunidades afectadas",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 41,
+          "section": "3.3 Targeting of environmental and human rights defenders",
+          "table": "N/A"
+        },
+        "nature": "cualitativo",
+        "impact": "alto",
+        "action": "Implementar debida diligencia para proteger a defensores de derechos humanos y sindicalistas en operaciones y cadenas de suministro."
+      },
+      {
+        "framework": "gri",
+        "criterio": "GRI 201: Desempeño económico y desigualdad",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 18,
+          "section": "1.1 A good decade for billionaires",
+          "table": "Figura 1"
+        },
+        "nature": "cuantitativo",
+        "impact": "medio",
+        "action": "Reportar la brecha salarial interna y analizar el impacto de la concentración de capital frente a los empleados de menor ingreso."
+      }
+    ]
+  }
+}

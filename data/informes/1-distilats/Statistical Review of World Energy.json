@@ -1,0 +1,364 @@
+{
+  "slug": "Statistical Review of World Energy",
+  "title": "Statistical review of world energy",
+  "institution": "STATISTICAL REVIEW OF WORLD ENERGY",
+  "filename_original": "Statistical Review of World Energy.pdf",
+  "generated_at": "2026-09-16T12:11:33",
+  "content_ca": {
+    "semafor": {
+      "grade": "D",
+      "gradeLabel": "Insuficient",
+      "indicators": [
+        {
+          "name": "Emissions directes (Scope 1 i 2)",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Dades detallades d'emissions de CO2 per regió i país (p. 26-28)."
+        },
+        {
+          "name": "Creixement d'energies renovables",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Creixement del 30% en solar i 8.2% en eòlica detallat (p. 4)."
+        },
+        {
+          "name": "Oferta Total d'Energia (TES)",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "TES supera els 600EJ amb dades desglossades per font (p. 23-24)."
+        },
+        {
+          "name": "Transició justa i impacte social",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "Es menciona una transició 'justa' al pròleg, però sense dades o mètriques socials quantificades."
+        },
+        {
+          "name": "Emissions Scope 3 (Cadena de valor)",
+          "status": "vermell",
+          "label": "Ignorat",
+          "note": "No s'aborden les emissions indirectes de la cadena de valor."
+        },
+        {
+          "name": "Impacte en biodiversitat i natura",
+          "status": "vermell",
+          "label": "Ignorat",
+          "note": "No es menciona l'impacte de la producció energètica en la biodiversitat."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "600.31 EJ",
+        "label": "Oferta Total d'Energia (TES) el 2025",
+        "page": "23"
+      },
+      {
+        "value": "35,806.2 Mt",
+        "label": "Emissions de CO2 per consum de combustibles fòssils",
+        "page": "26"
+      },
+      {
+        "value": "30%",
+        "label": "Creixement anual de la generació solar",
+        "page": "4"
+      },
+      {
+        "value": "3.2%",
+        "label": "Augment d'emissions dels EUA respecte 2024",
+        "page": "4"
+      },
+      {
+        "value": "302 GW",
+        "label": "Capacitat global d'emmagatzematge amb bateries",
+        "page": "11"
+      }
+    ],
+    "resumExecutiu": "L'edició del 2026 del Statistical Review of World Energy revela un sistema energètic global en una cruïlla. L'Oferta Total d'Energia (TES) va superar els 600 exajoules (EJ) el 2025, creixent un 1.7%, impulsat principalment per les renovables per primera vegada fora d'una recessió. L'energia solar va ser el rendiment destacat, creixent un 30% i representant el 71% de l'augment renovable. No obstant això, els combustibles fòssils van mantenir el seu domini, comprenent el 86% del TES, i totes les fonts d'energia van veure augments absoluts. En conseqüència, les emissions globals de CO2 per consum de fòssils van pujar un 1.1% a 35,806.2 milions de tones, arribant a 41,037 milions de toneles amb metà i flaring. Els Estats Units van contribuir significativament a aquest augment, amb un creixement del 3.2% en emissions, trencant la seva tendència de disminució de 10 anys. L'informe destaca camins regionals divergents: Xina lidera el desplegament renovable però continua consumint rècords de carbó; els EUA aprofiten la seva abundància d'oil i gas mentre augmenten les exportacions; Europa redueix la dependència del gas rus però s'enfronta a noves dependències de LNG i minerals crítics. La demanda d'electricitat va créixer un 3%, impulsada per vehicles elèctrics i centres de dades. L'emmagatzematge amb bateries va créixer un 66% fins a 302GW. Les dades subratllen un canvi estructural on l'energia neta substitueix cada cop més els fòssils, però el creixement absolut de la demanda i la persistència dels fòssils fan que les emissions continuïn pujant.",
+    "implicacions": {
+      "empreses": "Les empreses s'enfronten a un mercat energètic fragmentat amb polítiques regionals divergents. La diversificació de cadenes de subministrament i la flexibilitat contractual són primordials. El ràpid creixement de les renovables i l'emmagatzematge ofereix oportunitats d'inversió, però les limitacions de la xarxa elèctrica suposen riscos. Les companyies de combustibles fòssils han de navegar per la disminució de la demanda a llarg termini en algunes regions mentre capitalitzen les necessitats de seguretat a curt termini. L'augment dels centres de dades i els vehicles elèctrics presenta nous vectors de demanda per als proveïdors d'electricitat. Les empreses han d'invertir en solucions de flexibilitat i assegurar l'accés a minerals crítics per mantenir la competitivitat.",
+      "reguladors": "Els responsables polítics han de equilibrar la seguretat energètica, l'assequibilitat i els objectius climàtics. L'informe mostra que l'eficiència i l'electrificació són claus per desacoblar el creixement econòmic de les emissions. Els reguladors haurien d'incentivar la modernització de la xarxa, el desplegament d'emmagatzematge i la gestió de la demanda. Els camins regionals divergents destaquen la necessitat de polítiques adaptades. Abordar les noves dependències de minerals crítics i LNG és crucial. Les polítiques també haurien de dirigir-se als sectors difícils de reduir on les emissions estan augmentant.",
+      "ciutadans": "La transició energètica impacta els ciutadans a través dels preus de l'energia, la creació d'ocupació i la qualitat ambiental. El canvi a renovables i vehicles elèctrics ofereix estabilitat de costos a llarg termini però requereix inversió inicial. L'informe assenyala que dos terços de l'energia global es malgasta com a calor, destacant el potencial d'eficiència. Els ciutadans de les economies emergents estan guanyant accés a energia solar més barata, mentre que els de regions dependents de fòssils poden enfrontar disruptcions econòmiques. L'augment dels centres de dades augmenta la demanda elèctrica."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Ètica de la transició energètica",
+      "body": "1. FETS: L'informe detalla un augment del 1.7% en l'oferta d'energia i un 1.1% en emissions, amb renovables impulsant el creixement però els fòssils mantenint el 86% de quota. 2. PARTS INTERESSADES: Productors d'energia, governs, consumidors i generacions futures. EUA i Xina tenen rols contrastats. 3. ANÀLISI KANTIANA: La màxima de prioritzar la seguretat energètica via fòssils no és universalitzable, ja que agreuja el canvi climàtic, tractant les generacions futures com a mitjans. 4. ANÀLISI DEL BÉ COMÚ: Es revelen fallades en solidaritat i sostenibilitat. Algunes regions redueixen emissions, drees augmenten, minant els objectius climàtics globals. 5. IMPACTES MAJORITARIS: EUA guanya seguretat a curt termini però perd lideratge climàtic. Xina guanya avantatge econòmic en tecnologies netes però segueix sent el major emisor. 6. TENSIONS: Les dades d'emissions creixents contrasten amb l'objectiu d'una transició 'baixa en carboni'. Conclusió: La transició energètica ha de prioritzar la dignitat humana i la sostenibilitat ecològica per sobre dels interessos econòmics a curt termini."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "Consum de combustibles fòssils",
+        "desc": "Tot i que les renovables són la major font de nova energia, el consum de fòssils continua augmentant en termes absoluts, mostrant un efecte de substitució encara insuficient."
+      },
+      {
+        "type": "Contradicció",
+        "target": "Objectius climàtics globals",
+        "desc": "L'augment del consum de carbó i emissions als EUA per garantir la seguretat energètica contradiu directament els objectius climàtics globals i la seva pròpia tendència a la baixa."
+      },
+      {
+        "type": "Complement",
+        "target": "Expansió de l'emmagatzematge",
+        "desc": "El ràpid augment de la generació solar es complementa amb un creixement del 66% en emmagatzematge amb bateries, essencial per gestionar la intermitència."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Accelerar la modernització de la xarxa elèctrica",
+        "desc": "Invertir en infraestructures de transmissió i emmagatzematge per integrar el creixement rècord de renovables i evitar congestió.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Implementar polítiques de demanda flexible",
+        "desc": "Fomentar tarifes dinàmiques i gestió de la demanda per equilibrar el sistema amb alta penetració solar i vehicle elèctric.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Diversificar cadenes de subministrament de minerals crítics",
+        "desc": "Assegurar l'accés sostenible a liti, cobalt i terres rares per evitar noves dependències geopolítiques en la transició.",
+        "effort": "Alt",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "04",
+        "title": "Reforçar la transparència en emissions de la cadena de valor",
+        "desc": "Estendre l'informe d'emissions més enllà de la combustió directa per incloure tota la cadena de valor (Scope 3).",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "gri",
+        "criterion": "GRI 305-1 Direct GHG emissions",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 26,
+          "section": "Carbon dioxide emissions from energy",
+          "table": "T-26"
+        },
+        "nature": "quantitatiu",
+        "impact": "alt",
+        "action": "Verificar les dades d'emissions directes amb els inventaris nacionals i establir objectius de reducció."
+      },
+      {
+        "framework": "tcfd",
+        "criterion": "Metrics and Targets",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 4,
+          "section": "2025 Key highlights",
+          "table": null
+        },
+        "nature": "quantitatiu",
+        "impact": "mitja",
+        "action": "Establir objectius de reducció d'emissions alineats amb les dades del 2025 i l'acord de París."
+      },
+      {
+        "framework": "sasb",
+        "criterion": "IF-EU-420a.01 Grid Reliability",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 11,
+          "section": "Renewables as a tool for energy security",
+          "table": null
+        },
+        "nature": "qualitatiu",
+        "impact": "mitja",
+        "action": "Avaluar la fiabilitat de la xarxa amb l'augment de renovables variables i planificar inversions."
+      }
+    ]
+  },
+  "content_es": {
+    "semaforo": {
+      "grade": "A",
+      "gradeLabel": "Excelente cobertura cuantitativa de datos energéticos y emisiones",
+      "indicators": [
+        {
+          "name": "Emisiones CO2 energéticas",
+          "status": "verd",
+          "label": "Cuantificado con detalle",
+          "note": "Emisiones globales de CO2 por consumo de fósiles: 35.806,2 Mt en 2025, con desglose por país y región. Incluye emisiones de flaring y metano equivalentes (41.037 Mt CO2e)."
+        },
+        {
+          "name": "Cobertura renovables",
+          "status": "verd",
+          "label": "Cuantificado con detalle",
+          "note": "Datos detallados de capacidad instalada solar (2.391.584 MW), eólica (1.291.368 MW), generación por fuente, y behind-the-meter solar PV (1.177.191 MW)."
+        },
+        {
+          "name": "Dependencia de importaciones",
+          "status": "verd",
+          "label": "Cuantificado con detalle",
+          "note": "Análisis detallado de dependencia de importaciones por tipo de combustible fósil para Europa, EE.UU., China e India, con porcentajes netos de importación."
+        },
+        {
+          "name": "CCUS",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "Capacidad de captura de CCUS global: 258,9 Mt/año en 2025, con desglose por país y tecnología."
+        },
+        {
+          "name": "Hidrógeno",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "Producción global de hidrógeno: 1.082,3 miles de toneladas/año en 2025 (765,2 azul, 317,1 verde), con desglose regional."
+        },
+        {
+          "name": "Minerales críticos",
+          "status": "verd",
+          "label": "Cuantificado con detalle",
+          "note": "Producción y reservas de cobalto, litio, grafito, tierras raras, cobre, manganeso, níquel y zinc, con ratios R/P y precios."
+        },
+        {
+          "name": "Cobertura Scope 3",
+          "status": "rojo",
+          "label": "Ignorado",
+          "note": "El informe es una revisión estadística de mercados energéticos, no un reporte corporativo ESG. No aborda emisiones Scope 3 de cadena de valor."
+        },
+        {
+          "name": "Justicia transición energética",
+          "status": "groc",
+          "label": "Mencionado",
+          "note": "Se menciona la necesidad de una transición 'justa, segura y baja en carbono' en el prólogo, pero sin cuantificar indicadores de justicia social o equidad."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "600,31 EJ",
+        "label": "Suministro total de energía (TES) global en 2025",
+        "page": "p. 23"
+      },
+      {
+        "value": "35.806,2 Mt CO2",
+        "label": "Emisiones globales de CO2 por consumo de combustibles fósiles en 2025",
+        "page": "p. 26"
+      },
+      {
+        "value": "30%",
+        "label": "Crecimiento interanual de generación solar en 2025 (650 TWh adicionales)",
+        "page": "p. 62"
+      },
+      {
+        "value": "302 GW",
+        "label": "Capacidad global de almacenamiento en baterías en 2025 (+66% interanual)",
+        "page": "p. 65"
+      },
+      {
+        "value": "788 TWh",
+        "label": "Consumo eléctrico global de centros de datos en 2025 (40% en EE.UU.)",
+        "page": "p. 64"
+      }
+    ],
+    "resumExecutiu": "La 75ª edición del Statistical Review of World Energy confirma que 2025 marcó un punto de inflexión histórico: por primera vez fuera de una recesión, las renovables fueron la mayor fuente de crecimiento del suministro energético total (TES), impulsadas principalmente por el solar (+30% interanual, 71% del crecimiento renovable). El TES global superó los 600 EJ, con un crecimiento del 1,7%. Sin embargo, los combustibles fósiles mantuvieron su dominio con el 86% del TES y todas las fuentes energéticas crecieron en términos absolutos. Las emisiones de CO2 por consumo de fósiles subieron 1,1% hasta 35.806 Mt, con EE.UU. responsable de más de un tercio del aumento. La electricidad creció al 3%, casi tres veces el ritmo del TES, y las renovables superaron al carbón en generación eléctrica por primera vez (33,4% vs 32,6%). El almacenamiento en baterías experimentó un crecimiento explosivo del 66%. El informe revela un sistema energético global fragmentado: EE.UU. consolida su posición como superpotencia exportadora de petróleo y gas, China despliega renovables a escala sin precedentes mientras acumula fósiles, Europa reduce dependencia rusa pero adquiere nueva vulnerabilidad en minerales críticos, y India mantiene alta dependencia de importaciones de petróleo (90%) y gas (53%).",
+    "implicacions": {
+      "empresas": "Las empresas deben diversificar suministros energéticos y de minerales críticos ante la fragmentación geopolítica. La electrificación ofrece ventajas de eficiencia (un VE requiere menos de un tercio de la energía de un vehículo de combustión), pero la infraestructura de red y almacenamiento no escala al mismo ritmo que la generación renovable. Las empresas con exposición a centros de datos (788 TWh globales, 40% en EE.UU.) deben planificar el crecimiento de demanda eléctrica. La descarbonización del transporte en China (EVs >50% de ventas nuevas) reduce demanda de gasolina y diésel, desplazando el crecimiento del petróleo hacia el sector químico.",
+      "reguladores": "Los reguladores deben abordar el desfase entre el despliegue récord de renovables y la infraestructura de red, almacenamiento y flexibilidad. La transición de moléculas a electrones requiere marcos para integración de renovables variables, gestión de nuevas dependencias comerciales en minerales críticos y cadenas de suministro de tecnologías limpias. La seguridad energética evoluciona de diversificar suministro de combustibles a reducir dependencia mediante electrificación doméstica. Las políticas tipo REPowerEU demuestran que las renovables pueden evitar 121.000 millones de euros en importaciones fósiles en cuatro años.",
+      "ciudadanos": "Los ciudadanos se benefician del despliegue masivo de solar autoconsumo (Pakistan pasó del 3% al 22% de generación solar en cuatro años), pero enfrentan riesgos de nuevas dependencias en minerales críticos y tecnologías manufacturadas. La eficiencia de la electrificación (solar 2-3 veces más eficiente que térmica; VE 77% vs 12-30% en combustión) reduce costes energéticos a largo plazo. Sin embargo, dos tercios de la energía global se desperdicia como calor, y solo un tercio se convierte en energía útil. La divergencia regional significa que el acceso y asequibilidad energética varían drásticamente: el consumo per cápita en África (14 GJ) es 20 veces menor que en Norteamérica (219 GJ)."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Justicia y co-decisión en la transición energética",
+      "body": "El informe documenta una fragmentación profunda en las estrategias energéticas nacionales que refleja desigualdades estructurales: mientras Norteamérica consume 219 GJ per cápita y Asia-Pacífico apenas 65 GJ, las decisiones sobre el ritmo y modelo de transición se toman en foros donde los países más vulnerables a los impactos climáticos tienen menor capacidad de influencia. La narrativa de 'seguridad energética' que domina el informe prioriza la resiliencia nacional sobre la justicia global, y aunque se menciona una transición 'justa', no se cuantifican indicadores de equidad, acceso energético o participación ciudadana en la co-decisión de infraestructuras. El arraigo en modelos centralizados persiste pese al potencial del solar distribuido para democratizar el acceso energético, como demuestra el caso de Pakistan."
+    },
+    "conexions": [
+      {
+        "type": "Evolución",
+        "target": "Choques petroleros de los años 1970",
+        "desc": "El informe establece un paralelismo explícito entre los choques petroleros de 1973 y 1979 y las disrupciones actuales (cierre del Estrecho de Ormuz en 2026, crisis de gas en Europa post-2022). Ambos eventos alteraron permanentemente trayectorias de demanda y aceleraron la diversificación energética."
+      },
+      {
+        "type": "Contradicción",
+        "target": "Crecimiento renovable vs aumento de fósiles",
+        "desc": "Pese al récord de crecimiento renovable (mayor fuente de TES por primera vez), todos los combustibles fósiles alcanzaron niveles récord en términos absolutos. El carbón, gas y petróleo crecieron simultáneamente, revelando que la sustitución aún no compensa el crecimiento de la demanda total."
+      },
+      {
+        "type": "Complemento",
+        "target": "Almacenamiento en baterías y renovables variables",
+        "desc": "El crecimiento del 66% en capacidad de baterías (302 GW) complementa el despliegue récord de solar (+511 GW en 2025), pero el almacenamiento aún va por detrás de la generación. China concentra el 47,7% de la capacidad global de baterías (144 GW), reflejando la misma concentración geográfica que preocupa en minerales críticos."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Auditar exposición a minerales críticos en la cadena de suministro",
+        "desc": "Mapear dependencia de cobalto, litio, níquel, grafito y tierras raras identificando concentración geográfica (RDC 68,5% cobalto, Indonesia 66,5% níquel, China 74,6% grafito) y evaluar alternativas de suministro diversificado.",
+        "esforz": "Medio",
+        "impacte": "Alto"
+      },
+      {
+        "num": "02",
+        "title": "Integrar análisis de demanda de centros de datos en planificación energética",
+        "desc": "Con 788 TWh de consumo eléctrico global de centros de datos (creciendo al 13,9% interanual), las empresas deben evaluar el impacto de IA y digitalización en su huella energética y planificar contratos de energía renovable para cubrir este crecimiento.",
+        "esforz": "Bajo",
+        "impacte": "Medio"
+      },
+      {
+        "num": "03",
+        "title": "Desarrollar estrategia de descarbonización del transporte corporativo",
+        "desc": "Con las EVs superando el 25% de ventas globales de coches nuevos en 2025 (60% en China) y una eficiencia 77% vs 12-30% en combustión, evaluar la electrificación de flotas para reducir costes energéticos y emisiones Scope 1.",
+        "esforz": "Medio",
+        "impacte": "Alto"
+      },
+      {
+        "num": "04",
+        "title": "Diversificar fuentes de gas natural ante volatilidad geopolítica",
+        "desc": "Con Europa dependiente del 55% de importaciones de gas y China del 37%, evaluar contratos flexibles de LNG, alternativas de suministro y sustitución por electrificación renovable. El gas de EE.UU. creció como fuente dominante de LNG europeo (56% de importaciones).",
+        "esforz": "Alto",
+        "impacte": "Alto"
+      },
+      {
+        "num": "05",
+        "title": "Invertir en almacenamiento y flexibilidad de red",
+        "desc": "Con las renovables variables superando al carbón en generación eléctrica pero el almacenamiento creciendo a menor ritmo, priorizar inversiones en BESS, gestión de demanda y soluciones de flexibilidad para maximizar el valor del despliegue renovable.",
+        "esforz": "Alto",
+        "impacte": "Alto"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "gri",
+        "criterio": "GRI 305-1 Emisiones directas de GEI (Scope 1)",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 26,
+          "section": "Carbon dioxide emissions from energy",
+          "table": "Tabla de emisiones por país"
+        },
+        "nature": "cuantitativo",
+        "impact": "alto",
+        "action": "Utilizar los factores de emisión IPCC y datos de consumo de combustibles del informe para verificar y contextualizar las emisiones directas reportadas bajo GRI 305-1."
+      },
+      {
+        "framework": "tcfd",
+        "criterio": "Riesgos de transición - exposición a mercados de carbono y políticas climáticas",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 29,
+          "section": "Carbon Prices",
+          "table": "Tabla de precios de carbono en mercados de cumplimiento y voluntarios"
+        },
+        "nature": "cuantitativo",
+        "impact": "medio",
+        "action": "Integrar los precios de carbono de mercados de cumplimiento (EU ETS: 74,91 €/tCO2 en 2025) en análisis de escenarios de riesgo de transición bajo TCFD."
+      },
+      {
+        "framework": "csrd-esrs",
+        "criterio": "ESRS E1 - Transición a una economía baja en carbono",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 22,
+          "section": "Total energy supply and carbon",
+          "table": null
+        },
+        "nature": "cualitativo",
+        "impact": "medio",
+        "action": "Complementar el análisis de trayectoria de transición del informe con métricas corporativas específicas de intensidad de carbono y plan de descarbonización alineado con ESRS E1."
+      }
+    ]
+  }
+}

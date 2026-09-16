@@ -1,0 +1,371 @@
+{
+  "slug": "wef-global-gender-gap-2026",
+  "title": "Global gender gap 2026",
+  "institution": "World Economic Forum",
+  "filename_original": "wef-global-gender-gap-2026.pdf",
+  "generated_at": "2026-09-16T12:35:37",
+  "content_ca": {
+    "semafor": {
+      "grade": "A",
+      "gradeLabel": "Cobertura quantitativa exhaustiva en totes les dimensions de paritat de gènere",
+      "indicators": [
+        {
+          "name": "Brecha salarial y ingresos estimados",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Wage equality 64.7%, estimated earned income parity 54.9%, desglossat per economia (p. 17)"
+        },
+        {
+          "name": "Participación laboral femenina",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Labour-force participation parity 66.5%; women workforce share 41.8% (June 2026) segons LinkedIn (p. 7, 49)"
+        },
+        {
+          "name": "Representación política",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Political Empowerment 22.1%; parlament 32%, ministerial 23.7%, head of state 14.4%; 194 anys a paritat (p. 5-6, 24)"
+        },
+        {
+          "name": "Lideratge corporatiu i 'drop to the top'",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "C-suite 23%, Fortune 500 CEOs 6.4%, drop de 46% a 23% des d'entry-level a C-suite (p. 51-53)"
+        },
+        {
+          "name": "Bretxa digital i IA",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Dones 19.3% AI engineers, 20.6% ML engineers, 44.8% data annotators; desglossat per tipus d'empresa IA (p. 57-58)"
+        },
+        {
+          "name": "Accés a capital i fundadores",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "40.4% workforce en mercats de capital, 31% senior leadership; 2% VC global a equips femenins; founders 28% (p. 59-61)"
+        },
+        {
+          "name": "Implementació legal i percepció d'aplicació",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Scores 0-4 per àrea; paternity leave amb valoracions particularment baixes; right to work millor aplicat que discriminació en reclutament (p. 64-65)"
+        },
+        {
+          "name": "Impacte de pauses laborals en progressió",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "Full-time parenting: 6.3% dones vs 9.1% homes promocionen en 1 any; 7.2% vs 10.0% en 3 anys (p. 55-56)"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "69.2%",
+        "label": "Bretxa de gènere global tancada (145 economies, 2026)",
+        "page": "5"
+      },
+      {
+        "value": "120 anys",
+        "label": "Temps estimat per a paritat global al ritme actual (97 economies constants)",
+        "page": "5"
+      },
+      {
+        "value": "23.0%",
+        "label": "Representació femenina al C-suite (vs 46.0% a entry-level): 'drop to the top' del 50%",
+        "page": "51"
+      },
+      {
+        "value": "194 anys",
+        "label": "Temps estimat per a paritat en Empoderament Polític (22.1% tancat)",
+        "page": "5"
+      },
+      {
+        "value": "2%",
+        "label": "Capital de risc global destinat a equips fundadors exclusivament femenins (2025)",
+        "page": "60"
+      }
+    ],
+    "resumExecutiu": "El Global Gender Gap Report 2026, en la seva 20a edició, avalua 145 economies i constata que la bretxa de gènere global està tancada al 69.2%. Cap economia ha assolit la paritat plena; Islàndia lidera per 17è any consecutiu amb 93%. Al ritme actual, la paritat global es projecta a 120 anys. Les quatre dimensions mostren asimetries marcades: Salut i Supervivència (96.2%) i Educació (96.9%) estan pròximes a la paritat, mentre que Participació Econòmica (61.7%) i Empoderament Polític (22.1%) romanen lluny, aquest últim a 194 anys de tancar-se. L'informe documenta el fenomen del 'drop to the top': la representació femenina cau del 46% a nivell d'entrada al 23% al C-suite. En IA, les dones representen només el 19.3% dels enginyers d'IA i el 20.6% d'enginyers de machine learning, reproduint segregacions sectorials. Només el 2% del capital de risc global va a equips femenins. Les dades de LinkedIn mostren que la contractació de dones en lideratge s'ha estancat des de 2022. La implementació legal és mixta: el permís de paternitat rep les valoracions d'aplicació més baixes.",
+    "implicacions": {
+      "empreses": "Les empreses han d'auditar la seva pipeline de talent per identificar punts de fuita femenina, especialment en la transició de mid-level a top management. El 'drop to the top' del 50% exigeix programes estructurats de mentoria, patrocini i revisió de processos de selecció per a rols de CFO/COO —els principals feeders cap a CEO. La reproducció de segregació en IA obliga a inversions en reskilling femení en competències tècniques abans que la bretxa es consolidi. L'accés a capital de fundadores (2% VC) suggereix oportunitats de mercat inexplorades.",
+      "reguladors": "L'informe revela una bretxa quasi universal entre ambició legal i implementació. Els reguladors han de prioritzar l'aplicació efectiva del permís de paternitat i les proteccions contra discriminació en reclutament —les àrees amb valoracions més baixes. Les quotes legislatives de gènere (adoptades en 82 de 97 economies) han demostrat impacte sostingut en representació parlamentària, però la qualitat de la representació importa: les dones ministres concentren en carteres de mitjana i baixa influència, no en les d'alta.",
+      "ciutadans": "La projectió de 194 anys per a la paritat política significa que cap ciutadana viva veurà paritat política plena al ritme actual. L'estancament de la contractació femenina en lideratge des de 2022 i els signs de declivi en dades de LinkedIn suggereixen que el progrés no és automàtic. Les pauses laborals per maternitat continuen penalitzant la progressió professional de manera desproporcionada (6.3% vs 9.1% en promoció post-retorn), perpetuant desavantatges acumulats al llarg de la carrera."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Dignitat, solidaritat i redistribució del poder",
+      "body": "El report quantifica exhaustivament la bretxa però no qüestiona l'arquitectura mateixa del poder econòmic que la genera. El 'drop to the top' no és un problema de pipeline sinó de selecció: les dones arriben però no ascendeixen, suggerint barreres sistèmiques en els processes de decisió. L'assignació de dones ministres a carteres de baixa influència —mentre les d'alta (Defensa, Finances, Exterior) romanen masculinitzades— revela una paritat de façana que no redistribueix poder real. El 2% de VC a fundadores no és una bretxa: és una exclusió estructural del capital. Tractar les persones com a fi requereix no només mesurar la paritat, sinó interrogar per què les estructures que la impedeixen persisteixen. La dignitat no es compleix amb estadística; exigeix redistribució."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "Global Gender Gap Report 2025",
+        "desc": "La 20a edició confirma l'estancament detectat en 2025: la contractació femenina en lideratge s'ha estancat i mostra signes de declivi des de 2022, revertint la tendència positiva de la dècada anterior."
+      },
+      {
+        "type": "Complement",
+        "target": "WEF Future of Jobs Report 2025",
+        "desc": "El report d'ocupacions futures documenta la transformació del mercat laboral per IA i automatització; aquest informe evidencia que aquesta transformació està reproduint segregacions de gènere preexistents, no corregint-les."
+      },
+      {
+        "type": "Contradicció",
+        "target": "Informes de creixement econòmic que associen PIB amb desenvolupament",
+        "desc": "L'informe demostra que economies d'ingrés mitjà-baix (Namíbia 84.5%, Burundi 77.1%) superen economies d'alt ingrés en paritat global, contradient l'associació lineal entre desenvolupament econòmic i igualtat de gènere."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Auditar la pipeline de lideratge per identificar punts de fuita femenina",
+        "desc": "Mapejar per etapa de senioritat i sector la representació femenina utilitzant la metodologia 'drop to the top' del report. Identificar les transicions crítiques (mid-to-top management) on la pèrdua és més aguda i dissenyar intervencions específiques per etapa.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Implementar mètriques d'IA amb perspectiva de gènere abans de Q4",
+        "desc": "Mesurar la representació femenina en rols d'IA engineer, ML engineer i data annotator. Establir objectius de paritat en contractació tècnica i assegurar que les dones no queden confinades en rols d'anotació (els menys remunerats).",
+        "effort": "Baix",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Revisar polítiques de permisos parentals i progrés post-retorn",
+        "desc": "Les dades mostren que les dones són 4x més propenses a prendre excedència parental i pateixen bretxa de progressió post-retorn (6.3% vs 9.1%). Igualar condicions de permís per gènere i implementar programes de reintegró estructurats amb mentoria i objectius de promoció.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "04",
+        "title": "Auditar l'accés de fundadores a capital i establir fons dedicats",
+        "desc": "Amb només el 2% de VC global destinat a equips femenins, cal establir instruments financers dedicats i auditar els biaixos en processos d'avaluació d'inversions. Les fundadores amb competències en IA (8.7% vs 14.7% homes) requereixen suport específic.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "05",
+        "title": "Revisar l'assignació de carteres ministerials i directives per influència",
+        "desc": "Classificar posicions de lideratge (tant polítiques com corporatives) per nivell d'influència segons la taxonomia del report. Auditar si la representació femenina es concentra en rols de baixa influència i establir objectius de paritat en rols d'alta (Defensa, Finances, CEO, CFO).",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "gri",
+        "criterion": "GRI 405-1 Diversitat dels òrgans de govern i els empleats",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 17,
+          "section": "1.4 Performance by subindex",
+          "table": "T-3"
+        },
+        "nature": "quantitatiu",
+        "impact": "alt",
+        "action": "Reportar desglossament per gènere i nivell de senioritat aliniat amb les categories del Global Gender Gap Index (entry, mid, top management, C-suite)"
+      },
+      {
+        "framework": "csrd-esrs",
+        "criterion": "ESRS S1-9 Diversitat i igualtat d'oportunitats",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 51,
+          "section": "2.1 Corporate leadership and career pathways",
+          "table": "T-2.1"
+        },
+        "nature": "quantitatiu",
+        "impact": "alt",
+        "action": "Auditar la pipeline de lideratge femení per etapa de senioritat i identificar punts de fuita amb mètriques comparables al 'drop to the top'"
+      },
+      {
+        "framework": "iso-26000",
+        "criterion": "ISO 26000: Igualtat de gènere i empoderament de les dones",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 62,
+          "section": "2.3 Policy frameworks and political leadership",
+          "table": "Fig 2.13"
+        },
+        "nature": "quantitatiu",
+        "impact": "mitja",
+        "action": "Avaluar la bretxa entre marc legal i implementació efectiva utilitzant les dades de percepció d'aplicació del World Bank Women, Business and the Law"
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Cobertura cuantitativa robusta con una dimensión mencionada sin profundidad analítica completa",
+      "indicators": [
+        {
+          "name": "Brecha global de género",
+          "status": "verde",
+          "label": "69.2% cerrada en 2026",
+          "note": "Cuantificado para 145 economías con serie temporal de 20 años sobre muestra constante de 97 economías"
+        },
+        {
+          "name": "Participación Económica y Oportunidad",
+          "status": "verde",
+          "label": "61.7% de la brecha cerrada",
+          "note": "Cuantificado mediante 5 indicadores: participación laboral, igualdad salarial percibida, ingresos estimados, legisladoras y profesionales"
+        },
+        {
+          "name": "Empoderamiento Político",
+          "status": "verde",
+          "label": "22.1% de la brecha cerrada",
+          "note": "Cuantificado con datos de parlamento, ministerios y jefatura de Estado de los últimos 50 años para las 145 economías"
+        },
+        {
+          "name": "Logro Educativo",
+          "status": "verde",
+          "label": "96.9% de la brecha cerrada",
+          "note": "Cuantificado con 4 indicadores: alfabetización y matrícula en primaria, secundaria y terciaria"
+        },
+        {
+          "name": "Tiempo estimado hasta paridad global",
+          "status": "verde",
+          "label": "120 años al ritmo actual",
+          "note": "Proyección cuantificada a partir de la tasa de progreso de la muestra constante de 97 economías desde 2006"
+        },
+        {
+          "name": "Percepción de aplicación efectiva de reformas legales",
+          "status": "amarillo",
+          "label": "Mencionado con datos parciales por área temática",
+          "note": "Se incluyen puntuaciones 0-4 de percepción de aplicación, pero sin desagregación por economía individual ni análisis sistemático de barreras de implementación"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "69.2%",
+        "label": "Brecha global de género cerrada en 2026 (145 economías)",
+        "page": "p. 5"
+      },
+      {
+        "value": "120 años",
+        "label": "Tiempo estimado hasta la paridad global al ritmo actual",
+        "page": "p. 5"
+      },
+      {
+        "value": "93%",
+        "label": "Brecha cerrada por Islandia, líder mundial por 17º año consecutivo",
+        "page": "p. 5"
+      },
+      {
+        "value": "22.1%",
+        "label": "Brecha de Empoderamiento Político cerrada, la dimensión más rezagada",
+        "page": "p. 5"
+      },
+      {
+        "value": "6.4%",
+        "label": "Mujeres CEOs en el Fortune Global 500 en 2025, frente al 2.8% en 2015",
+        "page": "p. 53"
+      }
+    ],
+    "resumExecutiu": "El Global Gender Gap Report 2026, en su 20.ª edición, evalúa 145 economías a través de cuatro dimensiones: Participación Económica y Oportunidad, Logro Educativo, Salud y Supervivencia, y Empoderamiento Político. La brecha global de género se sitúa en 69.2% cerrada, con una mejora de +5.2 puntos porcentuales desde 2006 en la muestra constante de 97 economías. Al ritmo actual, se estima que la paridad global se alcanzará en 120 años. Islandia mantiene el liderazgo mundial por 17.º año consecutivo con 93% de su brecha cerrada, seguida de Finlandia (87.2%), Noruega (85.7%) y Namibia (84.5%). Europa encabeza el ranking regional (75.7%), seguida de Norteamérica (75.2%) y América Latina y el Caribe (74.5%). Las dimensiones más cercanas a la paridad son Salud y Supervivencia (96.2%) y Logro Educativo (96.9%), mientras que Empoderamiento Político (22.1%) y Participación Económica (61.7%) presentan las brechas más amplias. El informe revela que la representación femenina disminuye con la senioridad: del 46% en niveles de entrada al 23% en C-suite. En el ecosistema de IA, las mujeres representan solo el 19.3% de ingenieras. La contratación de mujeres en liderazgo senior se ha estancado desde 2022. Las reformas legales han ampliado derechos, pero la percepción de aplicación efectiva varía significativamente entre áreas. El progreso no es automático ni suficientemente rápido, y las nuevas fronteras de paridad se definen por la movilidad económica, la asignación de recursos y el poder de decisión.",
+    "implicaciones": {
+      "empresas": "Las empresas deben abordar el 'drop to the top', donde la representación femenina cae del 46% al 23% entre niveles de entrada y C-suite. Solo el 6.4% de CEOs en el Fortune Global 500 son mujeres. La contratación de mujeres en liderazgo senior se ha estancado desde 2022, con señales de declive. Las empresas deben auditar sus pipelines de talento, particularmente en roles trampolín hacia CEO como CFO y COO, donde las mujeres están subrepresentadas. En IA, donde las mujeres representan solo 19.3% de ingenieras, se reproducen patrones de segregación ocupacional. Las pausas profesionales por maternidad generan brechas persistentes en progresión posterior: las mujeres que toman permiso parental tienen menor avance de senioridad que los hombres tras uno y tres años. Las empresas necesitan políticas de permiso parental equitativas para ambos géneros, programas de retorno estructurados y métricas transparentes de representación por nivel de senioridad e industria.",
+      "reguladores": "La brecha entre reformas legales y su aplicación efectiva es crítica. El 96% de las reformas desde 1970 ampliaron derechos, pero la percepción de aplicación varía: el permiso de paternidad recibe las evaluaciones más bajas. Las disposiciones de igualdad salarial están entre las medidas percibidas como menos efectivamente aplicadas. El retraso medio entre promulgación y aplicación es de 99 días, pero las reformas de pensiones tardan 218 días frente a 38 días para cuidado infantil. Más del 80% de las economías del índice han adoptado cuotas de género legislativas, pero las mujeres ministros siguen concentradas en carteras de menor influencia presupuestaria y de personal. Los reguladores deben fortalecer mecanismos de monitoreo y sanción, especialmente en igualdad salarial, discriminación en reclutamiento y acceso flexible al trabajo. La coordinación entre sistemas administrativos, legales e industriales es determinante para traducir derechos formales en oportunidades económicas vividas.",
+      "ciudadanos": "La representación femenina en parlamentos ha aumentado +13.6 puntos porcentuales desde 2006 sin retrocesos absolutos, pero solo el 22.1% de la brecha política está cerrada. La participación ciudadana mediante cuotas legislativas ha demostrado ser un motor de cambio. Sin embargo, el número de jefas de Estado declinó desde su pico de 27% en 2022 a niveles de 2016, una reversión completa en una década. Los ciudadanos deben exigir transparencia en datos de género, especialmente en sectores emergentes como IA y mercados de capital, donde solo el 2% del capital de riesgo global fue a equipos fundadores exclusivamente femeninos en 2025. La economía del cuidado, donde las mujeres asumen desproporcionadamente el trabajo no remunerado, requiere atención ciudadana sostenida. La co-decisión en políticas de género, la vigilancia de la aplicación efectiva de las leyes y la exigencia de métricas que capturen no solo presencia sino influencia real son fundamentales para acelerar un progreso que, al ritmo actual, tardará cinco generaciones."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Justicia y Dignidad: ¿Paridad numérica o redistribución del poder real?",
+      "body": "El informe cuantifica magistralmente la brecha de género, pero el criterio de justicia exige preguntar: ¿progresar hacia qué modelo? La paridad numérica en parlamentos o C-suites no garantiza redistribución del poder material. Las mujeres ministros crecen en carteras de bajo presupuesto; las mujeres en IA se concentran en anotación de datos, los roles peor pagados del ecosistema. La dignidad exige reconocer que la brecha no es solo de representación sino de valoración: el trabajo de cuidados no remunerado, mayoritariamente femenino, permanece invisible en los indicadores principales del índice. La sostenibilidad del progreso es cuestionable cuando la contratación de mujeres en liderazgo se estanca y el tiempo hasta paridad supera cinco generaciones. Una justicia distributiva genuina no celebraría que la paridad educativa del 96.9% coexista con una paridad política del 22.1%, revelando que el sistema premia formación pero niega poder. La arrrraigo de las mujeres en sus territorios y comunidades se ve amenazado cuando el progreso se mide en exportación de talento femenino hacia estructuras que no redistribuyen valor."
+    },
+    "conexiones": [
+      {
+        "type": "Contradicción",
+        "target": "Logro Educativo vs. Participación Económica",
+        "desc": "La paridad educativa casi alcanzada (96.9%) coexiste con una participación económica del 61.7%, demostrando que la educación por sí sola no traduce en igualdad económica. Las mujeres superan o igualan a los hombres en matrícula terciaria en 111 economías, pero siguen subrepresentadas en roles de liderazgo e ingresos."
+      },
+      {
+        "type": "Evolución",
+        "target": "Empoderamiento Político: retroceso 2016-2026",
+        "desc": "El Empoderamiento Político era mayor en 2016 que en 2026 en la muestra constante de 97 economías, la única dimensión con reversión clara. El número de jefas de Estado alcanzó un pico de 27% en 2022 y desde entonces declinó a niveles de 2016, una reversión completa en menos de una década."
+      },
+      {
+        "type": "Complemento",
+        "target": "Segregación ocupacional en IA como nueva frontera de desigualdad",
+        "desc": "Los datos del ecosistema de IA complementan los hallazgos de representación por industria: las mujeres representan 44.8% de anotadoras de datos (rol de baja remuneración) pero solo 19.3% de ingenieras de IA y 20.6% de ingenieras de machine learning, reproduciendo patrones de segregación sectorial en una industria emergente."
+      }
+    ],
+    "acciones": [
+      {
+        "num": "01",
+        "title": "Auditar y publicar la brecha salarial de género por nivel de senioridad",
+        "desc": "Calcular la brecha salarial sin ajustar y ajustada por cargo, nivel y jornada, desagregando por industria. El informe muestra que la igualdad salarial percibida para trabajo similar se sitúa en 64.7% y los ingresos estimados en 54.9% de paridad, evidenciando la urgencia de mediciones duras.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "02",
+        "title": "Implementar programas de desarrollo de talento femenino en roles técnicos de IA",
+        "desc": "Las mujeres representan solo 19.3% de ingenieras de IA y 8.7% de fundadoras con habilidades de IA, frente al 14.7% de fundadores masculinos. Diseñar programas de upskilling, mentoría técnica y patrocinio ejecutivo específicos para cerrar esta brecha en la cadena de valor de IA.",
+        "esfuerzo": "Alto",
+        "impacto": "Alto"
+      },
+      {
+        "num": "03",
+        "title": "Diseñar políticas de permiso parental equitativo con seguimiento de progresión post-retorno",
+        "desc": "Las mujeres tienen el doble de probabilidad de tomar pausas profesionales y el permiso parental de tiempo completo es cuatro veces más común en mujeres. Tras el retorno, los hombres avanzan más en senioridad. Implementar permisos no transferibles para ambos progenitores y monitorear la progresión a 1 y 3 años.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "04",
+        "title": "Establecer métricas de representación femenina en C-suite y pipeline de sucesión CEO",
+        "desc": "El 'drop to the top' reduce la representación femenina del 46% al 23%. Las mujeres representan 19.1% de CEOs pero 65% de CHROs. Auditar los roles alimentadores de CEO (CFO, COO) y establecer objetivos de representación con transparencia y rendición de cuentas.",
+        "esfuerzo": "Bajo",
+        "impacto": "Medio"
+      },
+      {
+        "num": "05",
+        "title": "Fortalecer mecanismos de aplicación efectiva de leyes de igualdad salarial y no discriminación",
+        "desc": "Las disposiciones de igualdad salarial están entre las medidas peor percibidas en aplicación. El permiso de paternidad recibe las evaluaciones más bajas. Reducir el retraso de 99 días entre promulgación e implementación y crear sistemas de monitoreo con sanciones verificables.",
+        "esfuerzo": "Alto",
+        "impacto": "Alto"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "gri",
+        "criterio": "GRI 405-1: Diversidad de los órganos de gobierno y los empleados",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 21,
+          "section": "1.4 Performance by subindex",
+          "table": "TABLE 1.3 Political Empowerment subindex"
+        },
+        "nature": "cuantitativo",
+        "impact": "alto",
+        "action": "Auditar la diversidad de órganos de gobierno y empleados, publicando datos desagregados por género y nivel de responsabilidad, alineándose con la cobertura ya existente en el informe sobre parlamento, ministerios y C-suite."
+      },
+      {
+        "framework": "csrd-esrs",
+        "criterio": "ESRS S1-12: Brecha salarial de género",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 17,
+          "section": "1.4 Performance by subindex",
+          "table": "TABLE 1.3 Economic Participation and Opportunity subindex"
+        },
+        "nature": "cuantitativo",
+        "impact": "alto",
+        "action": "Calcular y publicar la brecha salarial de género sin ajustar y ajustada, ya que el informe utiliza igualdad salarial percibida (encuesta) e ingresos estimados, pero no reporta la brecha salarial mediana estricta exigida por ESRS."
+      },
+      {
+        "framework": "sasb",
+        "criterio": "SASB: Diversidad e inclusión en la fuerza laboral",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 50,
+          "section": "2.1 Corporate leadership and career pathways",
+          "table": "FIGURE 2.2 Share of women in the overall workforce, by industry"
+        },
+        "nature": "cuantitativo",
+        "impact": "medio",
+        "action": "Reportar métricas de diversidad por industria y nivel de senioridad según categorías SASB, ampliando los datos de LinkedIn hacia coberturas no incluidas como China en el ecosistema de IA."
+      }
+    ]
+  }
+}

@@ -113,6 +113,20 @@ def get_metadata_from_filename(filename: str) -> dict:
     return {"slug": slug, "title": title_raw, "institution": institution}
 
 
+def _mou_a_processats(pdf_path: Path):
+    """Mou el PDF original a 0-originals/processats/ després de destil·lar-lo."""
+    try:
+        proc = pdf_path.parent / "processats"
+        proc.mkdir(exist_ok=True)
+        desti = proc / pdf_path.name
+        if desti.exists():
+            desti = proc / f"{pdf_path.stem}_2{pdf_path.suffix}"
+        pdf_path.rename(desti)
+        print(f"  → PDF mogut a {proc.relative_to(pdf_path.parents[2])}/{desti.name}")
+    except Exception as e:
+        print(f"  (no mogut: {e})")
+
+
 def process_one_pdf(pdf_path: Path) -> bool:
     """Processa un PDF. Retorna True si tot ha anat bé."""
     name = pdf_path.name
@@ -123,6 +137,7 @@ def process_one_pdf(pdf_path: Path) -> bool:
     # Comprovar si ja està destil·lat
     if output_path.exists():
         print(f"  ✓ Ja destil·lat: {output_filename}")
+        _mou_a_processats(pdf_path)
         return True
 
     meta = get_metadata_from_filename(name)
@@ -131,9 +146,14 @@ def process_one_pdf(pdf_path: Path) -> bool:
     print(f"  Títol: {meta['title']}")
     print(f"  Institució: {meta['institution']}")
 
-    # 1. Extreure text
-    print(f"  → Extraient text...")
-    text = extract_text_from_pdf(pdf_path)
+    # 1. Extreure text (sidecar OCR si existeix, sino pdfplumber)
+    sidecar = pdf_path.with_suffix(".txt")
+    if sidecar.exists() and sidecar.stat().st_size > 2000:
+        print(f"  → Usant sidecar OCR: {sidecar.name}")
+        text = sidecar.read_text(encoding="utf-8")
+    else:
+        print(f"  → Extraient text...")
+        text = extract_text_from_pdf(pdf_path)
     if len(text) < 500:
         print(f"  ✗ Text massa curt ({len(text)} chars). Probablement és un PDF escanejat. Saltant.")
         return False
@@ -259,6 +279,7 @@ def process_one_pdf(pdf_path: Path) -> bool:
     }
     output_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"  ✓ Guardat a {output_path}")
+    _mou_a_processats(pdf_path)
     return True
 
 
@@ -269,7 +290,7 @@ def main():
     print(f"PDFs originals: {ORIGINALS_DIR}")
     print(f"Destinació: {DISTILATS_DIR}\n")
 
-    pdfs = sorted(ORIGINALS_DIR.glob("*.pdf"))
+    pdfs = sorted(ORIGINALS_DIR.glob("*.pdf")) + sorted((ORIGINALS_DIR / "per-processar").glob("*.pdf"))
     print(f"PDFs trobats: {len(pdfs)}\n")
 
     if target:

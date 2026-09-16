@@ -1,0 +1,337 @@
+{
+  "slug": "EFRAG_State of Play 2026_vShared_Layout checked - DD",
+  "title": " dd",
+  "institution": "EFRAG_STATE OF PLAY 2026_VSHARED_LAYOUT CHECKED ",
+  "filename_original": "EFRAG_State of Play 2026_vShared_Layout checked - DD.pdf",
+  "generated_at": "2026-09-16T11:50:42",
+  "content_ca": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "B",
+      "indicators": [
+        {
+          "name": "Cobertura objectius 1.5C i Scope 3",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "57% de les empreses declaren objectius near and long-term compatibles amb 1.5C incloent Scope 3."
+        },
+        {
+          "name": "Bretxa salarial ajustada",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "Només el 12% de les empreses faciliten la bretxa salarial ajustada per a factors compensables."
+        },
+        {
+          "name": "Terminis de pagament a PIMES",
+          "status": "groc",
+          "label": "Esmentat",
+          "note": "Només el 7% informen sobre terminis de pagament específics per a PIMES."
+        },
+        {
+          "name": "Desagregació geogràfica mètriques",
+          "status": "vermell",
+          "label": "Ignorat",
+          "note": "No hi ha desagregació a nivell de conca per a aigua (0%), dominant el nivell global (77%)."
+        },
+        {
+          "name": "Vinculació materialitat i objectius",
+          "status": "verd",
+          "label": "Quantificat",
+          "note": "S'identifiquen 6.4 temes materials de mitjana, però només es fixen 3.3 objectius mesurables."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "905",
+        "label": "Declaracions ESRS analitzades",
+        "page": "4"
+      },
+      {
+        "value": "69%",
+        "label": "Empreses amb Pla de Transició Climàtica (CTP)",
+        "page": "18"
+      },
+      {
+        "value": "14.3%",
+        "label": "Bretxa salarial mitjana no ajustada a favor dels homes",
+        "page": "21"
+      },
+      {
+        "value": "7%",
+        "label": "Empreses que informen terminis de pagament per a PIMES",
+        "page": "28"
+      },
+      {
+        "value": "63%",
+        "label": "Empreses amb objectius ESG en incentius executius",
+        "page": "15"
+      }
+    ],
+    "resumExecutiu": "L'EFRAG presenta la segona edició de l'informe State of Play, analitzant 905 declaracions de sostenibilitat de l'any fiscal 2025 sota la CSRD i els ESRS. S'observa una clara continuïtat: E1 (99%), S1 (99%) i G1 (95%) dominen la materialitat. L'adopció de Plans de Transició Climàtica (CTP) puja al 69%, però només el 57% alinea els objectius amb 1.5°C. Hi ha una bretxa crítica entre la materialitat declarada (6.4 temes) i els objectius mesurables (3.3 temes), i només el 63% vincula la sostenibilitat als incentius executius. En l'àmbit social, la bretxa salarial no ajustada és del 14.3%, però només el 12% ofereix l'ajustada. En governança, el 81% esmenta criteris ESG en proveïdors (sovint només codis de conducta), i només el 7% informa sobre terminis de pagament a PIMES, al·legant limitacions de sistema. L'anàlisi revela compliança estructural però falta de transformació estratègica profunda.",
+    "implicacions": {
+      "empreses": "Cal reduir la distància entre la materialitat declarada i l'acció estratègica. Fixar objectius mesurables, vincular-los a la remuneració executiva i millorar la desagregació geogràfica de les dades ambientals són passos imprescindibles. A més, calen inversions en sistemes ERP per identificar i protegir les PIMES a la cadena de valor.",
+      "reguladors": "La baixa adopció de marcs de la DG CLIMA davant d'alternatives privades (SBTi, IEA) suggereix la necessitat de millorar l'alineació. La simplificació ('Omnibus') no hauria de sacrificar la granularitat de dades crítiques com els terminis de pagament a PIMES o les mètriques de contaminació local.",
+      "ciutadans": "La persistència d'una bretxa salarial del 14.3% i la manca de protecció financera a PIMES evidencien desigualtats. La transparència augmenta, però els consumidors i treballadors han d'exigir que la materialitat es tradueixi en compromisos reals i vinculants que no els tractin com a simples recursos productius."
+    },
+    "mesEnllaCheckbox": "L'informe de l'EFRAG evidencia una mentalitat de compliança on la sostenibilitat es gestiona com a requisit administratiu. Declarar 6.4 temes materials però només establir 3.3 objectius revela un ús estratègic del reporting: es prioritza l'aparença de gestió sobre el deure de transformació. Tractar les PIMES i els treballadors de la cadena de valor mitjançant simples 'codis de conducta' sense conseqüències operatives els redueix a mitjans per a l'interès corporatiu. La dignitat i la justícia social exigeixen coherència entre allò que es declara material i allò que es mesura i remunera.",
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "Pla de Transició Climàtica",
+        "desc": "L'adopció del CTP ha crescut del 55% en FY2024 al 69% en FY2025, mostrant un impuls continuat en la planificació climàtica corporativa."
+      },
+      {
+        "type": "Contradicció",
+        "target": "Aproximació DMA vs Desagregació",
+        "desc": "El 67% usa una aproximació híbrida robusta a la DMA, però el 77% de les mètriques ambientals es reporten a nivell global global, ignorant el context local."
+      },
+      {
+        "type": "Complement",
+        "target": "Incentius i Objectius",
+        "desc": "El 63% de les empreses vinculen els objectius de sostenibilitat als esquemes d'incentius executius, complementant el 50% de temes materials amb objectius."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Implantar bretxa salarial ajustada",
+        "desc": "Anar més enllà de la bretxa no ajustada i reportar la bretxa ajustada per funció, antiguitat i geografia per reflectir la realitat de la força laboral.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Segmentar pagaments a PIMES",
+        "desc": "Actualitzar els sistemes ERP i de gestió de proveïdors per identificar PIMES i reportar terminis de pagament específics que en facilitin la liquidesa.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Vincular objectius a la remuneració",
+        "desc": "Establir un enllaç formal entre tots els temes materials quantificats i els incentius executius per tancar la bretxa entre estratègia i declaració.",
+        "effort": "Baix",
+        "impact": "Alt"
+      },
+      {
+        "num": "04",
+        "title": "Desagregar mètriques ambientals",
+        "desc": "Baixar les dades de nivell global a nivell de conca (aigua) i de lloc (contaminació) per permetre una avaluació d'impacte real i contextual.",
+        "effort": "Alt",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "csrd-esrs",
+        "criterion": "ESRS E1-1 Transition plan",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 18,
+          "section": "5.1",
+          "table": null
+        },
+        "nature": "quantitatiu",
+        "impact": "alt",
+        "action": "Verificar l'alineació del Pla de Transició Climàtica amb els escenaris de la DG CLIMA o alternatives reconegudes com SBTi."
+      },
+      {
+        "framework": "csrd-esrs",
+        "criterion": "ESRS S1-16 Gender pay gap",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 21,
+          "section": "6.1",
+          "table": null
+        },
+        "nature": "quantitatiu",
+        "impact": "mitja",
+        "action": "Incloure el càlcul i report de la bretxa salarial ajustada per millorar la transparència sobre la igualtat."
+      },
+      {
+        "framework": "csrd-esrs",
+        "criterion": "ESRS G1-6 Payment practices",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 28,
+          "section": "7.2",
+          "table": null
+        },
+        "nature": "quantitatiu",
+        "impact": "alt",
+        "action": "Adaptar els sistemes ERP per segmentar la base de proveïdors i reportar terminis de pagament específics per a PIMES."
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Cumple con datos en la mayoría de aspectos clave, con alguna mención sin cuantificar",
+      "indicators": [
+        {
+          "name": "Metas a 1.5°C",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "El 57% de las empresas divulgan metas a corto y largo plazo compatibles con 1.5°C."
+        },
+        {
+          "name": "Brecha salarial no ajustada",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "La brecha media es del 14.3% a favor de los hombres."
+        },
+        {
+          "name": "Plazos de pago a pymes",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "Solo el 7% lo divulga, con una media de 24 días."
+        },
+        {
+          "name": "Metodología DMA",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "El 67% usa un enfoque híbrido y el 82% actualizó la DMA."
+        },
+        {
+          "name": "Cobertura Scope 3",
+          "status": "groc",
+          "label": "Mencionado",
+          "note": "Se menciona la inclusión de Scope 3 en el análisis de objetivos, pero no se detalla su cobertura por empresa."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "905",
+        "label": "Declaraciones de sostenibilidad analizadas",
+        "page": "p. 4"
+      },
+      {
+        "value": "14.3%",
+        "label": "Brecha salarial de género media no ajustada a favor de los hombres",
+        "page": "p. 5"
+      },
+      {
+        "value": "57%",
+        "label": "Empresas con metas de descarbonización compatibles con 1.5°C",
+        "page": "p. 4"
+      },
+      {
+        "value": "63%",
+        "label": "Empresas que integran la sostenibilidad en incentivos ejecutivos",
+        "page": "p. 4"
+      },
+      {
+        "value": "7%",
+        "label": "Empresas que divulgan plazos de pago específicos para pymes",
+        "page": "p. 5"
+      }
+    ],
+    "resumExecutiu": "El segundo informe State of Play de EFRAG analiza 905 declaraciones de sostenibilidad del ejercicio FY2025, evidenciando una continuidad en la materialidad donde E1 (Clima), S1 (Plantilla) y G1 (Conducta) dominan con más del 95%. Se aprecia un avance en la adopción de Planes de Transición Climática, alcanzando el 69%, y un 57% de metas alineadas a 1.5°C. Sin embargo, persiste una desconexión estratégica: se identifican 6.4 temas materiales en promedio, pero solo se establecen metas medibles para 3.3. Además, solo el 63% vincula la sostenibilidad a la remuneración ejecutiva. La transparencia social mejora con datos como la brecha salarial (14.3%), pero la divulgación de plazos de pago a pymes sigue siendo marginal (7%), indicando que la integración ESG en la cadena de valor es más declarativa que operativa.",
+    "implicaciones": {
+      "empresas": "Deben cerrar la brecha entre materialidad y estrategia, pasando de los 3.3 a los 6.4 temas materiales con metas medibles. Es imperativo evolucionar de la mera firma de códigos de conducta con proveedores a mecanismos operativos con impacto real.",
+      "reguladores": "La baja divulgación sobre pymes (7%) y la agregación global de métricas ambientales (77%) revelan que los sistemas ERP actuales son una barrera técnica. Se requiere guiar o flexibilizar la implementación para facilitar el desglose de datos sin asfixiar operativamente a las empresas.",
+      "ciudadanos": "Aunque la transparencia estructural aumenta, la ausencia casi total de resúmenes ejecutivos de sostenibilidad (6%) dificulta el acceso a la información para el público no especializado, manteniendo los informes como documentos técnicos herméticos."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Justicia y Dignidad",
+      "body": "La brecha salarial media del 14.3% y la falta de desglose ajustado (solo 12%) enmascaran desigualdades estructurales en el seno de las organizaciones. Asimismo, la integración superficial de criterios ESG en proveedores, limitada a la exigencia de firmar códigos de conducta sin planes de acción correctivos, no protege activamente la dignidad de los trabajadores en la cadena de valor frente a abusos reales."
+    },
+    "conexiones": [
+      {
+        "type": "Evolución",
+        "target": "Adopción de Planes de Transición Climática",
+        "desc": "Aumento del 55% al 69% en la declaración de CTP entre FY2024 y FY2025, mostrando impulso en la planificación climática corporativa."
+      },
+      {
+        "type": "Contradicción",
+        "target": "Metas medibles vs. Materialidad estratégica",
+        "desc": "Se declaran 6.4 temas materiales en promedio, pero solo se establecen metas cuantitativas para 3.3, reflejando una desconexión profunda entre lo que es importante y lo que se gestiona."
+      },
+      {
+        "type": "Complemento",
+        "target": "Incentivos ejecutivos y metas climáticas",
+        "desc": "El 63% de las empresas vinculan la sostenibilidad a la retribución directiva, complementando el hecho de que el 98% de las empresas con E1 material tengan al menos una meta climática."
+      }
+    ],
+    "acciones": [
+      {
+        "num": "01",
+        "title": "Cerrar la brecha de metas medibles",
+        "desc": "Auditar los 6.4 temas materiales declarados y definir objetivos cuantitativos y temporales para alcanzar el 100% de cobertura estratégica antes del próximo ciclo.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "02",
+        "title": "Implementar cálculo de brecha salarial ajustada",
+        "desc": "Ir más allá del 14.3% no ajustado y desarrollar metodologías internas para divulgar la brecha salarial ajustada por rol, antigüedad y geografía.",
+        "esfuerzo": "Medio",
+        "impacto": "Medio"
+      },
+      {
+        "num": "03",
+        "title": "Descentralizar métricas ambientales (E2-E5)",
+        "desc": "Superar el reporte a nivel global exclusivo (77%) e introducir desgloses regionales o de sitio, especialmente en contaminación, agua y biodiversidad.",
+        "esfuerzo": "Alto",
+        "impacto": "Medio"
+      },
+      {
+        "num": "04",
+        "title": "Segmentar y agilizar pagos a pymes",
+        "desc": "Actualizar sistemas ERP para identificar proveedores pyme y reportar plazos de pago específicos, mejorando la liquidez del ecosistema empresarial y cumpliendo con ESRS G1-6.",
+        "esfuerzo": "Alto",
+        "impacto": "Alto"
+      },
+      {
+        "num": "05",
+        "title": "Incluir resúmenes ejecutivos de sostenibilidad",
+        "desc": "Elaborar un resumen ejecutivo de la declaración de sostenibilidad para facilitar la navegación y comprensión a inversores no especialistas y ciudadanos.",
+        "esfuerzo": "Bajo",
+        "impacto": "Medio"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "csrd-esrs",
+        "criterio": "ESRS G1-6 Average payment terms to suppliers",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 5,
+          "section": "7.2",
+          "table": "Figura 21"
+        },
+        "nature": "cuantitativo",
+        "impact": "medio",
+        "action": "Configurar el sistema ERP para identificar proveedores pymes y extraer plazos de pago promedio específicos."
+      },
+      {
+        "framework": "csrd-esrs",
+        "criterio": "ESRS S1-16 Gender pay gap",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 5,
+          "section": "6.1",
+          "table": "Figura 15"
+        },
+        "nature": "cuantitativo",
+        "impact": "alto",
+        "action": "Complementar la divulgación de la brecha no ajustada con el cálculo de la brecha ajustada para dar contexto a las particularidades de la plantilla."
+      },
+      {
+        "framework": "csrd-esrs",
+        "criterio": "ESRS E1 Transition plan for climate change mitigation",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 5,
+          "section": "5.1",
+          "table": "Figura 13"
+        },
+        "nature": "cualitativo",
+        "impact": "alto",
+        "action": "Asegurar que la declaración del Plan de Transición Climática venga acompañada de metas explícitamente alineadas con el scenario de 1.5°C."
+      }
+    ]
+  }
+}

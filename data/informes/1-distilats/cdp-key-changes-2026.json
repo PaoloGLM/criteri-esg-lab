@@ -1,0 +1,383 @@
+{
+  "slug": "cdp-key-changes-2026",
+  "title": "Key changes 2026",
+  "institution": "CDP",
+  "filename_original": "cdp-key-changes-2026.pdf",
+  "generated_at": "2026-09-16T11:38:48",
+  "content_ca": {
+    "semafor": {
+      "grade": "C",
+      "gradeLabel": "Majoria d'indicadors esmentats però no quantificats; cap indicador ignorat",
+      "indicators": [
+        {
+          "name": "Cobertura Scope 3",
+          "status": "groc",
+          "label": "Esmentat via alineació GHG Protocol Scope 3 Standard",
+          "note": "CDP manté alineació amb GHG Protocol Scope 3 Standard però no sol·licita dades quantitatives noves el 2026"
+        },
+        {
+          "name": "Ocean disclosure",
+          "status": "groc",
+          "label": "Introduït però no puntuat el 2026",
+          "note": "S'introdueix mòdul d'oceà per primera vegada; no es puntua per donar temps a les organitzacions"
+        },
+        {
+          "name": "Puntuació forestal (cocoa, cafè, cautxú)",
+          "status": "verd",
+          "label": "Quantificat: tres noves commodities puntuades",
+          "note": "Cocoa, cafè i cautxú s'afegeixen a les set commodities puntuades amb metodologia alineada"
+        },
+        {
+          "name": "Adaptació i resiliència",
+          "status": "verd",
+          "label": "Quantificat: 48% de grans empreses identifiquen riscos físics",
+          "note": "Dada del 2024: 48% de grans empreses reportants identifiquen riscos físics amb efecte substantiu"
+        },
+        {
+          "name": "Plàstics i economia circular",
+          "status": "groc",
+          "label": "Esmentat amb noves preguntes, no puntuat",
+          "note": "Nous mòduls sobre objectius, formats d'envasament i models de reutilització; no es puntua el 2026"
+        },
+        {
+          "name": "Objectius científics d'aigua (SBTN)",
+          "status": "groc",
+          "label": "Esmentat amb referència metodològica",
+          "note": "S'accepten targets SBTN freshwater validats per Accountability Accelerator; no hi ha dades quantitatives pròpies"
+        },
+        {
+          "name": "Alineació GHG Protocol LSRS",
+          "status": "groc",
+          "label": "Esmentat, no exigit quantitativament el 2026",
+          "note": "CDP prepararà les organitzacions per al LSRS però no demanarà dades quantitatives fins al 2027"
+        },
+        {
+          "name": "Puntuació SME A per canvi climàtic",
+          "status": "verd",
+          "label": "Quantificat: nou nivell de puntuació introduït",
+          "note": "Les SME poden ara assolir SME A score per canvi climàtic; abans només fins a SME B"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "48%",
+        "label": "Grans empreses reportants que identifiquen riscos físics amb efecte substantiu (2024)",
+        "page": "12"
+      },
+      {
+        "value": "US$11trn",
+        "label": "Actius totals representats pels 80+ membres d'UNEP FI Sustainable Blue Finance Initiative",
+        "page": "6"
+      },
+      {
+        "value": "5%",
+        "label": "Nou llindar per excloure commodities per volum petit (abans 1%) en puntuació forestal",
+        "page": "19"
+      },
+      {
+        "value": "7",
+        "label": "Commodities puntuades el 2026: bestiar, oli de palma, soja, fusta, cocoa, cafè, cautxú",
+        "page": "8"
+      },
+      {
+        "value": "22.100",
+        "label": "Empreses que van divulgar impactes ambientals via CDP el 2025",
+        "page": "25"
+      }
+    ],
+    "resumExecutiu": "CDP presenta els canvis clau del cicle de divulgació 2026, centrant-se en l'expansió cap a la natura holística. S'introdueix per primera vegada un mòdul d'oceà (no puntuat), s'amplia la puntuació forestal a cocoa, cafè i cautxú (set commodities totals), i es reforça l'alineació amb TNFD, GHG Protocol LSRS, SBTN i GRI 303. El qüestionari SME s'enriqueix amb mòduls de boscos i seguretat hídrica, i s'introdueix la puntuació SME A per canvi climàtic. L'adaptació i resiliència es priorititzen amb dades que mostren que el 48% de grans empreses identifiquen riscos físics. Els plàstics amplien preguntes sobre economia circular però no es puntuen. Els canvis reflecteixen una transició gradual cap a estàndards globals sense sobrecarregar les organitzacions amb requisits quantitatius immediats.",
+    "implicacions": {
+      "empreses": "Les empreses han de preparar-se per a la recollida de dades d'oceà i plàstics, encara que no es puntuïn el 2026. Les que produeixen o provenen de cocoa, cafè o cautxú han d'implementar sistemes de traçabilitat i objectius lliures de desforestació. Les SME necessiten adaptar-se als nous mòduls forestals i hídrics, i poden aspirar a la puntuació SME A en canvi climàtic. L'alineació amb SBTN i GHG Protocol LSRS requereix preparació anticipada.",
+      "reguladors": "CDP avança cap a estàndards globals (TNFD, IFRS S2, ESRS) que els reguladors poden aprofitar per alinear requisits obligatoris. L'acceptació de verificació ESRS per a emissions facilita la convergència regulatòria europea. La introducció progressiva d'oceà i plàstics crea un precedent per a futurs marcs reguladors sobre economia blava i economia circular.",
+      "ciutadans": "La major transparència sobre impactes en boscos, oceà i aigua permet a la ciutadania i inversors exigir responsabilitat ambiental. L'ampliació cap a set commodities forestals i l'enfocament en adaptació i resiliència millora la informació disponible sobre riscos físics que afecten comunitats. Les SME reben eines simplificades que redueixen barreres d'entrada a la divulgació ambiental."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Transparència progressiva vs. greenwashing per omissió",
+      "body": "CDP introduceix oceà i plàstics sense puntuar-los el 2026, la qual cosa permet temps d'adaptació però també crea una zona grisa on les empreses poden optar per no divulgar sense conseqüències. Des d'una òptica ètica, la universalització d'aquesta pràctica significaria que la transparència queda supeditada a la disposició voluntària. Tractar les empreses com a fi significa donar-los eines (guies simplificades per SME, mòduls optatius) i no només exigir-los dades. La pregunta ètica és si aquesta transició gradual garanteix el dret de la societat a saber o simplement retarda l'accés a informació crítica."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "CDP 2024: integració de qüestionaris separats en un de sol",
+        "desc": "El 2024 CDP va integrar canvi climàtic, aigua i boscos en un únic marc; el 2026 amplia aquest marc cap a oceà i plàstics, consolidant l'enfocament holístic de natura."
+      },
+      {
+        "type": "Complement",
+        "target": "TNFD recomanacions i mètriques de divulgació",
+        "desc": "CDP reforça l'alineació amb TNFD el 2026, ampliant orientació sobre riscos, supervisió del consell i objectius. TNFD emergeix com a marc fonacional per a requisits reguladors de natura."
+      },
+      {
+        "type": "Contradicció",
+        "target": "GHG Protocol LSRS vs. dades quantitatives 2026",
+        "desc": "CDP reconeix que el LSRS no estarà publicat a temps per al 2026, per la qual cosa no exigeix dades quantitatives d'emissions del sector terrestre. Això crea un buit temporal on les organitzacions poden retardar la recollida de dades de remoció de CO2."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Preparar recollida de dades d'oceà i plàstics",
+        "desc": "Tot i que no es puntuen el 2026, identificar dependències, impactes i riscos relacionats amb oceà i plàstics per respondre al mòdul optatiu i preparar-se per a futurs cicles.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "02",
+        "title": "Implementar traçabilitat per a cocoa, cafè i cautxú",
+        "desc": "Les organitzacions que produeixen o provenen d'aquestes tres noves commodities puntuades han d'establir sistemes de traçabilitat, objectius lliures de desforestació i monitorització de la petjada de conversió.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Avaluar riscos físics amb horitzó temporal ampli",
+        "desc": "Revisar els processos d'identificació i avaluació de riscos ambientals per cobrir tota la cadena de valor i múltiples horitzons temporals, seguint els nous criteris essencials EC-CC1, EC-F4 i EC-W5.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "04",
+        "title": "Adaptar qüestionari SME i aspirar a puntuació A",
+        "desc": "Les SME han de familiaritzar-se amb els nous mòduls de boscos i aigua, aprofitar les guies simplificades i preparar accions líders en canvi climàtic per optar a la nova puntuació SME A.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "05",
+        "title": "Alinear verificació d'emissions amb estàndards ESRS",
+        "desc": "Assegurar que la verificació d'emissions compleix els requisits aprovats pels Estats membres de la UE per als ESRS, proporcionant tots els detalls rellevants en les preguntes 7.9.1 a 7.9.3.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "tnfd",
+        "criterion": "TNFD recomanacions sobre divulgació de riscos naturals i supervisió del consell",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 14,
+          "section": "Increased Alignment with TNFD",
+          "table": null
+        },
+        "nature": "qualitatiu",
+        "impact": "alt",
+        "action": "Mapejar les preguntes del mòdul oceà i boscos de CDP amb les 14 recomanacions TNFD per identificar buits abans del cicle 2026"
+      },
+      {
+        "framework": "gri",
+        "criterion": "GRI 303: Aigua i efluents - tractament d'aigües residuals",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 9,
+          "section": "Water Security - Wastewater treatment",
+          "table": null
+        },
+        "nature": "quantitatiu",
+        "impact": "mitja",
+        "action": "Recopilar dades sobre nivells de tractament d'aigües residuals, volums de descàrrega i compliment regulador per alinear-se amb GRI 303"
+      },
+      {
+        "framework": "cdp",
+        "criterion": "CDP Essential Criteria EC-F3: Divulgació completa de commodities",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 19,
+          "section": "CDP Forests Essential Criteria 2026 - EC-F3",
+          "table": null
+        },
+        "nature": "quantitatiu",
+        "impact": "alt",
+        "action": "Revisar el llindar d'exclusió de commodities (ara 5%) i assegurar que les set commodities puntuades estan degudament reportades o excloses amb justificació"
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "C",
+      "gradeLabel": "El informe presenta cambios estructurales relevantes pero la mayoría de novedades (océano, plásticos, biodiversidad) no serán puntuadas en 2026, reflejando un año de transición más que de consolidación cuantitativa.",
+      "indicators": [
+        {
+          "name": "Cobertura Scope 3",
+          "status": "groc",
+          "label": "Alineación con GHG Protocol Scope 3",
+          "note": "CDP mantiene alineación con GHG Protocol Corporate Standard, Scope 2 y Scope 3, pero el LSRS se pospone a 2027. No se solicitan datos cuantitativos nuevos en 2026."
+        },
+        {
+          "name": "Bosques y commodities",
+          "status": "verd",
+          "label": "Puntuación de cacao, café y caucho",
+          "note": "Se cuantifica la incorporación de tres nuevos commodities puntuados con umbral de exclusión por pequeño volumen elevado del 1% al 5%."
+        },
+        {
+          "name": "Divulgación de océano",
+          "status": "groc",
+          "label": "Nuevo módulo de océano",
+          "note": "Se introduce el módulo de océano por primera vez pero no será puntuado en 2026. Se integra en módulos existentes (1-5, 13)."
+        },
+        {
+          "name": "Plásticos",
+          "status": "groc",
+          "label": "Expansión de plásticos",
+          "note": "Se añaden preguntas sobre objetivos, formatos de embalaje, diseño para reciclaje y modelos de reutilización, pero no se puntúa en 2026."
+        },
+        {
+          "name": "Adaptación y resiliencia",
+          "status": "verd",
+          "label": "Ampliación de preguntas de adaptación",
+          "note": "48% de grandes empresas reportaron riesgos físicos con efecto sustancial en 2024. Se actualizan módulos 2, 4, 5, 11, 12 y 14."
+        },
+        {
+          "name": "Seguridad hídrica",
+          "status": "groc",
+          "label": "Objetivos basados en ciencia (SBTN)",
+          "note": "Se permite reportar SBTN Step 1 y Step 3 para agua dulce, validados por Accountability Accelerator. Alineación con GRI 303."
+        },
+        {
+          "name": "Cuestionario PYME",
+          "status": "groc",
+          "label": "Novedades en PYME",
+          "note": "Introducción de puntuación A para PYME en cambio climático y nuevos módulos de bosques y agua, pero sin puntuación en estos últimos en 2026."
+        },
+        {
+          "name": "Alineación con TNFD",
+          "status": "groc",
+          "label": "Integración TNFD",
+          "note": "Se fortalece alineación con TNFD en divulgación de riesgos, supervisión del consejo y fijación de objetivos, pero sin métricas cuantitativas de cobertura."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "48%",
+        "label": "Grandes empresas reportantes que identificaron riesgos físicos (agudos o crónicos) con efecto sustancial en 2024",
+        "page": "12"
+      },
+      {
+        "value": "US$ 11 billones",
+        "label": "Activos totales representados por los 80+ miembros de UNEP FI Sustainable Blue Finance Initiative",
+        "page": "6"
+      },
+      {
+        "value": "1% → 5%",
+        "label": "Umbral de exclusión por pequeño volumen de commodities elevado para bosques",
+        "page": "19"
+      },
+      {
+        "value": "22.100",
+        "label": "Empresas que divulgaron impactos ambientales a través de CDP en 2025",
+        "page": "25"
+      },
+      {
+        "value": "7 commodities",
+        "label": "Commodities puntuados en bosques 2026: ganado, aceite de palma, soja, madera, cacao, café y caucho",
+        "page": "8"
+      }
+    ],
+    "resumExecutiu": "El informe de CDP sobre los cambios clave del ciclo de divulgación 2026 presenta una evolución significativa hacia un marco integrado de naturaleza y clima. Las principales novedades incluyen la introducción por primera vez de preguntas sobre océano, la incorporación de cacao, café y caucho como commodities puntuados en bosques, la expansión de preguntas sobre adaptación y resiliencia, y mejoras en el cuestionario de plásticos. CDP continúa fortaleciendo su alineación con TNFD, GHG Protocol, SBTN y GRI. El cuestionario PYME se actualiza con nuevos módulos de bosques y seguridad hídrica, e introduce la puntuación A para cambio climático. Sin embargo, océano, plásticos y biodiversidad no serán puntuados en 2026, lo que refleja un enfoque de transición que permite a las organizaciones prepararse para ciclos futuros. Los criterios esenciales se revisan con cambios menores en riesgos y oportunidades, incentivos, y exclusión de commodities. El sector de aviación se introduce como nuevo sector, y se reorganizan las clasificaciones de impacto industrial para bosques y agua.",
+    "implicaciones": {
+      "empresas": "Las empresas deben prepararse para una mayor amplitud temática en su divulgación ambiental 2026. Las organizaciones de sectores de alto impacto deberán considerar optar por el módulo de océano, mientras que las que producen o adquieren cacao, café o caucho enfrentarán puntuación por primera vez. Las empresas RE100 deberán completar el cuestionario completo, no el de PYME. Se requiere preparación de datos sobre tratamiento de aguas residuales, modelos de reutilización de plásticos y evaluación de riesgos físicos en toda la cadena de valor. Las empresas con SBT para Naturaleza validados podrán obtener reconocimiento en puntuación de liderazgo.",
+      "reguladores": "La evolución de CDP hacia un marco integrado de naturaleza refuerza la convergencia con estándares regulatorios emergentes como ESRS y TNFD. La aceptación de verificación de emisiones bajo estándares aprobados por Estados miembros de la UE para ESRS facilita la interoperabilidad. Los reguladores deben observar cómo la introducción gradual de océano y plásticos crea un precedente para futuras exigencias normativas. La exclusión de puntuación en 2026 para estos temas sugiere que la regulación debería permitir periodos de transición similares.",
+      "ciudadanos": "La expansión de la divulgación ambiental hacia océano, plásticos y adaptación resiliencia ofrece a la sociedad civil mayor visibilidad sobre cómo las empresas gestionan impactos en ecosistemas marinos, economía circular y riesgos climáticos físicos. La incorporación de PYMEs en la divulgación de bosques y agua mejora la transparencia de las cadenas de suministro globales. Sin embargo, la ausencia de puntuación en océano y plásticos limita la capacidad de los ciudadanos para comparar el desempeño real de las empresas en estas áreas críticas durante 2026."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Justicia transicional en la expansión de la divulgación",
+      "body": "CDP reconoce que la incorporación de nuevos temas como océano y plásticos requiere tiempo para que las organizaciones establezcan sistemas de recolección de datos, por lo que no los puntúa en 2026. Este enfoque respeta el principio de justicia: no penaliza a quienes están iniciando su trayectoria de transparencia. Sin embargo, la elevación del umbral de exclusión de commodities del 1% al 5% podría permitir que organizaciones con impactos reales pero 'pequeños' eludan la rendición de cuentas, tensionando el principio de sostenibilidad. La introducción de la puntuación A para PYMEs en clima democratiza el reconocimiento, pero la ausencia de puntuación en bosques y agua para PYMEs reproduce asimetrías de poder en la cadena de suministro, donde las grandes corporaciones exigen datos que ellas mismas no proporcionan con el mismo rigor."
+    },
+    "conexiones": [
+      {
+        "type": "Evolución",
+        "target": "Integración de cuestionarios 2024",
+        "desc": "En 2024 CDP integró sus cuestionarios separados de cambio climático, seguridad hídrica y bosques en un único marco. En 2026, esta integración se profundiza con la incorporación de océano y la expansión hacia una cobertura de naturaleza más completa."
+      },
+      {
+        "type": "Complemento",
+        "target": "Alineación con TNFD y SBTN",
+        "desc": "La introducción de océano y la expansión de bosques complementan la alineación con TNFD, mientras que la incorporación de SBTN Step 1 y Step 3 para agua dulce refuerza la coherencia con marcos basados en ciencia para la naturaleza."
+      },
+      {
+        "type": "Complemento",
+        "target": "Cuestionario PYME y cadenas de suministro",
+        "desc": "Los nuevos módulos de bosques y agua para PYMEs complementan directamente las necesidades de los miembros de CDP Supply Chain que requieren datos de naturaleza de sus proveedores, cerrando el círculo entre grandes corporaciones y sus cadenas de valor."
+      }
+    ],
+    "acciones": [
+      {
+        "num": "01",
+        "title": "Evaluar materialidad de océano y plásticos antes del ciclo 2026",
+        "desc": "Las organizaciones deben realizar una autoevaluación de dependencias, impactos, riesgos y oportunidades relacionadas con océano y plásticos para decidir si optan por divulgar estos temas voluntariamente en 2026, preparando así los sistemas de datos para futuros ciclos con puntuación.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "02",
+        "title": "Preparar datos de cadena de suministro para cacao, café y caucho",
+        "desc": "Las empresas que producen o adquieren cacao, café o caucho deben mapear orígenes, trazabilidad, objetivos libres de deforestación y conversión, y estado DCF antes del inicio del ciclo 2026, ya que estos commodities serán puntuados por primera vez.",
+        "esfuerzo": "Alto",
+        "impacto": "Alto"
+      },
+      {
+        "num": "03",
+        "title": "Alinear reporte de tratamiento de aguas residuales con GRI 303",
+        "desc": "Revisar los sistemas de monitoreo de aguas residuales para capturar niveles de tratamiento, volúmenes de descarga y cumplimiento normativo, asegurando consistencia con los nuevos datapoints solicitados en la pregunta 9.2.9.",
+        "esfuerzo": "Medio",
+        "impacto": "Medio"
+      },
+      {
+        "num": "04",
+        "title": "Revisar evaluación de riesgos físicos en toda la cadena de valor",
+        "desc": "Actualizar los procesos de identificación, evaluación y gestión de riesgos ambientales para cubrir operaciones directas y cadena de valor aguas arriba y abajo, en todos los horizontes temporales, cumpliendo con los criterios esenciales revisados EC-CC1, EC-F4 y EC-W5.",
+        "esfuerzo": "Alto",
+        "impacto": "Alto"
+      },
+      {
+        "num": "05",
+        "title": "Verificar elegibilidad de cuestionario PYME vs. completo",
+        "desc": "Las empresas RE100 deben confirmar que no son elegibles para el cuestionario PYME en 2026. Las PYMEs deben evaluar si conviene divulgar voluntariamente sobre bosques y agua para anticipar requisitos futuros de miembros de CDP Supply Chain.",
+        "esfuerzo": "Bajo",
+        "impacto": "Medio"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "tnfd",
+        "criterio": "Recomendaciones TNFD sobre divulgación de riesgos relacionados con la naturaleza y métricas core",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 14,
+          "section": "Increased Alignment with TNFD",
+          "table": null
+        },
+        "nature": "cualitativo",
+        "impact": "alto",
+        "action": "Mapear las recomendaciones TNFD contra las preguntas modificadas de CDP 2026 en módulos 2, 4 y 5 para identificar brechas en divulgación de gobernanza, estrategia y métricas de naturaleza."
+      },
+      {
+        "framework": "gri",
+        "criterio": "GRI 303: Agua y efluentes - tratamiento y descarga de aguas residuales",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 9,
+          "section": "Water Security - Wastewater treatment",
+          "table": null
+        },
+        "nature": "cuantitativo",
+        "impact": "medio",
+        "action": "Asegurar que los datos de niveles de tratamiento, volúmenes de descarga y cumplimiento normativo de aguas residuales cumplan con las modificaciones de la pregunta 9.2.9 antes del Q1 2026."
+      },
+      {
+        "framework": "csrd-esrs",
+        "criterio": "Verificación de emisiones bajo estándares aprobados por Estados miembros de la UE para ESRS",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 13,
+          "section": "Verification of emissions accounting",
+          "table": null
+        },
+        "nature": "cualitativo",
+        "impact": "medio",
+        "action": "Confirmar que la verificación de emisiones cumple con los estándares aprobados por Estados miembros de la UE y reportar todos los detalles relevantes en las preguntas 7.9.1, 7.9.2 y 7.9.3."
+      }
+    ]
+  }
+}

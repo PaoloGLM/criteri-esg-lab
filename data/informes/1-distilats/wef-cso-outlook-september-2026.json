@@ -1,0 +1,365 @@
+{
+  "slug": "wef-cso-outlook-september-2026",
+  "title": "Cso outlook september 2026",
+  "institution": "World Economic Forum",
+  "filename_original": "wef-cso-outlook-september-2026.pdf",
+  "generated_at": "2026-09-16T12:24:24",
+  "content_ca": {
+    "semafor": {
+      "grade": "A",
+      "gradeLabel": "Informació sòlida i quantificada en la majoria d'eixos, amb llacunes en justícia transicional",
+      "indicators": [
+        {
+          "name": "Progrés global de sostenibilitat",
+          "status": "verd",
+          "label": "Progrés a curt termini",
+          "note": "63% dels CSO esperen que el progrés global es mantingui o acceleri; 39% sense canvis, 24% acceleració (p. 5)"
+        },
+        {
+          "name": "Impacte ambiental de la IA",
+          "status": "verd",
+          "label": "Balanç IA i sostenibilitat",
+          "note": "77% identifiquen la intensitat energètica de la IA com a impacte negatiu principal; centres de dades = 1.5% consum elèctric global (p. 16)"
+        },
+        {
+          "name": "Adaptació i resiliència",
+          "status": "verd",
+          "label": "Inversió en adaptació",
+          "note": "85% esperen que l'adaptació sigui un focus major; 77% consideren la inversió privada decisiva; 62% citen cost-benefici incert (p. 18-19)"
+        },
+        {
+          "name": "Divergència verda i mercats emergents",
+          "status": "verd",
+          "label": "Lideratge emergent",
+          "note": "Dos tercios dels CSO esperen lideratge creixent dels mercats emergents; Índia 44% capacitat no fòssil 2024; Xina $625B inversió 2024 (p. 9-10)"
+        },
+        {
+          "name": "Finançament de natura",
+          "status": "verd",
+          "label": "Fluxos capitals vs natura",
+          "note": "$4.9 bilions cap a activitats que danyen natura vs $23 bilions anuals en solucions basades en natura (UNEP, p. 8)"
+        },
+        {
+          "name": "Integració estratègica",
+          "status": "groc",
+          "label": "Compliance vs competitivitat",
+          "note": "65% del C-suite veu sostenibilitat com a obligació de compliance, 41% com a font de valor; 54% d'empreses europees tenen estratègia separada (p. 12)"
+        },
+        {
+          "name": "Transició justa i PIME",
+          "status": "groc",
+          "label": "Finançament PIME",
+          "note": "S'esmenta que els models de finançament existents no funcionen per a PIME, però sense dades quantificades (p. 11)"
+        },
+        {
+          "name": "Geopolítica i conflictes",
+          "status": "verd",
+          "label": "Impacte geopolític",
+          "note": "78% esperen arrossegament significatiu; atac EUA-Israel a l'Iran i tancament de l'Estret d'Ormuz documentats (p. 6)"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "63%",
+        "label": "CSO que esperen progrés estable o accelerat",
+        "page": "5"
+      },
+      {
+        "value": "$5 bilions",
+        "label": "Valor de l'economia verda 2024 (~5% PIB global), >$7B per 2030",
+        "page": "8"
+      },
+      {
+        "value": "77%",
+        "label": "CSO que identifiquen intensitat energètica de la IA com a impacte negatiu principal",
+        "page": "16"
+      },
+      {
+        "value": "85%",
+        "label": "CSO que esperen adaptació com a focus creixent",
+        "page": "18"
+      },
+      {
+        "value": "$4.9 bilions vs $23 bilions",
+        "label": "Capital cap a activitats nocives vs solucions basades en natura",
+        "page": "8"
+      }
+    ],
+    "resumExecutiu": "L'informe del WEF recull la perspectiva de 103 Chief Sustainability Officers sobre l'estat de la transició sostenible. Malgrat un entorn geopolític turbulent —amb el conflicte EUA-Israel-Iran i la interrupció de l'Estret d'Ormuz durant el període de l'enquesta—, el 63% dels líders mantenir o accelerar el progrés. La sostenibilitat deixa de ser un compromís per esdevenir una capacitat empresarial integrada en competitivitat i resiliència. L'economia verda supera els 5 bilions de dòlars i creix al doble de ritme que altres sectors. Tanmateix, el 65% del C-suite encara la percep com a compliance. La IA emergeix com a accelerador operacional (73% d'optimistes), però el 77% alerta de la seva intensitat energètica i de recursos. L'adaptació guanya centralitat (85%), però el 62% cita cost-benefici incert com a barrera. La divergència verda defineix el proper capítol: velocitats i camins diferents segons regió i sector.",
+    "implicacions": {
+      "empreses": "Les empreses han de superar la visió compliance i integrar sostenibilitat en capital allocation, operations i competitivitat. La pressió a curt termini exigeix demostrar valor financer de les iniciatives verdes. L'IA ofereix eficiència operacional (medició, reporting, optimització) però requereix governança del seu propi impacte ambiental. L'adaptació necessita models d'inversió que quantifiquin pèrdues evitades. La integració amb PIME i cadenes de valor és determinant.",
+      "reguladors": "La inconsistència regulatòria (68% la citen com a barrera) és el principal fre al progrés. Cal predictibilitat i claredat per traduir momentum comercial en progrés sistèmic. Els acords internacionals perden força (només 7% els consideren motor). Es necessiten estructures invertibles per a adaptació, mecanismes de compartició de risc i col·laboració públic-privada. La reporting expansion (58% esperen creixement) continua via estàndards ISSB.",
+      "ciutadans": "La divergència verda implica que els beneficis de la transició es distribueixen desigualment entre sectors, mercats i geografies. Les PIME i mercats emergents necessiten infraestructura financera adequada. Els consumidors no apareixen com a prioritaris (15% customer priority, 8% workforce). L'opinió pública té un paper limitat (5% com a motor). Els ciutadans són afectats per riscos físics creixents però sense veu clara en l'agenda corporativa."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Ètica de la instrumentalització",
+      "body": "L'informe revela una instrumentalització sistemàtica de la sostenibilitat: de ser un deure ètic cap al planeta i les generacions futures, es converteix en eina de competitivitat i valor financer. Aquest gir, pragmàtic, tracta la natura com a mitjà i no com a fi. La divergència verda i l'absència de justícia transicional deixen les comunitats vulnerables sense protecció. L'IA, celebrada com a accelerador, consumeix recursos que pertanyen a ecosistemes i poblacions. Quan la sostenibilitat només es justifica pel ROI, què passa quan deixi de ser rendible?"
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "Global Risks Report 2026 (WEF)",
+        "desc": "L'informe cita el Global Risks Report 2026 que situa els riscos ambientals com a amenaces més severes a llarg termini, confirmant la urgència que aquest outlook trasllada a nivell corporatiu"
+      },
+      {
+        "type": "Contradicció",
+        "target": "UNEP State of Finance for Nature 2026",
+        "desc": "Mentre l'informe celebra l'embed comercial de la sostenibilitat, l'UNEP documenta que $4.9 bilions flueixen cap a activitats nocives vs $23B en natura, revelant una desalineació estructural del capital"
+      },
+      {
+        "type": "Complement",
+        "target": "IEA World Energy Investment 2025",
+        "desc": "L'IEA confirma que dos terços de la inversió energètica global 2025 va a renovables, grids i eficiència, recolzant l'optimisme dels CSO amb dades macro"
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Reformular el business case intern cap a valor operacional",
+        "desc": "Traduir l'agenda climàtica en estalvis concrets (aigua, residus, energia, materials) i demostrar ROI al C-suite per superar la barrera del 65% que la veu com a compliance",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Auditar i governar la petjada de la infraestructura d'IA",
+        "desc": "Establir protocols de mesura d'impacte energètic, hídric i mineral de la IA desplegada, prioritzant casos d'ús amb guanys d'eficiència superiors a la petjada generada",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Desenvolupar models d'inversió en adaptació amb mètriques de pèrdua evitada",
+        "desc": "Crear estructures invertibles que quantifiquin el valor de la resiliència (reducció de disrupcions, primes d'assegurança, continuïtat operacional) per superar la barrera del 62% en cost-benefici incert",
+        "effort": "Alt",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "04",
+        "title": "Construir infraestructura financera per a PIME a la cadena de valor",
+        "desc": "Dissenyar partenariats i instruments financers adaptats a PIME que facilitin la transició al nivell local, on la resiliència i l'adaptació es materialitzen",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "05",
+        "title": "Integrar la veu de stakeholders externs en l'estratègia",
+        "desc": "Incorporar expectatives de treballadors i comunitats afectades (avui només 8% i 15%) als processos de decisió per evitar la divergència verda desigual",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "csrd-esrs",
+        "criterion": "ESRS E1 - Climate Change Adaptation and Mitigation",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 18,
+          "section": "4 Adaptation to secure continuity",
+          "table": "Figure 11-13"
+        },
+        "nature": "qualitatiu",
+        "impact": "alt",
+        "action": "Quantificar exposició a riscos físics per instal·lació i cadena de valor amb dades financeres per complir ESRS E1 amb evidència"
+      },
+      {
+        "framework": "gri",
+        "criterion": "GRI 305-1 Direct (Scope 1) GHG emissions",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 11,
+          "section": "2 From compliance to competitiveness",
+          "table": "-"
+        },
+        "nature": "quantitatiu",
+        "impact": "mitja",
+        "action": "Reportar emissions Scope 1 desagregades per instal·lació abans del Q4 per alinear amb la reporting expansion anticipada"
+      },
+      {
+        "framework": "tcfd",
+        "criterion": "TCFD - Physical Risk Assessment",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 18,
+          "section": "4.1 Adaptation as an operational priority",
+          "table": "Figure 12"
+        },
+        "nature": "qualitatiu",
+        "impact": "alt",
+        "action": "Conduir avaluació de risc físic per logística (54%) i operacions (53%) amb escenaris climàtics per TCFD"
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Reportaje sólido con datos cuantitativos en la mayoría de bloques temáticos, pero con una mención superficial en el ámbito de la integración social y la transición justa.",
+      "indicators": [
+        {
+          "name": "Adaptación y resiliencia operativa",
+          "status": "verd",
+          "label": "Adaptación como prioridad operativa",
+          "note": "85% espera que la adaptación adquiera mayor foco global; 77% considera decisiva la inversión privada; 62% cita valoraciones coste-beneficio inciertas como barrera principal."
+        },
+        {
+          "name": "IA como acelerador de sostenibilidad",
+          "status": "verd",
+          "label": "Impacto de la IA en sostenibilidad",
+          "note": "73% espera que la IA impulse el progreso; 66% señala modelización de riesgos, 61% eficiencia energética; 77% identifica la intensidad energética y de recursos de la infraestructura de IA como principal impacto negativo."
+        },
+        {
+          "name": "Integración de sostenibilidad en estrategia empresarial",
+          "status": "verd",
+          "label": "Sostenibilidad como capacidad empresarial",
+          "note": "69% espera que estrategias e inversiones se mantengan o aceleren; 54% de empresas europeas mantienen sostenibilidad separada de la estrategia principal; solo 5% reportan integración total."
+        },
+        {
+          "name": "Divergencia verde y mercados emergentes",
+          "status": "verd",
+          "label": "Transición multivelocidad",
+          "note": "64% espera que los mercados emergentes asuman mayor liderazgo; 68% cita señales regulatorias inconsistentes; 54% señala tensiones internacionales; se documenta inversión en energías limpias en China, India y Sudeste Asiático."
+        },
+        {
+          "name": "Transición justa y stakeholders",
+          "status": "groc",
+          "label": "Impacto social y comunidades vulnerables",
+          "note": "Se menciona el papel de las pymes y la necesidad de infraestructura financiera local, pero no se cuantifica el impacto en comunidades vulnerables, derechos laborales ni distribución social de los costes de transición."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "63%",
+        "label": "CSOs que esperan que el progreso global en sostenibilidad se mantenga estable (39%) o acelere (24%) en el próximo año",
+        "page": "p. 5"
+      },
+      {
+        "value": "$5 billones (trillones USD)",
+        "label": "Valor anual de la economía verde en 2024, equivalente al 5% de la actividad económica global; se proyecta que supere $7 billones para 2030",
+        "page": "p. 8"
+      },
+      {
+        "value": "77%",
+        "label": "CSOs que identifican la intensidad energética y de recursos de la infraestructura de IA como su principal impacto negativo en sostenibilidad",
+        "page": "p. 5"
+      },
+      {
+        "value": "85%",
+        "label": "CSOs que esperan que la adaptación se convierta en un mayor foco de los esfuerzos globales de sostenibilidad en los próximos tres años",
+        "page": "p. 5"
+      },
+      {
+        "value": "54%",
+        "label": "Empresas europeas en las que la estrategia de sostenibilidad sigue separada de la estrategia principal del negocio; solo el 5% reporta integración total",
+        "page": "p. 12"
+      }
+    ],
+    "resumExecutiu": "El informe inaugural del Foro Económico Mundial sobre la perspectiva de los Chief Sustainability Officers (CSOs) revela una transición de sostenibilidad que avanza con fuerza comercial pero bajo vientos geopolíticos contrarios. Un 63% de los 103 CSOs encuestados espera que el progreso global se mantenga o acelere, impulsado por la lógica de negocio (64%), la reducción de costes tecnológicos (56%) y la eficiencia operativa. La economía verde superó los $5 billones en 2024. Sin embargo, el 78% anticipa que la fragmentación geopolítica frenará el progreso y el 68% cita señales regulatorias inconsistentes. La sostenibilidad deja de ser un compromiso declarativo para convertirse en una capacidad empresarial integrada, aunque el 65% del C-suite aún la percibe principalmente como obligación de cumplimiento. La IA emerge como acelerador operativo (73% espera beneficios), pero con trade-offs significativos: el 77% señala su intensidad energética y de recursos como principal impacto negativo. La adaptación climática gotea hacia la prioridad operativa (85%), pero el 62% identifica valoraciones coste-beneficio inciertas como barrera crítica. El informe documenta una 'divergencia verde': transiciones multivelocidad donde los mercados emergentes asumen creciente liderazgo.",
+    "implicaciones": {
+      "empresas": "Las empresas deben redefinir la sostenibilidad como capacidad competitiva integrada en decisiones de inversión, operaciones y cadena de valor, no como agenda paralela. La IA ofrece aceleración operativa en medición, eficiencia y reporte, pero requiere gobernanza sobre su huella energética e hídrica. La adaptación exige modelos de inversión que conviertan pérdidas evitadas en casos de negocio verificables, superando ciclos presupuestarios cortos y falta de buy-in directivo. Es crítico extender capacidades a pymes y proveedores.",
+      "reguladores": "La inconsistencia regulatoria (68%) y la fragmentación geopolítica (54%) son las principales barreras identificadas. Los reguladores deben proporcionar previsibilidad, simplificar requisitos de reporte y desarrollar mecanismos de compartición de riesgos que atraigan capital privado hacia adaptación. La política industrial debe articularse con objetivos climáticos, como demuestran China e India, sin abandonar la ambición ambiental. La estandarización de datos y métricas de riesgo físico es prioritaria.",
+      "ciudadanos": "La percepción pública favorable (solo 5% la considera impulsor) y el rechazo político (30% como barrera) reflejan que las preocupaciones climáticas compiten con inflación, pobreza y desempleo. Los ciudadanos deben ser reconocidos como actores de la transición, no solo como consumidores. La 'divergencia verde' afecta desigualmente a comunidades vulnerables; sin embargo, el informe apenas aborda la dimensión social y de derechos de la transición."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Justicia y co-decisión en la divergencia verde",
+      "body": "El informe documenta con claridad que la transición avanzará a múltiples velocidades ('divergencia verde'), pero no problematiza las implicaciones de justicia de esta desigualdad. Si los mercados emergentes asumen liderazgo mientras la mitad de las empresas europeas mantienen la sostenibilidad separada del negocio central, ¿quién asume los costes de la desigualdad transitoria? El 62% que cita valoraciones coste-beneficio inciertas para adaptación revela que el marco financiero dominante no sabe valorar la resiliencia de comunidades y pymes. Falta co-decisión: el informe captura la voz de CSOs de grandes corporaciones, pero no la de trabajadores, comunidades afectadas ni pymes que subyacen a las cadenas de valor mencionadas. La sostenibilidad como 'capacidad empresarial' sin dimensión de arraigo territorial y dignidad corre el riesgo de reproducir las desigualdades que pretende mitigar."
+    },
+    "conexiones": [
+      {
+        "type": "Evolución",
+        "target": "Global Risks Report 2026 del WEF",
+        "desc": "El informe se conecta con el Global Risks Report 2026, que sigue clasificando los riesgos ambientales entre las amenazas globales más severas a largo plazo, aunque los problemas económicos y geopolíticos dominen el corto plazo."
+      },
+      {
+        "type": "Complemento",
+        "target": "IEA World Energy Investment 2025",
+        "desc": "Los datos de la IEA sobre inversión energética (dos tercios dirigidos a renovables, nucleares, redes y eficiencia) complementan la percepción de CSOs de que el momentum comercial supera al impulso político."
+      },
+      {
+        "type": "Contradicción",
+        "target": "UNEP State of Finance for Nature 2026",
+        "desc": "Mientras los CSOs muestran optimismo por el momentum comercial ($23 billones invertidos en soluciones basadas en naturaleza), el UNEP señala que $4,9 billones de financiación privada siguen fluyendo hacia actividades que dañan directamente la naturaleza, una contradicción no resuelta."
+      }
+    ],
+    "acciones": [
+      {
+        "num": "01",
+        "title": "Integrar sostenibilidad en decisiones de asignación de capital",
+        "desc": "Trasladar la sostenibilidad de agenda paralela a métrica integrada en decisiones de inversión, operaciones y ventaja competitiva. Priorizar iniciativas que demuestren fortalecimiento de resiliencia operativa y ahorros financieros (reducción de residuos, eficiencia energética, gestión de cadena de suministro).",
+        "esfuerzo": "Alto",
+        "impacto": "Alto"
+      },
+      {
+        "num": "02",
+        "title": "Gobernar la huella ambiental de la infraestructura de IA",
+        "desc": "Establecer gobernanza sobre el despliegue de IA en sostenibilidad: auditar consumo energético e hídrico de centros de datos, priorizar casos de uso de alta rentabilidad (medición, eficiencia, modelización de riesgos) y asegurar que la infraestructura de IA se alimente con energía de baja carbono intensidad.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "03",
+        "title": "Desarrollar modelos de inversión verificables para adaptación",
+        "desc": "Construir casos de negocio para adaptación que traduzcan pérdidas evitadas en flujos de ingresos o reembolsos creíbles. Usar modelización de riesgos físicos (potenciada por IA) para cuantificar vulnerabilidades en distribución, logística y operaciones, y crear mecanismos de compartición de riesgos público-privados.",
+        "esfuerzo": "Alto",
+        "impacto": "Alto"
+      },
+      {
+        "num": "04",
+        "title": "Extender capacidades de sostenibilidad a pymes y cadena de valor",
+        "desc": "Construir infraestructura financiera y partnerships que canalicen inversión hacia el nivel local, donde las pymes ejecutan resiliencia y adaptación. Abordar carencias de datos interoperables y habilidades digitales mediante formación cruzada y herramientas accesibles.",
+        "esfuerzo": "Medio",
+        "impacto": "Medio"
+      },
+      {
+        "num": "05",
+        "title": "Auditar la coherencia entre la cartera de inversión y objetivos climáticos y de naturaleza",
+        "desc": "Frente a la divergencia verde, verificar que la asignación de capital corporativa no financia simultáneamente actividades dañinas para la naturaleza (referencia UNEP: $4,9 billones en financiación dañina vs $23 billones en soluciones basadas en naturaleza). Exigir coherencia entre la narrativa de transición y los flujos financieros reales.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "tcfd",
+        "criterio": "Estrategia: Riesgos físicos y de transición",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 18,
+          "section": "4 Adaptation to secure continuity",
+          "table": "Figura 12"
+        },
+        "nature": "cuantitativo",
+        "impact": "alto",
+        "action": "Mapear exposiciones en distribución/logística (54%) y operaciones (53%) identificadas como vulnerables y desarrollar planes de adaptación con métricas verificables antes del Q4."
+      },
+      {
+        "framework": "csrd-esrs",
+        "criterio": "ESRS E1 - Transición climática y mitigación",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 8,
+          "section": "Medium-term outlook",
+          "table": "Figura 3"
+        },
+        "nature": "cualitativo",
+        "impact": "medio",
+        "action": "Desarrollar un plan de transición cuantificado con trayectorias de emisiones Scope 1-3 y métricas de progreso, ya que el informe no reporta emisiones directas de las empresas encuestadas."
+      },
+      {
+        "framework": "gri",
+        "criterio": "GRI 305-3 Otras emisiones indirectas (Scope 3)",
+        "coverage": "no-cubierto",
+        "evidence": {
+          "page": null,
+          "section": null,
+          "table": null
+        },
+        "nature": "cuantitativo",
+        "impact": "bajo",
+        "action": "Iniciar inventario de emisiones Scope 3 de cadena de suministro, utilizando las herramientas de medición y trazabilidad mencionadas en el informe (CDP: $13,6 millardos en ahorros ya generados por gestión de emisiones de cadena)."
+      }
+    ]
+  }
+}

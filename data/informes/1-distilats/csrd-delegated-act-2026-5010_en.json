@@ -1,0 +1,352 @@
+{
+  "slug": "csrd-delegated-act-2026-5010_en",
+  "title": "Delegated act 2026 5010_en",
+  "institution": "CSRD",
+  "filename_original": "csrd-delegated-act-2026-5010_en.pdf",
+  "generated_at": "2026-09-16T11:39:46",
+  "content_ca": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Informe amb dades quantificades rellevants però amb àmbits clau esmentats sense profunditat",
+      "indicators": [
+        {
+          "name": "Reducció de datapoints obligatoris",
+          "status": "verd",
+          "label": "Reducció del 61% de datapoints obligatoris",
+          "note": "Dada quantificada que regeix tota la reforma dels ESRS"
+        },
+        {
+          "name": "Estalvi de costos per a empreses",
+          "status": "verd",
+          "label": "Estalvi mitjà del 34% dels costos base en 5 anys",
+          "note": "Quantificat amb evolució temporal: 28% (2027), 38% (2028), 33-36% (2029+)"
+        },
+        {
+          "name": "Cobertura Scope 3 / cadena de valor",
+          "status": "groc",
+          "label": "Esmentada la dificultat d'obtenir dades de la cadena de valor",
+          "note": "S'introdueixen flexibilitats però no es quantifica l'impacte sobre la qualitat de la informació Scope 3"
+        },
+        {
+          "name": "Drets humans i incidents",
+          "status": "groc",
+          "label": "Modificació: només instàncies 'substantivades verificades'",
+          "note": "S'esmenta però no es quantifiquen els efectes sobre la transparència en drets humans"
+        },
+        {
+          "name": "Interoperabilitat amb estàndards globals",
+          "status": "groc",
+          "label": "Es prioritza la interoperabilitat amb estàndards globals",
+          "note": "Esmentat com a objectiu però sense detalls sobre quins estàndards ni grau de compatibilitat"
+        },
+        {
+          "name": "Microplàstics secundaris",
+          "status": "vermell",
+          "label": "No es requereix informar sobre microplàstics secundaris",
+          "note": "S'elimina per viabilitat i proporcionalitat sense alternativa compensatòria"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "61%",
+        "label": "Reducció de datapoints obligatoris en els ESRS revisats",
+        "page": "2"
+      },
+      {
+        "value": "34%",
+        "label": "Estalvi mitjà de costos de report sobre 5 anys per a empreses en l'àmbit",
+        "page": "3"
+      },
+      {
+        "value": "4.700 M€",
+        "label": "Estalvi acumulat 2027-2031 incloent efectes de cadena de valor",
+        "page": "3"
+      },
+      {
+        "value": "2027",
+        "label": "Any d'aplicació obligatòria dels ESRS revisats",
+        "page": "2"
+      },
+      {
+        "value": "453",
+        "label": "Respostes a la consulta 'Have Your Say' (6 maig - 3 juny 2026)",
+        "page": "5"
+      }
+    ],
+    "resumExecutiu": "La Comissió Europea adopta un acte delegat que modifica els ESRS per simplificar la informació de sostenibilitat, reduint un 61% els datapoints obligatoris i prioritzant dades quantitatives sobre text narratiu. L'informe es basa en el paquet Omnibus I (Directiva 2026/470) i en el consell tècnic d'EFRAG, i introdueix flexibilitats en l'avaluació de materialitat, presentació fidel, emissions de GEI, microplàstics i drets humans. S'estima un estalvi mitjà del 34% dels costos de report en cinc anys, amb un impacte acumulat de 4.700 M€. Les empreses poden aplicar els estàndards revisats voluntàriament el 2026 i obligatòriament des del 2027. La Comissió ha modificat el consell d'EFRAG en 13 àmbits per facilitar l'aplicació i atorgar flexibilitat addicional.",
+    "implicacions": {
+      "empreses": "Les empreses en l'àmbit de la CSRD es beneficien d'una reducció significativa de la càrrega administrativa i de costos, amb flexibilitat per ometre informació no material o perjudicial comercialment. Poden optar per aplicar els estàndards revisats ja el 2026. Tanmateix, la simplificació pot generar riscos de pèrdua de granularitat i comparabilitat, especialment en cadena de valor i drets humans, on s'afluixaen els requisits de report.",
+      "reguladors": "Els reguladors nacionals i les autoritats europees (ESMA, EBA, EIOPA, EEA, FRA, ECB) hauran de transposar i supervisar un marc més flexible però potencialment menys comparable. La Comissió es compromet a monitorar la implementació per garantir rellevància i fiabilitat. La coherència amb la CSDDD i la legislació financera requereix coordinació interinstitucional continuada.",
+      "ciutadans": "Els ciutadans i la societat civil, com a usuaris d'informació ESG, poden experimentar una pèrdua d'informació qualitativa i narrativa, especialment en àmbits com microplàstics secundaris, drets humans i efectes financers anticipats. L'informe reconeix que els beneficis per als usuaris són difícils de quantificar i s'avaluen principalment en termes qualitatius, la qual cosa genera incertesa sobre si la simplificació manté la rendició de comptes cap a la societat."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Ètica de la simplificació: transparència vs. càrrega",
+      "body": "La reforma parteix d'una tensió ètica legítima: reduir la càrrega administrativa sense soscavar els objectius de la CSRD. Des d'una perspectiva kantiana, la màxima de 'simplificar per facilitar' és universalitzable si no converteix les persones afectades (treballadors, comunitats vulnerables) en mitjans per a un fi econòmic. L'eliminació del report sobre microplàstics secundaris i l'afluixament dels requisits sobre incidents de drets humans tracten les parts interessades afectades com a externals al càlcul. Des del bé comú, la dignitat humana i la solidaritat exigeixen que la simplificació no impliqui silenci sobre impactes materials. La transparència cap a la ciutadania es debilita quan s'omet informació per 'prejudici comercial' sense un mecanisme de compensació. La sostenibilitat institucional requereix que la flexibilitat no es converteixi en opacitat selectiva."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "Delegated Regulation (EU) 2023/2772 - ESRS originals",
+        "desc": "Aquest acte delegat modifica directament els ESRS originals de 2023, reduint datapoints i simplificant l'estructura. Representa una evolució reactiva basada en l'experiència d'aplicació i el paquet Omnibus I."
+      },
+      {
+        "type": "Complement",
+        "target": "Directiva (EU) 2026/470 - Omnibus I",
+        "desc": "L'acte delegat executa el mandat de l'Omnibus I de simplificar els ESRS en sis mesos, complementant la reducció d'empreses en l'àmbit amb la reducció de datapoints obligatoris."
+      },
+      {
+        "type": "Contradicció",
+        "target": "Objectius del Green Deal Europeu",
+        "desc": "Tot i que l'informe afirma retenir els objectius centrals del Green Deal, l'eliminació del report sobre microplàstics secundaris i l'afluixament en drets humans poden contradir la trajectòria cap a la neutralitat climàtica i la justícia social."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Actualitzar el sistema de report ESG intern",
+        "desc": "Revisar els processos de recollida de dades per al 2027 prioritzant datapoints quantitatius i eliminant els no obligatoris segons els ESRS revisats.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Aprofitar l'opció d'aplicació anticipada 2026",
+        "desc": "Avaluar si convé aplicar els ESRS revisats el 2026 per obtenir estalvis immediats o mantenir el marc vigent amb els reliefs transitoris.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "03",
+        "title": "Revisar la política de materialitat",
+        "desc": "Implementar l'enfocament 'top-down' per a l'avaluació de doble materialitat i documentar clarament les decisions d'omissió d'informació no material.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "04",
+        "title": "Auditar la cobertura de drets humans i cadena de valor",
+        "desc": "Verificar que la flexibilitat en el report d'incidents de drets humans i dades de cadena de valor no deixi buits materials no coberts.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "05",
+        "title": "Preparar la declaració de transparència sobre plans de transició",
+        "desc": "Si els objectius del pla de transició no són compatibles amb 1.5°C, preparar la declaració de transparència requerida pels ESRS revisats.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "csrd-esrs",
+        "criterion": "ESRS 1 - Avaluació de doble materialitat (enfocament top-down)",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 4,
+          "section": "2. Consultations prior to the adoption of the act",
+          "table": "N/A"
+        },
+        "nature": "qualitatiu",
+        "impact": "alt",
+        "action": "Implementar el nou enfocament top-down per a l'avaluació de materialitat i documentar les decisions d'exclusió."
+      },
+      {
+        "framework": "csddd",
+        "criterion": "Coherència amb la Directiva de Due Diligence (2024/1760) en informació de cadena de valor",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 4,
+          "section": "2. Consultations prior to the adoption of the act",
+          "table": "N/A"
+        },
+        "nature": "qualitatiu",
+        "impact": "mitja",
+        "action": "Alinear els processos de due diligence interns amb les modificacions tècniques introduïdes per coherència amb la CSDDD."
+      },
+      {
+        "framework": "taxonomia-ue",
+        "criterion": "Presentació de disclosures de Taxonomia en annex separat (ESRS 1 paràgraf 106)",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 9,
+          "section": "Article 2 - Transitional provisions",
+          "table": "N/A"
+        },
+        "nature": "compromis",
+        "impact": "mitja",
+        "action": "Configurar la presentació de disclosures de Taxonomia UE en un annex separat si s'apliquen els reliefs transitoris del 2026."
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "C",
+      "gradeLabel": "Simplificación técnica con pérdidas en granularidad social y ambiental",
+      "indicators": [
+        {
+          "name": "Reducción de datapoints",
+          "status": "verd",
+          "label": "Simplificación cuantitativa",
+          "note": "Reduce los datapoints obligatorios en un 61% priorizando lo cuantitativo."
+        },
+        {
+          "name": "Ahorro de costes",
+          "status": "verd",
+          "label": "Eficiencia económica",
+          "note": "Ahorro medio del 34% en costes de reporte a 5 años."
+        },
+        {
+          "name": "Flexibilidad GEI",
+          "status": "verd",
+          "label": "Método de control",
+          "note": "Permite elegir entre control financiero u operacional para emisiones."
+        },
+        {
+          "name": "Materialidad",
+          "status": "verd",
+          "label": "Enfoque top-down",
+          "note": "Prohíbe explícitamente reportar información no material."
+        },
+        {
+          "name": "Derechos humanos",
+          "status": "groc",
+          "label": "Incidentes verificados",
+          "note": "Limita el reporte a incidentes 'sustanciados y verificados', reduciendo visibilidad."
+        },
+        {
+          "name": "Microplásticos",
+          "status": "rojo",
+          "label": "Microplásticos secundarios",
+          "note": "Ignora los microplásticos secundarios por razones de viabilidad."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "61%",
+        "label": "Reducción de datapoints obligatorios",
+        "page": "2"
+      },
+      {
+        "value": "34%",
+        "label": "Ahorro medio de costes de reporte a 5 años",
+        "page": "3"
+      },
+      {
+        "value": "4.700M€",
+        "label": "Ahorro acumulado 2027-2031 incluyendo cadena de valor",
+        "page": "3"
+      },
+      {
+        "value": "2027",
+        "label": "Año financiero de aplicación obligatoria",
+        "page": "5"
+      },
+      {
+        "value": "1.5C",
+        "label": "Objetivo de transición climática a declarar",
+        "page": "4"
+      }
+    ],
+    "resumExecutiu": "El Reglamento Delegado de la Comisión Europea simplifica los estándares de reporte de sostenibilidad (ESRS) bajo la CSRD. Reduce los datapoints obligatorios en un 61% y prioriza lo cuantitativo sobre lo narrativo. Introduce un enfoque top-down para la materialidad, prohíbe reportar información irrelevante y otorga flexibilidades como el control financiero u operacional para GEI. Se estima un ahorro acumulado de 4.700M€ entre 2027 y 2031. Entrará en vigor para ejercicios a partir de 2027.",
+    "implicaciones": {
+      "empresas": "Reducción significativa de la carga administrativa y costes de reporte (34% de media). Mayor flexibilidad para omitir información no material y elegir métodos de cálculo de emisiones, aunque deben prepararse para la transición en 2027.",
+      "reguladores": "Deben transponer el Omnibus I para marzo de 2027 y asegurar que los proveedores de aseguramiento no exijan reportes innecesarios. Necesitarán monitorear la implementación para garantizar que la simplificación no merme la calidad de la información.",
+      "ciudadanos": "La pérdida de datapoints narrativos y la limitación a incidentes verificados puede reducir la transparencia sobre impactos reales en derechos humanos y medio ambiente, dificultando la rendición de cuentas social y la trazabilidad de daños."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Justicia y sostenibilidad",
+      "body": "La simplificación alivia a las empresas, pero limitar el reporte de microplásticos secundarios y de incidentes de derechos humanos no verificados externaliza el coste a la sociedad y el medio ambiente. La justicia exige que la reducción de cargas administrativas no implique ocultar impactos materiales para las comunidades vulnerables de la cadena de valor."
+    },
+    "conexiones": [
+      {
+        "type": "Evolución",
+        "target": "Delegated Regulation (EU) 2023/2772",
+        "desc": "Modifica y simplifica el primer conjunto de estándares ESRS adoptado en 2023."
+      },
+      {
+        "type": "Complemento",
+        "target": "Directive (EU) 2026/470 (Omnibus I)",
+        "desc": "Desarrolla y ejecuta los mandatos de simplificación y reducción de alcance establecidos en el paquete Omnibus I."
+      },
+      {
+        "type": "Complemento",
+        "target": "Directive (EU) 2024/1760 (CSDDD)",
+        "desc": "Incluye modificaciones técnicas para asegurar la coherencia y alineación con la directiva de debida diligencia."
+      }
+    ],
+    "acciones": [
+      {
+        "num": "01",
+        "title": "Auditar la materialidad",
+        "desc": "Revisar el proceso de doble materialidad con enfoque top-down para eliminar datapoints no materiales antes de 2027.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "02",
+        "title": "Optimizar cálculo GEI",
+        "desc": "Evaluar si el enfoque de control operacional o financiero es más eficiente para el reporte de emisiones de GEI.",
+        "esfuerzo": "Bajo",
+        "impacto": "Medio"
+      },
+      {
+        "num": "03",
+        "title": "Ajustar reporte de derechos humanos",
+        "desc": "Modificar sistemas de registro para reportar únicamente incidentes de derechos humanos sustanciados y verificados.",
+        "esfuerzo": "Medio",
+        "impacto": "Medio"
+      },
+      {
+        "num": "04",
+        "title": "Preparar transición voluntaria 2026",
+        "desc": "Analizar la viabilidad de aplicar anticipadamente los nuevos ESRS simplificados en el ejercicio 2026 para captar ahorros.",
+        "esfuerzo": "Bajo",
+        "impacto": "Medio"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "csrd-esrs",
+        "criterio": "ESRS 1 Materiality assessment",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 3,
+          "section": "1. CONTEXT OF THE DELEGATED ACT",
+          "table": null
+        },
+        "nature": "cualitativo",
+        "impact": "alto",
+        "action": "Implementar el enfoque top-down en la evaluación de materialidad para 2027."
+      },
+      {
+        "framework": "csddd",
+        "criterio": "Coherence with Corporate Sustainability Due Diligence Directive",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 4,
+          "section": "1. CONTEXT OF THE DELEGATED ACT",
+          "table": null
+        },
+        "nature": "cualitativo",
+        "impact": "medio",
+        "action": "Alinear los procesos internos de debida diligencia con las nuevas disposiciones de coherencia del CSDDD."
+      },
+      {
+        "framework": "gri",
+        "criterio": "Interoperability with global sustainability reporting standards",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 2,
+          "section": "1. CONTEXT OF THE DELEGATED ACT",
+          "table": null
+        },
+        "nature": "cualitativo",
+        "impact": "medio",
+        "action": "Mapear los datapoints restantes con los estándares GRI para maximizar la interoperabilidad."
+      }
+    ]
+  }
+}

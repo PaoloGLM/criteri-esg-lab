@@ -1,0 +1,365 @@
+{
+  "slug": "esma-work-programme-2026",
+  "title": "Work programme 2026",
+  "institution": "ESMA (European Securities and Markets Authority)",
+  "filename_original": "esma-work-programme-2026.pdf",
+  "generated_at": "2026-09-16T11:53:13",
+  "content_ca": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Bon nivell de quantificació amb àrees de millora",
+      "indicators": [
+        {
+          "name": "Emissions GHG",
+          "status": "verd",
+          "label": "Quantificat amb línia base i objectius",
+          "note": "457,1 tCO₂e base 2023; -15,4% el 2027, -31,4% el 2030"
+        },
+        {
+          "name": "Greenwashing",
+          "status": "verd",
+          "label": "Mètriques quantificades",
+          "note": "0,9% fons amb noms inconsistents; 50% amb llenguatge ESG vague"
+        },
+        {
+          "name": "Costos inversor minorista",
+          "status": "verd",
+          "label": "Objectius numèrics definits",
+          "note": "Fons actius <1,87%; passius no-ETF <0,75%; ETF <0,57%"
+        },
+        {
+          "name": "Supervisió ESG ratings",
+          "status": "verd",
+          "label": "Dates i processos concrets",
+          "note": "Aplicació reglament 2 juliol 2026; inici registre mig 2026"
+        },
+        {
+          "name": "DORA",
+          "status": "groc",
+          "label": "Esmentat amb cronologia",
+          "note": "Segon any d'aplicació; oversight CTPPs conjunt amb ESAs"
+        },
+        {
+          "name": "Finança de transició",
+          "status": "groc",
+          "label": "Esmentat sense quantificació",
+          "note": "Notes temàtiques planificades Q3 i Q4 2026"
+        },
+        {
+          "name": "Convergència supervisora",
+          "status": "groc",
+          "label": "Esmentat qualitativament",
+          "note": "USSP, CSAs, peer reviews descrits sense mètriques de resultat"
+        },
+        {
+          "name": "ESAP",
+          "status": "groc",
+          "label": "Esmentat amb fites",
+          "note": "Primera fase completació prevista 2026 sense dades d'ús"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "92.585.971 €",
+        "label": "Pressupost total 2026 (ingressos i despeses)",
+        "page": "51"
+      },
+      {
+        "value": "278",
+        "label": "FTE totals planificats 2026",
+        "page": "50"
+      },
+      {
+        "value": "457,1 tCO₂e",
+        "label": "Línia base emissions GHG 2023 (ajustada per FTE projectats)",
+        "page": "53"
+      },
+      {
+        "value": "50%",
+        "label": "Fons amb llenguatge ESG vague o sense substància",
+        "page": "52"
+      },
+      {
+        "value": "2 juliol 2026",
+        "label": "Data d'aplicació del reglament d'ESG ratings",
+        "page": "26"
+      }
+    ],
+    "resumExecutiu": "ESMA presenta el seu Programa de Treball 2026 alineat amb l'estratègia plurianual 2023-2028 i orientat a la nova estratègia de la Unió d'Estalvi i Inversió (SIU). L'any 2026 marca un abans i un després: ESMA assumeix nous mandats de supervisió directa sobre proveïdors d'ESG ratings, revisors externs de Green Bonds europeus i Consolidated Tape Providers, a més de l'oversight conjunt sota DORA. Es manté el compromís amb la reducció de càrregues (SBR) amb tres consultes insígnia en marxa. Pel que fa a sostenibilitat, ESMA quantifica objectius de reducció d'emissions GHG (-15,4% el 2027) i mètriques de greenwashing, però la finança de transició es tracta només qualitativament. La protecció de l'inversor minorista té objectius numèrics de costos, i el cicle T+1 s'orienta a octubre 2027.",
+    "implicacions": {
+      "empreses": "Les entitats supervisides (CRAs, CTPs, ESG rating providers, revisors EGBR) han de preparar-se per a nous requisits d'autorització i supervisió directa a partir de mig 2026. Les entitats financeres han de complir DORA en el seu segon any d'aplicació i adaptar-se a la transició T+1. Els gestors de fons han d'atendre les mètriques de greenwashing i els objectius de reducció de costos per a inversors minoristes.",
+      "reguladors": "ESMA i les NCAs han de coordinar la implementació de nous mandats amb recursos limitats (278 FTE). Cal convergència supervisora efectiva sota USSPs de ciberresiliència i ESG disclosures. Els reguladors nacionals han de participar en CSAs, peer reviews i col·legis supervisors ampliants.",
+      "ciutadans": "Els inversors minoristes es beneficien d'objectius de reducció de costos i protecció contra pràctiques de greenwashing. L'accés públic a informació financera millora amb ESAP. La transparència sobre productes d'inversió i riscos associats a IA i xarxes socials augmenta. Cal vigilar que la simplificació reguladora no afebleixi la protecció."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Reducció de càrregues vs. qualitat supervisora",
+      "body": "ESMA persegueix simultàniament simplificació (SBR) i noves responsabilitats supervisores. L'ètica requereix que la reducció de càrregues no es converteixi en desregulació encoberta que perjudiqui l'inversor minorista. El risc és que la pressió per competitivitat (SIU) faciliti greenwashing o debiliti l'aplicació de DORA i ESG disclosures. ESMA ha de garantir que les dades públics (ESAP) siguen accessibles i comprensibles, no només tècnicament disponibles. La dignitat de l'inversor requereix informació que veritablement permeti decisions sobiranes."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "ESMA Opinion 2024 sobre mercats de capital",
+        "desc": "El Programa 2026 materialitza les recomanacions del Position Paper de maig 2024 sobre atracció i eficiència dels mercats UE"
+      },
+      {
+        "type": "Complement",
+        "target": "ESMA Climate Transition Plan (juny 2025)",
+        "desc": "Els objectius GHG dels KPIs (-15,4% 2027, -31,4% 2030) s'alignen amb el Pla de Transició Climàtica publicat juny 2025"
+      },
+      {
+        "type": "Contradicció",
+        "target": "Estratègia SIU de la Comissió (març 2025)",
+        "desc": "La pressió per competitivitat i simplificació pot tensar amb l'objectiu de protecció de l'inversor minorista i prevenció de greenwashing"
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Preparar autorització com a ESG rating provider",
+        "desc": "Revisar documentació i processos interns abans del 2 juliol 2026 per complir els requisits del nou reglament d'ESG ratings",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Auditar conformitat DORA any 2",
+        "desc": "Verificar governança ICT, gestió de tercers i reporting d'incidents conforme als requisits DORA en el segon any d'aplicació",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Evaluar exposició a greenwashing",
+        "desc": "Revisar noms de fons, documentació i llenguatge ESG per identificar inconsistències abans de les accions supervisores d'ESMA",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "04",
+        "title": "Adaptar cicle de liquidació a T+1",
+        "desc": "Preparar sistemes i processos per a la transició a T+1 abans de l'11 octubre 2027 seguint les directrius d'ESMA",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "05",
+        "title": "Implementar reporting integrat",
+        "desc": "Aprofitar la revisió holística de reporting sota MiFIR/EMIR/SFTR per reduir duplicacions i optimitzar fluxos de dades",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "csrd-esrs",
+        "criterion": "ESRS - Aplicació i compliment de la informació de sostenibilitat",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 20,
+          "section": "2.2.3 Issuer disclosure",
+          "table": "Annex IV"
+        },
+        "nature": "qualitatiu",
+        "impact": "alt",
+        "action": "Preparar compliment ESRS alineat amb les prioritats d'aplicació comuna europea (ECEP) que ESMA publica anualment"
+      },
+      {
+        "framework": "sfdr",
+        "criterion": "SFDR - Revisió del reglament i estàndards tècnics",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 18,
+          "section": "2.2.1 Investment management",
+          "table": "Annex IV"
+        },
+        "nature": "compromis",
+        "impact": "mitja",
+        "action": "Monitorar la possible revisió de SFDR i preparar ajustos en disclosures de sostenibilitat de fons"
+      },
+      {
+        "framework": "taxonomia-ue",
+        "criterion": "Taxonomy Regulation - Requisits de disclosure i actes delegats",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 20,
+          "section": "2.2.3 Issuer disclosure",
+          "table": "-"
+        },
+        "nature": "qualitatiu",
+        "impact": "mitja",
+        "action": "Revisar alineació de disclosures amb Taxonomy Regulation i possibles revisions previstes per 2026"
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Buen desempeño ESG con margen de mejora en coberturas secundarias",
+      "indicators": [
+        {
+          "name": "Reducción de emisiones GEI",
+          "status": "verd",
+          "label": "Objetivos cuantificados de reducción de gases de efecto invernadero",
+          "note": "Línea base 2023: 457,1 tCO2e. Objetivos: -15,4% para 2027 y -31,4% para 2030, alineados con el ESMA Climate Transition Plan (junio 2025)."
+        },
+        {
+          "name": "Supervisión de proveedores de ratings ESG",
+          "status": "verd",
+          "label": "Inicio de supervisión con fecha de aplicación y proceso de registro definidos",
+          "note": "Fecha de aplicación del reglamento: 2 de julio de 2026. ESMA iniciará registro y supervisión desde mediados de 2026."
+        },
+        {
+          "name": "Riesgo de greenwashing",
+          "status": "verd",
+          "label": "Proyectos específicos y herramientas de supervisión dedicadas",
+          "note": "Finalización del proyecto TSI 'Tackling greenwashing risk in the sustainable investment fund market'. Notas temáticas sobre sustainability claims (Q4 2026). KOI con indicadores cuantificados."
+        },
+        {
+          "name": "Supervisión de revisores externos de Bonos Verdes Europeos",
+          "status": "verd",
+          "label": "Inicio de supervisión con cronograma definido",
+          "note": "La supervisión de revisores externos bajo el EuGB comenzará en junio de 2026, con procesamiento de solicitudes de registro previo."
+        },
+        {
+          "name": "Convergencia supervisora en divulgaciones ESG",
+          "status": "groc",
+          "label": "Mencionado como prioridad supervisora pero sin métricas de resultado cuantificadas",
+          "note": "ESMA espera finalizar el USSP sobre divulgaciones ESG en 2026 para consolidar el trabajo de las NCAs, pero no se establecen indicadores cuantitativos de cumplimiento."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "457,1 tCO2e",
+        "label": "Línea base de emisiones GEI (2023) con objetivos de reducción del 15,4% para 2027 y 31,4% para 2030",
+        "page": "52"
+      },
+      {
+        "value": "92.585.971 €",
+        "label": "Presupuesto total de ingresos y gastos para 2026 (equilibrado)",
+        "page": "51"
+      },
+      {
+        "value": "2 de julio de 2026",
+        "label": "Fecha de aplicación del reglamento de ratings ESG e inicio del mandato supervisor de ESMA",
+        "page": "26"
+      },
+      {
+        "value": "278",
+        "label": "Plantilla total prevista (FTE) para 2026 entre agentes temporales y agentes contractuales",
+        "page": "50"
+      },
+      {
+        "value": "Junio de 2026",
+        "label": "Inicio de la supervisión de revisores externos de Bonos Verdes Europeos (EuGB)",
+        "page": "27"
+      }
+    ],
+    "resumExecutiu": "El Programa de Trabajo 2026 de ESMA se enmarca en su estrategia plurianual 2023-2028 y se alinea con la nueva estrategia de la Unión de Ahorro e Inversión (SIU). ESMA asume mandatos supervisores significativamente ampliados: supervisión directa de proveedores de ratings ESG (desde julio de 2026), revisores externos de Bonos Verdes Europeos (desde junio de 2026) y Consolidated Tape Providers, además del ejercicio conjunto del mandato de supervisión bajo DORA. En finanzas sostenibles, ESMA profundiza en la lucha contra el greenwashing mediante proyectos específicos, notas temáticas sobre finanzas de transición y claims de sostenibilidad, y la finalización del USSP sobre divulgaciones ESG. La autoridad integra la simplificación y reducción de cargas (SBR) de manera transversal, con revisiones holísticas de reportes bajo MiFIR, EMIR y SFTR. En el plano interno, ESMA cuantifica objetivos de reducción de emisiones GEI (-31,4% para 2030) y mantiene el sistema EMAS para su gestión ambiental.",
+    "implicacions": {
+      "empresas": "Las entidades supervisadas por ESMA (agencias de rating, TRs, proveedores de benchmarks, CCPS) y las nuevas entidades bajo mandato (proveedores de ratings ESG, revisores de EuGB, CTPs) deben prepararse para la entrada en vigor de nuevos requisitos supervisores en 2026. Las gestoras de fondos y empresas de servicios de inversión enfrentarán revisiones de marcos regulatorios bajo RIS, SFDR y PRIIPs, con énfasis en simplificación de reportes. Las empresas deben anticipar escrutinio sobre divulgaciones ESG, riesgo de greenwashing y resiliencia operativa digital bajo DORA.",
+      "reguladores": "ESMA y las NCAs deben coordinar la implementación de múltiples nuevos mandatos supervisores simultáneamente. Se requiere armonización de prácticas supervisoras a través de CSAs, peer reviews y el USSP sobre resiliencia ciberdigital. Las autoridades nacionales deben prepararse para la evaluación conjunta de independencia supervisora y para la transición al ciclo T+1 en 2027. La coordinación con AMLA será crítica, así como la gestión del incremento de complejidad en el sistema de financiación por tasas de ESMA.",
+      "ciudadanos": "Los inversores minoristas se beneficiarán de esfuerzos de ESMA en protección al inversor, incluyendo la estrategia de inversión minorista (RIS), revisión del 'recorrido del inversor' y mayor transparencia en costes y cargas. El acceso a información financiera y de sostenibilidad mejorará con la primera fase del European Single Access Point (ESAP). La lucha contra el greenwashing busca preservar la confianza del inversor en productos ESG. La educación financiera y las campañas dirigidas a inversores minoristas en lenguas nacionales buscan empoderar la participación ciudadana en los mercados de capitales."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Sostenibilidad sistémica y coherencia regulatoria",
+      "body": "ESMA avanza más allá del cumplimiento formal al integrar la sostenibilidad como eje transversal de su estrategia supervisora, no como un módulo aislado. La reducción cuantificada de emisiones GEI internas (-31,4% para 2030) y la gestión ambiental mediante EMAS reflejan coherencia entre lo que se exige y lo que se practica. Sin embargo, la ambición de simplificación regulatoria (SBR) convive con una acumulación de mandatos supervisores que podría generar tensiones de capacidad. La justicia regulatoria exige que la reducción de cargas no comprometa la efectividad supervisora ni la protección del inversor minorista, especialmente en un contexto de creciente complejidad digital y de productos ESG."
+    },
+    "conexiones": [
+      {
+        "type": "Evolución",
+        "target": "Programa de Trabajo 2025 de ESMA",
+        "desc": "El programa 2026 es continuación directa del de 2025, expandiendo mandatos iniciados entonces (DORA, MiCA) y incorporando nuevos (ratings ESG, EuGB, CTPs). Las consultas de SBR lanzadas en 2025 tienen su seguimiento en 2026."
+      },
+      {
+        "type": "Complemento",
+        "target": "Estrategia SIU de la Comisión Europea (marzo 2025)",
+        "desc": "ESMA se posiciona como soporte técnico clave para la Savings and Investments Union, contribuyendo con asesoramiento técnico a propuestas legislativas esperadas para finales de 2025, incluyendo integración de infraestructuras de trading y post-trading."
+      },
+      {
+        "type": "Contradicción",
+        "target": "Simplificación regulatoria vs. expansión de mandatos",
+        "desc": "Mientras ESMA persigue activamente la reducción de cargas administrativas y de reporte (SBR), simultáneamente asume múltiples nuevos mandatos supervisores (ratings ESG, EuGB, CTPs, DORA) que incrementan la complejidad del panorama regulatorio y podrían generar tensiones de capacidad."
+      }
+    ],
+    "acciones": [
+      {
+        "num": "01",
+        "title": "Preparar registro como proveedor de ratings ESG",
+        "desc": "Las entidades que proporcionan ratings ESG deben preparar su solicitud de registro antes del 2 de julio de 2026, asegurando cumplimiento de los RTS que ESMA está desarrollando, y participando en el taller que ESMA organizará en el primer semestre de 2026.",
+        "esfuerzo": "Alto",
+        "impacto": "Alto"
+      },
+      {
+        "num": "02",
+        "title": "Auditar divulgaciones de sostenibilidad antes del cierre del USSP ESG",
+        "desc": "Las empresas emisoras y gestoras deben revisar sus divulgaciones ESG, incluyendo nombres de fondos y claims de sostenibilidad, antes de la finalización del USSP sobre divulgaciones ESG en 2026, anticipando el escrutinio sobre greenwashing.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "03",
+        "title": "Adaptar infraestructura de reporte al ciclo T+1 para octubre 2027",
+        "desc": "Las entidades de infraestructura de mercado, CSDs y participantes deben iniciar la adaptación técnica y operativa para el acortamiento del ciclo de liquidación a T+1 antes del 11 de octubre de 2027, siguiendo las actualizaciones de las directrices CSDR de ESMA en 2026.",
+        "esfuerzo": "Alto",
+        "impacto": "Alto"
+      },
+      {
+        "num": "04",
+        "title": "Implementar pruebas de resiliencia operativa digital bajo DORA",
+        "desc": "Las entidades supervisadas deben asegurar el cumplimiento pleno de los requisitos DORA en su segundo año de aplicación, incluyendo gestión de riesgos de TIC, reporte de incidentes mayores y gobernanza de proveedores externos, ante el escrutinio reforzado de ESMA.",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "05",
+        "title": "Revisar y simplificar flujos de reporte transaccional",
+        "desc": "Las entidades que reportan bajo MiFIR, EMIR y SFTR deben prepararse para la revisión holística del reporte transaccional de ESMA (Q2 2026), identificando duplicaciones y oportunidades de streamlining para reducir cargas operativas.",
+        "esfuerzo": "Medio",
+        "impacto": "Medio"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "csrd-esrs",
+        "criterio": "ESRS - Estándares de reporte de sostenibilidad aplicables a empresas cotizadas en la UE",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 20,
+          "section": "2.2.3 Issuer disclosure",
+          "table": null
+        },
+        "nature": "cualitativo",
+        "impact": "alto",
+        "action": "ESMA contribuye al desarrollo de los ESRS mediante su observadoreship en EFRAG. Las empresas deben monitorizar las actualizaciones de los ESRS y las prioridades de supervisión (ECEP) que ESMA publica anualmente."
+      },
+      {
+        "framework": "sfdr",
+        "criterio": "SFDR - Requisitos de divulgación de sostenibilidad en el sector de servicios financieros (RTS y revisión del marco)",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 18,
+          "section": "2.2.1 Investment management",
+          "table": null
+        },
+        "nature": "compromiso",
+        "impact": "alto",
+        "action": "Las gestoras deben prepararse para posibles nuevos RTS y asesoramiento técnico derivado de la revisión de SFDR que ESMA podría desarrollar en 2026, con foco en simplificación del marco y reducción de cargas."
+      },
+      {
+        "framework": "taxonomia-ue",
+        "criterio": "Taxonomía UE - Requisitos de divulgación alineación con la Taxonomy Regulation y delegated acts",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 20,
+          "section": "2.2.3 Issuer disclosure",
+          "table": null
+        },
+        "nature": "cualitativo",
+        "impact": "medio",
+        "action": "ESMA contribuye al desarrollo y mantenimiento de los requisitos de divulgación de la Taxonomía como miembro del EU Platform on Sustainable Finance. Las empresas deben seguir las posibles revisiones de la Taxonomy Regulation en 2026."
+      }
+    ]
+  }
+}

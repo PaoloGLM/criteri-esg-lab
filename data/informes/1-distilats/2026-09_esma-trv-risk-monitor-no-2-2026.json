@@ -1,0 +1,376 @@
+{
+  "slug": "2026-09_esma-trv-risk-monitor-no-2-2026",
+  "title": "09_esma trv risk monitor no 2 2026",
+  "institution": "United Nations",
+  "filename_original": "2026-09_esma-trv-risk-monitor-no-2-2026.pdf",
+  "generated_at": "2026-09-16T11:36:05",
+  "content_ca": {
+    "semafor": {
+      "grade": "B",
+      "gradeLabel": "Cobertura ESG sòlida amb dades quantificades en finança sostenible, però amb llacs en impacte social i governance operativa",
+      "indicators": [
+        {
+          "name": "Preu de carboni EU ETS",
+          "status": "verd",
+          "label": "Quantificat amb dada concreta",
+          "note": "EUA a EUR 78/tCO2eq el juny 2026, 20% per sota del pic de 2023 però el més alt dels sistemes d'intercanvi d'emissions del món"
+        },
+        {
+          "name": "Fluxos de fons ESG (SFDR Art. 8 i 9)",
+          "status": "verd",
+          "label": "Quantificat amb dades desagregades",
+          "note": "Art. 8: entrades netes de EUR 145bn (2,3% AuM); Art. 9: sortides netes de EUR 0,3bn (0,3% AuM); fons de transició i renovables atrauen inversions positives"
+        },
+        {
+          "name": "Mercat de bons ESG UE",
+          "status": "verd",
+          "label": "Quantificat amb volum i composició",
+          "note": "Volum total en circulació superior a EUR 2,8tn; bons verds representen EUR 181bn (+7% YoY); bons de sostenibilitat EUR 24bn (+20% YoY)"
+        },
+        {
+          "name": "Bretxa d'inversió en energia neta",
+          "status": "verd",
+          "label": "Quantificat amb bretxa anual",
+          "note": "Es necessiten EUR 842bn/any entre 2025-2030 per objectius climàtics; invertits EUR 498bn el 2023; bretxa equivalent al 2% del PIB UE"
+        },
+        {
+          "name": "Risc ambiental sistemàtic",
+          "status": "groc",
+          "label": "Esmentat sense desagregació completa",
+          "note": "ESMA puntua el risc ambiental a nivell 'mitjà'; es menciona l'exposició de la UE a la volatilitat de preus dels combustibles fòssils, però no hi ha anàlisi d'impacte climàtic físic o Scenario 3"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "EUR 78/tCO2eq",
+        "label": "Preu EUA (juny 2026), el més alt dels sistemes d'intercanvi d'emissions del món",
+        "page": "42"
+      },
+      {
+        "value": "EUR 2,8tn",
+        "label": "Volum total de bons ESG UE en circulació",
+        "page": "41"
+      },
+      {
+        "value": "EUR 842bn/any vs EUR 498bn (2023)",
+        "label": "Inversió anual necessària per objectius 2030 vs inversió actual; bretxa = 2% PIB UE",
+        "page": "40"
+      },
+      {
+        "value": "EUR 145bn entrades / EUR 0,3bn sortides",
+        "label": "Fluxos nets SFDR Article 8 vs Article 9 (1H 2026)",
+        "page": "40"
+      },
+      {
+        "value": "EUR 9,1bn (26 fons Art. 9) / EUR 1,3bn entrades",
+        "label": "Fons d'energia renovable dedicats: AuM i fluxos nets atrets (1H 2026)",
+        "page": "40"
+      }
+    ],
+    "resumExecutiu": "L'ESMA TRV Risk Monitor No. 2, 2026 examina els riscos, tendències i vulnerabilitats dels mercats financers europeus durant el primer semestre de 2026. El context macroeconòmic està marcat pel rebrot de tensions geopolítiques al Pròxim Orient, que ha provocat un xoc energètic amb efectes en inflació, tipus d'interès i cost de finançament. En l'àmbit ESG, l'informe destaca tres àmbits: el mercat de bons ESG UE manté la resiliència amb més de EUR 2,8tn en circulació i creixement dels bons de sostenibilitat (+20% YoY); els fluxos de fons ESG mostren un patró divergent amb sortides netes dels Article 9 (-0,3bn) però entrades en Article 8 (+145bn); i l'EU ETS entra en un cicle reformador amb un preu de carboni de EUR 78/tCO2eq. Cal subratllar que l'informe quantifica una bretxa d'inversió en energia neta de EUR 842bn/any per assolir els objectius climàtics 2030, equivalent al 2% del PIB de la UE. La transició cap a energies renovables es veu reforçada per la vulnerabilitat de la UE als preus dels combustibles fòssils, però l'informe no aborda emissions Scope 3, biodiversitat ni impacte social dels fons ESG.",
+    "implicacions": {
+      "empreses": "Les empreses amb obligacions de compliment dins de l'EU ETS enfronten costos addicionals amb EUA a EUR 78/tCO2eq i la pèrdua progressiva d'assignacions gratuïtes el 2026. La necessitat de mobilitzar capital privat a escala per a la transició (bretxa de 2% PIB) obre oportunitats per a productes financers amb use-of-proceeds vinculats a renovables. Les empreses han d'anticipar riscos de refinançament amb venciments concentrats 2027-2028 i pressió creixent sobre la qualitat creditícia.",
+      "reguladors": "ESMA manté el risc ambiental a nivell 'mitjà' però no profunditza en escenaris climàtics físics ni emissions Scope 3. La fragmentació del mercat UCITS i els riscos d'IA fronterera per a la resiliència operativa exigeixen reforçar el marc DORA i la supervisió de tercers. La regulació dels mercats predictius i la integració de cripto-actius amb el sistema tradicional requereixen vigilància addicional.",
+      "ciutadans": "Els inversors minoristes mantenen una exposició creixent al mercat nord-americà (44% de compres d'accions), concentrant el risc en tecnologia i IA. La protecció del consumidor davant plataformes digitals i xarxes socials es manté com a preocupació clau. Els fons ESG Article 9 registren sortides, mentre que els Article 8 i els fons de transició atrauen inversió, suggerint una preferència dels ciutadans per estratègies de transició pragmàtiques."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "L'informe d'ESMA revela una tensió ètica entre l'objectiu declarat de mobilitzar capital cap a la transició climàtica i la realitat d'un sistema financer que prioritza la liquiditat a curt termini sobre la transformació estructural. L'anàlisi kantià mostra que tractar els ciutadans-inversors com a mitjà per a la captació de fons ESG sense garantir claredat en l'impacte real de la inversió vulnera el principi de dignitat. L'absència d'abast Scope 3 i la qualificació de 'mitjà' del risc ambiental en un context de xoc energètic revelen una manca de proporcionalitat entre l'evidència científica i l'avaluació de risc.",
+      "body": "La defensa de la dignitat humana exigeix que la transició climàtica prioritati les persones i el planeta sobre la rentabilitat financera a curt termini. Cal coherència entre objectius declarats i accions concretes per garantir justícia ecològica i social."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "ESMA TRV Risk Monitor No. 1, 2025",
+        "desc": "L'informe manté la valoració de risc ambiental a nivell 'mitjà' sense canvis respecte al període anterior, malgrat l'agreujament del context geopolític i energètic; els EUA han pujat 20% respecte al pic de 2023 però segueix sent el preu de carboni més alt del món"
+      },
+      {
+        "type": "Complement",
+        "target": "EU Taxonomy alignment in green bonds",
+        "desc": "L'informe confirma que més del 70% de les emissions de bons verds UE des de 2021 tenen almenys un Use of Proceeds vinculat a projectes d'energia renovable, reforçant la coherència entre la Taxonomia UE i el mercat de bons verds"
+      },
+      {
+        "type": "Contradicció",
+        "target": "Fons Article 9 vs Article 8 SFDR",
+        "desc": "Les sortides netes dels fons Article 9 (més estrictes en la seva definició de sostenibilitat) contrasten amb les fortes entrades dels Article 8 (menys restrictius), suggerint que els inversors prefereixen etiquetes menys exigents en un context de tensió energètica i incertesa geopolítica"
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Quantificar emissions Scope 3 en carteres ESG",
+        "desc": "L'informe no aborda emissions indirectes de la cadena de valor. Demanar a les gestores de fons ESG que reportin la petjada de carboni Scope 3 de les seves inversions per alinear-se amb els objectius climàtics de la UE i proporcionar transparència real als inversors.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Reclassificar el risc ambiental sistemàtic",
+        "desc": "ESMA manté el risc ambiental a 'mitjà' en un context de xoc energètic amb preus del petroli +70% i gas doblant-se. Recomanar a ESMA que rebaixi aquest nivell només quan es justifiqui amb dades d'impacte climàtic físic quantificat, no per inèrcia metodològica.",
+        "effort": "Baix",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Aprofitar el momentum de fons de transició i renovables",
+        "desc": "Amb entrades netes de EUR 20bn en fons de transició i EUR 2,8bn en fons d'energia renovable, dissenyar productes financers que tanquin la bretxa d'inversió de 2% PIB amb instruments accessibles per a inversors minoristes i institucionals, vinculats a projectes amb use-of-proceeds verificable.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "04",
+        "title": "Integrar riscos d'IA fronterera en la governança ESG",
+        "desc": "Els models d'IA com Mythos i GPT-5.5 poden identificar vulnerabilitats en infraestructures crítiques financeres. Establir protocols de governança d'IA dins del marc ESG de les entitats financeres amb avaluació d'impacte en ciberseguretat, privadesa i drets digitals dels usuaris.",
+        "effort": "Mitjà",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "05",
+        "title": "Auditar la transparència dels fons Article 8",
+        "desc": "Amb EUR 145bn d'entrades als fons Article 8 (menys estrictes) i sortides dels Article 9, existeix el risc de greenwashing per etiquetatge lax. Auditar la coherència entre la denominació dels fons i la composició real de les carteres seguint les directrius ESMA sobre noms ESG en fons.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "sfdr",
+        "criterion": "SFDR Article 8 & 9 - Requisits de divulgació de sostenibilitat per a productes financers",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 40,
+          "section": "Sustainable finance - ESG fund flows mixed",
+          "table": "Chart 58"
+        },
+        "nature": "quantitatiu",
+        "impact": "alt",
+        "action": "Reportar les dades de fluxos desagregades per Article 8 i 9 amb detall d'AuM i percentatges per a transparència regulatoria completa"
+      },
+      {
+        "framework": "taxonomia-ue",
+        "criterion": "Taxonomia UE - Activitats econòmiques ambientalment sostenibles i use-of-proceeds",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 41,
+          "section": "Sustainable finance - ESG bond market stable as renewables UoP increase",
+          "table": "Chart 59"
+        },
+        "nature": "quantitatiu",
+        "impact": "mitja",
+        "action": "Verificar l'alineació amb la Taxonomia UE dels use-of-proceeds de bons verds, especialment en el sector utilities on >70% dels emissors tenen vinculació amb projectes renovables"
+      },
+      {
+        "framework": "tnfd",
+        "criterion": "TNFD - Divulgació de riscos i impactes relacionats amb la naturalesa",
+        "coverage": "no-cobert",
+        "evidence": {
+          "page": null,
+          "section": null,
+          "table": null
+        },
+        "nature": "qualitatiu",
+        "impact": "baixa",
+        "action": "Incorporar en futurs informes TRV una secció dedicada a riscos de biodiversat i naturalesa en carteres financeres i infraestructures, seguint el marc TNFD"
+      }
+    ]
+  },
+  "content_es": {
+    "semafor": {
+      "grade": "C",
+      "gradeLabel": "Cobertura parcial con datos cuantificados en finanzas sostenibles pero lagunas en métricas ESG profundas",
+      "indicators": [
+        {
+          "name": "Riesgo ambiental",
+          "status": "groc",
+          "label": "Riesgo medio",
+          "note": "ESMA puntúa el riesgo ambiental como 'medio' y lo mantiene estable, pero no profundiza en métricas de impacto climático cuantificadas más allá del EU ETS"
+        },
+        {
+          "name": "Finanzas sostenibles / ESG funds",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "Se detallan flujos netos de fondos Article 8 (EUR 145bn) y Article 9 (EUR -0.3bn), así como activos bajo gestión y market share"
+        },
+        {
+          "name": "EU ETS y precios de carbono",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "Precio EUA en EUR 78/tCO2, reducción de emisiones del 50% desde 2005, objetivos de -90% para 2040"
+        },
+        {
+          "name": "Bonos ESG UE",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "Volumen outstanding >EUR 2.8tn, emisión green bonds EUR 181bn en 1H26, EuGBs EUR 43bn outstanding"
+        },
+        {
+          "name": "Brecha de inversión climática",
+          "status": "verd",
+          "label": "Cuantificado",
+          "note": "Se cuantifica la brecha: EUR 842bn/año necesarios vs EUR 498bn invertidos en 2023, equivalente al 2% del PIB UE"
+        },
+        {
+          "name": "Riesgos sociales (inversores minoristas)",
+          "status": "groc",
+          "label": "Mencionado",
+          "note": "Se aborda la protección al inversor, sesgos conductuales y riesgos de redes sociales, pero sin métricas ESG sociales estructuradas"
+        },
+        {
+          "name": "Gobernanza corporativa",
+          "status": "groc",
+          "label": "Mencionado",
+          "note": "Se menciona gobernanza en contextos puntuales (SpaceX, fondos AI) pero sin marco ESG de gobernanza sistemático"
+        },
+        {
+          "name": "Scope 3 / Huella de carbono portfolio",
+          "status": "rojo",
+          "label": "Ignorado",
+          "note": "No se menciona la cobertura de emisiones Scope 3 ni la huella de carbono de carteras de inversión"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "1.1%",
+        "label": "Crecimiento PIB UE revisado a la baja para 2026 (-0.3pp vs otoño)",
+        "page": "7"
+      },
+      {
+        "value": "EUR 78/tCO2",
+        "label": "Precio EUA en junio 2026, 20% por debajo del pico de 2023",
+        "page": "42"
+      },
+      {
+        "value": "EUR 2.8tn",
+        "label": "Volumen outstanding de bonos ESG UE supera los 2.8tn EUR",
+        "page": "41"
+      },
+      {
+        "value": "EUR 842bn/año",
+        "label": "Inversión anual necesaria 2025-2030 para objetivos climáticos UE vs EUR 498bn en 2023",
+        "page": "40"
+      },
+      {
+        "value": "-38%",
+        "label": "Caída del Total Value Locked en DeFi en 1H26 a EUR 70bn",
+        "page": "44"
+      }
+    ],
+    "resumExecutiu": "El informe ESMA TRV Risk Monitor No. 2 de 2026 dibuja un panorama de incertidumbre estructural marcado por la guerra en Oriente Medio, que ha elevado los precios energéticos, revisado al alza la inflación (3.1% en 2026) y presionado los rendimientos soberanos. A pesar de este entorno, los mercados de renta variable muestran una resiliencia que genera preocupaciones de sobrevaloración, especialmente en el sector tecnológico y firms de IA. El riesgo crédito se intensifica con tasas de default de high yield acercándose a picos post-pandemia. En finanzas sostenibles, el informe destaca la resiliencia del mercado de bonos ESG UE (>EUR 2.8tn outstanding), flujos mixtos en fondos ESG (Article 8 atrae EUR 145bn mientras Article 9 registra salidas), y una creciente asignación hacia estrategias de transición y renovables. El EU ETS se sitúa en el centro del debate político con un precio de EUR 78/tCO2 y nuevas metas de reducción del 90% para 2040. La brecha de inversión climática (EUR 842bn/año vs EUR 498bn) subraya la necesidad de movilizar capital privado a escala. Paralelamente, los riesgos cibernéticos escalan con la IA frontera (modelos como Mythos y GPT-5.5), los criptoactivos continúan su caída (-28% YTD), y la innovación financiera avanza con tokenización de acciones, mercados de predicción y computación cuántica. La protección al inversor minorista emerge como preocupación ante la concentración en acciones estadounidenses y la influencia de redes sociales.",
+    "implicaciones": {
+      "empresas": "Las empresas deben prepararse para costes de financiación crecientes y presiones de refinanciación (pico de vencimientos en 2027-2028 con >EUR 3.6tn). La transición energética exige inversión acelerada en renovables, con oportunidades en bonos verdes y estrategias de transición. La gobernanza de ciberseguridad debe reforzarse ante modelos de IA frontera que pueden explotar vulnerabilidades décadas después de su creación. Las empresas del ETS deben gestionar el fin de asignaciones gratuitas y el CBAM.",
+      "reguladores": "Los reguladores deben abordar la fragmentación del mercado UCITS (5x más fondos que EE.UU. gestionando menos activos), evaluar el acceso de productos de predicción bajo MiFID II/MiCA, y fortalecer los marcos de resiliencia operativa (DORA) ante IA cibernética. El EU ETS requiere reformas que equilibren competitividad y descarbonización. La supervisión de plataformas digitales y neo-brokers debe intensificarse para proteger inversores minoristas expuestos a contenido de redes sociales y productos complejos.",
+      "ciudadanos": "Los inversores minoristas enfrentan riesgos de concentración en acciones estadounidenses (44% de compras brutas), exposición a información engañosa vía redes sociales, y productos complejos como CFDs y turbos. La participación en mercados de predicción y criptoactivos requiere cautela ante la ausencia de protecciones regulatorias UE. La transición energética ofrece oportunidades de inversión en renovables y fondos de transición, pero la brecha de inversión climática (2% PIB) requiere canalización del ahorro familiar hacia financiación productiva."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Justicia y co-decisión",
+      "body": "El informe revela una tensión ética fundamental: mientras la UE necesita movilizar EUR 842bn anuales para alcanzar sus objetivos climáticos, una gran parte de la riqueza familiar (EUR 39tn, >200% PIB) permanece en depósitos de bajo rendimiento. La fragmentación del mercado UCITS y la concentración inversora en activos estadounidenses reflejan un fallo de justicia distributiva: los ciudadanos europeos no están participando equitativamente en la financiación de su propia transición energética. Además, el acceso restringido a modelos de IA frontera como Mythos (solo una docena de empresas estadounidenses) crea una asimetría de poder que socava la co-decisión: entidades financieras europeas deben defenderse de amenazas que no pueden evaluar ni anticipar, profundizando dependencias tecnológicas y vulnerabilidades sistémicas."
+    },
+    "conexiones": [
+      {
+        "type": "Evolución",
+        "target": "ESMA TRV Risk Monitor No. 1, 2026",
+        "desc": "Este informe continúa el monitoreo del primer trimestre, profundizando en impactos de la guerra de Oriente Medio que comenzaron a perfilarse en ediciones anteriores, con análisis inéditos sobre IA frontera, mercados de predicción y tokenización de acciones"
+      },
+      {
+        "type": "Complemento",
+        "target": "EU Carbon Markets Report 2026",
+        "desc": "El análisis in-depth sobre el EU ETS complementa el reporte específico de mercados de carbono, detallando críticas sobre especulación financiera y el papel de intermediarios en la formación de precios de EUA"
+      },
+      {
+        "type": "Contradicción",
+        "target": "Draghi Report on EU Competitiveness",
+        "desc": "Mientras el informe Draghi aboga por mercados de capital más integrados y eficientes, los datos muestran que la fragmentación UCITS persiste (5x más fondos que EE.UU.) y los hogares mantienen una asignación desproporcionada a depósitos de bajo rendimiento, contradiciendo los objetivos de la Unión de Ahorro e Inversión"
+      }
+    ],
+    "acciones": [
+      {
+        "num": "01",
+        "title": "Auditar exposición a acciones estadounidenses y IA",
+        "desc": "Las empresas de gestión de activos deben evaluar su concentración en acciones de IA y tecnología estadounidense (45% de activos de fondos de renta variable), dado el riesgo de corrección desordenada y los esquemas de financiación circular identificados en firms de IA",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "02",
+        "title": "Reforzar resiliencia cibernética ante IA frontera",
+        "desc": "Implementar pruebas de penetración basadas en escenarios, ejercicios de estrés cibernético coordinados y revisión de dependencias de terceros ICT, preparándose para ciclos acelerados de descubrimiento y explotación de vulnerabilidades por modelos como Mythos y GPT-5.5",
+        "esfuerzo": "Alto",
+        "impacto": "Alto"
+      },
+      {
+        "num": "03",
+        "title": "Desarrollar estrategia de bonos verdes y transición",
+        "desc": "Las empresas con exposición a sectores intensivos en carbono deben preparar emisiones de bonos verdes o de transición alineados con la Taxonomía UE, aprovechando la demanda sostenida (EUR 181bn emitidos en 1H26) y el creciente interés en Use of Proceeds vinculados a renovables",
+        "esfuerzo": "Medio",
+        "impacto": "Medio"
+      },
+      {
+        "num": "04",
+        "title": "Gestionar riesgos de refinanciación 2027-2028",
+        "desc": "Anticipar el pico de vencimientos de bonos corporativos (>EUR 3.6tn, 28% del outstanding) en 2027-2028 mediante diversificación de fuentes de financiación, extensión de madureces y evaluación de alternativas de crédito privado",
+        "esfuerzo": "Medio",
+        "impacto": "Alto"
+      },
+      {
+        "num": "05",
+        "title": "Evaluar oportunidades en tokenización de activos",
+        "desc": "Monitorear el desarrollo de plataformas de tokenización de acciones (crecimiento 6.5x en 18 meses a EUR 1.9bn) y evaluar participación en el régimen piloto DLT de la UE, considerando beneficios de settlement atómico y riesgos de fragmentación de liquidez",
+        "esfuerzo": "Bajo",
+        "impacto": "Medio"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "sfdr",
+        "criterio": "SFDR Article 8 y 9 - Disclosure de sostenibilidad en fondos",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 40,
+          "section": "Sustainable finance - ESG fund flows",
+          "table": "Chart 58"
+        },
+        "nature": "cuantitativo",
+        "impact": "alto",
+        "action": "Revisar la clasificación SFDR de fondos y asegurar coherencia entre flujos Article 8/9 y estrategias de transición y renovables declaradas"
+      },
+      {
+        "framework": "taxonomia-ue",
+        "criterio": "Alineación con Taxonomía UE en Use of Proceeds de bonos verdes",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 41,
+          "section": "ESG bond market stable as renewables UoP increase",
+          "table": "Chart 59"
+        },
+        "nature": "cuantitativo",
+        "impact": "medio",
+        "action": "Verificar que los Use of Proceeds de emisiones de bonos verdes estén alineados con los criterios de actividad económica de la Taxonomía UE, especialmente en proyectos de energía renovable"
+      },
+      {
+        "framework": "tcfd",
+        "criterio": "TCFD - Métricas y objetivos de emisiones (Recomendación Métricas y Objetivos)",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 42,
+          "section": "In depth: EU Emissions Trading System – new targets"
+        },
+        "nature": "cuantitativo",
+        "impact": "medio",
+        "action": "Desarrollar métricas de exposición a riesgo físico y de transición climática en carteras, más allá de la mera referencia al EU ETS y precios de carbono"
+      },
+      {
+        "framework": "csrd-esrs",
+        "criterio": "ESRS E1 - Transición climática y emisiones Scope 1/2/3",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 40,
+          "section": "Sustainable finance - Rising tensions weigh on climate policy outlook"
+        },
+        "nature": "cualitativo",
+        "impact": "medio",
+        "action": "Preparar disclosure de emisiones Scope 3 en carteras de inversión, área no cubierta por el informe pero relevante para cumplimiento ESRS"
+      }
+    ]
+  }
+}

@@ -1,0 +1,353 @@
+{
+  "slug": "agora-decarbonising-transport-2026",
+  "title": "Decarbonising transport 2026",
+  "institution": "Agora Energiewende",
+  "filename_original": "agora-decarbonising-transport-2026.pdf",
+  "generated_at": "2026-09-16T11:37:44",
+  "content_ca": {
+    "semafor": {
+      "grade": "C",
+      "gradeLabel": "Cobertura acceptable amb llacunes en emissions indirectes i dades d'Àfrica",
+      "indicators": [
+        {
+          "name": "Emissions de transport G20",
+          "status": "verd",
+          "label": "Quantificades amb dades comparatives 1990-2024",
+          "note": "Dades detallades d'emissions per subgrups G7, BRICS+ i altres, amb desacoblament GDP-emissions documentat (p.6-8)."
+        },
+        {
+          "name": "Electrificació de vehicles",
+          "status": "verd",
+          "label": "Quantificada amb creixement i quotes de mercat",
+          "note": "De 730.000 a 39 milions de cotxes elèctrics; quota de mercat global del 22% el 2024; dades per país (p.9)."
+        },
+        {
+          "name": "Canvi modal i transport públic",
+          "status": "groc",
+          "label": "Esmentat amb dades parcials",
+          "note": "S'analitza la distribució modal però sense objectius quantificats globals; la majoria de G20 manté >80% cotxe (p.10-13)."
+        },
+        {
+          "name": "Subsidis a combustibles fòssils",
+          "status": "groc",
+          "label": "Esmentat sense quantificació detallada",
+          "note": "S'esmenta l'augment de subsidis el 2022 i la necessitat d'eliminar-los, però sense xifres agregades G20 (p.28)."
+        },
+        {
+          "name": "Dades específiques d'Àfrica",
+          "status": "groc",
+          "label": "Esmentades amb llacunes explícites",
+          "note": "El reconeixement de manca de dades és honest; recollida en curs per al 2026 (p.14, 20-27)."
+        },
+        {
+          "name": "Cobertura Scope 3",
+          "status": "vermell",
+          "label": "Ignorat",
+          "note": "No s'utilitza la terminologia Scope 1/2/3 ni es quantifiquen emissions indirectes de la cadena de valor del transport."
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "4%",
+        "label": "Creixement d'emissions de transport al G20 (2015-2024)",
+        "page": "7"
+      },
+      {
+        "value": "39 milions",
+        "label": "Cotxes elèctrics al món el 2024 (96% al G20)",
+        "page": "9"
+      },
+      {
+        "value": "67%",
+        "label": "Quota del G20 en emissions globals de transport (2024)",
+        "page": "7"
+      },
+      {
+        "value": "3,6%",
+        "label": "Mitjana de GDP dedicada a importacions de combustible per transport a Àfrica",
+        "page": "22"
+      },
+      {
+        "value": "110",
+        "label": "Parts que han presentat la tercera ronda de NDCs (de 188 inicials)",
+        "page": "5"
+      }
+    ],
+    "resumExecutiu": "Aquest informe d'Agora Verkehrswende i GIZ analitza la descarbonització del transport als països del G20 una dècada després de l'Acord de París. Les emissions de transport del G20 han crescut un 4% entre 2015 i 2024, molt menys que en dècades anteriors, però sense assolir el pic. S'observa un desacoblament lent entre creixement econòmic i emissions. L'electrificació avança: de 730.000 a 39 milions de cotxes elèctrics, amb la Xina al capdavant (11% de la flota elè4). Tanmateix, el canvi modal cap al transport públic i ferroviari roman insuficient; la majoria de països manté més del 80% de mobilitat per cotxe. L'informe incorpora per primera vegada la Unió Africana com a membre permanent del G20, destacant tant l'oportunitat (energies renovables, minerals per a vehicles elèctrics) com els reptes (importació de vehicles usats, 3,6% de GDP en combustibles). L'ambició política mostra signes d'erosió: els EUA han revertit polítiques de suport als VE i la UE podria debilitar els estàndards de CO₂. Es conclou que calen accions integrades: eliminar subsidis fòssils, invertir en transport públic, fomentar vehicles més lleugers i reduir la demanda de transport.",
+    "implicacions": {
+      "empreses": "El sector automoció ha d'accelerar la transició cap a vehicles elèctrics, especialment mercats emergents. Les empreses de transport i logística han d'integrar el canvi modal i l'eficiència en les seves operacions. Les cadenes de subministrament de minerals africans (cobalt, manganès) requereixen diligència deguda en drets humans i impacte local. La reducció de pes dels vehicles i la innovació en disseny aerodinàmic són oportunitats competitives.",
+      "reguladors": "Els governs del G20 han d'establir un grup de treball dedicat a la transformació del transport, eliminar subsidis als combustibles fòssils, implementar estàndards d'eficiència per a vehicles lleugers i pesats, i establir objectius quantitatius sectorials en les NDCs. La coordinació entre sectors (energia, transport, digitalització) és essencial. Cal prioritzar la recollida de dades estandarditzades.",
+      "ciutadans": "La ciutadania ha d'exigir inversions en transport públic accessible i de qualitat, especialment a ciutats africanes on el paratransit domina. Reduir la dependència del cotxe privat i optar per mobilitat activa i compartida és clau. La participació en el debat sobre l'ús de subsidis fòssils i la transició justa és una responsabilitat cívica."
+    },
+    "mesEnllaCheckbox": {
+      "criteri": "Justícia climàtica i tractament de les parts interessades",
+      "body": "L'informe revela una tensió ètica fonamental: els països del G20, responsables del 67% de les emissions globals de transport, avancen lentament mentre Àfrica, amb emissions mínimes per càpita, importa el 85-90% de vehicles usats i gasta desproporcionadament en combustibles. Tractar els països africans com a proveïdors de minerals (74% del cobalt mundial des del Congo) sense capacitar-los per a la fabricació local els converteix en mitjans, no en fins. La màxima 'cada país decideix el seu ritme' no és universalitzable: si tots mantinguessin el ritme actual, l'objectiu de 1,5°C seria impossible. La solidaritat exigeix transferència tecnològica i finançament, no només exportació de vehicles obsolets."
+    },
+    "connexions": [
+      {
+        "type": "Evolució",
+        "target": "Towards Decarbonising Transport 2023",
+        "desc": "Actualització de la sèrie iniciada el 2017; permet comparar el progrés en electrificació i polítiques durant una dècada. El creixement d'emissions ha alentit però no s'ha invertit."
+      },
+      {
+        "type": "Contradicció",
+        "target": "Polítiques EUA i UE vs. economies emergents",
+        "desc": "La reversió de polítiques als EUA i el possible debilitament d'estàndards CO₂ a la UE contrasten amb l'acceleració de l'electrificació a la Xina, Índia i Àfrica oriental, on l'oportunitat econòmica impulsa el canvi."
+      },
+      {
+        "type": "Complement",
+        "target": "Potencial renovable africà i electrificació del transport",
+        "desc": "Etiòpia, Kenya i RDC generen més del 90% de la seva electricitat amb renovables, fet que maximitza el benefici climàtic dels VE i redueix la dependència d'importacions de combustibles."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Crear un grup de treball del G20 per a la transformació del transport",
+        "desc": "Establir un flux de treball dedicat que integri experts en transport, energia i xarxes elèctriques per coordinar la descarbonització intersectorial.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "02",
+        "title": "Eliminar progressivament els subsidis als combustibles fòssils",
+        "desc": "Redirigir els fons cap a electrificació de vehicles, transport públic i combustibles zero-carbon per a aviació i navegació.",
+        "effort": "Alt",
+        "impact": "Alt"
+      },
+      {
+        "num": "03",
+        "title": "Invertir en infraestructura de transport públic i canvi modal",
+        "desc": "Prioritzar ferrocarril, BRT i mobilitat activa amb pressupostos sostinguts, especialment a ciutats africanes on el paratransit domina.",
+        "effort": "Alt",
+        "impact": "Mitjà"
+      },
+      {
+        "num": "04",
+        "title": "Recolzar la fabricació local de VE a Àfrica",
+        "desc": "Facilitar transferència tecnològica i finançament per a plantes d'assemblea local, aprofitant els minerals crítics del continent per crear valor afegit.",
+        "effort": "Mitjà",
+        "impact": "Alt"
+      },
+      {
+        "num": "05",
+        "title": "Establir objectius quantitatius de descarbonització del transport en NDCs",
+        "desc": "Incloure metes específiques d'emissions, quotes de VE i canvi modal en les properes rondes de NDCs, amb mecanismes de seguiment estandarditzats.",
+        "effort": "Baix",
+        "impact": "Mitjà"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "gri",
+        "criterion": "GRI 305-1 Direct GHG emissions",
+        "coverage": "compleix",
+        "evidence": {
+          "page": 7,
+          "section": "1.2 Slower growth in transport emissions",
+          "table": "Figura 3"
+        },
+        "nature": "quantitatiu",
+        "impact": "alt",
+        "action": "Quantificar i reportar emissions directes del transport per país amb metodologia consistent"
+      },
+      {
+        "framework": "tcfd",
+        "criterion": "Metrics and Targets - Emissions reduction targets",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 15,
+          "section": "2.1 Quantitative transport sector targets",
+          "table": "Figura 11"
+        },
+        "nature": "compromis",
+        "impact": "mitja",
+        "action": "Establir i comunicar objectius quantitatius de reducció d'emissions de transport alineats amb 1,5°C"
+      },
+      {
+        "framework": "csrd-esrs",
+        "criterion": "ESRS E1 - Transition plan for climate change mitigation",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 28,
+          "section": "4 Conclusion",
+          "table": null
+        },
+        "nature": "qualitatiu",
+        "impact": "mitja",
+        "action": "Desenvolupar un pla de transició integrat que inclogui electrificació, canvi modal i eliminació de subsidis fòssils"
+      }
+    ]
+  },
+  "content_es": {
+    "semaforo": {
+      "grade": "B",
+      "gradeLabel": "Cobertura sólida con alguna métrica insuficientemente desarrollada",
+      "indicators": [
+        {
+          "name": "Emisiones de transporte G20",
+          "status": "verd",
+          "label": "Crecimiento del 4% en la última década",
+          "note": "Datos cuantificados por subgrupo (G7, BRICS+, otros) y por región; comparación 1990-2015-2024 con desacoplamiento parcial respecto al PIB"
+        },
+        {
+          "name": "Electrificación de flotas",
+          "status": "verd",
+          "label": "39 millones de coches eléctricos en 2024",
+          "note": "Crecimiento del 5.000% desde 2015; datos por país con cuotas de parque y generación baja en carbono; China lidera con 11% de cuota"
+        },
+        {
+          "name": "Objetivos cuantitativos sectoriales",
+          "status": "verd",
+          "label": "17 de 20 miembros del G20 con metas cuantitativas",
+          "note": "13 países incluyen objetivos en NDCs; 4 solo a nivel nacional; Brasil debilitó su compromiso"
+        },
+        {
+          "name": "Cambio modal hacia transporte público",
+          "status": "groc",
+          "label": "Mencionado pero sin reversión de tendencia",
+          "note": "Todos los países tienen políticas de apoyo al transporte público, pero el transporte por carretera sigue creciendo; falta de datos comparables sistemáticos"
+        },
+        {
+          "name": "Cobertura Scope 3 / cadena de valor",
+          "status": "rojo",
+          "label": "No abordado",
+          "note": "El informe no contempla emisiones Scope 3 ni análisis de cadena de valor downstream/upstream del sector transporte"
+        }
+      ]
+    },
+    "dadesClau": [
+      {
+        "value": "4%",
+        "label": "Crecimiento de emisiones de transporte del G20 entre 2015 y 2024",
+        "page": "7"
+      },
+      {
+        "value": "39 millones",
+        "label": "Coches eléctricos a nivel mundial en 2024, frente a 730.000 en 2015",
+        "page": "9"
+      },
+      {
+        "value": "80%",
+        "label": "Cuota del PIB mundial que representa el G20; 2/3 de las emisiones globales de CO2",
+        "page": "3"
+      },
+      {
+        "value": "26%",
+        "label": "Aumento de emisiones de transporte en África (excl. Sudáfrica) entre 2015 y 2024",
+        "page": "7"
+      },
+      {
+        "value": "17 de 20",
+        "label": "Miembros del G20 con objetivo cuantitativo para el sector transporte a finales de 2025",
+        "page": "15"
+      }
+    ],
+    "resumExecutiu": "El informe de Agora Verkehrswende y GIZ ofrece una radiografía detallada del estado de la descarbonización del transporte en el G20, responsable del 80% del PIB mundial y dos tercios de las emisiones globales de CO2. Una década después del Acuerdo de París, las emisiones del sector transporte en el G20 han crecido solo un 4%, frente al 26% de la década anterior, sugiriendo un desacoplamiento parcial entre crecimiento económico y emisiones. La electrificación vehicular se ha expandido exponencialmente: de 730.000 coches eléctricos en 2015 a 39 millones en 2024, con China como líder indiscutible (cuota del 11% de su flota). Sin embargo, el cambio modal hacia transporte público y ferroviario apenas ha comenzado: el transporte por carretera sigue dominando con cuotas superiores al 80% en la mayoría de países. El informe incorpora por primera vez un análisis específico de África, continente donde las emisiones de transporte crecen más deprisa (+26% desde 2015) y donde la electrificación representa tanto una oportunidad climática como una de desarrollo económico, gracias al potencial renovable y a los recursos minerales clave para baterías. Pese a los avances, las ambiciones políticas se están erosionando en algunos países clave como Estados Unidos y la Unión Europea, y los subsidios a combustibles fósiles continúan distorsionando el mercado. El tiempo para una transformación profunda se reduce, y la inacción actual implicará costes más elevados en el futuro.",
+    "implicaciones": {
+      "empresas": "Las empresas del sector automoción deben acelerar la transición hacia flotas de emisiones cero para mantener competitividad en mercados que progresivamente exigen vehículos eléctricos. La relocalización de cadenas de suministro hacia países con recursos minerales (como África para cobalto, manganeso o cobre) abre oportunidades de inversión estratégica. Operadores logísticos deberán diversificar modos de transporte hacia ferrocarril y marítimo para reducir costes y emisiones.",
+      "reguladores": "Es necesario eliminar subsidios a combustibles fósiles que distorsionan el mercado y reasignar esos recursos a infraestructura de transporte público y recarga eléctrica. Los reguladores deben establecer estándares de eficiencia para vehículos pesados (HDV) todavía no universalmente adoptados, y fomentar enfoques integrados que conecten los sectores energía y transporte, algo que el G20 aún no ha estructurado formalmente.",
+      "ciudadanos": "La ciudadanía se beneficia de un transporte más limpio y eficiente, pero el cambio modal requiere alternativas viables al coche privado. El acceso a transporte público asequible y seguro sigue siendo un desafío especialmente en ciudades africanas, donde el paratránsito domina. La electrificación puede reducir costes operativos del transporte hasta 5,5 veces por kilómetro en países con electricidad barata, beneficiando directamente a usuarios de menores ingresos."
+    },
+    "masAllaCheckbox": {
+      "criterio": "Justicia y sostenibilidad sistémica",
+      "body": "El informe revela una tensión ética fundamental: mientras el G20 avanza lentamente en electrificación, África —con la población más joven del mundo y una huella de emisiones mínima— enfrenta el crecimiento más acelerado de emisiones de transporte. La justicia climática exige que los países desarrollados no solo descarbonicen sus propios sectores, sino que faciliten el acceso de los países en desarrollo a tecnologías limpias y financiación, evitando que se reproduzcan patrones de motorización insostenibles. El enfoque 'producir localmente, vender localmente' que adoptan países africanos apunta a un arraigo productivo que dignifica las economías locales en lugar de perpetuar dependencias de importación. Sin embargo, la eliminación pendiente de subsidios fósiles y la ausencia de un grupo de trabajo dedicado al transporte dentro del G20 reflejan una gobernanza que todavía no integra plenamente la co-decisión de los países del Sur en el diseño de la transición."
+    },
+    "conexiones": [
+      {
+        "type": "Evolución",
+        "target": "Towards Decarbonising Transport 2023",
+        "desc": "Actualización de la edición anterior; permite comparar la evolución de indicadores clave desde 2017. El crecimiento de emisiones se ha ralentizado del 7% al 4% interanual, y la electrificación ha pasado de nicho a fenómeno masivo."
+      },
+      {
+        "type": "Complemento",
+        "target": "Agora Verkehrswende - Africa's Raw Materials for Electric Mobility",
+        "desc": "Profundiza en el papel de los recursos minerales africanos (cobalto, manganeso, cobre) para la cadena de suministro de vehículos eléctricos, complementando el capítulo 3 del informe sobre oportunidades africanas."
+      },
+      {
+        "type": "Contradicción",
+        "target": "Políticas de reversión en EE.UU.",
+        "desc": "El informe señala que bajo la administración actual de EE.UU. se han revocado medidas de apoyo a la venta de EVs, contradiciendo la tendencia general del G20 hacia la electrificación y debilitando el impulso colectivo."
+      }
+    ],
+    "accions": [
+      {
+        "num": "01",
+        "title": "Auditar la huella de carbono del transporte corporativo",
+        "desc": "Mapear las emisiones directas e indirectas del transporte de mercancías y personal en toda la cadena de valor, estableciendo una línea base cuantitativa alineada con los datos del G20.",
+        "esforç": "Medio",
+        "impacte": "Alto"
+      },
+      {
+        "num": "02",
+        "title": "Diversificar modos de transporte de carga",
+        "desc": "Trasladar al menos un 15% del volumen de mercancías actualmente por carretera hacia ferrocarril o marítimo, siguiendo el modelo de China que redirigió una gran proporción de su carga creciente a riel y vías navegables.",
+        "esforç": "Alto",
+        "impacte": "Medio"
+      },
+      {
+        "num": "03",
+        "title": "Electrificar flotas propias y de proveedores",
+        "desc": "Establecer un plan de sustitución del 50% de la flota corporativa por vehículos eléctricos antes de 2030, priorizando operaciones en países con alta proporción de generación eléctrica baja en carbono.",
+        "esforç": "Medio",
+        "impacte": "Alto"
+      },
+      {
+        "num": "04",
+        "title": "Eliminar subsidios a combustibles fósiles en operaciones",
+        "desc": "Revisar contratos y políticas internas para asegurar que ninguna operación corporativa se beneficie indirectamente de subsidios a combustibles fósiles, alineando precios internos con costes reales del carbono.",
+        "esforç": "Bajo",
+        "impacte": "Medio"
+      },
+      {
+        "num": "05",
+        "title": "Invertir en transporte público accesible",
+        "desc": "Destinar parte del presupuesto de movilidad corporativa a financiar esquemas de transporte público o BRT en sedes ubicadas en países en desarrollo, siguiendo modelos como los de Dakar o Nairobi, promoviendo acceso equitativo a movilidad.",
+        "esforç": "Medio",
+        "impacte": "Medio"
+      }
+    ],
+    "crossRefs": [
+      {
+        "framework": "gri",
+        "criterio": "GRI 305-1 Emisiones directas de GEI (Scope 1)",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 7,
+          "section": "1.2 Slower growth in transport emissions",
+          "table": "Figura 3"
+        },
+        "nature": "cuantitativo",
+        "impact": "alto",
+        "action": "Cuantificar las emisiones directas del transporte corporativo siguiendo la metodología del informe para comparar con benchmarks del G20"
+      },
+      {
+        "framework": "cdp",
+        "criterio": "CDP Climate Change - Transport mode shift",
+        "coverage": "parcial",
+        "evidence": {
+          "page": 10,
+          "section": "1.4 Road transport continues growing",
+          "table": "Figura 9"
+        },
+        "nature": "cualitativo",
+        "impact": "medio",
+        "action": "Reportar el desglose modal del transporte de carga corporativo y establecer objetivos de desplazamiento hacia modos más eficientes"
+      },
+      {
+        "framework": "tcfd",
+        "criterio": "TCFD - Estrategia de transición y métricas",
+        "coverage": "cumple",
+        "evidence": {
+          "page": 28,
+          "section": "4 | Conclusion",
+          "table": null
+        },
+        "nature": "cualitativo",
+        "impact": "alto",
+        "action": "Integrar escenarios de transición del transporte alineados con los 1,5°C del Acuerdo de París en la planificación corporativa, considerando riesgos regulatorios y de costo de la transición"
+      }
+    ]
+  }
+}

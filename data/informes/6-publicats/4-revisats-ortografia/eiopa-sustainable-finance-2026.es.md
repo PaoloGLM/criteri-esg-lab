@@ -6,18 +6,17 @@ date: "2026-03-31"
 lang: es
 ---
 
-## Bloque 0 — Semáforo Metodológico
+## Bloc 0 — Semàfor Metodològic
 
-**Grado: C — Atención: brecha relevante aún abierta**
+**Nota global: C** — 1 verde: conclusiones a tomar con precaución.
 
-| Indicador | Estado | Etiqueta | Nota |
-|---|---|---|---|
-| Pérdidas globales por catástrofes naturales | 🟢 | Cuantificado | 274.000 M€ en 2024. |
-| Pérdidas aseguradas por catástrofes naturales | 🟢 | Cuantificado | 124.000 M€ en 2024; brecha no asegurada derivada: ~150.000 M€. |
-| Inversiones alineadas con la Taxonomía | 🟢 | Cuantificado | 4,5% directo; 10,7% en exposiciones no financieras. Queda >89% y 95,5% no alineado. |
-| Brecha de protección de seguros | 🟡 | Mencionado | Persistente y creciente, sin métrica regional europea; se deduce brecha global de 150.000 M€. |
-| Datos y modelos de riesgo | 🟡 | Mencionado | Se admiten limitaciones de datos y modelización, sin métricas cuantitativas. |
-| Alcance obligatorio ESRS/CSRD | 🔴 | Ignorado/Insuficiente | La mayoría de entidades aseguradoras quedan fuera del alcance obligatorio y dependerán de estándares voluntarios. |
+| Indicador | Estat | Lectura |
+|---|---|---|
+| Materialidad del impacto principal | 🟢 | Pérdidas por catástrofes cuantificadas: 274.000 M€ globales, 124.000 M€ asegurados (p. 1) |
+| Términos temporales | 🔴 | Ningún hito temporal propio; solo la fecha de publicación, marzo 2026 (p. 1-2) |
+| Fuentes independientes | 🔴 | Análisis propio de EIOPA sin citar fuentes externas (p. 1) |
+| Granularidad | 🟡 | Desglose por clase de activo (4,5% alineado con la Taxonomía), sin datos por país o sector (p. 1) |
+| Verificación externa | 🔴 | Artículo institucional firmado, sin assurance ni revisión externa (p. 1-2) |
 
 ## Bloque 1 — Ficha técnica
 

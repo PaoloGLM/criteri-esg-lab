@@ -8,16 +8,17 @@ lang: es
 
 # Strategy 2026-2029
 
-## Bloque 0 — Semáforo Metodológico
+## Bloc 0 — Semàfor Metodològic
 
-Nota global: B · Buena cobertura con algunas áreas mejorables
+**Nota global: B** — Base participativa sólida, sin assurance externo.
 
-- **Cobertura de Alcance 3**: amarillo — Mencionado
-- **Plazos temporales**: verde — Cuantificado
-- **Fuentes independientes**: verde — Cuantificado
-- **Granularidad**: verde — Cuantificado
-- **Verificación externa**: amarillo — Mencionado
-- **Financiación de emisiones (Alcance 3)**: amarillo — Mencionado, pero no detallado
+| Indicador | Estat | Lectura |
+|---|---|---|
+| Materialidad del impacto principal | 🟡 | La materialidad de los impactos de las carteras es eje central (p. 4), pero sin metodología de medición detallada |
+| Términos temporales | 🟢 | Horizonte cuatrienal definido: estrategia 2026-2029 (p. 1) |
+| Fuentes independientes | 🟢 | Encuesta a más de 250 miembros y más de 30 entrevistas a actores externos (p. 5) |
+| Granularidad | 🟢 | Cinco motores estratégicos desglosados en líneas de actuación concretas (p. 6-9) |
+| Verificación externa | 🟡 | Seguimiento interno de los marcos propios; sin verificación externa de la estrategia (p. 6) |
 
 ## Bloque 1 — Ficha técnica
 

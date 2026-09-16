@@ -7,37 +7,37 @@
   "content_ca": {
     "semafor": {
       "grade": "B",
-      "gradeLabel": "Bona cobertura amb algunes àrees millorables",
+      "gradeLabel": "Base participativa sòlida, sense assurance extern",
       "indicators": [
         {
-          "name": "Cobertura Scope 3",
+          "name": "Materialitat de l'impacte principal",
           "status": "groc",
-          "label": "Esmentat",
-          "note": "L'estratègia parla d'impacts de portfolis però no detalla específicament la cobertura d'emissions Scope 3"
+          "label": "La materialitat dels impactes de les carteres és eix central",
+          "note": "La materialitat dels impactes de les carteres és eix central (p. 4), però sense metodologia de mesura detallada"
         },
         {
           "name": "Termes temporals",
           "status": "verd",
-          "label": "Quantificat",
-          "note": "Estratègia definida per un període concret 2026-2029 amb indicadors de seguiment"
+          "label": "Horitzó quadriennal definit: estratègia 2026-2029",
+          "note": "Horitzó quadriennal definit: estratègia 2026-2029 (p. 1)"
         },
         {
           "name": "Fonts independents",
           "status": "verd",
-          "label": "Quantificat",
-          "note": "S'esmenten explícitament les fonts independents com a part del procés d'elaboració"
+          "label": "Enquesta a més de 250 membres i més de 30 entrevistes a actors externs",
+          "note": "Enquesta a més de 250 membres i més de 30 entrevistes a actors externs (p. 5)"
         },
         {
           "name": "Granularitat",
           "status": "verd",
-          "label": "Quantificat",
-          "note": "L'informe detalla objectius específics i drivers estratègics amb accions concretes"
+          "label": "Cinc motors estratègics desglossats en línies d'actuació concretes",
+          "note": "Cinc motors estratègics desglossats en línies d'actuació concretes (p. 6-9)"
         },
         {
           "name": "Verificació externa",
           "status": "groc",
-          "label": "Esmentat",
-          "note": "Es parla de seguiment però no es detalla un procés de verificació externa formal"
+          "label": "Seguiment intern dels marcs propis; sense verificació externa de l'estratègia",
+          "note": "Seguiment intern dels marcs propis; sense verificació externa de l'estratègia (p. 6)"
         }
       ]
     },
@@ -148,37 +148,37 @@
   "content_es": {
     "semafor": {
       "grade": "B",
-      "gradeLabel": "Bona cobertura amb algunes omissions",
+      "gradeLabel": "Base participativa sólida, sin assurance externo",
       "indicators": [
         {
-          "name": "Cobertura Scope 3",
+          "name": "Materialidad del impacto principal",
           "status": "groc",
-          "label": "Esmentat",
-          "note": "L'estratègia menciona la gestió d'impactes però no especifica cobertura de Scope 3"
+          "label": "La materialidad de los impactos de las carteras es eje central",
+          "note": "La materialidad de los impactos de las carteras es eje central (p. 4), pero sin metodología de medición detallada"
         },
         {
-          "name": "Termes temporals",
+          "name": "Términos temporales",
           "status": "verd",
-          "label": "Quantificat",
-          "note": "Estratègia definida per període 2026-2029 amb indicadors de seguiment"
+          "label": "Horizonte cuatrienal definido: estrategia 2026-2029",
+          "note": "Horizonte cuatrienal definido: estrategia 2026-2029 (p. 1)"
         },
         {
-          "name": "Fonts independents",
+          "name": "Fuentes independientes",
           "status": "verd",
-          "label": "Quantificat",
-          "note": "S'esmenten enquestes a 250+ membres i 30+ parts interessades externes"
+          "label": "Encuesta a más de 250 miembros y más de 30 entrevistas a actores externos",
+          "note": "Encuesta a más de 250 miembros y más de 30 entrevistas a actores externos (p. 5)"
         },
         {
-          "name": "Granularitat",
+          "name": "Granularidad",
           "status": "verd",
-          "label": "Quantificat",
-          "note": "Detalls dels 5 motors estratègics i objectius específics"
+          "label": "Cinco motores estratégicos desglosados en líneas de actuación concretas",
+          "note": "Cinco motores estratégicos desglosados en líneas de actuación concretas (p. 6-9)"
         },
         {
-          "name": "Verificació externa",
+          "name": "Verificación externa",
           "status": "groc",
-          "label": "Esmentat",
-          "note": "Es parla de seguiment però no es detallen mecanismes de verificació externa"
+          "label": "Seguimiento interno de los marcos propios; sin verificación externa de la estrategia",
+          "note": "Seguimiento interno de los marcos propios; sin verificación externa de la estrategia (p. 6)"
         }
       ]
     },

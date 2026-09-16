@@ -7,37 +7,37 @@
   "content_ca": {
     "semafor": {
       "grade": "C",
-      "gradeLabel": "Millorable",
+      "gradeLabel": "Text normatiu sense evidència externa ni verificació reforçada",
       "indicators": [
         {
           "name": "Cobertura Scope 3",
           "status": "groc",
-          "label": "Esmentat",
-          "note": "Es menciona el 'value chain cap' però no hi ha detalls sobre la cobertura específica de les emissions de la cadena de subministrament."
+          "label": "Reconeix la dificultat d'obtenir dades de tota la cadena de valor",
+          "note": "Reconeix la dificultat d'obtenir dades de tota la cadena de valor (p. 2) i simplifica l'avaluació de materialitat (p. 3)"
         },
         {
           "name": "Termes temporals",
-          "status": "groc",
-          "label": "Esmentat",
-          "note": "S'especifiquen les dates del procés de consulta i els passos següents, però no hi ha compromisos a llarg termini."
+          "status": "verd",
+          "label": "Aplicació obligatòria des de l'exercici 2027 i opció anticipada per al 2026",
+          "note": "Aplicació obligatòria des de l'exercici 2027 i opció anticipada per al 2026 (p. 6-7)"
         },
         {
           "name": "Fonts independents",
-          "status": "verd",
-          "label": "Quantificat",
-          "note": "Es reconeix explícitament el paper d'EFRAG com a cos assessor independent."
+          "status": "vermell",
+          "label": "Text normatiu: no cita evidència externa, només normativa i anàlisi d'impacte pròpies de la UE",
+          "note": "Text normatiu: no cita evidència externa, només normativa i anàlisi d'impacte pròpies de la UE"
         },
         {
           "name": "Granularitat",
-          "status": "verd",
-          "label": "Quantificat",
-          "note": "S'ofereixen dades concretes sobre la reducció de datapoints (60% obligatoris, 70% totals) i costos (30%)."
+          "status": "groc",
+          "label": "Amplia la discreció de l'empresa sobre el nivell d'agregació i desagregació de la informació",
+          "note": "Amplia la discreció de l'empresa sobre el nivell d'agregació i desagregació de la informació (p. 5)"
         },
         {
           "name": "Verificació externa",
-          "status": "vermell",
-          "label": "Ignorat",
-          "note": "No es fa cap menció a mecanismes de verificació externa de les informacions ESG."
+          "status": "groc",
+          "label": "Manté l'obligació d'assurance i redueix el risc d'informació no material",
+          "note": "Manté l'obligació d'assurance i redueix el risc d'informació no material (p. 2), sense reforçar-lo"
         }
       ]
     },
@@ -147,38 +147,38 @@
   },
   "content_es": {
     "semafor": {
-      "grade": "B",
-      "gradeLabel": "Reporte amb algunes limitacions",
+      "grade": "C",
+      "gradeLabel": "Texto normativo sin evidencia externa ni verificación reforzada",
       "indicators": [
         {
           "name": "Cobertura Scope 3",
           "status": "groc",
-          "label": "Esmentat",
-          "note": "Es menciona el 'value chain cap' però no hi ha detalls sobre la cobertura específica de les emissions Scope 3"
+          "label": "Reconoce la dificultad de obtener datos de toda la cadena de valor",
+          "note": "Reconoce la dificultad de obtener datos de toda la cadena de valor (p. 2) y simplifica la evaluación de materialidad (p. 3)"
         },
         {
-          "name": "Termes temporals",
+          "name": "Términos temporales",
           "status": "verd",
-          "label": "Quantificat",
-          "note": "S'indiquen clarament els terminis per a la consulta pública fins al 3 de juny i el procés d'adopció"
+          "label": "Aplicación obligatoria desde el ejercicio 2027 y opción anticipada para 2026",
+          "note": "Aplicación obligatoria desde el ejercicio 2027 y opción anticipada para 2026 (p. 6-7)"
         },
         {
-          "name": "Fonts independents",
-          "status": "verd",
-          "label": "Quantificat",
-          "note": "Es reconeix explícitament el paper d'EFRAG com a cos assessor independent"
+          "name": "Fuentes independientes",
+          "status": "vermell",
+          "label": "Texto normativo: no cita evidencia externa, solo normativa y análisis de impacto propios de la UE",
+          "note": "Texto normativo: no cita evidencia externa, solo normativa y análisis de impacto propios de la UE"
         },
         {
-          "name": "Granularitat",
-          "status": "verd",
-          "label": "Quantificat",
-          "note": "S'ofereixen dades concretes sobre la reducció de datapoints (60%+ obligatoris, 70%+ totals)"
+          "name": "Granularidad",
+          "status": "groc",
+          "label": "Amplía la discreción de la empresa sobre el nivel de agregación y desagregación de la información",
+          "note": "Amplía la discreción de la empresa sobre el nivel de agregación y desagregación de la información (p. 5)"
         },
         {
-          "name": "Verificació externa",
-          "status": "verd",
-          "label": "Quantificat",
-          "note": "Es descriu el procés de verificació a través del procediment sense objecció del Parlament i Consell"
+          "name": "Verificación externa",
+          "status": "groc",
+          "label": "Mantiene la obligación de assurance y reduce el riesgo de información no material",
+          "note": "Mantiene la obligación de assurance y reduce el riesgo de información no material (p. 2), sin reforzarlo"
         }
       ]
     },

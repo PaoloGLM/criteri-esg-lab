@@ -8,15 +8,17 @@ lang: es
 
 # Informe de Desarrollo Sostenible 2026 - Europa
 
-## Bloc 0 — Semáforo Metodológico
+## Bloc 0 — Semàfor Metodològic
 
-Nota global: B · Progreso con limitaciones
+**Nota global: B** — 4 de 5 criterios en verde; la cobertura de Scope 3 se queda corta.
 
-- **Cobertura Scope 3**: Amarillo — Esmentado pero no detallado
-- **Términos temporales**: Verde — Definidos claramente
-- **Fuentes independientes**: Verde — Diversificadas
-- **Granularidad**: Verde — Alta
-- **Verificación externa**: Amarillo — Parcial
+| Indicador | Estat | Lectura |
+|---|---|---|
+| Cobertura Scope 3 | 🟡 | Analiza spill-overs internacionales y cadenas textiles (p. 28, 35), pero sin contabilidad de Scope 3 por país |
+| Términos temporales | 🟢 | Meta central 2030 y agenda post-2030 explícitas desde la portada (p. 2, 5) |
+| Fuentes independientes | 🟢 | Publicado por Dublin University Press con datos de instituciones europeas, académicas y ONG (p. 4) |
+| Granularidad | 🟢 | 17 ODS y 169 targets para 41 países, con series desglosadas e índice auditado (p. 19) |
+| Verificación externa | 🟢 | Índice auditado estadísticamente por la Comisión Europea (p. 19, 31) |
 
 ## Bloc 1 — Ficha técnica
 

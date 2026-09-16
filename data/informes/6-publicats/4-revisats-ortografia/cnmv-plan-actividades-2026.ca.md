@@ -10,14 +10,15 @@ lang: ca
 
 ## Bloc 0 — Semàfor Metodològic
 
-Nota global: C · Millorable
+**Nota global: D** — 0 verds: no utilitzar com a font única.
 
-- **Cobertura Scope 3**: vermell — No tractat
-- **Termes temporals**: groc — Esmentat però no detallat
-- **Fonts independents**: groc — Algunes fonts
-- **Granularitat**: groc — General
-- **Verificació externa**: vermell — No present
-- **Objectius ESG quantificables**: vermell — L'informe esmenta la sostenibilitat, però no estableix objectius numèrics clars ni indicadors clau de rendiment per a l'impacte ambiental o social, més enllà de la conformitat reguladora.
+| Indicador | Estat | Lectura |
+|---|---|---|
+| Cobertura Scope 3 | 🔴 | No aborda la cadena de valor ni emissions; la sostenibilitat hi és transversal i declarativa (p. 5) |
+| Termes temporals | 🟡 | Prioritats estratègiques 2030 i iniciatives 2026 (p. 3, 15), sense fites intermèdies quantificades |
+| Fonts independents | 🟡 | Referències pròpies i normatives; la xarxa de col·laboradors és l'única aportació externa (p. 20) |
+| Granularitat | 🟡 | Iniciatives per any sense indicadors; el redisseny de KPI es promet per al futur (p. 30) |
+| Verificació externa | 🔴 | Controls i auditoria interna propis (p. 44); cap assurance extern del pla |
 
 ## Bloc 1 — Fitxa tècnica
 

@@ -9,17 +9,15 @@ lang: ca
 
 ## Bloc 0 — Semàfor Metodològic
 
+**Nota global: B** — Cobertura sòlida i quantificada, però sense verificació externa.
+
 | Indicador | Estat | Lectura |
 |---|---|---|
-| Ocupació sectorial neta | 🟢 | 951.000 llocs directes (2023); sèries 2010-2023 desagregades per tecnologia i estat membre |
-| Bretxa de gènere | 🟢 | 14-26% de presència femenina segons tecnologia; només 3% de dones supervisores en construcció |
-| Manca de competències | 🟢 | 21 EE. MM. reporten dèficit d'electricistes (EURES 2024); manca intensitat del dèficit |
-| Qualitat laboral i salaris | 🟢 | 24.300-44.300 € segons segment; tipus de contracte i riscos físics via EWCS 2024 |
-| Impacte comunitari en salut | 🟡 | Riscos químics en bateries (Hongria, Suècia) documentats però no sistemàtics; llacuna reguladora en liti |
-
-**Nota global: B** — Cobertura sòlida amb dades quantificades, però amb llacunes en impactes comunitaris i migratoris que el mateix informe reconeix. La qualificació està justificada: el rigor quantitatiu contrasta amb la debilitat qualitativa on la dignitat laboral es juga.
-
-> *Nota tècnica:* La numeració de pàgines en algunes dades clau presenta desplaçaments menors (1-2 pàg.) respecte a l'índex final de l'informe. Les xifres, però, són exactes.
+| Materialitat de l'impacte principal | 🟢 | Cadena de valor clean-tech quantificada: 951.000 llocs directes el 2023 (p. 53) |
+| Termes temporals | 🟢 | Projeccions 2030 per tecnologia: fins al doble d'ocupació en eòlica i solar FV (p. 10) |
+| Fonts independents | 🟡 | Dades pròpies de l'EEA amb referències externes EURES 2024 (p. 83) i EWCS 2024 (p. 90); sense auditoria externa |
+| Granularitat | 🟢 | Dades desagregades per tecnologia, segment de cadena de valor i estat membre (p. 68-69) |
+| Verificació externa | 🟡 | Sense assurance extern; validació metodològica interna sobre el LFS europeu (p. 68) |
 
 ## Bloc 1 — Fitxa tècnica
 

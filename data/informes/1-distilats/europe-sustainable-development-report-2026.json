@@ -7,37 +7,37 @@
   "content_ca": {
     "semafor": {
       "grade": "B",
-      "gradeLabel": "Progresseix però amb limitacions",
+      "gradeLabel": "4 de 5 criteris en verd; la cobertura de Scope 3 queda curta",
       "indicators": [
         {
           "name": "Cobertura Scope 3",
           "status": "groc",
-          "label": "Esmentat però no detallat",
-          "note": "L'informe menciona emissions de GHG però no proporciona detalls específics sobre l'abast 3"
+          "label": "Analitza spillovers internacionals i cadenes tèxtils",
+          "note": "Analitza spillovers internacionals i cadenes tèxtils (p. 28, 35), però sense comptabilització de Scope 3 per país"
         },
         {
           "name": "Termes temporals",
           "status": "verd",
-          "label": "Definits clarament",
-          "note": "L'informe estableix objectius a curt i llarg termini, incloent 2030 i 2050"
+          "label": "Fita central 2030 i agenda post-2030 explícites des de la portada",
+          "note": "Fita central 2030 i agenda post-2030 explícites des de la portada (p. 2, 5)"
         },
         {
           "name": "Fonts independents",
           "status": "verd",
-          "label": "Diversificades",
-          "note": "Utilitza múltiples fonts de dades institucionals i acadèmiques"
+          "label": "Publicat per Dublin University Press amb dades d'institucions europees, acadèmiques i ONG",
+          "note": "Publicat per Dublin University Press amb dades d'institucions europees, acadèmiques i ONG (p. 4)"
         },
         {
           "name": "Granularitat",
           "status": "verd",
-          "label": "Alta",
-          "note": "Proporciona anàlisis detallades per països i regions europees"
+          "label": "17 ODS i 169 targets per a 41 països, amb sèries desagregades i índex auditorat",
+          "note": "17 ODS i 169 targets per a 41 països, amb sèries desagregades i índex auditorat (p. 19)"
         },
         {
           "name": "Verificació externa",
-          "status": "groc",
-          "label": "Parcial",
-          "note": "Té contribucions d'experts però no una verificació externa formal"
+          "status": "verd",
+          "label": "Índex auditat estadísticament per la Comissió Europea",
+          "note": "Índex auditat estadísticament per la Comissió Europea (p. 19, 31)"
         }
       ]
     },
@@ -153,37 +153,37 @@
   "content_es": {
     "semafor": {
       "grade": "B",
-      "gradeLabel": "Reporte amb algunes mancances però amb contingut valuós",
+      "gradeLabel": "4 de 5 criterios en verde; la cobertura de Scope 3 se queda corta",
       "indicators": [
         {
           "name": "Cobertura Scope 3",
           "status": "groc",
-          "label": "Esmentat però no quantificat",
-          "note": "L'informe tracta emissions però no especifica cobertura Scope 3"
+          "label": "Analiza spill-overs internacionales y cadenas textiles",
+          "note": "Analiza spill-overs internacionales y cadenas textiles (p. 28, 35), pero sin contabilidad de Scope 3 por país"
         },
         {
-          "name": "Termes temporals",
+          "name": "Términos temporales",
           "status": "verd",
-          "label": "Objectius temporals clars",
-          "note": "L'informe estableix objectius per 2030 i 2050"
+          "label": "Meta central 2030 y agenda post-2030 explícitas desde la portada",
+          "note": "Meta central 2030 y agenda post-2030 explícitas desde la portada (p. 2, 5)"
         },
         {
-          "name": "Fonts independents",
+          "name": "Fuentes independientes",
           "status": "verd",
-          "label": "Fonts diversificades",
-          "note": "Utilitza múltiples fonts institucionals i independents"
+          "label": "Publicado por Dublin University Press con datos de instituciones europeas, académicas y ONG",
+          "note": "Publicado por Dublin University Press con datos de instituciones europeas, académicas y ONG (p. 4)"
         },
         {
-          "name": "Granularitat",
+          "name": "Granularidad",
           "status": "verd",
-          "label": "Anàlisi detallat",
-          "note": "Proporciona dades desagregades per països i indicadors"
+          "label": "17 ODS y 169 targets para 41 países, con series desglosadas e índice auditado",
+          "note": "17 ODS y 169 targets para 41 países, con series desglosadas e índice auditado (p. 19)"
         },
         {
-          "name": "Verificació externa",
-          "status": "groc",
-          "label": "Verificació parcial",
-          "note": "Té contribucions d'experts però no verificació externa formal"
+          "name": "Verificación externa",
+          "status": "verd",
+          "label": "Índice auditado estadísticamente por la Comisión Europea",
+          "note": "Índice auditado estadísticamente por la Comisión Europea (p. 19, 31)"
         }
       ]
     },

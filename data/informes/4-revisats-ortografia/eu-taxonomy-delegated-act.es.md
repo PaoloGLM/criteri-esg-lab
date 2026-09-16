@@ -8,15 +8,17 @@ lang: es
 
 # Reglamento delegado de la taxonomía
 
-## Bloc 0 — Semáforo Metodológico
+## Bloc 0 — Semàfor Metodològic
 
-Nota global: C · Mejorable
+**Nota global: C** — Texto normativo sin evidencia externa ni verificación reforzada.
 
-- **Cobertura Scope 3**: amarillo — Mencionado
-- **Plazos temporales**: verde — Cuantificado
-- **Fuentes independientes**: verde — Cuantificado
-- **Granularidad**: verde — Cuantificado
-- **Verificación externa**: rojo — Ignorado
+| Indicador | Estat | Lectura |
+|---|---|---|
+| Cobertura Scope 3 | 🟡 | Reconoce la dificultad de obtener datos de toda la cadena de valor (p. 2) y simplifica la evaluación de materialidad (p. 3) |
+| Términos temporales | 🟢 | Aplicación obligatoria desde el ejercicio 2027 y opción anticipada para 2026 (p. 6-7) |
+| Fuentes independientes | 🔴 | Texto normativo: no cita evidencia externa, solo normativa y análisis de impacto propios de la UE |
+| Granularidad | 🟡 | Amplía la discreción de la empresa sobre el nivel de agregación y desagregación de la información (p. 5) |
+| Verificación externa | 🟡 | Mantiene la obligación de assurance y reduce el riesgo de información no material (p. 2), sin reforzarlo |
 
 ## Bloc 1 — Ficha técnica
 

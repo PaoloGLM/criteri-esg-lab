@@ -10,13 +10,15 @@ lang: ca
 
 ## Bloc 0 — Semàfor Metodològic
 
-Nota global: C · Informació limitada sobre ASG
+**Nota global: D** — 0 verds: no utilitzar com a font única.
 
-- **Cobertura Abast 3**: vermell — No cobert
-- **Terminis temporals**: groc — Esmentat però no detallat
-- **Fonts independents**: groc — Parcial
-- **Granularitat**: groc — Limitada
-- **Verificació externa**: vermell — No present
+| Indicador | Estat | Lectura |
+|---|---|---|
+| Cobertura Scope 3 | 🔴 | No tracta emissions de cadena de valor ni materialitat ESG en cap secció (índex, p. 3-10) |
+| Termes temporals | 🟡 | Única fita temporal esmentada: aplicació plena de la normativa d'IA el 2030 (p. 130) |
+| Fonts independents | 🟡 | Cites externes puntuals: estimacions de tercers sobre fons alternatius (p. 45) i enquesta d'ESMA (p. 130) |
+| Granularitat | 🟡 | Estadístiques de mercat agregades; sense desglossament de dades ESG per sector o risc (p. 63) |
+| Verificació externa | 🔴 | Les auditories citades corresponen als sistemes supervisats, no al contingut del butlletí (p. 99) |
 
 ## Bloc 1 — Fitxa tècnica
 

@@ -8,16 +8,17 @@ lang: es
 
 # Plan de actividades 2026 - CNMV
 
-## Bloc 0 — Semáforo Metodológico
+## Bloc 0 — Semàfor Metodològic
 
-Nota global: C · Rendimiento aceptable con áreas de mejora
+**Nota global: D** — 0 verdes: no utilizar como fuente única.
 
-- **Cobertura Scope 3**: rojo — No abordado
-- **Términos temporales**: amarillo — Mencionado pero no detallado
-- **Fuentes independientes**: amarillo — Algunas fuentes
-- **Granularidad**: amarillo — General
-- **Verificación externa**: rojo — No presente
-- **Objetivos ESG cuantificables**: rojo — El informe menciona la sostenibilidad, pero no establece objetivos numéricos claros ni KPI para el impacto ambiental o social, más allá de la conformidad regulatoria.
+| Indicador | Estat | Lectura |
+|---|---|---|
+| Cobertura Scope 3 | 🔴 | No aborda la cadena de valor ni emisiones; la sostenibilidad es transversal y declarativa (p. 5) |
+| Términos temporales | 🟡 | Prioridades estratégicas 2030 e iniciativas 2026 (p. 3, 15), sin hitos intermedios cuantificados |
+| Fuentes independientes | 🟡 | Referencias propias y normativas; la red de colaboradores es la única aportación externa (p. 20) |
+| Granularidad | 🟡 | Iniciativas por año sin indicadores; el rediseño de KPI se promete para el futuro (p. 30) |
+| Verificación externa | 🔴 | Controles y auditoría internos propios (p. 44); sin assurance externo del plan |
 
 ## Bloc 1 — Ficha técnica
 

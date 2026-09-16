@@ -7,37 +7,37 @@
   "content_ca": {
     "semafor": {
       "grade": "B",
-      "gradeLabel": "Cobertura sòlida amb dades quantificades però amb llacunes en impactes comunitaris i migratoris",
+      "gradeLabel": "Cobertura sòlida i quantificada, però sense verificació externa",
       "indicators": [
         {
-          "name": "Ocupació sectorial neta",
+          "name": "Materialitat de l'impacte principal",
           "status": "verd",
-          "label": "951.000 llocs directes en 2023",
-          "note": "Dades desagregades per tecnologia, segment de cadena de valor i estat membre amb sèries 2010-2023"
+          "label": "Cadena de valor clean-tech quantificada: 951.000 llocs directes el 2023",
+          "note": "Cadena de valor clean-tech quantificada: 951.000 llocs directes el 2023 (p. 53)"
         },
         {
-          "name": "Bretxa de gènere",
+          "name": "Termes temporals",
           "status": "verd",
-          "label": "14-26% presència femenina",
-          "note": "Quantificat per tecnologia i segment; només 3% de dones supervisores en construcció"
+          "label": "Projeccions 2030 per tecnologia: fins al doble d'ocupació en eòlica i solar FV",
+          "note": "Projeccions 2030 per tecnologia: fins al doble d'ocupació en eòlica i solar FV (p. 10)"
         },
         {
-          "name": "Manca de competències tècniques",
-          "status": "verd",
-          "label": "21 EE. MM. reporten dèficit d'electricistes",
-          "note": "Dades EURES 2024 per a 15 ocupacions clau; manca d'intensitat del dèficit"
-        },
-        {
-          "name": "Qualitat laboral i salaris",
-          "status": "verd",
-          "label": "EUR 27.100-44.600 segons tecnologia",
-          "note": "Salaris per segment; tipus de contracte; exposició a riscos físics via EWCS 2024"
-        },
-        {
-          "name": "Impacte comunitari en salut",
+          "name": "Fonts independents",
           "status": "groc",
-          "label": "Riscos químics en bateries esmentats",
-          "note": "Casos Hongria i Suècia documentats però sense dades sistemàtiques; llacuna reguladora en liti"
+          "label": "Dades pròpies de l'EEA amb referències externes EURES 2024",
+          "note": "Dades pròpies de l'EEA amb referències externes EURES 2024 (p. 83) i EWCS 2024 (p. 90); sense auditoria externa"
+        },
+        {
+          "name": "Granularitat",
+          "status": "verd",
+          "label": "Dades desagregades per tecnologia, segment de cadena de valor i estat membre",
+          "note": "Dades desagregades per tecnologia, segment de cadena de valor i estat membre (p. 68-69)"
+        },
+        {
+          "name": "Verificació externa",
+          "status": "groc",
+          "label": "Sense assurance extern; validació metodològica interna sobre el LFS europeu",
+          "note": "Sense assurance extern; validació metodològica interna sobre el LFS europeu (p. 68)"
         }
       ]
     },
@@ -176,44 +176,38 @@
   },
   "content_es": {
     "semafor": {
-      "grade": "A",
-      "gradeLabel": "Excelente cobertura cuantitativa con datos robustos sobre empleo, género, salarios, escasez de habilidades y proyecciones",
+      "grade": "B",
+      "gradeLabel": "Cobertura sólida y cuantificada, pero sin verificación externa",
       "indicators": [
         {
-          "name": "Empleo directo en clean-tech",
+          "name": "Materialidad del impacto principal",
           "status": "verd",
-          "label": "951.000 empleos directos cuantificados en 2023",
-          "note": "Datos desglosados por tecnología (eólica 273.500, solar FV 227.300, bombas de calor 80.100, baterías 32.600) y por segmento de cadena de valor"
+          "label": "Cadena de valor clean-tech cuantificada: 951.000 empleos directos en 2023",
+          "note": "Cadena de valor clean-tech cuantificada: 951.000 empleos directos en 2023 (p. 53)"
         },
         {
-          "name": "Brecha de género",
+          "name": "Términos temporales",
           "status": "verd",
-          "label": "Participación femenina cuantificada: 14%-26% según tecnología",
-          "note": "Datos desglosados por tecnología, segmento de cadena de valor y posición de liderazgo (EWCS 2024)"
+          "label": "Proyecciones 2030 por tecnología: hasta el doble de empleo en eólica y solar FV",
+          "note": "Proyecciones 2030 por tecnología: hasta el doble de empleo en eólica y solar FV (p. 10)"
         },
         {
-          "name": "Calidad del empleo y salarios",
-          "status": "verd",
-          "label": "Salarios promedio anuales cuantificados por segmento y tecnología",
-          "note": "Rango desde 24.300€ en construcción hasta 44.300€ en operaciones; datos de contratos, autoempleo y formación también cuantificados"
+          "name": "Fuentes independientes",
+          "status": "groc",
+          "label": "Datos propios de la AEMA con referencias externas EURES 2024",
+          "note": "Datos propios de la AEMA con referencias externas EURES 2024 (p. 83) y EWCS 2024 (p. 90); sin auditoría externa"
         },
         {
-          "name": "Escasez de habilidades",
+          "name": "Granularidad",
           "status": "verd",
-          "label": "Escasez ocupacional mapeada por país y ocupación",
-          "note": "21 Estados miembros reportan escasez de electricistas; datos EURES 2024 con 440 ocupaciones clasificadas"
+          "label": "Datos desglosados por tecnología, segmento de cadena de valor y Estado miembro",
+          "note": "Datos desglosados por tecnología, segmento de cadena de valor y Estado miembro (p. 68-69)"
         },
         {
-          "name": "Proyecciones de empleo 2030",
-          "status": "verd",
-          "label": "Proyecciones cuantificadas con escenarios múltiples",
-          "note": "Hasta 500.000 empleos en eólica y solar FV cada una; rangos para bombas de calor (150.000-250.000) y baterías (200.000-400.000)"
-        },
-        {
-          "name": "Salud y seguridad ocupacional",
-          "status": "verd",
-          "label": "Riesgos físicos y ausencias por enfermedad cuantificados",
-          "note": "EWCS 2024: 13 días de ausencia media en manufactura vs 6 en I+D; exposición a químicos, ruido y temperaturas extremas por segmento"
+          "name": "Verificación externa",
+          "status": "groc",
+          "label": "Sin aseguramiento externo; validación metodológica interna sobre la LFS europea",
+          "note": "Sin aseguramiento externo; validación metodológica interna sobre la LFS europea (p. 68)"
         }
       ]
     },

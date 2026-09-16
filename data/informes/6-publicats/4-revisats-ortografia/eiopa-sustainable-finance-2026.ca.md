@@ -8,16 +8,15 @@ lang: ca
 
 ## Bloc 0 — Semàfor Metodològic
 
-**Grau: C** — Atenció: bretxa rellevant encara oberta. Quantificació parcial, tensions normatives no resoltes.
+**Nota global: C** — 1 verd: conclusions a prendre amb precaució.
 
-| Indicador | Estat | Observació |
+| Indicador | Estat | Lectura |
 |---|---|---|
-| Pèrdues per catàstrofes naturals | 🟢 Quantificat | 274.000 milions d'euros totals; 124.000 milions d'euros assegurats; bretxa implícita de 150.000 milions d'euros. |
-| Inversions alineades amb la Taxonomia | 🟢 Quantificat, amb context crític | 4,5% directe; 10,7% no financer. Però el 95,5% i el 89,3% restants no estan alineats. |
-| Bretxa de protecció d'assegurances | 🟡 Esmentat, derivable | Sense xifra regional europea; es deriva una bretxa global no assegurada de 150.000 milions d'euros. |
-| Dades i models de risc | 🟡 Esmentat | Limitacions admeses; contradicció amb l'agenda de simplificació que pot agreujar les llacunes. |
-| Cobertura de l'Abast 3 | 🔴 Ignorat | No s'esmenten les emissions de la cadena de valor. |
-| Obligatorietat ESRS per a asseguradores | 🔴 Ignorat | La majoria d'entitats asseguradores queden fora de l'abast obligatori i dependran d'estàndards voluntaris. |
+| Materialitat de l'impacte principal | 🟢 | Pèrdues per catàstrofes quantificades: 274.000 M€ globals, 124.000 M€ assegurats (p. 1) |
+| Termes temporals | 🔴 | Cap fita temporal pròpia; només la data de publicació, març 2026 (p. 1-2) |
+| Fonts independents | 🔴 | Anàlisi pròpia d'EIOPA sense citar fonts externes (p. 1) |
+| Granularitat | 🟡 | Desglossament per classe d'actiu (4,5% alineat amb la Taxonomia), sense dades per país o sector (p. 1) |
+| Verificació externa | 🔴 | Article institucional signat, sense assurance ni revisió externa (p. 1-2) |
 
 ## Bloc 1 — Fitxa tècnica
 

@@ -10,13 +10,15 @@ lang: ca
 
 ## Bloc 0 — Semàfor Metodològic
 
-Nota global: B · Progresseix però amb limitacions
+**Nota global: B** — 4 de 5 criteris en verd; la cobertura de Scope 3 queda curta.
 
-- **Cobertura Scope 3**: groc — Esmentat però no detallat
-- **Termes temporals**: verd — Definits clarament
-- **Fonts independents**: verd — Diversificades
-- **Granularitat**: verd — Alta
-- **Verificació externa**: groc — Té contribucions d'experts de diverses institucions i una consulta pública, però no una auditoria externa formal independent de la metodologia o dades complertes de l'informe
+| Indicador | Estat | Lectura |
+|---|---|---|
+| Cobertura Scope 3 | 🟡 | Analitza spillovers internacionals i cadenes tèxtils (p. 28, 35), però sense comptabilització de Scope 3 per país |
+| Termes temporals | 🟢 | Fita central 2030 i agenda post-2030 explícites des de la portada (p. 2, 5) |
+| Fonts independents | 🟢 | Publicat per Dublin University Press amb dades d'institucions europees, acadèmiques i ONG (p. 4) |
+| Granularitat | 🟢 | 17 ODS i 169 targets per a 41 països, amb sèries desagregades i índex auditorat (p. 19) |
+| Verificació externa | 🟢 | Índex auditat estadísticament per la Comissió Europea (p. 19, 31) |
 
 ## Bloc 1 — Fitxa tècnica
 

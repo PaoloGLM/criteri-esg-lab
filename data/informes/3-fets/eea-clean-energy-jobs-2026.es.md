@@ -6,19 +6,17 @@ date: 2026-01-15
 lang: es
 ---
 
-## Bloque 0 — Semáforo Metodológico
+## Bloc 0 — Semàfor Metodològic
 
-| Indicador | Estado | Lectura |
+**Nota global: B** — Cobertura sólida y cuantificada, pero sin verificación externa.
+
+| Indicador | Estat | Lectura |
 |---|---|---|
-| Ocupación sectorial neta | 🟢 | 951.000 puestos directos (2023); series 2010-2023 desagregadas por tecnología y Estado miembro |
-| Brecha de género | 🟢 | 14-26% de presencia femenina según tecnología; solo un 3% de mujeres supervisoras en construcción |
-| Falta de competencias | 🟢 | 21 Estados miembros informan de déficit de electricistas (EURES 2024); falta de intensidad del déficit |
-| Calidad laboral y salarios | 🟢 | 24.300-44.300 € según segmento; tipo de contrato y riesgos físicos vía EWCS 2024 |
-| Impacto comunitario en salud | 🟡 | Riesgos químicos en baterías (Hungría, Suecia) documentados pero no sistemáticos; vacío regulador en el litio |
-
-**Nota global: B** — Cobertura sólida con datos cuantificados, pero con lagunas en impactos comunitarios y migratorios que el propio informe reconoce. La calificación está justificada: el rigor cuantitativo contrasta con la debilidad cualitativa donde la dignidad laboral se juega.
-
-> *Nota técnica:* La numeración de páginas en algunos datos clave presenta desplazamientos menores (1-2 págs.) respecto al índice final del informe. Las cifras, sin embargo, son exactas.
+| Materialidad del impacto principal | 🟢 | Cadena de valor clean-tech cuantificada: 951.000 empleos directos en 2023 (p. 53) |
+| Términos temporales | 🟢 | Proyecciones 2030 por tecnología: hasta el doble de empleo en eólica y solar FV (p. 10) |
+| Fuentes independientes | 🟡 | Datos propios de la AEMA con referencias externas EURES 2024 (p. 83) y EWCS 2024 (p. 90); sin auditoría externa |
+| Granularidad | 🟢 | Datos desglosados por tecnología, segmento de cadena de valor y Estado miembro (p. 68-69) |
+| Verificación externa | 🟡 | Sin aseguramiento externo; validación metodológica interna sobre la LFS europea (p. 68) |
 
 ## Bloque 1 — Ficha técnica
 

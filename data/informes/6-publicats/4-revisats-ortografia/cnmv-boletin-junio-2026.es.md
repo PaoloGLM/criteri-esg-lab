@@ -8,15 +8,17 @@ lang: es
 
 # Boletín Junio 2026 - CNMV
 
-## Bloque 0 — Semáforo Metodológico
+## Bloc 0 — Semàfor Metodològic
 
-Nota global: C · Información limitada sobre ASG
+**Nota global: D** — 0 verdes: no utilizar como fuente única.
 
-- **Cobertura Scope 3**: Rojo — No cubierta
-- **Términos temporales**: Amarillo — Mencionado pero no detallado
-- **Fuentes independientes**: Amarillo — Parcial
-- **Granularidad**: Amarillo — Limitada
-- **Verificación externa**: Rojo — No presente
+| Indicador | Estat | Lectura |
+|---|---|---|
+| Cobertura Scope 3 | 🔴 | No trata emisiones de cadena de valor ni materialidad ESG en ninguna sección (índice, p. 3-10) |
+| Términos temporales | 🟡 | Único hito temporal mencionado: aplicación plena de la normativa de IA en 2030 (p. 130) |
+| Fuentes independientes | 🟡 | Citas externas puntuales: estimaciones de terceros sobre fondos alternativos (p. 45) y encuesta de ESMA (p. 130) |
+| Granularidad | 🟡 | Estadísticas de mercado agregadas; sin desglose de datos ESG por sector o riesgo (p. 63) |
+| Verificación externa | 🔴 | Las auditorías citadas corresponden a los sistemas supervisados, no al contenido del boletín (p. 99) |
 
 ## Bloque 1 — Ficha técnica
 

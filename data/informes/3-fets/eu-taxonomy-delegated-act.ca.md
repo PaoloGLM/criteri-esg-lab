@@ -10,13 +10,15 @@ lang: ca
 
 ## Bloc 0 — Semàfor Metodològic
 
-Nota global: C · Millorable
+**Nota global: C** — Text normatiu sense evidència externa ni verificació reforçada.
 
-- **Cobertura Scope 3**: groc — Esmentat
-- **Termes temporals**: groc — Esmentat
-- **Fonts independents**: verd — Quantificat
-- **Granularitat**: verd — Quantificat
-- **Verificació externa**: vermell — Ignorat
+| Indicador | Estat | Lectura |
+|---|---|---|
+| Cobertura Scope 3 | 🟡 | Reconeix la dificultat d'obtenir dades de tota la cadena de valor (p. 2) i simplifica l'avaluació de materialitat (p. 3) |
+| Termes temporals | 🟢 | Aplicació obligatòria des de l'exercici 2027 i opció anticipada per al 2026 (p. 6-7) |
+| Fonts independents | 🔴 | Text normatiu: no cita evidència externa, només normativa i anàlisi d'impacte pròpies de la UE |
+| Granularitat | 🟡 | Amplia la discreció de l'empresa sobre el nivell d'agregació i desagregació de la informació (p. 5) |
+| Verificació externa | 🟡 | Manté l'obligació d'assurance i redueix el risc d'informació no material (p. 2), sense reforçar-lo |
 
 ## Bloc 1 — Fitxa tècnica
 

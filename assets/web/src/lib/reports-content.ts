@@ -2329,39 +2329,39 @@ const europeSDR_es: ReportBlock = {
 // -----------------------------------------------------------------------------
 
 const cnmvBoletin_ca: ReportBlock = {
-  "semafor": {
-    "grade": "C",
-    "gradeLabel": "Informació limitada sobre ASG",
+    "semafor": {
+    "grade": "D",
+    "gradeLabel": "Materialitat qüestionable",
     "indicators": [
       {
         "name": "Cobertura Scope 3",
         "status": "vermell",
         "label": "No cobert",
-        "note": "L'informe no menciona emissions de l'Scope 3 ni la seva importància en l'anàlisi ASG."
+        "note": "No tracta emissions de cadena de valor ni materialitat ESG en cap secció (índex, p. 3-10)."
       },
       {
         "name": "Termes temporals",
         "status": "groc",
-        "label": "Esmentat",
-        "note": "S'esmenten objectius temporals de sostenibilitat però sense especificació clara dels horitzons."
+        "label": "Parcial",
+        "note": "Única fita temporal esmentada: aplicació plena de la normativa d'IA el 2030 (p. 130)."
       },
       {
         "name": "Fonts independents",
         "status": "groc",
         "label": "Parcial",
-        "note": "L'informe es basa en dades pròpies de la CNMV i algunes fonts externes, però no verifica amb auditors independents."
+        "note": "Cites externes puntuals: estimacions de tercers sobre fons alternatius (p. 45) i enquesta d'ESMA (p. 130)."
       },
       {
         "name": "Granularitat",
         "status": "groc",
         "label": "Limitada",
-        "note": "L'informe ofereix dades agregades sobre ASG però sense desglossament detallat per empresa o sector."
+        "note": "Estadístiques de mercat agregades; sense desglossament de dades ESG per sector o risc (p. 63)."
       },
       {
         "name": "Verificació externa",
         "status": "vermell",
         "label": "No present",
-        "note": "No hi ha cap menció a verificació externa de les dades ASG presentades."
+        "note": "Les auditories citades corresponen als sistemes supervisats, no al contingut del butlletí (p. 99)."
       }
     ]
   },
@@ -2471,39 +2471,39 @@ const cnmvBoletin_ca: ReportBlock = {
 };
 
 const cnmvBoletin_es: ReportBlock = {
-  "semafor": {
-    "grade": "C",
-    "gradeLabel": "Rendiment ESG limitat",
+    "semafor": {
+    "grade": "D",
+    "gradeLabel": "Materialidad cuestionable",
     "indicators": [
       {
         "name": "Cobertura Scope 3",
         "status": "vermell",
-        "label": "No tractada",
-        "note": "L'informe no aborda les emissions de scope 3 ni els impactes externs de les inversions."
+        "label": "No cubierto",
+        "note": "No trata emisiones de cadena de valor ni materialidad ESG en ninguna sección (índice, p. 3-10)."
       },
       {
-        "name": "Termes temporals",
-        "status": "groc",
-        "label": "Esmentada però no detallada",
-        "note": "S'esmenten objectius de sostenibilitat però sense horitzons temporals específics."
-      },
-      {
-        "name": "Fonts independents",
+        "name": "Términos temporales",
         "status": "groc",
         "label": "Parcial",
-        "note": "Algunes dades són de fonts pròpies de la CNMV, sense verificació externa."
+        "note": "Único hito temporal mencionado: aplicación plena de la normativa de IA en 2030 (p. 130)."
       },
       {
-        "name": "Granularitat",
+        "name": "Fuentes independientes",
         "status": "groc",
-        "label": "General",
-        "note": "L'informe ofereix una visió general dels mercats sense desglossar dades ESG detallades."
+        "label": "Parcial",
+        "note": "Citas externas puntuales: estimaciones de terceros sobre fondos alternativos (p. 45) y encuesta de ESMA (p. 130)."
       },
       {
-        "name": "Verificació externa",
+        "name": "Granularidad",
+        "status": "groc",
+        "label": "Limitada",
+        "note": "Estadísticas de mercado agregadas; sin desglose de datos ESG por sector o riesgo (p. 63)."
+      },
+      {
+        "name": "Verificación externa",
         "status": "vermell",
-        "label": "Absent",
-        "note": "No hi ha cap menció a verificacions externes de les dades ESG presentades."
+        "label": "No presente",
+        "note": "Las auditorías citadas corresponden a los sistemas supervisados, no al contenido del boletín (p. 99)."
       }
     ]
   },
@@ -2605,39 +2605,39 @@ const cnmvBoletin_es: ReportBlock = {
 // -----------------------------------------------------------------------------
 
 const cnmvPlan_ca: ReportBlock = {
-  "semafor": {
-    "grade": "C",
-    "gradeLabel": "Millorable",
+    "semafor": {
+    "grade": "D",
+    "gradeLabel": "Materialitat qüestionable",
     "indicators": [
       {
         "name": "Cobertura Scope 3",
         "status": "vermell",
         "label": "No tractat",
-        "note": "L'informe no menciona emissions de Scope 3 ni estratègies per a la seva reducció."
+        "note": "No aborda la cadena de valor ni emissions; la sostenibilitat hi és transversal i declarativa (p. 5)."
       },
       {
         "name": "Termes temporals",
         "status": "groc",
-        "label": "Esmentat",
-        "note": "S'esmenten objectius a llarg termini (2030) però sense compromisos específics i amb horitzons poc clars."
+        "label": "Parcial",
+        "note": "Prioritats estratègiques 2030 i iniciatives 2026 (p. 3, 15), sense fites intermèdies quantificades."
       },
       {
         "name": "Fonts independents",
         "status": "groc",
         "label": "Parcial",
-        "note": "Algunes iniciatives inclouen col·laboracions però no hi ha un marc robust de verificació externa."
+        "note": "Referències pròpies i normatives; la xarxa de col·laboradors és l'única aportació externa (p. 20)."
       },
       {
         "name": "Granularitat",
-        "status": "verd",
-        "label": "Quantificat",
-        "note": "S'ofereixen dades específiques sobre mercats, inversions i iniciatives."
+        "status": "groc",
+        "label": "Limitada",
+        "note": "Iniciatives per any sense indicadors; el redisseny de KPI es promet per al futur (p. 30)."
       },
       {
         "name": "Verificació externa",
         "status": "vermell",
-        "label": "No tractat",
-        "note": "No es descriuen mecanismes de verificació externa dels informes ESG."
+        "label": "No present",
+        "note": "Controls i auditoria interna propis (p. 44); cap assurance extern del pla."
       }
     ]
   },
@@ -2747,39 +2747,39 @@ const cnmvPlan_ca: ReportBlock = {
 };
 
 const cnmvPlan_es: ReportBlock = {
-  "semafor": {
-    "grade": "C",
-    "gradeLabel": "Rendiment acceptable amb àrees de millora",
+    "semafor": {
+    "grade": "D",
+    "gradeLabel": "Materialidad cuestionable",
     "indicators": [
       {
         "name": "Cobertura Scope 3",
         "status": "vermell",
-        "label": "No abordat",
-        "note": "L'informe no menciona emissions de Scope 3 ni factors de carboni relacionats amb les inversions."
+        "label": "No abordado",
+        "note": "No aborda la cadena de valor ni emisiones; la sostenibilidad es transversal y declarativa (p. 5)."
       },
       {
-        "name": "Termes temporals",
+        "name": "Términos temporales",
         "status": "groc",
-        "label": "Esmentat però no detallat",
-        "note": "S'esmenten objectius a 2030 però no s'estableixen terminis específics per a les accions climàtiques."
+        "label": "Parcial",
+        "note": "Prioridades estratégicas 2030 e iniciativas 2026 (p. 3, 15), sin hitos intermedios cuantificados."
       },
       {
-        "name": "Fonts independents",
+        "name": "Fuentes independientes",
         "status": "groc",
-        "label": "Algunes fonts",
-        "note": "Es fan referències a estudis i dades externes però no a verificació independent de dades ESG."
+        "label": "Parcial",
+        "note": "Referencias propias y normativas; la red de colaboradores es la única aportación externa (p. 20)."
       },
       {
-        "name": "Granularitat",
+        "name": "Granularidad",
         "status": "groc",
-        "label": "General",
-        "note": "L'informe aborda conceptes ESG de manera general sense desglossar dades específiques."
+        "label": "Limitada",
+        "note": "Iniciativas por año sin indicadores; el rediseño de KPI se promete para el futuro (p. 30)."
       },
       {
-        "name": "Verificació externa",
+        "name": "Verificación externa",
         "status": "vermell",
-        "label": "No present",
-        "note": "No hi ha cap menció a verificació externa de les dades o informes ESG."
+        "label": "No presente",
+        "note": "Controles y auditoría interna propios (p. 44); sin assurance externo del plan."
       }
     ]
   },
@@ -2898,39 +2898,39 @@ const cnmvPlan_es: ReportBlock = {
 // -----------------------------------------------------------------------------
 
 const eiopa_ca: ReportBlock = {
-  "semafor": {
+    "semafor": {
     "grade": "C",
-    "gradeLabel": "Atenció: bretxa rellevant encara oberta",
+    "gradeLabel": "Feble metodològicament",
     "indicators": [
       {
-        "name": "Pèrdues per catàstrofes naturals",
+        "name": "Materialitat de l'impacte principal",
         "status": "verd",
         "label": "Quantificat",
-        "note": "EIOPA cita €274 mil milions en pèrdues globals i €124 mil milions assegurades el 2024."
+        "note": "Pèrdues per catàstrofes quantificades: 274.000 M€ globals, 124.000 M€ assegurats (p. 1)."
       },
       {
-        "name": "Inversions alineades amb la Taxonomia",
-        "status": "verd",
-        "label": "Quantificat",
-        "note": "4,5% de bons corporatius i renda variable directes; 10,7% en exposicions no financeres, des de 5,7% el 2022."
-      },
-      {
-        "name": "Bretxa de protecció d'assegurances",
-        "status": "groc",
-        "label": "Esmentat",
-        "note": "Es descriu com a persistent i creixent, però sense xifra específica al text."
-      },
-      {
-        "name": "Dades i models de risc",
-        "status": "groc",
-        "label": "Esmentat",
-        "note": "S'admeten limitacions de dades i modelització, sense mètriques quantitatives."
-      },
-      {
-        "name": "Cobertura Scope 3",
+        "name": "Termes temporals",
         "status": "vermell",
-        "label": "Ignorat",
-        "note": "El text no esmenta emissions de cadena de valor ni abast 3."
+        "label": "Cap fita",
+        "note": "Cap fita temporal pròpia; només la data de publicació, març 2026 (p. 1-2)."
+      },
+      {
+        "name": "Fonts independents",
+        "status": "vermell",
+        "label": "Només pròpies",
+        "note": "Anàlisi pròpia d'EIOPA sense citar fonts externes (p. 1)."
+      },
+      {
+        "name": "Granularitat",
+        "status": "groc",
+        "label": "Parcial",
+        "note": "Desglossament per classe d'actiu (4,5% alineat amb la Taxonomia), sense dades per país o sector (p. 1)."
+      },
+      {
+        "name": "Verificació externa",
+        "status": "vermell",
+        "label": "No present",
+        "note": "Article institucional signat, sense assurance ni revisió externa (p. 1-2)."
       }
     ]
   },
@@ -3045,39 +3045,39 @@ const eiopa_ca: ReportBlock = {
 };
 
 const eiopa_es: ReportBlock = {
-  "semafor": {
-    "grade": "B",
-    "gradeLabel": "Cobertura cuantitativa mayoritaria con un aspecto mencionado",
+    "semafor": {
+    "grade": "C",
+    "gradeLabel": "Débil metodológicamente",
     "indicators": [
       {
-        "name": "Pérdidas globales por catástrofes naturales",
+        "name": "Materialidad del impacto principal",
         "status": "verd",
         "label": "Cuantificado",
-        "note": "El texto cifra 274 000 M€ en pérdidas globales en 2024."
+        "note": "Pérdidas por catástrofes cuantificadas: 274.000 M€ globales, 124.000 M€ asegurados (p. 1)."
       },
       {
-        "name": "Pérdidas aseguradas por catástrofes naturales",
-        "status": "verd",
-        "label": "Cuantificado",
-        "note": "El texto cifra 124 000 M€ asegurados en 2024."
+        "name": "Términos temporales",
+        "status": "vermell",
+        "label": "Sin hitos",
+        "note": "Ningún hito temporal propio; solo la fecha de publicación, marzo 2026 (p. 1-2)."
       },
       {
-        "name": "Inversiones directas alineadas con la Taxonomía",
-        "status": "verd",
-        "label": "Cuantificado",
-        "note": "El 4,5 % de las inversiones directas en bonos y acciones corporativas estaba alineado con la Taxonomía."
+        "name": "Fuentes independientes",
+        "status": "vermell",
+        "label": "Solo propias",
+        "note": "Análisis propio de EIOPA sin citar fuentes externas (p. 1)."
       },
       {
-        "name": "Exposiciones no financieras alineadas con la Taxonomía",
-        "status": "verd",
-        "label": "Cuantificado",
-        "note": "El 10,7 % de las exposiciones no financieras estaba alineado, frente al 5,7 % en 2022."
-      },
-      {
-        "name": "Brecha de protección aseguradora",
+        "name": "Granularidad",
         "status": "groc",
-        "label": "Mencionado",
-        "note": "Se describe como persistente y creciente, sin cuantificación en el texto."
+        "label": "Parcial",
+        "note": "Desglose por clase de activo (4,5% alineado con la Taxonomía), sin datos por país o sector (p. 1)."
+      },
+      {
+        "name": "Verificación externa",
+        "status": "vermell",
+        "label": "No presente",
+        "note": "Artículo institucional firmado, sin assurance ni revisión externa (p. 1-2)."
       }
     ]
   },

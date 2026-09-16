@@ -10,14 +10,15 @@ lang: es
 
 ## Bloc 0 — Semàfor Metodològic
 
-Nota global: B · Bona cobertura amb algunes àrees millorables
+**Nota global: B** — Base participativa sólida, sin assurance externo.
 
-- **Cobertura Scope 3**: groc — Esmentat
-- **Termes temporals**: verd — Quantificat
-- **Fonts independents**: verd — Quantificat
-- **Granularitat**: verd — Quantificat
-- **Verificació externa**: groc — Esmentat
-- **Finançament d'emissions (Scope 3)**: groc — Esmentat però no detallat
+| Indicador | Estat | Lectura |
+|---|---|---|
+| Materialidad del impacto principal | 🟡 | La materialidad de los impactos de las carteras es eje central (p. 4), pero sin metodología de medición detallada |
+| Términos temporales | 🟢 | Horizonte cuatrienal definido: estrategia 2026-2029 (p. 1) |
+| Fuentes independientes | 🟢 | Encuesta a más de 250 miembros y más de 30 entrevistas a actores externos (p. 5) |
+| Granularidad | 🟢 | Cinco motores estratégicos desglosados en líneas de actuación concretas (p. 6-9) |
+| Verificación externa | 🟡 | Seguimiento interno de los marcos propios; sin verificación externa de la estrategia (p. 6) |
 
 ## Bloc 1 — Fitxa tècnica
 

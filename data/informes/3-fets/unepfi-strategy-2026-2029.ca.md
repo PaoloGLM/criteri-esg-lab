@@ -10,13 +10,15 @@ lang: ca
 
 ## Bloc 0 — Semàfor Metodològic
 
-Nota global: B · Bona cobertura amb algunes àrees millorables
+**Nota global: B** — Base participativa sòlida, sense assurance extern.
 
-- **Cobertura Scope 3**: groc — Esmentat però no detallat específicament
-- **Termes temporals**: verd — Quantificat (2026-2029)
-- **Fonts independents**: verd — Quantificat (enquestes a 250+ membres i 30+ parts interessades externes)
-- **Granularitat**: verd — Quantificat (detalls dels 5 motors estratègics i objectius específics)
-- **Verificació externa**: groc — Seguiment intern pels marcs de UNEP FI, sense verificació externa formal de l'estratègia global
+| Indicador | Estat | Lectura |
+|---|---|---|
+| Materialitat de l'impacte principal | 🟡 | La materialitat dels impactes de les carteres és eix central (p. 4), però sense metodologia de mesura detallada |
+| Termes temporals | 🟢 | Horitzó quadriennal definit: estratègia 2026-2029 (p. 1) |
+| Fonts independents | 🟢 | Enquesta a més de 250 membres i més de 30 entrevistes a actors externs (p. 5) |
+| Granularitat | 🟢 | Cinc motors estratègics desglossats en línies d'actuació concretes (p. 6-9) |
+| Verificació externa | 🟡 | Seguiment intern dels marcs propis; sense verificació externa de l'estratègia (p. 6) |
 
 ## Bloc 1 — Fitxa tècnica
 

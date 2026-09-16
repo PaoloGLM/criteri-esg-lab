@@ -7,12 +7,16 @@ lang: es
 ---
 
 ## Bloc 0 — Semàfor Metodològic
-- **Qualificació global: B** (Cobertura sólida con datos cuantificados pero con lagunas en impactos comunitarios y migratorios).
-- **Ocupació sectorial neta (Verd):** 951.000 llocs directes en 2023. Dades desagregades per tecnologia i estat membre.
-- **Bretxa de gènere (Verd):** 14-26% presència femenina. Quantificat per tecnologia i segment; només 3% de dones supervisores en construcció.
-- **Manca de competències (Verd):** 21 EE. MM. reporten dèficit d'electricistes. Dades EURES 2024 per a 15 ocupacions clau.
-- **Qualitat laboral i salaris (Verd):** EUR 24.300-44.600 segons tecnologia i segment. Exposició a riscos via EWCS 2024.
-- **Impacte comunitari en salut (Groc):** Riscos químics en bateries esmentats (Hongria, Suècia), però sense dades sistemàtiques ni marc regulador per al liti. *Nota: La qualificació 'B' està justificada precisament per aquesta manca de dades a nivell comunitari i migratori que el propi informe reconeix.*
+
+**Nota global: B** — Cobertura sólida y cuantificada, pero sin verificación externa.
+
+| Indicador | Estat | Lectura |
+|---|---|---|
+| Materialidad del impacto principal | 🟢 | Cadena de valor clean-tech cuantificada: 951.000 empleos directos en 2023 (p. 53) |
+| Términos temporales | 🟢 | Proyecciones 2030 por tecnología: hasta el doble de empleo en eólica y solar FV (p. 10) |
+| Fuentes independientes | 🟡 | Datos propios de la AEMA con referencias externas EURES 2024 (p. 83) y EWCS 2024 (p. 90); sin auditoría externa |
+| Granularidad | 🟢 | Datos desglosados por tecnología, segmento de cadena de valor y Estado miembro (p. 68-69) |
+| Verificación externa | 🟡 | Sin aseguramiento externo; validación metodológica interna sobre la LFS europea (p. 68) |
 
 ## Bloc 1 — Fitxa tècnica
 - **Institució:** European Environment Agency (EEA)

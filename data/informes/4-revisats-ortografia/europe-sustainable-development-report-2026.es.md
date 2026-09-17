@@ -42,19 +42,13 @@ lang: es
 El Informe de Desarrollo Sostenible 2026 de Europa, preparado por el SDG Transformation Center de la UN Sustainable Development Solutions Network (SDSN), presenta una evaluación actualizada del progreso europeo en los Objetivos de Desarrollo Sostenible (ODS). Europa mantiene su posición de líder global en desarrollo sostenible, con países europeos ocupando 19 de los 20 primeros lugares en el Índice ODS global. Sin embargo, el informe revela un estancamiento en la implementación, especialmente después del cambio en la Comisión von der Leyen (2024-2029), donde los ODS ya no se mencionan explícitamente en el programa de trabajo. El documento destaca cómo las prioridades políticas están desplazándose hacia la defensa y la competitividad, con un riesgo de dilución de los objetivos de reducción de la pobreza. A pesar de ello, iniciativas como la Global Gateway han movilizado más de 300 mil millones de euros para inversiones sostenibles. El informe llama a un liderazgo europeo renovado para superar los retos geopolíticos y acelerar la transición hacia una economía verde y digital.
 
 ## Bloc 4 — Implicaciones
+**Empresas:** Las empresas europeas deben adaptarse a un entorno político cambiante donde la sostenibilidad puede perder protagonismo. Hay una oportunidad para liderar en tecnologías verdes y digitales, pero deben gestionar el riesgo de cambios en la regulación y las políticas públicas. La falta de alianzas políticas estables para los ODS podría crear incertidumbre para las inversiones a largo plazo en sostenibilidad.
 
-### Empresas
-Las empresas europeas deben adaptarse a un entorno político cambiante donde la sostenibilidad puede perder protagonismo. Hay una oportunidad para liderar en tecnologías verdes y digitales, pero deben gestionar el riesgo de cambios en la regulación y las políticas públicas. La falta de alianzas políticas estables para los ODS podría crear incertidumbre para las inversiones a largo plazo en sostenibilidad.
+**Reguladores:** Los reguladores europeos deben encontrar un equilibrio entre la seguridad y la competitividad, manteniendo la ambición climática y social. El informe subraya la necesidad de datos desagregados y de alta calidad para una medición efectiva del progreso, especialmente ante la complejidad de los retos actuales. La UE debe reforzar su papel como líder en multilateralismo y sostenibilidad, especialmente ante la oposición de los EE. UU. Hay una necesidad urgente de alinear el marco financiero plurianual con los ODS para evitar una dilución de los objetivos.
 
-### Reguladores
-Los reguladores europeos deben encontrar un equilibrio entre la seguridad y la competitividad, manteniendo la ambición climática y social. El informe subraya la necesidad de datos desagregados y de alta calidad para una medición efectiva del progreso, especialmente ante la complejidad de los retos actuales. La UE debe reforzar su papel como líder en multilateralismo y sostenibilidad, especialmente ante la oposición de los EE. UU. Hay una necesidad urgente de alinear el marco financiero plurianual con los ODS para evitar una dilución de los objetivos.
+**Ciudadanos:** Los ciudadanos europeos se enfrentan a un futuro con retos significativos: crecimiento económico lento, cambios climáticos y tensiones geopolíticas. El informe subraya la importancia de mantener el compromiso con el principio 'dejar a nadie atrás', especialmente ante el aumento de la desigualdad. Los ciudadanos deben exigir un liderazgo político que mantenga la sostenibilidad como prioridad fundamental para el bienestar a largo plazo.
 
-### Ciudadanos
-Los ciudadanos europeos se enfrentan a un futuro con retos significativos: crecimiento económico lento, cambios climáticos y tensiones geopolíticas. El informe subraya la importancia de mantener el compromiso con el principio 'dejar a nadie atrás', especialmente ante el aumento de la desigualdad. Los ciudadanos deben exigir un liderazgo político que mantenga la sostenibilidad como prioridad fundamental para el bienestar a largo plazo.
-
-### Más allá del cumplimiento formal
-Criterio: Justicia distributiva
-El informe revela cómo las prioridades políticas europeas están cambiando, con un enfoque creciente en la defensa y la competitividad que podría diluir los objetivos de reducción de la pobreza y la justicia social. El principio 'dejar a nadie atrás' está perdiendo atención explícita, mientras que las desigualdades persistentes y la falta de avance en muchos ODS sociales muestran que la justicia distributiva no está siendo priorizada adecuadamente en la nueva agenda política. Esto se refleja en el Índice 'Leave-no-one-behind' (LNOB) para Europa, donde la correlación con la desigualdad en la satisfacción vital sugiere que la justicia distributiva es un reto creciente.
+**Más allá del trámite formal — Justicia distributiva:** El informe revela cómo las prioridades políticas europeas están cambiando, con un enfoque creciente en la defensa y la competitividad que podría diluir los objetivos de reducción de la pobreza y la justicia social. El principio 'dejar a nadie atrás' está perdiendo atención explícita, mientras que las desigualdades persistentes y la falta de avance en muchos ODS sociales muestran que la justicia distributiva no está siendo priorizada adecuadamente en la nueva agenda política. Esto se refleja en el Índice 'Leave-no-one-behind' (LNOB) para Europa, donde la correlación con la desigualdad en la satisfacción vital sugiere que la justicia distributiva es un reto creciente.
 
 ## Bloc 5 — Conexiones
 
@@ -64,27 +58,19 @@ El informe revela cómo las prioridades políticas europeas están cambiando, co
 
 ## Bloc 6 — Acciones recomendadas
 
-01. **Reforzar el liderazgo político en ODS** — La UE debe restaurar explícitamente los ODS como marco central de sus políticas, especialmente en el próximo marco financiero plurianual y en las directrices políticas de la Comisión.
-   - Esfuerzo: Alto · Impacto: Alto
-
-02. **Mantener el principio 'Dejar a nadie atrás'** — Priorizar políticas que reduzcan la desigualdad y aseguren que los beneficios de la transición verde lleguen primero a los grupos más vulnerables.
-   - Esfuerzo: Medio · Impacto: Alto
-
-03. **Reforzar la cooperación multilateral** — Contrarrestar la oposición a los ODS por parte de otras potencias mediante una defensa activa del multilateralismo basado en normas y la cooperación internacional.
-   - Esfuerzo: Alto · Impacto: Medio
-
-04. **Mejorar la recopilación de datos** — Desarrollar sistemas de seguimiento más granulares y desagregados para los ODS, especialmente para emisiones de alcance 3 e indicadores sociales, tal como se recomienda para una medición efectiva del rendimiento.
-   - Esfuerzo: Medio · Impacto: Medio
-
-05. **Integrar la sostenibilidad en las inversiones** — Asegurar que las inversiones en tecnologías digitales e infraestructuras estén alineadas con los ODS y promuevan una transición justa.
-   - Esfuerzo: Bajo · Impacto: Alto
+| # | Acció | Esforç | Impacte |
+|---|---|---|---|
+| 01 | Reforzar el liderazgo político en ODS — La UE debe restaurar explícitamente los ODS como marco central de sus políticas, especialmente en el próximo marco financiero plurianual y en las directrices políticas de la Comisión. | Mitjà | Mitjà |
+| 02 | Mantener el principio 'Dejar a nadie atrás' — Priorizar políticas que reduzcan la desigualdad y aseguren que los beneficios de la transición verde lleguen primero a los grupos más vulnerables. | Mitjà | Mitjà |
+| 03 | Reforzar la cooperación multilateral — Contrarrestar la oposición a los ODS por parte de otras potencias mediante una defensa activa del multilateralismo basado en normas y la cooperación internacional. | Mitjà | Mitjà |
+| 04 | Mejorar la recopilación de datos — Desarrollar sistemas de seguimiento más granulares y desagregados para los ODS, especialmente para emisiones de alcance 3 e indicadores sociales, tal como se recomienda para una medición efectiva del rendimiento. | Mitjà | Mitjà |
+| 05 | Integrar la sostenibilidad en las inversiones — Asegurar que las inversiones en tecnologías digitales e infraestructuras estén alineadas con los ODS y promuevan una transición justa. | Mitjà | Mitjà |
 
 ## Bloc 7 — Referencias cruzadas
 
-- **ONU ODS** — ODS 13: Acción por el clima: El informe muestra progresos limitados en la transición energética europea, con riesgos de desaceleración política.
-- **European Green Deal** — Neutralidad de carbono 2050: A pesar del objetivo declarado, el informe pone en duda la coherencia de las políticas actuales para alcanzarlo.
-- **Agenda 2030** — Principio de 'Dejar a nadie atrás': El informe detecta una disminución en la atención a este principio en las políticas europeas actuales.
+| Marc | Criteri | Cobertura | Acció recomanada |
+|---|---|---|---|
+| **ONU ODS** |  | Parcial | ODS 13: Acción por el clima: El informe muestra progresos limitados en la transición energética europea, con riesgos de desaceleración política. |
+| **European Green Deal** |  | Parcial | Neutralidad de carbono 2050: A pesar del objetivo declarado, el informe pone en duda la coherencia de las políticas actuales para alcanzarlo. |
+| **Agenda 2030** |  | Parcial | Principio de 'Dejar a nadie atrás': El informe detecta una disminución en la atención a este principio en las políticas europeas actuales. |
 
----
-Procesado con asistencia de IA (GLM + Gemini) y pendiente de validación por Paolo.
-=== FI ===
